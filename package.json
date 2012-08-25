@@ -1,0 +1,27 @@
+{
+  "author": "",
+  "name": "bem-bl-test",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bem/bem-bl-test.git"
+  },
+  "engines": {
+    "node": "0.6 | 0.7"
+  },
+  "dependencies": {
+    "bem": "~0.5.10",
+    "ometajs": "~3.1.4",
+    "xjst": "~0.3.1",
+    "qq": "0.3",
+    "q": "~0.8.5",
+    "q-fs": "0.1",
+    "inherit": "1",
+    "csso": "~1.2.12",
+    "borschik": "~0.0.9",
+    "uglify-js": "~1.2.6"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "private": true
+}

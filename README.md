@@ -5,4 +5,4 @@ Minimal configs and folders to start BEM project
 2. `cd project-stub`
 3. `npm install`
 4. `bem server`
-5. Navigate to `http://localhost:8080/pages-desktop/index/index.html
+5. Navigate to `http://localhost:8080/pages-desktop/index/index.html`

@@ -3,6 +3,7 @@ node_modules
 .DS_Store
 .idea
 .svn
+.bem/cache
 pages-desktop/*/*.*
 !pages-desktop/*/*.bemjson.js
 !pages-desktop/.bem/*

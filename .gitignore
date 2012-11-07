@@ -1,0 +1,11 @@
+.bem/cache/*
+bem-bl/
+node_modules/
+desktop.pages/index/_index.css
+desktop.pages/index/_index.js
+desktop.pages/index/index.bemdecl.js
+desktop.pages/index/index.bemhtml.js
+desktop.pages/index/index.css
+desktop.pages/index/index.deps.js
+desktop.pages/index/index.html
+desktop.pages/index/index.js

@@ -1,0 +1,61 @@
+block button {
+
+    default: {
+        applyNext(
+            this._click = (this.ctx.type ?
+                {
+                    elem: 'input',
+                    type: this.ctx.type,
+                    tabindex: this.ctx.tabindex,
+                    disabled: this.mods.disabled,
+                    name: this.ctx.name,
+                    value: (this.ctx.value || this.ctx.content)
+                } : { elem: 'click' })
+        );
+    }
+
+    js: true
+
+    tag: 'span'
+    this.ctx.url, tag: 'a'
+
+    attrs: {
+        var ctx = this.ctx,
+            a = { role: 'button' };
+
+        ctx.url && (a.href = ctx.url);
+        ctx.target && (a.target = ctx.target);
+        ctx.counter && (a.onmousedown = ctx.counter);
+        this.mods.disabled && (a['aria-disabled'] = true);
+
+        return a;
+    }
+
+    content: [
+        this._click,
+        {
+            elem: 'text',
+            tag: 'span',
+            content: this.ctx.content
+        }
+    ]
+
+    elem click, tag: 'i'
+
+    elem input {
+        tag: 'input',
+        attrs: {
+            var a = { type: this.ctx.type, value: '' },
+                ctx = this.ctx,
+                props = ['tabindex', 'name', 'value'], p;
+
+            while(p = props.shift())
+                ctx[p] && (a[p] = ctx[p]);
+
+            ctx.disabled && (a.disabled = 'disabled');
+
+            return a;
+        }
+    }
+
+}

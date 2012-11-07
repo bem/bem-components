@@ -1,0 +1,7 @@
+.button_disabled_yes,
+a.button_disabled_yes
+{
+    cursor: default;
+
+    color: #9d9d9d !important;
+}

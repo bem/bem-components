@@ -1,0 +1,10 @@
+.i-ua_js_yes .button__input
+{
+    z-index: 4;
+    left: -1px;
+    top: -1px;
+
+    overflow: visible;
+
+    padding: 2px 0.84em 0;
+}

@@ -1,0 +1,20 @@
+.button_only-icon_yes
+{
+    padding: 0 1em;
+}
+
+.button_only-icon_yes .button__icon
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin: -8px 0 0 -8px;
+}
+
+@media all and (min-width:0px) {
+    .button_only-icon_yes.button_pressed_yes .button__icon
+    {
+        margin-top: -7px;
+    }
+}

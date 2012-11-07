@@ -1,0 +1,9 @@
+block button, mod 'only-icon' yes  {
+
+    content: [
+        this._click,
+        '&#160;',
+        this.ctx.content
+    ]
+
+}

@@ -1,0 +1,8 @@
+.button
+{
+    /*
+        Если блок находится в таблице, которой задан border-collapse: collapse,
+        то у блока не будет отрисовываться box-shadow
+    */
+    border-collapse: separate;
+}

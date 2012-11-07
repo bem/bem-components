@@ -1,6 +1,14 @@
+/*global MAKE:true */
+
+"use strict";
+
 //process.env.YENV = 'production';
 
 MAKE.decl('Arch', {
+
+    blocksLevelsRegexp: /^.+?\.blocks/,
+
+    bundlesLevelsRegexp: /^.+?\.bundles$/,
 
     getLibraries: function() {
 
@@ -16,6 +24,7 @@ MAKE.decl('Arch', {
 
 });
 
+
 MAKE.decl('BundleNode', {
 
     getTechs: function() {
@@ -23,7 +32,7 @@ MAKE.decl('BundleNode', {
             'bemjson.js',
             'bemdecl.js',
             'deps.js',
-            'bemhtml.js',
+            'bemhtml',
             'js',
             'css',
             'ie.css',

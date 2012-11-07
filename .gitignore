@@ -2,8 +2,9 @@ bem-bl
 node_modules
 .DS_Store
 .idea
+.project
 .svn
 .bem/cache
-pages-desktop/*/*.*
-!pages-desktop/*/*.bemjson.js
-!pages-desktop/.bem/*
+desktop.bundles/*/*.*
+!desktop.bundles/*/*.bemjson.js
+!desktop.bundles/.bem/*

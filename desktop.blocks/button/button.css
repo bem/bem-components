@@ -24,4 +24,11 @@
     {
         border: 0;
     }
+
+    a.button:link,
+    a.button:hover,
+    a.button:visited
+    {
+        text-decoration: none;
+    }
 }

@@ -1,25 +1,28 @@
 block button {
 
-    default: {
-        applyNext(
-            this._click = (this.ctx.type ?
-                {
-                    elem: 'input',
-                    type: this.ctx.type,
-                    tabindex: this.ctx.tabindex,
-                    disabled: this.mods.disabled,
-                    name: this.ctx.name,
-                    value: (this.ctx.value || this.ctx.content)
-                } : { elem: 'click' })
-        );
-    }
+    tag: ( this.ctx.url ? 'a' : 'button' )
 
     js: true
 
-    tag: 'span'
-    this.ctx.url, tag: 'a'
+    default, !(this.ctx.mods || {}).theme: apply(
+        this.ctx.mods = this.ctx.mods || {},
+        this.ctx.mods.theme = 'normal'
+    )
 
-    attrs: {
+    attrs, !this.ctx.url: {
+        var ctx = this.ctx,
+            a = { type: (ctx.type? ctx.type : 'button'), role: 'button' },
+            props = ['tabindex', 'name', 'value'], p;
+
+        while(p = props.shift())
+            ctx[p] && (a[p] = ctx[p]);
+
+        this.mods.disabled && (a.disabled = 'disabled');
+
+        return a;
+    }
+
+    attrs, this.ctx.url: {
         var ctx = this.ctx,
             a = { role: 'button' };
 
@@ -31,31 +34,10 @@ block button {
         return a;
     }
 
-    content: [
-        this._click,
-        {
-            elem: 'text',
-            tag: 'span',
-            content: this.ctx.content
-        }
-    ]
-
-    elem click, tag: 'i'
-
-    elem input {
-        tag: 'input',
-        attrs: {
-            var a = { type: this.ctx.type, value: '' },
-                ctx = this.ctx,
-                props = ['tabindex', 'name', 'value'], p;
-
-            while(p = props.shift())
-                ctx[p] && (a[p] = ctx[p]);
-
-            ctx.disabled && (a.disabled = 'disabled');
-
-            return a;
-        }
+    content: {
+        elem: 'text',
+        tag: 'span',
+        content: this.ctx.content
     }
 
 }

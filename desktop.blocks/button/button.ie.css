@@ -1,0 +1,29 @@
+/* button — рисует бордер кнопки */ /**/
+.button
+{
+    position: relative;
+
+    display: inline-block;
+
+    margin: 0;
+    padding: 0;
+
+    outline: 0;
+    cursor: default;
+
+    text-align: center;
+    white-space: nowrap;
+
+    -moz-user-select: none;
+    user-select: none;
+
+    overflow: visible;
+}
+
+/* Прячем стили от IE < 9 */ /**/
+@media all and (min-width:0px) {
+    .button
+    {
+        border: 0;
+    }
+}

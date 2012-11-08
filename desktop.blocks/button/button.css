@@ -17,3 +17,11 @@
     -moz-user-select: none;
     user-select: none;
 }
+
+/* Прячем стили от IE < 9 */ /**/
+@media all and (min-width:0px) {
+    .button
+    {
+        border: 0;
+    }
+}

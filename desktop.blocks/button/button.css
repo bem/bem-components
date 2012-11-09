@@ -8,7 +8,7 @@
     margin: 0;
     padding: 0;
 
-    outline: 0;
+    outline: 0 solid;
     cursor: default;
 
     text-align: center;
@@ -16,6 +16,13 @@
 
     -moz-user-select: none;
     user-select: none;
+}
+
+.button::-moz-focus-inner
+{
+    padding: 0;
+
+    border: 0;
 }
 
 /* Прячем стили от IE < 9 */ /**/

@@ -1,4 +1,4 @@
-.button_size_m
+button.button_size_m
 {
-    font: 13px/22px Arial, sans-serif;
+    line-height: 22px;
 }

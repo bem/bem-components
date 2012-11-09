@@ -1,7 +1,6 @@
-block button, mod 'only-icon' yes  {
+block button, mod 'only-icon' yes, elem text  {
 
     content: [
-        this._click,
         '&#160;',
         this.ctx.content
     ]

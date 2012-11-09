@@ -1,37 +1,56 @@
 block button {
 
-    tag: ( this.ctx.url ? 'a' : 'button' )
+    tag: 'button'
+    this.ctx.url, tag: 'a'
 
     js: true
 
-    default, !(this.ctx.mods || {}).theme: apply(
-        this.ctx.mods = this.ctx.mods || {},
-        this.ctx.mods.theme = 'normal'
-    )
-
-    attrs, !this.ctx.url: {
-        var ctx = this.ctx,
-            a = { type: (ctx.type? ctx.type : 'button'), role: 'button' },
-            props = ['tabindex', 'name', 'value'], p;
-
-        while(p = props.shift())
-            ctx[p] && (a[p] = ctx[p]);
-
-        this.mods.disabled && (a.disabled = 'disabled');
-
-        return a;
+    default, !(this.ctx.mods || {}).theme: {
+        apply(
+            this.ctx.mods = this._.extend(this.ctx.mods || {}, { theme: 'normal' })
+//            this.ctx.mods = this.ctx.mods || {},
+//            this.ctx.mods.theme = 'normal'
+        );
     }
 
-    attrs, this.ctx.url: {
-        var ctx = this.ctx,
-            a = { role: 'button' };
+    attrs {
 
-        ctx.url && (a.href = ctx.url);
-        ctx.target && (a.target = ctx.target);
-        ctx.counter && (a.onmousedown = ctx.counter);
-        this.mods.disabled && (a['aria-disabled'] = true);
+        true: {
+            var ctx = this.ctx,
+                a = { role: 'button' };
 
-        return a;
+            ctx.tabindex && (a.tabindex = ctx.tabindex);
+
+            return a;
+        }
+
+        !this.ctx.url: {
+            var ctx = this.ctx,
+                p = applyNext(),
+                a = { type: (ctx.type? ctx.type : 'button') },
+                props = ['name', 'value'], i;
+
+            while(i = props.shift())
+                ctx[i] && (a[i] = ctx[i]);
+
+            this.mods.disabled && (a.disabled = 'disabled');
+
+            return this._.extend(p, a);
+
+        }
+
+        this.ctx.url: {
+            var ctx = this.ctx,
+                p = applyNext(),
+                a = { href: ctx.url };
+
+            ctx.target && (a.target = ctx.target);
+
+            this.mods.disabled && (a['aria-disabled'] = true);
+
+            return this._.extend(p, a);
+        }
+
     }
 
     content: {

@@ -1,6 +1,8 @@
-.button_only-icon_yes
+.button_only-icon_yes .button__text
 {
-    padding: 0 1em;
+    display: inline-block;
+
+    width: 2px;
 }
 
 .button_only-icon_yes .button__icon
@@ -12,9 +14,9 @@
     margin: -8px 0 0 -8px;
 }
 
-@media all and (min-width:0px) {
-    .button_only-icon_yes.button_pressed_yes .button__icon
-    {
-        margin-top: -7px;
-    }
-}
+/*@media all and (min-width:0px) {*/
+    /*.button_only-icon_yes.button_pressed_yes .button__icon*/
+    /*{*/
+        /*margin-top: -7px;*/
+    /*}*/
+/*}*/

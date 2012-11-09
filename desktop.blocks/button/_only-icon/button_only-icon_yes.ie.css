@@ -1,4 +1,4 @@
-.button_only-icon_yes .button__icon
+a.button_only-icon_yes
 {
-    z-index: 3;
+    text-decoration: none;
 }

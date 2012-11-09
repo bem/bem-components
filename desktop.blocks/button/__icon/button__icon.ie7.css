@@ -1,6 +1,6 @@
-.button__text .button__icon
+.button__icon
 {
-    top: 0;
+    top: auto;
 
     vertical-align: middle;
 }

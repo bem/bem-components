@@ -1,6 +1,4 @@
-.button__text
+button.button .button__text
 {
-    padding: 0 0.85em;
-
-    background: green;
+   display: inline-block;
 }

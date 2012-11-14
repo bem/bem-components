@@ -20,8 +20,7 @@ MAKE.decl('Arch', {
             },
             'bl-core-bemhtml' : {
                 type: 'git',
-                url: 'git://github.com/tadatuta/bl-core-bemhtml.git',
-                npmPackages: false
+                url: 'git://github.com/tadatuta/bl-core-bemhtml.git'
             }
         };
 

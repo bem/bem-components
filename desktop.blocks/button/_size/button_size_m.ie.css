@@ -1,9 +1,6 @@
 button.button_size_m
 {
-    line-height: 22px;
-}
+    height: 30px;
 
-button.button_size_m .button__text
-{
-    margin-top: 1px;
+    line-height: 24px;
 }

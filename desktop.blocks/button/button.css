@@ -10,7 +10,6 @@
     
     /* solid transparent for Opera 12 to remove native focusing  *//**/
     outline: solid transparent;
-    cursor: default;
 
     text-align: center;
     white-space: nowrap;
@@ -37,6 +36,8 @@
     a.button:hover,
     a.button:visited
     {
+        cursor: default;
+
         text-decoration: none;
     }
 }

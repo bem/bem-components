@@ -1,7 +1,6 @@
 .button__icon
 {
-    top: auto;
+    top: 0;
 
     vertical-align: middle;
 }
-

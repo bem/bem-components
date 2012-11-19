@@ -7,8 +7,9 @@
 
     margin: 0;
     padding: 0;
-
-    outline: 0 solid;
+    
+    /* solid transparent for Opera 12 to remove native focusing  *//**/
+    outline: solid transparent;
     cursor: default;
 
     text-align: center;

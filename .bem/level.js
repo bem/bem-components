@@ -8,17 +8,17 @@ exports.getTechs = function() {
         'ie7.css': 'ie7.css',
         'ie8.css': 'ie8.css',
         'ie9.css': 'ie9.css',
-        'bemhtml.js': '../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
-        'html': '../../bem-bl/blocks-common/i-bem/bem/techs/html'
+        'bemhtml.js': '../../../bem-bl/blocks-common/i-bem/bem/techs/bemhtml.js',
+        'html': '../../../bem-bl/blocks-common/i-bem/bem/techs/html'
     };
 };
 
 exports.getConfig = function() {
     return extend({}, this.__base() || {}, {
         bundleBuildLevels: this.resolvePaths([
-            '../../bem-bl/blocks-common',
-            '../../bem-bl/blocks-desktop',
-            '../../desktop.blocks'
+            '../../../bem-bl/blocks-common',
+            '../../../bem-bl/blocks-desktop',
+            '../../../desktop.blocks'
         ])
     });
 };

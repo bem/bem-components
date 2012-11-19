@@ -8,13 +8,12 @@ block button {
     default, !(this.ctx.mods || {}).theme: {
         apply(
             this.ctx.mods = this._.extend(this.ctx.mods || {}, { theme: 'normal' })
-//            this.ctx.mods = this.ctx.mods || {},
-//            this.ctx.mods.theme = 'normal'
         );
     }
 
     attrs {
 
+        // Common attributes
         true: {
             var ctx = this.ctx,
                 a = { role: 'button' };
@@ -24,6 +23,7 @@ block button {
             return a;
         }
 
+        // Attributes for button variant
         !this.ctx.url: {
             var ctx = this.ctx,
                 p = applyNext(),
@@ -39,6 +39,7 @@ block button {
 
         }
 
+        // Attributes for link variant
         this.ctx.url: {
             var ctx = this.ctx,
                 p = applyNext(),

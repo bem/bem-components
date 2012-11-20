@@ -8,8 +8,7 @@
     margin: 0;
     padding: 0;
     
-    /* solid transparent for Opera 12 to remove native focusing  *//**/
-    outline: solid transparent;
+    outline: 0;
 
     text-align: center;
     white-space: nowrap;
@@ -38,6 +37,9 @@
     a.button:visited
     {
         cursor: default;
+
+        /* hidden for Opera 12 to remove native focusing  *//**/
+        outline: hidden;
 
         text-decoration: none;
     }

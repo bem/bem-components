@@ -23,7 +23,7 @@ exports.getTechs = function() {
         'ie8.css'       : 'ie8.css',
         'ie9.css'       : 'ie9.css',
 
-        'bemhtml'       : pjoin(PRJ_ROOT, 'bl-core-bemhtml/.bem/techs/bemhtml.js'),
+        'bemhtml'       : pjoin(PRJ_ROOT, 'bemhtml/.bem/techs/bemhtml.js'),
         'html'          : pjoin(BEMBL_TECHS, 'html.js')
     };
 

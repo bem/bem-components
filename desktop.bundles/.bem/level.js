@@ -8,7 +8,7 @@ exports.getConfig = function() {
         bundleBuildLevels: this.resolvePaths([
             '../../bem-bl/blocks-common',
             '../../bem-bl/blocks-desktop',
-            '../../bl-core-bemhtml/common.blocks',
+            '../../bemhtml/common.blocks',
             '../../common.blocks',
             '../../desktop.blocks'
         ])

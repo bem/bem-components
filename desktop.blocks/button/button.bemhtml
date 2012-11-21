@@ -5,12 +5,6 @@ block button {
 
     js: true
 
-    default, !(this.ctx.mods || {}).theme: {
-        apply(
-            this.ctx.mods = this._.extend(this.ctx.mods || {}, { theme: 'normal' })
-        );
-    }
-
     attrs {
 
         // Common attributes

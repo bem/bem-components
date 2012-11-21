@@ -1,0 +1,20 @@
+.b-autocomplete-item_type_lingvo
+{
+    display: block;
+
+    padding: 0.25em 0.3em;
+
+    cursor: pointer;
+}
+
+.b-autocomplete-item_type_lingvo .b-autocomplete-item__text
+{
+    color: #000;
+}
+
+.b-autocomplete-item_type_lingvo .b-autocomplete-item__translation
+{
+    white-space: nowrap;
+
+    color: #666;
+}

@@ -1,0 +1,12 @@
+.input_disabled_yes
+{
+    cursor: default;
+
+    opacity: .6;
+}
+
+.input_disabled_yes .input__input
+{
+    resize: none;
+    cursor: default;
+}

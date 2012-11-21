@@ -1,0 +1,6 @@
+block input, elem label {
+    
+    tag: 'label'
+    attrs: { 'for': this._inputId }
+
+}

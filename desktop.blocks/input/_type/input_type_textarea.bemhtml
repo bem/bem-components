@@ -1,0 +1,14 @@
+block input, mod type textarea, elem input {
+
+    tag: 'textarea'
+
+    attrs, !this._baseAttrsApplyed: {
+        var a = apply(this._value = null, this._baseAttrsApplyed = true);
+        return this._.extend(a, {rows: 10, cols: 10 });
+    }
+
+    content: {
+        return this._value || this.ctx.content
+    }
+
+}

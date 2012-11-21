@@ -1,0 +1,36 @@
+.input__hint
+{
+    float: left;
+    visibility: hidden;
+
+    width: 100%;
+
+    white-space: nowrap;
+}
+
+.input__hint-inner
+{
+    position: absolute;
+    z-index: 2;
+
+    overflow: hidden;
+
+    max-width: 100%;
+    padding: 0 1em 0 0.6em;
+
+    cursor: text;
+
+    color: #999;
+
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.i-ua_js_no .input__hint
+{
+    display: none;
+}

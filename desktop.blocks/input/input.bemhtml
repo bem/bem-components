@@ -1,0 +1,49 @@
+block input, !this.elem {
+
+    default, !(this.ctx.mods || {}).theme: apply(
+        this.ctx.mods = this.ctx.mods || {},
+        this.ctx.mods.theme = 'normal'
+    )
+
+    default, !this._inputId: {
+        applyNext(
+            this._inputId = this.ctx.id || this.generateId(),
+            this._name = this.ctx.name || '',
+            this._value = this.ctx.value || ''
+        );
+    }
+
+    js: {
+        return this.mods.popup == 'gradient' ? { popupMods: { gradient: 'yes' } } : true;
+    }
+
+    tag: 'span'
+}
+
+block input, elem input {
+
+    tag: 'input'
+
+    attrs: {
+        var a = {
+            id: this._inputId,
+            name: this._name
+        };
+
+        this._value && (a.value = this._value);
+        this.mods.disabled && (a.disabled = 'disabled');
+
+        return a;
+    }
+
+    default: {
+        applyCtx({
+            elem: 'box',
+            tag: 'span',
+            content: [
+                this.ctx,
+                this.ctx.clear
+            ]
+        });
+    }
+}

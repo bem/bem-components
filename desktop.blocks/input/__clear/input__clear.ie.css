@@ -1,0 +1,10 @@
+.input__clear
+{
+    left: 100%;
+
+    width: 20px;
+    height: 18px;
+    margin: -9px 0 0 -11px;
+
+    background: #fff url(input__clear.png) 50% 50% no-repeat;
+}

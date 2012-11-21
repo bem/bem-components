@@ -1,0 +1,8 @@
+block input, elem message {
+
+    tag: 'span'
+    attrs: {
+        return this.elemMods.type == 'error' ? { role: 'alert', 'aria-hidden': true } : ''
+    }
+
+}

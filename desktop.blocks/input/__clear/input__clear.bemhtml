@@ -1,0 +1,8 @@
+block input, elem clear {
+    
+    tag: 'span'
+
+    // &nbsp; — fixed bug FF of Linux.
+    // After text selection left-click on an item that has no content, the buffer is cleared
+    content, !this.ctx.content: '&nbsp;'
+}

@@ -1,0 +1,10 @@
+.b-layout-table
+{
+    width: 600px;
+    margin: 10px;
+}
+
+.b-layout-table .button
+{
+    margin-left: 0.5em;
+}

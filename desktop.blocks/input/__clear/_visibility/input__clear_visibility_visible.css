@@ -1,0 +1,11 @@
+.input__clear_visibility_visible
+{
+    visibility: visible;
+
+	opacity: 0.2;
+}
+
+.input__clear_visibility_visible:hover
+{
+	opacity: 1;
+}

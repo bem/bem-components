@@ -1,0 +1,7 @@
+.input__box
+{
+    /* z1 — fix bug IE. INPUT disappears in the table */
+    zoom: 1;
+
+    vertical-align: middle;
+}

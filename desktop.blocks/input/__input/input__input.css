@@ -1,0 +1,28 @@
+.input__input
+{
+    position: relative;
+    z-index: 3;
+
+    width: 100%;
+    margin: 0;
+
+    color: #000;
+
+    font: 100% Arial, sans-serif;
+}
+
+@media all and (min-width:0px) {
+    .i-ua_js_yes .input__input
+    {
+        padding-left: 0.4em;
+
+        outline: 0;
+
+        border: 0;
+        background: none;
+
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+}

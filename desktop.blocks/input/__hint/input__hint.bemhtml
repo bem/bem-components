@@ -1,0 +1,12 @@
+block input, elem hint {
+
+    tag: 'label'
+
+    attrs: { 'for': this._inputId }
+
+    content: {
+        elem: 'hint-inner',
+        tag: 'span',
+        content: this.ctx.content
+    }
+}

@@ -1,0 +1,27 @@
+block input, elem input {
+
+    tag: 'input'
+
+    attrs: {
+        var a = {
+            id: this._inputId,
+            name: this._name
+        };
+
+        this._value && (a.value = this._value);
+        this.mods.disabled && (a.disabled = 'disabled');
+
+        return a;
+    }
+
+    default: {
+        applyCtx({
+            elem: 'box',
+            tag: 'span',
+            content: [
+                this.ctx,
+                this.ctx.clear
+            ]
+        });
+    }
+}

@@ -1,5 +1,0 @@
-({
-    shouldDeps: [
-        { mods: { type: 'href' } }
-    ]
-})

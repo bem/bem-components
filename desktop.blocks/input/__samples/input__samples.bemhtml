@@ -1,6 +1,1 @@
-block input {
-
-    elem sample, tag: 'span'
-    elem samples, tag: 'span'
-
-}
+block input, elem samples, tag: 'span'

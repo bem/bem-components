@@ -1,0 +1,7 @@
+block input, elem message, elemMod type error  {
+
+    attrs: {
+        role: 'alert'
+    }
+
+}

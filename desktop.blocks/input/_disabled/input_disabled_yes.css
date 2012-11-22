@@ -10,3 +10,8 @@
     resize: none;
     cursor: default;
 }
+
+.input_disabled_yes .input__clear
+{
+    display: none;
+}

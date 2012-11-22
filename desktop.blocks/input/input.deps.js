@@ -6,6 +6,6 @@
     shouldDeps: [
         { block: 'i-system' },
         { mods: { disabled: 'yes' } },
-        { elems: ['input', 'box'] }
+        { elems: [ 'box', 'input' ] }
     ]
 })

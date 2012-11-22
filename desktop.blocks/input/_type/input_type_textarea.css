@@ -11,7 +11,7 @@
 
     resize: vertical;
 
-    /* Fixed bug — overflow tekstarea no scrolling on touch devices */
+    /* Fixed bug — overflow textarea no scrolling on touch devices */
     -webkit-overflow-scrolling: touch;
 }
 

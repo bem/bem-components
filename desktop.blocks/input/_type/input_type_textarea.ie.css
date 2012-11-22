@@ -8,7 +8,7 @@
     margin-bottom: 0;
 }
 
-/* body — increases the weight selector to override height INPUT specified in the _size */
+/* body — increases the weight of selector to override INPUT height specified in the _size */
 body .input_type_textarea .input__input
 {
     height: auto;

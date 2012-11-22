@@ -11,7 +11,7 @@
 .input__hint-inner
 {
     position: absolute;
-    z-index: 2;
+    z-index: 1;
 
     overflow: hidden;
 
@@ -22,8 +22,8 @@
 
     color: #999;
 
-    text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

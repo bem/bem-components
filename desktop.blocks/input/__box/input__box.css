@@ -9,22 +9,3 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
-/* :before — gradient input */
-.input__box:before
-{
-    position: absolute;
-    bottom: 1px;
-    right: 1px;
-    left: 1px;
-    top: 1px;
-
-    content: '';
-}
-
-.i-ua_js_no .input__box:before,
-.i-ua_js_no .input__box
-{
-    background: none !important;
-    box-shadow: none !important;
-}

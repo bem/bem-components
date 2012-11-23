@@ -23,7 +23,7 @@ exports.getTechs = function() {
         'ie9.css'       : 'ie9.css',
 
         'bemhtml'       : pjoin(PRJ_ROOT, 'bemhtml/.bem/techs/bemhtml.js'),
-        'html'          : pjoin(PRJ_ROOT, 'bemhtml/.bem/techs/html.js')
+        'html'          : pjoin(PRJ_ROOT, 'bemhtml/.bem/techs/bemjson2html.js')
     };
 
 };

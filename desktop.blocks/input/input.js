@@ -56,13 +56,6 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
                 })
             ) - 1;
 
-            // шорткат для перехода в инпут - ctrl+стрелка вверх
-            // TODO: вынести в islands-controls
-            _this.params.shortcut && _this.bindToDoc('keydown', function(e) {
-                if(e.ctrlKey && e.keyCode === 38 && !$(e.target).is('input, textarea')) {
-                    _this.setMod('focused', 'yes');
-                }
-            });
         },
 
         'disabled' : function(modName, modVal) {

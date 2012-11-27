@@ -3,12 +3,16 @@
     {
         padding: 2px 1px 0 0;
     }
+
+    .input_type_textarea .input__input
+    {
+        padding-top: 0.38em;
+    }
 }
 
 .input_type_textarea .input__input
 {
     margin-bottom: -0.6em;
-    padding-top: 0.38em;
 
     resize: vertical;
 

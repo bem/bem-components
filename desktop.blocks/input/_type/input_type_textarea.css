@@ -1,11 +1,12 @@
 @media all and (min-width:0px) {
     .input_type_textarea .input__box
     {
-        padding: 2px 1px 0 0;
+        padding: 2px 0 0 0;
     }
 
     .input_type_textarea .input__input
     {
+        padding-right: 1px;
         padding-top: 0.38em;
     }
 }

@@ -4,9 +4,4 @@ block input, elem hint {
 
     attrs: { 'for': this._inputId }
 
-    content: {
-        elem: 'hint-inner',
-        tag: 'span',
-        content: this.ctx.content
-    }
 }

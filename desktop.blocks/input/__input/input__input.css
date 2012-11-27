@@ -14,6 +14,7 @@
 @media all and (min-width:0px) {
     .i-ua_js_yes .input__input
     {
+        padding-right: 25px;
         padding-left: 0.4em;
 
         outline: 0;
@@ -21,7 +22,6 @@
         border: 0;
         background: none;
 
-        -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }

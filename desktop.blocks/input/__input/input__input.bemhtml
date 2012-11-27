@@ -20,7 +20,7 @@ block input, elem input {
             tag: 'span',
             content: [
                 this.ctx,
-                this.ctx.clear
+                { elem: 'clear' }
             ]
         });
     }

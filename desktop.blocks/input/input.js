@@ -56,6 +56,10 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
                 })
             ) - 1;
 
+            _this
+                .on('change', _this._updateClear)
+                ._updateClear();
+
         },
 
         'disabled' : function(modName, modVal) {
@@ -104,6 +108,24 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
             }
 
         }
+
+    },
+
+    _onClearClick : function() {
+
+        this.trigger('clear');
+        this.removeInsets &&
+            this.removeInsets();
+
+        this
+            .val('')
+            .setMod('focused', 'yes');
+
+    },
+
+    _updateClear : function() {
+
+        return this.toggleMod(this.elem('clear'), 'visibility', 'visible', '', !!this._val);
 
     },
 
@@ -217,6 +239,15 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
     }
 
+}, {
+
+    live : function() {
+
+        this.liveBindTo('clear', 'leftclick', function() {
+            this._onClearClick();
+        });
+
+    }
 });
 
 })();

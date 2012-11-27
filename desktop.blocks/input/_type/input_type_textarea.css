@@ -1,18 +1,24 @@
 @media all and (min-width:0px) {
     .input_type_textarea .input__box
     {
-        padding: 0.38em 1px 0 0;
+        padding: 2px 1px 0 0;
     }
 }
 
 .input_type_textarea .input__input
 {
     margin-bottom: -0.6em;
+    padding-top: 0.38em;
 
     resize: vertical;
 
     /* Fixed bug — overflow textarea no scrolling on touch devices */
     -webkit-overflow-scrolling: touch;
+}
+
+.input_type_textarea .input__clear
+{
+    display: none;
 }
 
 /* Only FF */

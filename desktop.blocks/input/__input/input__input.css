@@ -26,3 +26,9 @@
         box-sizing: border-box;
     }
 }
+
+.input__input::-ms-clear
+{
+    /* Hide native cross in IE10 */
+    display: none;
+}

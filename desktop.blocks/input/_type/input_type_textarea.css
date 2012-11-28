@@ -1,19 +1,18 @@
 @media all and (min-width:0px) {
-    .input_type_textarea .input__box
-    {
-        padding: 2px 0 0 0;
-    }
-
     .input_type_textarea .input__input
     {
-        padding-right: 1px;
-        padding-top: 0.38em;
+        display: block;
+
+        padding: 0.53em 1px 1px 0.4em;
+
+        vertical-align: baseline;
     }
 }
 
 .input_type_textarea .input__input
 {
-    margin-bottom: -0.6em;
+    height: auto;
+    min-height: 2em;
 
     resize: vertical;
 
@@ -27,13 +26,8 @@
 }
 
 /* Only FF */
-.input_type_textarea .input__box, x:-moz-any-link
-{
-    padding-right: 2px;
-}
-
 .input_type_textarea .input__input, x:-moz-any-link
 {
-    min-height: 1.7em;
-    margin-bottom: -0.3em;
+    padding-top: 0.44em;
 }
+

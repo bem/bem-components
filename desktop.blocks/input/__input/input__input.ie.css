@@ -1,4 +1,6 @@
 .input__input
 {
     float: left;
+
+    padding-left: 0.4em;
 }

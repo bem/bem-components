@@ -6,28 +6,29 @@
         padding: 0.53em 1px 1px 0.4em;
 
         vertical-align: baseline;
+
+        resize: vertical;
+
+         /* Fixed bug — overflow textarea no scrolling on touch devices */
+         -webkit-overflow-scrolling: touch;
+    }
+
+    /* Only FF */
+    .input_type_textarea .input__input, x:-moz-any-link
+    {
+        padding-top: 0.44em;
+    }
+
+    .input_type_textarea .input__clear
+    {
+        display: none;
     }
 }
 
-.input_type_textarea .input__input
+/* body — increases the weight of selector to override INPUT height */
+body .input_type_textarea .input__input
 {
     height: auto;
     min-height: 2em;
-
-    resize: vertical;
-
-    /* Fixed bug — overflow textarea no scrolling on touch devices */
-    -webkit-overflow-scrolling: touch;
-}
-
-.input_type_textarea .input__clear
-{
-    display: none;
-}
-
-/* Only FF */
-.input_type_textarea .input__input, x:-moz-any-link
-{
-    padding-top: 0.44em;
 }
 

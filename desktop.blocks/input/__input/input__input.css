@@ -14,8 +14,10 @@
 @media all and (min-width:0px) {
     .i-ua_js_yes .input__input
     {
-        padding-right: 25px;
+        height: 2em;
         padding-left: 0.4em;
+        /* padding-right for elem clear */
+        padding-right: 25px;
 
         outline: 0;
 

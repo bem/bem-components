@@ -8,12 +8,13 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
         'js' : function() {
 
-            var disabled = this.isDisabled();
+            var disabled = this.isDisabled(),
+                domElem = this.domElem;
 
-            (this._href = this.domElem.attr('href')) && disabled &&
-                this.domElem.removeAttr('href');
+            (this._href = domElem.attr('href')) && disabled &&
+                domElem.removeAttr('href');
 
-            this.attr('disabled', disabled);
+            domElem.attr('disabled', disabled);
 
         },
 
@@ -32,7 +33,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                     })
                     .bindTo('keydown', this._onKeyDown)
                 
-                _this.is(':focus') || _this.focus();
+                _this.domElem.is(':focus') || _this.domElem.focus();
 
                 this.afterCurrentEvent(function() {
                     this.trigger('gotfocus');
@@ -45,7 +46,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                 this
                     .unbindFromWin('unload')
                     .unbindFrom('keydown')
-                    .blur();
+                    .domElem.blur();
 
                 this.afterCurrentEvent(function() {
                     this.trigger('lostfocus');
@@ -67,7 +68,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             disable && domElem.keyup();
 
             this.afterCurrentEvent(function() {
-                this.attr('disabled', disable);
+                domElem.attr('disabled', disable);
             });
 
         },

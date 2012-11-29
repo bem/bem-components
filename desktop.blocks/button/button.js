@@ -13,7 +13,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             (this._href = this.domElem.attr('href')) && disabled &&
                 this.domElem.removeAttr('href');
 
-            this.elem('input').attr('disabled', disabled);
+            this.attr('disabled', disabled);
 
         },
 
@@ -32,7 +32,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                     })
                     .bindTo('keydown', this._onKeyDown)
                 
-                _this.elem('input').is(':focus') || _this.elem('input').focus();
+                _this.is(':focus') || _this.focus();
 
                 this.afterCurrentEvent(function() {
                     this.trigger('gotfocus');
@@ -45,7 +45,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                 this
                     .unbindFromWin('unload')
                     .unbindFrom('keydown')
-                    .elem('input').blur();
+                    .blur();
 
                 this.afterCurrentEvent(function() {
                     this.trigger('lostfocus');
@@ -67,7 +67,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             disable && domElem.keyup();
 
             this.afterCurrentEvent(function() {
-                this.elem('input').attr('disabled', disable);
+                this.attr('disabled', disable);
             });
 
         },

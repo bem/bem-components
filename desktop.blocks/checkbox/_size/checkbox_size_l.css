@@ -1,0 +1,12 @@
+.checkbox_size_l
+{
+    font: 15px Arial, sans-serif;
+}
+
+.checkbox_size_l .checkbox__box:after,
+.checkbox_size_l .checkbox__box:before
+{
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+}

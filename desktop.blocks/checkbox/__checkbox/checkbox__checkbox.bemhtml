@@ -1,0 +1,17 @@
+block checkbox, elem checkbox {
+
+    tag: 'input'
+
+    attrs: {
+        var a = this.ctx.attrs || {};
+
+        a['id'] = this._checkboxAttrs.id;
+        a.type = 'checkbox';
+
+        this.mods.disabled && (a.disabled = 'disabled');
+        this.mods.checked && (a.checked = 'checked');
+
+        return a;
+    }
+}
+

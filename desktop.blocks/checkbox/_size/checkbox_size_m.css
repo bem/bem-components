@@ -1,0 +1,16 @@
+.checkbox_size_m
+{
+    font: 13px Arial, sans-serif;
+}
+
+.checkbox_size_m .checkbox__box:after,
+.checkbox_size_m .checkbox__box:before
+{
+    width: 12px;
+    height: 12px;
+}
+
+.checkbox_size_m .checkbox__tick
+{
+    background-size: contain;
+}

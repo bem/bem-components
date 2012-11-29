@@ -1,0 +1,28 @@
+block checkbox {
+
+    tag: 'span'
+
+    js: true
+
+    default, !this._checkboxAttrs: {
+        applyNext(
+            this._checkboxAttrs = (this.ctx.checkboxAttrs || {}).id ?
+                    this.ctx.checkboxAttrs :
+                    { id: 'id' + this.generateId() }
+            );
+    }
+
+    content: [
+        {
+            elem: 'box',
+            tag: 'span',
+            elemMods: (this.mods.checked === 'yes') ? { checked:'yes' } : '',
+            content: [
+                { elem: 'checkbox', attrs: this.ctx.checkboxAttrs || {} },
+                { elem: 'tick', tag: 'i' }
+            ]
+        },
+        this.ctx.content
+    ]
+
+}

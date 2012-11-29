@@ -1,0 +1,11 @@
+block checkbox, elem label {
+
+    tag: 'label'
+
+    attrs: {
+        var a = this.ctx.attrs || {};
+        a['for'] = this._checkboxAttrs.id;
+
+        return a;
+    }
+}

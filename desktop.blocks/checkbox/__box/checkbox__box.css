@@ -1,0 +1,13 @@
+.checkbox__box
+{
+    position: relative;
+
+    cursor: default;
+}
+
+.i-ua_js_no .checkbox__box:before,
+.i-ua_js_no .checkbox__box:after,
+.i-ua_js_no .checkbox__tick
+{
+    display: none;
+}

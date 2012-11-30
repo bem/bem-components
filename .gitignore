@@ -1,7 +1,7 @@
 .project
 .settings/
 
-.bem/cache/*
+.bem/cache
 bem-bl/
 node_modules/
 

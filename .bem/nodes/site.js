@@ -49,11 +49,13 @@ registry.decl(SiteNodeName, 'Node', {
         // FIXME: fix hardcoded urls to `bem-machine` lib
         var MACHINE_TARGET = 'bem-machine',
             MACHINE_URL = PATH.relative(this.root, '../bem-machine'),
+            MACHINE_BRANCH = 'kiss-make';
 
             machineNode = new MachineNode({
                 root        : this.root,
                 target      : MACHINE_TARGET,
-                url         : MACHINE_URL
+                url         : MACHINE_URL,
+                treeish     : MACHINE_BRANCH
             });
 
         this.arch.setNode(machineNode, this.getId());

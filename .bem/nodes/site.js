@@ -14,6 +14,10 @@ exports.__defineGetter__(SiteNodeName, function() {
 });
 
 
+/**
+ * @namespace Узел описывает входную точку для архитектуры сборки сайта
+ * @name SiteArch
+ */
 registry.decl(SiteNodeName, 'Node', {
 
     __constructor : function(o) {
@@ -27,23 +31,20 @@ registry.decl(SiteNodeName, 'Node', {
 
     alterArch : function(arch) {
 
-        /**
-         * TODO:
-         *
-         * create `lib/bem-machine` node
-         * create `site*` node (import `introspectNodes` from bem-machine)
-         * getPrjStruct()   -> [project structure] as {Object}
-         * createLevel()    -> site.bundles/.bem/level.js
-         * createBlocks()   -> bemdecl.js (index, catalogue)
-         * buildBlocks()    -> bemhtml.js, bemtree.js (index, catalogue)
-         * createHtml()     -> html
-         */
-
         return this.createMachineNode();
 
     },
 
-    createMachineNode : function(parent) {
+    /**
+     * Динамически создаем узел про выкачку библиотеки `bem-machine`
+     *
+     * NOTE: при сборке сайта мы используем узлы которые приезжают из внешней библиотеки,
+     * поэтому узлы описывающие процесс сборки должны «появляться» после того,
+     * как выполнится `make` для `bem-machine`
+     *
+     * @returns {String}
+     */
+    createMachineNode : function() {
 
         // FIXME: fix hardcoded urls to `bem-machine` lib
         var MACHINE_TARGET = 'bem-machine',
@@ -53,11 +54,9 @@ registry.decl(SiteNodeName, 'Node', {
                 root        : this.root,
                 target      : MACHINE_TARGET,
                 url         : MACHINE_URL
-            }),
+            });
 
-            arch = this.arch;
-
-        arch.setNode(machineNode, this.getId());
+        this.arch.setNode(machineNode, this.getId());
 
         return machineNode.getId();
 

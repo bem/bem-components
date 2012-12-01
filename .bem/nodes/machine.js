@@ -9,7 +9,8 @@ var PATH = require('path'),
     SymlinkLibraryNodeName = BEM.require('./nodes/lib').SymlinkLibraryNodeName,
     GitLibraryNodeName = BEM.require('./nodes/lib').GitLibraryNodeName,
     // XXX: development only, use `GitLibraryNodeName` insted
-    LibraryNode = SymlinkLibraryNodeName,
+//    LibraryNode = SymlinkLibraryNodeName,
+    LibraryNode = GitLibraryNodeName,
 
     BundlesLevelNode = BEM.require('./nodes/level').BundlesLevelNode,
 
@@ -21,6 +22,21 @@ exports.__defineGetter__(MachineNodeName, function() {
 });
 
 
+/**
+ * @namespace Описывает последовательность действий для сборки сайта:
+ *
+ *  site -> bem-machine
+ *      (выкачать bem-machine)
+ *
+ *  site -> bem-machine*
+ *  bem-machine* -> bem-machine/site.bundles*
+ *      (собрать бандлы в библиотеке)
+ *
+ *  bem-machine* -> introspect
+ *      (собрать структуру проекта, собрать статичный HTML)
+ *
+ * @name MachineNode
+ */
 registry.decl(MachineNodeName, LibraryNode, {
 
     __constructor : function(o) {
@@ -30,18 +46,28 @@ registry.decl(MachineNodeName, LibraryNode, {
         // XXX: hack
         LibraryNode === 'SymlinkLibraryNode' && (this.relative = o.url);
 
-        // XXX: hardcode
-        // {String} where to search lib's local nodes
-        this.nodesroot = '.bem/nodes';
+        // {String} где искать собственные узлы библиотеки
+        this.nodesroot = PATH.join('.bem', 'nodes');
 
     },
 
+    /**
+     * Возвращает путь до собственного модуля с узлами сборки библиотеки.
+     * @param nodeName {Stirng}
+     * @returns {String}
+     */
     getNodesPath : function(nodeName) {
 
         return PATH.join(this.getPath(), this.nodesroot, nodeName);
 
     },
 
+    /**
+     * Настройки для сборки сайта
+     * FIXME: hardcode
+     * TODO: sets
+     * @returns {Object}
+     */
     getSiteConf : function() {
 
         // FIXME: move to root makefile
@@ -54,20 +80,28 @@ registry.decl(MachineNodeName, LibraryNode, {
 
     make : function() {
 
+        // XXX: кажется это нужно делать через `Arch::withLock()`?
+        // XXX: по идее `make` не будет выполняться если `isValid()` вернет `true`
         return this.__base.apply(this, arguments)
             .then(this.alterArch.bind(this));
 
     },
 
+    /**
+     * Динамически встраиваем нужные узлы в процесс сборки сайта
+     * @return {Promise}
+     */
     alterArch : function() {
 
         var _this = this;
 
         return Q.step(
+            // NOTE: добавляем узел `bem-machine*`
             function() {
                 return Q.call(_this.createMachineMagicNode, _this);
             },
 
+            // NOTE: добавляем узел `bem-machine* -> bem-machine/site.bundles`
             function(magic) {
                 return [
                     magic,
@@ -82,6 +116,13 @@ registry.decl(MachineNodeName, LibraryNode, {
 
     },
 
+    /**
+     * Создает узел для сборки банла с сайтом
+     * NOTE: К моменту сборки HTML нам нужны файлы `bemhtml.js` и `bemtree.js`
+     *
+     * @param {Node} parent
+     * @returns {String}
+     */
     createMachineBundlesNode : function(parent) {
 
         var arch = this.ctx.arch,
@@ -90,7 +131,6 @@ registry.decl(MachineNodeName, LibraryNode, {
 
         if(arch.hasNode(siteBundleLevel)) {
 
-            console.log('sd');
             return arch.getNode(siteBundleLevel);
 
         } else {
@@ -108,6 +148,14 @@ registry.decl(MachineNodeName, LibraryNode, {
 
     },
 
+    /**
+     * Добавляет узел про сборку структуры проекта (см. bem-machine/.bem/nodes/introspect.js)
+     * на основе данных конфига для сайта `MachineNode::getSiteConf()`
+     *
+     * FIXME: сейчас сайт собирается в банды `bem-machine`, вместо собственного `output`.
+     *
+     * @returns {String}
+     */
     createMachineMagicNode : function() {
 
         // {String} Use `magic` notation for node id

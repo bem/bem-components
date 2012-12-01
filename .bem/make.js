@@ -94,8 +94,8 @@ MAKE.decl('MachineNode', {
 
 /**
  * FIXME: Далее хардкод про то, как собирать бандл с сайтом.
- * Нужно придумать, как запускать предварительную сборку выкаченной библиотеки.
  *
+ * Нужно придумать, как запускать предварительную сборку выкаченной библиотеки.
  * Т.е. нужен аналог
  *
  *  > make -C lego/ -B pages-desktop
@@ -103,8 +103,12 @@ MAKE.decl('MachineNode', {
  * У библиотеки могут быть:
  *  - свои зависимости (`bem-machine` зависит от `bem-json`)
  *  - свои наборы технологий, `BundleNode::getTechs()`
+ *    сейчас сборка падает с
+ *    `Tech module with path '[...]/bl-controls/bem-machine/lib/bem-html/.bem/techs/bemhtml.js' not found on require search paths`
  *  - свои правила сборки технологий, `BundleNode::getLevels()`
  *  - пр. магия
+ *
+ * NOTE: смотреть в строну `cp.fork`-воркеров?
  */
 MAKE.decl('BundleNode', {
 

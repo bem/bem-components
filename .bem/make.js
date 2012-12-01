@@ -3,14 +3,7 @@
 var BEM = require('bem'),
     PATH = require('path'),
 
-    Q = BEM.require('qq'),
-    LOGGER = BEM.require('./logger'),
-
-    EXPORT_LEVELS = ['desktop'],
-    SITE_NODE_ID = 'site',
-    SITE_BUNDLES = 'site',
-
-    BEM_I18N_LANGS = ['ru'];
+    SiteNode = require('./nodes/site').SiteArch;
 
 
 MAKE.decl('Arch', {
@@ -36,15 +29,15 @@ MAKE.decl('Arch', {
 
     },
 
-    createCustomNodes : function(common, libs, blocks, bundles) {
+    createCustomNodes : function(common, libs, blocks) {
 
-        var node = new (MAKE.getNodeClass('Site'))({
-                root    : this.root,
-                arch    : this.arch
-            }),
-            arch = this.arch;
+        var arch = this.arch,
+            node = new SiteNode({
+                arch    : arch,
+                root    : this.root
+            });
 
-        arch.setNode(node, bundles.concat(libs));
+        arch.setNode(node, null, libs.concat(blocks));
 
         return node.alterArch();
 
@@ -53,102 +46,76 @@ MAKE.decl('Arch', {
 });
 
 
-MAKE.decl('Site', 'Node', {
+/**
+ * TODO: разобраться почему не работает переопределение собственных узов
+ */
+MAKE.decl('MachineNode', {
 
-    __constructor : function(o) {
+    siteconf : {
 
-        this.__base.apply(this, arguments);
+        'levels' : ['desktop.blocks'],
+        'langs' : ['ru'],
+        // TODO: sets
+        'sets' : {
+            'desktop.blocks' : {
+                'examples' : [
+                    'bem-bl/blocks-common',
+                    'bem-bl/blocks-desktop',
+                    'desktop.blocks'
+                ]
+            }
+        }
 
-        this.root = o.root;
-        this.arch = o.arch;
-
-    },
-
-    alterArch : function(arch) {
-
-        /**
-         * TODO:
-         *
-         * create `lib/bem-machine` node
-         * create `site*` node (import `introspectNodes` from bem-machine)
-         * getPrjStruct()   -> [project structure] as {Object}
-         * createLevel()    -> site.bundles/.bem/level.js
-         * createBlocks()   -> bemdecl.js (index, catalogue)
-         * buildBlocks()    -> bemhtml.js, bemtree.js (index, catalogue)
-         * createHtml()     -> html
-         */
-
-        return this.createMachineNode();
-
-    },
-
-    createMachineNode : function(parent) {
-
-        var MACHINE_TARGET = 'bem-machine',
-            MACHINE_URL = PATH.relative(this.root, '../bem-machine'),
-
-            machineNode = new (MAKE.getNodeClass('Machine'))({
-                root        : this.root,
-                target      : MACHINE_TARGET,
-                relative    : MACHINE_URL,
-                npmPackages : false
-            }),
-
-            arch = this.arch;
-
-        arch.setNode(machineNode, this.getId());
-
-        return machineNode.getId();
-
-    }
-
-}, {
-
-    createId : function(o) {
-        return SITE_NODE_ID;
     }
 
 });
 
 
-MAKE.decl('Machine', 'SymlinkLibraryNode', {
+MAKE.decl('BundleNode', {
 
-    make : function() {
+    isSiteBundle : function() {
+        return this.getLevelPath() === 'bem-machine/site.bundles';
+    },
 
-        return this.__base.apply(this, arguments)
-            .then(this.alterArch.bind(this));
+    getTechs : function() {
+
+        if(this.isSiteBundle()) {
+            return [
+                'bemdecl.js',
+                'deps.js',
+                'bemhtml',
+                'bemtree.js',
+                'css',
+                'js'
+            ];
+        }
+
+        return this.__base();
 
     },
 
-    alterArch : function() {
+    getLevels : function() {
 
-        var ctx = this.ctx,
-            arch = ctx.arch,
-            nodeId = SITE_NODE_ID + '*',
-            site;
-
-        if(arch.hasNode(nodeId)) {
-
-            site = arch.getNode(nodeId);
-
-        } else {
-
-            var introspectNodes = require(PATH.join(this.getPath(), '.bem/nodes/introspect'));
-
-            site = new introspectNodes.IntrospectNode({
-                id : nodeId,
-                root : this.root,
-                exportLevels : EXPORT_LEVELS,
-                siteBundleName : SITE_BUNDLES,
-                langs : BEM_I18N_LANGS
-            });
-
-            arch.setNode(site, arch.getParents(this));
-
+        if(this.isSiteBundle()) {
+            return [
+                    'lib/bem-html/common.blocks',
+                    'common.blocks',
+                    'site.blocks'
+                ].map(function(path) {
+                    return PATH.resolve(this.root, 'bem-machine', path);
+                }, this);
         }
 
-        return site.getId();
+        return this.__base();
 
+    },
+
+    'create-bemtree.js-node' : function(tech, bundleNode, magicNode) {
+        return this.createDefaultTechNode.apply(this, arguments);
+    },
+
+    'create-bemtree.js-optimizer-node' : function() {
+        return this['create-js-optimizer-node'].apply(this, arguments);
     }
 
 });

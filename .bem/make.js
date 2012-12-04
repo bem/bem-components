@@ -113,7 +113,7 @@ MAKE.decl('MachineNode', {
 MAKE.decl('BundleNode', {
 
     isSiteBundle : function() {
-        return this.getLevelPath() === 'bem-machine/site.bundles';
+        return this.getLevelPath() === 'site.bundles';
     },
 
     getTechs : function() {

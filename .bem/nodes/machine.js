@@ -1,18 +1,20 @@
 var PATH = require('path'),
     BEM = require('bem'),
+    LOGGER = require('bem/lib/logger'),
+    registry = require('bem/lib/nodesregistry'),
     Q = BEM.require('qq'),
-    LOGGER = BEM.require('./logger'),
-    registry = BEM.require('./nodesregistry'),
 
     MachineNodeName = exports.MachineNodeName = 'MachineNode',
 
-    SymlinkLibraryNodeName = BEM.require('./nodes/lib').SymlinkLibraryNodeName,
-    GitLibraryNodeName = BEM.require('./nodes/lib').GitLibraryNodeName,
+    SymlinkLibraryNodeName = require('bem/lib/nodes/lib').SymlinkLibraryNodeName,
+    GitLibraryNodeName = require('bem/lib/nodes/lib').GitLibraryNodeName,
     // XXX: development only, use `GitLibraryNodeName` insted
 //    LibraryNode = SymlinkLibraryNodeName,
     LibraryNode = GitLibraryNodeName,
 
-    BundlesLevelNode = BEM.require('./nodes/level').BundlesLevelNode,
+    BundlesLevelNode = require('bem/lib/nodes/level').BundlesLevelNode,
+
+    MKDIRP = BEM.require('mkdirp');
 
     SITE_NODE_ID = 'site';
 
@@ -101,12 +103,16 @@ registry.decl(MachineNodeName, LibraryNode, {
                 return Q.call(_this.createMachineMagicNode, _this);
             },
 
-            // NOTE: добавляем узел `bem-machine* -> bem-machine/site.bundles`
             function(magic) {
-                return [
+                return [magic, _this.createMachineBundles()];
+            },
+
+            // NOTE: добавляем узел `bem-machine* -> bem-machine/site.bundles`
+            function(magic, bundles) {
+                return Q.all([
                     magic,
-                    Q.call(_this.createMachineBundlesNode, _this, magic)
-                ];
+                    Q.call(_this.createMachineBundlesNode, _this, magic, bundles)
+                ]);
             })
 
             .then(function() {
@@ -117,42 +123,8 @@ registry.decl(MachineNodeName, LibraryNode, {
     },
 
     /**
-     * Создает узел для сборки банла с сайтом
-     * NOTE: К моменту сборки HTML нам нужны файлы `bemhtml.js` и `bemtree.js`
-     *
-     * @param {Node} parent
-     * @returns {String}
-     */
-    createMachineBundlesNode : function(parent) {
-
-        var arch = this.ctx.arch,
-            // XXX: hardcode
-            siteBundleLevel = PATH.relative(this.root, PATH.join(this.getPath(), 'site.bundles'));
-
-        if(arch.hasNode(siteBundleLevel)) {
-
-            return arch.getNode(siteBundleLevel);
-
-        } else {
-
-            var node = new BundlesLevelNode({
-                root    : this.root,
-                level   : siteBundleLevel
-            });
-
-            arch.setNode(node, parent);
-
-            return node.getId();
-
-        }
-
-    },
-
-    /**
      * Добавляет узел про сборку структуры проекта (см. bem-machine/.bem/nodes/introspect.js)
      * на основе данных конфига для сайта `MachineNode::getSiteConf()`
-     *
-     * FIXME: сейчас сайт собирается в банды `bem-machine`, вместо собственного `output`.
      *
      * @returns {String}
      */
@@ -174,15 +146,103 @@ registry.decl(MachineNodeName, LibraryNode, {
                 node = new IntrospectNode({
                     id  : nodeId,
                     root : this.root,
-                    siteRoot : this.getPath(),
+                    siteRoot : this.root,
                     exportLevels : siteconf.levels,
                     langs : siteconf.langs
                 });
+
+            // XXX: перетираем конфиг сборки примеров из `bem-machine`
+            require('./examples.js');
 
             arch.setNode(node, arch.getParents(this));
 
             return node.getId();
         }
+
+    },
+
+    /**
+     * Создает узел для сборки банла с сайтом
+     * NOTE: К моменту сборки HTML нам нужны файлы `bemhtml.js` и `bemtree.js`
+     *
+     * @param {Node} parent
+     * @returns {String}
+     */
+    createMachineBundlesNode : function(parent) {
+
+        var arch = this.ctx.arch,
+            // XXX: hardcode
+            siteBundleLevel = PATH.relative(this.root, 'site.bundles');
+
+        if(arch.hasNode(siteBundleLevel)) {
+
+            return arch.getNode(siteBundleLevel);
+
+        } else {
+
+            var node = new BundlesLevelNode({
+                root : this.root,
+                level : siteBundleLevel
+            });
+
+            // bem-machine* -> site.bundles*
+            arch.setNode(node, parent);
+
+            return node.getId();
+
+        }
+
+    },
+
+    /**
+     * Создает корневой уровень для сборки сайта (siteRoot)
+     *
+     * FIXME: hardcode
+     *
+     * @returns
+     */
+    createMachineBundles : function() {
+
+        var _this = this,
+            siteRoot = PATH.join(this.root, 'site.bundles');
+
+        return this.createSiteRoot(siteRoot).then(function() {
+
+            var level = BEM.createLevel(siteRoot),
+                proto = BEM.createLevel(PATH.join(_this.getPath(), 'site.bundles'));
+
+            return Q.all(['catalogue', 'index'].map(function(block) {
+
+                var src = proto.getPathByObj({ block: block }, 'bemdecl.js'),
+                    dest = level.getPathByObj({ block: block }, 'bemdecl.js');
+
+                return BEM.util.readFile(src).then(function(decl) {
+
+                    MKDIRP.sync(PATH.dirname(dest));
+
+                    return BEM.util.writeFile(dest, decl);
+
+                });
+
+            }));
+
+        });
+
+    },
+
+    /**
+     * FIXME: hardcode
+     */
+    createSiteRoot : function(path) {
+
+        var opts = {
+                outputDir : PATH.dirname(path),
+                level : PATH.resolve(__dirname, '../levels/site'),
+                force : true
+            },
+            names = [ PATH.basename(path) ];
+
+        return BEM.api.create.level(opts, { names: names });
 
     }
 

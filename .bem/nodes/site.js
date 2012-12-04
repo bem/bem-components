@@ -1,6 +1,6 @@
 var PATH = require('path'),
     BEM = require('bem'),
-    registry = BEM.require('./nodesregistry'),
+    registry = require('bem/lib/nodesregistry'),
 
     SiteNodeName = exports.SiteNodeName = 'SiteArch',
 
@@ -49,7 +49,7 @@ registry.decl(SiteNodeName, 'Node', {
         // FIXME: fix hardcoded urls to `bem-machine` lib
         var MACHINE_TARGET = 'bem-machine',
             MACHINE_URL = PATH.relative(this.root, '../bem-machine'),
-            MACHINE_BRANCH = 'kiss-make';
+            MACHINE_BRANCH = 'kiss-examples-make',
 
             machineNode = new MachineNode({
                 root        : this.root,

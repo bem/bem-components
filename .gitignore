@@ -3,9 +3,12 @@
 
 .bem/cache
 bem-bl/
+bem-json/
 node_modules/
 
 desktop.pages/*/*
 !desktop.pages/.bem/
 !desktop.pages/*/*.bemjson.js
 !desktop.pages/*/blocks/
+
+site.bundles

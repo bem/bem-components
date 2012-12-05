@@ -1,10 +1,11 @@
 .project
-.settings/
+.settings
 
 .bem/cache
-bem-bl/
-bem-json/
-node_modules/
+bem-bl
+bem-json
+bem-machine
+node_modules
 
 desktop.pages/*/*
 !desktop.pages/.bem/

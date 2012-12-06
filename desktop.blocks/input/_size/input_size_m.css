@@ -1,6 +1,7 @@
 .input_size_m
 {
-    font: 13px/28px Arial, sans-serif;
+    line-height: 28px;
+    font-size: 13px;
 }
 
 .input_size_m .input__clear

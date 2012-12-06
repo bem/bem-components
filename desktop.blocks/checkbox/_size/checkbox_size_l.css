@@ -1,6 +1,6 @@
 .checkbox_size_l
 {
-    font: 15px Arial, sans-serif;
+    font-size: 15px;
 }
 
 .checkbox_size_l .checkbox__box:after,

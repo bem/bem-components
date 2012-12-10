@@ -1,4 +1,4 @@
-block input, elem input {
+block input, elem control {
 
     tag: 'input'
 

@@ -1,4 +1,4 @@
-.input__input
+.input__control
 {
     position: relative;
     z-index: 3;
@@ -12,7 +12,7 @@
 }
 
 @media all and (min-width:0px) {
-    .i-ua_js_yes .input__input
+    .i-ua_js_yes .input__control
     {
         height: 2em;
         padding-left: 0.4em;
@@ -29,7 +29,7 @@
     }
 }
 
-.input__input::-ms-clear
+.input__control::-ms-clear
 {
     /* Hide native cross in IE10 */
     display: none;

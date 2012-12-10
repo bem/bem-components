@@ -1,4 +1,4 @@
-block checkbox, elem checkbox {
+block checkbox, elem control {
 
     tag: 'input'
 

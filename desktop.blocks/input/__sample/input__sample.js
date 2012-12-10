@@ -1,27 +1,28 @@
 BEM.DOM.decl('input', {
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this.__base.apply(this, arguments);
+                BEM.blocks['b-link'].on(this.elem('samples'), 'click', this._onSampleClick, this);
+            }
+        },
 
-    _setValFromSample : function(elem) {
-
-        if(!this.hasMod('disabled', 'yes')) {
-            var params = this.__self.extractParams(elem[0]);
-            this.val('val' in params? params.val : elem.text(), { source : 'sample' });
+        'disabled' : function(modName, modVal) {
+            this.findBlocksInside(this.elem('samples'), 'b-link').forEach(function(link) {
+                link.setMod(modName, modVal);
+            });
         }
+    },
 
+    destruct : function() {
+        BEM.blocks['b-link'].un(this.domElem, 'click');
+        this.__base.apply(this, arguments);
+    },
+
+    _onSampleClick : function(e) {
+        var linkDomElem = e.target.domElem,
+            sampleParams = this.elemParams(linkDomElem);
+
+        this.val('val' in sampleParams? sampleParams.val : linkDomElem.text(), { source : 'sample' });
     }
-
-}, {
-
-    live : function() {
-
-        this.__base();
-        this.liveBindTo('sample', 'leftclick', function(e) {
-            var linkSelector = BEM.blocks['b-link'].buildSelector('pseudo', 'yes');
-            $(e.target).closest(this.buildSelector('sample') + ',' + linkSelector).is(linkSelector) &&
-                this._setValFromSample(e.data.domElem);
-        });
-
-        return false;
-
-    }
-
 });

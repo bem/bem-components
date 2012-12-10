@@ -9,7 +9,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
         'js' : function() {
 
             var _this = this,
-                checkboxElem = _this.elem('checkbox');
+                checkboxElem = _this.elem('control');
 
             try {
                 // В iframe в IE9 происходит "Error: Unspecified error."
@@ -28,7 +28,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
                 if (this.isDisabled())
                     return false;
 
-                this.elem('checkbox').focus();
+                this.elem('control').focus();
                 this.setMod(this.elem('box'), 'focused', 'yes');
 
                 this.afterCurrentEvent(function() {
@@ -38,7 +38,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
 
             '' : function() {
 
-                this.elem('checkbox').blur();
+                this.elem('control').blur();
                 this.delMod(this.elem('box'), 'focused');
 
                 this.afterCurrentEvent(function() {
@@ -53,7 +53,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
             if (this.isDisabled())
                 return false;
 
-            this.elem('checkbox').attr('checked', modVal == 'yes');
+            this.elem('control').attr('checked', modVal == 'yes');
 
             this.afterCurrentEvent(function(){
                this.trigger('change');
@@ -64,7 +64,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
 
         'disabled' : function(modName, modVal) {
 
-            this.elem('checkbox').attr('disabled', modVal === 'yes');
+            this.elem('control').attr('disabled', modVal === 'yes');
         }
 
     },
@@ -98,7 +98,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
      * @returns {String|BEM.DOM}
      */
     val : function(val) {
-        var checkbox = this.elem('checkbox');
+        var checkbox = this.elem('control');
 
         if (typeof val === 'undefined')
             return checkbox.val();
@@ -126,16 +126,16 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
     live : function() {
 
         this
-            .liveBindTo('checkbox', 'click', function(e) {
+            .liveBindTo('control', 'click', function(e) {
                 this._onClick(e);
             })
-            .liveBindTo('checkbox', 'change', function(e) {
+            .liveBindTo('control', 'change', function(e) {
                 this._onChange(e);
             })
-            .liveBindTo('checkbox', 'focusin focusout', function(e) {
+            .liveBindTo('control', 'focusin focusout', function(e) {
                 this.setMod('focused', e.type === 'focusin'? 'yes' : '');
             })
-            .liveBindTo('checkbox', 'mouseover mouseout', function(e) {
+            .liveBindTo('control', 'mouseover mouseout', function(e) {
                 this.isDisabled() ||
                     this.setMod('hovered', e.type === 'mouseover'? 'yes' : '');
             });

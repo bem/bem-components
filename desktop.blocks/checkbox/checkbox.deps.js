@@ -5,6 +5,6 @@
             'disabled': 'yes',
             'focused': 'yes'
         },
-        elems: [ 'box', 'checkbox', 'tick' ]
+        elems: [ 'box', 'control', 'tick' ]
     }
 })

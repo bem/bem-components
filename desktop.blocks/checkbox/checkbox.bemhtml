@@ -18,7 +18,7 @@ block checkbox {
             tag: 'span',
             elemMods: (this.mods.checked === 'yes') ? { checked:'yes' } : '',
             content: [
-                { elem: 'checkbox', attrs: this.ctx.checkboxAttrs || {} },
+                { elem: 'control', attrs: this.ctx.checkboxAttrs || {} },
                 { elem: 'tick', tag: 'i' }
             ]
         },

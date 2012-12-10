@@ -5,7 +5,7 @@
     opacity: .6;
 }
 
-.input_disabled_yes .input__input
+.input_disabled_yes .input__control
 {
     resize: none;
     cursor: default;

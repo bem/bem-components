@@ -1,5 +1,5 @@
 @media all and (min-width:0px) {
-    .input_type_textarea .input__input
+    .input_type_textarea .input__control
     {
         display: block;
 
@@ -14,7 +14,7 @@
     }
 
     /* Only FF */
-    .input_type_textarea .input__input, x:-moz-any-link
+    .input_type_textarea .input__control, x:-moz-any-link
     {
         padding-top: 0.44em;
     }
@@ -26,7 +26,7 @@
 }
 
 /* body — increases the weight of selector to override INPUT height */
-body .input_type_textarea .input__input
+body .input_type_textarea .input__control
 {
     height: auto;
     min-height: 2em;

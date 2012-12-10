@@ -4,7 +4,7 @@ var instances,
     sysChannel,
     update = function () {
         var instance, i = 0;
-        while(instance = instances[i++]) instance.val(instance.elem('input').val());
+        while(instance = instances[i++]) instance.val(instance.elem('control').val());
     },
     getActiveElement = function (doc) {
         // В iframe в IE9: "Error: Unspecified error."
@@ -22,7 +22,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
         'js' : function() {
 
             var _this = this,
-                input = _this.elem('input'),
+                input = _this.elem('control'),
                 activeElement = getActiveElement(_this.__self.doc[0]),
                 haveToSetAutoFocus =
                     _this.params.autoFocus &&
@@ -64,7 +64,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
         'disabled' : function(modName, modVal) {
 
-            this.elem('input').attr('disabled', modVal === 'yes');
+            this.elem('control').attr('disabled', modVal === 'yes');
 
         },
 
@@ -146,7 +146,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
         if(typeof val == 'undefined') return this._val;
 
         if(this._val != val) {
-            var input = this.elem('input');
+            var input = this.elem('control');
             input.val() != val && input.val(val);
             this._val = val;
             this.trigger('change', data);
@@ -161,7 +161,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
      * @return {Number} Позиция конца выделения. Если ничего не выделено, то возвращается 0.
      */
     getSelectionEnd : function() {
-        var input = this.elem('input')[0],
+        var input = this.elem('control')[0],
             end = 0;
         if(typeof(input.selectionEnd) == 'number') {
             end = input.selectionEnd;
@@ -184,7 +184,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
     name : function(name) {
 
-        return this.elem('input').attr('name');
+        return this.elem('control').attr('name');
 
     },
 
@@ -208,7 +208,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
      */
     _focus : function() {
 
-        var input = this.elem('input')[0];
+        var input = this.elem('control')[0];
         if(input.createTextRange && !input.selectionStart) {
             var range = input.createTextRange();
             range.move('character', input.value.length);
@@ -221,7 +221,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
     _blur : function() {
 
-        this.elem('input').blur();
+        this.elem('control').blur();
 
     },
 

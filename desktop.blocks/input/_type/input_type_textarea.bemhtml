@@ -1,4 +1,4 @@
-block input, mod type textarea, elem input {
+block input, mod type textarea, elem control {
 
     tag: 'textarea'
 

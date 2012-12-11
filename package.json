@@ -10,7 +10,7 @@
     "node": "0.6 | 0.7 | 0.8 | 0.9"
   },
   "dependencies": {
-    "bem": "git://github.com/bem/bem-tools.git"
+    "bem" : "*"
   },
   "devDependencies": {},
   "private": true

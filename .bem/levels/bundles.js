@@ -11,7 +11,7 @@ var PATH = require('path'),
 exports.getTechs = function() {
 
     return {
-        'bemjson.js'    : '',
+        'bemjson.js'    : pjoin(PRJ_TECHS, 'bemjson.js'),
         'bemdecl.js'    : 'bemdecl.js',
         'deps.js'       : 'deps.js',
         'js'            : 'js-i',
@@ -29,6 +29,6 @@ exports.getTechs = function() {
 };
 
 
-// Do not create any techs files during bundle creation by default
-exports.defaultTechs = [];
+// Create bundles in bemjson.js tech
+exports.defaultTechs = ['bemjson.js'];
 

@@ -1,1 +1,9 @@
 block input, elem sample, tag: 'span'
+
+block b-link, this._inputLink, this._disabled {
+
+    mix: [{
+        mods: { disabled: 'yes' }
+    }]
+
+}

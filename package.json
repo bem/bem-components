@@ -10,7 +10,8 @@
     "node": "0.6 | 0.8 | 0.9"
   },
   "dependencies": {
-    "bem": "~0.5.20"
+    "bem": "~0.5.20",
+    "marked": "~0.2.6"
   },
   "devDependencies": {},
   "optionalDependencies": {},

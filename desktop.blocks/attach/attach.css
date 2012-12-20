@@ -1,0 +1,15 @@
+.attach
+{
+    display: inline-block;
+
+    white-space: nowrap;
+}
+
+/* Оптимизация css для элементов holder && reset */
+.attach .b-icon
+{
+    width: 1px;
+    height: 1px;
+
+    vertical-align: middle;
+}

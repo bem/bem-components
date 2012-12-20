@@ -247,6 +247,8 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
             this._onClearClick();
         });
 
+        return false;
+
     }
 });
 

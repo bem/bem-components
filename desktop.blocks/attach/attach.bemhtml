@@ -1,0 +1,45 @@
+block attach {
+
+    tag: 'span'
+
+    js: true
+
+    default: {
+        applyNext(
+            this._attachButton = true,
+            this._disabled = this.mods.disabled
+        );
+    }
+
+}
+
+block button, this._attachButton {
+
+    tag: 'label'
+
+    !!this._disabled, mix: [{
+        mods: { disabled: 'yes' }
+    }]
+
+    default: {
+        applyNext(
+            this._id = (this.ctx.id)? this.ctx.id : this.generateId(),
+            this._name = this.ctx.name || ''
+//            this._tabindex = this.ctx.tabindex
+        );
+    }
+
+    attrs: {
+        'for': this._id
+    }
+
+    content: {
+        var p = applyNext(),
+            a = { block: 'attach', elem: 'control' };
+
+        return [p, a];
+    }
+
+}
+
+

@@ -1,0 +1,21 @@
+block attach, elem holder {
+
+    tag: 'span'
+
+    content: [
+        {
+            block: 'b-icon',
+            mix: [{ block: 'attach', elem: 'icon-file' }]
+        },
+        {
+            elem: 'text',
+            tag: 'span',
+            content: this.ctx.content
+        },
+        {
+            block: 'b-icon',
+            mix: [{ block: 'attach', elem: 'reset' }]
+        }
+    ]
+
+}

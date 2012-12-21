@@ -4,7 +4,7 @@
         { block: 'i-bem', elems: ['dom'] }
     ],
     shouldDeps: {
-        elems: [ 'input', 'text' ],
+        elems: [ 'text' ],
         mods: {
             'focused': 'yes',
             'hovered': 'yes',

@@ -8,7 +8,8 @@ exports.getTechs = function() {
         'ie9.css': 'ie9.css',
 
         'title.txt': 'title.txt',
-        'desc.wiki': ''
+        'desc.wiki': '',
+        'examples': ''
     };
 
 };

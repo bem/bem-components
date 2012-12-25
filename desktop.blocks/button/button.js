@@ -31,8 +31,8 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                     .bindToWin('unload', function() {
                         _this.delMod('focused');
                     })
-                    .bindTo('keydown', this._onKeyDown)
-                
+                    .bindTo('keydown', this._onKeyDown);
+
                 _this.domElem.is(':focus') || _this.domElem.focus();
 
                 this.afterCurrentEvent(function() {

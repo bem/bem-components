@@ -1,8 +1,6 @@
 /*global MAKE:true */
 
-"use strict";
-
-//process.env.YENV = 'production';
+var environ = require('./environ');
 
 MAKE.decl('Arch', {
 
@@ -10,21 +8,7 @@ MAKE.decl('Arch', {
 
     bundlesLevelsRegexp: /^.+?\.bundles$/,
 
-    getLibraries: function() {
-
-        return {
-            'bem-bl': {
-                type: 'git',
-                url: 'git://github.com/bem/bem-bl.git',
-                treeish: '0.3'
-            },
-            'bemhtml' : {
-                type: 'git',
-                url: 'git://github.com/bem/bemhtml.git'
-            }
-        };
-
-    }
+    libraries : [ 'bem-bl' ]
 
 });
 
@@ -36,7 +20,7 @@ MAKE.decl('BundleNode', {
             'bemjson.js',
             'bemdecl.js',
             'deps.js',
-            'bemhtml',
+            'bemhtml.js',
             'js',
             'css',
             'ie.css',

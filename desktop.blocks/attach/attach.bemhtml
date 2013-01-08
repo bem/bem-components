@@ -30,7 +30,7 @@ block button, this._attachButton {
     }
 
     attrs: {
-        for: ''
+        for : ''
     }
 
     content: {

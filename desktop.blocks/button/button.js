@@ -25,15 +25,13 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                 if(this.isDisabled())
                     return false;
 
-                var _this = this;
-
                 this
                     .bindToWin('unload', function() {
-                        _this.delMod('focused');
+                        this.delMod('focused');
                     })
                     .bindTo('keydown', this._onKeyDown);
 
-                _this.domElem.is(':focus') || _this.domElem.focus();
+                this.containsDomElem($(document.activeElement)) || this.domElem.focus();
 
                 this.afterCurrentEvent(function() {
                     this.trigger('gotfocus');
@@ -45,8 +43,9 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
                 this
                     .unbindFromWin('unload')
-                    .unbindFrom('keydown')
-                    .domElem.blur();
+                    .unbindFrom('keydown');
+
+                this.containsDomElem($(document.activeElement)) && this.domElem.blur();
 
                 this.afterCurrentEvent(function() {
                     this.trigger('lostfocus');
@@ -188,6 +187,8 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             .liveBindTo('mousedown', function(e) {
                 var mod = eventsToMods[e.type];
                 e.which == 1 && this.setMod(mod.name, mod.val || '');
+
+                e.preventDefault();
             });
     }
 

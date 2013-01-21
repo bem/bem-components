@@ -15,7 +15,7 @@ block attach {
 
 block button, this._attachButton {
 
-    tag: 'label'
+    tag: 'span'
 
     !!this._disabled, mix: [{
         mods: { disabled: 'yes' }
@@ -27,10 +27,6 @@ block button, this._attachButton {
             this._name = this.ctx.name || ''
 //            this._tabindex = this.ctx.tabindex
         );
-    }
-
-    attrs: {
-        for : ''
     }
 
     content: {

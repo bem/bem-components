@@ -17,3 +17,5 @@ block attach, elem control {
     }
 
 }
+
+block attach, elem control, mix: [ { block: 'button', elem: 'control' } ]

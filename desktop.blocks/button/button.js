@@ -25,7 +25,8 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                 if(this.isDisabled())
                     return false;
 
-                var _this = this;
+                var _this = this,
+                    control = this.elem('control');
 
                 this
                     .bindToWin('unload', function() {
@@ -33,7 +34,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                     })
                     .bindTo('keydown', this._onKeyDown);
 
-                _this.domElem.is(':focus') || _this.domElem.focus();
+                control.is(':focus') || control.focus();
 
                 this.afterCurrentEvent(function() {
                     this.trigger('gotfocus');

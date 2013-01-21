@@ -1,9 +1,13 @@
-block button {
+block button{
 
     tag: 'button'
     this.ctx.url, tag: 'a'
 
     js: true
+
+    mix: {
+        block: 'button', elem: 'control'
+    }
 
     attrs {
 

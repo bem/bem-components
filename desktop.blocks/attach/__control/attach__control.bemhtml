@@ -2,6 +2,10 @@ block attach, elem control {
 
     tag: 'input'
 
+    mix: {
+        block: 'button', elem: 'control'
+    }
+
     attrs: {
         var a = {
                 value: '',
@@ -17,5 +21,3 @@ block attach, elem control {
     }
 
 }
-
-block attach, elem control, mix: [ { block: 'button', elem: 'control' } ]

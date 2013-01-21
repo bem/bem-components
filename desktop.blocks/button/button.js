@@ -129,11 +129,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
         var keyCode = e.keyCode;
         // имитируем state_pressed по нажатию на enter и space
-        if(keyCode == 13 || keyCode == 32) {
-            e.preventDefault();
-
-            if(this._keyDowned) return;
-
+        if((keyCode == 13 || keyCode == 32) && !this._keyDowned) {
             this._keyDowned = true;
             this
                 .setMod('pressed', 'yes')

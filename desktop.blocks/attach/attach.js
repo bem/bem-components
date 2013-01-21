@@ -173,12 +173,6 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
 
             });
 
-            /*
-            this.liveBindTo('button', 'focusin', function(e) {
-                e.preventDefault();
-            });
-              */
-
         }
 
         return false;

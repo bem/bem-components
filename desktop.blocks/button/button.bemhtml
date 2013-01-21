@@ -5,10 +5,6 @@ block button{
 
     js: true
 
-    mix: [{
-        block: 'button', elem: 'control'
-    }]
-
     attrs {
 
         // Common attributes

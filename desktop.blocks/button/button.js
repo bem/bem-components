@@ -26,7 +26,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                     return false;
 
                 var _this = this,
-                    control = this.elem('control');
+                    control = this.elem('control').length ? this.elem('control') : this.domElem;
 
                 this
                     .bindToWin('unload', function() {

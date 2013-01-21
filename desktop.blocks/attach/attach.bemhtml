@@ -17,6 +17,8 @@ block button, this._attachButton {
 
     tag: 'span'
 
+    mix: false
+
     !!this._disabled, mix: [{
         mods: { disabled: 'yes' }
     }]

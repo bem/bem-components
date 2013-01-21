@@ -5,9 +5,9 @@ block button{
 
     js: true
 
-    mix: {
+    mix: [{
         block: 'button', elem: 'control'
-    }
+    }]
 
     attrs {
 

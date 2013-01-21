@@ -15,7 +15,7 @@ block attach, elem control {
             };
 
         !!this._disabled && (a.disabled = 'disabled');
-        this._tabindex && (a.tabindex = this._tabindex);
+        //this._tabindex && (a.tabindex = this._tabindex);
 
         return a;
     }

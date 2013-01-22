@@ -23,11 +23,11 @@ block button, this._attachButton {
 
     default: {
         applyNext(
-            this._id = (this.ctx.id)? this.ctx.id : this.generateId(),
-            this._name = this.ctx.name || '',
             this._tabindex = this.ctx.tabindex
         );
     }
+
+    attrs: { }
 
     content: {
         var p = applyNext(),

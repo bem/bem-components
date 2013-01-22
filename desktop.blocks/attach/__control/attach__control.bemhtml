@@ -8,15 +8,11 @@ block attach, elem control {
 
     attrs: {
         var a = {
-                value: '',
-                type: 'file',
-                id: this._id,
-                name: this._name,
-                tabindex : this._tabindex
+                type: 'file'
             };
 
         !!this._disabled && (a.disabled = 'disabled');
-        //this._tabindex && (a.tabindex = this._tabindex);
+        this._tabindex && (a.tabindex = this._tabindex);
 
         return a;
     }

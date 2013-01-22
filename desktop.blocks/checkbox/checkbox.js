@@ -32,7 +32,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
                 this.setMod(this.elem('box'), 'focused', 'yes');
 
                 this.afterCurrentEvent(function() {
-                    this.trigger('gotfocus');
+                    this.trigger('focus');
                 });
             },
 
@@ -42,7 +42,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
                 this.delMod(this.elem('box'), 'focused');
 
                 this.afterCurrentEvent(function() {
-                    this.trigger('lostfocus');
+                    this.trigger('blur');
                 });
             }
 

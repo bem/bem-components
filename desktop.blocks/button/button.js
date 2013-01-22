@@ -14,6 +14,8 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             (this._href = domElem.attr('href')) && disabled &&
                 domElem.removeAttr('href');
 
+            this._isFocusable = 'a button'.indexOf(domElem[0].tagName.toLowerCase());
+
             domElem.attr('disabled', disabled);
 
         },
@@ -33,7 +35,10 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                     })
                     .bindTo('keydown', this._onKeyDown);
 
-                _this.domElem.is(':focus') || _this.domElem.focus();
+
+                if(this._isFocusable && _this.domElem.is(':focus')) {
+                    _this.domElem.focus();
+                }
 
                 this.afterCurrentEvent(function() {
                     this.trigger('gotfocus');

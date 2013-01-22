@@ -33,13 +33,13 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
      */
     resetFile : function() {
 
-        var buttonInput = this.findElem('control');
+        var buttonControl = this.findElem('control');
 
-        buttonInput.replaceWith(BEM.HTML.build({
+        buttonControl.replaceWith(BEM.HTML.build({
             block: 'attach',
             elem: 'control',
             tag: 'input',
-            attrs: { name: buttonInput.attr('name') || 'attachment', type: 'file' }
+            attrs: { name: buttonControl.attr('name') || 'attachment', type: 'file', tabindex: buttonControl.attr('tabindex') }
         }));
 
         this._update();
@@ -146,9 +146,16 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
 
     live : function() {
 
-        this.liveBindTo('change', function() {
-            this._update();
-        });
+        this
+            .liveBindTo('change', function() {
+                this._update();
+            })
+            .liveBindTo('control', 'focusin',  function() {
+                this.findBlockInside('button').setMod('focused', 'yes');
+            })
+            .liveBindTo('control', 'focusout',  function() {
+                this.findBlockInside('button').delMod('focused');
+            });
 
         if ($.browser.msie && parseInt($.browser.version) <= 8) {
 

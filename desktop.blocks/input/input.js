@@ -80,7 +80,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
                 this._focused && this._blur();
 
             this.afterCurrentEvent(function() {
-                this.trigger(focused? 'gotfocus' : 'lostfocus');
+                this.trigger(focused? 'focus' : 'blur');
             });
 
         }

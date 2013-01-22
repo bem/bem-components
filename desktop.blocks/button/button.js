@@ -41,7 +41,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                 }
 
                 this.afterCurrentEvent(function() {
-                    this.trigger('gotfocus');
+                    this.trigger('focus');
                 });
 
             },
@@ -54,7 +54,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                     .domElem.blur();
 
                 this.afterCurrentEvent(function() {
-                    this.trigger('lostfocus');
+                    this.trigger('blur');
                 });
 
             }

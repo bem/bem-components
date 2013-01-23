@@ -80,8 +80,13 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
         'pressed' : function(modName, modVal) {
 
-            this.isDisabled() || this.trigger(modVal == 'yes' ? 'press' : 'release');
-
+            if (modVal == 'yes') {
+		this.trigger('press');
+            }
+            else {
+                this.trigger('release');
+                this.trigger('action');
+            }
         },
 
         'hovered' : {
@@ -159,6 +164,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             e.preventDefault() :
             this.afterCurrentEvent(function() {
                 this.trigger('click');
+                this.trigger('action');
             });
     },
 

@@ -2,14 +2,11 @@ block attach, elem control {
 
     tag: 'input'
 
-    mix: {
-        block: 'button', elem: 'control'
-    }
-
     attrs: {
         var a = {
-                type: 'file'
-            };
+            type: 'file',
+            name: this._name
+        };
 
         !!this._disabled && (a.disabled = 'disabled');
         this._tabindex && (a.tabindex = this._tabindex);

@@ -14,10 +14,9 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             (this._href = domElem.attr('href')) && disabled &&
                 domElem.removeAttr('href');
 
-            this._isFocusable = 'a button'.indexOf(domElem[0].tagName.toLowerCase());
-
             domElem.attr('disabled', disabled);
 
+            this._isFocusable = 'a button'.indexOf(domElem[0].tagName.toLowerCase()) > -1;
         },
 
         'focused' : {
@@ -27,18 +26,13 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                 if(this.isDisabled())
                     return false;
 
-                var _this = this;
-
                 this
                     .bindToWin('unload', function() {
-                        _this.delMod('focused');
+                        this.delMod('focused');
                     })
                     .bindTo('keydown', this._onKeyDown);
 
-
-                if(this._isFocusable && _this.domElem.is(':focus')) {
-                    _this.domElem.focus();
-                }
+                this._isFocusable && (this._isControlFocused() || this.domElem.focus());
 
                 this.afterCurrentEvent(function() {
                     this.trigger('focus');
@@ -50,8 +44,9 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
                 this
                     .unbindFromWin('unload')
-                    .unbindFrom('keydown')
-                    .domElem.blur();
+                    .unbindFrom('keydown');
+
+                this._isFocusable && this._isControlFocused() && this.domElem.blur();
 
                 this.afterCurrentEvent(function() {
                     this.trigger('blur');
@@ -79,6 +74,8 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
         },
 
         'pressed' : function(modName, modVal) {
+
+            this.setMod('focused', 'yes');
 
             this.isDisabled() || this.trigger(modVal == 'yes' ? 'press' : 'release');
 
@@ -129,6 +126,21 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
     },
 
+    /**
+     * Проверяет в фокусе ли контрол
+     * @private
+     * @returns {Boolean}
+     */
+    _isControlFocused : function() {
+
+        try {
+            return this.containsDomElem($(document.activeElement));
+        } catch(e) {
+            return false;
+        }
+
+    },
+
     _onKeyDown : function(e) {
 
         var keyCode = e.keyCode;
@@ -154,7 +166,6 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
     },
 
     _onClick : function(e) {
-
         this.isDisabled()?
             e.preventDefault() :
             this.afterCurrentEvent(function() {
@@ -193,6 +204,9 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             .liveBindTo('mousedown', function(e) {
                 var mod = eventsToMods[e.type];
                 e.which == 1 && this.setMod(mod.name, mod.val || '');
+
+                // отменяем blur после mousedown, если кнопка в фокусе
+                this._isControlFocused() && e.preventDefault();
             });
     }
 

@@ -1,5 +1,7 @@
 var relative = require('path').relative.bind(null, __dirname);
 
+process.env.BEMHTML_ENV = 'development';
+
 module.exports = {
 
     libraries : {

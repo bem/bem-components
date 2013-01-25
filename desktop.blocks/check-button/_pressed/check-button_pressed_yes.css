@@ -1,0 +1,6 @@
+@media all and (min-width:0px) {
+    .check-button_pressed_yes .check-button__text
+    {
+        top: 1px;
+    }
+}

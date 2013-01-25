@@ -1,0 +1,11 @@
+.check-button__text
+{
+    position: relative;
+
+    padding: 0 1em;
+}
+
+.i-ua_js_no .check-button__text
+{
+    padding: 0 1em 0 0.3em;
+}

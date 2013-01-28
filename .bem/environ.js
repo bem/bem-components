@@ -29,6 +29,29 @@ var PATH = require('path'),
     LIB_ROOT = exports.LIB_ROOT = join(PRJ_ROOT, LIB_DIR),
 
     /**
+     * Имя директории с .bem-конфигами
+     * @type String
+     * @exports CONF_DIR
+     */
+    CONF_DIR = exports.CONF_DIR = 'configs',
+
+    /**
+     * Путь до директории с .bem-конфигами
+     * @type String
+     * @exports CONF_ROOT
+     */
+    CONF_ROOT = exports.CONF_ROOT = resolve(CONF_DIR),
+
+    /**
+     * «Текущая» конфигурация
+     * @exports getConf
+     * @returns {Object}
+     */
+    getConf = exports.getConf = function() {
+        return require(join(CONF_ROOT, 'current'));
+    },
+
+    /**
      * Абсолютный путь до библиотеки `lib`
      * @exports getLibPath
      * @param {String} id библиотеки
@@ -46,51 +69,4 @@ var PATH = require('path'),
      */
     getLibRelPath = exports.getLibRelPath = function(lib) {
         return relative(PRJ_ROOT, getLibPath(lib));
-    },
-
-    /**
-     * Список изветсных библиотек блоков
-     * @exports getLibraries
-     * @return Object
-     */
-    getLibraries = exports.getLibraries = function() {
-        return require('./conf/current').libraries;
     };
-
-
-require('bem/lib/nodesregistry').decl('Arch', {
-
-    /**
-     * Задает список необходимых библиотек
-     * @param {Array} libs Массив идентификаторов необходимых библиотек
-     * @return {Object}
-     */
-    useLibraries : function(libs) {
-
-        var repo = getLibraries();
-
-        return libs.reduce(function(enabled, lib) {
-
-            if(repo[lib] == null)
-                throw new Error('Library ' + lib + ' is not registered!');
-
-            enabled[getLibRelPath(lib)] = repo[lib];
-            return enabled;
-
-        }, {});
-
-    },
-
-    /**
-     * @returns {Object}
-     * @override
-     */
-    getLibraries : function() {
-
-        var libs = this.libraries;
-        return Array.isArray(libs)?
-                this.useLibraries(libs) : libs;
-
-    }
-
-});

@@ -1,6 +1,6 @@
 /*global MAKE:true */
 
-var environ = require('./environ');
+require('./nodes/arch');
 
 MAKE.decl('Arch', {
 

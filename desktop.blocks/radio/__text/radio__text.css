@@ -1,0 +1,12 @@
+.radio__text
+{
+    position: relative;
+    z-index: 1;
+
+    padding: 0 1em;
+}
+
+.i-ua_js_no .radio__text
+{
+    padding: 0 1em 0 0.3em;
+}

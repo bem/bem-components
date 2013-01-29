@@ -23,6 +23,7 @@ block button, this._attachButton {
 
     default: {
         applyNext(
+            this._name = this.ctx.name || 'attachment',
             this._tabindex = this.ctx.tabindex
         );
     }

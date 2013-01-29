@@ -13,8 +13,19 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
 
             this.bindTo('reset', 'click', this.resetFile);
 
+            this._getButton()
+                .on('focus', this._onButtonFocus, this)
+                .on('blur', this._onButtonBlur, this);
         }
 
+    },
+
+    _onButtonFocus : function() {
+        this._isControlFocused() || this.elem('control').focus();
+    },
+
+    _onButtonBlur : function() {
+        this._isControlFocused() && this.elem('control').blur();
     },
 
     /**
@@ -23,7 +34,7 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
      */
     val : function() {
 
-        return this.findElem('control').val();
+        return this.elem('control').val();
 
     },
 
@@ -33,14 +44,20 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
      */
     resetFile : function() {
 
-        var buttonControl = this.findElem('control');
+        var buttonControl = this.elem('control');
 
         buttonControl.replaceWith(BEM.HTML.build({
             block: 'attach',
             elem: 'control',
             tag: 'input',
-            attrs: { name: buttonControl.attr('name') || 'attachment', type: 'file', tabindex: buttonControl.attr('tabindex') }
+            attrs: {
+                name: buttonControl.attr('name'),
+                type: 'file',
+                tabindex: buttonControl.attr('tabindex')
+            }
         }));
+
+        this.dropElemCache('control');
 
         this._update();
         this.delMod(this.elem('reset'), 'visibility');
@@ -140,6 +157,29 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
         return {
             unknownType : 'unknown'
         }
+    },
+
+    /**
+     * @private
+     * @returns {BEM.DOM}
+     */
+    _getButton : function() {
+        return this._button || (this._button = this.findBlockOn('button', 'button'));
+    },
+
+    /**
+     * Проверяет в фокусе ли контрол
+     * @private
+     * @returns {Boolean}
+     */
+    _isControlFocused : function() {
+
+        try {
+            return this.containsDomElem($(document.activeElement));
+        } catch(e) {
+            return false;
+        }
+
     }
 
 }, /** @lends Attach */{
@@ -150,11 +190,8 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
             .liveBindTo('change', function() {
                 this._update();
             })
-            .liveBindTo('control', 'focusin',  function() {
-                this.findBlockInside('button').setMod('focused', 'yes');
-            })
-            .liveBindTo('control', 'focusout',  function() {
-                this.findBlockInside('button').delMod('focused');
+            .liveBindTo('control', 'focusin focusout',  function(e) {
+                this._getButton().toggleMod('focused', 'yes', '', e.type === 'focusin');
             });
 
         if ($.browser.msie && parseInt($.browser.version) <= 8) {

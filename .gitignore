@@ -6,6 +6,7 @@ vendor
 .project
 .svn
 .bem/cache
+.bem/snapshots
 desktop.bundles/*/*.*
 !desktop.bundles/*/*.bemjson.js
 !desktop.bundles/.bem/*

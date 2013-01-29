@@ -5,7 +5,7 @@ var PATH = require('path'),
     resolve = PATH.resolve.bind(null, __dirname),
 
     PRJ_TECHS = resolve('../techs/'),
-    BEMBL_TECHS = join(environ.getLibPath('bem-bl'), 'blocks-common/i-bem/bem/techs');
+    BEMBL_TECHS = environ.getLibPath('bem-bl', 'blocks-common/i-bem/bem/techs');
 
 
 exports.getTechs = function() {

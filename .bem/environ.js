@@ -54,19 +54,22 @@ var PATH = require('path'),
     /**
      * Абсолютный путь до библиотеки `lib`
      * @exports getLibPath
-     * @param {String} id библиотеки
+     * @param {String} lib id библиотеки
+     * @param {String} [...path]
      * @returns {String}
      */
-    getLibPath = exports.getLibPath = function(lib) {
-        return join(LIB_ROOT, lib);
+    getLibPath = exports.getLibPath = function() {
+        var args = [].splice.call(arguments, 0);
+        return join.apply(null, [LIB_ROOT].concat(args));
     },
 
     /**
      * Путь до библиотеки `lib` относительно корня проекта
      * @exports getLibRelPath
-     * @param {String} id библиотеки
+     * @param {String} lib id библиотеки
+     * @param {String} [...path]
      * @returns {String}
      */
-    getLibRelPath = exports.getLibRelPath = function(lib) {
-        return relative(PRJ_ROOT, getLibPath(lib));
+    getLibRelPath = exports.getLibRelPath = function() {
+        return relative(PRJ_ROOT, getLibPath.apply(null, arguments));
     };

@@ -5,7 +5,7 @@ var PATH = require('path'),
     resolve = PATH.resolve.bind(null, __dirname),
 
     PRJ_TECHS = resolve('../techs/'),
-    BEMBL_TECHS = join(environ.getLibPath('bem-bl'), 'blocks-common/i-bem/bem/techs');
+    BEMBL_TECHS = environ.getLibPath('bem-bl', 'blocks-common/i-bem/bem/techs');
 
 
 exports.getTechs = function() {
@@ -22,6 +22,7 @@ exports.getTechs = function() {
         'ie9.css'       : 'ie9.css',
 
         'bemjson.js'    : join(PRJ_TECHS, 'bemjson.js'),
+
         'bemhtml.js'    : join(BEMBL_TECHS, 'bemhtml.js'),
         'html'          : join(BEMBL_TECHS, 'html.js')
     };

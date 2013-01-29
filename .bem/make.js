@@ -4,7 +4,7 @@ require('./nodes/arch');
 
 MAKE.decl('Arch', {
 
-    blocksLevelsRegexp: /^.+?\.blocks/,
+    blocksLevelsRegexp: /^.+?\.blocks$/,
 
     bundlesLevelsRegexp: /^.+?\.bundles$/,
 

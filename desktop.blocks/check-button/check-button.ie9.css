@@ -1,0 +1,7 @@
+.check-button
+{
+    /* Not displayed box-shadow block in the table with the border-collapse: collapse */
+    border-collapse: separate;
+}
+
+

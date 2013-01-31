@@ -1,0 +1,9 @@
+block 'check-button', mod 'only-icon' yes  {
+
+    content: [
+        this._control,
+        '&#160;',
+        this.ctx.content
+    ]
+
+}

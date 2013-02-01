@@ -1,4 +1,6 @@
-.button_pressed_yes .button__text
-{
-    top: 1px;
+@media all and (min-width:0px) {
+    .button_pressed_yes .button__text
+    {
+        top: 1px;
+    }
 }

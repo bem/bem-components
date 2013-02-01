@@ -7,7 +7,7 @@
 .check-button_only-icon_yes .check-button__icon
 {
     /* vam — для _js_no и для ie */
-    vertical-align: middle;
+    vertical-align: baseline;
 }
 
 @media all and (min-width:0px) {

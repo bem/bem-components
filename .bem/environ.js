@@ -1,11 +1,15 @@
-var PATH = require('path'),
+var BEM = require('bem'),
+    PATH = require('path'),
+
+    /** @const */
+    __root = getGlobalRoot(),
 
     /** @type Function */
     join = PATH.join,
     /** @type Function */
     relative = PATH.relative,
     /** @type Function */
-    resolve = PATH.resolve.bind(null, __dirname),
+    resolve = PATH.resolve.bind(null, __root),
 
     /**
      * Путь до корня проекта
@@ -73,3 +77,13 @@ var PATH = require('path'),
     getLibRelPath = exports.getLibRelPath = function() {
         return relative(PRJ_ROOT, getLibPath.apply(null, arguments));
     };
+
+function getGlobalRoot() {
+    var root = BEM.require('./env').getEnv('__root_level_dir');
+    if(!root) {
+        BEM.require('./logger').warn('[environ] variable "__root_level_dir" is not set properly');
+        root = __dirname;
+    }
+
+    return root;
+}

@@ -1,3 +1,12 @@
+var PATH = require('path'),
+    ENV = require('bem/lib/env'),
+    GLOBAL_ROOT_NAME = '__root_level_dir';
+
+// XXX: `__root_level_dir` должна быть установлена только один раз
+ENV.getEnv(GLOBAL_ROOT_NAME) ||
+    ENV.setEnv(GLOBAL_ROOT_NAME, PATH.dirname(__dirname));
+
+
 var environ = require('../environ');
 
 require('bem/lib/nodesregistry').decl('Arch', {

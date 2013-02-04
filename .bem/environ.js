@@ -1,5 +1,4 @@
-var BEM = require('bem'),
-    PATH = require('path'),
+var PATH = require('path'),
 
     /** @const */
     __root = getGlobalRoot(),
@@ -79,9 +78,11 @@ var BEM = require('bem'),
     };
 
 function getGlobalRoot() {
-    var root = BEM.require('./env').getEnv('__root_level_dir');
+//    var root = BEM.require('./env').getEnv('__root_level_dir');
+    // FIXME: подумать, как обойтись без `env`
+    var root = process.env.__root_level_dir;
     if(!root) {
-        BEM.require('./logger').warn('[environ] variable "__root_level_dir" is not set properly');
+        require('bem/lib/logger').warn('[environ] variable "__root_level_dir" is not set properly');
         root = __dirname;
     }
 

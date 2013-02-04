@@ -1,5 +1,4 @@
-var BEM = require('bem'),
-    PATH = require('path'),
+var PATH = require('path'),
 
     /** @const */
     __root = getGlobalRoot(),
@@ -9,7 +8,20 @@ var BEM = require('bem'),
     /** @type Function */
     relative = PATH.relative,
     /** @type Function */
-    resolve = PATH.resolve.bind(null, __root),
+    resolve = PATH.resolve.bind(null, __dirname),
+    /** @type Function */
+    envresolve = PATH.resolve.bind(null, __root),
+
+    /**
+     * Путь до корня окружения
+     *
+     * NOTE: под окружением подразумеваем проект, сборку которого
+     * мы осуществляем.
+     *
+     * @type String
+     * @exports ENV_ROOT
+     */
+    ENV_ROOT = exports.ENV_ROOT = envresolve('../'),
 
     /**
      * Путь до корня проекта
@@ -27,10 +39,14 @@ var BEM = require('bem'),
 
     /**
      * Путь до корня хранилища библиотек
+     *
+     * NOTE: путь расчитывается относительно корня окружения `ENV_ROOT`
+     * пока нет способа описать зависимости в библиотеках.
+     *
      * @type String
      * @exports LIB_ROOT
      */
-    LIB_ROOT = exports.LIB_ROOT = join(PRJ_ROOT, LIB_DIR),
+    LIB_ROOT = exports.LIB_ROOT = join(ENV_ROOT, LIB_DIR),
 
     /**
      * Имя директории с .bem-конфигами
@@ -79,9 +95,11 @@ var BEM = require('bem'),
     };
 
 function getGlobalRoot() {
-    var root = BEM.require('./env').getEnv('__root_level_dir');
+//    var root = BEM.require('./env').getEnv('__root_level_dir');
+    // FIXME: подумать, как обойтись без `env`
+    var root = process.env.__root_level_dir;
     if(!root) {
-        BEM.require('./logger').warn('[environ] variable "__root_level_dir" is not set properly');
+        require('bem/lib/logger').warn('[environ] variable "__root_level_dir" is not set properly');
         root = __dirname;
     }
 

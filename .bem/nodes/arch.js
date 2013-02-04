@@ -3,8 +3,12 @@ var PATH = require('path'),
     GLOBAL_ROOT_NAME = '__root_level_dir';
 
 // XXX: `__root_level_dir` должна быть установлена только один раз
-ENV.getEnv(GLOBAL_ROOT_NAME) ||
-    ENV.setEnv(GLOBAL_ROOT_NAME, PATH.dirname(__dirname));
+//ENV.getEnv(GLOBAL_ROOT_NAME) ||
+//    ENV.setEnv(GLOBAL_ROOT_NAME, PATH.dirname(__dirname));
+
+// FIXME: подумать, как обойтись без `env`
+process.env[GLOBAL_ROOT_NAME] ||
+    (process.env[GLOBAL_ROOT_NAME] = PATH.dirname(__dirname));
 
 
 var environ = require('../environ');

@@ -11,19 +11,21 @@ var PATH = require('path'),
 exports.getTechs = function() {
 
     return {
-        'deps.js'       : 'deps.js',
-        'css'           : 'css',
-        'ie.css'        : 'ie.css',
-        'ie6.css'       : 'ie6.css',
-        'ie7.css'       : 'ie7.css',
-        'ie8.css'       : 'ie8.css',
-        'ie9.css'       : 'ie9.css',
+        'deps.js'        : 'deps.js',
+        'css'            : 'css',
+        'ie.css'         : 'ie.css',
+        'ie6.css'        : 'ie6.css',
+        'ie7.css'        : 'ie7.css',
+        'ie8.css'        : 'ie8.css',
+        'ie9.css'        : 'ie9.css',
 
-        'title.txt'     : join(PRJ_TECHS, 'i18n.title.txt'),
-        'desc.wiki'     : join(PRJ_TECHS, 'i18n.desc.wiki'),
+        'title.txt'      : 'title.txt',
+        'desc.wiki'      : '',
+        'i18n.title.txt' : join(PRJ_TECHS, 'i18n.title.txt'),
+        'i18n.desc.wiki' : join(PRJ_TECHS, 'i18n.desc.wiki'),
 
-        'bemhtml'       : join(BEMBL_TECHS, 'bemhtml.js'),
-        'js'            : join(BEMBL_TECHS, 'js.js')
+        'bemhtml'        : join(BEMBL_TECHS, 'bemhtml.js'),
+        'js'             : join(BEMBL_TECHS, 'js.js')
     };
 
 };

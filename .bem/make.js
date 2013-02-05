@@ -2,8 +2,6 @@
 
 require('./nodes/arch');
 
-var environ = require('./environ');
-
 
 MAKE.decl('Arch', {
 

@@ -11,6 +11,9 @@ var PATH = require('path'),
 exports.getTechs = function() {
 
     return {
+        'bemdecl.js'    : 'bemdecl.js',
+        'deps.js'       : 'deps.js',
+        'js'            : 'js-i',
         'css'           : 'css',
         'ie.css'        : 'ie.css',
         'ie6.css'       : 'ie6.css',
@@ -18,10 +21,15 @@ exports.getTechs = function() {
         'ie8.css'       : 'ie8.css',
         'ie9.css'       : 'ie9.css',
 
-        'js'            : join(BEMBL_TECHS, 'js.js'),
-        'bemhtml'       : join(BEMBL_TECHS, 'bemhtml.js'),
+        'bemjson.js'    : join(PRJ_TECHS, 'bemjson.js'),
+
+        'bemhtml.js'    : join(BEMBL_TECHS, 'bemhtml.js'),
+        'html'          : join(BEMBL_TECHS, 'html.js')
     };
 
 };
 
-exports.defaultTechs = ['css', 'js', 'bemhtml'];
+
+// Create bundles in bemjson.js tech
+exports.defaultTechs = ['bemjson.js'];
+

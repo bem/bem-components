@@ -1,9 +1,10 @@
 .project
 .settings/
 
-.bem/cache/
-bem-bl/
-node_modules/
+.bem/cache
+.bem/snapshots
+node_modules
+vendor
 
 desktop.pages/*/*
 !desktop.pages/.bem/

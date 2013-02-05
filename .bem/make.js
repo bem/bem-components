@@ -1,32 +1,35 @@
 /*global MAKE:true */
 
+require('./nodes/arch');
+
 MAKE.decl('Arch', {
 
-    blocksLevelsRegexp : /^.+?\.blocks$/,
+    blocksLevelsRegexp: /^.+?\.blocks$/,
 
-    bundlesLevelsRegexp : /^.+?\.pages/,
+    bundlesLevelsRegexp: /^.+?\.bundles$/,
 
-    getLibraries : function() {
+    libraries : [ 'bem-bl' ]
 
-        var repo = {
-                'bem-bl' : {
-                    type    : 'git',
-                    url     : 'git://github.com/bem/bem-bl.git',
-                    treeish : '0.3'
-                }
-            },
-            /**
-             * Список библиотек которые нужно подключить
-             */
-            libs = [];
+});
 
-        process.env.DEV_MODE || libs.push('bem-bl');
 
-        return libs.reduce(function(enabled, lib) {
-            repo[lib] && (enabled[lib] = repo[lib]);
-            return enabled;
-        }, {});
+MAKE.decl('BundleNode', {
 
+    getTechs: function() {
+        return [
+            'bemjson.js',
+            'bemdecl.js',
+            'deps.js',
+            'bemhtml.js',
+            'js',
+            'css',
+            'ie.css',
+            'ie6.css',
+            'ie7.css',
+            'ie8.css',
+            'ie9.css',
+            'html'
+        ];
     }
 
 });

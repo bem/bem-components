@@ -23,13 +23,11 @@ exports.getTechs = function() {
 
         'bemjson.js'    : join(PRJ_TECHS, 'bemjson.js'),
 
-        'bemhtml.js'    : join(BEMBL_TECHS, 'bemhtml.js'),
+        'bemhtml'       : join(BEMBL_TECHS, 'bemhtml.js'),
         'html'          : join(BEMBL_TECHS, 'html.js')
     };
 
 };
 
-
 // Create bundles in bemjson.js tech
 exports.defaultTechs = ['bemjson.js'];
-

@@ -18,8 +18,8 @@ exports.getTechs = function() {
         'ie8.css'       : 'ie8.css',
         'ie9.css'       : 'ie9.css',
 
-        'js'            : join(BEMBL_TECHS, 'js.js'),
         'bemhtml'       : join(BEMBL_TECHS, 'bemhtml.js'),
+        'js'            : join(BEMBL_TECHS, 'js.js')
     };
 
 };

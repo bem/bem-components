@@ -2,13 +2,16 @@
 
 require('./nodes/arch');
 
+var environ = require('./environ');
+
+
 MAKE.decl('Arch', {
 
     blocksLevelsRegexp: /^.+?\.blocks$/,
 
-    bundlesLevelsRegexp: /^.+?\.bundles$/,
+    bundlesLevelsRegexp: /^.+?\.pages$/,
 
-    libraries : [ 'bem-bl' ]
+    libraries: [ 'bem-bl' ]
 
 });
 
@@ -20,7 +23,6 @@ MAKE.decl('BundleNode', {
             'bemjson.js',
             'bemdecl.js',
             'deps.js',
-            'bemhtml.js',
             'js',
             'css',
             'ie.css',
@@ -28,6 +30,7 @@ MAKE.decl('BundleNode', {
             'ie7.css',
             'ie8.css',
             'ie9.css',
+            'bemhtml',
             'html'
         ];
     }

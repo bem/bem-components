@@ -5,6 +5,7 @@
 .bem/snapshots
 node_modules
 vendor
+release
 
 desktop.pages/*/*
 !desktop.pages/.bem/

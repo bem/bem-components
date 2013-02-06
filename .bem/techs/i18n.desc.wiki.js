@@ -3,7 +3,7 @@ exports.baseTechName = 'desc.wiki';
 exports.techMixin = {
 
     getSuffixes : function() {
-        return ['ru.title.txt'];
+        return ['ru.desc.wiki'];
     }
 
 };

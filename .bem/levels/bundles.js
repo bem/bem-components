@@ -1,17 +1,16 @@
-var BEM = require('bem'),
-    PATH = require('path'),
+var PATH = require('path'),
+    environ = require('../environ'),
 
     join = PATH.join,
     resolve = PATH.resolve.bind(null, __dirname),
 
-    PRJ_ROOT = resolve('../../'),
-    BEMBL_TECHS = join(PRJ_ROOT, 'bem-bl/blocks-common/i-bem/bem/techs');
+    PRJ_TECHS = resolve('../techs/'),
+    BEMBL_TECHS = environ.getLibPath('bem-bl', 'blocks-common/i-bem/bem/techs');
 
 
 exports.getTechs = function() {
 
     return {
-        'bemjson.js'    : '',
         'bemdecl.js'    : 'bemdecl.js',
         'deps.js'       : 'deps.js',
         'js'            : 'js-i',
@@ -22,22 +21,13 @@ exports.getTechs = function() {
         'ie8.css'       : 'ie8.css',
         'ie9.css'       : 'ie9.css',
 
+        'bemjson.js'    : join(PRJ_TECHS, 'bemjson.js'),
+
         'bemhtml'       : join(BEMBL_TECHS, 'bemhtml.js'),
         'html'          : join(BEMBL_TECHS, 'html.js')
     };
 
 };
 
-exports.getConfig = function() {
-
-    return BEM.util.extend(this.__base() || {}, {
-
-        bundleBuildLevels: this.resolvePaths([
-            '../../bem-bl/blocks-common',
-            '../../bem-bl/blocks-desktop',
-            '../../desktop.blocks'
-        ])
-
-    });
-
-};
+// Create bundles in bemjson.js tech
+exports.defaultTechs = ['bemjson.js'];

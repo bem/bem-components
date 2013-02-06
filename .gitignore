@@ -1,15 +1,12 @@
 .project
-.settings
+.settings/
 
 .bem/cache
-bem-bl
-bem-json
-bem-machine
+.bem/snapshots
 node_modules
+vendor
 
 desktop.pages/*/*
 !desktop.pages/.bem/
-!desktop.pages/*/*.bemjson.js
 !desktop.pages/*/blocks/
-
-site.bundles
+!desktop.pages/*/*.bemjson.js

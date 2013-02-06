@@ -1,21 +1,21 @@
 var PATH = require('path'),
     BEM = require('bem'),
     registry = require('bem/lib/nodesregistry'),
+    environ = require('../environ'),
 
     SiteNodeName = exports.SiteNodeName = 'SiteArch',
-
-    MachineNode = require('./machine').MachineNode,
-
-    SITE_NODE_ID = 'site';
+    MachineNode = require('./machine').MachineNode;
 
 
-exports.__defineGetter__(SiteNodeName, function() {
-    return registry.getNodeClass(SiteNodeName);
+Object.defineProperty(exports, SiteNodeName, {
+    'get' : function() {
+        return registry.getNodeClass(SiteNodeName);
+    }
 });
 
 
 /**
- * @namespace Узел описывает входную точку для архитектуры сборки сайта
+ * @namespace Узел описывает входную точку в архитектуру сборки сайта
  * @name SiteArch
  */
 registry.decl(SiteNodeName, 'Node', {
@@ -30,9 +30,7 @@ registry.decl(SiteNodeName, 'Node', {
     },
 
     alterArch : function(arch) {
-
         return this.createMachineNode();
-
     },
 
     /**
@@ -46,21 +44,24 @@ registry.decl(SiteNodeName, 'Node', {
      */
     createMachineNode : function() {
 
-        // FIXME: fix hardcoded urls to `bem-machine` lib
-        var MACHINE_TARGET = 'bem-machine',
-            MACHINE_URL = PATH.relative(this.root, '../bem-machine'),
-            MACHINE_BRANCH = 'kiss-examples-make',
+        try {
+            var repo = require('../repo'),
+                name = 'bem-gen-doc',
+                meta = repo[name];
+        } catch(e) {
+            BEM.require('logger').warn('Could not resolve "bem-gen-doc" meta description. Terminating!');
+            return;
+        }
 
-            machineNode = new MachineNode({
-                root        : this.root,
-                target      : MACHINE_TARGET,
-                url         : MACHINE_URL,
-                treeish     : MACHINE_BRANCH
-            });
+        var node = new MachineNode(
+                BEM.util.extend(
+                        { root : this.root },
+                        meta,
+                        { target : environ.getLibRelPath(name) }));
 
-        this.arch.setNode(machineNode, this.getId());
+        this.arch.setNode(node, this.getId());
 
-        return machineNode.getId();
+        return node.getId();
 
     }
 
@@ -68,8 +69,7 @@ registry.decl(SiteNodeName, 'Node', {
 
     createId : function(o) {
         // FIXME: hardcode
-        return SITE_NODE_ID;
+        return 'site*';
     }
 
 });
-

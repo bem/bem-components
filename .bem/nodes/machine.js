@@ -70,8 +70,7 @@ registry.decl(MachineNodeName, LibraryNode, {
 
         // XXX: по идее `make` не будет выполняться если `isValid()` вернет `true`
         var _t = this;
-//        return this.__base.apply(this, arguments)
-        return Q.resolve(1)
+        return this.__base.apply(this, arguments)
             .then(function() {
                 return _t.ctx.arch.withLock(_t.alterArch(), _t);
             });

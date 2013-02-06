@@ -2,6 +2,7 @@
 
 require('./nodes/arch');
 
+var siteNodes = require('./nodes/site');
 
 MAKE.decl('Arch', {
 
@@ -9,7 +10,16 @@ MAKE.decl('Arch', {
 
     bundlesLevelsRegexp: /^.+?\.pages$/,
 
-    libraries: [ 'bem-bl' ]
+    libraries: [ 'bem-bl', 'bem-json' ],
+
+    createCustomNodes: function(common, libs) {
+
+        var node = new siteNodes.SiteArch({ root : this.root, arch : this.arch });
+        this.arch.setNode(node, null, libs);
+
+        return node.alterArch();
+
+    }
 
 });
 

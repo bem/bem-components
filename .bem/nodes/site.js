@@ -49,7 +49,7 @@ registry.decl(SiteNodeName, 'Node', {
                 name = 'bem-gen-doc',
                 meta = repo[name];
         } catch(e) {
-            BEM.require('logger').warn('Could not resolve "bem-gen-doc" meta description. Terminating!');
+            BEM.require('./logger').warn('Could not resolve "bem-gen-doc" meta description. Terminating!');
             return;
         }
 

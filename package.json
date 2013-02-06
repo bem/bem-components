@@ -9,10 +9,9 @@
   "engines": {
     "node": ">=0.6"
   },
-  "dependencies": {
+  "devDependencies": {
     "bem": "~0.5.20"
   },
-  "devDependencies": {},
   "optionalDependencies": {},
   "private": true
 }

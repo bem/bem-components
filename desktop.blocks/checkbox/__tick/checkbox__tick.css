@@ -3,13 +3,13 @@
     position: relative;
     z-index: 3;
     top: -3px;
-    left: 2px;
+    left: 0.1em;
 
     display: inline-block;
     visibility: hidden;
 
-    width: 1.1em;
-    height: 1.1em;
+    width: 16px;
+    height: 14px;
     margin: 0 0 -2px;
     padding: 0;
 

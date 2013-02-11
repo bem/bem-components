@@ -4,7 +4,7 @@ var relative = require('path').relative.bind(null, __dirname);
 
 module.exports = {
 
-    libraries : require('bem').util.extend(require('../repo'), {
+    libraries : require('bem').util.extend(require('../repo.db'), {
 
         'bem-bl' : {
             type        : 'symlink',

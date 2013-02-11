@@ -1,7 +1,23 @@
 var PATH = require('path'),
 
-    /** @const */
+    environ = exports,
+
+    /**
+     * @const
+     * @private
+     */
     __root = getGlobalRoot(),
+
+    /**
+     * Константы, зависящие от окружения `ENV_ROOT`
+     *
+     * NOTE: список названий констант, которые могут быть переопределены
+     * на уровне проекта.
+     *
+     * @private
+     * @type Array
+     */
+    __extendables = ['LIB_DIR', 'LIB_ROOT'],
 
     /** @type Function */
     join = PATH.join,
@@ -68,7 +84,7 @@ var PATH = require('path'),
      * @returns {Object}
      */
     getConf = exports.getConf = function() {
-        return require(join(CONF_ROOT, 'current'));
+        return require(join(environ.CONF_ROOT, 'current'));
     },
 
     /**
@@ -80,7 +96,7 @@ var PATH = require('path'),
      */
     getLibPath = exports.getLibPath = function() {
         var args = [].splice.call(arguments, 0);
-        return join.apply(null, [LIB_ROOT].concat(args));
+        return join.apply(null, [environ.LIB_ROOT].concat(args));
     },
 
     /**
@@ -91,8 +107,27 @@ var PATH = require('path'),
      * @returns {String}
      */
     getLibRelPath = exports.getLibRelPath = function() {
-        return relative(PRJ_ROOT, getLibPath.apply(null, arguments));
+        return relative(environ.PRJ_ROOT, getLibPath.apply(null, arguments));
     };
+
+
+if(__root !== __dirname) {
+    try {
+        // Переопределяем константы `__extendables` из окружения проекта `ENV_ROOT`
+        var rootEnviron = require(join(__root, 'environ'));
+
+        __extendables.reduce(function(exports, name) {
+            var v = rootEnviron[name];
+            typeof v === 'undefined' || (exports[name] = v);
+            return exports;
+        }, module.exports);
+
+        // Устанавливаем новое значение `__root_level_dir`
+        process.env.__root_level_dir = __root;
+    } catch(e) {
+        // do something useful
+    }
+}
 
 function getGlobalRoot() {
 //    var root = BEM.require('./env').getEnv('__root_level_dir');

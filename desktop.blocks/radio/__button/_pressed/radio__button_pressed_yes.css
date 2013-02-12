@@ -1,0 +1,17 @@
+@media all and (min-width:0px) {
+    .radio__button_pressed_yes .radio__text
+    {
+        top: 1px;
+    }
+}
+
+.radio__button_pressed_yes:before
+{
+    right: 0;
+}
+
+.radio__button_next-for-pressed_yes:before
+{
+    left: 1px;
+}
+

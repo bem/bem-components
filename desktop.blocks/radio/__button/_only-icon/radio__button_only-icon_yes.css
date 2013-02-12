@@ -1,0 +1,32 @@
+.radio__button_only-icon_yes
+{
+    padding: 0 1em;
+}
+
+.radio__button_only-icon_yes .radio__icon
+{
+    /* vam — для _js_no и для ie */
+    vertical-align: middle;
+}
+
+@media all and (min-width:0px) {
+    .i-ua_js_yes .radio__button_only-icon_yes .radio__icon
+    {
+        position: absolute;
+        z-index: 3;
+        left: 50%;
+        top: 50%;
+
+        margin: -8px 0 0 -8px;
+    }
+
+    .radio__button_only-icon_yes.radio__button_pressed_yes .radio__icon
+    {
+        margin-top: -7px;
+    }
+}
+
+.i-ua_js_no .radio__button_only-icon_yes
+{
+    padding: 0 1em 0 0;
+}

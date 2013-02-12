@@ -1,0 +1,23 @@
+.radio__icon
+{
+    width: 16px;
+    height: 16px;
+}
+
+.radio__text .radio__icon
+{
+    position: relative;
+    top: 3px;
+
+    margin-right: 7px;
+}
+
+.radio__button_pressed_yes .radio__icon
+{
+    opacity: .6;
+}
+
+.radio__button_disabled_yes .radio__icon
+{
+    opacity: .4;
+}

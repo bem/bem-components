@@ -1,16 +1,12 @@
 .checkbox_size_m
 {
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .checkbox_size_m .checkbox__box:after,
 .checkbox_size_m .checkbox__box:before
 {
-    width: 12px;
-    height: 12px;
-}
-
-.checkbox_size_m .checkbox__tick
-{
-    background-size: contain;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
 }

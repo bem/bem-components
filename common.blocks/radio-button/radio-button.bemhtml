@@ -1,0 +1,11 @@
+block radio-button {
+
+    js: true
+    tag: 'span'
+
+    default, !this._inputAttrs: {
+        applyNext(this._inputAttrs = this.ctx.inputAttrs || {},
+                this._nextForChecked = false);
+    }
+
+}

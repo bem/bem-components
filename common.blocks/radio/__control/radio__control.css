@@ -1,9 +1,0 @@
-@media all and (min-width:0px) {
-    .i-ua_js_yes .radio__control
-    {
-        position: absolute;
-        /*left: -1000px;*/
-
-        opacity: 0;
-    }
-}

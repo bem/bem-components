@@ -1,0 +1,14 @@
+.radio-button__click
+{
+    position: absolute;
+    z-index: 4;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+.i-ua_js_no .radio-button__click
+{
+    display: none;
+}

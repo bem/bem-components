@@ -1,0 +1,5 @@
+.radio-button__click
+{
+    background: #fff;
+    filter: alpha(opacity=0);
+}

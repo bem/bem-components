@@ -1,0 +1,8 @@
+.radio-button
+{
+    display: inline-block;
+
+    white-space: nowrap;
+
+    border-radius: 3px;
+}

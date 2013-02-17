@@ -11,21 +11,9 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
             this._noFileText = this.elem('text').text();
             this._update();
 
-            this.bindTo('reset', 'click', this.resetFile);
-
-            this._getButton()
-                .on('focus', this._onButtonFocus, this)
-                .on('blur', this._onButtonBlur, this);
+            this._getButton().focusableElem = this.elem('control');
         }
 
-    },
-
-    _onButtonFocus : function() {
-        this._isControlFocused() || this.elem('control').focus();
-    },
-
-    _onButtonBlur : function() {
-        this._isControlFocused() && this.elem('control').blur();
     },
 
     /**
@@ -58,6 +46,7 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
         }));
 
         this.dropElemCache('control');
+        this._getButton().focusableElem = this.elem('control');
 
         this._update();
         this.delMod(this.elem('reset'), 'visibility');
@@ -69,7 +58,6 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
      * @private
      */
     _update : function() {
-
         var fileName = this._getFileByPath(this.val());
 
         this._setFile(fileName);
@@ -165,21 +153,6 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
      */
     _getButton : function() {
         return this._button || (this._button = this.findBlockOn('button', 'button'));
-    },
-
-    /**
-     * Проверяет в фокусе ли контрол
-     * @private
-     * @returns {Boolean}
-     */
-    _isControlFocused : function() {
-
-        try {
-            return this.containsDomElem($(document.activeElement));
-        } catch(e) {
-            return false;
-        }
-
     }
 
 }, /** @lends Attach */{
@@ -187,40 +160,20 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
     live : function() {
 
         this
-            .liveBindTo('change', function() {
+            .liveBindTo('control', 'change', function() {
                 this._update();
             })
-            .liveBindTo('control', 'focusin focusout',  function(e) {
-                this._getButton().toggleMod('focused', 'yes', '', e.type === 'focusin');
+            .liveBindTo('control', 'keydown', function(e) {
+                if (e.keyCode == 13 || e.keyCode == 32) {
+                    // принудительно отжимаем кнопку (в ff остаётся нажатой до закрытия окна выбора файла)
+                    e.data.domElem.trigger('keyup');
+                }
+            })
+            .liveBindTo('reset', 'leftclick', function() {
+                this.resetFile();
             });
-
-        if ($.browser.msie && parseInt($.browser.version) <= 8) {
-
-            var intervalId,
-                prevPath;
-
-            this.liveBindTo('click', function() {
-
-                if (typeof prevPath == 'undefined')
-                    prevPath = this.val();
-
-                var that = this;
-
-                intervalId = setInterval(function() {
-                    var path = that.val();
-                    if (prevPath != path) {
-                        clearInterval(intervalId);
-                        prevPath = path;
-                        that._update();
-                    }
-                }, 300);
-
-            });
-
-        }
 
         return false;
-
     }
 
 });

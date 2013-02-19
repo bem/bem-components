@@ -1,0 +1,30 @@
+block radiobox, elem radio {
+
+    tag: 'label'
+
+    this._mods.disabled, mix: {
+        return [{ elemMods: { disabled: 'yes' } }];
+    }
+
+    default, !this._inputId: {
+        apply(
+            this._inputAttrs = this._.extend(this._inputAttrs, this.ctx.inputAttrs),
+            this._inputId = this._inputAttrs.id || this.generateId(),
+            this._inputAttrs.id = this._inputId,
+            this._inputAttrs.checked =  this.elemMods.checked,
+            this._inputAttrs.disabled = this._mods.disabled ? 'yes' : this.elemMods.disabled
+        );
+    }
+
+    attrs: { 'for': this._inputId }
+
+    content: [
+        {
+            elem: 'box',
+            tag: 'span',
+            content: { elem: 'control' }
+        },
+        this.ctx.content
+    ]
+
+}

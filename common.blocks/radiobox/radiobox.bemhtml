@@ -1,0 +1,14 @@
+block radiobox {
+
+    tag: 'span'
+
+    js: true
+
+    default, !this._inputAttrs: {
+        applyNext(
+            this._inputAttrs = this.ctx.inputAttrs || {},
+            this._mods = this.ctx.mods
+        );
+    }
+
+}

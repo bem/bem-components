@@ -1,0 +1,7 @@
+.radiobox__radio_disabled_yes
+{
+    opacity: .6;
+
+    /* убираем выделение при клике в webkit-touch */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}

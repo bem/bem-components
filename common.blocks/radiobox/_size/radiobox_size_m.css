@@ -1,0 +1,14 @@
+.radiobox_size_m
+{
+    line-height: 32px;
+
+    font-size: 15px;
+}
+
+@media all and (min-width:0px) {
+    .radiobox_size_m .radiobox__box
+    {
+        width: 16px;
+        height: 16px;
+    }
+}

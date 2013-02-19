@@ -33,7 +33,6 @@ block radio-button {
         }
 
         content: [
-            { elem: 'click' },
             { elem: 'control' },
             { elem: 'text', content: this.ctx.content }
         ]

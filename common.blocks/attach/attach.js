@@ -11,6 +11,7 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
             this._noFileText = this.elem('text').text();
             this._update();
 
+            // переопределяем элемент получающий фокус у блока button
             this._getButton().focusableElem = this.elem('control');
         }
 
@@ -46,6 +47,7 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
         }));
 
         this.dropElemCache('control');
+        // переопределяем элемент получающий фокус у блока button на новосозданный
         this._getButton().focusableElem = this.elem('control');
 
         this._update();

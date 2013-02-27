@@ -99,6 +99,12 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
     },
 
     /**
+     * Переменная, указывающая на DOM-элемент, который может получить фокус
+     * @type {jQuery} [this.domElem]
+     */
+    focusableElem : null,
+
+    /**
      * Шорткат для проверки модификатора disabled_yes
      * @returns {Boolean}
      */

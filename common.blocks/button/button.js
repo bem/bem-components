@@ -11,10 +11,9 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             var disabled = this.isDisabled(),
                 domElem = this.domElem;
 
-            (this._href = domElem.attr('href')) && disabled &&
-                domElem.removeAttr('href');
-
-            domElem.attr('disabled', disabled);
+            if (this._href = domElem.attr('href')) {
+                disabled && domElem.removeAttr('href');
+            } else domElem.attr('disabled', disabled);
 
             this.focusableElem = this.domElem;
         },
@@ -61,13 +60,11 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             var disable = modVal == 'yes',
                 domElem = this.domElem;
 
-            this._href && (disable?
-                domElem.removeAttr('href') :
-                domElem.attr('href', this._href));
+            this._href && (disable? domElem.removeAttr('href') : domElem.attr('href', this._href));
 
             disable && domElem.keyup();
 
-            this.afterCurrentEvent(function() {
+            !this._href && this.afterCurrentEvent(function() {
                 domElem.attr('disabled', disable);
             });
 

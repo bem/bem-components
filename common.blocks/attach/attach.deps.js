@@ -1,7 +1,8 @@
 ({
     mustDeps: [
         { block: 'i-bem', elems: ['dom', 'html', 'i18n'] },
-        { block: 'button' }
+        { block: 'button' },
+        { block: 'i-jquery', elem: 'leftclick' }
     ],
     shouldDeps: [
         { block: 'b-icon' },

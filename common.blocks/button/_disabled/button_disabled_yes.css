@@ -2,3 +2,11 @@
 {
     opacity: .6;
 }
+
+.button_disabled_yes,
+a.button_disabled_yes:link,
+a.button_disabled_yes:hover,
+a.button_disabled_yes:visited
+{
+    cursor: default !important;
+}

@@ -60,13 +60,15 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             var disable = modVal == 'yes',
                 domElem = this.domElem;
 
-            this._href && (disable? domElem.removeAttr('href') : domElem.attr('href', this._href));
+            if (this._href) {
+                disable? domElem.removeAttr('href') : domElem.attr('href', this._href);
+            } else {
+                this.afterCurrentEvent(function() {
+                    domElem.attr('disabled', disable);
+                });
+            }
 
             disable && domElem.keyup();
-
-            !this._href && this.afterCurrentEvent(function() {
-                domElem.attr('disabled', disable);
-            });
 
         },
 

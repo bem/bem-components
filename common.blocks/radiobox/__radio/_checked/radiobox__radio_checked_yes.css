@@ -16,6 +16,7 @@
 
         /* Цвет (background) маркера задается в _theme */
 
+        -moz-border-radius: 100%;
         border-radius: 100%;
     }
 }

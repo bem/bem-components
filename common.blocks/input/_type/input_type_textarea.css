@@ -2,8 +2,9 @@
     .input_type_textarea .input__control
     {
         display: block;
+        position: relative;
 
-        padding: 0.4em 1px 1px 0.4em;
+        padding: 0.4em 24px 1px 0.4em;
 
         vertical-align: baseline;
 
@@ -21,7 +22,14 @@
 
     .input_type_textarea .input__clear
     {
-        display: none;
+        right: 6px;
+        top: 6px;
+
+        width: 14px;
+        height: 14px;
+        margin: 0;
+
+        background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04IDEuMjA5Yy0zLjc1MSAwLTYuNzkxIDMuMDQtNi43OTEgNi43OTEgMCAzLjc0OSAzLjA0IDYuNzg5IDYuNzkxIDYuNzg5IDMuNzQ5IDAgNi43ODktMy4wNCA2Ljc4OS02Ljc4OSAwLTMuNzUxLTMuMDQtNi43OTEtNi43ODktNi43OTF6TTExLjk5IDEwLjU2NGwtMS40MjYgMS40MjYtMi41NjQtMi41NjQtMi41NjQgMi41NjQtMS40MjYtMS40MjYgMi41NjQtMi41NjQtMi41NjQtMi41NjQgMS40MjYtMS40MjYgMi41NjQgMi41NjQgMi41NjQtMi41NjQgMS40MjYgMS40MjYtMi41NjQgMi41NjQgMi41NjQgMi41NjR6Ii8+PC9zdmc+) 50% 50% no-repeat;
     }
 }
 

@@ -4,9 +4,17 @@
     position: relative;
 
     display: block;
+}
 
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+@media all and (min-width:0px) {
+    .input__box
+    {
+        /* padding-right for elem clear */
+        padding-right: 29px;
+
+        -moz-box-sizing: border-box;
+         box-sizing: border-box;
+    }
 }
 
 /* ::after = fade */

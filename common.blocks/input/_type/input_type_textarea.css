@@ -3,7 +3,9 @@
     {
         display: block;
 
-        padding: 0.4em 1px 1px 0.4em;
+        padding-top: 0.4em;
+        padding-right: 1px;
+        padding-bottom: 1px;
 
         vertical-align: baseline;
 

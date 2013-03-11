@@ -15,9 +15,6 @@
     .i-ua_js_yes .input__control
     {
         height: 2em;
-        padding-left: 0.4em;
-        /* padding-right for elem clear */
-        padding-right: 2em;
 
         outline: 0;
 

@@ -4,3 +4,13 @@
 
     font-size: 13px;
 }
+
+.input_size_s .input__clear
+{
+    width: 27px;
+}
+
+.input_size_s .input__control
+{
+    padding-left: 7px;
+}

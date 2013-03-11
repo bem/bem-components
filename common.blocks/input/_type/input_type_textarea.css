@@ -25,6 +25,12 @@
     }
 }
 
+/* ::after — fade for long queries, is to the right */
+.input_type_textarea .input__box::after
+{
+    display: none;
+}
+
 .input_type_textarea .input__box
 {
     padding: 1px 1px 1px 0;

@@ -1,3 +1,8 @@
+.input_size_s .input__box
+{
+    margin-right: 12px;
+}
+
 .input_size_s .input__control
 {
     height: 22px;

@@ -1,0 +1,5 @@
+/* ::after = fade */
+.input_focused_yes .input__box::after
+{
+    display: none;
+}

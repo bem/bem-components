@@ -5,7 +5,7 @@
     ],
     shouldDeps: [
         { block: 'i-system' },
-        { mods: { disabled: 'yes', 'has-clear': 'yes' } },
+        { mods: { disabled: 'yes', focused: 'yes' } },
         { elems: [ 'box', 'control' ] },
         {
             elem: 'clear',

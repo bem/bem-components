@@ -50,9 +50,6 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
 
         'checked' : function(modName, modVal) {
 
-            if (this.isDisabled())
-                return false;
-
             this.elem('control').attr('checked', modVal == 'yes');
 
             this.afterCurrentEvent(function(){

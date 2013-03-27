@@ -6,17 +6,21 @@ block radiobox, elem radio {
         return [{ elemMods: { disabled: 'yes' } }];
     }
 
-    default, !this._inputId: {
+    this._controlAttrs.checked, !this.elemMods.checked, mix: {
+        return [{ elemMods: { checked: 'yes' } }];
+    }
+
+    default, !this._controlId: {
         apply(
-            this._inputAttrs = this._.extend(this._inputAttrs, this.ctx.inputAttrs),
-            this._inputId = this._inputAttrs.id || this.generateId(),
-            this._inputAttrs.id = this._inputId,
-            this._inputAttrs.checked =  this.elemMods.checked,
-            this._inputAttrs.disabled = this._mods.disabled ? 'yes' : this.elemMods.disabled
+            this._controlAttrs = this.ctx.controlAttrs,
+            this._controlId = this.ctx.controlAttrs.id || this.generateId(),
+            this._controlAttrs.id = this._controlId,
+            this._controlAttrs.checked =  (this._value == this._controlAttrs.value) || this.elemMods.checked,
+            this._controlAttrs.disabled = this._mods.disabled ? 'yes' : this.elemMods.disabled
         );
     }
 
-    attrs: { 'for': this._inputId }
+    attrs: { 'for': this._controlId }
 
     content: [
         {

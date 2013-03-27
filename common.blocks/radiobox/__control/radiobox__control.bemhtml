@@ -3,7 +3,7 @@ block radiobox, elem control {
     tag: 'input'
 
     attrs: {
-        var a = this._inputAttrs;
+        var a = this._controlAttrs;
 
         if(!a.disabled) {
             delete a.disabled
@@ -20,6 +20,7 @@ block radiobox, elem control {
         }
 
         a.type = 'radio';
+        a.name = this._name;
 
         typeof a.value === 'undefined' && delete a.value;
 

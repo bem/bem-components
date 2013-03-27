@@ -4,10 +4,11 @@ block radiobox {
 
     js: true
 
-    default, !this._inputAttrs: {
+    default, !this._name: {
         applyNext(
-            this._inputAttrs = this.ctx.inputAttrs || {},
-            this._mods = this.ctx.mods
+            this._mods = this.ctx.mods,
+            this._name = this.ctx.name,
+            this._value = this.ctx.value
         );
     }
 

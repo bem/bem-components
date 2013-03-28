@@ -1,26 +1,25 @@
 block radiobox, elem radio {
 
+    default: {
+        applyNext(
+            this._controlAttrs = this.ctx.controlAttrs,
+            this._controlId = this.ctx.controlAttrs.id || this.generateId(),
+            this._controlAttrs.checked = (this._value == this._controlAttrs.value) || this.elemMods.checked,
+            this._controlAttrs.disabled = this._modsDisabled
+        );
+    }
+
     tag: 'label'
 
-    this._mods.disabled, mix: {
+    attrs: { 'for': this._controlId }
+
+    this._modsDisabled, mix: {
         return [{ elemMods: { disabled: 'yes' } }];
     }
 
     this._controlAttrs.checked, !this.elemMods.checked, mix: {
         return [{ elemMods: { checked: 'yes' } }];
     }
-
-    default, !this._controlId: {
-        apply(
-            this._controlAttrs = this.ctx.controlAttrs,
-            this._controlId = this.ctx.controlAttrs.id || this.generateId(),
-            this._controlAttrs.id = this._controlId,
-            this._controlAttrs.checked =  (this._value == this._controlAttrs.value) || this.elemMods.checked,
-            this._controlAttrs.disabled = this._mods.disabled ? 'yes' : this.elemMods.disabled
-        );
-    }
-
-    attrs: { 'for': this._controlId }
 
     content: [
         {

@@ -1,15 +1,15 @@
 block radiobox {
 
-    tag: 'span'
-
-    js: true
-
-    default, !this._name: {
+    default: {
         applyNext(
-            this._mods = this.ctx.mods,
+            this._modsDisabled = this.ctx.mods && this.ctx.mods.disabled,
             this._name = this.ctx.name,
             this._value = this.ctx.value
         );
     }
+
+    tag: 'span'
+
+    js: true
 
 }

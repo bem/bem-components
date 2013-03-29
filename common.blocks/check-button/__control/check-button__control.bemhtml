@@ -3,18 +3,15 @@ block 'check-button', elem control {
     tag: 'input'
 
     attrs: {
-        var a = {
-                type: 'checkbox',
-                value: ''
-            },
-            ctx = this.ctx,
+        var ctx = this.ctx,
+            a = { type: 'checkbox' },
             props = ['tabindex', 'name', 'value', 'id'], p;
 
         while(p = props.pop())
             ctx[p] && (a[p] = ctx[p]);
 
-        ctx.disabled && (a.disabled = 'disabled');
         ctx.checked && (a.checked = 'checked');
+        ctx.disabled && (a.disabled = 'disabled');
 
         return a;
     }

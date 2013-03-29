@@ -1,25 +1,26 @@
 block check-button {
 
+    default: {
+        var ctx = this.ctx;
+        applyNext(
+            this._control = {
+                elem: 'control',
+                id: this.generateId(),
+                name: ctx.name,
+                tabindex: ctx.tabindex,
+                checked: this.mods.checked,
+                disabled: this.mods.disabled,
+                value: (ctx.value || ctx.content)
+            }
+        );
+    }
+
     tag: 'label'
 
     js: true
 
     attrs: {
         'for': this.generateId()
-    }
-
-    default: {
-        // TODO: проверить шаблон
-        var ctx = this.ctx;
-        applyNext(this._control = {
-            elem: 'control',
-            id: this.generateId(),
-            name: ctx.name,
-            tabindex: ctx.tabindex,
-            checked: this.mods.checked,
-            disabled: this.mods.disabled,
-            value: (ctx.value || ctx.content)
-        });
     }
 
     content: [

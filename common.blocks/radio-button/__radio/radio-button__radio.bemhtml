@@ -1,68 +1,44 @@
-block radio-button {
+block radio-button, elem radio {
 
-    elem radio {
-        default, !this._inputId: {
-            local(
-                this._inputAttrs = this._.extend(this._inputAttrs, this.ctx.inputAttrs), // TODO: refactor
-                this._inputId = this._inputAttrs.id || this.generateId(),
-                this._inputAttrs.id = this._inputId,
-                this._inputAttrs.checked = (this.elemMods.checked && (this._nextForChecked = true, this.elemMods.checked)),
-                this._inputAttrs.disabled = this.elemMods.disabled
-            ) this.apply()
-        }
-
-        js: true
-
-        tag: 'label'
-
-        attrs: { 'for': this._inputId }
-
-        mix: {
-            var m = [],
-                side = this.isFirst() + this.isLast();
-
-            side &&
-                m.push({ elemMods: { side: (side > 1 ? 'both' : (this.isFirst() ? 'left' : 'right')) } });
-
-            this._nextForChecked && !this._inputAttrs.checked && (
-                    this._nextForChecked = null, m.push({ elemMods: { 'next-for-pressed': 'yes' } }));
-
-            this._inputAttrs.checked && m.push({ elemMods: { 'pressed': 'yes' } });
-
-            return m;
-        }
-
-        content: [
-            { elem: 'control' },
-            { elem: 'text', content: this.ctx.content }
-        ]
-
+    default: {
+        applyNext(
+            this._controlAttrs = this.ctx.controlAttrs,
+            this._controlId = this.ctx.controlAttrs.id || this.generateId(),
+            this._controlAttrs.id = this._controlId,
+            this._controlAttrs.checked = (this._value == this._controlAttrs.value) || (this.elemMods.checked && (this._nextForChecked = true, this.elemMods.checked)),
+            this._controlAttrs.disabled = this._modsDisabled || this.elemMods.disabled
+        );
     }
 
-    elem control {
-        tag: 'input'
-        attrs: {
-            var a = this._inputAttrs;
+    tag: 'label'
 
-            if(!a.disabled)
-                delete a.disabled
-            else
-                a.disabled = 'disabled';
+    js: true
 
-            if(!a.checked)
-                delete a.checked
-            else
-                a.checked = 'checked';
+    attrs: { 'for': this._controlId }
 
-            a.type = 'radio';
+    mix: {
+        var m = [],
+            side = this.isFirst() + this.isLast();
 
-            typeof a.value === 'undefined' && delete a.value;
+        side && m.push({ elemMods: { side: (side > 1 ? 'both' : (this.isFirst() ? 'left' : 'right')) } });
 
-            return a;
-        }
+        this._nextForChecked && !this._controlAttrs.checked && (
+            this._nextForChecked = null, m.push({ elemMods: { 'next-for-pressed': 'yes' } }));
+
+        this._controlAttrs.checked && m.push({ elemMods: { 'pressed': 'yes' } });
+
+        this._modsDisabled && m.push({ elemMods: { disabled: 'yes' } });
+
+        return m;
     }
 
-    elem text, tag: 'span'
+    content: [
+        { elem: 'control' },
+        {
+            elem: 'text',
+            tag: 'span',
+            content: this.ctx.content
+        }
+    ]
 
-    elem click, tag: 'i'
 }

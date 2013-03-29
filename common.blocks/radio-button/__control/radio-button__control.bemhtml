@@ -1,0 +1,28 @@
+block radio-button, elem control {
+
+    tag: 'input'
+
+    attrs: {
+        var a = this._controlAttrs;
+
+        if(!a.disabled) {
+            delete a.disabled
+        } else {
+            a.disabled = 'disabled';
+            a.tabindex = '-1';
+        }
+
+        if(!a.checked) {
+            delete a.checked
+        } else {
+            a.checked = 'checked';
+        }
+
+        a.type = 'radio';
+        a.name = this._name;
+
+        typeof a.value === 'undefined' && delete a.value;
+
+        return a;
+    }
+}

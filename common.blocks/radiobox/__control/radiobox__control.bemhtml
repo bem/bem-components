@@ -14,8 +14,7 @@ block radiobox, elem control {
 
         if(!a.checked) {
             delete a.checked
-        }
-        else {
+        } else {
             a.checked = 'checked';
         }
 

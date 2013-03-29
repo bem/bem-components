@@ -14,12 +14,14 @@ block radiobox, elem radio {
 
     attrs: { 'for': this._controlId }
 
-    this._modsDisabled, mix: {
-        return [{ elemMods: { disabled: 'yes' } }];
-    }
+    mix: {
+        var m = [];
 
-    this._controlAttrs.checked, !this.elemMods.checked, mix: {
-        return [{ elemMods: { checked: 'yes' } }];
+        this._modsDisabled && m.push({ elemMods: { disabled: 'yes' } });
+
+        this._controlAttrs.checked && !this.elemMods.checked && m.push({ elemMods: { checked: 'yes' } });
+
+        return m;
     }
 
     content: [

@@ -123,7 +123,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
     live : function() {
 
         this
-            .liveBindTo('control', 'click', function(e) {
+            .liveBindTo('click', function(e) {
                 this._onClick(e);
             })
             .liveBindTo('control', 'change', function(e) {
@@ -132,7 +132,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
             .liveBindTo('control', 'focusin focusout', function(e) {
                 this.setMod('focused', e.type === 'focusin'? 'yes' : '');
             })
-            .liveBindTo('control', 'mouseover mouseout', function(e) {
+            .liveBindTo('mouseover mouseout', function(e) {
                 this.isDisabled() ||
                     this.setMod('hovered', e.type === 'mouseover'? 'yes' : '');
             });

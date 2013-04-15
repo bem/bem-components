@@ -49,7 +49,7 @@ BEM.DOM.decl({name : 'input', modName : 'autofocus', modVal : 'yes'}, {
 
         if (isTextKey(e) && activeElTag !== 'input' && activeElTag !== 'textarea') {
             //ставим курсор в конец строки и добавляем пробел
-            var inputElem = this.elem('input')[0],
+            var inputElem = this.elem('control')[0],
                 val = this.val();
 
             if (val.length > 0 && val.substr(val.length-1,1) !== ' ') {

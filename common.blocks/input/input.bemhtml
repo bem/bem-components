@@ -4,6 +4,8 @@ block input, !this.elem {
 
     js: true
 
+    content: this.ctx.content || { elem: 'control' }
+
     default, !this._inputId: {
         applyNext(
             this._inputId = this.ctx.id || this.generateId(),

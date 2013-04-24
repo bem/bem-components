@@ -1,5 +1,9 @@
-.input_size_s .input__control
+.input_size_m .input__box
+{
+    padding-left: 10px;
+}
+
+.input_size_m .input__control
 {
     padding-left: 0;
-    margin-left: 7px;
 }

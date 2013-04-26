@@ -4,5 +4,7 @@ block input, elem clear {
 
     // &nbsp; — fixed bug FF/Linux.
     // After text selection left-click on an item that has no content, the buffer is cleared
-    content, !this.ctx.content: '&nbsp;'
+    // Delete &nbsp; for fix bug with text selection.
+    // I think we don't need anymore FF-3 on linux with X11 ;)
+    content, !this.ctx.content: ''
 }

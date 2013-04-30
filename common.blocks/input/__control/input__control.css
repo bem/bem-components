@@ -31,3 +31,15 @@
     /* Hide native cross in IE10 */
     display: none;
 }
+
+/* Сбрасываем желтый бг у интутов при автозаполнении */
+.input__control:-webkit-autofill
+{
+    top: 1px;
+    left: 1px;
+
+    height: 1.9em;
+
+    -webkit-box-shadow: inset 0 0 0 50px #fff;
+    -webkit-text-fill-color: #000;
+}

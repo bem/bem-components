@@ -1,0 +1,5 @@
+.input__clear_visibility_visible
+{
+    -webkit-user-select: none;
+    user-select: none;
+}

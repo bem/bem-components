@@ -10,8 +10,12 @@
     width: 31px;
 }
 
-.input_size_m .input__hint,
 .input_size_m .input__control
 {
     padding-left: 10px;
+}
+
+.input_size_m .input__hint
+{
+    padding-left: 11px;
 }

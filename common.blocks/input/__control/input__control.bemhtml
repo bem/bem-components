@@ -14,7 +14,7 @@ block input, elem control {
         return a;
     }
 
-    default: {
+    !this.mods.clear, default: {
         applyCtx({
             elem: 'box',
             tag: 'span',

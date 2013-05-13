@@ -5,7 +5,7 @@ block radio-button, elem radio {
             this._controlAttrs = this.ctx.controlAttrs,
             this._controlId = this.ctx.controlAttrs.id || this.generateId(),
             this._controlAttrs.id = this._controlId,
-            this._controlAttrs.checked = (this._value == this._controlAttrs.value) || (this.elemMods.checked && (this._nextForChecked = true, this.elemMods.checked)),
+            this._controlAttrs.checked = this._controlAttrs.checked = (this._value == this._controlAttrs.value || this.elemMods.checked) && (this._nextForChecked = true),
             this._controlAttrs.disabled = this._modsDisabled || this.elemMods.disabled
         );
     }

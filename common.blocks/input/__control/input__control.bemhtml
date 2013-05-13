@@ -8,7 +8,7 @@ block input, elem control {
             name: this._name
         };
 
-        this._value && (a.value = this._value);
+        (this._value || this._value === 0) && (a.value = this._value);
         this.mods.disabled && (a.disabled = 'disabled');
 
         return a;

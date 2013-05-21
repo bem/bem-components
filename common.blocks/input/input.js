@@ -60,6 +60,10 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
                 .on('change', _this._updateClear)
                 ._updateClear();
 
+            _this.bindTo('click', function(){
+                _this.elem('control').trigger('focus');
+            });
+
         },
 
         'disabled' : function(modName, modVal) {

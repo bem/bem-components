@@ -1,27 +1,37 @@
 block radiobox, elem radio {
 
     default: {
-        applyNext(
-            this._controlAttrs = this.ctx.controlAttrs,
-            this._controlId = this.ctx.controlAttrs.id || this.generateId(),
-            this._controlAttrs.id = this._controlId,
-            this._controlAttrs.checked = (this._value == this._controlAttrs.value) || this.elemMods.checked,
-            this._controlAttrs.disabled = this._modsDisabled || this.elemMods.disabled
+        var ctx = this.ctx,
+            elemMods = ctx.elemMods || {},
+            ctxControlAttrs = ctx.controlAttrs || {},
+
+            // value блока совпало с value в controlAttrs элемента radio
+            valuesMatched = ctxControlAttrs.value != undefined && ctxControlAttrs.value == this._value,
+
+            controlAttrs = this._.extend(ctxControlAttrs, {
+                checked: valuesMatched || elemMods.checked,
+                disabled: this._modsDisabled || elemMods.disabled
+            });
+
+        controlAttrs['id'] || (controlAttrs['id'] = this.generateId());
+
+        return applyNext(
+            this._controlAttrs = controlAttrs,
+            this._valuesMatched = valuesMatched
         );
     }
 
     tag: 'label'
 
-    attrs: { 'for': this._controlId }
+    attrs: { 'for': this._controlAttrs['id'] }
 
     mix: {
-        var m = [];
+        var elemMods = {};
 
-        this._modsDisabled && m.push({ elemMods: { disabled: 'yes' } });
+        this._modsDisabled && (elemMods.disabled = 'yes');
+        this._valuesMatched && (elemMods.checked = 'yes');
 
-        this._controlAttrs.checked && !this.elemMods.checked && m.push({ elemMods: { checked: 'yes' } });
-
-        return m;
+        return [{ elemMods: elemMods }];
     }
 
     content: [

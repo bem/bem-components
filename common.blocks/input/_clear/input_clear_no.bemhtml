@@ -1,0 +1,10 @@
+block input, mod clear no, elem control {
+
+    default: {
+            applyCtx({
+                elem: 'box',
+                tag: 'span',
+                content: this.ctx
+            });
+        }
+}

@@ -2,10 +2,5 @@
 {
     visibility: visible;
 
-	opacity: 0.3;
-}
-
-.input__clear_visibility_visible:hover
-{
-	opacity: 0.8;
+	opacity: 0.2;
 }

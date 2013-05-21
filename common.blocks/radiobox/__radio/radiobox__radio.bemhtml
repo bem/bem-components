@@ -1,25 +1,30 @@
 block radiobox, elem radio {
 
     default: {
-        applyNext(
-            this._controlAttrs = this.ctx.controlAttrs,
-            this._controlId = this.ctx.controlAttrs.id || this.generateId(),
-            this._controlAttrs.id = this._controlId,
-            this._controlAttrs.checked = (this._value == this._controlAttrs.value) || this.elemMods.checked,
-            this._controlAttrs.disabled = this._modsDisabled || this.elemMods.disabled
-        );
+        var ctx = this.ctx,
+            elemMods = ctx.elemMods || {},
+            ctxControlAttrs = ctx.controlAttrs || {},
+            controlAttrs = this._.extend(ctxControlAttrs, {
+                checked: (this._value != undefined && this._value == ctxControlAttrs.value) || elemMods.checked,
+                disabled: this._modsDisabled || elemMods.disabled
+            });
+
+        controlAttrs['id'] || (controlAttrs['id'] = this.generateId());
+
+        return applyNext(this._controlAttrs = controlAttrs);
     }
 
     tag: 'label'
 
-    attrs: { 'for': this._controlId }
+    attrs: { 'for': this._controlAttrs['id'] }
 
     mix: {
-        var m = [];
+        var elemMods = this.ctx.elemMods || {},
+            controlAttrs = this._controlAttrs,
+            m = [];
 
-        this._modsDisabled && m.push({ elemMods: { disabled: 'yes' } });
-
-        this._controlAttrs.checked && !this.elemMods.checked && m.push({ elemMods: { checked: 'yes' } });
+        elemMods.disabled || controlAttrs.disabled && m.push({ elemMods: { disabled: 'yes' } });
+        elemMods.checked || controlAttrs.checked && m.push({ elemMods: { checked: 'yes' } });
 
         return m;
     }

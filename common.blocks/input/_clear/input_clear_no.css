@@ -1,0 +1,17 @@
+@media all and (min-width:0px) {
+    .input_clear_no .input__box
+    {
+        padding-right: 7px;
+    }
+
+    .input_clear_no .input__box::after
+    {
+        width: 14px;
+
+        background: -webkit-gradient(linear, left top, right top, color-stop(0,rgba(255,255,255,0)), color-stop(50%, #fff));
+        background:    -moz-linear-gradient(left, rgba(255,255,255,0) 0, #fff 50%);
+        background:     -ms-linear-gradient(left, rgba(255,255,255,0) 0, #fff 50%);
+        background:      -o-linear-gradient(left, rgba(255,255,255,0) 0, #fff 50%);
+        background:         linear-gradient(to right, rgba(255,255,255,0) 0, #fff 50%);
+    }
+}

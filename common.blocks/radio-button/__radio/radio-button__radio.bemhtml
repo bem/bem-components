@@ -1,31 +1,40 @@
 block radio-button, elem radio {
 
     default: {
-        applyNext(
-            this._controlAttrs = this.ctx.controlAttrs,
-            this._controlId = this.ctx.controlAttrs.id || this.generateId(),
-            this._controlAttrs.id = this._controlId,
-            this._controlAttrs.checked = (this._value == this._controlAttrs.value) || (this.elemMods.checked && (this._nextForChecked = true, this.elemMods.checked)),
-            this._controlAttrs.disabled = this._modsDisabled || this.elemMods.disabled
-        );
+        var ctx = this.ctx,
+            elemMods = ctx.elemMods || {},
+            ctxControlAttrs = ctx.controlAttrs || {},
+            controlAttrs = this._.extend(ctxControlAttrs, {
+                checked: (this._value != undefined && this._value == ctxControlAttrs.value || elemMods.checked) &&
+                    (this._nextForChecked = true),
+                disabled: this._modsDisabled || elemMods.disabled
+            });
+
+        controlAttrs['id'] || (controlAttrs['id'] = this.generateId());
+
+        return applyNext(this._controlAttrs = controlAttrs);
     }
 
     tag: 'label'
 
-    attrs: { 'for': this._controlId }
+    attrs: { 'for': this._controlAttrs['id'] }
 
     mix: {
-        var m = [],
-            side = this.isFirst() + this.isLast();
+        var elemMods = this.ctx.elemMods || {},
+            side = this.isFirst() + this.isLast(),
+            controlAttrs = this._controlAttrs,
+            m = [];
 
         side && m.push({ elemMods: { side: (side > 1 ? 'both' : (this.isFirst() ? 'left' : 'right')) } });
 
-        this._nextForChecked && !this._controlAttrs.checked && (
+        this._nextForChecked && !controlAttrs.checked && (
             this._nextForChecked = null, m.push({ elemMods: { 'next-for-pressed': 'yes' } }));
 
-        this._controlAttrs.checked && m.push({ elemMods: { 'pressed': 'yes' } });
+        elemMods.disabled || controlAttrs.disabled && m.push({ elemMods: { disabled: 'yes' } });
 
-        this._modsDisabled && m.push({ elemMods: { disabled: 'yes' } });
+        controlAttrs.checked && m.push({
+            elemMods: elemMods.checked ? { pressed: 'yes' } : { checked: 'yes', pressed: 'yes' }
+        });
 
         return m;
     }

@@ -9,7 +9,7 @@ block checkbox, elem control {
         a.type = 'checkbox';
 
         this.mods.disabled && (a.disabled = 'disabled');
-        this.mods.checked && (a.checked = 'checked');
+        this.mods.checked == 'yes' && (a.checked = 'checked');
 
         return a;
     }

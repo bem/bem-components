@@ -14,7 +14,7 @@
 @media all and (min-width:0px) {
     .i-ua_js_yes .input__control
     {
-        height: 2em;
+        padding: 0.4em 0;
 
         outline: 0;
 
@@ -30,4 +30,16 @@
 {
     /* Hide native cross in IE10 */
     display: none;
+}
+
+/* Сбрасываем желтый бг у интутов при автозаполнении */
+.input__control:-webkit-autofill
+{
+    top: 1px;
+    left: 1px;
+
+    height: 1.9em;
+
+    -webkit-box-shadow: inset 0 0 0 50px #fff;
+    -webkit-text-fill-color: #000;
 }

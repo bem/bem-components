@@ -14,7 +14,7 @@
 @media all and (min-width:0px) {
     .i-ua_js_yes .input__control
     {
-        height: 2em;
+        padding: 0.4em 0;
 
         outline: 0;
 

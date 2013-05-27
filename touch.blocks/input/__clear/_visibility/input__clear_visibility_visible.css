@@ -1,0 +1,7 @@
+/* disable select __clear on touch devices */
+.input__clear_visibility_visible
+{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}

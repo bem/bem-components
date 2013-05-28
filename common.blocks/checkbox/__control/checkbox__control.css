@@ -2,7 +2,7 @@
     .i-ua_js_yes .checkbox__control
     {
         position: absolute;
-        z-index: 4;
+        z-index: -1;
         top: 0;
         left: 0;
 

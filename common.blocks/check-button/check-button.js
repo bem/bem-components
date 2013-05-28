@@ -34,13 +34,11 @@ BEM.DOM.decl({ block: 'check-button', baseBlock: 'checkbox' }, /** @lends CheckB
 
         // XXX: синхронизируем состояние кнопки и чекбокса
         this.bindToDoc('mouseup', function(e) {
-            var _this = this;
+            this.afterCurrentEvent(function() {
+                this.isChecked() || this.delMod('pressed');
+            })
 
-            setTimeout(function() {
-                _this.isChecked() || _this.delMod('pressed');
-            }, 0);
-
-            _this.unbindFromDoc('mouseup');
+            this.unbindFromDoc('mouseup');
         });
     }
 

@@ -28,7 +28,8 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
                 if (this.isDisabled())
                     return false;
 
-                this.elem('control').focus();
+                this._isControlFocused() || this.elem('control').focus();
+                
                 this.setMod(this.elem('box'), 'focused', 'yes');
 
                 this.afterCurrentEvent(function() {
@@ -38,7 +39,8 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
 
             '' : function() {
 
-                this.elem('control').blur();
+                this._isControlFocused() && this.elem('control').blur();
+                
                 this.delMod(this.elem('box'), 'focused');
 
                 this.afterCurrentEvent(function() {
@@ -105,17 +107,45 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
         return this;
     },
 
-    _onClick : function(e) {
-        // Нам нужен только клик левой кнопки мыши и нажатие пробела
-        if (e.button) return;
+    _onClick : function(e) {   
+        this.isDisabled() || this
+            .setMod('focused', 'yes')
+            .toggle();
 
-        this.isDisabled() || this.setMod('focused', 'yes');
+        e.preventDefault();    
     },
 
     _onChange : function(e) {
         e.target.checked?
             this.setMod('checked', 'yes') :
             this.delMod('checked');
+    },
+
+    /**
+     * Обработчик события получения/потери фокуса
+     * @param e
+     * @private
+     */
+    _onFocusInFocusOut : function(e) {
+        this.setMod('focused', e.type === 'focusin'? 'yes' : '');
+    },
+
+    _onMouseOverMouseOut : function(e) {
+        this.isDisabled() ||
+            this.setMod('hovered', e.type === 'mouseover'? 'yes' : '');
+    },
+
+    /**
+     * Проверяет в фокусе ли контрол
+     * @private
+     * @returns {Boolean}
+     */
+    _isControlFocused : function() {
+        try {
+            return this.containsDomElem($(this.__self.doc.activeElement));
+        } catch(e) {
+            return false;
+        }
     }
 
 }, /** @lends Checkbox */{
@@ -123,21 +153,22 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
     live : function() {
 
         this
-            .liveBindTo('click', function(e) {
+            .liveBindTo('leftclick', function(e) {
                 this._onClick(e);
+            })
+            .liveBindTo('control', 'leftclick', function(e) {
+                e.stopPropagation();
             })
             .liveBindTo('control', 'change', function(e) {
                 this._onChange(e);
             })
             .liveBindTo('control', 'focusin focusout', function(e) {
-                this.setMod('focused', e.type === 'focusin'? 'yes' : '');
+                this._onFocusInFocusOut(e);
             })
             .liveBindTo('mouseover mouseout', function(e) {
-                this.isDisabled() ||
-                    this.setMod('hovered', e.type === 'mouseover'? 'yes' : '');
+                this._onMouseOverMouseOut(e);
             });
 
         return false;
     }
-
 });

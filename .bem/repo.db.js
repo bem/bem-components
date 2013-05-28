@@ -20,9 +20,18 @@ module.exports = {
         url      : 'git://github.com/bem/bem-bl.git',
         treeish  : '0.3'
     },
-    'bem-html' : {
+    'bem-controls' : {
         type     : 'git',
-        url      : 'git://github.com/bem/bemhtml.git'
+        url      : 'git://github.com/bem/bem-controls.git'
+    },
+    'bem-core' : {
+        type     : 'git',
+        url      : 'git://github.com/bem/bem-core.git'
+    },
+    'bem-gen-doc' : {
+        type     : 'git',
+        url      : 'git://github.com/bem/bem-gen-doc.git',
+        treeish  : 'make'
     },
     'bem-json' : {
         type     : 'git',
@@ -32,14 +41,9 @@ module.exports = {
         type     : 'git',
         url      : 'git://github.com/narqo/bem-pr.git'
     },
-    'bem-gen-doc' : {
+    'bem-yana' : {
         type     : 'git',
-        url      : 'git://github.com/bem/bem-gen-doc.git',
-        treeish  : 'make'
-    },
-    'bl-controls' : {
-        type     : 'git',
-        url      : 'git://github.com/bem/bl-controls.git'
+        url      : 'git://github.com/narqo/bem-yana.git'
     }
 
 };

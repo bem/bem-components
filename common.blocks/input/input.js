@@ -118,7 +118,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
             this.removeInsets();
 
         this
-            .val('')
+            .val('', { source: 'clear' })
             .setMod('focused', 'yes');
 
     },

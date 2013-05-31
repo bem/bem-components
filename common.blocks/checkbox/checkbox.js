@@ -8,16 +8,8 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
 
         'js' : function() {
 
-            var _this = this,
-                checkboxElem = _this.elem('control');
-
-            try {
-                // В iframe в IE9 происходит "Error: Unspecified error."
-                var activeNode = _this.__self.doc[0].activeElement;
-            } catch(e) {}
-
-            _this.setMod('checked', checkboxElem.attr('checked')? 'yes' : '');
-            activeNode === checkboxElem[0] && _this.setMod('focused', 'yes');
+            this.setMod('checked', this.elem('control').attr('checked')? 'yes' : '');
+            this._isControlFocused() && this.setMod('focused', 'yes');
 
         },
 
@@ -142,7 +134,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
      */
     _isControlFocused : function() {
         try {
-            return this.containsDomElem($(this.__self.doc.activeElement));
+            return this.containsDomElem($(this.__self.doc[0].activeElement));
         } catch(e) {
             return false;
         }

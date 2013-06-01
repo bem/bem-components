@@ -60,6 +60,10 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
                 .on('change', _this._updateClear)
                 ._updateClear();
 
+            _this.bindTo('box', 'click', function(e) {
+                _this.setMod('focused', 'yes');
+            });
+
         },
 
         'disabled' : function(modName, modVal) {
@@ -243,8 +247,9 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
     live : function() {
 
-        this.liveBindTo('clear', 'leftclick', function() {
+        this.liveBindTo('clear', 'leftclick', function(e) {
             this._onClearClick();
+            e.stopPropagation();
         });
 
         return false;

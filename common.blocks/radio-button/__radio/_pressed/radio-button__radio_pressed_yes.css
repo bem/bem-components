@@ -2,6 +2,8 @@
     .radio-button__radio_pressed_yes .radio-button__text
     {
         top: 1px;
+
+        padding: 1px 1em 0;
     }
 }
 

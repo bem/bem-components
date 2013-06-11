@@ -8,7 +8,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
 
         'js' : function() {
 
-            this.setMod('checked', this.elem('control').attr('checked')? 'yes' : '');
+            this.setMod('checked', this.elem('control').prop('checked')? 'yes' : '');
             this._isControlFocused() && this.setMod('focused', 'yes');
 
         },
@@ -44,18 +44,18 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
 
         'checked' : function(modName, modVal) {
 
-            this.elem('control').attr('checked', modVal == 'yes');
+            this.elem('control').prop('checked', modVal === 'yes');
 
             this.afterCurrentEvent(function(){
                this.trigger('change');
             });
 
-            this.toggleMod(this.elem('box'), 'checked', 'yes', modVal == 'yes');
+            this.setMod(this.elem('box'), 'checked', modVal);
         },
 
         'disabled' : function(modName, modVal) {
 
-            this.elem('control').attr('disabled', modVal === 'yes');
+            this.elem('control').prop('disabled', modVal === 'yes');
         }
 
     },
@@ -99,12 +99,19 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
         return this;
     },
 
-    _onClick : function(e) {   
-        this.isDisabled() || this
-            .setMod('focused', 'yes')
-            .toggle();
+    _onClick : function(e) {
+        if (this.isDisabled())
+            return;
 
-        e.preventDefault();    
+        // для клика по всему, кроме самого инпута, отменяем действие по умолчанию и перекючаем чекбокс сами
+        // иначе, при нескольких кликах подряд, чекбокс залипает в неправильном состоянии
+        if (e.target !== this.elem('control')[0]) {
+            e.preventDefault();
+
+            this.toggle();
+        }
+
+        this.setMod('focused', 'yes');
     },
 
     _onChange : function(e) {
@@ -147,9 +154,6 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
         this
             .liveBindTo('leftclick', function(e) {
                 this._onClick(e);
-            })
-            .liveBindTo('control', 'leftclick', function(e) {
-                e.stopPropagation();
             })
             .liveBindTo('control', 'change', function(e) {
                 this._onChange(e);

@@ -94,7 +94,7 @@ DOM.decl('attach', /** @lends Attach.prototype */ {
      */
     _setFile : function(fileName) {
         this
-            .setMod(this.elem('holder'), 'state', fileName ? '' : 'hidden')
+            .toggleMod(this.elem('holder'), 'state', 'hidden', fileName)
             .elem('text').html(fileName || this._getNoFileText());
         return this;
     },

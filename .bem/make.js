@@ -27,8 +27,8 @@ MAKE.decl('BundleNode', {
             'ie7.css',
             'ie8.css',
             'ie9.css',
-            'browser.js',
             'bemhtml',
+            'browser.js+bemhtml',
             'html'
         ];
     }

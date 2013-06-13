@@ -24,12 +24,12 @@ exports.getTechs = function() {
         'ie8.css'        : 'ie8.css',
         'ie9.css'        : 'ie9.css',
 
-        'bemhtml'       : join(BEMCORE_TECHS, 'bemhtml.js'),
-        'vanilla.js'    : join(BEMCORE_TECHS, 'vanilla.js.js'),
-        'browser.js'    : join(BEMCORE_TECHS, 'browser.js.js'),
+        'bemhtml'        : join(BEMCORE_TECHS, 'bemhtml.js'),
+        'vanilla.js'     : join(BEMCORE_TECHS, 'vanilla.js.js'),
+        'browser.js'     : join(BEMCORE_TECHS, 'browser.js.js'),
 
-        //'examples'      : join(PRJ_TECHS, 'examples.js'),
-        //'tests'         : join(PRJ_TECHS, 'tests.js')
+        //'examples'     : join(PRJ_TECHS, 'examples.js'),
+        //'tests'        : join(PRJ_TECHS, 'tests.js')
     };
 
 };

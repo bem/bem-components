@@ -16,6 +16,24 @@
                     block: 'button',
                     mods: { size: 'm' },
                     content: 'Custom Button'
+                },
+                {
+                    block: 'attach',
+                    mods: { size: 's' },
+                    content: [
+                        {
+                            block: 'button',
+                            mods: { size: 's' },
+                            mix: [{ block: 'attach', elem: 'button' }],
+                            tabindex: 1,
+                            id: 'bla',
+                            content: 'button text'
+                        },
+                        {
+                            elem: 'holder',
+                            content: 'no file'
+                        }
+                    ]
                 }
             ]
         }

@@ -1,23 +1,23 @@
+modules.define('i-bem__dom', ['jquery', 'BEMHTML'], function(provide, $, BEMHTML, DOM) {
+
 /**
  * @namespace
  * @name Attach
  */
-BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
-
+DOM.decl('attach', /** @lends Attach.prototype */ {
     onSetMod : {
+        'js' : {
+            'inited' : function() {
 
-        'js' : function() {
+                this
+                    ._update() // TODO: проверить, что это нужно при ините, возможно нужно гарантировать нужное состояние из шаблонов
+                    .bindTo('reset', 'click', this.resetFile); // TODO: сделать live-событием
 
-            this._noFileText = this.elem('text').text();
-            this._update();
-
-            this.bindTo('reset', 'click', this.resetFile);
-
-            this._getButton()
-                .on('focus', this._onButtonFocus, this)
-                .on('blur', this._onButtonBlur, this);
+                this._getButton()
+                    .on('focus', this._onButtonFocus, this)
+                    .on('blur', this._onButtonBlur, this);
+            }
         }
-
     },
 
     _onButtonFocus : function() {
@@ -33,9 +33,7 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
      * @returns {String}
      */
     val : function() {
-
         return this.elem('control').val();
-
     },
 
     /**
@@ -43,10 +41,9 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
      * @returns {BEM.DOM}
      */
     resetFile : function() {
-
         var buttonControl = this.elem('control');
 
-        buttonControl.replaceWith(BEM.HTML.build({
+        buttonControl.replaceWith(BEMHTML.apply({
             block: 'attach',
             elem: 'control',
             tag: 'input',
@@ -57,48 +54,58 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
             }
         }));
 
-        this.dropElemCache('control');
-
-        this._update();
-        this.delMod(this.elem('reset'), 'visibility');
-
-        return this.trigger('reset');
+        return this
+            .dropElemCache('control')
+            ._update()
+            .delMod(this.elem('reset'), 'visibility')
+            .trigger('reset');
     },
 
     /**
-     * @private
+     * @returns {this}
      */
     _update : function() {
-
         var fileName = this._getFileByPath(this.val());
 
-        this._setFile(fileName);
-        this._setExtension(this._getExtension(fileName));
+        this
+            ._setFile(fileName)
+            ._setExtension(this._getExtension(fileName));
 
-        this.setMod(this.elem('reset'), 'visibility', 'visible');
+        if(fileName) {
+            this
+                .setMod(this.elem('reset'), 'visibility', 'visible')
+                .trigger('change'); // NOTE: при init-e fileName точно пустой, поэтому не будет события
+        }
 
-        fileName && this.trigger('change');
+        return this;
     },
 
     /**
-     * @private
      * @param {String} path
      * @returns {String}
      */
     _getFileByPath : function(path) {
-
         return path.split('\\').pop();
-
     },
 
     /**
-     * @private
      * @param {String} fileName
+     * @returns {this}
      */
     _setFile : function(fileName) {
+        this
+            .setMod(this.elem('holder'), 'state', fileName ? '' : 'hidden')
+            .elem('text').html(fileName || this._getNoFileText());
+        return this;
+    },
 
-        this.setMod(this.elem('holder'), 'state', fileName ? '' : 'hidden');
-        this.elem('text').html(fileName || this._noFileText);
+    /**
+     * @returns {String}
+     */
+    _getNoFileText : function() {
+        return this.hasOwnProperty('_noFileText') ?
+            this._noFileText :
+            this._noFileText = this.elem('text').text();
     },
 
     _extensionsToMods : {
@@ -132,35 +139,26 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
     },
 
     /**
-     * @private
      * @param {String} fileName
      * @returns {String}
      */
     _getExtension : function(fileName) {
-
         return this._extensionsToMods[fileName.split('.').pop().toLowerCase()] || '';
-
     },
 
     /**
-     * @private
      * @param {String} extension
+     * @returns {this}
      */
     _setExtension : function(extension) {
-
-        this.setMod(this.elem('holder'), 'file', extension || this.params.unknownType);
-
+        return this.setMod(this.elem('holder'), 'file', extension || this.params.unknownType);
     },
 
     getDefaultParams : function() {
-
-        return {
-            unknownType : 'unknown'
-        }
+        return { unknownType : 'unknown' } // TODO: используетс ли этот параметр?
     },
 
     /**
-     * @private
      * @returns {BEM.DOM}
      */
     _getButton : function() {
@@ -169,58 +167,45 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
 
     /**
      * Проверяет в фокусе ли контрол
-     * @private
      * @returns {Boolean}
      */
     _isControlFocused : function() {
-
         try {
-            return this.containsDomElem($(document.activeElement));
+            return this.containsDomElem(DOM.doc.activeElement);
         } catch(e) {
             return false;
         }
-
     }
-
 }, /** @lends Attach */{
-
     live : function() {
-
         this
-            .liveBindTo('change', function() {
-                this._update();
-            })
+            .liveBindTo('change', function() { this._update() })
             .liveBindTo('control', 'focusin focusout',  function(e) {
                 this._getButton().toggleMod('focused', 'yes', '', e.type === 'focusin');
             });
 
-        if ($.browser.msie && parseInt($.browser.version) <= 8) {
-
+        if ($.browser && $.browser.msie && parseInt($.browser.version) <= 8) {
             var intervalId,
                 prevPath;
-
             this.liveBindTo('click', function() {
-
-                if (typeof prevPath == 'undefined')
-                    prevPath = this.val();
-
-                var that = this;
-
+                if (typeof prevPath == 'undefined') prevPath = this.val();
+                var _this = this;
+                // TODO: заменить на поведение аналогичное блоку input (использование модуля tick)
                 intervalId = setInterval(function() {
-                    var path = that.val();
+                    var path = _this.val();
                     if (prevPath != path) {
                         clearInterval(intervalId);
                         prevPath = path;
-                        that._update();
+                        _this._update();
                     }
                 }, 300);
-
             });
-
         }
 
         return false;
-
     }
+});
+
+provide(DOM);
 
 });

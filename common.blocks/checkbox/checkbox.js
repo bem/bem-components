@@ -1,63 +1,52 @@
+modules.define('i-bem__dom', ['next-tick'], function(provide, nextTick, DOM) {
+
 /**
  * @namespace i-bem.js реализация блока checkbox
  * @name Checkbox
  */
-BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
-
+DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
     onSetMod : {
-
-        'js' : function() {
-
-            this.setMod('checked', this.elem('control').prop('checked')? 'yes' : '');
-            this._isControlFocused() && this.setMod('focused', 'yes');
-
+        'js' : {
+            'inited' : function() {
+                this.setMod('checked', this.elem('control').prop('checked')? 'yes' : '');
+                this._isControlFocused() && this.setMod('focused', 'yes');
+            }
         },
 
         'focused' : {
-
             'yes' : function() {
-
-                if (this.isDisabled())
-                    return false;
+                if (this.isDisabled()) return false;
 
                 this._isControlFocused() || this.elem('control').focus();
-                
+
                 this.setMod(this.elem('box'), 'focused', 'yes');
 
-                this.afterCurrentEvent(function() {
-                    this.trigger('focus');
-                });
+                // TODO: заменить на `this.nextTick` после https://github.com/bem/bem-core/issues/71
+                nextTick(function() { this.trigger('focus') }.bind(this)); // TODO: убрать bind после https://github.com/bem/bem-core/issues/70
             },
 
             '' : function() {
-
                 this._isControlFocused() && this.elem('control').blur();
-                
+
                 this.delMod(this.elem('box'), 'focused');
 
-                this.afterCurrentEvent(function() {
-                    this.trigger('blur');
-                });
+                // TODO: заменить на `this.nextTick` после https://github.com/bem/bem-core/issues/71
+                nextTick(function() { this.trigger('blur') }.bind(this)); // TODO: убрать bind после https://github.com/bem/bem-core/issues/70
             }
-
         },
 
         'checked' : function(modName, modVal) {
-
             this.elem('control').prop('checked', modVal === 'yes');
 
-            this.afterCurrentEvent(function(){
-               this.trigger('change');
-            });
+            // TODO: заменить на `this.nextTick` после https://github.com/bem/bem-core/issues/71
+            nextTick(function() { this.trigger('change') }.bind(this)); // TODO: убрать bind после https://github.com/bem/bem-core/issues/70
 
             this.setMod(this.elem('box'), 'checked', modVal);
         },
 
         'disabled' : function(modName, modVal) {
-
             this.elem('control').prop('disabled', modVal === 'yes');
         }
-
     },
 
     /**
@@ -78,9 +67,11 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
 
     /**
      * Хелпер для переключения модификатора `_checked_yes`
+     * @param {Boolean} [condition] условие изменения модификатора
+     * @returns {this}
      */
-    toggle : function() {
-        this.toggleMod('checked', 'yes', '');
+    toggle : function(condition) {
+        return this.toggleMod('checked', 'yes', condition);
     },
 
     /**
@@ -91,8 +82,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
     val : function(val) {
         var checkbox = this.elem('control');
 
-        if (typeof val === 'undefined')
-            return checkbox.val();
+        if (!arguments.length) return checkbox.val();
 
         checkbox.val(val);
 
@@ -100,14 +90,12 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
     },
 
     _onClick : function(e) {
-        if (this.isDisabled())
-            return;
+        if (this.isDisabled()) return;
 
         // для клика по всему, кроме самого инпута, отменяем действие по умолчанию и перекючаем чекбокс сами
         // иначе, при нескольких кликах подряд, чекбокс залипает в неправильном состоянии
         if (e.target !== this.elem('control')[0]) {
             e.preventDefault();
-
             this.toggle();
         }
 
@@ -115,9 +103,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
     },
 
     _onChange : function(e) {
-        e.target.checked?
-            this.setMod('checked', 'yes') :
-            this.delMod('checked');
+        this.toggleMod('checked', 'yes', e.target.checked);
     },
 
     /**
@@ -126,12 +112,12 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
      * @private
      */
     _onFocusInFocusOut : function(e) {
-        this.setMod('focused', e.type === 'focusin'? 'yes' : '');
+        this.toggleMod('focused', 'yes', e.type === 'focusin');
     },
 
     _onMouseOverMouseOut : function(e) {
         this.isDisabled() ||
-            this.setMod('hovered', e.type === 'mouseover'? 'yes' : '');
+            this.toggleMod('hovered', 'yes', e.type === 'mouseover');
     },
 
     /**
@@ -141,7 +127,7 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
      */
     _isControlFocused : function() {
         try {
-            return this.containsDomElem($(this.__self.doc[0].activeElement));
+            return this.containsDomElem($(DOM.doc[0].activeElement));
         } catch(e) {
             return false;
         }
@@ -167,4 +153,8 @@ BEM.DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
 
         return false;
     }
+});
+
+provide(DOM);
+
 });

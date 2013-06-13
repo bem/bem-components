@@ -34,7 +34,8 @@
                             content: 'no file'
                         }
                     ]
-                }
+                },
+                { block: 'checkbox', mods: { size: 's', checked: 'yes' } }
             ]
         }
     ]

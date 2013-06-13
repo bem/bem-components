@@ -181,7 +181,7 @@ DOM.decl('attach', /** @lends Attach.prototype */ {
         this
             .liveBindTo('change', function() { this._update() })
             .liveBindTo('control', 'focusin focusout',  function(e) {
-                this._getButton().toggleMod('focused', 'yes', '', e.type === 'focusin');
+                this._getButton().toggleMod('focused', 'yes', e.type === 'focusin');
             });
 
         if ($.browser && $.browser.msie && parseInt($.browser.version) <= 8) {

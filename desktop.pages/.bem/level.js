@@ -8,10 +8,10 @@ exports.getConfig = function() {
     return BEM.util.extend(this.__base() || {}, {
 
         bundleBuildLevels: [
-                'blocks-common', 'blocks-desktop'
-            ]
-            .map(environ.getLibPath.bind(null, 'bem-bl'))
-            .concat(this.resolvePaths(['../../common.blocks']))
+            environ.getLibPath('bem-core', 'common.blocks'),
+            this.resolvePath('../../common.blocks'),
+            this.resolvePath('../../desktop.blocks')
+        ]
 
     });
 

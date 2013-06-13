@@ -35,7 +35,20 @@
                         }
                     ]
                 },
-                { block: 'checkbox', mods: { size: 's', checked: 'yes' } }
+                { block: 'checkbox', mods: { size: 's', checked: 'yes' } },
+                {
+                    block: 'check-button',
+                    name: 'porn',
+                    value: '1',
+                    mods: { size: 's' },
+                    content: '1'
+                },'&nbsp;&nbsp;&nbsp;',
+                {
+                    block: 'check-button',
+                    name: 'porn',
+                    mods: { size: 's' },
+                    content: '2'
+                }
             ]
         }
     ]

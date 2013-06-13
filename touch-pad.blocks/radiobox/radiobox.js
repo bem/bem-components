@@ -1,8 +1,8 @@
-BEM.DOM.decl('radiobox', null, {
+modules.define('i-bem__dom', function(provide, DOM) {
 
+DOM.decl('radiobox', null, {
     live : function() {
-
-    	this.__base.apply(this, arguments);
+        this.__base.apply(this, arguments);
 
         this.liveBindTo('radio', 'tap', function(e) {
             this._onLeftClick(e);
@@ -10,6 +10,9 @@ BEM.DOM.decl('radiobox', null, {
         });
 
         return false;
-
     }
+});
+
+provide(DOM);
+
 });

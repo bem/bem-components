@@ -171,7 +171,7 @@ DOM.decl('attach', /** @lends Attach.prototype */ {
      */
     _isControlFocused : function() {
         try {
-            return this.containsDomElem(DOM.doc.activeElement);
+            return this.containsDomElem($(DOM.doc[0].activeElement));
         } catch(e) {
             return false;
         }

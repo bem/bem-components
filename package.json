@@ -1,11 +1,15 @@
 {
   "author": "",
-  "name": "bl-controls",
-  "version": "0.0.0",
+  "name": "bem-controls",
+  "version": "2.0.0",
+  "description": "BEM Controls Library",
   "repository": {
     "type": "git",
     "url": "git://github.com/bem/bem-controls.git"
   },
+  "keywords": [
+    "bem"
+  ],
   "engines": {
     "node": ">=0.6"
   },

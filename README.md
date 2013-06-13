@@ -1,4 +1,4 @@
-# BEM Core Library
+# BEM Controls Library
 
 ## Что это?
 

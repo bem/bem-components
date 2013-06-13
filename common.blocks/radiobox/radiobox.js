@@ -29,6 +29,18 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
                 }
             });
 
+        },
+
+        'disabled' : {
+
+            'yes' : function() {
+                this.setMod(this.elem('radio'), 'disabled', 'yes');
+            },
+
+            '' : function() {
+                this.delMod(this.elem('radio'), 'disabled');  
+            }
+
         }
 
     },

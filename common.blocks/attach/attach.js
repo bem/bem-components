@@ -171,24 +171,6 @@ DOM.decl('attach', /** @lends Attach.prototype */ {
                 this._getButton().toggleMod('focused', 'yes', e.type === 'focusin');
             });
 
-        if($.browser && $.browser.msie && parseInt($.browser.version) <= 8) {
-            var intervalId,
-                prevPath;
-            this.liveBindTo('click', function() {
-                if (typeof prevPath == 'undefined') prevPath = this.val();
-                var _this = this;
-                // TODO: заменить на поведение аналогичное блоку input (использование модуля tick)
-                intervalId = setInterval(function() {
-                    var path = _this.val();
-                    if (prevPath != path) {
-                        clearInterval(intervalId);
-                        prevPath = path;
-                        _this._update();
-                    }
-                }, 300);
-            });
-        }
-
         return false;
     }
 });

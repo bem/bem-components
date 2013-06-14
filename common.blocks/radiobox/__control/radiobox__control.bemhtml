@@ -1,28 +1,24 @@
-block radiobox, elem control {
+block('radiobox').elem('control')(
+    tag()('input'),
 
-    tag: 'input'
+    attrs()(function() {
+        var attrs = this._controlAttrs;
 
-    attrs: {
-        var a = this._controlAttrs;
+        attrs.name = this._radiobox.name;
+        attrs.type = 'radio';
+        attrs.value || (attrs.value = ''); // NOTE: без value input type="radio" работает не правильно
 
-        if(!a.disabled) {
-            delete a.disabled
+        attrs.checked?
+            attrs.checked = 'checked' :
+            delete attrs.checked;
+
+        if(attrs.disabled) {
+            attrs.disabled = 'disabled';
+            attrs.tabindex = '-1';
         } else {
-            a.disabled = 'disabled';
-            a.tabindex = '-1';
+            delete attrs.disabled;
         }
 
-        if(!a.checked) {
-            delete a.checked
-        } else {
-            a.checked = 'checked';
-        }
-
-        a.type = 'radio';
-        a.name = this._name;
-
-        typeof a.value === 'undefined' && delete a.value;
-
-        return a;
-    }
-}
+        return attrs;
+    })
+)

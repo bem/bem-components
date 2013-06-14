@@ -1,46 +1,37 @@
-block radiobox, elem radio {
+block('radiobox').elem('radio')(
 
-    default: {
+    def().match(!this._controlAttrs)(function() {
         var ctx = this.ctx,
+            radiobox = this._radiobox,
+            radioboxDisabled = radiobox.mods && radiobox.mods.disabled,
             elemMods = ctx.elemMods || {},
-            ctxControlAttrs = ctx.controlAttrs || {},
-
+            controlAttrs = ctx.controlAttrs || {},
             // value блока совпало с value в controlAttrs элемента radio
-            valuesMatched = ctxControlAttrs.value != undefined && ctxControlAttrs.value == this._value,
+            valuesMatched = typeof controlAttrs.value !== 'undefined' && controlAttrs.value == radiobox.value;
 
-            controlAttrs = this._.extend(ctxControlAttrs, {
-                checked: valuesMatched || elemMods.checked,
-                disabled: this._modsDisabled || elemMods.disabled
-            });
+        controlAttrs.checked = valuesMatched || elemMods.checked;
+        controlAttrs.disabled = radioboxDisabled || elemMods.disabled;
+        controlAttrs.id || (controlAttrs.id = this.generateId());
 
-        controlAttrs['id'] || (controlAttrs['id'] = this.generateId());
+        valuesMatched && (elemMods.checked = 'yes');
+        radioboxDisabled && (elemMods.disabled = 'yes');
 
-        return applyNext(
-            this._controlAttrs = controlAttrs,
-            this._valuesMatched = valuesMatched
-        );
-    }
+        apply('', { '_controlAttrs' : controlAttrs })
+    }),
 
-    tag: 'label'
+    tag()('label'),
 
-    attrs: { 'for': this._controlAttrs['id'] }
+    attrs()(function() { return { 'for': this._controlAttrs.id } }),
 
-    mix: {
-        var elemMods = {};
+    content()(function() {
+        return [
+            {
+                elem: 'box',
+                tag: 'span',
+                content: { elem: 'control' }
+            },
+            this.ctx.content
+        ]
+    })
 
-        this._modsDisabled && (elemMods.disabled = 'yes');
-        this._valuesMatched && (elemMods.checked = 'yes');
-
-        return [{ elemMods: elemMods }];
-    }
-
-    content: [
-        {
-            elem: 'box',
-            tag: 'span',
-            content: { elem: 'control' }
-        },
-        this.ctx.content
-    ]
-
-}
+)

@@ -1,15 +1,5 @@
-block radiobox {
-
-    default: {
-        applyNext(
-            this._modsDisabled = this.ctx.mods && this.ctx.mods.disabled,
-            this._name = this.ctx.name,
-            this._value = this.ctx.value
-        );
-    }
-
-    tag: 'span'
-
-    js: true
-
-}
+block('radiobox')(
+    tag()('span'),
+    js()(true),
+    def()(function() { applyNext({ '_radiobox' : this.ctx }) })
+)

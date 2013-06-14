@@ -1,4 +1,4 @@
-modules.define('i-bem__dom', ['next-tick'], function(provide, nextTick, DOM) {
+modules.define('i-bem__dom', function(provide, DOM) {
 
 /**
  * @namespace i-bem.js реализация блока checkbox
@@ -19,29 +19,26 @@ DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
 
                 this._isControlFocused() || this.elem('control').focus();
 
-                this.setMod(this.elem('box'), 'focused', 'yes');
-
-                // TODO: заменить на `this.nextTick` после https://github.com/bem/bem-core/issues/71
-                nextTick(function() { this.trigger('focus') }.bind(this)); // TODO: убрать bind после https://github.com/bem/bem-core/issues/70
+                this
+                    .setMod(this.elem('box'), 'focused', 'yes')
+                    .nextTick(function() { this.trigger('focus') });
             },
 
             '' : function() {
                 this._isControlFocused() && this.elem('control').blur();
 
-                this.delMod(this.elem('box'), 'focused');
-
-                // TODO: заменить на `this.nextTick` после https://github.com/bem/bem-core/issues/71
-                nextTick(function() { this.trigger('blur') }.bind(this)); // TODO: убрать bind после https://github.com/bem/bem-core/issues/70
+                this
+                    .delMod(this.elem('box'), 'focused')
+                    .nextTick(function() { this.trigger('blur') });
             }
         },
 
         'checked' : function(modName, modVal) {
             this.elem('control').prop('checked', modVal === 'yes');
 
-            // TODO: заменить на `this.nextTick` после https://github.com/bem/bem-core/issues/71
-            nextTick(function() { this.trigger('change') }.bind(this)); // TODO: убрать bind после https://github.com/bem/bem-core/issues/70
-
-            this.setMod(this.elem('box'), 'checked', modVal);
+            this
+                .setMod(this.elem('box'), 'checked', modVal)
+                .nextTick(function() { this.trigger('change') });
         },
 
         'disabled' : function(modName, modVal) {

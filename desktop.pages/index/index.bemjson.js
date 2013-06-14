@@ -54,7 +54,10 @@
                     }
                 ]
             },
+            { tag: 'br' },
             { block: 'checkbox', mods: { size: 's', checked: 'yes' } },
+            { block: 'checkbox', mods: { size: 'm', disabled: 'yes', checked: 'yes' }, content: { elem: 'label', content: 'label' } },
+            { tag: 'br' },
             {
                 block: 'check-button',
                 name: 'porn',

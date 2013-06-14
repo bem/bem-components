@@ -1,4 +1,4 @@
-modules.define('i-bem__dom', ['next-tick'], function(provide, nextTick, DOM) {
+modules.define('i-bem__dom', function(provide, DOM) {
 
 /**
  * @namespace
@@ -34,8 +34,7 @@ DOM.decl('button', /** @lends Button.prototype */ {
 
                 this._isFocusable && (this._isControlFocused() || this.domElem.focus());
 
-                // TODO: заменить на `this.nextTick` после https://github.com/bem/bem-core/issues/71
-                nextTick(function() { this.trigger('focus') }.bind(this)); // TODO: убрать bind после https://github.com/bem/bem-core/issues/70
+                this.nextTick(function() { this.trigger('focus') });
             },
 
             '' : function() {
@@ -45,8 +44,7 @@ DOM.decl('button', /** @lends Button.prototype */ {
 
                 this._isFocusable && this._isControlFocused() && this.domElem.blur();
 
-                // TODO: заменить на `this.nextTick` после https://github.com/bem/bem-core/issues/71
-                nextTick(function() { this.trigger('blur') }.bind(this)); // TODO: убрать bind после https://github.com/bem/bem-core/issues/70
+                this.nextTick(function() { this.trigger('blur') });
             }
         },
 
@@ -142,8 +140,7 @@ DOM.decl('button', /** @lends Button.prototype */ {
     _onClick : function(e) {
         this.isDisabled()?
             e.preventDefault() :
-            // TODO: заменить на `this.nextTick` после https://github.com/bem/bem-core/issues/71
-            nextTick(function() { this.trigger('click') }.bind(this)); // TODO: убрать bind после https://github.com/bem/bem-core/issues/70
+            this.nextTick(function() { this.trigger('click') });
     }
 }, /** @lends Button */ {
     live : function() {

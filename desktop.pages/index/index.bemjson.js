@@ -52,7 +52,7 @@
                 { tag: 'br' },
                 {
                     block: 'input',
-                    mods: { size: 's' },
+                    mods: { size: 's', autofocus: 'focused' },
                     content: { elem: 'control' }
                 },
                 { tag: 'br' }

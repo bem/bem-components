@@ -28,11 +28,15 @@ DOM.decl('input', /** @lends Input.prototype */ {
                 // сохраняем индекс в массиве инстансов чтобы потом быстро из него удалять
                 this._instanceIndex = instances.push(this) - 1;
 
-                var input = this.elem('control');
+                var control = this.elem('control');
 
-                this._val = input.val();
+                this._val = control.val();
 
-                this.bindTo(input, { // TODO: сделать live-событием
+                // NOTE: если так получилось, что мы уже в фокусе, то синхронизируем состояние
+                this.__self.getActiveDomNode() === control[0] &&
+                    (this.setMod('focused', 'yes')._focused = true);
+
+                this.bindTo(control, { // TODO: сделать live-событием
                     focus : this._onFocus,
                     blur : this._onBlur
                 });
@@ -165,6 +169,16 @@ DOM.decl('input', /** @lends Input.prototype */ {
      */
     _blur : function() {
         this.elem('control').blur();
+    }
+}, {
+    getActiveDomNode : function() {
+        // В iframe в IE9: "Error: Unspecified error."
+        try { return DOM.doc[0].activeElement } catch (e) {}
+    },
+
+    isTextDomNode : function(node) {
+        var tag = node.tagName.toLowerCase();
+        return tag === 'input' || tag === 'textarea';
     }
 });
 

@@ -48,7 +48,14 @@
                     name: 'porn',
                     mods: { size: 's' },
                     content: '2'
-                }
+                },
+                { tag: 'br' },
+                {
+                    block: 'input',
+                    mods: { size: 's' },
+                    content: { elem: 'control' }
+                },
+                { tag: 'br' }
             ]
         }
     ]

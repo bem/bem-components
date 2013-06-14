@@ -1,20 +1,10 @@
-block input, !this.elem {
+block('input')(
+    tag()('span'),
+    js()(true),
+    def()(function() {
+        var ctx = this.ctx;
+        ctx.id = ctx.id || this.generateId();
+        applyNext({ '_input' : ctx })
+    })
 
-    tag: 'span'
-
-    js: true
-
-    default, !this._inputId: {
-        applyNext(
-            this._inputId = this.ctx.id || this.generateId(),
-            this._name = this.ctx.name || '',
-            this._value = (typeof this.ctx.value !== 'undefined' && this.ctx.value !== null)
-                                ? this.ctx.value
-                                : '',
-            this._inputLink = true,
-            this._disabled = this.mods.disabled
-        );
-
-    }
-
-}
+)

@@ -1,9 +1,11 @@
-block input, elem sample, tag: 'span'
+block('input').elem('sample').tag()('span')
 
-block b-link, this._inputLink, this._disabled {
-
-    mix: [{
-        mods: { disabled: 'yes' }
-    }]
-
-}
+block('b-link')
+    .match(this._input && this._input.mods && this._input.mods.disabled === 'yes')
+    .match(!this.mods.disabled)
+    .def()(function() {
+            apply(
+                '',
+                { 'ctx.mods': this._.extend(this.ctx.mods, { disabled : 'yes' }) }
+            )
+        })

@@ -1,3 +1,1 @@
-block input, elem samples, tag: 'span'
-
-
+block('input').elem('samples').tag()('span')

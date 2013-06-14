@@ -1,17 +1,16 @@
 ({
-    mustDeps: [
-        { block: 'i-jquery', elems: 'leftclick' },
-        { block: 'i-bem', elems: ['dom'] }
-    ],
+    mustDeps: { block: 'i-bem', elem: 'dom' },
     shouldDeps: [
-        { block: 'i-system' },
-        { mods: { disabled: 'yes', focused: 'yes' } },
-        { elems: [ 'box', 'control' ] },
         {
-            elem: 'clear',
-            mods: {
-                'visibility': 'visible'
-            }
-        }
+            mods: { disabled: 'yes', focused: 'yes' },
+            elems: [
+                'box',
+                'control',
+                { elem: 'clear', mods: { visibility: 'visible' } }
+            ]
+        },
+        { block: 'jquery', elem: 'leftclick' },
+        'tick',
+        'idle'
     ]
 })

@@ -5,12 +5,12 @@ DOM.decl('input', {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                BEM.blocks['b-link'].on(this.elem('samples'), 'click', this._onSampleClick, this);
+                DOM.blocks['b-link'].on(this.elem('samples'), 'click', this._onSampleClick, this);
             },
 
             '' : function() {
                 this.__base.apply(this, arguments);
-                BEM.blocks['b-link'].un(this.domElem, 'click');
+                DOM.blocks['b-link'].un(this.domElem, 'click');
             }
         },
 

@@ -1,35 +1,32 @@
-block check-button {
+block('check-button')(
 
-    default: {
-        var ctx = this.ctx;
-        applyNext(
-            this._control = {
+    tag()('label'),
+
+    js()(true),
+
+    content()(function() {
+        var ctx = this.ctx,
+            mods = this.mods;
+        return [
+            {
                 elem: 'control',
-                id: this.generateId(),
-                name: ctx.name,
-                tabindex: ctx.tabindex,
-                checked: this.mods.checked,
-                disabled: this.mods.disabled,
-                value: (ctx.value || ctx.content)
+                tag: 'input',
+                // TODO: в остальных контролах используется поле `controlAttrs`
+                attrs: {
+                    name: ctx.name,
+                    type: 'checkbox',
+                    tabindex: ctx.tabindex,
+                    checked: mods.checked === 'yes' ? 'checked' : undefined,
+                    disabled: mods.disabled === 'yes' ? 'disabled' : undefined,
+                    value: ctx.value || ctx.content
+                }
+            },
+            {
+                elem: 'text',
+                tag: 'span',
+                content: ctx.content
             }
-        );
-    }
+        ]
+    })
 
-    tag: 'label'
-
-    js: true
-
-    attrs: {
-        'for': this.generateId()
-    }
-
-    content: [
-        this._control,
-        {
-            elem: 'text',
-            tag: 'span',
-            content: this.ctx.content
-        }
-    ]
-
-}
+)

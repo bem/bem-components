@@ -1,8 +1,9 @@
 block('input').elem('sample').tag()('span')
 
 block('b-link')
+    .match(!this.elem)
     .match(this._input && this._input.mods && this._input.mods.disabled === 'yes')
-    .match(!this.mods.disabled)
+    .match(function() { return !this.mods.disabled })
     .def()(function() {
             apply(
                 '',

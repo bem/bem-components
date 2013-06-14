@@ -13,7 +13,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             // состояния, поведение которых блокируется на контролах с disable
             this._resistDisableStates = 'hovered pressed';
 
-            this._isFocusable = 'a button'.indexOf(domElem[0].tagName.toLowerCase()) > -1;
+            this._isFocusable = 'a button'.indexOf(this.domElem[0].tagName.toLowerCase()) > -1;
         },
 
         'focused' : {

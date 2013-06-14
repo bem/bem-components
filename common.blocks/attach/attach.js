@@ -8,14 +8,14 @@ DOM.decl('attach', /** @lends Attach.prototype */ {
     onSetMod : {
         'js' : {
             'inited' : function() {
+                this._noFileText = this.elem('text').text();
 
                 this
-                    ._update() // TODO: проверить, что это нужно при ините, возможно нужно гарантировать нужное состояние из шаблонов
-                    .bindTo('reset', 'click', this.resetFile); // TODO: сделать live-событием
-
-                this._getButton()
-                    .on('focus', this._onButtonFocus, this)
-                    .on('blur', this._onButtonBlur, this);
+                    .bindTo('reset', 'click', this.resetFile) // TODO: сделать live-событием
+                    ._update()
+                    ._getButton()
+                        .on('focus', this._onButtonFocus, this)
+                        .on('blur', this._onButtonBlur, this);
             }
         }
     },
@@ -38,19 +38,19 @@ DOM.decl('attach', /** @lends Attach.prototype */ {
 
     /**
      * Сбросить выбранное значение контрола
-     * @returns {BEM.DOM}
+     * @returns {this}
      */
     resetFile : function() {
         var buttonControl = this.elem('control');
 
         buttonControl.replaceWith(BEMHTML.apply({
-            block: 'attach',
-            elem: 'control',
-            tag: 'input',
-            attrs: {
-                name: buttonControl.attr('name'),
-                type: 'file',
-                tabindex: buttonControl.attr('tabindex')
+            block : 'attach',
+            elem  : 'control',
+            tag   : 'input',
+            attrs : {
+                name     : buttonControl.attr('name'),
+                type     : 'file',
+                tabindex : buttonControl.attr('tabindex')
             }
         }));
 
@@ -71,11 +71,9 @@ DOM.decl('attach', /** @lends Attach.prototype */ {
             ._setFile(fileName)
             ._setExtension(this._getExtension(fileName));
 
-        if(fileName) {
-            this
-                .setMod(this.elem('reset'), 'visibility', 'visible')
-                .trigger('change'); // NOTE: при init-e fileName точно пустой, поэтому не будет события
-        }
+        fileName && this
+            .setMod(this.elem('reset'), 'visibility', 'visible')
+            .trigger('change'); // NOTE: при init-e fileName точно пустой, поэтому не будет события
 
         return this;
     },
@@ -95,47 +93,38 @@ DOM.decl('attach', /** @lends Attach.prototype */ {
     _setFile : function(fileName) {
         this
             .toggleMod(this.elem('holder'), 'state', 'hidden', fileName)
-            .elem('text').html(fileName || this._getNoFileText());
+            .elem('text').html(fileName || this._noFileText);
         return this;
     },
 
-    /**
-     * @returns {String}
-     */
-    _getNoFileText : function() {
-        return this.hasOwnProperty('_noFileText') ?
-            this._noFileText :
-            this._noFileText = this.elem('text').text();
-    },
-
     _extensionsToMods : {
-        'zip' : 'archive',
-        'rar' : 'archive',
-        'tar' : 'archive',
-        'gz' : 'archive',
-        '7z' : 'archive',
-        'gif' : 'gif',
-        'jpg' : 'jpg',
+        'zip'  : 'archive',
+        'rar'  : 'archive',
+        'tar'  : 'archive',
+        'gz'   : 'archive',
+        '7z'   : 'archive',
+        'gif'  : '',
+        'jpg'  : '',
         'jpeg' : 'jpg',
-        'png' : 'png',
-        'eml' : 'eml',
-        'exe' : 'exe',
-        'm4a' : 'audio',
-        'ogg' : 'audio',
-        'mp3' : 'mp3',
-        'wav' : 'wav',
-        'wma' : 'wma',
-        'flv' : 'video',
-        'mov' : 'mov',
-        'wmv' : 'wmv',
-        'mp4' : 'mp4',
-        'avi' : 'avi',
-        'xls' : 'xls',
-        'doc' : 'doc',
+        'png'  : '',
+        'eml'  : '',
+        'exe'  : '',
+        'm4a'  : 'audio',
+        'ogg'  : 'audio',
+        'mp3'  : '',
+        'wav'  : '',
+        'wma'  : '',
+        'flv'  : 'video',
+        'mov'  : '',
+        'wmv'  : '',
+        'mp4'  : '',
+        'avi'  : '',
+        'xls'  : '',
+        'doc'  : '',
         'docx' : 'doc',
-        'txt' : 'txt',
-        'pdf' : 'pdf',
-        'ppt' : 'ppt'
+        'txt'  : '',
+        'pdf'  : '',
+        'ppt'  : ''
     },
 
     /**
@@ -143,7 +132,8 @@ DOM.decl('attach', /** @lends Attach.prototype */ {
      * @returns {String}
      */
     _getExtension : function(fileName) {
-        return this._extensionsToMods[fileName.split('.').pop().toLowerCase()] || '';
+        var ext = fileName.split('.').pop().toLowerCase();
+        return this._extensionsToMods.hasOwnProperty(ext)? this._extensionsToMods[ext] || ext : '';
     },
 
     /**
@@ -155,12 +145,9 @@ DOM.decl('attach', /** @lends Attach.prototype */ {
     },
 
     getDefaultParams : function() {
-        return { unknownType : 'unknown' } // TODO: используетс ли этот параметр?
+        return { unknownType : 'unknown' }; // TODO: используетс ли этот параметр?
     },
 
-    /**
-     * @returns {BEM.DOM}
-     */
     _getButton : function() {
         return this._button || (this._button = this.findBlockOn('button', 'button'));
     },
@@ -184,7 +171,7 @@ DOM.decl('attach', /** @lends Attach.prototype */ {
                 this._getButton().toggleMod('focused', 'yes', e.type === 'focusin');
             });
 
-        if ($.browser && $.browser.msie && parseInt($.browser.version) <= 8) {
+        if($.browser && $.browser.msie && parseInt($.browser.version) <= 8) {
             var intervalId,
                 prevPath;
             this.liveBindTo('click', function() {

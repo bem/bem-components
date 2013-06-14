@@ -79,6 +79,36 @@
                         controlAttrs: { value: 'val-3' }
                     }
                 ]
+            },
+            { tag: 'br' },
+            {
+                block: 'radio-button',
+                mods: { size: 'm' },
+                name: 'show_to',
+                value: 'friends',
+                content: [
+                    {
+                        elem: 'radio',
+                        controlAttrs: { value: 'all' },
+                        elemMods: { disabled: 'yes'},
+                        content: 'виден всем'
+                    },
+                    {
+                        elem: 'radio',
+                        controlAttrs: { value: 'friends' },
+                        content: 'только друзьям'
+                    },
+                    {
+                        elem: 'radio',
+                        controlAttrs: { value: 'me' },
+                        content: 'только мне'
+                    },
+                    {
+                        elem: 'radio',
+                        controlAttrs: { value: 'other' },
+                        content: 'только не мне'
+                    }
+                ]
             }
         ]
     }

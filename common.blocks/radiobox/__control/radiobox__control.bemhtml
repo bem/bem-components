@@ -1,3 +1,4 @@
+// TODO: copy-paste with common.blocks/radio-button/__control/radio-button__control.bemhtml
 block('radiobox').elem('control')(
     tag()('input'),
 

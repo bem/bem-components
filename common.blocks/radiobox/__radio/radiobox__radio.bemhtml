@@ -1,5 +1,6 @@
 block('radiobox').elem('radio')(
 
+    // TODO: copy-paste with common.blocks/radio-button/__radio/radio-button__radio.bemhtml
     def().match(!this._controlAttrs)(function() {
         var ctx = this.ctx,
             radiobox = this._radiobox,

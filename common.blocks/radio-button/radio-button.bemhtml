@@ -1,15 +1,5 @@
-block radio-button {
-
-    default: {
-        applyNext(
-            this._modsDisabled = this.ctx.mods && this.ctx.mods.disabled,
-            this._name = this.ctx.name,
-            this._value = this.ctx.value,
-            this._nextForChecked = false
-        );
-    }
-
-    tag: 'span'
-
-    js: true
-}
+block('radio-button')(
+    def()(function() { applyNext({ '_radioButton' : this.ctx }) }),
+    tag()('span'),
+    js()(true)
+)

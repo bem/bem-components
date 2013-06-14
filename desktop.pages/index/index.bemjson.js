@@ -16,6 +16,26 @@
                 mods: { size: 'm' },
                 content: 'Custom Button'
             },
+            { tag: 'br' },
+            {
+                block: 'attach',
+                mods: { size: 's', disabled: 'yes' },
+                content: [
+                    {
+                        block: 'button',
+                        mods: { size: 's' },
+                        mix: [{ block: 'attach', elem: 'button' }],
+                        tabindex: 1,
+                        id: 'bla',
+                        content: 'button text'
+                    },
+                    {
+                        elem: 'holder',
+                        content: 'no file'
+                    }
+                ]
+            },
+            { tag: 'br' },
             {
                 block: 'attach',
                 mods: { size: 's' },

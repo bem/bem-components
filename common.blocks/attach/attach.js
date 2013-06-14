@@ -41,16 +41,14 @@ DOM.decl('attach', /** @lends Attach.prototype */ {
      * @returns {this}
      */
     resetFile : function() {
-        var buttonControl = this.elem('control');
+        var control = this.elem('control');
 
-        buttonControl.replaceWith(BEMHTML.apply({
+        control.replaceWith(BEMHTML.apply({
             block : 'attach',
             elem  : 'control',
-            tag   : 'input',
             attrs : {
-                name     : buttonControl.attr('name'),
-                type     : 'file',
-                tabindex : buttonControl.attr('tabindex')
+                name     : control.attr('name'),
+                tabindex : control.attr('tabindex')
             }
         }));
 

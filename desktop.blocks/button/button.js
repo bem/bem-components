@@ -8,10 +8,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
         'js' : function() {
 
-            this.__base();
-
-            // состояния, поведение которых блокируется на контролах с disable
-            this._resistDisableStates = 'hovered pressed';
+            this.__base.apply(this, arguments);
 
             this._isFocusable = 'a button'.indexOf(this.domElem[0].tagName.toLowerCase()) > -1;
         },
@@ -55,36 +52,25 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
         'disabled' : function(modName, modVal) {
 
-            var disable = modVal == 'yes',
-                domElem = this.domElem;
-
-            this._href && (disable?
-                domElem.removeAttr('href') :
-                domElem.attr('href', this._href));
+            this.__base.apply(this, arguments);
 
             disable && domElem.keyup();
 
-            this.afterCurrentEvent(function() {
-                domElem.attr('disabled', disable);
-            });
+        },
+
+        'hovered' : function(modName, modVal) {
+
+            if (this.isDisabled()) return false;
+
+            modVal === '' && this.delMod('pressed');
 
         },
 
-        'hovered' : {
+        'pressed' : function(modName, modVal) {
 
-            '' : function() {
+            this.isDisabled() || this.setMod('focused', 'yes');
 
-                this.delMod('pressed');
-
-            }
-
-        },
-
-        'pressed': function(modName, modVal) {
-
-            this.setMod('focused', 'yes');
-
-            this.__base();
+            return this.__base.apply(this, arguments);
 
         }
 

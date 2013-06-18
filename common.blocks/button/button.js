@@ -11,9 +11,6 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             var disabled = this.isDisabled(),
                 domElem = this.domElem;
 
-            // состояния, поведение которых блокируется на контролах с disable
-            this._resistDisableStates = 'pressed';
-
             (this._href = domElem.attr('href')) && disabled &&
                 domElem.removeAttr('href');
 
@@ -38,14 +35,9 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
         'pressed' : function(modName, modVal) {
 
-            this.isDisabled() || this.trigger(modVal == 'yes' ? 'press' : 'release');
+            if (this.isDisabled()) return false;
 
-        },
-
-        '*' : function(modName) {
-
-            if(this.isDisabled() && this._resistDisableStates.indexOf(modName) > -1)
-                return false;
+            this.trigger(modVal == 'yes' ? 'press' : 'release');
 
         }
 
@@ -77,4 +69,4 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
     }
 
-}, /** @lends Button */ {});
+});

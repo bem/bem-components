@@ -13,19 +13,7 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
 
             this.bindTo('reset', 'click', this.resetFile);
 
-            this._getButton()
-                .on('focus', this._onButtonFocus, this)
-                .on('blur', this._onButtonBlur, this);
         }
-
-    },
-
-    _onButtonFocus : function() {
-        this._isControlFocused() || this.elem('control').focus();
-    },
-
-    _onButtonBlur : function() {
-        this._isControlFocused() && this.elem('control').blur();
     },
 
     /**
@@ -46,13 +34,11 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
 
         var buttonControl = this.elem('control');
 
-        buttonControl.replaceWith(BEM.HTML.build({
+        buttonControl.replaceWith(BEMHTML.apply({
             block: 'attach',
             elem: 'control',
-            tag: 'input',
             attrs: {
                 name: buttonControl.attr('name'),
-                type: 'file',
                 tabindex: buttonControl.attr('tabindex')
             }
         }));
@@ -157,29 +143,6 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
         return {
             unknownType : 'unknown'
         }
-    },
-
-    /**
-     * @private
-     * @returns {BEM.DOM}
-     */
-    _getButton : function() {
-        return this._button || (this._button = this.findBlockOn('button', 'button'));
-    },
-
-    /**
-     * Проверяет в фокусе ли контрол
-     * @private
-     * @returns {Boolean}
-     */
-    _isControlFocused : function() {
-
-        try {
-            return this.containsDomElem($(document.activeElement));
-        } catch(e) {
-            return false;
-        }
-
     }
 
 }, /** @lends Attach */{
@@ -189,35 +152,7 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
         this
             .liveBindTo('change', function() {
                 this._update();
-            })
-            .liveBindTo('control', 'focusin focusout',  function(e) {
-                this._getButton().toggleMod('focused', 'yes', '', e.type === 'focusin');
             });
-
-        if ($.browser.msie && parseInt($.browser.version) <= 8) {
-
-            var intervalId,
-                prevPath;
-
-            this.liveBindTo('click', function() {
-
-                if (typeof prevPath == 'undefined')
-                    prevPath = this.val();
-
-                var that = this;
-
-                intervalId = setInterval(function() {
-                    var path = that.val();
-                    if (prevPath != path) {
-                        clearInterval(intervalId);
-                        prevPath = path;
-                        that._update();
-                    }
-                }, 300);
-
-            });
-
-        }
 
         return false;
 

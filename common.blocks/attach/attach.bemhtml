@@ -32,7 +32,11 @@ block button, this._attachButton {
 
     content: {
         var p = applyNext(),
-            a = { block: 'attach', elem: 'control' };
+            a = {
+                block: 'attach',
+                elem: 'control',
+                attrs: this.ctx.controlAttrs
+            };
 
         return [p, a];
     }

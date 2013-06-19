@@ -3,10 +3,10 @@ block input, elem control {
     tag: 'input'
 
     attrs: {
-        var a = {
+        var a = this._.extend({
             id: this._inputId,
             name: this._name
-        };
+        }, this.ctx.controlAttrs);
 
         (this._value || this._value === 0) && (a.value = this._value);
         this.mods.disabled && (a.disabled = 'disabled');

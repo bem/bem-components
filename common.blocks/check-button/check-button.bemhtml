@@ -5,6 +5,7 @@ block check-button {
         applyNext(
             this._control = {
                 elem: 'control',
+                attrs: ctx.controlAttrs,
                 id: this.generateId(),
                 name: ctx.name,
                 tabindex: ctx.tabindex,

@@ -207,26 +207,19 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
     },
 
     /**
-     * Нормализует установку фокуса для IE
+     * Выставляем фокус для элемента control
      * @private
      */
     _focus : function() {
-
-        var input = this.elem('control')[0];
-        if(input.createTextRange && !input.selectionStart) {
-            var range = input.createTextRange();
-            range.move('character', input.value.length);
-            range.select();
-        } else {
-            input.focus();
-        }
-
+        this.elem('control').focus();
     },
 
+    /**
+     * Убираем фокус с элемента control
+     * @private
+     */
     _blur : function() {
-
         this.elem('control').blur();
-
     },
 
     destruct : function() {

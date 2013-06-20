@@ -56,14 +56,6 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
                 })
             ) - 1;
 
-            _this
-                .on('change', _this._updateClear)
-                ._updateClear();
-
-            _this.bindTo('box', 'click', function(e) {
-                _this.setMod('focused', 'yes');
-            });
-
         },
 
         'disabled' : function(modName, modVal) {
@@ -91,48 +83,12 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
     },
 
-    // TODO: вынести в __message
-    onElemSetMod : {
-
-        'message' : {
-
-            'visibility' : function(elem, modName, modVal) {
-
-                var _this = this,
-                    type = _this.getMod(elem, 'type');
-
-                if(type) {
-                    var needSetMod = true;
-                    modVal || _this.elem('message', 'type', type).each(function() {
-                        this != elem[0] && _this.hasMod($(this), 'visibility', 'visible') && (needSetMod = false);
-                    });
-                    needSetMod && _this.toggleMod('message-' + type, 'yes', '', modVal === 'visible');
-                }
-
-            }
-
-        }
-
-    },
-
-    _onClearClick : function() {
-
-        this.trigger('clear');
-        this.removeInsets &&
-            this.removeInsets();
-
-        this
-            .val('', { source: 'clear' })
-            .setMod('focused', 'yes');
-
-    },
-
-    _updateClear : function() {
-
-        return this.toggleMod(this.elem('clear'), 'visibility', 'visible', '', !!this._val);
-
-    },
-
+    /**
+     * Метод для проверки наличия у блока модификатора disabled
+     * @protected
+     * @return {Boolean} true - если блок находится в отключенном состоянии,
+     * false в остальных случаях
+     */
     isDisabled : function() {
 
         return this.hasMod('disabled', 'yes');
@@ -186,12 +142,21 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
         return end;
     },
 
+    /**
+     * Метод для возврата имени нативного контрола
+     * @param  {[type]} name [description]
+     * @return {String} имя нативного контрола
+     */
     name : function(name) {
 
         return this.elem('control').attr('name');
 
     },
 
+    /**
+     * Обработчик события выставления фокуса на элемент control блока
+     * @return {Object} экземпляр блока input
+     */
     _onFocus : function() {
 
         this._focused = true;
@@ -199,6 +164,10 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
     },
 
+    /**
+     * Обработчик события сброса фокуса с элемента control блока input
+     * @return {Object} экземпляр блока input
+     */
     _onBlur : function() {
 
         this._focused = false;
@@ -245,16 +214,6 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
 }, {
 
-    live : function() {
-
-        this.liveBindTo('clear', 'leftclick', function(e) {
-            this._onClearClick();
-            e.stopPropagation();
-        });
-
-        return false;
-
-    }
 });
 
 })();

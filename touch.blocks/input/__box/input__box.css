@@ -5,3 +5,9 @@
     -webkit-user-select: none;
     user-select: none;
 }
+
+.i-ua_platform_bada .input_theme_normal .input__box:before
+{
+    bottom: -1px;
+    top: -1px;
+}

@@ -10,7 +10,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
             this.__base.apply(this, arguments);
 
-            this._isFocusable = 'a button'.indexOf(this.domElem[0].tagName.toLowerCase()) > -1;
+            this._control = this.elem('control').length && this.elem('control') || this.domElem;
         },
 
         'focused' : {
@@ -26,7 +26,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                     })
                     .bindTo('keydown', this._onKeyDown);
 
-                this._isFocusable && (this._isControlFocused() || this.domElem.focus());
+                this._isControlFocused() || this._control.focus();
 
                 this.afterCurrentEvent(function() {
                     this.trigger('focus');
@@ -40,7 +40,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
                     .unbindFromWin('unload')
                     .unbindFrom('keydown');
 
-                this._isFocusable && this._isControlFocused() && this.domElem.blur();
+                this._isControlFocused() && this._control.blur();
 
                 this.afterCurrentEvent(function() {
                     this.trigger('blur');
@@ -84,7 +84,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
     _isControlFocused : function() {
 
         try {
-            return this.containsDomElem($(document.activeElement));
+            return this.containsDomElem($(this.__self.doc[0].activeElement));
         } catch(e) {
             return false;
         }
@@ -154,9 +154,6 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             .liveBindTo('mousedown', function(e) {
                 var mod = eventsToMods[e.type];
                 e.which == 1 && this.setMod(mod.name, mod.val || '');
-
-                // отменяем blur после mousedown, если кнопка в фокусе
-                this._isControlFocused() && e.preventDefault();
             });
     }
 

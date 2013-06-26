@@ -5,12 +5,17 @@ var PATH = require('path'),
     resolve = PATH.resolve.bind(null, __dirname),
 
     PRJ_TECHS = resolve('../techs/'),
-    BEMBL_TECHS = environ.getLibPath('bem-bl', 'blocks-common/i-bem/bem/techs');
+    BEMCORE_TECHS = environ.getLibPath('bem-core', '.bem/techs');
 
 
 exports.getTechs = function() {
 
     return {
+        'title.txt'      : 'title.txt',
+        'desc.wiki'      : '',
+        'i18n.title.txt' : join(PRJ_TECHS, 'i18n.title.txt'),
+        'i18n.desc.wiki' : join(PRJ_TECHS, 'i18n.desc.wiki'),
+
         'deps.js'        : 'deps.js',
         'css'            : 'css',
         'ie.css'         : 'ie.css',
@@ -19,13 +24,12 @@ exports.getTechs = function() {
         'ie8.css'        : 'ie8.css',
         'ie9.css'        : 'ie9.css',
 
-        'title.txt'      : 'title.txt',
-        'desc.wiki'      : '',
-        'i18n.title.txt' : join(PRJ_TECHS, 'i18n.title.txt'),
-        'i18n.desc.wiki' : join(PRJ_TECHS, 'i18n.desc.wiki'),
+        'bemhtml'        : join(BEMCORE_TECHS, 'bemhtml.js'),
+        'vanilla.js'     : join(BEMCORE_TECHS, 'vanilla.js.js'),
+        'browser.js'     : join(BEMCORE_TECHS, 'browser.js.js'),
 
-        'bemhtml'        : join(BEMBL_TECHS, 'bemhtml.js'),
-        'js'             : join(BEMBL_TECHS, 'js.js')
+        //'examples'     : join(PRJ_TECHS, 'examples.js'),
+        //'tests'        : join(PRJ_TECHS, 'tests.js')
     };
 
 };

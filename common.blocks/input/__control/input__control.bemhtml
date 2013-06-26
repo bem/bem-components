@@ -1,27 +1,28 @@
-block input, elem control {
+block('input').elem('control')(
 
-    tag: 'input'
+    tag()('input'),
 
-    attrs: {
-        var a = {
-            id: this._inputId,
-            name: this._name
+    attrs()(function() {
+        var attrs = {
+            id: this._input.id,
+            name: this._input.name,
+            value: this._input.value
         };
 
-        (this._value || this._value === 0) && (a.value = this._value);
-        this.mods.disabled && (a.disabled = 'disabled');
+        this.mods.disabled && (attrs.disabled = 'disabled');
 
-        return a;
-    }
+        return attrs;
+    }),
 
-    !this.mods.clear, default: {
+    def()(function() {
         applyCtx({
             elem: 'box',
             tag: 'span',
             content: [
                 this.ctx,
-                { elem: 'clear' }
+                this.mods.clear !== 'no' ? { elem: 'clear' } : ''
             ]
-        });
-    }
-}
+        })
+    })
+
+)

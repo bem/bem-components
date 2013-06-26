@@ -1,42 +1,5 @@
-block attach {
-
-    tag: 'span'
-
-    js: true
-
-    default: {
-        applyNext(
-            this._attachButton = true,
-            this._disabled = this.mods.disabled
-        );
-    }
-
-}
-
-block button, this._attachButton {
-
-    tag: 'span'
-
-    !!this._disabled, mix: [{
-        mods: { disabled: 'yes' }
-    }]
-
-    default: {
-        applyNext(
-            this._name = this.ctx.name || 'attachment',
-            this._tabindex = this.ctx.tabindex
-        );
-    }
-
-    attrs: { }
-
-    content: {
-        var p = applyNext(),
-            a = { block: 'attach', elem: 'control' };
-
-        return [p, a];
-    }
-
-}
-
-
+block('attach')(
+    def()(function() { applyNext({ '_attach': this.ctx }) }),
+    tag()('span'),
+    js()(true)
+)

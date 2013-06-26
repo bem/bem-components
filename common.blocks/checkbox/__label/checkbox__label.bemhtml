@@ -1,12 +1,11 @@
-block checkbox, elem label {
+block('checkbox').elem('label')(
 
-    tag: 'label'
+    tag()('label'),
 
-    attrs: {
-        var a = this.ctx.attrs || {};
+    attrs()(function() {
+        var attrs = this.ctx.attrs || {};
+        attrs['for'] = this._checkboxAttrs.id;
+        return attrs;
+    })
 
-        a['for'] = this._checkboxAttrs.id;
-
-        return a;
-    }
-}
+)

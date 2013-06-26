@@ -1,14 +1,13 @@
-block input, mod type textarea, elem control {
+block('input').mod('type', 'textarea').elem('control')(
 
-    tag: 'textarea'
+    tag()('textarea'),
 
-    attrs, !this._baseAttrsApplyed: {
-        var a = apply(this._value = null, this._baseAttrsApplyed = true);
-        return this._.extend(a, {rows: 10, cols: 10 });
-    }
+    attrs()(function() {
+        var attrs = applyNext();
+        delete attrs.value;
+        return this._.extend({ rows: 10, cols: 10 }, attrs);
+    })
 
-    content: {
-        return this._value || this.ctx.content
-    }
+    content()(function() { return this._input.value })
 
-}
+)

@@ -1,73 +1,64 @@
-(function() {
+modules.define('i-bem__dom', ['tick', 'idle'], function(provide, tick, idle, DOM) {
 
-var instances,
-    sysChannel,
+var instances = [],
+    bindedToTick,
     update = function () {
         var instance, i = 0;
         while(instance = instances[i++]) instance.val(instance.elem('control').val());
-    },
-    getActiveElement = function (doc) {
-        // В iframe в IE9: "Error: Unspecified error."
-        try { return doc.activeElement } catch (e) {}
     };
 
 /**
  * @namespace
- * @name Block
+ * @name Input
  */
-BEM.DOM.decl('input', /** @lends Block.prototype */ {
-
+DOM.decl('input', /** @lends Input.prototype */ {
     onSetMod : {
+        'js' : {
+            'inited' : function() {
+                // факт подписки
+                if(!bindedToTick) {
+                    bindedToTick = true;
+                    tick.on('tick', update);
+                    idle.on({
+                        idle : function() { tick.un('tick', update) },
+                        wakeup : function() { tick.on('tick', update) }
+                    });
+                }
 
-        'js' : function() {
+                // сохраняем индекс в массиве инстансов чтобы потом быстро из него удалять
+                this._instanceIndex = instances.push(this) - 1;
 
-            var _this = this,
-                input = _this.elem('control'),
-                activeElement = getActiveElement(_this.__self.doc[0]),
-                haveToSetAutoFocus =
-                    _this.params.autoFocus &&
-                        !(activeElement && $(activeElement).is('input, textarea'));
+                var control = this.elem('control');
 
-            _this._val = input.val();
+                this._val = control.val();
 
-            if (activeElement === input[0] || haveToSetAutoFocus) {
-                _this.setMod('focused', 'yes')._focused = true;
+                // NOTE: если так получилось, что мы уже в фокусе, то синхронизируем состояние
+                this.__self.getActiveDomNode() === control[0] &&
+                    (this.setMod('focused', 'yes')._focused = true);
+
+                this.bindTo(control, { // TODO: сделать live-событием
+                    focus : this._onFocus,
+                    blur : this._onBlur
+                });
+            },
+
+            '' : function() {
+                this.params.shortcut && this.unbindFromDoc('keydown'); // TODO: унести тудаже где делается bind -- islands-components/desktop.blocks/input/input.js
+
+                // удаляем из общего массива instances
+                instances.splice(this._instanceIndex, 1);
+                // понижаем _instanceIndex всем тем кто был добавлен в instances после нас
+                var i = this._instanceIndex, instance;
+                while(instance = instances[i++]) --instance._instanceIndex;
             }
-
-            // факт подписки
-            if(!sysChannel) {
-                instances = [];
-                sysChannel = _this.channel('sys')
-                    .on({
-                        'tick' : update,
-                        'idle' : function() {
-                            sysChannel.un('tick', update);
-                        },
-                        'wakeup' : function() {
-                            sysChannel.on('tick', update);
-                        }});
-            }
-
-            // сохраняем индекс в массиве инстансов чтобы потом быстро из него удалять
-            _this._instanceIndex = instances.push(
-                _this.bindTo(input, {
-                    focus : _this._onFocus,
-                    blur  : _this._onBlur
-                })
-            ) - 1;
-
         },
 
         'disabled' : function(modName, modVal) {
-
             this.elem('control').attr('disabled', modVal === 'yes');
-
         },
 
         'focused' : function(modName, modVal) {
-
-            if(this.hasMod('disabled', 'yes'))
-                return false;
+            if(this.hasMod('disabled', 'yes')) return false;
 
             var focused = modVal == 'yes';
 
@@ -75,12 +66,8 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
                 this._focused || this._focus() :
                 this._focused && this._blur();
 
-            this.afterCurrentEvent(function() {
-                this.trigger(focused? 'focus' : 'blur');
-            });
-
+            this.nextTick(function() { this.trigger(focused? 'focus' : 'blur') });
         }
-
     },
 
     /**
@@ -90,9 +77,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
      * false в остальных случаях
      */
     isDisabled : function() {
-
         return this.hasMod('disabled', 'yes');
-
     },
 
     /**
@@ -102,18 +87,17 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
      * @returns {String|BEM} если передан параметр val, то возвращается сам блок, если не передан -- текущее значение
      */
     val : function(val, data) {
-
-        if(typeof val == 'undefined') return this._val;
+        if(!arguments.length) return this._val;
 
         if(this._val != val) {
             var input = this.elem('control');
-            input.val() != val && input.val(val);
-            this._val = val;
-            this.trigger('change', data);
+            input.val() != val && input.val(this._val = val);
+            this
+                ._updateClear()
+                .trigger('change', data);
         }
 
         return this;
-
     },
 
     /**
@@ -123,11 +107,12 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
     getSelectionEnd : function() {
         var input = this.elem('control')[0],
             end = 0;
-        if(typeof(input.selectionEnd) == 'number') {
+
+        if(typeof input.selectionEnd === 'number') {
             end = input.selectionEnd;
         } else {
-            var range = document.selection.createRange();
-            if(range && range.parentElement() == input) {
+            var range = DOM.doc[0].selection.createRange();
+            if(range && range.parentElement() === input) {
                 var len = input.value.length,
                     textInputRange = input.createTextRange();
                 textInputRange.moveToBookmark(range.getBookmark());
@@ -139,6 +124,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
                     -textInputRange.moveEnd('character', -len);
             }
         }
+
         return end;
     },
 
@@ -148,9 +134,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
      * @return {String} имя нативного контрола
      */
     name : function(name) {
-
         return this.elem('control').attr('name');
-
     },
 
     /**
@@ -158,10 +142,8 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
      * @return {Object} экземпляр блока input
      */
     _onFocus : function() {
-
         this._focused = true;
         return this.setMod('focused', 'yes');
-
     },
 
     /**
@@ -169,10 +151,8 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
      * @return {Object} экземпляр блока input
      */
     _onBlur : function() {
-
         this._focused = false;
         return this.delMod('focused');
-
     },
 
     /**
@@ -189,24 +169,19 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
      */
     _blur : function() {
         this.elem('control').blur();
+    }
+}, {
+    getActiveDomNode : function() {
+        // В iframe в IE9: "Error: Unspecified error."
+        try { return DOM.doc[0].activeElement } catch (e) {}
     },
 
-    destruct : function() {
-
-        this.__base.apply(this, arguments);
-
-        this.params.shortcut && this.unbindFromDoc('keydown');
-        instances.splice(this._instanceIndex, 1);
-
-        var i = this._instanceIndex,
-            instance;
-
-        while(instance = instances[i++]) --instance._instanceIndex;
-
+    isTextDomNode : function(node) {
+        var tag = node.tagName.toLowerCase();
+        return tag === 'input' || tag === 'textarea';
     }
-
-}, {
-
 });
 
-})();
+provide(DOM);
+
+});

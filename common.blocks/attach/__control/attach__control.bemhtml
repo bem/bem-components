@@ -1,17 +1,19 @@
-block attach, elem control {
+block('attach').elem('control')(
 
-    tag: 'input'
+    tag()('input'),
 
-    attrs: {
-        var a = {
-            type: 'file',
-            name: this._name
-        };
+    attrs()(function() {
+        var attrs = { type: 'file' },
+            attach = this._attach;
 
-        !!this._disabled && (a.disabled = 'disabled');
-        this._tabindex && (a.tabindex = this._tabindex);
+        // в js генерим html для attach__control без самого attach
+        if(attach) {
+            attrs.name = attach.name;
+            attach.mods && attach.mods.disabled && (attrs.disabled = 'disabled');
+            attach.tabindex && (attrs.tabindex = attach.tabindex);
+        }
 
-        return a;
-    }
+        return attrs;
+    })
 
-}
+)

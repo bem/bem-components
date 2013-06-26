@@ -9,7 +9,7 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
         'js' : function() {
 
             this._noFileText = this.elem('text').text();
-            this._update();
+            this._update({ mode: 'clear' });
 
             this.bindTo('reset', 'click', this.resetFile);
 
@@ -45,7 +45,7 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
 
         this.dropElemCache('control');
 
-        this._update();
+        this._update({ mode: 'clear' });
         this.delMod(this.elem('reset'), 'visibility');
 
         return this.trigger('reset');
@@ -54,16 +54,20 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
     /**
      * @private
      */
-    _update : function() {
+    _update : function(data) {
 
-        var fileName = this._getFileByPath(this.val());
+        var fileName = this._getFileByPath(this.val()),
+            prevFileName = this.elem('text').html();
 
-        this._setFile(fileName);
-        this._setExtension(this._getExtension(fileName));
+        if((data && data.mode == 'clear') || (fileName && fileName !== prevFileName)) {
 
-        this.setMod(this.elem('reset'), 'visibility', 'visible');
+            this._setFile(fileName);
+            this._setExtension(this._getExtension(fileName));
 
-        fileName && this.trigger('change');
+            this.setMod(this.elem('reset'), 'visibility', 'visible');
+
+            fileName && this.trigger('change');
+        }
     },
 
     /**

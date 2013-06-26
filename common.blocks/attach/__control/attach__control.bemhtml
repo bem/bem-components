@@ -1,5 +1,10 @@
 block attach, elem control {
 
+    mix: [{
+        block: 'button',
+        elem: 'control'    
+    }]
+
     tag: 'input'
 
     attrs: {

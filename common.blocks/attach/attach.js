@@ -9,23 +9,11 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
         'js' : function() {
 
             this._noFileText = this.elem('text').text();
-            this._update();
+            this._update({ mode: 'clear' });
 
             this.bindTo('reset', 'click', this.resetFile);
 
-            this._getButton()
-                .on('focus', this._onButtonFocus, this)
-                .on('blur', this._onButtonBlur, this);
         }
-
-    },
-
-    _onButtonFocus : function() {
-        this._isControlFocused() || this.elem('control').focus();
-    },
-
-    _onButtonBlur : function() {
-        this._isControlFocused() && this.elem('control').blur();
     },
 
     /**
@@ -46,20 +34,18 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
 
         var buttonControl = this.elem('control');
 
-        buttonControl.replaceWith(BEM.HTML.build({
+        buttonControl.replaceWith(BEMHTML.apply({
             block: 'attach',
             elem: 'control',
-            tag: 'input',
             attrs: {
                 name: buttonControl.attr('name'),
-                type: 'file',
                 tabindex: buttonControl.attr('tabindex')
             }
         }));
 
         this.dropElemCache('control');
 
-        this._update();
+        this._update({ mode: 'clear' });
         this.delMod(this.elem('reset'), 'visibility');
 
         return this.trigger('reset');
@@ -68,16 +54,20 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
     /**
      * @private
      */
-    _update : function() {
+    _update : function(data) {
 
-        var fileName = this._getFileByPath(this.val());
+        var fileName = this._getFileByPath(this.val()),
+            prevFileName = this.elem('text').html();
 
-        this._setFile(fileName);
-        this._setExtension(this._getExtension(fileName));
+        if((data && data.mode == 'clear') || (fileName && fileName !== prevFileName)) {
 
-        this.setMod(this.elem('reset'), 'visibility', 'visible');
+            this._setFile(fileName);
+            this._setExtension(this._getExtension(fileName));
 
-        fileName && this.trigger('change');
+            this.setMod(this.elem('reset'), 'visibility', 'visible');
+
+            fileName && this.trigger('change');
+        }
     },
 
     /**
@@ -157,29 +147,6 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
         return {
             unknownType : 'unknown'
         }
-    },
-
-    /**
-     * @private
-     * @returns {BEM.DOM}
-     */
-    _getButton : function() {
-        return this._button || (this._button = this.findBlockOn('button', 'button'));
-    },
-
-    /**
-     * Проверяет в фокусе ли контрол
-     * @private
-     * @returns {Boolean}
-     */
-    _isControlFocused : function() {
-
-        try {
-            return this.containsDomElem($(document.activeElement));
-        } catch(e) {
-            return false;
-        }
-
     }
 
 }, /** @lends Attach */{
@@ -189,35 +156,7 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
         this
             .liveBindTo('change', function() {
                 this._update();
-            })
-            .liveBindTo('control', 'focusin focusout',  function(e) {
-                this._getButton().toggleMod('focused', 'yes', '', e.type === 'focusin');
             });
-
-        if ($.browser.msie && parseInt($.browser.version) <= 8) {
-
-            var intervalId,
-                prevPath;
-
-            this.liveBindTo('click', function() {
-
-                if (typeof prevPath == 'undefined')
-                    prevPath = this.val();
-
-                var that = this;
-
-                intervalId = setInterval(function() {
-                    var path = that.val();
-                    if (prevPath != path) {
-                        clearInterval(intervalId);
-                        prevPath = path;
-                        that._update();
-                    }
-                }, 300);
-
-            });
-
-        }
 
         return false;
 

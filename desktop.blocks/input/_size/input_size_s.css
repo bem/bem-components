@@ -1,0 +1,12 @@
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+    .input_size_s .input__box
+    {
+        padding-left: 7px;
+    }
+
+    .input_size_s .input__control
+    {
+        padding-left: 0;
+    }
+}

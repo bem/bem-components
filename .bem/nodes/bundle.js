@@ -1,11 +1,6 @@
-require('bem/lib/nodesregistry').decl('BundleNode', {
+var environ = require('../environ');
 
-    'create-browser.js+bemhtml-optimizer-node' : function() {
-        return this['create-js-optimizer-node'].apply(this, arguments);
-    },
-
-    'create-browser.js-optimizer-node' : function() {
-        return this['create-js-optimizer-node'].apply(this, arguments);
-    }
-
-});
+// TODO: есть проблема с использованием этого до того как получены библиотеки по зависимостям
+try {
+    require(environ.getLibPath('bem-core', '.bem/nodes/bundle.js'));
+} catch(e) {}

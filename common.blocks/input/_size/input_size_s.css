@@ -1,8 +1,14 @@
 .input_size_s
 {
-    line-height: 28px;
+    height: 28px;
 
+    line-height: 100%;
     font-size: 13px;
+}
+
+.input_size_s .input__box
+{
+    height: 100%;
 }
 
 .input_size_s .input__clear
@@ -12,5 +18,6 @@
 
 .input_size_s .input__control
 {
-    padding-left: 7px;
+    height: 27px;
+    padding: 0 0 0 7px; /* Сбрасываем паддинги, но оставляем паддинг слева*/
 }

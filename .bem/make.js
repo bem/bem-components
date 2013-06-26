@@ -1,6 +1,6 @@
 /*global MAKE:true */
 
-require('./nodes/arch');
+require('./nodes');
 
 
 MAKE.decl('Arch', {
@@ -9,7 +9,7 @@ MAKE.decl('Arch', {
 
     bundlesLevelsRegexp: /^.+?\.pages$/,
 
-    libraries: [ 'bem-bl' ]
+    libraries: [ 'bem-core' ]
 
 });
 
@@ -21,7 +21,6 @@ MAKE.decl('BundleNode', {
             'bemjson.js',
             'bemdecl.js',
             'deps.js',
-            'js',
             'css',
             'ie.css',
             'ie6.css',
@@ -29,6 +28,7 @@ MAKE.decl('BundleNode', {
             'ie8.css',
             'ie9.css',
             'bemhtml',
+            'browser.js+bemhtml',
             'html'
         ];
     }

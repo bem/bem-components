@@ -1,57 +1,55 @@
-block button{
+block('button')(
 
-    tag: 'button'
-    this.ctx.url, tag: 'a'
+    tag()(
+        'button',
+        match(function() { return this.ctx.url })('a')
+    ),
 
-    js: true
+    js()(true),
 
-    attrs {
+    attrs()(
 
         // Common attributes
-        true: {
+        function() {
             var ctx = this.ctx,
-                a = { role: 'button' };
+                attrs = { role: 'button' };
 
-            ctx.tabindex && (a.tabindex = ctx.tabindex);
+            ctx.tabindex && (attrs.tabindex = ctx.tabindex);
 
-            return a;
-        }
+            return attrs;
+        },
 
         // Attributes for button variant
-        !this.ctx.url: {
+        match(function() { return !this.ctx.url })(function() {
             var ctx = this.ctx,
-                p = applyNext(),
-                a = { type: (ctx.type? ctx.type : 'button') },
-                props = ['name', 'value'], i;
+                attrs = { type: ctx.type || 'button' };
 
-            while(i = props.shift())
-                ctx[i] && (a[i] = ctx[i]);
+            ctx.name && (attrs.name = ctx.name);
+            ctx.value && (attrs.value = ctx.value);
+            this.mods.disabled && (attrs.disabled = 'disabled');
 
-            this.mods.disabled && (a.disabled = 'disabled');
-
-            return this._.extend(p, a);
-
-        }
+            return this._.extend(applyNext(), attrs);
+        }),
 
         // Attributes for link variant
-        this.ctx.url: {
+        match(function() { return this.ctx.url })(function() {
             var ctx = this.ctx,
-                p = applyNext(),
-                a = { href: ctx.url };
+                attrs = { href: ctx.url };
 
-            ctx.target && (a.target = ctx.target);
+            ctx.target && (attrs.target = ctx.target);
+            this.mods.disabled && (attrs['aria-disabled'] = true);
 
-            this.mods.disabled && (a['aria-disabled'] = true);
+            return this._.extend(applyNext(), attrs);
+        })
 
-            return this._.extend(p, a);
+    ),
+
+    content()(function() {
+        return {
+            elem: 'text',
+            tag: 'span',
+            content: this.ctx.content
         }
+    })
 
-    }
-
-    content: {
-        elem: 'text',
-        tag: 'span',
-        content: this.ctx.content
-    }
-
-}
+)

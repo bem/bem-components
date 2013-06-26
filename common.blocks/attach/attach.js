@@ -1,23 +1,23 @@
+modules.define('i-bem__dom', ['jquery', 'BEMHTML'], function(provide, $, BEMHTML, DOM) {
+
 /**
  * @namespace
  * @name Attach
  */
-BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
-
+DOM.decl('attach', /** @lends Attach.prototype */ {
     onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this._noFileText = this.elem('text').text();
 
-        'js' : function() {
-
-            this._noFileText = this.elem('text').text();
-            this._update();
-
-            this.bindTo('reset', 'click', this.resetFile);
-
-            this._getButton()
-                .on('focus', this._onButtonFocus, this)
-                .on('blur', this._onButtonBlur, this);
+                this
+                    .bindTo('reset', 'click', this.resetFile) // TODO: сделать live-событием
+                    ._update()
+                    ._getButton()
+                        .on('focus', this._onButtonFocus, this)
+                        .on('blur', this._onButtonBlur, this);
+            }
         }
-
     },
 
     _onButtonFocus : function() {
@@ -33,194 +33,146 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
      * @returns {String}
      */
     val : function() {
-
         return this.elem('control').val();
-
     },
 
     /**
      * Сбросить выбранное значение контрола
-     * @returns {BEM.DOM}
+     * @returns {this}
      */
     resetFile : function() {
+        var control = this.elem('control');
 
-        var buttonControl = this.elem('control');
-
-        buttonControl.replaceWith(BEM.HTML.build({
-            block: 'attach',
-            elem: 'control',
-            tag: 'input',
-            attrs: {
-                name: buttonControl.attr('name'),
-                type: 'file',
-                tabindex: buttonControl.attr('tabindex')
+        control.replaceWith(BEMHTML.apply({
+            block : 'attach',
+            elem  : 'control',
+            attrs : {
+                name     : control.attr('name'),
+                tabindex : control.attr('tabindex')
             }
         }));
 
-        this.dropElemCache('control');
-
-        this._update();
-        this.delMod(this.elem('reset'), 'visibility');
-
-        return this.trigger('reset');
+        return this
+            .dropElemCache('control')
+            ._update()
+            .delMod(this.elem('reset'), 'visibility')
+            .trigger('reset');
     },
 
     /**
-     * @private
+     * @returns {this}
      */
     _update : function() {
-
         var fileName = this._getFileByPath(this.val());
 
-        this._setFile(fileName);
-        this._setExtension(this._getExtension(fileName));
+        this
+            ._setFile(fileName)
+            ._setExtension(this._getExtension(fileName));
 
-        this.setMod(this.elem('reset'), 'visibility', 'visible');
+        fileName && this
+            .setMod(this.elem('reset'), 'visibility', 'visible')
+            .trigger('change'); // NOTE: при init-e fileName точно пустой, поэтому не будет события
 
-        fileName && this.trigger('change');
+        return this;
     },
 
     /**
-     * @private
      * @param {String} path
      * @returns {String}
      */
     _getFileByPath : function(path) {
-
         return path.split('\\').pop();
-
     },
 
     /**
-     * @private
      * @param {String} fileName
+     * @returns {this}
      */
     _setFile : function(fileName) {
-
-        this.setMod(this.elem('holder'), 'state', fileName ? '' : 'hidden');
-        this.elem('text').html(fileName || this._noFileText);
+        this
+            .toggleMod(this.elem('holder'), 'state', 'hidden', fileName)
+            .elem('text').html(fileName || this._noFileText);
+        return this;
     },
 
     _extensionsToMods : {
-        'zip' : 'archive',
-        'rar' : 'archive',
-        'tar' : 'archive',
-        'gz' : 'archive',
-        '7z' : 'archive',
-        'gif' : 'gif',
-        'jpg' : 'jpg',
+        'zip'  : 'archive',
+        'rar'  : 'archive',
+        'tar'  : 'archive',
+        'gz'   : 'archive',
+        '7z'   : 'archive',
+        'gif'  : '',
+        'jpg'  : '',
         'jpeg' : 'jpg',
-        'png' : 'png',
-        'eml' : 'eml',
-        'exe' : 'exe',
-        'm4a' : 'audio',
-        'ogg' : 'audio',
-        'mp3' : 'mp3',
-        'wav' : 'wav',
-        'wma' : 'wma',
-        'flv' : 'video',
-        'mov' : 'mov',
-        'wmv' : 'wmv',
-        'mp4' : 'mp4',
-        'avi' : 'avi',
-        'xls' : 'xls',
-        'doc' : 'doc',
+        'png'  : '',
+        'eml'  : '',
+        'exe'  : '',
+        'm4a'  : 'audio',
+        'ogg'  : 'audio',
+        'mp3'  : '',
+        'wav'  : '',
+        'wma'  : '',
+        'flv'  : 'video',
+        'mov'  : '',
+        'wmv'  : '',
+        'mp4'  : '',
+        'avi'  : '',
+        'xls'  : '',
+        'doc'  : '',
         'docx' : 'doc',
-        'txt' : 'txt',
-        'pdf' : 'pdf',
-        'ppt' : 'ppt'
+        'txt'  : '',
+        'pdf'  : '',
+        'ppt'  : ''
     },
 
     /**
-     * @private
      * @param {String} fileName
      * @returns {String}
      */
     _getExtension : function(fileName) {
-
-        return this._extensionsToMods[fileName.split('.').pop().toLowerCase()] || '';
-
+        var ext = fileName.split('.').pop().toLowerCase();
+        return this._extensionsToMods.hasOwnProperty(ext)? this._extensionsToMods[ext] || ext : '';
     },
 
     /**
-     * @private
      * @param {String} extension
+     * @returns {this}
      */
     _setExtension : function(extension) {
-
-        this.setMod(this.elem('holder'), 'file', extension || this.params.unknownType);
-
+        return this.setMod(this.elem('holder'), 'file', extension || this.params.unknownType);
     },
 
     getDefaultParams : function() {
-
-        return {
-            unknownType : 'unknown'
-        }
+        return { unknownType : 'unknown' }; // TODO: используетс ли этот параметр?
     },
 
-    /**
-     * @private
-     * @returns {BEM.DOM}
-     */
     _getButton : function() {
         return this._button || (this._button = this.findBlockOn('button', 'button'));
     },
 
     /**
      * Проверяет в фокусе ли контрол
-     * @private
      * @returns {Boolean}
      */
     _isControlFocused : function() {
-
         try {
-            return this.containsDomElem($(document.activeElement));
+            return this.containsDomElem($(DOM.doc[0].activeElement));
         } catch(e) {
             return false;
         }
-
     }
-
 }, /** @lends Attach */{
-
     live : function() {
-
         this
-            .liveBindTo('change', function() {
-                this._update();
-            })
+            .liveBindTo('change', function() { this._update() })
             .liveBindTo('control', 'focusin focusout',  function(e) {
-                this._getButton().toggleMod('focused', 'yes', '', e.type === 'focusin');
+                this._getButton().toggleMod('focused', 'yes', e.type === 'focusin');
             });
-
-        if ($.browser.msie && parseInt($.browser.version) <= 8) {
-
-            var intervalId,
-                prevPath;
-
-            this.liveBindTo('click', function() {
-
-                if (typeof prevPath == 'undefined')
-                    prevPath = this.val();
-
-                var that = this;
-
-                intervalId = setInterval(function() {
-                    var path = that.val();
-                    if (prevPath != path) {
-                        clearInterval(intervalId);
-                        prevPath = path;
-                        that._update();
-                    }
-                }, 300);
-
-            });
-
-        }
 
         return false;
-
     }
+});
+
+provide(DOM);
 
 });

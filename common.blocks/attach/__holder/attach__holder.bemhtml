@@ -1,21 +1,23 @@
-block attach, elem holder {
+block('attach').elem('holder')(
 
-    tag: 'span'
+    tag()('span'),
 
-    content: [
-        {
-            block: 'b-icon',
-            mix: [{ block: 'attach', elem: 'icon-file' }]
-        },
-        {
-            elem: 'text',
-            tag: 'span',
-            content: this.ctx.content
-        },
-        {
-            block: 'b-icon',
-            mix: [{ block: 'attach', elem: 'reset' }]
-        }
-    ]
+    content()(function() {
+        return [
+            {
+                block: 'b-icon',
+                mix: [{ block: 'attach', elem: 'icon-file' }]
+            },
+            {
+                elem: 'text',
+                tag: 'span',
+                content: this.ctx.content
+            },
+            {
+                block: 'b-icon',
+                mix: [{ block: 'attach', elem: 'reset' }]
+            }
+        ]
+    })
 
-}
+)

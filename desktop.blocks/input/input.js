@@ -1,21 +1,13 @@
-/**
- * @namespace
- * @name Block
- */
-BEM.DOM.decl('input', /** @lends Block.prototype */ {
+modules.define('i-bem__dom', function(provide, DOM) {
 
+DOM.decl('input', {
     onSetMod : {
-
-        js : {
-
+        'js' : {
             'inited': function() {
-
                 this.__base.apply(this, arguments);
 
-                var _this = this;
-
                 /*Исправление для ошибки при которой в IE при вводе длинной строки после потери фокуса
-                текст остается выровненным по правому краю */
+                 текст остается выровненным по правому краю */
                 var input = this.elem('control')[0];
                 input.attachEvent && input.attachEvent('onbeforedeactivate', this._onBeforeDeactivate);
             }
@@ -56,7 +48,6 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
      * @private
      */
     _focus : function() {
-
         var input = this.elem('control')[0];
         if(input.createTextRange && !input.selectionStart) {
             var range = input.createTextRange();
@@ -66,6 +57,8 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
             input.focus();
         }
     }
-}, {
+});
+
+provide(DOM);
 
 });

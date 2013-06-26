@@ -1,8 +1,7 @@
-block radio-button, elem radio, this.elemMods['only-icon'] === 'yes', content:  [
-    { elem: 'control' },
-    '&#160;',
-    this.ctx.content
-]
-
-
-
+block('radio-button').elem('radio').elemMods('only-icon', 'yes').content()(function() {
+    return [
+        { elem: 'control' },
+        '&#160;',
+        this.ctx.content
+    ]
+})

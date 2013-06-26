@@ -1,9 +1,7 @@
-block 'check-button', mod 'only-icon' yes  {
-
-    content: [
+block('check-button').mod('only-icon', 'yes').content()(function() {
+    return [
         this._control,
         '&#160;',
         this.ctx.content
     ]
-
-}
+})

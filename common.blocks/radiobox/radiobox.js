@@ -1,56 +1,44 @@
-(function(BEM, undefined) {
+modules.define('i-bem__dom', function(provide, DOM) {
 
 /**
  * @namespace JS-API блока radio
  * @name block
  */
-BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
-
+DOM.decl('radiobox', /** @lends block.prototype */ {
     onSetMod: {
+        'js' : {
+            'inited' : function() {
+                var _this = this;
 
-        'js' : function() {
+                _this._val = this.findElem(this.elem('radio', 'checked', 'yes'), 'control').val();
 
-            var _this = this;
+                _this.elem('control').each(function(i, control) {
+                    control = $(control);
 
-            _this._val = this.findElem(this.elem('radio', 'checked', 'yes'), 'control').val();
+                    var mods = [];
 
-            _this.elem('control').each(function(i, control) {
-                var mods = [];
+                    _this._isControlFocused(control) && mods.push('focused');
+                    control.prop('checked') && mods.push('checked');
 
-                _this._isControlFocused($(control)) && mods.push('focused');
-                control.checked && mods.push('checked');
+                    if(mods.length) {
+                        var radio = _this.__self._getRadioByElem(control);
 
-                if(mods[0]) {
-                    var radio = _this.__self._getRadioByElem($(control));
-
-                    mods.forEach(function(modName) {
-                        _this.setMod(radio, modName, 'yes');
-                    });
-                }
-            });
-
+                        mods.forEach(function(modName) {
+                            _this.setMod(radio, modName, 'yes');
+                        });
+                    }
+                });
+            }
         },
 
-        'disabled' : {
-
-            'yes' : function() {
-                this.setMod(this.elem('radio'), 'disabled', 'yes');
-            },
-
-            '' : function() {
-                this.delMod(this.elem('radio'), 'disabled');  
-            }
-
+        'disabled' : function(modName, modVal) {
+            this.toggleMod(this.elem('radio'), 'disabled', 'yes', modVal === 'yes');
         }
-
     },
 
     onElemSetMod : {
-
         'radio' : {
-
             'focused' : {
-
                 'yes' : function(elem) {
                     this.delMod(this.elem('radio', 'focused', 'yes'), 'focused');
 
@@ -58,21 +46,19 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
 
                     this._isControlFocused(control) || control.focus();
 
-                    this.afterCurrentEvent(function() {
+                    this.nextTick(function() {
                         this.trigger('focus', { current: elem });
                     });
                 },
 
                 '' : function(elem) {
-                    this.afterCurrentEvent(function() {
+                    this.nextTick(function() {
                         this.trigger('blur', { prev: elem });
                     });
                 }
-
             },
 
             'checked' : {
-
                 'yes' : function(elem) {
                     this._val = this
                         .findElem(elem, 'control')
@@ -80,26 +66,18 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
                         .val();
 
                     var prev = this.elem('radio', 'checked', 'yes');
-                    this.delMod(prev, 'checked');
-
-                    this.trigger('change', {
-                        current: elem,
-                        prev: prev
-                    });
+                    this
+                        .delMod(prev, 'checked')
+                        .trigger('change', { current: elem, prev: prev });
                 }
-
             },
 
             'hovered' : function(elem) {
-
                 return !this.isDisabled(elem);
-
             },
 
             'disabled' : function(elem, modName, modVal) {
-
-                elem.find(this.buildSelector('control')).prop('disabled', modVal == 'yes');
-
+                this.findElem(elem, 'control').prop('disabled', modVal === 'yes');
             }
 
         }
@@ -113,25 +91,21 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
      * @returns {Boolean}
      */
     _isControlFocused : function(control) {
-
         try {
-            return control[0] === this.__self.doc[0].activeElement;
+            return control[0] === DOM.doc[0].activeElement;
         } catch(e) {
             return false;
         }
-
     },
 
     /**
      * Шорткат для проверки модификатора `_disabled_yes`
      *
-     * @param {jQuery} radio кнопка, состояние которой необнодимо проверить
+     * @param {jQuery} [radio] кнопка, состояние которой необнодимо проверить (если не указан, то проверяется сам блок)
      * @returns {Boolean}
      */
     isDisabled : function(radio) {
-
         return this.hasMod(radio, 'disabled', 'yes');
-
     },
 
     /**
@@ -144,10 +118,7 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
      * @returns {String|BEM.DOM} Аттрибут value активного элемента radio, либо объект блока
      */
     val : function(val) {
-
-        if(typeof val == 'undefined') {
-            return this._val;
-        }
+        if(!arguments.length) return this._val;
 
         var _this = this;
         this.elem('control').each(function(i, control) {
@@ -156,8 +127,8 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
                 return false;
             }
         });
-        return _this;
 
+        return _this;
     },
 
     /**
@@ -165,7 +136,6 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
      * @returns {BEM.DOM} Объект блока
      */
     uncheckAll : function() {
-
         var prevRadio = this.elem('radio', 'checked', 'yes');
 
         this
@@ -174,13 +144,7 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
 
         this._val = undefined;
 
-        this.trigger('change', {
-            current: undefined,
-            prev: prevRadio
-        });
-
-        return this;
-
+        return this.trigger('change', { prev: prevRadio });
     },
 
     /**
@@ -189,9 +153,7 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
      * @param {jQuery.Event} e
      */
     _onLeftClick : function(e) {
-
-        this.isDisabled(e.data.domElem) || this.setMod(e.data.domElem, 'focused', 'yes');
-
+        this.isDisabled(e.domElem) || this.setMod(e.domElem, 'focused', 'yes');
     },
 
     /**
@@ -200,31 +162,23 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
      * @param {jQuery.Event} e
      */
     _onChange : function(e) {
-
         // Событие change тригерится только при свойстве checked === true
-        this.setMod(this.__self._getRadioByElem(e.data.domElem), 'checked', 'yes');
-
+        this.setMod(this.__self._getRadioByElem(e.domElem), 'checked', 'yes');
     }
-
 }, /** @lends block */ {
-
     live : function() {
-
         this
-            .liveBindTo('radio', 'leftclick', function(e) {
-                this._onLeftClick(e);
-            })
-            .liveBindTo('control', 'change', function(e) {
-                this._onChange(e);
-            })
+            .liveBindTo('radio', 'leftclick', function(e) { this._onLeftClick(e) })
+            .liveBindTo('control', 'change', function(e) { this._onChange(e) })
             .liveBindTo('radio', 'mouseover mouseout', function(e) {
-                this.setMod(e.data.domElem, 'hovered', e.type == 'mouseover'? 'yes' : '');
+                this.toggleMod(e.domElem, 'hovered', 'yes', e.type === 'mouseover');
             })
             .liveBindTo('control', 'focusin focusout', function(e) {
-                this.setMod(
-                    this.__self._getRadioByElem(e.data.domElem),
+                this.toggleMod(
+                    this.__self._getRadioByElem(e.domElem),
                     'focused',
-                    e.type == 'focusin'? 'yes' : '');
+                     'yes',
+                     e.type === 'focusin');
             });
 
         return false;
@@ -234,13 +188,10 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
      * Позволяет получить элемент radio (radiobox__radio) по какому-либо потомку этого элемента в DOM-дереве.
      */
     _getRadioByElem : function(elem) {
-        // метод вынесен в статические методы класса, так как он никак не зависит от инстансов
-
         return elem.closest(this.buildSelector('radio'));
-
     }
-
 });
 
+provide(DOM);
 
-})(BEM);
+});

@@ -30,9 +30,12 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
     _onBlur : function() {
         this.__base.apply(this, arguments);
 
-        var input = this.elem('control')[0];
-        if(input.selectionStart && input.selectionEnd) {
-            input.selectionStart = input.selectionEnd = 0;
+        if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+            var input = this.elem('control')[0];
+
+            if(input.selectionStart && input.selectionEnd) {
+                input.selectionStart = input.selectionEnd = 0;
+            }
         }
     },
 

@@ -1,11 +1,15 @@
 var PATH = require('path'),
     environ = require('../environ'),
 
-    join = PATH.join,
+    pjoin = PATH.join,
     resolve = PATH.resolve.bind(null, __dirname),
 
-    PRJ_TECHS = resolve('../techs/'),
-    BEMBL_TECHS = environ.getLibPath('bem-bl', 'blocks-common/i-bem/bem/techs');
+    environ = require('../environ'),
+
+    PRJ_ROOT = environ.PRJ_ROOT,
+    PRJ_TECHS = pjoin(PRJ_ROOT, '.bem/techs'),
+    BEMBL_TECHS = environ.getLibPath('bem-bl', 'blocks-common/i-bem/bem/techs'),
+    BEM_GEN_DOC_TECHS = environ.getLibPath('bem-gen-doc', '.bem/techs');
 
 
 exports.getTechs = function() {
@@ -21,11 +25,11 @@ exports.getTechs = function() {
 
         'title.txt'      : 'title.txt',
         'desc.wiki'      : '',
-        'i18n.title.txt' : join(PRJ_TECHS, 'i18n.title.txt'),
-        'i18n.desc.wiki' : join(PRJ_TECHS, 'i18n.desc.wiki'),
+        'i18n.title.txt' : pjoin(PRJ_TECHS, 'i18n.title.txt'),
+        'i18n.desc.wiki' : pjoin(PRJ_TECHS, 'i18n.desc.wiki'),
 
-        'bemhtml'        : join(BEMBL_TECHS, 'bemhtml.js'),
-        'js'             : join(BEMBL_TECHS, 'js.js')
+        'bemhtml'        : pjoin(BEMBL_TECHS, 'bemhtml.js'),
+        'js'             : pjoin(BEMBL_TECHS, 'js.js')
     };
 
 };

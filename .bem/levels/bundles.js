@@ -1,7 +1,7 @@
 var PATH = require('path'),
     environ = require('../environ'),
 
-    join = PATH.join,
+    pjoin = PATH.join,
     resolve = PATH.resolve.bind(null, __dirname),
 
     PRJ_TECHS = resolve('../techs/'),
@@ -21,10 +21,10 @@ exports.getTechs = function() {
         'ie8.css'       : 'ie8.css',
         'ie9.css'       : 'ie9.css',
 
-        'bemjson.js'    : join(PRJ_TECHS, 'bemjson.js'),
+        'bemjson.js'    : pjoin(PRJ_TECHS, 'bemjson.js'),
 
-        'bemhtml'       : join(BEMBL_TECHS, 'bemhtml.js'),
-        'html'          : join(BEMBL_TECHS, 'html.js')
+        'bemhtml'       : pjoin(BEMBL_TECHS, 'bemhtml.js'),
+        'html'          : pjoin(BEMBL_TECHS, 'html.js')
     };
 
 };

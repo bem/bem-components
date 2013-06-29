@@ -1,0 +1,5 @@
+block button, mod focused no {
+
+    attrs: { tabindex: '-1' }
+
+}

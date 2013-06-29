@@ -1,5 +1,9 @@
 .input__control
 {
     padding-right: 29px;
+}
+
+.input:not(.input_type_textarea) .input__control
+{
     padding-left: 0;
 }

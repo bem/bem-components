@@ -1,0 +1,5 @@
+block checkbox, mod autocomplete off, elem control, attrs: {
+   this.ctx.attrs.autocomplete = 'off';
+
+   return applyNext();
+}

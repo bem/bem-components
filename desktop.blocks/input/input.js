@@ -1,4 +1,4 @@
-modules.define('i-bem__dom', function(provide, DOM) {
+modules.define('i-bem__dom', ['ua'], function(provide, browser, DOM) {
 
 DOM.decl('input', {
     onSetMod : {
@@ -22,9 +22,13 @@ DOM.decl('input', {
     _onBlur : function() {
         this.__base.apply(this, arguments);
 
-        var input = this.elem('control')[0];
-        if(input.selectionStart && input.selectionEnd) {
-            input.selectionStart = input.selectionEnd = 0;
+        /*Данный код необходим только для выполнения в браузере FF. Исправление для LEGO-9163*/
+        if(browser.mozilla) {
+            var input = this.elem('control')[0];
+
+            if(input.selectionStart && input.selectionEnd) {
+                input.selectionStart = input.selectionEnd = 0;
+            }
         }
     },
 

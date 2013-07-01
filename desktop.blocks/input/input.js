@@ -30,9 +30,13 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
     _onBlur : function() {
         this.__base.apply(this, arguments);
 
-        var input = this.elem('control')[0];
-        if(input.selectionStart && input.selectionEnd) {
-            input.selectionStart = input.selectionEnd = 0;
+        /*Данный код необходим только для выполнения в браузере FF. Исправление для LEGO-9163*/
+        if(/firefox/i.test(navigator.userAgent)) {
+            var input = this.elem('control')[0];
+
+            if(input.selectionStart && input.selectionEnd) {
+                input.selectionStart = input.selectionEnd = 0;
+            }
         }
     },
 

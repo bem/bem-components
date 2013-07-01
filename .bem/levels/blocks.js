@@ -5,7 +5,8 @@ var PATH = require('path'),
     resolve = PATH.resolve.bind(null, __dirname),
 
     PRJ_TECHS = resolve('../techs/'),
-    BEMCORE_TECHS = environ.getLibPath('bem-core', '.bem/techs');
+    BEMCORE_TECHS = environ.getLibPath('bem-core', '.bem/techs'),
+    BEMPR_TECHS = environ.getLibPath('bem-pr', 'bem/techs');
 
 
 exports.getTechs = function() {
@@ -28,8 +29,9 @@ exports.getTechs = function() {
         'vanilla.js'     : join(BEMCORE_TECHS, 'vanilla.js.js'),
         'browser.js'     : join(BEMCORE_TECHS, 'browser.js.js'),
 
-        //'examples'     : join(PRJ_TECHS, 'examples.js'),
-        //'tests'        : join(PRJ_TECHS, 'tests.js')
+        'examples'       : join(PRJ_TECHS, 'examples.js'),
+        'test.js'        : join(BEMPR_TECHS, 'test.js.js'),
+        'tests'          : join(PRJ_TECHS, 'tests.js')
     };
 
 };

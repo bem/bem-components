@@ -68,7 +68,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
         'pressed' : function(modName, modVal) {
 
-            this.isDisabled() || this.setMod('focused', 'yes');
+            this.isDisabled() || this.hasMod('focused', 'no') || this.setMod('focused', 'yes');
 
             return this.__base.apply(this, arguments);
 
@@ -125,7 +125,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
     destruct : function () {
 
-        this.delMod('focused');
+        this.delMod('focused', 'yes');
         this.__base.apply(this, arguments);
 
     }
@@ -140,7 +140,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             'mousedown' : { name : 'pressed', val : 'yes' },
             'mouseup' : { name : 'pressed' },
             'focusin' : { name : 'focused', val : 'yes' },
-            'focusout' : { name : 'focused' }
+            'focusout' : { name : 'focused', val : 'yes' }
         };
 
         this

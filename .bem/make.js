@@ -26,10 +26,8 @@ MAKE.decl('Arch', {
         if(!setsNodes) return;
 
         // Сборка примеров
-        var s = setsNodes.SetsNode
-            .create({ root : this.root, arch : this.arch });
-        console.log('**** %j', s.getSets());
-        return s     // создаем экземпляр узла
+        return setsNodes.SetsNode
+            .create({ root : this.root, arch : this.arch })     // создаем экземпляр узла
             .alterArch(null, libs);                             // расширяем процесс сборки новыми узлами из bem-pr
     }
 

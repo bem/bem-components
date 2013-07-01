@@ -8,3 +8,5 @@ var environ = require('../environ');
 try {
     require(environ.getLibPath('bem-core', '.bem/nodes'));
 } catch(e) {}
+
+require('./arch.js');

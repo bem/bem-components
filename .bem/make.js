@@ -73,6 +73,8 @@ MAKE.decl('ExampleNode', {
 
     'desktop-levels' : function() {
         return [
+            environ.getLibPath('bem-core', 'common.blocks'),
+            environ.getLibPath('bem-core', 'desktop.blocks'),
             'common.blocks',
             'desktop.blocks'
         ];
@@ -80,6 +82,8 @@ MAKE.decl('ExampleNode', {
 
     'touch-pad-levels' : function() {
         return [
+            environ.getLibPath('bem-core', 'common.blocks'),
+            environ.getLibPath('bem-core', 'touch.blocks'),
             'common.blocks',
             'touch.blocks',
             'touch-pad.blocks'
@@ -88,6 +92,8 @@ MAKE.decl('ExampleNode', {
 
     'touch-phone-levels' : function() {
         return [
+            environ.getLibPath('bem-core', 'common.blocks'),
+            environ.getLibPath('bem-core', 'touch.blocks'),
             'common.blocks',
             'touch.blocks',
             'touch-phone.blocks'

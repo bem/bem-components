@@ -54,7 +54,7 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
             this.__base.apply(this, arguments);
 
-            disable && domElem.keyup();
+            modVal == 'yes' && this.domElem.keyup();
 
         },
 

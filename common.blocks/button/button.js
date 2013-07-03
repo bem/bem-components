@@ -20,15 +20,15 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
         'disabled' : function(modName, modVal) {
 
-            var disable = modVal == 'yes',
+            var isDisabled = modVal == 'yes',
                 domElem = this.domElem;
 
-            this._href && (disable?
+            this._href && (isDisabled ?
                 domElem.removeAttr('href') :
                 domElem.attr('href', this._href));
 
             this.afterCurrentEvent(function() {
-                domElem.attr('disabled', disable);
+                domElem.attr('disabled', isDisabled);
             });
 
         },

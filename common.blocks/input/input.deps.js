@@ -1,4 +1,4 @@
-({
+[{
     mustDeps: { block: 'i-bem', elem: 'dom' },
     shouldDeps: [
         {
@@ -13,4 +13,9 @@
         'tick',
         'idle'
     ]
-})
+},
+{
+    tech: 'test.js',
+    mustDeps: { tech: 'bemhtml', block: 'input' }
+}
+]

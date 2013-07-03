@@ -34,7 +34,6 @@ MAKE.decl('Arch', {
 });
 
 
-console.log('MAKE.decl SetsNode');
 MAKE.decl('SetsNode', {
 
     /**
@@ -42,7 +41,6 @@ MAKE.decl('SetsNode', {
      * @returns {Object}
      */
     getSets : function() {
-        console.log('??????????');
         return {
             'desktop' : [ 'common.blocks', 'desktop.blocks' ],
             'touch-pad' : [ 'common.blocks', 'touch.blocks', 'touch-pad.blocks' ],

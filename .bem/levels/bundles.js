@@ -1,4 +1,5 @@
 var PATH = require('path'),
+    BEM = require('bem'),
     environ = require('../environ'),
 
     join = PATH.join,
@@ -6,32 +7,20 @@ var PATH = require('path'),
 
     PRJ_TECHS = resolve('../techs/'),
     BEMCORE_TECHS = environ.getLibPath('bem-core', '.bem/techs');
+    BEMPR_TECHS = environ.getLibPath('bem-pr', 'bem/techs');
 
+
+exports.baseLevelPath = require.resolve('./blocks');
 
 exports.getTechs = function() {
 
-    return {
-        'bemdecl.js'         : 'bemdecl.js',
-        'deps.js'            : 'deps.js',
-        'css'                : 'css',
-        'ie.css'             : 'ie.css',
-        'ie6.css'            : 'ie6.css',
-        'ie7.css'            : 'ie7.css',
-        'ie8.css'            : 'ie8.css',
-        'ie9.css'            : 'ie9.css',
-
-        'vanilla.js'         : join(BEMCORE_TECHS, 'vanilla.js.js'),
-        'browser.js'         : join(BEMCORE_TECHS, 'browser.js.js'),
-        'browser.js+bemhtml' : join(BEMCORE_TECHS, 'browser.js+bemhtml.js'),
-
+    return BEM.util.extend(this.__base(), {
         'bemjson.js'         : join(PRJ_TECHS, 'bemjson.js.js'),
-
-        'bemhtml'            : join(BEMCORE_TECHS, 'bemhtml.js'),
+        'browser.js+bemhtml' : join(BEMCORE_TECHS, 'browser.js+bemhtml.js'),
         'html'               : join(BEMCORE_TECHS, 'html.js'),
-
-        //'examples'         : join(PRJ_TECHS, 'examples.js'),
-        //'tests'            : join(PRJ_TECHS, 'tests.js'),
-    };
+        'phantomjs'          : join(BEMPR_TECHS, 'phantomjs.js'),
+        'test-tmpl'          : join(BEMPR_TECHS, 'test-tmpl.js')
+    });
 
 };
 

@@ -4,7 +4,9 @@ var instances = [],
     bindedToTick,
     update = function () {
         var instance, i = 0;
-        while(instance = instances[i++]) instance.val(instance.elem('control').val());
+        while(instance = instances[i++]) {
+            instance.val(instance.elem('control').val());
+        }
     };
 
 /**
@@ -18,11 +20,19 @@ DOM.decl('input', /** @lends Input.prototype */ {
                 // факт подписки
                 if(!bindedToTick) {
                     bindedToTick = true;
-                    tick.on('tick', update);
-                    idle.on({
-                        idle : function() { tick.un('tick', update) },
-                        wakeup : function() { tick.on('tick', update) }
-                    });
+                    tick
+                        .on('tick', update)
+                        .start();
+                    idle
+                        .on({
+                            idle   : function() {
+                                tick.un('tick', update);
+                            },
+                            wakeup : function() {
+                                tick.on('tick', update);
+                            }
+                        })
+                        .start();
                 }
 
                 // сохраняем индекс в массиве инстансов чтобы потом быстро из него удалять
@@ -90,11 +100,12 @@ DOM.decl('input', /** @lends Input.prototype */ {
         if(!arguments.length) return this._val;
 
         if(this._val != val) {
+            this._val = val;
+
             var input = this.elem('control');
-            input.val() != val && input.val(this._val = val);
-            this
-                ._updateClear()
-                .trigger('change', data);
+            input.val() != val && input.val(val);
+
+            this.trigger('change', data);
         }
 
         return this;

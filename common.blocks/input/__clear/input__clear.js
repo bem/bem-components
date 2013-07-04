@@ -56,6 +56,7 @@ DOM.decl('input', /** @lends Block.prototype */ {
      * @return {Object} экземпляр блока input
      */
     _updateClear : function() {
+        console.log('clear');
         return this.toggleMod(this.elem('clear'), 'visibility', 'visible', !!this._val);
     }
 }, {

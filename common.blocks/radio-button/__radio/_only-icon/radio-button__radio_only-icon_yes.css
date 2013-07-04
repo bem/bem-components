@@ -10,7 +10,7 @@
 }
 
 @media all and (min-width:0px) {
-    .i-ua_js_yes .radio-button__radio_only-icon_yes .radio-button__icon
+    .ua_js_yes .radio-button__radio_only-icon_yes .radio-button__icon
     {
         position: absolute;
         z-index: 3;
@@ -26,7 +26,7 @@
     }
 }
 
-.i-ua_js_no .radio-button__radio_only-icon_yes
+.ua_js_no .radio-button__radio_only-icon_yes
 {
     padding: 0 1em 0 0;
 }

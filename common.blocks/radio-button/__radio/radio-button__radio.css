@@ -67,8 +67,8 @@
     border-bottom-right-radius: 2px;
 }
 
-.i-ua_js_no .radio-button__radio:after,
-.i-ua_js_no .radio-button__radio:before
+.ua_js_no .radio-button__radio:after,
+.ua_js_no .radio-button__radio:before
 {
     display: none;
 }

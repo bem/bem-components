@@ -1,0 +1,14 @@
+block input, elem control {
+
+    attrs: {
+        var a = this.ctx.attrs || {};
+
+        a.autocomplete = a.autocomplete || 'off';
+        a.autocorrect = a.autocorrect || 'off';
+        a.autocapitalize = a.autocapitalize || 'off';
+        a.spellcheck = a.spellcheck || 'false';
+
+        return a;
+    }
+
+}

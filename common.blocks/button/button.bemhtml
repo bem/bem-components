@@ -20,7 +20,7 @@ block('button')(
         },
 
         // Attributes for button variant
-        match(function() { return !this.ctx.url })(function() {
+        match(function() { return !this.elem && !this.ctx.url })(function() {
             var ctx = this.ctx,
                 attrs = { type: ctx.type || 'button' };
 
@@ -32,7 +32,7 @@ block('button')(
         }),
 
         // Attributes for link variant
-        match(function() { return this.ctx.url })(function() {
+        match(function() { return !this.elem && this.ctx.url })(function() {
             var ctx = this.ctx,
                 attrs = { href: ctx.url };
 

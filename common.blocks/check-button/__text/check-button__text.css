@@ -2,8 +2,7 @@
 {
     position: relative;
 
-    /* Здесь добавлен 1px нижний паддинг для решение проблемы с несрабатыванием контрола LEGO-9439 */
-    padding: 0 1em 1px;
+    padding: 0 1em;
 }
 
 .i-ua_js_no .check-button__text

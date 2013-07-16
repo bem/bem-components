@@ -2,11 +2,12 @@
     .i-ua_js_yes .check-button__control
     {
         position: absolute;
-        z-index: -1;
+        z-index: 1;
         /* TODO: добавить комментарий
            top, left — для LEGO-7938 */
-        top: 4px;
-        left: 4px;
+
+        width: 100%;
+        height: 100%;
 
         margin: 0;
         padding: 0;

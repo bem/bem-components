@@ -2,7 +2,7 @@ BEM.DOM.decl('input', null, {
 
     live : function() {
 
-        this.liveBindTo('clear', 'pointerdown', function() {
+        this.liveBindTo('clear', 'click', function() {
             this._onClearClick();
         });
 

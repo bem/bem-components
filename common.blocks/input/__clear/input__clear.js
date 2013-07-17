@@ -12,16 +12,14 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
             var _this = this;
 
-            _this
-                .on('change', _this._updateClear)
-                ._updateClear();
-
             if(_this.elem('clear') && !_this.hasMod('clear', 'visibility', 'visible')) {
                 _this.bindTo('box', 'click', function(e) {
                     _this.setMod('focused', 'yes');
                 });
             }
-         }
+
+            _this.bindInput();
+        }
     },
 
     onElemSetMod : {
@@ -45,6 +43,21 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
         }
     },
 
+    bindInput : function() {
+
+        var _this = this;
+
+        _this.bindTo('input', function() {
+            _this.val(_this.elem('control').val());
+            _this._updateClear();
+        });
+
+        _this
+            .on('change', _this._updateClear)
+            ._updateClear();
+
+    },
+
     /**
      * Обработчик нажатия на кнопку очистки инпута
      * Очищает значение в поле ввода
@@ -57,8 +70,18 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
         this.removeInsets && this.removeInsets();
 
         return this
-            .val('', { source: 'clear' })
+            .clearInput({ source: 'clear' })
             .setMod('focused', 'yes');
+
+    },
+
+    clearInput : function(data) {
+
+        this.elem('control').val('');
+        this._val = '';
+        this.trigger('change', data);
+
+        return this;
 
     },
 

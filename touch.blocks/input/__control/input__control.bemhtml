@@ -1,0 +1,18 @@
+block input, elem control {
+
+    attrs: {
+
+        var ctx = this.ctx,
+            a = this._.extend(
+                applyNext(),{
+                    autocomplete: ctx.autocomplete || 'off',
+                    autocorrect: ctx.autocorrect || 'off',
+                    autocapitalize: ctx.autocapitalize || 'off',
+                    spellcheck: ctx.spellcheck || 'false'
+                });
+
+            return a;
+
+    }
+
+}

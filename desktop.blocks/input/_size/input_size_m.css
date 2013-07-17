@@ -5,7 +5,7 @@
         padding-left: 10px;
     }
 
-    .input_size_m .input__control
+    .input.input_size_m .input__box .input__control
     {
         padding-left: 0;
     }

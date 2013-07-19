@@ -95,8 +95,7 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
         return this.toggleMod(this.elem('clear'), 'visibility', 'visible', '', !!this._val);
 
-    },
-
+    }
 
 }, {
 

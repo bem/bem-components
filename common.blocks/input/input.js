@@ -45,11 +45,6 @@ DOM.decl('input', /** @lends Input.prototype */ {
                 // NOTE: если так получилось, что мы уже в фокусе, то синхронизируем состояние
                 this.__self.getActiveDomNode() === control[0] &&
                     (this.setMod('focused', 'yes')._focused = true);
-
-                this.bindTo(control, { // TODO: сделать live-событием
-                    focus : this._onFocus,
-                    blur : this._onBlur
-                });
             },
 
             '' : function() {
@@ -182,6 +177,18 @@ DOM.decl('input', /** @lends Input.prototype */ {
         this.elem('control').blur();
     }
 }, {
+    live : function() {
+        this
+            .liveBindTo('control', 'focusin', function(e) {
+                this._onFocus(e);
+            })
+            .liveBindTo('control', 'focusout', function(e) {
+                this._onBlur(e);
+            });
+
+        return false;
+    },
+
     getActiveDomNode : function() {
         // В iframe в IE9: "Error: Unspecified error."
         try { return DOM.doc[0].activeElement } catch (e) {}

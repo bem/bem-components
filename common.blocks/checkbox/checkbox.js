@@ -1,4 +1,4 @@
-modules.define('i-bem__dom', function(provide, DOM) {
+modules.define('i-bem__dom', ['jquery'], function(provide, $, DOM) {
 
 /**
  * @namespace i-bem.js реализация блока checkbox

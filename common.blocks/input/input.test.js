@@ -79,7 +79,7 @@ describe('input', function() {
     });
 
     describe('val', function() {
-        it('should trigger change-event if value changed', function() {
+        it('should trigger change-event when value changed', function() {
             var spy = sinon.spy();
             input.on('change', spy);
 

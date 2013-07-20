@@ -12,5 +12,4 @@
 {
     tech: 'test.js',
     mustDeps: { tech: 'bemhtml', block: 'input' }
-}
-]
+}]

@@ -13,6 +13,8 @@ describe('input__clear', function() {
 
         input.elem('clear').trigger('pointerdown');
         input.val().should.be.equal('');
+
+        DOM.destruct(input.domElem);
     });
 });
 

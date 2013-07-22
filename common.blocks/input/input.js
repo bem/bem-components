@@ -73,27 +73,10 @@ DOM.decl('input', /** @lends Input.prototype */ {
      * @return {Number} Позиция конца выделения. Если ничего не выделено, то возвращается 0.
      */
     getSelectionEnd : function() { // TODO: для чего это публичный метод, кто и как им пользуется?
-        var input = this.elem('control')[0],
-            end = 0;
-
-        if(typeof input.selectionEnd === 'number') {
-            end = input.selectionEnd;
-        } else {
-            var range = DOM.doc[0].selection.createRange();
-            if(range && range.parentElement() === input) {
-                var len = input.value.length,
-                    textInputRange = input.createTextRange();
-                textInputRange.moveToBookmark(range.getBookmark());
-
-                var endRange = input.createTextRange();
-                endRange.collapse(false);
-                end = textInputRange.compareEndPoints('EndToEnd', endRange) > -1 ?
-                    len :
-                    -textInputRange.moveEnd('character', -len);
-            }
-        }
-
-        return end;
+        var input = this.elem('control')[0];
+        return typeof input.selectionEnd === 'number'?
+            input.selectionEnd :
+            0;
     },
 
     /**

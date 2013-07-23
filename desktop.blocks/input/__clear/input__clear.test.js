@@ -6,12 +6,6 @@ describe('input__clear', function() {
         DOM.destruct(input.domElem);
     });
 
-    it('should clear input on click', function() {
-        input = buildInput('bla');
-        input.elem('clear').trigger('leftclick');
-        input.val().should.be.equal('');
-    });
-
     it('should be focused on box click', function() {
         input = buildInput('');
         input.elem('box').trigger('leftclick');

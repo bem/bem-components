@@ -23,6 +23,12 @@ describe('input__clear', function() {
         input.val('');
         isClearElemVisible(input).should.be.false;
     });
+
+    it('should clear input on click', function() {
+        input = buildInput('bla');
+        input.elem('clear').trigger('leftclick');
+        input.val().should.be.equal('');
+    });
 });
 
 function buildInput(val) {

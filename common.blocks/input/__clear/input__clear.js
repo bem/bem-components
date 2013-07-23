@@ -1,6 +1,6 @@
 modules.define('i-bem__dom', function(provide, DOM) {
 
-DOM.decl('input', /** @lends Block.prototype */ {
+DOM.decl('input', {
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -33,6 +33,12 @@ DOM.decl('input', /** @lends Block.prototype */ {
      */
     _updateClear : function() {
         return this.toggleMod(this.elem('clear'), 'visibility', 'visible', !!this._val);
+    }
+}, {
+    live : function() {
+        this.liveBindTo('clear', 'leftclick', function() {
+            this._onClearClick();
+        });
     }
 });
 

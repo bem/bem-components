@@ -9,13 +9,9 @@ DOM.decl('input', {
     }
 }, {
     live : function() {
-        this
-            .liveBindTo('clear', 'leftclick', function() {
-                this._onClearClick();
-            })
-            .liveBindTo('box', 'leftclick', function() {
-                this._onBoxClick();
-            });
+        this.liveBindTo('box', 'leftclick', function() {
+            this._onBoxClick();
+        });
 
         return this.__base.apply(this, arguments);
     }

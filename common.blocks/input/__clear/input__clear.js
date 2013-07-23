@@ -10,7 +10,7 @@ DOM.decl('input', /** @lends Block.prototype */ {
                     .on('change', this._updateClear)
                     ._updateClear();
 
-                this.elem('clear') && !this.hasMod('clear', 'visibility', 'visible') && // TODO: это точно все нужно в common?
+                this.elem('clear') && !this.hasMod('clear', 'visibility', 'visible') && // TODO: это точно все нужно в common? (на тачах не нужно)
                     this.bindTo('box', 'click', function() {
                         this.setMod('focused', 'yes');
                     });

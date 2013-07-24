@@ -30,12 +30,12 @@ BEM.DOM.decl({ block: 'check-button', baseBlock: 'checkbox' }, /** @lends CheckB
     _onMouseDown : function(e) {
         e.preventDefault();
 
-        this.isChecked() || this.setMod('pressed', 'yes');
+        this.setMod('pressed', 'yes');
 
         // XXX: синхронизируем состояние кнопки и чекбокса
         this.bindToDoc('mouseup', function(e) {
             this.afterCurrentEvent(function() {
-                this.isChecked() || this.delMod('pressed');
+                this.delMod('pressed');
             })
 
             this.unbindFromDoc('mouseup');

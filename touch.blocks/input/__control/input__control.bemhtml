@@ -1,14 +1,15 @@
-block input, elem control {
+block('input').elem('control')(
 
-    attrs: {
-        var a = this.ctx.attrs || {};
+    attrs()(function() {
+        var baseAttrs = applyNext(),
+            attrs = this.ctx.attrs || {};
 
-        a.autocomplete = a.autocomplete || 'off';
-        a.autocorrect = a.autocorrect || 'off';
-        a.autocapitalize = a.autocapitalize || 'off';
-        a.spellcheck = a.spellcheck || 'false';
+        attrs.autocomplete = attrs.autocomplete || 'off';
+        attrs.autocorrect = attrs.autocorrect || 'off';
+        attrs.autocapitalize = attrs.autocapitalize || 'off';
+        attrs.spellcheck = attrs.spellcheck || 'false';
 
-        return a;
-    }
+        return this._.extend(baseAttrs, attrs);
+    })
 
-}
+)

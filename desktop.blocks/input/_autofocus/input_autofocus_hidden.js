@@ -26,42 +26,42 @@ DOM.decl({ block : 'input', modName : 'autofocus', modVal : 'hidden' }, {
             }
         },
 
-        'autofocus' : {
-            '' : function() {
-                this.unbindFromDoc('keydown');
+        'focused' : {
+            'yes' : function() {
+                this.__base.apply(this, arguments);
+
+                this
+                    .unbindFromDoc('keydown')
+                    .delMod('autofocus');
             }
         }
     },
 
     _onDocKeyDown : function(e) {
-        if (this.hasMod('focused', 'yes')) return;
+        if(this.hasMod('focused', 'yes')) return;
 
-        if (isTextKey(e) && !this.__self.isTextDomNode(this.__self.getActiveDomNode())) {
+        if(isTextKey(e) && !this.__self.isTextDomNode(this.__self.getActiveDomNode())) {
             // ставим курсор в конец строки и добавляем пробел
             // TODO: что за пробел?? o_0
             var inputDomNode = this.elem('control')[0],
                 val = this.val();
 
-            if (val.length > 0 && val.substr(val.length - 1, 1) !== ' ') {
+            if(val.length && val.substr(val.length - 1, 1) !== ' ') {
                 val += ' ';
                 this.val(val);
             }
 
-            if (inputDomNode.createTextRange) {
-                // ie
+            if(inputDomNode.createTextRange) { // IE
                 var r = inputDomNode.createTextRange();
                 r.collapse(false);
                 r.select();
-            } else if (inputDomNode.selectionStart) { //браузеры
-                inputDomNode.setSelectionRange(val.length,val.length);
+            } else if(inputDomNode.selectionStart) { // браузеры
+                inputDomNode.setSelectionRange(val.length, val.length);
             }
 
-            this
-                .setMod('focused', 'yes')
-                .delMod('autofocus');
+            this.setMod('focused', 'yes');
         }
     }
-
 });
 
 provide(DOM);

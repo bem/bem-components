@@ -79,7 +79,7 @@ describe('input', function() {
     });
 
     describe('val', function() {
-        it('should trigger change-event if value changed', function() {
+        it('should trigger change-event when value changed', function() {
             var spy = sinon.spy();
             input.on('change', spy);
 
@@ -88,6 +88,17 @@ describe('input', function() {
 
             input.val('blabla');
             spy.should.have.been.calledOnce;
+        });
+
+        it('should update value when control value changed', function(done) {
+            input.on('change', function(e) {
+                e.target.val().should.be.equal('new-value');
+                done();
+            });
+
+            input.elem('control')
+                .val('new-value')
+                .trigger('input'); // TODO: разобраться с touch, нихера оно не работает без этого при программной установке
         });
     });
 });

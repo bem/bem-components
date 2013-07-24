@@ -10,7 +10,7 @@ DOM.decl({ block : 'input', modName : 'autofocus', modVal : 'focused' }, {
                 // если фокус нигде не стоит или стоит не в текстовом элементе,
                 // то делаем автофокус
                 activeDomNode && this.__self.isTextDomNode(activeDomNode) ||
-                    (this.setMod('focused', 'yes')._focused = true);
+                    this.setMod('focused', 'yes');
             }
         }
     }

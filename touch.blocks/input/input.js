@@ -1,11 +1,16 @@
 modules.define('i-bem__dom', function(provide, DOM) {
 
-DOM.decl('input', null, {
+DOM.decl('input', {
+    _onInputChanged : function() {
+        this.val(this.elem('control').val());
+    }
+}, {
     live : function() {
-        this.liveBindTo('clear', 'pointerdown', function() {
-            this._onClearClick();
+        this.liveBindTo('control', 'input', function() {
+            this._onInputChanged();
         });
-        return false;
+
+        return this.__base.apply(this, arguments);
     }
 });
 

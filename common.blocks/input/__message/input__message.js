@@ -1,4 +1,4 @@
-modules.define('i-bem__dom', function(provide, DOM) {
+modules.define('i-bem__dom', ['jquery'], function(provide, $, DOM) {
 
 DOM.decl('input', {
     onElemSetMod : {
@@ -10,7 +10,7 @@ DOM.decl('input', {
                 if(type) {
                     var needSetMod = true;
                     modVal || _this.elem('message', 'type', type).each(function() {
-                        this != elem[0] &&
+                        this !== elem[0] &&
                             _this.hasMod($(this), 'visibility', 'visible') &&
                                 (needSetMod = false);
                     });

@@ -1,3 +1,3 @@
 ({
-    shouldDeps: { block: 'jquery', elem: 'leftclick' }
+    shouldDeps: { block: 'jquery', elem: 'pointerclick' }
 })

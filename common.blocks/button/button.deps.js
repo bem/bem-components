@@ -1,6 +1,6 @@
 ({
     mustDeps: [
-        { block: 'jquery', elem: 'leftclick' },
+        { block: 'jquery', elem: 'pointerclick' },
         { block: 'i-bem', elems: ['dom'] }
     ],
     shouldDeps: {

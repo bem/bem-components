@@ -152,7 +152,7 @@ DOM.decl('radiobox', /** @lends block.prototype */ {
      * @private
      * @param {jQuery.Event} e
      */
-    _onLeftClick : function(e) {
+    _onPointerClick : function(e) {
         this.isDisabled(e.domElem) || this.setMod(e.domElem, 'focused', 'yes');
     },
 
@@ -168,7 +168,7 @@ DOM.decl('radiobox', /** @lends block.prototype */ {
 }, /** @lends block */ {
     live : function() {
         this
-            .liveBindTo('radio', 'leftclick', function(e) { this._onLeftClick(e) })
+            .liveBindTo('radio', 'pointerclick', function(e) { this._onPointerClick(e) })
             .liveBindTo('control', 'change', function(e) { this._onChange(e) })
             .liveBindTo('radio', 'mouseover mouseout', function(e) {
                 this.toggleMod(e.domElem, 'hovered', 'yes', e.type === 'mouseover');

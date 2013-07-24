@@ -5,7 +5,7 @@ DOM.decl('radiobox', null, {
         this.__base.apply(this, arguments);
 
         this.liveBindTo('radio', 'tap', function(e) {
-            this._onLeftClick(e);
+            this._onPointerClick(e);
             this._onChange(e);
         });
 

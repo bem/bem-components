@@ -135,7 +135,7 @@ DOM.decl('checkbox', /** @lends Checkbox.prototype */ {
     live : function() {
 
         this
-            .liveBindTo('leftclick', function(e) {
+            .liveBindTo('pointerclick', function(e) {
                 this._onClick(e);
             })
             .liveBindTo('control', 'change', function(e) {

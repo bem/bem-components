@@ -36,7 +36,7 @@ DOM.decl('input', {
     }
 }, {
     live : function() {
-        this.liveBindTo('clear', 'leftclick', function() {
+        this.liveBindTo('clear', 'pointerclick', function() {
             this._onClearClick();
         });
     }

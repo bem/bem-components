@@ -8,7 +8,7 @@ describe('input__clear', function() {
 
     it('should be focused on box click', function() {
         input = buildInput('');
-        input.elem('box').trigger('leftclick');
+        input.elem('box').trigger('pointerclick');
         input.hasMod('focused', 'yes').should.be.true;
     });
 });

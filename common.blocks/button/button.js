@@ -154,7 +154,7 @@ DOM.decl('button', /** @lends Button.prototype */ {
         };
 
         this
-            .liveBindTo('leftclick', function(e) { this._onClick(e) })
+            .liveBindTo('pointerclick', function(e) { this._onClick(e) })
             .liveBindTo('mouseover mouseout mouseup focusin focusout', function(e) {
                 var mod = eventsToMods[e.type];
                 this.setMod(mod.name, mod.val || '');

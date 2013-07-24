@@ -9,7 +9,7 @@ DOM.decl('input', {
     }
 }, {
     live : function() {
-        this.liveBindTo('box', 'leftclick', function() {
+        this.liveBindTo('box', 'pointerclick', function() {
             this._onBoxClick();
         });
 

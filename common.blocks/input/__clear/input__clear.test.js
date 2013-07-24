@@ -26,7 +26,7 @@ describe('input__clear', function() {
 
     it('should clear input on click', function() {
         input = buildInput('bla');
-        input.elem('clear').trigger('leftclick');
+        input.elem('clear').trigger('pointerclick');
         input.val().should.be.equal('');
     });
 });

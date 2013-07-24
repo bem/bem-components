@@ -1,21 +1,23 @@
 modules.define('i-bem__dom', function(provide, DOM) {
 
+var LinkBlock = DOM.blocks['link'];
+
 DOM.decl('input', {
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                DOM.blocks['b-link'].on(this.elem('samples'), 'click', this._onSampleClick, this);
+                LinkBlock.on(this.elem('samples'), 'click', this._onSampleClick, this);
             },
 
             '' : function() {
                 this.__base.apply(this, arguments);
-                DOM.blocks['b-link'].un(this.domElem, 'click');
+                LinkBlock.un(this.domElem, 'click');
             }
         },
 
         'disabled' : function(modName, modVal) {
-            this.findBlocksInside(this.elem('samples'), 'b-link').forEach(function(link) {
+            this.findBlocksInside(this.elem('samples'), 'link').forEach(function(link) {
                 link.setMod(modName, modVal);
             });
         }

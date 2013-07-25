@@ -4,7 +4,15 @@ block('input')(
     def()(function() {
         var ctx = this.ctx;
         ctx.id = ctx.id || this.generateId();
-        applyNext({ '_input' : ctx })
+        applyNext({ _input: ctx })
+    }),
+    content()(function() {
+        var ctx = this.ctx, content = [{ elem: 'control' }];
+        ctx.hint && content.unshift({ elem: 'hint', content: ctx.hint });
+        ctx.label && content.unshift({ elem: 'label', content: ctx.label });
+        ctx.messages && content.push(ctx.messages);
+        ctx.samples && content.push({ elem: 'samples', content: ctx.samples });
+        return content;
     })
 
 )

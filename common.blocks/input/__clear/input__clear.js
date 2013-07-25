@@ -39,6 +39,8 @@ DOM.decl('input', {
         this.liveBindTo('clear', 'pointerclick', function() {
             this._onClearClick();
         });
+
+        return this.__base.apply(this, arguments);
     }
 });
 

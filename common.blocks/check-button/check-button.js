@@ -29,14 +29,14 @@ DOM.decl({ block: 'check-button', baseBlock: 'checkbox' }, /** @lends CheckButto
     _onMouseDown : function(e) {
         e.preventDefault();
 
-        this.isChecked() || this.setMod('pressed', 'yes');
+        this.setMod('pressed', 'yes');
 
         // XXX: синхронизируем состояние кнопки и чекбокса
         // TODO: использовать https://github.com/bem/bem-core/issues/73
         this.bindToDoc('mouseup', function(e) {
             // TODO: заменить на `this.nextTick` после https://github.com/bem/bem-core/issues/71
             nextTick(function() {
-                this.isChecked() || this.delMod('pressed');
+                this.delMod('pressed');
             }.bind(this)); // TODO: убрать bind после https://github.com/bem/bem-core/issues/70
 
             this.unbindFromDoc('mouseup');

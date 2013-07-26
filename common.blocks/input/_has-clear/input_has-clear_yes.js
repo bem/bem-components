@@ -1,6 +1,6 @@
 modules.define('i-bem__dom', function(provide, DOM) {
 
-DOM.decl('input', {
+DOM.decl({ block: 'input', modName: 'has-clear', modVal: 'yes' }, {
     onSetMod : {
         'js' : {
             'inited' : function() {

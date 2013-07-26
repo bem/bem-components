@@ -15,7 +15,7 @@
         { tag: 'br' },
         {
             block: 'input',
-            mods: { size: 's', 'has-clear': 'no' },
+            mods: { size: 's', 'has-clear': 'yes' },
             id: 'id2',
             name: 'name2',
             val: 'value2'

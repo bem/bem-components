@@ -1,17 +1,32 @@
 @media all and (min-width:0px) {
-    .input_clear_no .input__box
+    .input_clear_yes .input__box
     {
-        padding-right: 7px;
-    }
+        /* padding-right for elem clear */
+        padding-right: 29px;
 
-    .input_clear_no .input__box::after
-    {
-        width: 14px;
+        -moz-box-sizing: border-box;
+         box-sizing: border-box;
 
-        background: -webkit-gradient(linear, left top, right top, color-stop(0,rgba(255,255,255,0)), color-stop(50%, #fff));
-        background:    -moz-linear-gradient(left, rgba(255,255,255,0) 0, #fff 50%);
-        background:     -ms-linear-gradient(left, rgba(255,255,255,0) 0, #fff 50%);
-        background:      -o-linear-gradient(left, rgba(255,255,255,0) 0, #fff 50%);
-        background:         linear-gradient(to right, rgba(255,255,255,0) 0, #fff 50%);
+        cursor: text;
     }
+}
+
+/* ::after = fade */
+.input_clear_yes .input__box::after
+{
+    position: absolute;
+    z-index: 3;
+    bottom: 1px;
+    right: 1px;
+    top: 2px;
+
+    content: '';
+
+    width: 36px;
+
+    background: -webkit-gradient(linear, left top, right top, color-stop(0,rgba(255,255,255,0)), color-stop(20%, #fff));
+    background:    -moz-linear-gradient(left, rgba(255,255,255,0) 0, #fff 20%);
+    background:      -o-linear-gradient(left, rgba(255,255,255,0) 0, #fff 20%);
+    background:     -ms-linear-gradient(left, rgba(255,255,255,0) 0, #fff 20%);
+    background:         linear-gradient(to right, rgba(255,255,255,0) 0, #fff 20%);
 }

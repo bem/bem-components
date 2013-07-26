@@ -14,8 +14,7 @@ describe('input', function() {
         input = DOM.init(
                 $(BEMHTML.apply({
                     block: 'input',
-                    content: { elem: 'control' },
-                    value: 'bla'
+                    val: 'bla'
                 })))
             .appendTo('body')
             .bem('input');

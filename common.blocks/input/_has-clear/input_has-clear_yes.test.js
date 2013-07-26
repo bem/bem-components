@@ -1,6 +1,6 @@
 modules.define('test', ['i-bem__dom', 'jquery', 'BEMHTML'], function(provide, DOM, $, BEMHTML) {
 
-describe('input__clear', function() {
+describe('input_has-clear_yes', function() {
     var input;
     afterEach(function() {
         DOM.destruct(input.domElem);
@@ -35,8 +35,7 @@ function buildInput(val) {
     return DOM.init(
             $(BEMHTML.apply({
                 block: 'input',
-                content: [{ elem: 'control' }],
-                value: val
+                val: val
             })))
         .appendTo('body')
         .bem('input');

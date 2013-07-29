@@ -1,21 +1,45 @@
-BEM.DOM.decl('input', {
+/**
+ * @namespace
+ * @name Block
+ */
+BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
-    bindInput : function() {
+    onSetMod : {
 
-        var _this = this;
+        'js' : function() {
 
-        _this
-            .on('change', _this._updateClear)
-            ._updateClear();
+            this.__base.apply(this, arguments);
 
+            var _this = this;
+
+            if(_this.elem('clear') && !_this.hasMod('clear', 'visibility', 'visible')) {
+                _this.bindTo('box', 'click', function(e) {
+                    _this.setMod('focused', 'yes');
+                });
+            }
+
+        }
     },
 
-    clearInput : function(data) {
+    onElemSetMod : {
 
-        this.val('', data);
+        'clear' : {
 
-        return this;
+            'visibility' : {
 
+                'visible' : function() {
+                    this.unbindFrom('box', 'click');
+                },
+
+                '' : function() {
+                    var _this = this;
+                    this.bindTo('box', 'click', function(e) {
+                        _this.setMod('focused', 'yes');
+                    });
+                }
+            }
+
+        }
     }
 
 });

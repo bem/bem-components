@@ -1,20 +1,26 @@
-/**
- * @namespace
- * @name Block
- */
 BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
     onSetMod : {
 
         'js' : function() {
 
-            this._val = this.elem('control').val();
-            this.bindFocus();
+            var _this = this,
+                input = _this.elem('control');
+
+            _this._val = input.val();
+            _this.bindInput();
+            _this.bindFocus();
+
+            _this.bindTo('box', 'click', function(e) {
+                _this.setMod('focused', 'yes');
+            });
 
         },
 
         'disabled' : function(modName, modVal) {
+
             this.elem('control').attr('disabled', modVal === 'yes');
+
         },
 
         'focused' : function(modName, modVal) {
@@ -36,6 +42,46 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
     },
 
+    // TODO: вынести в __message
+    onElemSetMod : {
+
+        'message' : {
+
+            'visibility' : function(elem, modName, modVal) {
+
+                var _this = this,
+                    type = _this.getMod(elem, 'type');
+
+                if(type) {
+                    var needSetMod = true;
+                    modVal || _this.elem('message', 'type', type).each(function() {
+                        this != elem[0] && _this.hasMod($(this), 'visibility', 'visible') && (needSetMod = false);
+                    });
+                    needSetMod && _this.toggleMod('message-' + type, 'yes', '', modVal === 'visible');
+                }
+
+            }
+
+        }
+
+    },
+
+    bindInput : function() {
+
+        var _this = this;
+
+        _this.bindTo('input', function() {
+            _this.
+                val(_this.elem('control').val())
+                _updateClear();
+        });
+
+        _this
+            .on('change', _this._updateClear)
+            ._updateClear();
+
+    },
+
     bindFocus : function() {
 
         this.bindTo(this.elem('control'), {
@@ -45,14 +91,28 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
     },
 
-    /**
-     * Метод для проверки наличия у блока модификатора disabled
-     * @protected
-     * @return {Boolean} true - если блок находится в отключенном состоянии,
-     * false в остальных случаях
-     */
+    _onClearClick : function() {
+
+        this.trigger('clear');
+        this.removeInsets &&
+            this.removeInsets();
+
+        this
+            .val('', { source: 'clear' })
+            .setMod('focused', 'yes');
+
+    },
+
+    _updateClear : function() {
+
+        return this.toggleMod(this.elem('clear'), 'visibility', 'visible', '', !!this._val);
+
+    },
+
     isDisabled : function() {
+
         return this.hasMod('disabled', 'yes');
+
     },
 
     /**
@@ -65,28 +125,23 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
         if(typeof val == 'undefined') return this._val;
 
-        var input = this.elem('control');
-        input.val() != val && input.val(val);
-        this._val = val;
-        this.trigger('change', data);
+        if(this._val != val) {
+            var input = this.elem('control');
+            input.val() != val && input.val(val);
+            this._val = val;
+            this.trigger('change', data);
+        }
 
         return this;
 
     },
 
-    /**
-     * Метод для возврата имени нативного контрола
-     * @param  {[type]} name [description]
-     * @return {String} имя нативного контрола
-     */
     name : function(name) {
+
         return this.elem('control').attr('name');
+
     },
 
-    /**
-     * Обработчик события выставления фокуса на элемент control блока
-     * @return {Object} экземпляр блока input
-     */
     _onFocus : function() {
 
         this._focused = true;
@@ -94,10 +149,6 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
     },
 
-    /**
-     * Обработчик события сброса фокуса с элемента control блока input
-     * @return {Object} экземпляр блока input
-     */
     _onBlur : function() {
 
         this._focused = false;
@@ -106,21 +157,37 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
     },
 
     /**
-     * Выставляем фокус для элемента control
+     * Нормализует установку фокуса для IE
      * @private
      */
     _focus : function() {
-        this.elem('control').focus();
+
+        var input = this.elem('control')[0];
+        if(input.createTextRange && !input.selectionStart) {
+            var range = input.createTextRange();
+            range.move('character', input.value.length);
+            range.select();
+        } else {
+            input.focus();
+        }
+
     },
 
-    /**
-     * Убираем фокус с элемента control
-     * @private
-     */
     _blur : function() {
+
         this.elem('control').blur();
+
     }
 
 }, {
 
+    live : function() {
+
+        this.liveBindTo('clear', 'leftclick', function(e) {
+            this._onClearClick();
+        });
+
+        return false;
+
+    }
 });

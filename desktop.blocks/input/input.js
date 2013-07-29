@@ -57,32 +57,18 @@ BEM.DOM.decl('input', /** @lends Block.prototype */ {
 
         // сохраняем индекс в массиве инстансов чтобы потом быстро из него удалять
         this._instanceIndex = instances.push(
-            this.bindTo(this.elem('control'), {
-                focus : this._onFocus,
-                blur  : this._onBlur
-            })
+            this.__base.apply(this, arguments);
         ) - 1;
 
     },
 
-    /**
-     * Возвращает/устанавливает текущее значение
-     * @param {String} [val] значение
-     * @param {Object} [data] дополнительные данные
-     * @returns {String|BEM} если передан параметр val, то возвращается сам блок, если не передан -- текущее значение
-     */
-    val : function(val, data) {
+    bindInput : function() {
 
-        if(typeof val == 'undefined') return this._val;
+        var _this = this;
 
-        if(this._val != val) {
-            var input = this.elem('control');
-            input.val() != val && input.val(val);
-            this._val = val;
-            this.trigger('change', data);
-        }
-
-        return this;
+        _this
+            .on('change', _this._updateClear)
+            ._updateClear();
 
     },
 

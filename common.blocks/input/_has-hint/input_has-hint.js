@@ -1,6 +1,6 @@
 modules.define('i-bem__dom', function(provide, DOM) {
 
-DOM.decl({ block: 'input', modName: 'has-hint', modVal: true }, {
+DOM.decl({ block : 'input', modName : 'has-hint', modVal : true }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -10,11 +10,6 @@ DOM.decl({ block: 'input', modName: 'has-hint', modVal: true }, {
                     .on('change', this._updateHint)
                     ._updateHint();
             }
-        },
-
-        'focused' : function() {
-            this.__base.apply(this, arguments);
-            this._updateHint();
         }
     },
 

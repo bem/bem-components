@@ -1,6 +1,6 @@
 modules.define('test', ['i-bem__dom', 'jquery', 'BEMHTML'], function(provide, DOM, $, BEMHTML) {
 
-describe('input__hint', function() {
+describe('input_has-hint', function() {
     var input;
     afterEach(function() {
         DOM.destruct(input.domElem);
@@ -29,15 +29,16 @@ function buildInput(val) {
     return DOM.init(
             $(BEMHTML.apply({
                 block: 'input',
-                content: [{ elem: 'control' }, { elem: 'hint', content: 'hint' }],
-                value: val
+                mods: { 'has-hint': true },
+                hint: 'hint',
+                val: val
             })))
         .appendTo('body')
         .bem('input');
 }
 
 function isHintVisible(input) {
-    return input.hasMod(input.elem('hint'), 'visibility', 'visible');
+    return input.hasMod(input.elem('hint'), 'visible');
 }
 
 provide();

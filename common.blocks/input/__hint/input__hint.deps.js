@@ -1,5 +1,3 @@
 ({
-    shouldDeps: {
-        mods: { 'visibility': 'visible' }
-    }
+    shouldDeps: { mod: 'visible' }
 })

@@ -1,21 +1,20 @@
 modules.define('i-bem__dom', function(provide, DOM) {
 
-DOM.decl('input', {
+DOM.decl({ block: 'input', modName: 'has-hint', modVal: true }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                (this._hasHint = !!this.elem('hint').length) &&
-                    this
-                        .on('change', this._updateHint)
-                        ._updateHint();
+                this
+                    .on('change', this._updateHint)
+                    ._updateHint();
             }
         },
 
         'focused' : function() {
             this.__base.apply(this, arguments);
-            this._hasHint && this._updateHint();
+            this._updateHint();
         }
     },
 
@@ -24,9 +23,8 @@ DOM.decl('input', {
      * @private
      */
     _updateHint : function() {
-        this.toggleMod(this.elem('hint'), 'visibility', 'visible', !this.val());
+        this.toggleMod(this.elem('hint'), 'visible', true, !this.val());
     }
-
 });
 
 provide(DOM);

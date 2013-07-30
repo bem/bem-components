@@ -20,10 +20,3 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
-.ua_js_no .input__hint
-{
-    position: static;
-
-    visibility: visible;
-}

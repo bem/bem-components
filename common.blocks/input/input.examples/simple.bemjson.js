@@ -23,7 +23,7 @@
         { tag: 'br' },
         {
             block: 'input',
-            mods: { size: 's' },
+            mods: { size: 's', 'has-hint': true },
             id: 'id3',
             name: 'name3',
             val: 'value3',
@@ -32,7 +32,7 @@
         { tag: 'br' },
         {
             block: 'input',
-            mods: { size: 's' },
+            mods: { size: 's', 'has-hint': true },
             id: 'id4',
             name: 'name4',
             val: 'value4',
@@ -41,7 +41,7 @@
         },
         {
             block: 'input',
-            mods: { size: 's' },
+            mods: { size: 's', 'has-hint': true },
             id: 'id5',
             name: 'name5',
             val: 'value5',
@@ -54,7 +54,7 @@
         { tag: 'br' },
         {
             block: 'input',
-            mods: { size: 's' },
+            mods: { size: 's', 'has-hint': true },
             id: 'id6',
             name: 'name6',
             val: 'value6',
@@ -64,7 +64,7 @@
         },
         {
             block: 'input',
-            mods: { size: 's' },
+            mods: { size: 's', 'has-hint': true },
             id: 'id7',
             name: 'name7',
             val: 'value7',
@@ -74,7 +74,7 @@
         },
         {
             block: 'input',
-            mods: { size: 's' },
+            mods: { size: 's', 'has-hint': true },
             id: 'id6',
             name: 'name8',
             val: 'value8',
@@ -88,7 +88,7 @@
         },
         {
             block: 'input',
-            mods: { size: 's' },
+            mods: { size: 's', 'has-hint': true },
             id: 'id6',
             name: 'name9',
             val: 'value9',

@@ -12,7 +12,7 @@ block('input')(
         ctx.hint && content.unshift({ elem: 'hint', content: ctx.hint });
         ctx.label && content.unshift({ elem: 'label', content: ctx.label });
         ctx.messages && content.push(ctx.messages);
-        ctx.samples && content.push({ elem: 'samples', content: ctx.samples });
+        ctx.samples && content.push({ elem: 'samples', samples: ctx.samples });
         return content;
     })
 

@@ -54,7 +54,7 @@
         { tag: 'br' },
         {
             block: 'input',
-            mods: { size: 's', 'has-hint': true },
+            mods: { size: 's', 'has-hint': true, 'has-samples': true },
             id: 'id6',
             name: 'name6',
             val: 'value6',
@@ -64,7 +64,7 @@
         },
         {
             block: 'input',
-            mods: { size: 's', 'has-hint': true },
+            mods: { size: 's', 'has-hint': true, 'has-samples': true },
             id: 'id7',
             name: 'name7',
             val: 'value7',

@@ -71,41 +71,6 @@
             hint: 'hint7',
             label: 'label7',
             samples: [{ text: 'sample1', val: 'value1' }, { text: 'sample2', val: 'value2' }]
-        },
-        {
-            block: 'input',
-            mods: { size: 's', 'has-hint': true },
-            id: 'id6',
-            name: 'name8',
-            val: 'value8',
-            hint: 'hint8',
-            label: 'label8',
-            messages: {
-                elem: 'message',
-                elemMods: { type: 'error', visibility: 'visible' },
-                content: 'error message'
-            }
-        },
-        {
-            block: 'input',
-            mods: { size: 's', 'has-hint': true },
-            id: 'id6',
-            name: 'name9',
-            val: 'value9',
-            hint: 'hint9',
-            label: 'label9',
-            messages: [
-                {
-                    elem: 'message',
-                    elemMods: { type: 'error' },
-                    content: 'error message'
-                },
-                {
-                    elem: 'message',
-                    elemMods: { type: 'info', visibility: 'visible' },
-                    content: 'error message'
-                }
-            ]
-        },
+        }
     ]
 })

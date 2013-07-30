@@ -9,7 +9,7 @@ block('input').elem('control')(
                 name: input.name,
                 value: input.val,
                 maxlength: input.maxLength,
-                tabindex: input.tabIndex,
+                tabindex: input.tabIndex
             };
 
         input.autocomplete === false && (attrs.autocomplete = 'off');
@@ -21,11 +21,7 @@ block('input').elem('control')(
     def()(function() {
         applyCtx({
             elem: 'box',
-            tag: 'span',
-            content: [
-                this.ctx,
-                this.mods.clear !== 'no' ? { elem: 'clear' } : ''
-            ]
+            content: this.ctx
         })
     })
 

@@ -1,5 +1,5 @@
 @media all and (min-width:0px) {
-    .input_clear_yes .input__box
+    .input_has-clear .input__box
     {
         /* padding-right for elem clear */
         padding-right: 29px;
@@ -12,7 +12,7 @@
 }
 
 /* ::after = fade */
-.input_clear_yes .input__box::after
+.input_has-clear .input__box::after
 {
     position: absolute;
     z-index: 3;

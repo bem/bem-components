@@ -1,6 +1,6 @@
 modules.define('i-bem__dom', function(provide, DOM) {
 
-DOM.decl({ block: 'input', modName: 'has-clear', modVal: 'yes' }, {
+DOM.decl({ block: 'input', modName: 'has-clear', modVal: true }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -32,7 +32,7 @@ DOM.decl({ block: 'input', modName: 'has-clear', modVal: 'yes' }, {
      * @return {Object} экземпляр блока input
      */
     _updateClear : function() {
-        return this.toggleMod(this.elem('clear'), 'visibility', 'visible', !!this._val);
+        return this.toggleMod(this.elem('clear'), 'visible', true, !!this._val);
     }
 }, {
     live : function() {

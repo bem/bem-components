@@ -1,6 +1,6 @@
-modules.define('test', ['i-bem__dom', 'jquery', 'BEMHTML'], function(provide, DOM, $, BEMHTML) {
+  modules.define('test', ['i-bem__dom', 'jquery', 'BEMHTML'], function(provide, DOM, $, BEMHTML) {
 
-describe('input_has-clear_yes', function() {
+describe('input_has-clear', function() {
     var input;
     afterEach(function() {
         DOM.destruct(input.domElem);
@@ -35,6 +35,7 @@ function buildInput(val) {
     return DOM.init(
             $(BEMHTML.apply({
                 block: 'input',
+                mods: { 'has-clear': true },
                 val: val
             })))
         .appendTo('body')
@@ -42,7 +43,7 @@ function buildInput(val) {
 }
 
 function isClearElemVisible(input) {
-    return input.hasMod(input.elem('clear'), 'visibility', 'visible');
+    return input.hasMod(input.elem('clear'), 'visible');
 }
 
 provide();

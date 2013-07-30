@@ -1,0 +1,6 @@
+block('input').mod('has-clear', true).elem('control').def()(function() {
+    applyCtx({
+        elem: 'box',
+        content: [this.ctx, { elem: 'clear' }]
+    })
+})

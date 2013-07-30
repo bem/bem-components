@@ -1,0 +1,19 @@
+block('link')(
+    tag()('a'),
+
+    attrs()(function() {
+        var attrs = {},
+            ctx = this.ctx,
+            url = ctx.url,
+            typeOfUrl = typeof url;
+
+        typeOfUrl !== 'undefined' && (attrs.href = typeOfUrl === 'string'?
+            url :
+            BEMHTML.apply(url)); // в урле может лежать bemjson
+
+        ctx.title && (attrs.title = ctx.title);
+        ctx.target && (attrs.target = ctx.target);
+
+        return attrs;
+    })
+)

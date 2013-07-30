@@ -35,8 +35,7 @@ module.exports = {
     },
     'bem-pr' : {
         type     : 'git',
-        url      : 'git://github.com/narqo/bem-pr.git',
-        treeish  : '0.1.0'
+        url      : 'git://github.com/narqo/bem-pr.git'
     },
     'bem-yana' : {
         type     : 'git',

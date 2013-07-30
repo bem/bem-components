@@ -9,7 +9,7 @@ describe('input_has-clear', function() {
     it('should be focused on box click', function() {
         input = buildInput('');
         input.elem('box').trigger('pointerclick');
-        input.hasMod('focused', 'yes').should.be.true;
+        input.hasMod('focused').should.be.true;
     });
 });
 

@@ -5,33 +5,41 @@ modules.define('i-bem__dom', function(provide, DOM) {
  * @name Input
  */
 DOM.decl('input', /** @lends Input.prototype */ {
+    beforeSetMod : {
+        'focused' : {
+            true : function() {
+                if(this.hasMod('disabled'))
+                    return false;
+            }
+        }
+    },
+
     onSetMod : {
         'js' : {
             'inited' : function() {
                 var control = this.elem('control');
 
                 this._val = control.val();
+                this._focused = false;
 
                 // NOTE: если так получилось, что мы уже в фокусе, то синхронизируем состояние
                 this.__self.getActiveDomNode() === control[0] &&
-                    (this.setMod('focused', 'yes')._focused = true);
+                    (this.setMod('focused')._focused = true);
             }
         },
 
         'disabled' : function(modName, modVal) {
-            this.elem('control').attr('disabled', modVal === 'yes');
+            this.elem('control').attr('disabled', modVal);
         },
 
         'focused' : function(modName, modVal) {
-            if(this.hasMod('disabled', 'yes')) return false;
-
-            var focused = modVal == 'yes';
-
-            focused?
+            modVal?
                 this._focused || this._focus() :
                 this._focused && this._blur();
 
-            this.nextTick(function() { this.trigger(focused? 'focus' : 'blur') });
+            this.nextTick(function() {
+                this.trigger(modVal? 'focus' : 'blur');
+            });
         }
     },
 
@@ -42,7 +50,7 @@ DOM.decl('input', /** @lends Input.prototype */ {
      * false в остальных случаях
      */
     isDisabled : function() {
-        return this.hasMod('disabled', 'yes');
+        return this.hasMod('disabled');
     },
 
     /**
@@ -94,7 +102,7 @@ DOM.decl('input', /** @lends Input.prototype */ {
      */
     _onFocus : function() {
         this._focused = true;
-        return this.setMod('focused', 'yes');
+        return this.setMod('focused');
     },
 
     /**

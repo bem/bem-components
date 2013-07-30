@@ -15,5 +15,4 @@ block('input')(
         ctx.samples && content.push({ elem: 'samples', samples: ctx.samples });
         return content;
     })
-
 )

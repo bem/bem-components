@@ -22,7 +22,7 @@ DOM.decl({ block: 'input', modName: 'has-clear', modVal: true }, {
     _onClearClick : function() {
         return this
             .val('', { source : 'clear' })
-            .setMod('focused', 'yes');
+            .setMod('focused');
     },
 
     /**

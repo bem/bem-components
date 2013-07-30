@@ -38,7 +38,7 @@ DOM.decl({ block : 'input', modName : 'autofocus', modVal : 'hidden' }, {
     },
 
     _onDocKeyDown : function(e) {
-        if(this.hasMod('focused', 'yes')) return;
+        if(this.hasMod('focused')) return;
 
         if(isTextKey(e) && !this.__self.isTextDomNode(this.__self.getActiveDomNode())) {
             // ставим курсор в конец строки и добавляем пробел
@@ -59,7 +59,7 @@ DOM.decl({ block : 'input', modName : 'autofocus', modVal : 'hidden' }, {
                 inputDomNode.setSelectionRange(val.length, val.length);
             }
 
-            this.setMod('focused', 'yes');
+            this.setMod('focused');
         }
     }
 });

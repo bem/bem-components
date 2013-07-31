@@ -1,10 +1,6 @@
 modules.define('i-bem__dom', function(provide, DOM) {
 
-/**
- * @namespace
- * @name Input
- */
-DOM.decl('input', /** @lends Input.prototype */ {
+DOM.decl('input', {
     beforeSetMod : {
         'focused' : {
             true : function() {
@@ -22,7 +18,7 @@ DOM.decl('input', /** @lends Input.prototype */ {
                 this._val = control.val();
                 this._focused = false;
 
-                // NOTE: если так получилось, что мы уже в фокусе, то синхронизируем состояние
+                // NOTE: if control already in focus we need to synchronize state
                 this.__self.getActiveDomNode() === control[0] &&
                     (this.setMod('focused')._focused = true);
             }
@@ -42,20 +38,18 @@ DOM.decl('input', /** @lends Input.prototype */ {
     },
 
     /**
-     * Метод для проверки наличия у блока модификатора disabled
-     * @protected
-     * @return {Boolean} true - если блок находится в отключенном состоянии,
-     * false в остальных случаях
+     * Returns whether the control is disabled
+     * @returns {Boolean}
      */
     isDisabled : function() {
         return this.hasMod('disabled');
     },
 
     /**
-     * Возвращает/устанавливает текущее значение
-     * @param {String} [val] значение
-     * @param {Object} [data] дополнительные данные
-     * @returns {String|BEM} если передан параметр val, то возвращается сам блок, если не передан -- текущее значение
+     * Gets/sets control value
+     * @param {String} [val] value, if present then the value is set, otherwise the current value is returned
+     * @param {Object} [data] additional data, for case if value is set
+     * @returns {String|this}
      */
     val : function(val, data) {
         if(!arguments.length) return this._val;
@@ -64,14 +58,19 @@ DOM.decl('input', /** @lends Input.prototype */ {
 
         if(this._val !== val) {
             this._val = val;
-
-            var input = this.elem('control');
-            input.val() !== val && input.val(val);
-
+            this.elem('control').val(val);
             this.emit('change', data);
         }
 
         return this;
+    },
+
+    /**
+     * Returns name of control
+     * @returns {String}
+     */
+    name : function() {
+        return this.elem('control').attr('name');
     },
 
     /**
@@ -85,45 +84,20 @@ DOM.decl('input', /** @lends Input.prototype */ {
             0;
     },
 
-    /**
-     * Метод для возврата имени нативного контрола
-     * @param  {[type]} name [description]
-     * @return {String} имя нативного контрола
-     */
-    name : function(name) {
-        return this.elem('control').attr('name');
-    },
-
-    /**
-     * Обработчик события выставления фокуса на элемент control блока
-     * @return {Object} экземпляр блока input
-     */
     _onFocus : function() {
         this._focused = true;
-        return this.setMod('focused');
+        this.setMod('focused');
     },
 
-    /**
-     * Обработчик события сброса фокуса с элемента control блока input
-     * @return {Object} экземпляр блока input
-     */
     _onBlur : function() {
         this._focused = false;
-        return this.delMod('focused');
+        this.delMod('focused');
     },
 
-    /**
-     * Выставляем фокус для элемента control
-     * @private
-     */
     _focus : function() {
         this.elem('control').focus();
     },
 
-    /**
-     * Убираем фокус с элемента control
-     * @private
-     */
     _blur : function() {
         this.elem('control').blur();
     }

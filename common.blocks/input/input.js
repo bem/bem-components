@@ -37,7 +37,7 @@ DOM.decl('input', /** @lends Input.prototype */ {
                 this._focused || this._focus() :
                 this._focused && this._blur();
 
-            this.trigger(modVal? 'focus' : 'blur');
+            this.emit(modVal? 'focus' : 'blur');
         }
     },
 
@@ -68,7 +68,7 @@ DOM.decl('input', /** @lends Input.prototype */ {
             var input = this.elem('control');
             input.val() !== val && input.val(val);
 
-            this.trigger('change', data);
+            this.emit('change', data);
         }
 
         return this;

@@ -56,7 +56,7 @@ describe('input', function() {
             input.elem('control')[0].should.not.be.equal(getActiveDomNode());
         });
 
-        it('should trigger focus event after focused', function() {
+        it('should emit focus event after focused', function() {
             var spy = sinon.spy();
 
             input
@@ -66,7 +66,7 @@ describe('input', function() {
             spy.should.have.been.calledOnce;
         });
 
-        it('should trigger blur event after blured', function() {
+        it('should emit blur event after blured', function() {
             var spy = sinon.spy();
 
             input
@@ -79,7 +79,7 @@ describe('input', function() {
     });
 
     describe('val', function() {
-        it('should trigger "change" event when value changed', function() {
+        it('should emit "change" event when value changed', function() {
             var spy = sinon.spy();
             input.on('change', spy);
 

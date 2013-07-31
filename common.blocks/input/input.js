@@ -37,9 +37,7 @@ DOM.decl('input', /** @lends Input.prototype */ {
                 this._focused || this._focus() :
                 this._focused && this._blur();
 
-            this.nextTick(function() {
-                this.trigger(modVal? 'focus' : 'blur');
-            });
+            this.trigger(modVal? 'focus' : 'blur');
         }
     },
 

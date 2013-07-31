@@ -1,7 +1,7 @@
 modules.define(
     'test',
-    ['i-bem__dom', 'jquery', 'BEMHTML', 'sinon', 'next-tick'],
-    function(provide, DOM, $, BEMHTML, sinon, nextTick) {
+    ['i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, DOM, $, BEMHTML, sinon) {
 
 function getActiveDomNode() {
     return DOM.doc[0].activeElement;
@@ -56,20 +56,17 @@ describe('input', function() {
             input.elem('control')[0].should.not.be.equal(getActiveDomNode());
         });
 
-        it('should trigger focus event after focused', function(done) {
+        it('should trigger focus event after focused', function() {
             var spy = sinon.spy();
 
             input
                 .on('focus', spy)
                 .setMod('focused');
 
-            nextTick(function() {
-                spy.should.have.been.calledOnce;
-                done();
-            })
+            spy.should.have.been.calledOnce;
         });
 
-        it('should trigger blur event after blured', function(done) {
+        it('should trigger blur event after blured', function() {
             var spy = sinon.spy();
 
             input
@@ -77,10 +74,7 @@ describe('input', function() {
                 .setMod('focused')
                 .delMod('focused');
 
-            nextTick(function() {
-                spy.should.have.been.calledOnce;
-                done();
-            })
+            spy.should.have.been.calledOnce;
         });
     });
 

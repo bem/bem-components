@@ -27,7 +27,7 @@ DOM.decl({ block : 'input', modName : 'autofocus', modVal : 'hidden' }, {
         },
 
         'focused' : {
-            'yes' : function() {
+            true : function() {
                 this.__base.apply(this, arguments);
 
                 this

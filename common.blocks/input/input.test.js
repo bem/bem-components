@@ -1,17 +1,13 @@
 modules.define(
     'test',
-    ['i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
-    function(provide, DOM, $, BEMHTML, sinon) {
-
-function getActiveDomNode() {
-    return DOM.doc[0].activeElement;
-}
+    ['i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
+    function(provide, BEMDOM, $, dom, BEMHTML, sinon) {
 
 describe('input', function() {
     var input;
 
     beforeEach(function() {
-        input = DOM.init(
+        input = BEMDOM.init(
                 $(BEMHTML.apply({
                     block: 'input',
                     val: 'bla'
@@ -21,7 +17,7 @@ describe('input', function() {
     });
 
     afterEach(function() {
-        DOM.destruct(input.domElem);
+        BEMDOM.destruct(input.domElem);
     });
 
     describe('focus/blur', function() {
@@ -39,7 +35,7 @@ describe('input', function() {
 
         it('should be focused after "focused" mod set', function() {
             input.setMod('focused');
-            input.elem('control')[0].should.be.equal(getActiveDomNode());
+            input.elem('control')[0].should.be.equal(dom.getFocused()[0]);
         });
 
         it('should not set "focused" mod if it has "disabled" mod', function() {
@@ -49,11 +45,18 @@ describe('input', function() {
             input.hasMod('focused').should.be.false;
         });
 
+        it('should set "focused" mod if input have been focused before block init', function() {
+            var domElem = $(BEMHTML.apply({ block: 'input' })).appendTo('body');
+            domElem.find('.input__control').focus();
+            input = BEMDOM.init(domElem).bem('input');
+            input.hasMod('focused').should.be.true;
+        });
+
         it('should be blured after "focused" mod unset', function() {
             input
                 .setMod('focused')
                 .delMod('focused');
-            input.elem('control')[0].should.not.be.equal(getActiveDomNode());
+            input.elem('control')[0].should.not.be.equal(dom.getFocused()[0]);
         });
 
         it('should emit focus event after focused', function() {

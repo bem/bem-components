@@ -1,9 +1,12 @@
 [{
     mustDeps: { block: 'i-bem', elem: 'dom' },
-    shouldDeps: {
-        mods: ['disabled', 'focused'],
-        elems: ['box', 'control']
-    }
+    shouldDeps: [
+        {
+            mods: ['disabled', 'focused'],
+            elems: ['box', 'control']
+        },
+        'dom'
+    ]
 },
 {
     tech: 'test.js',

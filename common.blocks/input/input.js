@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', function(provide, DOM) {
+modules.define('i-bem__dom', ['dom'], function(provide, dom, BEMDOM) {
 
-DOM.decl('input', {
+BEMDOM.decl('input', {
     beforeSetMod : {
         'focused' : {
             true : function() {
@@ -18,9 +18,8 @@ DOM.decl('input', {
                 this._val = control.val();
                 this._focused = false;
 
-                // NOTE: if control already in focus we need to synchronize state
-                this.__self.getActiveDomNode() === control[0] &&
-                    (this.setMod('focused')._focused = true);
+                // if control already in focus we need to synchronize state
+                dom.containsFocus(control) && (this.setMod('focused')._focused = true);
             }
         },
 
@@ -112,19 +111,9 @@ DOM.decl('input', {
             });
 
         return false;
-    },
-
-    getActiveDomNode : function() {
-        // В iframe в IE9: "Error: Unspecified error."
-        try { return DOM.doc[0].activeElement } catch (e) {}
-    },
-
-    isTextDomNode : function(node) {
-        var tag = node.tagName.toLowerCase();
-        return tag === 'input' || tag === 'textarea';
     }
 });
 
-provide(DOM);
+provide(BEMDOM);
 
 });

@@ -1,22 +1,6 @@
-modules.define('i-bem__dom', function(provide, DOM) {
+modules.define('i-bem__dom', ['dom'], function(provide, dom, BEMDOM) {
 
-/**
- * Хелпер для определения типа нажатой клавиши
- * возвращает true в случае, если нажатая клавиша вводит текст
- */
-function isTextKey(e) {
-    var keyCode = e.charCode || e.keyCode || e.which || 0;
-    // TODO: проверку можно сделать проще, если проверять обратное -- что нажата системная клавиша
-    if (!e.ctrlKey && !e.altKey && !e.metaKey && (
-            (keyCode >= 48 && keyCode <= 57) ||     //isDigit
-            (keyCode >= 96 && keyCode <= 105) ||    //isNumpad
-            (keyCode >= 65 && keyCode <= 90) ||     //isLetter
-            (keyCode >= 1025 && keyCode <= 1071) || //isLetter (кирилица в Opera)
-            keyCode === 0))                         //isLetter (кирилица в FF)
-        return true;
-}
-
-DOM.decl({ block : 'input', modName : 'autofocus', modVal : 'hidden' }, {
+BEMDOM.decl({ block : 'input', modName : 'autofocus', modVal : 'hidden' }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -40,9 +24,9 @@ DOM.decl({ block : 'input', modName : 'autofocus', modVal : 'hidden' }, {
     _onDocKeyDown : function(e) {
         if(this.hasMod('focused')) return;
 
-        if(isTextKey(e) && !this.__self.isTextDomNode(this.__self.getActiveDomNode())) {
+        if(isTextKey(e) && !dom.isEditable(dom.getFocused())) {
             // ставим курсор в конец строки и добавляем пробел
-            // TODO: что за пробел?? o_0
+            // пробел нужен для того чтобы мы начинали набирать после автофокуса новое слово
             var inputDomNode = this.elem('control')[0],
                 val = this.val();
 
@@ -64,6 +48,22 @@ DOM.decl({ block : 'input', modName : 'autofocus', modVal : 'hidden' }, {
     }
 });
 
-provide(DOM);
+provide(BEMDOM);
+
+/**
+ * Хелпер для определения типа нажатой клавиши
+ * возвращает true в случае, если нажатая клавиша вводит текст
+ */
+function isTextKey(e) {
+    var keyCode = e.charCode || e.keyCode || e.which || 0;
+    // TODO: проверку можно сделать проще, если проверять обратное -- что нажата системная клавиша
+    if (!e.ctrlKey && !e.altKey && !e.metaKey && (
+            (keyCode >= 48 && keyCode <= 57) ||     //isDigit
+            (keyCode >= 96 && keyCode <= 105) ||    //isNumpad
+            (keyCode >= 65 && keyCode <= 90) ||     //isLetter
+            (keyCode >= 1025 && keyCode <= 1071) || //isLetter (кирилица в Opera)
+            keyCode === 0))                         //isLetter (кирилица в FF)
+        return true;
+}
 
 });

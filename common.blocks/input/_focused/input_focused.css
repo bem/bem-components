@@ -1,0 +1,9 @@
+/* ::after = fade */
+.input_focused .input__box::after
+{
+    /* Здесь раньше был display: none, но
+      с ним для FF не пробрасывается click после установки фокуса (LEGO-9448)
+      visibility: hidden решает эту проблему и не  и не влияет на визуальное представление компонента
+    */
+    visibility: hidden;
+}

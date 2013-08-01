@@ -7,13 +7,7 @@ describe('input', function() {
     var input;
 
     beforeEach(function() {
-        input = BEMDOM.init(
-                $(BEMHTML.apply({
-                    block: 'input',
-                    val: 'bla'
-                })))
-            .appendTo('body')
-            .bem('input');
+        input = buildInput({ block: 'input', val: 'bla' });
     });
 
     afterEach(function() {
@@ -35,7 +29,7 @@ describe('input', function() {
 
         it('should be focused after "focused" mod set', function() {
             input.setMod('focused');
-            input.elem('control')[0].should.be.equal(dom.getFocused()[0]);
+            dom.containsFocus(input.elem('control')).should.be.true;
         });
 
         it('should not set "focused" mod if it has "disabled" mod', function() {
@@ -45,18 +39,25 @@ describe('input', function() {
             input.hasMod('focused').should.be.false;
         });
 
-        it('should set "focused" mod if input have been focused before block init', function() {
+        it('should set "focused" mod if input have been focused before init', function() {
             var domElem = $(BEMHTML.apply({ block: 'input' })).appendTo('body');
             domElem.find('.input__control').focus();
-            input = BEMDOM.init(domElem).bem('input');
+            var input = BEMDOM.init(domElem).bem('input');
             input.hasMod('focused').should.be.true;
+            BEMDOM.destruct(input.domElem);
+        });
+
+        it('should focus control if input already has focused mod before init', function() {
+            var input = buildInput({ block: 'input', mods: { focused: true }});
+            dom.containsFocus(input.elem('control')).should.be.true;
+            BEMDOM.destruct(input.domElem);
         });
 
         it('should be blured after "focused" mod unset', function() {
             input
                 .setMod('focused')
                 .delMod('focused');
-            input.elem('control')[0].should.not.be.equal(dom.getFocused()[0]);
+            dom.containsFocus(input.elem('control')).should.be.false;
         });
 
         it('should emit focus event after focused', function() {
@@ -107,5 +108,10 @@ describe('input', function() {
 });
 
 provide();
+
+function buildInput(bemjson) {
+    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))
+        .bem('input');
+}
 
 });

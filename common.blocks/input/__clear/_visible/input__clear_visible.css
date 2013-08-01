@@ -1,0 +1,8 @@
+.input__clear_visible
+{
+	visibility: visible;
+
+	opacity: 0.2;
+
+	cursor: pointer;
+}

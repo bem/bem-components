@@ -1,7 +1,7 @@
 modules.define('i-bem__dom', ['tick', 'idle'], function(provide, tick, idle, DOM) {
 
 var instances = [],
-    bindedToTick,
+    boundToTick,
     update = function () {
         var instance, i = 0;
         while(instance = instances[i++]) {
@@ -16,8 +16,8 @@ DOM.decl('input', {
                 this.__base.apply(this, arguments);
 
                 // факт подписки
-                if(!bindedToTick) {
-                    bindedToTick = true;
+                if(!boundToTick) {
+                    boundToTick = true;
                     tick
                         .on('tick', update)
                         .start();

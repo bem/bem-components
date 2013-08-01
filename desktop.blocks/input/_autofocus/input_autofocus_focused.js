@@ -1,21 +1,16 @@
-modules.define('i-bem__dom', function(provide, DOM) {
+modules.define('i-bem__dom', ['dom'], function(provide, dom, BEMDOM) {
 
-DOM.decl({ block : 'input', modName : 'autofocus', modVal : 'focused' }, {
+BEMDOM.decl({ block : 'input', modName : 'autofocus', modVal : 'focused' }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-
-                var activeDomNode = this.__self.getActiveDomNode();
-                // если фокус нигде не стоит или стоит не в текстовом элементе,
-                // то делаем автофокус
-                activeDomNode && this.__self.isTextDomNode(activeDomNode) ||
-                    this.setMod('focused', 'yes');
+                dom.isEditable(dom.getFocused()) || this.setMod('focused');
             }
         }
     }
 });
 
-provide(DOM);
+provide(BEMDOM);
 
 });

@@ -1,85 +1,88 @@
 modules.define(
     'test',
-    ['i-bem__dom', 'jquery', 'BEMHTML', 'sinon', 'next-tick'],
-    function(provide, DOM, $, BEMHTML, sinon, nextTick) {
-
-function getActiveDomNode() {
-    return DOM.doc[0].activeElement;
-}
+    ['i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
+    function(provide, BEMDOM, $, dom, BEMHTML, sinon) {
 
 describe('input', function() {
     var input;
 
     beforeEach(function() {
-        input = DOM.init(
+        input = BEMDOM.init(
                 $(BEMHTML.apply({
                     block: 'input',
-                    content: { elem: 'control' },
-                    value: 'bla'
+                    val: 'bla'
                 })))
             .appendTo('body')
             .bem('input');
     });
 
     afterEach(function() {
-        DOM.destruct(input.domElem);
+        BEMDOM.destruct(input.domElem);
     });
 
     describe('focus/blur', function() {
-        it('should have focused_yes mod on focus', function() {
+        it('should have "focused" mod on focus', function() {
             input.elem('control').focus();
-            input.hasMod('focused', 'yes').should.be.true;
+            input.hasMod('focused').should.be.true;
         });
 
-        it('should not have focused_yes mod on blur', function() {
+        it('should not have "focused" mod on blur', function() {
             input.elem('control')
                 .focus()
                 .blur();
-            input.hasMod('focused', 'yes').should.be.false;
+            input.hasMod('focused').should.be.false;
         });
 
-        it('should be focused after focused_yes mod set', function() {
-            input.setMod('focused', 'yes');
-            input.elem('control')[0].should.be.equal(getActiveDomNode());
+        it('should be focused after "focused" mod set', function() {
+            input.setMod('focused');
+            input.elem('control')[0].should.be.equal(dom.getFocused()[0]);
         });
 
-        it('should be blured after focused_yes mod unset', function() {
+        it('should not set "focused" mod if it has "disabled" mod', function() {
             input
-                .setMod('focused', 'yes')
-                .delMod('focused');
-            input.elem('control')[0].should.not.be.equal(getActiveDomNode());
+                .setMod('disabled')
+                .setMod('focused');
+            input.hasMod('focused').should.be.false;
         });
 
-        it('should trigger focus event after focused', function(done) {
+        it('should set "focused" mod if input have been focused before block init', function() {
+            var domElem = $(BEMHTML.apply({ block: 'input' })).appendTo('body');
+            domElem.find('.input__control').focus();
+            input = BEMDOM.init(domElem).bem('input');
+            input.hasMod('focused').should.be.true;
+        });
+
+        it('should be blured after "focused" mod unset', function() {
+            input
+                .setMod('focused')
+                .delMod('focused');
+            input.elem('control')[0].should.not.be.equal(dom.getFocused()[0]);
+        });
+
+        it('should emit focus event after focused', function() {
             var spy = sinon.spy();
 
             input
                 .on('focus', spy)
-                .setMod('focused', 'yes');
+                .setMod('focused');
 
-            nextTick(function() {
-                spy.should.have.been.calledOnce;
-                done();
-            })
+            spy.should.have.been.calledOnce;
         });
 
-        it('should trigger blur event after blured', function(done) {
+        it('should emit blur event after blured', function() {
             var spy = sinon.spy();
 
             input
                 .on('blur', spy)
-                .setMod('focused', 'yes')
+                .setMod('focused')
                 .delMod('focused');
 
-            nextTick(function() {
-                spy.should.have.been.calledOnce;
-                done();
-            })
+            spy.should.have.been.calledOnce;
         });
     });
 
     describe('val', function() {
-        it('should trigger change-event when value changed', function() {
+        it('should emit "change" event when value changed', function() {
             var spy = sinon.spy();
             input.on('change', spy);
 

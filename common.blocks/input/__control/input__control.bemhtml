@@ -3,12 +3,16 @@ block('input').elem('control')(
     tag()('input'),
 
     attrs()(function() {
-        var attrs = {
-            id: this._input.id,
-            name: this._input.name,
-            value: this._input.value
-        };
+        var input = this._input,
+            attrs = {
+                id: input.id,
+                name: input.name,
+                value: input.val,
+                maxlength: input.maxLength,
+                tabindex: input.tabIndex
+            };
 
+        input.autocomplete === false && (attrs.autocomplete = 'off');
         this.mods.disabled && (attrs.disabled = 'disabled');
 
         return attrs;
@@ -17,11 +21,7 @@ block('input').elem('control')(
     def()(function() {
         applyCtx({
             elem: 'box',
-            tag: 'span',
-            content: [
-                this.ctx,
-                this.mods.clear !== 'no' ? { elem: 'clear' } : ''
-            ]
+            content: this.ctx
         })
     })
 

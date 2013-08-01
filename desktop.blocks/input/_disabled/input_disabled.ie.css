@@ -1,0 +1,10 @@
+.input_disabled .input__label,
+.input_disabled .input__hint
+{
+    color: #c6c6c6;
+}
+
+.input_disabled .input__control
+{
+    filter: alpha(opacity = 60);
+}

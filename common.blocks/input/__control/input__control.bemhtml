@@ -18,11 +18,13 @@ block('input').elem('control')(
         return attrs;
     }),
 
-    def()(function() {
-        applyCtx({
-            elem: 'box',
-            content: this.ctx
-        })
+    def().match(function() { return !this._input__control })(function() {
+        applyCtx(
+            { '_input__control': true },
+            {
+                elem: 'box',
+                content: this.ctx
+            })
     })
 
 )

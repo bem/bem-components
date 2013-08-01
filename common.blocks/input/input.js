@@ -16,10 +16,11 @@ BEMDOM.decl('input', {
                 var control = this.elem('control');
 
                 this._val = control.val();
-                this._focused = false;
+                this._focused = dom.containsFocus(control);
 
-                // if control already in focus we need to synchronize state
-                dom.containsFocus(control) && (this.setMod('focused')._focused = true);
+                this._focused?
+                    this.setMod('focused') : // if control already in focus we need to set focused mod
+                    this.hasMod('focused') && this._focus(); // if block already has focused mod we need to focus control
             }
         },
 

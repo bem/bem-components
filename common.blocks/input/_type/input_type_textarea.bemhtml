@@ -6,8 +6,8 @@ block('input').mod('type', 'textarea').elem('control')(
         var attrs = applyNext();
         delete attrs.value;
         return this._.extend({ rows: 10, cols: 10 }, attrs);
-    })
+    }),
 
-    content()(function() { return this._input.value })
+    content()(function() { return this._input.val })
 
 )

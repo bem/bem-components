@@ -3,9 +3,12 @@ block('input').mod('type', 'textarea').elem('control')(
     tag()('textarea'),
 
     attrs()(function() {
-        var attrs = applyNext();
+        var attrs = applyNext(),
+            input = this._input;
         delete attrs.value;
-        return this._.extend({ rows: 10, cols: 10 }, attrs);
+        return this._.extend(
+            { rows: input.rows || 10, cols: input.cols || 10 },
+            attrs);
     }),
 
     content()(function() { return this._input.val })

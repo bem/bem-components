@@ -1,5 +1,5 @@
 var PATH = require('path'),
-    environ = require('../environ'),
+    environ = require('bem-environ'),
 
     join = PATH.join,
     resolve = PATH.resolve.bind(null, __dirname),

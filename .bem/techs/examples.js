@@ -1,5 +1,5 @@
 var PATH = require('path'),
-    environ = require('../environ');
+    environ = require('bem-environ');
 
 // путь до базовой технологии
 exports.baseTechPath = environ.getLibPath('bem-pr', 'bem/techs/examples.js');

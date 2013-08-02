@@ -1,6 +1,6 @@
 var PATH = require('path'),
     BEM = require('bem'),
-    environ = require('../../.bem/environ');
+    environ = require('bem-environ');
 
 exports.baseLevelPath = environ.getLibPath('bem-pr', 'bem/levels/sets.js');
 

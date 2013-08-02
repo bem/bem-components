@@ -1,6 +1,8 @@
 /*global MAKE:true */
 
-require('./nodes/arch');
+var environ = require('bem-environ')(__dirname);
+
+environ.extendMake(MAKE);
 
 
 MAKE.decl('Arch', {

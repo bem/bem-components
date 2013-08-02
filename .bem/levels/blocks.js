@@ -1,5 +1,5 @@
 var PATH = require('path'),
-    environ = require('../environ'),
+    environ = require('bem-environ'),
 
     join = PATH.join,
     resolve = PATH.resolve.bind(null, __dirname),
@@ -18,6 +18,7 @@ exports.getTechs = function() {
         'i18n.desc.wiki'             : join(PRJ_TECHS, 'i18n.desc.wiki'),
 
         'deps.js'                    : 'deps.js',
+        'js'                         : 'js-i',
         'css'                        : 'css',
         'ie.css'                     : 'ie.css',
         'ie6.css'                    : 'ie6.css',
@@ -32,7 +33,7 @@ exports.getTechs = function() {
         'examples'                   : join(PRJ_TECHS, 'examples.js'),
         'tests'                      : join(PRJ_TECHS, 'tests.js'),
         'test.js'                    : join(BEMPR_TECHS, 'test.js.js'),
-        'test.js+browser.js+bemhtml' : join(BEMPR_TECHS, 'test.js+browser.js+bemhtml.js'),
+        'test.js+browser.js+bemhtml' : join(BEMPR_TECHS, 'test.js+browser.js+bemhtml.js')
     };
 
 };

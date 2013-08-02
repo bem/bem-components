@@ -1,5 +1,5 @@
 var BEM = require('bem'),
-    environ = require('../../.bem/environ');
+    environ = require('bem-environ');
 
 exports.baseLevelPath = require.resolve('../../.bem/levels/bundles');
 

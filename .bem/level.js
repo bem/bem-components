@@ -1,4 +1,4 @@
-var environ = require('./environ');
+var environ = require('bem-environ');
 
 exports.baseLevelPath = require.resolve('bem/lib/levels/simple');
 

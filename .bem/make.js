@@ -1,9 +1,11 @@
 /*global MAKE:true */
 
-require('./nodes');
-
 var PATH = require('path'),
-    environ = require('./environ');
+    environ = require('bem-environ')(__dirname);
+
+environ.extendMake(MAKE);
+
+require('./nodes');
 
 try {
     var setsNodes = require(environ.getLibPath('bem-pr', 'bem/nodes/sets'));

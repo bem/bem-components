@@ -1,5 +1,5 @@
 var BEM = require('bem'),
-    environ = require('../../.bem/environ');
+    environ = require('bem-environ');
 
 exports.baseLevelPath = require.resolve('../../.bem/levels/bundles');
 
@@ -10,7 +10,9 @@ exports.getConfig = function() {
         bundleBuildLevels: [
                 'blocks-common', 'blocks-desktop'
             ]
-            .map(environ.getLibPath.bind(null, 'bem-bl'))
+            .map(function(path) {
+                return environ.getLibPath('bem-bl', path);
+            })
             .concat(this.resolvePaths(['../../common.blocks']))
 
     });

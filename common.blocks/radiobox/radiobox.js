@@ -38,7 +38,7 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
             },
 
             '' : function() {
-                this.delMod(this.elem('radio'), 'disabled');  
+                this.delMod(this.elem('radio'), 'disabled');
             }
 
         }
@@ -157,6 +157,16 @@ BEM.DOM.decl('radiobox', /** @lends block.prototype */ {
             }
         });
         return _this;
+
+    },
+
+    /**
+     * Метод позволяет получить активный элемент radio блока.
+     * @returns {jQuery} DOM elements
+     */
+    getCurrent: function() {
+
+        return this.findElem('radio', 'checked', 'yes');
 
     },
 

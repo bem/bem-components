@@ -54,31 +54,6 @@ DOM.decl('input', {
         }
     },
 
-    getSelectionEnd : function() {
-        var input = this.elem('control')[0];
-
-        if(typeof input.selectionEnd === 'number') {
-            return this.__base();
-        }
-
-        var res = 0,
-            range = DOM.doc[0].selection.createRange();
-
-        if(range && range.parentElement() === input) {
-            var len = input.value.length,
-                textInputRange = input.createTextRange();
-            textInputRange.moveToBookmark(range.getBookmark());
-
-            var endRange = input.createTextRange();
-            endRange.collapse(false);
-            res = textInputRange.compareEndPoints('EndToEnd', endRange) > -1 ?
-                len :
-                -textInputRange.moveEnd('character', -len);
-        }
-
-        return res;
-    },
-
     /**
      * Доопределяем обработчик события blur
      * для показа начала длинной строки в FF

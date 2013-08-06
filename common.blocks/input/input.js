@@ -73,17 +73,6 @@ BEMDOM.decl('input', {
         return this.elem('control').attr('name');
     },
 
-    /**
-     * @see http://stackoverflow.com/questions/4185821#4186100
-     * @return {Number} Позиция конца выделения. Если ничего не выделено, то возвращается 0.
-     */
-    getSelectionEnd : function() { // TODO: для чего это публичный метод, кто и как им пользуется?
-        var input = this.elem('control')[0];
-        return typeof input.selectionEnd === 'number'?
-            input.selectionEnd :
-            0;
-    },
-
     _onFocus : function() {
         this._focused = true;
         this.setMod('focused');

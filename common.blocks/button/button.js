@@ -1,22 +1,21 @@
-modules.define('i-bem__dom', ['jquery'], function(provide, $, DOM) {
+modules.define('i-bem__dom', ['jquery', 'dom'], function(provide, $, dom, BEMDOM) {
 
-/**
- * @namespace
- * @name Button
- */
-DOM.decl('button', /** @lends Button.prototype */ {
+BEMDOM.decl('button', {
+    beforeSetMod : function(modName, modVal) {
+        if(this.isDisabled() && modVal && ~['focused', 'hovered', 'pressed'].indexOf(modName))
+            return false;
+    },
+
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var disabled = this.isDisabled(),
+                var isDisabled = this.isDisabled(),
                     domElem = this.domElem;
 
-                (this._href = domElem.attr('href')) && disabled &&
+                (this._href = domElem.attr('href')) && isDisabled &&
                     domElem.removeAttr('href');
 
-                domElem.attr('disabled', disabled);
-
-                this._isFocusable = 'a button'.indexOf(domElem[0].tagName.toLowerCase()) > -1;
+                domElem.attr('disabled', isDisabled);
             },
 
             '' : function() {
@@ -25,60 +24,55 @@ DOM.decl('button', /** @lends Button.prototype */ {
         },
 
         'focused' : {
-            'yes' : function() {
-                if(this.isDisabled()) return false;
-
+            true : function() {
                 this
-                    .bindToWin('unload', function() { this.delMod('focused') })
+                    .bindToWin('unload', this._onUnload)
                     .bindTo('keydown', this._onKeyDown);
 
-                this._isFocusable && (this._isControlFocused() || this.domElem.focus());
+                dom.isFocusable(this.domElem) && (dom.containsFocus(this.domElem) || this.domElem.focus());
 
-                this.nextTick(function() { this.trigger('focus') });
+                this.trigger('focus');
             },
 
             '' : function() {
                 this
-                    .unbindFromWin('unload')
-                    .unbindFrom('keydown');
+                    .unbindFromWin('unload', this._onUnload)
+                    .unbindFrom('keydown', this._onKeyDown);
 
-                this._isFocusable && this._isControlFocused() && this.domElem.blur();
+                dom.isFocusable(this.domElem) && dom.containsFocus(this.domElem) && this.domElem.blur();
 
-                this.nextTick(function() { this.trigger('blur') });
+                this.trigger('blur');
             }
         },
 
-        'disabled' : function(modName, modVal) {
-            var disable = modVal == 'yes',
-                domElem = this.domElem;
+        'disabled' : {
+            '*' : function(_, modVal) {
+                this.domElem.attr('disabled', modVal);
+            },
 
-            this._href && (disable?
-                domElem.removeAttr('href') :
-                domElem.attr('href', this._href));
+            true : function() {
+                this._href && this.domElem.removeAttr('href');
+                this.delMod('pressed');
+            },
 
-            // TODO: нужно более явно отжимать кнопку,
-            // а не создавать фейковое событие keyup,
-            // которое кто-то может слушать и использовать
-            disable && domElem.keyup();
-
-            domElem.attr('disabled', disable);
+            '' : function() {
+                this._href && this.domElem.attr('href', this._href);
+            }
         },
 
-        'pressed' : function(modName, modVal) {
-            this.setMod('focused', 'yes');
-            this.isDisabled() || this.trigger(modVal == 'yes' ? 'press' : 'release');
+        'pressed' : function(_, modVal) {
+            this.trigger(modVal? 'press' : 'release');
         },
 
         'hovered' : {
             '' : function() {
                 this.delMod('pressed');
             }
-        },
-
-        '*' : function(modName) {
-            if(this.isDisabled() && 'hovered pressed'.indexOf(modName) > -1)
-                return false;
         }
+    },
+
+    _onUnload : function() {
+        this.delMod('focused');
     },
 
     /**
@@ -103,54 +97,42 @@ DOM.decl('button', /** @lends Button.prototype */ {
         }
     },
 
-    /**
-     * Проверяет в фокусе ли контрол
-     * @private
-     * @returns {Boolean}
-     */
-    _isControlFocused : function() {
-        try {
-            return this.containsDomElem($(DOM.doc[0].activeElement));
-        } catch(e) {
-            return false;
-        }
-    },
-
     _onKeyDown : function(e) {
         var keyCode = e.keyCode;
-        // имитируем state_pressed по нажатию на enter и space
+        // имитируем pressed по нажатию на enter и space
         if((keyCode == 13 || keyCode == 32) && !this._keyDowned) {
             this._keyDowned = true;
+            var onKeyUp = function() {
+                this
+                    .delMod('pressed')
+                    .unbindFrom('keyup', onKeyUp);
+
+                this._keyDowned = false;
+
+                // делаем переход по ссылке по space
+                keyCode == 32 && this._href &&
+                    (document.location = this._href);
+            };
             this
-                .setMod('pressed', 'yes')
-                .bindTo('keyup', function() {
-                    this
-                        .delMod('pressed')
-                        .unbindFrom('keyup');
-
-                    delete this._keyDowned;
-
-                    // делаем переход по ссылке по space
-                    keyCode == 32 && this.domElem.attr('href') &&
-                        (document.location = this.domElem.attr('href'));
-                });
+                .setMod('pressed')
+                .bindTo('keyup', onKeyUp);
         }
     },
 
     _onClick : function(e) {
         this.isDisabled()?
             e.preventDefault() :
-            this.nextTick(function() { this.trigger('click') });
+            this.trigger('click');
     }
-}, /** @lends Button */ {
+}, {
     live : function() {
         var eventsToMods = {
-            'mouseover' : { name : 'hovered', val : 'yes' },
-            'mouseout' : { name : 'hovered' },
-            'mousedown' : { name : 'pressed', val : 'yes' },
-            'mouseup' : { name : 'pressed' },
-            'focusin' : { name : 'focused', val : 'yes' },
-            'focusout' : { name : 'focused' }
+            mouseover : { name : 'hovered', val : true },
+            mouseout : { name : 'hovered' },
+            mousedown : { name : 'pressed', val : true },
+            mouseup : { name : 'pressed' },
+            focusin : { name : 'focused', val : true },
+            focusout : { name : 'focused' }
         };
 
         this
@@ -161,14 +143,11 @@ DOM.decl('button', /** @lends Button.prototype */ {
             })
             .liveBindTo('mousedown', function(e) {
                 var mod = eventsToMods[e.type];
-                e.which == 1 && this.setMod(mod.name, mod.val || '');
-
-                // отменяем blur после mousedown, если кнопка в фокусе
-                this._isControlFocused() && e.preventDefault();
+                e.which === 1 && this.setMod(mod.name, mod.val);
             });
     }
 });
 
-provide(DOM);
+provide(BEMDOM);
 
 });

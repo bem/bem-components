@@ -1,11 +1,11 @@
-.button_only-icon_yes .button__text
+.button_only-icon .button__text
 {
     display: inline-block;
 
     width: 4px;
 }
 
-.button_only-icon_yes .button__icon
+.button_only-icon .button__icon
 {
     position: absolute;
     top: 50%;

@@ -1,5 +1,5 @@
 @media all and (min-width:0px) {
-    .button_pressed_yes .button__text
+    .button_pressed .button__text
     {
         top: 1px;
     }

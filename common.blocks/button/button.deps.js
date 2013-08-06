@@ -8,7 +8,7 @@
         mods: {
             'focused': 'yes',
             'hovered': 'yes',
-            'disabled': 'yes', /* CHECKME: remove disabled from default dependencies? */
+            'disabled': 'yes',
             'pressed': 'yes'
         }
     }

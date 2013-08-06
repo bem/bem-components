@@ -3,14 +3,14 @@ modules.define(
     ['i-bem__dom', 'jquery', 'BEMHTML'],
     function(provide, BEMDOM, $, BEMHTML) {
 
-describe('input_autofocus_hidden', function() {
+describe('input_autofocus', function() {
     var input;
 
     beforeEach(function() {
         input = BEMDOM.init(
                 $(BEMHTML.apply({
                     block: 'input',
-                    mods: { autofocus: 'hidden' },
+                    mods: { autofocus: true },
                     val: 'bla'
                 })))
             .appendTo('body')

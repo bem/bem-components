@@ -1,6 +1,6 @@
 modules.define('i-bem__dom', ['dom'], function(provide, dom, BEMDOM) {
 
-BEMDOM.decl({ block : 'input', modName : 'autofocus', modVal : 'hidden' }, {
+BEMDOM.decl({ block : 'input', modName : 'autofocus', modVal : true }, {
     onSetMod : {
         'js' : {
             'inited' : function() {

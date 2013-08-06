@@ -2,7 +2,7 @@ modules.define('i-bem__dom', ['jquery', 'dom'], function(provide, $, dom, BEMDOM
 
 BEMDOM.decl('button', {
     beforeSetMod : function(modName, modVal) {
-        if(this.isDisabled() && modVal && ~['focused', 'hovered', 'pressed'].indexOf(modName))
+        if(this.isDisabled() && modVal && (modName === 'focused' || modName === 'pressed'))
             return false;
     },
 
@@ -16,10 +16,6 @@ BEMDOM.decl('button', {
                     domElem.removeAttr('href');
 
                 domElem.attr('disabled', isDisabled);
-            },
-
-            '' : function() {
-                this.delMod('focused');
             }
         },
 
@@ -39,7 +35,7 @@ BEMDOM.decl('button', {
                     .unbindFromWin('unload', this._onUnload)
                     .unbindFrom('keydown', this._onKeyDown);
 
-                dom.isFocusable(this.domElem) && dom.containsFocus(this.domElem) && this.domElem.blur();
+                dom.containsFocus(this.domElem) && this.domElem.blur();
 
                 this.trigger('blur');
             }
@@ -62,25 +58,15 @@ BEMDOM.decl('button', {
 
         'pressed' : function(_, modVal) {
             this.trigger(modVal? 'press' : 'release');
-        },
-
-        'hovered' : {
-            '' : function() {
-                this.delMod('pressed');
-            }
         }
     },
 
-    _onUnload : function() {
-        this.delMod('focused');
-    },
-
     /**
-     * Шорткат для проверки модификатора disabled_yes
+     * Returns whether the control is disabled
      * @returns {Boolean}
      */
     isDisabled : function() {
-        return this.hasMod('disabled', 'yes');
+        return this.hasMod('disabled');
     },
 
     /**
@@ -95,6 +81,10 @@ BEMDOM.decl('button', {
         } else {
             return this._href;
         }
+    },
+
+    _onUnload : function() {
+        this.delMod('focused');
     },
 
     _onKeyDown : function(e) {
@@ -126,24 +116,18 @@ BEMDOM.decl('button', {
     }
 }, {
     live : function() {
-        var eventsToMods = {
-            mouseover : { name : 'hovered', val : true },
-            mouseout : { name : 'hovered' },
-            mousedown : { name : 'pressed', val : true },
-            mouseup : { name : 'pressed' },
-            focusin : { name : 'focused', val : true },
-            focusout : { name : 'focused' }
-        };
-
         this
-            .liveBindTo('pointerclick', function(e) { this._onClick(e) })
-            .liveBindTo('mouseover mouseout mouseup focusin focusout', function(e) {
-                var mod = eventsToMods[e.type];
-                this.setMod(mod.name, mod.val || '');
+            .liveBindTo('pointerclick', function(e) {
+                this._onClick(e);
+            })
+            .liveBindTo('focusin focusout', function(e) {
+                this.setMod('focused', e.type === 'focusin');
+            })
+            .liveBindTo('mouseup', function() {
+                this.delMod('pressed');
             })
             .liveBindTo('mousedown', function(e) {
-                var mod = eventsToMods[e.type];
-                e.which === 1 && this.setMod(mod.name, mod.val);
+                e.which === 1 && this.setMod('pressed', true);
             });
     }
 });

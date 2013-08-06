@@ -43,7 +43,7 @@ $ npm install
 
 3. С помощью bem-tools устанавливаем все зависимые библиотеки:
 ```
-$ bem make vendor
+$ bem make libs
 ```
 
 4. Собираем примеры и тесты:

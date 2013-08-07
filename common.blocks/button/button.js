@@ -21,9 +21,7 @@ BEMDOM.decl('button', {
 
         'focused' : {
             true : function() {
-                this
-                    .bindToWin('unload', this._onUnload)
-                    .bindTo('keydown', this._onKeyDown);
+                this.bindToWin('unload', this._onUnload);
 
                 dom.isFocusable(this.domElem) && (dom.containsFocus(this.domElem) || this.domElem.focus());
 
@@ -31,9 +29,7 @@ BEMDOM.decl('button', {
             },
 
             '' : function() {
-                this
-                    .unbindFromWin('unload', this._onUnload)
-                    .unbindFrom('keydown', this._onKeyDown);
+                this.unbindFromWin('unload', this._onUnload);
 
                 dom.containsFocus(this.domElem) && this.domElem.blur();
 
@@ -85,28 +81,6 @@ BEMDOM.decl('button', {
 
     _onUnload : function() {
         this.delMod('focused');
-    },
-
-    _onKeyDown : function(e) {
-        var keyCode = e.keyCode;
-        // имитируем pressed по нажатию на enter и space
-        if((keyCode == 13 || keyCode == 32) && !this._keyDowned) {
-            this._keyDowned = true;
-            var onKeyUp = function() {
-                this
-                    .delMod('pressed')
-                    .unbindFrom('keyup', onKeyUp);
-
-                this._keyDowned = false;
-
-                // делаем переход по ссылке по space
-                keyCode == 32 && this._href &&
-                    (document.location = this._href);
-            };
-            this
-                .setMod('pressed')
-                .bindTo('keyup', onKeyUp);
-        }
     },
 
     _onClick : function(e) {

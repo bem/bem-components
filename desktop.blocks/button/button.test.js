@@ -41,6 +41,23 @@ describe('button', function() {
             button.hasMod('pressed').should.be.false;
         });
     });
+
+    describe('pressed', function() {
+        it('should set "pressed" mod on "space" or "enter" key pressed when focused', function() {
+            button.setMod('focused');
+            button.domElem.trigger($.Event('keydown', { keyCode: 22 }));
+            button.hasMod('pressed').should.be.false;
+            button.domElem.trigger('keyup');
+
+            button.domElem.trigger($.Event('keydown', { keyCode: 32 }));
+            button.hasMod('pressed').should.be.true;
+            button.domElem.trigger('keyup');
+            button.hasMod('pressed').should.be.false;
+
+            button.domElem.trigger($.Event('keydown', { keyCode: 13 }));
+            button.hasMod('pressed').should.be.true;
+        });
+    });
 });
 
 provide();

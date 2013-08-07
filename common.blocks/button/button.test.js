@@ -7,11 +7,12 @@ describe('button', function() {
     var button;
 
     beforeEach(function() {
-        button = buildButton({ block: 'button' });
+        button = BEMDOM.init($(BEMHTML.apply({ block: 'button' })).appendTo('body'))
+            .bem('button');
     });
 
     afterEach(function() {
-        button.domElem && BEMDOM.destruct(button.domElem);
+        BEMDOM.destruct(button.domElem);
     });
 
     describe('focus/blur', function() {
@@ -106,10 +107,5 @@ describe('button', function() {
 });
 
 provide();
-
-function buildButton(bemjson) {
-    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))
-        .bem('button');
-}
 
 });

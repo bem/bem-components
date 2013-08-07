@@ -63,16 +63,13 @@ describe('button', function() {
     });
 
     describe('press/release', function() {
-        it('should have "pressed" mod on left button mousedown', function() {
-            button.domElem.mousedown();
-            button.hasMod('pressed').should.be.false;
-
-            button.domElem.trigger($.Event('mousedown', { which : 1 }));
+        it('should have "pressed" mod on pointerdown', function() {
+            button.domElem.trigger($.Event('pointerdown'));
             button.hasMod('pressed').should.be.true;
         });
 
-        it('should delete "pressed" mod on mouseup', function() {
-            button.domElem.mouseout();
+        it('should delete "pressed" mod on pointerup', function() {
+            button.domElem.trigger('pointerup');
             button.hasMod('pressed').should.be.false;
         });
 

@@ -1,6 +1,6 @@
 [{
     mustDeps: [
-        { block: 'jquery', elem: 'pointerclick' },
+        { block: 'jquery', elem: 'pointer-events' },
         { block: 'i-bem', elems: ['dom'] }
     ],
     shouldDeps: {

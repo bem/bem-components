@@ -94,15 +94,15 @@ BEMDOM.decl('button', {
             .liveBindTo('pointerclick', function(e) {
                 this._onClick(e);
             })
+            .liveBindTo('pointerup', function() {
+                this.delMod('pressed');
+            })
+            .liveBindTo('pointerdown', function() {
+                this.setMod('pressed', true);
+            })
             .liveBindTo('focusin focusout', function(e) {
                 this.setMod('focused', e.type === 'focusin');
             })
-            .liveBindTo('mouseup', function() {
-                this.delMod('pressed');
-            })
-            .liveBindTo('mousedown', function(e) {
-                e.which === 1 && this.setMod('pressed', true);
-            });
     }
 });
 

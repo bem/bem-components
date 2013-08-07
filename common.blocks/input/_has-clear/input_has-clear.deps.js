@@ -1,5 +1,8 @@
 [{
-    shouldDeps: { elem: 'clear' }
+    shouldDeps: [
+        { elem: 'clear' },
+        { block: 'jquery', elem: 'pointer-events' }
+    ]
 },
 {
     tech: 'test.js',

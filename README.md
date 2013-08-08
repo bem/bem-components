@@ -1,4 +1,4 @@
-# BEM Controls Library
+# BEM Components Library
 
 ## Что это?
 
@@ -31,8 +31,8 @@
 
 1. Получаем исходники:
 ```
-$ git clone -b v2 git@github.com:bem/bem-controls.git
-$ cd bem-controls
+$ git clone -b v2 git@github.com:bem/bem-components.git
+$ cd bem-components
 ```
 
 2. Устанавливаем зависимости:

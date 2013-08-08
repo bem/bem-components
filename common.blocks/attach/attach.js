@@ -57,7 +57,7 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
     _update : function(data) {
 
         var fileName = this._getFileByPath(this.val()),
-            prevFileName = this.elem('text').html();
+            prevFileName = this.elem('text').text();
 
         if((data && data.mode == 'clear') || (fileName && fileName !== prevFileName)) {
 
@@ -88,7 +88,7 @@ BEM.DOM.decl('attach', /** @lends Attach.prototype */ {
     _setFile : function(fileName) {
 
         this.setMod(this.elem('holder'), 'state', fileName ? '' : 'hidden');
-        this.elem('text').html(fileName || this._noFileText);
+        this.elem('text').text(fileName || this._noFileText);
     },
 
     _extensionsToMods : {

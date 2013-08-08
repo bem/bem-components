@@ -35,11 +35,6 @@ DOM.decl('input', {
 
                 // сохраняем индекс в массиве инстансов чтобы потом быстро из него удалять
                 this._instanceIndex = instances.push(this) - 1;
-
-                /*Исправление для ошибки при которой в IE при вводе длинной строки после потери фокуса
-                 текст остается выровненным по правому краю */
-                var input = this.elem('control')[0];
-                input.attachEvent && input.attachEvent('onbeforedeactivate', this._onBeforeDeactivate);
             },
 
             '' : function() {
@@ -51,35 +46,6 @@ DOM.decl('input', {
                 var i = this._instanceIndex, instance;
                 while(instance = instances[i++]) --instance._instanceIndex;
             }
-        }
-    },
-
-    /**
-     * Доопределяем обработчик события blur
-     * для показа начала длинной строки в FF
-     * @private
-     */
-    _onBlur : function() {
-        this.__base.apply(this, arguments);
-
-        var input = this.elem('control')[0];
-        if(input.selectionStart && input.selectionEnd) {
-            input.selectionStart = input.selectionEnd = 0;
-        }
-    },
-
-    /**
-     * Перед снятием фокуса делаем видимым начало длинной строки в IE
-     * @param  {Object} e объект события
-     * @private
-     */
-    _onBeforeDeactivate: function(e) {
-        var input = e.target || e.srcElement;
-
-        if(input.createTextRange) {
-            var range = input.createTextRange();
-            range.collapse(true);
-            range.select();
         }
     },
 

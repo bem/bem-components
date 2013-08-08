@@ -7,8 +7,7 @@ BEMDOM.decl('button', {
     beforeSetMod : {
         'hovered' : {
             true : function() {
-                if(this.isDisabled())
-                    return false;
+                if(this.hasMod('disabled')) return false;
             }
         }
     },

@@ -2,26 +2,14 @@ modules.define('i-bem__dom', ['jquery', 'dom'], function(provide, $, dom, BEMDOM
 
 BEMDOM.decl('button', {
     beforeSetMod : function(modName, modVal) {
-        if(this.isDisabled() && modVal && (modName === 'focused' || modName === 'pressed'))
+        if(this.hasMod('disabled') && modVal && (modName === 'focused' || modName === 'pressed'))
             return false;
     },
 
     onSetMod : {
-        'js' : {
-            'inited' : function() {
-                var isDisabled = this.isDisabled(),
-                    domElem = this.domElem;
-
-                (this._href = domElem.attr('href')) && isDisabled &&
-                    domElem.removeAttr('href');
-
-                domElem.attr('disabled', isDisabled);
-            }
-        },
-
         'focused' : {
             true : function() {
-                this.bindToWin('unload', this._onUnload);
+                this.bindToWin('unload', this._onUnload); // TODO: выяснить и написать зачем это
 
                 dom.isFocusable(this.domElem) && (dom.containsFocus(this.domElem) || this.domElem.focus());
 
@@ -43,12 +31,7 @@ BEMDOM.decl('button', {
             },
 
             true : function() {
-                this._href && this.domElem.removeAttr('href');
                 this.delMod('pressed');
-            },
-
-            '' : function() {
-                this._href && this.domElem.attr('href', this._href);
             }
         },
 
@@ -57,34 +40,12 @@ BEMDOM.decl('button', {
         }
     },
 
-    /**
-     * Returns whether the control is disabled
-     * @returns {Boolean}
-     */
-    isDisabled : function() {
-        return this.hasMod('disabled');
-    },
-
-    /**
-     * Получение/установка урла (для кнопки-ссылки)
-     * @param {String} [val] урл
-     */
-    url : function(val) {
-        if(arguments.length) {
-            this._href = val;
-            this.isDisabled() || this.domElem.attr('href', val);
-            return this;
-        } else {
-            return this._href;
-        }
-    },
-
     _onUnload : function() {
         this.delMod('focused');
     },
 
     _onClick : function(e) {
-        this.isDisabled()?
+        this.hasMod('disabled')?
             e.preventDefault() :
             this.trigger('click');
     }

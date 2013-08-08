@@ -3,10 +3,7 @@ block('button')(
         applyNext({ _button: this.ctx });
     }),
 
-    tag()(
-        'button',
-        match(function() { return this.ctx.url })('a')
-    ),
+    tag()('button'),
 
     js()(true),
 
@@ -23,7 +20,7 @@ block('button')(
         },
 
         // Attributes for button variant
-        match(function() { return !this.ctx.url })(function() {
+        match(function() { return !this.mods.type })(function() {
             var ctx = this.ctx,
                 attrs = { type: ctx.type || 'button' };
 
@@ -32,19 +29,7 @@ block('button')(
             this.mods.disabled && (attrs.disabled = 'disabled');
 
             return this._.extend(applyNext(), attrs);
-        }),
-
-        // Attributes for link variant
-        match(function() { return this.ctx.url })(function() {
-            var ctx = this.ctx,
-                attrs = { href: ctx.url };
-
-            ctx.target && (attrs.target = ctx.target);
-            this.mods.disabled && (attrs['aria-disabled'] = true);
-
-            return this._.extend(applyNext(), attrs);
         })
-
     ),
 
     content()(function() {

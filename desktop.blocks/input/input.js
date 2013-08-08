@@ -5,7 +5,7 @@ var instances = [],
     update = function () {
         var instance, i = 0;
         while(instance = instances[i++]) {
-            instance.val(instance.elem('control').val());
+            instance.setVal(instance.elem('control').val());
         }
     };
 

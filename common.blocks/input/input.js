@@ -38,22 +38,20 @@ BEMDOM.decl('input', {
     },
 
     /**
-     * Returns whether the control is disabled
-     * @returns {Boolean}
+     * Returns control value
+     * @returns {String}
      */
-    isDisabled : function() {
-        return this.hasMod('disabled');
+    getVal : function() {
+        return this._val;
     },
 
     /**
-     * Gets/sets control value
-     * @param {String} [val] value, if present then the value is set, otherwise the current value is returned
-     * @param {Object} [data] additional data, for case if value is set
-     * @returns {String|this}
+     * Sets control value
+     * @param {String} val value
+     * @param {Object} [data] additional data
+     * @returns {this}
      */
-    val : function(val, data) {
-        if(!arguments.length) return this._val;
-
+    setVal : function(val, data) {
         val = String(val);
 
         if(this._val !== val) {
@@ -69,7 +67,7 @@ BEMDOM.decl('input', {
      * Returns name of control
      * @returns {String}
      */
-    name : function() {
+    getName : function() {
         return this.elem('control').attr('name');
     },
 

@@ -83,20 +83,25 @@ describe('input', function() {
     });
 
     describe('val', function() {
-        it('should emit "change" event when value changed', function() {
+        it('should update control elem value when value changed', function() {
+            input.setVal('blabla');
+            input.elem('control').val().should.be.equal('blabla');
+        });
+
+        it('should emit "change" event only when value changed', function() {
             var spy = sinon.spy();
             input.on('change', spy);
 
-            input.val('bla');
+            input.setVal('bla');
             spy.should.not.have.been.called;
 
-            input.val('blabla');
+            input.setVal('blabla');
             spy.should.have.been.calledOnce;
         });
 
         it('should update value when control value changed', function(done) {
             input.on('change', function(e) {
-                e.target.val().should.be.equal('new-value');
+                e.target.getVal().should.be.equal('new-value');
                 done();
             });
 

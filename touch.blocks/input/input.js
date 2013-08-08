@@ -2,7 +2,7 @@ modules.define('i-bem__dom', function(provide, DOM) {
 
 DOM.decl('input', {
     _onInputChanged : function() {
-        this.val(this.elem('control').val());
+        this.setVal(this.elem('control').val());
     }
 }, {
     live : function() {

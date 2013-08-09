@@ -15,6 +15,8 @@ BEMDOM.decl({ block : 'input', modName : 'has-samples', modVal : true }, {
         },
 
         'disabled' : function(modName, modVal) {
+            this.__base.apply(this, arguments);
+
             this.findBlocksInside(this.elem('samples'), 'link').forEach(function(link) {
                 link.setMod(modName, modVal);
             });
@@ -22,7 +24,7 @@ BEMDOM.decl({ block : 'input', modName : 'has-samples', modVal : true }, {
     },
 
     _onSampleClick : function(e) {
-        this.val(
+        this.setVal(
             this.elemParams(e.target.domElem).val,
             { source : 'sample' });
     }

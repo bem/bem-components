@@ -13,7 +13,23 @@ describe('input_has-samples', function() {
         sampleElems.length.should.be.equal(3);
         sampleElems.each(function(i) {
             $(this).bem('link').trigger('click');
-            input.val().should.be.equal(samples[i]);
+            input.getVal().should.be.equal(samples[i]);
+        });
+    });
+
+    it('should set "disabled" mod on links according to self', function() {
+        input = buildInput(['text1', 'text2', 'val3']);
+
+        input.setMod('disabled');
+        var samples = input.findBlocksInside('link');
+        samples.length.should.be.equal(3);
+        samples.forEach(function(sample) {
+            sample.hasMod('disabled').should.be.true;
+        });
+
+        input.delMod('disabled');
+        samples.forEach(function(sample) {
+            sample.hasMod('disabled').should.be.false;
         });
     });
 });

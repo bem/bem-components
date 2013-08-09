@@ -8,8 +8,6 @@
     /* Размеры (width, height) обертки задаются в _size */
     margin-right: 0.5em;
 
-    cursor: default;
-    
     -moz-border-radius: 100%;
     border-radius: 100%;
 }

@@ -1,0 +1,8 @@
+@media all and (min-width:0px) {
+
+    .checkbox__box
+    {
+        cursor: pointer;
+    }
+
+}

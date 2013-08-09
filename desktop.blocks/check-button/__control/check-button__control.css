@@ -1,0 +1,8 @@
+@media all and (min-width:0px) {
+
+    .check-button__control
+    {
+        cursor: pointer;
+    }
+
+}

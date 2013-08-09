@@ -1,0 +1,9 @@
+@media all and (min-width:0px) {
+
+    .radiobox__box,
+    .radiobox__control
+    {
+        cursor: pointer;
+    }
+
+}

@@ -1,0 +1,8 @@
+@media all and (min-width:0px) {
+
+    .radio-button__radio
+    {
+        cursor: pointer;
+    }
+
+}

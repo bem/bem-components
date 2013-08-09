@@ -1,0 +1,8 @@
+@media all and (min-width:0px) {
+
+    .checkbox_disabled_yes .checkbox__box
+    {
+        cursor: default;
+    }
+
+}

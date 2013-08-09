@@ -1,0 +1,6 @@
+.button_disabled_yes,
+a.button_disabled_yes,
+a.button_disabled_yes .button__text
+{
+    cursor: default;
+}

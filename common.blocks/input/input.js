@@ -24,16 +24,20 @@ BEMDOM.decl('input', {
             }
         },
 
-        'disabled' : function(modName, modVal) {
-            this.elem('control').attr('disabled', modVal);
+        'focused' : {
+            true : function() {
+                this._focused || this._focus();
+                this.emit('focus');
+            },
+
+            '' : function() {
+                this._focused && this._blur();
+                this.emit('blur');
+            }
         },
 
-        'focused' : function(modName, modVal) {
-            modVal?
-                this._focused || this._focus() :
-                this._focused && this._blur();
-
-            this.emit(modVal? 'focus' : 'blur');
+        'disabled' : function(_, modVal) {
+            this.elem('control').attr('disabled', modVal);
         }
     },
 

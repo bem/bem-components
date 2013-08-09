@@ -1,43 +1,45 @@
-modules.define('i-bem__dom', ['tick', 'idle'], function(provide, tick, idle, DOM) {
+modules.define('i-bem__dom', ['tick', 'idle'], function(provide, tick, idle, BEMDOM) {
 
 var instances = [],
     boundToTick,
-    update = function () {
+    bindToTick = function() {
+        boundToTick = true;
+        tick
+            .on('tick', update)
+            .start();
+        idle
+            .on({
+                idle : function() {
+                    tick.un('tick', update);
+                },
+                wakeup : function() {
+                    tick.on('tick', update);
+                }
+            })
+            .start();
+    },
+    update = function() {
         var instance, i = 0;
         while(instance = instances[i++]) {
             instance.setVal(instance.elem('control').val());
         }
     };
 
-DOM.decl('input', {
+BEMDOM.decl('input', {
     onSetMod : {
         'js' : {
-            'inited': function() {
+            'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                // факт подписки
-                if(!boundToTick) {
-                    boundToTick = true;
-                    tick
-                        .on('tick', update)
-                        .start();
-                    idle
-                        .on({
-                            idle   : function() {
-                                tick.un('tick', update);
-                            },
-                            wakeup : function() {
-                                tick.on('tick', update);
-                            }
-                        })
-                        .start();
-                }
+                boundToTick || bindToTick();
 
                 // сохраняем индекс в массиве инстансов чтобы потом быстро из него удалять
                 this._instanceIndex = instances.push(this) - 1;
             },
 
             '' : function() {
+                this.__base.apply(this, arguments);
+
                 this.params.shortcut && this.unbindFromDoc('keydown'); // TODO: унести тудаже где делается bind -- islands-components/desktop.blocks/input/input.js
 
                 // удаляем из общего массива instances
@@ -65,6 +67,6 @@ DOM.decl('input', {
     }
 });
 
-provide(DOM);
+provide(BEMDOM);
 
 });

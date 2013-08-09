@@ -18,9 +18,9 @@ describe('input_has-hint', function() {
 
     it('should change hint visibility according to value', function() {
         input = buildInput('');
-        input.val('bla');
+        input.setVal('bla');
         isHintVisible(input).should.be.false;
-        input.val('');
+        input.setVal('');
         isHintVisible(input).should.be.true;
     });
 });

@@ -18,16 +18,16 @@ describe('input_has-clear', function() {
 
     it('should change clear elem visibility according to value', function() {
         input = buildInput('');
-        input.val('bla');
+        input.setVal('bla');
         isClearElemVisible(input).should.be.true;
-        input.val('');
+        input.setVal('');
         isClearElemVisible(input).should.be.false;
     });
 
     it('should clear input on click', function() {
         input = buildInput('bla');
         input.elem('clear').trigger('pointerclick');
-        input.val().should.be.equal('');
+        input.getVal().should.be.equal('');
     });
 });
 

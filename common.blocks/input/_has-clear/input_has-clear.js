@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', function(provide, DOM) {
+modules.define('i-bem__dom', function(provide, BEMDOM) {
 
-DOM.decl({ block: 'input', modName: 'has-clear', modVal: true }, {
+BEMDOM.decl({ block : 'input', modName : 'has-clear', modVal : true }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -21,7 +21,7 @@ DOM.decl({ block: 'input', modName: 'has-clear', modVal: true }, {
      */
     _onClearClick : function() {
         return this
-            .val('', { source : 'clear' })
+            .setVal('', { source : 'clear' })
             .setMod('focused');
     },
 
@@ -44,6 +44,6 @@ DOM.decl({ block: 'input', modName: 'has-clear', modVal: true }, {
     }
 });
 
-provide(DOM);
+provide(BEMDOM);
 
 });

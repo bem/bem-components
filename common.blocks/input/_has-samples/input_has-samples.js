@@ -1,16 +1,16 @@
-modules.define('i-bem__dom', function(provide, DOM) {
+modules.define('i-bem__dom', function(provide, BEMDOM) {
 
-DOM.decl({ block : 'input', modName : 'has-samples', modVal : true }, {
+BEMDOM.decl({ block : 'input', modName : 'has-samples', modVal : true }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                DOM.blocks['link'].on(this.elem('samples'), 'click', this._onSampleClick, this);
+                BEMDOM.blocks['link'].on(this.elem('samples'), 'click', this._onSampleClick, this);
             },
 
             '' : function() {
                 this.__base.apply(this, arguments);
-                DOM.blocks['link'].un(this.domElem, 'click');
+                BEMDOM.blocks['link'].un(this.domElem, 'click');
             }
         },
 
@@ -28,6 +28,6 @@ DOM.decl({ block : 'input', modName : 'has-samples', modVal : true }, {
     }
 });
 
-provide(DOM);
+provide(BEMDOM);
 
 });

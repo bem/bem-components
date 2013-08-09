@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', function(provide, DOM) {
+modules.define('i-bem__dom', function(provide, BEMDOM) {
 
-DOM.decl({ block : 'input', modName : 'has-clear', modVal : true }, {
+BEMDOM.decl({ block : 'input', modName : 'has-clear', modVal : true }, {
     _onBoxClick : function() {
         this.hasMod(this.elem('clear'), 'visible') || this.setMod('focused');
     }
@@ -14,6 +14,6 @@ DOM.decl({ block : 'input', modName : 'has-clear', modVal : true }, {
     }
 });
 
-provide(DOM);
+provide(BEMDOM);
 
 });

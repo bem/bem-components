@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', function(provide, DOM) {
+modules.define('i-bem__dom', function(provide, BEMDOM) {
 
-DOM.decl({ block : 'input', modName : 'has-hint', modVal : true }, {
+BEMDOM.decl({ block : 'input', modName : 'has-hint', modVal : true }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -18,10 +18,10 @@ DOM.decl({ block : 'input', modName : 'has-hint', modVal : true }, {
      * @private
      */
     _updateHint : function() {
-        this.toggleMod(this.elem('hint'), 'visible', true, !this.val());
+        this.toggleMod(this.elem('hint'), 'visible', true, !this.getVal());
     }
 });
 
-provide(DOM);
+provide(BEMDOM);
 
 });

@@ -13,26 +13,14 @@ BEMDOM.decl({ block : 'input', modName : 'has-clear', modVal : true }, {
         }
     },
 
-    /**
-     * Обработчик нажатия на кнопку очистки инпута
-     * Очищает значение в поле ввода
-     * @private
-     * @return {Object} экземпляр блока input
-     */
     _onClearClick : function() {
-        return this
+        this
             .setVal('', { source : 'clear' })
             .setMod('focused');
     },
 
-    /**
-     * Переключает значение модификатора visibility для элемента clear
-     * в зависимости от наличия значения в поле ввода
-     * @private
-     * @return {Object} экземпляр блока input
-     */
     _updateClear : function() {
-        return this.toggleMod(this.elem('clear'), 'visible', true, !!this._val);
+        this.toggleMod(this.elem('clear'), 'visible', true, !!this._val);
     }
 }, {
     live : function() {

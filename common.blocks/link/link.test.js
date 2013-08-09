@@ -1,7 +1,7 @@
 modules.define(
     'test',
-    ['i-bem__dom', 'jquery', 'BEMHTML', 'next-tick', 'sinon'],
-    function(provide, DOM, $, BEMHTML, nextTick, sinon) {
+    ['i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, DOM, $, BEMHTML, sinon) {
 
 describe('link', function() {
     var link;
@@ -20,29 +20,23 @@ describe('link', function() {
         DOM.destruct(link.domElem);
     });
 
-    it('should emit "click" event', function(done) {
+    it('should emit "click" event', function() {
         var spy = sinon.spy();
 
         link.on('click', spy);
         link.domElem.trigger('pointerclick');
 
-        nextTick(function() {
-            spy.should.have.been.calledOnce;
-            done();
-        });
+        spy.should.have.been.calledOnce;
     });
 
-    it('should not emit "click" event if disabled', function(done) {
+    it('should not emit "click" event if disabled', function() {
         var spy = sinon.spy();
 
         link.setMod('disabled');
         link.on('click', spy);
         link.domElem.trigger('pointerclick');
 
-        nextTick(function() {
-            spy.should.not.have.been.called;
-            done();
-        });
+        spy.should.not.have.been.called;
     });
 });
 

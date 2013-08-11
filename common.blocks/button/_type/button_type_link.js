@@ -18,6 +18,7 @@ BEMDOM.decl({ block : 'button', modName : 'type', modVal : 'link' }, {
             },
 
             '' : function() {
+                this.__base.apply(this, arguments);
                 this.domElem.attr('href', this._url);
             }
         }

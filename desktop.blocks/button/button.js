@@ -7,7 +7,7 @@ BEMDOM.decl('button', {
     beforeSetMod : {
         'hovered' : {
             true : function() {
-                if(this.hasMod('disabled')) return false;
+                return !this.hasMod('disabled');
             }
         }
     },
@@ -15,6 +15,7 @@ BEMDOM.decl('button', {
     onSetMod : {
         'hovered' : {
             '' : function() {
+                this.__base.apply(this, arguments);
                 this.delMod('pressed');
             }
         },
@@ -28,6 +29,13 @@ BEMDOM.decl('button', {
             '' : function() {
                 this.__base.apply(this, arguments);
                 this.unbindFrom('keydown', this._onKeyDown);
+            }
+        },
+
+        'disabled' : {
+            true : function() {
+                this.__base.apply(this, arguments);
+                this.delMod('hovered');
             }
         }
     },
@@ -54,9 +62,13 @@ BEMDOM.decl('button', {
     }
 }, {
     live : function() {
-        this.liveBindTo('mouseover mouseout', function(e) {
-            this.setMod('hovered', e.type === 'mouseover');
-        });
+        this
+            .liveBindTo('mouseover', function() {
+                this.setMod('hovered');
+            })
+            .liveBindTo('mouseout', function() {
+                this.delMod('hovered');
+            });
 
         return this.__base.apply(this, arguments);
     }

@@ -101,6 +101,28 @@ describe('button', function() {
             spy.should.have.been.calledOnce;
         });
     });
+
+    describe('click', function() {
+        it('should emit click on "pointerclick" event', function() {
+            var spy = sinon.spy();
+
+            button.on('click', spy);
+            button.domElem.trigger('pointerclick');
+
+            spy.should.have.been.calledOnce;
+        });
+
+        it('should not emit click on "pointerclick" event if disabled', function() {
+            var spy = sinon.spy();
+
+            button
+                .on('click', spy)
+                .setMod('disabled');
+            button.domElem.trigger('pointerclick');
+
+            spy.should.not.have.been.called;
+        });
+    });
 });
 
 provide();

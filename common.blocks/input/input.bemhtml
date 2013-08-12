@@ -1,11 +1,27 @@
 block('input')(
     tag()('span'),
+
     js()(true),
+
     def()(function() {
         var ctx = this.ctx;
         ctx.id = ctx.id || this.generateId();
+        ctx.val = apply('value', { ctx: ctx.val });
         applyNext({ _input: ctx })
     }),
+
+    mode('value')(
+        match()(function() { return '' }),
+        match(this.ctx)(function() {
+            var value = [];
+            apply({ _buf: value, _mode: '' });
+            return value.join('');
+        }),
+        match(function() { return this._.isSimple(this.ctx) })(function() {
+            return this.ctx;
+        })
+    ),
+
     content()(function() {
         var ctx = this.ctx, content = [{ elem: 'control' }];
         // NOTE: не вынесли в отдельные шаблоны ради оптимизации

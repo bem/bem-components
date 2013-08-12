@@ -71,6 +71,20 @@
             hint: 'hint7',
             label: 'label7',
             samples: [{ text: 'sample1', val: 'value1' }, { text: 'sample2', val: 'value2' }]
+        },
+        {
+            block: 'input',
+            mods: { size: 's' },
+            id: 'id8',
+            name: 'name8',
+            val: 0
+        },
+        {
+            block: 'input',
+            mods: { size: 's' },
+            id: 'id9',
+            name: 'name9',
+            val: { block: 'i-bem', elem: 'i18n', keyset: 'input', value: 'myvalue' }
         }
     ]
 })

@@ -1,20 +1,33 @@
-block input, !this.elem {
+block input {
 
     tag: 'span'
 
     js: true
 
     default, !this._inputId: {
+        var value = apply('value', this.ctx = this.ctx.value);
         applyNext(
             this._inputId = this.ctx.id || this.generateId(),
             this._name = this.ctx.name || '',
-            this._value = (typeof this.ctx.value !== 'undefined' && this.ctx.value !== null)
-                                ? this.ctx.value
-                                : '',
+            this._value = value,
             this._inputLink = true,
             this._disabled = this.mods.disabled
         );
 
+    }
+
+    value {
+        true: ''
+
+        this.ctx: {
+            var value = [];
+            apply(this._buf = value, this._mode = '');
+            return value.join('');
+        }
+
+        this._.isSimple(this.ctx): {
+            return this.ctx;
+        }
     }
 
 }

@@ -14,8 +14,6 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
             (this._href = domElem.attr('href')) && disabled &&
                 domElem.removeAttr('href');
 
-            domElem.attr('disabled', disabled);
-
         },
 
         'disabled' : function(modName, modVal) {

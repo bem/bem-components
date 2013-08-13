@@ -15,6 +15,5 @@
 * ((#input.60-autocomplete_bem c автокомплитом)).
 
 == API контрола
-  * ((/blocks-desktop/input/input.jsdoc.wiki JS-API));
   * ((http://wiki.yandex-team.ru/Lego/controls/api-forms/#form-input Общее API контролов)).
 \\

@@ -9,6 +9,5 @@
 1. В кнопке используется нативный контрол — прикрепить файл.
 
 == API контрола
-  * ((/blocks-desktop/attach/attach.jsdoc.wiki JS-API блока));
   * ((http://wiki.yandex-team.ru/Lego/controls/api-forms/#form-attach Общее API контролов)).
 \\

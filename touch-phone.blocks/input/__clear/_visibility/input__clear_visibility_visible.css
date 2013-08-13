@@ -2,3 +2,8 @@
 {
     opacity: .3;
 }
+
+.i-ua_platform_wp .input__clear_visibility_visible
+{
+    opacity: 1;
+}

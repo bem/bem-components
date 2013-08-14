@@ -95,11 +95,11 @@ BEMDOM.decl('input', {
 }, {
     live : function() {
         this
-            .liveBindTo('control', 'focusin', function(e) {
-                this._onFocus(e);
+            .liveBindTo('control', 'focusin', function() {
+                this._onFocus();
             })
-            .liveBindTo('control', 'focusout', function(e) {
-                this._onBlur(e);
+            .liveBindTo('control', 'focusout', function() {
+                this._onBlur();
             });
 
         return false;

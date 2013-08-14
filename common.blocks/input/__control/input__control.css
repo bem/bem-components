@@ -14,7 +14,8 @@
 @media all and (min-width:0px) {
     .input__control
     {
-        padding: 0.4em 0;
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
 
         outline: 0;
 

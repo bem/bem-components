@@ -1,0 +1,13 @@
+.input__clear_visible
+{
+    display: block;
+
+    opacity: 0.2;
+
+    cursor: pointer;
+}
+
+.input__clear_visible:hover
+{
+    opacity: 1;
+}

@@ -1,0 +1,11 @@
+.input__control
+{
+    font-size: 100%;
+    font-family: inherit;
+
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+}

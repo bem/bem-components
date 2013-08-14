@@ -1,11 +1,19 @@
 block('input')(
     tag()('span'),
+
     js()(true),
+
     def()(function() {
-        var ctx = this.ctx;
+        var ctx = this.ctx,
+            val = ctx.val;
+
+        val == null && (val = '');
+
+        ctx.val = this._.isSimple(val)? val : BEMHTML.apply(val);
         ctx.id = ctx.id || this.generateId();
-        applyNext({ _input: ctx })
+        applyNext({ _input: ctx });
     }),
+
     content()(function() {
         var ctx = this.ctx, content = [{ elem: 'control' }];
         // NOTE: не вынесли в отдельные шаблоны ради оптимизации

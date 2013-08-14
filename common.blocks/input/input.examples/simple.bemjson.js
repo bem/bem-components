@@ -71,6 +71,42 @@
             hint: 'hint7',
             label: 'label7',
             samples: [{ text: 'sample1', val: 'value1' }, { text: 'sample2', val: 'value2' }]
+        },
+        { tag: 'br' },
+        {
+            block: 'input',
+            mods: { size: 's' },
+            id: 'id8',
+            name: 'name8',
+            val: 0
+        },
+        {
+            block: 'input',
+            mods: { size: 's' },
+            id: 'id9',
+            name: 'name9',
+            val: false
+        },
+        {
+            block: 'input',
+            mods: { size: 's' },
+            id: 'id10',
+            name: 'name10',
+            val: undefined
+        },
+        {
+            block: 'input',
+            mods: { size: 's' },
+            id: 'id11',
+            name: 'name11',
+            val: null
+        },
+        {
+            block: 'input',
+            mods: { size: 's' },
+            id: 'id12',
+            name: 'nam12',
+            val: { block: 'i-bem', elem: 'i18n', keyset: 'input', value: 'myvalue' }
         }
     ]
 })

@@ -71,6 +71,19 @@
             hint: 'hint7',
             label: 'label7',
             samples: [{ text: 'sample1', val: 'value1' }, { text: 'sample2', val: 'value2' }]
+        },
+        { tag: 'br' },
+        {
+            block: 'input',
+            mods: { 'has-samples': true },
+            val: 'value',
+            content: [
+                { elem: 'control' },
+                {
+                    elem: 'samples',
+                    samples: [{ text: 'sample1', val: 'value1' }, { text: 'sample2', val: 'value2' }]
+                }
+            ]
         }
     ]
 })

@@ -44,9 +44,27 @@ MAKE.decl('SetsNode', {
      */
     getSets : function() {
         return {
-            'desktop' : [ 'common.blocks', 'desktop.blocks' ],
-            'touch-pad' : [ 'common.blocks', 'touch.blocks', 'touch-pad.blocks' ],
-            'touch-phone' : [ 'common.blocks', 'touch.blocks', 'touch-phone.blocks' ],
+            'desktop' : [
+                'common.blocks',
+                'design/common.blocks',
+                'desktop.blocks',
+                'design/desktop.blocks'
+            ],
+            'touch-pad' : [
+                'common.blocks',
+                'design/common.blocks',
+                'touch.blocks',
+                'design/touch.blocks',
+                'touch-pad.blocks',
+                'design/touch-pad.blocks'
+            ],
+            'touch-phone' : [
+                'common.blocks',
+                'design/common.blocks',
+                'touch.blocks',
+                'design/touch.blocks',
+                'design/touch-phone.blocks'
+            ],
         };
     }
 
@@ -76,7 +94,9 @@ MAKE.decl('ExampleNode', {
             environ.getLibPath('bem-core', 'common.blocks'),
             environ.getLibPath('bem-core', 'desktop.blocks'),
             'common.blocks',
-            'desktop.blocks'
+            'design/common.blocks',
+            'desktop.blocks',
+            'design/desktop.blocks'
         ];
     },
 
@@ -85,8 +105,11 @@ MAKE.decl('ExampleNode', {
             environ.getLibPath('bem-core', 'common.blocks'),
             environ.getLibPath('bem-core', 'touch.blocks'),
             'common.blocks',
+            'design/common.blocks',
             'touch.blocks',
-            'touch-pad.blocks'
+            'design/touch.blocks',
+            'touch-pad.blocks',
+            'design/touch-pad.blocks'
         ];
     },
 
@@ -95,8 +118,10 @@ MAKE.decl('ExampleNode', {
             environ.getLibPath('bem-core', 'common.blocks'),
             environ.getLibPath('bem-core', 'touch.blocks'),
             'common.blocks',
+            'design/common.blocks',
             'touch.blocks',
-            'touch-phone.blocks'
+            'design/touch.blocks',
+            'design/touch-phone.blocks'
         ];
     },
 

@@ -1,0 +1,7 @@
+/* disable select __box on touch devices */
+.input__box
+{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+            user-select: none;
+}

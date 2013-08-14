@@ -17,14 +17,14 @@ exports.getTechs = function() {
         'i18n.title.txt'             : join(PRJ_TECHS, 'i18n.title.txt'),
         'i18n.desc.wiki'             : join(PRJ_TECHS, 'i18n.desc.wiki'),
 
-        'deps.js'                    : 'deps.js',
-        'js'                         : 'js-i',
-        'css'                        : 'css',
-        'ie.css'                     : 'ie.css',
-        'ie6.css'                    : 'ie6.css',
-        'ie7.css'                    : 'ie7.css',
-        'ie8.css'                    : 'ie8.css',
-        'ie9.css'                    : 'ie9.css',
+        'deps.js'                    : 'v2/deps.js',
+        'js'                         : 'v2/js-i',
+        'css'                        : 'v2/css',
+        'ie.css'                     : 'v2/ie.css',
+        'ie6.css'                    : 'v2/ie6.css',
+        'ie7.css'                    : 'v2/ie7.css',
+        'ie8.css'                    : 'v2/ie8.css',
+        'ie9.css'                    : 'v2/ie9.css',
 
         'bemhtml'                    : join(BEMCORE_TECHS, 'bemhtml.js'),
         'vanilla.js'                 : join(BEMCORE_TECHS, 'vanilla.js.js'),
@@ -32,6 +32,7 @@ exports.getTechs = function() {
 
         'examples'                   : join(PRJ_TECHS, 'examples.js'),
         'tests'                      : join(PRJ_TECHS, 'tests.js'),
+        'sets'                       : join(BEMPR_TECHS, 'sets.js'),
         'test.js'                    : join(BEMPR_TECHS, 'test.js.js'),
         'test.js+browser.js+bemhtml' : join(BEMPR_TECHS, 'test.js+browser.js+bemhtml.js')
     };

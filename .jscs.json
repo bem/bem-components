@@ -1,0 +1,17 @@
+{
+    "requireSpaceAfterKeywords" : ["do", "else"],
+    "disallowSpaceAfterKeywords" : ["if", "for", "while", "switch"],
+    "requireSpacesInsideObjectBrackets" : "all",
+    "disallowSpacesInsideArrayBrackets" : true,
+    "requireMultipleVarDecl" : true,
+    "requireSpaceAfterObjectKeys" : true,
+    "requireLeftStickedOperators" : [",", "?"],
+    "disallowRightStickedOperators" : [",", "?", ":"],
+    "disallowKeywords" : ["with"],
+    "disallowMultipleLineBreaks" : true,
+    "disallowKeywordsOnNewLine" : ["else"],
+
+    "excludeFiles" : [
+        ".bem/**"
+    ]
+}

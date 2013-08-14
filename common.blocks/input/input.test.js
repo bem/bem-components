@@ -7,7 +7,7 @@ describe('input', function() {
     var input;
 
     beforeEach(function() {
-        input = buildInput({ block: 'input', val: 'bla' });
+        input = buildInput({ block : 'input', val : 'bla' });
     });
 
     afterEach(function() {
@@ -40,7 +40,7 @@ describe('input', function() {
         });
 
         it('should set "focused" mod if input have been focused before init', function() {
-            var domElem = $(BEMHTML.apply({ block: 'input' })).appendTo('body');
+            var domElem = $(BEMHTML.apply({ block : 'input' })).appendTo('body');
             domElem.find('.input__control').focus();
             var input = BEMDOM.init(domElem).bem('input');
             input.hasMod('focused').should.be.true;
@@ -48,7 +48,7 @@ describe('input', function() {
         });
 
         it('should focus control if input already has focused mod before init', function() {
-            var input = buildInput({ block: 'input', mods: { focused: true }});
+            var input = buildInput({ block : 'input', mods : { focused : true } });
             dom.containsFocus(input.elem('control')).should.be.true;
             BEMDOM.destruct(input.domElem);
         });

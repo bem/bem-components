@@ -1,7 +1,7 @@
 [{
-    shouldDeps: { elem: 'samples' }
+    shouldDeps : { elem : 'samples' }
 },
 {
-    tech: 'test.js',
-    mustDeps: { tech: 'bemhtml', block: 'input', mod: 'has-samples' }
+    tech : 'test.js',
+    mustDeps : { tech : 'bemhtml', block : 'input', mod : 'has-samples' }
 }]

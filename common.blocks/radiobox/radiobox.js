@@ -132,6 +132,14 @@ DOM.decl('radiobox', /** @lends block.prototype */ {
     },
 
     /**
+     * Метод позволяет получить активный элемент radio блока.
+     * @returns {jQuery} DOM elements
+     */
+    getCurrent: function() {
+        return this.findElem('radio', 'checked', 'yes');
+    },
+
+    /**
      * Метод позволяет перевести все кнопки блока в ненажатое состояние.
      * @returns {BEM.DOM} Объект блока
      */

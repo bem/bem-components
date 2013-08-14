@@ -16,9 +16,9 @@ describe('input_has-clear', function() {
 function buildInput(val) {
     return DOM.init(
             $(BEMHTML.apply({
-                block: 'input',
-                mods: { 'has-clear': true },
-                val: val
+                block : 'input',
+                mods : { 'has-clear' : true },
+                val : val
             })))
         .appendTo('body')
         .bem('input');

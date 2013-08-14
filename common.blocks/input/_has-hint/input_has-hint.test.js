@@ -28,10 +28,10 @@ describe('input_has-hint', function() {
 function buildInput(val) {
     return DOM.init(
             $(BEMHTML.apply({
-                block: 'input',
-                mods: { 'has-hint': true },
-                hint: 'hint',
-                val: val
+                block : 'input',
+                mods : { 'has-hint' : true },
+                hint : 'hint',
+                val : val
             })))
         .appendTo('body')
         .bem('input');

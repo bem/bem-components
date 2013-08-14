@@ -57,7 +57,7 @@ provide(BEMDOM);
 function isTextKey(e) {
     var keyCode = e.charCode || e.keyCode || e.which || 0;
     // TODO: проверку можно сделать проще, если проверять обратное -- что нажата системная клавиша
-    if (!e.ctrlKey && !e.altKey && !e.metaKey && (
+    if(!e.ctrlKey && !e.altKey && !e.metaKey && (
             (keyCode >= 48 && keyCode <= 57) ||     //isDigit
             (keyCode >= 96 && keyCode <= 105) ||    //isNumpad
             (keyCode >= 65 && keyCode <= 90) ||     //isLetter

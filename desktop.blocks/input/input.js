@@ -40,8 +40,6 @@ BEMDOM.decl('input', {
             '' : function() {
                 this.__base.apply(this, arguments);
 
-                this.params.shortcut && this.unbindFromDoc('keydown'); // TODO: унести тудаже где делается bind -- islands-components/desktop.blocks/input/input.js
-
                 // удаляем из общего массива instances
                 instances.splice(this._instanceIndex, 1);
                 // понижаем _instanceIndex всем тем кто был добавлен в instances после нас

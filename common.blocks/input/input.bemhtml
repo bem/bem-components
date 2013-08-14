@@ -4,23 +4,15 @@ block('input')(
     js()(true),
 
     def()(function() {
-        var ctx = this.ctx;
-        ctx.id = ctx.id || this.generateId();
-        ctx.val = apply('value', { ctx: ctx.val });
-        applyNext({ _input: ctx })
-    }),
+        var ctx = this.ctx,
+            val = ctx.val;
 
-    mode('value')(
-        match()(function() { return '' }),
-        match(this.ctx)(function() {
-            var value = [];
-            apply({ _buf: value, _mode: '' });
-            return value.join('');
-        }),
-        match(function() { return this._.isSimple(this.ctx) })(function() {
-            return this.ctx;
-        })
-    ),
+        val == null && (val = '');
+
+        ctx.val = this._.isSimple(val)? val : BEMHTML.apply(val);
+        ctx.id = ctx.id || this.generateId();
+        applyNext({ _input: ctx });
+    }),
 
     content()(function() {
         var ctx = this.ctx, content = [{ elem: 'control' }];

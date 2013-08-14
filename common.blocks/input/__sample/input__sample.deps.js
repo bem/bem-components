@@ -1,3 +1,3 @@
 ({
-    shouldDeps: { block: 'link' }
+    shouldDeps : { block : 'link' }
 })

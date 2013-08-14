@@ -1,3 +1,3 @@
 ({
-    shouldDeps: { elem: 'sample' }
+    shouldDeps : { elem : 'sample' }
 })

@@ -17,7 +17,11 @@
     "bem-environ": "~1.2.0"
   },
   "devDependencies": {
-    "bem": "~0.6.15"
+    "bem": "~0.6.15",
+    "jshint": "2.1.8",
+    "jshint-groups": "0.5.1",
+    "jscs": "1.0.0",
+    "git-hooks": "0.0.3"
   },
   "optionalDependencies": {},
   "private": true

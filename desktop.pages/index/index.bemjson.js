@@ -13,8 +13,18 @@
         content: [
             {
                 block: 'button',
-                mods: { size: 'm' },
-                content: 'Custom Button'
+                text: 'button with text'
+            },
+            {
+                block: 'button',
+                text: 'button with text and icon',
+                icon: { elem: 'icon' }
+            },
+            {
+                block: 'button',
+                mods: { 'only-icon' : true },
+                icon: { elem: 'icon' },
+                text: 'button with icon only'
             },
             { tag: 'br' },
             {

@@ -32,10 +32,16 @@ block('button')(
         })
     ),
 
-    content()(function() {
-        var content = { elem: 'text' };
-        content.content = this.ctx.content || [this.ctx.icon, this.ctx.text];
-        return content;
-    })
+    content()(
+        function() {
+            var content = [this.ctx.icon];
+            typeof this.ctx.text !== 'undefined' &&
+                content.push({ elem: 'text', content: this.ctx.text });
+            return content;
+        },
+        match(function() { return typeof this.ctx.content !== 'undefined' })(function() {
+            return this.ctx.content;
+        })
+    )
 
 )

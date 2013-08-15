@@ -1,15 +1,14 @@
-({
+[{
     mustDeps: [
-        { block: 'jquery', elem: 'pointerclick' },
+        { block: 'jquery', elem: 'pointer-events' },
         { block: 'i-bem', elems: ['dom'] }
     ],
     shouldDeps: {
-        elems: [ 'text' ],
-        mods: {
-            'focused': 'yes',
-            'hovered': 'yes',
-            'disabled': 'yes', /* CHECKME: remove disabled from default dependencies? */
-            'pressed': 'yes'
-        }
+        elems: ['text'],
+        mods: { focused: 'yes', hovered: 'yes', disabled: 'yes', pressed: 'yes' }
     }
-})
+},
+{
+    tech: 'test.js',
+    mustDeps: { tech: 'bemhtml', block: 'button' }
+}]

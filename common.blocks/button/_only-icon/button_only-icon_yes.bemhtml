@@ -1,6 +1,0 @@
-block('button').mod('only-icon', 'yes').elem('text').content()(function() {
-    return [
-        '&#160;',
-        this.ctx.content
-    ]
-})

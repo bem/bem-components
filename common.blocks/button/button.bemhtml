@@ -1,9 +1,9 @@
 block('button')(
+    def()(function() {
+        applyNext({ _button: this.ctx });
+    }),
 
-    tag()(
-        'button',
-        match(function() { return this.ctx.url })('a')
-    ),
+    tag()('button'),
 
     js()(true),
 
@@ -14,42 +14,34 @@ block('button')(
             var ctx = this.ctx,
                 attrs = { role: 'button' };
 
-            ctx.tabindex && (attrs.tabindex = ctx.tabindex);
+            ctx.tabIndex && (attrs.tabindex = ctx.tabIndex);
 
             return attrs;
         },
 
         // Attributes for button variant
-        match(function() { return !this.elem && !this.ctx.url })(function() {
+        match(function() { return !this.mods.type })(function() {
             var ctx = this.ctx,
                 attrs = { type: ctx.type || 'button' };
 
             ctx.name && (attrs.name = ctx.name);
-            ctx.value && (attrs.value = ctx.value);
+            ctx.val && (attrs.value = ctx.val);
             this.mods.disabled && (attrs.disabled = 'disabled');
 
             return this._.extend(applyNext(), attrs);
-        }),
-
-        // Attributes for link variant
-        match(function() { return !this.elem && this.ctx.url })(function() {
-            var ctx = this.ctx,
-                attrs = { href: ctx.url };
-
-            ctx.target && (attrs.target = ctx.target);
-            this.mods.disabled && (attrs['aria-disabled'] = true);
-
-            return this._.extend(applyNext(), attrs);
         })
-
     ),
 
-    content()(function() {
-        return {
-            elem: 'text',
-            tag: 'span',
-            content: this.ctx.content
-        }
-    })
+    content()(
+        function() {
+            var content = [this.ctx.icon];
+            typeof this.ctx.text !== 'undefined' &&
+                content.push({ elem: 'text', content: this.ctx.text });
+            return content;
+        },
+        match(function() { return typeof this.ctx.content !== 'undefined' })(function() {
+            return this.ctx.content;
+        })
+    )
 
 )

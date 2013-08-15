@@ -1,0 +1,13 @@
+block('button').mod('type', 'link')(
+    tag()('a'),
+
+    attrs()(function() {
+        var ctx = this.ctx,
+            attrs = { href: ctx.url };
+
+        ctx.target && (attrs.target = ctx.target);
+        this.mods.disabled && (attrs['aria-disabled'] = true);
+
+        return this._.extend(applyNext(), attrs);
+    })
+)

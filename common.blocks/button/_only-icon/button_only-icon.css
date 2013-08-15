@@ -1,0 +1,8 @@
+.button_only-icon .button__icon
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin: -8px 0 0 -8px;
+}

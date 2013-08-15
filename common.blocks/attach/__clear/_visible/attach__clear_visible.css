@@ -1,11 +1,11 @@
-.attach__reset_visible
+.attach__clear_visible
 {
     visibility: visible;
 
     opacity: .2;
 }
 
-.attach__reset_visible:hover
+.attach__clear_visible:hover
 {
     opacity: 1;
 }

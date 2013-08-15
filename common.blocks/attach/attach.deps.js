@@ -4,11 +4,12 @@
     shouldDeps : [
         {
             block : 'button',
-            mods : { 'only-icon'  : 'yes' }// TODO : убрать после https ://github.com/bem/bem-tools/pull/424
+            mods : { 'only-icon' : 'yes' }// TODO : убрать после https ://github.com/bem/bem-tools/pull/424
         },
         { elem : 'holder', mods : { state : 'hidden' } },
-        { elem : 'reset', mods : { visibility : 'visible' } },
-        { elems : ['text', 'icon-file', 'button', 'control'] }
+        { elem : 'clear', mods : { visible : true } },
+        { elems : ['text', 'icon-file', 'button', 'control'] },
+        { block : 'jquery', elem : 'pointerclick' }
     ]
 },
 {

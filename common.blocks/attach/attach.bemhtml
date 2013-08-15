@@ -30,7 +30,7 @@ block('attach')(
                     content : [
                         { elem : 'icon-file' },
                         { elem : 'text', content : this.ctx.noFileText },
-                        { elem : 'reset' }
+                        { elem : 'clear' }
                     ]
                 }
             ];

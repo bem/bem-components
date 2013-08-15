@@ -23,7 +23,7 @@ block check-button {
     js: true
 
     attrs: {
-        'for': this.generateId()
+        'for': this.ctx.id || this.generateId()
     }
 
     content: [

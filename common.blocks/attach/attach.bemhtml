@@ -26,12 +26,8 @@ block('attach')(
             return [
                 button,
                 {
-                    elem : 'holder',
-                    content : [
-                        { elem : 'icon-file' },
-                        { elem : 'text', content : this.ctx.noFileText },
-                        { elem : 'clear' }
-                    ]
+                    elem : 'no-file',
+                    content : this.ctx.noFileText
                 }
             ];
         },

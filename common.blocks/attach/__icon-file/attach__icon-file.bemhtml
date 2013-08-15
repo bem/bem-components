@@ -1,1 +1,0 @@
-block('attach').elem('icon-file').tag()('span')

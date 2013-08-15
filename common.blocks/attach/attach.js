@@ -4,8 +4,6 @@ BEMDOM.decl('attach', {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._noFileText = this.elem('text').text();
-                this._update();
             }
         }
     },
@@ -19,56 +17,68 @@ BEMDOM.decl('attach', {
     },
 
     /**
-     * Сбросить выбранное значение контрола
+     * Clear control value
      * @param {Object} [data] additional data
      * @returns {this}
      */
     clear : function(data) {
         var control = this.elem('control');
+        BEMDOM.replace(
+            control,
+            BEMHTML.apply({
+                block : 'attach',
+                elem : 'control',
+                attrs : {
+                    name : control.attr('name'),
+                    tabindex : control.attr('tabindex')
+                }
+            }));
 
-        control.replaceWith(BEMHTML.apply({
-            block : 'attach',
-            elem : 'control',
-            attrs : {
-                name : control.attr('name'),
-                tabindex : control.attr('tabindex')
-            }
-        }));
+        BEMDOM.destruct(this.elem('file'));
 
         return this
-            .dropElemCache('control')
-            ._update()
-            .delMod(this.elem('clear'), 'visible')
-            .trigger('change', data);
+            .delMod(this.elem('no-file'), 'hidden')
+            .dropElemCache('control file')
+            ._update(data);
     },
 
     _onClearClick : function() {
         this.clear({ source : 'clear' });
     },
 
-    _update : function() {
-        var fileName = this._getFileByPath(this.getVal());
-
+    _onChange : function() {
         this
-            ._setFile(fileName)
-            ._setExtension(this._getExtension(fileName));
-
-        fileName && this
-            .setMod(this.elem('reset'), 'visible')
-            .trigger('change'); // NOTE: при init-e fileName точно пустой, поэтому не будет события
-
-        return this;
+            .setMod(this.elem('no-file'), 'hidden', true) // TODO: https://github.com/bem/bem-core/issues/214
+            ._buildFileElem()
+            ._update();
     },
 
-    _getFileByPath : function(path) {
+    _update : function(data) {
+        return this.trigger('change', data);
+    },
+
+    _buildFileElem : function() {
+        var fileName = this._getFileName(this.getVal());
+
+        this.elem('file').length && BEMDOM.destruct(this.elem('file'));
+
+        BEMDOM.append(
+            this.domElem,
+            BEMHTML.apply({
+                block : 'attach',
+                elem : 'file',
+                content : [
+                    { elem : 'icon', mods : { file : this._getExtension(fileName) } },
+                    { elem : 'text', content : fileName },
+                    { elem : 'clear' }
+                ]
+            }));
+
+        return this.dropElemCache('file');
+    },
+
+    _getFileName : function(path) {
         return path.split('\\').pop(); // TODO: учесть разделитель путей в windows
-    },
-
-    _setFile : function(fileName) {
-        this
-            .toggleMod(this.elem('holder'), 'hidden', true, !!fileName)
-            .elem('text').text(fileName || this._noFileText);
-        return this;
     },
 
     _extensionsToMods : {
@@ -104,10 +114,6 @@ BEMDOM.decl('attach', {
     _getExtension : function(fileName) {
         var ext = fileName.split('.').pop().toLowerCase();
         return this._extensionsToMods.hasOwnProperty(ext)? this._extensionsToMods[ext] || ext : '';
-    },
-
-    _setExtension : function(extension) {
-        return this.setMod(this.elem('holder'), 'file', extension || 'unknown');
     }
 }, {
     live : function() {
@@ -116,7 +122,7 @@ BEMDOM.decl('attach', {
                 this._onClearClick();
             })
             .liveBindTo('control', 'change', function() {
-                this._update();
+                this._onChange();
             });
 
         return false;

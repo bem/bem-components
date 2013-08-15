@@ -6,9 +6,7 @@
             block : 'button',
             mods : { 'only-icon' : 'yes' }// TODO : убрать после https ://github.com/bem/bem-tools/pull/424
         },
-        { elem : 'holder', mods : { state : 'hidden' } },
-        { elem : 'clear', mods : { visible : true } },
-        { elems : ['text', 'icon-file', 'button', 'control'] },
+        { elems : ['button', 'control', 'no-file', 'file'] },
         { block : 'jquery', elem : 'pointerclick' }
     ]
 },
@@ -18,7 +16,11 @@
         // TODO : нужно что-то придумать с повторением `tech : 'bemhtml'`
         { tech : 'bemhtml', block : 'i-bem' },
         // TODO : почему-то не работает без указания `block : 'attach'`
-        { tech : 'bemhtml', block : 'attach', elem : 'control' }
+        {
+            tech : 'bemhtml',
+            block : 'attach',
+            elems : ['control', 'file']
+        }
     ]
 }
 ]

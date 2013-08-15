@@ -4,6 +4,10 @@ block('check-button')(
 
     js()(true),
 
+    attrs()({
+        'for': this.ctx.id || this.generateId()
+    })
+
     content()(function() {
         var ctx = this.ctx,
             mods = this.mods;
@@ -14,6 +18,7 @@ block('check-button')(
                 // TODO: в остальных контролах используется поле `controlAttrs`
                 attrs: {
                     name: ctx.name,
+                    id: ctx.id || this.generateId(),
                     type: 'checkbox',
                     tabindex: ctx.tabindex,
                     checked: mods.checked === 'yes' ? 'checked' : undefined,

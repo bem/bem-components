@@ -1,5 +1,42 @@
 block('attach')(
-    def()(function() { applyNext({ '_attach': this.ctx }) }),
+    def()(function() { applyNext({ _attach : this.ctx }) }),
+
     tag()('span'),
-    js()(true)
+
+    js()(true),
+
+    content()(
+        function() {
+            var ctx = this.ctx,
+                buttonText = ctx.buttonText,
+                button = ctx.button;
+
+            button || (button = {
+                block : 'button',
+                text : this._.isSimple(buttonText)?
+                    buttonText :
+                    BEMHTML.apply(buttonText)
+            });
+
+            button.mods || (button.mods = {});
+            var modNames = ['size', 'theme', 'disabled'], i = 0, modName;
+            while(modName = modNames[i++])
+                button.mods[modName] || (button.mods[modName] = this.mods[modName]);
+
+            return [
+                button,
+                {
+                    elem : 'holder',
+                    content : [
+                        { elem : 'icon-file' },
+                        { elem : 'text', content : this.ctx.noFileText },
+                        { elem : 'reset' }
+                    ]
+                }
+            ];
+        },
+        match(function() { return typeof this.ctx.content !== 'undefined' })(function() {
+            return this.ctx.content;
+        })
+    )
 )

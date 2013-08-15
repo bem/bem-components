@@ -28,11 +28,11 @@ BEMDOM.decl({ block : 'input', modName : 'autofocus', modVal : true }, {
             // ставим курсор в конец строки и добавляем пробел
             // пробел нужен для того чтобы мы начинали набирать после автофокуса новое слово
             var inputDomNode = this.elem('control')[0],
-                val = this.val();
+                val = this.getVal();
 
             if(val.length && val.substr(val.length - 1, 1) !== ' ') {
                 val += ' ';
-                this.val(val);
+                this.setVal(val);
             }
 
             if(inputDomNode.createTextRange) { // IE

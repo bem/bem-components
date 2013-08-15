@@ -6,7 +6,7 @@ block('check-button')(
 
     attrs()({
         'for': this.ctx.id || this.generateId()
-    })
+    }),
 
     content()(function() {
         var ctx = this.ctx,

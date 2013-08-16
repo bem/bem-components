@@ -40,11 +40,21 @@ BEMDOM.decl('attach', {
     },
 
     /**
+     * Returns control name
+     * @returns {String}
+     */
+    getName : function() {
+        return this.elem('control').attr('name');
+    },
+
+    /**
      * Clear control value
      * @param {Object} [data] additional data
      * @returns {this}
      */
     clear : function(data) {
+        if(!this.getVal()) return;
+
         var control = this.elem('control');
         BEMDOM.replace(
             control,
@@ -111,8 +121,6 @@ BEMDOM.decl('attach', {
             .liveBindTo('control', 'change', function() {
                 this._onChange();
             });
-
-        return false;
     }
 });
 

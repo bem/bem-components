@@ -1,10 +1,9 @@
-[
-{
+[{
     mustDeps : { block : 'i-bem', elems : ['dom', 'i18n'] },
     shouldDeps : [
         {
             block : 'button',
-            mods : { 'only-icon' : 'yes' }// TODO : убрать после https ://github.com/bem/bem-tools/pull/424
+            mods : { 'only-icon' : 'yes' }// TODO : убрать после https://github.com/bem/bem-tools/pull/424
         },
         { elems : ['button', 'control', 'no-file', 'file'] },
         { block : 'jquery', elem : 'pointerclick' }
@@ -22,5 +21,8 @@
             elems : ['control', 'file']
         }
     ]
-}
-]
+},
+{
+    tech : 'test.js',
+    mustDeps : { tech : 'bemhtml', block : 'attach' }
+}]

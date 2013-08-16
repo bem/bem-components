@@ -15,7 +15,7 @@ block('attach')(
                 block : 'button',
                 text : this._.isSimple(buttonText)?
                     buttonText :
-                    BEMHTML.apply(buttonText)
+                    BEMHTML.apply(buttonText) // TODO: это не работает, BEMHTML тут недоступен
             });
 
             button.mods || (button.mods = {});

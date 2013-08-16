@@ -1,21 +1,18 @@
 .button__icon
 {
-    font: 16px/16px serif;
+    font: 1em/1 serif;
 
     position: relative;
 
-    width: 16px;
-    height: 16px;
+    width: 1em;
+    height: 1em;
 }
 
 .button__icon::before
 {
-    font: 16px/16px serif;
-
     display: inline-block;
 
-    width: 16px;
-    height: 16px;
+    width: 1em;
 
     text-align: center;
     content: '×';

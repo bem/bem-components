@@ -1,46 +1,21 @@
-/* button — рисует бордер кнопки */ /**/
 .button
 {
-    position: relative;
-
-    display: inline-block;
-
-    margin: 0;
-    padding: 0;
-    
-    outline: 0;
-
-    text-align: center;
-    white-space: nowrap;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
+    font-size: 100%;
+    line-height: 100%;
+    font-family: inherit;
 }
 
-.button::-moz-focus-inner
+a.button:link,
+a.button:hover,
+a.button:visited
 {
-    padding: 0;
+    cursor: default;
+    text-decoration: none;
 
-    border: 0;
+    color: #000;
 }
 
-/* Прячем стили от IE < 9 */ /**/
-@media all and (min-width:0px) {
-    .button
-    {
-        border: 0;
-    }
-
-    a.button:link,
-    a.button:hover,
-    a.button:visited
-    {
-        cursor: default;
-
-        /* hidden for Opera 12 to remove native focusing  *//**/
-        outline: hidden;
-
-        text-decoration: none;
-    }
+.button__text
+{
+    position: relative;
 }

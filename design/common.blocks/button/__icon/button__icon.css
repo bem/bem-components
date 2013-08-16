@@ -1,10 +1,26 @@
 .button__icon
 {
+    position: relative;
+
+    width: 16px;
+    height: 16px;
+    margin-right: 7px;
+}
+
+.button__icon::before
+{
+    font: 16px/16px serif;
+
+    display: inline-block;
+
     width: 16px;
     height: 16px;
 
-    position: relative;
-    top: 3px;
+    text-align: center;
+    content: '×';
+}
 
-    margin-right: 7px;
+.button_pressed .button__icon
+{
+    top: 1px;
 }

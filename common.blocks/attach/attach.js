@@ -1,35 +1,5 @@
 modules.define('i-bem__dom', ['jquery', 'BEMHTML'], function(provide, $, BEMHTML, BEMDOM) {
 
-var EXTENSIONS_TO_MODS = {
-    'zip'  : 'archive',
-    'rar'  : 'archive',
-    'tar'  : 'archive',
-    'gz'   : 'archive',
-    '7z'   : 'archive',
-    'gif'  : '',
-    'jpg'  : '',
-    'jpeg' : 'jpg',
-    'png'  : '',
-    'eml'  : '',
-    'exe'  : '',
-    'm4a'  : 'audio',
-    'ogg'  : 'audio',
-    'mp3'  : '',
-    'wav'  : '',
-    'wma'  : '',
-    'flv'  : 'video',
-    'mov'  : '',
-    'wmv'  : '',
-    'mp4'  : '',
-    'avi'  : '',
-    'xls'  : '',
-    'doc'  : '',
-    'docx' : 'doc',
-    'txt'  : '',
-    'pdf'  : '',
-    'ppt'  : ''
-};
-
 BEMDOM.decl('attach', {
     /**
      * Returns control value
@@ -69,8 +39,9 @@ BEMDOM.decl('attach', {
 
         BEMDOM.destruct(this.elem('file'));
 
+        this.domElem.append(this.elem('no-file')); // use append because only detached before
+
         return this
-            .delMod(this.elem('no-file'), 'hidden')
             .dropElemCache('control file')
             ._triggerChange(data);
     },
@@ -80,8 +51,8 @@ BEMDOM.decl('attach', {
     },
 
     _onChange : function() {
+        this.elem('no-file').detach();
         this
-            .setMod(this.elem('no-file'), 'hidden')
             ._updateFileElem()
             ._triggerChange();
     },
@@ -125,6 +96,36 @@ BEMDOM.decl('attach', {
 });
 
 provide(BEMDOM);
+
+var EXTENSIONS_TO_MODS = {
+    'zip'  : 'archive',
+    'rar'  : 'archive',
+    'tar'  : 'archive',
+    'gz'   : 'archive',
+    '7z'   : 'archive',
+    'gif'  : '',
+    'jpg'  : '',
+    'jpeg' : 'jpg',
+    'png'  : '',
+    'eml'  : '',
+    'exe'  : '',
+    'm4a'  : 'audio',
+    'ogg'  : 'audio',
+    'mp3'  : '',
+    'wav'  : '',
+    'wma'  : '',
+    'flv'  : 'video',
+    'mov'  : '',
+    'wmv'  : '',
+    'mp4'  : '',
+    'avi'  : '',
+    'xls'  : '',
+    'doc'  : '',
+    'docx' : 'doc',
+    'txt'  : '',
+    'pdf'  : '',
+    'ppt'  : ''
+};
 
 function extractFileNameFromPath(path) {
     return path.split('\\').pop(); // TODO: учесть разделитель путей в windows

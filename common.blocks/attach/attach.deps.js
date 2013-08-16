@@ -6,7 +6,8 @@
             mods : { 'only-icon' : 'yes' }// TODO : убрать после https://github.com/bem/bem-tools/pull/424
         },
         { elems : ['button', 'control', 'no-file', 'file'] },
-        { block : 'jquery', elem : 'pointerclick' }
+        { block : 'jquery', elem : 'pointerclick' },
+        { block : 'strings', elem : 'escape' }
     ]
 },
 {

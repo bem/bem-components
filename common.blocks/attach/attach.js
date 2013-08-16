@@ -1,4 +1,7 @@
-modules.define('i-bem__dom', ['jquery', 'BEMHTML'], function(provide, $, BEMHTML, BEMDOM) {
+modules.define(
+    'i-bem__dom',
+    ['jquery', 'BEMHTML', 'strings__escape'],
+    function(provide, $, BEMHTML, escape, BEMDOM) {
 
 BEMDOM.decl('attach', {
     /**
@@ -76,7 +79,7 @@ BEMDOM.decl('attach', {
                         elem : 'icon',
                         mods : { file : extractExtensionFromFileName(fileName) }
                     },
-                    { elem : 'text', content : fileName },
+                    { elem : 'text', content : escape.html(fileName) },
                     { elem : 'clear' }
                 ]
             }));

@@ -1,10 +1,11 @@
 .button__icon
 {
+    font: 16px/16px serif;
+
     position: relative;
 
     width: 16px;
     height: 16px;
-    margin-right: 7px;
 }
 
 .button__icon::before
@@ -18,9 +19,18 @@
 
     text-align: center;
     content: '×';
+
+    color: #fff;
+    background: #000;
+    border-radius: 50%;
 }
 
 .button_pressed .button__icon
 {
     top: 1px;
+}
+
+.button__icon + .button__text
+{
+    margin-left: 7px;
 }

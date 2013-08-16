@@ -16,11 +16,6 @@
         },
         {
             block : 'button',
-            text : 'focused',
-            mods : { 'focused' : true }
-        },
-        {
-            block : 'button',
             text : 'with icon',
             icon : { elem : 'icon' }
         },

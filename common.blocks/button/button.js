@@ -18,11 +18,7 @@ BEMDOM.decl('button', {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._focused = dom.isFocusable(this.domElem) && dom.containsFocus(this.domElem);
-
-                this._focused?
-                    this.setMod('focused') : // if control already in focus we need to set focused mod
-                    this.hasMod('focused') && this._focus(); // if block already has focused mod we need to focus control
+                this._focused = false;
             }
         },
 
@@ -30,14 +26,14 @@ BEMDOM.decl('button', {
             true : function() {
                 this.bindToWin('unload', this._onUnload); // TODO: выяснить и написать зачем это
 
-                this._focused || this.domElem.focus();
+                this._focused || this._focus();
                 this.emit('focus');
             },
 
             '' : function() {
                 this.unbindFromWin('unload', this._onUnload);
 
-                this._focused && this.domElem.blur();
+                this._focused && this._blur();
                 this.emit('blur');
             }
         },
@@ -75,6 +71,14 @@ BEMDOM.decl('button', {
         this.hasMod('disabled')?
             e.preventDefault() :
             this.trigger('click');
+    },
+
+    _focus : function() {
+        this.domElem.focus();
+    },
+
+    _blur : function() {
+        this.domElem.blur();
     }
 }, {
     live : function() {

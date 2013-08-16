@@ -1,0 +1,21 @@
+.button
+{
+    font-size: 100%;
+    line-height: 100%;
+    font-family: inherit;
+}
+
+a.button:link,
+a.button:hover,
+a.button:visited
+{
+    cursor: default;
+    text-decoration: none;
+
+    color: #000;
+}
+
+.button__text
+{
+    position: relative;
+}

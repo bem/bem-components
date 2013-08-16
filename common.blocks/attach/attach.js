@@ -1,13 +1,36 @@
 modules.define('i-bem__dom', ['jquery', 'BEMHTML'], function(provide, $, BEMHTML, BEMDOM) {
 
-BEMDOM.decl('attach', {
-    onSetMod : {
-        'js' : {
-            'inited' : function() {
-            }
-        }
-    },
+var EXTENSIONS_TO_MODS = {
+    'zip'  : 'archive',
+    'rar'  : 'archive',
+    'tar'  : 'archive',
+    'gz'   : 'archive',
+    '7z'   : 'archive',
+    'gif'  : '',
+    'jpg'  : '',
+    'jpeg' : 'jpg',
+    'png'  : '',
+    'eml'  : '',
+    'exe'  : '',
+    'm4a'  : 'audio',
+    'ogg'  : 'audio',
+    'mp3'  : '',
+    'wav'  : '',
+    'wma'  : '',
+    'flv'  : 'video',
+    'mov'  : '',
+    'wmv'  : '',
+    'mp4'  : '',
+    'avi'  : '',
+    'xls'  : '',
+    'doc'  : '',
+    'docx' : 'doc',
+    'txt'  : '',
+    'pdf'  : '',
+    'ppt'  : ''
+};
 
+BEMDOM.decl('attach', {
     /**
      * Returns control value
      * @returns {String}
@@ -39,7 +62,7 @@ BEMDOM.decl('attach', {
         return this
             .delMod(this.elem('no-file'), 'hidden')
             .dropElemCache('control file')
-            ._update(data);
+            ._triggerChange(data);
     },
 
     _onClearClick : function() {
@@ -48,17 +71,17 @@ BEMDOM.decl('attach', {
 
     _onChange : function() {
         this
-            .setMod(this.elem('no-file'), 'hidden', true) // TODO: https://github.com/bem/bem-core/issues/214
-            ._buildFileElem()
-            ._update();
+            .setMod(this.elem('no-file'), 'hidden')
+            ._updateFileElem()
+            ._triggerChange();
     },
 
-    _update : function(data) {
+    _triggerChange : function(data) {
         return this.trigger('change', data);
     },
 
-    _buildFileElem : function() {
-        var fileName = this._getFileName(this.getVal());
+    _updateFileElem : function() {
+        var fileName = extractFileNameFromPath(this.getVal());
 
         this.elem('file').length && BEMDOM.destruct(this.elem('file'));
 
@@ -68,52 +91,16 @@ BEMDOM.decl('attach', {
                 block : 'attach',
                 elem : 'file',
                 content : [
-                    { elem : 'icon', mods : { file : this._getExtension(fileName) } },
+                    {
+                        elem : 'icon',
+                        mods : { file : extractExtensionFromFileName(fileName) }
+                    },
                     { elem : 'text', content : fileName },
                     { elem : 'clear' }
                 ]
             }));
 
         return this.dropElemCache('file');
-    },
-
-    _getFileName : function(path) {
-        return path.split('\\').pop(); // TODO: учесть разделитель путей в windows
-    },
-
-    _extensionsToMods : {
-        'zip'  : 'archive',
-        'rar'  : 'archive',
-        'tar'  : 'archive',
-        'gz'   : 'archive',
-        '7z'   : 'archive',
-        'gif'  : '',
-        'jpg'  : '',
-        'jpeg' : 'jpg',
-        'png'  : '',
-        'eml'  : '',
-        'exe'  : '',
-        'm4a'  : 'audio',
-        'ogg'  : 'audio',
-        'mp3'  : '',
-        'wav'  : '',
-        'wma'  : '',
-        'flv'  : 'video',
-        'mov'  : '',
-        'wmv'  : '',
-        'mp4'  : '',
-        'avi'  : '',
-        'xls'  : '',
-        'doc'  : '',
-        'docx' : 'doc',
-        'txt'  : '',
-        'pdf'  : '',
-        'ppt'  : ''
-    },
-
-    _getExtension : function(fileName) {
-        var ext = fileName.split('.').pop().toLowerCase();
-        return this._extensionsToMods.hasOwnProperty(ext)? this._extensionsToMods[ext] || ext : '';
     }
 }, {
     live : function() {
@@ -130,5 +117,14 @@ BEMDOM.decl('attach', {
 });
 
 provide(BEMDOM);
+
+function extractFileNameFromPath(path) {
+    return path.split('\\').pop(); // TODO: учесть разделитель путей в windows
+}
+
+function extractExtensionFromFileName(fileName) {
+    var ext = fileName.split('.').pop().toLowerCase();
+    return EXTENSIONS_TO_MODS.hasOwnProperty(ext)? EXTENSIONS_TO_MODS[ext] || ext : '';
+}
 
 });

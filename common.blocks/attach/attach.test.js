@@ -12,23 +12,36 @@ describe('attach', function() {
 
         // we need to replace input[@type=file] by input[@type=text] for tests
         var input = attach.findElem('control');
-        input.replaceWith('<input type="text" class="attach__control" name="' + input.attr('name')  + '"/>');
+        input.replaceWith('<input class="attach__control" name="' + input.attr('name')  + '"/>');
     });
 
     afterEach(function() {
         BEMDOM.destruct(attach.domElem);
     });
 
-    describe('getName', function() {
-        it('should return input\'s name', function() {
+    describe('name', function() {
+        it('getName should return input\'s name', function() {
             attach.getName().should.be.equal('upload');
         });
     });
 
-    describe('getVal', function() {
-        it('should return input\'s value', function() {
+    describe('value', function() {
+        it('getVal should return actual input\'s value', function() {
+            attach.getVal().should.be.equal('');
             setFile('/file.png');
             attach.getVal().should.be.equal('/file.png');
+        });
+
+        it('should emit "change" event after input value changed', function() {
+            var spy = sinon.spy();
+            attach.on('change', spy);
+            setFile('/file.png');
+            spy.should.have.been.calledOnce;
+        });
+
+        it('should properly extract file name', function() {
+            setFile('\\usr\\local\\file.png');
+            attach.elem('text').text().should.be.equal('file.png');
         });
     });
 

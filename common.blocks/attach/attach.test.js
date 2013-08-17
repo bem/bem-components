@@ -28,14 +28,14 @@ describe('attach', function() {
     describe('value', function() {
         it('getVal should return actual input\'s value', function() {
             attach.getVal().should.be.equal('');
-            setFile('/file.png');
-            attach.getVal().should.be.equal('/file.png');
+            setFile('file.png');
+            attach.getVal().should.be.equal('file.png');
         });
 
         it('should emit "change" event after input value changed', function() {
             var spy = sinon.spy();
             attach.on('change', spy);
-            setFile('/file.png');
+            setFile('file.png');
             spy.should.have.been.calledOnce;
         });
 
@@ -43,18 +43,27 @@ describe('attach', function() {
             setFile('\\usr\\local\\file.png');
             attach.elem('text').text().should.be.equal('file.png');
         });
+
+        it('should properly extract file extension', function() {
+            setFile('file.png');
+            attach.getMod(attach.findElem('icon'), 'file').should.be.equal('png');
+            setFile('file.zip');
+            attach.getMod(attach.findElem('icon'), 'file').should.be.equal('archive');
+            setFile('file.docx');
+            attach.getMod(attach.findElem('icon'), 'file').should.be.equal('doc');
+        });
     });
 
     describe('clear', function() {
         it('should reset input\'s value', function() {
-            setFile('/file.png');
+            setFile('file.png');
             attach.clear();
             attach.getVal().should.be.equal('');
         });
 
         it('should emit "change" event after clear', function() {
             var spy = sinon.spy();
-            setFile('/file.png');
+            setFile('file.png');
             attach.on('change', spy);
             attach.clear();
             spy.should.have.been.calledOnce;
@@ -65,7 +74,7 @@ describe('attach', function() {
         it('should be called after "pointerclick" on "clear" elem', function() {
             var spy = sinon.spy();
             attach.clear = spy;
-            setFile('/file.png');
+            setFile('file.png');
             attach.elem('clear').trigger('pointerclick');
             spy.should.have.been.calledOnce;
         });

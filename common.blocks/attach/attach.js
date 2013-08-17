@@ -131,7 +131,7 @@ var EXTENSIONS_TO_MODS = {
 };
 
 function extractFileNameFromPath(path) {
-    return path.split('\\').pop(); // TODO: учесть разделитель путей в windows
+    return path.split('\\').pop(); // we need this only in windows
 }
 
 function extractExtensionFromFileName(fileName) {

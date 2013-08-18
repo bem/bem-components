@@ -21,7 +21,6 @@
         },
         {
             block : 'button',
-            mods : { 'only-icon' : true },
             icon : { elem : 'icon' }
         },
         {
@@ -51,7 +50,7 @@
         },
         {
             block : 'button',
-            mods : { 'only-icon' : true, 'type' : 'link' },
+            mods : { 'type' : 'link' },
             url : 'http://bem.info/',
             icon : { elem : 'icon' }
         }

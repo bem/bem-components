@@ -80,6 +80,53 @@ describe('attach', function() {
         });
     });
 
+    describe('focus/blur', function() {
+        it('should have "focused" mod on focus', function() {
+            attach.elem('control').focus();
+            attach.hasMod('focused').should.be.true;
+        });
+
+        it('should delete "focused" mod on blur', function() {
+            attach.elem('control')
+                .focus()
+                .blur();
+            attach.hasMod('focused').should.be.false;
+        });
+
+        it('should be focused after "focused" mod set', function() {
+            attach.setMod('focused');
+            dom.containsFocus(attach.elem('control')).should.be.true;
+        });
+
+        it('should not set "focused" mod if it has "disabled" mod', function() {
+            attach
+                .setMod('disabled')
+                .setMod('focused');
+            attach.hasMod('focused').should.be.false;
+        });
+
+        it('should emit focus event after focused', function() {
+            var spy = sinon.spy();
+
+            attach
+                .on('focus', spy)
+                .setMod('focused');
+
+            spy.should.have.been.calledOnce;
+        });
+
+        it('should emit blur event after blured', function() {
+            var spy = sinon.spy();
+
+            attach
+                .on('blur', spy)
+                .setMod('focused')
+                .delMod('focused');
+
+            spy.should.have.been.calledOnce;
+        });
+    });
+
     describe('enable/disable', function() {
         it('should enable/disable button and elem "control" according to self "disabled" mod', function() {
             attach.setMod('disabled');

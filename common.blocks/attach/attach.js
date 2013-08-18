@@ -4,7 +4,33 @@ modules.define(
     function(provide, $, BEMHTML, escape, BEMDOM) {
 
 BEMDOM.decl('attach', {
+    beforeSetMod : {
+        'focused' : {
+            true : function() {
+                return !this.hasMod('disabled');
+            }
+        }
+    },
+
     onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this._focused = false;
+            }
+        },
+
+        'focused' : {
+            true : function() {
+                this._focused || this._focus();
+                this.emit('focus');
+            },
+
+            '' : function() {
+                this._focused && this._blur();
+                this.emit('blur');
+            }
+        },
+
         'disabled' : function(modName, modVal) {
             this.elem('control').prop(modName, !!modVal);
             this._getButton().setMod(modName, modVal);
@@ -56,6 +82,16 @@ BEMDOM.decl('attach', {
             ._triggerChange(data);
     },
 
+    _onFocus : function() {
+        this._focused = true;
+        this.setMod('focused');
+    },
+
+    _onBlur : function() {
+        this._focused = false;
+        this.delMod('focused');
+    },
+
     _onClearClick : function() {
         this.clear({ source : 'clear' });
     },
@@ -96,10 +132,24 @@ BEMDOM.decl('attach', {
 
     _getButton : function() {
         return this.findBlockInside('button');
+    },
+
+    _focus : function() {
+        this.elem('control').focus();
+    },
+
+    _blur : function() {
+        this.elem('control').blur();
     }
 }, {
     live : function() {
         this
+            .liveBindTo('control', 'focusin', function() {
+                this._onFocus();
+            })
+            .liveBindTo('control', 'focusout', function() {
+                this._onBlur();
+            })
             .liveBindTo('clear', 'pointerclick', function() {
                 this._onClearClick();
             })

@@ -80,6 +80,18 @@ describe('attach', function() {
         });
     });
 
+    describe('enable/disable', function() {
+        it('should enable/disable button and elem "control" according to self "disabled" mod', function() {
+            attach.setMod('disabled');
+            attach.findBlockInside('button').hasMod('disabled').should.be.true;
+            attach.elem('control').prop('disabled').should.be.true;
+
+            attach.delMod('disabled');
+            attach.findBlockInside('button').hasMod('disabled').should.be.false;
+            attach.elem('control').prop('disabled').should.be.false;
+        });
+    });
+
     function setFile(filePath) {
         attach.elem('control')
             .val(filePath)

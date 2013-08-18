@@ -4,6 +4,13 @@ modules.define(
     function(provide, $, BEMHTML, escape, BEMDOM) {
 
 BEMDOM.decl('attach', {
+    onSetMod : {
+        'disabled' : function(modName, modVal) {
+            this.elem('control').prop(modName, !!modVal);
+            this._getButton().setMod(modName, modVal);
+        }
+    },
+
     /**
      * Returns control value
      * @returns {String}
@@ -85,6 +92,10 @@ BEMDOM.decl('attach', {
             }));
 
         return this.dropElemCache('file');
+    },
+
+    _getButton : function() {
+        return this.findBlockInside('button');
     }
 }, {
     live : function() {

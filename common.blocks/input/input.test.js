@@ -82,6 +82,16 @@ describe('input', function() {
         });
     });
 
+    describe('enable/disable', function() {
+        it('should set "disabled" property according to "disabled" mod', function() {
+            input.setMod('disabled');
+            input.elem('control').prop('disabled').should.be.true;
+
+            input.delMod('disabled');
+            input.elem('control').prop('disabled').should.be.false;
+        });
+    });
+
     describe('val', function() {
         it('should update control elem value when value changed', function() {
             input.setVal('blabla');

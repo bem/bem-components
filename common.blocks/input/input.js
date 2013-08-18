@@ -36,8 +36,8 @@ BEMDOM.decl('input', {
             }
         },
 
-        'disabled' : function(_, modVal) {
-            this.elem('control').attr('disabled', modVal);
+        'disabled' : function(modName, modVal) {
+            this.elem('control').prop(modName, !!modVal);
         }
     },
 

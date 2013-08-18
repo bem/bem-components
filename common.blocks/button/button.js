@@ -39,8 +39,8 @@ BEMDOM.decl('button', {
         },
 
         'disabled' : {
-            '*' : function(_, modVal) {
-                this.domElem.attr('disabled', modVal);
+            '*' : function(modName, modVal) {
+                this.domElem.prop(modName, !!modVal);
             },
 
             true : function() {

@@ -7,7 +7,7 @@ describe('button', function() {
     var button;
 
     beforeEach(function() {
-        button = BEMDOM.init($(BEMHTML.apply({ block: 'button' })).appendTo('body'))
+        button = BEMDOM.init($(BEMHTML.apply({ block : 'button' })).appendTo('body'))
             .bem('button');
     });
 
@@ -99,6 +99,16 @@ describe('button', function() {
                 .delMod('pressed');
 
             spy.should.have.been.calledOnce;
+        });
+    });
+
+    describe('enable/disable', function() {
+        it('should set "disabled" property according to "disabled" mod', function() {
+            button.setMod('disabled');
+            button.domElem.prop('disabled').should.be.true;
+
+            button.delMod('disabled');
+            button.domElem.prop('disabled').should.be.false;
         });
     });
 

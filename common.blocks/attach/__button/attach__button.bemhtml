@@ -3,7 +3,13 @@ block('button')
 
         tag()('span'),
 
+        attrs()(function() {
+            var attrs = applyNext();
+            attrs.tabindex = -1;
+            return attrs;
+        }),
+
         content()(function() {
-            return [applyNext(), { block: 'attach', elem: 'control' }]
+            return [applyNext(), { block : 'attach', elem : 'control' }]
         })
     )

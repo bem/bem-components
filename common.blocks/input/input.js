@@ -4,8 +4,7 @@ BEMDOM.decl('input', {
     beforeSetMod : {
         'focused' : {
             true : function() {
-                if(this.hasMod('disabled'))
-                    return false;
+                return !this.hasMod('disabled');
             }
         }
     },

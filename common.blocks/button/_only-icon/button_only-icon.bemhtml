@@ -1,3 +1,0 @@
-block('button').mod('only-icon', true).content()(function() {
-    return ['&#160;', applyNext()];
-})

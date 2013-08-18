@@ -1,3 +1,0 @@
-({
-    shouldDeps: { elem: 'icon' }
-})

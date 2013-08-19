@@ -12,7 +12,6 @@ block('input')(
             // NOTE: не вынесли в отдельные шаблоны ради оптимизации
             ctx.hint && content.unshift({ elem: 'hint', content: ctx.hint });
             ctx.label && content.unshift({ elem: 'label', content: ctx.label });
-            ctx.samples && content.push({ elem: 'samples', samples: ctx.samples });
             return content;
         },
         match(function() { return typeof this.ctx.content !== 'undefined' })(function() {

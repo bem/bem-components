@@ -53,39 +53,6 @@
             maxLength : 42,
             tabIndex : 42,
             autocomplete : false
-        },
-        {
-            block : 'input',
-            mods : { 'has-hint' : true, 'has-label' : true, 'has-samples' : true },
-            id : 'id6',
-            name : 'name6',
-            val : 'value6',
-            hint : 'hint6',
-            label : 'label6',
-            samples : ['sample1', 'sample2']
-        },
-        {
-            block : 'input',
-            mods : { 'has-hint' : true, 'has-label' : true, 'has-samples' : true },
-            id : 'id7',
-            name : 'name7',
-            val : 'value7',
-            hint : 'hint7',
-            label : 'label7',
-            samples : [{ text : 'sample1', val : 'value1' }, { text : 'sample2', val : 'value2' }]
-        },
-        { tag : 'br' },
-        {
-            block : 'input',
-            mods : { 'has-samples' : true },
-            val : 'value',
-            content : [
-                { elem : 'control' },
-                {
-                    elem : 'samples',
-                    samples : [{ text : 'sample1', val : 'value1' }, { text : 'sample2', val : 'value2' }]
-                }
-            ]
         }
     ].map(function(input) {
         return {

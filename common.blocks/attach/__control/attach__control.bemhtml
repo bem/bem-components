@@ -10,7 +10,7 @@ block('attach').elem('control')(
         if(attach) {
             attrs.name = attach.name;
             attach.mods && attach.mods.disabled && (attrs.disabled = 'disabled');
-            attach.tabindex && (attrs.tabindex = attach.tabindex);
+            attach.tabIndex && (attrs.tabindex = attach.tabIndex);
         }
 
         return attrs;

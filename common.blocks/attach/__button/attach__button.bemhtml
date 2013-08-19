@@ -1,18 +1,15 @@
 block('button')
-    .match(!this.elem)
     .match(this._attach)(
-        match(function() { return this._attach.mods && this._attach.mods.disabled === 'yes' })
-            .match(function() { return !this.mods.disabled })
-            .def()(function() {
-                    apply(
-                        '',
-                        { 'ctx.mods': this._.extend(this.ctx.mods, { disabled : 'yes' }) }
-                    )
-                }),
 
         tag()('span'),
 
+        attrs()(function() {
+            var attrs = applyNext();
+            attrs.tabindex = -1;
+            return attrs;
+        }),
+
         content()(function() {
-            return [applyNext(), { block: 'attach', elem: 'control' }]
+            return [applyNext(), { block : 'attach', elem : 'control' }]
         })
     )

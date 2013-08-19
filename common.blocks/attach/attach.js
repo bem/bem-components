@@ -1,178 +1,203 @@
-modules.define('i-bem__dom', ['jquery', 'BEMHTML'], function(provide, $, BEMHTML, DOM) {
+modules.define(
+    'i-bem__dom',
+    ['jquery', 'BEMHTML', 'strings__escape'],
+    function(provide, $, BEMHTML, escape, BEMDOM) {
 
-/**
- * @namespace
- * @name Attach
- */
-DOM.decl('attach', /** @lends Attach.prototype */ {
-    onSetMod : {
-        'js' : {
-            'inited' : function() {
-                this._noFileText = this.elem('text').text();
-
-                this
-                    .bindTo('reset', 'click', this.resetFile) // TODO: сделать live-событием
-                    ._update()
-                    ._getButton()
-                        .on('focus', this._onButtonFocus, this)
-                        .on('blur', this._onButtonBlur, this);
+BEMDOM.decl('attach', {
+    beforeSetMod : {
+        'focused' : {
+            true : function() {
+                return !this.hasMod('disabled');
             }
         }
     },
 
-    _onButtonFocus : function() {
-        this._isControlFocused() || this.elem('control').focus();
-    },
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this._focused = false;
+            }
+        },
 
-    _onButtonBlur : function() {
-        this._isControlFocused() && this.elem('control').blur();
+        'focused' : {
+            true : function() {
+                this._focused || this._focus();
+                this.emit('focus');
+            },
+
+            '' : function() {
+                this._focused && this._blur();
+                this.emit('blur');
+            }
+        },
+
+        'disabled' : function(modName, modVal) {
+            this.elem('control').prop(modName, !!modVal);
+            this._getButton().setMod(modName, modVal);
+        }
     },
 
     /**
-     * Возвращает значение контрола, путь к выбранному файлу
+     * Returns control value
      * @returns {String}
      */
-    val : function() {
+    getVal : function() {
         return this.elem('control').val();
     },
 
     /**
-     * Сбросить выбранное значение контрола
+     * Returns control name
+     * @returns {String}
+     */
+    getName : function() {
+        return this.elem('control').attr('name');
+    },
+
+    /**
+     * Clear control value
+     * @param {Object} [data] additional data
      * @returns {this}
      */
-    resetFile : function() {
-        var control = this.elem('control');
+    clear : function(data) {
+        if(!this.getVal()) return;
 
-        control.replaceWith(BEMHTML.apply({
-            block : 'attach',
-            elem  : 'control',
-            attrs : {
-                name     : control.attr('name'),
-                tabindex : control.attr('tabindex')
-            }
-        }));
+        var control = this.elem('control');
+        BEMDOM.replace(
+            control,
+            BEMHTML.apply({
+                block : 'attach',
+                elem : 'control',
+                attrs : {
+                    name : control.attr('name'),
+                    tabindex : control.attr('tabindex')
+                }
+            }));
+
+        BEMDOM.destruct(this.elem('file'));
+
+        this.domElem.append(this.elem('no-file')); // use append because only detached before
 
         return this
-            .dropElemCache('control')
-            ._update()
-            .delMod(this.elem('reset'), 'visibility')
-            .trigger('reset');
+            .dropElemCache('control file')
+            ._triggerChange(data);
     },
 
-    /**
-     * @returns {this}
-     */
-    _update : function() {
-        var fileName = this._getFileByPath(this.val());
+    _onFocus : function() {
+        this._focused = true;
+        this.setMod('focused');
+    },
 
+    _onBlur : function() {
+        this._focused = false;
+        this.delMod('focused');
+    },
+
+    _onClearClick : function() {
+        this.clear({ source : 'clear' });
+    },
+
+    _onChange : function() {
+        this.elem('no-file').detach();
         this
-            ._setFile(fileName)
-            ._setExtension(this._getExtension(fileName));
-
-        fileName && this
-            .setMod(this.elem('reset'), 'visibility', 'visible')
-            .trigger('change'); // NOTE: при init-e fileName точно пустой, поэтому не будет события
-
-        return this;
+            ._updateFileElem()
+            ._triggerChange();
     },
 
-    /**
-     * @param {String} path
-     * @returns {String}
-     */
-    _getFileByPath : function(path) {
-        return path.split('\\').pop();
+    _triggerChange : function(data) {
+        return this.trigger('change', data);
     },
 
-    /**
-     * @param {String} fileName
-     * @returns {this}
-     */
-    _setFile : function(fileName) {
-        this
-            .toggleMod(this.elem('holder'), 'state', 'hidden', fileName)
-            .elem('text').text(fileName || this._noFileText);
-        return this;
-    },
+    _updateFileElem : function() {
+        var fileName = extractFileNameFromPath(this.getVal());
 
-    _extensionsToMods : {
-        'zip'  : 'archive',
-        'rar'  : 'archive',
-        'tar'  : 'archive',
-        'gz'   : 'archive',
-        '7z'   : 'archive',
-        'gif'  : '',
-        'jpg'  : '',
-        'jpeg' : 'jpg',
-        'png'  : '',
-        'eml'  : '',
-        'exe'  : '',
-        'm4a'  : 'audio',
-        'ogg'  : 'audio',
-        'mp3'  : '',
-        'wav'  : '',
-        'wma'  : '',
-        'flv'  : 'video',
-        'mov'  : '',
-        'wmv'  : '',
-        'mp4'  : '',
-        'avi'  : '',
-        'xls'  : '',
-        'doc'  : '',
-        'docx' : 'doc',
-        'txt'  : '',
-        'pdf'  : '',
-        'ppt'  : ''
-    },
+        this.elem('file').length && BEMDOM.destruct(this.elem('file'));
 
-    /**
-     * @param {String} fileName
-     * @returns {String}
-     */
-    _getExtension : function(fileName) {
-        var ext = fileName.split('.').pop().toLowerCase();
-        return this._extensionsToMods.hasOwnProperty(ext)? this._extensionsToMods[ext] || ext : '';
-    },
+        BEMDOM.append(
+            this.domElem,
+            BEMHTML.apply({
+                block : 'attach',
+                elem : 'file',
+                content : [
+                    {
+                        elem : 'icon',
+                        mods : { file : extractExtensionFromFileName(fileName) }
+                    },
+                    { elem : 'text', content : escape.html(fileName) },
+                    { elem : 'clear' }
+                ]
+            }));
 
-    /**
-     * @param {String} extension
-     * @returns {this}
-     */
-    _setExtension : function(extension) {
-        return this.setMod(this.elem('holder'), 'file', extension || this.params.unknownType);
-    },
-
-    getDefaultParams : function() {
-        return { unknownType : 'unknown' }; // TODO: используетс ли этот параметр?
+        return this.dropElemCache('file');
     },
 
     _getButton : function() {
-        return this._button || (this._button = this.findBlockOn('button', 'button'));
+        return this.findBlockInside('button');
     },
 
-    /**
-     * Проверяет в фокусе ли контрол
-     * @returns {Boolean}
-     */
-    _isControlFocused : function() {
-        try {
-            return this.containsDomElem($(DOM.doc[0].activeElement));
-        } catch(e) {
-            return false;
-        }
+    _focus : function() {
+        this.elem('control').focus();
+    },
+
+    _blur : function() {
+        this.elem('control').blur();
     }
-}, /** @lends Attach */{
+}, {
     live : function() {
         this
-            .liveBindTo('change', function() { this._update() })
-            .liveBindTo('control', 'focusin focusout',  function(e) {
-                this._getButton().toggleMod('focused', 'yes', e.type === 'focusin');
+            .liveBindTo('control', 'focusin', function() {
+                this._onFocus();
+            })
+            .liveBindTo('control', 'focusout', function() {
+                this._onBlur();
+            })
+            .liveBindTo('clear', 'pointerclick', function() {
+                this._onClearClick();
+            })
+            .liveBindTo('control', 'change', function() {
+                this._onChange();
             });
-
-        return false;
     }
 });
 
-provide(DOM);
+provide(BEMDOM);
+
+var EXTENSIONS_TO_MODS = {
+    'zip'  : 'archive',
+    'rar'  : 'archive',
+    'tar'  : 'archive',
+    'gz'   : 'archive',
+    '7z'   : 'archive',
+    'gif'  : '',
+    'jpg'  : '',
+    'jpeg' : 'jpg',
+    'png'  : '',
+    'eml'  : '',
+    'exe'  : '',
+    'm4a'  : 'audio',
+    'ogg'  : 'audio',
+    'mp3'  : '',
+    'wav'  : '',
+    'wma'  : '',
+    'flv'  : 'video',
+    'mov'  : '',
+    'wmv'  : '',
+    'mp4'  : '',
+    'avi'  : '',
+    'xls'  : '',
+    'doc'  : '',
+    'docx' : 'doc',
+    'txt'  : '',
+    'pdf'  : '',
+    'ppt'  : ''
+};
+
+function extractFileNameFromPath(path) {
+    return path.split('\\').pop(); // we need this only in windows
+}
+
+function extractExtensionFromFileName(fileName) {
+    var ext = fileName.split('.').pop().toLowerCase();
+    return EXTENSIONS_TO_MODS.hasOwnProperty(ext)? EXTENSIONS_TO_MODS[ext] || ext : '';
+}
 
 });

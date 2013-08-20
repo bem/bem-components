@@ -67,6 +67,18 @@ BEMDOM.decl('button', {
         this.delMod('focused');
     },
 
+    _onPointerDown : function() {
+        this
+            .bindToDoc('pointerup', this._onPointerUp)
+            .setMod('pressed');
+    },
+
+    _onPointerUp : function() {
+        this
+            .unbindFromDoc('pointerup', this._onPointerUp)
+            .delMod('pressed');
+    },
+
     _onClick : function(e) {
         this.hasMod('disabled')?
             e.preventDefault() :
@@ -90,10 +102,7 @@ BEMDOM.decl('button', {
                 this._onBlur();
             })
             .liveBindTo('pointerdown', function() {
-                this.setMod('pressed');
-            })
-            .liveBindTo('pointerup', function() {
-                this.delMod('pressed');
+                this._onPointerDown();
             })
             .liveBindTo('pointerclick', function(e) {
                 this._onClick(e);

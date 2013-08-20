@@ -44,21 +44,24 @@ BEMDOM.decl('button', {
         var keyCode = e.keyCode;
         if((keyCode === KEY_CODE_SPACE || keyCode === KEY_CODE_ENTER) && !this._keyDowned) {
             this._keyDowned = true;
-            var onKeyUp = function() {
-                this
-                    .delMod('pressed')
-                    .unbindFrom('keyup', onKeyUp);
-
-                this._keyDowned = false;
-
-                keyCode === KEY_CODE_SPACE && this._href &&
-                    (document.location = this._href);
-            };
-
-            this
-                .setMod('pressed')
-                .bindTo('keyup', onKeyUp);
+            this._onPressKeyDown(keyCode);
         }
+    },
+
+    _onPressKeyDown : function(keyCode) {
+        var onKeyUp = function() {
+            this
+                .delMod('pressed')
+                .unbindFrom('keyup', onKeyUp);
+
+            this._keyDowned = false;
+
+            keyCode === KEY_CODE_SPACE && this._href && // TODO: этот код должен быть в button_type_link
+                (document.location = this._href);
+        };
+        this
+            .bindTo('keyup', onKeyUp)
+            .setMod('pressed');
     }
 }, {
     live : function() {

@@ -11,6 +11,11 @@
         },
         {
             block : 'button',
+            mods : { togglable : true },
+            text : 'togglable'
+        },
+        {
+            block : 'button',
             mods : { 'disabled' : true },
             text : 'disabled'
         },

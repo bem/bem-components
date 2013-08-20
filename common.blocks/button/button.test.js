@@ -79,27 +79,6 @@ describe('button', function() {
                 .setMod('pressed');
             button.hasMod('pressed').should.be.false;
         });
-
-        it('should emit "press" event after pressed', function() {
-            var spy = sinon.spy();
-
-            button
-                .on('press', spy)
-                .setMod('pressed');
-
-            spy.should.have.been.calledOnce;
-        });
-
-        it('should emit "release" event after released', function() {
-            var spy = sinon.spy();
-
-            button
-                .on('release', spy)
-                .setMod('pressed')
-                .delMod('pressed');
-
-            spy.should.have.been.calledOnce;
-        });
     });
 
     describe('enable/disable', function() {
@@ -109,6 +88,22 @@ describe('button', function() {
 
             button.delMod('disabled');
             button.domElem.prop('disabled').should.be.false;
+        });
+
+        it('should remove "pressed" mod while set "disabled" mod', function() {
+            button
+                .setMod('pressed')
+                .setMod('disabled');
+
+            button.hasMod('pressed').should.be.false;
+        });
+
+        it('may not be pressed while disabled', function() {
+            button
+                .setMod('disabled')
+                .setMod('pressed');
+
+            button.hasMod('pressed').should.be.false;
         });
     });
 

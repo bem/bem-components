@@ -10,8 +10,12 @@ BEMDOM.decl('button', {
 
         'pressed' : {
             true : function() {
-                return !this.hasMod('disabled');
+                return !this.hasMod('disabled') || this.hasMod('checkable');
             }
+        },
+
+        'checked' : function() {
+            return this.hasMod('checkable');
         }
     },
 
@@ -44,12 +48,14 @@ BEMDOM.decl('button', {
             },
 
             true : function() {
-                this.delMod('pressed');
+                this.hasMod('checkable') || this.delMod('pressed');
             }
         },
 
-        'pressed' : function(_, modVal) {
-            this.trigger(modVal? 'press' : 'release');
+        'checked' : function(_, modVal) {
+            this
+                .setMod('pressed', modVal)
+                .trigger(modVal? 'check' : 'uncheck');
         }
     },
 
@@ -73,10 +79,14 @@ BEMDOM.decl('button', {
             .setMod('pressed');
     },
 
-    _onPointerUp : function() {
-        this
-            .unbindFromDoc('pointerup', this._onPointerUp)
-            .delMod('pressed');
+    _onPointerUp : function(e) {
+        this.unbindFromDoc('pointerup', this._onPointerUp);
+
+        this.hasMod('checkable')?
+            dom.contains(this.domElem, $(e.target))?
+                this.toggleMod('checked') :
+                this.hasMod('checked') || this.delMod('pressed') :
+            this.delMod('pressed');
     },
 
     _onClick : function(e) {

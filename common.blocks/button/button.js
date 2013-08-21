@@ -7,18 +7,18 @@ BEMDOM.decl('button', {
     beforeSetMod : {
         'focused' : {
             true : function() {
-                return !this.hasMod('disabled') && dom.isFocusable(this.domElem);
+                return !this.hasMod('disabled');
             }
         },
 
         'pressed' : {
             true : function() {
-                return !this.hasMod('disabled') || this.hasMod('check-mode');
+                return !this.hasMod('disabled') || this.hasMod('toggle');
             }
         },
 
         'checked' : function() {
-            return this.hasMod('check-mode');
+            return this.hasMod('toggle');
         }
     },
 
@@ -51,7 +51,7 @@ BEMDOM.decl('button', {
             },
 
             true : function() {
-                this.hasMod('check-mode') || this.delMod('pressed');
+                this.hasMod('toggle') || this.delMod('pressed');
             }
         },
 
@@ -85,9 +85,9 @@ BEMDOM.decl('button', {
     _onPointerUp : function(e) {
         this.unbindFromDoc('pointerup', this._onPointerUp);
 
-        this.hasMod('check-mode')?
+        this.hasMod('toggle')?
             dom.contains(this.domElem, $(e.target))?
-                this.getMod('check-mode') === 'check'?
+                this.getMod('toggle') === 'check'?
                     this.toggleMod('checked') :
                     this.setMod('checked') :
                 this.hasMod('checked') || this.delMod('pressed') :

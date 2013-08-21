@@ -10,43 +10,65 @@ BEMDOM.decl('radio', {
             }
         }
     },
-    
+
+    /**
+     * Returns control value
+     * @returns {String}
+     */
     getVal : function() {
         return this._val;
     },
-    
-    setVal : function(val) {
+
+    /**
+     * Sets control value
+     * @param {String} val value
+     * @param {Object} [data] additional data
+     * @returns {this}
+     */
+    setVal : function(val, data) {
         val = String(val);
 
         if(this._val !== val) {
-            var _this = this;
-            this.elem('control').each(function() {
-                var control = $(this);
-                if(control.val() === val) {
-                    _this._val = val;
-                    control.prop('checked', true);
-                    _this._syncControlContainer(control);
-                    _this.emit('change');
-                    return false;
-                }
-            });
+            var valueControl = this.elem('control').filter('[value="' + val + '"]');
+            if(valueControl.length) {
+                this._val = val;
+                valueControl.prop('checked', true);
+                this._syncControlContainer(valueControl);
+                this.emit('change', data);
+            }
         }
 
         return this;
     },
-    
+
+    disableVal : function(val) {
+
+    },
+
+    enableVal : function(val) {
+
+    },
+
+    /**
+     * Returns name of control
+     * @returns {String}
+     */
     getName : function() {
         return this.elem('control').attr('name');
     },
 
-    _syncControlContainer : function(control) {
-        var checkedLabel = this.elem('label', 'checked', true),
-            label = control.closest(this.buildSelector('label'));
+    _syncControlContainer : function() {
+        var controls = this.elem('control'),
+            _this = this;
 
-        checkedLabel[0] !== label[0] &&
-            this
-                .delMod(checkedLabel, 'checked')
-                .setMod(label, 'checked');
+        this.elem('label').each(function(i) {
+            var label = $(this),
+                control = controls.eq(i);
+
+            _this
+                .setMod(label, 'checked', control.prop('checked'))
+                .setMod(label, 'disabled', control.prop('disabled'));
+        });
     },
 
     _onControlPointerClick : function(e) {

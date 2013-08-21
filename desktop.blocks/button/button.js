@@ -16,7 +16,7 @@ BEMDOM.decl('button', {
         'hovered' : {
             '' : function() {
                 this.__base.apply(this, arguments);
-                this.hasMod('check-mode') || this.delMod('pressed');
+                this.hasMod('toggle') || this.delMod('pressed');
             }
         },
 
@@ -51,7 +51,7 @@ BEMDOM.decl('button', {
 
                 this.unbindFrom('keyup', onKeyUp);
 
-                if(!this.hasMod('check-mode')) {
+                if(!this.hasMod('toggle')) {
                     this.delMod('pressed');
                     keyCode === KEY_CODE_SPACE && this._doAction();
                 }
@@ -59,8 +59,8 @@ BEMDOM.decl('button', {
 
             this.bindTo('keyup', onKeyUp);
 
-            this.hasMod('check-mode')?
-                this.getMod('check-mode') === 'check'?
+            this.hasMod('toggle')?
+                this.getMod('toggle') === 'check'?
                     this.toggleMod('checked') :
                     this.setMod('checked') :
                 this.setMod('pressed');

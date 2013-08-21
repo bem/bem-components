@@ -1,25 +1,30 @@
 block('radio').mod('type', 'button')(
     content()(
         function() {
-            var cur = this.ctx.val;
+            var curVal = this.ctx.val;
             return (this.ctx.controls || []).map(function(control) {
-                var checked = typeof control.val !== 'undefined' && (control.val == cur),
+                var checked = typeof control.val !== 'undefined' && (control.val == curVal),
                     buttonContent = [
                         {
                             block : 'radio',
                             elem : 'control',
                             checked : checked,
+                            disabled : control.disabled,
                             val : control.val
                         },
                         control.icon
                     ];
 
-            typeof control.label !== 'undefined' &&
-                buttonContent.push({ elem : 'text', content : control.label });
+                typeof control.label !== 'undefined' &&
+                    buttonContent.push({ elem : 'text', content : control.label });
 
                 return {
                     block : 'button',
-                    mods : { 'check-mode' : 'radio', checked : checked },
+                    mods : {
+                        toggle : 'radio',
+                        checked : checked,
+                        disabled : control.disabled
+                    },
                     content : buttonContent
                 };
             });
@@ -29,10 +34,5 @@ block('radio').mod('type', 'button')(
 
 block('button')
     .match(this._radio)(
-        tag()('span'),
-        attrs()(function() {
-            var attrs = applyNext();
-            attrs.tabindex = -1;
-            return attrs;
-        })
+        tag()('label')
     )

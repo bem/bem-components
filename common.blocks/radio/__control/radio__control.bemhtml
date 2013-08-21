@@ -7,6 +7,7 @@ block('radio').elem('control')(
         res.value = ctx.val;
         res.name = this._radio.name;
         ctx.checked && (res.checked = 'checked');
+        ctx.disabled && (res.disabled = 'checked');
 
         return res;
     })

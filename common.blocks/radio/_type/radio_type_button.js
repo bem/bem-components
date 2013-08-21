@@ -15,18 +15,17 @@ BEMDOM.decl({ block : 'radio', modName : 'type', modVal : 'button' }, {
         }
     },
 
-    _onButtonBeforeUncheck : function(e) {
-        e.preventDefault();
-    },
-
     _onButtonCheck : function(e) {
         this.setVal(this.findElem(e.target.domElem, 'control').val());
     },
 
-    _syncControlContainer : function(control) {
-        var buttonToCheck = this.findBlockOutside(control, 'button');
-        this.findBlocksInside('button').forEach(function(button) {
-            button.setMod('checked', buttonToCheck === button);
+    _syncControlContainer : function() {
+        var controls = this.elem('control');
+        this.findBlocksInside('button').forEach(function(button, i) {
+            var control = controls.eq(i);
+            button
+                .setMod('checked', control.prop('checked'))
+                .setMod('disabled', control.prop('disabled'));
         });
     }
 });

@@ -7,7 +7,7 @@ describe('button', function() {
     var button;
 
     beforeEach(function() {
-        button = BEMDOM.init($(BEMHTML.apply({ block : 'button', mods : { checkable : true } })).appendTo('body'))
+        button = BEMDOM.init($(BEMHTML.apply({ block : 'button', mods : { toggle : 'check' } })).appendTo('body'))
             .bem('button');
     });
 

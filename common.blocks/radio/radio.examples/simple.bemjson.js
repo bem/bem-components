@@ -11,9 +11,18 @@
             controls : [
                 { val : 1, label : 'first' },
                 { val : 2, label : 'second' },
-                { val : 3, label : 'third' }
+                { val : 3, label : 'third', disabled : true }
             ],
             val : 2
+        },
+        {
+            block : 'radio',
+            name : 'r3',
+            controls : [
+                { val : 1, label : 'first' },
+                { val : 2, label : 'second' },
+                { val : 3, label : 'third' }
+            ]
         },
         {
             block : 'radio',
@@ -21,7 +30,7 @@
             mods : { type : 'button' },
             controls : [
                 { val : 1, label : 'first' },
-                { val : 2, label : 'second' },
+                { val : 2, label : 'second', disabled : true },
                 { val : 3, label : 'third' }
             ],
             val : 3

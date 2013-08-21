@@ -17,6 +17,7 @@ block('radio')(
                             content : {
                                 elem : 'control',
                                 checked : checked,
+                                disabled : control.disabled,
                                 val : control.val
                             }
                         },

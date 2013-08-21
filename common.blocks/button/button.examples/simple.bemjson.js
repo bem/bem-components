@@ -11,6 +11,16 @@
         },
         {
             block : 'button',
+            mods : { checkable : true },
+            text : 'checkable'
+        },
+        {
+            block : 'button',
+            mods : { checkable : true, checked : true },
+            text : 'checkable and checked'
+        },
+        {
+            block : 'button',
             mods : { 'disabled' : true },
             text : 'disabled'
         },

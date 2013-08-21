@@ -41,11 +41,13 @@ BEMDOM.decl({ block : 'button', modName : 'type', modVal : 'link' }, {
         this._url = url;
         this.hasMod('disabled') || this.domElem.attr('href', url);
         return this;
+    },
+
+    _doAction : function() {
+        this._url && (document.location = this._url);
     }
 });
 
 provide(BEMDOM);
 
 });
-
-

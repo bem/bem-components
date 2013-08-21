@@ -1,4 +1,7 @@
-modules.define('i-bem__dom', ['jquery', 'dom'], function(provide, $, dom, BEMDOM) {
+modules.define(
+    'i-bem__dom',
+    ['jquery', 'dom', 'events'],
+    function(provide, $, dom, events, BEMDOM) {
 
 BEMDOM.decl('button', {
     beforeSetMod : {
@@ -10,12 +13,12 @@ BEMDOM.decl('button', {
 
         'pressed' : {
             true : function() {
-                return !this.hasMod('disabled') || this.hasMod('checkable');
+                return !this.hasMod('disabled') || this.hasMod('check-mode');
             }
         },
 
         'checked' : function() {
-            return this.hasMod('checkable');
+            return this.hasMod('check-mode');
         }
     },
 
@@ -48,7 +51,7 @@ BEMDOM.decl('button', {
             },
 
             true : function() {
-                this.hasMod('checkable') || this.delMod('pressed');
+                this.hasMod('check-mode') || this.delMod('pressed');
             }
         },
 
@@ -82,9 +85,11 @@ BEMDOM.decl('button', {
     _onPointerUp : function(e) {
         this.unbindFromDoc('pointerup', this._onPointerUp);
 
-        this.hasMod('checkable')?
+        this.hasMod('check-mode')?
             dom.contains(this.domElem, $(e.target))?
-                this.toggleMod('checked') :
+                this.getMod('check-mode') === 'check'?
+                    this.toggleMod('checked') :
+                    this.setMod('checked') :
                 this.hasMod('checked') || this.delMod('pressed') :
             this.delMod('pressed');
     },

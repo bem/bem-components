@@ -1,0 +1,13 @@
+block('radio').elem('control')(
+    tag()('input'),
+    attrs()(function() {
+        var res = { type : 'radio' },
+            ctx = this.ctx;
+
+        res.value = ctx.val;
+        res.name = this._radio.name;
+        ctx.checked && (res.checked = 'checked');
+
+        return res;
+    })
+)

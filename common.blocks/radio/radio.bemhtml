@@ -1,0 +1,29 @@
+block('radio')(
+    def()(function() { applyNext({ _radio : this.ctx }) }),
+    tag()('span'),
+    js()(true),
+
+    content()(
+        function() {
+            var curVal = this.ctx.val;
+            return (this.ctx.controls || []).map(function(control) {
+                var checked = typeof control.val !== 'undefined' && (control.val == curVal);
+                return {
+                    elem : 'label',
+                    mods : { checked : checked },
+                    content : [
+                        {
+                            elem : 'box',
+                            content : {
+                                elem : 'control',
+                                checked : checked,
+                                val : control.val
+                            }
+                        },
+                        control.label
+                    ]
+                }
+            });
+        }
+    )
+)

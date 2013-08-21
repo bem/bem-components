@@ -1,4 +1,4 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define('i-bem__dom', ['functions'], function(provide, functions, BEMDOM) {
 
 var KEY_CODE_SPACE = 32,
     KEY_CODE_ENTER = 13;
@@ -41,6 +41,8 @@ BEMDOM.decl('button', {
     },
 
     _onKeyDown : function(e) {
+        if(this.hasMod('disabled')) return;
+
         var keyCode = e.keyCode;
         if((keyCode === KEY_CODE_SPACE || keyCode === KEY_CODE_ENTER) && !this._keyDowned) {
             this._keyDowned = true;
@@ -51,8 +53,7 @@ BEMDOM.decl('button', {
                     .delMod('pressed')
                     .unbindFrom('keyup', onKeyUp);
 
-                keyCode === KEY_CODE_SPACE && this._href && // TODO: этот код должен быть в button_type_link
-                    (document.location = this._href);
+                keyCode === KEY_CODE_SPACE && this._doAction();
             };
 
             this.bindTo('keyup', onKeyUp);
@@ -61,7 +62,9 @@ BEMDOM.decl('button', {
                 this.toggleMod('checked') :
                 this.setMod('pressed');
         }
-    }
+    },
+
+    _doAction : functions.noop
 }, {
     live : function() {
         this

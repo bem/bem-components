@@ -1,5 +1,6 @@
 block('button')(
     def()(function() {
+        this.mods.checkable && this.mods.checked && (this.mods.pressed = true); // TODO: я не уверен, что это правильное место для этого, выяснить
         applyNext({ _button: this.ctx });
     }),
 

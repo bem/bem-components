@@ -10,8 +10,12 @@ BEMDOM.decl('button', {
 
         'pressed' : {
             true : function() {
-                return !this.hasMod('disabled');
+                return !this.hasMod('disabled') || this.hasMod('checkable');
             }
+        },
+
+        'checked' : function() {
+            return this.hasMod('checkable');
         }
     },
 
@@ -44,12 +48,14 @@ BEMDOM.decl('button', {
             },
 
             true : function() {
-                this.delMod('pressed');
+                this.hasMod('checkable') || this.delMod('pressed');
             }
         },
 
-        'pressed' : function(_, modVal) {
-            this.trigger(modVal? 'press' : 'release');
+        'checked' : function(_, modVal) {
+            this
+                .setMod('pressed', modVal)
+                .trigger(modVal? 'check' : 'uncheck');
         }
     },
 
@@ -65,6 +71,22 @@ BEMDOM.decl('button', {
     _onBlur : function() {
         this._focused = false;
         this.delMod('focused');
+    },
+
+    _onPointerDown : function() {
+        this
+            .bindToDoc('pointerup', this._onPointerUp)
+            .setMod('pressed');
+    },
+
+    _onPointerUp : function(e) {
+        this.unbindFromDoc('pointerup', this._onPointerUp);
+
+        this.hasMod('checkable')?
+            dom.contains(this.domElem, $(e.target))?
+                this.toggleMod('checked') :
+                this.hasMod('checked') || this.delMod('pressed') :
+            this.delMod('pressed');
     },
 
     _onClick : function(e) {
@@ -90,10 +112,7 @@ BEMDOM.decl('button', {
                 this._onBlur();
             })
             .liveBindTo('pointerdown', function() {
-                this.setMod('pressed');
-            })
-            .liveBindTo('pointerup', function() {
-                this.delMod('pressed');
+                this._onPointerDown();
             })
             .liveBindTo('pointerclick', function(e) {
                 this._onClick(e);

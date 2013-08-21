@@ -1,4 +1,4 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define('i-bem__dom', ['functions'], function(provide, functions, BEMDOM) {
 
 var KEY_CODE_SPACE = 32,
     KEY_CODE_ENTER = 13;
@@ -16,7 +16,7 @@ BEMDOM.decl('button', {
         'hovered' : {
             '' : function() {
                 this.__base.apply(this, arguments);
-                this.delMod('pressed');
+                this.hasMod('checkable') || this.delMod('pressed');
             }
         },
 
@@ -41,25 +41,30 @@ BEMDOM.decl('button', {
     },
 
     _onKeyDown : function(e) {
+        if(this.hasMod('disabled')) return;
+
         var keyCode = e.keyCode;
         if((keyCode === KEY_CODE_SPACE || keyCode === KEY_CODE_ENTER) && !this._keyDowned) {
             this._keyDowned = true;
             var onKeyUp = function() {
+                this._keyDowned = false;
+
                 this
                     .delMod('pressed')
                     .unbindFrom('keyup', onKeyUp);
 
-                this._keyDowned = false;
-
-                keyCode === KEY_CODE_SPACE && this._href &&
-                    (document.location = this._href);
+                keyCode === KEY_CODE_SPACE && this._doAction();
             };
 
-            this
-                .setMod('pressed')
-                .bindTo('keyup', onKeyUp);
+            this.bindTo('keyup', onKeyUp);
+
+            this.hasMod('checkable')?
+                this.toggleMod('checked') :
+                this.setMod('pressed');
         }
-    }
+    },
+
+    _doAction : functions.noop
 }, {
     live : function() {
         this

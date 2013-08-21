@@ -77,9 +77,10 @@ BEMDOM.decl('button', {
     },
 
     _onPointerDown : function() {
-        this
-            .bindToDoc('pointerup', this._onPointerUp)
-            .setMod('pressed');
+        this.hasMod('disabled') ||
+            this
+                .bindToDoc('pointerup', this._onPointerUp)
+                .setMod('pressed');
     },
 
     _onPointerUp : function(e) {

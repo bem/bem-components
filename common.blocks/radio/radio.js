@@ -4,9 +4,8 @@ BEMDOM.decl('radio', {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var checkedControl = this.elem('control').filter(':checked');
-                this._val = checkedControl.val();
-                this._syncControlContainer(checkedControl);
+                this._val = this.elem('control').filter(':checked').val();
+                this._syncWithControls();
             }
         }
     },
@@ -33,7 +32,7 @@ BEMDOM.decl('radio', {
             if(valueControl.length) {
                 this._val = val;
                 valueControl.prop('checked', true);
-                this._syncControlContainer(valueControl);
+                this._syncWithControls(valueControl);
                 this.emit('change', data);
             }
         }
@@ -57,7 +56,7 @@ BEMDOM.decl('radio', {
         return this.elem('control').attr('name');
     },
 
-    _syncControlContainer : function() {
+    _syncWithControls : function() {
         var controls = this.elem('control'),
             _this = this;
 

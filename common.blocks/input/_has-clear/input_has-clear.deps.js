@@ -1,7 +1,7 @@
 [{
     shouldDeps : [
         { elem : 'clear' },
-        { block : 'jquery', elem : 'pointer-events' }
+        'pointer-events'
     ]
 },
 {

@@ -1,10 +1,10 @@
 [{
-    shouldDeps: [
-        { block: 'jquery', elem: 'pointer-events' },
-        { mod: 'disabled' }
+    shouldDeps : [
+        { mod : 'disabled' },
+        'pointer-events'
     ]
 },
 {
-    tech: 'test.js',
-    mustDeps: { tech: 'bemhtml', block: 'link' }
+    tech : 'test.js',
+    mustDeps : { tech : 'bemhtml', block : 'link' }
 }]

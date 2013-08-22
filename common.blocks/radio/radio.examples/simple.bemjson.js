@@ -35,16 +35,31 @@
             ],
             val : 3
         },
-        {
-            block : 'radio',
-            name : 'r4',
-            mods : { type : 'button' },
-            options : [
-                { val : 1, label : 'first' },
-                { val : 2, label : 'second' },
-                { val : 3, label : 'third' }
-            ]
-        }
+        [
+            {
+                block : 'radio',
+                js : { id : 'r4' },
+                name : 'r4',
+                mods : { type : 'button' },
+                options : [
+                    { val : 1, label : 'first' },
+                    { val : 2, label : 'second' },
+                    { val : 3, label : 'third' }
+                ]
+            },
+            ' separator ',
+            {
+                block : 'radio',
+                js : { id : 'r4' },
+                name : 'r4',
+                mods : { type : 'button' },
+                options : [
+                    { val : 4, label : 'fourth' },
+                    { val : 5, label : 'fifth' },
+                    { val : 6, label : 'sixth' }
+                ]
+            }
+        ]
     ].map(function(button) {
         return {
             tag : 'p',

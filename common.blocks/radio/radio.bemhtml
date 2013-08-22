@@ -1,7 +1,9 @@
 block('radio')(
     def()(function() { applyNext({ _radio : this.ctx }) }),
     tag()('span'),
-    js()(true),
+    js()(function() {
+        return this._.extend(this.ctx.params, { id : this.ctx.id || this.ctx.name })
+    }),
 
     content()(
         function() {

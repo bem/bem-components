@@ -29,11 +29,15 @@ BEMDOM.decl('radio', {
     setVal : function(val, data) {
         val = String(val);
 
-        if(this._val !== val) {
-            var valueControl = this._getControlByVal(val);
-            if(valueControl.length) {
-                this._val = valueControl.prop('disabled')? undef : val;
-                valueControl.prop('checked', true);
+        var valueControl = this._getControlByVal(val);
+        if(valueControl.length) {
+            valueControl
+                .prop('checked', true)
+                .prop('disabled') &&
+                    (val = undef);
+
+            if(this._val !== val) {
+                this._val = val;
                 this._update(valueControl);
                 this.emit('change', data);
             }

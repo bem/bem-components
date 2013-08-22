@@ -34,6 +34,16 @@
                 { val : 3, label : 'third' }
             ],
             val : 3
+        },
+        {
+            block : 'radio',
+            name : 'r2',
+            mods : { type : 'button' },
+            options : [
+                { val : 1, label : 'first' },
+                { val : 2, label : 'second' },
+                { val : 3, label : 'third' }
+            ]
         }
     ].map(function(button) {
         return {

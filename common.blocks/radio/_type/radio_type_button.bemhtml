@@ -2,28 +2,28 @@ block('radio').mod('type', 'button')(
     content()(
         function() {
             var curVal = this.ctx.val;
-            return (this.ctx.controls || []).map(function(control) {
-                var checked = typeof control.val !== 'undefined' && (control.val == curVal),
+            return (this.ctx.options || []).map(function(option) {
+                var checked = typeof option.val !== 'undefined' && (option.val == curVal),
                     buttonContent = [
                         {
                             block : 'radio',
                             elem : 'control',
                             checked : checked,
-                            disabled : control.disabled,
-                            val : control.val
+                            disabled : option.disabled,
+                            val : option.val
                         },
-                        control.icon
+                        option.icon
                     ];
 
-                typeof control.label !== 'undefined' &&
-                    buttonContent.push({ elem : 'text', content : control.label });
+                typeof option.label !== 'undefined' &&
+                    buttonContent.push({ elem : 'text', content : option.label });
 
                 return {
                     block : 'button',
                     mods : {
                         toggle : 'radio',
                         checked : checked,
-                        disabled : control.disabled
+                        disabled : option.disabled
                     },
                     content : buttonContent
                 };

@@ -1,12 +1,12 @@
 [{
-    mustDeps : [
-        { block : 'jquery', elem : 'pointer-events' },
-        { block : 'i-bem', elems : ['dom'] }
-    ],
-    shouldDeps : {
-        elems : ['label', 'box', 'control'],
-        mods : { disabled : 'yes' }
-    }
+    mustDeps : { block : 'i-bem', elems : ['dom'] },
+    shouldDeps : [
+        {
+            elems : ['label', 'box', 'control'],
+            mods : { disabled : 'yes' }
+        },
+        'pointer-events'
+    ]
 },
 {
     tech : 'test.js',

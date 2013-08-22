@@ -8,7 +8,7 @@
         {
             block : 'radio',
             name : 'r1',
-            controls : [
+            options : [
                 { val : 1, label : 'first' },
                 { val : 2, label : 'second' },
                 { val : 3, label : 'third', disabled : true }
@@ -18,7 +18,7 @@
         {
             block : 'radio',
             name : 'r3',
-            controls : [
+            options : [
                 { val : 1, label : 'first' },
                 { val : 2, label : 'second' },
                 { val : 3, label : 'third' }
@@ -28,7 +28,7 @@
             block : 'radio',
             name : 'r2',
             mods : { type : 'button' },
-            controls : [
+            options : [
                 { val : 1, label : 'first' },
                 { val : 2, label : 'second', disabled : true },
                 { val : 3, label : 'third' }

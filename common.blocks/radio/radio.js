@@ -1,11 +1,13 @@
 modules.define('i-bem__dom', ['jquery'], function(provide, $, BEMDOM) {
 
+var undef;
+
 BEMDOM.decl('radio', {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._val = this.elem('control').filter(':checked').val();
-                this._syncWithControls();
+                this._val = this.elem('control').filter(':checked:not(:disabled)').val();
+                this._update();
             }
         }
     },
@@ -28,11 +30,11 @@ BEMDOM.decl('radio', {
         val = String(val);
 
         if(this._val !== val) {
-            var valueControl = this.elem('control').filter('[value="' + val + '"]');
+            var valueControl = this._getControlByVal(val);
             if(valueControl.length) {
-                this._val = val;
+                this._val = valueControl.prop('disabled')? undef : val;
                 valueControl.prop('checked', true);
-                this._syncWithControls(valueControl);
+                this._update(valueControl);
                 this.emit('change', data);
             }
         }
@@ -40,12 +42,22 @@ BEMDOM.decl('radio', {
         return this;
     },
 
-    disableVal : function(val) {
-
+    /**
+     * Disables option by given value
+     * @param {String} val value
+     * @returns {this}
+     */
+    disableOptionByVal : function(val) {
+        return this._updateOptionDisabled(val, true);
     },
 
-    enableVal : function(val) {
-
+    /**
+     * Enables option by given value
+     * @param {String} val value
+     * @returns {this}
+     */
+    enableOptionByVal : function(val) {
+        return this._updateOptionDisabled(val, false);
     },
 
     /**
@@ -56,7 +68,26 @@ BEMDOM.decl('radio', {
         return this.elem('control').attr('name');
     },
 
-    _syncWithControls : function() {
+    _updateOptionDisabled : function(val, disable) {
+        var valueControl = this._getControlByVal(val);
+        if(valueControl.length && valueControl.prop('disabled') !== disable) {
+            valueControl
+                .prop('disabled', disable)
+                .prop('checked') &&
+                    this.setVal(val);
+        }
+
+        return this;
+    },
+
+    _getControlByVal : function(val) {
+        return this.elem('control').filter('[value="' + val + '"]');
+    },
+
+    /**
+     * Synchronizes state of block after updating
+     */
+    _update : function() {
         var controls = this.elem('control'),
             _this = this;
 

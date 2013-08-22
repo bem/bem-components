@@ -17,7 +17,7 @@
         },
         {
             block : 'radio',
-            name : 'r3',
+            name : 'r2',
             options : [
                 { val : 1, label : 'first' },
                 { val : 2, label : 'second' },
@@ -26,7 +26,7 @@
         },
         {
             block : 'radio',
-            name : 'r2',
+            name : 'r3',
             mods : { type : 'button' },
             options : [
                 { val : 1, label : 'first' },
@@ -37,7 +37,7 @@
         },
         {
             block : 'radio',
-            name : 'r2',
+            name : 'r4',
             mods : { type : 'button' },
             options : [
                 { val : 1, label : 'first' },

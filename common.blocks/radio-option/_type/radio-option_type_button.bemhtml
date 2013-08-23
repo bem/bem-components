@@ -1,0 +1,32 @@
+block('radio-option').mod('type', 'button')(
+    def()(function() {
+        var ctx = this.ctx,
+            mods = this.mods,
+            buttonContent = [
+                {
+                    block : 'radio-option',
+                    elem : 'control',
+                    checked : mods.checked,
+                    disabled : mods.disabled,
+                    name : ctx.name,
+                    val : ctx.val
+                },
+                ctx.icon
+            ];
+
+        typeof ctx.label !== 'undefined' &&
+            buttonContent.push({ elem : 'text', content : ctx.label });
+
+        applyCtx({
+            block : 'button',
+            mix : { block : 'radio-option', mods : mods, js : true },
+            tag : 'label',
+            mods : {
+                toggle : 'radio',
+                checked : mods.checked,
+                disabled : mods.disabled
+            },
+            content : buttonContent
+        });
+    })
+)

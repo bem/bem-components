@@ -1,32 +1,25 @@
 block('radio')(
-    def()(function() { applyNext({ _radio : this.ctx }) }),
     tag()('span'),
     js()(function() {
-        return this._.extend(this.ctx.params, { id : this.ctx.id || this.ctx.name })
+        return this._.extend(this.ctx.params, { id : this.ctx.id || this.ctx.name });
     }),
-
     content()(
         function() {
-            var curVal = this.ctx.val;
+            var _this = this,
+                curVal = this.ctx.val;
             return (this.ctx.options || []).map(function(option) {
                 var checked = typeof option.val !== 'undefined' && (option.val == curVal);
                 return {
-
-                    elem : 'label',
-                    mix : { block : 'radio-option' },
-                    mods : { checked : checked },
-                    content : [
-                        {
-                            elem : 'box',
-                            content : {
-                                elem : 'control',
-                                checked : checked,
-                                disabled : option.disabled,
-                                val : option.val
-                            }
-                        },
-                        option.label
-                    ]
+                    block : 'radio-option',
+                    mods : {
+                        type : _this.mods.type,
+                        checked : checked,
+                        disabled : option.disabled || _this.mods.disabled
+                    },
+                    name : _this.ctx.name,
+                    val : option.val,
+                    label : option.label,
+                    icon : option.icon
                 }
             });
         }

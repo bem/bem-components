@@ -8,17 +8,31 @@ BEMDOM.decl('radio-option', {
             }
         },
 
-        'checked' : function(_, modVal) {
-            this.trigger(modVal? 'check' : 'uncheck');
+        'checked' : function(modName, modVal) {
+            this.elem('control').prop(modName, modVal);
+            this.emit(modVal? 'check' : 'uncheck');
         },
 
         'disabled' : function(modName, modVal) {
             this.elem('control').prop(modName, modVal);
+            this.emit(modVal? 'disable' : 'enable');
         }
     },
 
+    /**
+     * Returns control value
+     * @returns {String}
+     */
     getVal : function() {
         return this.elem('control').val();
+    },
+
+    /**
+     * Returns name of control
+     * @returns {String}
+     */
+    getName : function() {
+        return this.elem('control').attr('name');
     },
 
     _onPointerClick : function() {
@@ -26,7 +40,7 @@ BEMDOM.decl('radio-option', {
     }
 }, {
     live : function() {
-        this.liveBindTo('control', 'pointerclick', function() {
+        this.liveBindTo('pointerclick', function() {
             this._onPointerClick();
         });
 

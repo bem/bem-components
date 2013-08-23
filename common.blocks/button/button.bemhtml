@@ -4,7 +4,9 @@ block('button')(
         applyNext({ _button: this.ctx });
     }),
 
-    tag()('button'),
+    tag()(function() {
+        return this.ctx.tag || 'button';
+    }),
 
     js()(true),
 

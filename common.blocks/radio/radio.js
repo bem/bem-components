@@ -6,14 +6,28 @@ BEMDOM.decl('radio', {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._val = this.elem('control').filter(':checked:not(:disabled)').val();
-                this._update();
+                var checkedOption = this.findBlockInside({
+                    block : 'radio-option',
+                    modName : 'checked',
+                    modVal : true
+                });
+
+                this._val = checkedOption? checkedOption.getVal() : undef;
+                this._options = undef;
+
+                BEMDOM.blocks['radio-option'].on(this.domElem, 'check', this._onOptionCheck, this);
+            },
+
+            '' : function() {
+                BEMDOM.blocks['radio-option'].un(this.domElem, 'check', this._onOptionCheck, this);
             }
         },
 
         'disabled' : function(modName, modVal) {
-            this.elem('control').prop(modName, modVal);
-            this._update();
+            this.getOptions().forEach(function(option) {
+                option.setMod(modName, modVal);
+            });
+
             this.emit(modVal? 'disable' : 'enable');
         }
     },
@@ -35,16 +49,12 @@ BEMDOM.decl('radio', {
     setVal : function(val, data) {
         val = String(val);
 
-        var valueControl = this._getControlByVal(val);
-        if(valueControl.length) {
-            valueControl
-                .prop('checked', true)
-                .prop('disabled') &&
-                    (val = undef);
-
-            if(this._val !== val) {
-                this._val = val;
-                this._update(valueControl);
+        if(this._val !== val) {
+            var option = this._getOptionByVal(val);
+            if(option) {
+                this._val !== undef && this._getOptionByVal(this._val).delMod('checked');
+                this._val = option.getVal();
+                option.setMod('checked');
                 this.emit('change', data);
             }
         }
@@ -53,66 +63,42 @@ BEMDOM.decl('radio', {
     },
 
     /**
-     * Disables option by given value
-     * @param {String} val value
-     * @returns {this}
-     */
-    disableOptionByVal : function(val) {
-        return this._updateOptionDisabled(val, true);
-    },
-
-    /**
-     * Enables option by given value
-     * @param {String} val value
-     * @returns {this}
-     */
-    enableOptionByVal : function(val) {
-        return this._updateOptionDisabled(val, false);
-    },
-
-    /**
      * Returns name of control
      * @returns {String}
      */
     getName : function() {
-        return this.elem('control').attr('name');
-    },
-
-    _updateOptionDisabled : function(val, disable) {
-        var valueControl = this._getControlByVal(val);
-        if(valueControl.length && valueControl.prop('disabled') !== disable) {
-            valueControl
-                .prop('disabled', disable)
-                .prop('checked') &&
-                    this.setVal(val);
-        }
-
-        return this;
-    },
-
-    _getControlByVal : function(val) {
-        return this.elem('control').filter('[value="' + val + '"]');
+        return this.getOptions()[0].getName();
     },
 
     /**
-     * Synchronizes state of block after updating
+     * Returns options
+     * @returns {BEM.blocks['radio-option'][]}
      */
-    _update : function() {
-        var controls = this.elem('control'),
-            _this = this;
-
-        this.elem('label').each(function(i) {
-            var label = $(this),
-                control = controls.eq(i);
-
-            _this
-                .setMod(label, 'checked', control.prop('checked'))
-                .setMod(label, 'disabled', control.prop('disabled'));
-        });
+    getOptions : function() {
+        return this._options || (this._options = this.findBlocksInside('radio-option'));
     },
 
-    _onControlPointerClick : function(e) {
-        this.setVal($(e.currentTarget).val());
+    /**
+     * Returns checked option
+     * @returns {BEM.blocks['radio-option']|undefined}
+     */
+    getCheckedOption : function() {
+        return this._getOptionByVal(this._val);
+    },
+
+    _onOptionCheck : function(e) {
+        this.setVal(e.target.getVal());
+    },
+
+    _getOptionByVal : function(val) {
+        var options = this.getOptions(),
+            i = 0, option;
+
+        while(option = options[i++]) {
+            if(option.getVal() === val) {
+                return option;
+            }
+        }
     }
 });
 

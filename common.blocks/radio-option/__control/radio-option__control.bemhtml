@@ -1,11 +1,11 @@
-block('radio').elem('control')(
+block('radio-option').elem('control')(
     tag()('input'),
     attrs()(function() {
         var res = { type : 'radio' },
             ctx = this.ctx;
 
         res.value = ctx.val;
-        res.name = this._radio.name;
+        res.name = ctx.name;
         ctx.checked && (res.checked = 'checked');
         ctx.disabled && (res.disabled = 'disabled');
 

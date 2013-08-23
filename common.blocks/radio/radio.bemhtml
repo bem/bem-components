@@ -11,7 +11,9 @@ block('radio')(
             return (this.ctx.options || []).map(function(option) {
                 var checked = typeof option.val !== 'undefined' && (option.val == curVal);
                 return {
+
                     elem : 'label',
+                    mix : { block : 'radio-option' },
                     mods : { checked : checked },
                     content : [
                         {

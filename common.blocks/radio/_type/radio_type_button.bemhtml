@@ -20,6 +20,7 @@ block('radio').mod('type', 'button')(
 
                 return {
                     block : 'button',
+                    mix : { block : 'radio-option' },
                     mods : {
                         toggle : 'radio',
                         checked : checked,

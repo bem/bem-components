@@ -9,6 +9,12 @@ BEMDOM.decl('radio', {
                 this._val = this.elem('control').filter(':checked:not(:disabled)').val();
                 this._update();
             }
+        },
+
+        'disabled' : function(modName, modVal) {
+            this.elem('control').prop(modName, modVal);
+            this._update();
+            this.emit(modVal? 'disable' : 'enable');
         }
     },
 
@@ -107,14 +113,6 @@ BEMDOM.decl('radio', {
 
     _onControlPointerClick : function(e) {
         this.setVal($(e.currentTarget).val());
-    }
-}, {
-    live : function() {
-        this.liveBindTo('control', 'pointerclick', function(e) {
-            this._onControlPointerClick(e);
-        });
-
-        return false;
     }
 });
 

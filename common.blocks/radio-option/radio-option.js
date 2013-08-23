@@ -4,7 +4,12 @@ BEMDOM.decl('radio-option', {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this.setMod('checked', this.elem('control').prop('checked')); // sync state
+                var control = this.elem('control');
+
+                 // sync state
+                this
+                    .setMod('checked', control.prop('checked'))
+                    .setMod('disabled', control.prop('disabled'));
             }
         },
 
@@ -36,7 +41,7 @@ BEMDOM.decl('radio-option', {
     },
 
     _onPointerClick : function() {
-        this.setMod('checked');
+        this.hasMod('disabled') || this.setMod('checked');
     }
 }, {
     live : function() {

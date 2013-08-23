@@ -1,7 +1,0 @@
-block('radio-button').elem('radio').elemMods('only-icon', 'yes').content()(function() {
-    return [
-        { elem: 'control' },
-        '&#160;',
-        this.ctx.content
-    ]
-})

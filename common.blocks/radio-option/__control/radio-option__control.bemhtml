@@ -1,7 +1,7 @@
 block('radio-option').elem('control')(
     tag()('input'),
     attrs()(function() {
-        var res = { type : 'radio' },
+        var res = { type : 'radio', autocomplete : 'off' },
             ctx = this.ctx;
 
         res.value = ctx.val;

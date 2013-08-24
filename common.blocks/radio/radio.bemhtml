@@ -1,7 +1,7 @@
 block('radio')(
     tag()('span'),
     js()(function() {
-        return this._.extend(this.ctx.params, { id : this.ctx.id || this.ctx.name });
+        return this._.extend(this.ctx.params, { id : this.ctx.id || 'radio-' + this.ctx.name });
     }),
     content()(
         function() {

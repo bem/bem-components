@@ -3,11 +3,11 @@ modules.define(
     ['i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
     function(provide, BEMDOM, $, dom, BEMHTML, sinon) {
 
-describe('button_toggle_check', function() {
+describe('button_toggle_radio', function() {
     var button;
 
     beforeEach(function() {
-        button = BEMDOM.init($(BEMHTML.apply({ block : 'button', mods : { toggle : 'check' } })).appendTo('body'))
+        button = BEMDOM.init($(BEMHTML.apply({ block : 'button', mods : { toggle : 'radio' } })).appendTo('body'))
             .bem('button');
     });
 
@@ -34,7 +34,7 @@ describe('button_toggle_check', function() {
     });
 
     describe('check/uncheck', function() {
-        it('should switch "checked" mod on "pointerdown"/"pointerup" only if "pointerup" target is in block', function() {
+        it('should set "checked" mod on "pointerdown"/"pointerup" only if "pointerup" target is in block', function() {
             function triggerPointerUpPointerDown(onBlock) {
                 button.domElem
                     .trigger('pointerdown')
@@ -45,8 +45,9 @@ describe('button_toggle_check', function() {
             button.hasMod('checked').should.be.true;
 
             triggerPointerUpPointerDown(true);
-            button.hasMod('checked').should.be.false;
+            button.hasMod('checked').should.be.true;
 
+            button.delMod('checked');
             triggerPointerUpPointerDown(false);
             button.hasMod('checked').should.be.false;
         });

@@ -95,7 +95,7 @@ BEMDOM.decl('button', {
             this.delMod('pressed');
     },
 
-    _onClick : function(e) {
+    _onPointerClick : function(e) {
         this.hasMod('disabled')?
             e.preventDefault() :
             this.trigger('click');
@@ -121,7 +121,7 @@ BEMDOM.decl('button', {
                 this._onPointerDown();
             })
             .liveBindTo('pointerclick', function(e) {
-                this._onClick(e);
+                this._onPointerClick(e);
             });
     }
 });

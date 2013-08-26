@@ -1,21 +1,24 @@
-modules.define('i-bem__dom', ['jquery', 'dom'], function(provide, $, dom, BEMDOM) {
+modules.define(
+    'i-bem__dom',
+    ['jquery', 'dom', 'events'],
+    function(provide, $, dom, events, BEMDOM) {
 
 BEMDOM.decl('button', {
     beforeSetMod : {
         'focused' : {
             true : function() {
-                return !this.hasMod('disabled') && dom.isFocusable(this.domElem);
+                return !this.hasMod('disabled');
             }
         },
 
         'pressed' : {
             true : function() {
-                return !this.hasMod('disabled') || this.hasMod('checkable');
+                return !this.hasMod('disabled') || this.hasMod('toggle');
             }
         },
 
         'checked' : function() {
-            return this.hasMod('checkable');
+            return this.hasMod('toggle');
         }
     },
 
@@ -48,7 +51,7 @@ BEMDOM.decl('button', {
             },
 
             true : function() {
-                this.hasMod('checkable') || this.delMod('pressed');
+                this.hasMod('toggle') || this.delMod('pressed');
             }
         },
 
@@ -74,22 +77,25 @@ BEMDOM.decl('button', {
     },
 
     _onPointerDown : function() {
-        this
-            .bindToDoc('pointerup', this._onPointerUp)
-            .setMod('pressed');
+        this.hasMod('disabled') ||
+            this
+                .bindToDoc('pointerup', this._onPointerUp)
+                .setMod('pressed');
     },
 
     _onPointerUp : function(e) {
         this.unbindFromDoc('pointerup', this._onPointerUp);
 
-        this.hasMod('checkable')?
+        this.hasMod('toggle')?
             dom.contains(this.domElem, $(e.target))?
-                this.toggleMod('checked') :
+                this.getMod('toggle') === 'check'?
+                    this.toggleMod('checked') :
+                    this.setMod('checked') :
                 this.hasMod('checked') || this.delMod('pressed') :
             this.delMod('pressed');
     },
 
-    _onClick : function(e) {
+    _onPointerClick : function(e) {
         this.hasMod('disabled')?
             e.preventDefault() :
             this.trigger('click');
@@ -115,7 +121,7 @@ BEMDOM.decl('button', {
                 this._onPointerDown();
             })
             .liveBindTo('pointerclick', function(e) {
-                this._onClick(e);
+                this._onPointerClick(e);
             });
     }
 });

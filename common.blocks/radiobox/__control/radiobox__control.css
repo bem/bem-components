@@ -1,9 +1,0 @@
-@media all and (min-width:0px) {
-    .ua_js_yes .radiobox__control
-    {
-        position: absolute;
-
-        opacity: 0;
-    }
-}
-

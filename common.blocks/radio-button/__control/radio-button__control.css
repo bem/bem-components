@@ -1,9 +1,0 @@
-@media all and (min-width:0px) {
-    .ua_js_yes .radio-button__control
-    {
-        position: absolute;
-        /*left: -1000px;*/
-
-        opacity: 0;
-    }
-}

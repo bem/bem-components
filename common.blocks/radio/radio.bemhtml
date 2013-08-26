@@ -1,0 +1,31 @@
+block('radio')(
+    def()(function() { applyNext({ _radio : this.ctx }) }),
+
+    tag()('span'),
+
+    js()(function() {
+        return this._.extend(this.ctx.params, { id : this.ctx.id || 'radio-' + this.ctx.name });
+    }),
+
+    content()(
+        function() {
+            var _this = this,
+                curVal = this.ctx.val;
+            return (this.ctx.options || []).map(function(option) {
+                var checked = typeof option.val !== 'undefined' && (option.val == curVal);
+                return {
+                    block : 'radio-option',
+                    mods : {
+                        type : _this.mods.type,
+                        checked : checked,
+                        disabled : option.disabled || _this.mods.disabled
+                    },
+                    name : _this.ctx.name,
+                    val : option.val,
+                    label : option.label,
+                    icon : option.icon
+                }
+            });
+        }
+    )
+)

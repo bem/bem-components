@@ -42,12 +42,12 @@ describe('radio-option', function() {
                 .elem('control').prop('checked').should.be.false;
         });
 
-        it('should set "checked" mod on pointerclick', function() {
+        it('should set "checked" mod on "pointerclick" event', function() {
             radioOption.domElem.trigger('pointerclick');
             radioOption.hasMod('checked').should.be.true;
         });
 
-        it('should not set "checked" mod on pointerclick if disabled', function() {
+        it('should not set "checked" mod on "pointerclick" event if disabled', function() {
             radioOption.setMod('disabled');
             radioOption.domElem.trigger('pointerclick');
             radioOption.hasMod('checked').should.be.false;
@@ -108,7 +108,7 @@ describe('radio-option', function() {
             dom.containsFocus(radioOption.elem('control')).should.be.false;
         });
 
-        it('should emit focus event after focused', function() {
+        it('should emit "focus" event after focused', function() {
             var spy = sinon.spy();
 
             radioOption
@@ -118,7 +118,7 @@ describe('radio-option', function() {
             spy.should.have.been.calledOnce;
         });
 
-        it('should emit blur event after blured', function() {
+        it('should emit "blur" event after blured', function() {
             var spy = sinon.spy();
 
             radioOption

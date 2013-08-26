@@ -3,7 +3,7 @@
     shouldDeps : [
         {
             elems : ['box', 'control'],
-            mods : { disabled : 'yes' }
+            mods : { disabled : true, checked : true, focused : true }
         },
         'pointer-events'
     ]

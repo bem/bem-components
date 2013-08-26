@@ -1,0 +1,19 @@
+block('radio-option')(
+    tag()('label'),
+    js()(true),
+    content()(function() {
+        return [
+            {
+                elem : 'box',
+                content : {
+                    elem : 'control',
+                    checked : this.mods.checked,
+                    disabled : this.mods.disabled,
+                    name : this.ctx.name,
+                    val : this.ctx.val
+                }
+            },
+            this.ctx.label
+        ];
+    })
+)

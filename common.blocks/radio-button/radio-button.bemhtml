@@ -1,5 +1,0 @@
-block('radio-button')(
-    def()(function() { applyNext({ '_radioButton' : this.ctx }) }),
-    tag()('span'),
-    js()(true)
-)

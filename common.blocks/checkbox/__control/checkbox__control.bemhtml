@@ -1,16 +1,16 @@
 block('checkbox').elem('control')(
-
     tag()('input'),
 
     attrs()(function() {
-        var attrs = this._checkboxAttrs;
+        var attrs = {};
 
         attrs.type = 'checkbox';
-
-        this.mods.disabled === 'yes' && (attrs.disabled = 'disabled');
-        this.mods.checked === 'yes' && (attrs.checked = 'checked');
+        attrs.name = this.ctx.name;
+        attrs.autocomplete = 'off';
+        attrs.value = this.ctx.val;
+        this.ctx.disabled && (attrs.disabled = 'disabled');
+        this.ctx.checked && (attrs.checked = 'checked');
 
         return attrs;
     })
-
 )

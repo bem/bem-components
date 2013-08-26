@@ -1,13 +1,14 @@
-({
-	mustDeps: [
-        { block: 'jquery', elem: 'pointerclick' }
-    ],
-    shouldDeps: {
-        mods: {
-            'checked': 'yes',
-            'disabled': 'yes',
-            'focused': 'yes'
+[{
+    mustDeps : { block : 'i-bem', elems : ['dom'] },
+    shouldDeps : [
+        {
+            elems : ['box', 'control', 'tick'],
+            mods : { disabled : true, focused : true, checked : true }
         },
-        elems: [ 'box', 'control', 'tick' ]
-    }
-})
+        'pointer-events'
+    ]
+},
+{
+    tech : 'test.js',
+    mustDeps : { tech : 'bemhtml', block : 'checkbox' }
+}]

@@ -1,30 +1,24 @@
 block('checkbox')(
-
-    tag()('span'),
+    tag()('label'),
 
     js()(true),
-
-    // TODO: в блоке `radio` это поле называется controlAttrs, что более логично соответствует структуре БЭМ-дерева и тут
-    def().match(!this._checkboxAttrs)(function() {
-        var checkboxAttrs = this.ctx.checkboxAttrs || {};
-        checkboxAttrs.id || (checkboxAttrs.id = this.generateId());
-        applyNext({ '_checkboxAttrs' : checkboxAttrs });
-    }),
 
     content()(function() {
         return [
             {
-                elem: 'box',
-                tag: 'span',
-                // TODO: точно ли нужно пробрасывать _checked_yes для __box? вроде можно использовать каскад в CSS
-                elemMods: this.mods.checked === 'yes' ? { checked: 'yes' } : {},
-                content: [
-                    { elem: 'control' },
-                    { elem: 'tick', tag: 'i' }
+                elem : 'box',
+                content : [
+                    {
+                        elem : 'control',
+                        checked : this.mods.checked,
+                        disabled : this.mods.disabled,
+                        name : this.ctx.name,
+                        val : this.ctx.val
+                    },
+                    { elem : 'tick' }
                 ]
             },
-            this.ctx.content
-        ]
+            this.ctx.label
+        ];
     })
-
 )

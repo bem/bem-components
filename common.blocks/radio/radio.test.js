@@ -30,20 +30,6 @@ describe('radio', function() {
         BEMDOM.destruct(radio.domElem);
     });
 
-    describe('options', function() {
-        it('should properly enable/disable option', function() {
-            radio.elem('control').eq(2).prop('disabled').should.be.true;
-            radio.enableOptionByVal('val3');
-            radio.elem('control').eq(2).prop('disabled').should.be.false;
-
-            radio.disableOptionByVal('val1');
-            radio.elem('control').eq(0).prop('disabled').should.be.true;
-
-            radio.enableOptionByVal('val1');
-            radio.elem('control').eq(0).prop('disabled').should.be.false;
-        });
-    });
-
     describe('value', function() {
         it('should have correct initial value', function() {
             radio.getVal().should.be.equal('val2');
@@ -61,70 +47,40 @@ describe('radio', function() {
             expect(radio.getVal()).to.be.undefined;
         });
 
-        it('should have correct initial value if it disabled', function() {
-            BEMDOM.destruct(radio.domElem);
-
-            radio = buildRadio({
-                block : 'radio',
-                name : 'name',
-                val : 'val1',
-                options : [{ val : 'val1', label : 'label1', disabled : true }]
-            });
-
-            expect(radio.getVal()).to.be.undefined;
-        });
-
-        it('should properly update value on pointerclick', function() {
-            radio.elem('control').eq(0).trigger('pointerclick');
-            radio.getVal().should.be.equal('val1');
-        });
-
         it('should properly set allowed value', function() {
-            var controls = radio.elem('control'),
+            var options = radio.getOptions(),
                 spy = sinon.spy();
 
             radio
                 .on('change', spy)
                 .setVal('val1');
-            controls.eq(1).prop('checked').should.be.false;
-            controls.eq(0).prop('checked').should.be.true;
+            options[0].hasMod('checked').should.be.true;
+            options[1].hasMod('checked').should.be.false;
             radio.getVal().should.be.equal('val1');
             spy.should.have.been.calledOnce;
         });
 
         it('should not set wrong value', function() {
-            var controls = radio.elem('control'),
+            var options = radio.getOptions(),
                 spy = sinon.spy();
 
             radio.setVal('val44');
-            controls.eq(1).prop('checked').should.be.true;
+            options[1].hasMod('checked').should.be.true;
             radio.getVal().should.be.equal('val2');
             spy.should.not.have.been.called;
         });
+    });
 
-        it('should properly react on enable/disable options', function() {
-            var controls = radio.elem('control'),
-                spy = sinon.spy();
+    describe('focus/blur', function() {
+        it('should focus first option', function() {
+            radio.setMod('focused');
+            radio.getOptions()[0].hasMod('focused').should.be.true;
+        });
 
-            radio
-                .on('change', spy)
-                .setVal('val3');
-            controls.eq(1).prop('checked').should.be.false;
-            controls.eq(2).prop('checked').should.be.true;
-            expect(radio.getVal()).to.be.undefined;
-            spy.should.have.been.calledOnce;
-
-            radio.enableOptionByVal('val3');
-            radio.getVal().should.be.equal('val3');
-            spy.should.have.been.calledTwice;
-
-            radio.disableOptionByVal('val2');
-            radio.getVal().should.be.equal('val3');
-            spy.should.have.been.calledTwice;
-
-            radio.disableOptionByVal('val3');
-            expect(radio.getVal()).to.be.undefined;
-            spy.should.have.been.calledThrice;
+        it('should remove "focused" mod from currently focused option', function() {
+            radio.getOptions()[1].setMod('focused');
+            radio.delMod('focused');
+            radio.getOptions()[1].hasMod('focused').should.be.false;
         });
     });
 });

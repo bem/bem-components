@@ -1,6 +1,6 @@
 [{
     mustDeps : { block : 'i-bem', elems : ['dom'] },
-    shouldDeps : 'radio-option'
+    shouldDeps : ['radio-option', 'dom']
 },
 {
     tech : 'test.js',

@@ -1,8 +1,16 @@
-modules.define('i-bem__dom', ['jquery'], function(provide, $, BEMDOM) {
+modules.define('i-bem__dom', ['jquery', 'dom'], function(provide, $, dom, BEMDOM) {
 
 var undef;
 
 BEMDOM.decl('radio', {
+    beforeSetMod : {
+        'focused' : {
+            true : function() {
+                return !this.hasMod('disabled');
+            }
+        }
+    },
+
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -12,6 +20,7 @@ BEMDOM.decl('radio', {
                         modVal : true
                     });
 
+                this._inSetVal = false;
                 this._val = checkedOption? checkedOption.getVal() : undef;
                 this._options = undef;
             }
@@ -21,6 +30,32 @@ BEMDOM.decl('radio', {
             this.getOptions().forEach(function(option) {
                 option.setMod(modName, modVal);
             });
+        },
+
+        'focused' : {
+            true : function() {
+                if(dom.containsFocus(this.domElem)) return;
+
+                var options = this.getOptions(),
+                    i = 0, option;
+
+                while(option = options[i++]) {
+                    if(!option.hasMod('disabled')) {
+                        option.setMod('focused');
+                        return;
+                    }
+                }
+            },
+
+            '' : function() {
+                var focusedOption = this.findBlockInside({
+                        block : 'radio-option',
+                        modName : 'focused',
+                        modVal : true
+                    });
+
+                focusedOption && focusedOption.delMod('focused');
+            }
         }
     },
 
@@ -39,6 +74,8 @@ BEMDOM.decl('radio', {
      * @returns {this}
      */
     setVal : function(val, data) {
+        this._inSetVal = true;
+
         val = String(val);
 
         if(this._val !== val) {
@@ -50,6 +87,8 @@ BEMDOM.decl('radio', {
                 this.emit('change', data);
             }
         }
+
+        this._inSetVal = false;
 
         return this;
     },
@@ -81,15 +120,16 @@ BEMDOM.decl('radio', {
     _onOptionCheck : function(option) {
         var optionVal = option.getVal();
 
-        if(this._val === optionVal) {
-            // on block init value set in constructor, we need remove old checked and emit "change" event
-            this.getOptions().forEach(function(option) {
-                option.getVal() !== optionVal && option.delMod('checked');
-            });
-
-            this.emit('change');
-        } else {
-            this.setVal(option.getVal());
+        if(!this._inSetVal) {
+            if(this._val === optionVal) {
+                // on block init value set in constructor, we need remove old checked and emit "change" event
+                this.getOptions().forEach(function(option) {
+                    option.getVal() !== optionVal && option.delMod('checked');
+                });
+                this.emit('change');
+            } else {
+                this.setVal(option.getVal());
+            }
         }
     },
 
@@ -102,12 +142,27 @@ BEMDOM.decl('radio', {
                 return option;
             }
         }
+    },
+
+    _onFocus : function() {
+        this.setMod('focused');
+    },
+
+    _onBlur : function() {
+        this.delMod('focused');
     }
 }, {
     live : function() {
-        this.liveInitOnBlockInsideEvent('check', 'radio-option', function(e) {
-            this._onOptionCheck(e.target);
-        });
+        this
+            .liveInitOnBlockInsideEvent('check', 'radio-option', function(e) {
+                this._onOptionCheck(e.target);
+            })
+            .liveBindTo('focusin', function() {
+                this._onFocus();
+            })
+            .liveBindTo('focusout', function() {
+                this._onBlur();
+            });
     }
 });
 

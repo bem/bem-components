@@ -75,6 +75,60 @@ describe('radio-option', function() {
                 .elem('control').prop('disabled').should.be.false;
         });
     });
+
+    describe('focus/blur', function() {
+        it('should have "focused" mod on focus', function() {
+            radioOption.elem('control').focus();
+            radioOption.hasMod('focused').should.be.true;
+        });
+
+        it('should not have "focused" mod on blur', function() {
+            radioOption.elem('control')
+                .focus()
+                .blur();
+            radioOption.hasMod('focused').should.be.false;
+        });
+
+        it('should be focused after "focused" mod set', function() {
+            radioOption.setMod('focused');
+            dom.containsFocus(radioOption.elem('control')).should.be.true;
+        });
+
+        it('should not set "focused" mod if it has "disabled" mod', function() {
+            radioOption
+                .setMod('disabled')
+                .setMod('focused');
+            radioOption.hasMod('focused').should.be.false;
+        });
+
+        it('should be blured after "focused" mod unset', function() {
+            radioOption
+                .setMod('focused')
+                .delMod('focused');
+            dom.containsFocus(radioOption.elem('control')).should.be.false;
+        });
+
+        it('should emit focus event after focused', function() {
+            var spy = sinon.spy();
+
+            radioOption
+                .on('focus', spy)
+                .setMod('focused');
+
+            spy.should.have.been.calledOnce;
+        });
+
+        it('should emit blur event after blured', function() {
+            var spy = sinon.spy();
+
+            radioOption
+                .on('blur', spy)
+                .setMod('focused')
+                .delMod('focused');
+
+            spy.should.have.been.calledOnce;
+        });
+    });
 });
 
 provide();

@@ -2,8 +2,8 @@
     mustDeps : { block : 'i-bem', elems : ['dom'] },
     shouldDeps : [
         {
-            elems : ['box', 'control', 'tick', 'label'],
-            mods : { disabled : 'yes', focused : 'yes', checked : 'yes' }
+            elems : ['box', 'control', 'tick'],
+            mods : { disabled : true, focused : true, checked : true }
         },
         'pointer-events'
     ]

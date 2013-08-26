@@ -13,6 +13,7 @@ block('attach')(
 
             button || (button = {
                 block : 'button',
+                tag : 'span',
                 text : this._.isSimple(buttonText)?
                     buttonText :
                     BEMHTML.apply(buttonText) // TODO: это не работает, BEMHTML тут недоступен

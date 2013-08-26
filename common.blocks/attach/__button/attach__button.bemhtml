@@ -1,14 +1,6 @@
 block('button')
     .match(this._attach)(
-
         tag()('span'),
-
-        attrs()(function() {
-            var attrs = applyNext();
-            attrs.tabindex = -1;
-            return attrs;
-        }),
-
         content()(function() {
             return [applyNext(), { block : 'attach', elem : 'control' }]
         })

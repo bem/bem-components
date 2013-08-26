@@ -3,7 +3,7 @@ block('button').mod('type', 'link')(
 
     attrs()(function() {
         var ctx = this.ctx,
-            attrs = { href: ctx.url };
+            attrs = { href : ctx.url };
 
         ctx.target && (attrs.target = ctx.target);
         this.mods.disabled && (attrs['aria-disabled'] = true);

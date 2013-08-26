@@ -1,7 +1,7 @@
 block('button')(
     def()(function() {
         this.mods.toggle && this.mods.checked && (this.mods.pressed = true); // TODO: я не уверен, что это правильное место для этого, выяснить
-        applyNext({ _button: this.ctx });
+        applyNext({ _button : this.ctx });
     }),
 
     tag()(function() {
@@ -15,7 +15,7 @@ block('button')(
         // Common attributes
         function() {
             var ctx = this.ctx,
-                attrs = { role: 'button' };
+                attrs = { role : 'button' };
 
             ctx.tabIndex && (attrs.tabindex = ctx.tabIndex);
 
@@ -25,7 +25,9 @@ block('button')(
         // Attributes for button variant
         match(function() { return !this.mods.type })(function() {
             var ctx = this.ctx,
-                attrs = { type: ctx.type || 'button' };
+                attrs = {};
+
+            !ctx.type && !ctx.tag && (attrs.type = 'button');
 
             ctx.name && (attrs.name = ctx.name);
             ctx.val && (attrs.value = ctx.val);
@@ -39,7 +41,7 @@ block('button')(
         function() {
             var content = [this.ctx.icon];
             typeof this.ctx.text !== 'undefined' &&
-                content.push({ elem: 'text', content: this.ctx.text });
+                content.push({ elem : 'text', content : this.ctx.text });
             return content;
         },
         match(function() { return typeof this.ctx.content !== 'undefined' })(function() {

@@ -33,7 +33,6 @@
     }
 
     a.button:link,
-    a.button:hover,
     a.button:visited
     {
         /* hidden for Opera 12 to remove native focusing  *//**/

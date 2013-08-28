@@ -1,5 +1,8 @@
-block('input').mod('type', 'textarea').elem('control')(
+block('input').mod('type', 'textarea').tag()('div')
 
+block('input').mod('type', 'textarea').elem('box').tag()('div')
+
+block('input').mod('type', 'textarea').elem('control')(
     tag()('textarea'),
 
     attrs()(function() {
@@ -12,5 +15,4 @@ block('input').mod('type', 'textarea').elem('control')(
     }),
 
     content()(function() { return this._input.val })
-
 )

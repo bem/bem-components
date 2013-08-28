@@ -27,12 +27,6 @@
     }
 }
 
-.input__control::-ms-clear
-{
-    /* Hide native cross in IE10 */
-    display: none;
-}
-
 /* Сбрасываем желтый бг у интутов при автозаполнении */
 .input__control:-webkit-autofill
 {

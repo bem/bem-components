@@ -1,0 +1,10 @@
+/* Hide native cross in IE10 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+    .input__control::-ms-clear
+    {
+        display: none;
+    }
+
+}
+

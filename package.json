@@ -14,10 +14,11 @@
     "node": ">=0.6"
   },
   "dependencies": {
-    "bem-environ": "~1.2.0"
+    "bem-environ": "~1.2.0",
+    "bem-techs-core": "~0.2.1"
   },
   "devDependencies": {
-    "bem": "~0.6.15",
+    "bem": "~1.0.0-alpha4",
     "jshint": "2.1.8",
     "jshint-groups": "0.5.1",
     "jscs": "1.0.0",

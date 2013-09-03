@@ -1,0 +1,20 @@
+{
+  "name": "bem-components",
+  "version": "2.0.0",
+  "homepage": "https://github.com/bem/bem-components",
+  "authors": [
+    "Sergey Tatarintsev <sevinf@yandex-team.ru>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    ".bem/cache",
+    "node_modules",
+    "libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bem-pr": "git://github.com/SevInf/bem-pr.git#1f2b597d3f08e46bb482930df208684eaffa7d11",
+    "bem-core": "git://github.com/bem/bem-core.git#63241239aff1ac511ea10223350ad16d7f42789d"
+  }
+}

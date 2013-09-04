@@ -14,7 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "bem-pr": "git://github.com/SevInf/bem-pr.git#1f2b597d3f08e46bb482930df208684eaffa7d11",
-    "bem-core": "git://github.com/bem/bem-core.git#63241239aff1ac511ea10223350ad16d7f42789d"
+    "bem-pr": "git://github.com/SevInf/bem-pr.git#b65c25afa5fbd6145f1c606ee69e4f1334ed8beb",
+    "bem-core": "git://github.com/bem/bem-core.git#3c87d19435be6c25cb4c88a96589ef229bd4d4af"
   }
 }

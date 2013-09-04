@@ -81,8 +81,9 @@ module.exports = function(MAKE) {
                 'bemdecl.js',
                 'deps.js',
                 'css',
+                'i18n',
                 'bemhtml',
-                'browser.js+bemhtml',
+                'i18n.browser.js+bemhtml',
                 'html'
             ];
         },

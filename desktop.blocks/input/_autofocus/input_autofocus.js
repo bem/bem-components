@@ -11,7 +11,7 @@ BEMDOM.decl({ block : 'input', modName : 'autofocus', modVal : true }, {
         },
 
         'focused' : {
-            true : function() {
+            'true' : function() {
                 this.__base.apply(this, arguments);
 
                 this

@@ -5,7 +5,7 @@ var undef;
 BEMDOM.decl('radio', {
     beforeSetMod : {
         'focused' : {
-            true : function() {
+            'true' : function() {
                 return !this.hasMod('disabled');
             }
         }
@@ -33,7 +33,7 @@ BEMDOM.decl('radio', {
         },
 
         'focused' : {
-            true : function() {
+            'true' : function() {
                 if(dom.containsFocus(this.domElem)) return;
 
                 var options = this.getOptions(),

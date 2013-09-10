@@ -6,7 +6,7 @@ modules.define(
 BEMDOM.decl('attach', {
     beforeSetMod : {
         'focused' : {
-            true : function() {
+            'true' : function() {
                 return !this.hasMod('disabled');
             }
         }
@@ -20,7 +20,7 @@ BEMDOM.decl('attach', {
         },
 
         'focused' : {
-            true : function() {
+            'true' : function() {
                 this._focused || this._focus();
                 this.emit('focus');
             },

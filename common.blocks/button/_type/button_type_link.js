@@ -12,7 +12,7 @@ BEMDOM.decl({ block : 'button', modName : 'type', modVal : 'link' }, {
         },
 
         'disabled' : {
-            true : function() {
+            'true' : function() {
                 this.__base.apply(this, arguments);
                 this.domElem.removeAttr('href');
             },

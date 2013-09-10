@@ -6,7 +6,7 @@ var KEY_CODE_SPACE = 32,
 BEMDOM.decl('button', {
     beforeSetMod : {
         'hovered' : {
-            true : function() {
+            'true' : function() {
                 return !this.hasMod('disabled');
             }
         }
@@ -21,7 +21,7 @@ BEMDOM.decl('button', {
         },
 
         'focused' : {
-            true : function() {
+            'true' : function() {
                 this.__base.apply(this, arguments);
                 this.bindTo('keydown', this._onKeyDown);
             },
@@ -33,7 +33,7 @@ BEMDOM.decl('button', {
         },
 
         'disabled' : {
-            true : function() {
+            'true' : function() {
                 this.__base.apply(this, arguments);
                 this.delMod('hovered');
             }

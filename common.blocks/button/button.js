@@ -6,13 +6,13 @@ modules.define(
 BEMDOM.decl('button', {
     beforeSetMod : {
         'focused' : {
-            true : function() {
+            'true' : function() {
                 return !this.hasMod('disabled');
             }
         },
 
         'pressed' : {
-            true : function() {
+            'true' : function() {
                 return !this.hasMod('disabled') || this.hasMod('toggle');
             }
         },
@@ -30,7 +30,7 @@ BEMDOM.decl('button', {
         },
 
         'focused' : {
-            true : function() {
+            'true' : function() {
                 this.bindToWin('unload', this._onUnload); // TODO: выяснить и написать зачем это
 
                 this._focused || this._focus();
@@ -50,7 +50,7 @@ BEMDOM.decl('button', {
                 this.domElem.prop(modName, !!modVal);
             },
 
-            true : function() {
+            'true' : function() {
                 this.hasMod('toggle') || this.delMod('pressed');
             }
         },

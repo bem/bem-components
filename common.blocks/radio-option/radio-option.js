@@ -3,7 +3,7 @@ modules.define('i-bem__dom', ['jquery'], function(provide, $, BEMDOM) {
 BEMDOM.decl('radio-option', {
     beforeSetMod : {
         'focused' : {
-            true : function() {
+            'true' : function() {
                 return !this.hasMod('disabled');
             }
         }
@@ -26,7 +26,7 @@ BEMDOM.decl('radio-option', {
         },
 
         'focused' : {
-            true : function() {
+            'true' : function() {
                 this._focused || this._focus();
                 this.emit('focus');
             },

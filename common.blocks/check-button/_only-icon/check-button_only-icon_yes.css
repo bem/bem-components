@@ -20,7 +20,8 @@
         margin: -8px 0 0 -8px;
     }
 
-    .check-button_only-icon_yes.check-button_pressed_yes .check-button__icon
+    .check-button_only-icon_yes.check-button_pressed_yes .check-button__icon,
+    .check-button_only-icon_yes.check-button_checked_yes .check-button__icon
     {
         margin-top: -7px;
     }

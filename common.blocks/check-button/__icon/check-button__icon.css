@@ -13,12 +13,8 @@
     margin-right: 7px;
 }
 
-.check-button_pressed_yes .check-button__icon
-{
-    opacity: .6;
-}
-
-.check-button_pressed_yes .check-button__icon
+.check-button_pressed_yes .check-button__icon,
+.check-button_checked_yes .check-button__icon
 {
     opacity: .4;
 }

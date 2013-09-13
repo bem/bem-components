@@ -1,12 +1,14 @@
 block check-button {
 
     default: {
-        var ctx = this.ctx;
+        var ctx = this.ctx,
+            id = (ctx.controlAttrs || {}).id || this.generateId();
         applyNext(
             this._control = {
                 elem: 'control',
                 attrs: ctx.controlAttrs,
-                id: this.generateId(),
+                id: id,
+                labelledby: 'text' + id,
                 name: ctx.name,
                 tabindex: ctx.tabindex,
                 checked: this.mods.checked,

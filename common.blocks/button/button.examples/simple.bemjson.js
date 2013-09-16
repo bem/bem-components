@@ -11,23 +11,23 @@
         },
         {
             block : 'button',
-            mods : { toggle : 'check' },
-            text : 'toggle=check'
+            mods : { togglable : 'check' },
+            text : 'togglable=check'
         },
         {
             block : 'button',
-            mods : { toggle : 'radio' },
-            text : 'toggle=radio'
+            mods : { togglable : 'radio' },
+            text : 'togglable=radio'
         },
         {
             block : 'button',
-            mods : { toggle : 'check', checked : true },
-            text : 'toggle=check and checked'
+            mods : { togglable : 'check', checked : true },
+            text : 'togglable=check and checked'
         },
         {
             block : 'button',
-            mods : { toggle : 'radio', checked : true },
-            text : 'toggle=radio and checked'
+            mods : { togglable : 'radio', checked : true },
+            text : 'togglable=radio and checked'
         },
         {
             block : 'button',

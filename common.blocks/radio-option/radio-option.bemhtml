@@ -2,6 +2,7 @@ block('radio-option')(
     tag()('label'),
     js()(true),
     content()(function() {
+        var ctx = this.ctx;
         return [
             {
                 elem : 'box',
@@ -9,11 +10,11 @@ block('radio-option')(
                     elem : 'control',
                     checked : this.mods.checked,
                     disabled : this.mods.disabled,
-                    name : this.ctx.name,
-                    val : this.ctx.val
+                    name : ctx.name,
+                    val : ctx.val
                 }
             },
-            this.ctx.label
+            ctx.text
         ];
     })
 )

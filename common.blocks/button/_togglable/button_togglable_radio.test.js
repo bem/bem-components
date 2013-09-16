@@ -3,11 +3,11 @@ modules.define(
     ['i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
     function(provide, BEMDOM, $, dom, BEMHTML, sinon) {
 
-describe('button_toggle_radio', function() {
+describe('button_togglable_radio', function() {
     var button;
 
     beforeEach(function() {
-        button = BEMDOM.init($(BEMHTML.apply({ block : 'button', mods : { toggle : 'radio' } })).appendTo('body'))
+        button = BEMDOM.init($(BEMHTML.apply({ block : 'button', mods : { togglable : 'radio' } })).appendTo('body'))
             .bem('button');
     });
 

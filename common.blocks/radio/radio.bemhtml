@@ -4,28 +4,29 @@ block('radio')(
     tag()('span'),
 
     js()(function() {
-        return this._.extend(this.ctx.params, { id : this.ctx.id || 'radio-' + this.ctx.name });
+        var ctx = this.ctx,
+            res = ctx.js !== true && ctx.js || {};
+        res.id || (res.id = ctx.id || 'radio-' + ctx.name);
+        return res;
     }),
 
-    content()(
-        function() {
-            var _this = this,
-                curVal = this.ctx.val;
-            return (this.ctx.options || []).map(function(option) {
-                var checked = typeof option.val !== 'undefined' && (option.val == curVal);
-                return {
-                    block : 'radio-option',
-                    mods : {
-                        type : _this.mods.type,
-                        checked : checked,
-                        disabled : option.disabled || _this.mods.disabled
-                    },
-                    name : _this.ctx.name,
-                    val : option.val,
-                    label : option.label,
-                    icon : option.icon
-                }
-            });
-        }
-    )
+    content()(function() {
+        var _this = this,
+            curVal = this.ctx.val;
+        return (this.ctx.options || []).map(function(option) {
+            var checked = typeof option.val !== 'undefined' && (option.val == curVal);
+            return {
+                block : 'radio-option',
+                mods : {
+                    type : _this.mods.type,
+                    checked : checked,
+                    disabled : option.disabled || _this.mods.disabled
+                },
+                name : _this.ctx.name,
+                val : option.val,
+                text : option.text,
+                icon : option.icon
+            }
+        });
+    })
 )

@@ -3,7 +3,7 @@ block('radio-option').mod('type', 'button')(
         var ctx = this.ctx,
             mods = this.mods,
             buttonMods = {
-                toggle : 'radio',
+                togglable : 'radio',
                 checked : mods.checked,
                 disabled : mods.disabled
             },
@@ -27,8 +27,8 @@ block('radio-option').mod('type', 'button')(
             }
         }
 
-        typeof ctx.label !== 'undefined' &&
-            buttonContent.push({ elem : 'text', content : ctx.label });
+        typeof ctx.text !== 'undefined' &&
+            buttonContent.push({ elem : 'text', content : ctx.text });
 
         applyCtx({
             block : 'button',

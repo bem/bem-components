@@ -9,9 +9,9 @@
             block : 'radio',
             name : 'r1',
             options : [
-                { val : 1, label : 'first' },
-                { val : 2, label : 'second' },
-                { val : 3, label : 'third', disabled : true }
+                { val : 1, text : 'first' },
+                { val : 2, text : 'second' },
+                { val : 3, text : 'third', disabled : true }
             ],
             val : 2
         },
@@ -19,9 +19,9 @@
             block : 'radio',
             name : 'r2',
             options : [
-                { val : 1, label : 'first' },
-                { val : 2, label : 'second' },
-                { val : 3, label : 'third' }
+                { val : 1, text : 'first' },
+                { val : 2, text : 'second' },
+                { val : 3, text : 'third' }
             ]
         },
         {
@@ -29,9 +29,9 @@
             mods : { type : 'button' },
             name : 'r3',
             options : [
-                { val : 1, label : 'first' },
-                { val : 2, label : 'second', disabled : true },
-                { val : 3, label : 'third' }
+                { val : 1, text : 'first' },
+                { val : 2, text : 'second', disabled : true },
+                { val : 3, text : 'third' }
             ],
             val : 3
         },
@@ -42,9 +42,9 @@
                 name : 'r4',
                 mods : { type : 'button' },
                 options : [
-                    { val : 1, label : 'first' },
-                    { val : 2, label : 'second' },
-                    { val : 3, label : 'third' }
+                    { val : 1, text : 'first' },
+                    { val : 2, text : 'second' },
+                    { val : 3, text : 'third' }
                 ]
             },
             ' separator ',
@@ -53,9 +53,9 @@
                 js : { id : 'r4' },
                 name : 'r4',
                 options : [
-                    { val : 4, label : 'fourth' },
-                    { val : 5, label : 'fifth' },
-                    { val : 6, label : 'sixth' }
+                    { val : 4, text : 'fourth' },
+                    { val : 5, text : 'fifth' },
+                    { val : 6, text : 'sixth' }
                 ]
             }
         ]

@@ -11,6 +11,8 @@ block checkbox, elem control {
         this.mods.disabled && (a.disabled = 'disabled');
         this.mods.checked == 'yes' && (a.checked = 'checked');
 
+        a['aria-labelledby'] = this._labelId;
+
         return a;
     }
 }

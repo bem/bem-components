@@ -1,0 +1,6 @@
+@media all and (min-width:0px) {
+    .input__control
+    {
+        -webkit-box-sizing: border-box;
+    }
+}

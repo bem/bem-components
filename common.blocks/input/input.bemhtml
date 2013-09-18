@@ -2,9 +2,13 @@ block('input')(
     tag()('span'),
     js()(true),
     def()(function() {
-        var ctx = this.ctx;
+        var ctx = this.ctx,
+            val = ctx.val;
+
+        ctx.val = val == null? '' : this.isSimple(val)? val : this.reapply(val);
         ctx.id = ctx.id || this.generateId();
-        applyNext({ _input: ctx })
+
+        applyNext({ _input: ctx });
     }),
     content()(
         function() {

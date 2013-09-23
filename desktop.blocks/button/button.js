@@ -10,6 +10,8 @@ BEM.DOM.decl('button', /** @lends Button.prototype */ {
 
             this.__base.apply(this, arguments);
 
+            navigator.userAgent.indexOf('AppleWebKit/') >= 0 && this.setMod('webkit', 'yes');
+
             this._control = this.elem('control').length && this.elem('control') || this.domElem;
         },
 

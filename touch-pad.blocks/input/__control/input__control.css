@@ -5,7 +5,7 @@
 
 .input:not(.input_type_textarea) .input__control
 {
-    padding-left: 0;
+    padding-left: 7px;
 }
 
 .input_clear_no .input__control

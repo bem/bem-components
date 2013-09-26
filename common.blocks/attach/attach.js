@@ -104,7 +104,7 @@ BEMDOM.decl('attach', {
     },
 
     _triggerChange : function(data) {
-        return this.trigger('change', data);
+        return this.emit('change', data);
     },
 
     _updateFileElem : function() {

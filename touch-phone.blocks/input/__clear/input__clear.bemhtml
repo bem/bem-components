@@ -1,9 +1,7 @@
 block input, elem clear {
 
     tag: 'a'
-    attrs: {
-        href: '#'
-    }
+
     content, !this.ctx.content: ''
 
 }

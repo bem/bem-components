@@ -79,7 +79,7 @@ BEMDOM.decl('attach', {
 
         return this
             .dropElemCache('control file')
-            ._triggerChange(data);
+            ._emitChange(data);
     },
 
     _onFocus : function() {
@@ -100,10 +100,10 @@ BEMDOM.decl('attach', {
         this.elem('no-file').detach();
         this
             ._updateFileElem()
-            ._triggerChange();
+            ._emitChange();
     },
 
-    _triggerChange : function(data) {
+    _emitChange : function(data) {
         return this.emit('change', data);
     },
 

@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', function(provide, DOM) {
+modules.define('i-bem__dom', function(provide, BEMDOM) {
 
-DOM.decl('link', {
+BEMDOM.decl('link', {
     _onClick : function(e) {
         e.preventDefault();
         this.hasMod('disabled') || this.trigger('click');
@@ -13,6 +13,6 @@ DOM.decl('link', {
     }
 });
 
-provide(DOM);
+provide(BEMDOM);
 
 });

@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', function(provide, DOM) {
+modules.define('i-bem__dom', function(provide, BEMDOM) {
 
-DOM.decl('input', {
+BEMDOM.decl('input', {
     _onInputChanged : function() {
         this.setVal(this.elem('control').val());
     }
@@ -14,6 +14,6 @@ DOM.decl('input', {
     }
 });
 
-provide(DOM);
+provide(BEMDOM);
 
 });

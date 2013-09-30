@@ -6,7 +6,7 @@ block check-button {
             this._control = {
                 elem: 'control',
                 attrs: ctx.controlAttrs,
-                id: this.generateId(),
+                id: ctx.id || this.generateId(),
                 name: ctx.name,
                 tabindex: ctx.tabindex,
                 checked: this.mods.checked,
@@ -21,7 +21,7 @@ block check-button {
     js: true
 
     attrs: {
-        'for': this.generateId()
+        'for': this.ctx.id || this.generateId()
     }
 
     content: [

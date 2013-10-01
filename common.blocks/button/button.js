@@ -58,7 +58,7 @@ BEMDOM.decl('button', {
         'checked' : function(_, modVal) {
             this
                 .setMod('pressed', modVal)
-                .trigger(modVal? 'check' : 'uncheck');
+                .emit(modVal? 'check' : 'uncheck');
         }
     },
 
@@ -98,7 +98,7 @@ BEMDOM.decl('button', {
     _onPointerClick : function(e) {
         this.hasMod('disabled')?
             e.preventDefault() :
-            this.trigger('click');
+            this.emit('click');
     },
 
     _focus : function() {

@@ -17,7 +17,8 @@ block radio-button, elem radio {
 
         return applyNext(
             this._controlAttrs = controlAttrs,
-            this._valuesMatched = valuesMatched
+            this._valuesMatched = valuesMatched,
+            this._textId = 'text' + controlAttrs.id
         );
     }
 

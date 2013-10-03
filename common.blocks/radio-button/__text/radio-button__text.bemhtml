@@ -1,0 +1,6 @@
+block radio-button, elem text {
+    attrs: {
+        id: this._textId,
+        'aria-hidden': true
+    }
+}

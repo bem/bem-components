@@ -23,6 +23,8 @@ block radio-button, elem control {
 
         typeof a.value === 'undefined' && delete a.value;
 
+        a['aria-labelledby'] = this._textId;
+
         return a;
     }
 }

@@ -16,6 +16,8 @@ block attach, elem control {
         !!this._disabled && (a.disabled = 'disabled');
         this._tabindex && (a.tabindex = this._tabindex);
 
+        a['aria-labelledby'] = this._textId;
+
         return a;
     }
 

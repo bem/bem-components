@@ -5,9 +5,12 @@ block attach {
     js: true
 
     default: {
+        var id = (this.ctx.controlAttrs || {}).id || this.generateId();
+
         applyNext(
             this._attachButton = true,
-            this._disabled = this.mods.disabled
+            this._disabled = this.mods.disabled,
+            this._textId = 'text' + id
         );
     }
 
@@ -39,6 +42,15 @@ block button, this._attachButton {
             };
 
         return [p, a];
+    }
+
+    elem text {
+        attrs: {
+            var a = applyNext() || {};
+            a.id = this._textId;
+            a['aria-hidden'] = true;
+            return a;
+        }
     }
 
 }

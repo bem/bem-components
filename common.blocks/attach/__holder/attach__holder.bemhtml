@@ -18,4 +18,8 @@ block attach, elem holder {
         }
     ]
 
+    attrs: {
+        'aria-hidden': true
+    }
+
 }

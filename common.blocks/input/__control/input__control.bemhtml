@@ -11,6 +11,8 @@ block input, elem control {
         (this._value || this._value === 0) && (a.value = this._value);
         this.mods.disabled && (a.disabled = 'disabled');
 
+        a['aria-labelledby'] = this._labelId + ' ' + this._hintId;
+
         return a;
     }
 

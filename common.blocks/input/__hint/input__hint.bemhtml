@@ -2,6 +2,10 @@ block input, elem hint {
 
     tag: 'label'
 
-    attrs: { 'for': this._inputId }
+    attrs: {
+        id: this._hintId,
+        'for': this._inputId,
+        'aria-hidden': true
+    }
 
 }

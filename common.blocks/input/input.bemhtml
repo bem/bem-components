@@ -5,9 +5,12 @@ block input {
     js: true
 
     default, !this._inputId: {
-        var value = apply('value', this.ctx = this.ctx.value);
+        var value = apply('value', this.ctx = this.ctx.value),
+            id = this.ctx.id || this.generateId();
         applyNext(
-            this._inputId = this.ctx.id || this.generateId(),
+            this._inputId = id,
+            this._labelId = 'label' + id,
+            this._hintId = 'hint' + id,
             this._name = this.ctx.name || '',
             this._value = value,
             this._inputLink = true,

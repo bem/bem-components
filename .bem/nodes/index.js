@@ -1,1 +1,3 @@
-require('./bundle.js');
+exports.extendMake = function(MAKE) {
+    require('./bundle').extendMake(MAKE);
+};

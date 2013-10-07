@@ -7,6 +7,9 @@ block checkbox, elem label {
 
         a['for'] = this._checkboxAttrs.id;
 
+        a['id'] = this._labelId;
+        a['aria-hidden'] = true;
+
         return a;
     }
 }

@@ -34,11 +34,11 @@ describe('button_togglable_radio', function() {
     });
 
     describe('check/uncheck', function() {
-        it('should set "checked" mod on "pointerdown"/"pointerup" only if "pointerup" target is in block', function() {
+        it('should set "checked" mod on "pointerpress"/"pointerrelease" only if "pointerrelease" target is in block', function() {
             function triggerPointerUpPointerDown(onBlock) {
                 button.domElem
-                    .trigger('pointerdown')
-                    .trigger(new $.Event('pointerup', { target : onBlock? button.domElem[0] : $('body') }));
+                    .trigger('pointerpress')
+                    .trigger(new $.Event('pointerrelease', { target : onBlock? button.domElem[0] : $('body') }));
             }
 
             triggerPointerUpPointerDown(true);

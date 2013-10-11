@@ -1,7 +1,7 @@
 [{
     shouldDeps : [
         { mod : 'disabled' },
-        'pointer-events'
+        { block : 'jquery', elem : 'event', mods : { type : 'pointers' } }
     ]
 },
 {

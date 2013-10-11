@@ -5,7 +5,7 @@
             elems : ['box', 'control', 'tick'],
             mods : { disabled : true, focused : true, checked : true }
         },
-        'pointer-events'
+        { block : 'jquery', elem : 'event', mods : { type : 'pointers' } }
     ]
 },
 {

@@ -76,15 +76,15 @@ BEMDOM.decl('button', {
         this.delMod('focused');
     },
 
-    _onPointerDown : function() {
+    _onPointerPress : function() {
         this.hasMod('disabled') ||
             this
-                .bindToDoc('pointerup', this._onPointerUp)
+                .bindToDoc('pointerrelease', this._onPointerRelease)
                 .setMod('pressed');
     },
 
-    _onPointerUp : function(e) {
-        this.unbindFromDoc('pointerup', this._onPointerUp);
+    _onPointerRelease : function(e) {
+        this.unbindFromDoc('pointerrelease', this._onPointerRelease);
 
         this.hasMod('togglable')?
             dom.contains(this.domElem, $(e.target))?
@@ -117,8 +117,8 @@ BEMDOM.decl('button', {
             .liveBindTo('focusout', function() {
                 this._onBlur();
             })
-            .liveBindTo('pointerdown', function() {
-                this._onPointerDown();
+            .liveBindTo('pointerpress', function() {
+                this._onPointerPress();
             })
             .liveBindTo('pointerclick', function(e) {
                 this._onPointerClick(e);

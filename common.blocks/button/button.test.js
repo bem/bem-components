@@ -63,13 +63,13 @@ describe('button', function() {
     });
 
     describe('press/release', function() {
-        it('should have "pressed" mod on pointerdown', function() {
-            button.domElem.trigger($.Event('pointerdown'));
+        it('should have "pressed" mod on pointerpress', function() {
+            button.domElem.trigger($.Event('pointerpress'));
             button.hasMod('pressed').should.be.true;
         });
 
-        it('should delete "pressed" mod on pointerup', function() {
-            button.domElem.trigger('pointerup');
+        it('should delete "pressed" mod on pointerrelease', function() {
+            button.domElem.trigger('pointerrelease');
             button.hasMod('pressed').should.be.false;
         });
 

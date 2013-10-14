@@ -1,11 +1,11 @@
 .input_size_m
 {
-    line-height: 32px;
+    line-height: 30px;
 
     font-size: 15px;
 }
 
-.input_size_m .input__clear
+.input_size_m .input__clear:before
 {
     width: 31px;
 }

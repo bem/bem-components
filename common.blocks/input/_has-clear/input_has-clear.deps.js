@@ -1,7 +1,7 @@
 [{
     shouldDeps : [
         { elem : 'clear' },
-        { block : 'jquery', elem : 'event', mods : { type : 'pointers' } }
+        { block : 'jquery', elem : 'event', mods : { type : 'pointer' } }
     ]
 },
 {

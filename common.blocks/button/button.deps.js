@@ -5,7 +5,7 @@
             elems : ['text'],
             mods : { focused : 'yes', hovered : 'yes', disabled : 'yes', pressed : 'yes' }
         },
-        { block : 'jquery', elem : 'event', mods : { type : 'pointers' } }
+        { block : 'jquery', elem : 'event', mods : { type : 'pointer' } }
     ]
 },
 {

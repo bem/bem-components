@@ -53,6 +53,24 @@
             maxLength : 42,
             tabIndex : 42,
             autocomplete : false
+        },
+        {
+            block : 'input',
+            id : 'id6',
+            name : 'name6',
+            val : 0
+        },
+        {
+            block : 'input',
+            id : 'id6',
+            name : 'name6',
+            val : false
+        },
+        {
+            block : 'input',
+            id : 'id7',
+            name : 'name7',
+            val : { tag : '', content : 'value7' }
         }
     ].map(function(input) {
         return {

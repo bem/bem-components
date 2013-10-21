@@ -5,10 +5,13 @@ block checkbox {
     js: true
 
     default, !this._checkboxAttrs: {
+        var checkboxId = (this.ctx.checkboxAttrs || {}).id,
+            id = checkboxId || this.generateId();
         applyNext(
-            this._checkboxAttrs = (this.ctx.checkboxAttrs || {}).id ?
+            this._checkboxAttrs = checkboxId ?
                     this.ctx.checkboxAttrs :
-                    { id: 'id' + this.generateId() }
+                    { id: 'id' + id },
+            this._labelId = 'label' + id
             );
     }
 

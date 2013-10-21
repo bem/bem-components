@@ -1,0 +1,5 @@
+block check-button, elem text {
+    attrs: {
+        id: this._control.labelledby
+    }
+}

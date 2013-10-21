@@ -13,6 +13,8 @@ block 'check-button', elem control {
         ctx.checked && (a.checked = 'checked');
         ctx.disabled && (a.disabled = 'disabled');
 
+        a['aria-lebelledby'] = ctx.labelledby;
+
         return a;
     }
 

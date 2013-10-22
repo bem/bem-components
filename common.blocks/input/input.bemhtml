@@ -4,7 +4,7 @@ block input {
 
     js: true
 
-    default, !this._inputId: {
+    default: {
         var value = apply('value', this.ctx = this.ctx.value),
             id = this.ctx.id || this.generateId();
         applyNext(

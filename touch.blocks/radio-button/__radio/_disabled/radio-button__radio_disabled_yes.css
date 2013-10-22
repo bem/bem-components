@@ -1,0 +1,4 @@
+.radio-button__radio_disabled_yes
+{
+    pointer-events: none;
+}

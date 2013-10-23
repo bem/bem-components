@@ -1,0 +1,4 @@
+.radiobox__radio_disabled_yes
+{
+    pointer-events: none;
+}

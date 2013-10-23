@@ -1,0 +1,7 @@
+block radiobox, elem label {
+    tag: 'span'
+
+    attrs: {
+        id: this._labelId
+    }
+}

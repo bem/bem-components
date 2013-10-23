@@ -23,6 +23,8 @@ block radiobox, elem control {
 
         typeof a.value === 'undefined' && delete a.value;
 
+        a['aria-labelledby'] = this._labelId;
+
         return a;
     }
 }

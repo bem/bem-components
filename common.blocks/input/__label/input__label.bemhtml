@@ -1,6 +1,10 @@
 block input, elem label {
     
     tag: 'label'
-    attrs: { 'for': this._inputId }
+    attrs: {
+        id: this._labelId,
+        'for': this._inputId,
+        'aria-hidden': true
+    }
 
 }

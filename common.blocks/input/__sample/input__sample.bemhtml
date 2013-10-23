@@ -1,4 +1,12 @@
-block input, elem sample, tag: 'span'
+block input, elem sample {
+
+    tag: 'span'
+
+    attrs: {
+        role: 'listitem'
+    }
+
+}
 
 block b-link, this._inputLink, this._disabled {
 

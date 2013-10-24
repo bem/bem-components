@@ -1,11 +1,4 @@
-.input_size_m .input__box
-{
-    margin-right: 15px;
-}
-
 .input_size_m .input__control
 {
-    height: 26px;
-
-    line-height: 26px;
+    box-sizing: border-box;
 }

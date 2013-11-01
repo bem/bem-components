@@ -15,7 +15,9 @@ BEM.DOM.decl('input', {
 
         'focused' : function() {
 
-            this.__base.apply(this, arguments);
+            if(this.__base.apply(this, arguments) === false) {
+                return false;
+            }
 
             this._hasHint && this._updateHint();
 

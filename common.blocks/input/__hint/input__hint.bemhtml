@@ -8,4 +8,13 @@ block input, elem hint {
         'aria-hidden': true
     }
 
+    !this._value, this._value !== 0, default: {
+        var ctx = this.ctx,
+            elemMods = ctx.elemMods || (ctx.elemMods = {});
+
+        elemMods.visibility = 'visible';
+
+        return applyCtx(ctx);
+    }
+
 }

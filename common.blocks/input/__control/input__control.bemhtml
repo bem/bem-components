@@ -22,7 +22,10 @@ block input, elem control {
             tag: 'span',
             content: [
                 this.ctx,
-                { elem: 'clear' }
+                {
+                    elem: 'clear',
+                    elemMods: this._value || this._value === 0 ? { visibility: 'visible' } : undefined
+                }
             ]
         });
     }

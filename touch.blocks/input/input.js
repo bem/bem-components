@@ -1,4 +1,18 @@
-BEM.DOM.decl('input', null, {
+BEM.DOM.decl('input', {
+
+    onSetMod: {
+
+        js: function() {
+
+            this.__base.apply(this, arguments);
+
+            this.bindTo('input', function() {
+                this.val(this.elem('control').val());
+            });
+        }
+    }
+
+}, {
 
     live : function() {
 

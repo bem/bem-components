@@ -2,6 +2,8 @@
 {
     width: 16px;
     height: 16px;
+
+    pointer-events: none;
 }
 
 .radio-button__text .radio-button__icon

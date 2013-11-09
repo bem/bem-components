@@ -54,7 +54,15 @@ BEM.DOM.decl({ block : 'radio-button', baseBlock : 'radiobox' }, /** @lends bloc
         this.bindToDoc('mouseup', function(e) {
             this.afterCurrentEvent(function() {
 
-                if(!this.findElem(radio, 'control').prop('checked')) {
+                var control = this.findElem(radio, 'control');
+
+                // https://st.yandex-team.ru/ISLCOMPONENTS-482
+                // Форсим активацию контрола, если она не произошла по mouseup на потомке элемента radio.
+                if(radio.find(e.target).length && !control.prop('checked')) {
+                    control.prop('checked', true).trigger('change').focus();
+                }
+
+                if(!control.prop('checked')) {
                     this
                         .delMod(radio, 'pressed')
                         .setMod(this.elem('radio', 'checked', 'yes'), 'pressed', 'yes');

@@ -1,0 +1,6 @@
+.checkbox_checked .checkbox__box::before
+{
+    content: '\2713';
+
+    background: #fff7db;
+}

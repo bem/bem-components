@@ -7,16 +7,13 @@ block('checkbox')(
         return [
             {
                 elem : 'box',
-                content : [
-                    {
-                        elem : 'control',
-                        checked : this.mods.checked,
-                        disabled : this.mods.disabled,
-                        name : this.ctx.name,
-                        val : this.ctx.val
-                    },
-                    { elem : 'tick' }
-                ]
+                content : {
+                    elem : 'control',
+                    checked : this.mods.checked,
+                    disabled : this.mods.disabled,
+                    name : this.ctx.name,
+                    val : this.ctx.val
+                }
             },
             this.ctx.text
         ];

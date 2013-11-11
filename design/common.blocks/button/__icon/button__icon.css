@@ -4,6 +4,8 @@
 
     position: relative;
 
+    display: inline-block;
+
     width: 1em;
     height: 1em;
 }
@@ -15,7 +17,6 @@
     width: 1em;
 
     content: '×';
-    text-align: center;
 
     color: #fff;
     border-radius: 50%;
@@ -29,5 +30,15 @@
 
 .button__icon + .button__text
 {
-    margin-left: 7px;
+    margin-left: 0.3em;
+}
+
+.button__icon
+{
+    margin-left: -0.7em;
+}
+
+.button__icon:last-child
+{
+    margin-right: -0.7em;
 }

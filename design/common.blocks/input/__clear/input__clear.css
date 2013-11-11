@@ -2,9 +2,9 @@
 {
     position: absolute;
     z-index: 1;
+    top: 0;
     right: 0;
     bottom: 0;
-    top: 0;
 
     display: none;
 
@@ -15,8 +15,8 @@
 .input__clear::after
 {
     font-size: 140%;
-    line-height: 1;
     font-weight: bold;
+    line-height: 1;
 
     display: block;
 

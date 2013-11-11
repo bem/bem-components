@@ -1,0 +1,11 @@
+.checkbox_checked .checkbox__tick::after
+{
+    line-height: 0.6em;
+
+    display: block;
+
+    height: inherit;
+
+    content: '\2713';
+    vertical-align: middle;
+}

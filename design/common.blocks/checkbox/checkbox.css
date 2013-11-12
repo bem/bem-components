@@ -1,6 +1,9 @@
 .checkbox__control
 {
-    display: none;
+    position: absolute;
+    z-index: -1;
+
+    visibility: hidden;
 }
 
 .checkbox__box::before

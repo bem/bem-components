@@ -1,6 +1,9 @@
 .radio-option__control
 {
-    display: none;
+    position: absolute;
+    z-index: -1;
+
+    visibility: hidden;
 }
 
 .radio-option__box::before

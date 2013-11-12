@@ -1,0 +1,21 @@
+.checkbox__control
+{
+    display: none;
+}
+
+.checkbox__box::before
+{
+    line-height: 0.6em;
+
+    display: inline-block;
+
+    width: 0.75em;
+    height: 0.75em;
+    margin: 0.1em 0.2em 0.3em;
+
+    content: ' ';
+    vertical-align: middle;
+
+    border-radius: 2px;
+    box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.5);
+}

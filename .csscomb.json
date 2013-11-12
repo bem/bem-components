@@ -2,7 +2,8 @@
     "exclude": [
         ".git/**",
         "libs/**",
-        "node_modules/**"
+        "node_modules/**",
+        "*.sets/**"
     ],
     "always-semicolon": true,
     "block-indent": true,

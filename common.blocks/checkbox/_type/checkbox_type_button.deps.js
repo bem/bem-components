@@ -1,5 +1,5 @@
 [{
-    shouldDeps : 'button'
+    mustDeps : 'button'
 },
 {
     tech : 'test.js',

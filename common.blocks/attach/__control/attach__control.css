@@ -1,14 +1,14 @@
-@media all and (min-width:0px) {
+@media all and (min-width:0)
+{
     .attach__control
     {
+        font-size: 150%;
+
         position: absolute;
         right: 0;
 
         opacity: 0;
-
-        background: none;
         border: none;
-
-        font-size: 150%;
+        background: none;
     }
 }

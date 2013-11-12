@@ -1,8 +1,8 @@
 .button
 {
+    font-family: inherit;
     font-size: 100%;
     line-height: 100%;
-    font-family: inherit;
 }
 
 a.button:link,

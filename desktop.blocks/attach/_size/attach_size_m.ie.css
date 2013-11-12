@@ -1,9 +1,8 @@
 .attach_size_m .attach__control
 {
-    height: 34px;
-    padding: 0 0.5em;
-
+    font-size: 15px;  /* Не наследуется от родителя в IE */
     line-height: 30px;
 
-    font-size: 15px;  /* Не наследуется от родителя в IE */
+    height: 34px;
+    padding: 0 0.5em;
 }

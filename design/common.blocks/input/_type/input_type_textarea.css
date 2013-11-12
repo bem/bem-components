@@ -1,4 +1,5 @@
-@media all and (min-width:0px) {
+@media all and (min-width:0)
+{
     .input_type_textarea .input__control
     {
         display: block;
@@ -7,12 +8,11 @@
         padding-right: 1px;
         padding-bottom: 1px;
 
+        resize: vertical;
         vertical-align: baseline;
 
-        resize: vertical;
-
          /* Fixed bug — overflow textarea no scrolling on touch devices */
-         -webkit-overflow-scrolling: touch;
+        -webkit-overflow-scrolling: touch;
     }
 
     /* Only FF */
@@ -44,4 +44,3 @@ body .input_type_textarea .input__control
     height: auto;
     min-height: 2em;
 }
-

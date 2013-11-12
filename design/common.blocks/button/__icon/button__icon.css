@@ -14,12 +14,12 @@
 
     width: 1em;
 
-    text-align: center;
     content: '×';
+    text-align: center;
 
     color: #fff;
-    background: #000;
     border-radius: 50%;
+    background: #000;
 }
 
 .button_pressed .button__icon

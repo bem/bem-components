@@ -6,6 +6,8 @@
     visibility: hidden;
     overflow: hidden;
 
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
     max-width: 100%;
     padding: 3px;
 
@@ -14,7 +16,4 @@
     text-overflow: ellipsis;
 
     color: #ccc;
-
-    -moz-box-sizing: border-box;
-         box-sizing: border-box;
 }

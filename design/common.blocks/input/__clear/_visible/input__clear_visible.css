@@ -2,9 +2,9 @@
 {
     display: block;
 
-    opacity: 0.2;
-
     cursor: pointer;
+
+    opacity: 0.2;
 }
 
 .input__clear_visible:hover

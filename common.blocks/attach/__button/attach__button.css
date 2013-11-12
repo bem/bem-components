@@ -1,4 +1,5 @@
-@media all and (min-width:0px) {
+@media all and (min-width:0)
+{
     .attach__button
     {
         overflow: hidden;

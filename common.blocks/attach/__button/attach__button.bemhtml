@@ -2,6 +2,9 @@ block('button')
     .match(this._attach)(
         tag()('span'),
         content()(function() {
-            return [applyNext(), { block : 'attach', elem : 'control' }]
+            return [
+                { block : 'attach', elem : 'control' },
+                applyNext()
+            ]
         })
     )

@@ -1,0 +1,21 @@
+.attach
+{
+    display: inline-block;
+
+    white-space: nowrap;
+}
+
+.attach .button
+{
+    position: relative;
+}
+
+.attach .button__text
+{
+    z-index: 1;
+}
+
+.attach .button__icon::before
+{
+    content: '?';
+}

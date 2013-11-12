@@ -1,5 +1,5 @@
 [{
-    shouldDeps : 'button'
+    shouldDeps : { block : 'button', mods : { togglable : 'radio' } }
 },
 {
     tech : 'test.js',

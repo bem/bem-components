@@ -11,9 +11,10 @@
             options : [
                 { val : 1, text : 'first' },
                 { val : 2, text : 'second' },
-                { val : 3, text : 'third', disabled : true }
+                { val : 3, text : 'third', disabled : true },
+                { val : 4, text : 'fourth', disabled : true }
             ],
-            val : 2
+            val : 3
         },
         {
             block : 'radio',
@@ -30,8 +31,9 @@
             name : 'r3',
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second', disabled : true },
-                { val : 3, text : 'third' }
+                { val : 2, text : 'second' },
+                { val : 3, text : 'third', disabled : true },
+                { val : 4, text : 'fourth', disabled : true }
             ],
             val : 3
         },
@@ -43,19 +45,30 @@
                 mods : { type : 'button' },
                 options : [
                     { val : 1, text : 'first' },
-                    { val : 2, text : 'second' },
-                    { val : 3, text : 'third' }
+                    { val : 2, text : 'second' }
                 ]
             },
-            ' separator ',
+            ' &mdash; ',
+            {
+                block : 'radio',
+                js : { id : 'r4' },
+                name : 'r4',
+                mods : { type : 'button' },
+                options : [
+                    { val : 3, text : 'third' },
+                    { val : 4, text : 'fourth' },
+                    { val : 5, text : 'fifth' }
+                ]
+            },
+            ' &mdash; ',
             {
                 block : 'radio',
                 js : { id : 'r4' },
                 name : 'r4',
                 options : [
-                    { val : 4, text : 'fourth' },
-                    { val : 5, text : 'fifth' },
-                    { val : 6, text : 'sixth' }
+                    { val : 6, text : 'sixth' },
+                    { val : 7, text : 'seventh' },
+                    { val : 8, text : 'eighth' }
                 ]
             }
         ]

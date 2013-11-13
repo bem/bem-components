@@ -13,21 +13,21 @@ var PATH = require('path'),
 exports.getTechs = function() {
 
     return {
-        'deps.js'        : 'deps.js',
-        'css'            : 'css',
-        'ie.css'         : 'ie.css',
-        'ie6.css'        : 'ie6.css',
-        'ie7.css'        : 'ie7.css',
-        'ie8.css'        : 'ie8.css',
-        'ie9.css'        : 'ie9.css',
+        'deps.js'        : 'v2/deps.js',
+        'css'            : 'v2/css',
+        'ie.css'         : 'v2/ie.css',
+        'ie6.css'        : 'v2/ie6.css',
+        'ie7.css'        : 'v2/ie7.css',
+        'ie8.css'        : 'v2/ie8.css',
+        'ie9.css'        : 'v2/ie9.css',
 
-        'title.txt'      : 'title.txt',
-        'desc.wiki'      : '',
+        'title.txt'      : 'bem/lib/tech/v2',
+        'desc.wiki'      : 'bem/lib/tech/v2',
         'i18n.title.txt' : pjoin(PRJ_TECHS, 'i18n.title.txt'),
         'i18n.desc.wiki' : pjoin(PRJ_TECHS, 'i18n.desc.wiki'),
 
-        'bemhtml'        : pjoin(BEMBL_TECHS, 'bemhtml.js'),
-        'js'             : pjoin(BEMBL_TECHS, 'js.js')
+        'bemhtml'        : pjoin(BEMBL_TECHS, 'v2/bemhtml.js'),
+        'js'             : pjoin(BEMBL_TECHS, 'v2/js.js')
     };
 
 };

@@ -3,6 +3,7 @@
         ".git/**",
         "libs/**",
         "node_modules/**",
+        "*.pages/*/*.css",
         "*.sets/**"
     ],
     "always-semicolon": true,

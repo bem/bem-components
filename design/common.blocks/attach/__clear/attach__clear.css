@@ -1,0 +1,11 @@
+.attach__clear
+{
+    margin-left: 5px;
+
+    cursor: pointer;
+}
+
+.attach__clear::before
+{
+    content: '×';
+}

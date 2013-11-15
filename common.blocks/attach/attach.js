@@ -171,6 +171,7 @@ var EXTENSIONS_TO_MODS = {
     'jpg'  : '',
     'jpeg' : 'jpg',
     'png'  : '',
+    'svg'  : '',
     'eml'  : '',
     'exe'  : '',
     'm4a'  : 'audio',

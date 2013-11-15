@@ -7,23 +7,20 @@
     content : [
         {
             block : 'attach',
-            mods : { size : 's' },
             buttonText : 'file',
             noFileText : 'no file selected'
         },
         {
             block : 'attach',
-            mods : { size : 's', disabled : true },
+            mods : { disabled : true },
             tabIndex : 1,
             buttonText : 'file',
             noFileText : 'no file selected'
         },
         {
             block : 'attach',
-            mods : { size : 's' },
             button : {
                 block : 'button',
-                mods : { 'only-icon' : true },
                 icon : { elem : 'icon' }
             },
             noFileText : 'no file selected'

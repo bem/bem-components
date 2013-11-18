@@ -18,13 +18,13 @@ try {
 
 MAKE.decl('Arch', {
 
-    blocksLevelsRegexp: /^.+?\.blocks$/,
+    blocksLevelsRegexp : /^.+?\.blocks$/,
 
-    bundlesLevelsRegexp: /^.+?\.pages$/,
+    bundlesLevelsRegexp : /^.+?\.pages$/,
 
-    libraries: [ 'bem-core@v1.0.0', 'bem-pr@origin/v0.3' ],
+    libraries : ['bem-core@v1.0.0', 'bem-pr@origin/v0.3'],
 
-    createCustomNodes: function(common, libs, blocks) {
+    createCustomNodes : function(common, libs, blocks) {
         if(!setsNodes) return;
 
         // Сборка примеров
@@ -131,7 +131,7 @@ MAKE.decl('ExampleNode', {
     getLevels : function() {
         var type = this.getNodePrefix().split('.')[0],
             resolve = PATH.resolve.bind(null, this.root),
-            levels = [ ],
+            levels = [],
             getLevels = this[(type.indexOf(environ.getConf().siteOutputFolder) === 0? 'desktop' : type) + '-levels'];
 
         getLevels && (levels = levels.concat(getLevels()));
@@ -140,7 +140,7 @@ MAKE.decl('ExampleNode', {
             this.getSourceNodePrefix() // Подключаем директорию blocks из папки с примерами блока
                 .split('/')
                 .slice(0, -1)
-                .concat([ 'blocks' ])
+                .concat(['blocks'])
                 .join('/'),
             this.rootLevel // Подключаем %examplename%.blocks из папки с примерами блока
                 .getTech('blocks')

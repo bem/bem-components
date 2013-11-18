@@ -1,41 +1,47 @@
 module.exports = {
     options : {
-        expr : true,
-        eqeqeq : true,
-        undef : true,
         boss : true,
+        eqeqeq : true,
+        evil : true,
+        expr : true,
+        forin : true,
+        immed : true,
+        loopfunc : true,
+        maxdepth : 4,
+        maxlen : 120,
+        newcap : true,
+        noarg : true,
+        noempty : true,
+        nonew : true,
+        onecase : true,
+        quotmark : 'single',
         sub : true,
         supernew : true,
-        loopfunc : true,
-        onecase : true,
-        quotmark : 'single'
+        trailing : true,
+        undef : true,
+        unused : true
     },
 
     groups : {
-        vanillajs : {
-            options : {
-                predef : ['modules']
-            },
-            includes : ['**/*.vanilla.js']
-        },
-
         browserjs : {
             options : {
                 browser : true,
                 predef : ['modules']
             },
-            includes : ['**/*.js'],
+            includes : ['*.blocks/**/*.js'],
             excludes : [
-                '**/*.vanilla.js',
+                '**/*.i18n/*.js',
+                '**/_*.js',
                 '**/*.test.js',
-                '**/*.node.js',
-                '**/*.deps.js'
+                '**/*.deps.js',
+                '**/*.bemjson.js'
             ]
         },
 
         testjs : {
             options : {
                 browser : true,
+                maxlen : 150,
                 predef : [
                     'modules',
                     'describe',
@@ -46,7 +52,14 @@ module.exports = {
                     'afterEach'
                 ]
             },
-            includes : ['**/*.test.js']
+            includes : ['*.blocks/**/*.test.js']
+        },
+
+        bemjsonjs : {
+            options : {
+                asi : true
+            },
+            includes : ['*.pages/**/*.bemjson.js']
         }
     }
 };

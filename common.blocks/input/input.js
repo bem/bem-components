@@ -18,8 +18,10 @@ BEMDOM.decl('input', {
                 this._focused = dom.containsFocus(control);
 
                 this._focused?
-                    this.setMod('focused') : // if control already in focus we need to set focused mod
-                    this.hasMod('focused') && this._focus(); // if block already has focused mod we need to focus control
+                    // if control already in focus we need to set focused mod
+                    this.setMod('focused') :
+                    // if block already has focused mod we need to focus control
+                    this.hasMod('focused') && this._focus();
             }
         },
 

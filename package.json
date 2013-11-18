@@ -19,14 +19,14 @@
   "devDependencies": {
     "bem": "~0.6.15",
     "csscomb": "1.0.0",
-    "jshint": "2.1.8",
-    "jshint-groups": "0.5.1",
-    "jscs": "1.0.0",
+    "jshint": "2.3.0",
+    "jshint-groups": "0.5.3",
+    "jscs": "1.0.11",
     "git-hooks": "0.0.3"
   },
   "optionalDependencies": {},
   "private": true,
   "scripts": {
-    "test": "./node_modules/.bin/csscomb -vl ."
+    "test": "./node_modules/.bin/jshint-groups && ./node_modules/.bin/jscs . && ./node_modules/.bin/csscomb -vl ."
   }
 }

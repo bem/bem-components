@@ -9,8 +9,8 @@ describe('link', function() {
     beforeEach(function() {
         link = DOM.init(
                 $(BEMHTML.apply({
-                    block: 'link',
-                    js: true
+                    block : 'link',
+                    js : true
                 })))
             .appendTo('body')
             .bem('link');

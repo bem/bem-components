@@ -10,9 +10,9 @@ describe('button_type_link', function() {
 
     beforeEach(function() {
         button = buildButton({
-            block: 'button',
-            mods: { type: 'link' },
-            url: '/'
+            block : 'button',
+            mods : { type : 'link' },
+            url : '/'
         });
     });
 
@@ -37,9 +37,9 @@ describe('button_type_link', function() {
         it('should remove "href" attribute if disabled before init', function() {
             BEMDOM.destruct(button.domElem); // we need to destruct default button from beforeEach
             button = buildButton({
-                block: 'button',
-                mods: { type: 'link', disabled: true },
-                url: '/'
+                block : 'button',
+                mods : { type : 'link', disabled : true },
+                url : '/'
             });
             button.getUrl().should.be.equal('/');
             expect(button.domElem.attr('href')).to.be.undefined;

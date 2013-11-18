@@ -1,3 +1,3 @@
 ({
-    shouldDeps: { block: 'button', elem: 'icon' }
+    shouldDeps : { block : 'button', elem : 'icon' }
 })

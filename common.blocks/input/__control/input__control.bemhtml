@@ -9,7 +9,8 @@ block('input').elem('control')(
                 name: input.name,
                 value: input.val,
                 maxlength: input.maxLength,
-                tabindex: input.tabIndex
+                tabindex: input.tabIndex,
+                placeholder: input.placeholder
             };
 
         input.autocomplete === false && (attrs.autocomplete = 'off');

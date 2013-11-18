@@ -1,6 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components',
+    mods : { theme : 'normal' },
     head : [
         { elem : 'css', url : '_index.css', ie : false },
         { elem : 'css', url : '_index', ie : true },
@@ -76,33 +77,23 @@
                 'Input',
                 {
                     block : 'input',
-                    id : 'id1',
+                    name : 'name0',
+                    val : 'value0',
+                    placeholder : 'hint0'
+                },
+                {
+                    block : 'input',
+                    mods : { theme : 'normal', size : 'm' },
                     name : 'name1',
-                    val : 'value1'
+                    val : 'value1',
+                    placeholder : 'hint1'
                 },
                 {
                     block : 'input',
-                    mods : { 'has-clear' : true },
-                    id : 'id2',
+                    mods : { theme : 'normal', size : 'm', 'has-clear' : true },
                     name : 'name2',
-                    val : 'value2'
-                },
-                {
-                    block : 'input',
-                    mods : { 'has-hint' : true },
-                    id : 'id3',
-                    name : 'name3',
-                    val : '',
-                    hint : 'hint3'
-                },
-                {
-                    block : 'input',
-                    mods : { 'has-hint' : true, 'has-label' : true },
-                    id : 'id4',
-                    name : 'name4',
-                    val : '',
-                    hint : 'hint4',
-                    label : 'label4'
+                    val : 'value2',
+                    placeholder : 'hint2'
                 }
             ],
             [

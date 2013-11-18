@@ -1,0 +1,10 @@
+.page_theme_normal.page__body
+{
+    font: 13px/15px Arial, Helvetica, sans-serif;
+
+    margin: 0;
+    padding: 20px;
+
+    color: #000;
+    background: #f6f5f3;
+}

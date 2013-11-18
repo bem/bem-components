@@ -1,9 +1,0 @@
-.input_focused
-{
-    box-shadow: 0 0 5px 1px rgba(255, 204, 0, 1);
-}
-
-.input_focused .input__control:focus
-{
-    outline: none;
-}

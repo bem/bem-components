@@ -1,152 +1,158 @@
 ({
-    block: 'page',
-    title: 'Title of the page',
-    favicon: '/favicon.ico',
-    head: [
-        { elem: 'css', url: '_index.css', ie: false },
-        { elem: 'css', url: '_index', ie: true },
-        { elem: 'js', url: '_index.js' },
+    block : 'page',
+    title : 'bem-components',
+    head : [
+        { elem : 'css', url : '_index.css', ie : false },
+        { elem : 'css', url : '_index', ie : true },
+        { elem : 'js', url : '_index.js' },
     ],
-    content: {
-        tag: 'form',
-        attrs: { action: 'http://example.com' },
-        content: [
-            {
-                block: 'button',
-                text: 'button with text'
-            },
-            {
-                block: 'button',
-                text: 'button with text and icon',
-                icon: { elem: 'icon' }
-            },
-            {
-                block: 'button',
-                mods: { 'only-icon' : true },
-                icon: { elem: 'icon' },
-                text: 'button with icon only'
-            },
-            { tag: 'br' },
-            {
-                block: 'attach',
-                mods: { size: 's', disabled: 'yes' },
-                content: [
+    content : {
+        tag : 'form',
+        attrs : { action : 'http://example.com' },
+        content : [
+            [
+                'Link',
+                {
+                    block : 'link',
+                    url : '#',
+                    title : 'simple link',
+                    target : '_blank',
+                    content : 'default link'
+                }
+            ],
+            [
+                'Attach',
+                { block : 'attach', buttonText : 'file', noFileText : 'no file selected' },
+                {
+                    block : 'attach',
+                    button : { block : 'button', icon : { elem : 'icon' } },
+                    noFileText : 'no file selected'
+                }
+            ],
+            [
+                'Button',
+                { block : 'button', text : 'default' },
+                { block : 'button', text : 'with icon', icon : { elem : 'icon' } },
+                { block : 'button', icon : { elem : 'icon' } },
+                { block : 'button', mods : { 'type' : 'link' }, url : '#', text : 'link' }
+            ],
+            [
+                'Checkbox',
+                [
                     {
-                        block: 'button',
-                        mods: { size: 's' },
-                        mix: [{ block: 'attach', elem: 'button' }],
-                        tabindex: 1,
-                        id: 'bla',
-                        content: 'button text'
+                        block : 'checkbox',
+                        name : 'r1',
+                        val : 1,
+                        text : 'label1'
                     },
+                    ' ',
                     {
-                        elem: 'holder',
-                        content: 'no file'
+                        block : 'checkbox',
+                        name : 'r1',
+                        mods : { checked : true },
+                        val : 2,
+                        text : 'label2'
+                    }
+                ],
+                [
+                    {
+                        block : 'checkbox',
+                        mods : { type : 'button' },
+                        name : 'r2',
+                        val : 1,
+                        text : 'label1'
+                    },
+                    ' ',
+                    {
+                        block : 'checkbox',
+                        mods : { type : 'button', checked : true },
+                        name : 'r2',
+                        val : 2,
+                        text : 'label2'
                     }
                 ]
-            },
-            { tag: 'br' },
-            {
-                block: 'attach',
-                mods: { size: 's' },
-                content: [
+            ],
+            [
+                'Input',
+                {
+                    block : 'input',
+                    id : 'id1',
+                    name : 'name1',
+                    val : 'value1'
+                },
+                {
+                    block : 'input',
+                    mods : { 'has-clear' : true },
+                    id : 'id2',
+                    name : 'name2',
+                    val : 'value2'
+                },
+                {
+                    block : 'input',
+                    mods : { 'has-hint' : true },
+                    id : 'id3',
+                    name : 'name3',
+                    val : '',
+                    hint : 'hint3'
+                },
+                {
+                    block : 'input',
+                    mods : { 'has-hint' : true, 'has-label' : true },
+                    id : 'id4',
+                    name : 'name4',
+                    val : '',
+                    hint : 'hint4',
+                    label : 'label4'
+                }
+            ],
+            [
+                'Radio',
+                {
+                    block : 'radio',
+                    name : 'r3',
+                    options : [
+                        { val : 1, text : 'first' },
+                        { val : 2, text : 'second' },
+                        { val : 3, text : 'third' }
+                    ],
+                    val : 3
+                },
+                {
+                    block : 'radio',
+                    js : { id : 'r4' },
+                    name : 'r4',
+                    mods : { type : 'button' },
+                    options : [
+                        { val : 1, text : 'first' },
+                        { val : 2, text : 'second' }
+                    ],
+                    val : 2
+                }
+            ],
+            [
+                'Search form',
+                [
                     {
-                        block: 'button',
-                        mods: { size: 's' },
-                        mix: [{ block: 'attach', elem: 'button' }],
-                        tabindex: 1,
-                        id: 'bla',
-                        content: 'button text'
+                        block : 'input',
+                        mods : { 'has-clear' : true, 'has-hint' : true },
+                        id : 'text',
+                        name : 'text',
+                        val : 'query'
                     },
+                    ' ',
                     {
-                        elem: 'holder',
-                        content: 'no file'
+                        block : 'button',
+                        text : 'find'
                     }
                 ]
-            },
-            { tag: 'br' },
-            { block: 'checkbox', mods: { size: 's', checked: 'yes' } },
-            {
-                block: 'checkbox',
-                mods: { size: 'm', disabled: 'yes', checked: 'yes' },
-                content: { elem: 'label', content: 'label' }
-            },
-            { tag: 'br' },
-            {
-                block: 'check-button',
-                name: 'porn',
-                value: '1',
-                mods: { size: 's' },
-                content: '1'
-            },'&nbsp;&nbsp;&nbsp;',
-            {
-                block: 'check-button',
-                name: 'porn',
-                mods: { size: 's' },
-                content: '2'
-            },
-            { tag: 'br' },
-            {
-                block: 'input',
-                mods: { size: 's', autofocus: 'focused' },
-                content: { elem: 'control' }
-            },
-            { tag: 'br' },
-            {
-                block: 'radiobox',
-                mods: { size: 's' },
-                name: 'bla',
-                content: [
-                    {
-                        elem: 'radio',
-                        content: 'только друзьям',
-                        controlAttrs: { value: 'val-1' }
-                    },
-                    '&nbsp;&nbsp;&nbsp;&nbsp;',
-                    {
-                        elem: 'radio',
-                        content: 'только мне',
-                        controlAttrs: { value: 'val-2' }
-                    },
-                    '&nbsp;&nbsp;&nbsp;&nbsp;',
-                    {
-                        elem: 'radio',
-                        elemMods: { disabled: 'yes' },
-                        content: 'только не мне',
-                        controlAttrs: { value: 'val-3' }
-                    }
-                ]
-            },
-            { tag: 'br' },
-            {
-                block: 'radio-button',
-                mods: { size: 'm' },
-                name: 'show_to',
-                value: 'friends',
-                content: [
-                    {
-                        elem: 'radio',
-                        controlAttrs: { value: 'all' },
-                        elemMods: { disabled: 'yes'},
-                        content: 'виден всем'
-                    },
-                    {
-                        elem: 'radio',
-                        controlAttrs: { value: 'friends' },
-                        content: 'только друзьям'
-                    },
-                    {
-                        elem: 'radio',
-                        controlAttrs: { value: 'me' },
-                        content: 'только мне'
-                    },
-                    {
-                        elem: 'radio',
-                        controlAttrs: { value: 'other' },
-                        content: 'только не мне'
-                    }
-                ]
+            ]
+        ].map(function(group) {
+            return {
+                tag : 'p',
+                content : group.map(function(item, i) {
+                    return [i ? ' &middot; ' : '', item];
+                })
             }
-        ]
+        })
     }
 })

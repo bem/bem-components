@@ -1,6 +1,7 @@
-/*global MAKE:true */
+/*global MAKE:false */
 
 var PATH = require('path'),
+    BEM = require('bem'),
     environ = require('bem-environ')(__dirname);
 
 environ.extendMake(MAKE);
@@ -13,7 +14,7 @@ try {
     if(e.code !== 'MODULE_NOT_FOUND')
         throw e;
 
-    require('bem/lib/logger').warn('"bem-pr" is not installer');
+    BEM.logger.warn('"bem-pr" is not installer');
 }
 
 MAKE.decl('Arch', {
@@ -31,6 +32,42 @@ MAKE.decl('Arch', {
         return setsNodes.SetsNode
             .create({ root : this.root, arch : this.arch })     // создаем экземпляр узла
             .alterArch(null, libs);                             // расширяем процесс сборки новыми узлами из bem-pr
+    }
+
+});
+
+
+MAKE.decl('BundleNode', {
+
+    /**
+     * Технологии сборки примера
+     * @returns {Array}
+     */
+    getTechs : function() {
+        return [
+            'bemjson.js',
+            'bemdecl.js',
+            'deps.js',
+            'css',
+            'bemhtml',
+            'browser.js+bemhtml',
+            'html'
+        ];
+    },
+
+    getLevels : function() {
+        return [
+            environ.getLibPath('bem-core', 'common.blocks'),
+            environ.getLibPath('bem-core', 'desktop.blocks')
+        ].concat([
+            'common.blocks',
+            'desktop.blocks',
+            'design/common.blocks',
+            'design/desktop.blocks'
+        ].map(function(path) {
+            return PATH.resolve(environ.PRJ_ROOT, path);
+        }))
+        .concat(PATH.resolve(environ.PRJ_ROOT, PATH.dirname(this.getNodePrefix()), 'blocks'));
     }
 
 });
@@ -64,7 +101,7 @@ MAKE.decl('SetsNode', {
                 'touch.blocks',
                 'design/touch.blocks',
                 'design/touch-phone.blocks'
-            ],
+            ]
         };
     }
 

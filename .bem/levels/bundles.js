@@ -1,27 +1,22 @@
 var PATH = require('path'),
     BEM = require('bem'),
     environ = require('bem-environ'),
-
-    join = PATH.join,
     resolve = PATH.resolve.bind(null, __dirname),
-
-    PRJ_TECHS = resolve('../techs/'),
-    BEMCORE_TECHS = environ.getLibPath('bem-core', '.bem/techs');
+    BEMCORE_TECHS = environ.getLibPath('bem-core', '.bem/techs'),
     BEMPR_TECHS = environ.getLibPath('bem-pr', 'bem/techs');
-
 
 exports.baseLevelPath = require.resolve('./blocks');
 
 exports.getTechs = function() {
+    var techs = {
+        'bemjson.js' : ''
+    };
 
-    return BEM.util.extend(this.__base(), {
-        'bemjson.js'         : join(PRJ_TECHS, 'bemjson.js.js'),
-        'browser.js+bemhtml' : join(BEMCORE_TECHS, 'browser.js+bemhtml.js'),
-        'html'               : join(BEMCORE_TECHS, 'html.js'),
-        'phantomjs'          : join(BEMPR_TECHS, 'phantomjs.js'),
-        'test-tmpl'          : join(BEMPR_TECHS, 'test-tmpl.js')
-    });
+    ['browser.js+bemhtml', 'html'].forEach(this.resolveTechs(techs, BEMCORE_TECHS));
 
+    ['phantomjs', 'test-tmpl'].forEach(this.resolveTechs(techs, BEMPR_TECHS));
+
+    return BEM.util.extend(this.__base(), techs);
 };
 
 // Create bundles in bemjson.js tech

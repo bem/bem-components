@@ -12,7 +12,7 @@ exports.techMixin = {
 
     getBuildSuffixesMap : function() {
         return {
-            'css': ['roo', 'css']
+            css : ['roo', 'css']
         };
     },
 

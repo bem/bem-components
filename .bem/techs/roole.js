@@ -22,7 +22,7 @@ exports.techMixin = {
         ROOLE.compile(res, {
             filename : './',
             out : './',
-            prefixes : false
+            prefixes : []
         }, function(err, res) {
             err?
                 defer.reject(err) :

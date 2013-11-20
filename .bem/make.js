@@ -2,11 +2,12 @@
 
 var PATH = require('path'),
     BEM = require('bem'),
+    Q = require('q'),
     environ = require('bem-environ')(__dirname);
 
 environ.extendMake(MAKE);
 
-require('./nodes');
+require('./nodes')(MAKE);
 
 try {
     var setsNodes = require(environ.getLibPath('bem-pr', 'bem/nodes/sets'));
@@ -103,10 +104,6 @@ MAKE.decl('BundleNode', {
             return PATH.resolve(environ.PRJ_ROOT, path);
         }))
         .concat(PATH.resolve(environ.PRJ_ROOT, PATH.dirname(this.getNodePrefix()), 'blocks'));
-    },
-
-    'create-roole-optimizer-node' : function() {
-        return this['create-css-optimizer-node'].apply(this, arguments);
     }
 
 });

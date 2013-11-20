@@ -2,11 +2,12 @@
 
 var PATH = require('path'),
     BEM = require('bem'),
+    Q = require('q'),
     environ = require('bem-environ')(__dirname);
 
 environ.extendMake(MAKE);
 
-require('./nodes');
+require('./nodes')(MAKE);
 
 try {
     var setsNodes = require(environ.getLibPath('bem-pr', 'bem/nodes/sets'));
@@ -32,42 +33,6 @@ MAKE.decl('Arch', {
         return setsNodes.SetsNode
             .create({ root : this.root, arch : this.arch })     // создаем экземпляр узла
             .alterArch(null, libs);                             // расширяем процесс сборки новыми узлами из bem-pr
-    }
-
-});
-
-
-MAKE.decl('BundleNode', {
-
-    /**
-     * Технологии сборки примера
-     * @returns {Array}
-     */
-    getTechs : function() {
-        return [
-            'bemjson.js',
-            'bemdecl.js',
-            'deps.js',
-            'css',
-            'bemhtml',
-            'browser.js+bemhtml',
-            'html'
-        ];
-    },
-
-    getLevels : function() {
-        return [
-            environ.getLibPath('bem-core', 'common.blocks'),
-            environ.getLibPath('bem-core', 'desktop.blocks')
-        ].concat([
-            'common.blocks',
-            'desktop.blocks',
-            'design/common.blocks',
-            'design/desktop.blocks'
-        ].map(function(path) {
-            return PATH.resolve(environ.PRJ_ROOT, path);
-        }))
-        .concat(PATH.resolve(environ.PRJ_ROOT, PATH.dirname(this.getNodePrefix()), 'blocks'));
     }
 
 });
@@ -108,10 +73,10 @@ MAKE.decl('SetsNode', {
 });
 
 
-MAKE.decl('ExampleNode', {
+MAKE.decl('BundleNode', {
 
     /**
-     * Технологии сборки примера
+     * Технологии сборки бандла / примера
      * @returns {Array}
      */
     getTechs : function() {
@@ -119,20 +84,40 @@ MAKE.decl('ExampleNode', {
             'bemjson.js',
             'bemdecl.js',
             'deps.js',
-            'css',
+            'roole',
             'bemhtml',
             'browser.js+bemhtml',
             'html'
         ];
     },
 
+    getLevels : function() {
+        return [
+            environ.getLibPath('bem-core', 'common.blocks'),
+            environ.getLibPath('bem-core', 'desktop.blocks')
+        ].concat([
+            'common.blocks',
+            'desktop.blocks',
+            'design/common.blocks',
+            'design/desktop.blocks'
+        ].map(function(path) {
+            return PATH.resolve(environ.PRJ_ROOT, path);
+        }))
+        .concat(PATH.resolve(environ.PRJ_ROOT, PATH.dirname(this.getNodePrefix()), 'blocks'));
+    }
+
+});
+
+
+MAKE.decl('ExampleNode', {
+
     'desktop-levels' : function() {
         return [
             environ.getLibPath('bem-core', 'common.blocks'),
             environ.getLibPath('bem-core', 'desktop.blocks'),
             'common.blocks',
-            'design/common.blocks',
             'desktop.blocks',
+            'design/common.blocks',
             'design/desktop.blocks'
         ];
     },
@@ -163,8 +148,8 @@ MAKE.decl('ExampleNode', {
     },
 
     /**
-    * Уровни переопределения используемые для сборки примера
-    */
+     * Уровни переопределения используемые для сборки примера
+     */
     getLevels : function() {
         var type = this.getNodePrefix().split('.')[0],
             resolve = PATH.resolve.bind(null, this.root),
@@ -174,11 +159,6 @@ MAKE.decl('ExampleNode', {
         getLevels && (levels = levels.concat(getLevels()));
 
         levels.push(
-            this.getSourceNodePrefix() // Подключаем директорию blocks из папки с примерами блока
-                .split('/')
-                .slice(0, -1)
-                .concat(['blocks'])
-                .join('/'),
             this.rootLevel // Подключаем %examplename%.blocks из папки с примерами блока
                 .getTech('blocks')
                 .getPath(this.getSourceNodePrefix()));

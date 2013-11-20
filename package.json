@@ -14,7 +14,10 @@
     "node": ">=0.6"
   },
   "dependencies": {
-    "bem-environ": "~1.2.0"
+    "bem-environ": "~1.2.0",
+    "q": "~0.9.7",
+    "roole": "~0.9.0",
+    "borschik": "~0.4.0"
   },
   "devDependencies": {
     "bem": "~0.6.15",
@@ -22,7 +25,9 @@
     "jshint": "2.3.0",
     "jshint-groups": "0.5.3",
     "jscs": "1.0.11",
-    "git-hooks": "0.0.3"
+    "git-hooks": "0.0.3",
+    "autoprefixer": "~0.8.20131104",
+    "q-io": "~1.10.6"
   },
   "optionalDependencies": {},
   "private": true,

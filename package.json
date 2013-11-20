@@ -25,7 +25,9 @@
     "jshint": "2.3.0",
     "jshint-groups": "0.5.3",
     "jscs": "1.0.11",
-    "git-hooks": "0.0.3"
+    "git-hooks": "0.0.3",
+    "autoprefixer": "~0.8.20131104",
+    "q-io": "~1.10.6"
   },
   "optionalDependencies": {},
   "private": true,

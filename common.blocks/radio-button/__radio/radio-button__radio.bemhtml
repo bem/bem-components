@@ -27,8 +27,9 @@ block radio-button, elem radio {
     attrs: { 'for': this._controlAttrs['id'] }
 
     mix: {
-        var side = this.isFirst() + this.isLast(),
-            controlAttrs = this._controlAttrs,
+        var mods = this.ctx.mods || {},
+            side = mods.side === undefined && this.isFirst() + this.isLast(),
+            controlAttrs = this._controlAttrs || {},
             elemMods = {};
 
         side && (elemMods.side = side > 1 ? 'both' : (this.isFirst() ? 'left' : 'right'));

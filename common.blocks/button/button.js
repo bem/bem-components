@@ -29,6 +29,12 @@ BEMDOM.decl('button', {
             }
         },
 
+        'pressed' : {
+            '' : function() {
+                this.emit('release');
+            }
+        },
+
         'focused' : {
             'true' : function() {
                 this.bindToWin('unload', this._onUnload); // TODO: выяснить и написать зачем это

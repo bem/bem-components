@@ -1,63 +1,148 @@
 ({
     block : 'page',
+    title : 'bem-components: input',
+    mods : { theme : 'normal' },
     head : [
-        { elem : 'css', url : '_simple.css', ie : false },
+        { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
     ],
     content : [
-        {
+
+        { tag : 'h2', content : 'default' },
+        { tag : 'p', content : { block : 'input', val : 'default' } },
+        { tag : 'p', content : { block : 'input', placeholder : 'placeholder' } },
+        { tag : 'p', content : {
             block : 'input',
-            id : 'id0',
-            mods : { 'disabled' : true },
-            name : 'name0',
-            val : 'value0'
-        },
-        {
+            val : 'disabled',
+            placeholder : 'placeholder',
+            mods : { disabled : true }
+        } },
+        { tag : 'p', content : {
             block : 'input',
-            id : 'id1',
-            name : 'name1',
-            val : 'value1'
-        },
-        {
+            mods : { 'has-clear' : true, 'has-label' : true },
+            val : 'value',
+            label : 'label',
+            placeholder : 'placeholder'
+        } },
+
+        { tag : 'hr' },
+
+        { tag : 'h2', content : 'simple' },
+        { tag : 'p', content : {
             block : 'input',
-            mods : { 'has-clear' : true },
-            id : 'id2',
-            name : 'name2',
-            val : 'value2'
-        },
-        {
+            mods : { theme : 'simple' },
+            val : 'simple'
+        } },
+        { tag : 'p', content : {
             block : 'input',
-            mods : { 'has-hint' : true },
-            id : 'id3',
-            name : 'name3',
-            val : '',
-            hint : 'hint3'
-        },
-        {
+            mods : { theme : 'simple', 'has-clear' : true },
+            placeholder : 'placeholder'
+        } },
+        { tag : 'p', content : {
             block : 'input',
-            mods : { 'has-hint' : true, 'has-label' : true },
-            id : 'id4',
-            name : 'name4',
-            val : '',
-            hint : 'hint4',
-            label : 'label4'
-        },
-        {
+            mods : { theme : 'simple', 'has-clear' : true, disabled : true },
+            val : 'disabled',
+            placeholder : 'placeholder'
+        } },
+        { tag : 'p', content : {
             block : 'input',
-            mods : { 'has-hint' : true, 'has-label' : true },
-            id : 'id5',
-            name : 'name5',
-            val : 'value5',
-            hint : 'hint5',
-            label : 'label5',
-            maxLength : 42,
-            tabIndex : 42,
-            autocomplete : false
-        }
-    ].map(function(input) {
-        return {
-            tag : 'p',
-            content : input
-        };
-    })
+            mods : { theme : 'simple', 'has-clear' : true, 'has-label' : true },
+            val : 'value',
+            label : 'label',
+            placeholder : 'placeholder'
+        } },
+
+        { tag : 'hr' },
+
+        { tag : 'h2', content : 'normal' },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { theme : 'normal', size : 'm' },
+            val : 'normal'
+        } },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { theme : 'normal', 'has-clear' : true, size : 'm', disabled : true },
+            val : 'disabled'
+        } },
+
+        { tag : 'h3', content : 'clear' },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { theme : 'normal', 'has-clear' : true, size : 'm' },
+            val : 'has-clear',
+            placeholder : 'placeholder'
+        } },
+
+        { tag : 'h3', content : 'type' },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { theme : 'normal', 'has-clear' : true, size : 'm', type : 'password' },
+            val : 'password',
+            placeholder : 'password'
+        } },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { theme : 'normal', 'has-clear' : true, size : 'm', type : 'search' },
+            val : 'search',
+            placeholder : 'query'
+        } },
+
+        { tag : 'h3', content : 'label' },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : {
+                theme : 'normal',
+                'has-clear' : true,
+                'has-label' : true,
+                size : 'm'
+            },
+            val : 'size s',
+            label : 'label',
+            placeholder : 'placeholder'
+        } },
+        { tag : 'p', content : [
+            {
+                block : 'input',
+                elem : 'label',
+                id : 'with-label',
+                content : 'label'
+            },
+            ': ',
+            {
+                block : 'input',
+                id : 'with-label',
+                mods : { theme : 'normal', 'has-clear' : true, size : 'm' },
+                val : 'size s',
+                placeholder : 'placeholder'
+            }
+        ] },
+
+
+        { tag : 'h3', content : 'size' },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { theme : 'normal', 'has-clear' : true, size : 's' },
+            val : 'size s',
+            placeholder : 'placeholder'
+        } },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { theme : 'normal', 'has-clear' : true, size : 'm' },
+            val : 'size m',
+            placeholder : 'placeholder'
+        } },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { theme : 'normal', 'has-clear' : true, size : 'l' },
+            val : 'size l',
+            placeholder : 'placeholder'
+        } },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { theme : 'normal', 'has-clear' : true, size : 'xl' },
+            val : 'size xl',
+            placeholder : 'placeholder'
+        } }
+    ]
 });

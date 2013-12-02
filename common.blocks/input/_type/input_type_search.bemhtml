@@ -1,0 +1,3 @@
+block('input').mod('type', 'search').elem('control').attrs()(function() {
+    return this._.extend(applyNext(), { type: 'search' })
+})

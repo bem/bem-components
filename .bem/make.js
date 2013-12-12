@@ -1,37 +1,36 @@
 /*global MAKE:false */
 
 var PATH = require('path'),
-    BEM = require('bem'),
     environ = require('bem-environ')(__dirname);
 
 environ.extendMake(MAKE);
 
-require('./nodes');
+require('./nodes')(MAKE);
 
 try {
-    var setsNodes = require(environ.getLibPath('bem-pr', 'bem/nodes/sets'));
+    require(environ.getLibPath('bem-pr', 'bem/nodes'))(MAKE);
 } catch(e) {
     if(e.code !== 'MODULE_NOT_FOUND')
         throw e;
-
-    BEM.logger.warn('"bem-pr" is not installer');
+    require('bem/lib/logger').warn('"bem-pr" is not installer');
 }
+
 
 MAKE.decl('Arch', {
 
     blocksLevelsRegexp : /^.+?\.blocks$/,
-
     bundlesLevelsRegexp : /^.+?\.pages$/,
 
-    libraries : ['bem-core@v1.0.0', 'bem-pr@origin/v0.3'],
+    createCustomNodes : function() {
+        var SetsNode = MAKE.getNodeClass('SetsNode');
 
-    createCustomNodes : function(common, libs, blocks) {
-        if(!setsNodes) return;
+        if(typeof SetsNode.createId === 'undefined') {
+            return;
+        }
 
-        // Сборка примеров
-        return setsNodes.SetsNode
-            .create({ root : this.root, arch : this.arch })     // создаем экземпляр узла
-            .alterArch(null, libs);                             // расширяем процесс сборки новыми узлами из bem-pr
+        return SetsNode
+            .create({ root : this.root, arch : this.arch })
+            .alterArch();
     }
 
 });
@@ -67,6 +66,10 @@ MAKE.decl('SetsNode', {
                 'design/touch-phone.blocks'
             ]
         };
+    },
+
+    getSourceTechs : function() {
+        return ['examples', 'specs'];
     }
 
 });
@@ -88,6 +91,10 @@ MAKE.decl('BundleNode', {
             'browser.js+bemhtml',
             'html'
         ];
+    },
+
+    getForkedTechs : function() {
+        return this.__base().concat(['browser.js+bemhtml', 'roole']);
     },
 
     getLevels : function() {
@@ -112,7 +119,7 @@ MAKE.decl('BundleNode', {
 });
 
 
-MAKE.decl('ExampleNode', {
+MAKE.decl('TargetBundleNode', {
 
     'desktop-levels' : function() {
         return [
@@ -151,20 +158,20 @@ MAKE.decl('ExampleNode', {
     },
 
     /**
-     * Уровни переопределения используемые для сборки примера
+     * Уровни переопределения используемые для сборки примера / теста
      */
     getLevels : function() {
-        var type = this.getNodePrefix().split('.')[0],
-            resolve = PATH.resolve.bind(null, this.root),
-            levels = [],
-            getLevels = this[(type.indexOf(environ.getConf().siteOutputFolder) === 0? 'desktop' : type) + '-levels'];
+        var resolve = PATH.resolve.bind(PATH, this.root),
+            getLevels = this.getLevelPath().split('.')[0] + '-levels',
+            levels = [];
 
-        getLevels && (levels = levels.concat(getLevels()));
+        if(typeof this[getLevels] === 'function') {
+            Array.prototype.push.apply(levels, this[getLevels]());
+        }
 
-        levels.push(
-            this.rootLevel // Подключаем %examplename%.blocks из папки с примерами блока
-                .getTech('blocks')
-                .getPath(this.getSourceNodePrefix()));
+        if(!levels.length) {
+            return [];
+        }
 
         return levels.map(function(level) {
             return resolve(level);
@@ -174,18 +181,31 @@ MAKE.decl('ExampleNode', {
 });
 
 
-MAKE.decl('TestNode', {
+MAKE.decl('ExampleNode', {
 
     getLevels : function() {
-        return this.__base().concat([
-            environ.getLibPath('bem-pr', 'test.blocks')
-        ]);
-    },
+        return this.__base()
+            .concat(this.rootLevel
+                .getTech('blocks')
+                .getPath(this.getSourceNodePrefix()));
+    }
+
+});
+
+
+MAKE.decl('SpecNode', {
 
     getTechs : function() {
-        return this.__base().concat([
-            'test.js+browser.js+bemhtml',
-            'phantomjs'
-        ]);
+        return this.__base()
+            .concat([
+                'spec.js+browser.js+bemhtml',
+                'phantomjs'
+            ]);
+    },
+
+    getLevels : function() {
+        return this.__base.apply(this, arguments)
+            .concat(environ.getLibPath('bem-pr', 'spec.blocks'));
     }
+
 });

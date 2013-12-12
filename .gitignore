@@ -11,4 +11,6 @@ desktop.pages/*/*
 !desktop.pages/*/blocks/
 !desktop.pages/*/*.bemjson.js
 
-*.sets/*
+/*.examples
+/*.specs
+/*.tests

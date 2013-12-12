@@ -4,7 +4,9 @@
         "libs/**",
         "node_modules/**",
         "*.pages/*/*.css",
-        "*.sets/**"
+        "*.examples/**",
+        "*.specs/**",
+        "*.tests/**"
     ],
     "always-semicolon": true,
     "block-indent": true,

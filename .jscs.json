@@ -1,7 +1,9 @@
 {
     "excludeFiles" : [
         ".bem/cache/**",
-        "*.sets/**",
+        "*.examples/**",
+        "*.specs/**",
+        "*.tests/**",
         "*.pages/**",
         "**/*.i18n/**",
         "libs/**",

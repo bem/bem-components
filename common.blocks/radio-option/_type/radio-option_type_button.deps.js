@@ -2,6 +2,6 @@
     shouldDeps : { block : 'button', mods : { togglable : 'radio' } }
 },
 {
-    tech : 'test.js',
+    tech : 'spec.js',
     mustDeps : { tech : 'bemhtml', block : 'radio-option', mods : { type : 'button' } }
 }]

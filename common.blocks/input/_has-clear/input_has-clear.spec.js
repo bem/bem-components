@@ -1,4 +1,4 @@
-modules.define('test', ['i-bem__dom', 'jquery', 'BEMHTML'], function(provide, DOM, $, BEMHTML) {
+modules.define('spec', ['i-bem__dom', 'jquery', 'BEMHTML'], function(provide, DOM, $, BEMHTML) {
 
 describe('input_has-clear', function() {
     var input;

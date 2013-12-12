@@ -1,13 +1,13 @@
 modules.define(
-    'test',
+    'spec',
     ['i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
     function(provide, BEMDOM, $, dom, BEMHTML, sinon) {
 
-describe('button_togglable_check', function() {
+describe('button_togglable_radio', function() {
     var button;
 
     beforeEach(function() {
-        button = BEMDOM.init($(BEMHTML.apply({ block : 'button', mods : { togglable : 'check' } })).appendTo('body'))
+        button = BEMDOM.init($(BEMHTML.apply({ block : 'button', mods : { togglable : 'radio' } })).appendTo('body'))
             .bem('button');
     });
 
@@ -34,7 +34,7 @@ describe('button_togglable_check', function() {
     });
 
     describe('check/uncheck', function() {
-        it('should switch "checked" mod on "pointerpress"/"pointerreleaase" only if "pointerrelease" target is in block', function() {
+        it('should set "checked" mod on "pointerpress"/"pointerrelease" only if "pointerrelease" target is in block', function() {
             function triggerPointerUpPointerDown(onBlock) {
                 button.domElem
                     .trigger('pointerpress')
@@ -45,8 +45,9 @@ describe('button_togglable_check', function() {
             button.hasMod('checked').should.be.true;
 
             triggerPointerUpPointerDown(true);
-            button.hasMod('checked').should.be.false;
+            button.hasMod('checked').should.be.true;
 
+            button.delMod('checked');
             triggerPointerUpPointerDown(false);
             button.hasMod('checked').should.be.false;
         });

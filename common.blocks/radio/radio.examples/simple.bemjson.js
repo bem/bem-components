@@ -27,7 +27,7 @@
         },
         {
             block : 'radio',
-            mods : { type : 'button' },
+            mods : { type : 'button', theme : 'simple' },
             name : 'r3',
             options : [
                 { val : 1, text : 'first' },
@@ -42,7 +42,7 @@
                 block : 'radio',
                 js : { id : 'r4' },
                 name : 'r4',
-                mods : { type : 'button' },
+                mods : { type : 'button', theme : 'simple' },
                 options : [
                     { val : 1, text : 'first' },
                     { val : 2, text : 'second' }
@@ -53,7 +53,7 @@
                 block : 'radio',
                 js : { id : 'r4' },
                 name : 'r4',
-                mods : { type : 'button' },
+                mods : { type : 'button', theme : 'simple' },
                 options : [
                     { val : 3, text : 'third' },
                     { val : 4, text : 'fourth' },

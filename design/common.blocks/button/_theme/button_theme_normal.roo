@@ -1,0 +1,196 @@
+.button_theme_normal
+{
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: inline-block;
+
+    margin: 0;
+    padding: 0;
+
+    user-select: none;
+    /* из-за транзишена появляются странные глюки в ФФ и Опере
+    transition: box-shadow 0.05s ease-out,
+                background 0.05s ease-out,
+                border 0.05s ease-out;
+    */
+
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    outline: 0;
+    color: #000;
+    background: #fff;
+
+    text-align: center;
+    white-space: nowrap;
+
+    &::-moz-focus-inner
+    {
+        padding: 0;
+
+        border: 0;
+    }
+
+    .button__text,
+    .button__icon
+    {
+        display: inline-block;
+    }
+
+    .button__icon
+    {
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+    }
+
+    // Хак для правильного позиционирования по baseline
+    .button__icon::after
+    {
+        visibility: hidden;
+
+        content: '\00A0';
+    }
+
+    &.button_disabled
+    {
+        background: rgba(0, 0, 0, 0.08);
+        box-shadow: none;
+
+        color: rgba(0, 0, 0, 0.4);
+    }
+
+    &.button_hovered
+    {
+        border: 1px solid rgba(0, 0, 0, 0.3);
+    }
+
+    &.button_pressed
+    {
+        background: #f6f5f3;
+    }
+
+    &.button_focused
+    {
+        border: 1px solid rgba(178, 142, 0, 0.6);
+        box-shadow: 0 0 10px #fc0;
+    }
+
+    &.button_size_s
+    {
+        font-size: 13px;
+        line-height: 22px;
+
+        .button__icon
+        {
+            width: 22px;
+        }
+
+        .button__text
+        {
+            padding: 0 10px;
+        }
+    }
+
+    &.button_size_m
+    {
+        font-size: 13px;
+        line-height: 26px;
+
+        .button__icon
+        {
+            width: 26px;
+        }
+
+        .button__text
+        {
+            padding: 0 13px;
+        }
+    }
+
+    &.button_size_l
+    {
+        font-size: 15px;
+        line-height: 30px;
+
+        .button__icon
+        {
+            width: 30px;
+        }
+
+        .button__text
+        {
+            padding: 0 15px;
+        }
+    }
+
+    &.button_size_xl
+    {
+        font-size: 18px;
+        line-height: 36px;
+
+        .button__icon
+        {
+            width: 36px;
+        }
+
+        .button__text
+        {
+            padding: 0 18px;
+        }
+    }
+
+    & .button__icon + .button__text
+    {
+        padding-left: 0;
+    }
+
+    .button__text:not(:last-child)
+    {
+        padding-right: 0;
+    }
+
+
+    &.button_togglable_radio:first-of-type,
+    &.button_togglable_radio ~ .button_togglable_radio
+    {
+        border-right-width: 0;
+    }
+
+    &.button_togglable_radio ~ .button_togglable_radio
+    {
+        border-radius: 0;
+    }
+
+    &.button_togglable_radio:first-of-type
+    {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    &.button_togglable_radio:last-of-type
+    {
+        border-right-width: 1px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    &.button_togglable_radio.button_hovered
+    {
+        border-right-width: 1px;
+    }
+
+    &.button_togglable_radio.button_hovered ~ .button_togglable_radio
+    {
+        border-left-width: 0;
+    }
+
+    &.button_togglable_radio.button_hovered ~ .button_togglable_radio ~ .button_togglable_radio
+    {
+        border-left-width: 1px;
+    }
+}
+
+.button:focus,
+.button:active
+{
+    outline: 0 !important;
+}

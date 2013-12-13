@@ -3,6 +3,6 @@
     shouldDeps : ['radio-option', 'dom']
 },
 {
-    tech : 'test.js',
+    tech : 'spec.js',
     mustDeps : { tech : 'bemhtml', block : 'radio' }
 }]

@@ -9,6 +9,6 @@
     ]
 },
 {
-    tech : 'test.js',
+    tech : 'spec.js',
     mustDeps : { tech : 'bemhtml', block : 'checkbox' }
 }]

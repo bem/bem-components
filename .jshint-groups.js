@@ -32,13 +32,13 @@ module.exports = {
             excludes : [
                 '**/*.i18n/*.js',
                 '**/_*.js',
-                '**/*.test.js',
+                '**/*.spec.js',
                 '**/*.deps.js',
                 '**/*.bemjson.js'
             ]
         },
 
-        testjs : {
+        specjs : {
             options : {
                 browser : true,
                 maxlen : 150,
@@ -52,7 +52,7 @@ module.exports = {
                     'afterEach'
                 ]
             },
-            includes : ['*.blocks/**/*.test.js']
+            includes : ['*.blocks/**/*.spec.js']
         },
 
         bemjsonjs : {

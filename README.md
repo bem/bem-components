@@ -31,7 +31,7 @@
 
 1. Получаем исходники:
 ```
-$ git clone -b v2 git@github.com:bem/bem-components.git
+$ git clone -b v2 git://github.com/bem/bem-components.git
 $ cd bem-components
 ```
 
@@ -39,11 +39,12 @@ $ cd bem-components
 ```
 $ npm install
 ```
-Для последующего запуска локально установленных bem-tools нам потребуется `export PATH=./node_modules/.bin:$PATH` или любой альтернативный способ.
+Для последующего запуска локально установленных bem-tools нам потребуется `export PATH=./node_modules/.bin:$PATH`
+или любой альтернативный способ.
 
-3. С помощью bem-tools устанавливаем все зависимые библиотеки:
+3. Устанавливаем зависимые библиотеки:
 ```
-$ bem make libs
+$ bower-npm-install
 ```
 
 4. Собираем примеры и тесты:
@@ -68,3 +69,4 @@ $ bem server
 7. Ждать закрытия pull-request и issue ;-)
 
 ### Модульное тестирование
+

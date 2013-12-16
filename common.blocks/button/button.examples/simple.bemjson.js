@@ -88,6 +88,23 @@
             mods : { theme : 'normal', size : 'm', disabled : true }
         } },
 
+        { tag : 'h3', content : 'view' },
+        { tag : 'p', content : {
+            block : 'button',
+            mods : { theme : 'normal', size : 'm' },
+            text : 'normal'
+        } },
+        { tag : 'p', content : {
+            block : 'button',
+            mods : { theme : 'normal', pseudo : true, size : 'm' },
+            text : 'pseudo'
+        } },
+        { tag : 'p', content : {
+            block : 'button',
+            mods : { theme : 'normal', action : true, size : 'm' },
+            text : 'action'
+        } },
+
         { tag : 'h3', content : 'size' },
         { tag : 'p', content : {
             block : 'button',

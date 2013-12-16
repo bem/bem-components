@@ -74,6 +74,27 @@
         box-shadow: 0 0 10px #fc0;
     }
 
+    &.button_pseudo
+    {
+        background: 0;
+
+        &.button_pressed
+        {
+            background: rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    // TODO: прочекать бордеры, сделать непрозрачными
+    &.button_action
+    {
+        background: #ffdb4d;
+
+        &.button_pressed
+        {
+            background: #fc0;
+        }
+    }
+
     &.button_size_s
     {
         font-size: 13px;
@@ -187,10 +208,4 @@
     {
         border-left-width: 1px;
     }
-}
-
-.button:focus,
-.button:active
-{
-    outline: 0 !important;
 }

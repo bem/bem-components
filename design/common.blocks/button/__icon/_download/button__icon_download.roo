@@ -1,0 +1,4 @@
+.button__icon_download
+{
+    background-image: url(button__icon_download.svg);
+}

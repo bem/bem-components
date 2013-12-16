@@ -1,0 +1,26 @@
+.button__icon_arrow_up,
+.button__icon_arrow_right,
+.button__icon_arrow_down,
+.button__icon_arrow_left
+{
+    background-image: url(button__icon_arrow.svg);
+}
+
+// TODO: autoprefixer
+.button__icon_arrow_up
+{
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+
+.button__icon_arrow_right
+{
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+}
+
+.button__icon_arrow_left
+{
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}

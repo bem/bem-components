@@ -1,0 +1,133 @@
+.button_theme_simple
+{
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 100%;
+
+    display: inline-block;
+
+    margin: 0;
+    padding: 0.2em 1em;
+
+    text-align: center;
+
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    outline: 0;
+    border-radius: 3px;
+    color: #000;
+    background: #fff;
+
+    &::-moz-focus-inner
+    {
+        padding: 0;
+
+        border: 0;
+    }
+
+    .button__text
+    {
+        position: relative;
+    }
+
+    &.button_disabled
+    {
+        opacity: 0.6;
+    }
+
+    &.button_focused
+    {
+        box-shadow: 0 0 5px 1px rgba(255, 204, 0, 1);
+    }
+
+    &.button_hovered
+    {
+        border-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &.button_pressed
+    {
+        background: #fff7db;
+        box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.1);
+
+        .button__text,
+        .button__icon
+        {
+            top: 1px;
+        }
+    }
+
+    .button__icon
+    {
+        font: 1em/1 serif;
+
+        position: relative;
+
+        display: inline-block;
+
+        width: 1em;
+        height: 1em;
+        margin-left: -0.7em;
+
+        &::before
+        {
+            display: inline-block;
+
+            width: 1em;
+
+            content: '×';
+
+            color: #fff;
+            border-radius: 50%;
+            background: #000;
+        }
+
+        + .button__text
+        {
+            margin-left: 0.3em;
+        }
+
+        &:last-child
+        {
+            margin-right: -0.7em;
+        }
+    }
+
+    &.button_togglable_radio:first-of-type,
+    &.button_togglable_radio ~ .button_togglable_radio
+    {
+        border-right-width: 0;
+    }
+
+    &.button_togglable_radio ~ .button_togglable_radio
+    {
+        border-radius: 0;
+    }
+
+    &.button_togglable_radio:first-of-type
+    {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    &.button_togglable_radio:last-of-type
+    {
+        border-right-width: 1px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    &.button_togglable_radio.button_hovered
+    {
+        border-right-width: 1px;
+    }
+
+    &.button_togglable_radio.button_hovered ~ .button_togglable_radio
+    {
+        border-left-width: 0;
+    }
+
+    &.button_togglable_radio.button_hovered ~ .button_togglable_radio ~ .button_togglable_radio
+    {
+        border-left-width: 1px;
+    }
+}

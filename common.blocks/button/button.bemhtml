@@ -28,7 +28,7 @@ block('button')(
             var ctx = this.ctx,
                 attrs = {};
 
-            !ctx.type && !ctx.tag && (attrs.type = 'button');
+            ctx.tag || (attrs.type = ctx.type || 'button');
 
             ctx.name && (attrs.name = ctx.name);
             ctx.val && (attrs.value = ctx.val);

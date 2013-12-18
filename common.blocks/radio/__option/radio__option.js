@@ -1,6 +1,6 @@
-modules.define('radio-option', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define({ block : 'radio', elem : 'option' }, ['i-bem__dom'], function(provide, BEMDOM) {
 
-provide(BEMDOM.decl(this.name, {
+provide(BEMDOM.decl({ block: 'radio', elem: 'option' }, {
     beforeSetMod : {
         'focused' : {
             'true' : function() {

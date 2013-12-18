@@ -1,4 +1,4 @@
-block('radio-option').mod('type', 'button')(
+block('radio').elem('option').mod('type', 'button')(
     def()(function() {
         var ctx = this.ctx,
             mods = this.mods,
@@ -9,7 +9,7 @@ block('radio-option').mod('type', 'button')(
             },
             buttonContent = [
                 {
-                    block : 'radio-option',
+                    block : 'radio',
                     elem : 'control',
                     checked : mods.checked,
                     disabled : mods.disabled,
@@ -32,7 +32,7 @@ block('radio-option').mod('type', 'button')(
 
         applyCtx({
             block : 'button',
-            mix : { block : 'radio-option', mods : mods, js : true },
+            mix : { block : 'radio', elem: 'option', mods : mods, js : true },
             tag : 'label',
             mods : buttonMods,
             content : buttonContent

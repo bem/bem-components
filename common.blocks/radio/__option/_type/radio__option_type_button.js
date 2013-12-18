@@ -1,4 +1,9 @@
-modules.define('radio-option', function(provide, RadioOption) {
+modules.define({
+    block : 'radio',
+    elem : 'option',
+    modName : 'type',
+    modVal : 'button'
+}, function(provide, RadioOption) {
 
 provide(RadioOption.decl({ modName : 'type', modVal : 'button' }, {
     onSetMod : {

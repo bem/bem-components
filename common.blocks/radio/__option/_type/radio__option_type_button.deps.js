@@ -3,5 +3,5 @@
 },
 {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'radio-option', mods : { type : 'button' } }
+    mustDeps : { tech : 'bemhtml', elem : 'option', mods : { type : 'button' } }
 }]

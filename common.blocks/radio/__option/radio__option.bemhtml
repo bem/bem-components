@@ -1,6 +1,7 @@
-block('radio-option')(
+block('radio').elem('option')(
     tag()('label'),
     js()(true),
+    mix()({ block: 'i-bem' }),
     content()(function() {
         var ctx = this.ctx;
         return [

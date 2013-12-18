@@ -1,5 +1,4 @@
 [{
-    mustDeps : { block : 'i-bem', elems : ['dom'] },
     shouldDeps : [
         {
             elems : ['box', 'control'],
@@ -10,5 +9,5 @@
 },
 {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'radio-option' }
+    mustDeps : { tech : 'bemhtml', elem : 'option' }
 }]

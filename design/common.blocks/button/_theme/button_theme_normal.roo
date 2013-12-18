@@ -42,7 +42,7 @@
         background-repeat: no-repeat;
     }
 
-    // Хак для правильного позиционирования по baseline
+    /* Хак для правильного позиционирования по baseline */
     .button__icon::after
     {
         visibility: hidden;
@@ -84,7 +84,7 @@
         }
     }
 
-    // TODO: прочекать бордеры, сделать непрозрачными
+    /* TODO: прочекать бордеры, сделать непрозрачными */
     &.button_action
     {
         background: #ffdb4d;

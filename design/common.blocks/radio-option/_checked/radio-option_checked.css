@@ -1,6 +1,0 @@
-.radio-option_checked .radio-option__box::before
-{
-    content: '\2022';
-
-    background: #fff7db;
-}

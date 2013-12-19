@@ -1,5 +1,5 @@
 [{
-    shouldDeps : { block : 'button', mods : { togglable : 'radio', theme : 'simple' } } // TODO: написать зависимости для разных тем
+    shouldDeps : { block : 'button', mods : { togglable : 'radio' } }
 },
 {
     tech : 'spec.js',

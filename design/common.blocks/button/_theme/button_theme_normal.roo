@@ -50,14 +50,6 @@
         content: '\00A0';
     }
 
-    &.button_disabled
-    {
-        background: rgba(0, 0, 0, 0.08);
-        box-shadow: none;
-
-        color: rgba(0, 0, 0, 0.4);
-    }
-
     &.button_hovered
     {
         border: 1px solid rgba(0, 0, 0, 0.3);
@@ -72,6 +64,14 @@
     {
         border: 1px solid rgba(178, 142, 0, 0.6);
         box-shadow: 0 0 10px #fc0;
+    }
+
+    &.button_disabled
+    {
+        background: rgba(0, 0, 0, 0.08);
+        box-shadow: none;
+
+        color: rgba(0, 0, 0, 0.4);
     }
 
     &.button_pseudo
@@ -170,42 +170,51 @@
     }
 
 
-    &.button_togglable_radio:first-of-type,
-    &.button_togglable_radio ~ .button_togglable_radio
+    &.button_togglable_radio
     {
-        border-right-width: 0;
-    }
+        &:first-of-type,
+        ~ .button_togglable_radio
+        {
+            border-right-width: 0;
+        }
 
-    &.button_togglable_radio ~ .button_togglable_radio
-    {
-        border-radius: 0;
-    }
+        ~ .button_togglable_radio
+        {
+            border-radius: 0;
+        }
 
-    &.button_togglable_radio:first-of-type
-    {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
+        &:first-of-type
+        {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
 
-    &.button_togglable_radio:last-of-type
-    {
-        border-right-width: 1px;
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-    }
+        &:last-of-type
+        {
+            border-right-width: 1px;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
 
-    &.button_togglable_radio.button_hovered
-    {
-        border-right-width: 1px;
-    }
+        &.button_checked
+        {
+            background: #ffeba0;
+        }
 
-    &.button_togglable_radio.button_hovered ~ .button_togglable_radio
-    {
-        border-left-width: 0;
-    }
+        &.button_hovered
+        {
+            border-right-width: 1px;
 
-    &.button_togglable_radio.button_hovered ~ .button_togglable_radio ~ .button_togglable_radio
-    {
-        border-left-width: 1px;
+            ~ .button_togglable_radio
+            {
+                border-left-width: 0;
+            }
+
+            /* TODO: сложновато, проверить производительность */
+            ~ .button_togglable_radio ~ .button_togglable_radio
+            {
+                border-left-width: 1px;
+            }
+        }
     }
 }

@@ -1,10 +1,11 @@
-/*global MAKE:false */
+/* global MAKE:false */
 
 var PATH = require('path'),
     environ = require('bem-environ')(__dirname);
 
 environ.extendMake(MAKE);
 
+require('bem-tools-autoprefixer')(MAKE);
 require('./nodes')(MAKE);
 
 try {
@@ -87,6 +88,7 @@ MAKE.decl('BundleNode', {
             'bemdecl.js',
             'deps.js',
             'roole',
+            'css',
             'bemhtml',
             'browser.js+bemhtml',
             'html'
@@ -112,8 +114,11 @@ MAKE.decl('BundleNode', {
         .concat(PATH.resolve(environ.PRJ_ROOT, PATH.dirname(this.getNodePrefix()), 'blocks'));
     },
 
-    'create-roole-optimizer-node' : function() {
-        return this['create-css-optimizer-node'].apply(this, arguments);
+    'create-css-node' : function(tech, bundleNode, magicNode) {
+        var source = this.getBundlePath('roole');
+        if(this.ctx.arch.hasNode(source)) {
+            return this.createAutoprefixerNode(tech, this.ctx.arch.getNode(source), bundleNode, magicNode);
+        }
     }
 
 });

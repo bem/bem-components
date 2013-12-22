@@ -6,3 +6,4 @@ module.exports = function(registry) {
         require(environ.getLibPath('bem-core', '.bem/nodes/bundle.js'));
     } catch(e) {}
 };
+

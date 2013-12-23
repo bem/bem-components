@@ -25,7 +25,7 @@
             mods : { disabled : true },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' },
+                { val : 2, text : 'second' }
             ],
             val : 2
         } },
@@ -50,7 +50,7 @@
             mods : { theme : 'simple', disabled : true },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' },
+                { val : 2, text : 'second' }
             ],
             val : 2
         } },
@@ -98,7 +98,7 @@
             mods : { theme : 'normal', size : 'm', disabled : true },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' },
+                { val : 2, text : 'second' }
             ],
             val : 2
         } },

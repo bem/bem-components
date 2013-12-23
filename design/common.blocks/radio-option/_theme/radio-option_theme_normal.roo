@@ -1,6 +1,11 @@
 .radio-option_theme_normal
 {
-    display: block;
+    &::after
+    {
+        display: block;
+
+        content: '';
+    }
 
     .radio-option__control
     {

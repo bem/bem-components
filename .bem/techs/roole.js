@@ -50,4 +50,3 @@ exports.techMixin = {
     }
 
 };
-

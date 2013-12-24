@@ -12,16 +12,17 @@ exports.techMixin = {
 
     getBuildSuffixesMap : function() {
         return {
-            css : ['roo', 'css']
+            'roole.css' : ['roo', 'css']
         };
     },
 
-    compileBuildResult : function(res) {
+    processBuildResult : function(res) {
         var defer = Q.defer();
 
         ROOLE.compile(res, {
             filename : './',
             out : './',
+            indent : '    ',
             prefixes : []
         }, function(err, res) {
             err?
@@ -44,7 +45,7 @@ exports.techMixin = {
 
                 file.content = file.parse(res.join(''));
 
-                return this.compileBuildResult(file.process(output));
+                return this.processBuildResult(file.process(output));
             }.bind(this));
     }
 

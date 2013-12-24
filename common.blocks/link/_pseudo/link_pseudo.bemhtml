@@ -1,0 +1,3 @@
+block('link').mod('pseudo', true)(
+    js()(true)
+)

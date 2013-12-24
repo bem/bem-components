@@ -1,7 +1,7 @@
 modules.define(
     'i-bem__dom',
-    ['jquery', 'dom', 'events'],
-    function(provide, $, dom, events, BEMDOM) {
+    ['jquery', 'dom'],
+    function(provide, $, dom, BEMDOM) {
 
 BEMDOM.decl('button', {
     beforeSetMod : {

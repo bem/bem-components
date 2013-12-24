@@ -6,7 +6,7 @@
     background-image: url(button__icon_arrow.svg);
 }
 
-// TODO: autoprefixer
+/* TODO: autoprefixer */
 .button__icon_arrow_up
 {
     -moz-transform: rotate(180deg);

@@ -1,71 +1,223 @@
 ({
     block : 'page',
+    title : 'bem-components: checkbox',
+    mods : { theme : 'normal' },
     head : [
-        { elem : 'css', url : '_simple.css', ie : false },
+        { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
     ],
     content : [
-        [{
+
+        { tag : 'h2', content : 'default' },
+        { tag : 'p', content : {
             block : 'checkbox',
-            name : 'r1',
-            val : 1,
-            text : 'label1'
-        },
-        {
+            text : 'first'
+        } },
+        { tag : 'p', content : {
             block : 'checkbox',
-            name : 'r1',
             mods : { checked : true },
-            val : 2,
-            text : 'label2'
-        },
-        {
+            text : 'second'
+        } },
+        { tag : 'p', content : {
             block : 'checkbox',
-            name : 'r1',
             mods : { disabled : true },
-            val : 3,
-            text : 'label3'
-        },
-        {
+            text : 'third'
+        } },
+
+        { tag : 'hr' },
+
+        { tag : 'h2', content : 'simple' },
+        { tag : 'p', content : {
             block : 'checkbox',
-            name : 'r1',
-            mods : { checked : true, disabled : true },
-            val : 4,
-            text : 'label4'
-        }],
-        [{
+            mods : { theme : 'simple' },
+            text : 'first'
+        } },
+        { tag : 'p', content : {
             block : 'checkbox',
-            mods : { type : 'button' },
-            name : 'r2',
-            val : 1,
-            text : 'label1'
-        },
-        {
+            mods : { theme : 'simple', checked : true },
+            text : 'second'
+        } },
+        { tag : 'p', content : {
             block : 'checkbox',
-            mods : { type : 'button', checked : true },
-            name : 'r2',
-            val : 2,
-            text : 'label2'
-        },
-        {
+            mods : { theme : 'simple', checked : true, disabled : true },
+            text : 'third'
+        } },
+        { tag : 'p', content : {
             block : 'checkbox',
-            mods : { type : 'button', disabled : true },
-            name : 'r2',
-            val : 3,
-            text : 'label3'
-        },
-        {
-            block : 'checkbox',
-            name : 'r2',
-            mods : { type : 'button', checked : true, disabled : true },
-            val : 4,
-            text : 'label4'
-        }]
-    ].map(function(group) {
-        return {
-            tag : 'p',
-            content : group.map(function(checkbox, i) {
-                return [i ? ' ' : '', checkbox];
-            })
-        };
-    })
+            mods : { theme : 'simple', disabled : true },
+            text : 'fourth'
+        } },
+
+        { tag : 'h3', content : 'button' },
+        { tag : 'p', content : [
+            {
+                block : 'checkbox',
+                mods : { theme : 'simple', type : 'button' },
+                text : 'first'
+            },
+            '&nbsp;',
+            {
+                block : 'checkbox',
+                mods : { theme : 'simple', type : 'button', checked : true },
+                text : 'second'
+            },
+            '&nbsp;',
+            {
+                block : 'checkbox',
+                mods : { theme : 'simple', type : 'button', disabled : true },
+                text : 'third'
+            },
+            '&nbsp;',
+            {
+                block : 'checkbox',
+                mods : { theme : 'simple', type : 'button', checked : true, disabled : true },
+                text : 'fourth'
+            }
+        ] },
+
+        { tag : 'hr' },
+
+        { tag : 'h2', content : 'normal' },
+        { tag : 'p', content : [
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm' },
+                val : 1,
+                name : 'r1',
+                text : 'first'
+            },
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm', checked : true },
+                val : 2,
+                name : 'r1',
+                text : 'second'
+            },
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm', disabled : true },
+                val : 3,
+                name : 'r1',
+                text : 'third'
+            }
+        ] },
+        { tag : 'p', content : [
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm', disabled : true },
+                val : 1,
+                name : 'r1',
+                text : 'first'
+            },
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm', disabled : true, checked : true },
+                val : 2,
+                name : 'r1',
+                text : 'second'
+            }
+        ] },
+
+        { tag : 'h3', content : 'size' },
+        { tag : 'p', content : [
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm' },
+                val : 1,
+                name : 'r1',
+                text : 'size_m'
+            },
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm', checked : true },
+                val : 2,
+                name : 'r1',
+                text : 'size_m'
+            }
+        ] },
+        { tag : 'p', content : [
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'l' },
+                val : 1,
+                name : 'r1',
+                text : 'size_l'
+            },
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'l', checked : true },
+                val : 2,
+                name : 'r1',
+                text : 'size_l'
+            }
+        ] },
+
+        { tag : 'h3', content : 'button' },
+        { tag : 'p', content : [
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm', type : 'button' },
+                val : 1,
+                name : 'r1',
+                text : 'first'
+            },
+            '&nbsp;',
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm', type : 'button', checked : true },
+                val : 2,
+                name : 'r1',
+                text : 'second'
+            },
+            '&nbsp;',
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
+                val : 3,
+                name : 'r1',
+                text : 'third'
+            },
+            '&nbsp;',
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm', type : 'button', checked : true, disabled : true },
+                val : 3,
+                name : 'r1',
+                text : 'third'
+            }
+        ] },
+        { tag : 'p', content : [
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'l', type : 'button' },
+                val : 1,
+                name : 'r1',
+                text : 'first'
+            },
+            '&nbsp;',
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'l', type : 'button', checked : true },
+                val : 2,
+                name : 'r1',
+                text : 'second'
+            },
+            '&nbsp;',
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'l', type : 'button', disabled : true },
+                val : 3,
+                name : 'r1',
+                text : 'third'
+            },
+            '&nbsp;',
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'l', type : 'button', checked : true, disabled : true },
+                val : 3,
+                name : 'r1',
+                text : 'third'
+            }
+        ] }
+    ]
 });

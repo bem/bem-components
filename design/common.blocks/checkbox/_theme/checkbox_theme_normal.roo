@@ -1,0 +1,121 @@
+.checkbox_theme_normal
+{
+    font-family: Arial, Helvetica, sans-serif;
+
+    &::after
+    {
+        display: block;
+
+        content: '';
+    }
+
+    .checkbox__control
+    {
+        position: absolute;
+        z-index: -1;
+
+        margin: 0;
+
+        opacity: 0;
+    }
+
+    .checkbox__box
+    {
+        position: relative;
+
+        display: inline-block;
+
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+        background: #fff;
+
+        &::after
+        {
+            visibility: hidden;
+
+            content: '\00A0';
+        }
+    }
+
+    &.checkbox_size_m
+    {
+        font-size: 13px;
+        line-height: 24px;
+
+        .checkbox__box
+        {
+            line-height: 12px;
+
+            width: 12px;
+            height: 12px;
+            margin-right: 6px;
+
+            &::before
+            {
+                top: -4px;
+                left: 1px;
+
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+
+    &.checkbox_size_l
+    {
+        font-size: 15px;
+        line-height: 30px;
+
+        .checkbox__box
+        {
+            line-height: 16px;
+
+            width: 15px;
+            height: 15px;
+            margin-right: 8px;
+
+            &::before
+            {
+                top: -5px;
+                left: 1px;
+
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+
+    &.checkbox_checked
+    {
+        .checkbox__box
+        {
+            background: #ffeba0;
+
+            &::before
+            {
+                position: absolute;
+
+                content: ' ';
+
+                background-image: url(_normal/tip.svg);
+                background-size: 100%;
+            }
+        }
+    }
+
+    &.checkbox_disabled
+    {
+        color: #999;
+
+        .checkbox__box
+        {
+            background: rgba(0, 0, 0, 0.08);
+            border-color: transparent;
+
+            &::before
+            {
+                opacity: 0.4;
+            }
+        }
+    }
+}

@@ -1,0 +1,108 @@
+.attach_theme_simple
+{
+    display: inline-block;
+
+    white-space: nowrap;
+
+    .attach__control
+    {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        margin: 0;
+
+        opacity: 0;
+    }
+
+    .attach__file,
+    .attach__no-file
+    {
+        display: inline;
+
+        margin-left: 0.5em;
+    }
+
+    .attach__clear
+    {
+        margin-left: 5px;
+
+        cursor: pointer;
+
+        &::before
+        {
+            content: '×';
+        }
+    }
+
+    &.attach_disabled
+    {
+        .attach__no-file,
+        .attach__file
+        {
+            opacity: 0.6;
+        }
+
+        /* TODO: disable clear in JS */
+        .attach__clear
+        {
+            display: none;
+        }
+    }
+
+    .button
+    {
+        position: relative;
+
+        &__text
+        {
+            display: inline;
+
+            z-index: 1;
+        }
+    }
+
+    .attach__icon
+    {
+        display: inline-block;
+
+        margin-right: 0.5em;
+        padding: 0 0.2em;
+
+        text-align: center;
+
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 0 0.4em 0 0;
+
+        &::before { content: '???'; }
+
+        &_file
+        {
+            &_archive::before { content: 'xxx'; }
+            &_gif::before { content: 'gif'; }
+            &_jpg::before { content: 'jpg'; }
+            &_png::before { content: 'png'; }
+            &_svg::before { content: 'svg'; }
+            &_eml::before { content: 'eml'; }
+            &_exe::before { content: 'exe'; }
+            &_video::before { content: 'vid'; }
+            &_mov::before { content: 'mov'; }
+            &_wmv::before { content: 'wmv'; }
+            &_mp4::before { content: 'mp4'; }
+            &_avi::before { content: 'avi'; }
+            &_xls::before { content: 'xls'; }
+            &_doc::before { content: 'doc'; }
+            &_txt::before { content: 'txt'; }
+            &_pdf::before { content: 'pdf'; }
+            &_ppt::before { content: 'ppt'; }
+            &_audio::before { content: 'aud'; }
+            &_mp3::before { content: 'mp3'; }
+            &_wav::before { content: 'wav'; }
+            &_wma::before { content: 'wma'; }
+        }
+    }
+}

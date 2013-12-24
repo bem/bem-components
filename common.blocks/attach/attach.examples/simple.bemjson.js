@@ -1,34 +1,58 @@
 ({
     block : 'page',
+    title : 'bem-components: attach',
+    mods : { theme : 'normal' },
     head : [
-        { elem : 'css', url : '_simple.css', ie : false },
+        { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
     ],
     content : [
-        {
+
+        { tag : 'h2', content : 'default' },
+        { tag : 'p', content : {
             block : 'attach',
             buttonText : 'file',
             noFileText : 'no file selected'
-        },
-        {
+        } },
+        { tag : 'p', content : {
             block : 'attach',
             mods : { disabled : true },
-            tabIndex : 1,
             buttonText : 'file',
             noFileText : 'no file selected'
-        },
-        {
+        } },
+        { tag : 'p', content : {
             block : 'attach',
             button : {
                 block : 'button',
                 icon : { elem : 'icon' }
             },
             noFileText : 'no file selected'
-        }
-    ].map(function(attach) {
-        return {
-            tag : 'p',
-            content : attach
-        };
-    })
+        } },
+
+        { tag : 'hr' },
+
+        { tag : 'h2', content : 'simple' },
+        { tag : 'p', content : {
+            block : 'attach',
+            mods : { theme : 'simple' },
+            buttonText : 'file',
+            noFileText : 'no file selected'
+        } },
+        { tag : 'p', content : {
+            block : 'attach',
+            mods : { theme : 'simple', disabled : true },
+            buttonText : 'file',
+            noFileText : 'no file selected'
+        } },
+        { tag : 'p', content : {
+            block : 'attach',
+            mods : { theme : 'simple' },
+            button : {
+                block : 'button',
+                icon : { elem : 'icon' }
+            },
+            noFileText : 'no file selected'
+        } }
+
+    ]
 });

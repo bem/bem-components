@@ -20,22 +20,26 @@ describe('link', function() {
         DOM.destruct(link.domElem);
     });
 
-    it('should emit "click" event', function() {
-        var spy = sinon.spy();
+    it('should emit "click" event and do not prevent default action', function() {
+        var spy = sinon.spy(),
+            e = $.Event('pointerclick');
 
         link.on('click', spy);
-        link.domElem.trigger('pointerclick');
+        link.domElem.trigger(e);
 
+        e.isDefaultPrevented().should.be.false;
         spy.should.have.been.calledOnce;
     });
 
-    it('should not emit "click" event if disabled', function() {
-        var spy = sinon.spy();
+    it('should prevent default action and do not emit "click" event if disabled', function() {
+        var spy = sinon.spy(),
+            e = $.Event('pointerclick');
 
         link.setMod('disabled');
         link.on('click', spy);
-        link.domElem.trigger('pointerclick');
+        link.domElem.trigger(e);
 
+        e.isDefaultPrevented().should.be.true;
         spy.should.not.have.been.called;
     });
 });

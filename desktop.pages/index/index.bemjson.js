@@ -15,10 +15,17 @@
                 'Link',
                 {
                     block : 'link',
-                    url : '#',
+                    url : '.',
                     title : 'simple link',
                     target : '_blank',
                     content : 'default link'
+                },
+                {
+                    block : 'link',
+                    mods : { pseudo : true },
+                    url : '.',
+                    title : 'pseudo link',
+                    content : 'pseudo link'
                 }
             ],
             [

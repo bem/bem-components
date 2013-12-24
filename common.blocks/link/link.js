@@ -2,8 +2,9 @@ modules.define('i-bem__dom', function(provide, BEMDOM) {
 
 BEMDOM.decl('link', {
     _onClick : function(e) {
-        e.preventDefault();
-        this.hasMod('disabled') || this.emit('click');
+        this.hasMod('disabled')?
+            e.preventDefault() :
+            this.emit('click');
     }
 }, {
     live : function() {

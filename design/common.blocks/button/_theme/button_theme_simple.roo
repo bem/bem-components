@@ -29,6 +29,11 @@
         position: relative;
     }
 
+    &.button_type_link
+    {
+        text-decoration: none;
+    }
+
     &.button_disabled
     {
         opacity: 0.6;

@@ -17,6 +17,12 @@
         } },
         { tag : 'p', content : {
             block : 'button',
+            mods : { type : 'link' },
+            url : '#',
+            text : 'link'
+        } },
+        { tag : 'p', content : {
+            block : 'button',
             text : 'with icon',
             icon : { elem : 'icon' }
         } },
@@ -125,6 +131,29 @@
             block : 'button',
             mods : { theme : 'normal', size : 'xl' },
             text : 'size xl'
+        } },
+
+        { tag : 'h3', content : 'link' },
+        { tag : 'p', content : {
+            block : 'button',
+            mods : {
+                theme : 'normal',
+                size : 'm',
+                type : 'link'
+            },
+            url : '#',
+            text : 'default link'
+        } },
+        { tag : 'p', content : {
+            block : 'button',
+            mods : {
+                theme : 'normal',
+                size : 'm',
+                type : 'link',
+                disabled : true
+            },
+            url : '#',
+            text : 'disabled link'
         } },
 
         { tag : 'h3', content : 'icon' },

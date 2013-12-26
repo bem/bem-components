@@ -169,6 +169,10 @@
         padding-right: 0;
     }
 
+    &.button_checked
+    {
+        background: #ffeba0;
+    }
 
     &.button_togglable_radio
     {
@@ -194,11 +198,6 @@
             border-right-width: 1px;
             border-top-right-radius: 3px;
             border-bottom-right-radius: 3px;
-        }
-
-        &.button_checked
-        {
-            background: #ffeba0;
         }
 
         &.button_hovered

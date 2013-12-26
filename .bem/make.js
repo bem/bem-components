@@ -3,9 +3,7 @@
 var PATH = require('path'),
     environ = require('bem-environ')(__dirname);
 
-environ.extendMake(MAKE);
 require('bem-tools-autoprefixer').extendMake(MAKE);
-
 require('./nodes')(MAKE);
 
 try {
@@ -181,10 +179,9 @@ MAKE.decl('TargetBundleNode', {
             environ.getLibPath('bem-core', 'common.blocks'),
             environ.getLibPath('bem-core', 'touch.blocks'),
             'common.blocks',
-            'design/common.blocks',
             'touch.blocks',
+            'design/common.blocks',
             'design/touch.blocks',
-            'touch-pad.blocks',
             'design/touch-pad.blocks'
         ];
     },
@@ -194,8 +191,8 @@ MAKE.decl('TargetBundleNode', {
             environ.getLibPath('bem-core', 'common.blocks'),
             environ.getLibPath('bem-core', 'touch.blocks'),
             'common.blocks',
-            'design/common.blocks',
             'touch.blocks',
+            'design/common.blocks',
             'design/touch.blocks',
             'design/touch-phone.blocks'
         ];
@@ -240,11 +237,20 @@ MAKE.decl('ExampleNode', {
 MAKE.decl('SpecNode', {
 
     getTechs : function() {
-        return this.__base()
-            .concat([
-                'spec.js+browser.js+bemhtml',
-                'phantomjs'
-            ]);
+        return [
+            'bemjson.js',
+            'bemdecl.js',
+            'deps.js',
+            'roole',
+            'spec.js+browser.js+bemhtml',
+            'bemhtml',
+            'html',
+            'phantomjs'
+        ];
+    },
+
+    getForkedTechs : function() {
+        return ['bemhtml', 'spec.js+browser.js+bemhtml', 'phantomjs'];
     },
 
     getLevels : function() {

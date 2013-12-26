@@ -1,7 +1,7 @@
 block('input').elem('control')(
 
-    attrs()(function() {
-        var baseAttrs = applyNext(),
+    attrs().match(function() { return !this.ctx._input__controlAttrs })(function() {
+        var baseAttrs = applyNext({ 'ctx._input__controlAttrs': true }),
             attrs = this.ctx.attrs || {};
 
         attrs.autocomplete = attrs.autocomplete || 'off';
@@ -9,7 +9,7 @@ block('input').elem('control')(
         attrs.autocapitalize = attrs.autocapitalize || 'off';
         attrs.spellcheck = attrs.spellcheck || 'false';
 
-        return this._.extend(baseAttrs, attrs);
+        return this.extend(baseAttrs, attrs);
     })
 
 )

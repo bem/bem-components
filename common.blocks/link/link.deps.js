@@ -1,5 +1,7 @@
 [{
-    mustDeps : { block : 'i-bem', elem : 'dom' },
+    mustDeps : [
+        { block : 'i-bem', elems : ['dom'] }
+    ],
     shouldDeps : [
         { mod : 'disabled' },
         { block : 'jquery', elem : 'event', mods : { type : 'pointer' } }

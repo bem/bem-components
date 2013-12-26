@@ -9,7 +9,7 @@ block('input').mod('type', 'textarea').elem('control')(
         var attrs = applyNext(),
             input = this._input;
         delete attrs.value;
-        return this._.extend(
+        return this.extend(
             { rows: input.rows || 10, cols: input.cols || 10 },
             attrs);
     }),

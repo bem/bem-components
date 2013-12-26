@@ -1,13 +1,13 @@
 modules.define(
     'spec',
     ['i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
-    function(provide, DOM, $, BEMHTML, sinon) {
+    function(provide, BEMDOM, $, BEMHTML, sinon) {
 
 describe('link', function() {
     var link;
 
     beforeEach(function() {
-        link = DOM.init(
+        link = BEMDOM.init(
                 $(BEMHTML.apply({
                     block : 'link',
                     js : true
@@ -17,7 +17,7 @@ describe('link', function() {
     });
 
     afterEach(function() {
-        DOM.destruct(link.domElem);
+        BEMDOM.destruct(link.domElem);
     });
 
     it('should emit "click" event and do not prevent default action', function() {

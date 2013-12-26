@@ -33,6 +33,9 @@
   "optionalDependencies": {},
   "private": true,
   "scripts": {
-    "test": "jshint-groups && jscs . && csscomb -vl ."
+    "test": "npm run lint && npm run unit",
+    "lint": "jshint-groups && jscs . && csscomb -vl .",
+    "unit": "bower-npm-install && bem make -w 16 desktop.specs touch-pad.specs touch-phone.specs"
   }
 }
+

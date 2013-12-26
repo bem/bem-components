@@ -3,9 +3,7 @@
 var PATH = require('path'),
     environ = require('bem-environ')(__dirname);
 
-environ.extendMake(MAKE);
 require('bem-tools-autoprefixer').extendMake(MAKE);
-
 require('./nodes')(MAKE);
 
 try {

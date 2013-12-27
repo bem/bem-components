@@ -97,7 +97,7 @@
                 'has-label' : true,
                 size : 'm'
             },
-            val : 'size s',
+            val : 'monolithic',
             label : 'label',
             placeholder : 'placeholder'
         } },
@@ -113,7 +113,7 @@
                 block : 'input',
                 id : 'with-label',
                 mods : { theme : 'normal', 'has-clear' : true, size : 'm' },
-                val : 'size s',
+                val : 'separate',
                 placeholder : 'placeholder'
             }
         ] },

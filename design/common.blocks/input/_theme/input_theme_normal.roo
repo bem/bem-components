@@ -129,11 +129,6 @@
 
         background-image: url(_normal/clear_size_s.svg);
         background-position: 6px 50%;
-
-        .ua_svg_no &
-        {
-            background-image: url(_normal/clear_size_s.png);
-        }
     }
 
     &.input_size_s
@@ -186,11 +181,6 @@
 
         background-image: url(_normal/clear_size_l.svg);
         background-position: 8px 50%;
-
-        .ua_svg_no &
-        {
-            background-image: url(_normal/clear_size_l.png);
-        }
     }
 
     &.input_size_l

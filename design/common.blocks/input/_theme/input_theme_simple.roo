@@ -1,13 +1,13 @@
 .input_theme_simple
 {
-    position: relative;
-
     display: inline-block;
 
     .input__box
     {
+        position: relative;
+
         display: block;
-        -webkit-touch-callout: none;
+
         user-select: none;
     }
 
@@ -19,16 +19,11 @@
         box-sizing: border-box;
         width: 100%;
         margin: 0;
-    }
 
-    &.input_has-clear .input__box
-    {
-        box-sizing: border-box;
-    }
-
-    &.input_has-clear .input__control::-ms-clear
-    {
-        display: none;
+        &::-ms-clear
+        {
+            display: none;
+        }
     }
 
     .input__clear
@@ -43,61 +38,60 @@
 
         margin: 0;
         padding: 0;
-        -webkit-touch-callout: none;
+
         user-select: none;
-    }
 
-    .input__clear::after
-    {
-        font-size: 140%;
-        font-weight: bold;
-        line-height: 1;
+        &::after
+        {
+            font-size: 140%;
+            font-weight: bold;
+            line-height: 1;
 
-        display: block;
+            display: block;
 
-        width: 1.2em;
+            width: 1.2em;
 
-        content: '×';
-        text-align: center;
-    }
+            content: '×';
+            text-align: center;
+        }
 
-    .input__clear_visible
-    {
-        display: block;
+        &_visible
+        {
+            display: block;
 
-        cursor: pointer;
+            cursor: pointer;
 
-        opacity: 0.2;
-    }
+            opacity: 0.2;
 
-    .input__clear_visible:hover
-    {
-        opacity: 1;
+            &:hover
+            {
+                opacity: 1;
+            }
+        }
     }
 
     &.input_disabled
     {
         opacity: 0.6;
+
+        .input__control
+        {
+            resize: none;
+        }
+
+        .input__clear
+        {
+            display: none;
+        }
+
+        .input__box,
+        .input__control
+        {
+            cursor: default;
+        }
     }
 
-    &.input_disabled .input__control
-    {
-        resize: none;
-    }
-
-    &.input_disabled .input__clear
-    {
-        display: none;
-    }
-
-    /* TODO: desktop only */
-    &.input_disabled .input__box,
-    &.input_disabled .input__control
-    {
-        cursor: default;
-    }
-
-    &.input_focused
+    &.input_focused .input__box
     {
         box-shadow: 0 0 5px 1px rgba(255, 204, 0, 1);
     }

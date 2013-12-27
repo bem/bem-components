@@ -1,10 +1,7 @@
 [{
     mustDeps : { block : 'i-bem', elems : ['dom', 'i18n'] },
     shouldDeps : [
-        {
-            block : 'button',
-            mods : { 'only-icon' : 'yes' }// TODO : убрать после https://github.com/bem/bem-tools/pull/424
-        },
+        { block : 'button' },
         { elems : ['button', 'control', 'no-file', 'file'] },
         { block : 'jquery', elem : 'event', mods : { type : 'pointer' } },
         { block : 'strings', elem : 'escape' }

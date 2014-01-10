@@ -71,8 +71,6 @@
         top: 0;
         right: 0;
 
-        display: block;
-
         cursor: text;
         transition: opacity 0.1s ease-out;
 
@@ -81,8 +79,6 @@
 
         &_visible
         {
-            display: block;
-
             opacity: 0.3;
 
             &:hover

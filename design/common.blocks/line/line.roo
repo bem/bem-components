@@ -1,0 +1,57 @@
+.line
+{
+    position: relative;
+
+    box-sizing: content-box;
+
+    border-width: 1px 0;
+    border-style: dashed;
+    border-color: rgba(0, 0, 0, 0.1);
+
+    white-space: nowrap;
+
+    &::after
+    {
+        font-size: inherit;
+        line-height: inherit;
+
+        position: absolute;
+        top: 35%;
+        left: 0;
+        right: 0;
+
+        height: 1px;
+
+        content: '';
+
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    &_size_s
+    {
+        font-size: 13px;
+
+        height: 24px;
+    }
+
+    &_size_m
+    {
+        font-size: 13px;
+
+        height: 28px;
+    }
+
+    &_size_l
+    {
+        font-size: 15px;
+
+        height: 32px;
+    }
+
+    &_size_xl
+    {
+        font-size: 18px;
+
+        height: 38px;
+    }
+}

@@ -1,0 +1,1 @@
+../../desktop.pages/index/index.bemjson.js

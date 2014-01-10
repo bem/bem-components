@@ -6,10 +6,10 @@
 node_modules
 libs
 
-desktop.pages/*/*
-!desktop.pages/.bem/
-!desktop.pages/*/blocks/
-!desktop.pages/*/*.bemjson.js
+*.pages/*/*
+!*.pages/.bem/*
+!*.pages/*/blocks
+!*.pages/*/*.bemjson.js
 
 /*.examples
 /*.specs

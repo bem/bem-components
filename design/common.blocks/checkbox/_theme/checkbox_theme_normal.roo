@@ -2,6 +2,10 @@
 {
     font-family: Arial, Helvetica, sans-serif;
 
+    /*
+     * TODO: корявый хак, появляется некрасивая серая плашка при клике на тачах в iOS, надо переделать
+     * NOTE: то же самое в radio
+     */
     &::after
     {
         display: block;
@@ -40,7 +44,7 @@
     &.checkbox_size_m
     {
         font-size: 13px;
-        line-height: 24px;
+        line-height: 26px;
 
         .checkbox__box
         {

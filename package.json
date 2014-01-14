@@ -16,8 +16,7 @@
   "dependencies": {
     "bem-environ": "~1.4.0",
     "q": "~0.9.7",
-    "roole": "~0.9.0",
-    "borschik": "~0.4.0"
+    "roole": "~0.9.0"
   },
   "devDependencies": {
     "bem": "~0.7.2",

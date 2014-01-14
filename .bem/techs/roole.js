@@ -1,4 +1,4 @@
-var BORSCHIK_CSS_TECH = require('borschik/lib/techs/css'),
+var BORSCHIK_CSS_TECH = require('bem/node_modules/borschik/lib/techs/css'),
     ROOLE = require('roole'),
     Q = require('q');
 

@@ -25,9 +25,16 @@ exports.techMixin = {
             indent : '    ',
             prefixes : []
         }, function(err, res) {
-            err?
-                defer.reject(err) :
-                defer.resolve([res]);
+            if(err) {
+                var e = new Error(err);
+                if(typeof err.context === 'function') {
+                    e.message += '\n' + err.context();
+                }
+                defer.reject(e);
+                return;
+            }
+
+            defer.resolve([res]);
         });
 
         return defer.promise;

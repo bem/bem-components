@@ -1,6 +1,6 @@
 .input_theme_normal
 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $theme_normal_fontFamily;
 
     display: inline-block;
 
@@ -13,8 +13,8 @@
         -webkit-touch-callout: none;
         user-select: none;
 
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        background: #fff;
+        border: $theme_normal_border;
+        background: $theme_normal_background;
     }
 
     .input__control
@@ -73,7 +73,6 @@
         right: 0;
 
         cursor: text;
-        transition: opacity 0.1s ease-out;
 
         opacity: 0;
         background: 50% 50% no-repeat;
@@ -95,15 +94,14 @@
     {
         .input__box
         {
-            border: 1px solid rgba(178, 142, 0, 0.6);
-            box-shadow: 0 0 10px #fc0;
+            border-color: $theme_normal_focused_borderColor;
+            box-shadow: $theme_normal_focused_boxShadow;
         }
     }
 
     &.input_disabled
     {
-        background: rgba(0, 0, 0, 0.08);
-        box-shadow: none;
+        background: $theme_normal_disabled_background;
 
         .input__clear
         {
@@ -113,7 +111,7 @@
         .input__box,
         .input__control
         {
-            color: rgba(0, 0, 0, 0.4);
+            color: $theme_normal_disabled_color;
             cursor: default;
         }
     }

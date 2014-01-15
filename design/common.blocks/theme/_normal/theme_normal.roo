@@ -1,0 +1,31 @@
+$theme_normal_fontFamily = Arial, Helvetica, sans-serif;
+
+// Border
+$theme_normal_borderSize = 1px;
+$theme_normal_borderColor = rgba(0, 0, 0, 0.2);
+$theme_normal_borderRadius = 3px;
+$theme_normal_border = $theme_normal_borderSize solid $theme_normal_borderColor;
+
+// Colors
+$theme_normal_color = #000;
+$theme_normal_background = #fff;
+
+// Focused
+$theme_normal_focused_borderColor = rgba(178, 142, 0, 0.6);
+$theme_normal_focused_boxShadow = 0 0 10px #fc0;
+
+// Disabled
+$theme_normal_disabled_opacity = 0.4;
+$theme_normal_disabled_color = rgba(0, 0, 0, $theme_normal_disabled_opacity);
+$theme_normal_disabled_background = rgba(0, 0, 0, 0.08);
+
+// Sizes
+$theme_normal_size_s_height = 24px;
+$theme_normal_size_m_height = 28px;
+$theme_normal_size_l_height = 32px;
+$theme_normal_size_xl_height = 38px;
+
+$theme_normal_Border = @function {
+    border: $theme_normal_border;
+    border-radius: $theme_normal_borderRadius;
+};

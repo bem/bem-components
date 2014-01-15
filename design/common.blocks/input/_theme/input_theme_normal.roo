@@ -20,6 +20,7 @@
     .input__control
     {
         font-family: inherit;
+        line-height: inherit;
 
         position: relative;
 
@@ -131,13 +132,14 @@
     {
         .input__box
         {
+            line-height: 22px;
+
             padding-right: 22px;
         }
 
         .input__control
         {
             font-size: 13px;
-            line-height: 16px;
 
             height: 22px;
             padding: 3px 0 3px 5px;
@@ -148,13 +150,14 @@
     {
         .input__box
         {
+            line-height: 26px;
+
             padding-right: 26px;
         }
 
         .input__control
         {
             font-size: 13px;
-            line-height: 16px;
 
             height: 26px;
             padding: 5px 0 5px 7px;
@@ -183,13 +186,14 @@
     {
         .input__box
         {
+            line-height: 30px;
+
             padding-right: 30px;
         }
 
         .input__control
         {
             font-size: 15px;
-            line-height: 20px;
 
             height: 30px;
             padding: 5px 0 5px 9px;
@@ -200,13 +204,14 @@
     {
         .input__box
         {
+            line-height: 36px;
+
             padding-right: 36px;
         }
 
         .input__control
         {
             font-size: 18px;
-            line-height: 24px;
 
             height: 36px;
             padding: 6px 0 6px 11px;

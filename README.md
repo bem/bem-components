@@ -9,6 +9,21 @@
 
 Подключить библиотеку в проект любым известным способом.
 
+## Поддерживаемые браузеры
+* Desktop:
+  * Firefox 24+
+  * Chrome last 2 versions
+  * Safari 6.0+
+  * Opera 12.1+
+  * Internet Explorer 9+
+* Touch-pad:
+  * Android 4+
+  * iOS 5+
+* Touch-phone:
+  * Android 4+
+  * iOS 6+
+  * Windows Phone 8+ (Internet Explorer 10+)
+
 ## Состав
 
 ### Уровни

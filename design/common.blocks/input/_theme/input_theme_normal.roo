@@ -130,14 +130,14 @@
     {
         .input__box
         {
-            line-height: 22px;
+            line-height: $theme_normal_size_s_innerHeight;
         }
 
         .input__control
         {
-            font-size: 13px;
+            font-size: $theme_normal_size_s_fontSize;
 
-            height: 22px;
+            height: $theme_normal_size_s_innerHeight;
             padding: 3px 0 3px 5px;
         }
 

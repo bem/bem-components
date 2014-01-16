@@ -102,8 +102,8 @@
 
     &.button_size_s
     {
-        font-size: 13px;
-        line-height: 22px;
+        font-size: $theme_normal_size_s_fontSize;
+        line-height: $theme_normal_size_s_innerHeight;
 
         .button__icon
         {
@@ -118,8 +118,8 @@
 
     &.button_size_m
     {
-        font-size: 13px;
-        line-height: 26px;
+        font-size: $theme_normal_size_m_fontSize;
+        line-height: $theme_normal_size_m_innerHeight;
 
         .button__icon
         {
@@ -134,8 +134,8 @@
 
     &.button_size_l
     {
-        font-size: 15px;
-        line-height: 30px;
+        font-size: $theme_normal_size_l_fontSize;
+        line-height: $theme_normal_size_l_innerHeight;
 
         .button__icon
         {
@@ -150,8 +150,8 @@
 
     &.button_size_xl
     {
-        font-size: 18px;
-        line-height: 36px;
+        font-size: $theme_normal_size_xl_fontSize;
+        line-height: $theme_normal_size_xl_innerHeight;
 
         .button__icon
         {
@@ -176,7 +176,7 @@
 
     &.button_checked
     {
-        background: #ffeba0;
+        background: $theme_normal_checked_background;
     }
 
     &.button_togglable_radio

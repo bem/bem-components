@@ -152,14 +152,14 @@
     {
         .input__box
         {
-            line-height: 26px;
+            line-height: $theme_normal_size_m_innerHeight;
         }
 
         .input__control
         {
-            font-size: 13px;
+            font-size: $theme_normal_size_m_fontSize;
 
-            height: 26px;
+            height: $theme_normal_size_m_innerHeight;
             padding: 5px 0 5px 7px;
         }
 
@@ -191,14 +191,20 @@
     {
         .input__box
         {
+<<<<<<< HEAD
             line-height: 30px;
+=======
+            line-height: $theme_normal_size_l_innerHeight;
+
+            padding-right: 30px;
+>>>>>>> size & checked
         }
 
         .input__control
         {
-            font-size: 15px;
+            font-size: $theme_normal_size_l_fontSize;
 
-            height: 30px;
+            height: $theme_normal_size_l_innerHeight;
             padding: 5px 0 5px 9px;
         }
 
@@ -212,14 +218,20 @@
     {
         .input__box
         {
+<<<<<<< HEAD
             line-height: 36px;
+=======
+            line-height: $theme_normal_size_xl_innerHeight;
+
+            padding-right: 36px;
+>>>>>>> size & checked
         }
 
         .input__control
         {
-            font-size: 18px;
+            font-size: $theme_normal_size_xl_fontSize;
 
-            height: 36px;
+            height: $theme_normal_size_xl_innerHeight;
             padding: 6px 0 6px 11px;
         }
 

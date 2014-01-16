@@ -49,8 +49,8 @@
 
     &.checkbox_size_m
     {
-        font-size: 13px;
-        line-height: 26px;
+        font-size: $theme_normal_size_m_fontSize;
+        line-height: $theme_normal_size_m_innerHeight;
 
         .checkbox__box
         {
@@ -73,8 +73,8 @@
 
     &.checkbox_size_l
     {
-        font-size: 15px;
-        line-height: 30px;
+        font-size: $theme_normal_size_l_fontSize;
+        line-height: $theme_normal_size_l_innerHeight;
 
         .checkbox__box
         {
@@ -99,7 +99,7 @@
     {
         .checkbox__box
         {
-            background: #ffeba0;
+            background: $theme_normal_checked_background;
 
             &::before
             {

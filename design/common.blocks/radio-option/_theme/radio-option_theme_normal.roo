@@ -44,7 +44,7 @@
         {
             position: relative;
 
-            background: #ffeba0;
+            background: $theme_normal_checked_background;
             border: 1px solid rgba(153, 122, 0, 0.5);
 
             &::before

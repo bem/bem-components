@@ -39,10 +39,6 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             if(!this._owner) throw Error('Invalid arguments');
             this._pos = null;
         } else {
-            var pos = this._pos;
-            if(pos && pos.left === left && pos.top === top)
-                return this;
-
             this._pos = { left : left, top : top };
             this._owner = null;
         }
@@ -118,49 +114,57 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             winHeight = win.height();
 
         return {
-            popupWidth : popupWidth,
-            popupHeight : popupHeight,
-            popupArea : popupWidth * popupHeight,
+            popup : {
+                width : popupWidth,
+                height : popupHeight,
+                area : popupWidth * popupHeight
+            },
 
-            ownerLeft : ownerPos.left,
-            ownerTop : ownerPos.top,
-            ownerWidth : pos? 0 : owner.outerWidth(),
-            ownerHeight : pos? 0 : owner.outerHeight(),
+            owner : {
+                left : ownerPos.left,
+                top : ownerPos.top,
+                width : pos? 0 : owner.outerWidth(),
+                height : pos? 0 : owner.outerHeight()
+            },
 
-            viewportTop : winTop,
-            viewportLeft : winLeft,
-            viewportBottom : winTop + winHeight,
-            viewportRight : winLeft + winWidth
+            viewport : {
+                top : winTop,
+                left : winLeft,
+                bottom : winTop + winHeight,
+                right : winLeft + winWidth
+            }
         };
     },
 
     _calcPos : function(direction, dimensions) {
         var res = {},
-            offset = this.params.offset;
+            offset = this.params.offset,
+            owner = dimensions.owner,
+            popup = dimensions.popup;
 
-        if(!direction.indexOf('bottom')) { // main direction is bottom
-            res.top = dimensions.ownerTop + dimensions.ownerHeight + offset;
-        } else if(!direction.indexOf('top')) { // main direction is top
-            res.top = dimensions.ownerTop - dimensions.popupHeight - offset;
-        } else if(!direction.indexOf('left')) { // main direction is left
-            res.left = dimensions.ownerLeft - dimensions.popupWidth - offset;
-        } else if(!direction.indexOf('right')) { // main direction is right
-            res.left = dimensions.ownerLeft + dimensions.ownerWidth + offset;
+        if(checkMainDirection(direction, 'bottom')) {
+            res.top = owner.top + owner.height + offset;
+        } else if(checkMainDirection(direction, 'top')) {
+            res.top = owner.top - popup.height - offset;
+        } else if(checkMainDirection(direction, 'left')) {
+            res.left = owner.left - popup.width - offset;
+        } else if(checkMainDirection(direction, 'right')) {
+            res.left = owner.left + owner.width + offset;
         }
 
-        if(~direction.indexOf('-right')) { // secondary direction is right
-            res.left = dimensions.ownerLeft + dimensions.ownerWidth - dimensions.popupWidth;
-        } else if(~direction.indexOf('-left')) { // secondary direction is left
-            res.left = dimensions.ownerLeft;
-        } else if(~direction.indexOf('-bottom')) { // secondary direction is bottom
-            res.top = dimensions.ownerTop + dimensions.ownerHeight - dimensions.popupHeight;
-        } else if(~direction.indexOf('-top')) { // secondary direction is top
-            res.top = dimensions.ownerTop;
-        } else if(~direction.indexOf('-center')) { // secondary direction is center
-            if(!direction.indexOf('top') || !direction.indexOf('bottom')) { // main direction is top or bottom
-                res.left = dimensions.ownerLeft + dimensions.ownerWidth / 2 - dimensions.popupWidth / 2;
-            } else if(!direction.indexOf('left') || !direction.indexOf('right')) { // main direction is left or right
-                res.top = dimensions.ownerTop + dimensions.ownerHeight / 2 - dimensions.popupHeight / 2;
+        if(checkSecondaryDirection(direction, 'right')) {
+            res.left = owner.left + owner.width - popup.width;
+        } else if(checkSecondaryDirection(direction, 'left')) {
+            res.left = owner.left;
+        } else if(checkSecondaryDirection(direction, 'bottom')) {
+            res.top = owner.top + owner.height - popup.height;
+        } else if(checkSecondaryDirection(direction, 'top')) {
+            res.top = owner.top;
+        } else if(checkSecondaryDirection(direction, 'center')) {
+            if(checkMainDirection(direction, 'top', 'bottom')) {
+                res.left = owner.left + owner.width / 2 - popup.width / 2;
+            } else if(checkMainDirection(direction, 'left', 'right')) {
+                res.top = owner.top + owner.height / 2 - popup.height / 2;
             }
         }
 
@@ -168,15 +172,17 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
     },
 
     _calcViewportFactor : function(pos, dimensions) {
-        var intersectionLeft = Math.max(pos.left, dimensions.viewportLeft),
-            intersectionRight = Math.min(pos.left + dimensions.popupWidth, dimensions.viewportRight),
-            intersectionTop = Math.max(pos.top, dimensions.viewportTop),
-            intersectionBottom = Math.min(pos.top + dimensions.popupHeight, dimensions.viewportBottom);
+        var viewport = dimensions.viewport,
+            popup = dimensions.popup,
+            intersectionLeft = Math.max(pos.left, viewport.left),
+            intersectionRight = Math.min(pos.left + popup.width, viewport.right),
+            intersectionTop = Math.max(pos.top, viewport.top),
+            intersectionBottom = Math.min(pos.top + popup.height, viewport.bottom);
 
         return intersectionLeft < intersectionRight && intersectionTop < intersectionBottom? // has intersection
             (intersectionRight - intersectionLeft) *
                 (intersectionBottom - intersectionTop) /
-                dimensions.popupArea :
+                popup.area :
             0;
     },
 
@@ -200,5 +206,13 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
 });
 
 provide(BEMDOM);
+
+function checkMainDirection(direction, mainDirection1, mainDirection2) {
+    return !direction.indexOf(mainDirection1) || (mainDirection2 && !direction.indexOf(mainDirection2));
+}
+
+function checkSecondaryDirection(direction, secondaryDirection) {
+    return ~direction.indexOf('-' + secondaryDirection);
+}
 
 });

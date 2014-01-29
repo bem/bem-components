@@ -2,12 +2,19 @@
  * @module i-bem__dom
  */
 
-modules.define('i-bem__dom', ['jquery', 'dom'], function(provide, $, dom, BEMDOM) {
+modules.define('i-bem__dom', ['jquery'], function(provide, $, BEMDOM) {
+
+var VIEWPORT_ACCURACY_FACTOR = 0.99;
 
 /**
+ * @exports
  * @class popup
  * @bem
- * @exports
+ *
+ * @param {Number} offset
+ * @param {Array[String]} directions
+ *
+ * @bemmod visible Represents visible state
  */
 BEMDOM.decl('popup', /** @lends popup.prototype */{
     onBeforeSetMod : {
@@ -67,6 +74,10 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
         return this;
     },
 
+    /**
+     * Redraws popup
+     * @returns {this}
+     */
     redraw : function() {
         if(!this.hasMod('visible')) return this;
 
@@ -83,7 +94,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             viewportFactor,
             bestDirection,
             bestPos,
-            bestViewportFactor = 0;
+            bestViewportFactor;
 
         while(direction = directions[i++]) {
             pos = this._calcPos(direction, dimensions);
@@ -93,7 +104,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
                 bestViewportFactor = viewportFactor;
                 bestPos = pos;
             }
-            if(bestViewportFactor > 0.99) break;
+            if(bestViewportFactor > VIEWPORT_ACCURACY_FACTOR) break;
         }
 
         this

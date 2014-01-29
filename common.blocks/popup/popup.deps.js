@@ -1,0 +1,3 @@
+({
+    shouldDeps : { mods : { visible : true } }
+})

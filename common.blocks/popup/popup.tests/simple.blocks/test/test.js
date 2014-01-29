@@ -6,7 +6,7 @@ BEMDOM.decl('test', {
             'inited' : function() {
                 var link = this.findBlockInside('link');
                 link.on('click', function() {
-                    this.findBlockInside('popup').show(link);
+                    this.findBlockInside('popup').toggle(link);
                 }, this);
             }
         }

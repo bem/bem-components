@@ -15,6 +15,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             'inited' : function() {
                 this._owner = null;
                 this._pos = null;
+                this._isAttachedToScope = false;
             },
 
             '' : function() {
@@ -31,18 +32,11 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
      */
     show : function(left, top) {
         if(arguments.length === 1) {
-            var owner = left instanceof BEMDOM?
+            this._owner = left instanceof BEMDOM?
                     left.domElem :
                     left instanceof $?
                         left : null;
-
-            if(this._owner) {
-                if(this._owner[0] !== owner[0]) this._owner = owner;
-                else return this;
-            } else {
-                this._owner = owner;
-            }
-
+            if(!this._owner) throw Error('Invalid arguments');
             this._pos = null;
         } else {
             var pos = this._pos;
@@ -68,18 +62,47 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
 
     /**
      * Toggles popup
+     * @param {Number|jQuery|BEMDOM} left x-coordinate or owner DOM elem or owner BEMDOM block
+     * @param {Number} [top] y-coordinate
      * @returns {this}
      */
-    toggle : function() {
+    toggle : function(left, top) {
+        /*jshint unused:false */
         return this.hasMod('visible')?
             this.hide() :
-            this.show(this._owner);
+            this.show.apply(this, arguments);
     },
 
     repos : function() {
-//        var dimensions = this._calcDimensions();
+        if(this._isAttachedToScope) {
+            BEMDOM.scope.append(this.domElem);
+            this._isAttachedToScope = true;
+        }
 
+        var dimensions = this._calcDimensions(),
+            directions = this.params.directions,
+            i = 0,
+            direction,
+            pos,
+            viewportFactor,
+            bestDirection,
+            bestPos,
+            bestViewportFactor = 0;
 
+        while(direction = directions[i++]) {
+            pos = this._calcPos(direction, dimensions);
+            viewportFactor = this._calcViewportFactor(pos, dimensions);
+            if(viewportFactor > bestViewportFactor || i === 1) {
+                bestDirection = direction;
+                bestViewportFactor = viewportFactor;
+                bestPos = pos;
+            }
+            if(bestViewportFactor > 0.99) break;
+        }
+
+        this
+            .setMod('direction', bestDirection)
+            .domElem.css({ left : bestPos.left, top : bestPos.top });
     },
 
     _calcDimensions : function() {
@@ -89,22 +112,25 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             popupWidth = this.domElem.outerWidth(),
             popupHeight = this.domElem.outerHeight(),
             ownerPos = pos? pos : owner.offset(),
-            windowTop = win.scrollTop(),
-            windowLeft = win.scrollLeft();
+            winTop = win.scrollTop(),
+            winLeft = win.scrollLeft(),
+            winWidth = win.width(),
+            winHeight = win.height();
 
         return {
             popupWidth : popupWidth,
             popupHeight : popupHeight,
+            popupArea : popupWidth * popupHeight,
 
             ownerLeft : ownerPos.left,
             ownerTop : ownerPos.top,
             ownerWidth : pos? 0 : owner.outerWidth(),
             ownerHeight : pos? 0 : owner.outerHeight(),
 
-            viewportTop : windowTop,
-            viewportLeft : windowLeft,
-            viewportBottom : windowTop + win.height(),
-            viewportRight : windowLeft + win.width()
+            viewportTop : winTop,
+            viewportLeft : winLeft,
+            viewportBottom : winTop + winHeight,
+            viewportRight : winLeft + winWidth
         };
     },
 
@@ -141,11 +167,17 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
         return res;
     },
 
-    _checkViewport : function(pos, dimensions) {
-        return pos.top >= dimensions.viewportTop &&
-            pos.top + dimensions.popupHeight < dimensions.viewportBottom &&
-            pos.left >= dimensions.viewportLeft &&
-            pos.left + dimensions.popupWidth < dimensions.viewportRight;
+    _calcViewportFactor : function(pos, dimensions) {
+        var intersectionLeft = Math.max(pos.left, dimensions.viewportLeft),
+            intersectionRight = Math.min(pos.left + dimensions.popupWidth, dimensions.viewportRight),
+            intersectionTop = Math.max(pos.top, dimensions.viewportTop),
+            intersectionBottom = Math.min(pos.top + dimensions.popupHeight, dimensions.viewportBottom);
+
+        return intersectionLeft < intersectionRight && intersectionTop < intersectionBottom? // has intersection
+            (intersectionRight - intersectionLeft) *
+                (intersectionBottom - intersectionTop) /
+                dimensions.popupArea :
+            0;
     },
 
     setContent : function() {

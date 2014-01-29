@@ -10,6 +10,15 @@ modules.define('i-bem__dom', ['jquery', 'dom'], function(provide, $, dom, BEMDOM
  * @exports
  */
 BEMDOM.decl('popup', /** @lends popup.prototype */{
+    onBeforeSetMod : {
+        'visible' : {
+            'true' : function() {
+                if(!this._owner && !this._pos)
+                    throw Error('Can\'t show popup without target');
+            }
+        }
+    },
+
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -21,16 +30,28 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             '' : function() {
 
             }
+        },
+
+        'visible' : {
+            'true' : function() {
+                this
+                    .redraw()
+                    .emit('show');
+            },
+
+            '' : function() {
+                this.emit('hide');
+            }
         }
     },
 
     /**
-     * Shows popup
+     * Sets target
      * @param {Number|jQuery|BEMDOM} left x-coordinate or owner DOM elem or owner BEMDOM block
      * @param {Number} [top] y-coordinate
      * @returns {this}
      */
-    show : function(left, top) {
+    setTarget : function(left, top) {
         if(arguments.length === 1) {
             this._owner = left instanceof BEMDOM?
                     left.domElem :
@@ -43,33 +64,12 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             this._owner = null;
         }
 
-        return this
-            .setMod('visible', true)
-            .repos();
+        return this;
     },
 
-    /**
-     * Hides popup
-     * @returns {this}
-     */
-    hide : function() {
-        return this.delMod('visible');
-    },
+    redraw : function() {
+        if(!this.hasMod('visible')) return this;
 
-    /**
-     * Toggles popup
-     * @param {Number|jQuery|BEMDOM} left x-coordinate or owner DOM elem or owner BEMDOM block
-     * @param {Number} [top] y-coordinate
-     * @returns {this}
-     */
-    toggle : function(left, top) {
-        /*jshint unused:false */
-        return this.hasMod('visible')?
-            this.hide() :
-            this.show.apply(this, arguments);
-    },
-
-    repos : function() {
         if(this._isAttachedToScope) {
             BEMDOM.scope.append(this.domElem);
             this._isAttachedToScope = true;
@@ -99,6 +99,8 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
         this
             .setMod('direction', bestDirection)
             .domElem.css({ left : bestPos.left, top : bestPos.top });
+
+        return this;
     },
 
     _calcDimensions : function() {
@@ -186,8 +188,14 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             0;
     },
 
-    setContent : function() {
-
+    /**
+     * Sets content
+     * @param {String|jQuery} content
+     * @returns {this}
+     */
+    setContent : function(content) {
+        BEMDOM.update(this.domElem, content);
+        return this.redraw();
     },
 
     getDefaultParams : function() {

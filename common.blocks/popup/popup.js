@@ -70,7 +70,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
     redraw : function() {
         if(!this.hasMod('visible')) return this;
 
-        if(this._isAttachedToScope) {
+        if(!this._isAttachedToScope) {
             BEMDOM.scope.append(this.domElem);
             this._isAttachedToScope = true;
         }

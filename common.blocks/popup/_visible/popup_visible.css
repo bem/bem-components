@@ -1,7 +1,4 @@
 .popup_visible
 {
-    top: -99999px;
-    left: -99999px;
-
-    display: block;
+    margin-left: 0;
 }

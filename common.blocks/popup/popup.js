@@ -4,7 +4,13 @@
 
 modules.define('i-bem__dom', ['jquery'], function(provide, $, BEMDOM) {
 
-var VIEWPORT_ACCURACY_FACTOR = 0.99;
+var VIEWPORT_ACCURACY_FACTOR = 0.99,
+    DEFAULT_DIRECTIONS = [
+        'bottom-left', 'bottom-center', 'bottom-right',
+        'top-left', 'top-center', 'top-right',
+        'right-top', 'right-center', 'right-bottom',
+        'left-top', 'left-center', 'left-bottom'
+    ];
 
 /**
  * @exports
@@ -17,7 +23,7 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99;
  * @bemmod visible Represents visible state
  */
 BEMDOM.decl('popup', /** @lends popup.prototype */{
-    onBeforeSetMod : {
+    beforeSetMod : {
         'visible' : {
             'true' : function() {
                 if(!this._owner && !this._pos)
@@ -99,7 +105,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
         while(direction = directions[i++]) {
             pos = this._calcPos(direction, dimensions);
             viewportFactor = this._calcViewportFactor(pos, dimensions);
-            if(viewportFactor > bestViewportFactor || i === 1) {
+            if(i === 1 || viewportFactor > bestViewportFactor) {
                 bestDirection = direction;
                 bestViewportFactor = viewportFactor;
                 bestPos = pos;
@@ -212,12 +218,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
     getDefaultParams : function() {
         return {
             offset : 10,
-            directions : [
-                'bottom-left', 'bottom-center', 'bottom-right',
-                'top-left', 'top-center', 'top-right',
-                'right-top', 'right-center', 'right-bottom',
-                'left-top', 'left-center', 'left-bottom'
-            ]
+            directions : DEFAULT_DIRECTIONS
         };
     }
 }, /** @lends popup */{

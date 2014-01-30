@@ -1,0 +1,71 @@
+.popup
+{
+    border: 1px solid red;
+    background: #fff;
+    margin-left: -99999px;
+    padding: 10px;
+    opacity: 0;
+    box-shadow: 0 1px 2px #999;
+    animation-duration: .1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.popup_visible
+{
+    margin-left: 0;
+    opacity: 1;
+}
+
+@for $rule in [
+    [bottom Y 0 10 [left center right]]
+    [top Y 0 -10 [left center right]]
+    [right X 0 10 [top center bottom]]
+    [left X 0 -10 [top center bottom]]
+] {
+    @for $secondary in $rule[4] {
+        .popup_direction_{$rule[0]}-{$secondary} {
+            animation-name: popup_{$rule[0]};
+            &.popup_visible {
+                animation-name: popup_{$rule[0]}_visible;
+            }
+        }
+    }
+
+    @keyframes popup_{$rule[0]}
+    {
+        0%
+        {
+            opacity: 1;
+            margin-left: 0;
+            transform: translate{$rule[1]}({$rule[2]});
+        }
+
+        99%
+        {
+            opacity: 0;
+            margin-left: 0;
+            transform: translate{$rule[1]}({$rule[3]}px);
+        }
+
+        100%
+        {
+            margin-left: -99999px;
+        }
+    }
+
+    @keyframes popup_{$rule[0]}_visible
+    {
+        0%
+        {
+            opacity: 0;
+            transform: translate{$rule[1]}({$rule[3]}px);
+        }
+
+        100%
+        {
+            opacity: 1;
+            transform: translate{$rule[1]}({$rule[2]});
+        }
+    }
+}

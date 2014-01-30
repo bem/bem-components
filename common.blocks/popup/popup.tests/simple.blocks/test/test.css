@@ -1,9 +1,38 @@
 .test
 {
-    padding-top: 100px;
+    position: absolute;
+}
+
+.test_direction_all,
+.test_direction_left,
+.test_direction_right
+{
+    top: 200px;
+}
+
+.test_direction_all
+{
+    left: 300px;
 }
 
 .test_direction_left
 {
-    padding-left: 100px;
+    left: 170px;
+}
+
+.test_direction_right
+{
+    left: 410px;
+}
+
+.test_direction_bottom
+{
+    left: 280px;
+    top: 250px;
+}
+
+.test_direction_top
+{
+    left: 290px;
+    top: 150px;
 }

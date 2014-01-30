@@ -9,27 +9,56 @@
     content : [
         {
             block : 'test',
+            mods : { direction : 'all' },
             js : true,
             content : [
-                { block : 'link', mods : { pseudo : true }, content : 'click me' },
+                { block : 'link', mods : { pseudo : true }, content : 'all directions' },
                 {
                     block : 'popup',
-                    content : 'content'
+                    content : [
+                        'There\'s content',
+                        { tag : 'br' },
+                        'There\'s content'
+                    ]
                 }
             ]
         },
         {
             block : 'test',
+            mods : { direction : 'bottom' },
+            js : true,
+            content : [
+                { block : 'link', mods : { pseudo : true }, content : 'bottom-* directions' },
+                {
+                    block : 'popup',
+                    js : { directions : ['bottom-left', 'bottom-center', 'bottom-right'] },
+                    content : 'There\'s content'
+                }
+            ]
+        },
+        {
+            block : 'test',
+            mods : { direction : 'top' },
+            js : true,
+            content : [
+                { block : 'link', mods : { pseudo : true }, content : 'top-* directions' },
+                {
+                    block : 'popup',
+                    js : { directions : ['top-left', 'top-center', 'top-right'] },
+                    content : 'There\'s content'
+                }
+            ]
+        },
+        {
+            block : 'test',
+            mods : { direction : 'right' },
             js : true,
             content : [
                 { block : 'link', mods : { pseudo : true }, content : 'right-* directions' },
                 {
                     block : 'popup',
-                    js : {
-                        offsets : [20, 20],
-                        directions : ['right-top', 'right-center', 'right-bottom']
-                    },
-                    content : 'content'
+                    js : { directions : ['right-top', 'right-center', 'right-bottom'] },
+                    content : 'There\'s content'
                 }
             ]
         },
@@ -41,11 +70,8 @@
                 { block : 'link', mods : { pseudo : true }, content : 'left-* directions' },
                 {
                     block : 'popup',
-                    js : {
-                        offsets : [20, 20],
-                        directions : ['left-top', 'left-center', 'left-bottom']
-                    },
-                    content : 'content'
+                    js : { directions : ['left-top', 'left-center', 'left-bottom'] },
+                    content : 'There\'s content'
                 }
             ]
         }

@@ -4,7 +4,6 @@
     background: #fff;
     margin-left: -99999px;
     padding: 10px;
-    opacity: 0;
     box-shadow: 0 1px 2px #999;
     animation-duration: .1s;
     animation-timing-function: ease-out;
@@ -14,7 +13,6 @@
 .popup_visible
 {
     margin-left: 0;
-    opacity: 1;
 }
 
 @for $rule in [

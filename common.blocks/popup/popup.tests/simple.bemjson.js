@@ -9,6 +9,17 @@
     content : [
         {
             block : 'test',
+            js : { target : [100, 100] },
+            content : [
+                { block : 'link', mods : { pseudo : true }, content : 'open at 100,100' },
+                {
+                    block : 'popup',
+                    content : 'popup is opened at 100,100'
+                }
+            ]
+        },
+        {
+            block : 'test',
             mods : { direction : 'all' },
             js : true,
             content : [

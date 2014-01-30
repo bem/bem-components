@@ -5,7 +5,12 @@ BEMDOM.decl('test', {
         'js' : {
             'inited' : function() {
                 var link = this.findBlockInside('link'),
-                    popup = this.findBlockInside('popup').setTarget(link);
+                    popup = this.findBlockInside('popup'),
+                    target = this.params.target;
+
+                target?
+                    popup.setTarget(target[0], target[1]) :
+                    popup.setTarget(link);
 
                 link.on('click', function() {
                     popup.toggleMod('visible');

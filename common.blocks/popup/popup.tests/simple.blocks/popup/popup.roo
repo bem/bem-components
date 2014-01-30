@@ -18,12 +18,12 @@
 }
 
 @for $rule in [
-    [bottom Y 0 10 [left center right]]
-    [top Y 0 -10 [left center right]]
-    [right X 0 10 [top center bottom]]
-    [left X 0 -10 [top center bottom]]
+    [bottom Y 10 [left center right]]
+    [top Y -10 [left center right]]
+    [right X 10 [top center bottom]]
+    [left X -10 [top center bottom]]
 ] {
-    @for $secondary in $rule[4] {
+    @for $secondary in $rule[3] {
         .popup_direction_{$rule[0]}-{$secondary} {
             animation-name: popup_{$rule[0]};
             &.popup_visible {
@@ -38,14 +38,14 @@
         {
             opacity: 1;
             margin-left: 0;
-            transform: translate{$rule[1]}({$rule[2]});
+            transform: translate{$rule[1]}(0);
         }
 
         99%
         {
             opacity: 0;
             margin-left: 0;
-            transform: translate{$rule[1]}({$rule[3]}px);
+            transform: translate{$rule[1]}({$rule[2]}px);
         }
 
         100%
@@ -59,13 +59,13 @@
         0%
         {
             opacity: 0;
-            transform: translate{$rule[1]}({$rule[3]}px);
+            transform: translate{$rule[1]}({$rule[2]}px);
         }
 
         100%
         {
             opacity: 1;
-            transform: translate{$rule[1]}({$rule[2]});
+            transform: translate{$rule[1]}(0);
         }
     }
 }

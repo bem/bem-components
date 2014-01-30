@@ -11,7 +11,8 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
         'top-left', 'top-center', 'top-right',
         'right-top', 'right-center', 'right-bottom',
         'left-top', 'left-center', 'left-bottom'
-    ];
+    ],
+    BASE_ZINDEX = 10000;
 
 /**
  * @exports
@@ -38,6 +39,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             'inited' : function() {
                 this._owner = null;
                 this._pos = null;
+                this._zIndex = null;
                 this._isAttachedToScope = false;
             },
 
@@ -54,6 +56,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             },
 
             '' : function() {
+                putZIndex(this._zIndex);
                 this.emit('hide');
             }
         }
@@ -107,7 +110,11 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
 
         this
             .setMod('direction', bestDrawingParams.direction)
-            .domElem.css({ left : bestDrawingParams.left, top : bestDrawingParams.top });
+            .domElem.css({
+                left : bestDrawingParams.left,
+                top : bestDrawingParams.top,
+                zIndex : this._zIndex = getZIndex()
+            });
 
         return this;
     },
@@ -237,6 +244,17 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
 });
 
 provide(BEMDOM);
+
+var visiblePopupsZIndexes = [BASE_ZINDEX];
+
+function getZIndex() {
+    return visiblePopupsZIndexes[
+        visiblePopupsZIndexes.push(visiblePopupsZIndexes[visiblePopupsZIndexes.length - 1] + 1) - 1];
+}
+
+function putZIndex(zIndex) {
+    visiblePopupsZIndexes.splice(visiblePopupsZIndexes.indexOf(zIndex), 1);
+}
 
 function checkMainDirection(direction, mainDirection1, mainDirection2) {
     return !direction.indexOf(mainDirection1) || (mainDirection2 && !direction.indexOf(mainDirection2));

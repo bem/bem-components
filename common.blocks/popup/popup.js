@@ -5,7 +5,7 @@
 modules.define('i-bem__dom', ['jquery'], function(provide, $, BEMDOM) {
 
 var VIEWPORT_ACCURACY_FACTOR = 0.99,
-    DEFAULT_OFFSETS = [10, 0],
+    DEFAULT_OFFSETS = [5, 0],
     DEFAULT_DIRECTIONS = [
         'bottom-left', 'bottom-center', 'bottom-right',
         'top-left', 'top-center', 'top-right',
@@ -82,6 +82,16 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
     },
 
     /**
+     * Sets content
+     * @param {String|jQuery} content
+     * @returns {this}
+     */
+    setContent : function(content) {
+        BEMDOM.update(this.domElem, content);
+        return this.redraw();
+    },
+
+    /**
      * Redraws popup
      * @returns {this}
      */
@@ -93,6 +103,16 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             this._isAttachedToScope = true;
         }
 
+        var bestDrawingParams = this._calcBestDrawingParams();
+
+        this
+            .setMod('direction', bestDrawingParams.direction)
+            .domElem.css({ left : bestDrawingParams.left, top : bestDrawingParams.top });
+
+        return this;
+    },
+
+    _calcBestDrawingParams : function() {
         var dimensions = this._calcDimensions(),
             directions = this.params.directions,
             i = 0,
@@ -114,11 +134,11 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             if(bestViewportFactor > VIEWPORT_ACCURACY_FACTOR) break;
         }
 
-        this
-            .setMod('direction', bestDirection)
-            .domElem.css({ left : bestPos.left, top : bestPos.top });
-
-        return this;
+        return {
+            direction : bestDirection,
+            left : bestPos.left,
+            top : bestPos.top
+        };
     },
 
     _calcDimensions : function() {
@@ -204,16 +224,6 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
                 (intersectionBottom - intersectionTop) /
                 popup.area :
             0;
-    },
-
-    /**
-     * Sets content
-     * @param {String|jQuery} content
-     * @returns {this}
-     */
-    setContent : function(content) {
-        BEMDOM.update(this.domElem, content);
-        return this.redraw();
     },
 
     getDefaultParams : function() {

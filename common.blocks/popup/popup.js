@@ -5,6 +5,7 @@
 modules.define('i-bem__dom', ['jquery'], function(provide, $, BEMDOM) {
 
 var VIEWPORT_ACCURACY_FACTOR = 0.99,
+    DEFAULT_OFFSETS = [10, 0],
     DEFAULT_DIRECTIONS = [
         'bottom-left', 'bottom-center', 'bottom-right',
         'top-left', 'top-center', 'top-right',
@@ -17,8 +18,8 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
  * @class popup
  * @bem
  *
- * @param {Number} offset
- * @param {Array[String]} directions
+ * @param {Array[Number]} [offsets] two-elements array with main and secondary offsets
+ * @param {Array[String]} [directions] allowed directions
  *
  * @bemmod visible Represents visible state
  */
@@ -157,28 +158,28 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
 
     _calcPos : function(direction, dimensions) {
         var res = {},
-            offset = this.params.offset,
+            offsets = this.params.offsets,
             owner = dimensions.owner,
             popup = dimensions.popup;
 
         if(checkMainDirection(direction, 'bottom')) {
-            res.top = owner.top + owner.height + offset;
+            res.top = owner.top + owner.height + offsets[0];
         } else if(checkMainDirection(direction, 'top')) {
-            res.top = owner.top - popup.height - offset;
+            res.top = owner.top - popup.height - offsets[0];
         } else if(checkMainDirection(direction, 'left')) {
-            res.left = owner.left - popup.width - offset;
+            res.left = owner.left - popup.width - offsets[0];
         } else if(checkMainDirection(direction, 'right')) {
-            res.left = owner.left + owner.width + offset;
+            res.left = owner.left + owner.width + offsets[0];
         }
 
         if(checkSecondaryDirection(direction, 'right')) {
-            res.left = owner.left + owner.width - popup.width;
+            res.left = owner.left + owner.width - popup.width - offsets[1];
         } else if(checkSecondaryDirection(direction, 'left')) {
-            res.left = owner.left;
+            res.left = owner.left + offsets[1];
         } else if(checkSecondaryDirection(direction, 'bottom')) {
-            res.top = owner.top + owner.height - popup.height;
+            res.top = owner.top + owner.height - popup.height - offsets[1];
         } else if(checkSecondaryDirection(direction, 'top')) {
-            res.top = owner.top;
+            res.top = owner.top + offsets[1];
         } else if(checkSecondaryDirection(direction, 'center')) {
             if(checkMainDirection(direction, 'top', 'bottom')) {
                 res.left = owner.left + owner.width / 2 - popup.width / 2;
@@ -217,7 +218,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
 
     getDefaultParams : function() {
         return {
-            offset : 10,
+            offsets : DEFAULT_OFFSETS,
             directions : DEFAULT_DIRECTIONS
         };
     }

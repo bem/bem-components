@@ -25,7 +25,26 @@
                 { block : 'link', mods : { pseudo : true }, content : 'right-* directions' },
                 {
                     block : 'popup',
-                    js : { directions : ['right-top', 'right-center', 'right-bottom'] },
+                    js : {
+                        offsets : [20, 20],
+                        directions : ['right-top', 'right-center', 'right-bottom']
+                    },
+                    content : 'content'
+                }
+            ]
+        },
+        {
+            block : 'test',
+            mods : { direction : 'left' },
+            js : true,
+            content : [
+                { block : 'link', mods : { pseudo : true }, content : 'left-* directions' },
+                {
+                    block : 'popup',
+                    js : {
+                        offsets : [20, 20],
+                        directions : ['left-top', 'left-center', 'left-bottom']
+                    },
                     content : 'content'
                 }
             ]

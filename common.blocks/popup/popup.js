@@ -56,7 +56,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             },
 
             '' : function() {
-                putZIndex(this._zIndex);
+                returnZIndex(this._zIndex);
                 this.emit('hide');
             }
         }
@@ -252,7 +252,7 @@ function getZIndex() {
         visiblePopupsZIndexes.push(visiblePopupsZIndexes[visiblePopupsZIndexes.length - 1] + 1) - 1];
 }
 
-function putZIndex(zIndex) {
+function returnZIndex(zIndex) {
     visiblePopupsZIndexes.splice(visiblePopupsZIndexes.indexOf(zIndex), 1);
 }
 

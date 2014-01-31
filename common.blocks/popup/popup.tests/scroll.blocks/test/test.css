@@ -1,0 +1,16 @@
+.test
+{
+    margin: 50px;
+    padding: 100px;
+    overflow: scroll;
+    height: 400px;
+    background-color: #666;
+}
+
+.test .test
+{
+    margin: 0;
+    padding: 50px;
+    height: 200px;
+    background-color: #999;
+}

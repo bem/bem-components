@@ -2,7 +2,10 @@
  * @module i-bem__dom
  */
 
-modules.define('i-bem__dom', ['jquery'], function(provide, $, BEMDOM) {
+modules.define(
+    'i-bem__dom',
+    ['jquery', 'dom', 'functions', 'functions__throttle'],
+    function(provide, $, dom, functions, throttle, BEMDOM) {
 
 var VIEWPORT_ACCURACY_FACTOR = 0.99,
     DEFAULT_OFFSETS = [5, 0],
@@ -12,7 +15,9 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
         'right-top', 'right-center', 'right-bottom',
         'left-top', 'left-center', 'left-bottom'
     ],
-    BASE_ZINDEX = 10000;
+    BASE_ZINDEX = 10000,
+    CHECK_OWNER_THROTTLING_INTERVAL = 100,
+    doc = BEMDOM.doc[0];
 
 /**
  * @exports
@@ -41,6 +46,10 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
                 this._pos = null;
                 this._zIndex = null;
                 this._isAttachedToScope = false;
+
+                this._checkOwnerVisibility = doc.elementFromPoint?
+                    throttle(this._checkOwnerVisibility, CHECK_OWNER_THROTTLING_INTERVAL, this) :
+                    functions.noop;
             },
 
             '' : function() {
@@ -52,12 +61,15 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             'true' : function() {
                 this
                     .redraw()
+                    ._bindToScrollAndResize()
                     .emit('show');
             },
 
             '' : function() {
                 returnZIndex(this._zIndex);
-                this.emit('hide');
+                this
+                    ._unbindFromScrollAndResize()
+                    .emit('hide');
             }
         }
     },
@@ -69,6 +81,8 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
      * @returns {this}
      */
     setTarget : function(left, top) {
+        this._unbindFromScrollAndResize();
+
         if(arguments.length === 1) {
             this._owner = left instanceof BEMDOM?
                     left.domElem :
@@ -76,6 +90,8 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
                         left : null;
             if(!this._owner) throw Error('Invalid arguments');
             this._pos = null;
+
+            this.hasMod('visible') && this._bindToScrollAndResize();
         } else {
             this._pos = { left : left, top : top };
             this._owner = null;
@@ -149,7 +165,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
     },
 
     _calcDimensions : function() {
-        var win = this.__self.win,
+        var win = BEMDOM.win,
             pos = this._pos,
             owner = this._owner,
             popupWidth = this.domElem.outerWidth(),
@@ -231,6 +247,51 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
                 (intersectionBottom - intersectionTop) /
                 popup.area :
             0;
+    },
+
+    _bindToScrollAndResize : function() {
+        this._owner && this
+            .bindTo(
+                this._ownerParents = this._owner.parents().add(BEMDOM.win),
+                'scroll',
+                this._onScrollOrResize)
+            .bindToWin('resize', this._onScrollOrResize);
+
+        return this;
+    },
+
+    _unbindFromScrollAndResize : function() {
+        if(this._ownerParents) {
+            this
+                .unbindFrom(this._ownerParents, 'scroll', this._onScrollOrResize)
+                .unbindFromWin('resize', this._onScrollOrResize);
+            delete this._ownerParents;
+        }
+
+        return this;
+    },
+
+    _onScrollOrResize : function() {
+        this._checkOwnerVisibility();
+        this.redraw();
+    },
+
+    _checkOwnerVisibility : function() {
+        // NOTE: because of possibility of block destruct during throttle
+        if(!this.hasMod('js', 'inited')) return;
+
+        var win = BEMDOM.win,
+            winTop = win.scrollTop(),
+            winLeft = win.scrollLeft(),
+            owner = this._owner,
+            ownerOffset = owner.offset(),
+            ownerWidth = owner.outerWidth(),
+            ownerHeight = owner.outerHeight(),
+            elemFromPoint = BEMDOM.doc[0].elementFromPoint(
+                ownerOffset.left - winLeft + ownerWidth / 2,
+                ownerOffset.top - winTop + ownerHeight / 2);
+
+        dom.contains(owner, $(elemFromPoint)) || this.delMod('visible');
     },
 
     getDefaultParams : function() {

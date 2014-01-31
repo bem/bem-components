@@ -14,7 +14,11 @@
                 { block : 'link', mods : { pseudo : true }, content : 'open at 100,100' },
                 {
                     block : 'popup',
-                    content : 'popup is opened at 100,100'
+                    content : [
+                        'popup is opened at 100,100',
+                        { tag : 'br' },
+                        { block : 'link', mods : { pseudo : true }, content : 'update content' },
+                    ]
                 }
             ]
         },
@@ -29,7 +33,9 @@
                     content : [
                         'There\'s content',
                         { tag : 'br' },
-                        'There\'s content'
+                        'There\'s content',
+                        { tag : 'br' },
+                        { block : 'link', mods : { pseudo : true }, content : 'update content' }
                     ]
                 }
             ]
@@ -43,7 +49,11 @@
                 {
                     block : 'popup',
                     js : { directions : ['bottom-left', 'bottom-center', 'bottom-right'] },
-                    content : 'There\'s content'
+                    content : [
+                        'There\'s content',
+                        { tag : 'br' },
+                        { block : 'link', mods : { pseudo : true }, content : 'update content' }
+                    ]
                 }
             ]
         },
@@ -56,7 +66,11 @@
                 {
                     block : 'popup',
                     js : { directions : ['top-left', 'top-center', 'top-right'] },
-                    content : 'There\'s content'
+                    content : [
+                        'There\'s content',
+                        { tag : 'br' },
+                        { block : 'link', mods : { pseudo : true }, content : 'update content' }
+                    ]
                 }
             ]
         },
@@ -69,7 +83,11 @@
                 {
                     block : 'popup',
                     js : { directions : ['right-top', 'right-center', 'right-bottom'] },
-                    content : 'There\'s content'
+                    content : [
+                        'There\'s content',
+                        { tag : 'br' },
+                        { block : 'link', mods : { pseudo : true }, content : 'update content' }
+                    ]
                 }
             ]
         },
@@ -82,7 +100,11 @@
                 {
                     block : 'popup',
                     js : { directions : ['left-top', 'left-center', 'left-bottom'] },
-                    content : 'There\'s content'
+                    content : [
+                        'There\'s content',
+                        { tag : 'br' },
+                        { block : 'link', mods : { pseudo : true }, content : 'update content' }
+                    ]
                 }
             ]
         }

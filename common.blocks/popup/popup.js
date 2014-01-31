@@ -17,6 +17,8 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
     ],
     BASE_ZINDEX = 10000,
     CHECK_OWNER_THROTTLING_INTERVAL = 100,
+
+    win = BEMDOM.win,
     doc = BEMDOM.doc[0];
 
 /**
@@ -43,10 +45,10 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
         'js' : {
             'inited' : function() {
                 this._owner = null;
+                this._ownerParents = null;
                 this._pos = null;
                 this._zIndex = null;
                 this._isAttachedToScope = false;
-
                 this._checkOwnerVisibility = doc.elementFromPoint?
                     throttle(this._checkOwnerVisibility, CHECK_OWNER_THROTTLING_INTERVAL, this) :
                     functions.noop;
@@ -165,8 +167,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
     },
 
     _calcDimensions : function() {
-        var win = BEMDOM.win,
-            pos = this._pos,
+        var pos = this._pos,
             owner = this._owner,
             popupWidth = this.domElem.outerWidth(),
             popupHeight = this.domElem.outerHeight(),
@@ -251,22 +252,17 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
 
     _bindToScrollAndResize : function() {
         this._owner && this
-            .bindTo(
-                this._ownerParents = this._owner.parents().add(BEMDOM.win),
-                'scroll',
-                this._onScrollOrResize)
-            .bindToWin('resize', this._onScrollOrResize);
+            .bindTo(this._ownerParents = this._owner.parents(), 'scroll', this._onScrollOrResize)
+            .bindToWin('scroll resize', this._onScrollOrResize);
 
         return this;
     },
 
     _unbindFromScrollAndResize : function() {
-        if(this._ownerParents) {
-            this
-                .unbindFrom(this._ownerParents, 'scroll', this._onScrollOrResize)
-                .unbindFromWin('resize', this._onScrollOrResize);
-            delete this._ownerParents;
-        }
+        this._ownerParents && (this
+            .unbindFrom(this._ownerParents, 'scroll', this._onScrollOrResize)
+            .unbindFromWin('scroll resize', this._onScrollOrResize)
+            ._ownerParents = null);
 
         return this;
     },
@@ -277,19 +273,14 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
     },
 
     _checkOwnerVisibility : function() {
-        // NOTE: because of possibility of block destruct during throttle
+        // NOTE: because block might be destructed during throttling
         if(!this.hasMod('js', 'inited')) return;
 
-        var win = BEMDOM.win,
-            winTop = win.scrollTop(),
-            winLeft = win.scrollLeft(),
-            owner = this._owner,
+        var owner = this._owner,
             ownerOffset = owner.offset(),
-            ownerWidth = owner.outerWidth(),
-            ownerHeight = owner.outerHeight(),
-            elemFromPoint = BEMDOM.doc[0].elementFromPoint(
-                ownerOffset.left - winLeft + ownerWidth / 2,
-                ownerOffset.top - winTop + ownerHeight / 2);
+            elemFromPoint = doc.elementFromPoint(
+                ownerOffset.left - win.scrollLeft() + owner.outerWidth() / 2,
+                ownerOffset.top - win.scrollTop() + owner.outerHeight() / 2);
 
         dom.contains(owner, $(elemFromPoint)) || this.delMod('visible');
     },

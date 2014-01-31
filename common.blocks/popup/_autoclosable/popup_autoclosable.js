@@ -16,7 +16,7 @@ BEMDOM.decl({ block : 'popup', modName : 'autoclosable', modVal : true }, /** @l
         'visible' : {
             'true' : function() {
                 this
-                    // NOTE: nextTick because of event bubling to document
+                    // NOTE: nextTick because of event bubbling to document
                     .nextTick(function() {
                         this
                             .bindTo('pointerclick', this._onPointerClick)

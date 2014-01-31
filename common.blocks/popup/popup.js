@@ -55,7 +55,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
             },
 
             '' : function() {
-
+                // FIXME: drop link to `_owner` on destruct
             }
         },
 

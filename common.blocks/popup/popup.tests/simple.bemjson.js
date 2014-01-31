@@ -14,9 +14,27 @@
                 { block : 'link', mods : { pseudo : true }, content : 'open at 100,100' },
                 {
                     block : 'popup',
+                    mods : { autoclosable : true },
                     content : [
                         'popup is opened at 100,100',
-                        { tag : 'br' },
+                        {
+                            tag : 'p',
+                                content : [
+                                    {
+                                        block : 'input',
+                                        mods : { theme : 'simple' },
+                                        val : 'simple'
+                                    },
+                                    {
+                                        tag : 'select',
+                                        content : [
+                                            { tag : 'option', content : '1' },
+                                            { tag : 'option', content : '2' }
+                                        ]
+                                    }
+                                ]
+
+                        },
                         { block : 'link', mods : { pseudo : true }, content : 'update content' },
                     ]
                 }

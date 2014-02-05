@@ -1,0 +1,21 @@
+block('form').elem('input').elemMod('type', 'input')(
+
+    def()(function() {
+        var ctx = this.ctx;
+
+        applyCtx(this._.extend(
+            {
+                block: 'input',
+                mix: {
+                    block: this.block,
+                    elem: this.elem,
+                    js: apply('js')
+                },
+                id: ctx.id,
+                name: ctx.name,
+                value: ctx.value
+            },
+            ctx.input));
+    })
+
+);

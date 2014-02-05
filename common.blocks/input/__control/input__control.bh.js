@@ -13,7 +13,7 @@ module.exports = function(bh) {
                 placeholder : input.placeholder
             };
 
-        input.autocomplete === false && (attrs.autocomplete = 'off');
+        input.autocomplete !== true && (attrs.autocomplete = 'off');
         json.blockMods.disabled && (attrs.disabled = 'disabled');
 
         ctx.attrs(attrs);

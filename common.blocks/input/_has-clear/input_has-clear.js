@@ -5,10 +5,7 @@ provide(Input.decl({ modName : 'has-clear', modVal : true }, {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-
-                this
-                    .on('change', this._updateClear)
-                    ._updateClear();
+                this.on('change', this._updateClear);
             }
         }
     },

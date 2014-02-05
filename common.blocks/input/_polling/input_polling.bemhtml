@@ -1,0 +1,3 @@
+block('input').mod('polling', true).js()(function() {
+    return this.extend(applyNext(), { live : false });
+});

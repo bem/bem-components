@@ -1,0 +1,3 @@
+({
+    shouldDeps : ['idle', 'tick']
+})

@@ -1,5 +1,5 @@
 [{
-    shouldDeps : ['tick', 'idle']
+    shouldDeps : ['ua']
 },
 {
     tech : 'spec.js',

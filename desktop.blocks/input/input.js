@@ -1,68 +1,30 @@
-modules.define('input', ['tick', 'idle'], function(provide, tick, idle, Input) {
+modules.define('input', ['ua'], function(provide, ua, Input) {
 
-var instances = [],
-    boundToTick,
-    bindToTick = function() {
-        boundToTick = true;
-        tick
-            .on('tick', update)
-            .start();
-        idle
-            .on({
-                idle : function() {
-                    tick.un('tick', update);
-                },
-                wakeup : function() {
-                    tick.on('tick', update);
-                }
-            })
-            .start();
-    },
-    update = function() {
-        var instance, i = 0;
-        while(instance = instances[i++]) {
-            instance.setVal(instance.elem('control').val());
-        }
-    };
+if(!ua.msie || ua.version >= 10) {
+    provide(Input);
+    return;
+}
 
-provide(Input.decl({
-    onSetMod : {
-        'js' : {
-            'inited' : function() {
-                this.__base.apply(this, arguments);
-
-                boundToTick || bindToTick();
-
-                // сохраняем индекс в массиве инстансов чтобы потом быстро из него удалять
-                this._instanceIndex = instances.push(this) - 1;
-            },
-
-            '' : function() {
-                this.__base.apply(this, arguments);
-
-                // удаляем из общего массива instances
-                instances.splice(this._instanceIndex, 1);
-                // понижаем _instanceIndex всем тем кто был добавлен в instances после нас
-                var i = this._instanceIndex, instance;
-                while(instance = instances[i++]) --instance._instanceIndex;
-            }
-        }
-    },
-
+provide(Input.decl('input', {
     /**
-     * Нормализация установки фокуса для IE
-     * @private
-     * @override
+     * Normalizes focus for IE
      */
     _focus : function() {
         var input = this.elem('control')[0];
-        if(input.createTextRange && !input.selectionStart) {
+        if(!input.selectionStart) {
             var range = input.createTextRange();
             range.move('character', input.value.length);
             range.select();
-        } else {
-            input.focus();
         }
+    }
+}, {
+    live : function() {
+        this.liveBindTo('keyup cut paste', function() {
+            // nextTick because when `cut` and `paste` events callbacks are executed, real value is not changed
+            this.nextTick(this._tryToUpdateVal);
+        });
+
+        return this.__base();
     }
 }));
 

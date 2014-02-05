@@ -10,7 +10,7 @@ BEMDOM.decl('form', {
                 modVal ? input.disable() : input.enable();
             });
 
-            this.trigger(modVal ? 'disabled' : 'enabled');
+            this.emit(modVal ? 'disabled' : 'enabled');
 
         }
 
@@ -82,7 +82,7 @@ BEMDOM.decl('form', {
                 input.clear();
             });
 
-        this.trigger('clear').trigger('update');
+        this.emit('clear').emit('update');
 
         this.afterCurrentEvent(function() {
             this.delMod('locked');
@@ -108,7 +108,7 @@ BEMDOM.decl('form', {
                 input.update(data);
             });
 
-        this.trigger('update', data);
+        this.emit('update', data);
 
     },
 
@@ -130,7 +130,7 @@ BEMDOM.decl('form', {
                 input.fill(data);
             });
 
-        this.trigger('fill', data).trigger('update');
+        this.emit('fill', data).emit('update');
 
         this.afterCurrentEvent(function() {
             this.delMod('locked');

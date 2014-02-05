@@ -1,0 +1,9 @@
+block('form').elem('input')(
+
+    js()(true),
+
+    cls()('i-bem'),
+
+    tag()('input')
+
+);

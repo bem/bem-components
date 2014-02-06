@@ -1,4 +1,4 @@
-modules.require(['i-bem__dom'], function(BEMDOM) {
+modules.define('i-bem__dom', function(provide, BEMDOM) {
 /**
  * Форма
  */
@@ -158,5 +158,7 @@ BEMDOM.decl('form', {
     live : true
 
 });
+
+provide(BEMDOM);
 
 });

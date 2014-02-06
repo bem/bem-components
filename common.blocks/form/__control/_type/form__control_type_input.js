@@ -1,4 +1,4 @@
-modules.require(['i-bem__dom'], function(BEMDOM) {
+modules.define('i-bem__dom', function(provide, BEMDOM) {
 /**
  * Контрол типа input (текстовое поле ввода)
  * Подмешивается к блоку input
@@ -26,5 +26,7 @@ BEMDOM.decl({
     }
 
 });
+
+provide(BEMDOM);
 
 });

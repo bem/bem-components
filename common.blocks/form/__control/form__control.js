@@ -1,4 +1,4 @@
-modules.require(['i-bem__dom', 'jquery'], function(BEMDOM, $) {
+modules.define('i-bem__dom', ['jquery'], function(provide, $, BEMDOM) {
 /**
  * Болванка для контрола (поля ввода) формы
  * Тип контрола задается модификатором _type
@@ -129,5 +129,7 @@ BEMDOM.decl({
     live : true
 
 });
+
+provide(BEMDOM);
 
 });

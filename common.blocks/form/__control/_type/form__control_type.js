@@ -1,4 +1,4 @@
-modules.require(['i-bem__dom'], function(BEMDOM) {
+modules.define('i-bem__dom', function(provide, BEMDOM) {
 /**
  * Болванка для контрола формы с заданным типом (модификатор _type)
  * К таким контролам подмешивается BEM-блок, реализующий АПИ соответсвующего контрола
@@ -91,7 +91,8 @@ BEMDOM.decl({
 
     }
 
-
 });
+
+provide(BEMDOM);
 
 });

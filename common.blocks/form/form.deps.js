@@ -10,7 +10,7 @@
     ],
     shouldDeps : [
         {
-            elem : 'input'
+            elem : 'control'
         }
     ]
 })

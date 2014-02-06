@@ -13,8 +13,8 @@ BEMDOM.decl('form', {
          */
         'disabled' : function(modName, modVal) {
 
-            this.elemInstances('input').forEach(function(input) {
-                modVal ? input.disable() : input.enable();
+            this.elemInstances('control').forEach(function(control) {
+                modVal ? control.disable() : control.enable();
             });
 
             this.emit(modVal ? 'disable' : 'enable');
@@ -39,35 +39,37 @@ BEMDOM.decl('form', {
     },
 
     /**
-     * Сериализует форму и возвращает объект следующего вида: { <имя инпута>: <значение инпута>, ... }
+     * Сериализует форму и возвращает объект следующего вида:
+     *  { <имя контрола>: <значение контрола>, ... }
      * @returns {Object|*}
      * @private
      */
     _serializeObject : function() {
 
         return this
-            .elemInstances('input')
-            .reduce(function(res, input) {
-                var name = input.getName();
-                if(name) res[name] = input.getVal();
+            .elemInstances('control')
+            .reduce(function(res, control) {
+                var name = control.getName();
+                if(name) res[name] = control.getVal();
                 return res;
             }, {});
 
     },
 
     /**
-     * Сериализует форму и возвращает массив следующего вида: [ { name: <имя инпута>, value: <значение инпута> }, ... ]
+     * Сериализует форму и возвращает массив следующего вида:
+     *  [ { name: <имя контрола>, value: <значение контрола> }, ... ]
      * @returns {Array|*}
      * @private
      */
     _serializeArray : function() {
 
         return this
-            .elemInstances('input')
-            .map(function(input) {
+            .elemInstances('control')
+            .map(function(control) {
                 return {
-                    name : input.getName(),
-                    value : input.getVal()
+                    name : control.getName(),
+                    value : control.getVal()
                 };
             });
 
@@ -82,9 +84,9 @@ BEMDOM.decl('form', {
         this.setMod('locked', 'yes');
 
         this
-            .elemInstances('input')
-            .forEach(function(input) {
-                input.clear();
+            .elemInstances('control')
+            .forEach(function(control) {
+                control.clear();
             });
 
         this.emit('clear');
@@ -96,21 +98,19 @@ BEMDOM.decl('form', {
     },
 
     /**
-     * Вызывает метод update всех инпутов с модификатором _updatable_yes и генерирует событие update
-     * Вызывается из инпута, в котором произошли изменения
-     * @param {Object} data данные изменившегося инпута
-     * @param {Object} [data.type] тип инпута (напр. input, select, checkbox и т.п.)
-     * @param {Object} [data.name] имя инпута
-     * @param {Object} data.value значение инпута
+     * Вызывает метод update всех контролов с модификатором _updatable_yes и генерирует событие update
+     * Вызывается из контрола, в котором произошли изменения
+     * @param {Object} data данные изменившегося контрола
+     * @param {Object} data.control ссылка на инстанс контрола
      */
     update : function(data) {
 
         if(this.hasMod('locked')) return;
 
         this
-            .elemInstances('input', 'updatable', 'yes')
-            .forEach(function(input) {
-                data.input === input || input.update(data);
+            .elemInstances('control', 'updatable', 'yes')
+            .forEach(function(control) {
+                data.control === control || control.update(data);
             });
 
         this.emit('update', data);
@@ -130,9 +130,9 @@ BEMDOM.decl('form', {
         this.setMod('locked', 'yes');
 
         this
-            .elemInstances('input')
-            .forEach(function(input) {
-                input.fill(data);
+            .elemInstances('control')
+            .forEach(function(control) {
+                control.fill(data);
             });
 
         this.emit('fill', data);

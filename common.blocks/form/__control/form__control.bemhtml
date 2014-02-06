@@ -1,4 +1,4 @@
-block('form').elem('input')(
+block('form').elem('control')(
 
     js()(true),
 

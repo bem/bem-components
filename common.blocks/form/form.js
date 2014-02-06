@@ -9,7 +9,7 @@ BEMDOM.decl('form', {
         /**
          * Модификатор, переводящий форму в неактивное состояние
          * @param {String} modName имя модификатора ('disabled')
-         * @param {String} modVal значение модификатора ('yes'|'')
+         * @param {String} modVal значение модификатора (true|false)
          */
         'disabled' : function(modName, modVal) {
 
@@ -77,11 +77,11 @@ BEMDOM.decl('form', {
 
     /**
      * Очищает форму.
-     * На время очистки форма блокируется от лишних операций обновления с помощью установки модификатора _locked_yes
+     * На время очистки форма блокируется от лишних операций обновления с помощью установки модификатора _locked
      */
     clear : function() {
 
-        this.setMod('locked', 'yes');
+        this.setMod('locked', true);
 
         this
             .elemInstances('control')
@@ -119,7 +119,7 @@ BEMDOM.decl('form', {
 
     /**
      * Заполняет форму данными
-     * На время заполнения форма блокируется от лишних операций обновления с помощью установки модификатора _locked_yes
+     * На время заполнения форма блокируется от лишних операций обновления с помощью установки модификатора _locked
      * @param {Object} [data] данные (если не передан - берется из параметра fillData)
      */
     fill : function(data) {
@@ -127,7 +127,7 @@ BEMDOM.decl('form', {
         if(!data) data = this.params.fillData;
         if(!data) return;
 
-        this.setMod('locked', 'yes');
+        this.setMod('locked', true);
 
         this
             .elemInstances('control')

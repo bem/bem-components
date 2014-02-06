@@ -62,7 +62,7 @@ BEMDOM.decl({
      */
     disable : function() {
 
-        this.getControl().setMod('disabled', 'yes');
+        this.getControl().setMod('disabled', true);
 
     },
 

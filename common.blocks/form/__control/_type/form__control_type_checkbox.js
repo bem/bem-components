@@ -14,7 +14,7 @@ BEMDOM.decl({
 
     setVal : function(val) {
 
-        this.getControl().toggleMod('checked', 'yes', '', !!val);
+        this.getControl().setMod('checked', !!val);
 
     }
 

@@ -9,22 +9,23 @@ describe('radio__option_type_button', function() {
     function buildRadioOption() {
         return BEMDOM.init($(BEMHTML.apply({
                 block : 'radio',
-                elem : 'option',
                 mods : { type : 'button' },
                 name : 'name',
-                val : 'val',
-                label : 'label'
+                options : [{
+                    val : 'val',
+                    label : 'label'
+                }]
             }))
                 .appendTo('body'))
-                .bem('radio__option');
+                .bem('radio');
     }
 
     beforeEach(function() {
-        radioOption = buildRadioOption();
+        radioOption = buildRadioOption().elemInstance('option');
     });
 
     afterEach(function() {
-        BEMDOM.destruct(radioOption.domElem);
+        BEMDOM.destruct(radioOption.block().domElem);
     });
 
     describe('checked', function() {

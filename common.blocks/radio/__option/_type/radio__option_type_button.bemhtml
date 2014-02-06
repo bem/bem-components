@@ -32,7 +32,7 @@ block('radio').elem('option').mod('type', 'button')(
 
         applyCtx({
             block : 'button',
-            mix : { block : 'radio', elem: 'option', mods : mods, js : true },
+            mix : { block : 'radio', elem: 'option', elemMods : mods, js : true },
             tag : 'label',
             mods : buttonMods,
             content : buttonContent

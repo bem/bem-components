@@ -13,19 +13,6 @@ BEMDOM.decl({
 }, {
 
     /**
-     * Устанавливает/возвращает значение инпута
-     * @param {String} [val] устанавливаемое значение
-     * @returns {String}
-     */
-    val : function(val) {
-
-        return typeof val === 'undefined' ?
-            this.getInput().getVal() :
-            this.getInput().setVal(val);
-
-    },
-
-    /**
      * Запускает процедуру обновления формы при изменении значения инпута
      */
     onInputChange : function() {

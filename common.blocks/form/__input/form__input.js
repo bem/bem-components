@@ -12,15 +12,42 @@ BEMDOM.decl({
 }, {
 
     /**
-     * Устанавливает/возвращает значение инпута
-     * @param {*} [val] устанавливаемое значение
-     * @returns {*}
+     * Возвращает jQuery-инстанс инпута
+     * @returns {BEM}
      */
-    val : function(val) {
+    getInput : function() {
 
-        return typeof val === 'undefined' ?
-            this.getInput().val() :
-            this.getInput().val(val);
+        return this.domElem;
+
+    },
+
+    /**
+     * Возвращает имя инпута
+     * В качестве имени берется js-параметр name, если указан, или HTML-атрибут name DOM-ноды, соответствующей инпуту
+     * @returns {String}
+     */
+    getName : function() {
+
+        return this.params.name || this.domElem.attr('name');
+
+    },
+
+    /**
+     * Возвращает значение инпута
+     */
+    getVal : function() {
+
+        return this.getInput().val();
+
+    },
+
+    /**
+     * Устанавливает значение инпута
+     * @param {*} val устанавливаемое значение
+     */
+    setVal : function(val) {
+
+        this.getInput().val(val);
 
     },
 
@@ -29,7 +56,7 @@ BEMDOM.decl({
      */
     clear : function() {
 
-        this.val('');
+        this.setVal('');
 
     },
 
@@ -65,7 +92,7 @@ BEMDOM.decl({
 
         if(name) {
             var value = data[name];
-            value ? this.val(value) : this.clear();
+            value ? this.setVal(value) : this.clear();
         }
 
     },
@@ -80,23 +107,11 @@ BEMDOM.decl({
     validate : function() { return []; },
 
     /**
-     * Возвращает имя инпута
-     * В качестве имени берется js-параметр name, если указан, или HTML-атрибут name DOM-ноды, соответствующей инпуту
-     * @returns {String}
+     * Переводит инпут в активное состояние
      */
-    getName : function() {
+    enable : function() {
 
-        return this.params.name || this.domElem.attr('name');
-
-    },
-
-    /**
-     * Возвращает jQuery-инстанс инпута
-     * @returns {BEM}
-     */
-    getInput : function() {
-
-        return this.domElem;
+        this._toggleDisabledState(false);
 
     },
 
@@ -106,15 +121,6 @@ BEMDOM.decl({
     disable : function() {
 
         this._toggleDisabledState(true);
-
-    },
-
-    /**
-     * Переводит инпут в активное состояние
-     */
-    enable : function() {
-
-        this._toggleDisabledState(false);
 
     },
 

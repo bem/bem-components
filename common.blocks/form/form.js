@@ -1,16 +1,23 @@
 modules.require(['i-bem__dom'], function(BEMDOM) {
-
+/**
+ * Форма
+ */
 BEMDOM.decl('form', {
 
     onSetMod : {
 
+        /**
+         * Модификатор, переводящий форму в неактивное состояние
+         * @param {String} modName имя модификатора ('disabled')
+         * @param {String} modVal значение модификатора ('yes'|'')
+         */
         'disabled' : function(modName, modVal) {
 
             this.elemInstances('input').forEach(function(input) {
                 modVal ? input.disable() : input.enable();
             });
 
-            this.emit(modVal ? 'disabled' : 'enabled');
+            this.emit(modVal ? 'disable' : 'enable');
 
         }
 
@@ -42,9 +49,7 @@ BEMDOM.decl('form', {
             .elemInstances('input')
             .reduce(function(res, input) {
                 var name = input.getName();
-
-                if(name) res[name] = input.val();
-
+                if(name) res[name] = input.getVal();
                 return res;
             }, {});
 
@@ -62,7 +67,7 @@ BEMDOM.decl('form', {
             .map(function(input) {
                 return {
                     name : input.getName(),
-                    value : input.val()
+                    value : input.getVal()
                 };
             });
 
@@ -82,7 +87,7 @@ BEMDOM.decl('form', {
                 input.clear();
             });
 
-        this.emit('clear').emit('update');
+        this.emit('clear');
 
         this.afterCurrentEvent(function() {
             this.delMod('locked');
@@ -105,7 +110,7 @@ BEMDOM.decl('form', {
         this
             .elemInstances('input', 'updatable', 'yes')
             .forEach(function(input) {
-                input.update(data);
+                data.input === input || input.update(data);
             });
 
         this.emit('update', data);
@@ -130,7 +135,7 @@ BEMDOM.decl('form', {
                 input.fill(data);
             });
 
-        this.emit('fill', data).emit('update');
+        this.emit('fill', data);
 
         this.afterCurrentEvent(function() {
             this.delMod('locked');
@@ -139,9 +144,14 @@ BEMDOM.decl('form', {
     },
 
     /**
-     * Заглушка для валидации формы
+     * Валидация
+     * Форма с отключенной валидацией (без модификатора _validation) всегда валидна
      */
-    validate : function() {}
+    validate : function() {
+
+        return true;
+
+    }
 
 }, {
 

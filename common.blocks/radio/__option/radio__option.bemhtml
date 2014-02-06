@@ -9,8 +9,8 @@ block('radio').elem('option')(
                 elem : 'box',
                 content : {
                     elem : 'control',
-                    checked : this.mods.checked,
-                    disabled : this.mods.disabled,
+                    checked : this.elemMods.checked,
+                    disabled : this.elemMods.disabled,
                     name : ctx.name,
                     val : ctx.val
                 }

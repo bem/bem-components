@@ -1,7 +1,7 @@
 block('radio').elem('option').mod('type', 'button')(
     def()(function() {
         var ctx = this.ctx,
-            mods = this.mods,
+            mods = this.elemMods,
             buttonMods = {
                 togglable : 'radio',
                 checked : mods.checked,

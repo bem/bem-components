@@ -1,22 +1,24 @@
-block('form').elem('control').elemMod('type', 'checkbox')(
+block('form').elem('control').elemMod('type', 'radio')(
 
     def()(function() {
         var ctx = this.ctx,
             js = apply('js'),
             newCtx = {
-                block: 'checkbox',
+                block: 'radio',
                 mix: {
                     block: this.block,
                     elem: this.elem,
                     elemMods: this.elemMods,
                     js: ctx.js ? this._.extend(ctx.js, js) : js
                 },
+                id: ctx.id,
                 name: ctx.name,
-                val: ctx.val
+                val: ctx.val,
+                options: ctx.options
             },
-            checkbox = ctx.checkbox;
+            radio = ctx.radio;
 
-        applyCtx(checkbox ? this._.extend(newCtx, checkbox) : newCtx);
+        applyCtx(radio ? this._.extend(newCtx, radio) : newCtx);
     })
 
 );

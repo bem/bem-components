@@ -233,6 +233,7 @@ MAKE.decl('SpecNode', {
             'bemdecl.js',
             'deps.js',
             'roole',
+            'css',
             'spec.js+browser.js+bemhtml',
             'bemhtml',
             'html',

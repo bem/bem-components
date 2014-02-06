@@ -101,28 +101,4 @@
         outline: none;
     }
 
-    .input__hint
-    {
-        position: absolute;
-        z-index: 5;
-
-        visibility: hidden;
-        overflow: hidden;
-
-        box-sizing: border-box;
-        max-width: 100%;
-        padding: 3px;
-
-        cursor: text;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-
-        color: #ccc;
-    }
-
-    .input__hint_visible
-    {
-        visibility: visible;
-    }
-
 }

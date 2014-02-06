@@ -1,4 +1,0 @@
-block('input').elem('hint')(
-    tag()('label'),
-    attrs()(function() { return { 'for': this._input.id } })
-)

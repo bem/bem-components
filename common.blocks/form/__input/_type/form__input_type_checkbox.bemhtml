@@ -1,10 +1,10 @@
-block('form').elem('input').elemMod('type', 'input')(
+block('form').elem('input').elemMod('type', 'checkbox')(
 
     def()(function() {
         var ctx = this.ctx,
             js = apply('js'),
             newCtx = {
-                block: 'input',
+                block: 'checkbox',
                 mix: {
                     block: this.block,
                     elem: this.elem,
@@ -15,9 +15,9 @@ block('form').elem('input').elemMod('type', 'input')(
                 name: ctx.name,
                 val: ctx.val
             },
-            input = ctx.input;
+            checkbox = ctx.checkbox;
 
-        applyCtx(input ? this._.extend(newCtx, input) : newCtx);
+        applyCtx(checkbox ? this._.extend(newCtx, checkbox) : newCtx);
     })
 
 );

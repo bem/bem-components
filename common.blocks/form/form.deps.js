@@ -7,5 +7,10 @@
                 mods : { 'elem-instances' : 'yes' }
             }
         }
+    ],
+    shouldDeps : [
+        {
+            elem : 'input'
+        }
     ]
 })

@@ -59,6 +59,31 @@ BEMDOM.decl({
 
         input.toggleMod('disabled', 'yes', '', isDisabled);
 
+    },
+
+    /**
+     * Реакция на событие изменения значения инпута
+     * Запускает процедуру обновления формы
+     */
+    onInputChange : function() {
+
+        this.runUpdate();
+
+    },
+
+    /**
+     * Реакция на событие получения инпутом фокуса
+     */
+    onInputFocus : function() {},
+
+    /**
+     * Реакция на событие потери инпутом фокуса
+     * Запускает процедуру валидации формы
+     */
+    onInputBlur : function() {
+
+        this.block().validate();
+
     }
 
 

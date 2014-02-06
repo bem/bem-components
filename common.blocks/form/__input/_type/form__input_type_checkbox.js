@@ -1,21 +1,29 @@
 modules.require(['i-bem__dom'], function(BEMDOM) {
 /**
- * Инпут типа input (текстовое поле ввода)
- * Подмешивается к блоку input
+ * Инпут типа checkbox
+ * Подмешивается к блоку checkbox
  */
 BEMDOM.decl({
 
     block : 'form',
     elem : 'input',
     modName : 'type',
-    modVal : 'input'
+    modVal : 'checkbox'
 
-}, {}, {
+}, {
+
+    setVal : function(val) {
+
+        this.toggleMod('checked', 'yes', '', !!val);
+
+    }
+
+}, {
 
     live : function() {
 
         this.__base();
-        this.liveInitOnBlockEvent('change focus blur', 'input', function(e, data) {
+        this.liveInitOnBlockEvent('change focus blur', 'checkbox', function(e, data) {
             switch(e.type) {
                 case 'change': this.onInputChange(e, data); break;
                 case 'focus': this.onInputFocus(e, data); break;

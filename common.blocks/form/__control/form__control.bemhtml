@@ -4,6 +4,15 @@ block('form').elem('control')(
 
     cls()('i-bem'),
 
-    tag()('input')
+    tag()('input'),
+
+    attrs()(function() {
+        var ctx = this.ctx;
+        return {
+            id: ctx.id,
+            name: ctx.name,
+            value: ctx.val
+        };
+    })
 
 );

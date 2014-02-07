@@ -24,7 +24,7 @@
     "bem-tools-autoprefixer": "~0.0.2",
     "csscomb": "~2.0.0",
     "jshint": "2.3.0",
-    "jshint-groups": "0.5.3",
+    "jshint-groups": "0.5.4",
     "jscs": "1.0.11",
     "git-hooks": "0.0.3",
     "svgo": "0.4.1",

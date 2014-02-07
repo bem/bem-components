@@ -14,7 +14,7 @@ describe('popup_autoclosable', function() {
         BEMDOM.destruct(rootDomElem);
     });
 
-    describe('pointerclick', function() {
+    describe('pointerclick reactions', function() {
         it('should be visible/hidden on pointerclick inside/outside', function(done) {
             var popup = buildPopupWithOwner(rootDomElem, true).setMod('visible');
 
@@ -54,14 +54,14 @@ describe('popup_autoclosable', function() {
         });
     });
 
-    describe('on escape key', function() {
+    describe('on escape key reactions', function() {
         it('should be hidden on press escape', function() {
             var popup = buildPopupWithOwner(rootDomElem, true).setMod('visible');
             rootDomElem.trigger($.Event('keydown', { keyCode : 27 }));
             popup.hasMod('visible').should.be.false;
         });
 
-        it('should be hide popups in back order of its showing', function() {
+        it('should hide popups in back order of its showing', function() {
             var popup1 = buildPopupWithOwner(rootDomElem, true).setMod('visible'),
                 popup2 = buildPopupWithOwner(rootDomElem, true).setMod('visible'),
                 popup3 = buildPopupWithOwner(rootDomElem, true).setMod('visible'),

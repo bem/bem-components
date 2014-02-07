@@ -139,7 +139,7 @@ describe('popup', function() {
         });
     });
 
-    describe('scroll', function() {
+    describe('scroll reactions', function() {
         it('should be shown/hidden on owner parents scroll', function(done) {
             var timeout = CHECK_OWNER_THROTTLING_INTERVAL + CHECK_OWNER_THROTTLING_INTERVAL / 2;
 
@@ -193,7 +193,7 @@ describe('popup', function() {
         });
     });
 
-    describe('nested', function() {
+    describe('nested popups', function() {
         var childPopup, childOwnerDomElem;
         beforeEach(function() {
             popup.setTarget(popupOwnerDomElem);
@@ -213,16 +213,15 @@ describe('popup', function() {
         });
     });
 
-    describe('destruct', function() {
-        it('should be hidden on destruct', function(done) {
+    describe('destructing', function() {
+        it('should be hidden on destruct', function() {
             popup
-                .on('hide', function() {
-                    done();
-                })
                 .setTarget(popupOwnerDomElem)
                 .setMod('visible');
 
             BEMDOM.destruct(popupDomElem);
+
+            popup.hasMod('visible').should.be.false;
         });
 
         it('should be destructed on owner destruct', function() {
@@ -233,6 +232,22 @@ describe('popup', function() {
             BEMDOM.destruct(popupOwnerDomElem);
 
             popup.hasMod('js').should.be.false;
+        });
+    });
+
+    describe('events', function() {
+        it('should emit "show"/"hide" event on visibility changing', function(done) {
+            var events = [];
+            popup
+                .on('show hide', function(e) {
+                    if(events.push(e.type) === 2) {
+                        events.should.be.eql(['show', 'hide']);
+                        done();
+                    }
+                })
+                .setTarget(0, 0)
+                .setMod('visible')
+                .delMod('visible');
         });
     });
 });

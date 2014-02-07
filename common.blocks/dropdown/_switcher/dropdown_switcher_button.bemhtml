@@ -1,0 +1,18 @@
+block('dropdown').mod('switcher', 'button').elem('switcher').content()(function() {
+    var content = this.ctx.content;
+    if(this.isArray(content)) return content;
+
+    var res = this.isSimple(content)?
+        { block : 'button', text : content } :
+        content;
+
+    if(res.block === 'button') {
+        var resMods = res.mods || (res.mods = {}),
+            dropdownMods = this.mods;
+        resMods.size || (resMods.size = dropdownMods.size);
+        resMods.theme || (resMods.theme = dropdownMods.theme);
+        resMods.disabled = dropdownMods.disabled;
+    }
+
+    return res;
+})

@@ -1,0 +1,12 @@
+.popup
+{
+    border: 1px solid red;
+    background: #fff;
+    padding: 10px;
+    display: none;
+}
+
+.popup_visible
+{
+    display: block;
+}

@@ -1,0 +1,20 @@
+block('dropdown')(
+    js()(true),
+
+    content()(function() {
+        var popup = this.ctx.popup;
+        (this.isSimple(popup) || popup.block !== 'popup') &&
+            (popup = { block : 'popup', content : popup });
+
+        if(popup.block === 'popup') {
+            var popupMods = popup.mods || (popup.mods = {});
+            popupMods.theme || (popupMods.theme = this.mods.theme);
+            popupMods.hasOwnProperty('autoclosable') || (popupMods.autoclosable = true);
+        }
+
+        return [
+            { elem : 'switcher', content : this.ctx.switcher },
+            popup
+        ];
+    })
+)

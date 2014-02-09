@@ -2,7 +2,7 @@
 {
     border: 1px solid red;
     background: #fff;
-    margin-left: -99999px;
+    visibility: hidden;
     padding: 10px;
     box-shadow: 0 1px 2px #999;
     animation-duration: .1s;
@@ -12,7 +12,7 @@
 
 .popup_visible
 {
-    margin-left: 0;
+    visibility: visible;
 }
 
 @for $rule in [
@@ -35,21 +35,21 @@
         0%
         {
             opacity: 1;
-            margin-left: 0;
+            visibility: visible;
             transform: translate{$rule[1]}(0);
         }
 
         99%
         {
             opacity: 0;
-            margin-left: 0;
+            visibility: visible;
             transform: translate{$rule[1]}({$rule[2]}px);
         }
 
         100%
         {
             opacity: 0;
-            margin-left: -99999px;
+            visibility: hidden;
         }
     }
 

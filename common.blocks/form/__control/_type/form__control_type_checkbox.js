@@ -12,6 +12,22 @@ BEMDOM.decl({
 
 }, {
 
+    /**
+     * Возвращает значение контрола
+     * @returns {String}
+     */
+    getVal : function() {
+
+        var control = this.getControl();
+
+        return control.hasMod('checked') ? control.getVal() : '';
+
+    },
+
+    /**
+     * Устанавливает значение контрола
+     * @param {String} val значение
+     */
     setVal : function(val) {
 
         this.getControl().setMod('checked', !!val);

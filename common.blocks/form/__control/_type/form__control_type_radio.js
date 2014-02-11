@@ -20,6 +20,12 @@ BEMDOM.decl({
                 case 'change': this.onControlChange(e, data); break;
             }
         });
+        this.liveInitOnBlockEvent('focus blur', 'radio-option', function(e, data) {
+            switch(e.type) {
+                case 'focus': this.onControlFocus(e, data); break;
+                case 'blur': this.onControlBlur(e, data); break;
+            }
+        });
 
     }
 

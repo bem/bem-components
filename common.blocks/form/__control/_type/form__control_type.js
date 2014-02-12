@@ -68,13 +68,8 @@ BEMDOM.decl({
 
     /**
      * Реакция на событие изменения значения контрола
-     * Запускает процедуру обновления формы
      */
-    onControlChange : function() {
-
-        this.runUpdate();
-
-    },
+    onControlChange : function() {},
 
     /**
      * Реакция на событие получения контролом фокуса
@@ -83,13 +78,8 @@ BEMDOM.decl({
 
     /**
      * Реакция на событие потери контролом фокуса
-     * Запускает процедуру валидации формы
      */
-    onControlBlur : function() {
-
-        this.block().validate();
-
-    }
+    onControlBlur : function() {}
 
 });
 

@@ -141,16 +141,6 @@ BEMDOM.decl('form', {
             this.delMod('locked');
         });
 
-    },
-
-    /**
-     * Валидация
-     * Форма с отключенной валидацией (без модификатора _validation) всегда валидна
-     */
-    validate : function() {
-
-        return true;
-
     }
 
 }, {

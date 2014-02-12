@@ -1,1 +1,1 @@
-block('attach').elem('icon').tag()('span')
+block('attach').elem('icon').tag()('i')

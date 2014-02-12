@@ -11,9 +11,10 @@ block('form').elem('control').elemMod('type', 'input')(
                     elemMods: this.elemMods,
                     js: ctx.js ? this._.extend(ctx.js, js) : js
                 },
-                id: ctx.id,
+                id: apply('id'),
                 name: ctx.name,
-                val: ctx.val
+                val: ctx.val,
+                label: ctx.label
             },
             input = ctx.input;
 

@@ -11,8 +11,10 @@ block('form').elem('control').elemMod('type', 'checkbox')(
                     elemMods: this.elemMods,
                     js: ctx.js ? this._.extend(ctx.js, js) : js
                 },
+                id: apply('id'),
                 name: ctx.name,
-                val: ctx.val
+                val: ctx.val,
+                text: ctx.text
             },
             checkbox = ctx.checkbox;
 

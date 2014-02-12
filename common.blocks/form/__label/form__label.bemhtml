@@ -1,0 +1,7 @@
+block('form').elem('label')(
+
+    tag()('label'),
+
+    attrs()({ 'for': this._formItemId })
+
+);

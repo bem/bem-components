@@ -98,7 +98,7 @@ BEMDOM.decl('form', {
     },
 
     /**
-     * Вызывает метод update всех контролов с модификатором _updatable_yes и генерирует событие update
+     * Вызывает метод update всех контролов с модификатором _updatable и генерирует событие update
      * Вызывается из контрола, в котором произошли изменения
      * @param {Object} data данные изменившегося контрола
      * @param {Object} data.control ссылка на инстанс контрола
@@ -108,7 +108,7 @@ BEMDOM.decl('form', {
         if(this.hasMod('locked')) return;
 
         this
-            .elemInstances('control', 'updatable', 'yes')
+            .elemInstances('control', 'updatable', true)
             .forEach(function(control) {
                 data.control === control || control.update(data);
             });

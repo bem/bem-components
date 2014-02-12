@@ -1,0 +1,22 @@
+block('form').elem('control').elemMod('type', 'button')(
+
+    def()(function() {
+        var ctx = this.ctx,
+            js = apply('js'),
+            newCtx = {
+                block: 'button',
+                mix: {
+                    block: this.block,
+                    elem: this.elem,
+                    elemMods: this.elemMods,
+                    js: ctx.js ? this._.extend(ctx.js, js) : js
+                },
+                type: ctx.type,
+                content: ctx.content
+            },
+            button = ctx.button;
+
+        applyCtx(button ? this._.extend(newCtx, button) : newCtx);
+    })
+
+);

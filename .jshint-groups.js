@@ -29,6 +29,7 @@ module.exports = {
             includes : ['*.blocks/**/*.js'],
             excludes : [
                 '**/*.i18n/*.js',
+                '**/*.bem/*.js',
                 '**/_*.js',
                 '**/*.bh.js',
                 '**/*.spec.js',
@@ -69,6 +70,18 @@ module.exports = {
                 asi : true
             },
             includes : ['*.pages/**/*.bemjson.js']
+        },
+
+        nodejs : {
+            options : {
+                node : true
+            },
+            includes : ['**/.bem/**/*.js'],
+            excludes : [
+                '.bem/cache/**',
+                'libs/**',
+                'node_modules/**'
+            ]
         }
     }
 };

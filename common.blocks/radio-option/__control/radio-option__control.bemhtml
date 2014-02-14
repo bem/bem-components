@@ -1,15 +1,19 @@
 block('radio-option').elem('control')(
     tag()('input'),
+
     attrs()(function() {
         // NOTE: don't remove autocomplete attribute, otherwise js and DOM may be desynced
-        var res = { type : 'radio', autocomplete : 'off' },
-            ctx = this.ctx;
+        var ctx = this.ctx,
+            attrs = {
+                type : 'radio',
+                autocomplete : 'off',
+                name : ctx.name,
+                value : ctx.val
+            };
 
-        res.value = ctx.val;
-        res.name = ctx.name;
-        ctx.checked && (res.checked = 'checked');
-        ctx.disabled && (res.disabled = 'disabled');
+        ctx.checked && (attrs.checked = 'checked');
+        ctx.disabled && (attrs.disabled = 'disabled');
 
-        return res;
+        return attrs;
     })
 )

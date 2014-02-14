@@ -2,9 +2,9 @@ block('input').mod('has-clear', true).elem('control')
     // TODO: подумать ещё про варианты без кастомного гарда
     .def().match(function() { return !this._input__control })(function() {
         applyCtx(
-            { '_input__control': true },
+            { '_input__control' : true },
             {
-                elem: 'box',
-                content: [this.ctx, { elem: 'clear' }]
+                elem : 'box',
+                content : [this.ctx, { elem : 'clear' }]
             })
 })

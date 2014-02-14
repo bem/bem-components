@@ -22,6 +22,7 @@
   "devDependencies": {
     "bem": "~0.7.2",
     "bem-tools-autoprefixer": "~0.0.2",
+    "bh": "~1.0.1",
     "csscomb": "~2.0.0",
     "jshint": "2.3.0",
     "jshint-groups": "0.5.4",

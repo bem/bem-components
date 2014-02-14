@@ -30,6 +30,7 @@ module.exports = {
             excludes : [
                 '**/*.i18n/*.js',
                 '**/_*.js',
+                '**/*.bh.js',
                 '**/*.spec.js',
                 '**/*.deps.js',
                 '**/*.bemjson.js'
@@ -51,6 +52,16 @@ module.exports = {
                 ]
             },
             includes : ['*.blocks/**/*.spec.js']
+        },
+
+        bhjs : {
+            options : {
+                predef : ['module']
+            },
+            includes : [
+                '*.blocks/**/*.bh.js',
+                'design/*.blocks/**/*.bh.js'
+            ]
         },
 
         bemjsonjs : {

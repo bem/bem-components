@@ -3,6 +3,7 @@
 
 .bem/cache
 .bem/snapshots
+.enb/tmp
 node_modules
 libs
 

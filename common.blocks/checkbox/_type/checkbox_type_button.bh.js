@@ -1,7 +1,7 @@
-block('checkbox').mod('type', 'button')(
-    def()(function() {
-        var ctx = this.ctx,
-            mods = this.mods,
+module.exports = function(bh) {
+
+    bh.match('checkbox_type_button', function(ctx, json) {
+        var mods = ctx.mods(),
             buttonMods = {
                 togglable : 'check',
                 checked : mods.checked,
@@ -15,21 +15,22 @@ block('checkbox').mod('type', 'button')(
                     elem : 'control',
                     checked : mods.checked,
                     disabled : mods.disabled,
-                    name : ctx.name,
-                    val : ctx.val
+                    name : json.name,
+                    val : json.val
                 },
-                ctx.icon
+                json.icon
             ];
 
-        typeof ctx.text !== 'undefined' &&
-            buttonContent.push({ elem : 'text', content : ctx.text });
+        typeof json.text !== 'undefined' &&
+            buttonContent.push({ elem : 'text', content : json.text });
 
-        applyCtx({
+        return {
             block : 'button',
-            mix : { block : 'checkbox', mods : mods, js : ctx.js || true },
+            mix : { block : 'checkbox', mods : mods, js : json.js || true },
             tag : 'label',
             mods : buttonMods,
             content : buttonContent
-        });
-    })
-)
+        };
+    });
+
+};

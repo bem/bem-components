@@ -40,9 +40,9 @@ block('button')(
 
     content()(
         function() {
-            var content = [this.ctx.icon];
-            typeof this.ctx.text !== 'undefined' &&
-                content.push({ elem : 'text', content : this.ctx.text });
+            var ctx = this.ctx, content = [this.ctx.icon];
+            // NOTE: не вынесли в отдельные шаблоны ради оптимизации
+            ctx.text && content.push({ elem : 'text', content : ctx.text });
             return content;
         },
         match(function() { return typeof this.ctx.content !== 'undefined' })(function() {

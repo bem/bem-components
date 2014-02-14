@@ -2,14 +2,14 @@ block('checkbox').elem('control')(
     tag()('input'),
 
     attrs()(function() {
-        var attrs = {};
+        // NOTE: don't remove autocomplete attribute, otherwise js and DOM may be desynced
+        var attrs = { type : 'checkbox', autocomplete : 'off' },
+            ctx = this.ctx;
 
-        attrs.type = 'checkbox';
-        attrs.name = this.ctx.name;
-        attrs.autocomplete = 'off';
-        attrs.value = this.ctx.val;
-        this.ctx.disabled && (attrs.disabled = 'disabled');
-        this.ctx.checked && (attrs.checked = 'checked');
+        attrs.name = ctx.name;
+        attrs.value = ctx.val;
+        ctx.checked && (attrs.checked = 'checked');
+        ctx.disabled && (attrs.disabled = 'disabled');
 
         return attrs;
     })

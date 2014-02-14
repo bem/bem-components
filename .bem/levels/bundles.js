@@ -1,6 +1,4 @@
-var PATH = require('path'),
-    BEM = require('bem'),
-    environ = require('bem-environ'),
+var environ = require('bem-environ'),
     BEMCORE_TECHS = environ.getLibPath('bem-core', '.bem/techs'),
     BEMPR_TECHS = environ.getLibPath('bem-pr', 'bem/techs'),
     getTechResolver = environ.getTechResolver;

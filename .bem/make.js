@@ -172,7 +172,7 @@ MAKE.decl('BundleNode', {
         }
 
         return levels
-            .map(function(path) { return resolve(path) })
+            .map(function(path) { return resolve(path); })
             .concat(resolve(PATH.dirname(this.getNodePrefix()), 'blocks'));
     },
 

@@ -40,7 +40,7 @@ exports.techMixin = {
         return defer.promise;
     },
 
-    getBuildResult : function(filteredFiles, destSuffix, output, opts) {
+    getBuildResult : function(filteredFiles, destSuffix, output) {
         return this.__base.apply(this, arguments)
             .then(function(res) {
                 var tech = new BORSCHIK_CSS_TECH.Tech({

@@ -8,19 +8,19 @@ block('attach')(
     content()(
         function() {
             var ctx = this.ctx,
-                buttonText = ctx.buttonText,
                 button = ctx.button;
 
-            button || (button = {
+            this.isSimple(button) && (button = {
                 block : 'button',
                 tag : 'span',
-                text : buttonText
+                text : button
             });
 
-            button.mods || (button.mods = {});
-            var modNames = ['size', 'theme', 'disabled'], i = 0, modName;
-            while(modName = modNames[i++])
-                button.mods[modName] || (button.mods[modName] = this.mods[modName]);
+            var attachMods = this.mods,
+                buttonMods = button.mods || (button.mods = {});
+            buttonMods['size'] || (buttonMods['size'] = attachMods['size']);
+            buttonMods['theme'] || (buttonMods['theme'] = attachMods['theme']);
+            buttonMods['disabled'] || (buttonMods['disabled'] = attachMods['disabled']);
 
             return [
                 button,

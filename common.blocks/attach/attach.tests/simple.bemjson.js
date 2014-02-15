@@ -11,13 +11,13 @@
         { tag : 'h2', content : 'default' },
         { tag : 'p', content : {
             block : 'attach',
-            buttonText : 'file',
+            button : 'file',
             noFileText : 'no file selected'
         } },
         { tag : 'p', content : {
             block : 'attach',
             mods : { disabled : true },
-            buttonText : 'file',
+            button : 'file',
             noFileText : 'no file selected'
         } },
         { tag : 'p', content : {
@@ -35,13 +35,13 @@
         { tag : 'p', content : {
             block : 'attach',
             mods : { theme : 'simple' },
-            buttonText : 'file',
+            button : 'file',
             noFileText : 'no file selected'
         } },
         { tag : 'p', content : {
             block : 'attach',
             mods : { theme : 'simple', disabled : true },
-            buttonText : 'file',
+            button : 'file',
             noFileText : 'no file selected'
         } },
         { tag : 'p', content : {

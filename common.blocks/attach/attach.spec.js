@@ -6,7 +6,7 @@ modules.define(
 describe('attach', function() {
     var attach;
     beforeEach(function() {
-        var bemJson = { block : 'attach', name : 'upload', buttonText : 'file' };
+        var bemJson = { block : 'attach', name : 'upload', button : 'file' };
         attach = BEMDOM.init($(BEMHTML.apply(bemJson)).appendTo('body'))
             .bem('attach');
 

@@ -1,9 +1,18 @@
+/**
+ * @module attach
+ */
+
 modules.define(
     { block : 'attach' },
     ['jquery', 'i-bem__dom', 'BEMHTML', 'strings__escape'],
     function(provide, $, BEMDOM, BEMHTML, escape) {
 
-provide({
+/**
+ * @exports
+ * @class attach
+ * @bem
+ */
+provide(/** @lends attach.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -57,7 +66,7 @@ provide({
      * @returns {this}
      */
     clear : function(data) {
-        if(!this.getVal()) return;
+        if(!this.getVal()) return this;
 
         var control = this.elem('control');
         BEMDOM.replace(
@@ -139,7 +148,7 @@ provide({
     _blur : function() {
         this.elem('control').blur();
     }
-}, {
+}, /** @lends attach */{
     live : function() {
         this
             .liveBindTo('control', 'focusin', function() {

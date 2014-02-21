@@ -1,4 +1,4 @@
-modules.define('i-bem__dom', ['tick', 'idle'], function(provide, tick, idle, BEMDOM) {
+modules.define({ block : 'input' }, ['tick', 'idle'], function(provide, tick, idle) {
 
 var instances = [],
     boundToTick,
@@ -25,7 +25,7 @@ var instances = [],
         }
     };
 
-BEMDOM.decl('input', {
+provide({
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -64,7 +64,5 @@ BEMDOM.decl('input', {
         }
     }
 });
-
-provide(BEMDOM);
 
 });

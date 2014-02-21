@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', ['dom'], function(provide, dom, BEMDOM) {
+modules.define({ block : 'input', modName : 'autofocus', modVal : true }, ['dom'], function(provide, dom) {
 
-BEMDOM.decl({ block : 'input', modName : 'autofocus', modVal : true }, {
+provide({
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -47,8 +47,6 @@ BEMDOM.decl({ block : 'input', modName : 'autofocus', modVal : true }, {
         }
     }
 });
-
-provide(BEMDOM);
 
 /**
  * Хелпер для определения типа нажатой клавиши

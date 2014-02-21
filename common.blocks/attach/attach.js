@@ -1,9 +1,9 @@
 modules.define(
-    'i-bem__dom',
-    ['jquery', 'BEMHTML', 'strings__escape'],
-    function(provide, $, BEMHTML, escape, BEMDOM) {
+    { block : 'attach' },
+    ['jquery', 'i-bem__dom', 'BEMHTML', 'strings__escape'],
+    function(provide, $, BEMDOM, BEMHTML, escape) {
 
-BEMDOM.decl('attach', {
+provide({
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -22,12 +22,10 @@ BEMDOM.decl('attach', {
         'focused' : {
             'true' : function() {
                 this._focused || this._focus();
-                this.emit('focus');
             },
 
             '' : function() {
                 this._focused && this._blur();
-                this.emit('blur');
             }
         },
 
@@ -158,8 +156,6 @@ BEMDOM.decl('attach', {
             });
     }
 });
-
-provide(BEMDOM);
 
 var EXTENSIONS_TO_MODS = {
     'zip'  : 'archive',

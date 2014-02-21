@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
-    function(provide, BEMDOM, $, dom, BEMHTML, sinon) {
+    ['attach', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
+    function(provide, Attach, BEMDOM, $, dom, BEMHTML, sinon) {
 
 describe('attach', function() {
     var attach;
@@ -103,27 +103,6 @@ describe('attach', function() {
                 .setMod('disabled')
                 .setMod('focused');
             attach.hasMod('focused').should.be.false;
-        });
-
-        it('should emit focus event after focused', function() {
-            var spy = sinon.spy();
-
-            attach
-                .on('focus', spy)
-                .setMod('focused');
-
-            spy.should.have.been.calledOnce;
-        });
-
-        it('should emit blur event after blured', function() {
-            var spy = sinon.spy();
-
-            attach
-                .on('blur', spy)
-                .setMod('focused')
-                .delMod('focused');
-
-            spy.should.have.been.calledOnce;
         });
     });
 

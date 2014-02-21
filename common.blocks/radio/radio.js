@@ -1,8 +1,11 @@
-modules.define('i-bem__dom', ['jquery', 'dom'], function(provide, $, dom, BEMDOM) {
+modules.define(
+    { block : 'radio' },
+    ['jquery', 'dom', 'radio-option'],
+    function(provide, $, dom) {
 
 var undef;
 
-BEMDOM.decl('radio', {
+provide({
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -103,7 +106,7 @@ BEMDOM.decl('radio', {
 
     /**
      * Returns options
-     * @returns {BEM.blocks['radio-option'][]}
+     * @returns {radio-option[]}
      */
     getOptions : function() {
         return this._options || (this._options = this.findBlocksInside('radio-option'));
@@ -111,7 +114,7 @@ BEMDOM.decl('radio', {
 
     /**
      * Returns checked option
-     * @returns {BEM.blocks['radio-option']|undefined}
+     * @returns {radio-option[]|undefined}
      */
     getCheckedOption : function() {
         return this._getOptionByVal(this._val);
@@ -154,7 +157,7 @@ BEMDOM.decl('radio', {
 }, {
     live : function() {
         this
-            .liveInitOnBlockInsideEvent('check', 'radio-option', function(e) {
+            .liveInitOnBlockInsideEvent({ modName : 'checked', modVal : true }, 'radio-option', function(e) {
                 this._onOptionCheck(e.target);
             })
             .liveBindTo('focusin', function() {
@@ -165,7 +168,5 @@ BEMDOM.decl('radio', {
             });
     }
 });
-
-provide(BEMDOM);
 
 });

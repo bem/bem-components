@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define({ block : 'button', modName : 'type', modVal : 'link' }, function(provide) {
 
-BEMDOM.decl({ block : 'button', modName : 'type', modVal : 'link' }, {
+provide({
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -47,7 +47,5 @@ BEMDOM.decl({ block : 'button', modName : 'type', modVal : 'link' }, {
         this._url && (document.location = this._url);
     }
 });
-
-provide(BEMDOM);
 
 });

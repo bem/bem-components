@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, BEMDOM, $, BEMHTML) {
+    ['button', 'i-bem__dom', 'jquery', 'BEMHTML'],
+    function(provide, Button, BEMDOM, $, BEMHTML) {
 
 describe('button', function() {
     var button;

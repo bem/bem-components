@@ -1,9 +1,9 @@
 modules.define(
-    'i-bem__dom',
+    { block : 'button' },
     ['jquery', 'dom'],
-    function(provide, $, dom, BEMDOM) {
+    function(provide, $, dom) {
 
-BEMDOM.decl('button', {
+provide({
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -32,16 +32,12 @@ BEMDOM.decl('button', {
         'focused' : {
             'true' : function() {
                 this.bindToWin('unload', this._onUnload); // TODO: выяснить и написать зачем это
-
                 this._focused || this._focus();
-                this.emit('focus');
             },
 
             '' : function() {
                 this.unbindFromWin('unload', this._onUnload);
-
                 this._focused && this._blur();
-                this.emit('blur');
             }
         },
 
@@ -125,7 +121,5 @@ BEMDOM.decl('button', {
             });
     }
 });
-
-provide(BEMDOM);
 
 });

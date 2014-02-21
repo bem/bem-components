@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'jquery', 'dom', 'BEMHTML'],
-    function(provide, BEMDOM, $, dom, BEMHTML) {
+    ['checkbox', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML'],
+    function(provide, Checkbox, BEMDOM, $, dom, BEMHTML) {
 
 describe('checkbox_type_button', function() {
     var checkbox;

@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', ['jquery'], function(provide, $, BEMDOM) {
+modules.define({ block : 'checkbox' }, function(provide) {
 
-BEMDOM.decl('checkbox', {
+provide({
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -28,12 +28,10 @@ BEMDOM.decl('checkbox', {
         'focused' : {
             'true' : function() {
                 this._focused || this._focus();
-                this.emit('focus');
             },
 
             '' : function() {
                 this._focused && this._blur();
-                this.emit('blur');
             }
         }
     },
@@ -89,7 +87,5 @@ BEMDOM.decl('checkbox', {
             });
     }
 });
-
-provide(BEMDOM);
 
 });

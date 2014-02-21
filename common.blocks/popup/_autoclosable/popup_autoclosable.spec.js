@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'jquery', 'BEMHTML', 'next-tick'],
-    function(provide, BEMDOM, $, BEMHTML, nextTick) {
+    ['popup', 'i-bem__dom', 'jquery', 'BEMHTML', 'next-tick'],
+    function(provide, Popup, BEMDOM, $, BEMHTML, nextTick) {
 
 describe('popup_autoclosable', function() {
     var rootDomElem;

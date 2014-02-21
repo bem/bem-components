@@ -1,11 +1,11 @@
 /**
- * @module i-bem__dom
+ * @module popup
  */
 
 modules.define(
-    'i-bem__dom',
-    ['jquery', 'dom', 'functions', 'functions__throttle'],
-    function(provide, $, dom, functions, throttle, BEMDOM) {
+    { block : 'popup' },
+    ['jquery', 'i-bem__dom', 'dom', 'functions', 'functions__throttle'],
+    function(provide, $, BEMDOM, dom, functions, throttle) {
 
 var VIEWPORT_ACCURACY_FACTOR = 0.99,
     DEFAULT_OFFSETS = [5, 0],
@@ -31,7 +31,7 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
  *
  * @bemmod visible Represents visible state
  */
-BEMDOM.decl('popup', /** @lends popup.prototype */{
+provide(/** @lends popup.prototype */{
     beforeSetMod : {
         'visible' : {
             'true' : function() {
@@ -77,8 +77,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
                     .bindTo('pointerclick', this._onPointerClick)
                     ._bindToParentPopup()
                     ._bindToScrollAndResize()
-                    .redraw()
-                    .emit('show');
+                    .redraw();
             },
 
             '' : function() {
@@ -86,8 +85,7 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
                 this
                     .unbindFrom('pointerclick', this._onPointerClick)
                     ._unbindFromParentPopup()
-                    ._unbindFromScrollAndResize()
-                    .emit('hide');
+                    ._unbindFromScrollAndResize();
             }
         }
     },
@@ -336,13 +334,13 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
 
     _bindToParentPopup : function() {
         this._parentPopup &&
-            this._parentPopup.on('hide', this._onParentPopupHide, this);
+            this._parentPopup.on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
         return this;
     },
 
     _unbindFromParentPopup : function() {
         this._parentPopup &&
-            this._parentPopup.un('hide', this._onParentPopupHide, this);
+            this._parentPopup.un({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
         return this;
     },
 
@@ -352,13 +350,13 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
 
     _bindToPopupOwner : function() {
         this._popupOwner &&
-            this._popupOwner.on('destruct', this._onPopupOwnerDestruct, this);
+            this._popupOwner.on({ modName : 'js', modVal : '' }, this._onPopupOwnerDestruct, this);
         return this;
     },
 
     _unbindFromPopupOwner : function() {
         this._popupOwner &&
-            this._popupOwner.un('destruct', this._onPopupOwnerDestruct, this);
+            this._popupOwner.un({ modName : 'js', modVal : '' }, this._onPopupOwnerDestruct, this);
         return this;
     },
 
@@ -375,8 +373,6 @@ BEMDOM.decl('popup', /** @lends popup.prototype */{
 }, /** @lends popup */{
     live : true
 });
-
-provide(BEMDOM);
 
 var visiblePopupsZIndexes = [BASE_ZINDEX];
 

@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
-    function(provide, BEMDOM, $, BEMHTML, sinon) {
+    ['link', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, Link, BEMDOM, $, BEMHTML, sinon) {
 
 describe('link', function() {
     var link;

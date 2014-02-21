@@ -1,13 +1,13 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, DOM, $, BEMHTML) {
+    ['link', 'i-bem__dom', 'jquery', 'BEMHTML'],
+    function(provide, Link, BEMDOM, $, BEMHTML) {
 
 describe('link_pseudo', function() {
     var link;
 
     beforeEach(function() {
-        link = DOM.init(
+        link = BEMDOM.init(
                 $(BEMHTML.apply({
                     block : 'link',
                     mods : { pseudo : true }
@@ -17,7 +17,7 @@ describe('link_pseudo', function() {
     });
 
     afterEach(function() {
-        DOM.destruct(link.domElem);
+        BEMDOM.destruct(link.domElem);
     });
 
     it('should always prevent default action', function() {

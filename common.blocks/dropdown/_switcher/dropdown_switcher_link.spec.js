@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, BEMDOM, $, BEMHTML) {
+    ['dropdown', 'i-bem__dom', 'jquery', 'BEMHTML'],
+    function(provide, Dropdown, BEMDOM, $, BEMHTML) {
 
 describe('dropdown', function() {
     var body = $('body'),

@@ -1,17 +1,17 @@
 /**
- * @module i-bem__dom
+ * @module dropdown
  */
 
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define({ block : 'dropdown' }, ['popup'], function(provide) {
 
 /**
- * @exports i-bem__dom:blocks.dropdown
+ * @exports
  * @class dropdown
  * @bem
  *
  * @bemmod opened Represents opened state
  */
-BEMDOM.decl('dropdown', /** @lends dropdown.prototype */{
+provide(/** @lends dropdown.prototype */{
     beforeSetMod : {
         'opened' : {
             'true' : function() {
@@ -30,7 +30,6 @@ BEMDOM.decl('dropdown', /** @lends dropdown.prototype */{
 
         'opened' : function(_, modVal) {
             this.getPopup().setMod('visible', modVal);
-            this.emit(modVal? 'open' : 'close');
         },
 
         'disabled' : {
@@ -46,13 +45,13 @@ BEMDOM.decl('dropdown', /** @lends dropdown.prototype */{
 
     /**
      * Returns popup
-     * @returns {i-bem__dom:blocks.popup}
+     * @returns {popup}
      */
     getPopup : function() {
         return this._popup ||
             (this._popup = this.findBlockInside('popup')
                 .setTarget(this.getSwitcher())
-                .on('show hide', this._onPopupVisibilityChange, this));
+                .on({ modName : 'visible', modVal : '*' }, this._onPopupVisibilityChange, this));
     },
 
     /**
@@ -64,8 +63,8 @@ BEMDOM.decl('dropdown', /** @lends dropdown.prototype */{
             (this._switcher = this.findBlockInside(this.getMod('switcher')));
     },
 
-    _onPopupVisibilityChange : function() {
-        this.setMod('opened', this.getPopup().getMod('visible'));
+    _onPopupVisibilityChange : function(_, data) {
+        this.setMod('opened', data.modVal);
     }
 }, /** @lends dropdown */{
     live : true,
@@ -80,7 +79,5 @@ BEMDOM.decl('dropdown', /** @lends dropdown.prototype */{
         this.toggleMod('opened');
     }
 });
-
-provide(BEMDOM);
 
 });

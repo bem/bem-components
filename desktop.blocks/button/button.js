@@ -1,9 +1,12 @@
-modules.define('i-bem__dom', ['functions'], function(provide, functions, BEMDOM) {
+modules.define(
+    { block : 'button' },
+    ['functions'],
+    function(provide, functions) {
 
 var KEY_CODE_SPACE = 32,
     KEY_CODE_ENTER = 13;
 
-BEMDOM.decl('button', {
+provide({
     beforeSetMod : {
         'hovered' : {
             'true' : function() {
@@ -81,7 +84,5 @@ BEMDOM.decl('button', {
         return this.__base.apply(this, arguments);
     }
 });
-
-provide(BEMDOM);
 
 });

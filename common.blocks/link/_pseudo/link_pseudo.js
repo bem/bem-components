@@ -1,12 +1,10 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define({ block : 'link', modName : 'pseudo', modVal : true }, function(provide) {
 
-BEMDOM.decl({ block : 'link', modName : 'pseudo', modVal : true }, {
+provide({
     _onClick : function(e) {
         e.preventDefault();
         this.__base.apply(this, arguments);
     }
 });
-
-provide(BEMDOM);
 
 });

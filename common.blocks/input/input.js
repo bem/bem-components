@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', ['dom'], function(provide, dom, BEMDOM) {
+modules.define({ block : 'input' }, ['dom'], function(provide, dom) {
 
-BEMDOM.decl('input', {
+provide({
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -18,9 +18,9 @@ BEMDOM.decl('input', {
                 this._focused = dom.containsFocus(control);
 
                 this._focused?
-                    // if control already in focus we need to set focused mod
+                    // if control is already in focus, we need to set focused mod
                     this.setMod('focused') :
-                    // if block already has focused mod we need to focus control
+                    // if block already has focused mod, we need to focus control
                     this.hasMod('focused') && this._focus();
             }
         },
@@ -28,12 +28,10 @@ BEMDOM.decl('input', {
         'focused' : {
             'true' : function() {
                 this._focused || this._focus();
-                this.emit('focus');
             },
 
             '' : function() {
                 this._focused && this._blur();
-                this.emit('blur');
             }
         },
 
@@ -106,7 +104,5 @@ BEMDOM.decl('input', {
         return false;
     }
 });
-
-provide(BEMDOM);
 
 });

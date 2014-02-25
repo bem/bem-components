@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'chai', 'jquery', 'BEMHTML'],
-    function(provide, BEMDOM, chai, $, BEMHTML) {
+    ['button', 'i-bem__dom', 'chai', 'jquery', 'BEMHTML'],
+    function(provide, Button, BEMDOM, chai, $, BEMHTML) {
 
 var expect = chai.expect;
 

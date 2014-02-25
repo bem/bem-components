@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', ['jquery'], function(provide, $, BEMDOM) {
+modules.define({ block : 'radio-option' }, function(provide) {
 
-BEMDOM.decl('radio-option', {
+provide({
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -18,7 +18,6 @@ BEMDOM.decl('radio-option', {
 
         'checked' : function(modName, modVal) {
             this.elem('control').prop(modName, modVal);
-            modVal && this.emit('check');
         },
 
         'disabled' : function(modName, modVal) {
@@ -28,12 +27,10 @@ BEMDOM.decl('radio-option', {
         'focused' : {
             'true' : function() {
                 this._focused || this._focus();
-                this.emit('focus');
             },
 
             '' : function() {
                 this._focused && this._blur();
-                this.emit('blur');
             }
         }
     },
@@ -89,7 +86,5 @@ BEMDOM.decl('radio-option', {
             });
     }
 });
-
-provide(BEMDOM);
 
 });

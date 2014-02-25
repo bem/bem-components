@@ -1,9 +1,12 @@
-modules.define('spec', ['i-bem__dom', 'jquery', 'BEMHTML'], function(provide, DOM, $, BEMHTML) {
+modules.define(
+    'spec',
+    ['input', 'i-bem__dom', 'jquery', 'BEMHTML'],
+    function(provide, Input, BEMDOM, $, BEMHTML) {
 
 describe('input_has-clear', function() {
     var input;
     afterEach(function() {
-        DOM.destruct(input.domElem);
+        BEMDOM.destruct(input.domElem);
     });
 
     it('should be focused on box click', function() {
@@ -14,7 +17,7 @@ describe('input_has-clear', function() {
 });
 
 function buildInput(val) {
-    return DOM.init(
+    return BEMDOM.init(
             $(BEMHTML.apply({
                 block : 'input',
                 mods : { 'has-clear' : true },

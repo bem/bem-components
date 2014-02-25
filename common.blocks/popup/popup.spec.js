@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, BEMDOM, $, BEMHTML) {
+    ['popup', 'i-bem__dom', 'jquery', 'BEMHTML'],
+    function(provide, Popup, BEMDOM, $, BEMHTML) {
 
 describe('popup', function() {
     var popup, popupDomElem, popupParentDomElem, popupOwnerDomElem,
@@ -232,22 +232,6 @@ describe('popup', function() {
             BEMDOM.destruct(popupOwnerDomElem);
 
             popup.hasMod('js').should.be.false;
-        });
-    });
-
-    describe('events', function() {
-        it('should emit "show"/"hide" event on visibility changing', function(done) {
-            var events = [];
-            popup
-                .on('show hide', function(e) {
-                    if(events.push(e.type) === 2) {
-                        events.should.be.eql(['show', 'hide']);
-                        done();
-                    }
-                })
-                .setTarget(0, 0)
-                .setMod('visible')
-                .delMod('visible');
         });
     });
 });

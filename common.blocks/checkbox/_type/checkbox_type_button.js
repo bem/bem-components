@@ -1,6 +1,8 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define(
+    { block : 'checkbox', modName : 'type', modVal : 'button' },
+    function(provide) {
 
-BEMDOM.decl({ block : 'checkbox', modName : 'type', modVal : 'button' }, {
+provide({
     onSetMod : {
         'checked' : proxyMod,
         'disabled' : proxyMod
@@ -15,7 +17,5 @@ function proxyMod(modName, modVal) {
     this._getButton().setMod(modName, modVal);
     this.__base.apply(this, arguments);
 }
-
-provide(BEMDOM);
 
 });

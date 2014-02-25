@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
-    function(provide, BEMDOM, $, dom, BEMHTML, sinon) {
+    ['button', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
+    function(provide, Button, BEMDOM, $, dom, BEMHTML, sinon) {
 
 describe('button', function() {
     var button;
@@ -38,27 +38,6 @@ describe('button', function() {
                 .setMod('disabled')
                 .setMod('focused');
             button.hasMod('focused').should.be.false;
-        });
-
-        it('should emit focus event after focused', function() {
-            var spy = sinon.spy();
-
-            button
-                .on('focus', spy)
-                .setMod('focused');
-
-            spy.should.have.been.calledOnce;
-        });
-
-        it('should emit blur event after blured', function() {
-            var spy = sinon.spy();
-
-            button
-                .on('blur', spy)
-                .setMod('focused')
-                .delMod('focused');
-
-            spy.should.have.been.calledOnce;
         });
     });
 

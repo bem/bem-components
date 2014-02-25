@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
-    function(provide, BEMDOM, $, dom, BEMHTML, sinon) {
+    ['radio-option', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML'],
+    function(provide, RadioOption, BEMDOM, $, dom, BEMHTML) {
 
 describe('radio-option', function() {
     var radioOption;
@@ -52,16 +52,6 @@ describe('radio-option', function() {
             radioOption.domElem.trigger('pointerclick');
             radioOption.hasMod('checked').should.be.false;
         });
-
-        it('should trigger "check" event while set "checked" mod', function() {
-            var spy = sinon.spy();
-
-            radioOption
-                .on('check', spy)
-                .setMod('checked');
-
-            spy.should.have.been.calledOnce;
-        });
     });
 
     describe('disabled', function() {
@@ -106,27 +96,6 @@ describe('radio-option', function() {
                 .setMod('focused')
                 .delMod('focused');
             dom.containsFocus(radioOption.elem('control')).should.be.false;
-        });
-
-        it('should emit "focus" event after focused', function() {
-            var spy = sinon.spy();
-
-            radioOption
-                .on('focus', spy)
-                .setMod('focused');
-
-            spy.should.have.been.calledOnce;
-        });
-
-        it('should emit "blur" event after blured', function() {
-            var spy = sinon.spy();
-
-            radioOption
-                .on('blur', spy)
-                .setMod('focused')
-                .delMod('focused');
-
-            spy.should.have.been.calledOnce;
         });
     });
 });

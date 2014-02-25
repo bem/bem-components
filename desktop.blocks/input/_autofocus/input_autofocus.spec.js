@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, BEMDOM, $, BEMHTML) {
+    ['input', 'i-bem__dom', 'jquery', 'BEMHTML'],
+    function(provide, Input, BEMDOM, $, BEMHTML) {
 
 describe('input_autofocus', function() {
     var input;

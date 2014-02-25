@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define({ block : 'input', modName : 'has-clear', modVal : true }, function(provide) {
 
-BEMDOM.decl({ block : 'input', modName : 'has-clear', modVal : true }, {
+provide({
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -31,7 +31,5 @@ BEMDOM.decl({ block : 'input', modName : 'has-clear', modVal : true }, {
         return this.__base.apply(this, arguments);
     }
 });
-
-provide(BEMDOM);
 
 });

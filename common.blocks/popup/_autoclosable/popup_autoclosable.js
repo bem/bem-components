@@ -1,8 +1,11 @@
 /**
- * @module i-bem__dom
+ * @module popup
  */
 
-modules.define('i-bem__dom', ['jquery', 'ua', 'dom'], function(provide, $, ua, dom, BEMDOM) {
+modules.define(
+    { block : 'popup', modName : 'autoclosable', modVal : true },
+    ['jquery', 'i-bem__dom', 'ua', 'dom'],
+    function(provide, $, BEMDOM, ua, dom) {
 
 var KEYDOWN_EVENT = (ua.opera && ua.version < 12.10)? 'keypress' : 'keydown',
     visiblePopupsStack = [];
@@ -12,7 +15,7 @@ var KEYDOWN_EVENT = (ua.opera && ua.version < 12.10)? 'keypress' : 'keydown',
  * @class popup
  * @bem
  */
-BEMDOM.decl({ block : 'popup', modName : 'autoclosable', modVal : true }, /** @lends popup.prototype */{
+provide(/** @lends popup.prototype */{
     onSetMod : {
         'visible' : {
             'true' : function() {
@@ -53,7 +56,5 @@ function onDocKeyDown(e) {
         visiblePopupsStack.length &&
             visiblePopupsStack[0].delMod('visible');
 }
-
-provide(BEMDOM);
 
 });

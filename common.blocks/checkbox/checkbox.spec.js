@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
-    function(provide, BEMDOM, $, dom, BEMHTML, sinon) {
+    ['checkbox', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
+    function(provide, Checkbox, BEMDOM, $, dom, BEMHTML, sinon) {
 
 describe('checkbox', function() {
     var checkbox;
@@ -107,27 +107,6 @@ describe('checkbox', function() {
                 .setMod('focused')
                 .delMod('focused');
             dom.containsFocus(checkbox.elem('control')).should.be.false;
-        });
-
-        it('should emit "focus" event after focused', function() {
-            var spy = sinon.spy();
-
-            checkbox
-                .on('focus', spy)
-                .setMod('focused');
-
-            spy.should.have.been.calledOnce;
-        });
-
-        it('should emit "blur" event after blured', function() {
-            var spy = sinon.spy();
-
-            checkbox
-                .on('blur', spy)
-                .setMod('focused')
-                .delMod('focused');
-
-            spy.should.have.been.calledOnce;
         });
     });
 });

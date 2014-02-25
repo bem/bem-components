@@ -1,0 +1,13 @@
+block('dropdown').mod('switcher', 'link').elem('switcher').content()(function() {
+    var content = this.ctx.content;
+    if(this.isArray(content)) return content;
+
+    var res = this.isSimple(content)?
+        { block : 'link', mods : { pseudo : true }, content : content } :
+        content;
+
+    res.block === 'link' &&
+        ((res.mods || (res.mods = {})).disabled = this.mods.disabled);
+
+    return res;
+})

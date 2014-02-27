@@ -1,0 +1,3 @@
+block('menu-item').js()(function() {
+    return { val : this.ctx.val }
+})

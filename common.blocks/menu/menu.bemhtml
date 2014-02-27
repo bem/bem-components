@@ -1,0 +1,4 @@
+block('menu')(
+    attrs()({ tabindex : 0 }),
+    js()(true)
+)

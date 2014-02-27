@@ -1,0 +1,6 @@
+block('menu').elem('group').elemMod('has-title', true).content()(function() {
+    return [
+        { elem : 'group-title', content : this.ctx.title },
+        applyNext()
+    ]
+})

@@ -1,5 +1,10 @@
 [{
-    mustDeps : { block : 'i-bem', elems : ['dom'] }
+    mustDeps : { block : 'i-bem', elems : ['dom'] },
+    shouldDeps: [
+        'dom',
+        'next-tick',
+        { mods : { focused: true } }
+    ]
 },
 {
     tech : 'spec.js',

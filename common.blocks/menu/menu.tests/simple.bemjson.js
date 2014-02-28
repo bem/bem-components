@@ -12,22 +12,26 @@
             content : [
                 {
                     block : 'menu',
-                    mods : { select : 'radio' },
+                    mods : { select : 'radio', focused : true },
                     content : [
                         {
                             block : 'menu-item',
+                            val : 1,
                             content : 'item 1'
                         },
                         {
                             block : 'menu-item',
+                            val : 2,
                             content : 'item 2'
                         },
                         {
                             block : 'menu-item',
+                            val : 3,
                             content : 'item 3'
                         },
                         {
                             block : 'menu-item',
+                            val : 4,
                             content : 'item 4'
                         }
                     ]

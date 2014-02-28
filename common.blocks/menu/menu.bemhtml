@@ -1,1 +1,4 @@
-block('menu').js()(true)
+block('menu')(
+    attrs()({ tabindex : 0 }),
+    js()(true)
+)

@@ -26,6 +26,7 @@
                         },
                         {
                             block : 'menu-item',
+                            mods : { disabled : true },
                             val : 3,
                             content : 'item 3'
                         },

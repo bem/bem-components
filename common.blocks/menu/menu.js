@@ -2,7 +2,10 @@
  * @module menu
  */
 
-modules.define({ block : 'menu' }, ['dom', 'next-tick'], function(provide, dom, nextTick) {
+modules.define(
+    { block : 'menu' },
+    ['dom', 'next-tick', 'i-bem__dom'],
+    function(provide, dom, nextTick, BEMDOM) {
 
 /**
  * @exports
@@ -24,14 +27,14 @@ provide(/** @lends menu.prototype */{
                 this._hoveredItem = null;
                 this._items = null;
 
+                this.hasMod('focused') && this.bindTo('keydown', this._onKeyDown);
+
                 this._focused = dom.containsFocus(this.domElem);
                 this._focused?
                     // if control is already in focus, we need to set focused mod
                     this.setMod('focused') :
                     // if block already has focused mod, we need to focus control
                     this.hasMod('focused') && this._focus();
-
-                this.hasMod('focused') && this.bindTo('keydown', this._onKeyDown);
             },
 
             '' : function() {
@@ -72,8 +75,8 @@ provide(/** @lends menu.prototype */{
     },
 
     _onItemHover : function(item) {
-        console.log('!!!!!!', item.hasMod('hovered'));
         if(item.hasMod('hovered')) {
+            this._hoveredItem && this._hoveredItem.delMod('hovered');
             this._hoveredItem = item;
         } else if(this._hoveredItem === item) {
             this._hoveredItem = null;
@@ -96,17 +99,12 @@ provide(/** @lends menu.prototype */{
                 nextIdx = hoveredIdx,
                 i = 0;
 
-                console.log('start', this._hoveredItem, hoveredIdx, dir);
             do {
                 nextIdx += dir;
                 nextIdx = nextIdx < 0? len - 1 : nextIdx >= len? 0 : nextIdx;
-                console.log('tick', i, nextIdx);
                 if(++i === len) return; // if we have no next item to hover
             } while(items[nextIdx].hasMod('disabled'));
 
-            console.log('finish', nextIdx);
-
-            this._hoveredItem && this._hoveredItem.delMod('hovered');
             items[nextIdx].setMod('hovered');
         }
     },
@@ -132,8 +130,6 @@ provide(/** @lends menu.prototype */{
     live : function() {
         this
             .liveInitOnBlockInsideEvent({ modName : 'hovered', modVal : '*' }, 'menu-item', function(e) {
-                console.log('live hovered', arguments);
-                console.log('item.hasMod', e.target.hasMod('hovered'));
                 this._onItemHover(e.target);
             })
             .liveInitOnBlockInsideEvent({ modName : 'checked', modVal : true }, 'menu-item', function(e) {

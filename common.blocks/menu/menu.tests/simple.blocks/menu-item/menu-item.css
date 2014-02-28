@@ -2,3 +2,8 @@
 {
     background-color: pink;
 }
+
+.menu-item_disabled
+{
+    color: #ccc;
+}

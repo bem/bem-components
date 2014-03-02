@@ -67,7 +67,7 @@
                             content : [
                                 {
                                     block : 'attach',
-                                    buttonText : 'file',
+                                    button : 'file',
                                     noFileText : 'no file selected'
                                 },
                                 { tag : 'br' },
@@ -87,7 +87,7 @@
                                 {
                                     block : 'attach',
                                     mods : { theme : 'simple' },
-                                    buttonText : 'file',
+                                    button : 'file',
                                     noFileText : 'no file selected'
                                 },
                                 { tag : 'br' },

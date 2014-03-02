@@ -1,5 +1,5 @@
 html,
 body
 {
-    height: 100%;
+    height: 100%;  /* NOTE: touch devices need this to work properly */
 }

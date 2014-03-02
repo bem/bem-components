@@ -1,6 +1,6 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define({ block : 'test' }, ['link', 'popup'], function(provide) {
 
-BEMDOM.decl('test', {
+provide({
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -24,7 +24,5 @@ BEMDOM.decl('test', {
         }
     }
 });
-
-provide(BEMDOM);
 
 });

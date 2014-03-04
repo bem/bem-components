@@ -18,6 +18,11 @@
     text-align: center;
     white-space: nowrap;
 
+    &:hover
+    {
+        cursor: pointer;
+    }
+
     &::-moz-focus-inner
     {
         padding: 0;
@@ -28,6 +33,8 @@
     .button__text,
     .button__icon
     {
+        position: relative; /* для того, чтобы в Опере и IE9 не было сдвига текста при pressed */
+
         display: inline-block;
     }
 

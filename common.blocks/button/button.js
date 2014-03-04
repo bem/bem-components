@@ -1,9 +1,9 @@
 modules.define(
-    { block : 'button' },
-    ['jquery', 'dom'],
-    function(provide, $, dom) {
+    'button',
+    ['i-bem__dom', 'jquery', 'dom'],
+    function(provide, BEMDOM, $, dom) {
 
-provide({
+provide(BEMDOM.decl(this.name, {
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -120,6 +120,6 @@ provide({
                 this._onPointerClick(e);
             });
     }
-});
+}));
 
 });

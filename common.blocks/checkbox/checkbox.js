@@ -1,6 +1,6 @@
-modules.define({ block : 'checkbox' }, function(provide) {
+modules.define('checkbox', ['i-bem__dom'], function(provide, BEMDOM) {
 
-provide({
+provide(BEMDOM.decl(this.name, {
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -86,6 +86,6 @@ provide({
                 this._onChange();
             });
     }
-});
+}));
 
 });

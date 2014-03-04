@@ -1,10 +1,10 @@
-modules.define({ block : 'link', modName : 'pseudo', modVal : true }, function(provide) {
+modules.define('link', function(provide, Link) {
 
-provide({
+provide(Link.decl({ modName : 'pseudo', modVal : true }, {
     _onClick : function(e) {
         e.preventDefault();
         this.__base.apply(this, arguments);
     }
-});
+}));
 
 });

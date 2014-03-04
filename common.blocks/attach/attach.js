@@ -3,16 +3,16 @@
  */
 
 modules.define(
-    { block : 'attach' },
-    ['jquery', 'i-bem__dom', 'BEMHTML', 'strings__escape'],
-    function(provide, $, BEMDOM, BEMHTML, escape) {
+    'attach',
+    ['i-bem__dom', 'jquery', 'BEMHTML', 'strings__escape'],
+    function(provide, BEMDOM, $, BEMHTML, escape) {
 
 /**
  * @exports
  * @class attach
  * @bem
  */
-provide(/** @lends attach.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends attach.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -164,7 +164,7 @@ provide(/** @lends attach.prototype */{
                 this._onChange();
             });
     }
-});
+}));
 
 var EXTENSIONS_TO_MODS = {
     'zip'  : 'archive',

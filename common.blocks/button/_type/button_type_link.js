@@ -1,6 +1,6 @@
-modules.define({ block : 'button', modName : 'type', modVal : 'link' }, function(provide) {
+modules.define('button', function(provide, Button) {
 
-provide({
+provide(Button.decl({ modName : 'type', modVal : 'link' }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -46,6 +46,6 @@ provide({
     _doAction : function() {
         this._url && (document.location = this._url);
     }
-});
+}));
 
 });

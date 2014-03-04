@@ -1,12 +1,9 @@
-modules.define(
-    { block : 'button' },
-    ['functions'],
-    function(provide, functions) {
+modules.define('button', ['functions'], function(provide, functions, Button) {
 
 var KEY_CODE_SPACE = 32,
     KEY_CODE_ENTER = 13;
 
-provide({
+provide(Button.decl({
     beforeSetMod : {
         'hovered' : {
             'true' : function() {
@@ -83,6 +80,6 @@ provide({
 
         return this.__base.apply(this, arguments);
     }
-});
+}));
 
 });

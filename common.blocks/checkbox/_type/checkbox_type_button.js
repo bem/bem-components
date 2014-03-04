@@ -1,8 +1,6 @@
-modules.define(
-    { block : 'checkbox', modName : 'type', modVal : 'button' },
-    function(provide) {
+modules.define('checkbox', function(provide, Checkbox) {
 
-provide({
+provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, {
     onSetMod : {
         'checked' : proxyMod,
         'disabled' : proxyMod
@@ -11,7 +9,7 @@ provide({
     _getButton : function() {
         return this.findBlockOn('button');
     }
-});
+}));
 
 function proxyMod(modName, modVal) {
     this._getButton().setMod(modName, modVal);

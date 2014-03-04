@@ -2,7 +2,10 @@
  * @module dropdown
  */
 
-modules.define({ block : 'dropdown' }, ['popup'], function(provide) {
+modules.define(
+    'dropdown',
+    ['i-bem__dom', 'popup'],
+    function(provide, BEMDOM) {
 
 /**
  * @exports
@@ -11,7 +14,7 @@ modules.define({ block : 'dropdown' }, ['popup'], function(provide) {
  *
  * @bemmod opened Represents opened state
  */
-provide(/** @lends dropdown.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends dropdown.prototype */{
     beforeSetMod : {
         'opened' : {
             'true' : function() {
@@ -78,6 +81,6 @@ provide(/** @lends dropdown.prototype */{
         this._switcher || (this._switcher = e.target);
         this.toggleMod('opened');
     }
-});
+}));
 
 });

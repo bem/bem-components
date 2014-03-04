@@ -1,6 +1,6 @@
-modules.define({ block : 'input' }, function(provide) {
+modules.define('input', function(provide, Input) {
 
-provide({
+provide(Input.decl({
     _onInputChanged : function() {
         this.setVal(this.elem('control').val());
     }
@@ -12,6 +12,6 @@ provide({
 
         return this.__base.apply(this, arguments);
     }
-});
+}));
 
 });

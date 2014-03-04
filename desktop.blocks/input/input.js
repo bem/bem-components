@@ -1,4 +1,4 @@
-modules.define({ block : 'input' }, ['tick', 'idle'], function(provide, tick, idle) {
+modules.define('input', ['tick', 'idle'], function(provide, tick, idle, Input) {
 
 var instances = [],
     boundToTick,
@@ -25,7 +25,7 @@ var instances = [],
         }
     };
 
-provide({
+provide(Input.decl({
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -63,6 +63,6 @@ provide({
             input.focus();
         }
     }
-});
+}));
 
 });

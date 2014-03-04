@@ -2,17 +2,14 @@
  * @module dropdown
  */
 
-modules.define(
-    { block : 'dropdown', modName : 'switcher', modVal : 'button' },
-    ['button'],
-    function(provide) {
+modules.define('dropdown', ['button'], function(provide, _, Dropdown) {
 
 /**
  * @exports
  * @class dropdown
  * @bem
  */
-provide(/** @lends dropdown.prototype */{
+provide(Dropdown.decl({ modName : 'switcher', modVal : 'button' }, /** @lends dropdown.prototype */{
     onSetMod : {
         'opened' : function(_, modVal) {
             this.__base.apply(this, arguments);
@@ -25,6 +22,6 @@ provide(/** @lends dropdown.prototype */{
         this.liveInitOnBlockInsideEvent('click', 'button', this.onSwitcherClick);
         return this.__base.apply(this, arguments);
     }
-});
+}));
 
 });

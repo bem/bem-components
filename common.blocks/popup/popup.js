@@ -3,9 +3,9 @@
  */
 
 modules.define(
-    { block : 'popup' },
-    ['jquery', 'i-bem__dom', 'dom', 'functions', 'functions__throttle'],
-    function(provide, $, BEMDOM, dom, functions, throttle) {
+    'popup',
+    ['i-bem__dom', 'jquery', 'dom', 'functions', 'functions__throttle'],
+    function(provide, BEMDOM, $, dom, functions, throttle) {
 
 var VIEWPORT_ACCURACY_FACTOR = 0.99,
     DEFAULT_OFFSETS = [5, 0],
@@ -31,7 +31,7 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
  *
  * @bemmod visible Represents visible state
  */
-provide(/** @lends popup.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     beforeSetMod : {
         'visible' : {
             'true' : function() {
@@ -372,7 +372,7 @@ provide(/** @lends popup.prototype */{
     }
 }, /** @lends popup */{
     live : true
-});
+}));
 
 var visiblePopupsZIndexes = [BASE_ZINDEX];
 

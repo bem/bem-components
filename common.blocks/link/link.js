@@ -1,6 +1,6 @@
-modules.define({ block : 'link' }, function(provide) {
+modules.define('link', ['i-bem__dom'], function(provide, BEMDOM) {
 
-provide({
+provide(BEMDOM.decl(this.name, {
     _onClick : function(e) {
         this.hasMod('disabled')?
             e.preventDefault() :
@@ -12,6 +12,6 @@ provide({
             this._onClick(e);
         });
     }
-});
+}));
 
 });

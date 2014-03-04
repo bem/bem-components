@@ -1,6 +1,6 @@
-modules.define({ block : 'input', modName : 'autofocus', modVal : true }, ['dom'], function(provide, dom) {
+modules.define('input', ['dom'], function(provide, dom, Input) {
 
-provide({
+provide(Input.decl({ modName : 'autofocus', modVal : true }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -46,7 +46,7 @@ provide({
             this.setMod('focused');
         }
     }
-});
+}));
 
 /**
  * Хелпер для определения типа нажатой клавиши

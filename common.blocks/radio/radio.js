@@ -1,11 +1,11 @@
 modules.define(
-    { block : 'radio' },
-    ['jquery', 'dom', 'radio-option'],
-    function(provide, $, dom) {
+    'radio',
+    ['i-bem__dom', 'jquery', 'dom', 'radio-option'],
+    function(provide, BEMDOM, $, dom) {
 
 var undef;
 
-provide({
+provide(BEMDOM.decl(this.name, {
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -167,6 +167,6 @@ provide({
                 this._onBlur();
             });
     }
-});
+}));
 
 });

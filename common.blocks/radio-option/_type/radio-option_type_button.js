@@ -1,6 +1,6 @@
-modules.define({ block : 'radio-option', modName : 'type', modVal : 'button' }, function(provide) {
+modules.define('radio-option', function(provide, RadioOption) {
 
-provide({
+provide(RadioOption.decl({ modName : 'type', modVal : 'button' }, {
     onSetMod : {
         'checked' : proxyMod,
         'disabled' : proxyMod
@@ -9,7 +9,7 @@ provide({
     _getButton : function() {
         return this.findBlockOn('button');
     }
-});
+}));
 
 function proxyMod(modName, modVal) {
     this._getButton().setMod(modName, modVal);

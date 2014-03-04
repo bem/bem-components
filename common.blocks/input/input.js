@@ -1,6 +1,6 @@
-modules.define({ block : 'input' }, ['dom'], function(provide, dom) {
+modules.define('input', ['i-bem__dom', 'dom'], function(provide, BEMDOM, dom) {
 
-provide({
+provide(BEMDOM.decl(this.name, {
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -103,6 +103,6 @@ provide({
 
         return false;
     }
-});
+}));
 
 });

@@ -3,9 +3,9 @@
  */
 
 modules.define(
-    { block : 'popup', modName : 'autoclosable', modVal : true },
+    'popup',
     ['jquery', 'i-bem__dom', 'ua', 'dom'],
-    function(provide, $, BEMDOM, ua, dom) {
+    function(provide, $, BEMDOM, ua, dom, Popup) {
 
 var KEYDOWN_EVENT = (ua.opera && ua.version < 12.10)? 'keypress' : 'keydown',
     visiblePopupsStack = [];
@@ -15,7 +15,7 @@ var KEYDOWN_EVENT = (ua.opera && ua.version < 12.10)? 'keypress' : 'keydown',
  * @class popup
  * @bem
  */
-provide(/** @lends popup.prototype */{
+provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup.prototype */{
     onSetMod : {
         'visible' : {
             'true' : function() {
@@ -46,7 +46,7 @@ provide(/** @lends popup.prototype */{
     live : function() {
         BEMDOM.doc.on(KEYDOWN_EVENT, onDocKeyDown);
     }
-});
+}));
 
 function onDocKeyDown(e) {
     // on ESC

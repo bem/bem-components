@@ -1,5 +1,10 @@
 .radio-option_theme_normal
 {
+    &:hover
+    {
+        cursor: pointer;
+    }
+
     &::after
     {
         display: block;

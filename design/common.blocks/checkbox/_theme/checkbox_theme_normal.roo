@@ -6,6 +6,12 @@
      * TODO: корявый хак, появляется некрасивая серая плашка при клике на тачах в iOS, надо переделать
      * NOTE: то же самое в radio
      */
+
+    &:hover
+    {
+        cursor: pointer;
+    }
+
     &::after
     {
         display: block;
@@ -56,7 +62,7 @@
 
             &::before
             {
-                top: -4px;
+                top: -6px;
                 left: 1px;
 
                 width: 15px;
@@ -80,7 +86,7 @@
 
             &::before
             {
-                top: -5px;
+                top: -6px;
                 left: 1px;
 
                 width: 18px;

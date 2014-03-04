@@ -133,8 +133,6 @@
         .input__box
         {
             line-height: 22px;
-
-            padding-right: 22px;
         }
 
         .input__control
@@ -144,6 +142,12 @@
             height: 22px;
             padding: 3px 0 3px 5px;
         }
+
+        &.input_has-clear .input__box
+        {
+            padding-right: 22px;
+        }
+
     }
 
     &.input_size_m
@@ -151,8 +155,6 @@
         .input__box
         {
             line-height: 26px;
-
-            padding-right: 26px;
         }
 
         .input__control
@@ -161,6 +163,11 @@
 
             height: 26px;
             padding: 5px 0 5px 7px;
+        }
+
+        &.input_has-clear .input__box
+        {
+            padding-right: 26px;
         }
 
         .input__clear
@@ -187,8 +194,6 @@
         .input__box
         {
             line-height: 30px;
-
-            padding-right: 30px;
         }
 
         .input__control
@@ -198,6 +203,11 @@
             height: 30px;
             padding: 5px 0 5px 9px;
         }
+
+        &.input_has-clear .input__box
+        {
+            padding-right: 30px;
+        }
     }
 
     &.input_size_xl
@@ -205,8 +215,6 @@
         .input__box
         {
             line-height: 36px;
-
-            padding-right: 36px;
         }
 
         .input__control
@@ -215,6 +223,11 @@
 
             height: 36px;
             padding: 6px 0 6px 11px;
+        }
+
+        &.input_has-clear .input__box
+        {
+            padding-right: 36px;
         }
 
         .input__clear

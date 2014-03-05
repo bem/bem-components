@@ -10,16 +10,6 @@ modules.define('menu', function(provide, Menu) {
  * @bem
  */
 provide(Menu.decl({ modName : 'select', modVal : 'check' }, /** @lends menu.prototype */{
-    onSetMod : {
-        'js' : {
-            'inited' : function() {
-            },
-
-            '' : function() {
-            }
-        }
-    },
-
     /**
      * @override
      */
@@ -29,6 +19,9 @@ provide(Menu.decl({ modName : 'select', modVal : 'check' }, /** @lends menu.prot
             .map(function(item) { return item.getVal(); });
     },
 
+    /**
+     * @override
+     */
     _onItemClick : function(clickedItem) {
         this._getItems().forEach(function(item) {
             item === clickedItem && item.toggleMod('checked');

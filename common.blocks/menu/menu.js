@@ -27,7 +27,7 @@ provide(BEMDOM.decl(this.name, /** @lends menu.prototype */{
                 this._hoveredItem = null;
                 this._items = null;
 
-                this.hasMod('focused') && this.bindTo('keydown', this._onKeyDown);
+                this.hasMod('focused') && this.bindToDoc('keydown', this._onKeyDown);
 
                 this._focused = dom.containsFocus(this.domElem);
                 this._focused?
@@ -35,20 +35,17 @@ provide(BEMDOM.decl(this.name, /** @lends menu.prototype */{
                     this.setMod('focused') :
                     // if block already has focused mod, we need to focus control
                     this.hasMod('focused') && this._focus();
-            },
-
-            '' : function() {
             }
         },
 
         'focused' : {
             'true' : function() {
-                this.bindTo('keydown', this._onKeyDown);
+                this.bindToDoc('keydown', this._onKeyDown);
                 this._focused || this._focus();
             },
 
             '' : function() {
-                this.unbindFrom('keydown', this._onKeyDown);
+                this.unbindFromDoc('keydown', this._onKeyDown);
                 this._focused && this._blur();
             }
         },

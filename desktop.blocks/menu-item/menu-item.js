@@ -1,6 +1,6 @@
-modules.define( { block : 'menu-item' }, function(provide) {
+modules.define('menu-item', function(provide, MenuItem) {
 
-provide({
+provide(MenuItem.decl({
     beforeSetMod : {
         'hovered' : {
             'true' : function() {
@@ -39,6 +39,6 @@ provide({
 
         return this.__base.apply(this, arguments);
     }
-});
+}));
 
 });

@@ -21,6 +21,7 @@
                         },
                         {
                             block : 'menu-item',
+                            mods : { checked : true },
                             val : 2,
                             content : 'item 2'
                         },
@@ -47,6 +48,7 @@
                         },
                         {
                             block : 'menu-item',
+                            mods : { checked : true },
                             content : 'item 2'
                         },
                         {
@@ -55,6 +57,7 @@
                         },
                         {
                             block : 'menu-item',
+                            mods : { checked : true },
                             content : 'item 4'
                         }
                     ]
@@ -73,6 +76,7 @@
                         },
                         {
                             block : 'menu-item',
+                            mods : { checked : true },
                             content : 'item 3'
                         },
                         {

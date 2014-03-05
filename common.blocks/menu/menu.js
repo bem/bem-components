@@ -3,7 +3,7 @@
  */
 
 modules.define(
-    { block : 'menu' },
+    'menu',
     ['dom', 'next-tick', 'i-bem__dom'],
     function(provide, dom, nextTick, BEMDOM) {
 
@@ -12,7 +12,7 @@ modules.define(
  * @class menu
  * @bem
  */
-provide(/** @lends menu.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends menu.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -83,8 +83,7 @@ provide(/** @lends menu.prototype */{
         }
     },
 
-    _onItemCheck : function() {
-    },
+    _onItemClick : function(item) {},
 
     _onKeyDown : function(e) {
         var isArrow = e.keyCode === 38 || e.keyCode === 40;
@@ -132,8 +131,8 @@ provide(/** @lends menu.prototype */{
             .liveInitOnBlockInsideEvent({ modName : 'hovered', modVal : '*' }, 'menu-item', function(e) {
                 this._onItemHover(e.target);
             })
-            .liveInitOnBlockInsideEvent({ modName : 'checked', modVal : true }, 'menu-item', function(e) {
-                this._onItemCheck(e.target);
+            .liveInitOnBlockInsideEvent('click', 'menu-item', function(e) {
+                this._onItemClick(e.target);
             })
             .liveBindTo('focusin', function() {
                 this._onFocus();
@@ -150,6 +149,6 @@ provide(/** @lends menu.prototype */{
             });
         }
     }
-});
+}));
 
 });

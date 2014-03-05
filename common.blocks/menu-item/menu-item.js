@@ -2,7 +2,7 @@
  * @module menu-item
  */
 
-modules.define({ block : 'menu-item' }, function(provide) {
+modules.define('menu-item', ['i-bem__dom'], function(provide, BEMDOM) {
 
 /**
  * @exports
@@ -11,7 +11,8 @@ modules.define({ block : 'menu-item' }, function(provide) {
  *
  * @param val Value of item
  */
-provide(/** @lends menu-item.prototype */{
+provide(BEMDOM.decl(this.name,
+    /** @lends menu-item.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -20,10 +21,21 @@ provide(/** @lends menu-item.prototype */{
             '' : function() {
             }
         }
+    },
+
+    getVal : function() {
+        return this.params.val;
+    },
+
+    _onPointerClick : function() {
+        this.hasMod('disabled') || this.emit('click');
     }
 }, /** @lends menu-item */{
     live : function() {
+        this.liveBindTo('pointerclick', function() {
+            this._onPointerClick();
+        });
     }
-});
+}));
 
 });

@@ -47,6 +47,8 @@ provide(Menu.decl({ modName : 'select', modVal : 'radio' }, /** @lends menu.prot
      * @override
      */
     _onItemClick : function(clickedItem) {
+        this.__base.apply(this, arguments);
+
         var isChanged = false;
         this._getItems().forEach(function(item) {
             if(item === clickedItem) {

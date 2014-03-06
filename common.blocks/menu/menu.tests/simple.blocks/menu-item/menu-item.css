@@ -1,3 +1,8 @@
+.menu-item
+{
+    display: block;
+}
+
 .menu-item_hovered
 {
     background-color: pink;

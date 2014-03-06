@@ -47,6 +47,7 @@ provide(BEMDOM.decl(this.name, /** @lends menu.prototype */{
             '' : function() {
                 this.unbindFromDoc('keydown', this._onKeyDown);
                 this._focused && this._blur();
+                this._hoveredItem && this._hoveredItem.delMod('hovered');
             }
         },
 
@@ -80,7 +81,9 @@ provide(BEMDOM.decl(this.name, /** @lends menu.prototype */{
         }
     },
 
-    _onItemClick : function(item) {},
+    _onItemClick : function(item) {
+        this.emit('item-click', item);
+    },
 
     _onKeyDown : function(e) {
         var isArrow = e.keyCode === 38 || e.keyCode === 40;

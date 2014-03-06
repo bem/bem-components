@@ -132,19 +132,34 @@
             block : 'menu',
             content : [
                 {
-                    block : 'menu-item',
-                    mods : { type : 'link' },
-                    content : { block : 'link', url : '//yandex.ru', content : 'Yandex' }
+                    block : 'link',
+                    mix : {
+                        block : 'menu-item',
+                        mods : { type : 'link' },
+                        js : true
+                    },
+                    url : '//yandex.ru',
+                    content : 'Yandex'
                 },
                 {
-                    block : 'menu-item',
-                    mods : { type : 'link' },
-                    content : { block : 'link', url : '//google.ru', content : 'Google' }
+                    block : 'link',
+                    mix : {
+                        block : 'menu-item',
+                        mods : { type : 'link' },
+                        js : true
+                    },
+                    url : '//google.ru',
+                    content : 'Google'
                 },
                 {
-                    block : 'menu-item',
-                    mods : { type : 'link' },
-                    content : { block : 'link', url : '//bing.com', content : 'Bing' }
+                    block : 'link',
+                    mix : {
+                        block : 'menu-item',
+                        mods : { type : 'link' },
+                        js : true
+                    },
+                    url : '//bing.com',
+                    content : 'Bing'
                 }
             ]
         },

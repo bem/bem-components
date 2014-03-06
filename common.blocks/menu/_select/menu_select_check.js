@@ -52,6 +52,8 @@ provide(Menu.decl({ modName : 'select', modVal : 'check' }, /** @lends menu.prot
      * @override
      */
     _onItemClick : function(clickedItem) {
+        this.__base.apply(this, arguments);
+
         this._getItems().forEach(function(item) {
             item === clickedItem && item.toggleMod('checked');
         });

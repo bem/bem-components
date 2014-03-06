@@ -13,12 +13,34 @@ provide(Menu.decl({ modName : 'select', modVal : 'radio' }, /** @lends menu.prot
     /**
      * @override
      */
-    _extractVal : function() {
+    _getVal : function() {
         var items = this._getItems(),
-            i = 0, item;
+            i = 0,
+            item;
+
         while(item = items[i++])
             if(item.hasMod('checked'))
                 return item.getVal();
+    },
+
+    /**
+     * @override
+     */
+    _setVal : function(val) {
+        var wasChanged = false,
+            hasVal = false,
+            itemsCheckedVals = this._getItems().map(function(item) {
+                if(!item.isValEq(val)) return false;
+
+                item.hasMod('checked') || (wasChanged = true);
+                return hasVal = true;
+            });
+
+        if(!hasVal) return false;
+
+        this._updateItemsCheckedMod(itemsCheckedVals);
+
+        return wasChanged;
     },
 
     /**

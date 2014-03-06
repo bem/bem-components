@@ -23,10 +23,6 @@ provide(Menu.decl({ modName : 'select' }, /** @lends menu.prototype */{
         }
     },
 
-    _extractVal : function() {
-        return null;
-    },
-
     _onKeyDown : function(e) {
         if(e.keyCode === KEY_CODE_ENTER || e.keyCode === KEY_CODE_SPACE) {
             e.preventDefault();
@@ -41,10 +37,14 @@ provide(Menu.decl({ modName : 'select' }, /** @lends menu.prototype */{
      */
     getVal : function() {
         if(!this._isValValid) {
-            this._val = this._extractVal();
+            this._val = this._getVal();
             this._isValValid = true;
         }
         return this._val;
+    },
+
+    _getVal : function() {
+        return null;
     },
 
     /**
@@ -53,8 +53,34 @@ provide(Menu.decl({ modName : 'select' }, /** @lends menu.prototype */{
      * @returns {this}
      */
     setVal : function(val) {
-        this._val = val;
+        if(this._setVal(val)) {
+            this._val = val;
+            this._isValValid = true;
+            this.emit('change');
+        }
         return this;
+    },
+
+    _setVal : function() {
+        return false;
+    },
+
+    _updateItemsCheckedMod : function(modVals) {
+        var items = this._getItems();
+        modVals.forEach(function(modVal, i) {
+            items[i].setMod('checked', modVal);
+        });
+    },
+
+    /**
+     * Sets content
+     * @override
+     */
+    setContent : function() {
+        var res = this.__base.apply(this, arguments);
+        this._isValValid = false;
+        this.emit('change'); // NOTE: potentially unwanted event could be emitted
+        return res;
     }
 }));
 

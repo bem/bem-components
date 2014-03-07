@@ -1,14 +1,6 @@
 modules.define('menu-item', function(provide, MenuItem) {
 
 provide(MenuItem.decl({
-    beforeSetMod : {
-        'hovered' : {
-            'true' : function() {
-                return !this.hasMod('disabled');
-            }
-        }
-    },
-
     onSetMod : {
         'js' : {
             'inited' : function() {

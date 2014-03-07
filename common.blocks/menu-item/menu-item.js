@@ -12,6 +12,14 @@ modules.define('menu-item', ['i-bem__dom'], function(provide, BEMDOM) {
  * @param val Value of item
  */
 provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
+    beforeSetMod : {
+        'hovered' : {
+            'true' : function() {
+                return !this.hasMod('disabled');
+            }
+        }
+    },
+
     /**
      * Checks whether given value is equal to current value
      * @param {*} val

@@ -9,5 +9,8 @@
 },
 {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'link' }
+    mustDeps : [
+        { tech : 'bemhtml', block : 'link' },
+        { tech : 'js', block : 'dom' }
+    ]
 }]

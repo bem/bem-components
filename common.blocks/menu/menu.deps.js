@@ -1,9 +1,10 @@
 [{
     mustDeps : { block : 'i-bem', elems : ['dom'] },
-    shouldDeps: [
+    shouldDeps : [
         'dom',
         'next-tick',
-        { mods : { focused: true } }
+        'menu-item',
+        { mods : { focused : true } }
     ]
 },
 {

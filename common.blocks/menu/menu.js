@@ -4,8 +4,8 @@
 
 modules.define(
     'menu',
-    ['dom', 'next-tick', 'i-bem__dom'],
-    function(provide, dom, nextTick, BEMDOM) {
+    ['i-bem__dom', 'dom', 'next-tick', 'menu-item'],
+    function(provide, BEMDOM, dom, nextTick) {
 
 /**
  * @exports

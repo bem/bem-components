@@ -1,6 +1,8 @@
 block('link')(
     tag()('a'),
 
+    js()(true),
+
     attrs()(function() {
         var attrs = {},
             ctx = this.ctx,

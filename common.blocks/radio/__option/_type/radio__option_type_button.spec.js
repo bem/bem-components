@@ -1,6 +1,6 @@
 modules.define(
     'spec',
-    ['radio-option', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML'],
+    [{ block : 'radio', elem : 'option' }, 'i-bem__dom', 'jquery', 'dom', 'BEMHTML'],
     function(provide, RadioOption, BEMDOM, $, dom, BEMHTML) {
 
 describe('radio__option_type_button', function() {

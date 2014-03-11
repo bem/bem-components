@@ -1,4 +1,4 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define('i-bem__dom', ['next-tick'], function(provide, nextTick, BEMDOM) {
 /**
  * Форма
  */
@@ -91,7 +91,7 @@ BEMDOM.decl('form', {
 
         this.emit('clear');
 
-        this.afterCurrentEvent(function() {
+        nextTick(function() {
             this.delMod('locked');
         });
 
@@ -137,7 +137,7 @@ BEMDOM.decl('form', {
 
         this.emit('fill', data);
 
-        this.afterCurrentEvent(function() {
+        nextTick(function() {
             this.delMod('locked');
         });
 

@@ -1,6 +1,6 @@
 modules.define(
     'radio',
-    ['i-bem__dom', 'jquery', 'dom'],
+    ['i-bem__dom', 'jquery', 'dom', { block : 'radio', elem : 'option' }],
     function(provide, BEMDOM, $, dom) {
 
 var undef;

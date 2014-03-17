@@ -52,7 +52,7 @@ provide(BEMDOM.decl(this.name, /** @lends menu.prototype */{
         },
 
         'disabled' : function(modName, modVal) {
-            this.attr('tabindex', modVal ? -1 : 0);
+            this.domElem.attr('tabindex', modVal? -1 : 0);
         }
     },
 

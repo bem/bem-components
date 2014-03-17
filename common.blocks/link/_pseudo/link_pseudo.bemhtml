@@ -1,3 +1,4 @@
 block('link').mod('pseudo', true)(
-    js()(true)
+    js()(true),
+    tag().match(function() { return !this.ctx.url })('span')
 )

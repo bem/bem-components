@@ -3,7 +3,7 @@
         block : 'i-bem',
         elems : [{
             name : 'dom',
-            mods : { 'elem-instances' : 'yes' }
+            mods : ['elem-instances']
         }]
     },
     shouldDeps : [{ elem : 'option' }, 'dom']

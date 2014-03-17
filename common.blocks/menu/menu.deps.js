@@ -1,8 +1,7 @@
 [{
     mustDeps : { block : 'i-bem', elems : ['dom'] },
     shouldDeps : [
-        'dom',
-        'next-tick',
+        'base-control',
         'menu-item',
         { mods : { focused : true } }
     ]

@@ -1,6 +1,7 @@
 [{
     mustDeps : { block : 'i-bem', elems : ['dom', 'i18n'] },
     shouldDeps : [
+        { block : 'base-control' },
         { block : 'button' },
         { block : 'icon' },
         { elems : ['button', 'control', 'no-file', 'file'] },

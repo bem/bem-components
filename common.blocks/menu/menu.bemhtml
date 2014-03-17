@@ -8,7 +8,8 @@ block('menu')(
         this.mods.disabled || (attrs.tabindex = 0);
         return attrs;
     }),
-    js()(true)
+    js()(true),
+    mix()([{ elem : 'control' }])
 )
 
 block('menu-item').match(this._menuTheme).def()(function() {

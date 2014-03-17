@@ -1,89 +1,29 @@
-modules.define('radio-option', ['i-bem__dom'], function(provide, BEMDOM) {
+/**
+ * @module radio-option
+ */
 
-provide(BEMDOM.decl(this.name, {
-    beforeSetMod : {
-        'focused' : {
-            'true' : function() {
-                return !this.hasMod('disabled');
-            }
-        }
-    },
+modules.define('radio-option', ['i-bem__dom', 'base-control'], function(provide, BEMDOM, BaseControl) {
 
+/**
+ * @exports
+ * @class radio-option
+ * @augments base-control
+ * @bem
+ */
+provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends radio-option.prototype */{
     onSetMod : {
-        'js' : {
-            'inited' : function() {
-                this._focused = false;
-            }
-        },
-
         'checked' : function(modName, modVal) {
             this.elem('control').prop(modName, modVal);
-        },
-
-        'disabled' : function(modName, modVal) {
-            this.elem('control').prop(modName, modVal);
-        },
-
-        'focused' : {
-            'true' : function() {
-                this._focused || this._focus();
-            },
-
-            '' : function() {
-                this._focused && this._blur();
-            }
         }
-    },
-
-    /**
-     * Returns control value
-     * @returns {String}
-     */
-    getVal : function() {
-        return this.elem('control').val();
-    },
-
-    /**
-     * Returns name of control
-     * @returns {String}
-     */
-    getName : function() {
-        return this.elem('control').attr('name');
-    },
-
-    _focus : function() {
-        this.elem('control').focus();
-    },
-
-    _blur : function() {
-        this.elem('control').blur();
-    },
-
-    _onFocus : function() {
-        this._focused = true;
-        this.setMod('focused');
-    },
-
-    _onBlur : function() {
-        this._focused = false;
-        this.delMod('focused');
     },
 
     _onPointerClick : function() {
         this.hasMod('disabled') || this.setMod('checked');
     }
-}, {
+}, /** @lends radio-option */{
     live : function() {
-        this
-            .liveBindTo('focusin', function() {
-                this._onFocus();
-            })
-            .liveBindTo('focusout', function() {
-                this._onBlur();
-            })
-            .liveBindTo('pointerclick', function() {
-                this._onPointerClick();
-            });
+        this.liveBindTo('pointerclick', this.prototype._onPointerClick);
+        return this.__base.apply(this, arguments);
     }
 }));
 

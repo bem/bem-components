@@ -5,7 +5,6 @@ provide(Input.decl({ modName : 'autofocus', modVal : true }, {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-
                 this.bindToDoc('keydown', this._onDocKeyDown);
             }
         },
@@ -13,7 +12,6 @@ provide(Input.decl({ modName : 'autofocus', modVal : true }, {
         'focused' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
-
                 this
                     .unbindFromDoc('keydown')
                     .delMod('autofocus');

@@ -13,6 +13,7 @@ describe('attach', function() {
         // we need to replace input[@type=file] by input[@type=text] for tests
         var input = attach.findElem('control');
         input.replaceWith('<input class="attach__control" name="' + input.attr('name')  + '"/>');
+        attach.dropElemCache();
     });
 
     afterEach(function() {

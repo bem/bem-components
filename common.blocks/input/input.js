@@ -1,48 +1,29 @@
-modules.define('input', ['i-bem__dom', 'dom'], function(provide, BEMDOM, dom) {
+/**
+ * @module input
+ */
 
-provide(BEMDOM.decl(this.name, {
-    beforeSetMod : {
-        'focused' : {
-            'true' : function() {
-                return !this.hasMod('disabled');
-            }
-        }
-    },
+modules.define('input', ['i-bem__dom', 'base-control'], function(provide, BEMDOM, BaseControl) {
 
+/**
+ * @exports
+ * @class input
+ * @augments base-control
+ * @bem
+ */
+provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var control = this.elem('control');
-
-                this._val = control.val();
-                this._focused = dom.containsFocus(control);
-
-                this._focused?
-                    // if control is already in focus, we need to set focused mod
-                    this.setMod('focused') :
-                    // if block already has focused mod, we need to focus control
-                    this.hasMod('focused') && this._focus();
+                this.__base.apply(this, arguments);
+                this._val = this.elem('control').val();
             }
-        },
-
-        'focused' : {
-            'true' : function() {
-                this._focused || this._focus();
-            },
-
-            '' : function() {
-                this._focused && this._blur();
-            }
-        },
-
-        'disabled' : function(modName, modVal) {
-            this.elem('control').prop(modName, !!modVal);
         }
     },
 
     /**
      * Returns control value
      * @returns {String}
+     * @override
      */
     getVal : function() {
         return this._val;
@@ -67,43 +48,10 @@ provide(BEMDOM.decl(this.name, {
         }
 
         return this;
-    },
-
-    /**
-     * Returns name of control
-     * @returns {String}
-     */
-    getName : function() {
-        return this.elem('control').attr('name');
-    },
-
-    _onFocus : function() {
-        this._focused = true;
-        this.setMod('focused');
-    },
-
-    _onBlur : function() {
-        this._focused = false;
-        this.delMod('focused');
-    },
-
-    _focus : function() {
-        this.elem('control').focus();
-    },
-
-    _blur : function() {
-        this.elem('control').blur();
     }
 }, {
     live : function() {
-        this
-            .liveBindTo('control', 'focusin', function() {
-                this._onFocus();
-            })
-            .liveBindTo('control', 'focusout', function() {
-                this._onBlur();
-            });
-
+        this.__base.apply(this, arguments);
         return false;
     }
 }));

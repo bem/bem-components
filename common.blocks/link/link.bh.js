@@ -3,7 +3,8 @@ module.exports = function(bh) {
     bh.match('link', function(ctx, json) {
         ctx
             .tag('a')
-            .js(true);
+            .js(true)
+            .mix({ elem : 'control' });
 
         var attrs = {
                 tabindex : json.tabIndex

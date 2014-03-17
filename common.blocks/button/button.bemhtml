@@ -10,8 +10,10 @@ block('button')(
 
     js()(true),
 
-    attrs()(
+    // Implements `base-control`'s interface
+    mix()([{ elem : 'control' }]),
 
+    attrs()(
         // Common attributes
         function() {
             var ctx = this.ctx,

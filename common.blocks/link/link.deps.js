@@ -4,7 +4,8 @@
     ],
     shouldDeps : [
         { mod : 'disabled' },
-        { block : 'jquery', elem : 'event', mods : { type : 'pointer' } }
+        { block : 'jquery', elem : 'event', mods : { type : 'pointer' } },
+        'base-control'
     ]
 },
 {

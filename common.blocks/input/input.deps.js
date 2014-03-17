@@ -1,11 +1,11 @@
 [{
-    mustDeps : { block : 'i-bem', elem : 'dom' },
+    mustDeps : { block : 'i-bem', elems : 'dom' },
     shouldDeps : [
         {
             mods : ['disabled', 'focused'],
             elems : ['box', 'control']
         },
-        'dom'
+        'base-control'
     ]
 },
 {

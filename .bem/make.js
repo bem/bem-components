@@ -1,8 +1,7 @@
 /* global MAKE:false */
 
 var PATH = require('path'),
-    environ = require('bem-environ')(__dirname),
-    U = require('bem').util;
+    environ = require('bem-environ')(__dirname);
 
 require('bem-tools-autoprefixer').extendMake(MAKE);
 require('./nodes')(MAKE);
@@ -103,54 +102,39 @@ MAKE.decl('BundleNode', {
     },
 
     /**
-     * Возвращает платформу по пути к уровню перепределения.
+     * Возвращает список уровней переопределения по названию бандла
      *
-     * @example
-     *  'desktop.blocks'    -> desktop
-     *  'touch-pad.bundles' -> touchPad
-     *
-     * @param {String} levelPath
-     * @returns {String}
+     * @returns {Object}
      */
-    getPlatform : function(levelPath) {
-        return levelPath.split('.')[0].replace(/-([a-z])/gi, function(_, letter) {
-            return letter.toUpperCase();
-        });
-    },
-
-    getDesktopLevels : function() {
-        return [
-            'libs/bem-core/common.blocks',
-            'libs/bem-core/desktop.blocks',
-            'common.blocks',
-            'desktop.blocks',
-            'design/common.blocks',
-            'design/desktop.blocks'
-        ];
-    },
-
-    getTouchPadLevels : function() {
-        return [
-            'libs/bem-core/common.blocks',
-            'libs/bem-core/touch.blocks',
-            'common.blocks',
-            'touch.blocks',
-            'design/common.blocks',
-            'design/touch.blocks',
-            'design/touch-pad.blocks'
-        ];
-    },
-
-    getTouchPhoneLevels : function() {
-        return [
-            'libs/bem-core/common.blocks',
-            'libs/bem-core/touch.blocks',
-            'common.blocks',
-            'touch.blocks',
-            'design/common.blocks',
-            'design/touch.blocks',
-            'design/touch-phone.blocks'
-        ];
+    getLevelsMap : function() {
+        return {
+            'desktop' : [
+                'libs/bem-core/common.blocks',
+                'libs/bem-core/desktop.blocks',
+                'common.blocks',
+                'desktop.blocks',
+                'design/common.blocks',
+                'design/desktop.blocks'
+            ],
+            'touch-pad' : [
+                'libs/bem-core/common.blocks',
+                'libs/bem-core/touch.blocks',
+                'common.blocks',
+                'touch.blocks',
+                'design/common.blocks',
+                'design/touch.blocks',
+                'design/touch-pad.blocks'
+            ],
+            'touch-phone' : [
+                'libs/bem-core/common.blocks',
+                'libs/bem-core/touch.blocks',
+                'common.blocks',
+                'touch.blocks',
+                'design/common.blocks',
+                'design/touch.blocks',
+                'design/touch-phone.blocks'
+            ]
+        };
     },
 
     /**
@@ -159,17 +143,8 @@ MAKE.decl('BundleNode', {
      */
     getLevels : function() {
         var resolve = PATH.resolve.bind(PATH, this.root),
-            buildLevel = this.getLevelPath(),
-            getPlatformLevelsFn = 'get' + U.toUpperCaseFirst(this.getPlatform(buildLevel)) + 'Levels',
-            levels = [];
-
-        if(typeof this[getPlatformLevelsFn] === 'function') {
-            Array.prototype.push.apply(levels, this[getPlatformLevelsFn].apply(this, arguments));
-        }
-
-        if(!levels.length) {
-            return [];
-        }
+            buildLevel = this.getLevelPath().split('.')[0],
+            levels = this.getLevelsMap()[buildLevel] || [];
 
         return levels
             .map(function(path) { return resolve(path); })

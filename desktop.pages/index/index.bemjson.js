@@ -127,10 +127,7 @@
                                 }
                             ]
                         },
-                        {
-                            elem : 'cell',
-                            content : '&mdash;'
-                        }
+                        { elem : 'cell', content : '&mdash;' }
                     ]
                 },
                 {
@@ -426,7 +423,22 @@
                         { elem : 'cell', content : 'popup' },
                         {
                             elem : 'cell',
-                            content : '&mdash;'
+                            content : {
+                                block : 'link-popup',
+                                js : true,
+                                content : [
+                                    {
+                                        block : 'link',
+                                        mods : { pseudo : true },
+                                        content : 'show popup'
+                                    },
+                                    {
+                                        block : 'popup',
+                                        mods : { autoclosable : true },
+                                        content : 'Hello, world!'
+                                    }
+                                ]
+                            }
                         },
                         {
                             elem : 'cell',
@@ -465,6 +477,66 @@
                                     }
                                 ]
                             }
+                        }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'dropdown' },
+                        {
+                            elem : 'cell',
+                            content : [
+                                {
+                                    block : 'dropdown',
+                                    mods : { switcher : 'button' },
+                                    switcher : 'button',
+                                    popup : 'Hello, world!'
+                                },
+                                ' ',
+                                {
+                                    block : 'dropdown',
+                                    mods : { switcher : 'link' },
+                                    switcher : 'link',
+                                    popup : 'Hello, world!'
+                                }
+                            ]
+                        },
+                        {
+                            elem : 'cell',
+                            content : [
+                                {
+                                    block : 'dropdown',
+                                    mods : { switcher : 'button', theme : 'simple' },
+                                    switcher : 'button',
+                                    popup : 'Hello, world!'
+                                },
+                                ' ',
+                                {
+                                    block : 'dropdown',
+                                    mods : { switcher : 'link', theme : 'simple' },
+                                    switcher : 'link',
+                                    popup : 'Hello, world!'
+                                }
+                            ]
+                        },
+                        {
+                            elem : 'cell',
+                            content : [
+                                {
+                                    block : 'dropdown',
+                                    mods : { switcher : 'button', theme : 'normal', size : 'm' },
+                                    switcher : 'button',
+                                    popup : 'Hello, world!'
+                                },
+                                ' ',
+                                {
+                                    block : 'dropdown',
+                                    mods : { switcher : 'link', theme : 'normal' },
+                                    switcher : 'link',
+                                    popup : 'Hello, world!'
+                                }
+                            ]
                         }
                     ]
                 }

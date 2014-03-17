@@ -46,6 +46,13 @@
                 },
                 ' ',
                 {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'normal', size : 's' },
+                    switcher : 'dropdown',
+                    popup : { block : 'popup', mods : { theme : 'normal' }, content : 'popup' }
+                },
+                ' ',
+                {
                     block : 'spin',
                     mods : { theme : 'normal', size : 's', progress : true }
                 }
@@ -88,6 +95,13 @@
                     mods : { theme : 'normal', size : 'm', type : 'button' },
                     val : 1,
                     text : 'check'
+                },
+                ' ',
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'normal', size : 'm' },
+                    switcher : 'dropdown',
+                    popup : { block : 'popup', mods : { theme : 'normal' }, content : 'popup' }
                 },
                 ' ',
                 {
@@ -136,6 +150,13 @@
                 },
                 ' ',
                 {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'normal', size : 'l' },
+                    switcher : 'dropdown',
+                    popup : { block : 'popup', mods : { theme : 'normal' }, content : 'popup' }
+                },
+                ' ',
+                {
                     block : 'spin',
                     mods : { theme : 'normal', size : 'l', progress : true }
                 }
@@ -178,6 +199,13 @@
                     mods : { theme : 'normal', size : 'xl', type : 'button' },
                     val : 1,
                     text : 'check'
+                },
+                ' ',
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'normal', size : 'xl' },
+                    switcher : 'dropdown',
+                    popup : { block : 'popup', mods : { theme : 'normal' }, content : 'popup' }
                 },
                 ' ',
                 {

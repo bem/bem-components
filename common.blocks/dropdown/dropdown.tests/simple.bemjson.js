@@ -7,6 +7,8 @@
         { elem : 'js', url : '_simple.js' }
     ],
     content : [
+
+        { tag : 'h2', content : 'default' },
         {
             block : 'test',
             content : [
@@ -18,19 +20,88 @@
                 },
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'link' },
-                    switcher : { block : 'link', mods : { pseudo : true, bla : 'bla' }, content : 'custom link' },
-                    popup : { block : 'button', mods : { theme : 'normal', size : 's' }, text : 'popup button' }
-                },
-                {
-                    block : 'dropdown',
-                    mods : { switcher : 'button', theme : 'simple', size : 'xl' },
+                    mods : { switcher : 'button' },
                     switcher : 'button',
-                    popup : { block : 'popup', mods : { autoclosable : true, theme : 'simple' }, content : 'cusom popup' }
+                    popup : 'bemjson'
                 },
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'button', theme : 'normal', size : 'xl' },
+                    mods : { switcher : 'button', disabled : true },
+                    switcher : 'disabled',
+                    popup : 'bemjson'
+                }
+            ].map(function(content) { return { tag : 'p', content : content }; })
+        },
+
+        { tag : 'hr' },
+
+        { tag : 'h2', content : 'simple' },
+        {
+            block : 'test',
+            content : [
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'link', theme : 'simple' },
+                    switcher : 'link',
+                    popup : 'bemjson'
+                },
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'link', theme : 'simple' },
+                    switcher : { block : 'link', mods : { pseudo : true, bla : 'bla' }, content : 'custom link' },
+                    popup : { block : 'button', mods : { theme : 'simple' }, text : 'popup button' }
+                },
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'simple' },
+                    switcher : 'button',
+                    popup : { block : 'popup', mods : { autoclosable : true, theme : 'simple' }, content : 'custom popup' }
+                },
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'simple', disabled : true },
+                    switcher : 'disabled',
+                    popup : 'bemjson'
+                }
+            ].map(function(content) { return { tag : 'p', content : content }; })
+        },
+
+        { tag : 'hr' },
+
+        { tag : 'h2', content : 'normal' },
+        {
+            block : 'test',
+            content : [
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'link', theme : 'normal' },
+                    switcher : 'link',
+                    popup : 'bemjson'
+                },
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'link', theme : 'normal' },
+                    switcher : { block : 'link', mods : { pseudo : true, bla : 'bla' }, content : 'custom link' },
+                    popup : { block : 'button', mods : { theme : 'normal', size : 'xl' }, text : 'popup button' }
+                },
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'normal', size : 's' },
+                    switcher : 'button',
+                    popup : { block : 'popup', mods : { autoclosable : true, theme : 'normal' }, content : 'custom popup' }
+                },
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'normal' },
+                    switcher : {
+                        block : 'bla',
+                        content : { block : 'button', mods : { theme : 'normal', size : 'm' }, text : 'wrapped button' }
+                    },
+                    popup : 'bemjson'
+                },
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'normal', size : 'l' },
                     switcher : { block : 'button', mods : { togglable : 'check' }, text : 'custom button' },
                     popup : {
                         block : 'popup',
@@ -40,20 +111,11 @@
                 },
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'button' },
-                    switcher : {
-                        block : 'bla',
-                        content : { block : 'button', mods : { theme : 'normal', size : 'l' }, text : 'wrapped button' }
-                    },
-                    popup : 'bemjson'
-                },
-                {
-                    block : 'dropdown',
-                    mods : { switcher : 'button', theme : 'normal', size : 'l', disabled : true },
+                    mods : { switcher : 'button', theme : 'normal', size : 'xl', disabled : true },
                     switcher : 'disabled',
                     popup : 'bemjson'
                 }
-            ].map(function(i) { return { tag : 'div', attrs : { style : 'padding: 5px' }, content : i } })
+            ].map(function(content) { return { tag : 'div', attrs : { style : 'margin: 1em 0' }, content : content }; })
         }
     ]
 });

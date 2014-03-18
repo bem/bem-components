@@ -419,6 +419,54 @@
                             }
                         }
                     ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'popup' },
+                        {
+                            elem : 'cell',
+                            content : '&mdash;'
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'link-popup',
+                                js : true,
+                                content : [
+                                    {
+                                        block : 'link',
+                                        mods : { theme : 'simple', pseudo : true },
+                                        content : 'show popup'
+                                    },
+                                    {
+                                        block : 'popup',
+                                        mods : { autoclosable : true, theme: 'simple' },
+                                        content : 'Hello, world!'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'link-popup',
+                                js : true,
+                                content : [
+                                    {
+                                        block : 'link',
+                                        mods : { theme : 'normal', pseudo : true },
+                                        content : 'show popup'
+                                    },
+                                    {
+                                        block : 'popup',
+                                        mods : { autoclosable : true, theme: 'normal' },
+                                        content : 'Hello, world!'
+                                    }
+                                ]
+                            }
+                        }
+                    ]
                 }
             ]
         }

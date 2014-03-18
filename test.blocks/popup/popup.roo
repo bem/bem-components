@@ -1,14 +1,9 @@
-.popup_test
+.popup:not([class*="popup_theme"])
 {
     display: none;
+}
 
-    padding: 10px;
-
-    border: 1px solid red;
-    background: #fff;
-
-    &.popup_visible
-    {
-        display: block;
-    }
+.popup_visible:not([class*="popup_theme"])
+{
+    display: block;
 }

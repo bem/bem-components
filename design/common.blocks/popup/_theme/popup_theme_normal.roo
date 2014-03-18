@@ -1,0 +1,74 @@
+.popup_theme_normal
+{
+    visibility: hidden;
+
+    padding: 10px;
+
+    animation-duration: 0.1s;
+    animation-timing-function: ease-out;
+
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: #fff;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.4);
+
+    animation-fill-mode: forwards;
+
+    &.popup_visible
+    {
+        visibility: visible;
+    }
+
+    @for $rule in [
+        [bottom Y 10 [left center right]]
+        [top Y -10 [left center right]]
+        [right X 10 [top center bottom]]
+        [left X -10 [top center bottom]]
+    ] {
+        @for $secondary in $rule[3] {
+            &.popup_direction_{$rule[0]}-{$secondary} {
+                animation-name: popup_theme_normal_{$rule[0]};
+                &.popup_visible {
+                    animation-name: popup_theme_normal_{$rule[0]}_visible;
+                }
+            }
+        }
+
+        @keyframes popup_theme_normal_{$rule[0]}
+        {
+            0%
+            {
+                opacity: 1;
+                visibility: visible;
+                transform: translate{$rule[1]}(0);
+            }
+
+            99%
+            {
+                opacity: 0;
+                visibility: visible;
+                transform: translate{$rule[1]}({$rule[2]}px);
+            }
+
+            100%
+            {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @keyframes popup_theme_normal_{$rule[0]}_visible
+        {
+            0%
+            {
+                opacity: 0;
+                transform: translate{$rule[1]}({$rule[2]}px);
+            }
+
+            100%
+            {
+                opacity: 1;
+                transform: translate{$rule[1]}(0);
+            }
+        }
+    }
+}

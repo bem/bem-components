@@ -1,6 +1,12 @@
 [{
-    mustDeps : { block : 'i-bem', elems : ['dom'] },
-    shouldDeps : ['radio-option', 'dom']
+    mustDeps : {
+        block : 'i-bem',
+        elems : [{
+            name : 'dom',
+            mods : ['elem-instances']
+        }]
+    },
+    shouldDeps : [{ elem : 'option' }, 'dom']
 },
 {
     tech : 'spec.js',

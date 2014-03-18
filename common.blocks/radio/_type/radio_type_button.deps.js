@@ -1,3 +1,3 @@
 ({
-    shouldDeps : { block : 'radio-option', mods : { type : 'button' } }
+    shouldDeps : { elem : 'option', mods : { type : 'button' } }
 })

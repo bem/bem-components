@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['radio', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'chai', 'sinon'],
-    function(provide, Radio, BEMDOM, $, dom, BEMHTML, chai, sinon) {
+    ['radio', { block : 'radio', elem : 'option' }, 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'chai', 'sinon'],
+    function(provide, Radio, RadioOption, BEMDOM, $, dom, BEMHTML, chai, sinon) {
 
 var expect = chai.expect;
 

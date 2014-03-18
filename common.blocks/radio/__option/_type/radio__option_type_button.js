@@ -1,6 +1,6 @@
-modules.define('radio-option', function(provide, RadioOption) {
+modules.define({ block : 'radio', elem : 'option' }, ['i-bem__dom'], function(provide, BEMDOM) {
 
-provide(RadioOption.decl({ modName : 'type', modVal : 'button' }, {
+provide(BEMDOM.decl({ block : 'radio', elem : 'option', modName : 'type', modVal : 'button' }, {
     onSetMod : {
         'checked' : proxyMod,
         'disabled' : proxyMod

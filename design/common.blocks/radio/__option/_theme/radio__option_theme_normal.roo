@@ -1,4 +1,4 @@
-.radio-option_theme_normal
+.radio__option_theme_normal
 {
     &:hover
     {
@@ -12,7 +12,7 @@
         content: '';
     }
 
-    .radio-option__control
+    .radio__control
     {
         position: absolute;
         z-index: -1;
@@ -22,7 +22,7 @@
         opacity: 0;
     }
 
-    .radio-option__box
+    .radio__box
     {
         display: inline-block;
 
@@ -38,9 +38,9 @@
         }
     }
 
-    &.radio-option_checked
+    &.radio__option_checked
     {
-        .radio-option__box
+        .radio__box
         {
             position: relative;
 
@@ -59,17 +59,17 @@
         }
     }
 
-    &.radio-option_focused
+    &.radio__option_focused
     {
-        .radio-option__box
+        .radio__box
         {
             box-shadow: 0 0 10px #fc0;
         }
     }
 
-    &.radio-option_disabled
+    &.radio__option_disabled
     {
-        .radio-option__box
+        .radio__box
         {
             background: rgba(0, 0, 0, 0.08);
             border-color: transparent;
@@ -81,14 +81,14 @@
         }
     }
 
-    &.radio-option_type_button
+    &.radio__option_type_button
     {
         display: inline-block;
     }
 
-    &.radio-option_size_m
+    &.radio__option_size_m
     {
-        .radio-option__box
+        .radio__box
         {
             line-height: 12px;
 
@@ -107,9 +107,9 @@
         }
     }
 
-    &.radio-option_size_l
+    &.radio__option_size_l
     {
-        .radio-option__box
+        .radio__box
         {
             line-height: 15px;
 

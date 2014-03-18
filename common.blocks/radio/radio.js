@@ -1,6 +1,6 @@
 modules.define(
     'radio',
-    ['i-bem__dom', 'jquery', 'dom', 'radio-option'],
+    ['i-bem__dom', 'jquery', 'dom', { block : 'radio', elem : 'option' }],
     function(provide, BEMDOM, $, dom) {
 
 var undef;
@@ -17,11 +17,7 @@ provide(BEMDOM.decl(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var checkedOption = this.findBlockInside({
-                        block : 'radio-option',
-                        modName : 'checked',
-                        modVal : true
-                    });
+                var checkedOption = this.findElemInstance('option', 'checked', true);
 
                 this._inSetVal = false;
                 this._val = checkedOption? checkedOption.getVal() : undef;
@@ -51,11 +47,7 @@ provide(BEMDOM.decl(this.name, {
             },
 
             '' : function() {
-                var focusedOption = this.findBlockInside({
-                        block : 'radio-option',
-                        modName : 'focused',
-                        modVal : true
-                    });
+                var focusedOption = this.findElemInstance('option', 'focused', true);
 
                 focusedOption && focusedOption.delMod('focused');
             }
@@ -106,15 +98,15 @@ provide(BEMDOM.decl(this.name, {
 
     /**
      * Returns options
-     * @returns {radio-option[]}
+     * @returns {radio__option[]}
      */
     getOptions : function() {
-        return this._options || (this._options = this.findBlocksInside('radio-option'));
+        return this._options || (this._options = this.elemInstances('option'));
     },
 
     /**
      * Returns checked option
-     * @returns {radio-option[]|undefined}
+     * @returns {radio__option[]|undefined}
      */
     getCheckedOption : function() {
         return this._getOptionByVal(this._val);
@@ -157,7 +149,7 @@ provide(BEMDOM.decl(this.name, {
 }, {
     live : function() {
         this
-            .liveInitOnBlockInsideEvent({ modName : 'checked', modVal : true }, 'radio-option', function(e) {
+            .liveInitOnBlockInsideEvent({ modName : 'checked', modVal : true }, 'radio__option', function(e) {
                 this._onOptionCheck(e.target);
             })
             .liveBindTo('focusin', function() {

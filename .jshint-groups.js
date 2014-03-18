@@ -32,6 +32,7 @@ module.exports = {
                 '**/*.bem/*.js',
                 '**/_*.js',
                 '**/*.bh.js',
+                '**/*.generator.js',
                 '**/*.spec.js',
                 '**/*.deps.js',
                 '**/*.bemjson.js'
@@ -53,6 +54,11 @@ module.exports = {
                 ]
             },
             includes : ['*.blocks/**/*.spec.js']
+        },
+
+        generator : {
+            options : { asi : true },
+            includes : ['*.blocks/**/*.generator.js']
         },
 
         bhjs : {

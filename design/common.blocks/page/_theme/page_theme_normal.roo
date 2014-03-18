@@ -11,5 +11,5 @@ html
     margin: 0;
 
     color: #000;
-    background: #f6f5f3;
+    background: #fff;
 }

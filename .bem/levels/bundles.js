@@ -10,7 +10,7 @@ exports.getTechs = function() {
 
     ['browser.js+bemhtml', 'html'].forEach(getTechResolver(techs, BEMCORE_TECHS));
 
-    ['phantomjs', 'spec.bemjson.js'].forEach(getTechResolver(techs, BEMPR_TECHS));
+    ['spec.bemjson.js'].forEach(getTechResolver(techs, BEMPR_TECHS));
 
     return techs;
 };

@@ -1,0 +1,15 @@
+span.link
+{
+    .test &,
+    .popup &
+    {
+        cursor: pointer;
+
+        color: blue;
+
+        &:hover
+        {
+            color: red;
+        }
+    }
+}

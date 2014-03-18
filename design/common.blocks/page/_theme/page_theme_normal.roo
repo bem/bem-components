@@ -1,9 +1,14 @@
+html
+{
+    height: 100%;
+}
+
 .page_theme_normal
 {
     font: 13px/15px Arial, Helvetica, sans-serif;
 
+    height: 100%;
     margin: 0;
-    padding: 20px;
 
     color: #000;
     background: #f6f5f3;

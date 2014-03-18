@@ -1,15 +1,24 @@
 block('link')(
     tag()('a'),
 
+    js()(true),
+
     attrs()(function() {
-        var attrs = {},
-            ctx = this.ctx,
+        var ctx = this.ctx,
+            attrs = {
+                tabindex : ctx.tabIndex
+            },
             url = ctx.url,
             typeOfUrl = typeof url;
 
         typeOfUrl !== 'undefined' && (attrs.href = typeOfUrl === 'string'?
             url :
-            BEMHTML.apply(url)); // в урле может лежать bemjson
+            this.reapply(url)); // url could contain bemjson
+
+        // default value for tabindex in case of link \wo href, so link could be focusable
+        typeof attrs.href === 'undefined' &&
+            typeof attrs.tabindex === 'undefined' &&
+            (attrs.tabindex = 0);
 
         ctx.title && (attrs.title = ctx.title);
         ctx.target && (attrs.target = ctx.target);

@@ -18,7 +18,7 @@
                 { block : 'link', mods : { pseudo : true }, content : 'open' },
                 {
                     block : 'popup',
-                    mods : { autoclosable : true },
+                    mods : { autoclosable : true, test : true },
                     content : [
                         'popup is opened at 100,100',
                         {
@@ -57,7 +57,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'open' },
                         {
                             block : 'popup',
-                            mods : { autoclosable : true },
+                            mods : { autoclosable : true, test : true },
                             content : [
                                 'popup is opened at 100,100',
                                 {

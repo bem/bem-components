@@ -48,7 +48,8 @@ MAKE.decl('SetsNode', {
                 'common.blocks',
                 'design/common.blocks',
                 'desktop.blocks',
-                'design/desktop.blocks'
+                'design/desktop.blocks',
+                'test.blocks'
             ],
             'touch-pad' : [
                 'common.blocks',
@@ -56,14 +57,16 @@ MAKE.decl('SetsNode', {
                 'touch.blocks',
                 'design/touch.blocks',
                 'touch-pad.blocks',
-                'design/touch-pad.blocks'
+                'design/touch-pad.blocks',
+                'test.blocks'
             ],
             'touch-phone' : [
                 'common.blocks',
                 'design/common.blocks',
                 'touch.blocks',
                 'design/touch.blocks',
-                'design/touch-phone.blocks'
+                'design/touch-phone.blocks',
+                'test.blocks'
             ]
         };
     },
@@ -125,7 +128,8 @@ MAKE.decl('BundleNode', {
             'common.blocks',
             'desktop.blocks',
             'design/common.blocks',
-            'design/desktop.blocks'
+            'design/desktop.blocks',
+            'test.blocks'
         ];
     },
 
@@ -137,7 +141,8 @@ MAKE.decl('BundleNode', {
             'touch.blocks',
             'design/common.blocks',
             'design/touch.blocks',
-            'design/touch-pad.blocks'
+            'design/touch-pad.blocks',
+            'test.blocks'
         ];
     },
 
@@ -149,7 +154,8 @@ MAKE.decl('BundleNode', {
             'touch.blocks',
             'design/common.blocks',
             'design/touch.blocks',
-            'design/touch-phone.blocks'
+            'design/touch-phone.blocks',
+            'test.blocks'
         ];
     },
 

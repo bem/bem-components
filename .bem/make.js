@@ -254,6 +254,29 @@ MAKE.decl('SpecNode', {
     getLevels : function() {
         return this.__base.apply(this, arguments)
             .concat(environ.getLibPath('bem-pr', 'spec.blocks'));
+    },
+
+    createPhantomJsNode : function() {
+        var arch = this.ctx.arch,
+            node = this.__base.apply(this, arguments);
+        ['spec.js+browser.js+bemhtml', 'css'].forEach(function(tech) {
+            var bundlePath = this.getBundlePath(tech);
+            if(!arch.hasNode(bundlePath)) {
+                throw new Error('Can\'t find node for tech ' + tech + ' in the bundle ' + this.path);
+            }
+
+            arch.hasNode(bundlePath) && arch.addChildren(node, arch.getNode(bundlePath));
+//            arch.link(
+//                arch
+//                    .getNode(bundlePath)
+//                    .getFiles()
+//                    .map(function(file) {
+//                        return PATH.join(PATH.dirname(file), '_' + PATH.basename(file));
+//                    }),
+//                node);
+        }, this);
+
+        return node;
     }
 
 });

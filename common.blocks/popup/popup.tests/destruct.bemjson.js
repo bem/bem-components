@@ -12,10 +12,11 @@
             js : true,
             content : [
                 { block : 'link', mods : { pseudo : true }, content : 'open' },
+                ' ',
                 { block : 'link', mods : { pseudo : true }, content : 'destruct' },
                 {
                     block : 'popup',
-                    mods : { autoclosable : true },
+                    mods : { autoclosable : true, test : true },
                     content : 'popup is opened'
                 }
             ]

@@ -26,35 +26,59 @@
                         { elem : 'cell', content : 'link' },
                         {
                             elem : 'cell',
-                            content : {
-                                block : 'link',
-                                url : '#',
-                                title : 'link',
-                                target : '_blank',
-                                content : 'link'
-                            }
+                            content : [
+                                {
+                                    block : 'link',
+                                    url : '#',
+                                    title : 'link',
+                                    target : '_blank',
+                                    content : 'link'
+                                },
+                                ' ',
+                                {
+                                    block : 'link',
+                                    mods : { pseudo : true },
+                                    content : 'pseudo'
+                                }
+                            ]
                         },
                         {
                             elem : 'cell',
-                            content : {
-                                block : 'link',
-                                mods : { theme : 'simple' },
-                                url : '#',
-                                title : 'link',
-                                target : '_blank',
-                                content : 'link'
-                            }
+                            content : [
+                                {
+                                    block : 'link',
+                                    mods : { theme : 'simple' },
+                                    url : '#',
+                                    title : 'link',
+                                    target : '_blank',
+                                    content : 'link'
+                                },
+                                ' ',
+                                {
+                                    block : 'link',
+                                    mods : { theme : 'simple', pseudo : true },
+                                    content : 'pseudo'
+                                }
+                            ]
                         },
                         {
                             elem : 'cell',
-                            content : {
-                                block : 'link',
-                                mods : { theme : 'normal' },
-                                url : '#',
-                                title : 'link',
-                                target : '_blank',
-                                content : 'link'
-                            }
+                            content : [
+                                {
+                                    block : 'link',
+                                    mods : { theme : 'normal' },
+                                    url : '#',
+                                    title : 'link',
+                                    target : '_blank',
+                                    content : 'link'
+                                },
+                                ' ',
+                                {
+                                    block : 'link',
+                                    mods : { theme : 'normal', pseudo : true },
+                                    content : 'pseudo'
+                                }
+                            ]
                         }
                     ]
                 },

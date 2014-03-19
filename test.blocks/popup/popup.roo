@@ -1,0 +1,14 @@
+.popup_test
+{
+    display: none;
+
+    padding: 10px;
+
+    border: 1px solid red;
+    background: #fff;
+
+    &.popup_visible
+    {
+        display: block;
+    }
+}

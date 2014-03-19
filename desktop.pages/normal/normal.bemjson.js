@@ -10,6 +10,89 @@
         { tag : 'h2', content : 'Normal theme' },
 
         {
+            block : 'menu',
+            mods : { theme : 'normal', size : 'm' },
+            attrs : { style : 'width: 150px;' },
+            content : [
+                {
+                    block : 'menu-item',
+                    val : 1,
+                    content : 'item 1'
+                },
+                {
+                    block : 'menu-item',
+                    mods : { checked : true },
+                    val : 2,
+                    content : 'item 2 item 2 item 2 item 2 item 2 item 2'
+                },
+                {
+                    block : 'menu-item',
+                    mods : { disabled : true },
+                    val : 3,
+                    content : 'item 3'
+                },
+                {
+                    block : 'menu-item',
+                    val : 4,
+                    content : 'item 4'
+                }
+            ]
+        },
+
+        { tag : 'br' },
+
+        {
+            block : 'menu',
+            mods : { theme : 'normal', size : 'm' },
+            attrs : { style : 'width: 150px;' },
+            content : [
+                {
+                    elem : 'group',
+                    elemMods : { 'has-title' : true },
+                    title : 'Group 1',
+                    content : [
+                        {
+                            block : 'menu-item',
+                            content : 'item 1'
+                        },
+                        {
+                            block : 'menu-item',
+                            content : 'item 2'
+                        }
+                    ]
+                },
+                {
+                    elem : 'group',
+                    content : [
+                        {
+                            block : 'menu-item',
+                            content : 'item 3'
+                        },
+                        {
+                            block : 'menu-item',
+                            content : 'item 4'
+                        }
+                    ]
+                },
+                {
+                    elem : 'group',
+                    content : [
+                        {
+                            block : 'menu-item',
+                            content : 'item 3'
+                        },
+                        {
+                            block : 'menu-item',
+                            content : 'item 4'
+                        }
+                    ]
+                }
+            ]
+        },
+
+        { tag : 'br' },
+
+        {
             block : 'line',
             mods : { size : 's' },
             content : [

@@ -398,6 +398,27 @@
                             ]
                         }
                     ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'spin' },
+                        { elem : 'cell', content : '&mdash;' },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'spin',
+                                mods : { theme : 'simple', progress : true }
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'spin',
+                                mods : { theme : 'normal', size : 'm', progress : true }
+                            }
+                        }
+                    ]
                 }
             ]
         }

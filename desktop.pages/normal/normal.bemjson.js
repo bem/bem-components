@@ -43,6 +43,11 @@
                     mods : { theme : 'normal', size : 's', type : 'button' },
                     val : 1,
                     text : 'check'
+                },
+                ' ',
+                {
+                    block : 'spin',
+                    mods : { theme : 'normal', size : 's', progress : true }
                 }
             ]
         },
@@ -83,6 +88,11 @@
                     mods : { theme : 'normal', size : 'm', type : 'button' },
                     val : 1,
                     text : 'check'
+                },
+                ' ',
+                {
+                    block : 'spin',
+                    mods : { theme : 'normal', size : 'm', progress : true }
                 }
             ]
         },
@@ -123,6 +133,11 @@
                     mods : { theme : 'normal', size : 'l', type : 'button' },
                     val : 1,
                     text : 'check'
+                },
+                ' ',
+                {
+                    block : 'spin',
+                    mods : { theme : 'normal', size : 'l', progress : true }
                 }
             ]
         },
@@ -163,6 +178,11 @@
                     mods : { theme : 'normal', size : 'xl', type : 'button' },
                     val : 1,
                     text : 'check'
+                },
+                ' ',
+                {
+                    block : 'spin',
+                    mods : { theme : 'normal', size : 'xl', progress : true }
                 }
             ]
         }

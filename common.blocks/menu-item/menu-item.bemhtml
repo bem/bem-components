@@ -1,3 +1,6 @@
-block('menu-item').js()(function() {
-    return { val : this.ctx.val }
-})
+block('menu-item')(
+    js()(function() {
+        return { val : this.ctx.val }
+    }),
+    attrs()({ role : 'menuitem' })
+)

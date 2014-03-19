@@ -1,6 +1,11 @@
-block('menu').elem('group').elemMod('has-title', true).content()(function() {
-    return [
-        { elem : 'group-title', content : this.ctx.title },
-        applyNext()
-    ]
-})
+block('menu').elem('group').elemMod('has-title', true)(
+    attrs()(function() {
+        return this.extend(applyNext(), { 'aria-label' : this.ctx.title });
+    }),
+    content()(function() {
+        return [
+            { elem : 'group-title', content : this.ctx.title },
+            applyNext()
+        ];
+    })
+)

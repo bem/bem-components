@@ -256,23 +256,11 @@ MAKE.decl('SpecNode', {
             .concat(environ.getLibPath('bem-pr', 'spec.blocks'));
     },
 
-    createPhantomJsNode : function(tech, bundleNode, magicNode) {
-        var bundlePath = this.getBundlePath('html'),
-            node = MAKE.getNodeClass('PhantomJsNode').create({
-                root : this.root,
-                path : bundlePath
-            });
-
-        var arch = this.ctx.arch;
-        arch
-            .setNode(node)
-            .addChildren(node, arch.getNode(bundlePath));
-
-        bundleNode && arch.addParents(node, bundleNode);
-        magicNode && arch.addChildren(node, magicNode);
-
+    createPhantomJsNode : function() {
+        var arch = this.ctx.arch,
+            node = this.__base.apply(this, arguments);
         ['spec.js+browser.js+bemhtml', 'css'].forEach(function(tech) {
-            bundlePath = this.getBundlePath(tech);
+            var bundlePath = this.getBundlePath(tech);
             if(!arch.hasNode(bundlePath)) {
                 throw new Error('Can\'t find node for tech ' + tech + ' in the bundle ' + this.path);
             }
@@ -289,10 +277,6 @@ MAKE.decl('SpecNode', {
         }, this);
 
         return node;
-    },
-
-    'create-phantomjs-node' : function(tech, bundleNode, magicNode) {
-        return this.createPhantomJsNode(tech, bundleNode, magicNode);
     }
 
 });

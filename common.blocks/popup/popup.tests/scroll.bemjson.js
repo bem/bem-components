@@ -18,29 +18,24 @@
                 { block : 'link', mods : { pseudo : true }, content : 'open' },
                 {
                     block : 'popup',
-                    mods : { autoclosable : true, test : true },
-                    content : [
-                        'popup is opened at 100,100',
-                        {
-                            tag : 'p',
+                    mods : { theme : 'simple', autoclosable : true },
+                    content : {
+                        tag : 'p',
+                        content : [
+                            {
+                                block : 'input',
+                                mods : { theme : 'simple' },
+                                val : 'simple'
+                            },
+                            {
+                                tag : 'select',
                                 content : [
-                                    {
-                                        block : 'input',
-                                        mods : { theme : 'simple' },
-                                        val : 'simple'
-                                    },
-                                    {
-                                        tag : 'select',
-                                        content : [
-                                            { tag : 'option', content : '1' },
-                                            { tag : 'option', content : '2' }
-                                        ]
-                                    }
+                                    { tag : 'option', content : '1' },
+                                    { tag : 'option', content : '2' }
                                 ]
-
-                        },
-                        { block : 'link', mods : { pseudo : true }, content : 'update content' },
-                    ]
+                            }
+                        ]
+                    }
                 },
                 {
                     tag : 'p',
@@ -57,29 +52,24 @@
                         { block : 'link', mods : { pseudo : true }, content : 'open' },
                         {
                             block : 'popup',
-                            mods : { autoclosable : true, test : true },
-                            content : [
-                                'popup is opened at 100,100',
-                                {
-                                    tag : 'p',
+                            mods : { theme : 'simple', autoclosable : true },
+                            content : {
+                                tag : 'p',
+                                content : [
+                                    {
+                                        block : 'input',
+                                        mods : { theme : 'simple' },
+                                        val : 'simple'
+                                    },
+                                    {
+                                        tag : 'select',
                                         content : [
-                                            {
-                                                block : 'input',
-                                                mods : { theme : 'simple' },
-                                                val : 'simple'
-                                            },
-                                            {
-                                                tag : 'select',
-                                                content : [
-                                                    { tag : 'option', content : '1' },
-                                                    { tag : 'option', content : '2' }
-                                                ]
-                                            }
+                                            { tag : 'option', content : '1' },
+                                            { tag : 'option', content : '2' }
                                         ]
-
-                                },
-                                { block : 'link', mods : { pseudo : true }, content : 'update content' },
-                            ]
+                                    }
+                                ]
+                            }
                         },
                         {
                             tag : 'p',

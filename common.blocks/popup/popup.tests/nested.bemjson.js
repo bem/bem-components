@@ -14,7 +14,7 @@
                 { block : 'link', mods : { pseudo : true }, content : 'open' },
                 {
                     block : 'popup',
-                    mods : { autoclosable : true, test : true },
+                    mods : { theme : 'simple', autoclosable : true },
                     content : [
                         'popup is opened',
                         {
@@ -32,7 +32,7 @@
                                         { block : 'link', mods : { pseudo : true }, content : 'open' },
                                         {
                                             block : 'popup',
-                                            mods : { test : true },
+                                            mods : { theme : 'simple' },
                                             content : [
                                                 'popup is opened',
                                                 { tag : 'br' },
@@ -52,11 +52,8 @@
                                                                 { block : 'link', mods : { pseudo : true }, content : 'open' },
                                                                 {
                                                                     block : 'popup',
-                                                                    mods : { autoclosable : true, test : true },
-                                                                    content : [
-                                                                        'popup is opened',
-                                                                        'popup is opened'
-                                                                    ]
+                                                                    mods : { theme : 'simple', autoclosable : true },
+                                                                    content : 'popup is opened'
                                                                 },
                                                                 {
                                                                     tag : 'select',

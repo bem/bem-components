@@ -38,11 +38,6 @@
         backface-visibility: hidden; /* Accelerate animation */
     }
 
-    &.spin_paused /* Do not use! For tests only! */
-    {
-        animation-play-state: paused;
-    }
-
     $sizeList = [16, 24, 28, 32, 38];
 
     @for $sizeVal, $i in xs s m l xl

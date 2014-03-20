@@ -17,35 +17,35 @@
         { tag : 'h2', content : 'normal' },
         { tag : 'h3', content : 'size' },
         { tag : 'p', content : [
-            { tag : 'span', content : 'xs ' },
+            'xs ',
             {
                 block : 'spin',
                 mods : { theme : 'normal', size : 'xs', progress : true }
             }
         ] },
         { tag : 'p', content : [
-            { tag : 'span', content : 's ' },
+            's ',
             {
                 block : 'spin',
                 mods : { theme : 'normal', size : 's', progress : true }
             }
         ] },
         { tag : 'p', content : [
-            { tag : 'span', content : 'm ' },
+            'm ',
             {
                 block : 'spin',
                 mods : { theme : 'normal', size : 'm', progress : true }
             }
         ] },
         { tag : 'p', content : [
-            { tag : 'span', content : 'l ' },
+            'l ',
             {
                 block : 'spin',
                 mods : { theme : 'normal', size : 'l', progress : true }
             }
         ] },
         { tag : 'p', content : [
-            { tag : 'span', content : 'xl ' },
+            'xl ',
             {
                 block : 'spin',
                 mods : { theme : 'normal', size : 'xl', progress : true }

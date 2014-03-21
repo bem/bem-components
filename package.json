@@ -27,7 +27,7 @@
     "jshint": "2.3.0",
     "jshint-groups": "0.6.0",
     "jscs": "1.0.11",
-    "git-hooks": "0.0.3",
+    "git-hooks": "0.0.6",
     "svgo": "0.4.1",
     "bower-npm-install": "~0.5.2"
   },

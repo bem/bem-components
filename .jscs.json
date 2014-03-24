@@ -1,6 +1,7 @@
 {
     "excludeFiles" : [
         ".bem/cache/**",
+        ".enb/tmp/**",
         "*.examples/**",
         "*.specs/**",
         "*.tests/**",

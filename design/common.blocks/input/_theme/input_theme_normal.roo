@@ -191,13 +191,7 @@
     {
         .input__box
         {
-<<<<<<< HEAD
-            line-height: 30px;
-=======
             line-height: $theme_normal_size_l_innerHeight;
-
-            padding-right: 30px;
->>>>>>> size & checked
         }
 
         .input__control
@@ -218,13 +212,7 @@
     {
         .input__box
         {
-<<<<<<< HEAD
-            line-height: 36px;
-=======
             line-height: $theme_normal_size_xl_innerHeight;
-
-            padding-right: 36px;
->>>>>>> size & checked
         }
 
         .input__control

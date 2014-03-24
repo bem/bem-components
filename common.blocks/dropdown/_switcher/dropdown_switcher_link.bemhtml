@@ -6,8 +6,13 @@ block('dropdown').mod('switcher', 'link').elem('switcher').content()(function() 
         { block : 'link', mods : { pseudo : true }, content : content } :
         content;
 
-    res.block === 'link' &&
-        ((res.mods || (res.mods = {})).disabled = this.mods.disabled);
+
+    if(res.block === 'link') {
+        var resMods = res.mods || (res.mods = {}),
+            dropdownMods = this.mods;
+        resMods.theme || (resMods.theme = dropdownMods.theme);
+        resMods.disabled = dropdownMods.disabled;
+    }
 
     return res;
 })

@@ -1,19 +1,19 @@
 .radio_theme_normal
 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $theme_normal_fontFamily;
 
     display: block;
 
     &.radio_size_m
     {
-        font-size: 13px;
-        line-height: 26px;
+        font-size: $theme_normal_size_m_fontSize;
+        line-height: $theme_normal_size_m_innerHeight;
     }
 
     &.radio_size_l
     {
-        font-size: 15px;
-        line-height: 30px;
+        font-size: $theme_normal_size_l_fontSize;
+        line-height: $theme_normal_size_l_innerHeight;
     }
 
     &.radio_type_button

@@ -1,6 +1,6 @@
 .button_theme_normal
 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $theme_normal_fontFamily;
 
     display: inline-block;
 
@@ -9,11 +9,11 @@
 
     user-select: none;
 
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
+    @mixin $theme_normal_Border();
+
     outline: 0;
-    color: #000;
-    background: #fff;
+    color: $theme_normal_color;
+    background: $theme_normal_background;
 
     text-align: center;
     white-space: nowrap;
@@ -69,16 +69,14 @@
 
     &.button_focused
     {
-        border: 1px solid rgba(178, 142, 0, 0.6);
-        box-shadow: 0 0 10px #fc0;
+        border-color: $theme_normal_focused_borderColor;
+        box-shadow: $theme_normal_focused_boxShadow;
     }
 
     &.button_disabled
     {
-        background: rgba(0, 0, 0, 0.08);
-        box-shadow: none;
-
-        color: rgba(0, 0, 0, 0.4);
+        color: $theme_normal_disabled_color;
+        background: $theme_normal_disabled_background;
     }
 
     &.button_pseudo
@@ -104,8 +102,8 @@
 
     &.button_size_s
     {
-        font-size: 13px;
-        line-height: 22px;
+        font-size: $theme_normal_size_s_fontSize;
+        line-height: $theme_normal_size_s_innerHeight;
 
         .button__icon
         {
@@ -120,8 +118,8 @@
 
     &.button_size_m
     {
-        font-size: 13px;
-        line-height: 26px;
+        font-size: $theme_normal_size_m_fontSize;
+        line-height: $theme_normal_size_m_innerHeight;
 
         .button__icon
         {
@@ -136,8 +134,8 @@
 
     &.button_size_l
     {
-        font-size: 15px;
-        line-height: 30px;
+        font-size: $theme_normal_size_l_fontSize;
+        line-height: $theme_normal_size_l_innerHeight;
 
         .button__icon
         {
@@ -152,8 +150,8 @@
 
     &.button_size_xl
     {
-        font-size: 18px;
-        line-height: 36px;
+        font-size: $theme_normal_size_xl_fontSize;
+        line-height: $theme_normal_size_xl_innerHeight;
 
         .button__icon
         {
@@ -178,7 +176,7 @@
 
     &.button_checked
     {
-        background: #ffeba0;
+        background: $theme_normal_checked_background;
     }
 
     &.button_togglable_radio
@@ -202,14 +200,14 @@
 
         &:last-of-type
         {
-            border-right-width: 1px;
-            border-top-right-radius: 3px;
-            border-bottom-right-radius: 3px;
+            border-right-width: $theme_normal_borderSize;
+            border-top-right-radius: $theme_normal_borderRadius;
+            border-bottom-right-radius: $theme_normal_borderRadius;
         }
 
         &.button_hovered
         {
-            border-right-width: 1px;
+            border-right-width: $theme_normal_borderSize;
 
             ~ .button_togglable_radio
             {
@@ -219,7 +217,7 @@
             /* TODO: сложновато, проверить производительность */
             ~ .button_togglable_radio ~ .button_togglable_radio
             {
-                border-left-width: 1px;
+                border-left-width: $theme_normal_borderSize;
             }
         }
     }

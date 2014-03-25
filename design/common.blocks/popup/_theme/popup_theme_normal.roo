@@ -5,8 +5,8 @@
     animation-duration: 0.1s;
     animation-timing-function: ease-out;
 
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    background: #fff;
+    border: $theme_normal_border;
+    background: $theme_normal_background;
     box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.4);
 
     animation-fill-mode: forwards;

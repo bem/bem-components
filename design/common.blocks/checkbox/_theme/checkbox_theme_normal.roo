@@ -1,6 +1,6 @@
 .checkbox_theme_normal
 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $theme_normal_fontFamily;
 
     /*
      * TODO: корявый хак, появляется некрасивая серая плашка при клике на тачах в iOS, надо переделать
@@ -35,9 +35,9 @@
 
         display: inline-block;
 
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 3px;
-        background: #fff;
+        border: $theme_normal_border;
+        border-radius: $theme_normal_borderRadius;
+        background: $theme_normal_background;
 
         &::after
         {
@@ -49,8 +49,8 @@
 
     &.checkbox_size_m
     {
-        font-size: 13px;
-        line-height: 26px;
+        font-size: $theme_normal_size_m_fontSize;
+        line-height: $theme_normal_size_m_innerHeight;
 
         .checkbox__box
         {
@@ -73,8 +73,8 @@
 
     &.checkbox_size_l
     {
-        font-size: 15px;
-        line-height: 30px;
+        font-size: $theme_normal_size_l_fontSize;
+        line-height: $theme_normal_size_l_innerHeight;
 
         .checkbox__box
         {
@@ -99,7 +99,7 @@
     {
         .checkbox__box
         {
-            background: #ffeba0;
+            background: $theme_normal_checked_background;
 
             &::before
             {
@@ -119,12 +119,12 @@
 
         .checkbox__box
         {
-            background: rgba(0, 0, 0, 0.08);
+            background: $theme_normal_disabled_background;
             border-color: transparent;
 
             &::before
             {
-                opacity: 0.4;
+                opacity: $theme_normal_disabled_opacity;
             }
         }
     }

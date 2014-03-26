@@ -2,7 +2,7 @@ block('form').elem('control')(
 
     js()(true),
 
-    cls()('i-bem'),
+    mix()({ block: 'i-bem' }),
 
     tag()('input'),
 

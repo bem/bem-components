@@ -6,6 +6,12 @@ provide(BEMDOM.decl(this.name, {
 
     onSetMod : {
 
+        'js' : {
+            'inited' : function() {
+                this._setValInProgress = false;
+            }
+        },
+
         'disabled' : function(modName, modVal) {
             this.elemInstances('control').forEach(function(control) {
                 control.setMod(modName, modVal);
@@ -32,13 +38,19 @@ provide(BEMDOM.decl(this.name, {
      * @param {Object} val данные (если не передан - берется из параметра fillData)
      */
     setVal : function(val) {
+        this._setValInProgress = true;
         this
             .elemInstances('control')
             .forEach(function(control) {
                 control.setVal(val[control.getName()]);
             });
+        this._setValInProgress = false;
+        this.emit('change');
+    },
 
-        this.emit('change', val); // TODO сделать один change
+    onControlChange : function() {
+        if(this._setValInProgress) return;
+        this.emit('change');
     }
 
 }, {

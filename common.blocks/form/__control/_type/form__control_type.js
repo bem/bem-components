@@ -56,7 +56,7 @@ provide(BEMDOM.decl({
      * Реакция на событие изменения значения контрола
      */
     onControlChange : function() {
-        //this.block().onChange(); // TODO
+        this.block().onControlChange();
     },
 
     /**

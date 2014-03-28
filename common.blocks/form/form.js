@@ -6,11 +6,6 @@ provide(BEMDOM.decl(this.name, {
 
     onSetMod : {
 
-        /**
-         * Модификатор, переводящий форму в неактивное состояние
-         * @param {String} modName имя модификатора ('disabled')
-         * @param {String} modVal значение модификатора (true|false)
-         */
         'disabled' : function(modName, modVal) {
             this.elemInstances('control').forEach(function(control) {
                 control.setMod(modName, modVal);

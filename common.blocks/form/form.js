@@ -12,135 +12,36 @@ BEMDOM.decl('form', {
          * @param {String} modVal значение модификатора (true|false)
          */
         'disabled' : function(modName, modVal) {
-
             this.elemInstances('control').forEach(function(control) {
-                modVal ? control.disable() : control.enable();
+                control.setMod(modName, modVal);
             });
-
-            this.emit(modVal ? 'disable' : 'enable');
-
         }
 
     },
 
     /**
      * Сериализует форму
-     * @param {String} [type] тип сериализованных данных (по умолчанию - массив)
      * @returns {*}
      */
-    serialize : function(type) {
-
-        switch(type) {
-            case 'object': return this._serializeObject();
-            case 'array': return this._serializeArray();
-            default: return this._serializeArray();
-        }
-
-    },
-
-    /**
-     * Сериализует форму и возвращает объект следующего вида:
-     *  { <имя контрола>: <значение контрола>, ... }
-     * @returns {Object|*}
-     * @private
-     */
-    _serializeObject : function() {
-
-        return this
-            .elemInstances('control')
-            .reduce(function(res, control) {
-                var name = control.getName();
-                if(name) res[name] = control.getVal();
-                return res;
-            }, {});
-
-    },
-
-    /**
-     * Сериализует форму и возвращает массив следующего вида:
-     *  [ { name: <имя контрола>, value: <значение контрола> }, ... ]
-     * @returns {Array|*}
-     * @private
-     */
-    _serializeArray : function() {
-
-        return this
-            .elemInstances('control')
-            .map(function(control) {
-                return {
-                    name : control.getName(),
-                    value : control.getVal()
-                };
-            });
-
-    },
-
-    /**
-     * Очищает форму.
-     * На время очистки форма блокируется от лишних операций обновления с помощью установки модификатора _locked
-     */
-    clear : function() {
-
-        this.setMod('locked', true);
-
-        this
-            .elemInstances('control')
-            .forEach(function(control) {
-                control.clear();
-            });
-
-        this.emit('clear');
-
-        nextTick(function() {
-            this.delMod('locked');
-        });
-
-    },
-
-    /**
-     * Вызывает метод update всех контролов с модификатором _updatable и генерирует событие update
-     * Вызывается из контрола, в котором произошли изменения
-     * @param {Object} data данные изменившегося контрола
-     * @param {Object} data.control ссылка на инстанс контрола
-     */
-    update : function(data) {
-
-        if(this.hasMod('locked')) return;
-
-        this
-            .elemInstances('control', 'updatable', true)
-            .forEach(function(control) {
-                data.control === control || control.update(data);
-            });
-
-        this.emit('update', data);
-
+    getVal : function() {
+        return this.elemInstances('control').reduce(function(res, control) {
+            res[control.getName()] = control.getVal();
+        }, {});
     },
 
     /**
      * Заполняет форму данными
      * На время заполнения форма блокируется от лишних операций обновления с помощью установки модификатора _locked
-     * @param {Object} [data] данные (если не передан - берется из параметра fillData)
+     * @param {Object} val данные (если не передан - берется из параметра fillData)
      */
-    fill : function(data) {
-
-        if(!data) data = this.params.fillData;
-        if(!data) return;
-
-        this.setMod('locked', true);
-
+    setVal : function(val) {
         this
             .elemInstances('control')
             .forEach(function(control) {
-                control.fill(data);
+                control.setVal(val[control.getName()]);
             });
 
-        this.emit('fill', data);
-
-        nextTick(function() {
-            this.delMod('locked');
-        });
-
+        this.emit('change', val); // TODO сделать один change
     }
 
 }, {

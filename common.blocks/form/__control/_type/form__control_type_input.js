@@ -13,7 +13,6 @@ BEMDOM.decl({
 }, {}, {
 
     live : function() {
-
         this.__base();
         this.liveInitOnBlockEvent('change focus blur', 'input', function(e, data) {
             switch(e.type) {
@@ -22,7 +21,6 @@ BEMDOM.decl({
                 case 'blur': this.onControlBlur(e, data); break;
             }
         });
-
     }
 
 });

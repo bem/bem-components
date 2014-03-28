@@ -12,20 +12,28 @@ BEMDOM.decl({
 
 }, {
 
+    onSetMod : {
+
+        'disabled' : function(modName, modVal) {
+            this.getControl().setMod(modName, modVal);
+        }
+
+    },
+
     /**
      * Возвращает закэшированный инстанс подмешанного контрола
      * @returns {BEM}
      */
     getControl : function() {
-
         return this._control || (this._control = this.findBlockOn(this.getMod('type')));
-
     },
 
+    /**
+     * Возвращает имя контрола
+     * @returns {String}
+     */
     getName : function() {
-
         return this.params.name || this.getControl().getName();
-
     },
 
     /**
@@ -33,9 +41,7 @@ BEMDOM.decl({
      * @returns {String}
      */
     getVal : function() {
-
         return this.getControl().getVal();
-
     },
 
     /**
@@ -43,33 +49,15 @@ BEMDOM.decl({
      * @param {*|String} val устанавливаемое значение
      */
     setVal : function(val) {
-
         this.getControl().setVal(val);
-
-    },
-
-    /**
-     * Переводит контрол в активное состояние
-     */
-    enable : function() {
-
-        this.getControl().delMod('disabled');
-
-    },
-
-    /**
-     * Переводит контрол в неактивное состояние
-     */
-    disable : function() {
-
-        this.getControl().setMod('disabled', true);
-
     },
 
     /**
      * Реакция на событие изменения значения контрола
      */
-    onControlChange : function() {},
+    onControlChange : function() {
+        //this.block().onChange(); // TODO
+    },
 
     /**
      * Реакция на событие получения контролом фокуса

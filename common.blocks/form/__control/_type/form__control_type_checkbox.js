@@ -17,11 +17,8 @@ BEMDOM.decl({
      * @returns {String}
      */
     getVal : function() {
-
         var control = this.getControl();
-
         return control.hasMod('checked') ? control.getVal() : '';
-
     },
 
     /**
@@ -29,15 +26,12 @@ BEMDOM.decl({
      * @param {String} val значение
      */
     setVal : function(val) {
-
         this.getControl().setMod('checked', !!val);
-
     }
 
 }, {
 
     live : function() {
-
         this.__base();
         this.liveInitOnBlockEvent('change focus blur', 'checkbox', function(e, data) {
             switch(e.type) {
@@ -46,7 +40,6 @@ BEMDOM.decl({
                 case 'blur': this.onControlBlur(e, data); break;
             }
         });
-
     }
 
 });

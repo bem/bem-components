@@ -13,20 +13,19 @@ BEMDOM.decl({
 }, {}, {
 
     live : function() {
-
         this.__base();
-        this.liveInitOnBlockEvent('change', 'radio', function(e, data) {
-            switch(e.type) {
-                case 'change': this.onControlChange(e, data); break;
-            }
-        });
-        this.liveInitOnBlockEvent('focus blur', 'radio-option', function(e, data) {
-            switch(e.type) {
-                case 'focus': this.onControlFocus(e, data); break;
-                case 'blur': this.onControlBlur(e, data); break;
-            }
-        });
-
+        this
+            .liveInitOnBlockEvent('change', 'radio', function(e, data) {
+                switch(e.type) {
+                    case 'change': this.onControlChange(e, data); break;
+                }
+            })
+            .liveInitOnBlockEvent('focus blur', 'radio-option', function(e, data) {
+                switch(e.type) {
+                    case 'focus': this.onControlFocus(e, data); break;
+                    case 'blur': this.onControlBlur(e, data); break;
+                }
+            });
     }
 
 });

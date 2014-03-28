@@ -1,9 +1,9 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
 /**
  * Контрол типа checkbox (флажок)
  * Подмешивается к блоку checkbox
  */
-BEMDOM.decl({
+provide(BEMDOM.decl({
 
     block : 'form',
     elem : 'control',
@@ -42,8 +42,6 @@ BEMDOM.decl({
         });
     }
 
-});
-
-provide(BEMDOM);
+}));
 
 });

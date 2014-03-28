@@ -1,9 +1,9 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
 /**
  * Контрол типа radio (радиогруппа)
  * Подмешивается к блоку radio
  */
-BEMDOM.decl({
+provide(BEMDOM.decl({
 
     block : 'form',
     elem : 'control',
@@ -28,8 +28,6 @@ BEMDOM.decl({
             });
     }
 
-});
-
-provide(BEMDOM);
+}));
 
 });

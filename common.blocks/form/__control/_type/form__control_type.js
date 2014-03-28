@@ -1,10 +1,10 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
 /**
  * Болванка для контрола формы с заданным типом (модификатор _type)
  * К таким контролам подмешивается BEM-блок, реализующий АПИ соответсвующего контрола
  * В общем случае считается, что имя подмешанного блока совпадает со значением модификатора _type
  */
-BEMDOM.decl({
+provide(BEMDOM.decl({
 
     block : 'form',
     elem : 'control',
@@ -69,8 +69,6 @@ BEMDOM.decl({
      */
     onControlBlur : function() {}
 
-});
-
-provide(BEMDOM);
+}));
 
 });

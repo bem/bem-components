@@ -1,9 +1,9 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
 /**
  * Контрол типа button (кнопка)
  * Подмешивается к блоку button
  */
-BEMDOM.decl({
+provide(BEMDOM.decl({
 
     block : 'form',
     elem : 'control',
@@ -27,8 +27,6 @@ BEMDOM.decl({
      */
     setVal : function() {}
 
-});
-
-provide(BEMDOM);
+}));
 
 });

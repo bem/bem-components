@@ -1,8 +1,8 @@
-modules.define('i-bem__dom', ['jquery'], function(provide, $, BEMDOM) {
+modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
 /**
  * Контрол (поле ввода) формы
  */
-BEMDOM.decl({
+provide(BEMDOM.decl({
 
     block : 'form',
     elem : 'control'
@@ -69,8 +69,6 @@ BEMDOM.decl({
 
     live : true
 
-});
-
-provide(BEMDOM);
+}));
 
 });

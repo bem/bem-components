@@ -1,9 +1,9 @@
-modules.define('i-bem__dom', function(provide, BEMDOM) {
+modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
 /**
  * Контрол типа input (текстовое поле ввода)
  * Подмешивается к блоку input
  */
-BEMDOM.decl({
+provide(BEMDOM.decl({
 
     block : 'form',
     elem : 'control',
@@ -23,8 +23,6 @@ BEMDOM.decl({
         });
     }
 
-});
-
-provide(BEMDOM);
+}));
 
 });

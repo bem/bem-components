@@ -1,8 +1,8 @@
-modules.define('i-bem__dom', ['next-tick'], function(provide, nextTick, BEMDOM) {
+modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
 /**
  * Форма
  */
-BEMDOM.decl('form', {
+provide(BEMDOM.decl(this.name, {
 
     onSetMod : {
 
@@ -48,8 +48,6 @@ BEMDOM.decl('form', {
 
     live : true
 
-});
-
-provide(BEMDOM);
+}));
 
 });

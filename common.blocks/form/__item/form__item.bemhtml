@@ -1,7 +1,0 @@
-block('form').elem('item')(
-
-    def()(function() {
-        applyNext({ _formItemId: this.generateId() })
-    })
-
-);

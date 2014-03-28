@@ -9,20 +9,10 @@ block('form').elem('control')(
     attrs()(function() {
         var ctx = this.ctx;
         return {
-            id: apply('id'),
+            id: ctx.id,
             name: ctx.name,
             value: ctx.val
         };
-    }),
-
-    mode('id')(function() {
-        return this.ctx.id || this.generateId();
-    }),
-
-    mode('id').match(this._formItemId)(function() {
-        var id = this._formItemId;
-        delete this._formItemId;
-        return id;
     })
 
 );

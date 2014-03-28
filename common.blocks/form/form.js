@@ -25,7 +25,9 @@ provide(BEMDOM.decl(this.name, {
      */
     getVal : function() {
         return this.elemInstances('control').reduce(function(res, control) {
-            res[control.getName()] = control.getVal();
+            var name = control.getName();
+            name && (res[name] = control.getVal());
+            return res;
         }, {});
     },
 

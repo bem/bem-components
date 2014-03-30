@@ -45,6 +45,20 @@
 
             content: '\00A0';
         }
+
+        &::before
+        {
+            position: absolute;
+
+            content: '';
+
+            background-image: url(_normal/tip.svg);
+            background-size: 100%;
+
+            opacity: 0;
+
+            transition: transform .05s ease-out, opacity .05s ease-out;
+        }
     }
 
     &.checkbox_size_m
@@ -67,6 +81,8 @@
 
                 width: 15px;
                 height: 15px;
+
+                transform: translateY(-5px);
             }
         }
     }
@@ -91,6 +107,8 @@
 
                 width: 18px;
                 height: 18px;
+
+                transform: translateY(-7px);
             }
         }
     }
@@ -101,14 +119,9 @@
         {
             background: #ffeba0;
 
-            &::before
-            {
-                position: absolute;
-
-                content: ' ';
-
-                background-image: url(_normal/tip.svg);
-                background-size: 100%;
+            &::before {
+                opacity: 1;
+                transform: translateY(0px);
             }
         }
     }
@@ -121,10 +134,16 @@
         {
             background: rgba(0, 0, 0, 0.08);
             border-color: transparent;
+        }
 
-            &::before
+        &.checkbox_checked
+        {
+            .checkbox__box
             {
-                opacity: 0.4;
+                &::before
+                {
+                    opacity: 0.4;
+                }
             }
         }
     }

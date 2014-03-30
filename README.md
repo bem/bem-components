@@ -1,4 +1,4 @@
-# BEM Components Library [![Build Status](https://travis-ci.org/bem/bem-components.png)](https://travis-ci.org/bem/bem-components)
+# BEM Components Library [![Build Status](https://travis-ci.org/bem/bem-components.svg?branch=v2)](https://travis-ci.org/bem/bem-components)
 
 ## Что это?
 

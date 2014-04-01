@@ -1,0 +1,20 @@
+<[% ctx.tag || 'button' %]
+    class="button
+        [% IF ctx.theme %]button_theme[% ctx.theme %][% END %]
+        i-bem"
+    data-bem="{'button':{}}"
+    role="button"
+    type="button"
+    [% IF ctx.name %]name="[% ctx.name %]"[% END %]
+    [% IF ctx.val %]value="[% ctx.val %]"[% END %]
+    [% IF ctx.mods.disabled %]disabled="disabled"[% END %]
+    >
+    [% IF ctx.content %]
+        [% ctx.content %]
+    [% ELSE %]
+        [% ctx.icon %]
+        [% IF ctx.text %]
+            <span class="button__text">[% ctx.content %]</span>
+        [% END %]
+    [% END %]
+</[% ctx.tag || 'button' %]>

@@ -1,11 +1,11 @@
-modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('form', function(provide, Form) {
 /**
  * Контрол типа radio (радиогруппа)
  * Подмешивается к блоку radio
  */
 
 // TODO Form.decl({ elem: 'control', modName: 'type', modVal: 'radio' }, ...)
-provide(BEMDOM.decl({ block : 'form', elem : 'control', modName : 'type', modVal : 'radio' }, {}, {
+provide(Form.decl({ block : 'form', elem : 'control', modName : 'type', modVal : 'radio' }, {}, {
     live : function() {
         var ptp = this.prototype;
 

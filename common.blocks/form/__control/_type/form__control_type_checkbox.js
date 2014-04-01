@@ -1,9 +1,9 @@
-modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('form', function(provide, Form) {
 /**
  * Контрол типа checkbox (флажок)
  * Подмешивается к блоку checkbox
  */
-provide(BEMDOM.decl({ block : this.name, elem : 'control', modName : 'type', modVal : 'checkbox' }, {
+provide(Form.decl({ block : this.name, elem : 'control', modName : 'type', modVal : 'checkbox' }, {
     /**
      * Возвращает значение контрола
      * @returns {String}

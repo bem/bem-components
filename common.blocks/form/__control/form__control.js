@@ -1,7 +1,7 @@
-modules.define('form', function(provide, BEMDOM) {
+modules.define('form', function(provide, Form) {
 /**
  * Контрол (поле ввода) формы
  */
-provide(BEMDOM.decl({ block : this.name, elem : 'control' }, {}, { live : true }));
+provide(Form.decl({ block : this.name, elem : 'control' }, {}, { live : true }));
 
 });

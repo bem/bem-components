@@ -1,9 +1,9 @@
-modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('form', function(provide, Form) {
 /**
  * Контрол типа input (текстовое поле ввода)
  * Подмешивается к блоку input
  */
-provide(BEMDOM.decl({ block : 'form', elem : 'control', modName : 'type', modVal : 'input' }, {}, {
+provide(Form.decl({ block : 'form', elem : 'control', modName : 'type', modVal : 'input' }, {}, {
     live : function() {
         var ptp = this.prototype;
 

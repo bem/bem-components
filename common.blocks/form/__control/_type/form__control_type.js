@@ -1,10 +1,10 @@
-modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('form', function(provide, Form) {
 /**
  * Болванка для контрола формы с заданным типом (модификатор _type)
  * К таким контролам подмешивается BEM-блок, реализующий АПИ соответсвующего контрола
  * В общем случае считается, что имя подмешанного блока совпадает со значением модификатора _type
  */
-provide(BEMDOM.decl({ block : this.name, elem : 'control', modName : 'type' }, {
+provide(Form.decl({ block : this.name, elem : 'control', modName : 'type' }, {
     onSetMod : {
         'disabled' : function(modName, modVal) {
             this.getControl().setMod(modName, modVal);

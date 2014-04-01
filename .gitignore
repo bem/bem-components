@@ -12,6 +12,9 @@ libs
 !*.pages/*/blocks
 !*.pages/*/*.bemjson.js
 
+/coverage
+/coverage.json
+
 /*.examples
 /*.specs
 /*.tests

@@ -29,14 +29,15 @@
     "jscs": "1.0.11",
     "git-hooks": "0.0.6",
     "svgo": "0.4.1",
-    "bower-npm-install": "~0.5.2"
+    "bower-npm-install": "~0.5.2",
+    "istanbul": "^0.2.7"
   },
   "optionalDependencies": {},
   "private": true,
   "scripts": {
     "test": "npm run lint && npm run unit",
     "lint": "jshint-groups && jscs . && csscomb -vl .",
-    "unit": "bower-npm-install && bem make -w 10 desktop.specs touch-pad.specs touch-phone.specs"
+    "unit": "bower-npm-install && bem make -w 10 desktop.specs touch-pad.specs touch-phone.specs",
+    "coverage": "ISTANBUL_COVERAGE=yes npm run unit"
   }
 }
-

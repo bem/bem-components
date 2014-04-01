@@ -3,13 +3,7 @@ modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
  * Контрол типа button (кнопка)
  * Подмешивается к блоку button
  */
-provide(BEMDOM.decl({
-    block : 'form',
-    elem : 'control',
-    modName : 'type',
-    modVal : 'button'
-}, {
-
+provide(BEMDOM.decl({ block : this.name, elem : 'control', modName : 'type', modVal : 'button' }, {
     /**
      * Заглушка
      */
@@ -24,7 +18,6 @@ provide(BEMDOM.decl({
      * Заглушка
      */
     setVal : function() {}
-
 }));
 
 });

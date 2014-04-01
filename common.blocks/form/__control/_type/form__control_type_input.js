@@ -4,7 +4,6 @@ modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
  * Подмешивается к блоку input
  */
 provide(BEMDOM.decl({ block : 'form', elem : 'control', modName : 'type', modVal : 'input' }, {}, {
-
     live : function() {
         var ptp = this.prototype;
 
@@ -14,7 +13,6 @@ provide(BEMDOM.decl({ block : 'form', elem : 'control', modName : 'type', modVal
             .liveInitOnBlockEvent('focus', 'input', ptp._onControlFocus)
             .liveInitOnBlockEvent('blur', 'input', ptp._onControlBlur);
     }
-
 }));
 
 });

@@ -4,20 +4,11 @@ modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
  * К таким контролам подмешивается BEM-блок, реализующий АПИ соответсвующего контрола
  * В общем случае считается, что имя подмешанного блока совпадает со значением модификатора _type
  */
-provide(BEMDOM.decl({
-
-    block : 'form',
-    elem : 'control',
-    modName : 'type'
-
-}, {
-
+provide(BEMDOM.decl({ block : this.name, elem : 'control', modName : 'type' }, {
     onSetMod : {
-
         'disabled' : function(modName, modVal) {
             this.getControl().setMod(modName, modVal);
         }
-
     },
 
     /**
@@ -73,7 +64,6 @@ provide(BEMDOM.decl({
      * @protected
      */
     _onControlBlur : function() {}
-
 }));
 
 });

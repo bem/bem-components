@@ -1,4 +1,4 @@
-modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('form', function(provide, BEMDOM) {
 /**
  * Контрол (поле ввода) формы
  */

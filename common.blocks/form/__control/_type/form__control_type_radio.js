@@ -6,7 +6,6 @@ modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
 
 // TODO Form.decl({ elem: 'control', modName: 'type', modVal: 'radio' }, ...)
 provide(BEMDOM.decl({ block : 'form', elem : 'control', modName : 'type', modVal : 'radio' }, {}, {
-
     live : function() {
         var ptp = this.prototype;
 
@@ -16,7 +15,6 @@ provide(BEMDOM.decl({ block : 'form', elem : 'control', modName : 'type', modVal
             .liveInitOnBlockEvent('focus', 'radio-option', ptp._onControlFocus)
             .liveInitOnBlockEvent('blur', 'radio-option', ptp._onControlBlur);
     }
-
 }));
 
 });

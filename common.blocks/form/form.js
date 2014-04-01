@@ -4,7 +4,6 @@ modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
  */
 provide(BEMDOM.decl(this.name, {
     onSetMod : {
-
         'js' : {
             'inited' : function() {
                 this._setValInProgress = false;
@@ -16,7 +15,6 @@ provide(BEMDOM.decl(this.name, {
                 control.setMod(modName, modVal);
             });
         }
-
     },
 
     /**

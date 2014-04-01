@@ -1,7 +1,3 @@
 ({
-    shouldDeps : [
-        {
-            block : 'radio'
-        }
-    ]
+    shouldDeps : 'radio'
 })

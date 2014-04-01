@@ -1,3 +1,3 @@
 ({
-    block : 'button'
+    shouldDeps : 'button'
 })

@@ -1,18 +1,5 @@
 block('form').elem('control')(
 
-    js()(true),
-
-    mix()({ block: 'i-bem' }),
-
-    tag()('input'),
-
-    attrs()(function() {
-        var ctx = this.ctx;
-        return {
-            id: ctx.id,
-            name: ctx.name,
-            value: ctx.val
-        };
-    })
+    js()(true)
 
 );

@@ -1,7 +1,3 @@
 ({
-    shouldDeps : [
-        {
-            block : 'checkbox'
-        }
-    ]
+    shouldDeps : 'checkbox'
 })

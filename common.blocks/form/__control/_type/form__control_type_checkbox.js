@@ -32,14 +32,13 @@ provide(BEMDOM.decl({
 }, {
 
     live : function() {
+        var ptp = this.prototype;
+
         this.__base();
-        this.liveInitOnBlockEvent('change focus blur', 'checkbox', function(e, data) {
-            switch(e.type) {
-                case 'change': this.onControlChange(e, data); break;
-                case 'focus': this.onControlFocus(e, data); break;
-                case 'blur': this.onControlBlur(e, data); break;
-            }
-        });
+        this
+            .liveInitOnBlockEvent('change', 'checkbox', ptp._onControlChange)
+            .liveInitOnBlockEvent('focus', 'checkbox', ptp._onControlFocus)
+            .liveInitOnBlockEvent('blur', 'checkbox', ptp._onControlBlur);
     }
 
 }));

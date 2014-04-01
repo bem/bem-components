@@ -3,7 +3,6 @@ modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
  * Форма
  */
 provide(BEMDOM.decl(this.name, {
-
     onSetMod : {
 
         'js' : {
@@ -22,7 +21,7 @@ provide(BEMDOM.decl(this.name, {
 
     /**
      * Сериализует форму
-     * @returns {*}
+     * @returns {Object}
      */
     getVal : function() {
         return this.elemInstances('control').reduce(function(res, control) {
@@ -34,7 +33,6 @@ provide(BEMDOM.decl(this.name, {
 
     /**
      * Заполняет форму данными
-     * На время заполнения форма блокируется от лишних операций обновления с помощью установки модификатора _locked
      * @param {Object} val данные (если не передан - берется из параметра fillData)
      */
     setVal : function(val) {
@@ -45,18 +43,20 @@ provide(BEMDOM.decl(this.name, {
                 control.setVal(val[control.getName()]);
             });
         this._setValInProgress = false;
-        this.emit('change');
+        this.emit('change'); // TODO если значение не поменялось - не эмитим change
+        // TODO класть вторым аргументом хеш - в ключах имена, в листьях хэши с полями event и data
     },
 
-    onControlChange : function() {
+    /**
+     * метод зовется элементом __control
+     * @private
+     */
+    _onControlChange : function() {
         if(this._setValInProgress) return;
         this.emit('change');
     }
-
 }, {
-
     live : true
-
 }));
 
 });

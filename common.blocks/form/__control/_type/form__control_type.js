@@ -33,7 +33,7 @@ provide(BEMDOM.decl({
      * @returns {String}
      */
     getName : function() {
-        return this.params.name || this.getControl().getName();
+        return this.getControl().getName();
     },
 
     /**
@@ -54,20 +54,25 @@ provide(BEMDOM.decl({
 
     /**
      * Реакция на событие изменения значения контрола
+     * @protected
      */
-    onControlChange : function() {
-        this.block().onControlChange();
+    _onControlChange : function() {
+        this.block()._onControlChange();
     },
 
     /**
      * Реакция на событие получения контролом фокуса
+     * @abstract
+     * @protected
      */
-    onControlFocus : function() {},
+    _onControlFocus : function() {},
 
     /**
      * Реакция на событие потери контролом фокуса
+     * @abstract
+     * @protected
      */
-    onControlBlur : function() {}
+    _onControlBlur : function() {}
 
 }));
 

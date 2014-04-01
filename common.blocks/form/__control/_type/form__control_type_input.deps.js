@@ -1,7 +1,3 @@
 ({
-    shouldDeps : [
-        {
-            block : 'input'
-        }
-    ]
+    shouldDeps : 'input'
 })

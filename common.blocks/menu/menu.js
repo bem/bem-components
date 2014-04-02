@@ -40,7 +40,11 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends m
         }
     },
 
-    _getItems : function() {
+    /**
+     * Returns items
+     * @returns {menu-item[]}
+     */
+    getItems : function() {
         return this._items || (this._items = this.findBlocksInside('menu-item'));
     },
 
@@ -59,14 +63,29 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends m
     _onItemHover : function(item) {
         if(item.hasMod('hovered')) {
             this._hoveredItem && this._hoveredItem.delMod('hovered');
-            this._hoveredItem = item;
+            this._scrollToItem(this._hoveredItem = item);
         } else if(this._hoveredItem === item) {
             this._hoveredItem = null;
         }
     },
 
-    _onItemClick : function(item) {
-        this.emit('item-click', item);
+    _scrollToItem : function(item) {
+        var domElemOffsetTop = this.domElem.offset().top,
+            itemDomElemOffsetTop = item.domElem.offset().top,
+            relativeScroll;
+
+        if((relativeScroll = itemDomElemOffsetTop - domElemOffsetTop) < 0 ||
+            (relativeScroll =
+                itemDomElemOffsetTop +
+                item.domElem.outerHeight() -
+                domElemOffsetTop -
+                this.domElem.outerHeight()) > 0) {
+            this.domElem.scrollTop(this.domElem.scrollTop() + relativeScroll);
+        }
+    },
+
+    _onItemClick : function(item, data) {
+        this.emit('item-click', { item : item, source : data.source });
     },
 
     _onKeyDown : function(e) {
@@ -77,7 +96,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends m
             e.preventDefault();
 
             var dir = keyCode - 39, // using the features of key codes for "up"/"down" ;-)
-                items = this._getItems(),
+                items = this.getItems(),
                 len = items.length,
                 hoveredIdx = items.indexOf(this._hoveredItem),
                 nextIdx = hoveredIdx,
@@ -98,8 +117,8 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends m
             .liveInitOnBlockInsideEvent({ modName : 'hovered', modVal : '*' }, 'menu-item', function(e) {
                 this._onItemHover(e.target);
             })
-            .liveInitOnBlockInsideEvent('click', 'menu-item', function(e) {
-                this._onItemClick(e.target);
+            .liveInitOnBlockInsideEvent('click', 'menu-item', function(e, data) {
+                this._onItemClick(e.target, data);
             });
 
         return this.__base.apply(this, arguments);

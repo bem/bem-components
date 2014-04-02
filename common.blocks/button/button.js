@@ -62,7 +62,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
      * @returns {this}
      */
     setText : function(text) {
-        this.elem('text').text(text);
+        this.elem('text').text(typeof text === 'undefined'? ' ' : text);
         return this;
     },
 

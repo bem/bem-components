@@ -68,9 +68,9 @@ describe('menu_select_radio-check', function() {
         });
 
         it('should modify value after clicks on items', function() {
-            menuItems[0].emit('click');
+            menuItems[0].emit('click', { source : 'pointer' });
             menu.getVal().should.be.eql(1);
-            menuItems[0].emit('click');
+            menuItems[0].emit('click', { source : 'pointer' });
             chai.should().not.exist(menu.getVal());
         });
 
@@ -104,12 +104,12 @@ describe('menu_select_radio-check', function() {
         });
 
         it('should emit change event on non checked items clicks', function() {
-            menuItems[0].emit('click');
+            menuItems[0].emit('click', { source : 'pointer' });
             spy.should.have.been.called;
         });
 
         it('should emit change event on checked items clicks', function() {
-            menuItems[1].emit('click');
+            menuItems[1].emit('click', { source : 'pointer' });
             spy.should.have.been.called;
         });
     });

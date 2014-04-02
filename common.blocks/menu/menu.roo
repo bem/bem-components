@@ -1,0 +1,4 @@
+.menu
+{
+    overflow-y: auto;
+}

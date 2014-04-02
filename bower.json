@@ -10,10 +10,10 @@
     "libs"
   ],
   "dependencies": {
-    "bem-core": "git://github.com/bem/bem-core.git#v2"
+    "bem-core": "git://github.com/bem/bem-core.git#58b53814237004d13ee1595bda9542d51a4723ef"
   },
   "devDependencies": {
-    "bem-pr": "git://github.com/narqo/bem-pr.git#0.8.1-beta2"
+    "bem-pr": "git://github.com/narqo/bem-pr.git#0.8.1-beta3"
   },
   "private": true
 }

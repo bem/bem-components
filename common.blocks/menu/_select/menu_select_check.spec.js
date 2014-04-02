@@ -69,9 +69,9 @@ describe('menu_select_check', function() {
         });
 
         it('should modify value after clicks on items', function() {
-            menuItems[0].emit('click');
+            menuItems[0].emit('click', { source : 'pointer' });
             menu.getVal().should.be.eql([1, 2, 4]);
-            menuItems[1].emit('click');
+            menuItems[1].emit('click', { source : 'pointer' });
             menu.getVal().should.be.eql([1, 4]);
         });
 
@@ -106,7 +106,7 @@ describe('menu_select_check', function() {
         });
 
         it('should emit change event on items clicks', function() {
-            menuItems[0].emit('click');
+            menuItems[0].emit('click', { source : 'pointer' });
             spy.should.have.been.called;
         });
     });

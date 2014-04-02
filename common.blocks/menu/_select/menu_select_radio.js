@@ -14,7 +14,7 @@ provide(Menu.decl({ modName : 'select', modVal : 'radio' }, /** @lends menu.prot
      * @override
      */
     _getVal : function() {
-        var items = this._getItems(),
+        var items = this.getItems(),
             i = 0,
             item;
 
@@ -29,7 +29,7 @@ provide(Menu.decl({ modName : 'select', modVal : 'radio' }, /** @lends menu.prot
     _setVal : function(val) {
         var wasChanged = false,
             hasVal = false,
-            itemsCheckedVals = this._getItems().map(function(item) {
+            itemsCheckedVals = this.getItems().map(function(item) {
                 if(!item.isValEq(val)) return false;
 
                 item.hasMod('checked') || (wasChanged = true);
@@ -50,7 +50,7 @@ provide(Menu.decl({ modName : 'select', modVal : 'radio' }, /** @lends menu.prot
         this.__base.apply(this, arguments);
 
         var isChanged = false;
-        this._getItems().forEach(function(item) {
+        this.getItems().forEach(function(item) {
             if(item === clickedItem) {
                 if(!item.hasMod('checked')) {
                     item.setMod('checked', true);

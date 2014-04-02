@@ -87,9 +87,10 @@ describe('menu', function() {
         it('should emit "item-click" event on item click', function() {
             var spy = sinon.spy();
             menu.on('item-click', spy);
-            menuItems[1].emit('click');
+            menuItems[1].emit('click', { source : 'pointer' });
             spy.should.have.been.called;
-            spy.args[0][1].should.be.equal(menuItems[1]);
+            spy.args[0][1].item.should.be.equal(menuItems[1]);
+            spy.args[0][1].source.should.be.equal('pointer');
         });
     });
 });

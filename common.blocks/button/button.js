@@ -37,22 +37,19 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
             'inited' : function() {
                 this.__base.apply(this, arguments);
                 this._preventLoseFocus = false;
+                this.hasMod('focused') && this._bindToOnFocusedEvents();
             }
         },
 
         'focused' : {
             'true' : function() {
                 this.__base.apply(this, arguments); // should be called before binds
-                this
-                    .bindToWin('unload', this._onUnload) // TODO: WTF???
-                    .bindTo('control', 'keydown', this._onKeyDown);
+                this._bindToOnFocusedEvents();
             },
 
             '' : function() {
-                this
-                    .unbindFromWin('unload', this._onUnload)
-                    .unbindFrom('control', 'keydown', this._onKeyDown)
-                    .__base.apply(this, arguments);
+                this._unbindFromOnFocusedEvents();
+                this.__base.apply(this, arguments);
             }
         },
 
@@ -78,8 +75,20 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
      * @returns {this}
      */
     setText : function(text) {
-        this.elem('text').text(text);
+        this.elem('text').text(typeof text === 'undefined'? ' ' : text);
         return this;
+    },
+
+    _bindToOnFocusedEvents : function() {
+        this
+            .bindToWin('unload', this._onUnload) // TODO: WTF???
+            .bindTo('control', 'keydown', this._onKeyDown);
+    },
+
+    _unbindFromOnFocusedEvents : function() {
+        this
+            .unbindFromWin('unload', this._onUnload)
+            .unbindFrom('control', 'keydown', this._onKeyDown);
     },
 
     _onUnload : function() {

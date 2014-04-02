@@ -54,8 +54,8 @@ provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup
 function onDocKeyDown(e) {
     e.keyCode === keyCodes.ESC &&
         // omit ESC in inputs, selects and etc.
-        !dom.isFocusable($(e.target)) &&
         visiblePopupsStack.length &&
+        !dom.isEditable($(e.target)) &&
             visiblePopupsStack[0].delMod('visible');
 }
 

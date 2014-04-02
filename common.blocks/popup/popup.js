@@ -193,121 +193,144 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         return this;
     },
 
-    _calcBestDrawingParams : function() {
-        var dimensions = this._calcDimensions(),
-            directions = this.params.directions,
-            i = 0,
-            direction,
-            pos,
-            viewportFactor,
-            bestDirection,
-            bestPos,
-            bestViewportFactor;
+    /**
+     * Returns possible directions to draw with max available width and height.
+     * @returns {Array}
+     */
+    calcPossibleDrawingParams : function() {
+        var owner = this._calcOwnerDimensions(),
+            viewport = this._calcViewportDimensions(),
+            popup = this._calcPopupDimensions(),
+            params = this.params,
+            mainOffset = params.mainOffset,
+            secondaryOffset = params.secondaryOffset,
+            viewportOffset = params.viewportOffset;
 
-        while(direction = directions[i++]) {
-            pos = this._calcPos(direction, dimensions);
-            viewportFactor = this._calcViewportFactor(pos, dimensions);
-            if(i === 1 ||
-                    viewportFactor > bestViewportFactor ||
-                    (!bestViewportFactor && this.hasMod('direction', direction))) {
-                bestDirection = direction;
-                bestViewportFactor = viewportFactor;
-                bestPos = pos;
+        return this.params.directions.map(function(direction) {
+            var subRes = {
+                    direction : direction,
+                    width : 0,
+                    height : 0,
+                    left : 0,
+                    top : 0,
+                    factor : 0
+                };
+
+            if(checkMainDirection(direction, 'bottom')) {
+                subRes.top = owner.top + owner.height + mainOffset;
+                subRes.height = viewport.bottom - subRes.top - viewportOffset;
+            } else if(checkMainDirection(direction, 'top')) {
+                subRes.top = owner.top - popup.height - mainOffset;
+                subRes.height = owner.top - viewport.top - mainOffset - viewportOffset;
+            } else if(checkMainDirection(direction, 'left', 'right')) {
+                if(checkSecondaryDirection(direction, 'center')) {
+                    subRes.top = owner.top + owner.height / 2 - popup.height / 2;
+                    subRes.height = viewport.bottom - viewport.top - 2 * viewportOffset;
+                } else if(checkSecondaryDirection(direction, 'bottom')) {
+                    subRes.top = owner.top + owner.height - popup.height - secondaryOffset;
+                    subRes.height = owner.top + owner.height - viewport.top - secondaryOffset - viewportOffset;
+                } else if(checkSecondaryDirection(direction, 'top')) {
+                    subRes.top = owner.top + secondaryOffset;
+                    subRes.height = viewport.bottom - subRes.top - viewportOffset;
+                }
+
+                if(checkMainDirection(direction, 'left')) {
+                    subRes.left = owner.left - popup.width - mainOffset;
+                    subRes.width = owner.left - viewport.left - mainOffset - viewportOffset;
+                } else {
+                    subRes.left = owner.left + owner.width + mainOffset;
+                    subRes.width = viewport.right - subRes.left - viewportOffset;
+                }
             }
-            if(bestViewportFactor > VIEWPORT_ACCURACY_FACTOR) break;
+
+            if(checkSecondaryDirection(direction, 'right')) {
+                subRes.left = owner.left + owner.width - popup.width - secondaryOffset;
+                subRes.width = owner.left + owner.width - viewport.left - secondaryOffset - viewportOffset;
+            } else if(checkSecondaryDirection(direction, 'left')) {
+                subRes.left = owner.left + secondaryOffset;
+                subRes.width = viewport.right - subRes.left - viewportOffset;
+            } else if(checkSecondaryDirection(direction, 'center')) {
+                if(checkMainDirection(direction, 'top', 'bottom')) {
+                    subRes.left = owner.left + owner.width / 2 - popup.width / 2;
+                    subRes.width = viewport.right - viewport.left - 2 * viewportOffset;
+                }
+            }
+
+            var intersectionLeft = Math.max(subRes.left, viewport.left + viewportOffset),
+                intersectionRight = Math.min(subRes.left + popup.width, viewport.right - viewportOffset),
+                intersectionTop = Math.max(subRes.top, viewport.top + viewportOffset),
+                intersectionBottom = Math.min(subRes.top + popup.height, viewport.bottom - viewportOffset);
+
+            subRes.factor = intersectionLeft < intersectionRight && intersectionTop < intersectionBottom?
+                (intersectionRight - intersectionLeft) *
+                    (intersectionBottom - intersectionTop) /
+                    popup.area :
+                0;
+
+            return subRes;
+        }, this);
+    },
+
+    _calcBestDrawingParams : function() {
+        var possibleDrawingParams = this.calcPossibleDrawingParams(),
+            i = 0,
+            drawingParams,
+            bestDrawingParams;
+
+        while(drawingParams = possibleDrawingParams[i++]) {
+            if(i === 1 ||
+                    drawingParams.factor > bestDrawingParams.factor ||
+                    (bestDrawingParams.factor < VIEWPORT_ACCURACY_FACTOR &&
+                        this.hasMod('direction', drawingParams.direction))) {
+                bestDrawingParams = drawingParams;
+            }
+
+            if(bestDrawingParams.factor >= VIEWPORT_ACCURACY_FACTOR) break;
         }
 
         return {
-            direction : bestDirection,
-            left : bestPos.left,
-            top : bestPos.top
+            direction : bestDrawingParams.direction,
+            left : bestDrawingParams.left,
+            top : bestDrawingParams.top
         };
     },
 
-    _calcDimensions : function() {
+    _calcPopupDimensions : function() {
+        var popupWidth = this.domElem.outerWidth(),
+            popupHeight = this.domElem.outerHeight();
+
+        return {
+            width : popupWidth,
+            height : popupHeight,
+            area : popupWidth * popupHeight
+        };
+    },
+
+    _calcOwnerDimensions : function() {
         var pos = this._pos,
             owner = this._owner,
-            popupWidth = this.domElem.outerWidth(),
-            popupHeight = this.domElem.outerHeight(),
-            ownerPos = pos? pos : owner.offset(),
-            winTop = win.scrollTop(),
+            ownerPos = pos? pos : owner.offset();
+
+        return {
+            left : ownerPos.left,
+            top : ownerPos.top,
+            width : pos? 0 : owner.outerWidth(),
+            height : pos? 0 : owner.outerHeight()
+        };
+    },
+
+    _calcViewportDimensions : function() {
+        var winTop = win.scrollTop(),
             winLeft = win.scrollLeft(),
             winWidth = win.width(),
             winHeight = win.height();
 
         return {
-            popup : {
-                width : popupWidth,
-                height : popupHeight,
-                area : popupWidth * popupHeight
-            },
-
-            owner : {
-                left : ownerPos.left,
-                top : ownerPos.top,
-                width : pos? 0 : owner.outerWidth(),
-                height : pos? 0 : owner.outerHeight()
-            },
-
-            viewport : {
-                top : winTop,
-                left : winLeft,
-                bottom : winTop + winHeight,
-                right : winLeft + winWidth
-            }
+            top : winTop,
+            left : winLeft,
+            bottom : winTop + winHeight,
+            right : winLeft + winWidth
         };
-    },
-
-    _calcPos : function(direction, dimensions) {
-        var res = {},
-            mainOffset = this.params.mainOffset,
-            secondaryOffset = this.params.secondaryOffset,
-            owner = dimensions.owner,
-            popup = dimensions.popup;
-
-        if(checkMainDirection(direction, 'bottom')) {
-            res.top = owner.top + owner.height + mainOffset;
-        } else if(checkMainDirection(direction, 'top')) {
-            res.top = owner.top - popup.height - mainOffset;
-        } else if(checkMainDirection(direction, 'left')) {
-            res.left = owner.left - popup.width - mainOffset;
-        } else if(checkMainDirection(direction, 'right')) {
-            res.left = owner.left + owner.width + mainOffset;
-        }
-
-        if(checkSecondaryDirection(direction, 'right')) {
-            res.left = owner.left + owner.width - popup.width - secondaryOffset;
-        } else if(checkSecondaryDirection(direction, 'left')) {
-            res.left = owner.left + secondaryOffset;
-        } else if(checkSecondaryDirection(direction, 'bottom')) {
-            res.top = owner.top + owner.height - popup.height - secondaryOffset;
-        } else if(checkSecondaryDirection(direction, 'top')) {
-            res.top = owner.top + secondaryOffset;
-        } else if(checkSecondaryDirection(direction, 'center')) {
-            if(checkMainDirection(direction, 'top', 'bottom')) {
-                res.left = owner.left + owner.width / 2 - popup.width / 2;
-            } else if(checkMainDirection(direction, 'left', 'right')) {
-                res.top = owner.top + owner.height / 2 - popup.height / 2;
-            }
-        }
-
-        return res;
-    },
-
-    _calcViewportFactor : function(pos, dimensions) {
-        var viewport = dimensions.viewport,
-            popup = dimensions.popup,
-            viewportOffset = this.params.viewportOffset,
-            intersectionLeft = Math.max(pos.left, viewport.left + viewportOffset),
-            intersectionRight = Math.min(pos.left + popup.width, viewport.right - viewportOffset),
-            intersectionTop = Math.max(pos.top, viewport.top + viewportOffset),
-            intersectionBottom = Math.min(pos.top + popup.height, viewport.bottom - viewportOffset);
-
-        return intersectionLeft < intersectionRight && intersectionTop < intersectionBottom? // has intersection
-            (intersectionRight - intersectionLeft) *
-                (intersectionBottom - intersectionTop) /
-                popup.area :
-            0;
     },
 
     /**

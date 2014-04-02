@@ -1,0 +1,48 @@
+block('select')(
+    def().match(!this._select)(function() { // TODO: check BEM-XJST for proper applyNext
+        if(!this.mods.type) throw Error('Can\'t build select without type modifier');
+
+        var options = this.ctx.options,
+            i = 0, j,
+            optionOrGroup, option, firstOption, checkedOptions = [];
+
+        while(optionOrGroup = options[i++]) { // NOTE: because of possible performance bust
+            if(optionOrGroup.group) {
+                j = 0;
+                while(option = optionOrGroup[j++]) {
+                    i === 1 && j === 1 && (firstOption = option);
+                    option.checked && checkedOptions.push(option);
+                }
+            } else {
+                i === 1 && (firstOption = optionOrGroup);
+                optionOrGroup.checked && checkedOptions.push(optionOrGroup);
+            }
+        }
+
+        applyNext({
+            _select : this.ctx,
+            _checkedOptions : checkedOptions,
+            _firstOption : firstOption
+        });
+    }),
+
+    js()(function () {
+        var ctx = this.ctx;
+        return {
+            name : ctx.name,
+            optionsMaxHeight : ctx.optionsMaxHeight
+        };
+    }),
+
+    content()(function() {
+        return [
+            { elem : 'button' },
+            {
+                block : 'popup',
+                mods : { theme : this.mods.theme, autoclosable : true },
+                js : { directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'] },
+                content : { block : this.block, mods : this.mods, elem : 'menu' }
+            }
+        ];
+    })
+)

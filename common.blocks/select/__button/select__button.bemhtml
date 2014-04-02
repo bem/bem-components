@@ -1,0 +1,18 @@
+block('select').elem('button')(
+    def()(function() {
+        var mods = this.mods;
+        applyCtx({
+            block : 'button',
+            mix : { block : this.block, elem : this.elem },
+            mods : {
+                size : mods.size,
+                theme : mods.theme,
+                focused : mods.focused,
+                disabled : mods.disabled,
+                checked : mods.type !== 'radio' && !!this._checkedOptions.length
+            },
+            textMaxWidth : this._select.textMaxWidth,
+            content : apply('content')
+        });
+    })
+)

@@ -34,14 +34,16 @@ provide(BEMDOM.decl(this.name, {
      * @param {Object} val данные (если не передан - берется из параметра fillData)
      */
     setVal : function(val) {
-        this._changeStorage = {};
+        var storage = this._changeStorage = {};
+
         this
             .elemInstances('control')
             .forEach(function(control) {
                 control.setVal(val[control.getName()]);
             });
+
         this.nextTick(function() {
-            objects.isEmpty(this._changeStorage) || this.emit('change', this._changeStorage);
+            objects.isEmpty(storage) || this.emit('change', storage);
             this._changeStorage = null;
         });
     },

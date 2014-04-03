@@ -47,8 +47,8 @@ provide(Form.decl({ block : this.name, elem : 'control', modName : 'type' }, {
      * Реакция на событие изменения значения контрола
      * @protected
      */
-    _onControlChange : function() {
-        this.block()._onControlChange.apply(this, arguments);
+    _onControlChange : function(e, data) {
+        this.block()._onControlChange(this, e, data);
     },
 
     /**

@@ -2,6 +2,8 @@ block('form').elem('label')(
 
     tag()('label'),
 
-    attrs()({ 'for': this.ctx.id })  // TODO проверить
+    attrs()(function() {
+        return { 'for': this.ctx.id };
+    })
 
 );

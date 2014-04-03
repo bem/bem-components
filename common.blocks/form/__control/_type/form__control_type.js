@@ -48,7 +48,7 @@ provide(Form.decl({ block : this.name, elem : 'control', modName : 'type' }, {
      * @protected
      */
     _onControlChange : function() {
-        this.block()._onControlChange();
+        this.block()._onControlChange.apply(this, arguments);
     },
 
     /**

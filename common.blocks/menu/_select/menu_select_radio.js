@@ -60,7 +60,7 @@ provide(Menu.decl({ modName : 'select', modVal : 'radio' }, /** @lends menu.prot
             } else {
                 item.delMod('checked');
             }
-        });
+        }, this);
         isChanged && this.emit('change');
     }
 }));

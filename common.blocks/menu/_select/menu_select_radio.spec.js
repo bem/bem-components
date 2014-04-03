@@ -50,6 +50,10 @@ describe('menu_select_radio', function() {
             menuItems[0].emit('click');
             menu.getVal().should.be.equal(1);
             menuItems[1].hasMod('checked').should.be.false;
+
+            menuItems[1].emit('click');
+            menu.getVal().should.be.equal(2);
+            menuItems[0].hasMod('checked').should.be.false;
         });
 
         it('should change value', function() {

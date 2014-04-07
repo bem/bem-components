@@ -10,6 +10,99 @@
         { tag : 'h2', content : 'Normal theme' },
 
         {
+            block : 'table',
+            attrs : { style : 'table-layout: fixed; width: 600px' },
+            content : [
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'title', content : 'size s' },
+                        { elem : 'title', content : 'size m' },
+                        { elem : 'title', content : 'size l' },
+                        { elem : 'title', content : 'size xl' }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', size : 's' },
+                        { elem : 'cell', size : 'm' },
+                        { elem : 'cell', size : 'l' },
+                        { elem : 'cell', size : 'xl' }
+                    ].map(function(cell) {
+                        cell.attrs = { style : 'width: 25%' };
+                        cell.content = [
+                            {
+                                block : 'menu',
+                                mods : { theme : 'normal', size : cell.size },
+                                attrs : { style : 'border: 1px solid rgba(0, 0, 0, 0.1)' },
+                                content : [
+                                    {
+                                        block : 'menu-item',
+                                        val : 1,
+                                        content : 'New'
+                                    },
+                                    {
+                                        block : 'menu-item',
+                                        mods : { disabled : true },
+                                        val : 3,
+                                        content : 'Open Recent'
+                                    }
+                                ]
+                            },
+                            { tag : 'br' },
+                            {
+                                block : 'menu',
+                                mods : { select : 'check', theme : 'normal', size : cell.size },
+                                attrs : { style : 'border: 1px solid rgba(0, 0, 0, 0.1)' },
+                                content : [
+                                    {
+                                        elem : 'group',
+                                        elemMods : { 'has-title' : true },
+                                        title : 'Automate',
+                                        content : [
+                                            {
+                                                block : 'menu-item',
+                                                content : 'Batch'
+                                            },
+                                            {
+                                                block : 'menu-item',
+                                                content : 'Create Droplet'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        elem : 'group',
+                                        content : [
+                                            {
+                                                block : 'menu-item',
+                                                mods : { checked : true },
+                                                content : [
+                                                    { elem : 'icon', elemMods : { social : 'twitter' } },
+                                                    'Twitter'
+                                                ]
+                                            },
+                                            {
+                                                block : 'menu-item',
+                                                content : [
+                                                    { elem : 'icon', elemMods : { social : 'vk' } },
+                                                    'VK'
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ];
+                        return cell;
+                    })
+                }
+            ]
+        },
+
+        { tag : 'br' },
+
+        {
             block : 'line',
             mods : { size : 's' },
             content : [

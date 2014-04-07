@@ -1,0 +1,11 @@
+.menu_theme_simple
+{
+    .menu__group-title
+    {
+        font-style: italic;
+
+        padding: 4px 10px;
+
+        color: #999;
+    }
+}

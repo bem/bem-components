@@ -1,0 +1,1 @@
+block('menu').elem('group').attrs()({ role : 'group' })

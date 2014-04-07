@@ -155,7 +155,7 @@
                     content : {
                         block : 'link',
                         url : '//bing.ru',
-                        content : 'Bind'
+                        content : 'Bing'
                     }
                 }
             ]

@@ -1,0 +1,9 @@
+.test
+{
+    .menu_focused
+    {
+        box-shadow: 0 0 0 1px red;
+
+        outline: none;
+    }
+}

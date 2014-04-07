@@ -539,6 +539,90 @@
                             ]
                         }
                     ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'menu' },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'menu',
+                                mods : { select : 'check' },
+                                content : [
+                                    {
+                                        block : 'menu-item',
+                                        val : 1,
+                                        content : 'New'
+                                    },
+                                    {
+                                        block : 'menu-item',
+                                        mods : { checked : true },
+                                        val : 2,
+                                        content : 'Open'
+                                    },
+                                    {
+                                        block : 'menu-item',
+                                        mods : { disabled : true },
+                                        val : 3,
+                                        content : 'Open Recent'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'menu',
+                                mods : { theme : 'simple', select : 'radio' },
+                                content : [
+                                    {
+                                        block : 'menu-item',
+                                        val : 1,
+                                        content : 'New'
+                                    },
+                                    {
+                                        block : 'menu-item',
+                                        mods : { checked : true },
+                                        val : 2,
+                                        content : 'Open'
+                                    },
+                                    {
+                                        block : 'menu-item',
+                                        mods : { disabled : true },
+                                        val : 3,
+                                        content : 'Open Recent'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'menu',
+                                mods : { theme : 'normal', size : 'm', select : 'radio' },
+                                content : [
+                                    {
+                                        block : 'menu-item',
+                                        val : 1,
+                                        content : 'New'
+                                    },
+                                    {
+                                        block : 'menu-item',
+                                        mods : { checked : true },
+                                        val : 2,
+                                        content : 'Open'
+                                    },
+                                    {
+                                        block : 'menu-item',
+                                        mods : { disabled : true },
+                                        val : 3,
+                                        content : 'Open Recent'
+                                    }
+                                ]
+                            }
+                        }
+                    ]
                 }
             ]
         }

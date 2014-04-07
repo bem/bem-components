@@ -1,4 +1,13 @@
 block('menu')(
-    attrs()({ tabindex : 0 }),
-    js()(true)
+    attrs()({ tabindex : 0, role : 'menu' }),
+    js()(true),
+    def()(function() {
+        applyNext({ _menuTheme : this.ctx.mods.theme });
+        delete this._menuTheme;
+    })
 )
+
+block('menu-item').match(this._menuTheme).def()(function() {
+    (this.ctx.mods || (this.ctx.mods = this.mods)).theme = this._menuTheme;
+    applyNext();
+});

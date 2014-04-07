@@ -52,7 +52,7 @@
 
             content: '';
 
-            background-image: url(_normal/tip.svg);
+            background-image: url(../../theme/_normal/tip.svg);
             background-size: 100%;
 
             opacity: 0;

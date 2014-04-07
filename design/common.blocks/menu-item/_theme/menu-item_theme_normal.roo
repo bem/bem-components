@@ -1,0 +1,109 @@
+@block
+{
+$paddingLeft = [30, 30, 34, 40];
+$paddingVert = [3, 4, 5, 6];
+$paddingHor = [10, 13, 15, 20];
+
+$tipSize = [14, 14, 15, 15];
+$tipPosTop = [4, 4, 7, 8];
+$tipPosLeft = [10, 12, 15, 19];
+
+.menu-item_theme_normal
+{
+    position: relative;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &.menu-item_hovered
+    {
+        cursor: pointer;
+
+        background: #ffeba0;
+    }
+
+    &.menu-item_disabled
+    {
+        opacity: 0.3;
+
+        .link
+        {
+            cursor: default;
+        }
+    }
+
+    &.menu-item_checked::before
+    {
+        position: absolute;
+
+        content: '';
+
+        background: 0 50% no-repeat url(../../theme/_normal/tip.svg);
+        background-size: 100%;
+    }
+
+    &.menu-item_type_link
+    {
+        .link
+        {
+            text-decoration: none;
+
+            color: inherit;
+            outline: none;
+        }
+    }
+
+    .menu-item__icon
+    {
+        display: inline-block;
+
+        width: 16px;
+        margin-right: 5px;
+
+        background-repeat: no-repeat;
+        background-position: 0 50%;
+
+        /* Hack for the correct positioning baseline */
+        &::after
+        {
+            visibility: hidden;
+
+            content: '\00A0';
+        }
+    }
+}
+
+@for $sizeVal, $i in s m l xl
+{
+    .menu_size_$sizeVal
+    {
+        .menu-item_theme_normal
+        {
+            padding: 0 $paddingHor[$i]px;
+
+            &::before
+            {
+                top: $tipPosTop[$i]px;
+                left: $tipPosLeft[$i]px;
+
+                width: $tipSize[$i]px;
+                height: $tipSize[$i]px;
+            }
+        }
+
+        .menu__group + .menu-item_theme_normal
+        {
+            margin-top: $paddingVert[$i]px;
+        }
+
+        &[class*='menu_select'] .menu-item_theme_normal,
+        .menu__group-title + .menu-item_theme_normal
+        {
+            padding-left: $paddingLeft[$i]px;
+        }
+    }
+}
+
+}

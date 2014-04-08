@@ -33,12 +33,12 @@
 
             99%
             {
-                opacity: 0;
                 transform: translate{$rule[1]}({$rule[2]}px);
             }
 
             100%
             {
+                opacity: 0;
                 visibility: hidden;
             }
         }

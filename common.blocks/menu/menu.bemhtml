@@ -2,7 +2,7 @@ block('menu')(
     attrs()({ tabindex : 0, role : 'menu' }),
     js()(true),
     def()(function() {
-        applyNext({ _menuTheme : this.ctx.mods.theme });
+        applyNext({ _menuTheme : this.mods.theme });
         delete this._menuTheme;
     })
 )

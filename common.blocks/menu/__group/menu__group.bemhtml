@@ -1,1 +1,14 @@
-block('menu').elem('group').attrs()({ role : 'group' })
+block('menu').elem('group')(
+    attrs()({ role : 'group' }),
+    match(function() { return typeof this.ctx.title !== 'undefined' })(
+        attrs()(function() {
+            return this.extend(applyNext(), { 'aria-label' : this.ctx.title });
+        }),
+        content()(function() {
+            return [
+                { elem : 'group-title', content : this.ctx.title },
+                applyNext()
+            ];
+        })
+    )
+)

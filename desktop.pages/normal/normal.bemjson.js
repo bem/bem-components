@@ -35,7 +35,6 @@
                             {
                                 block : 'menu',
                                 mods : { theme : 'normal', size : cell.size },
-                                attrs : { style : 'border: 1px solid rgba(0, 0, 0, 0.1)' },
                                 content : [
                                     {
                                         block : 'menu-item',
@@ -70,7 +69,6 @@
                             {
                                 block : 'menu',
                                 mods : { select : 'check', theme : 'normal', size : cell.size },
-                                attrs : { style : 'border: 1px solid rgba(0, 0, 0, 0.1)' },
                                 content : [
                                     {
                                         elem : 'group',

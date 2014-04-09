@@ -1,9 +1,4 @@
-.test
+.menu[class*='menu_theme']
 {
-    .menu_focused
-    {
-        box-shadow: 0 0 0 1px red;
-
-        outline: none;
-    }
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }

@@ -26,6 +26,7 @@ provide(BEMDOM.decl(this.name, {
         'js' : {
             'inited' : function() {
                 this._focused = false;
+                this._refocusOnBlur = false;
             }
         },
 
@@ -69,14 +70,26 @@ provide(BEMDOM.decl(this.name, {
 
     _onBlur : function() {
         this._focused = false;
-        this.delMod('focused');
+        if(this._refocusOnBlur) {
+            this._refocusOnBlur = false;
+            this.nextTick(this._focus);
+        } else {
+            this.delMod('focused');
+        }
     },
 
     _onPointerPress : function() {
+        this._refocusOnBlur = true;
+        this.nextTick(this._clearRefocusOnBlur);
+
         this.hasMod('disabled') ||
             this
                 .bindToDoc('pointerrelease', this._onPointerRelease)
                 .setMod('pressed');
+    },
+
+    _clearRefocusOnBlur : function() {
+        this._refocusOnBlur = false;
     },
 
     _onPointerRelease : function(e) {
@@ -94,7 +107,9 @@ provide(BEMDOM.decl(this.name, {
     _onPointerClick : function(e) {
         this.hasMod('disabled')?
             e.preventDefault() :
-            this.emit('click');
+            this
+                .setMod('focused')
+                .emit('click');
     },
 
     _focus : function() {

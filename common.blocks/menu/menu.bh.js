@@ -1,8 +1,14 @@
 module.exports = function(bh) {
+
     bh.match('menu', function(ctx) {
         ctx
             .attrs({ tabindex : 0, role : 'menu' })
-            .js(true);
+            .js(true)
+            .tParam('_menuTheme', ctx.mod('theme'));
     });
-    // TODO: `menu-item_theme` inherit
+
+    bh.match('menu-item', function(ctx) {
+        ctx.mod('theme', ctx.tParam('_menuTheme'));
+    });
+
 };

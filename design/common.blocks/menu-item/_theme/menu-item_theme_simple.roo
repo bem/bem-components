@@ -7,14 +7,7 @@
 
     .menu__group &
     {
-        padding: 4px 15px;
-    }
-
-    &.menu-item_hovered
-    {
-        cursor: pointer;
-
-        background: #fff7db;
+        padding-left: 25px;
     }
 
     &.menu-item_disabled
@@ -32,6 +25,13 @@
         font-weight: bold;
 
         background: #fff7db;
+    }
+
+    &.menu-item_hovered
+    {
+        cursor: pointer;
+
+        background: #ffc7c7;
     }
 
     .menu-item__icon

@@ -35,18 +35,33 @@
                             {
                                 block : 'menu',
                                 mods : { theme : 'normal', size : cell.size },
-                                attrs : { style : 'border: 1px solid rgba(0, 0, 0, 0.1)' },
                                 content : [
                                     {
                                         block : 'menu-item',
-                                        val : 1,
                                         content : 'New'
                                     },
                                     {
                                         block : 'menu-item',
                                         mods : { disabled : true },
-                                        val : 3,
                                         content : 'Open Recent'
+                                    },
+                                    {
+                                        elem : 'group',
+                                        title : 'Save',
+                                        content : [
+                                            {
+                                                block : 'menu-item',
+                                                content : 'Save as...'
+                                            },
+                                            {
+                                                block : 'menu-item',
+                                                content : 'Export'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        block : 'menu-item',
+                                        content : 'Close'
                                     }
                                 ]
                             },
@@ -54,11 +69,9 @@
                             {
                                 block : 'menu',
                                 mods : { select : 'check', theme : 'normal', size : cell.size },
-                                attrs : { style : 'border: 1px solid rgba(0, 0, 0, 0.1)' },
                                 content : [
                                     {
                                         elem : 'group',
-                                        elemMods : { 'has-title' : true },
                                         title : 'Automate',
                                         content : [
                                             {

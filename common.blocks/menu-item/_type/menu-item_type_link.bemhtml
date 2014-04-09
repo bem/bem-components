@@ -1,9 +1,9 @@
-block('menu-item').mod('type', 'link').mod('disabled', true).def()(function() {
-    applyNext({ _menuItemDisabled : true });
+block('menu-item').mod('type', 'link').mod('disabled', true).match(!this._menuItemDisabled).def()(function() {
+    apply({ _menuItemDisabled : true });
 });
 
 block('link').match(this._menuItemDisabled).def()(function() {
     delete this._menuItemDisabled;
-    (this.ctx.mods || (this.ctx.mods = this.mods)).disabled = true;
+    this.mods.disabled = true;
     apply();
 });

@@ -39,6 +39,19 @@ describe('button', function() {
                 .setMod('focused');
             button.hasMod('focused').should.be.false;
         });
+
+        it('should refocus itself on self click', function(done) {
+            // NOTE: some browsers (at least FF, Safari) trigger blur while button is clicked
+            button.setMod('focused');
+            button.domElem
+                .trigger('pointerpress')
+                .trigger('blur');
+
+            setTimeout(function() {
+                button.hasMod('focused').should.be.true;
+                done();
+            }, 30);
+        });
     });
 
     describe('press/release', function() {

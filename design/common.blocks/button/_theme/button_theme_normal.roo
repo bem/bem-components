@@ -62,9 +62,19 @@
         border: 1px solid rgba(0, 0, 0, 0.3);
     }
 
+    &.button_checked
+    {
+        background: #ffeba0;
+    }
+
     &.button_pressed
     {
         background: #f6f5f3;
+
+        &.button_checked
+        {
+            background: #fee481;
+        }
     }
 
     &.button_focused
@@ -174,11 +184,6 @@
     .button__text:not(:last-child)
     {
         padding-right: 0;
-    }
-
-    &.button_checked
-    {
-        background: #ffeba0;
     }
 
     &.button_togglable_radio

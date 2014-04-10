@@ -1,8 +1,6 @@
 module.exports = function(bh) {
 
     bh.match('button', function(ctx, json) {
-        ctx.mod('togglable') && ctx.mod('checked') && ctx.mod('pressed', true);
-
         ctx.js(true);
 
         // Common attributes

@@ -24,7 +24,7 @@ describe('button_togglable_radio', function() {
             button.hasMod('pressed').should.be.true;
         });
 
-        it('may be pressed while disabled', function() {
+        it('could be pressed while disabled', function() {
             button
                 .setMod('disabled')
                 .setMod('pressed');

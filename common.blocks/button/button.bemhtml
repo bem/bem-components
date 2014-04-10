@@ -1,7 +1,6 @@
 block('button')(
     def()(function() {
         var mods = this.mods;
-        mods.togglable && mods.checked && (mods.pressed = true);
         applyNext({ _button : this.ctx });
     }),
 

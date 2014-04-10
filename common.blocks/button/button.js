@@ -15,10 +15,6 @@ provide(BEMDOM.decl(this.name, {
             'true' : function() {
                 return !this.hasMod('disabled') || this.hasMod('togglable');
             }
-        },
-
-        'checked' : function() {
-            return this.hasMod('togglable');
         }
     },
 
@@ -50,12 +46,6 @@ provide(BEMDOM.decl(this.name, {
             'true' : function() {
                 this.hasMod('togglable') || this.delMod('pressed');
             }
-        },
-
-        'checked' : function(_, modVal) {
-            this
-                .setMod('pressed', modVal)
-                .emit(modVal? 'check' : 'uncheck');
         }
     },
 
@@ -95,13 +85,13 @@ provide(BEMDOM.decl(this.name, {
     _onPointerRelease : function(e) {
         this.unbindFromDoc('pointerrelease', this._onPointerRelease);
 
-        this.hasMod('togglable')?
-            dom.contains(this.domElem, $(e.target))?
-                this.getMod('togglable') === 'check'?
-                    this.toggleMod('checked') :
-                    this.setMod('checked') :
-                this.hasMod('checked') || this.delMod('pressed') :
-            this.delMod('pressed');
+        if(this.hasMod('togglable') && dom.contains(this.domElem, $(e.target))) {
+            this.getMod('togglable') === 'check'?
+                this.toggleMod('checked') :
+                this.setMod('checked');
+        }
+
+        this.delMod('pressed');
     },
 
     _onPointerClick : function(e) {

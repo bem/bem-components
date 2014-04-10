@@ -46,10 +46,6 @@ provide(BEMDOM.decl(this.name, {
             'true' : function() {
                 this.hasMod('togglable') || this.delMod('pressed');
             }
-        },
-
-        'checked' : function(_, modVal) {
-            this.emit(modVal? 'check' : 'uncheck');
         }
     },
 

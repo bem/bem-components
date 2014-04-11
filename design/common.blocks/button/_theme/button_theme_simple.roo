@@ -49,6 +49,11 @@
         border-color: rgba(0, 0, 0, 0.5);
     }
 
+    &.button_checked
+    {
+        background: #fff7db;
+    }
+
     &.button_pressed
     {
         background: #fff7db;

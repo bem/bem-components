@@ -77,6 +77,24 @@
             ],
             val : 2
         } },
+        { tag : 'p', content : {
+            block : 'radio',
+            name : 'simple-button3',
+            mods : { theme : 'simple', type : 'button' },
+            options : [
+                {
+                    val : 'vk',
+                    text : 'VK',
+                    icon : { elem : 'icon' }
+                },
+                {
+                    val : 'twitter',
+                    text : 'Twitter',
+                    icon : { elem : 'icon' }
+                }
+            ],
+            val : 'twitter'
+        } },
 
         { tag : 'hr' },
 
@@ -146,6 +164,24 @@
                 { val : 2, text : 'second' }
             ],
             val : 2
+        } },
+        { tag : 'p', content : {
+            block : 'radio',
+            name : 'normal-button3',
+            mods : { theme : 'normal', size : 'm', type : 'button' },
+            options : [
+                {
+                    val : 'vk',
+                    text : 'VK',
+                    icon : { elem : 'icon', elemMods : { social : 'vk' } }
+                },
+                {
+                    val : 'twitter',
+                    text : 'Twitter',
+                    icon : { elem : 'icon', elemMods : { social : 'twitter' } }
+                }
+            ],
+            val : 'twitter'
         } }
     ]
 });

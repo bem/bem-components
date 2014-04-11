@@ -172,14 +172,6 @@
             '&nbsp;',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
-                val : 3,
-                name : 'r1',
-                text : 'third'
-            },
-            '&nbsp;',
-            {
-                block : 'checkbox',
                 mods : { theme : 'normal', size : 'm', type : 'button', checked : true, disabled : true },
                 val : 3,
                 name : 'r1',
@@ -201,14 +193,6 @@
                 val : 2,
                 name : 'r1',
                 text : 'second'
-            },
-            '&nbsp;',
-            {
-                block : 'checkbox',
-                mods : { theme : 'normal', size : 'l', type : 'button', disabled : true },
-                val : 3,
-                name : 'r1',
-                text : 'third'
             },
             '&nbsp;',
             {

@@ -18,11 +18,11 @@ $tipSize = [14, 14, 15, 15];
     &.menu-item_disabled
     {
         opacity: 0.3;
+    }
 
-        .link
-        {
-            cursor: default;
-        }
+    .link_disabled
+    {
+        cursor: text;
     }
 
     &.menu-item_checked

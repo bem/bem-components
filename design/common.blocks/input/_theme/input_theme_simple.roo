@@ -87,7 +87,7 @@
         .input__box,
         .input__control
         {
-            cursor: default;
+            cursor: auto;
         }
     }
 

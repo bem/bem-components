@@ -14,27 +14,26 @@
     "node": ">=0.10"
   },
   "dependencies": {
-    "bem-environ": "~1.4.0",
-    "q": "~0.9.7",
-    "roole": "~0.9.0",
-    "borschik": "~0.4.0"
+    "bem-environ": "~1.4.0"
   },
   "devDependencies": {
-    "bem": "~0.7.2",
-    "bem-tools-autoprefixer": "~0.0.2",
+    "bem": "~0.8.0",
+    "bem-tools-autoprefixer": "~0.0.3",
     "bh": "~1.0.1",
+    "roole": "~0.9.0",
     "csscomb": "~2.0.0",
     "jshint": "2.3.0",
     "jshint-groups": "0.6.0",
     "jscs": "1.3.0",
     "git-hooks": "0.0.6",
     "svgo": "0.4.1",
-    "bower-npm-install": "~0.5.2",
+    "bower-npm-install": "~0.5.4",
     "istanbul": "^0.2.7"
   },
   "optionalDependencies": {},
   "private": true,
   "scripts": {
+    "deps": "bower-npm-install --non-interactive",
     "test": "npm run lint && npm run unit",
     "lint": "jshint-groups && jscs . && csscomb -vl .",
     "unit": "bower-npm-install && bem make -w 10 desktop.specs touch-pad.specs touch-phone.specs",

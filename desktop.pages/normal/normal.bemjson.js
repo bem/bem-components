@@ -134,6 +134,13 @@
                 },
                 ' ',
                 {
+                    block : 'button',
+                    mods : { theme : 'normal', size : 's' },
+                    text : 'button',
+                    icon : { elem : 'icon', elemMods : { download : true } }
+                },
+                ' ',
+                {
                     block : 'radio',
                     mods : { theme : 'normal', size : 's', type : 'button' },
                     name : 'radio-sizes-s',
@@ -183,6 +190,13 @@
                     block : 'button',
                     mods : { theme : 'normal', size : 'm' },
                     text : 'button'
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'normal', size : 'm' },
+                    text : 'button',
+                    icon : { elem : 'icon', elemMods : { download : true } }
                 },
                 ' ',
                 {
@@ -238,6 +252,13 @@
                 },
                 ' ',
                 {
+                    block : 'button',
+                    mods : { theme : 'normal', size : 'l' },
+                    text : 'button',
+                    icon : { elem : 'icon', elemMods : { download : true } }
+                },
+                ' ',
+                {
                     block : 'radio',
                     mods : { theme : 'normal', size : 'l', type : 'button' },
                     name : 'radio-sizes-l',
@@ -287,6 +308,13 @@
                     block : 'button',
                     mods : { theme : 'normal', size : 'xl' },
                     text : 'button'
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'normal', size : 'xl' },
+                    text : 'button',
+                    icon : { elem : 'icon', elemMods : { download : true } }
                 },
                 ' ',
                 {

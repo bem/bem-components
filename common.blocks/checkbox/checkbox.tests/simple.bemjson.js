@@ -72,6 +72,13 @@
                 block : 'checkbox',
                 mods : { theme : 'simple', type : 'button', checked : true, disabled : true },
                 text : 'fourth'
+            },
+            '&nbsp;',
+            {
+                block : 'checkbox',
+                mods : { theme : 'simple', type : 'button' },
+                text : 'icon',
+                icon : { elem : 'icon' }
             }
         ] },
 
@@ -176,31 +183,21 @@
                 val : 3,
                 name : 'r1',
                 text : 'third'
-            }
-        ] },
-        { tag : 'p', content : [
-            {
-                block : 'checkbox',
-                mods : { theme : 'normal', size : 'l', type : 'button' },
-                val : 1,
-                name : 'r1',
-                text : 'first'
             },
             '&nbsp;',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'l', type : 'button', checked : true },
-                val : 2,
+                mods : { theme : 'normal', size : 'm', type : 'button', checked : true, disabled : true },
+                val : 4,
                 name : 'r1',
-                text : 'second'
+                text : 'fourth'
             },
             '&nbsp;',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'l', type : 'button', checked : true, disabled : true },
-                val : 3,
-                name : 'r1',
-                text : 'third'
+                mods : { theme : 'normal', size : 'm', type : 'button' },
+                text : 'icon',
+                icon : { elem : 'icon', mods : { social : 'twitter' } }
             }
         ] }
     ]

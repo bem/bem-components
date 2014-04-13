@@ -3,7 +3,7 @@
 .button__icon_arrow_down,
 .button__icon_arrow_left
 {
-    background-image: url(button__icon_arrow.svg);
+    background-image: url(arrow.svg);
 }
 
 .button__icon_arrow_up

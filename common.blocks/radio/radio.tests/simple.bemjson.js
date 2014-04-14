@@ -14,10 +14,9 @@
             name : 'default1',
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' },
+                { val : 2, text : 'second', checked : true },
                 { val : 3, text : 'third', disabled : true }
-            ],
-            val : 2
+            ]
         } },
         { tag : 'p', content : {
             block : 'radio',
@@ -25,9 +24,8 @@
             mods : { disabled : true },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' }
-            ],
-            val : 2
+                { val : 2, text : 'second', checked : true }
+            ]
         } },
 
         { tag : 'hr' },
@@ -39,10 +37,9 @@
             mods : { theme : 'simple' },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' },
+                { val : 2, text : 'second', checked : true },
                 { val : 3, text : 'third', disabled : true }
-            ],
-            val : 2
+            ]
         } },
         { tag : 'p', content : {
             block : 'radio',
@@ -50,9 +47,8 @@
             mods : { theme : 'simple', disabled : true },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' }
-            ],
-            val : 2
+                { val : 2, text : 'second', checked : true }
+            ]
         } },
 
         { tag : 'h3', content : 'button' },
@@ -62,10 +58,9 @@
             mods : { theme : 'simple', type : 'button' },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' },
+                { val : 2, text : 'second', checked : true },
                 { val : 3, text : 'third', disabled : true }
-            ],
-            val : 2
+            ]
         } },
         { tag : 'p', content : {
             block : 'radio',
@@ -73,9 +68,8 @@
             mods : { theme : 'simple', type : 'button', disabled : true },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' }
-            ],
-            val : 2
+                { val : 2, text : 'second', checked : true }
+            ]
         } },
         { tag : 'p', content : {
             block : 'radio',
@@ -90,10 +84,10 @@
                 {
                     val : 'twitter',
                     text : 'Twitter',
-                    icon : { elem : 'icon' }
+                    icon : { elem : 'icon' },
+                    checked : true
                 }
-            ],
-            val : 'twitter'
+            ]
         } },
 
         { tag : 'hr' },
@@ -105,10 +99,9 @@
             mods : { theme : 'normal', size : 'm' },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' },
+                { val : 2, text : 'second', checked : true },
                 { val : 3, text : 'third', disabled : true }
-            ],
-            val : 2
+            ]
         } },
         { tag : 'p', content : {
             block : 'radio',
@@ -116,9 +109,8 @@
             mods : { theme : 'normal', size : 'm', disabled : true },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' }
-            ],
-            val : 2
+                { val : 2, text : 'second', checked : true }
+            ]
         } },
 
         { tag : 'h3', content : 'size' },
@@ -128,9 +120,8 @@
             mods : { theme : 'normal', size : 'm' },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' }
-            ],
-            val : 2
+                { val : 2, text : 'second', checked : true }
+            ]
         } },
         { tag : 'p', content : {
             block : 'radio',
@@ -138,9 +129,8 @@
             mods : { theme : 'normal', size : 'l' },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' }
-            ],
-            val : 2
+                { val : 2, text : 'second', checked : true }
+            ]
         } },
 
         { tag : 'h3', content : 'button' },
@@ -150,10 +140,9 @@
             mods : { theme : 'normal', size : 'm', type : 'button' },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' },
+                { val : 2, text : 'second', checked : true },
                 { val : 3, text : 'third', disabled : true }
-            ],
-            val : 2
+            ]
         } },
         { tag : 'p', content : {
             block : 'radio',
@@ -161,9 +150,8 @@
             mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second' }
-            ],
-            val : 2
+                { val : 2, text : 'second', checked : true }
+            ]
         } },
         { tag : 'p', content : {
             block : 'radio',
@@ -178,10 +166,10 @@
                 {
                     val : 'twitter',
                     text : 'Twitter',
-                    icon : { elem : 'icon', elemMods : { social : 'twitter' } }
+                    icon : { elem : 'icon', elemMods : { social : 'twitter' } },
+                    checked : true
                 }
-            ],
-            val : 'twitter'
+            ]
         } }
     ]
 });

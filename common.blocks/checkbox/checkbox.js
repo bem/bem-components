@@ -1,6 +1,13 @@
+/**
+ * @module checkbox
+ */
 modules.define('checkbox', ['i-bem__dom'], function(provide, BEMDOM) {
 
-provide(BEMDOM.decl(this.name, {
+/**
+ * @exports
+ * @class checkbox
+ */
+provide(BEMDOM.decl(this.name, /** @lends attach.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {

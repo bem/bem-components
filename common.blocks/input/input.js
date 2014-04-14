@@ -1,6 +1,14 @@
+/**
+ * @module input
+ */
+
 modules.define('input', ['i-bem__dom', 'dom'], function(provide, BEMDOM, dom) {
 
-provide(BEMDOM.decl(this.name, {
+/**
+ * @exports
+ * @class input
+ */
+provide(BEMDOM.decl(this.name, /** @lends input.prototype */ {
     beforeSetMod : {
         'focused' : {
             'true' : function() {

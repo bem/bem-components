@@ -1,9 +1,17 @@
+/**
+ * @module button
+ */
+
 modules.define(
     'button',
     ['i-bem__dom', 'jquery', 'dom'],
     function(provide, BEMDOM, $, dom) {
 
-provide(BEMDOM.decl(this.name, {
+/**
+ * @exports
+ * @class button
+ */
+provide(BEMDOM.decl(this.name, /** @lends button.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {

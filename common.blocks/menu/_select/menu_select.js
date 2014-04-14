@@ -10,7 +10,6 @@ var KEY_CODE_SPACE = 32,
 /**
  * @exports
  * @class menu
- * @bem
  */
 provide(Menu.decl({ modName : 'select' }, /** @lends menu.prototype */{
     onSetMod : {

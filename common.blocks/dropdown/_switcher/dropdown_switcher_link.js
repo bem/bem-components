@@ -7,7 +7,6 @@ modules.define('dropdown', ['link'], function(provide, _, Dropdown) {
 /**
  * @exports
  * @class dropdown
- * @bem
  */
 provide(Dropdown.decl({ modName : 'switcher', modVal : 'link' }, null, /** @lends dropdown */{
     live : function() {

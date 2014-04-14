@@ -13,7 +13,6 @@ var KEYDOWN_EVENT = (ua.opera && ua.version < 12.10)? 'keypress' : 'keydown',
 /**
  * @exports
  * @class popup
- * @bem
  */
 provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup.prototype */{
     onSetMod : {

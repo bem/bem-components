@@ -7,7 +7,6 @@ modules.define('menu-item', ['i-bem__dom'], function(provide, BEMDOM) {
 /**
  * @exports
  * @class menu-item
- * @bem
  *
  * @param val Value of item
  */

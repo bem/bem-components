@@ -24,19 +24,10 @@ provide(Button.decl({ modName : 'type', modVal : 'link' }, {
         }
     },
 
-    /**
-     * Returns url
-     * @returns {String}
-     */
     getUrl : function() {
         return this._url;
     },
 
-    /**
-     * Sets url
-     * @param {String} url
-     * @returns {this}
-     */
     setUrl : function(url) {
         this._url = url;
         this.hasMod('disabled') || this.domElem.attr('href', url);

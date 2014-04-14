@@ -10,7 +10,6 @@ modules.define(
 /**
  * @exports
  * @class attach
- * @bem
  */
 provide(BEMDOM.decl(this.name, /** @lends attach.prototype */{
     beforeSetMod : {

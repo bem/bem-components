@@ -49,10 +49,6 @@ provide(Input.decl({
         }
     },
 
-    /**
-     * Нормализация установки фокуса для IE
-     * @private
-     */
     _focus : function() {
         var input = this.elem('control')[0];
         if(input.createTextRange && !input.selectionStart) {

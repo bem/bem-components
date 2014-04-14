@@ -10,9 +10,6 @@ modules.define(
 /**
  * @exports
  * @class dropdown
- * @bem
- *
- * @bemmod opened Represents opened state
  */
 provide(BEMDOM.decl(this.name, /** @lends dropdown.prototype */{
     beforeSetMod : {

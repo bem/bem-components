@@ -1,3 +1,7 @@
+/**
+ * @module radio
+ */
+
 modules.define(
     'radio',
     ['i-bem__dom', 'jquery', 'dom', 'radio-option'],
@@ -5,7 +9,11 @@ modules.define(
 
 var undef;
 
-provide(BEMDOM.decl(this.name, {
+/**
+ * @exports
+ * @class radio
+ */
+provide(BEMDOM.decl(this.name, /** @lends radio.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {

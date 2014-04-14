@@ -10,7 +10,6 @@ modules.define(
 /**
  * @exports
  * @class menu
- * @bem
  */
 provide(BEMDOM.decl(this.name, /** @lends menu.prototype */{
     beforeSetMod : {

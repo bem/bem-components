@@ -24,12 +24,10 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
 /**
  * @exports
  * @class popup
- * @bem
  *
  * @param {Array[Number]} [offsets] two-elements array with main and secondary offsets
  * @param {Array[String]} [directions] allowed directions
  *
- * @bemmod visible Represents visible state
  */
 provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     beforeSetMod : {

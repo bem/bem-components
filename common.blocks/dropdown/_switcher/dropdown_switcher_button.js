@@ -7,7 +7,6 @@ modules.define('dropdown', ['button'], function(provide, _, Dropdown) {
 /**
  * @exports
  * @class dropdown
- * @bem
  */
 provide(Dropdown.decl({ modName : 'switcher', modVal : 'button' }, /** @lends dropdown.prototype */{
     onSetMod : {

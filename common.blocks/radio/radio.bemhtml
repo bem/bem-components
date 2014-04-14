@@ -11,24 +11,21 @@ block('radio')(
     }),
 
     content()(function() {
-        var _this = this,
-            curVal = this.ctx.val;
         return (this.ctx.options || []).map(function(option) {
-            var checked = typeof option.val !== 'undefined' && (option.val === curVal);
             return {
                 block : 'radio-option',
                 mods : {
-                    type : _this.mods.type,
-                    theme : _this.mods.theme,
-                    size : _this.mods.size,
-                    checked : checked,
-                    disabled : option.disabled || _this.mods.disabled
+                    type : this.mods.type,
+                    theme : this.mods.theme,
+                    size : this.mods.size,
+                    checked : option.checked,
+                    disabled : option.disabled || this.mods.disabled
                 },
-                name : _this.ctx.name,
+                name : this.ctx.name,
                 val : option.val,
                 text : option.text,
                 icon : option.icon
             }
-        });
+        }, this);
     })
 )

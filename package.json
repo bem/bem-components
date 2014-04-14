@@ -20,6 +20,11 @@
     "borschik": "~0.4.0"
   },
   "devDependencies": {
+    "enb-islands-tools": "git://github.yandex-team.ru/lego/enb-islands-tools.git#865525e92dba7b328784d47c16aa8e9a8a9b937f",
+    "enb": "0.10.0",
+    "enb-diverse-js": "0.1.0",
+    "enb-bemxjst": "1.1.1",
+    "enb-roole": "0.2.0",
     "bem": "~0.7.2",
     "bem-tools-autoprefixer": "~0.0.2",
     "bh": "~1.0.1",

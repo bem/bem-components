@@ -6,6 +6,7 @@
 .enb/tmp
 node_modules
 libs
+desktop.sets
 
 *.pages/*/*
 !*.pages/.bem/*

@@ -10,18 +10,15 @@ module.exports = function(bh) {
         js.id || (js.id = json.id || 'radio-' + json.name);
         ctx.js(js, true);
 
-        var curVal = json.val,
-            mods = ctx.mods(),
-            checked;
+        var mods = ctx.mods();
         ctx.content((json.options || []).map(function(option) {
-            checked = typeof option.val !== 'undefined' && (option.val === curVal);
             return {
                 block : 'radio-option',
                 mods : {
                     type : mods.type,
                     theme : mods.theme,
                     size : mods.size,
-                    checked : checked,
+                    checked : option.checked,
                     disabled : option.disabled || mods.disabled
                 },
                 name : json.name,

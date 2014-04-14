@@ -206,14 +206,14 @@
                             {
                                 block : 'menu-item',
                                 content : [
-                                    { elem : 'icon', elemMods : { social : 'twitter' } },
+                                    { block : 'icon', mods : { social : 'twitter' } },
                                     'Twitter'
                                 ]
                             },
                             {
                                 block : 'menu-item',
                                 content : [
-                                    { elem : 'icon', elemMods : { social : 'vk' } },
+                                    { block : 'icon', mods : { social : 'vk' } },
                                     'VK'
                                 ]
                             },

@@ -1,0 +1,13 @@
+block('image')(
+    tag()('img'),
+    attrs()(function() {
+        var ctx = this.ctx;
+        return {
+            src : ctx.url,
+            width : ctx.width,
+            height : ctx.height,
+            alt : ctx.alt,
+            title : ctx.title
+        };
+    })
+)

@@ -23,6 +23,40 @@
                 {
                     elem : 'row',
                     content : [
+                        { elem : 'cell', content : 'image' },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'image',
+                                url : '../../test.blocks/menu-item/__icon/_social/twitter.png',
+                                width : 16,
+                                height : 16,
+                                alt : 'Twitter',
+                                title : 'Follow us on Twitter'
+                            }
+                        },
+                        { elem : 'cell', content : '&mdash;' },
+                        { elem : 'cell', content : '&mdash;' }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'icon' },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'icon',
+                                mods : { social : 'twitter' }
+                            }
+                        },
+                        { elem : 'cell', content : '&mdash;' },
+                        { elem : 'cell', content : '&mdash;' }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
                         { elem : 'cell', content : 'link' },
                         {
                             elem : 'cell',
@@ -93,15 +127,6 @@
                                     block : 'attach',
                                     button : 'file',
                                     noFileText : 'no file selected'
-                                },
-                                { tag : 'br' },
-                                {
-                                    block : 'attach',
-                                    button : {
-                                        block : 'button',
-                                        icon : { elem : 'icon' }
-                                    },
-                                    noFileText : 'no file selected'
                                 }
                             ]
                         },
@@ -121,7 +146,7 @@
                                     button : {
                                         block : 'button',
                                         mods : { theme : 'simple' },
-                                        icon : { elem : 'icon' }
+                                        icon : { block : 'icon', mods : { action : 'download' } }
                                     },
                                     noFileText : 'no file selected'
                                 }
@@ -171,9 +196,7 @@
                             content : [
                                 { block : 'button', text : 'default' },
                                 ' ',
-                                { block : 'button', text : 'with icon', icon : { elem : 'icon' } },
-                                ' ',
-                                { block : 'button', icon : { elem : 'icon' } },
+                                { block : 'button', icon : { block : 'icon' } },
                                 ' ',
                                 { block : 'button', mods : { 'type' : 'link' }, url : '#', text : 'link' }
                             ]
@@ -187,10 +210,14 @@
                                     block : 'button',
                                     mods : { theme : 'simple' },
                                     text : 'with icon',
-                                    icon : { elem : 'icon' }
+                                    icon : { block : 'icon', mods : { action : 'download' } }
                                 },
                                 ' ',
-                                { block : 'button', mods : { theme : 'simple' }, icon : { elem : 'icon' } },
+                                {
+                                    block : 'button',
+                                    mods : { theme : 'simple' },
+                                    icon : { block : 'icon', mods : { action : 'download' } }
+                                },
                                 ' ',
                                 {
                                     block : 'button',
@@ -207,6 +234,19 @@
                                     block : 'button',
                                     mods : { theme : 'normal', size : 'm' },
                                     text : 'button'
+                                },
+                                ' ',
+                                {
+                                    block : 'button',
+                                    mods : { theme : 'normal', size : 'm' },
+                                    icon : { block : 'icon', mods : { action : 'download' } }
+                                },
+                                ' ',
+                                {
+                                    block : 'button',
+                                    mods : { theme : 'normal', size : 'm', type : 'link' },
+                                    url : '#',
+                                    text : 'link'
                                 }
                             ]
                         }

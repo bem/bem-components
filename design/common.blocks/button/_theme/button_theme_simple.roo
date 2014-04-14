@@ -66,36 +66,17 @@
         }
 
         .button__text,
-        .button__icon
+        .icon
         {
+            position: relative;
             top: 1px;
         }
     }
 
-    .button__icon
+    .icon
     {
-        font: 1em/1 serif;
-
-        position: relative;
-
-        display: inline-block;
-
         width: 1em;
-        height: 1em;
         margin-left: -0.7em;
-
-        &::before
-        {
-            display: inline-block;
-
-            width: 1em;
-
-            content: '×';
-
-            color: #fff;
-            border-radius: 50%;
-            background: #000;
-        }
 
         + .button__text
         {

@@ -1,6 +1,5 @@
-.button__icon_social
+.icon_social
 {
-
     &_twitter
     {
         background-image: url(twitter.png);
@@ -10,5 +9,4 @@
     {
         background-image: url(vk.png);
     }
-
 }

@@ -126,7 +126,7 @@ provide(BEMDOM.decl(this.name, /** @lends attach.prototype */{
                 elem : 'file',
                 content : [
                     {
-                        elem : 'icon',
+                        block : 'icon',
                         mods : { file : extractExtensionFromFileName(fileName) }
                     },
                     { elem : 'text', content : escape.html(fileName) },

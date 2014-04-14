@@ -19,7 +19,7 @@
 
     .input__control
     {
-        font-family: inherit;
+        font: inherit;
         line-height: inherit;
 
         position: relative;
@@ -27,6 +27,8 @@
         display: inline-block;
 
         box-sizing: border-box;
+        margin-top: -1px; /* Hack for IE 9+ (any negative value allowed) */
+        padding: 0;
         width: 100%;
 
         border: 0;
@@ -130,17 +132,13 @@
 
     &.input_size_s
     {
-        .input__box
-        {
-            line-height: 22px;
-        }
+        font-size: 13px;
+        line-height: 22px;
 
         .input__control
         {
-            font-size: 13px;
-
             height: 22px;
-            padding: 3px 0 3px 5px;
+            padding-left: 5px;
         }
 
         &.input_has-clear .input__box
@@ -152,17 +150,13 @@
 
     &.input_size_m
     {
-        .input__box
-        {
-            line-height: 26px;
-        }
+        font-size: 13px;
+        line-height: 26px;
 
         .input__control
         {
-            font-size: 13px;
-
             height: 26px;
-            padding: 5px 0 5px 7px;
+            padding-left: 7px;
         }
 
         &.input_has-clear .input__box
@@ -191,17 +185,13 @@
 
     &.input_size_l
     {
-        .input__box
-        {
-            line-height: 30px;
-        }
+        font-size: 15px;
+        line-height: 30px;
 
         .input__control
         {
-            font-size: 15px;
-
             height: 30px;
-            padding: 5px 0 5px 9px;
+            padding-left: 9px;
         }
 
         &.input_has-clear .input__box
@@ -212,17 +202,13 @@
 
     &.input_size_xl
     {
-        .input__box
-        {
-            line-height: 36px;
-        }
+        font-size: 18px;
+        line-height: 36px;
 
         .input__control
         {
-            font-size: 18px;
-
             height: 36px;
-            padding: 6px 0 6px 11px;
+            padding-left: 11px;
         }
 
         &.input_has-clear .input__box

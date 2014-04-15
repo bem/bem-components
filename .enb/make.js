@@ -33,7 +33,7 @@ module.exports = function(config) {
             ],
             targets: [
                 '?.css', '?.js', '_?.bemjson.js',
-                '?.bemhtml.js', '?.html'
+                '?.bemhtml.js', '_?.html'
             ],
             optimizeTargets: [
                 '?.css',

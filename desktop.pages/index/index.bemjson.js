@@ -325,9 +325,8 @@
                                     name : 'radio-default1',
                                     options : [
                                         { val : 1, text : 'first' },
-                                        { val : 2, text : 'second' }
-                                    ],
-                                    val : 2
+                                        { val : 2, text : 'second', checked : true }
+                                    ]
                                 },
                                 ' ',
                                 {
@@ -336,9 +335,8 @@
                                     name : 'radio-default2',
                                     options : [
                                         { val : 1, text : 'first' },
-                                        { val : 2, text : 'second' }
-                                    ],
-                                    val : 2
+                                        { val : 2, text : 'second', checked : true }
+                                    ]
                                 }
                             ]
                         },
@@ -351,9 +349,8 @@
                                     name : 'radio-simple1',
                                     options : [
                                         { val : 1, text : 'first' },
-                                        { val : 2, text : 'second' }
-                                    ],
-                                    val : 2
+                                        { val : 2, text : 'second', checked : true }
+                                    ]
                                 },
                                 ' ',
                                 {
@@ -362,9 +359,8 @@
                                     name : 'radio-simple2',
                                     options : [
                                         { val : 1, text : 'first' },
-                                        { val : 2, text : 'second' }
-                                    ],
-                                    val : 2
+                                        { val : 2, text : 'second', checked : true }
+                                    ]
                                 }
                             ]
                         },
@@ -377,9 +373,8 @@
                                     name : 'radio-normal1',
                                     options : [
                                         { val : 1, text : 'first' },
-                                        { val : 2, text : 'second' }
-                                    ],
-                                    val : 2
+                                        { val : 2, text : 'second', checked : true }
+                                    ]
                                 },
                                 ' ',
                                 {
@@ -388,9 +383,8 @@
                                     name : 'radio-normal2',
                                     options : [
                                         { val : 1, text : 'first' },
-                                        { val : 2, text : 'second' }
-                                    ],
-                                    val : 2
+                                        { val : 2, text : 'second', checked : true }
+                                    ]
                                 }
                             ]
                         }

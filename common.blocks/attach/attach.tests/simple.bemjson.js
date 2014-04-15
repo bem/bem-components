@@ -20,14 +20,6 @@
             button : 'file',
             noFileText : 'no file selected'
         } },
-        { tag : 'p', content : {
-            block : 'attach',
-            button : {
-                block : 'button',
-                icon : { elem : 'icon' }
-            },
-            noFileText : 'no file selected'
-        } },
 
         { tag : 'hr' },
 
@@ -49,7 +41,7 @@
             mods : { theme : 'simple' },
             button : {
                 block : 'button',
-                icon : { elem : 'icon' }
+                icon : { block : 'icon', mods : { action : 'download' } }
             },
             noFileText : 'no file selected'
         } }

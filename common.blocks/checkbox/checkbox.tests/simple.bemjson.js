@@ -78,7 +78,7 @@
                 block : 'checkbox',
                 mods : { theme : 'simple', type : 'button' },
                 text : 'icon',
-                icon : { elem : 'icon' }
+                icon : { block : 'icon', mods : { social : 'twitter' } }
             }
         ] },
 
@@ -197,7 +197,7 @@
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'm', type : 'button' },
                 text : 'icon',
-                icon : { elem : 'icon', mods : { social : 'twitter' } }
+                icon : { block : 'icon', mods : { social : 'twitter' } }
             }
         ] }
     ]

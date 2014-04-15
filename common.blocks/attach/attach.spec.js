@@ -46,11 +46,11 @@ describe('attach', function() {
 
         it('should properly extract file extension', function() {
             setFile('file.png');
-            attach.getMod(attach.findElem('icon'), 'file').should.be.equal('png');
+            attach.findBlockInside('icon').getMod('file').should.be.equal('png');
             setFile('file.zip');
-            attach.getMod(attach.findElem('icon'), 'file').should.be.equal('archive');
+            attach.findBlockInside('icon').getMod('file').should.be.equal('archive');
             setFile('file.docx');
-            attach.getMod(attach.findElem('icon'), 'file').should.be.equal('doc');
+            attach.findBlockInside('icon').getMod('file').should.be.equal('doc');
         });
     });
 

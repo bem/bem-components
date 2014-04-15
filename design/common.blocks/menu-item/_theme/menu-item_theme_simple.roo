@@ -34,17 +34,12 @@
         background: #ffc7c7;
     }
 
-    .menu-item__icon
+    .icon
     {
-        display: inline-block;
-
         width: 1.2em;
         height: 1.2em;
         margin-right: 0.4em;
 
         vertical-align: top;
-
-        background-repeat: no-repeat;
-        background-position: 50%;
     }
 }

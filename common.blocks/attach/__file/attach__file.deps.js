@@ -1,3 +1,3 @@
 ({
-    shouldDeps : { elems : ['icon', 'text', 'clear'] }
+    shouldDeps : { elems : ['text', 'clear'] }
 })

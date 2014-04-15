@@ -21,11 +21,6 @@
             url : '#',
             text : 'link'
         } },
-        { tag : 'p', content : {
-            block : 'button',
-            text : 'with icon',
-            icon : { elem : 'icon' }
-        } },
 
         { tag : 'hr' },
 
@@ -45,39 +40,19 @@
             block : 'button',
             text : 'with icon',
             mods : { theme : 'simple' },
-            icon : { elem : 'icon' }
+            icon : { block : 'icon', mods : { social : 'twitter' } }
         } },
         { tag : 'p', content : {
             block : 'button',
             mods : { theme : 'simple' },
-            icon : { elem : 'icon' }
+            icon : { block : 'icon', mods : { social : 'vk' } }
         } },
 
         { tag : 'p', content : {
             block : 'button',
             mods : { theme : 'simple', type : 'link' },
             url : '#',
-            text : 'default link'
-        } },
-        { tag : 'p', content : {
-            block : 'button',
-            mods : { theme : 'simple', disabled : true, type : 'link' },
-            url : '#',
-            text : 'disabled link'
-        } },
-
-        { tag : 'p', content : {
-            block : 'button',
-            mods : { theme : 'simple', type : 'link' },
-            url : '#',
-            text : 'link with icon',
-            icon : { elem : 'icon' }
-        } },
-        { tag : 'p', content : {
-            block : 'button',
-            mods : { theme : 'simple', type : 'link' },
-            url : '#',
-            icon : { elem : 'icon' }
+            text : 'link'
         } },
 
         { tag : 'hr' },
@@ -162,14 +137,14 @@
                 block : 'button',
                 mods : { theme : 'normal', size : 's' },
                 // Здесь иконка прописана через content, чтобы появилась в deps.js
-                content : { elem : 'icon', elemMods : { download : true } }
+                content : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {
                 block : 'button',
                 text : 'up',
                 mods : { theme : 'normal', size : 's' },
-                icon : { elem : 'icon', elemMods : { arrow : 'up' } }
+                icon : { block : 'icon', mods : { action : 'up' } }
             },
             ' ',
             {
@@ -177,7 +152,7 @@
                 mods : { theme : 'normal', size : 's' },
                 content : [
                     { elem : 'text', content : 'down' },
-                    { elem : 'icon', elemMods : { arrow : 'down' } }
+                    { block : 'icon', mods : { action : 'down' } }
                 ]
             },
             ' ',
@@ -185,9 +160,9 @@
                 block : 'button',
                 mods : { theme : 'normal', size : 's' },
                 content : [
-                    { elem : 'icon', elemMods : { arrow : 'left' } },
+                    { block : 'icon', mods : { action : 'left' } },
                     { elem : 'text', content : 'set width' },
-                    { elem : 'icon', elemMods : { arrow : 'right' } }
+                    { block : 'icon', mods : { action : 'right' } }
                 ]
             },
             ' ololo ',
@@ -196,11 +171,11 @@
                 mods : { theme : 'normal', size : 's' },
                 content : [
                     { elem : 'text', content : 'o' },
-                    { elem : 'icon', elemMods : { arrow : 'left' } },
+                    { block : 'icon', mods : { action : 'left' } },
                     { elem : 'text', content : '^' },
                     { elem : 'text', content : '_' },
                     { elem : 'text', content : '^' },
-                    { elem : 'icon', elemMods : { arrow : 'right' } },
+                    { block : 'icon', mods : { action : 'right' } },
                     { elem : 'text', content : 'o' }
                 ]
             },
@@ -209,11 +184,11 @@
                 block : 'button',
                 mods : { theme : 'normal', size : 's' },
                 content : [
-                    { elem : 'icon', elemMods : { arrow : 'left' } },
+                    { block : 'icon', mods : { action : 'left' } },
                     { elem : 'text', content : '0' },
-                    { elem : 'icon', elemMods : { arrow : 'up' } },
+                    { block : 'icon', mods : { action : 'up' } },
                     { elem : 'text', content : 'o' },
-                    { elem : 'icon', elemMods : { arrow : 'right' } }
+                    { block : 'icon', mods : { action : 'right' } }
                 ]
             }
         ] },
@@ -221,16 +196,16 @@
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm' },
-                icon : { elem : 'icon', elemMods : { download : true } }
+                icon : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm' },
                 content : [
-                    { elem : 'icon', elemMods : { arrow : 'left' } },
+                    { block : 'icon', mods : { action : 'left' } },
                     { elem : 'text', content : 'set width' },
-                    { elem : 'icon', elemMods : { arrow : 'right' } }
+                    { block : 'icon', mods : { action : 'right' } }
                 ]
             }
         ] },
@@ -238,16 +213,16 @@
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 'l' },
-                icon : { elem : 'icon', elemMods : { download : true } }
+                icon : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 'l' },
                 content : [
-                    { elem : 'icon', elemMods : { arrow : 'left' } },
+                    { block : 'icon', mods : { action : 'left' } },
                     { elem : 'text', content : 'set width' },
-                    { elem : 'icon', elemMods : { arrow : 'right' } }
+                    { block : 'icon', mods : { action : 'right' } }
                 ]
             }
         ] },
@@ -255,16 +230,16 @@
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 'xl' },
-                icon : { elem : 'icon', elemMods : { download : true } }
+                icon : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 'xl' },
                 content : [
-                    { elem : 'icon', elemMods : { arrow : 'left' } },
+                    { block : 'icon', mods : { action : 'left' } },
                     { elem : 'text', content : 'set width' },
-                    { elem : 'icon', elemMods : { arrow : 'right' } }
+                    { block : 'icon', mods : { action : 'right' } }
                 ]
             }
         ] },

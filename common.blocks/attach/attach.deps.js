@@ -2,6 +2,7 @@
     mustDeps : { block : 'i-bem', elems : ['dom', 'i18n'] },
     shouldDeps : [
         { block : 'button' },
+        { block : 'icon' },
         { elems : ['button', 'control', 'no-file', 'file'] },
         { block : 'jquery', elem : 'event', mods : { type : 'pointer' } },
         { block : 'strings', elem : 'escape' }
@@ -17,6 +18,10 @@
             tech : 'bemhtml',
             block : 'attach',
             elems : ['control', 'file']
+        },
+        {
+            tech : 'bemhtml',
+            block : 'icon'
         }
     ]
 },

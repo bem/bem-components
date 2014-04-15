@@ -25,26 +25,17 @@
         border: 0;
     }
 
-    .button__text,
-    .button__icon
+    .icon,
+    .button__text
     {
-        position: relative; /* для того, чтобы в Опере и IE9 не было сдвига текста при pressed */
+        /*
+         * These rules fixes Opera 12+ && IE 9 bug with extra top margin when pressed
+         * Warning: bug still can be reproduced by clicking on button's border
+         * TODO: try to fix
+         */
+        position: relative;
 
         display: inline-block;
-    }
-
-    .button__icon
-    {
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-    }
-
-    /* Хак для правильного позиционирования по baseline */
-    .button__icon::after
-    {
-        visibility: hidden;
-
-        content: '\00A0';
     }
 
     &.button_type_link
@@ -114,7 +105,7 @@
         font-size: 13px;
         line-height: 22px;
 
-        .button__icon
+        .icon
         {
             width: 22px;
         }
@@ -130,7 +121,7 @@
         font-size: 13px;
         line-height: 26px;
 
-        .button__icon
+        .icon
         {
             width: 26px;
         }
@@ -146,7 +137,7 @@
         font-size: 15px;
         line-height: 30px;
 
-        .button__icon
+        .icon
         {
             width: 30px;
         }
@@ -162,7 +153,7 @@
         font-size: 18px;
         line-height: 36px;
 
-        .button__icon
+        .icon
         {
             width: 36px;
         }
@@ -173,7 +164,7 @@
         }
     }
 
-    & .button__icon + .button__text
+    & .icon + .button__text
     {
         padding-left: 0;
     }

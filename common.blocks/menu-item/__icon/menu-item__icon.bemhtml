@@ -1,1 +1,0 @@
-block('menu-item').elem('icon').tag()('i')

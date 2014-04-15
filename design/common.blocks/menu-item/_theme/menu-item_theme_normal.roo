@@ -48,23 +48,10 @@ $tipSize = [14, 14, 15, 15];
         }
     }
 
-    .menu-item__icon
+    .icon
     {
-        display: inline-block;
-
         width: 16px;
         margin-right: 5px;
-
-        background-repeat: no-repeat;
-        background-position: 0 50%;
-
-        /* Hack for the correct positioning baseline */
-        &::after
-        {
-            visibility: hidden;
-
-            content: '\00A0';
-        }
     }
 }
 

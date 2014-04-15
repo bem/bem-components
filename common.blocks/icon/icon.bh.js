@@ -1,5 +1,5 @@
 module.exports = function(bh) {
-    bh.match('button__icon', function(ctx) {
+    bh.match('icon', function(ctx) {
         ctx.tag('i');
     });
 };

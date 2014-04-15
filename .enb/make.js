@@ -16,6 +16,10 @@ module.exports = function(config) {
                     sourceTarget: '?.bemjson.js',
                     destTarget: '_?.bemjson.js'
                 } ],
+                [ require('enb/techs/file-copy'), {
+                    sourceTarget: '?.html',
+                    destTarget: '_?.html'
+                } ],
                 require('enb-roole/techs/css-roole'),
                 [ require('enb-modules/techs/prepend-modules'), {
                     target: '?.js',

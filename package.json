@@ -20,7 +20,7 @@
     "borschik": "~0.4.0"
   },
   "devDependencies": {
-    "enb-islands-tools": "git://github.yandex-team.ru/lego/enb-islands-tools.git#b1aee5a4285ceab7f57bbd02064a7b9f1461b074",
+    "enb-islands-tools": "git://github.yandex-team.ru/lego/enb-islands-tools.git#a8d714c90e17b64803f863e2c74dc24fb771c517",
     "enb": "0.10.0",
     "enb-modules": "0.1.1",
     "enb-diverse-js": "0.1.0",

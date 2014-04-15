@@ -146,9 +146,8 @@
                     name : 'radio-sizes-s',
                     options : [
                         { val : 1, text : 'first' },
-                        { val : 2, text : 'second' }
-                    ],
-                    val : 2
+                        { val : 2, text : 'second', checked : true }
+                    ]
                 },
                 ' ',
                 {
@@ -205,9 +204,8 @@
                     name : 'radio-sizes-m',
                     options : [
                         { val : 1, text : 'first' },
-                        { val : 2, text : 'second' }
-                    ],
-                    val : 2
+                        { val : 2, text : 'second', checked : true }
+                    ]
                 },
                 ' ',
                 {
@@ -264,9 +262,8 @@
                     name : 'radio-sizes-l',
                     options : [
                         { val : 1, text : 'first' },
-                        { val : 2, text : 'second' }
-                    ],
-                    val : 2
+                        { val : 2, text : 'second', checked : true }
+                    ]
                 },
                 ' ',
                 {
@@ -323,9 +320,8 @@
                     name : 'radio-sizes-xl',
                     options : [
                         { val : 1, text : 'first' },
-                        { val : 2, text : 'second' }
-                    ],
-                    val : 2
+                        { val : 2, text : 'second', checked : true }
+                    ]
                 },
                 ' ',
                 {

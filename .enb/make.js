@@ -13,7 +13,13 @@ module.exports = function(config) {
             directorySuffixes: ['tests'],
             techs: [
                 require('enb-roole/techs/css-roole'),
-                [ require('enb-diverse-js/techs/browser-js'), { target: '?.js' } ],
+                [ require('enb-modules/techs/prepend-modules'), {
+                    target: '?.js',
+                    source: '?.pre.js'
+                } ],
+                [ require('enb-diverse-js/techs/browser-js'), {
+                    target: '?.pre.js'
+                } ],
                 require('enb-bemxjst/techs/bemhtml'),
                 require('enb/techs/html-from-bemjson')
             ],

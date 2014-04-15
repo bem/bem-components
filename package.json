@@ -22,6 +22,7 @@
   "devDependencies": {
     "enb-islands-tools": "git://github.yandex-team.ru/lego/enb-islands-tools.git#b1aee5a4285ceab7f57bbd02064a7b9f1461b074",
     "enb": "0.10.0",
+    "enb-modules": "0.1.1",
     "enb-diverse-js": "0.1.0",
     "enb-bemxjst": "1.1.1",
     "enb-roole": "0.2.0",

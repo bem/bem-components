@@ -12,6 +12,10 @@ module.exports = function(config) {
         examples: {
             directorySuffixes: ['tests'],
             techs: [
+                [ require('enb/techs/file-copy'), {
+                    sourceTarget: '?.bemjson.js',
+                    destTarget: '_?.bemjson.js'
+                } ],
                 require('enb-roole/techs/css-roole'),
                 [ require('enb-modules/techs/prepend-modules'), {
                     target: '?.js',
@@ -24,7 +28,7 @@ module.exports = function(config) {
                 require('enb/techs/html-from-bemjson')
             ],
             targets: [
-                '?.css', '?.js',
+                '?.css', '?.js', '_?.bemjson.js',
                 '?.bemhtml.js', '?.html'
             ],
             optimizeTargets: [

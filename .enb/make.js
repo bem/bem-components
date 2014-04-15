@@ -6,6 +6,9 @@ module.exports = function(config) {
     tools.configureSets(getDesktopSetsLevels(config), {
         destPath: 'desktop.sets',
         levels: getDesktopLevels(config),
+        docs: {
+            sourceSuffixes: ['ru.md', 'ru.title.txt']
+        },
         examples: {
             directorySuffixes: ['tests'],
             techs: [

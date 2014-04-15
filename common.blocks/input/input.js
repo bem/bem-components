@@ -59,7 +59,10 @@ provide(BEMDOM.decl(this.name, {
 
         if(this._val !== val) {
             this._val = val;
-            this.elem('control').val(val);
+
+            var control = this.elem('control');
+            control.val() !== val && control.val(val);
+
             this.emit('change', data);
         }
 

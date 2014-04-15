@@ -43,6 +43,8 @@
     "test": "npm run lint && npm run unit",
     "lint": "jshint-groups && jscs . && csscomb -vl .",
     "unit": "bower-npm-install && bem make -w 10 desktop.specs touch-pad.specs touch-phone.specs",
-    "coverage": "ISTANBUL_COVERAGE=yes npm run unit"
+    "coverage": "ISTANBUL_COVERAGE=yes npm run unit",
+    "deps": "bower install",
+    "build": "node_modules/.bin/enb make sets -n"
   }
 }

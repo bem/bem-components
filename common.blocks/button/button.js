@@ -75,7 +75,8 @@ provide(BEMDOM.decl(this.name, {
         this.hasMod('disabled') ||
             this
                 .bindToDoc('pointerrelease', this._onPointerRelease)
-                .setMod('pressed');
+                .setMod('pressed')
+                .setMod('focused');
     },
 
     _clearRefocusOnBlur : function() {
@@ -85,21 +86,16 @@ provide(BEMDOM.decl(this.name, {
     _onPointerRelease : function(e) {
         this.unbindFromDoc('pointerrelease', this._onPointerRelease);
 
-        if(this.hasMod('togglable') && dom.contains(this.domElem, $(e.target))) {
-            this.getMod('togglable') === 'check'?
-                this.toggleMod('checked') :
-                this.setMod('checked');
+        if(dom.contains(this.domElem, $(e.target))) {
+            this.hasMod('togglable') &&
+                (this.hasMod('togglable', 'check')?
+                    this.toggleMod('checked') :
+                    this.setMod('checked'));
+
+            this.emit('click');
         }
 
         this.delMod('pressed');
-    },
-
-    _onPointerClick : function(e) {
-        this.hasMod('disabled')?
-            e.preventDefault() :
-            this
-                .setMod('focused')
-                .emit('click');
     },
 
     _focus : function() {
@@ -120,9 +116,6 @@ provide(BEMDOM.decl(this.name, {
             })
             .liveBindTo('pointerpress', function() {
                 this._onPointerPress();
-            })
-            .liveBindTo('pointerclick', function(e) {
-                this._onPointerClick(e);
             });
     }
 }));

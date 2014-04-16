@@ -40,9 +40,9 @@ describe('button', function() {
             button.hasMod('focused').should.be.false;
         });
 
-        it('should be focused on click', function() {
+        it('should be focused on press', function() {
             button.hasMod('focused').should.be.false;
-            button.domElem.click();
+            button.domElem.trigger('pointerpress');
             button.hasMod('focused').should.be.true;
         });
 
@@ -106,22 +106,37 @@ describe('button', function() {
     });
 
     describe('click', function() {
-        it('should emit click on "pointerclick" event', function() {
-            var spy = sinon.spy();
-
-            button.on('click', spy);
-            button.domElem.trigger('pointerclick');
-
-            spy.should.have.been.calledOnce;
-        });
-
-        it('should not emit click on "pointerclick" event if disabled', function() {
+        it('should emit click on release on self', function() {
             var spy = sinon.spy();
 
             button
                 .on('click', spy)
-                .setMod('disabled');
-            button.domElem.trigger('pointerclick');
+                .domElem
+                    .trigger('pointerpress')
+                    .trigger('pointerrelease');
+
+            spy.should.have.been.calledOnce;
+        });
+
+        it('should emit click on release outside self', function() {
+            var spy = sinon.spy();
+
+            button.on('click', spy);
+            button.domElem.trigger('pointerpress');
+            $('body').trigger('pointerrelease');
+
+            spy.should.not.have.been.called;
+        });
+
+        it('should not emit click on release event if disabled', function() {
+            var spy = sinon.spy();
+
+            button
+                .on('click', spy)
+                .setMod('disabled')
+                .domElem
+                    .trigger('pointerpress')
+                    .trigger('pointerrelease');
 
             spy.should.not.have.been.called;
         });

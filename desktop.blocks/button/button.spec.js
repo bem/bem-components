@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['button', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, Button, BEMDOM, $, BEMHTML) {
+    ['button', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, Button, BEMDOM, $, BEMHTML, sinon) {
 
 describe('button', function() {
     var button;
@@ -56,6 +56,23 @@ describe('button', function() {
 
             button.domElem.trigger($.Event('keydown', { keyCode : 13 }));
             button.hasMod('pressed').should.be.true;
+        });
+    });
+
+    describe('click', function() {
+        it('should emit click on "space" or "enter"', function() {
+            var spy = sinon.spy();
+
+            button
+                .on('click', spy)
+                .setMod('focused')
+                .domElem
+                    .trigger($.Event('keydown', { keyCode : 32 }))
+                    .trigger('keyup')
+                    .trigger($.Event('keydown', { keyCode : 13 }))
+                    .trigger('keyup');
+
+            spy.should.have.been.calledTwice;
         });
     });
 });

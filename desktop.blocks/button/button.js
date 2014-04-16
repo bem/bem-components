@@ -49,21 +49,23 @@ provide(Button.decl({
             var onKeyUp = function() {
                 this._keyDowned = false;
 
-                this.unbindFrom('keyup', onKeyUp);
+                this
+                    .unbindFrom('keyup', onKeyUp)
+                    .delMod('pressed');
 
-                if(!this.hasMod('togglable')) {
-                    this.delMod('pressed');
-                    keyCode === KEY_CODE_SPACE && this._doAction();
-                }
+                keyCode === KEY_CODE_SPACE && this._doAction();
+
+                this.emit('click');
             };
 
-            this.bindTo('keyup', onKeyUp);
+            this
+                .bindTo('keyup', onKeyUp)
+                .setMod('pressed');
 
-            this.hasMod('togglable')?
-                this.getMod('togglable') === 'check'?
+            this.hasMod('togglable') &&
+                (this.hasMod('togglable', 'check')?
                     this.toggleMod('checked') :
-                    this.setMod('checked') :
-                this.setMod('pressed');
+                    this.setMod('checked'));
         }
     },
 

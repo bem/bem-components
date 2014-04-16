@@ -28,7 +28,7 @@
                             elem : 'cell',
                             content : {
                                 block : 'image',
-                                url : '../../test.blocks/menu-item/__icon/_social/twitter.png',
+                                url : '../../test.blocks/icon/_social/twitter.png',
                                 width : 16,
                                 height : 16,
                                 alt : 'Twitter',
@@ -45,10 +45,11 @@
                         { elem : 'cell', content : 'icon' },
                         {
                             elem : 'cell',
-                            content : {
-                                block : 'icon',
-                                mods : { social : 'twitter' }
-                            }
+                            content : [
+                                { block : 'icon', mods : { social : 'twitter' } },
+                                ' ',
+                                { block : 'icon', url : '../../test.blocks/icon/_social/vk.png' }
+                            ]
                         },
                         { elem : 'cell', content : '&mdash;' },
                         { elem : 'cell', content : '&mdash;' }

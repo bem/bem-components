@@ -1,1 +1,6 @@
-block('icon').tag()('i')
+block('icon')(
+    tag()('i'),
+    attrs().match(function() { return this.ctx.url })({
+        style : 'background-image:url(' + this.ctx.url + ')'
+    })
+)

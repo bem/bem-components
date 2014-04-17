@@ -4,7 +4,7 @@ The **attach** block is used to send a file to a server.
 
 The block is visually represented by: 
  
-* button (`__button` based on the [button block]()) that opens a system window for a file download  
+* button (`__button` based on the [button](bem-components/common.blocks/button/) block) that opens a system window for a file download  
 * icon (`__icon`)  
 * deletion cross element (`__clear`)
 
@@ -13,7 +13,7 @@ Block functionality does not support:
 * more than one file attaching  
 * drag-and-drop
 
-??? Блок использует функциональность нативного контрола, сам контрол скрыт. В MSIE8 и ниже attach деградирует до нативного контрола — прикрепить файл `<input type="file">`.
+Block attach provides native control functionality. The control is hidden. In MSIE8 block attach is rendered as native control `<input type="file">`.
 
 # Block's modifiers
 
@@ -22,16 +22,16 @@ Block functionality does not support:
 
 The block supports only the *Simple* theme. 
 
-If theme is not spesified (declared), the block applies only default values:  
+If theme is not spesified, the block applies only default values:  
 
 * Theme of a button: native representation of a button by the browser.  
-* Localization: ru.
-* Button's message text (`__button`): «Выбрать файл»  
-* Text message rendered with no file selected (`__no-file`): "Файл не выбран"
+* Localization: en.
+* Button's message text (`__button`): "Choose file"
+* Text message rendered with no file selected (`__no-file`): "no file selected"
 
 Following example demonstrates this:
 
-```` 
+````bemjson 
     {
         block : 'attach',
         button : 'file',
@@ -39,7 +39,7 @@ Following example demonstrates this:
     }
 ````
 
-```` 
+````bemjson 
     {
         block : 'attach',
         mods : { theme : 'simple' },
@@ -56,7 +56,7 @@ If block is disabled a file selection button becomes unavailable for user's mani
 
 The button is active by default.
 
-````
+````bemjson
     {
         block : 'attach',
         mods : { disabled : true },
@@ -65,7 +65,7 @@ The button is active by default.
     }
 ```` 
 
-````
+````bemjson
     {
         block : 'attach',
         mods : { theme : 'simple', disabled : true },
@@ -82,11 +82,11 @@ The block is visually represented by the following elements:
 
 A mandatory element.
 
-A file selection button. It aims to open the system window for a file download. It is based on a [button]() block and inherites its behavior (JS) and formatting (CSS). 
+A file selection button. It aims to open the system window for a file download. It is based on a [button](bem-components/common.blocks/button/) block and inherites its behavior (JS) and formatting (CSS). 
 
 If a theme *Simple* is not declared, the button's text «Выбрать файл» is used by default. 
 
-````
+````bemjson
     {
         block : 'attach',
         mods : { theme : 'simple' },
@@ -136,9 +136,3 @@ File name. It appears after some file is attached.
 Clear attachment button (deletion cross elemet). It appears after some file is attached.
 
 The element is available for a *Simple* theme of **attach** block.
-
-
-
-
-
-

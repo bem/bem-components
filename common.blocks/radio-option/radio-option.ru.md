@@ -1,19 +1,16 @@
-# spin
+# radio-option
 
-This block indicates the progress of some process (e.g. site page or some media file loading).
-
-Rotation of the **spin** block is implemented by CSS3 animation.
-
-# Block Modifiers
+набора зависимых переключателей «радио-кнопок» (элементы блока radio).
+## Block Modifiers
 
 The **spin** block requieres the block modifiers listed below:
 
-## Themes of a block `_theme`
+## __theme
 
 
 ### simple
 
-````bemjson
+````
     {
         block : 'spin',
         mods : { theme : 'simple', size : 's', progress : true }
@@ -24,14 +21,16 @@ The **spin** block requieres the block modifiers listed below:
 
 The theme **normal** is developed for Yandex.
 
-````bemjson       
+````       
     {
         block : 'spin',
         mods : { theme : 'normal', size : 's', progress : true }
     }
 ````
 
-## Sizes `_size`
+## __size
+
+`{ size : 's' }`
 
 There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
 
@@ -119,7 +118,7 @@ There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
 
 </table>
 
-## Spin progress `_progress`
+## __progress
 
 The `{ progress : true }` modifier activates the spin. The **spin** block rotates in visible state.
 

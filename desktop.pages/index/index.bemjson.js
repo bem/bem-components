@@ -138,15 +138,15 @@
                             elem : 'cell',
                             content : {
                                 block : 'input',
+                                mods : { 'has-clear' : true },
                                 val : 'value',
-                                placeholder : 'default'
-                            }
+                                placeholder : 'default'                            }
                         },
                         {
                             elem : 'cell',
                             content : {
                                 block : 'input',
-                                mods : { theme : 'simple', 'has-clear' : true },
+                                mods : { theme : 'simple', type : 'textarea', lable : 'bls' },
                                 val : 'value',
                                 placeholder : 'simple'
                             }
@@ -155,7 +155,7 @@
                             elem : 'cell',
                             content : {
                                 block : 'input',
-                                mods : { theme : 'normal', size : 'm', 'has-clear' : true },
+                                mods : { theme : 'normal', size : 'm', type : 'search', 'has-clear' : false },
                                 val : 'value',
                                 placeholder : 'normal'
                             }

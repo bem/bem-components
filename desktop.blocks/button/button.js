@@ -1,7 +1,4 @@
-modules.define('button', ['functions'], function(provide, functions, Button) {
-
-var KEY_CODE_SPACE = 32,
-    KEY_CODE_ENTER = 13;
+modules.define('button', function(provide, Button) {
 
 provide(Button.decl({
     beforeSetMod : {
@@ -13,74 +10,36 @@ provide(Button.decl({
     },
 
     onSetMod : {
-        'hovered' : {
-            '' : function() {
-                this.__base.apply(this, arguments);
-                this.hasMod('togglable') || this.delMod('pressed');
-            }
-        },
-
-        'focused' : {
-            'true' : function() {
-                this.__base.apply(this, arguments);
-                this.bindTo('keydown', this._onKeyDown);
-            },
-
-            '' : function() {
-                this.__base.apply(this, arguments);
-                this.unbindFrom('keydown', this._onKeyDown);
-            }
-        },
-
         'disabled' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
                 this.delMod('hovered');
             }
+        },
+
+        'hovered' : {
+            'true' : function() {
+                this.bindTo('mouseleave', this._onMouseLeave);
+            },
+
+            '' : function() {
+                this.unbindFrom('mouseleave', this._onMouseLeave);
+            }
         }
     },
 
-    _onKeyDown : function(e) {
-        if(this.hasMod('disabled')) return;
-
-        var keyCode = e.keyCode;
-        if((keyCode === KEY_CODE_SPACE || keyCode === KEY_CODE_ENTER) && !this._keyDowned) {
-            this._keyDowned = true;
-            var onKeyUp = function() {
-                this._keyDowned = false;
-
-                this
-                    .unbindFrom('keyup', onKeyUp)
-                    .delMod('pressed');
-
-                keyCode === KEY_CODE_SPACE && this._doAction();
-
-                this.emit('click');
-            };
-
-            this
-                .bindTo('keyup', onKeyUp)
-                .setMod('pressed');
-
-            this.hasMod('togglable') &&
-                (this.hasMod('togglable', 'check')?
-                    this.toggleMod('checked') :
-                    this.setMod('checked'));
-        }
+    _onMouseOver : function() {
+        this.setMod('hovered');
     },
 
-    _doAction : functions.noop
+    _onMouseLeave : function() {
+        this.delMod('hovered');
+    }
 }, {
     live : function() {
-        this
-            .liveBindTo('mouseover', function() {
-                this.setMod('hovered');
-            })
-            .liveBindTo('mouseout', function() {
-                this.delMod('hovered');
-            });
-
-        return this.__base.apply(this, arguments);
+        return this
+            .liveBindTo('mouseover', this.prototype._onMouseOver)
+            .__base.apply(this, arguments);
     }
 }));
 

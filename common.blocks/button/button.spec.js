@@ -61,21 +61,37 @@ describe('button', function() {
     });
 
     describe('press/release', function() {
-        it('should have "pressed" mod on pointerpress', function() {
+        it('should be pressed on pointerpress', function() {
             button.domElem.trigger($.Event('pointerpress'));
             button.hasMod('pressed').should.be.true;
         });
 
-        it('should delete "pressed" mod on pointerrelease', function() {
+        it('should be pressed on "space" or "enter" key when focused', function() {
+            button.setMod('focused');
+            button.domElem.trigger($.Event('keydown', { keyCode : 22 }));
+            button.hasMod('pressed').should.be.false;
+            button.domElem.trigger('keyup');
+
+            button.domElem.trigger($.Event('keydown', { keyCode : 32 }));
+            button.hasMod('pressed').should.be.true;
+            button.domElem.trigger('keyup');
+            button.hasMod('pressed').should.be.false;
+
+            button.domElem.trigger($.Event('keydown', { keyCode : 13 }));
+            button.hasMod('pressed').should.be.true;
+        });
+
+        it('should not be pressed on pointerrelease', function() {
             button.domElem.trigger('pointerrelease');
             button.hasMod('pressed').should.be.false;
         });
 
-        it('should not set "hovered" mod if it has "disabled" mod', function() {
+        it('should not be pressed while disabled', function() {
             button
                 .setMod('disabled')
-                .setMod('pressed');
-            button.hasMod('pressed').should.be.false;
+                .setMod('pressed')
+                .hasMod('pressed')
+                    .should.be.false;
         });
     });
 
@@ -126,6 +142,21 @@ describe('button', function() {
             $('body').trigger('pointerrelease');
 
             spy.should.not.have.been.called;
+        });
+
+        it('should emit click on "space" or "enter"', function() {
+            var spy = sinon.spy();
+
+            button
+                .on('click', spy)
+                .setMod('focused')
+                .domElem
+                    .trigger($.Event('keydown', { keyCode : 32 }))
+                    .trigger('keyup')
+                    .trigger($.Event('keydown', { keyCode : 13 }))
+                    .trigger('keyup');
+
+            spy.should.have.been.calledTwice;
         });
 
         it('should not emit click on release event if disabled', function() {

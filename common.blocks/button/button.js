@@ -1,7 +1,10 @@
 modules.define(
     'button',
-    ['i-bem__dom', 'jquery', 'dom'],
-    function(provide, BEMDOM, $, dom) {
+    ['i-bem__dom', 'jquery', 'dom', 'functions'],
+    function(provide, BEMDOM, $, dom, functions) {
+
+var KEY_CODE_SPACE = 32,
+    KEY_CODE_ENTER = 13;
 
 provide(BEMDOM.decl(this.name, {
     beforeSetMod : {
@@ -28,12 +31,18 @@ provide(BEMDOM.decl(this.name, {
 
         'focused' : {
             'true' : function() {
-                this.bindToWin('unload', this._onUnload); // TODO: выяснить и написать зачем это
+                this
+                    .bindToWin('unload', this._onUnload) // TODO: WTF???
+                    .bindTo('keydown', this._onKeyDown);
+
                 this._focused || this._focus();
             },
 
             '' : function() {
-                this.unbindFromWin('unload', this._onUnload);
+                this
+                    .unbindFromWin('unload', this._onUnload)
+                    .unbindFrom('keydown', this._onKeyDown);
+
                 this._focused && this._blur();
             }
         },
@@ -86,16 +95,45 @@ provide(BEMDOM.decl(this.name, {
     _onPointerRelease : function(e) {
         this.unbindFromDoc('pointerrelease', this._onPointerRelease);
 
-        if(dom.contains(this.domElem, $(e.target))) {
-            this.hasMod('togglable') &&
-                (this.hasMod('togglable', 'check')?
-                    this.toggleMod('checked') :
-                    this.setMod('checked'));
-
-            this.emit('click');
-        }
+        dom.contains(this.domElem, $(e.target)) &&
+            this
+                ._updateChecked()
+                .emit('click');
 
         this.delMod('pressed');
+    },
+
+    _onKeyDown : function(e) {
+        if(this.hasMod('disabled')) return;
+
+        var keyCode = e.keyCode;
+        if(keyCode === KEY_CODE_SPACE || keyCode === KEY_CODE_ENTER) {
+            this
+                .unbindFrom('keydown', this._onKeyDown)
+                .bindTo('keyup', this._onKeyUp)
+                ._updateChecked()
+                .setMod('pressed');
+        }
+    },
+
+    _onKeyUp : function(e) {
+        this
+            .unbindFrom('keyup', this._onKeyUp)
+            .bindTo('keydown', this._onKeyDown)
+            .delMod('pressed');
+
+        e.keyCode === KEY_CODE_SPACE && this._doAction();
+
+        this.emit('click');
+    },
+
+    _updateChecked : function() {
+        this.hasMod('togglable') &&
+            (this.hasMod('togglable', 'check')?
+                this.toggleMod('checked') :
+                this.setMod('checked'));
+
+        return this;
     },
 
     _focus : function() {
@@ -104,19 +142,16 @@ provide(BEMDOM.decl(this.name, {
 
     _blur : function() {
         this.domElem.blur();
-    }
+    },
+
+    _doAction : functions.noop
 }, {
     live : function() {
+        var ptp = this.prototype;
         this
-            .liveBindTo('focusin', function() {
-                this._onFocus();
-            })
-            .liveBindTo('focusout', function() {
-                this._onBlur();
-            })
-            .liveBindTo('pointerpress', function() {
-                this._onPointerPress();
-            });
+            .liveBindTo('focusin', ptp._onFocus)
+            .liveBindTo('focusout', ptp._onBlur)
+            .liveBindTo('pointerpress', ptp._onPointerPress);
     }
 }));
 

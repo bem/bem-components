@@ -1,1 +1,1 @@
-A button as a block’s element
+Button as a block’s element

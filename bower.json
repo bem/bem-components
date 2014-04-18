@@ -12,7 +12,7 @@
     "bem-core": "git://github.com/bem/bem-core.git#v2"
   },
   "devDependencies": {
-    "bem-pr": "git://github.com/narqo/bem-pr.git#^0.7.0"
+    "bem-pr": "git://github.com/narqo/bem-pr.git#0.8.1-beta2"
   },
   "private": true
 }

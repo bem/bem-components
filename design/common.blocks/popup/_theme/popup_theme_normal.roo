@@ -2,6 +2,8 @@
 {
     visibility: hidden;
 
+    margin: -1000px 0 0 -1000px;
+
     animation-duration: 0.1s;
     animation-timing-function: ease-out;
 
@@ -14,6 +16,8 @@
     &.popup_visible
     {
         visibility: visible;
+
+        margin: 0;
     }
 
     @for $rule in [
@@ -26,20 +30,29 @@
         {
             0%
             {
-                opacity: 1;
                 visibility: visible;
+
+                margin: 0;
+
                 transform: translate{$rule[1]}(0);
+
+                opacity: 1;
             }
 
             99%
             {
+                margin: 0;
+
                 transform: translate{$rule[1]}({$rule[2]}px);
             }
 
             100%
             {
-                opacity: 0;
                 visibility: hidden;
+
+                margin: -1000px 0 0 -1000px;
+
+                opacity: 0;
             }
         }
 
@@ -48,12 +61,14 @@
             0%
             {
                 opacity: 0;
+
                 transform: translate{$rule[1]}({$rule[2]}px);
             }
 
             100%
             {
                 opacity: 1;
+
                 transform: translate{$rule[1]}(0);
             }
         }

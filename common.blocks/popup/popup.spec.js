@@ -7,8 +7,7 @@ describe('popup', function() {
     var popup, popupDomElem, popupParentDomElem, popupOwnerDomElem,
         win = $(window),
         winWidth = win.width(),
-        winHeight = win.height(),
-        CHECK_OWNER_THROTTLING_INTERVAL = 100;
+        winHeight = win.height();
 
     beforeEach(function() {
         popupParentDomElem = $(BEMHTML.apply({ tag : 'div' })).appendTo('body');
@@ -140,30 +139,19 @@ describe('popup', function() {
     });
 
     describe('scroll reactions', function() {
-        it('should be shown/hidden on owner parents scroll', function(done) {
-            var timeout = CHECK_OWNER_THROTTLING_INTERVAL + CHECK_OWNER_THROTTLING_INTERVAL / 2;
-
+        it('should be hidden on window scroll', function(done) {
             popupParentDomElem.height(winHeight + 2 * popupOwnerDomElem.height());
 
             popup
                 .setTarget(popupOwnerDomElem)
                 .setMod('visible');
 
-            popupDomElem.css('display').should.not.be.equal('none', 'wrong display on visible owner');
-
-            win.scrollTop(popupOwnerDomElem.offset().top + popupOwnerDomElem.height());
+            win.scrollTop(10);
 
             setTimeout(function() {
-                popupDomElem.css('display').should.be.equal('none', 'wrong display on hidden owner');
-                win.scrollTop(popupOwnerDomElem.offset().top);
-                setTimeout(function() {
-                    popupDomElem.css('display').should.not.be.equal(
-                        'none',
-                        'wrong display on restore owner visibility');
-                    win.scrollTop(0);
-                    done();
-                }, timeout);
-            }, timeout);
+                popup.hasMod('visible').should.be.false;
+                done();
+            }, 20);
         });
     });
 

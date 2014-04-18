@@ -59,7 +59,8 @@
             options : [
                 { val : 1, text : 'first' },
                 { val : 2, text : 'second', checked : true },
-                { val : 3, text : 'third', disabled : true }
+                { val : 3, text : 'third', disabled : true },
+                { val : 4, text : 'fourth', checked : true, disabled : true }
             ]
         } },
         { tag : 'p', content : {
@@ -79,12 +80,12 @@
                 {
                     val : 'vk',
                     text : 'VK',
-                    icon : { elem : 'icon' }
+                    icon : { block : 'icon', mods : { social : 'vk' } }
                 },
                 {
                     val : 'twitter',
                     text : 'Twitter',
-                    icon : { elem : 'icon' },
+                    icon : { block : 'icon', mods : { social : 'twitter' } },
                     checked : true
                 }
             ]
@@ -141,7 +142,8 @@
             options : [
                 { val : 1, text : 'first' },
                 { val : 2, text : 'second', checked : true },
-                { val : 3, text : 'third', disabled : true }
+                { val : 3, text : 'third', disabled : true },
+                { val : 4, text : 'fourth', checked : true, disabled : true }
             ]
         } },
         { tag : 'p', content : {
@@ -161,12 +163,12 @@
                 {
                     val : 'vk',
                     text : 'VK',
-                    icon : { elem : 'icon', elemMods : { social : 'vk' } }
+                    icon : { block : 'icon', mods : { social : 'vk' } }
                 },
                 {
                     val : 'twitter',
                     text : 'Twitter',
-                    icon : { elem : 'icon', elemMods : { social : 'twitter' } },
+                    icon : { block : 'icon', mods : { social : 'twitter' } },
                     checked : true
                 }
             ]

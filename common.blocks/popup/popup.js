@@ -4,8 +4,8 @@
 
 modules.define(
     'popup',
-    ['i-bem__dom', 'jquery', 'dom', 'functions', 'functions__throttle'],
-    function(provide, BEMDOM, $, dom, functions, throttle) {
+    ['i-bem__dom', 'jquery', 'dom', 'functions__throttle'],
+    function(provide, BEMDOM, $, dom, throttle) {
 
 var VIEWPORT_ACCURACY_FACTOR = 0.99,
     DEFAULT_OFFSETS = [5, 0],
@@ -18,8 +18,7 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
     BASE_ZINDEX = 10000,
     CHECK_OWNER_THROTTLING_INTERVAL = 100,
 
-    win = BEMDOM.win,
-    docNode = BEMDOM.doc[0];
+    win = BEMDOM.win;
 
 /**
  * @exports
@@ -52,13 +51,11 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this._zIndex = null;
                 this._isAttachedToScope = false;
                 this._isOwnerVisible = false;
-                this._checkOwnerVisibility = docNode.elementFromPoint?
-                    throttle(
-                        this._checkOwnerVisibility,
-                        CHECK_OWNER_THROTTLING_INTERVAL,
-                        false,
-                        this) :
-                    functions.noop;
+                this._checkOwnerVisibility = throttle(
+                    this._checkOwnerVisibility,
+                    CHECK_OWNER_THROTTLING_INTERVAL,
+                    false,
+                    this);
             },
 
             '' : function() {
@@ -71,7 +68,10 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         'visible' : {
             'true' : function() {
                 this._zIndex = captureZIndex();
-                this._owner && this._updateIsOwnerVisible();
+                if(this._owner) {
+                    this._ownerParents = this._owner.parents();
+                    this._updateIsOwnerVisible();
+                }
 
                 this
                     .bindTo('pointerclick', this._onPointerClick)
@@ -82,10 +82,12 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
             '' : function() {
                 releaseZIndex(this._zIndex);
+
                 this
                     .unbindFrom('pointerclick', this._onPointerClick)
                     ._unbindFromParentPopup()
-                    ._unbindFromScrollAndResize();
+                    ._unbindFromScrollAndResize()
+                    ._ownerParents = null;
             }
         }
     },
@@ -108,20 +110,22 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                     left instanceof $?
                         left : null;
             if(!this._owner) throw Error('Invalid arguments');
-            this._pos = null;
 
-            var blockName = this.__self.getName();
-            this._parentPopup = this.findBlockOutside(this._owner, blockName);
-            this._popupOwner = this._owner.bem('_' + blockName + '-owner');
+            this._pos = null;
+            this._popupOwner = this._owner.bem('_' + this.__self.getName() + '-owner');
             this._bindToPopupOwner();
 
-            this.hasMod('visible') && this
-                ._bindToScrollAndResize()
-                .redraw();
+            if(this.hasMod('visible')){
+                this._ownerParents = this._owner.parents();
+                this
+                    ._bindToScrollAndResize()
+                    .redraw();
+            }
         } else {
             this._pos = { left : left, top : top };
             this._parentPopup = null;
             this._owner = null;
+            this._ownerParents = null;
             this._popupOwner = null;
         }
 
@@ -278,18 +282,19 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     },
 
     _bindToScrollAndResize : function() {
-        this._owner && this
-            .bindTo(this._ownerParents = this._owner.parents(), 'scroll', this._onScrollOrResize)
-            .bindToWin('scroll resize', this._onScrollOrResize);
+        this._ownerParents &&
+            this
+                .bindTo(this._ownerParents, 'scroll', this._onScrollOrResize)
+                .bindToWin('scroll resize', this._onScrollOrResize);
 
         return this;
     },
 
     _unbindFromScrollAndResize : function() {
-        this._ownerParents && (this
-            .unbindFrom(this._ownerParents, 'scroll', this._onScrollOrResize)
-            .unbindFromWin('scroll resize', this._onScrollOrResize)
-            ._ownerParents = null);
+        this._ownerParents &&
+            this
+                .unbindFrom(this._ownerParents, 'scroll', this._onScrollOrResize)
+                .unbindFromWin('scroll resize', this._onScrollOrResize);
 
         return this;
     },
@@ -315,14 +320,32 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     _updateIsOwnerVisible : function() {
         var owner = this._owner,
             ownerOffset = owner.offset(),
-            elemFromPoint = $(docNode.elementFromPoint(
-                ownerOffset.left - win.scrollLeft() + owner.outerWidth() / 2,
-                ownerOffset.top - win.scrollTop() + owner.outerHeight() / 2)),
-            prevIsOwnerVisible = this._isOwnerVisible;
+            ownerLeft = ownerOffset.left,
+            ownerTop = ownerOffset.top,
+            ownerRight = ownerLeft + owner.outerWidth(),
+            ownerBottom = ownerTop + owner.outerHeight(),
+            prevIsOwnerVisible = this._isOwnerVisible,
+            direction = this.getMod('direction'),
+            vertBorder = checkMainDirection(direction, 'top') || checkSecondaryDirection(direction, 'top')?
+                ownerTop :
+                ownerBottom,
+            horizBorder = checkMainDirection(direction, 'left') || checkSecondaryDirection(direction, 'left')?
+                ownerLeft :
+                ownerRight,
+            _this = this;
 
-        this._isOwnerVisible = dom.contains(owner, elemFromPoint);
+        this._ownerParents.each(function() {
+            var parent = $(this),
+                parentOffset = parent.offset();
 
-        return prevIsOwnerVisible !== this._isOwnerVisible;
+            return _this._isOwnerVisible = !(
+                (vertBorder < parentOffset.top) ||
+                (parentOffset.top + parent.outerHeight() < vertBorder) ||
+                (horizBorder < parentOffset.left) ||
+                (parentOffset.left + parent.outerWidth() < horizBorder));
+        });
+
+        return this._isOwnerVisible !== prevIsOwnerVisible;
     },
 
     _onPointerClick : function() {
@@ -333,14 +356,19 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     },
 
     _bindToParentPopup : function() {
-        this._parentPopup &&
+        this._owner &&
+            (this._parentPopup = this.findBlockOutside(this._owner, this.__self.getName())) &&
             this._parentPopup.on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
+
         return this;
     },
 
     _unbindFromParentPopup : function() {
-        this._parentPopup &&
+        if(this._parentPopup) {
             this._parentPopup.un({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
+            this._parentPopup = null;
+        }
+
         return this;
     },
 

@@ -140,7 +140,7 @@ describe('popup', function() {
     });
 
     describe('scroll reactions', function() {
-        it('should be shown/hidden on owner parents scroll', function(done) {
+        it('should not be hidden on window scroll', function(done) {
             var timeout = CHECK_OWNER_THROTTLING_INTERVAL + CHECK_OWNER_THROTTLING_INTERVAL / 2;
 
             popupParentDomElem.height(winHeight + 2 * popupOwnerDomElem.height());
@@ -149,18 +149,45 @@ describe('popup', function() {
                 .setTarget(popupOwnerDomElem)
                 .setMod('visible');
 
-            popupDomElem.css('display').should.not.be.equal('none', 'wrong display on visible owner');
+            popupDomElem.css('display').should.not.be.equal('none');
 
             win.scrollTop(popupOwnerDomElem.offset().top + popupOwnerDomElem.height());
 
             setTimeout(function() {
-                popupDomElem.css('display').should.be.equal('none', 'wrong display on hidden owner');
+                popupDomElem.css('display').should.not.be.equal('none');
                 win.scrollTop(popupOwnerDomElem.offset().top);
+                done();
+            }, timeout);
+        });
+
+        it('should be hidden in nested scrolled container', function(done) {
+            var timeout = CHECK_OWNER_THROTTLING_INTERVAL + CHECK_OWNER_THROTTLING_INTERVAL / 2,
+                ownerHeight = popupOwnerDomElem.height();
+
+            popupParentDomElem
+                .append('<div style="height: ' + (4 * ownerHeight) + 'px"/>')
+                .css({
+                    overflow : 'auto',
+                    marginTop : 2 * ownerHeight,
+                    height : 2 * ownerHeight
+                });
+
+            popup
+                .setTarget(popupOwnerDomElem)
+                .setMod('visible');
+
+            popupDomElem.css('display').should.not.be.equal('none', 'wrong display on visible owner');
+
+            popupParentDomElem.scrollTop(3 * ownerHeight);
+
+            setTimeout(function() {
+                popupDomElem.css('display').should.be.equal('none', 'wrong display on hidden owner');
+                popupParentDomElem.scrollTop(0);
                 setTimeout(function() {
                     popupDomElem.css('display').should.not.be.equal(
                         'none',
                         'wrong display on restore owner visibility');
-                    win.scrollTop(0);
+                    popupParentDomElem.scrollTop(0);
                     done();
                 }, timeout);
             }, timeout);

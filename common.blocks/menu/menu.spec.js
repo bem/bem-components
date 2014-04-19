@@ -1,7 +1,9 @@
 modules.define(
     'spec',
-    ['menu', 'i-bem__dom', 'jquery', 'dom', 'sinon', 'BEMHTML'],
-    function(provide, Menu, BEMDOM, $, dom, sinon, BEMHTML) {
+    ['menu', 'i-bem__dom', 'jquery', 'sinon', 'chai', 'BEMHTML'],
+    function(provide, Menu, BEMDOM, $, sinon, chai, BEMHTML) {
+
+var expect = chai.expect;
 
 describe('menu', function() {
     var menu, menuItems;
@@ -36,6 +38,19 @@ describe('menu', function() {
         BEMDOM.destruct(menu.domElem);
     });
 
+    describe('disable', function() {
+        it('should remove "tabindex" attribute on disable', function() {
+            var control = menu.elem('control');
+            control.attr('tabindex').should.be.equal('0');
+
+            menu.setMod('disabled');
+            expect(control.attr('tabindex')).to.be.undefined;
+
+            menu.delMod('disabled');
+            control.attr('tabindex').should.be.equal('0');
+        });
+    });
+
     describe('hover on items', function() {
         it('should unhover previous hovered item', function() {
             menuItems[0].setMod('hovered');
@@ -68,39 +83,8 @@ describe('menu', function() {
 
     });
 
-    describe('focus', function() {
-        it('should mirror focus state with DOM-focus (which can be appeared before init)', function() {
-            var menuDomElem = $(BEMHTML.apply({ block : 'menu' })).appendTo('body').focus(),
-                menu = BEMDOM.init(menuDomElem).bem('menu');
-            menu.hasMod('focused').should.be.true;
-            BEMDOM.destruct(menu.domElem);
-        });
-
-        it('should mirror DOM-focus with focus state on init', function() {
-            var menu = buildMenu({ block : 'menu', mods : { focused : true } });
-            dom.getFocused()[0].should.be.equal(menu.domElem[0]);
-            BEMDOM.destruct(menu.domElem);
-        });
-
-        it('should synchronize focus state with DOM-focus', function() {
-            menu.hasMod('focused').should.be.false;
-            menu.domElem.focus();
-            menu.hasMod('focused').should.be.true;
-            menu.domElem.blur();
-            menu.hasMod('focused').should.be.false;
-        });
-
-        it('should synchronize DOM-focus with focus state', function() {
-            menu.hasMod('focused').should.be.false;
-            menu.setMod('focused');
-            dom.getFocused()[0].should.be.equal(menu.domElem[0]);
-            menu.delMod('focused');
-            dom.getFocused()[0].should.not.be.equal(menu.domElem[0]);
-        });
-    });
-
     describe('events', function() {
-        it('should emit event on item click', function() {
+        it('should emit "item-click" event on item click', function() {
             var spy = sinon.spy();
             menu.on('item-click', spy);
             menuItems[1].emit('click');

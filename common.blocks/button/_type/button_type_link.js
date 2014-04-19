@@ -7,19 +7,19 @@ provide(Button.decl({ modName : 'type', modVal : 'link' }, {
                 this.__base.apply(this, arguments);
                 this._url = this.domElem.attr('href');
 
-                this.hasMod('disabled') && this.elem('control').removeAttr('href');
+                this.hasMod('disabled') && this.domElem.removeAttr('href');
             }
         },
 
         'disabled' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
-                this.elem('control').removeAttr('href');
+                this.domElem.removeAttr('href');
             },
 
             '' : function() {
                 this.__base.apply(this, arguments);
-                this.elem('control').attr('href', this._url);
+                this.domElem.attr('href', this._url);
             }
         }
     },
@@ -39,7 +39,7 @@ provide(Button.decl({ modName : 'type', modVal : 'link' }, {
      */
     setUrl : function(url) {
         this._url = url;
-        this.hasMod('disabled') || this.elem('control').attr('href', url);
+        this.hasMod('disabled') || this.domElem.attr('href', url);
         return this;
     },
 

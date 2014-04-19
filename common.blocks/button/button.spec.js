@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['button', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
-    function(provide, Button, BEMDOM, $, dom, BEMHTML, sinon) {
+    ['button', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, Button, BEMDOM, $, BEMHTML, sinon) {
 
 describe('button', function() {
     var button;
@@ -16,30 +16,6 @@ describe('button', function() {
     });
 
     describe('focus/blur', function() {
-        it('should have "focused" mod on focus', function() {
-            button.domElem.focus();
-            button.hasMod('focused').should.be.true;
-        });
-
-        it('should delete "focused" mod on blur', function() {
-            button.domElem
-                .focus()
-                .blur();
-            button.hasMod('focused').should.be.false;
-        });
-
-        it('should be focused after "focused" mod set', function() {
-            button.setMod('focused');
-            dom.containsFocus(button.domElem).should.be.true;
-        });
-
-        it('should not set "focused" mod if it has "disabled" mod', function() {
-            button
-                .setMod('disabled')
-                .setMod('focused');
-            button.hasMod('focused').should.be.false;
-        });
-
         it('should be focused on press', function() {
             button.hasMod('focused').should.be.false;
             button.domElem.trigger('pointerpress');
@@ -96,14 +72,6 @@ describe('button', function() {
     });
 
     describe('enable/disable', function() {
-        it('should set "disabled" property according to "disabled" mod', function() {
-            button.setMod('disabled');
-            button.domElem.prop('disabled').should.be.true;
-
-            button.delMod('disabled');
-            button.domElem.prop('disabled').should.be.false;
-        });
-
         it('should remove "pressed" mod while set "disabled" mod', function() {
             button
                 .setMod('pressed')

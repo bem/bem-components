@@ -34,6 +34,7 @@ provide(Menu.decl({ modName : 'select' }, /** @lends menu.prototype */{
     /**
      * Returns menu value
      * @returns {*}
+     * @override
      */
     getVal : function() {
         if(!this._isValValid) {

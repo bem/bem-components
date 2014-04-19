@@ -31,7 +31,7 @@ describe('base-control', function() {
         });
 
         it('getName should return an empty string for non inputs', function() {
-            // we're replacing `<input>` tag with
+            // NOTE: we're replacing `<input>` tag with `<span>`
             var control = baseControl.findElem('control');
             control.replaceWith('<span class="' + control[0].className + '" tabindex="0">Blah</span>');
             baseControl.dropElemCache();

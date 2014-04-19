@@ -33,10 +33,7 @@ provide(MenuItem.decl({ modName : 'type', modVal : 'link' }, {
     }
 }, {
     live : function() {
-        this.liveBindTo('focusin', function() {
-            this._onFocus();
-        });
-
+        this.liveBindTo('focusin', this.prototype._onFocus);
         return this.__base.apply(this, arguments);
     }
 }));

@@ -10,6 +10,7 @@ modules.define(
 /**
  * @exports
  * @class attach
+ * @augments base-control
  * @bem
  */
 provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends attach.prototype */{

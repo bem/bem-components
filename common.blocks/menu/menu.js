@@ -42,9 +42,10 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends m
 
         'disabled' : function(modName, modVal) {
             this.__base.apply(this, arguments);
+            var control = this.elem('control');
             modVal?
-                this.elem('control').removeAttr('tabindex') :
-                this.elem('control').attr('tabindex', 0);
+                control.removeAttr('tabindex') :
+                control.attr('tabindex', 0);
         }
     },
 

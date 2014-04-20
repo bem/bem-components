@@ -25,6 +25,7 @@
     "disallowKeywords": ["with"],
     "disallowKeywordsOnNewLine": ["else"],
     "requireLineFeedAtFileEnd": true,
+    "disallowMultipleLineBreaks": true,
     "validateJSDoc": {
         "checkParamNames": true,
         "requireParamTypes": true

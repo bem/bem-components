@@ -11,4 +11,3 @@
     tech : 'spec.js',
     mustDeps : { tech : 'bemhtml', block : 'popup' }
 }]
-

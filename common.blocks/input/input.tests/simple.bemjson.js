@@ -118,7 +118,6 @@
             }
         ] },
 
-
         { tag : 'h3', content : 'size' },
         { tag : 'p', content : {
             block : 'input',

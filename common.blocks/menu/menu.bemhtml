@@ -1,13 +1,17 @@
 block('menu')(
-    attrs()({ tabindex : 0, role : 'menu' }),
-    js()(true),
     def()(function() {
         applyNext({ _menuTheme : this.mods.theme });
         delete this._menuTheme;
-    })
+    }),
+    attrs()(function() {
+        var attrs = { role : 'menu' };
+        this.mods.disabled || (attrs.tabindex = 0);
+        return attrs;
+    }),
+    js()(true)
 )
 
 block('menu-item').match(this._menuTheme).def()(function() {
-    (this.ctx.mods || (this.ctx.mods = this.mods)).theme = this._menuTheme;
+    this.mods.theme = this._menuTheme;
     applyNext();
 });

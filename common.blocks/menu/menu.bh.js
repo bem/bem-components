@@ -2,9 +2,12 @@ module.exports = function(bh) {
 
     bh.match('menu', function(ctx) {
         ctx
-            .attrs({ tabindex : 0, role : 'menu' })
             .js(true)
             .tParam('_menuTheme', ctx.mod('theme'));
+
+        var attrs = { role : 'menu' };
+        ctx.mod('disabled') || (attrs.tabindex = 0);
+        ctx.attrs(attrs);
     });
 
     bh.match('menu-item', function(ctx) {

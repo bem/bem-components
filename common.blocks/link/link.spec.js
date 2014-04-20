@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['link', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
-    function(provide, Link, BEMDOM, $, dom, BEMHTML, sinon) {
+    ['link', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, Link, BEMDOM, $, BEMHTML, sinon) {
 
 describe('link', function() {
     var link;
@@ -38,32 +38,6 @@ describe('link', function() {
 
         e.isDefaultPrevented().should.be.true;
         spy.should.not.have.been.called;
-    });
-
-    describe('focus/blur', function() {
-        it('should have "focused" mod on focus', function() {
-            link.domElem.focus();
-            link.hasMod('focused').should.be.true;
-        });
-
-        it('should delete "focused" mod on blur', function() {
-            link.domElem
-                .focus()
-                .blur();
-            link.hasMod('focused').should.be.false;
-        });
-
-        it('should be focused after "focused" mod set', function() {
-            link.setMod('focused');
-            dom.containsFocus(link.domElem).should.be.true;
-        });
-
-        it('should not set "focused" mod if it has "disabled" mod', function() {
-            link
-                .setMod('disabled')
-                .setMod('focused')
-                .hasMod('focused').should.be.false;
-        });
     });
 });
 

@@ -1,19 +1,23 @@
+/**
+ * @module button
+ */
+
 modules.define(
     'button',
-    ['i-bem__dom', 'jquery', 'dom', 'functions'],
-    function(provide, BEMDOM, $, dom, functions) {
+    ['i-bem__dom', 'base-control', 'jquery', 'dom', 'functions'],
+    function(provide, BEMDOM, BaseControl, $, dom, functions) {
 
 var KEY_CODE_SPACE = 32,
     KEY_CODE_ENTER = 13;
 
-provide(BEMDOM.decl(this.name, {
+/**
+ * @exports
+ * @class button
+ * @augments base-control
+ * @bem
+ */
+provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends button.prototype */{
     beforeSetMod : {
-        'focused' : {
-            'true' : function() {
-                return !this.hasMod('disabled');
-            }
-        },
-
         'pressed' : {
             'true' : function() {
                 return !this.hasMod('disabled') || this.hasMod('togglable');
@@ -24,7 +28,7 @@ provide(BEMDOM.decl(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._focused = false;
+                this.__base.apply(this, arguments);
                 this._refocusOnBlur = false;
             }
         },
@@ -33,26 +37,21 @@ provide(BEMDOM.decl(this.name, {
             'true' : function() {
                 this
                     .bindToWin('unload', this._onUnload) // TODO: WTF???
-                    .bindTo('keydown', this._onKeyDown);
-
-                this._focused || this._focus();
+                    .bindTo('control', 'keydown', this._onKeyDown)
+                    .__base.apply(this, arguments);
             },
 
             '' : function() {
                 this
                     .unbindFromWin('unload', this._onUnload)
-                    .unbindFrom('keydown', this._onKeyDown);
-
-                this._focused && this._blur();
+                    .unbindFrom('control', 'keydown', this._onKeyDown)
+                    .__base.apply(this, arguments);
             }
         },
 
         'disabled' : {
-            '*' : function(modName, modVal) {
-                this.domElem.prop(modName, !!modVal);
-            },
-
             'true' : function() {
+                this.__base.apply(this, arguments);
                 this.hasMod('togglable') || this.delMod('pressed');
             }
         }
@@ -60,11 +59,6 @@ provide(BEMDOM.decl(this.name, {
 
     _onUnload : function() {
         this.delMod('focused');
-    },
-
-    _onFocus : function() {
-        this._focused = true;
-        this.setMod('focused');
     },
 
     _onBlur : function() {
@@ -95,7 +89,7 @@ provide(BEMDOM.decl(this.name, {
     _onPointerRelease : function(e) {
         this.unbindFromDoc('pointerrelease', this._onPointerRelease);
 
-        dom.contains(this.domElem, $(e.target)) &&
+        dom.contains(this.elem('control'), $(e.target)) &&
             this
                 ._updateChecked()
                 .emit('click');
@@ -109,8 +103,8 @@ provide(BEMDOM.decl(this.name, {
         var keyCode = e.keyCode;
         if(keyCode === KEY_CODE_SPACE || keyCode === KEY_CODE_ENTER) {
             this
-                .unbindFrom('keydown', this._onKeyDown)
-                .bindTo('keyup', this._onKeyUp)
+                .unbindFrom('control', 'keydown', this._onKeyDown)
+                .bindTo('control', 'keyup', this._onKeyUp)
                 ._updateChecked()
                 .setMod('pressed');
         }
@@ -118,8 +112,8 @@ provide(BEMDOM.decl(this.name, {
 
     _onKeyUp : function(e) {
         this
-            .unbindFrom('keyup', this._onKeyUp)
-            .bindTo('keydown', this._onKeyDown)
+            .unbindFrom('control', 'keyup', this._onKeyUp)
+            .bindTo('control', 'keydown', this._onKeyDown)
             .delMod('pressed');
 
         e.keyCode === KEY_CODE_SPACE && this._doAction();
@@ -136,22 +130,11 @@ provide(BEMDOM.decl(this.name, {
         return this;
     },
 
-    _focus : function() {
-        this.domElem.focus();
-    },
-
-    _blur : function() {
-        this.domElem.blur();
-    },
-
     _doAction : functions.noop
-}, {
+}, /** @lends button */{
     live : function() {
-        var ptp = this.prototype;
-        this
-            .liveBindTo('focusin', ptp._onFocus)
-            .liveBindTo('focusout', ptp._onBlur)
-            .liveBindTo('pointerpress', ptp._onPointerPress);
+        this.liveBindTo('control', 'pointerpress', this.prototype._onPointerPress);
+        return this.__base.apply(this, arguments);
     }
 }));
 

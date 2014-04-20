@@ -6,10 +6,7 @@ provide(Input.decl({
     }
 }, {
     live : function() {
-        this.liveBindTo('control', 'input', function() {
-            this._onInputChanged();
-        });
-
+        this.liveBindTo('control', 'input', this.prototype._onInputChanged);
         return this.__base.apply(this, arguments);
     }
 }));

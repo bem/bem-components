@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['attach', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
-    function(provide, Attach, BEMDOM, $, dom, BEMHTML, sinon) {
+    ['attach', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, Attach, BEMDOM, $, BEMHTML, sinon) {
 
 describe('attach', function() {
     var attach;
@@ -13,16 +13,11 @@ describe('attach', function() {
         // we need to replace input[@type=file] by input[@type=text] for tests
         var input = attach.findElem('control');
         input.replaceWith('<input class="attach__control" name="' + input.attr('name')  + '"/>');
+        attach.dropElemCache();
     });
 
     afterEach(function() {
         BEMDOM.destruct(attach.domElem);
-    });
-
-    describe('name', function() {
-        it('getName should return input\'s name', function() {
-            attach.getName().should.be.equal('upload');
-        });
     });
 
     describe('value', function() {
@@ -80,41 +75,13 @@ describe('attach', function() {
         });
     });
 
-    describe('focus/blur', function() {
-        it('should have "focused" mod on focus', function() {
-            attach.elem('control').focus();
-            attach.hasMod('focused').should.be.true;
-        });
-
-        it('should delete "focused" mod on blur', function() {
-            attach.elem('control')
-                .focus()
-                .blur();
-            attach.hasMod('focused').should.be.false;
-        });
-
-        it('should be focused after "focused" mod set', function() {
-            attach.setMod('focused');
-            dom.containsFocus(attach.elem('control')).should.be.true;
-        });
-
-        it('should not set "focused" mod if it has "disabled" mod', function() {
-            attach
-                .setMod('disabled')
-                .setMod('focused');
-            attach.hasMod('focused').should.be.false;
-        });
-    });
-
     describe('enable/disable', function() {
-        it('should enable/disable button and elem "control" according to self "disabled" mod', function() {
+        it('should enable/disable button according to self "disabled" state', function() {
             attach.setMod('disabled');
             attach.findBlockInside('button').hasMod('disabled').should.be.true;
-            attach.elem('control').prop('disabled').should.be.true;
 
             attach.delMod('disabled');
             attach.findBlockInside('button').hasMod('disabled').should.be.false;
-            attach.elem('control').prop('disabled').should.be.false;
         });
     });
 

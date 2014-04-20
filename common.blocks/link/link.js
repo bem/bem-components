@@ -1,57 +1,25 @@
-modules.define('link', ['i-bem__dom'], function(provide, BEMDOM) {
+/**
+ * @module link
+ */
 
-provide(BEMDOM.decl(this.name, {
-    beforeSetMod : {
-        'focused' : {
-            'true' : function() {
-                return !this.hasMod('disabled');
-            }
-        }
-    },
+modules.define('link', ['i-bem__dom', 'base-control'], function(provide, BEMDOM, BaseControl) {
 
-    onSetMod : {
-        'focused' : {
-            'true' : function() {
-                this.domElem.focus();
-            },
-
-            '' : function() {
-                this.domElem.blur();
-            }
-        },
-
-        'disabled' : {
-            'true' : function() {
-                this.delMod('focused');
-            }
-        }
-    },
-
-    _onClick : function(e) {
+/**
+ * @exports
+ * @class link
+ * @augments base-control
+ * @bem
+ */
+provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends link.prototype */{
+    _onPointerClick : function(e) {
         this.hasMod('disabled')?
             e.preventDefault() :
             this.emit('click');
-    },
-
-    _onFocus : function() {
-        this.setMod('focused');
-    },
-
-    _onBlur : function() {
-        this.delMod('focused');
     }
-}, {
+}, /** @lends link */{
     live : function() {
-        this
-            .liveBindTo('pointerclick', function(e) {
-                this._onClick(e);
-            })
-            .liveBindTo('focusin', function() {
-                this._onFocus();
-            })
-            .liveBindTo('focusout', function() {
-                this._onBlur();
-            });
+        this.liveBindTo('control', 'pointerclick', this.prototype._onPointerClick);
+        return this.__base.apply(this, arguments);
     }
 }));
 

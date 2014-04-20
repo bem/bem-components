@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['checkbox', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
-    function(provide, Checkbox, BEMDOM, $, dom, BEMHTML, sinon) {
+    ['checkbox', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, Checkbox, BEMDOM, $, BEMHTML, sinon) {
 
 describe('checkbox', function() {
     var checkbox;
@@ -13,8 +13,8 @@ describe('checkbox', function() {
                 val : 'val',
                 label : 'label'
             }))
-                .appendTo('body'))
-                .bem('checkbox');
+            .appendTo('body'))
+            .bem('checkbox');
     }
 
     beforeEach(function() {
@@ -23,12 +23,6 @@ describe('checkbox', function() {
 
     afterEach(function() {
         BEMDOM.destruct(checkbox.domElem);
-    });
-
-    describe('value', function() {
-        it('should return value of "control" elem', function() {
-            checkbox.getVal().should.be.equal('val');
-        });
     });
 
     describe('checked', function() {
@@ -62,51 +56,6 @@ describe('checkbox', function() {
                 .setMod('checked');
 
             spy.should.have.been.calledOnce;
-        });
-    });
-
-    describe('disabled', function() {
-        it('should properly update "control" elem "disabled" attr', function() {
-            checkbox
-                .setMod('disabled')
-                .elem('control').prop('disabled').should.be.true;
-
-            checkbox
-                .delMod('disabled')
-                .elem('control').prop('disabled').should.be.false;
-        });
-    });
-
-    describe('focus/blur', function() {
-        it('should have "focused" mod on focus', function() {
-            checkbox.elem('control').focus();
-            checkbox.hasMod('focused').should.be.true;
-        });
-
-        it('should not have "focused" mod on blur', function() {
-            checkbox.elem('control')
-                .focus()
-                .blur();
-            checkbox.hasMod('focused').should.be.false;
-        });
-
-        it('should be focused after "focused" mod set', function() {
-            checkbox.setMod('focused');
-            dom.containsFocus(checkbox.elem('control')).should.be.true;
-        });
-
-        it('should not set "focused" mod if it has "disabled" mod', function() {
-            checkbox
-                .setMod('disabled')
-                .setMod('focused');
-            checkbox.hasMod('focused').should.be.false;
-        });
-
-        it('should be blured after "focused" mod unset', function() {
-            checkbox
-                .setMod('focused')
-                .delMod('focused');
-            dom.containsFocus(checkbox.elem('control')).should.be.false;
         });
     });
 });

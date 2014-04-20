@@ -45,9 +45,7 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
     }
 }, /** @lends menu-item */{
     live : function() {
-        this.liveBindTo('pointerclick', function() {
-            this._onPointerClick();
-        });
+        this.liveBindTo('pointerclick', this.prototype._onPointerClick);
     }
 }));
 

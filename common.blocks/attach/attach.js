@@ -4,60 +4,21 @@
 
 modules.define(
     'attach',
-    ['i-bem__dom', 'jquery', 'BEMHTML', 'strings__escape'],
-    function(provide, BEMDOM, $, BEMHTML, escape) {
+    ['i-bem__dom', 'base-control', 'jquery', 'BEMHTML', 'strings__escape'],
+    function(provide, BEMDOM, BaseControl, $, BEMHTML, escape) {
 
 /**
  * @exports
  * @class attach
+ * @augments base-control
  * @bem
  */
-provide(BEMDOM.decl(this.name, /** @lends attach.prototype */{
-    beforeSetMod : {
-        'focused' : {
-            'true' : function() {
-                return !this.hasMod('disabled');
-            }
-        }
-    },
-
+provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends attach.prototype */{
     onSetMod : {
-        'js' : {
-            'inited' : function() {
-                this._focused = false;
-            }
-        },
-
-        'focused' : {
-            'true' : function() {
-                this._focused || this._focus();
-            },
-
-            '' : function() {
-                this._focused && this._blur();
-            }
-        },
-
         'disabled' : function(modName, modVal) {
-            this.elem('control').prop(modName, !!modVal);
+            this.__base.apply(this, arguments);
             this._getButton().setMod(modName, modVal);
         }
-    },
-
-    /**
-     * Returns control value
-     * @returns {String}
-     */
-    getVal : function() {
-        return this.elem('control').val();
-    },
-
-    /**
-     * Returns control name
-     * @returns {String}
-     */
-    getName : function() {
-        return this.elem('control').attr('name');
     },
 
     /**
@@ -87,16 +48,6 @@ provide(BEMDOM.decl(this.name, /** @lends attach.prototype */{
         return this
             .dropElemCache('control file')
             ._emitChange(data);
-    },
-
-    _onFocus : function() {
-        this._focused = true;
-        this.setMod('focused');
-    },
-
-    _onBlur : function() {
-        this._focused = false;
-        this.delMod('focused');
     },
 
     _onClearClick : function() {
@@ -139,30 +90,14 @@ provide(BEMDOM.decl(this.name, /** @lends attach.prototype */{
 
     _getButton : function() {
         return this.findBlockInside('button');
-    },
-
-    _focus : function() {
-        this.elem('control').focus();
-    },
-
-    _blur : function() {
-        this.elem('control').blur();
     }
 }, /** @lends attach */{
     live : function() {
         this
-            .liveBindTo('control', 'focusin', function() {
-                this._onFocus();
-            })
-            .liveBindTo('control', 'focusout', function() {
-                this._onBlur();
-            })
-            .liveBindTo('clear', 'pointerclick', function() {
-                this._onClearClick();
-            })
-            .liveBindTo('control', 'change', function() {
-                this._onChange();
-            });
+            .liveBindTo('clear', 'pointerclick', this.prototype._onClearClick)
+            .liveBindTo('control', 'change', this.prototype._onChange);
+
+        return this.__base.apply(this, arguments);
     }
 }));
 

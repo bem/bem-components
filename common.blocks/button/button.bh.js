@@ -3,8 +3,9 @@ module.exports = function(bh) {
     bh.match('button', function(ctx, json) {
         ctx.js(true);
 
-        // Common attributes
-        ctx.attr('role', 'button');
+        ctx
+            .attr('role', 'button') // Common attributes)
+            .mix({ elem : 'control' }); // Implements `base-control`'s interface
 
         json.tabIndex && ctx.attr('tabindex', json.tabIndex);
 

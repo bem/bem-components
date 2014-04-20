@@ -52,6 +52,7 @@ provide(Input.decl({
     /**
      * Нормализация установки фокуса для IE
      * @private
+     * @override
      */
     _focus : function() {
         var input = this.elem('control')[0];

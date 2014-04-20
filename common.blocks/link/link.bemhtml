@@ -3,6 +3,9 @@ block('link')(
 
     js()(true),
 
+    // Implements `base-control`'s interface
+    mix()([{ elem : 'control' }]),
+
     attrs()(function() {
         var ctx = this.ctx,
             attrs = {

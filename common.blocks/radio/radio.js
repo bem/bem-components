@@ -1,3 +1,7 @@
+/**
+ * @module radio
+ */
+
 modules.define(
     'radio',
     ['i-bem__dom', 'jquery', 'dom', 'radio-option'],
@@ -5,7 +9,12 @@ modules.define(
 
 var undef;
 
-provide(BEMDOM.decl(this.name, {
+/**
+ * @exports
+ * @class radio
+ * @bem
+ */
+provide(BEMDOM.decl(this.name, /** @lends radio.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -120,6 +129,17 @@ provide(BEMDOM.decl(this.name, {
         return this._getOptionByVal(this._val);
     },
 
+    _getOptionByVal : function(val) {
+        var options = this.getOptions(),
+            i = 0, option;
+
+        while(option = options[i++]) {
+            if(option.getVal() === val) {
+                return option;
+            }
+        }
+    },
+
     _onOptionCheck : function(option) {
         var optionVal = option.getVal();
 
@@ -136,35 +156,17 @@ provide(BEMDOM.decl(this.name, {
         }
     },
 
-    _getOptionByVal : function(val) {
-        var options = this.getOptions(),
-            i = 0, option;
-
-        while(option = options[i++]) {
-            if(option.getVal() === val) {
-                return option;
-            }
-        }
-    },
-
-    _onFocus : function() {
-        this.setMod('focused');
-    },
-
-    _onBlur : function() {
-        this.delMod('focused');
+    _onOptionFocus : function(option) {
+        this.toggleMod('focused', option.hasMod('focused'));
     }
-}, {
+}, /** @lends radio */{
     live : function() {
         this
             .liveInitOnBlockInsideEvent({ modName : 'checked', modVal : true }, 'radio-option', function(e) {
                 this._onOptionCheck(e.target);
             })
-            .liveBindTo('focusin', function() {
-                this._onFocus();
-            })
-            .liveBindTo('focusout', function() {
-                this._onBlur();
+            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : '*' }, 'radio-option', function(e) {
+                this._onOptionFocus(e.target);
             });
     }
 }));

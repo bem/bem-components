@@ -15,7 +15,6 @@ try {
     require('bem/lib/logger').warn('"bem-pr" is not installer');
 }
 
-
 MAKE.decl('Arch', {
 
     blocksLevelsRegexp : /^.+?\.blocks$/,
@@ -34,7 +33,6 @@ MAKE.decl('Arch', {
     }
 
 });
-
 
 MAKE.decl('SetsNode', {
 
@@ -76,7 +74,6 @@ MAKE.decl('SetsNode', {
     }
 
 });
-
 
 MAKE.decl('BundleNode', {
 
@@ -191,7 +188,6 @@ MAKE.decl('BundleNode', {
 
 });
 
-
 MAKE.decl('AutoprefixerNode', {
 
     getPlatform : function() {
@@ -229,7 +225,6 @@ MAKE.decl('AutoprefixerNode', {
     }
 
 });
-
 
 MAKE.decl('SpecNode', {
 

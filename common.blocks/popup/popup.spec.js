@@ -8,7 +8,8 @@ describe('popup', function() {
         win = $(window),
         winWidth = win.width(),
         winHeight = win.height(),
-        CHECK_OWNER_THROTTLING_INTERVAL = 100;
+        CHECK_OWNER_THROTTLING_INTERVAL = 100,
+        POPUP_MAIN_OFFSET = 5;
 
     beforeEach(function() {
         popupParentDomElem = $(BEMHTML.apply({ tag : 'div' })).appendTo('body');
@@ -18,7 +19,11 @@ describe('popup', function() {
         })).appendTo(popupParentDomElem);
         popup = buildPopup(
             popupParentDomElem,
-            { block : 'popup', content : 'content' });
+            {
+                block : 'popup',
+                js : { mainOffset : POPUP_MAIN_OFFSET },
+                content : 'content'
+            });
         popupDomElem = popup.domElem;
     });
 
@@ -44,7 +49,7 @@ describe('popup', function() {
                 .setMod('visible');
 
             var popupOffset = popupDomElem.offset();
-            popupOffset.top.should.be.equal(coords.top + popup.params.offsets[0]);
+            popupOffset.top.should.be.equal(coords.top + popup.params.mainOffset);
             popupOffset.left.should.be.equal(coords.left);
         });
 
@@ -57,7 +62,7 @@ describe('popup', function() {
                 popupOffset = popupDomElem.offset();
 
             popupOffset.top.should.be.equal(
-                ownerOffset.top + popupOwnerDomElem.outerHeight() + popup.params.offsets[0],
+                ownerOffset.top + popupOwnerDomElem.outerHeight() + popup.params.mainOffset,
                 'invalid top');
             popupOffset.left.should.be.equal(
                 ownerOffset.left,
@@ -77,9 +82,8 @@ describe('popup', function() {
 
     describe('directions', function() {
         var margin = 10,
-            popupOffset = 5,
-            popupWidth = winWidth - popupOffset - margin,
-            popupHeight = winHeight - popupOffset - margin,
+            popupWidth = winWidth - POPUP_MAIN_OFFSET - margin,
+            popupHeight = winHeight - POPUP_MAIN_OFFSET - margin,
             variants = [
                 [margin, margin, 'bottom-left'],
                 [winWidth - popupWidth / 2, margin, 'bottom-center'],
@@ -87,12 +91,12 @@ describe('popup', function() {
                 [margin, winHeight - margin, 'top-left'],
                 [winWidth - popupWidth / 2, winHeight - margin, 'top-center'],
                 [winWidth - margin, winHeight - margin, 'top-right'],
-                [margin, winHeight - popupHeight + popupOffset / 2, 'right-top'],
+                [margin, winHeight - popupHeight + POPUP_MAIN_OFFSET / 2, 'right-top'],
                 [margin, winHeight - popupHeight / 2, 'right-center'],
-                [margin, winHeight - margin - popupOffset * 1.5, 'right-bottom'],
+                [margin, winHeight - margin - POPUP_MAIN_OFFSET * 1.5, 'right-bottom'],
                 [winWidth - margin, winHeight - popupHeight, 'left-top'],
                 [winWidth - margin, winHeight - popupHeight / 2, 'left-center'],
-                [winWidth - margin, winHeight - margin - popupOffset * 1.5, 'left-bottom']
+                [winWidth - margin, winHeight - margin - POPUP_MAIN_OFFSET * 1.5, 'left-bottom']
             ];
 
         beforeEach(function() {
@@ -204,7 +208,7 @@ describe('popup', function() {
                         attrs : { style : 'width: ' + size + 'px; height: ' + size + 'px;'
                     }
                 }))
-                .setTarget(winWidth - size - 1, winHeight - size - popup.params.offsets[0])
+                .setTarget(winWidth - size - 1, winHeight - size - popup.params.mainOffset)
                 .setMod('visible');
 
             popup.getMod('direction').should.be.equal('bottom-left');

@@ -8,7 +8,6 @@ modules.define(
     function(provide, BEMDOM, $, dom, throttle) {
 
 var VIEWPORT_ACCURACY_FACTOR = 0.99,
-    DEFAULT_OFFSETS = [5, 0],
     DEFAULT_DIRECTIONS = [
         'bottom-left', 'bottom-center', 'bottom-right',
         'top-left', 'top-center', 'top-right',
@@ -25,7 +24,9 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
  * @class popup
  * @bem
  *
- * @param {Array[Number]} [offsets] two-elements array with main and secondary offsets
+ * @param {Number} [mainOffset=0] offset along the main direction
+ * @param {Number} [secondaryOffset=0] offset along the secondary direction
+ * @param {Number} [viewportOffset=0] offset from the viewport (window)
  * @param {Array[String]} [directions] allowed directions
  *
  * @bemmod visible Represents visible state
@@ -182,7 +183,9 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         while(direction = directions[i++]) {
             pos = this._calcPos(direction, dimensions);
             viewportFactor = this._calcViewportFactor(pos, dimensions);
-            if(i === 1 || viewportFactor > bestViewportFactor) {
+            if(i === 1 ||
+                    viewportFactor > bestViewportFactor ||
+                    (!bestViewportFactor && this.hasMod('direction', direction))) {
                 bestDirection = direction;
                 bestViewportFactor = viewportFactor;
                 bestPos = pos;
@@ -233,28 +236,29 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
     _calcPos : function(direction, dimensions) {
         var res = {},
-            offsets = this.params.offsets,
+            mainOffset = this.params.mainOffset,
+            secondaryOffset = this.params.secondaryOffset,
             owner = dimensions.owner,
             popup = dimensions.popup;
 
         if(checkMainDirection(direction, 'bottom')) {
-            res.top = owner.top + owner.height + offsets[0];
+            res.top = owner.top + owner.height + mainOffset;
         } else if(checkMainDirection(direction, 'top')) {
-            res.top = owner.top - popup.height - offsets[0];
+            res.top = owner.top - popup.height - mainOffset;
         } else if(checkMainDirection(direction, 'left')) {
-            res.left = owner.left - popup.width - offsets[0];
+            res.left = owner.left - popup.width - mainOffset;
         } else if(checkMainDirection(direction, 'right')) {
-            res.left = owner.left + owner.width + offsets[0];
+            res.left = owner.left + owner.width + mainOffset;
         }
 
         if(checkSecondaryDirection(direction, 'right')) {
-            res.left = owner.left + owner.width - popup.width - offsets[1];
+            res.left = owner.left + owner.width - popup.width - secondaryOffset;
         } else if(checkSecondaryDirection(direction, 'left')) {
-            res.left = owner.left + offsets[1];
+            res.left = owner.left + secondaryOffset;
         } else if(checkSecondaryDirection(direction, 'bottom')) {
-            res.top = owner.top + owner.height - popup.height - offsets[1];
+            res.top = owner.top + owner.height - popup.height - secondaryOffset;
         } else if(checkSecondaryDirection(direction, 'top')) {
-            res.top = owner.top + offsets[1];
+            res.top = owner.top + secondaryOffset;
         } else if(checkSecondaryDirection(direction, 'center')) {
             if(checkMainDirection(direction, 'top', 'bottom')) {
                 res.left = owner.left + owner.width / 2 - popup.width / 2;
@@ -269,10 +273,11 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     _calcViewportFactor : function(pos, dimensions) {
         var viewport = dimensions.viewport,
             popup = dimensions.popup,
-            intersectionLeft = Math.max(pos.left, viewport.left),
-            intersectionRight = Math.min(pos.left + popup.width, viewport.right),
-            intersectionTop = Math.max(pos.top, viewport.top),
-            intersectionBottom = Math.min(pos.top + popup.height, viewport.bottom);
+            viewportOffset = this.params.viewportOffset,
+            intersectionLeft = Math.max(pos.left, viewport.left + viewportOffset),
+            intersectionRight = Math.min(pos.left + popup.width, viewport.right - viewportOffset),
+            intersectionTop = Math.max(pos.top, viewport.top + viewportOffset),
+            intersectionBottom = Math.min(pos.top + popup.height, viewport.bottom - viewportOffset);
 
         return intersectionLeft < intersectionRight && intersectionTop < intersectionBottom? // has intersection
             (intersectionRight - intersectionLeft) *
@@ -394,7 +399,9 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
     getDefaultParams : function() {
         return {
-            offsets : DEFAULT_OFFSETS,
+            mainOffset : 0,
+            secondaryOffset : 0,
+            viewportOffset : 0,
             directions : DEFAULT_DIRECTIONS
         };
     }

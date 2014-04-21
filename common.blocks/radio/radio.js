@@ -140,8 +140,9 @@ provide(BEMDOM.decl(this.name, /** @lends radio.prototype */{
         }
     },
 
-    _onOptionCheck : function(option) {
-        var optionVal = option.getVal();
+    _onOptionCheck : function(e) {
+        var option = e.target,
+            optionVal = option.getVal();
 
         if(!this._inSetVal) {
             if(this._val === optionVal) {
@@ -151,23 +152,26 @@ provide(BEMDOM.decl(this.name, /** @lends radio.prototype */{
                 });
                 this.emit('change');
             } else {
-                this.setVal(option.getVal());
+                this.setVal(optionVal);
             }
         }
     },
 
-    _onOptionFocus : function(option) {
-        this.toggleMod('focused', true, '', option.hasMod('focused'));
+    _onOptionFocus : function(e) {
+        this.setMod('focused', e.target.getMod('focused'));
     }
 }, /** @lends radio */{
     live : function() {
+        var ptp = this.prototype;
         this
-            .liveInitOnBlockInsideEvent({ modName : 'checked', modVal : true }, 'radio-option', function(e) {
-                this._onOptionCheck(e.target);
-            })
-            .liveInitOnBlockInsideEvent({ modName : 'focused', modVal : '*' }, 'radio-option', function(e) {
-                this._onOptionFocus(e.target);
-            });
+            .liveInitOnBlockInsideEvent(
+                { modName : 'checked', modVal : true },
+                'radio-option',
+                ptp._onOptionCheck)
+            .liveInitOnBlockInsideEvent(
+                { modName : 'focused', modVal : '*' },
+                'radio-option',
+                ptp._onOptionFocus);
     }
 }));
 

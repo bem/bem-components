@@ -157,7 +157,7 @@ provide(BEMDOM.decl(this.name, /** @lends radio.prototype */{
     },
 
     _onOptionFocus : function(option) {
-        this.toggleMod('focused', option.hasMod('focused'));
+        this.toggleMod('focused', true, '', option.hasMod('focused'));
     }
 }, /** @lends radio */{
     live : function() {

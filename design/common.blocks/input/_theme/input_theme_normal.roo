@@ -13,7 +13,7 @@
         -webkit-touch-callout: none;
         user-select: none;
 
-        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
         background: #fff;
     }
 
@@ -97,8 +97,8 @@
     {
         .input__box
         {
-            border: 1px solid rgba(178, 142, 0, 0.6);
-            box-shadow: 0 0 10px #fc0;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2),
+                        0 0 10px #fc0;
         }
     }
 
@@ -123,27 +123,27 @@
     &.input_size_s .input__clear,
     &.input_size_m .input__clear
     {
-        width: 22px;
-        height: 22px;
+        width: 24px;
+        height: 24px;
 
         background-image: url(_normal/clear_size_s.svg);
-        background-position: 6px 50%;
+        background-position: 7px 50%;
     }
 
     &.input_size_s
     {
         font-size: 13px;
-        line-height: 22px;
+        line-height: 24px;
 
         .input__control
         {
-            height: 22px;
-            padding-left: 5px;
+            height: 24px;
+            padding-left: 6px;
         }
 
         &.input_has-clear .input__box
         {
-            padding-right: 22px;
+            padding-right: 24px;
         }
 
     }
@@ -151,77 +151,77 @@
     &.input_size_m
     {
         font-size: 13px;
-        line-height: 26px;
+        line-height: 28px;
 
         .input__control
         {
-            height: 26px;
-            padding-left: 7px;
+            height: 28px;
+            padding-left: 8px;
         }
 
         &.input_has-clear .input__box
         {
-            padding-right: 26px;
+            padding-right: 28px;
         }
 
         .input__clear
         {
-            width: 26px;
-            height: 26px;
+            width: 28px;
+            height: 28px;
 
-            background-position: 8px 50%;
+            background-position: 9px 50%;
         }
     }
 
     &.input_size_l .input__clear,
     &.input_size_xl .input__clear
     {
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
 
         background-image: url(_normal/clear_size_l.svg);
-        background-position: 8px 50%;
+        background-position: 9px 50%;
     }
 
     &.input_size_l
     {
         font-size: 15px;
-        line-height: 30px;
+        line-height: 32px;
 
         .input__control
         {
-            height: 30px;
-            padding-left: 9px;
+            height: 32px;
+            padding-left: 10px;
         }
 
         &.input_has-clear .input__box
         {
-            padding-right: 30px;
+            padding-right: 32px;
         }
     }
 
     &.input_size_xl
     {
         font-size: 18px;
-        line-height: 36px;
+        line-height: 38px;
 
         .input__control
         {
-            height: 36px;
-            padding-left: 11px;
+            height: 38px;
+            padding-left: 12px;
         }
 
         &.input_has-clear .input__box
         {
-            padding-right: 36px;
+            padding-right: 38px;
         }
 
         .input__clear
         {
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
 
-            background-position: 11px 50%;
+            background-position: 12px 50%;
         }
     }
 

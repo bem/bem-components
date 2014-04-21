@@ -91,14 +91,14 @@
                                                 block : 'menu-item',
                                                 mods : { checked : true },
                                                 content : [
-                                                    { elem : 'icon', elemMods : { social : 'twitter' } },
+                                                    { block : 'icon', mods : { social : 'twitter' } },
                                                     'Twitter'
                                                 ]
                                             },
                                             {
                                                 block : 'menu-item',
                                                 content : [
-                                                    { elem : 'icon', elemMods : { social : 'vk' } },
+                                                    { block : 'icon', mods : { social : 'vk' } },
                                                     'VK'
                                                 ]
                                             }
@@ -137,7 +137,7 @@
                     block : 'button',
                     mods : { theme : 'normal', size : 's' },
                     text : 'button',
-                    icon : { elem : 'icon', elemMods : { download : true } }
+                    icon : { block : 'icon', mods : { action : 'download' } }
                 },
                 ' ',
                 {
@@ -195,7 +195,7 @@
                     block : 'button',
                     mods : { theme : 'normal', size : 'm' },
                     text : 'button',
-                    icon : { elem : 'icon', elemMods : { download : true } }
+                    icon : { block : 'icon', mods : { action : 'download' } }
                 },
                 ' ',
                 {
@@ -253,7 +253,7 @@
                     block : 'button',
                     mods : { theme : 'normal', size : 'l' },
                     text : 'button',
-                    icon : { elem : 'icon', elemMods : { download : true } }
+                    icon : { block : 'icon', mods : { action : 'download' } }
                 },
                 ' ',
                 {
@@ -311,7 +311,7 @@
                     block : 'button',
                     mods : { theme : 'normal', size : 'xl' },
                     text : 'button',
-                    icon : { elem : 'icon', elemMods : { download : true } }
+                    icon : { block : 'icon', mods : { action : 'download' } }
                 },
                 ' ',
                 {

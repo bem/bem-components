@@ -4,8 +4,8 @@
 
 modules.define(
     'popup',
-    ['jquery', 'i-bem__dom', 'ua', 'dom'],
-    function(provide, $, BEMDOM, ua, dom, Popup) {
+    ['jquery', 'i-bem__dom', 'ua', 'dom', 'keyboard__codes'],
+    function(provide, $, BEMDOM, ua, dom, keyCodes, Popup) {
 
 var KEYDOWN_EVENT = (ua.opera && ua.version < 12.10)? 'keypress' : 'keydown',
     visiblePopupsStack = [];
@@ -57,8 +57,7 @@ provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup
 }));
 
 function onDocKeyDown(e) {
-    // on ESC
-    e.keyCode === 27 &&
+    e.keyCode === keyCodes.ESC &&
         // omit ESC in inputs, selects and etc.
         !dom.isFocusable($(e.target)) &&
         visiblePopupsStack.length &&

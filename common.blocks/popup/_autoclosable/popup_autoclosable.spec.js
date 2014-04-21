@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['popup', 'i-bem__dom', 'jquery', 'BEMHTML', 'next-tick'],
-    function(provide, Popup, BEMDOM, $, BEMHTML, nextTick) {
+    ['popup', 'i-bem__dom', 'jquery', 'BEMHTML', 'next-tick', 'keyboard__codes'],
+    function(provide, Popup, BEMDOM, $, BEMHTML, nextTick, keyCodes) {
 
 describe('popup_autoclosable', function() {
     var rootDomElem;
@@ -70,7 +70,7 @@ describe('popup_autoclosable', function() {
     describe('on escape key reactions', function() {
         it('should be hidden on press escape', function() {
             var popup = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible');
-            rootDomElem.trigger($.Event('keydown', { keyCode : 27 }));
+            rootDomElem.trigger($.Event('keydown', { keyCode : keyCodes.ESC }));
             popup.hasMod('visible').should.be.false;
         });
 
@@ -78,7 +78,7 @@ describe('popup_autoclosable', function() {
             var popup1 = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible'),
                 popup2 = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible'),
                 popup3 = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible'),
-                event = $.Event('keydown', { keyCode : 27 });
+                event = $.Event('keydown', { keyCode : keyCodes.ESC });
 
             rootDomElem.trigger(event);
 

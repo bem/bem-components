@@ -2,10 +2,7 @@
  * @module menu
  */
 
-modules.define('menu', function(provide, Menu) {
-
-var KEY_CODE_SPACE = 32,
-    KEY_CODE_ENTER = 13;
+modules.define('menu', ['keyboard__codes'], function(provide, keyCodes, Menu) {
 
 /**
  * @exports
@@ -24,7 +21,7 @@ provide(Menu.decl({ modName : 'select' }, /** @lends menu.prototype */{
     },
 
     _onKeyDown : function(e) {
-        if(e.keyCode === KEY_CODE_ENTER || e.keyCode === KEY_CODE_SPACE) {
+        if(e.keyCode === keyCodes.ENTER || e.keyCode === keyCodes.SPACE) {
             e.preventDefault();
             this._onItemClick(this._hoveredItem);
         }

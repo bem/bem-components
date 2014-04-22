@@ -41,8 +41,9 @@ block('button')(
 
     content()(
         function() {
-            var ctx = this.ctx, content = [this.ctx.icon];
+            var ctx = this.ctx, content = [];
             // NOTE: не вынесли в отдельные шаблоны ради оптимизации
+            ctx.icon && content.push({ elem : 'icon', content : ctx.icon });
             ctx.text && content.push({ elem : 'text', content : ctx.text });
             return content;
         },

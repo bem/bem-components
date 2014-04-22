@@ -25,7 +25,7 @@
         border: 0;
     }
 
-    .icon,
+    .button__icon,
     .button__text
     {
         /*
@@ -105,7 +105,7 @@
         font-size: 13px;
         line-height: 22px;
 
-        .icon
+        .button__icon
         {
             width: 22px;
         }
@@ -121,7 +121,7 @@
         font-size: 13px;
         line-height: 26px;
 
-        .icon
+        .button__icon
         {
             width: 26px;
         }
@@ -137,7 +137,7 @@
         font-size: 15px;
         line-height: 30px;
 
-        .icon
+        .button__icon
         {
             width: 30px;
         }
@@ -153,7 +153,7 @@
         font-size: 18px;
         line-height: 36px;
 
-        .icon
+        .button__icon
         {
             width: 36px;
         }
@@ -164,7 +164,7 @@
         }
     }
 
-    & .icon + .button__text
+    & .button__icon + .button__text
     {
         padding-left: 0;
     }

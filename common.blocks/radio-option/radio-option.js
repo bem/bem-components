@@ -18,11 +18,15 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends r
     },
 
     _onPointerClick : function() {
-        this.hasMod('disabled') || this.setMod('checked');
+        if(this.hasMod('disabled')) return;
+
+        this.hasMod('mode', 'radio-check')?
+            this.toggleMod('checked') :
+            this.setMod('checked');
     }
 }, /** @lends radio-option */{
     live : function() {
-        this.liveBindTo('pointerclick', this.prototype._onPointerClick);
+        this.liveBindTo('control', 'pointerclick', this.prototype._onPointerClick);
         return this.__base.apply(this, arguments);
     }
 }));

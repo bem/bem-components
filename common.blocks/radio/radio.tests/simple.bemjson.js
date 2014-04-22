@@ -134,6 +134,17 @@
             ]
         } },
 
+        { tag : 'h3', content : 'mode=radio-check' },
+        { tag : 'p', content : {
+            block : 'radio',
+            name : 'radio-check',
+            mods : { mode : 'radio-check', theme : 'normal', size : 'l' },
+            options : [
+                { val : 1, text : 'first' },
+                { val : 2, text : 'second' }
+            ]
+        } },
+
         { tag : 'h3', content : 'button' },
         { tag : 'p', content : {
             block : 'radio',

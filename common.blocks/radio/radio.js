@@ -88,15 +88,23 @@ provide(BEMDOM.decl(this.name, /** @lends radio.prototype */{
     setVal : function(val, data) {
         this._inSetVal = true;
 
-        val = String(val);
+        var isValUndef = val === undef;
+
+        isValUndef || (val = String(val));
 
         if(this._val !== val) {
-            var option = this._getOptionByVal(val);
-            if(option) {
+            if(isValUndef) {
                 this._val !== undef && this.getCheckedOption().delMod('checked');
-                this._val = option.getVal();
-                option.setMod('checked');
+                this._val = undef;
                 this.emit('change', data);
+            } else {
+                var option = this._getOptionByVal(val);
+                if(option) {
+                    this._val !== undef && this.getCheckedOption().delMod('checked');
+                    this._val = option.getVal();
+                    option.setMod('checked');
+                    this.emit('change', data);
+                }
             }
         }
 
@@ -141,19 +149,21 @@ provide(BEMDOM.decl(this.name, /** @lends radio.prototype */{
     },
 
     _onOptionCheck : function(e) {
+        if(this._inSetVal) return;
+
         var option = e.target,
             optionVal = option.getVal();
 
-        if(!this._inSetVal) {
-            if(this._val === optionVal) {
+        if(this._val === optionVal) {
+            option.hasMod('checked')?
                 // on block init value set in constructor, we need remove old checked and emit "change" event
                 this.getOptions().forEach(function(option) {
                     option.getVal() !== optionVal && option.delMod('checked');
-                });
-                this.emit('change');
-            } else {
-                this.setVal(optionVal);
-            }
+                }) :
+                this._val = undef;
+            this.emit('change');
+        } else {
+            this.setVal(optionVal);
         }
     },
 
@@ -165,7 +175,7 @@ provide(BEMDOM.decl(this.name, /** @lends radio.prototype */{
         var ptp = this.prototype;
         this
             .liveInitOnBlockInsideEvent(
-                { modName : 'checked', modVal : true },
+                { modName : 'checked', modVal : '*' },
                 'radio-option',
                 ptp._onOptionCheck)
             .liveInitOnBlockInsideEvent(

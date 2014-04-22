@@ -16,6 +16,7 @@ block('radio')(
                 block : 'radio-option',
                 mods : {
                     type : this.mods.type,
+                    mode : this.mods.mode,
                     theme : this.mods.theme,
                     size : this.mods.size,
                     checked : option.checked,

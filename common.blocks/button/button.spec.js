@@ -7,7 +7,7 @@ describe('button', function() {
     var button;
 
     beforeEach(function() {
-        button = BEMDOM.init($(BEMHTML.apply({ block : 'button' })).appendTo('body'))
+        button = BEMDOM.init($(BEMHTML.apply({ block : 'button', text : 'foo' })).appendTo('body'))
             .bem('button');
     });
 
@@ -138,6 +138,17 @@ describe('button', function() {
                     .trigger('pointerrelease');
 
             spy.should.not.have.been.called;
+        });
+    });
+
+    describe('setText/getText', function() {
+        it('should return text of the button', function() {
+            button.getText().should.be.equal('foo');
+        });
+
+        it('should set text to the button', function() {
+            button.setText('bar');
+            button.elem('text').text().should.be.equal('bar');
         });
     });
 });

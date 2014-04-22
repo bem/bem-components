@@ -54,6 +54,25 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
         }
     },
 
+    /**
+     * Returns text of the button
+     * @returns {String}
+     */
+    getText : function() {
+        return this.elem('text').text();
+    },
+
+    /**
+     * Sets text to the button
+     * @param {String} text
+     * @returns {this}
+     */
+    setText : function(text) {
+        this.elem('text').text(text);
+
+        return this;
+    },
+
     _onUnload : function() {
         this.delMod('focused');
     },

@@ -66,14 +66,14 @@
         }
 
         .button__text,
-        .icon
+        .button__icon
         {
             position: relative;
             top: 1px;
         }
     }
 
-    .icon
+    .button__icon
     {
         width: 1em;
         margin-left: -0.7em;

@@ -137,7 +137,7 @@
                 block : 'button',
                 mods : { theme : 'normal', size : 's' },
                 // Здесь иконка прописана через content, чтобы появилась в deps.js
-                content : { block : 'icon', mods : { action : 'download' } }
+                content : { elem : 'icon', content : { block : 'icon', mods : { action : 'download' } } }
             },
             ' ',
             {
@@ -152,7 +152,7 @@
                 mods : { theme : 'normal', size : 's' },
                 content : [
                     { elem : 'text', content : 'down' },
-                    { block : 'icon', mods : { action : 'down' } }
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'down' } } }
                 ]
             },
             ' ',
@@ -160,9 +160,9 @@
                 block : 'button',
                 mods : { theme : 'normal', size : 's' },
                 content : [
-                    { block : 'icon', mods : { action : 'left' } },
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'left' } } },
                     { elem : 'text', content : 'set width' },
-                    { block : 'icon', mods : { action : 'right' } }
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'right' } } }
                 ]
             },
             ' ololo ',
@@ -171,11 +171,11 @@
                 mods : { theme : 'normal', size : 's' },
                 content : [
                     { elem : 'text', content : 'o' },
-                    { block : 'icon', mods : { action : 'left' } },
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'left' } } },
                     { elem : 'text', content : '^' },
                     { elem : 'text', content : '_' },
                     { elem : 'text', content : '^' },
-                    { block : 'icon', mods : { action : 'right' } },
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'right' } } },
                     { elem : 'text', content : 'o' }
                 ]
             },
@@ -184,11 +184,11 @@
                 block : 'button',
                 mods : { theme : 'normal', size : 's' },
                 content : [
-                    { block : 'icon', mods : { action : 'left' } },
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'left' } } },
                     { elem : 'text', content : '0' },
-                    { block : 'icon', mods : { action : 'up' } },
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'up' } } },
                     { elem : 'text', content : 'o' },
-                    { block : 'icon', mods : { action : 'right' } }
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'right' } } }
                 ]
             }
         ] },
@@ -203,9 +203,9 @@
                 block : 'button',
                 mods : { theme : 'normal', size : 'm' },
                 content : [
-                    { block : 'icon', mods : { action : 'left' } },
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'left' } } },
                     { elem : 'text', content : 'set width' },
-                    { block : 'icon', mods : { action : 'right' } }
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'right' } } }
                 ]
             }
         ] },
@@ -220,9 +220,9 @@
                 block : 'button',
                 mods : { theme : 'normal', size : 'l' },
                 content : [
-                    { block : 'icon', mods : { action : 'left' } },
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'left' } } },
                     { elem : 'text', content : 'set width' },
-                    { block : 'icon', mods : { action : 'right' } }
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'right' } } }
                 ]
             }
         ] },
@@ -237,10 +237,47 @@
                 block : 'button',
                 mods : { theme : 'normal', size : 'xl' },
                 content : [
-                    { block : 'icon', mods : { action : 'left' } },
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'left' } } },
                     { elem : 'text', content : 'set width' },
-                    { block : 'icon', mods : { action : 'right' } }
+                    { elem : 'icon', content : { block : 'icon', mods : { action : 'right' } } }
                 ]
+            }
+        ] },
+
+        { tag : 'h3', content : 'spin' },
+        { tag : 'p', content : [
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 's' },
+                icon : { block : 'spin', mods : { theme : 'normal', size : 'xs', progress : true } }
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 's' },
+                text : 'Loading...',
+                icon : { block : 'spin', mods : { theme : 'normal', size : 'xs', progress : true } }
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'm' },
+                text : 'Loading...',
+                icon : { block : 'spin', mods : { theme : 'normal', size : 'xs', progress : true } }
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'l' },
+                text : 'Loading...',
+                icon : { block : 'spin', mods : { theme : 'normal', size : 'xs', progress : true } }
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'xl' },
+                text : 'Loading...',
+                icon : { block : 'spin', mods : { theme : 'normal', size : 's', progress : true } }
             }
         ] },
 

@@ -141,6 +141,13 @@
                 },
                 ' ',
                 {
+                    block : 'button',
+                    mods : { theme : 'normal', size : 's' },
+                    icon : { block : 'spin', mods : { theme : 'normal', size : 'xs', progress : true } },
+                    text : 'Loading...'
+                },
+                ' ',
+                {
                     block : 'radio',
                     mods : { theme : 'normal', size : 's', type : 'button' },
                     name : 'radio-sizes-s',
@@ -196,6 +203,13 @@
                     mods : { theme : 'normal', size : 'm' },
                     text : 'button',
                     icon : { block : 'icon', mods : { action : 'download' } }
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'normal', size : 'm' },
+                    icon : { block : 'spin', mods : { theme : 'normal', size : 's', progress : true } },
+                    text : 'Loading...'
                 },
                 ' ',
                 {
@@ -257,6 +271,13 @@
                 },
                 ' ',
                 {
+                    block : 'button',
+                    mods : { theme : 'normal', size : 'l' },
+                    icon : { block : 'spin', mods : { theme : 'normal', size : 'm', progress : true } },
+                    text : 'Loading...'
+                },
+                ' ',
+                {
                     block : 'radio',
                     mods : { theme : 'normal', size : 'l', type : 'button' },
                     name : 'radio-sizes-l',
@@ -312,6 +333,13 @@
                     mods : { theme : 'normal', size : 'xl' },
                     text : 'button',
                     icon : { block : 'icon', mods : { action : 'download' } }
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'normal', size : 'xl' },
+                    icon : { block : 'spin', mods : { theme : 'normal', size : 'l', progress : true } },
+                    text : 'Loading...'
                 },
                 ' ',
                 {

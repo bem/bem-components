@@ -8,7 +8,7 @@ describe('popup', function() {
         win = $(window),
         winWidth = win.width(),
         winHeight = win.height(),
-        CHECK_OWNER_THROTTLING_INTERVAL = 100,
+        UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
         POPUP_MAIN_OFFSET = 5;
 
     beforeEach(function() {
@@ -145,7 +145,7 @@ describe('popup', function() {
 
     describe('scroll reactions', function() {
         it('should not be hidden on window scroll', function(done) {
-            var timeout = CHECK_OWNER_THROTTLING_INTERVAL + CHECK_OWNER_THROTTLING_INTERVAL / 2;
+            var timeout = UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL + UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL / 2;
 
             popupParentDomElem.height(winHeight + 2 * popupOwnerDomElem.height());
 
@@ -159,13 +159,12 @@ describe('popup', function() {
 
             setTimeout(function() {
                 popupDomElem.css('display').should.not.be.equal('none');
-                win.scrollTop(popupOwnerDomElem.offset().top);
                 done();
             }, timeout);
         });
 
         it('should be hidden in nested scrolled container', function(done) {
-            var timeout = CHECK_OWNER_THROTTLING_INTERVAL + CHECK_OWNER_THROTTLING_INTERVAL / 2,
+            var timeout = UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL + UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL / 2,
                 ownerHeight = popupOwnerDomElem.height();
 
             popupParentDomElem

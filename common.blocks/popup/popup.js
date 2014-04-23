@@ -4,8 +4,8 @@
 
 modules.define(
     'popup',
-    ['i-bem__dom', 'jquery', 'dom', 'functions__throttle'],
-    function(provide, BEMDOM, $, dom, throttle) {
+    ['i-bem__dom', 'jquery', 'dom', 'objects', 'functions__throttle'],
+    function(provide, BEMDOM, $, dom, objects, throttle) {
 
 var VIEWPORT_ACCURACY_FACTOR = 0.99,
     DEFAULT_DIRECTIONS = [
@@ -15,9 +15,10 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
         'left-top', 'left-center', 'left-bottom'
     ],
     BASE_ZINDEX = 10000,
-    CHECK_OWNER_THROTTLING_INTERVAL = 100,
+    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
 
-    win = BEMDOM.win;
+    win = BEMDOM.win,
+    undef;
 
 /**
  * @exports
@@ -51,10 +52,16 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this._pos = null;
                 this._zIndex = null;
                 this._isAttachedToScope = false;
-                this._isOwnerVisible = false;
-                this._checkOwnerVisibility = throttle(
-                    this._checkOwnerVisibility,
-                    CHECK_OWNER_THROTTLING_INTERVAL,
+                this._isTargetVisible = undef;
+                this._lastDrawingCss = {
+                        left : undef,
+                        top : undef,
+                        zIndex : undef,
+                        display : undef
+                    };
+                this._updateIsTargetVisible = throttle(
+                    this._updateIsTargetVisible,
+                    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL,
                     false,
                     this);
             },
@@ -69,10 +76,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         'visible' : {
             'true' : function() {
                 this._zIndex = captureZIndex();
-                if(this._owner) {
-                    this._ownerParents = this._owner.parents();
-                    this._updateIsOwnerVisible();
-                }
+                this._owner && (this._ownerParents = this._owner.parents());
 
                 this
                     .bindTo('pointerclick', this._onPointerClick)
@@ -114,6 +118,8 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
             this._pos = null;
             this._popupOwner = this._owner.bem('_' + this.__self.getName() + '-owner');
+            this._isTargetVisible = undef;
+
             this._bindToPopupOwner();
 
             if(this.hasMod('visible')){
@@ -121,6 +127,8 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this
                     ._bindToScrollAndResize()
                     .redraw();
+            } else {
+                this._ownerParents = null;
             }
         } else {
             this._pos = { left : left, top : top };
@@ -128,6 +136,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             this._owner = null;
             this._ownerParents = null;
             this._popupOwner = null;
+            this._isTargetVisible = true;
         }
 
         return this;
@@ -157,14 +166,29 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
         var bestDrawingParams = this._calcBestDrawingParams();
 
-        this
-            .setMod('direction', bestDrawingParams.direction)
-            .domElem.css({
+        this.setMod('direction', bestDrawingParams.direction);
+
+        typeof this._isTargetVisible === 'undefined' &&
+            (this._isTargetVisible = this._calcIsTargetVisible());
+
+        var lastDrawingCss = this._lastDrawingCss,
+            needUpdateCss = false;
+
+        objects.each(
+            {
+                display : this._isTargetVisible? '' : 'none',
                 left : bestDrawingParams.left,
                 top : bestDrawingParams.top,
-                display : !this._owner || this._isOwnerVisible? '' : 'none',
                 zIndex : this._zIndex
+            },
+            function(val, name) {
+                if(lastDrawingCss[name] !== val) {
+                    lastDrawingCss[name] = val;
+                    needUpdateCss = true;
+                }
             });
+
+        needUpdateCss && this.domElem.css(lastDrawingCss);
 
         return this;
     },
@@ -286,6 +310,49 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             0;
     },
 
+    /**
+     * Calculates target visibility state
+     * @private
+     * @returns {Boolean} Whether state is visible
+     */
+    _calcIsTargetVisible : function() {
+        var owner = this._owner;
+        if(!owner) return true;
+
+        var ownerOffset = owner.offset(),
+            ownerLeft = ownerOffset.left,
+            ownerTop = ownerOffset.top,
+            ownerRight = ownerLeft + owner.outerWidth(),
+            ownerBottom = ownerTop + owner.outerHeight(),
+            direction = this.getMod('direction'),
+            vertBorder = Math.floor(checkMainDirection(direction, 'top') ||
+                    checkSecondaryDirection(direction, 'top')?
+                ownerTop :
+                ownerBottom),
+            horizBorder = Math.floor(checkMainDirection(direction, 'left') ||
+                    checkSecondaryDirection(direction, 'left')?
+                ownerLeft :
+                ownerRight),
+            res = true;
+
+        this._ownerParents.each(function() {
+            if(this.tagName === 'BODY') return false;
+
+            var parent = $(this),
+                parentOffset = parent.offset(),
+                parentTopOffset = Math.floor(parentOffset.top),
+                parentLeftOffset = Math.floor(parentOffset.left);
+
+            return res = !(
+                (vertBorder < parentTopOffset) ||
+                (parentTopOffset + parent.outerHeight() < vertBorder) ||
+                (horizBorder < parentLeftOffset) ||
+                (parentLeftOffset + parent.outerWidth() < horizBorder));
+        });
+
+        return res;
+    },
+
     _bindToScrollAndResize : function() {
         this._ownerParents &&
             this
@@ -305,52 +372,20 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     },
 
     _onScrollOrResize : function() {
-        this._checkOwnerVisibility();
-        this.redraw();
+        this
+            .redraw()
+            ._updateIsTargetVisible();
     },
 
-    _checkOwnerVisibility : function() {
-        // NOTE: because block might be destructed during throttling
-        this.hasMod('js', 'inited') &&
-            this.hasMod('visible') &&
-            this._updateIsOwnerVisible() &&
-            this.domElem.css({ display : this._isOwnerVisible? '' : 'none' });
-    },
+    _updateIsTargetVisible : function() {
+        if(!this.hasMod('js', 'inited') || !this.hasMod('visible'))
+            return;
 
-    /**
-     * Updates owner visibility state
-     * @private
-     * @returns {Boolean} Whether state was updated
-     */
-    _updateIsOwnerVisible : function() {
-        var owner = this._owner,
-            ownerOffset = owner.offset(),
-            ownerLeft = ownerOffset.left,
-            ownerTop = ownerOffset.top,
-            ownerRight = ownerLeft + owner.outerWidth(),
-            ownerBottom = ownerTop + owner.outerHeight(),
-            prevIsOwnerVisible = this._isOwnerVisible,
-            direction = this.getMod('direction'),
-            vertBorder = checkMainDirection(direction, 'top') || checkSecondaryDirection(direction, 'top')?
-                ownerTop :
-                ownerBottom,
-            horizBorder = checkMainDirection(direction, 'left') || checkSecondaryDirection(direction, 'left')?
-                ownerLeft :
-                ownerRight,
-            _this = this;
-
-        this._ownerParents.each(function() {
-            var parent = $(this),
-                parentOffset = parent.offset();
-
-            return _this._isOwnerVisible = !(
-                (vertBorder < parentOffset.top) ||
-                (parentOffset.top + parent.outerHeight() < vertBorder) ||
-                (horizBorder < parentOffset.left) ||
-                (parentOffset.left + parent.outerWidth() < horizBorder));
-        });
-
-        return this._isOwnerVisible !== prevIsOwnerVisible;
+        var isTargetVisible = this._calcIsTargetVisible();
+        if(isTargetVisible !== this._isTargetVisible) {
+            this._isTargetVisible = isTargetVisible;
+            this.redraw();
+        }
     },
 
     _onPointerClick : function() {

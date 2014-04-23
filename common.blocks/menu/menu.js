@@ -4,8 +4,8 @@
 
 modules.define(
     'menu',
-    ['i-bem__dom', 'base-control', 'menu-item'],
-    function(provide, BEMDOM, BaseControl) {
+    ['i-bem__dom', 'base-control', 'keyboard__codes', 'menu-item'],
+    function(provide, BEMDOM, BaseControl, keyCodes) {
 
 /**
  * @exports
@@ -79,12 +79,13 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends m
     },
 
     _onKeyDown : function(e) {
-        var isArrow = e.keyCode === 38 || e.keyCode === 40;
+        var keyCode = e.keyCode,
+            isArrow = keyCode === keyCodes.UP || keyCode === keyCodes.DOWN;
 
         if(isArrow && !e.shiftKey) {
             e.preventDefault();
 
-            var dir = e.keyCode - 39, // using the features of key codes for "up"/"down" ;-)
+            var dir = keyCode - 39, // using the features of key codes for "up"/"down" ;-)
                 items = this._getItems(),
                 len = items.length,
                 hoveredIdx = items.indexOf(this._hoveredItem),

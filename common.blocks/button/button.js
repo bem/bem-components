@@ -4,11 +4,8 @@
 
 modules.define(
     'button',
-    ['i-bem__dom', 'base-control', 'jquery', 'dom', 'functions'],
-    function(provide, BEMDOM, BaseControl, $, dom, functions) {
-
-var KEY_CODE_SPACE = 32,
-    KEY_CODE_ENTER = 13;
+    ['i-bem__dom', 'base-control', 'jquery', 'dom', 'functions', 'keyboard__codes'],
+    function(provide, BEMDOM, BaseControl, $, dom, functions, keyCodes) {
 
 /**
  * @exports
@@ -101,7 +98,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
         if(this.hasMod('disabled')) return;
 
         var keyCode = e.keyCode;
-        if(keyCode === KEY_CODE_SPACE || keyCode === KEY_CODE_ENTER) {
+        if(keyCode === keyCodes.SPACE || keyCode === keyCodes.ENTER) {
             this
                 .unbindFrom('control', 'keydown', this._onKeyDown)
                 .bindTo('control', 'keyup', this._onKeyUp)
@@ -116,7 +113,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
             .bindTo('control', 'keydown', this._onKeyDown)
             .delMod('pressed');
 
-        e.keyCode === KEY_CODE_SPACE && this._doAction();
+        e.keyCode === keyCodes.SPACE && this._doAction();
 
         this.emit('click');
     },

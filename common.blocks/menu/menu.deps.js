@@ -3,6 +3,7 @@
     shouldDeps : [
         'base-control',
         'menu-item',
+        { block : 'keyboard', elem : 'codes' },
         { mods : { focused : true } }
     ]
 },

@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['button', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
-    function(provide, Button, BEMDOM, $, BEMHTML, sinon) {
+    ['button', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon', 'keyboard__codes'],
+    function(provide, Button, BEMDOM, $, BEMHTML, sinon, keyCodes) {
 
 describe('button', function() {
     var button;
@@ -48,12 +48,12 @@ describe('button', function() {
             button.hasMod('pressed').should.be.false;
             button.domElem.trigger('keyup');
 
-            button.domElem.trigger($.Event('keydown', { keyCode : 32 }));
+            button.domElem.trigger($.Event('keydown', { keyCode : keyCodes.SPACE }));
             button.hasMod('pressed').should.be.true;
             button.domElem.trigger('keyup');
             button.hasMod('pressed').should.be.false;
 
-            button.domElem.trigger($.Event('keydown', { keyCode : 13 }));
+            button.domElem.trigger($.Event('keydown', { keyCode : keyCodes.ENTER }));
             button.hasMod('pressed').should.be.true;
         });
 
@@ -119,9 +119,9 @@ describe('button', function() {
                 .on('click', spy)
                 .setMod('focused')
                 .domElem
-                    .trigger($.Event('keydown', { keyCode : 32 }))
+                    .trigger($.Event('keydown', { keyCode : keyCodes.SPACE }))
                     .trigger('keyup')
-                    .trigger($.Event('keydown', { keyCode : 13 }))
+                    .trigger($.Event('keydown', { keyCode : keyCodes.ENTER }))
                     .trigger('keyup');
 
             spy.should.have.been.calledTwice;

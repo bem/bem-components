@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['menu', 'i-bem__dom', 'jquery', 'sinon', 'chai', 'BEMHTML'],
-    function(provide, Menu, BEMDOM, $, sinon, chai, BEMHTML) {
+    ['menu', 'i-bem__dom', 'jquery', 'sinon', 'chai', 'keyboard__codes', 'BEMHTML'],
+    function(provide, Menu, BEMDOM, $, sinon, chai, keyCodes, BEMHTML) {
 
 var expect = chai.expect;
 
@@ -101,11 +101,11 @@ function doKeyDown(code) {
 }
 
 function pressDownKey() {
-    doKeyDown(40);
+    doKeyDown(keyCodes.DOWN);
 }
 
 function pressUpKey() {
-    doKeyDown(38);
+    doKeyDown(keyCodes.UP);
 }
 
 function buildMenu(bemjson) {

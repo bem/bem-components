@@ -1,6 +1,4 @@
-var PATH = require('path'),
-    environ = require('bem-environ'),
-    PRJ_TECHS = PATH.resolve(__dirname, '../techs/'),
+var environ = require('bem-environ'),
     BEMCORE_TECHS = environ.getLibPath('bem-core', '.bem/techs'),
     BEMPR_TECHS = environ.getLibPath('bem-pr', 'bem/techs'),
     getTechResolver = environ.getTechResolver;
@@ -15,6 +13,7 @@ exports.getTechs = function() {
         'bemdecl.js' : 'v2/bemdecl.js',
         'deps.js' : 'v2/deps.js',
         'js' : 'v2/js-i',
+        'roole' : 'v2/roole',
         'css' : 'v2/css',
         'ie.css' : 'v2/ie.css',
         'ie6.css' : 'v2/ie6.css',
@@ -31,9 +30,7 @@ exports.getTechs = function() {
         'spec.bemjson.js'
     ].forEach(getTechResolver(techs, BEMPR_TECHS));
 
-    ['roole'].forEach(getTechResolver(techs, PRJ_TECHS));
-
     return techs;
 };
 
-exports.defaultTechs = ['css', 'browser.js', 'bemhtml'];
+exports.defaultTechs = ['roole', 'browser.js', 'bemhtml'];

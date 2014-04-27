@@ -5,7 +5,6 @@ var PATH = require('path'),
     U = require('bem').util;
 
 require('bem-tools-autoprefixer').extendMake(MAKE);
-require('./nodes')(MAKE);
 
 try {
     require(environ.getLibPath('bem-pr', 'bem/nodes'))(MAKE);

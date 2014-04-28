@@ -1,6 +1,13 @@
 [{
     mustDeps : { block : 'i-bem', elems : ['dom'] },
-    shouldDeps : ['radio-option', 'dom']
+    shouldDeps : [
+        {
+            elems : ['box', 'control'],
+            mods : { disabled : true, checked : true, focused : true }
+        },
+        { block : 'jquery', elem : 'event', mods : { type : 'pointer' } },
+        'base-control'
+    ]
 },
 {
     tech : 'spec.js',

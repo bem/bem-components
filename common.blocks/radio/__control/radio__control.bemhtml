@@ -1,4 +1,4 @@
-block('radio-option').elem('control')(
+block('radio').elem('control')(
     tag()('input'),
 
     attrs()(function() {

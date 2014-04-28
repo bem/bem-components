@@ -1,7 +1,7 @@
-module.exports = function(bh) {
-
-    bh.match('radio-option_type_button', function(ctx, json) {
-        var mods = ctx.mods(),
+block('radio').mod('type', 'button')(
+    def()(function() {
+        var ctx = this.ctx,
+            mods = this.mods,
             buttonMods = {
                 togglable : 'radio',
                 checked : mods.checked,
@@ -9,35 +9,33 @@ module.exports = function(bh) {
             },
             buttonContent = [
                 {
-                    block : 'radio-option',
+                    block : 'radio',
                     elem : 'control',
                     checked : mods.checked,
                     disabled : mods.disabled,
-                    name : json.name,
-                    val : json.val
+                    name : ctx.name,
+                    val : ctx.val
                 },
-                json.icon
+                ctx.icon
             ];
 
-        var radio = ctx.tParam('_radio');
-        if(radio) {
-            var radioMods = radio.mods;
+        if(this._radioGroup) {
+            var radioMods = this._radioGroup.mods;
             if(radioMods) {
                 buttonMods.theme = radioMods.theme;
                 buttonMods.size = radioMods.size;
             }
         }
 
-        typeof json.text !== 'undefined' &&
-            buttonContent.push({ elem : 'text', content : json.text });
+        typeof ctx.text !== 'undefined' &&
+            buttonContent.push({ elem : 'text', content : ctx.text });
 
-        return {
+        applyCtx({
             block : 'button',
-            mix : { block : 'radio-option', mods : mods, js : true },
+            mix : { block : 'radio', mods : mods, js : true },
             tag : 'label',
             mods : buttonMods,
             content : buttonContent
-        };
-    });
-
-};
+        });
+    })
+)

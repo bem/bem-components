@@ -357,12 +357,12 @@
                 {
                     elem : 'row',
                     content : [
-                        { elem : 'cell', content : 'radio' },
+                        { elem : 'cell', content : 'radio-group' },
                         {
                             elem : 'cell',
                             content : [
                                 {
-                                    block : 'radio',
+                                    block : 'radio-group',
                                     name : 'radio-default1',
                                     options : [
                                         { val : 1, text : 'first' },
@@ -371,7 +371,7 @@
                                 },
                                 ' ',
                                 {
-                                    block : 'radio',
+                                    block : 'radio-group',
                                     mods : { type : 'button' },
                                     name : 'radio-default2',
                                     options : [
@@ -385,7 +385,7 @@
                             elem : 'cell',
                             content : [
                                 {
-                                    block : 'radio',
+                                    block : 'radio-group',
                                     mods : { theme : 'simple' },
                                     name : 'radio-simple1',
                                     options : [
@@ -395,7 +395,7 @@
                                 },
                                 ' ',
                                 {
-                                    block : 'radio',
+                                    block : 'radio-group',
                                     mods : { theme : 'simple', type : 'button' },
                                     name : 'radio-simple2',
                                     options : [
@@ -409,7 +409,7 @@
                             elem : 'cell',
                             content : [
                                 {
-                                    block : 'radio',
+                                    block : 'radio-group',
                                     mods : { theme : 'normal', size : 'm' },
                                     name : 'radio-normal1',
                                     options : [
@@ -419,7 +419,7 @@
                                 },
                                 ' ',
                                 {
-                                    block : 'radio',
+                                    block : 'radio-group',
                                     mods : { theme : 'normal', size : 'm', type : 'button' },
                                     name : 'radio-normal2',
                                     options : [

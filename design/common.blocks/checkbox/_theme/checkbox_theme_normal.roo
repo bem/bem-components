@@ -2,21 +2,9 @@
 {
     font-family: Arial, Helvetica, sans-serif;
 
-    /*
-     * TODO: корявый хак, появляется некрасивая серая плашка при клике на тачах в iOS, надо переделать
-     * NOTE: то же самое в radio
-     */
-
     &:hover
     {
         cursor: pointer;
-    }
-
-    &::after
-    {
-        display: block;
-
-        content: '';
     }
 
     .checkbox__control
@@ -35,9 +23,10 @@
 
         display: inline-block;
 
-        border: 1px solid rgba(0, 0, 0, 0.2);
+        border: 0;
         border-radius: 3px;
         background: #fff;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
 
         &::after
         {
@@ -49,6 +38,8 @@
         &::before
         {
             position: absolute;
+            top: -5px;
+            left: 2px;
 
             content: '';
 
@@ -64,21 +55,17 @@
     &.checkbox_size_m
     {
         font-size: 13px;
-        line-height: 26px;
 
         .checkbox__box
         {
-            line-height: 12px;
+            line-height: 14px;
 
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             margin-right: 6px;
 
             &::before
             {
-                top: -6px;
-                left: 1px;
-
                 width: 15px;
                 height: 15px;
 
@@ -90,21 +77,17 @@
     &.checkbox_size_l
     {
         font-size: 15px;
-        line-height: 30px;
 
         .checkbox__box
         {
-            line-height: 16px;
+            line-height: 17px;
 
-            width: 15px;
-            height: 15px;
+            width: 17px;
+            height: 17px;
             margin-right: 8px;
 
             &::before
             {
-                top: -6px;
-                left: 1px;
-
                 width: 18px;
                 height: 18px;
 
@@ -118,6 +101,7 @@
         .checkbox__box
         {
             background: #ffeba0;
+            box-shadow: inset 0 0 0 1px rgba(153, 122, 0, 0.5);
 
             &::before {
                 opacity: 1;
@@ -135,7 +119,7 @@
         .checkbox__box
         {
             background: rgba(0, 0, 0, 0.08);
-            border-color: transparent;
+            box-shadow: none;
         }
 
         &.checkbox_checked

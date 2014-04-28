@@ -224,7 +224,14 @@
                 ' ',
                 {
                     block : 'checkbox',
-                    mods : { theme : 'normal', size : 'm', type : 'button' },
+                    mods : { theme : 'normal', size : 'm', checked : true },
+                    val : 1,
+                    text : 'check'
+                },
+                ' ',
+                {
+                    block : 'checkbox',
+                    mods : { theme : 'normal', size : 'm', type : 'button', checked : true },
                     val : 1,
                     text : 'check'
                 },
@@ -285,6 +292,13 @@
                         { val : 1, text : 'first' },
                         { val : 2, text : 'second', checked : true }
                     ]
+                },
+                ' ',
+                {
+                    block : 'checkbox',
+                    mods : { theme : 'normal', size : 'l', checked : true },
+                    val : 1,
+                    text : 'check'
                 },
                 ' ',
                 {

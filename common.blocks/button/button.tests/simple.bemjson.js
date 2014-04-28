@@ -70,21 +70,45 @@
         } },
 
         { tag : 'h3', content : 'view' },
-        { tag : 'p', content : {
-            block : 'button',
-            mods : { theme : 'normal', size : 'm' },
-            text : 'normal'
-        } },
-        { tag : 'p', content : {
-            block : 'button',
-            mods : { theme : 'normal', pseudo : true, size : 'm' },
-            text : 'pseudo'
-        } },
-        { tag : 'p', content : {
-            block : 'button',
-            mods : { theme : 'normal', action : true, size : 'm' },
-            text : 'action'
-        } },
+        { tag : 'p', content : [
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'm' },
+                text : 'normal'
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'm', disabled : true },
+                text : 'normal'
+            }
+        ] },
+        { tag : 'p', content : [
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'm', pseudo : true },
+                text : 'pseudo'
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'm', pseudo : true, disabled : true },
+                text : 'pseudo'
+            }
+        ] },
+        { tag : 'p', content : [
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'm', action : true },
+                text : 'action'
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'm', action : true, disabled : true },
+                text : 'action'
+            }
+        ] },
 
         { tag : 'h3', content : 'size' },
         { tag : 'p', content : {
@@ -265,6 +289,32 @@
                 {
                     block : 'button',
                     mods : { theme : 'normal', size : 'm', togglable : 'radio', checked : true },
+                    text : 'radio'
+                }
+            ] }
+        ] },
+
+        { tag : 'p', content : [
+            { tag : 'span', content : {
+                block : 'button',
+                mods : { theme : 'normal', size : 'm', togglable : 'check', pseudo : true },
+                text : 'check'
+            } },
+            ' ',
+            { tag : 'span', content : [
+                {
+                    block : 'button',
+                    mods : { theme : 'normal', size : 'm', togglable : 'radio', pseudo : true },
+                    text : 'radio'
+                },
+                {
+                    block : 'button',
+                    mods : { theme : 'normal', size : 'm', togglable : 'radio', pseudo : true },
+                    text : 'radio'
+                },
+                {
+                    block : 'button',
+                    mods : { theme : 'normal', size : 'm', togglable : 'radio', pseudo : true, checked : true },
                     text : 'radio'
                 }
             ] }

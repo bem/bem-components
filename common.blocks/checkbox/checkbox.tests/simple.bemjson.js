@@ -93,6 +93,7 @@
                 name : 'r1',
                 text : 'first'
             },
+            ' ',
             {
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'm', checked : true },
@@ -100,28 +101,21 @@
                 name : 'r1',
                 text : 'second'
             },
+            ' ',
             {
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'm', disabled : true },
                 val : 3,
                 name : 'r1',
                 text : 'third'
-            }
-        ] },
-        { tag : 'p', content : [
-            {
-                block : 'checkbox',
-                mods : { theme : 'normal', size : 'm', disabled : true },
-                val : 1,
-                name : 'r1',
-                text : 'first'
             },
+            ' ',
             {
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'm', disabled : true, checked : true },
-                val : 2,
+                val : 4,
                 name : 'r1',
-                text : 'second'
+                text : 'fourth'
             }
         ] },
 
@@ -134,6 +128,7 @@
                 name : 'r1',
                 text : 'size_m'
             },
+            ' ',
             {
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'm', checked : true },
@@ -150,6 +145,7 @@
                 name : 'r1',
                 text : 'size_l'
             },
+            ' ',
             {
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'l', checked : true },

@@ -8,6 +8,11 @@ provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, {
 
     _getButton : function() {
         return this.findBlockOn('button');
+    },
+
+    _onChange : function() {
+        this.__base.apply(this, arguments);
+        this.hasMod('disabled') || this.setMod('focused');
     }
 }));
 

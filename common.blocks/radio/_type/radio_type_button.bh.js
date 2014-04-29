@@ -1,7 +1,7 @@
-block('radio-option').mod('type', 'button')(
-    def()(function() {
-        var ctx = this.ctx,
-            mods = this.mods,
+module.exports = function(bh) {
+
+    bh.match('radio_type_button', function(ctx, json) {
+        var mods = ctx.mods(),
             buttonMods = {
                 togglable : 'radio',
                 checked : mods.checked,
@@ -9,33 +9,35 @@ block('radio-option').mod('type', 'button')(
             },
             buttonContent = [
                 {
-                    block : 'radio-option',
+                    block : 'radio',
                     elem : 'control',
                     checked : mods.checked,
                     disabled : mods.disabled,
-                    name : ctx.name,
-                    val : ctx.val
+                    name : json.name,
+                    val : json.val
                 },
-                ctx.icon
+                json.icon
             ];
 
-        if(this._radio) {
-            var radioMods = this._radio.mods;
+        var radio = ctx.tParam('_radioGroup');
+        if(radio) {
+            var radioMods = radio.mods;
             if(radioMods) {
                 buttonMods.theme = radioMods.theme;
                 buttonMods.size = radioMods.size;
             }
         }
 
-        typeof ctx.text !== 'undefined' &&
-            buttonContent.push({ elem : 'text', content : ctx.text });
+        typeof json.text !== 'undefined' &&
+            buttonContent.push({ elem : 'text', content : json.text });
 
-        applyCtx({
+        return {
             block : 'button',
-            mix : { block : 'radio-option', mods : mods, js : true },
+            mix : { block : 'radio', mods : mods, js : true },
             tag : 'label',
             mods : buttonMods,
             content : buttonContent
-        });
-    })
-)
+        };
+    });
+
+};

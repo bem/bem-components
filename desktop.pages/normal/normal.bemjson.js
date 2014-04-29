@@ -148,7 +148,7 @@
                 },
                 ' ',
                 {
-                    block : 'radio',
+                    block : 'radio-group',
                     mods : { theme : 'normal', size : 's', type : 'button' },
                     name : 'radio-sizes-s',
                     options : [
@@ -213,7 +213,7 @@
                 },
                 ' ',
                 {
-                    block : 'radio',
+                    block : 'radio-group',
                     mods : { theme : 'normal', size : 'm', type : 'button' },
                     name : 'radio-sizes-m',
                     options : [
@@ -285,7 +285,7 @@
                 },
                 ' ',
                 {
-                    block : 'radio',
+                    block : 'radio-group',
                     mods : { theme : 'normal', size : 'l', type : 'button' },
                     name : 'radio-sizes-l',
                     options : [
@@ -357,7 +357,7 @@
                 },
                 ' ',
                 {
-                    block : 'radio',
+                    block : 'radio-group',
                     mods : { theme : 'normal', size : 'xl', type : 'button' },
                     name : 'radio-sizes-xl',
                     options : [

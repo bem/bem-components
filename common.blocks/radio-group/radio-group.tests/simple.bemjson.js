@@ -1,6 +1,6 @@
 ({
     block : 'page',
-    title : 'bem-components: radio',
+    title : 'bem-components: radio-group',
     mods : { theme : 'normal' },
     head : [
         { elem : 'css', url : '_simple.css' },
@@ -10,7 +10,7 @@
 
         { tag : 'h2', content : 'default' },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'default1',
             options : [
                 { val : 1, text : 'first' },
@@ -19,7 +19,7 @@
             ]
         } },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'default2',
             mods : { disabled : true },
             options : [
@@ -32,7 +32,7 @@
 
         { tag : 'h2', content : 'simple' },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'simple1',
             mods : { theme : 'simple' },
             options : [
@@ -42,7 +42,7 @@
             ]
         } },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'simple2',
             mods : { theme : 'simple', disabled : true },
             options : [
@@ -53,7 +53,7 @@
 
         { tag : 'h3', content : 'button' },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'simple-button1',
             mods : { theme : 'simple', type : 'button' },
             options : [
@@ -64,7 +64,7 @@
             ]
         } },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'simple-button2',
             mods : { theme : 'simple', type : 'button', disabled : true },
             options : [
@@ -73,7 +73,7 @@
             ]
         } },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'simple-button3',
             mods : { theme : 'simple', type : 'button' },
             options : [
@@ -95,7 +95,7 @@
 
         { tag : 'h2', content : 'normal' },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'normal1',
             mods : { theme : 'normal', size : 'm' },
             options : [
@@ -105,7 +105,7 @@
             ]
         } },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'normal2',
             mods : { theme : 'normal', size : 'm', disabled : true },
             options : [
@@ -116,7 +116,7 @@
 
         { tag : 'h3', content : 'size' },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'normal-size1',
             mods : { theme : 'normal', size : 'm' },
             options : [
@@ -125,7 +125,7 @@
             ]
         } },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'normal-size2',
             mods : { theme : 'normal', size : 'l' },
             options : [
@@ -136,7 +136,7 @@
 
         { tag : 'h3', content : 'button' },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'normal-button1',
             mods : { theme : 'normal', size : 'm', type : 'button' },
             options : [
@@ -147,7 +147,7 @@
             ]
         } },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'normal-button2',
             mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
             options : [
@@ -156,7 +156,7 @@
             ]
         } },
         { tag : 'p', content : {
-            block : 'radio',
+            block : 'radio-group',
             name : 'normal-button3',
             mods : { theme : 'normal', size : 'm', type : 'button' },
             options : [

@@ -1,0 +1,25 @@
+.radio-group_theme_normal
+{
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: block;
+
+    &.radio-group_size_m
+    {
+        font-size: 13px;
+        line-height: 26px;
+    }
+
+    &.radio-group_size_l
+    {
+        font-size: 15px;
+        line-height: 30px;
+    }
+
+    &.radio-group_type_button
+    {
+        display: inline-block;
+
+        white-space: nowrap;
+    }
+}

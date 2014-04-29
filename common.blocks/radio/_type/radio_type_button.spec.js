@@ -1,25 +1,25 @@
 modules.define(
     'spec',
-    ['radio-option', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML'],
-    function(provide, RadioOption, BEMDOM, $, dom, BEMHTML) {
+    ['radio', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML'],
+    function(provide, Radio, BEMDOM, $, dom, BEMHTML) {
 
-describe('radio-option_type_button', function() {
+describe('radio_type_button', function() {
     var radioOption;
 
-    function buildRadioOption() {
+    function buildRadio() {
         return BEMDOM.init($(BEMHTML.apply({
-                block : 'radio-option',
+                block : 'radio',
                 mods : { type : 'button' },
                 name : 'name',
                 val : 'val',
                 label : 'label'
             }))
                 .appendTo('body'))
-                .bem('radio-option');
+                .bem('radio');
     }
 
     beforeEach(function() {
-        radioOption = buildRadioOption();
+        radioOption = buildRadio();
     });
 
     afterEach(function() {

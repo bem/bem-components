@@ -11,8 +11,16 @@ provide(Radio.decl({ modName : 'type', modVal : 'button' }, {
     },
 
     _onPointerClick : function() {
-        this.__base.apply(this, arguments);
         this.hasMod('disabled') || this.setMod('focused');
+    }
+}, {
+    live : function() {
+        return this
+            .liveBindTo(
+                { modName : 'type', modVal : 'button' },
+                'pointerclick',
+                this.prototype._onPointerClick)
+            .__base.apply(this, arguments);
     }
 }));
 

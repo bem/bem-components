@@ -51,8 +51,7 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
                     i = 0, radio;
 
                 while(radio = radios[i++]) {
-                    if(!radio.hasMod('disabled')) {
-                        radio.setMod('focused');
+                    if(radio.setMod('focused').hasMod('focused')) { // we need to be sure that radio has got focus
                         return;
                     }
                 }
@@ -85,21 +84,21 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
      * @returns {this}
      */
     setVal : function(val, data) {
-        this._inSetVal = true;
-
         val = String(val);
 
         if(this._val !== val) {
             var radio = this._getRadioByVal(val);
             if(radio) {
-                this._val !== undef && this.getCheckedRadio().delMod('checked');
+                this._inSetVal = true;
+
+                this._val !== undef && this._getRadioByVal(this._val).delMod('checked');
                 this._val = radio.getVal();
                 radio.setMod('checked');
+
+                this._inSetVal = false;
                 this.emit('change', data);
             }
         }
-
-        this._inSetVal = false;
 
         return this;
     },
@@ -120,19 +119,11 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
         return this._radios || (this._radios = this.findBlocksInside('radio'));
     },
 
-    /**
-     * Returns checked option
-     * @returns {radio[]|undefined}
-     */
-    getCheckedRadio : function() {
-        return this._getRadioByVal(this._val);
-    },
-
     _getRadioByVal : function(val) {
-        var options = this.getRadios(),
+        var radios = this.getRadios(),
             i = 0, option;
 
-        while(option = options[i++]) {
+        while(option = radios[i++]) {
             if(option.getVal() === val) {
                 return option;
             }
@@ -140,9 +131,7 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
     },
 
     _onRadioCheck : function(e) {
-        var radio = e.target,
-            radioVal = radio.getVal();
-
+        var radioVal = e.target.getVal();
         if(!this._inSetVal) {
             if(this._val === radioVal) {
                 // on block init value set in constructor, we need remove old checked and emit "change" event

@@ -36,14 +36,14 @@ describe('radio', function() {
                 .elem('control').prop('checked').should.be.false;
         });
 
-        it('should set "checked" mod on "pointerclick" event', function() {
-            radioOption.domElem.trigger('pointerclick');
+        it('should set "checked" mod on "change" event', function() {
+            radioOption.domElem.trigger('change');
             radioOption.hasMod('checked').should.be.true;
         });
 
-        it('should not set "checked" mod on "pointerclick" event if disabled', function() {
+        it('should not set "checked" mod on "change" event if disabled', function() {
             radioOption.setMod('disabled');
-            radioOption.domElem.trigger('pointerclick');
+            radioOption.domElem.trigger('change');
             radioOption.hasMod('checked').should.be.false;
         });
     });

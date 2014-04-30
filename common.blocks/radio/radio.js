@@ -20,12 +20,12 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends r
         }
     },
 
-    _onPointerClick : function() {
+    _onChange : function() {
         this.hasMod('disabled') || this.setMod('checked');
     }
 }, /** @lends radio */{
     live : function() {
-        this.liveBindTo('pointerclick', this.prototype._onPointerClick);
+        this.liveBindTo('change', this.prototype._onChange);
         return this.__base.apply(this, arguments);
     }
 }));

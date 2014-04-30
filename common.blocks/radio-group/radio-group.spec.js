@@ -6,15 +6,15 @@ modules.define(
 var expect = chai.expect;
 
 describe('radio-group', function() {
-    var radio;
+    var radioGroup;
 
-    function buildRadio(bemjson) {
+    function buildRadioGroup(bemjson) {
         return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))
             .bem('radio-group');
     }
 
     beforeEach(function() {
-        radio = buildRadio({
+        radioGroup = buildRadioGroup({
             block : 'radio-group',
             name : 'name',
             options : [
@@ -27,60 +27,72 @@ describe('radio-group', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(radio.domElem);
+        BEMDOM.destruct(radioGroup.domElem);
     });
 
     describe('value', function() {
         it('should have correct initial value', function() {
-            radio.getVal().should.be.equal('val2');
+            radioGroup.getVal().should.be.equal('val2');
         });
 
         it('should have correct initial undefined value', function() {
-            BEMDOM.destruct(radio.domElem);
+            BEMDOM.destruct(radioGroup.domElem);
 
-            radio = buildRadio({
+            radioGroup = buildRadioGroup({
                 block : 'radio-group',
                 name : 'name',
                 options : [{ val : 'val1', label : 'label1' }]
             });
 
-            expect(radio.getVal()).to.be.undefined;
+            expect(radioGroup.getVal()).to.be.undefined;
         });
 
         it('should properly set allowed value', function() {
-            var options = radio.getRadios(),
+            var options = radioGroup.getRadios(),
                 spy = sinon.spy();
 
-            radio
+            radioGroup
                 .on('change', spy)
                 .setVal('val1');
             options[0].hasMod('checked').should.be.true;
             options[1].hasMod('checked').should.be.false;
-            radio.getVal().should.be.equal('val1');
+            radioGroup.getVal().should.be.equal('val1');
             spy.should.have.been.calledOnce;
         });
 
         it('should not set wrong value', function() {
-            var options = radio.getRadios(),
+            var options = radioGroup.getRadios(),
                 spy = sinon.spy();
 
-            radio.setVal('val44');
+            radioGroup.setVal('val44');
             options[1].hasMod('checked').should.be.true;
-            radio.getVal().should.be.equal('val2');
+            radioGroup.getVal().should.be.equal('val2');
             spy.should.not.have.been.called;
         });
     });
 
     describe('focus/blur', function() {
-        it('should focus first option', function() {
-            radio.setMod('focused');
-            radio.getRadios()[0].hasMod('focused').should.be.true;
+        it('should focus first enabled radio', function() {
+            BEMDOM.destruct(radioGroup.domElem);
+
+            radioGroup = buildRadioGroup({
+                block : 'radio-group',
+                name : 'name',
+                options : [
+                    { val : 'val1', label : 'label1', disabled : true },
+                    { val : 'val2', label : 'label2' }
+                ]
+            });
+
+            radioGroup.setMod('focused');
+            radioGroup.getRadios()[0].hasMod('focused').should.be.false;
+            radioGroup.getRadios()[1].hasMod('focused').should.be.true;
         });
 
-        it('should remove "focused" mod from currently focused option', function() {
-            radio.getRadios()[1].setMod('focused');
-            radio.delMod('focused');
-            radio.getRadios()[1].hasMod('focused').should.be.false;
+        it('should remove "focused" mod from currently focused radio', function() {
+            radioGroup.getRadios()[1].setMod('focused');
+            radioGroup.delMod('focused');
+            radioGroup.getRadios()[1].hasMod('focused').should.be.false;
         });
     });
 });

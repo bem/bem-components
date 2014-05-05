@@ -7,13 +7,22 @@ env:
   global:
     - GH_REF: github.com/bem/bem-components.git
     - ISTANBUL_COVERAGE: yes
+    - secure: "XnxskQdGx6Lb6AJ5otHfV99InDVCndUhn4oLhDMW2ohqos8fBbBse8SIoGvTlM9oRqlReINF0RIZc2YbC9eoyePmvp4mE2PegiKNtNpR5rU575ehipvZqENP0nMak2a2uwDBBST2P1lhAMgIs9T5lf4V/BZg0wNCjK7kUqpCzyg="
+    - secure: "XaxTNoPANf9oAgLGQ6DMl4t+7ryybBCioFOAwCbq1l5WCZjW0X+wyT/RRGOzEiSiPZ+4uWrZrlmYwVq/TsX+oOfzb4aSFSSRAvQlMAIL6iKaXpCIcwO//uP2MVYHNsUyIsNNK1S90Mj6ZswScafP3TSp8NDQbyPSG1HAY8xibJ0="
 
 branches:
   only:
     - v2
+
+before_script:
+  - python -m SimpleHTTPServer 8080 &
+  - 'echo "gridUrl: http://${SAUCE_USERNAME}:${SAUCE_ACCESS_KEY}@ondemand.saucelabs.com/wd/hub" > .gemini.yml'
+  - cat .gemini.yml.in >> .gemini.yml
 
 after_success:
   - npm install coveralls
   - ./node_modules/.bin/istanbul report lcovonly
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
 
+addons:
+  sauce_connect: true

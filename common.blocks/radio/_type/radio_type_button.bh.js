@@ -5,7 +5,9 @@ module.exports = function(bh) {
             buttonMods = {
                 togglable : 'radio',
                 checked : mods.checked,
-                disabled : mods.disabled
+                disabled : mods.disabled,
+                theme : mods.theme,
+                size : mods.size
             },
             buttonContent = [
                 {
@@ -18,15 +20,6 @@ module.exports = function(bh) {
                 },
                 json.icon
             ];
-
-        var radio = ctx.tParam('_radioGroup');
-        if(radio) {
-            var radioMods = radio.mods;
-            if(radioMods) {
-                buttonMods.theme = radioMods.theme;
-                buttonMods.size = radioMods.size;
-            }
-        }
 
         typeof json.text !== 'undefined' &&
             buttonContent.push({ elem : 'text', content : json.text });

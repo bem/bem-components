@@ -1,14 +1,9 @@
 module.exports = function(bh) {
 
     bh.match('radio-group', function(ctx, json) {
-        ctx.tParam('_radioGroup', json);
-
-        ctx.tag('span');
-
-        var js = ctx.js() || {};
-        js === true && (js = {});
-        js.id || (js.id = json.id || 'radio-' + json.name);
-        ctx.js(js, true);
+        ctx
+            .tag('span')
+            .js(true);
 
         var mods = ctx.mods();
         ctx.content((json.options || []).map(function(option) {

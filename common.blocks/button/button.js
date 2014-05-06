@@ -32,10 +32,10 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
 
         'focused' : {
             'true' : function() {
+                this.__base.apply(this, arguments); // should be called before binds
                 this
                     .bindToWin('unload', this._onUnload) // TODO: WTF???
-                    .bindTo('control', 'keydown', this._onKeyDown)
-                    .__base.apply(this, arguments);
+                    .bindTo('control', 'keydown', this._onKeyDown);
             },
 
             '' : function() {

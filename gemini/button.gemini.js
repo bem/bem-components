@@ -4,7 +4,7 @@ gemini.suite('button', function(suite) {
     suite
         .setUrl('desktop.tests/button/simple/simple.html')
         .setElements({
-            button: '.button'
+            button : '.button'
         })
         .capture('plain')
         .capture('hovered', function(actions, elements) {

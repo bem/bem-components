@@ -27,9 +27,8 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends m
 
         'focused' : {
             'true' : function() {
-                this
-                    .bindToDoc('keydown', this._onKeyDown)
-                    .__base.apply(this, arguments);
+                this.__base.apply(this, arguments);
+                this.bindToDoc('keydown', this._onKeyDown); // NOTE: should be called after __base
             },
 
             '' : function() {

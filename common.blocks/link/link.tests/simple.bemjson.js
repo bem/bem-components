@@ -13,11 +13,12 @@
         },
         {
             block : 'link',
-            content : {
+            url : {
                 block : 'link-content',
                 tag : '',
-                content : 'Empty link 2'
-            }
+                content : '/action'
+            },
+            content : 'url with bemjson'
         },
         {
             block : 'link',

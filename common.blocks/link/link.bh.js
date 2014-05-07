@@ -14,7 +14,7 @@ module.exports = function(bh) {
 
         typeOfUrl !== 'undefined' && (attrs.href = typeOfUrl === 'string'?
             url :
-            url); // TODO: реализовать возможность отдавать bemjson в url
+            bh.apply(url));
 
         typeof attrs.href === 'undefined' &&
             typeof attrs.tabindex === 'undefined' &&

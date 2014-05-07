@@ -1,6 +1,8 @@
-var environ = require('bem-environ'),
+var PATH = require('path'),
+    environ = require('bem-environ'),
     BEMCORE_TECHS = environ.getLibPath('bem-core', '.bem/techs'),
     BEMPR_TECHS = environ.getLibPath('bem-pr', 'bem/techs'),
+    PRJ_TECHS = PATH.join(environ.PRJ_ROOT, '.bem', 'techs'),
     getTechResolver = environ.getTechResolver;
 
 exports.getTechs = function() {
@@ -23,6 +25,7 @@ exports.getTechs = function() {
     };
 
     ['bemhtml', 'vanilla.js', 'browser.js'].forEach(getTechResolver(techs, BEMCORE_TECHS));
+    ['bh'].forEach(getTechResolver(techs, PRJ_TECHS));
 
     [
         'spec.js',

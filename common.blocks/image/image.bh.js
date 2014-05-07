@@ -1,7 +1,7 @@
 module.exports = function(bh) {
     bh.match('image', function(ctx, json) {
         ctx
-            .tag('i')
+            .tag('img')
             .attrs({
                 src : json.url,
                 width : json.width,

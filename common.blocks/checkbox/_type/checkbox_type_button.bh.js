@@ -26,7 +26,7 @@ module.exports = function(bh) {
 
         return {
             block : 'button',
-            mix : { block : 'checkbox', mods : mods, js : json.js || true },
+            mix : [{ block : 'checkbox', mods : mods, js : json.js || true }].concat(ctx.mix() || []),
             tag : 'label',
             mods : buttonMods,
             content : buttonContent

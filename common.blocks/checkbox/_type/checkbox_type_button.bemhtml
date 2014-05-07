@@ -26,7 +26,7 @@ block('checkbox').mod('type', 'button')(
 
         applyCtx({
             block : 'button',
-            mix : { block : 'checkbox', mods : mods, js : ctx.js || true },
+            mix : [{ block : 'checkbox', mods : mods, js : ctx.js || true }].concat(ctx.mix || []),
             tag : 'label',
             mods : buttonMods,
             content : buttonContent

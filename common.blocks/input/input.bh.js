@@ -13,7 +13,7 @@ module.exports = function(bh) {
         if(typeof content === 'undefined') {
             content = [{ elem : 'control' }];
             // NOTE: не вынесли в отдельные шаблоны ради оптимизации
-            ctx.label && content.unshift({ elem : 'label', content : ctx.label });
+            json.label && content.unshift({ elem : 'label', content : json.label });
             ctx.content(content);
         }
     });

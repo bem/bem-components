@@ -15,6 +15,8 @@ branches:
     - v2
 
 before_script:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y graphicsmagick
   - python -m SimpleHTTPServer 8080 &
   - 'echo "gridUrl: http://${SAUCE_USERNAME}:${SAUCE_ACCESS_KEY}@ondemand.saucelabs.com/wd/hub" > .gemini.yml'
   - cat .gemini.yml.in >> .gemini.yml

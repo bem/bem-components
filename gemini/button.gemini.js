@@ -3,17 +3,18 @@ var gemini = require('gemini');
 gemini.suite('button', function(suite) {
     suite
         .setUrl('desktop.tests/button/simple/simple.html')
-        .setElements({
-            button : '.button'
+        .setCaptureElements('.button')
+        .before(function(actions, find) {
+            this.button = find('.buttons');
         })
         .capture('plain')
-        .capture('hovered', function(actions, elements) {
-            actions.mouseMove(elements.button);
+        .capture('hovered', function(actions, find) {
+            actions.mouseMove(this.button);
         })
-        .capture('pressed', function(actions, elements) {
-            actions.mouseDown(elements.button);
+        .capture('pressed', function(actions, find) {
+            actions.mouseDown(this.button);
         })
-        .capture('clicked', function(actions, elements) {
-            actions.click(elements.button);
+        .capture('clicked', function(actions, find) {
+            actions.mouseUp(this.button);
         });
 });

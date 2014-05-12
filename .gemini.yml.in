@@ -1,6 +1,5 @@
 rootUrl: http://localhost:8000/
 browsers:
-  - {name: chrome, version: '33.0'}
-  - {name: opera, version: '12.16'}
-  - {name: firefox, version: '25.0'}
-  - phantomjs
+  - {name: chrome, version: '33'}
+  - {name: opera, version: '12'}
+  - {name: firefox, version: '25'}

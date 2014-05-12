@@ -39,7 +39,9 @@
     "test": "npm run lint && npm run unit && npm run gemini",
     "lint": "jshint-groups && jscs . && csscomb -vl .",
     "unit": "npm run deps && bem make -w 10 desktop.specs touch-pad.specs touch-phone.specs",
-    "gemini": "gemini test",
+    "gemini": "python -m SimpleHTTPServer 8000 & p=$!; gemini test; kill -9 ${p}",
+    "gemini.yml": "echo \"gridUrl: http://${SAUCE_USERNAME}:${SAUCE_ACCESS_KEY}@ondemand.saucelabs.com/wd/hub\" > .gemini.yml; cat .gemini.yml.in >> .gemini.yml",
+    "gemini-gather": "python -m SimpleHTTPServer 8000 & p=$!; gemini gather; kill -9 ${p}",
     "coverage": "ISTANBUL_COVERAGE=yes npm run unit"
   }
 }

@@ -3,9 +3,9 @@ var gemini = require('gemini');
 gemini.suite('button', function(suite) {
     suite
         .setUrl('desktop.tests/button/simple/simple.html')
-        .setCaptureElements('.button')
+        .setCaptureElements('.button_theme_normal')
         .before(function(actions, find) {
-            this.button = find('.buttons');
+            this.button = find('.button_theme_normal');
         })
         .capture('plain')
         .capture('hovered', function(actions, find) {

@@ -1,4 +1,4 @@
-rootUrl: http://localhost:8080/
+rootUrl: http://localhost:8000/
 browsers:
   - {name: chrome, version: '33.0'}
   - {name: opera, version: '12.16'}

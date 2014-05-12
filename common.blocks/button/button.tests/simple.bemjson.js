@@ -74,39 +74,45 @@
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm' },
-                text : 'normal'
+                text : 'normal',
+                cls : 'gemini-test-button-normal-enabled'
             },
-            ' ',
+            '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm', disabled : true },
-                text : 'normal'
+                text : 'normal',
+                cls : 'gemini-test-button-normal-disabled'
             }
         ] },
         { tag : 'p', content : [
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm', pseudo : true },
-                text : 'pseudo'
+                text : 'pseudo',
+                cls : 'gemini-test-button-pseudo-enabled'
             },
-            ' ',
+            '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm', pseudo : true, disabled : true },
-                text : 'pseudo'
+                text : 'pseudo',
+                cls : 'gemini-test-button-pseudo-disabled'
             }
         ] },
         { tag : 'p', content : [
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm', action : true },
-                text : 'action'
+                text : 'action',
+                cls : 'gemini-test-button-action-enabled'
             },
-            ' ',
+            '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm', action : true, disabled : true },
-                text : 'action'
+                text : 'action',
+                cls : 'gemini-test-button-action-disabled'
             }
         ] },
 

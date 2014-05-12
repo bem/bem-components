@@ -2,31 +2,39 @@ var gemini = require('gemini');
 
 gemini.suite('button', function(root) {
 
-    root.setUrl('desktop.tests/button/simple/simple.html')
-        .setCaptureElements('.button_theme_normal');
+    root.setUrl('desktop.tests/button/simple/simple.html');
 
-    gemini.suite('normal', function(suite) {
-        suite
-            .setCaptureElements('.button_theme_normal')
-            .before(function(actions, find) {
-                this.button = find('.button_theme_normal');
-            })
-            .capture('plain')
-            .capture('hovered', function(actions, find) {
-                actions.mouseMove(this.button);
-            })
-            .capture('pressed', function(actions, find) {
-                actions.mouseDown(this.button);
-            })
-            .capture('clicked', function(actions, find) {
-                actions.mouseUp(this.button);
-            });
-    });
+    ['normal', 'pseudo', 'action'].forEach(function(theme) {
+        
+        var buttonSelector = '.gemini-test-button-' + theme,
+            buttonEnabledSelector = buttonSelector + '-enabled';
+            buttonDisabledSelector = buttonSelector + '-disabled';
 
-    gemini.suite('disabled', function(suite) {
-        suite
-            .setCaptureElements('.button_theme_normal.button_disabled')
-            .capture('plain');
+        // tests for enabled button
+        gemini.suite(theme + '-enabled', function(suite) {
+            suite
+                .setCaptureElements(buttonEnabledSelector)
+                .before(function(actions, find) {
+                    this.button = find(buttonEnabledSelector);
+                })
+                .capture('plain')
+                .capture('hovered', function(actions, find) {
+                    actions.mouseMove(this.button);
+                })
+                .capture('pressed', function(actions, find) {
+                    actions.mouseDown(this.button);
+                })
+                .capture('clicked', function(actions, find) {
+                    actions.mouseUp(this.button);
+                });
+        });
+
+        // tests for disabled button
+        gemini.suite(theme + '-disabled', function(suite) {
+            suite
+                .setCaptureElements(buttonDisabledSelector)
+                .capture('plain');
+        });
     });
 
 });

@@ -7,8 +7,10 @@ env:
   global:
     - GH_REF: github.com/bem/bem-components.git
     - ISTANBUL_COVERAGE: yes
-    - secure: "XnxskQdGx6Lb6AJ5otHfV99InDVCndUhn4oLhDMW2ohqos8fBbBse8SIoGvTlM9oRqlReINF0RIZc2YbC9eoyePmvp4mE2PegiKNtNpR5rU575ehipvZqENP0nMak2a2uwDBBST2P1lhAMgIs9T5lf4V/BZg0wNCjK7kUqpCzyg="
-    - secure: "XaxTNoPANf9oAgLGQ6DMl4t+7ryybBCioFOAwCbq1l5WCZjW0X+wyT/RRGOzEiSiPZ+4uWrZrlmYwVq/TsX+oOfzb4aSFSSRAvQlMAIL6iKaXpCIcwO//uP2MVYHNsUyIsNNK1S90Mj6ZswScafP3TSp8NDQbyPSG1HAY8xibJ0="
+    # SAUCE_USERNAME
+    - secure: "Z21+fRlqB/e47iLnKKyfp1J2R9aXbytXbToOQ6k6/7UJWp0Zg1VnYJ/m8g+uoTj1s7WqBx6hdly9bPVtiQ6/WWUIek50Q6xrx0j1X3aWWeLDCyCFE3nwBeLu0YNXQehF8TPfdWoxLNy9g4Y2tX0RPQCZ8aeV639d+6Hc4Etjp+E="
+    # SAUCE_ACCESS_KEY
+    - secure: "L0m7LKhlXK3hob+0jwVCAE7qGd9x+9shMN8OthTTV7lHyz83Ypv3FMEKQtDYho9d24i1SidJbtvpFrkKBLGkn94JzrNE/8UcKPNiIWLHc2bvQ15/aS2XH7nrloWLI8hoavs0A3dJUCFyPY8auRop4Z/vOnFZuDBGuziyZFuZeds="
 
 branches:
   only:

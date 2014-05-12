@@ -26,7 +26,7 @@ block('radio').mod('type', 'button')(
 
         applyCtx({
             block : 'button',
-            mix : { block : 'radio', mods : mods, js : true },
+            mix : [{ block : 'radio', mods : mods, js : true }].concat(ctx.mix || []),
             tag : 'label',
             mods : buttonMods,
             content : buttonContent

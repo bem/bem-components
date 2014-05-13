@@ -19,7 +19,6 @@ branches:
 before_script:
   - sudo apt-get update -qq
   - sudo apt-get install -y graphicsmagick
-  - npm run gemini.yml
 
 after_success:
   - npm install coveralls

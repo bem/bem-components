@@ -15,8 +15,6 @@ libs
 /coverage
 /coverage.json
 
-/.gemini.yml
-
 /*.examples
 /*.specs
 /*.tests

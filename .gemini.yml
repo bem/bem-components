@@ -1,3 +1,4 @@
+gridUrl: http://ondemand.saucelabs.com/wd/hub
 rootUrl: http://localhost:8000/
 browsers:
   - {name: chrome, version: 33}

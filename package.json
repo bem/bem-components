@@ -22,7 +22,7 @@
     "bh": "~1.0.1",
     "bower-npm-install": "~0.5.4",
     "csscomb": "~2.0.0",
-    "gemini": "^0.3.0",
+    "gemini": "^0.3.1",
     "git-hooks": "0.0.6",
     "http-server": "^0.6.1",
     "istanbul": "^0.2.7",

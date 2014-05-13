@@ -36,12 +36,16 @@
   "private": true,
   "scripts": {
     "deps": "bower-npm-install --non-interactive",
-    "build": "npm run deps && bem make -w 10 sets",
-    "test": "npm run lint && npm run unit && npm run gemini",
+    "build": "npm run deps && npm run build-${TEST_SCOPE:-all}",
+    "build-all": "bem make -w 10 sets",
+    "build-gemini": "bem make -w 10 desktop.tests",
+    "test": "npm run build && npm run ${TEST_SCOPE:-test-all}",
+    "test-all": "npm run lint && npm run gemini",
     "lint": "jshint-groups && jscs . && csscomb -vl .",
-    "unit": "npm run deps && bem make -w 10 desktop.specs touch-pad.specs touch-phone.specs",
+    "specs": "bem make -w 10 desktop.specs touch-pad.specs touch-phone.specs",
+    "unit": "npm run specs",
     "gemini": "http-server -s -p 8000 & p=$!; gemini test; kill -9 ${p}",
     "gemini-gather": "http-server -s -p 8000 & p=$!; gemini gather; kill -9 ${p}",
-    "coverage": "ISTANBUL_COVERAGE=yes npm run unit"
+    "coverage": "ISTANBUL_COVERAGE=yes npm run specs"
   }
 }

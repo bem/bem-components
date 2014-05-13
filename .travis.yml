@@ -33,6 +33,8 @@ before_script:
 
 after_success:
   - |
-      npm install coveralls
-      node_modules/.bin/istanbul report lcovonly
-      cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
+      if [ ${TEST_SCOPE} == "specs" ]; then
+        npm install coveralls
+        node_modules/.bin/istanbul report lcovonly
+        cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
+      fi

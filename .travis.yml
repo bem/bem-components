@@ -32,7 +32,8 @@ before_script:
         echo "capabilities:" >> .gemini.yml
         echo "  tunnel-identifier: '${TRAVIS_JOB_NUMBER}'" >> .gemini.yml
         echo "  build: '${TRAVIS_BUILD_NUMBER}'" >> .gemini.yml
-        echo "  tags:\n  - CI" >> .gemini.yml
+        echo "  tags:" >> .gemini.yml
+        echo "    - CI" >> .gemini.yml
         cat .gemini.yml
       fi
 

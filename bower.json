@@ -5,6 +5,7 @@
   "bugs": "https://github.com/bem/bem-components/issues",
   "ignore": [
     ".bem/cache",
+    ".enb/tmp",
     "node_modules",
     "libs"
   ],

@@ -29,12 +29,14 @@
     "svgo": "0.4.1",
     "bower-npm-install": "~0.5.4",
     "istanbul": "^0.2.7",
-    "enb-bem-docs": "git://github.com/andrewblond/enb-bem-docs.git#3cd156684d92af632d9cf6337b023fa2c29c0587",
     "enb": "0.10.0",
+    "enb-bem-docs": "git://github.com/andrewblond/enb-bem-docs.git#3cd156684d92af632d9cf6337b023fa2c29c0587",
     "enb-modules": "0.1.1",
     "enb-diverse-js": "0.1.0",
     "enb-bemxjst": "1.1.1",
-    "enb-roole": "0.2.0"
+    "enb-roole": "0.2.1",
+    "enb-bh": "0.1.1",
+    "enb-autoprefixer": "0.1.0"
   },
   "optionalDependencies": {},
   "private": true,

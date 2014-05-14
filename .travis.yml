@@ -25,16 +25,17 @@ branches:
 
 before_script:
   - |
-      if [ ${TEST_SCOPE} == "gemini" ]; then
+      if [ "${TEST_SCOPE}" == "gemini" ]; then
         curl -L https://gist.githubusercontent.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
         sudo apt-get update -qq
         sudo apt-get install -qq -y graphicsmagick
         echo "capabilities:\n  tunnel-identifier: '${TRAVIS_JOB_NUMBER}'" >> .gemini.yml
+        cat .gemini.yml
       fi
 
 after_success:
   - |
-      if [ ${TEST_SCOPE} == "specs" ]; then
+      if [ "${TEST_SCOPE}" == "specs" ]; then
         npm install coveralls
         node_modules/.bin/istanbul report lcovonly
         cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"

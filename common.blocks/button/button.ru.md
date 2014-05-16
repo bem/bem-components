@@ -295,7 +295,7 @@
                 text : 'default'
             }
         }
-      <pre><code>
+      </pre></code>
     </td>
     <td>
       <pre><code>

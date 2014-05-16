@@ -21,7 +21,7 @@ Block **attach** provides native control functionality. The control is hidden. I
 
 The block supports only the *simple* theme.
 
-If theme is not spesified, the block applies only default values:
+If theme is not specified, the block applies only default values:
 
 * Theme of a button: native representation of a button by the browser.
 * Localization: en
@@ -107,7 +107,7 @@ It is rendered by BEMHTML and BH template engines as a native control of file at
 
 Element for description rendering with no file selected.
 
-If a theme *simple* is not declared, the text mesage "no file selected" is used by default.
+If a theme *simple* is not declared, the text message "no file selected" is used by default.
 
 ### __file
 
@@ -124,6 +124,6 @@ File name. It appears after some file is attached.
 
 ### __clear
 
-Clear attachment button (deletion cross elemet). It appears after some file is attached.
+Clear attachment button (deletion cross element). It appears after some file is attached.
 
 The element is available for a *simple* theme of **attach** block.

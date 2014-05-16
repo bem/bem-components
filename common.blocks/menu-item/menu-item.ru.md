@@ -22,7 +22,7 @@
             val : 1,
             content : 'Selector value'
         }
-        </td>
+        </td></code></pre>
     <tr>
         <td>Ссылка</td>
         <td>Элемент меню со ссылкой. Блок `link` помещается в поле `content` BEMJSON-декларации блока.  Так же требуется установить блоку модификатор `type` в значение `link`. </td>
@@ -37,7 +37,7 @@
                 content : 'Link 1'
             }
         }
-        </td>
+        </td></code></pre>
     </tr>
 </table>
 
@@ -51,9 +51,9 @@
         <th>Описание</th>
     </tr>
     <tr>
-        <td><pre><code>val</td>
-        <td><pre><code>{Number}</td>
-        <td><pre><code>Порядковый номер пункта меню</td>
+        <code>val</td>
+        <code>{Number}</td>
+        <code>Порядковый номер пункта меню</td>
     </tr>
 </table>
 
@@ -87,7 +87,7 @@
             url : '#',
             content : 'link'
         }
-        </td>
+        </td></code></pre>
         <td><pre><code>
         {
             block : 'menu-item',
@@ -95,7 +95,7 @@
             url : '#',
             content : 'link'
         }
-        </td>
+        </td></code></pre>
         <td><pre><code>
         {
             tag: 'form',
@@ -105,15 +105,15 @@
                 content : 'normal'
             }
         }
-        </td>
+        </td></code></pre>
     </tr>
 </table>
 
 ### Состояния блока 
 
-#### Не активна `_disabled_true`
+#### Отключен `_disabled`
    
-В состоянии "не активна" пункт меню отображается, но недоступен для действий пользователя.  
+В состоянии "отключен" пункт меню отображается, но недоступен для действий пользователя.  
 
 Такой пункт меню не изменяет состояние при щелчке мышью. Если для блока установлен модификатор `_type_link`, переход по вложенной ссылке не осуществляется. 
 
@@ -132,26 +132,26 @@
             mods : { disabled : true },
             content : '_disabled_true'
         }
-        </td>
+        </td></code></pre>
         <td><pre><code>
         {
             block : 'menu-item',
             mods : { theme : 'simple', disabled : true },
             content : '_disabled_true'
         }
-        </td>
+        </td></code></pre>
         <td><pre><code>       
         {
             block : 'menu-item',
             mods : { theme : 'normal', size : 'm', disabled : true },
             content : '_disabled_true'
         }
-        </td>
+        </td></code></pre>
     </tr>
     </table>
     
 
-#### Наведение курсором `_hovered_true`
+#### Наведение курсором `_hovered`
 
 Определяет действие "наведение курсором" на пункт меню.
 
@@ -172,27 +172,27 @@
             mods : { hovered : true },
             content : '_hovered_true'
         }
-        </td>
+        </td></code></pre>
         <td><pre><code>
         {
             block : 'menu-item',
             mods : { theme : 'simple', hovered : true },
             content : '_hovered_true'
         }
-        </td>
+        </td></code></pre>
         <td><pre><code>       
         {
             block : 'menu-item',
             mods : { theme : 'normal', size : 'm', hovered : true },
             content : '_hovered_true'
         }
-        </td>
+        </td></code></pre>
     </tr>
 </table>
 
 
 
-#### Активный пункт меню `_checked_true`
+#### Активный пункт меню `_checked`
 
 Модификатор задает активный пункт меню.
 
@@ -210,21 +210,21 @@
             content : '_togglable_true',
             mods : { togglable : true }
         }
-        </td>
+        </td></code></pre>
         <td><pre><code>
         {
             block : 'menu-item',
             content : '_togglable_true',
             mods : { theme : 'simple', togglable : true }
         }
-        </td>
+        </td></code></pre>
         <td><pre><code>       
         {
             block : 'menu-item',
             content : '_togglable_true',
             mods : { theme : 'normal', size : 'm', togglable : true }
         }
-        </td>
+        </td></code></pre>
     </tr>
 </table>
 

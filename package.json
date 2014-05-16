@@ -28,12 +28,19 @@
     "git-hooks": "0.0.6",
     "svgo": "0.4.1",
     "bower-npm-install": "~0.5.4",
-    "istanbul": "^0.2.7"
+    "istanbul": "^0.2.7",
+    "enb-bem-docs": "git://github.com/andrewblond/enb-bem-docs.git#6b1544a8f3e516eaee3303cf84131e773868eb2b",
+    "enb": "0.10.0",
+    "enb-modules": "0.1.1",
+    "enb-diverse-js": "0.1.0",
+    "enb-bemxjst": "1.1.1",
+    "enb-roole": "0.2.0"
   },
   "optionalDependencies": {},
   "private": true,
   "scripts": {
     "deps": "bower-npm-install --non-interactive",
+    "build": "enb make docs -n",
     "test": "npm run lint && npm run unit",
     "lint": "jshint-groups && jscs . && csscomb -vl .",
     "unit": "bower-npm-install && bem make -w 10 desktop.specs touch-pad.specs touch-phone.specs",

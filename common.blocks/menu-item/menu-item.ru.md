@@ -51,9 +51,9 @@
         <th>Описание</th>
     </tr>
     <tr>
-        <code>val</td>
-        <code>{Number}</td>
-        <code>Порядковый номер пункта меню</td>
+        <td>val</td>
+        <td>{Number}</td>
+        <td>Порядковый номер пункта меню</td>
     </tr>
 </table>
 
@@ -148,7 +148,7 @@
         }
         </td></code></pre>
     </tr>
-    </table>
+</table>
     
 
 #### Наведение курсором `_hovered`

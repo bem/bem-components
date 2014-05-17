@@ -29,7 +29,7 @@
     "svgo": "0.4.1",
     "bower-npm-install": "~0.5.4",
     "istanbul": "^0.2.7",
-    "enb-bem-docs": "git://github.com/andrewblond/enb-bem-docs.git#6b1544a8f3e516eaee3303cf84131e773868eb2b",
+    "enb-bem-docs": "git://github.com/andrewblond/enb-bem-docs.git#3cd156684d92af632d9cf6337b023fa2c29c0587",
     "enb": "0.10.0",
     "enb-modules": "0.1.1",
     "enb-diverse-js": "0.1.0",

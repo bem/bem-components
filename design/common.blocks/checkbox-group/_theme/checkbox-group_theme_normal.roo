@@ -1,0 +1,25 @@
+.checkbox-group_theme_normal
+{
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: block;
+
+    &.checkbox-group_size_m
+    {
+        font-size: 13px;
+        line-height: 26px;
+    }
+
+    &.checkbox-group_size_l
+    {
+        font-size: 15px;
+        line-height: 30px;
+    }
+
+    &.checkbox-group_type_button
+    {
+        display: inline-block;
+
+        white-space: nowrap;
+    }
+}

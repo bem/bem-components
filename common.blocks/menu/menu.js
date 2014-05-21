@@ -37,14 +37,6 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends m
                     .__base.apply(this, arguments);
                 this._hoveredItem && this._hoveredItem.delMod('hovered');
             }
-        },
-
-        'disabled' : function(modName, modVal) {
-            this.__base.apply(this, arguments);
-            var control = this.elem('control');
-            modVal?
-                control.removeAttr('tabindex') :
-                control.attr('tabindex', 0);
         }
     },
 

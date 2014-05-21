@@ -31,7 +31,8 @@ provide(BEMDOM.decl(this.name, /** @lends base-control.prototype */{
                     this.hasMod('focused') && this._focus();
 
                 this._tabIndex = this.elem('control').attr('tabindex');
-                this._tabIndex !== 'undefined' && this.elem('control').removeAttr('tabindex');
+                if(this.hasMod('disabled') && this._tabIndex !== 'undefined')
+                    this.elem('control').removeAttr('tabindex');
             }
         },
 

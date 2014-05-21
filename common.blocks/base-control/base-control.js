@@ -29,6 +29,9 @@ provide(BEMDOM.decl(this.name, /** @lends base-control.prototype */{
                     this.setMod('focused') :
                     // if block already has focused mod, we need to focus control
                     this.hasMod('focused') && this._focus();
+
+                this._tabIndex = this.elem('control').attr('tabindex');
+                this._tabIndex !== 'undefined' && this.elem('control').removeAttr('tabindex');
             }
         },
 
@@ -49,6 +52,13 @@ provide(BEMDOM.decl(this.name, /** @lends base-control.prototype */{
 
             'true' : function() {
                 this.delMod('focused');
+                typeof this._tabIndex !== 'undefined' &&
+                    this.elem('control').removeAttr('tabindex');
+            },
+
+            '' : function() {
+                typeof this._tabIndex !== 'undefined' &&
+                    this.elem('control').attr('tabindex', this._tabIndex);
             }
         }
     },

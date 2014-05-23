@@ -16,28 +16,29 @@
     <tr>
         <td>Переключатель</td>
         <td>Применяется для любых выпадающих списков, табов, пунктов меню и селектов и т.п. Используется по умолчанию.</td>
-        <td><pre><code>
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'Selector value'
-        }
-        </td></code></pre>
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    val : 1,
+    content : 'Selector value'
+}</code></pre>
+        </td>
     <tr>
         <td>Ссылка</td>
-        <td>Элемент меню со ссылкой. Блок `link` помещается в поле `content` BEMJSON-декларации блока.  Так же требуется установить блоку модификатор `type` в значение `link`. </td>
-        <td><pre><code>
-        {
-            block : 'menu-item',
-            mods : { type : 'link' },
-            val : 2,
-            content : {
-                block : 'link',
-                url : '#',
-                content : 'Link 1'
-            }
-        }
-        </td></code></pre>
+        <td>Элемент меню со ссылкой. Блок `link` помещается в поле `content` BEMJSON-декларации блока. Так же требуется установить блоку модификатор `type` в значение `link`.
+        </td>
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    mods : { type : 'link' },
+    val : 2,
+    content : {
+        block : 'link',
+        url : '#',
+        content : 'Link 1'
+    }
+}</code></pre>
+        </td>
     </tr>
 </table>
 
@@ -66,7 +67,7 @@
 
 Блок представлен следующими типами: 
 
-* пункт меню-ссылка (`_link`). Блок `link` помещается в поле `content` BEMJSON-декларации блока. Если модификатор `_type_link` не установлен, вложенная ссылка будет доступна для действий пользователя при установленном модификаторе `_disabled_true`.
+* пункт меню-ссылка (`_link`). Блок `link` помещается в поле `content` BEMJSON-декларации блока. Если модификатор `_type_link` не установлен, вложенная ссылка будет доступна для действий пользователя при установленном модификаторе `_disabled`.
 * переключатель. Используется по умолчанию.
 
 
@@ -79,33 +80,40 @@
         <th>normal</th>
     </tr>
     <tr>
-    
-        <td><pre><code>
-        {
-            block : 'menu-item',
-            mods : { type : 'link' },
-            url : '#',
-            content : 'link'
-        }
-        </td></code></pre>
-        <td><pre><code>
-        {
-            block : 'menu-item',
-            mods : { theme : 'simple', type : 'link' },
-            url : '#',
-            content : 'link'
-        }
-        </td></code></pre>
-        <td><pre><code>
-        {
-            tag: 'form',
-            content: {
-                block : 'menu-item',
-                mods : { theme : 'normal', size : 'm', type : 'submit' },
-                content : 'normal'
-            }
-        }
-        </td></code></pre>
+
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    mods : { type : 'link' },
+    url : '#',
+    content : 'link'
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    mods : { 
+        theme : 'simple', 
+        type : 'link' 
+    },
+    url : '#',
+    content : 'link'
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    tag: 'form',
+    content: {
+        block : 'menu-item',
+        mods : { 
+            theme : 'normal', 
+            size : 'm', 
+            type : 'submit' 
+        },
+        content : 'normal'
+    }
+}</code></pre>
+        </td>
     </tr>
 </table>
 
@@ -126,27 +134,34 @@
         <th>normal</th>
     </tr>
     <tr>
-        <td><pre><code>
-        {
-            block : 'menu-item',
-            mods : { disabled : true },
-            content : '_disabled_true'
-        }
-        </td></code></pre>
-        <td><pre><code>
-        {
-            block : 'menu-item',
-            mods : { theme : 'simple', disabled : true },
-            content : '_disabled_true'
-        }
-        </td></code></pre>
-        <td><pre><code>       
-        {
-            block : 'menu-item',
-            mods : { theme : 'normal', size : 'm', disabled : true },
-            content : '_disabled_true'
-        }
-        </td></code></pre>
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    mods : { disabled : true },
+    content : '_disabled'
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    mods : { 
+        theme : 'simple', 
+        disabled : true 
+    },
+    content : '_disabled'
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    mods : { 
+        theme : 'normal', 
+        size : 'm', 
+        disabled : true 
+    },
+    content : '_disabled'
+}</code></pre>
+        </td>
     </tr>
 </table>
     
@@ -166,27 +181,34 @@
         <th>normal</th>
     </tr>
     <tr>
-        <td><pre><code>
-        {
-            block : 'menu-item',
-            mods : { hovered : true },
-            content : '_hovered_true'
-        }
-        </td></code></pre>
-        <td><pre><code>
-        {
-            block : 'menu-item',
-            mods : { theme : 'simple', hovered : true },
-            content : '_hovered_true'
-        }
-        </td></code></pre>
-        <td><pre><code>       
-        {
-            block : 'menu-item',
-            mods : { theme : 'normal', size : 'm', hovered : true },
-            content : '_hovered_true'
-        }
-        </td></code></pre>
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    mods : { hovered : true },
+    content : '_hovered'
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    mods : { 
+        theme : 'simple', 
+        hovered : true 
+    },
+    content : '_hovered'
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    mods : { 
+        theme : 'normal', 
+        size : 'm', 
+        hovered : true 
+    },
+    content : '_hovered'
+}</code></pre>
+        </td>
     </tr>
 </table>
 
@@ -204,34 +226,41 @@
         <th>normal</th>
     </tr>
     <tr>
-        <td><pre><code>
-        {
-            block : 'menu-item',
-            content : '_togglable_true',
-            mods : { togglable : true }
-        }
-        </td></code></pre>
-        <td><pre><code>
-        {
-            block : 'menu-item',
-            content : '_togglable_true',
-            mods : { theme : 'simple', togglable : true }
-        }
-        </td></code></pre>
-        <td><pre><code>       
-        {
-            block : 'menu-item',
-            content : '_togglable_true',
-            mods : { theme : 'normal', size : 'm', togglable : true }
-        }
-        </td></code></pre>
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    content : '_togglable',
+    mods : { togglable : true }
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    content : '_togglable',
+    mods : { 
+        theme : 'simple', 
+        togglable : true 
+    }
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'menu-item',
+    content : '_togglable',
+    mods : { 
+        theme : 'normal', 
+        size : 'm', 
+        togglable : true 
+    }
+}</code></pre>
+        </td>
     </tr>
 </table>
 
 В блоке `menu` устанавливается для пункта при клике:
 
 ````bemjson
-    {
+{
     block : 'menu',
     mods : { theme : 'simple', select : 'check' },
     content : [
@@ -246,7 +275,7 @@
             content : 'Second item'
         }
     ]
-    }
+}
 ````
 
 

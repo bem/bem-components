@@ -17,26 +17,30 @@
     <tr>
         <td>Обычная ссылка</td>
         <td>Применяется для любых ссылок веб-интерфейса; используется по умолчанию.</td>
-        <td><pre><code>
-        {
-            block : 'link',
-            url : 'http://yandex.ru',
-            title : 'link',
-            content : 'link'
-        }
-        </td></code></pre>
+        <td>
+<pre><code>{
+    block : 'link',
+    url : 'http://yandex.ru',
+    title : 'link',
+    content : 'link'
+}</code></pre>
+        </td>
+    </tr>
     <tr>
         <td>Псевдо-ссылка</td>
-        <td>Разновидность ссылки, при нажатии по которой в браузере не осуществляется переход. Применяется для вызова сценариев.</td>
-        <td><pre><code>
-        {
-            block : 'link',
-            mods : { pseudo : true },
-            content : 'pseudo'
-        }
-        </td></code></pre>
+        <td>Разновидность ссылки, при нажатии по которой в браузере не осуществляется переход. Применяется для вызова
+            сценариев.
+        </td>
+        <td>
+<pre><code>{
+    block : 'link',
+    mods : { pseudo : true },
+    content : 'pseudo'
+}</code></pre>
+        </td>
     </tr>
 </table>
+
 
 ## Допустимые атрибуты блока
 
@@ -86,31 +90,31 @@
 
 #### default
 ````bemjson
-    {
-        block : 'link', 
-        url : '#',
-        content : 'link'
-    }
+{
+    block : 'link', 
+    url : '#',
+    content : 'link'
+}
 ````
 #### simple
 
 ````bemjson
-    {
-        block : 'link',
-        mods : { theme : 'simple' },
-        url : '#',
-        content : 'link'
-    } 
+{
+    block : 'link',
+    mods : { theme : 'simple' },
+    url : '#',
+    content : 'link'
+} 
 ```` 
 #### normal
 
 ````bemjson
-    {
-        block : 'link',
-        mods : { theme : 'normal' },
-        url : '#',
-        content : 'link'
-    }
+{
+    block : 'link',
+    mods : { theme : 'normal' },
+    url : '#',
+    content : 'link'
+}
 ```` 
 
 
@@ -126,34 +130,40 @@
         <th>normal</th>
     </tr>
     <tr>
-        <td><pre><code>
-        {
-            block : 'link',
-            mods : { pseudo : true },
-            url : '#',
-            title : 'pseudo mod are toggled',
-            content : 'link'
-        }
-        </td></code></pre>
-        <td><pre><code>
-        {
-            block : 'link',
-            mods : { theme : 'simple', pseudo : true },
-            url : '#',
-            title : 'pseudo mod are toggled',
-            content : 'link'
-        }
-        </td></code></pre>
-        <td>       
-        {
-            block : 'link',
-            mods : { theme : 'normal', pseudo : true },
-            url : '#',
-            title : 'pseudo mod are toggled',
-            content : 'link'
-        }
-        </td></code></pre>
-  </tr>
+        <td>
+<pre><code>{
+    block : 'link',
+    mods : { pseudo : true },
+    url : '#',
+    title : 'pseudo mod are toggled',
+    content : 'link'
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'link',
+    mods : { 
+        theme : 'simple', 
+        pseudo : true 
+    },
+    url : '#',
+    title : 'pseudo mod are toggled',
+    content : 'link'
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'link',
+    mods : { 
+        theme : 'normal', 
+        pseudo : true 
+    },
+    url : '#',
+    title : 'pseudo mod are toggled',
+    content : 'link'
+}</code></pre>
+        </td>
+    </tr>
 </table>
 
 
@@ -167,14 +177,14 @@
 Реализован во всех темах блока.
 
 ````
-    {
-        block : 'link',
-        mods : { 
-            theme : 'normal',
-            focused : true 
-        },
-        content : '_focused_true'
-    } 
+{
+    block : 'link',
+    mods : { 
+        theme : 'normal',
+        focused : true 
+    },
+    content : '_focused'
+} 
 ````
 
 
@@ -184,7 +194,7 @@
 
 Для такой ссылки не будет: 
 
-* устанавливаться модификатор `_focused_true` в момент получения фокуса;
+* устанавливаться модификатор `_focused` в момент получения фокуса;
 * осуществляться переход, если задан атрибут `url`;
 * генерироваться БЭМ-событие `click`.
 
@@ -197,27 +207,33 @@
         <th>normal</th>
     </tr>
     <tr>
-        <td><pre><code>
-        {
-            block : 'link',
-            mods : { disabled : true },
-            content : '_disabled_true'
-        }
-        </td></code></pre>
         <td>
-        {
-            block : 'link',
-            mods : { theme : 'simple', disabled : true },
-            content : '_disabled_true'
-        }
-        </td></code></pre>
-        <td><pre><code>       
-        {
-            block : 'link',
-            mods : { theme : 'normal', disabled : true }б
-            content : '_disabled_true'
-        }
-        </td></code></pre>
+<pre><code>{
+    block : 'link',
+    mods : { disabled : true },
+    content : '_disabled'
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'link',
+    mods : {
+        theme : 'simple',
+        disabled : true
+    },
+    content : '_disabled'
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'link',
+    mods : {
+        theme : 'normal',
+        disabled : true
+    },
+    content : '_disabled'
+}</code></pre>
+        </td>
     </tr>
 </table>
 

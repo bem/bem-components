@@ -15,19 +15,19 @@
 #### simple
 
 ```bemjson
-    {
-        block : 'spin',
-        mods : { theme : 'simple', size : 's', progress : true }
-    }
+{
+    block : 'spin',
+    mods : { theme : 'simple', size : 's', progress : true }
+}
 ```
 
 #### normal
 
 ```bemjson
-    {
-        block : 'spin',
-        mods : { theme : 'normal', size : 's', progress : true }
-    }
+{
+    block : 'spin',
+    mods : { theme : 'normal', size : 's', progress : true }
+}
 ```
 
 ### Размеры `_size`
@@ -58,106 +58,126 @@
 
 
 <table>
-  <tr>
-    <th>Тема/Размер</th>
-    <th>simple</th>
-    <th>normal</th>
-  </tr>
-  <tr>
-    <th>xs</th>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'simple', size : 'xs', progress : true }
-            }
-        </pre></code>
-    </td>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'normal', size : 'xs', progress : true }
-            }
-        </pre></code>
-    </td>
-  </tr>
-  <tr>
-    <th>s</th>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'simple', size : 's', progress : true }
-            }
-        </pre></code>
-    </td>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'normal', size : 's', progress : true }
-            }
-        </pre></code>
-    </td>
-  </tr>
-  <tr>
-    <th>m</th>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'simple', size : 'm', progress : true }
-            }
-        </pre></code>
-    </td>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'normal', size : 'm', progress : true }
-            }
-        </pre></code>
-    </td>
-  </tr>
-  <tr>
-    <th>l</th>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'simple', size : 'l', progress : true }
-            }
-        </pre></code>
-    </td>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'normal', size : 'l', progress : true }
-            }
-        </pre></code>
-    </td>
-  </tr>
-  <tr>
-    <th>xl</th>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'simple', size : 'xl', progress : true }
-            }
-        </pre></code>
-    </td>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'normal', size : 'xl', progress : true }
-            }
-        </pre></code>
-    </td>
-  </tr>
+    <tr>
+        <th>Тема/Размер</th>
+        <th>simple</th>
+        <th>normal</th>
+    </tr>
+    <tr>
+        <th>xs</th>
+        <td>
+<pre><code>{
+    block : 'spin',
+    mods : { 
+        theme : 'simple', 
+        size : 'xs', 
+        progress : true 
+    }
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'spin',
+    mods : { 
+        theme : 'normal', 
+        size : 'xs', 
+        progress : true 
+    }
+}</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>s</th>
+        <td>
+<pre><code>{
+    block : 'spin',
+    mods : { 
+        theme : 'simple', 
+        size : 's', 
+        progress : true 
+    }
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'spin',
+    mods : { 
+        theme : 'normal', 
+        size : 's', 
+        progress : true 
+    }
+}</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>m</th>
+        <td>
+<pre><code>{
+    block : 'spin',
+    mods : { 
+        theme : 'simple', 
+        size : 'm', 
+        progress : true 
+    }
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'spin',
+    mods : { 
+        theme : 'normal', 
+        size : 'm', 
+        progress : true 
+    }
+}</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>l</th>
+        <td>
+<pre><code>{
+    block : 'spin',
+    mods : { 
+        theme : 'simple', 
+        size : 'l', 
+        progress : true 
+    }
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'spin',
+    mods : { 
+        theme : 'normal', 
+        size : 'l', 
+        progress : true 
+    }
+}</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>xl</th>
+        <td>
+<pre><code>{
+    block : 'spin',
+    mods : { 
+        theme : 'simple', 
+        size : 'xl', 
+        progress : true 
+    }
+}</code></pre>
+        </td>
+        <td>
+<pre><code>{
+    block : 'spin',
+    mods : { 
+        theme : 'normal', 
+        size : 'xl', 
+        progress : true 
+    }
+}</code></pre>
+        </td>
+    </tr>
 </table>
 
 ### Вращение прелоадера `_progress`

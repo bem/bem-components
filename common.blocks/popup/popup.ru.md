@@ -23,28 +23,28 @@
 
 #### default
 ````bemjson
-    {
-        block : 'popup', 
-        content : 'default' 
-    }
+{
+    block : 'popup', 
+    content : 'default' 
+}
 ````
 #### simple
 
 ````bemjson
-    {
-        block : 'popup',
-        mods : { theme : 'simple' },
-        content : 'simple'
-    } 
+{
+    block : 'popup',
+    mods : { theme : 'simple' },
+    content : 'simple'
+} 
 ```` 
 #### normal
 
 ````bemjson
-    {
-        block : 'popup',
-        mods : { theme : 'normal' },
-        content : 'normal'
-    }
+{
+    block : 'popup',
+    mods : { theme : 'normal' },
+    content : 'normal'
+}
 ```` 
 
 ### Видимый `_visible`
@@ -55,29 +55,29 @@
 
 #### default
 ````bemjson
-    {
-        block : 'popup', 
-        mods : { visible : true },
-        content : 'default'
-    }
+{
+    block : 'popup', 
+    mods : { visible : true },
+    content : 'default'
+}
 ````
 #### simple
 
 ````bemjson
-    {
-        block : 'popup',
-        mods : { theme : 'simple', visible : true },
-        content : 'simple'
-    } 
+{
+    block : 'popup',
+    mods : { theme : 'simple', visible : true },
+    content : 'simple'
+} 
 ```` 
 #### normal
 
 ````bemjson
-    {
-        block : 'popup',
-        mods : { theme : 'normal', visible : true },
-        content : 'normal'
-    }
+{
+    block : 'popup',
+    mods : { theme : 'normal', visible : true },
+    content : 'normal'
+}
 ```` 
 
 
@@ -148,29 +148,29 @@
 Например, если нужно, чтобы попап раскрывался над родителем:
 
 ````bemjson
-    {
-        block : 'popup',
-        mods : { autoclosable : true, theme: 'simple' },
-        js : { directions : ['right-top', 'right-center', 'right-bottom'] },
-        content : 'Hello, world!'
-    }
+{
+    block : 'popup',
+    mods : { autoclosable : true, theme: 'simple' },
+    js : { directions : ['right-top', 'right-center', 'right-bottom'] },
+    content : 'Hello, world!'
+}
 ````
 
 Или разместить попап справа по центру:
 
 ````bemjson
-    {
-        block : 'popup',
-        mods : { autoclosable : true, theme: 'simple' },
-        js : { directions : ['right-center'] },
-        content : 'Hello, world!'
-    }
+{
+    block : 'popup',
+    mods : { autoclosable : true, theme: 'simple' },
+    js : { directions : ['right-center'] },
+    content : 'Hello, world!'
+}
 ````
 
 
 ### Автоматическое скрытие `_autoclosable`
 
-Модификатор отвечает за автоматическое закрытие попапа при клике вне блока. При значении модификатора `_autoclosable_true` блок будет закрываться при щелчке за его пределами (будет снят модификатор `_visible_true`).
+Модификатор отвечает за автоматическое закрытие попапа при клике вне блока. При значении модификатора `_autoclosable` блок будет закрываться при щелчке за его пределами (будет снят модификатор `_visible`).
 
 Кроме того, если модификатор установлен, блок будет автоматически закрываться во время скролла. 
 
@@ -178,29 +178,29 @@
 
 #### default
 ````bemjson
-    {
-        block : 'popup', 
-        mods : { autoclosable : true },
-        content : 'default'
-    }
+{
+    block : 'popup', 
+    mods : { autoclosable : true },
+    content : 'default'
+}
 ````
 #### simple
 
 ````bemjson
-    {
-        block : 'popup',
-        mods : { theme : 'simple', autoclosable : true },
-        content : 'simple'
-    } 
+{
+    block : 'popup',
+    mods : { theme : 'simple', autoclosable : true },
+    content : 'simple'
+} 
 ```` 
 #### normal
 
 ````bemjson
-    {
-        block : 'popup',
-        mods : { theme : 'normal', autoclosable : true },
-        content : 'normal'
-    }
+{
+    block : 'popup',
+    mods : { theme : 'normal', autoclosable : true },
+    content : 'normal'
+}
 ````     
 
 

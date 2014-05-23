@@ -114,13 +114,13 @@
 * [theme](#Темы блока `_theme`)
 * [size](#Размеры кнопок `_size`)
 * [type](#Типы блока `_type`)
-* [disabled](#Не активна `_disabled_true`)
-* [focused](#В фокусе `_focused_true`)
-* [hovered](#Наведение курсором `_hovered_true`)
-* [pressed](#Нажатие `_pressed_true`)
-* [togglable](#Залипание `_togglable_true`)
-* [action](#Выделение `_action_true`)
-* [pseudo](#Псевдокнопка `_pseudo_true`)
+* [disabled](#Не активна `_disabled`)
+* [focused](#В фокусе `_focused`)
+* [hovered](#Наведение курсором `_hovered`)
+* [pressed](#Нажатие `_pressed`)
+* [togglable](#Залипание `_togglable`)
+* [action](#Выделение `_action`)
+* [pseudo](#Псевдокнопка `_pseudo`)
 
 ### Темы `_theme`
 
@@ -345,7 +345,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_disabled_true',
+            text : '_disabled',
             mods : { disabled : true }
         }
       </pre></code>
@@ -354,7 +354,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_disabled_true',
+            text : '_disabled',
             mods : { theme : 'simple', disabled : true }
         }
       </pre></code>
@@ -363,7 +363,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_disabled_true',
+            text : '_disabled',
             mods : { theme : 'normal', size : 'm', disabled : true }
         }
       </pre></code>
@@ -380,7 +380,7 @@
 ```bemjson
     {
         block : 'button',
-        text : '_focused_true',
+        text : '_focused',
         mods : {
             theme : 'normal',
             size : 'm',
@@ -405,7 +405,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_hovered_true',
+            text : '_hovered',
             mods : { hovered : true }
         }
       </pre></code>
@@ -414,7 +414,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_hovered_true',
+            text : '_hovered',
             mods : { theme : 'simple', hovered : true }
         }
       </pre></code>
@@ -423,7 +423,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_hovered_true',
+            text : '_hovered',
             mods : { theme : 'normal', size : 'm', hovered : true }
         }
       </pre></code>
@@ -448,7 +448,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_pressed_true',
+            text : '_pressed',
             mods : { pressed : true }
         }
       </pre></code>
@@ -457,7 +457,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_pressed_true',
+            text : '_pressed',
             mods : { theme : 'simple', pressed : true }
         }
       </pre></code>
@@ -466,7 +466,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_pressed_true',
+            text : '_pressed',
             mods : { theme : 'normal', size : 'm', pressed : true }
         }
       </pre></code>
@@ -489,7 +489,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_togglable_true',
+            text : '_togglable',
             mods : { togglable : true }
         }
       </pre></code>
@@ -498,7 +498,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_togglable_true',
+            text : '_togglable',
             mods : { theme : 'simple', togglable : true }
         }
       </pre></code>
@@ -507,7 +507,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_togglable_true',
+            text : '_togglable',
             mods : { theme : 'normal', size : 'm', togglable : true }
         }
       </pre></code>
@@ -532,7 +532,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_action_true',
+            text : '_action',
             mods : { action : true }
         }
       </pre></code>
@@ -541,7 +541,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_action_true',
+            text : '_action',
             mods : { theme : 'simple', action : true }
         }
       </pre></code>
@@ -550,7 +550,7 @@
       <pre><code>
         {
             block : 'button',
-            text : '_action_true',
+            text : '_action',
             mods : { theme : 'normal', size : 'm', action : true }
         }
       </pre></code>

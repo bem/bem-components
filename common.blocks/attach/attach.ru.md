@@ -23,20 +23,20 @@
 Наглядно видно на примерах ниже:
 
 ```bemjson
-    {
-        block : 'attach',
-        button : 'file',
-        noFileText : 'no file selected'
-    }
+{
+    block : 'attach',
+    button : 'file',
+    noFileText : 'no file selected'
+}
 ```
 
 ```bemjson
-    {
-        block : 'attach',
-        mods : { theme : 'simple' },
-        button : 'file',
-        noFileText : 'no file selected'
-    }
+{
+    block : 'attach',
+    mods : { theme : 'simple' },
+    button : 'file',
+    noFileText : 'no file selected'
+}
 ```
 
 ### Состояния блока
@@ -48,12 +48,12 @@
 Если модификатор `disabled` не выбран, кнопка по умолчанию активна.
 
 ```bemjson
-    {
-        block : 'attach',
-        mods : { theme : 'simple', disabled : true },
-        button : 'Файл',
-        noFileText : 'файл не выбран'
-    }
+{
+    block : 'attach',
+    mods : { theme : 'simple', disabled : true },
+    button : 'Файл',
+    noFileText : 'файл не выбран'
+}
 ```
 
 ## Элементы блока
@@ -66,16 +66,16 @@
 Кнопка выбора файла. Открывает системное окно загрузки файла. Создается на основе блока [button](https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.ru.md) и использует его поведение (JS) и внешний вид (CSS). По умолчанию контент кнопки содержит локализованный текст "Выберите файл".
 
 ```bemjson
-    {
-        block : 'attach',
+{
+    block : 'attach',
+    mods : { theme : 'simple' },
+    button : {
+        block : 'button',
         mods : { theme : 'simple' },
-        button : {
-            block : 'button',
-            mods : { theme : 'simple' },
-            icon : { elem : 'icon' }
-        },
-        noFileText : 'no file selected'
-    }
+        icon : { elem : 'icon' }
+    },
+    noFileText : 'no file selected'
+}
 ```
 ### __control
 

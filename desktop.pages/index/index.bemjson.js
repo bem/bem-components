@@ -249,6 +249,13 @@
                                 {
                                     block : 'button',
                                     mods : { theme : 'normal', size : 'm' },
+                                    text : 'with icon',
+                                    icon : { block : 'icon', mods : { action : 'download' } }
+                                },
+                                ' ',
+                                {
+                                    block : 'button',
+                                    mods : { theme : 'normal', size : 'm' },
                                     icon : { block : 'icon', mods : { action : 'download' } }
                                 },
                                 ' ',

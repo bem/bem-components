@@ -1,0 +1,1 @@
+Element for description rendering with no file selected

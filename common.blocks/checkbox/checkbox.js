@@ -14,7 +14,6 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends c
     onSetMod : {
         'checked' : function(modName, modVal) {
             this.elem('control').prop(modName, modVal);
-            this.emit('change');
         }
     },
 

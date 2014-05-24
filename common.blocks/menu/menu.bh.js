@@ -3,7 +3,8 @@ module.exports = function(bh) {
     bh.match('menu', function(ctx) {
         ctx
             .js(true)
-            .tParam('_menuTheme', ctx.mod('theme'));
+            .tParam('_menuTheme', ctx.mod('theme'))
+            .mix({ elem : 'control' });
 
         var attrs = { role : 'menu' };
         ctx.mod('disabled') || (attrs.tabindex = 0);

@@ -1,6 +1,6 @@
 module.exports = function(bh) {
 
-    bh.match('input__control', function(ctx) {
+    bh.match('input__control', function(ctx, json) {
         ctx.tag('input');
 
         var input = ctx.tParam('_input'),
@@ -14,7 +14,7 @@ module.exports = function(bh) {
             };
 
         input.autocomplete === false && (attrs.autocomplete = 'off');
-        ctx.mod('disabled') && (attrs.disabled = 'disabled');
+        json.blockMods.disabled && (attrs.disabled = 'disabled');
 
         ctx.attrs(attrs);
 

@@ -37,7 +37,7 @@
   "scripts": {
     "deps": "bower-npm-install --non-interactive",
     "build": "npm run build-${TEST_SCOPE:-all}",
-    "build-all": "npm run deps && bem make -w 10 sets",
+    "build-all": "npm run deps && enb make docs -n && bem make -w 10 sets",
     "build-specs": "npm run deps",
     "build-gemini": "npm run deps && bem make -w 10 desktop.tests",
     "test": "npm run build && npm run ${TEST_SCOPE:-test-all}",

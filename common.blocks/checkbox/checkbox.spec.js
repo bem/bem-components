@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['checkbox', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
-    function(provide, Checkbox, BEMDOM, $, BEMHTML, sinon) {
+    ['checkbox', 'i-bem__dom', 'jquery', 'BEMHTML'],
+    function(provide, Checkbox, BEMDOM, $, BEMHTML) {
 
 describe('checkbox', function() {
     var checkbox;
@@ -46,16 +46,6 @@ describe('checkbox', function() {
                 .prop('checked', false)
                 .trigger('change');
             checkbox.hasMod('checked').should.be.false;
-        });
-
-        it('should trigger "change" event while set "checked" mod', function() {
-            var spy = sinon.spy();
-
-            checkbox
-                .on('change', spy)
-                .setMod('checked');
-
-            spy.should.have.been.calledOnce;
         });
     });
 });

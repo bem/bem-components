@@ -16,7 +16,7 @@ module.exports = function(bh) {
                 text : button
             });
 
-            var attachMods = ctx.mod,
+            var attachMods = ctx.mods(),
                 buttonMods = button.mods || (button.mods = {});
             buttonMods['size'] || (buttonMods['size'] = attachMods['size']);
             buttonMods['theme'] || (buttonMods['theme'] = attachMods['theme']);

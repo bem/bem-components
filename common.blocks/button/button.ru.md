@@ -8,6 +8,7 @@
 
 Блок **button** служит для создания различных типов кнопок:
 
+
 <table>
     <tr>
         <th>Тип</th>
@@ -18,11 +19,13 @@
         <td>Обычная кнопка</td>
         <td>Применяется для любых кнопок веб-интерфейса; используется по умолчанию.</td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     mods : { theme : 'normal', size : 'm' },
     icon : { block : 'icon', mods : { action : 'download' } }
-}</code></pre>
+}
+            </code></pre>
         </td>
     <tr>
         <td>Кнопка-ссылка</td>
@@ -30,26 +33,30 @@
             Применяется для перехода по ссылке.
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     mods : { theme : 'normal', size : 'm', type : 'link' },
     url : '#',
     text : 'link'
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
     <tr>
         <td>Кнопка действия</td>
         <td>Предназначена для отправки данных на сервер (submit). Всегда располагается в форме. Чтобы кнопка стала кнопкой действия, во входном BEMJSON блока необходимо добавить модификатор `type` со значением `submit`.</td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     tag: 'form',
     content: {
         block : 'button',
         mods : { theme : 'normal', size : 'm', type : 'submit' },
         text : 'button'
     }
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
 </table>
@@ -188,32 +195,40 @@
     <tr>
         <td>Пример</td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     mods : { theme : 'normal', size : 's' },
     text : 'Small'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     mods : { theme : 'normal', size : 'm' },
     text : 'Medium'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     mods : { theme : 'normal', size : 'l' },
     text : 'Large'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     mods : { theme : 'normal', size : 'xl' },
     text : 'X-large'
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
 </table>
@@ -238,61 +253,73 @@
     <tr>
         <td> `_link`</td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     mods : { type : 'link' },
     url : '#',
     text : 'link'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     mods : { theme : 'simple', type : 'link' },
     url : '#',
     text : 'link'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     mods : { theme : 'normal', size : 'm', type : 'link' },
     url : '#',
     text : 'link'
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
     <tr>
         <td>`_submit`</td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     tag: 'form',
     content: {
         block : 'button',
         mods : { type : 'submit' },
         text : 'default'
     }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     tag: 'form',
     content: {
         block : 'button',
         mods : { theme : 'simple', type : 'submit' },
         text : 'simple'
     }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     tag: 'form',
     content: {
         block : 'button',
         mods : { theme : 'normal', size : 'm', type : 'submit' },
         text : 'normal'
     }
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
 </table>
@@ -315,25 +342,31 @@
     </tr>
     <tr>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_disabled',
     mods : { disabled : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_disabled',
     mods : { theme : 'simple', disabled : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_disabled',
     mods : { theme : 'normal', size : 'm', disabled : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
 </table>
@@ -369,25 +402,31 @@
     </tr>
     <tr>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_hovered',
     mods : { hovered : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_hovered',
     mods : { theme : 'simple', hovered : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_hovered',
     mods : { theme : 'normal', size : 'm', hovered : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
 </table>
@@ -406,25 +445,31 @@
     </tr>
     <tr>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_pressed',
     mods : { pressed : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_pressed',
     mods : { theme : 'simple', pressed : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_pressed',
     mods : { theme : 'normal', size : 'm', pressed : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
 </table>
@@ -432,6 +477,8 @@
 #### Залипание `_togglable`
 
 Определяет состояние кнопки в нажатом состоянии, когда первый клик по кнопке нажимает ее, а второй возвращает в исходное состояние.
+
+Реализован во всех темах блока.
 
 <table>
     <tr>
@@ -441,25 +488,31 @@
     </tr>
     <tr>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_togglable',
     mods : { togglable : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_togglable',
     mods : { theme : 'simple', togglable : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_togglable',
     mods : { theme : 'normal', size : 'm', togglable : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
 </table>
@@ -478,25 +531,31 @@
     </tr>
     <tr>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_action',
     mods : { action : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_action',
     mods : { theme : 'simple', action : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'button',
     text : '_action',
     mods : { theme : 'normal', size : 'm', action : true }
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
 </table>

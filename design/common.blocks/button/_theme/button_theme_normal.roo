@@ -182,6 +182,11 @@
         {
             display: none;
         }
+
+        .icon
+        {
+            opacity: 0.3;
+        }
     }
 
     &.button_size_s

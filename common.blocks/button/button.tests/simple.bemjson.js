@@ -166,9 +166,9 @@
             ' ',
             {
                 block : 'button',
-                text : 'up',
-                mods : { theme : 'normal', size : 's' },
-                icon : { block : 'icon', mods : { action : 'up' } }
+                text : 'download',
+                mods : { theme : 'normal', size : 's', disabled : true },
+                icon : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {

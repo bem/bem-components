@@ -21,6 +21,12 @@
             url : '#',
             text : 'link'
         } },
+        { tag : 'p', content : {
+            block : 'button',
+            mods : { type : 'link', disabled : true },
+            url : '#',
+            text : 'link'
+        } },
 
         { tag : 'hr' },
 

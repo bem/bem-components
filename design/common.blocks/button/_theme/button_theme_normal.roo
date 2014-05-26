@@ -183,6 +183,13 @@
             display: none;
         }
 
+        &.button_checked:before
+        {
+            display: block;
+
+            background: #ffeba0;
+        }
+
         .icon
         {
             opacity: 0.3;

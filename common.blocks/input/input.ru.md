@@ -30,12 +30,12 @@
     <tr>
         <td>id</td>
         <td>`string`</td>
-        <td>Уникальный идентификатор блока. По умолчанию генерируется случайным образом, если явно не задан в BEMJSON.
+        <td>Уникальный идентификатор блока. По умолчанию генерируется случайным образом, если явно не задан в BEMJSON.</td>
     </tr>
     <tr>
         <td>label</td>
         <td>`string`</td>
-        <td>Метка над полем ввода.
+        <td>Метка над полем ввода.</td>
     </tr>
 </table>
 
@@ -131,7 +131,10 @@ _В скобках указано соответствие атрибута ти
             <pre><code>
 {
     block : 'input',
-    mods : { theme : 'simple', type : 'textarea' },
+    mods : {
+        theme : 'simple',
+        type : 'textarea'
+    },
     placeholder : 'simple'
 }
             </code></pre>
@@ -140,7 +143,10 @@ _В скобках указано соответствие атрибута ти
             <pre><code>
 {
     block : 'input',
-    mods : { theme : 'normal', type : 'textarea' },
+    mods : {
+        theme : 'normal',
+        type : 'textarea'
+    },
     placeholder : 'normal'
 }
             </code></pre>
@@ -161,7 +167,10 @@ _В скобках указано соответствие атрибута ти
             <pre><code>
 {
     block : 'input',
-    mods : { theme : 'simple', type : 'password' },
+    mods : {
+        theme : 'simple',
+        type : 'password'
+    },
     placeholder : 'simple'
 }
             </code></pre>
@@ -170,7 +179,10 @@ _В скобках указано соответствие атрибута ти
             <pre><code>
 {
     block : 'input',
-    mods : { theme : 'normal', type : 'password' },
+    mods : {
+        theme : 'normal',
+        type : 'password'
+    },
     placeholder : 'normal'
 }
             </code></pre>
@@ -191,7 +203,10 @@ _В скобках указано соответствие атрибута ти
             <pre><code>
 {
     block : 'input',
-    mods : { theme : 'simple', type : 'search' },
+    mods : {
+        theme : 'simple',
+        type : 'search'
+    },
     placeholder : 'simple'
 }
             </code></pre>
@@ -200,7 +215,10 @@ _В скобках указано соответствие атрибута ти
             <pre><code>
 {
     block : 'input',
-    mods : { theme : 'normal', type : 'search' },
+    mods : {
+        theme : 'normal',
+        type : 'search'
+    },
     placeholder : 'normal'
 }
             </code></pre>
@@ -325,7 +343,10 @@ _В скобках указано соответствие атрибута ти
             <pre><code>
 {
     block : 'input',
-    mods : { theme : 'normal', 'has-label' : true },
+    mods : {
+        theme : 'normal',
+        'has-label' : true
+    },
     label : 'Label',
     placeholder : 'normal'
 }

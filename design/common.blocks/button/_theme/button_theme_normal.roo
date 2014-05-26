@@ -20,7 +20,7 @@
     text-align: center;
     white-space: nowrap;
 
-    &:-moz-focus-inner
+    &::-moz-focus-inner
     {
         padding: 0;
 
@@ -181,6 +181,18 @@
         &:before
         {
             display: none;
+        }
+
+        &.button_checked:before
+        {
+            display: block;
+
+            background: #ffeba0;
+        }
+
+        .icon
+        {
+            opacity: 0.3;
         }
     }
 

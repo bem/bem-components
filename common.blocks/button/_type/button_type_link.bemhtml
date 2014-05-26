@@ -3,11 +3,18 @@ block('button').mod('type', 'link')(
 
     attrs()(function() {
         var ctx = this.ctx,
-            attrs = { href : ctx.url };
+            attrs = {};
 
         ctx.target && (attrs.target = ctx.target);
-        this.mods.disabled && (attrs['aria-disabled'] = true);
+        this.mods.disabled?
+            attrs['aria-disabled'] = true :
+            attrs.href = ctx.url;
 
-        return this._.extend(applyNext(), attrs);
-    })
+        return this.extend(applyNext(), attrs);
+    }),
+
+    mod('disabled', true)
+        .js()(function() {
+            return this._.extend(applyNext(), { url : this.ctx.url });
+        })
 )

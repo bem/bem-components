@@ -5,42 +5,42 @@
 Иконку можно передать как через модификатор, так и через поле `url`:
 
 ```bemjson
-    {
-        block : 'icon',
-        mods : { social : 'twitter' }
-    }
+{
+    block : 'icon',
+    mods : { social : 'twitter' }
+}
 ```
 
 ```bemjson
-    {
-     block : 'icon',
-     url : '../../../test.blocks/icon/_action/download.svg'
-    }
+{
+    block : 'icon',
+    url : '../../../test.blocks/icon/_action/download.svg'
+}
 ```
 
 ```bemjson
-    {
-        block : 'button',
-        text : 'with icon',
-        mods : { theme : 'normal', size : 'm' },
-        icon : { block : 'icon', mods : { social : 'twitter' } }
-    }
+{
+    block : 'button',
+    text : 'with icon',
+    mods : { theme : 'normal', size : 'm' },
+    icon : { block : 'icon', mods : { social : 'twitter' } }
+}
 ```
 
 ```bemjson
-    {
-        block : 'checkbox',
-        mods : { theme : 'simple', type : 'button' },
-        text : 'icon',
-        icon : { block : 'icon', mods : { action : 'download' } }
-    }
+{
+    block : 'checkbox',
+    mods : { theme : 'simple', type : 'button' },
+    text : 'icon',
+    icon : { block : 'icon', mods : { action : 'download' } }
+}
 ```
 
 ```bemjson
-    {
-        block : 'button',
-        text : 'with icon',
-        mods : { theme : 'normal', size : 'm' },
-        icon : { block : 'icon', url : '../../../test.blocks/icon/_action/download.svg' }
-    }
+{
+    block : 'button',
+    text : 'with icon',
+    mods : { theme : 'normal', size : 'm' },
+    icon : { block : 'icon', url : '../../../test.blocks/icon/_action/download.svg' }
+}
 ```

@@ -20,7 +20,7 @@
     text-align: center;
     white-space: nowrap;
 
-    &:-moz-focus-inner
+    &::-moz-focus-inner
     {
         padding: 0;
 

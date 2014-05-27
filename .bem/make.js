@@ -88,8 +88,10 @@ MAKE.decl('BundleNode', {
             'roole',
             'css',
             'bemhtml',
+            'bh',
             'browser.js+bemhtml',
-            'html'
+            'html',
+            'bh.html'
         ];
     },
 
@@ -99,6 +101,14 @@ MAKE.decl('BundleNode', {
      */
     getForkedTechs : function() {
         return this.__base().concat(['browser.js+bemhtml', 'roole']);
+    },
+
+    'create-bh.html-node' : function(tech, bundleNode, magicNode) {
+        return this.setBemCreateNode(
+            tech,
+            this.level.resolveTech(tech),
+            bundleNode,
+            magicNode);
     },
 
     /**

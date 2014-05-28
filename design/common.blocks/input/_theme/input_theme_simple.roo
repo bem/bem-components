@@ -9,6 +9,9 @@
         display: block;
 
         user-select: none;
+
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        background: #fff;
     }
 
     .input__control
@@ -20,7 +23,21 @@
         width: 100%;
         margin: 0;
 
+        border: 0;
+
+        -webkit-appearance: none;
+
         &::-ms-clear
+        {
+            display: none;
+        }
+
+        &::-webkit-search-decoration
+        {
+            -webkit-appearance: none;
+        }
+
+        &::-webkit-search-cancel-button
         {
             display: none;
         }

@@ -24,6 +24,12 @@
             label : 'label',
             placeholder : 'placeholder'
         } },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { type : 'search' },
+            val : 'search',
+            placeholder : 'query'
+        } },
 
         { tag : 'hr' },
 
@@ -50,6 +56,12 @@
             val : 'value',
             label : 'label',
             placeholder : 'placeholder'
+        } },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { theme : 'simple', 'has-clear' : true, type : 'search' },
+            val : 'search',
+            placeholder : 'query'
         } },
 
         { tag : 'hr' },

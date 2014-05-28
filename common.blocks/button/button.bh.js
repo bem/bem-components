@@ -1,6 +1,8 @@
 module.exports = function(bh) {
 
     bh.match('button', function(ctx, json) {
+        ctx.tParam('_button', json);
+
         ctx.js(true);
 
         ctx

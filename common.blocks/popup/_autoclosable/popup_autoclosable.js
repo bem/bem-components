@@ -44,11 +44,6 @@ provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup
         this._inPopupPointerClick?
            this._inPopupPointerClick = null :
            this.delMod('visible');
-    },
-
-    /** @override */
-    _onScrollOrResize : function() {
-        this.delMod('visible');
     }
 }, {
     live : function() {

@@ -5,7 +5,7 @@ provide(Button.decl({ modName : 'type', modVal : 'link' }, {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                this._url = this.domElem.attr('href');
+                this._url = this.params.url || this.domElem.attr('href');
 
                 this.hasMod('disabled') && this.domElem.removeAttr('href');
             }

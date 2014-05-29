@@ -30,12 +30,12 @@
     <tr>
         <td>id</td>
         <td>`string`</td>
-        <td>Уникальный идентификатор блока. По умолчанию генерируется случайным образом, если явно не задан в BEMJSON.
+        <td>Уникальный идентификатор блока. По умолчанию генерируется случайным образом, если явно не задан в BEMJSON.</td>
     </tr>
     <tr>
         <td>label</td>
         <td>`string`</td>
-        <td>Метка над полем ввода.
+        <td>Метка над полем ввода.</td>
     </tr>
 </table>
 
@@ -63,7 +63,7 @@ _В скобках указано соответствие атрибута ти
  * simple
  * normal
 
-Без указания темы к блоку применяются значения по умолчанию (*default*):
+Без указания модификатора темы отображается состояние кастомного блока (*default*):
 
 * Тип поля ввода: простое текстовое
 * Ширина: 100%
@@ -73,6 +73,7 @@ _В скобках указано соответствие атрибута ти
 Наглядно видно на примерах ниже:
 
 #### default
+
 ```bemjson
 {
     block : 'input',
@@ -116,93 +117,111 @@ _В скобках указано соответствие атрибута ти
         <th>normal</th>
     </tr>
     <tr>
-        <td> `_textarea`</td>
+        <td>`_textarea`</td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
     mods : { type : 'textarea' },
     placeholder : 'default'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
-    mods : { 
-        theme : 'simple', 
-        type : 'textarea' 
+    mods : {
+        theme : 'simple',
+        type : 'textarea'
     },
     placeholder : 'simple'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
-    mods : { 
-        theme : 'normal', 
-        type : 'textarea' 
+    mods : {
+        theme : 'normal',
+        type : 'textarea'
     },
     placeholder : 'normal'
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
     <tr>
-        <td>`_password`</td>
+        <td> `_password`</td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
     placeholder : 'default',
     mods : { type : 'password' }
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
-    mods : { 
-        theme : 'simple', 
-        type : 'password' 
+    mods : {
+        theme : 'simple',
+        type : 'password'
     },
     placeholder : 'simple'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
-    mods : { 
-        theme : 'normal', 
-        type : 'password' 
+    mods : {
+        theme : 'normal',
+        type : 'password'
     },
     placeholder : 'normal'
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
     <tr>
-        <td>`_search`</td>
+        <td> `_search`</td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
     mods : { type : 'search' },
     placeholder : 'default'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
-    mods : { 
-        theme : 'simple', 
-        type : 'search' 
+    mods : {
+        theme : 'simple',
+        type : 'search'
     },
     placeholder : 'simple'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
-    mods : { 
-        theme : 'normal', 
-        type : 'search' 
+    mods : {
+        theme : 'normal',
+        type : 'search'
     },
     placeholder : 'normal'
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
 </table>
@@ -253,37 +272,37 @@ _В скобках указано соответствие атрибута ти
     </tr>
     <tr>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
     mods : { 'has-clear' : true },
     placeholder : 'default'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
-    mods : { 
-        theme : 'simple', 
-        'has-clear' : true 
-    },
+    mods : { theme : 'simple', 'has-clear' : true },
     placeholder : 'simple'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
-    mods : { 
-        theme : 'normal', 
-        'has-clear' : true 
-    },
+    mods : { theme : 'normal', 'has-clear' : true },
     placeholder : 'normal'
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
 </table>
 
 ---
-**NB** Модификатор `has-clear` не используется для типа инпута – поисковое поле (`_search`) в теме *simple*.
+**NB** Модификатор `has-clear` не используется для типа инпута – поисковое поле (`_search`) в теме *simple*.
 
 ---
 
@@ -301,34 +320,37 @@ _В скобках указано соответствие атрибута ти
     </tr>
     <tr>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
     mods : { 'has-clear' : true },
     label : 'Label',
     placeholder : 'default'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
-    mods : { 
-        theme : 'simple', 
-        'has-label' : true 
-    },
+    mods : { theme : 'simple', 'has-label' : true },
     label : 'Label',
     placeholder : 'simple'
-}</code></pre>
+}
+            </code></pre>
         </td>
         <td>
-<pre><code>{
+            <pre><code>
+{
     block : 'input',
-    mods : { 
-        theme : 'normal', 
-        'has-label' : true 
+    mods : {
+        theme : 'normal',
+        'has-label' : true
     },
     label : 'Label',
     placeholder : 'normal'
-}</code></pre>
+}
+            </code></pre>
         </td>
     </tr>
 </table>

@@ -46,7 +46,7 @@ There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
                 block : 'spin',
                 mods : { theme : 'simple', size : 'xs', progress : true }
             }
-        </pre></code>
+        </code></pre>
     </td>
     <td>
         <pre><code>
@@ -54,7 +54,7 @@ There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
                 block : 'spin',
                 mods : { theme : 'normal', size : 'xs', progress : true }
             }
-        </pre></code>
+        </code></pre>
     </td>
   </tr>
   <tr>
@@ -65,7 +65,7 @@ There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
                 block : 'spin',
                 mods : { theme : 'simple', size : 's', progress : true }
             }
-        </pre></code>
+        </code></pre>
     </td>
     <td>
         <pre><code>
@@ -73,7 +73,7 @@ There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
                 block : 'spin',
                 mods : { theme : 'normal', size : 's', progress : true }
             }
-        </pre></code>
+        </code></pre>
     </td>
   </tr>
   <tr>
@@ -84,7 +84,7 @@ There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
                 block : 'spin',
                 mods : { theme : 'simple', size : 'm', progress : true }
             }
-        </pre></code>
+        </code></pre>
     </td>
     <td>
         <pre><code>
@@ -92,7 +92,7 @@ There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
                 block : 'spin',
                 mods : { theme : 'normal', size : 'm', progress : true }
             }
-        </pre></code>
+        </code></pre>
     </td>
   </tr>
   <tr>
@@ -103,7 +103,7 @@ There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
                 block : 'spin',
                 mods : { theme : 'simple', size : 'l', progress : true }
             }
-        </pre></code>
+        </code></pre>
     </td>
     <td>
         <pre><code>
@@ -111,7 +111,7 @@ There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
                 block : 'spin',
                 mods : { theme : 'normal', size : 'l', progress : true }
             }
-        </pre></code>
+        </code></pre>
     </td>
   </tr>
   <tr>
@@ -122,7 +122,7 @@ There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
                 block : 'spin',
                 mods : { theme : 'simple', size : 'xl', progress : true }
             }
-        </pre></code>
+        </code></pre>
     </td>
     <td>
         <pre><code>
@@ -130,7 +130,7 @@ There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
                 block : 'spin',
                 mods : { theme : 'normal', size : 'xl', progress : true }
             }
-        </pre></code>
+        </code></pre>
     </td>
   </tr>
 </table>

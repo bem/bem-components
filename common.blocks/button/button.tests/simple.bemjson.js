@@ -9,23 +9,30 @@
     content : [
 
         { tag : 'h2', content : 'default' },
-        { tag : 'p', content : { block : 'button', text : 'default' } },
+        { tag : 'p', content : {
+            block : 'button',
+            text : 'default',
+            cls : 'gemini-test-button-default-enabled'
+        } },
         { tag : 'p', content : {
             block : 'button',
             text : 'disabled',
-            mods : { disabled : true }
+            mods : { disabled : true },
+            cls : 'gemini-test-button-default-disabled'
         } },
         { tag : 'p', content : {
             block : 'button',
             mods : { type : 'link' },
             url : '#',
-            text : 'link'
+            text : 'link',
+            cls : 'gemini-test-button-default-link-enabled'
         } },
         { tag : 'p', content : {
             block : 'button',
             mods : { type : 'link', disabled : true },
             url : '#',
-            text : 'link'
+            text : 'disabled link',
+            cls : 'gemini-test-button-default-link-disabled'
         } },
 
         { tag : 'hr' },
@@ -153,7 +160,8 @@
                 type : 'link'
             },
             url : '#',
-            text : 'default link'
+            text : 'default link',
+            cls : 'gemini-test-button-normal-link-enabled'
         } },
         { tag : 'p', content : {
             block : 'button',
@@ -164,7 +172,8 @@
                 disabled : true
             },
             url : '#',
-            text : 'disabled link'
+            text : 'disabled link',
+            cls : 'gemini-test-button-normal-link-disabled'
         } },
 
         { tag : 'h3', content : 'icon' },
@@ -173,7 +182,15 @@
                 block : 'button',
                 mods : { theme : 'normal', size : 's' },
                 // Здесь иконка прописана через content, чтобы появилась в deps.js
-                content : { block : 'icon', mods : { action : 'download' } }
+                content : { block : 'icon', mods : { action : 'download' } },
+                cls : 'gemini-test-button-normal-icon-enabled'
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 's', disabled : true },
+                icon : { block : 'icon', mods : { action : 'download' } },
+                cls : 'gemini-test-button-normal-icon-disabled'
             },
             ' ',
             {
@@ -284,7 +301,8 @@
             { tag : 'span', content : {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm', togglable : 'check' },
-                text : 'check'
+                text : 'check',
+                cls : 'gemini-test-button-normal-check'
             } },
             ' ',
             { tag : 'span', content : [

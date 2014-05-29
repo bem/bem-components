@@ -185,14 +185,14 @@
                 content : { block : 'icon', mods : { action : 'download' } },
                 cls : 'gemini-test-button-normal-icon-enabled'
             },
-            ' ',
+            '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
                 mods : { theme : 'normal', size : 's', disabled : true },
                 icon : { block : 'icon', mods : { action : 'download' } },
                 cls : 'gemini-test-button-normal-icon-disabled'
             },
-            ' ',
+            '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
                 text : 'download',
@@ -304,7 +304,7 @@
                 text : 'check',
                 cls : 'gemini-test-button-normal-check'
             } },
-            ' ',
+            '&nbsp;&nbsp;&nbsp;',
             { tag : 'span', content : [
                 {
                     block : 'button',

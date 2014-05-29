@@ -286,55 +286,29 @@
         ] },
 
         { tag : 'p', content : [
-            { tag : 'span', content : {
+            {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm', togglable : 'check' },
                 text : 'check'
-            } },
+            },
             ' ',
-            { tag : 'span', content : [
-                {
-                    block : 'button',
-                    mods : { theme : 'normal', size : 'm', togglable : 'radio' },
-                    text : 'radio'
-                },
-                {
-                    block : 'button',
-                    mods : { theme : 'normal', size : 'm', togglable : 'radio' },
-                    text : 'radio'
-                },
-                {
-                    block : 'button',
-                    mods : { theme : 'normal', size : 'm', togglable : 'radio', checked : true },
-                    text : 'radio'
-                }
-            ] }
-        ] },
-
-        { tag : 'p', content : [
-            { tag : 'span', content : {
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'm', togglable : 'radio' },
+                text : 'radio'
+            },
+            ' ',
+            {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm', togglable : 'check', pseudo : true },
                 text : 'check'
-            } },
+            },
             ' ',
-            { tag : 'span', content : [
-                {
-                    block : 'button',
-                    mods : { theme : 'normal', size : 'm', togglable : 'radio', pseudo : true },
-                    text : 'radio'
-                },
-                {
-                    block : 'button',
-                    mods : { theme : 'normal', size : 'm', togglable : 'radio', pseudo : true },
-                    text : 'radio'
-                },
-                {
-                    block : 'button',
-                    mods : { theme : 'normal', size : 'm', togglable : 'radio', pseudo : true, checked : true },
-                    text : 'radio'
-                }
-            ] }
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'm', togglable : 'radio', pseudo : true },
+                text : 'radio'
+            }
         ] }
     ]
 });

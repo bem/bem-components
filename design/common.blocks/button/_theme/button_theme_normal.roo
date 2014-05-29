@@ -183,7 +183,6 @@
 
     &.button_disabled
     {
-        color: rgba(0, 0, 0, 0.3);
         background: rgba(0, 0, 0, 0.08);
 
         &:before
@@ -196,6 +195,11 @@
             display: block;
 
             background: #ffeba0;
+        }
+
+        .button__text
+        {
+            color: #aaa;
         }
 
         .icon
@@ -278,7 +282,8 @@
         margin-right: 0;
     }
 
-    &.button_togglable_radio
+    .checkbox-group &,
+    .radio-group &
     {
         border-radius: 0;
 
@@ -323,7 +328,5 @@
                 right: 1px;
             }
         }
-
     }
-
 }

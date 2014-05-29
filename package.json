@@ -45,8 +45,8 @@
     "lint": "jshint-groups && jscs . && csscomb -vl .",
     "specs": "bem make -w 10 desktop.specs touch-pad.specs touch-phone.specs",
     "unit": "npm run specs",
-    "gemini": "http-server -s -p 8000 & p=$!; gemini test --reporter html --reporter tree; e=$?; kill -9 ${p}; exit ${e}",
-    "gemini-gather": "http-server -s -p 8000 & p=$!; gemini gather; kill -9 ${p}",
+    "gemini": "http-server -c \"no-cache, no-store\" -s -p 8000 & p=$!; gemini test --reporter html --reporter tree; e=$?; kill -9 ${p}; exit ${e}",
+    "gemini-gather": "http-server -c \"no-cache, no-store\" -s -p 8000 & p=$!; gemini gather; kill -9 ${p}",
     "coverage": "ISTANBUL_COVERAGE=yes npm run specs"
   }
 }

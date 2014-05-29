@@ -1,5 +1,6 @@
 .project
 .settings/
+.idea/
 
 .bem/cache
 .bem/snapshots
@@ -14,6 +15,7 @@ libs
 
 /coverage
 /coverage.json
+/gemini-report/
 
 /*.examples
 /*.specs

@@ -223,6 +223,13 @@
                 },
                 ' ',
                 {
+                    block : 'radio',
+                    mods : { theme : 'normal', size : 'm', checked : true },
+                    val : 1,
+                    text : 'radio'
+                },
+                ' ',
+                {
                     block : 'checkbox',
                     mods : { theme : 'normal', size : 'm', checked : true },
                     val : 1,
@@ -292,6 +299,13 @@
                         { val : 1, text : 'first' },
                         { val : 2, text : 'second', checked : true }
                     ]
+                },
+                ' ',
+                {
+                    block : 'radio',
+                    mods : { theme : 'normal', size : 'l', checked : true },
+                    val : 1,
+                    text : 'radio'
                 },
                 ' ',
                 {

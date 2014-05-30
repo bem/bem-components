@@ -27,6 +27,14 @@
         border: 0;
     }
 
+    .button__text
+    {
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+        vertical-align: top;
+    }
+
     .icon,
     .button__text
     {
@@ -175,7 +183,6 @@
 
     &.button_disabled
     {
-        color: rgba(0, 0, 0, 0.3);
         background: rgba(0, 0, 0, 0.08);
 
         &:before
@@ -188,6 +195,11 @@
             display: block;
 
             background: #ffeba0;
+        }
+
+        .button__text
+        {
+            color: #aaa;
         }
 
         .icon
@@ -208,7 +220,7 @@
 
         .button__text
         {
-            padding: 0 10px;
+            margin: 0 10px;
         }
     }
 
@@ -224,7 +236,7 @@
 
         .button__text
         {
-            padding: 0 13px;
+            margin: 0 13px;
         }
     }
 
@@ -240,7 +252,7 @@
 
         .button__text
         {
-            padding: 0 15px;
+            margin: 0 15px;
         }
     }
 
@@ -256,21 +268,22 @@
 
         .button__text
         {
-            padding: 0 18px;
+            margin: 0 18px;
         }
     }
 
     & .icon + .button__text
     {
-        padding-left: 0;
+        margin-left: 0;
     }
 
     .button__text:not(:last-child)
     {
-        padding-right: 0;
+        margin-right: 0;
     }
 
-    &.button_togglable_radio
+    .checkbox-group &,
+    .radio-group &
     {
         border-radius: 0;
 
@@ -315,7 +328,5 @@
                 right: 1px;
             }
         }
-
     }
-
 }

@@ -176,6 +176,17 @@
             cls : 'gemini-test-button-normal-link-disabled'
         } },
 
+        { tag : 'h3', content : 'max-width' },
+        { tag : 'p', content : {
+            block : 'button',
+            mods : {
+                theme : 'normal',
+                size : 'm'
+            },
+            textMaxWidth : 100,
+            text : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+        } },
+
         { tag : 'h3', content : 'icon' },
         { tag : 'p', content : [
             {
@@ -298,56 +309,30 @@
         ] },
 
         { tag : 'p', content : [
-            { tag : 'span', content : {
+            {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm', togglable : 'check' },
                 text : 'check',
                 cls : 'gemini-test-button-normal-check'
-            } },
+            },
             '&nbsp;&nbsp;&nbsp;',
-            { tag : 'span', content : [
-                {
-                    block : 'button',
-                    mods : { theme : 'normal', size : 'm', togglable : 'radio' },
-                    text : 'radio'
-                },
-                {
-                    block : 'button',
-                    mods : { theme : 'normal', size : 'm', togglable : 'radio' },
-                    text : 'radio'
-                },
-                {
-                    block : 'button',
-                    mods : { theme : 'normal', size : 'm', togglable : 'radio', checked : true },
-                    text : 'radio'
-                }
-            ] }
-        ] },
-
-        { tag : 'p', content : [
-            { tag : 'span', content : {
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'm', togglable : 'radio' },
+                text : 'radio'
+            },
+            ' ',
+            {
                 block : 'button',
                 mods : { theme : 'normal', size : 'm', togglable : 'check', pseudo : true },
                 text : 'check'
-            } },
+            },
             ' ',
-            { tag : 'span', content : [
-                {
-                    block : 'button',
-                    mods : { theme : 'normal', size : 'm', togglable : 'radio', pseudo : true },
-                    text : 'radio'
-                },
-                {
-                    block : 'button',
-                    mods : { theme : 'normal', size : 'm', togglable : 'radio', pseudo : true },
-                    text : 'radio'
-                },
-                {
-                    block : 'button',
-                    mods : { theme : 'normal', size : 'm', togglable : 'radio', pseudo : true, checked : true },
-                    text : 'radio'
-                }
-            ] }
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 'm', togglable : 'radio', pseudo : true },
+                text : 'radio'
+            }
         ] }
     ]
 });

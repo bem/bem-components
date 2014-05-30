@@ -4,21 +4,27 @@ block('radio-group')(
     js()(true),
 
     content()(function() {
-        return (this.ctx.options || []).map(function(option) {
-            return {
-                block : 'radio',
-                mods : {
-                    type : this.mods.type,
-                    theme : this.mods.theme,
-                    size : this.mods.size,
-                    checked : option.checked,
-                    disabled : option.disabled || this.mods.disabled
-                },
-                name : this.ctx.name,
-                val : option.val,
-                text : option.text,
-                icon : option.icon
-            }
-        }, this);
+        var mods = this.mods,
+            ctx = this.ctx;
+
+        return (ctx.options || []).map(function(option, i) {
+            return [
+                !!i && !mods.type && { tag : 'br' },
+                {
+                    block : 'radio',
+                    mods : {
+                        type : mods.type,
+                        theme : mods.theme,
+                        size : mods.size,
+                        checked : option.checked,
+                        disabled : option.disabled || mods.disabled
+                    },
+                    name : ctx.name,
+                    val : option.val,
+                    text : option.text,
+                    icon : option.icon
+                }
+            ]
+        });
     })
 )

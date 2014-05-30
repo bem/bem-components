@@ -161,6 +161,17 @@
             text : 'disabled link'
         } },
 
+        { tag : 'h3', content : 'max-width' },
+        { tag : 'p', content : {
+            block : 'button',
+            mods : {
+                theme : 'normal',
+                size : 'm'
+            },
+            textMaxWidth : 100,
+            text : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+        } },
+
         { tag : 'h3', content : 'icon' },
         { tag : 'p', content : [
             {

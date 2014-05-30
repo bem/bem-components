@@ -1,1 +1,7 @@
-block('button').elem('text').tag()('span')
+block('button').elem('text')(
+    tag()('span'),
+
+    match(this._button.textMaxWidth).attrs()(function() {
+        return { style : 'max-width:' + this._button.textMaxWidth + 'px' };
+    })
+)

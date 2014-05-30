@@ -27,6 +27,14 @@
         border: 0;
     }
 
+    .button__text
+    {
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+        vertical-align: top;
+    }
+
     .icon,
     .button__text
     {
@@ -208,7 +216,7 @@
 
         .button__text
         {
-            padding: 0 10px;
+            margin: 0 10px;
         }
     }
 
@@ -224,7 +232,7 @@
 
         .button__text
         {
-            padding: 0 13px;
+            margin: 0 13px;
         }
     }
 
@@ -240,7 +248,7 @@
 
         .button__text
         {
-            padding: 0 15px;
+            margin: 0 15px;
         }
     }
 
@@ -256,18 +264,18 @@
 
         .button__text
         {
-            padding: 0 18px;
+            margin: 0 18px;
         }
     }
 
     & .icon + .button__text
     {
-        padding-left: 0;
+        margin-left: 0;
     }
 
     .button__text:not(:last-child)
     {
-        padding-right: 0;
+        margin-right: 0;
     }
 
     &.button_togglable_radio

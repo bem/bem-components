@@ -96,9 +96,9 @@
 
 ### Модульное тестирование
 
-### Регрессионное тестирование вёртски
+### Регрессионное тестирование вёрстки
 
-Для тестирования вёртски мы используем [gemini](https://github.com/bem/gemini) .
+Для тестирования вёрстки мы используем [gemini](https://github.com/bem/gemini) .
 
 Тесты каждого блока находятся в отдельном файле вида `block-name.gemini.js` в директории `gemini/`. Запускаются тесты локально руками и в Travis автоматически. В качестве [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2) мы используем сервис [SauceLabs](https://saucelabs.com).
 

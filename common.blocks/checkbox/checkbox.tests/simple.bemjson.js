@@ -9,44 +9,59 @@
     content : [
 
         { tag : 'h2', content : 'default' },
-        { tag : 'p', content : {
-            block : 'checkbox',
-            text : 'first'
-        } },
-        { tag : 'p', content : {
-            block : 'checkbox',
-            mods : { checked : true },
-            text : 'second'
-        } },
-        { tag : 'p', content : {
-            block : 'checkbox',
-            mods : { disabled : true },
-            text : 'third'
-        } },
+        { tag : 'p', content : [
+            {
+                block : 'checkbox',
+                text : 'first'
+            },
+            ' ',
+            {
+                block : 'checkbox',
+                mods : { checked : true },
+                text : 'second'
+            },
+            ' ',
+            {
+                block : 'checkbox',
+                mods : { disabled : true },
+                text : 'third'
+            },
+            ' ',
+            {
+                block : 'checkbox',
+                mods : { checked : true, disabled : true },
+                text : 'fourth'
+            }
+        ] },
 
         { tag : 'hr' },
 
         { tag : 'h2', content : 'simple' },
-        { tag : 'p', content : {
-            block : 'checkbox',
-            mods : { theme : 'simple' },
-            text : 'first'
-        } },
-        { tag : 'p', content : {
-            block : 'checkbox',
-            mods : { theme : 'simple', checked : true },
-            text : 'second'
-        } },
-        { tag : 'p', content : {
-            block : 'checkbox',
-            mods : { theme : 'simple', checked : true, disabled : true },
-            text : 'third'
-        } },
-        { tag : 'p', content : {
-            block : 'checkbox',
-            mods : { theme : 'simple', disabled : true },
-            text : 'fourth'
-        } },
+        { tag : 'p', content : [
+            {
+                block : 'checkbox',
+                mods : { theme : 'simple' },
+                text : 'first'
+            },
+            ' ',
+            {
+                block : 'checkbox',
+                mods : { theme : 'simple', checked : true },
+                text : 'second'
+            },
+            ' ',
+            {
+                block : 'checkbox',
+                mods : { theme : 'simple', disabled : true },
+                text : 'third'
+            },
+            ' ',
+            {
+                block : 'checkbox',
+                mods : { theme : 'simple', checked : true, disabled : true },
+                text : 'fourth'
+            }
+        ] },
 
         { tag : 'h3', content : 'button' },
         { tag : 'p', content : [
@@ -175,7 +190,7 @@
             '&nbsp;',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm', type : 'button', checked : true, disabled : true },
+                mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
                 val : 3,
                 name : 'r1',
                 text : 'third'

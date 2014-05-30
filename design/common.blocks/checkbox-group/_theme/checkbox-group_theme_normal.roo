@@ -22,4 +22,22 @@
 
         white-space: nowrap;
     }
+
+    &.checkbox-group_type_line
+    {
+        &.checkbox-group_size_m .checkbox
+        {
+            margin-right: 13px;
+        }
+
+        &.checkbox-group_size_l .checkbox
+        {
+            margin-right: 15px;
+        }
+
+        .checkbox:last-child
+        {
+            margin-right: 0;
+        }
+    }
 }

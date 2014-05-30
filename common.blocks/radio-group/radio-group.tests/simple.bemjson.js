@@ -134,6 +134,30 @@
             ]
         } },
 
+        { tag : 'h3', content : 'line' },
+        { tag : 'p', content : {
+            block : 'radio-group',
+            name : 'normal-line1',
+            mods : { theme : 'normal', size : 'm', type : 'line' },
+            options : [
+                { val : 1, text : 'first' },
+                { val : 2, text : 'second', checked : true },
+                { val : 3, text : 'third', disabled : true },
+                { val : 4, text : 'fourth', checked : true, disabled : true }
+            ]
+        } },
+        { tag : 'p', content : {
+            block : 'radio-group',
+            name : 'normal-line2',
+            mods : { theme : 'normal', size : 'l', type : 'line' },
+            options : [
+                { val : 1, text : 'first' },
+                { val : 2, text : 'second', checked : true },
+                { val : 3, text : 'third', disabled : true },
+                { val : 4, text : 'fourth', checked : true, disabled : true }
+            ]
+        } },
+
         { tag : 'h3', content : 'button' },
         { tag : 'p', content : {
             block : 'radio-group',

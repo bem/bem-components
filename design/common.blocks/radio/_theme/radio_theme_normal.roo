@@ -5,13 +5,6 @@
         cursor: pointer;
     }
 
-    &::after
-    {
-        display: block;
-
-        content: '';
-    }
-
     .radio__control
     {
         position: absolute;
@@ -70,6 +63,8 @@
     &.radio_disabled
     {
         cursor: default;
+
+        color: #999;
 
         .radio__box
         {

@@ -110,6 +110,15 @@
         }
     }
 
+    &.checkbox_focused
+    {
+        .checkbox__box
+        {
+            box-shadow: inset 0 0 0 1px rgba(178, 142, 0, 0.6),
+                        0 0 10px #fc0;
+        }
+    }
+
     &.checkbox_disabled
     {
         cursor: default;

@@ -1,4 +1,4 @@
 block('input').elem('label')(
     tag()('label'),
-    attrs()(function() { return { 'for': this.ctx.id || this._input.id } })
+    attrs()(function() { return { 'for': this.ctx.id } })
 )

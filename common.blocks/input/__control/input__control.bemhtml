@@ -17,15 +17,5 @@ block('input').elem('control')(
         this.mods.disabled && (attrs.disabled = 'disabled');
 
         return attrs;
-    }),
-
-    def().match(function() { return !this._input__control })(function() {
-        applyCtx(
-            { '_input__control': true },
-            {
-                elem: 'box',
-                content: this.ctx
-            })
     })
-
 )

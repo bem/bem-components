@@ -17,12 +17,6 @@ module.exports = function(bh) {
         json.blockMods.disabled && (attrs.disabled = 'disabled');
 
         ctx.attrs(attrs);
-
-        if(!ctx.tParam('_input__control'))
-            return {
-                elem : 'box',
-                content : ctx.json()
-            };
     });
 
 };

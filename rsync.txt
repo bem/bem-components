@@ -1,0 +1,17 @@
+- node_modules
+- /libs/*/*.docs/**
+
+# Exclude unnecessary files under the build results
+- [^_]*.js
+- [^_]*.css
+- *.bemhtml.js
+
+# Include tests & pages build targets
++ /*.tests/**
++ /*.pages/**
+
+# Keep the graphics from all directories
++ */
++ *.svg
++ *.png
+- *

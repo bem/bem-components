@@ -22,22 +22,4 @@
 
         white-space: nowrap;
     }
-
-    &.radio-group_type_line
-    {
-        &.radio-group_size_m .radio
-        {
-            margin-right: 13px;
-        }
-
-        &.radio-group_size_l .radio
-        {
-            margin-right: 15px;
-        }
-
-        .radio:last-child
-        {
-            margin-right: 0;
-        }
-    }
 }

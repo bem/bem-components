@@ -83,6 +83,24 @@
         display: inline-block;
     }
 
+    &.radio_type_line
+    {
+        &.radio_size_m
+        {
+            margin-right: 13px;
+        }
+
+        &.radio_size_l
+        {
+            margin-right: 15px;
+        }
+
+        &:last-child
+        {
+            margin-right: 0;
+        }
+    }
+
     &.radio_size_m
     {
         .radio__box

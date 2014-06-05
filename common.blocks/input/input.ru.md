@@ -1,12 +1,11 @@
 # input
 
-Блок **input** служит для создания различных типов текстовых полей:
+Блок `input` служит для создания различных типов текстовых полей:
 
+* поле ввода (значение по умолчанию);
 * текстовая область;
 * поле с паролем;
 * поисковая форма.
-
-В MSIE8 и ниже поле ввода деградирует до нативного контрола `<input атрибуты>`, поле ввода с текстовой областью станет нативной текстовой областью `<textarea атрибуты>`.
 
 ## Допустимые атрибуты блока
 Допустимые атрибуты блока задаются в одноименных полях входного BEMJSON блока:
@@ -19,40 +18,36 @@
     </tr>
     <tr>
         <td>val</td>
-        <td>`string`</td>
-        <td>Значение, отправляемое на сервер. По умолчанию содержит пустое значение.</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Значение, отправляемое на сервер. По умолчанию пустое.</td>
     </tr>
     <tr>
         <td>placeholder</td>
-        <td>`string`</td>
-        <td>Замещающийся текст. По умолчанию содержит пустое значение.
+        <td>
+            <code>String</code>
+        </td>
+        <td>Подсказка в поле ввода.</td>
     </tr>
     <tr>
         <td>id</td>
-        <td>`string`</td>
+        <td>
+            <code>String</code>
+        </td>
         <td>Уникальный идентификатор блока. По умолчанию генерируется случайным образом, если явно не задан в BEMJSON.</td>
     </tr>
     <tr>
         <td>label</td>
-        <td>`string`</td>
+        <td>
+            <code>String</code>
+        </td>
         <td>Метка над полем ввода.</td>
     </tr>
 </table>
 
 
-Допустимые атрибуты блока, которые задаются в зарезервированном поле `attrs` в BEMJSON:
-
-* [name](http://htmlbook.ru/html/a/name) (_common_)
-* [tabindex](http://htmlbook.ru/html/a/tabindex) (_common_)
-* [spellcheck](http://htmlbook.ru/html/attr/spellcheck) (_common_)
-* [accesskey](http://htmlbook.ru/html/a/accesskey) (_common_)
-* [rows](http://htmlbook.ru/html/frameset/rows) (`_textarea`)
-* [cols](http://htmlbook.ru/html/textarea/cols) (`_textarea`)
-* [readonly](http://htmlbook.ru/html/textarea/readonly) (`_textarea`)
-* [wrap](http://htmlbook.ru/html/textarea/wrap) (`_textarea`)
-* [maxlength](http://htmlbook.ru/html/input/maxlength) (`_textarea`)
-
-_В скобках указано соответствие атрибута типу инпута._
+Другие допустимые атрибуты блока могут быть заданы в зарезервированном поле `attrs` в BEMJSON.
 
 ## Модификаторы блока
 
@@ -63,16 +58,11 @@ _В скобках указано соответствие атрибута ти
  * simple
  * normal
 
-Без указания модификатора темы отображается состояние кастомного блока (*default*):
-
-* Тип поля ввода: простое текстовое
-* Ширина: 100%
-* Тема оформления: нативное отображение поля ввода браузером.
-* Размеры текстовой области: `cols:10`, `rows:10`.
+Без указания модификатора темы отображается нативный вид контрола (*default*).
 
 Наглядно видно на примерах ниже:
 
-#### default
+**default**
 
 ```bemjson
 {
@@ -80,7 +70,7 @@ _В скобках указано соответствие атрибута ти
     placeholder : 'default'
 }
 ```
-#### simple
+**simple**
 
 ```bemjson
 {
@@ -89,15 +79,88 @@ _В скобках указано соответствие атрибута ти
     placeholder : 'simple'
 }
 ```
-#### normal
+**normal**
 
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal' },
+    mods : { theme : 'normal', size: 'm' },
     placeholder : 'normal'
 }
 ```
+
+### Размеры `_size`
+
+Задает размер всем типам текстовых полей. Обязательный модификатор.
+
+Реализован только в теме *normal*.
+
+Доступно четыре размера реализации блока: **s**, **m**, **l**, **xl**.
+
+<table>
+    <tr>
+        <th>Размер</th>
+        <th>Размер<br>шрифта</th>
+        <th>Высота<br>строки</th>
+        <th>Пример</th>
+    </tr>
+    <tr>
+        <th>S</th>
+        <td>13px</td>
+        <td>24px</td>
+        <td>
+            <pre><code>
+{
+    block : 'input',
+    mods : { theme : 'normal', size: 's' },
+    placeholder : 'Small'
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>M</th>
+        <td>13px</td>
+        <td>28px</td>
+        <td>
+            <pre><code>
+{
+    block : 'input',
+    mods : { theme : 'normal', size: 'm' },
+    placeholder : 'Medium'
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>L</th>
+        <td>15px</td>
+        <td>32px</td>
+        <td>
+            <pre><code>
+{
+    block : 'input',
+    mods : { theme : 'normal', size: 'l' },
+    placeholder : 'Large'
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>XL</th>
+        <td>18px</td>
+        <td>38px</td>
+        <td>
+            <pre><code>
+{
+    block : 'input',
+    mods : { theme : 'normal', size: 'xl' },
+    placeholder : 'X-Large'
+}
+            </code></pre>
+        </td>
+    </tr>
+</table>
 
 ### Типы `_type`
 
@@ -107,119 +170,51 @@ _В скобках указано соответствие атрибута ти
 * поле с паролем (`_password`)
 * поисковая форма (`_search`)
 
-Реализован в темах `simple` и `normal`.
+Без указания типа поля блок `input` по умолчанию получает значение `<input type="text"/>`.
 
 <table>
     <tr>
-        <th>Тип / Реализация</th>
-        <th>default</th>
-        <th>simple</th>
-        <th>normal</th>
+        <th>Тип</th>
+        <th>Реализация</th>
     </tr>
     <tr>
-        <td>`_textarea`</td>
         <td>
-            <pre><code>
-{
-    block : 'input',
-    mods : { type : 'textarea' },
-    placeholder : 'default'
-}
-            </code></pre>
+            <code>_textarea</code>
         </td>
         <td>
             <pre><code>
 {
     block : 'input',
-    mods : {
-        theme : 'simple',
-        type : 'textarea'
-    },
-    placeholder : 'simple'
-}
-            </code></pre>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'input',
-    mods : {
-        theme : 'normal',
-        type : 'textarea'
-    },
-    placeholder : 'normal'
+    mods : { theme : 'normal', size : 'm', type : 'textarea' },
+    placeholder : 'Тексторвая область'
 }
             </code></pre>
         </td>
     </tr>
     <tr>
-        <td> `_password`</td>
         <td>
-            <pre><code>
-{
-    block : 'input',
-    placeholder : 'default',
-    mods : { type : 'password' }
-}
-            </code></pre>
+            <code>_password</code>
         </td>
         <td>
             <pre><code>
 {
     block : 'input',
-    mods : {
-        theme : 'simple',
-        type : 'password'
-    },
-    placeholder : 'simple'
-}
-            </code></pre>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'input',
-    mods : {
-        theme : 'normal',
-        type : 'password'
-    },
-    placeholder : 'normal'
+    mods : { theme : 'normal', size: 'm', type : 'password' },
+    placeholder : 'Поле с паролем'
 }
             </code></pre>
         </td>
     </tr>
     <tr>
-        <td> `_search`</td>
         <td>
-            <pre><code>
-{
-    block : 'input',
-    mods : { type : 'search' },
-    placeholder : 'default'
-}
-            </code></pre>
+            <code>_search</code>
         </td>
         <td>
             <pre><code>
 {
     block : 'input',
-    mods : {
-        theme : 'simple',
-        type : 'search'
-    },
-    placeholder : 'simple'
-}
-            </code></pre>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'input',
-    mods : {
-        theme : 'normal',
-        type : 'search'
-    },
-    placeholder : 'normal'
+    mods : { theme : 'normal', size : 'm', type : 'search' },
+    placeholder : 'Поисковая форма'
 }
             </code></pre>
         </td>
@@ -228,19 +223,17 @@ _В скобках указано соответствие атрибута ти
 
 ### Состояния
 
-#### Не активен `_disabled`
+#### Неактивен `_disabled`
 
-В состоянии блока "не активен" поле ввода и все его элементы становятся недоступными для действий пользователя.
+В состоянии блока «неактивен» поле ввода и все его элементы становятся недоступными для действий пользователя.
 
-Если модификатор `disabled` не выбран, инпут по умолчанию активен.
-
-Реализован в темах `simple` и `normal`.
+Если модификатор `_disabled` не установлен, инпут по умолчанию активен.
 
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', disabled : true },
-    val : 'disabled'
+    mods : { theme : 'normal', size : 'm', disabled : true },
+    val : 'Неактивено'
 }
 ```
 
@@ -248,112 +241,38 @@ _В скобках указано соответствие атрибута ти
 
 В состоянии блока `_focused` со значением `true` поле ввода находится в фокусе.
 
-Реализован в темах `simple` и `normal`.
-
-```
+```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', focused : true },
-    val : 'focused'
+    mods : { theme : 'normal', size : 'm', focused : true },
+    val : 'В фокусе'
 }
 ```
 
 ### Очистка содержимого `_has-clear`
 
-Модификатор `_has-clear` в значении `true` отображает в инпуте крестик для очистки содержимого (элемент `__clear`).
+Модификатор `_has-clear` в значении `_true` отображает в инпуте крестик для очистки содержимого (элемент `__clear`).
 
-Реализован в темах `simple` и `normal`.
-
-<table>
-    <tr>
-        <th>default</th>
-        <th>simple</th>
-        <th>normal</th>
-    </tr>
-    <tr>
-        <td>
-            <pre><code>
+```bemjson
 {
     block : 'input',
-    mods : { 'has-clear' : true },
-    placeholder : 'default'
+    mods : { theme : 'normal', size : 'm', 'has-clear' : true },
+    placeholder : 'Добавлен крестик для очистки содержимого'
 }
-            </code></pre>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'input',
-    mods : { theme : 'simple', 'has-clear' : true },
-    placeholder : 'simple'
-}
-            </code></pre>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'input',
-    mods : { theme : 'normal', 'has-clear' : true },
-    placeholder : 'normal'
-}
-            </code></pre>
-        </td>
-    </tr>
-</table>
-
----
-**NB** Модификатор `has-clear` не используется для типа инпута – поисковое поле (`_search`) в теме *simple*.
-
----
+```
 
 ### Метка над полем ввода `_has-label`
 
-Модификатор `_has-label` в значении `true` отображает в метку над полем ввода (элемент `__label`).
+Модификатор `_has-label` в значении `_true` указывает на наличие метки над полем ввода (элемент `__label`).
 
-Реализован в темах `simple` и `normal`.
-
-<table>
-    <tr>
-        <th>default</th>
-        <th>simple</th>
-        <th>normal</th>
-    </tr>
-    <tr>
-        <td>
-            <pre><code>
+```bemjson
 {
     block : 'input',
-    mods : { 'has-clear' : true },
+    mods : { theme : 'normal', size : 'm', 'has-label' : true },
     label : 'Label',
-    placeholder : 'default'
+    placeholder : 'Метка над полем ввода'
 }
-            </code></pre>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'input',
-    mods : { theme : 'simple', 'has-label' : true },
-    label : 'Label',
-    placeholder : 'simple'
-}
-            </code></pre>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'input',
-    mods : {
-        theme : 'normal',
-        'has-label' : true
-    },
-    label : 'Label',
-    placeholder : 'normal'
-}
-            </code></pre>
-        </td>
-    </tr>
-</table>
+```
 
 ## Элементы блока
 
@@ -367,15 +286,15 @@ _В скобках указано соответствие атрибута ти
 
 ### __clear
 
-Кнопка очистки содержимого инпута ("крестик").
+Кнопка очистки содержимого инпута («крестик»).
 
-Если применить модификатор блока `has-clear` со значением `false`, то "крестик" при вводе текста отображаться не будет.
+По умолчанию модификатор `_has-label` имеет значение `_false`, при котором крестик не отображается. Для отображения крестика нужно установить модификатор в значение `_true`.
 
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', 'has-clear' : true },
-    label : 'label'
+    mods : { theme : 'normal', size: 'm', 'has-clear' : true },
+    placeholder : 'Добавлен крестик для очистки содержимого'
 }
 ```
 
@@ -383,22 +302,23 @@ _В скобках указано соответствие атрибута ти
 
 Обязательный элемент.
 
-BEMHTML- или BH-шаблоном преобразуется в нативный контрол `<input атрибуты>`.
+BEMHTML- или BH-шаблоном преобразуется в нативный контрол `<input>`.
 
 ### __label
 
 Метка над полем ввода.
-
-Элемент добавляет метку полю ввода (преобразуется в HTML-тэг `<label>`). Связь метки с тэгом `<input>` устанавливается с помощью идентификатора `id`, который может генерироваться по умолчанию случайным образом. При щелчке кнопкой мыши на метку в поле ввода будет установлен фокус.
+Элемент добавляет метку с тегом `<label>` над полем ввода. Связь метки с тэгом `<input>` устанавливается с помощью идентификатора `id`, который может генерироваться автоматически.
+При щелчке кнопкой мыши на метку в поле ввода будет установлен фокус.
 
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', 'has-label' : true },
-    label : 'label'
+    mods : { theme : 'normal', size : 'm', 'has-label' : true },
+    label : 'Метка над полем ввода'
 }
 ```
 
 ## Зависимости блока
 
-Блок `input` зависит от блока `base-control`, предоставляющего общий API для контролов, а также от блока `i-bem__dom`.
+* `base-control`
+* `i-bem__dom`

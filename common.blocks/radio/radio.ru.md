@@ -55,8 +55,8 @@
 ```bemjson
 {
     block : 'radio',
-    name : 'radio-simple1',
-    text : 'Lonely switch1'
+    name : 'radio-simple',
+    text : 'Lonely switch'
 }
 ```
 
@@ -66,8 +66,8 @@
 {
     block : 'radio',
     mods : { theme : 'simple' },
-    name : 'radio-simple1',
-    text : 'Lonely switch2'
+    name : 'radio-simple',
+    text : 'Lonely switch'
 }
 ```
 
@@ -77,8 +77,8 @@
 {
     block : 'radio',
     mods : { theme : 'normal', size : 'l' },
-    name : 'radio-normal1',
-    text : 'Lonely switch3'
+    name : 'radio-normal',
+    text : 'Lonely switch'
 }
 ```
 
@@ -138,8 +138,8 @@
 {
     block : 'radio',
     mods : { theme : 'normal', size : 'l' },
-    name : 'radio-normal1',
-    text : 'Lonely switch1'
+    name : 'radio-normal',
+    text : 'Lonely switch'
 }
             </code></pre>
         </td>
@@ -154,7 +154,7 @@
         size : 'l',
         type : 'button'
     },
-    name : 'radio-normal1',
+    name : 'radio-normal',
     text : 'Lonely switch2'
 }
             </code></pre>
@@ -178,8 +178,8 @@
 {
     block : 'radio',
     mods : { theme : 'normal', size : 'l', disabled : true },
-    name : 'radio-normal1',
-    text : 'Lonely switch1'
+    name : 'radio-normal',
+    text : 'Lonely switch'
 }
 ```
 
@@ -197,8 +197,8 @@
         size : 'l',
         focused : true
     },
-    name : 'radio-normal1',
-    text : 'Lonely switch1'
+    name : 'radio-normal',
+    text : 'Lonely switch'
 }
 ```
 
@@ -209,15 +209,15 @@
 Модификатор устанавливается по:
 
 * щелчку мыши по блоку (при повторных щелчках модификатор сохраняется);
-* нажатию клавиш `Enter` или `Space` (возможность использования клавиши `Enter` зависит от типа и версии браузера), если радиопереключатель находится в фокусе (модификатор `_focused`);
+* нажатию клавиш `Enter` или `Space` (возможность использования клавиши `Enter` зависит от браузера), если радиопереключатель находится в фокусе (модификатор `_focused`);
 * нажатию клавиш стрелок, если фокус установлен на соседний радиопереключатель в радиогруппе или в блоке, содержащем несколько блоков `radio`.
 
 ```bemjson
 {
     block : 'radio',
     mods : { theme : 'normal', size : 'l', checked : true },
-    name : 'radio-normal1',
-    text : 'Lonely switch1'
+    name : 'radio-norma',
+    text : 'Lonely switch'
 }
 ```
 

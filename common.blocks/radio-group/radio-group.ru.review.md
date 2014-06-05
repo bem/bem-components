@@ -18,7 +18,7 @@
     <tr>
         <td>name</td>
         <td><code>String</code></td>
-        <td>Имя радиогруппы. Преобразуется в HTML-атрибут `name` вложенного блока `input`.</td>
+        <td>Имя радиогруппы. Преобразуется в HTML-атрибут <code>name</code> вложенного блока <code>input</code>.</td>
     </tr>
     <tr>
         <td>options</td>
@@ -45,13 +45,27 @@
 
 Наглядно видно на примерах ниже:
 
+#### default
+
+```bemjson
+{
+    block : 'radio-group',
+    name : 'radio-default',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second' }
+    ]
+}
+```
+
+
 #### simple
 
 ```bemjson
 {
     block : 'radio-group',
     mods : { theme : 'simple' },
-    name : 'radio-simple1',
+    name : 'radio-simple',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
@@ -66,7 +80,7 @@
 {
     block : 'radio-group',
     mods : { theme : 'normal', size : 'l' },
-    name : 'radio-normal1',
+    name : 'radio-normal',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
@@ -76,9 +90,9 @@
 
 
 
-### Размеры радиобоксов группы `_size`
+### Размеры переключателей группы `_size`
 
-Задает размер радиобоксов для всех типов радиогрупп. Обязательный модификатор. 
+Задает размер переключателей для всех типов радиогрупп. Обязательный модификатор. 
 
 Реализован только в теме *normal*.
 
@@ -88,7 +102,7 @@
     <tr>
         <th>Размер</th>
         <th>Обычная радиогруппа</th>
-        <th>Кнопочная радиогруппа (`_type_button`)</th>
+        <th>Кнопочная радиогруппа (<code>_type_button</code>)</th>
     </tr>
     <tr>
         <th>s</th>
@@ -112,9 +126,101 @@
 </table>
 
 
+Размеры, на примере темы *normal* с модификатором `_type_button`:
+
+<table>
+    <tr>
+        <th>Размер</th>
+        <th>Пример</th>
+    </tr>
+    <tr>
+        <th>s</th>
+        <td>
+            <pre><code>
+{
+    block : 'radio-group',
+    mods : { 
+        theme : 'normal', 
+        size : 's', 
+        type : 'button' 
+    },
+    name : 'radio-S',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second' }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>m</th>
+        <td>
+            <pre><code>
+{
+    block : 'radio-group',
+    mods : { 
+        theme : 'normal', 
+        size : 'm', 
+        type : 'button' 
+    },
+    name : 'radio-M',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second' }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>l</th>
+        <td>
+            <pre><code>
+{
+    block : 'radio-group',
+    mods : { 
+        theme : 'normal', 
+        size : 'l', 
+        type : 'button' 
+    },
+    name : 'radio-L',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second' }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>xl</th>
+        <td>
+            <pre><code>
+{
+    block : 'radio-group',
+    mods : { 
+        theme : 'normal', 
+        size : 'xl', 
+        type : 'button' 
+    },
+    name : 'radio-XL',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second' }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>
+</table>
+
 ### Тип радиогруппы `_type`
 
-Модификатор `_type` со значением `button` используется для создания кнопочной радиогруппы – блока кнопок-переключателей. 
+Модификатор `_type` может иметь следующие значения:
+
+* `button`. Используется для создания кнопочной радиогруппы – блока кнопок-переключателей;
+* `line`. Используется для создания радиогруппы с выравниванием в строку. После каждого переключателя группы, кроме последнего, автоматически добавляется отступ справа. Размер отступа зависит от значения модификатора `_size`. Реализован только в теме *normal*.
 
 Модификатор реализован во всех темах блока.
 
@@ -131,7 +237,7 @@
 {
     block : 'radio-group',
     mods : { theme : 'normal', size : 'l' },
-    name : 'radio-normal1',
+    name : 'radio-normal',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
@@ -150,7 +256,7 @@
         size : 'l', 
         type : 'button' 
     },
-    name : 'radio-normal1',
+    name : 'radio-button',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
@@ -159,6 +265,26 @@
             </code></pre>
         </td>
     </tr>
+    <tr>
+        <td>Строчная радиогруппа (<code>_type_line</code>)</td>
+        <td>
+            <pre><code>
+{
+    block : 'radio-group',
+    mods : { 
+        theme : 'normal', 
+        size : 'l', 
+        type : 'line' 
+    },
+    name : 'radio-line',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second' }
+    ]
+}
+            </code></pre>
+        </td>
+    </tr>    
 </table>
 
 
@@ -184,7 +310,7 @@
         type : 'button',
         disabled : true 
     },
-    name : 'radio-normal1',
+    name : 'radio-normal',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
@@ -200,6 +326,23 @@
 Модификатор `_focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
 
 Реализован во всех темах блока.
+
+```bemjson
+{
+    block : 'radio-group',
+    mods : { 
+        theme : 'normal', 
+        size : 'l', 
+        type : 'button',
+        focused : true 
+    },
+    name : 'radio-normal',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second' }
+    ]
+}
+```
 
 
 

@@ -60,7 +60,7 @@ The block supports the following themes:
  * simple
  * normal
 
-It a `_theme` modifier is not specified the native representation (`default`) of a control is available.
+It a `_theme` modifier is not specified the native representation (*default*) of a control is available.
 
 Following example demonstrates this:
 
@@ -306,14 +306,8 @@ The `control` element is used to provide native control checkbox functionality.
 
 The `control` element is added to the block on a template engine level.
 
-### `__tick`
+## Block's dependencies
 
-The element is used to display the tick on the checkbox.
-
-There is a vector image of a tick (`background-image`) in svg format .In the CSS property of the element `tick` is a vector image ticks `background-image` in svg format.
-Элемент для отображения галочки в поле чекбокса.
-
-В CSS-свойстве элемента `tick` находится векторное изображение «галочки» `background-image` в формате svg.
-
-
-
+* `i-bem__dom`
+* `base-control`
+* `button`

@@ -23,13 +23,6 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
     },
 
     onSetMod : {
-        'js' : {
-            'inited' : function() {
-                this.__base.apply(this, arguments);
-                this._refocusOnBlur = false;
-            }
-        },
-
         'focused' : {
             'true' : function() {
                 this.__base.apply(this, arguments); // should be called before binds
@@ -77,37 +70,29 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
     },
 
     _onBlur : function() {
-        this._focused = false;
-        if(this._refocusOnBlur) {
-            this._refocusOnBlur = false;
-            this.nextTick(this._focus);
-        } else {
-            this.delMod('focused');
-        }
+        this._inPointerPress || this.__base.apply(this, arguments);
     },
 
     _onPointerPress : function() {
-        this._refocusOnBlur = true;
-        this.nextTick(this._clearRefocusOnBlur);
-
+        this._inPointerPress = true;
         this.hasMod('disabled') ||
             this
                 .bindToDoc('pointerrelease', this._onPointerRelease)
-                .setMod('pressed')
-                .setMod('focused');
-    },
-
-    _clearRefocusOnBlur : function() {
-        this._refocusOnBlur = false;
+                .setMod('pressed');
     },
 
     _onPointerRelease : function(e) {
+        this._inPointerPress = false;
         this.unbindFromDoc('pointerrelease', this._onPointerRelease);
 
-        dom.contains(this.elem('control'), $(e.target)) &&
+        if(dom.contains(this.elem('control'), $(e.target))) {
+            this._focus();
             this
                 ._updateChecked()
                 .emit('click');
+        } else {
+            this._blur();
+        }
 
         this.delMod('pressed');
     },

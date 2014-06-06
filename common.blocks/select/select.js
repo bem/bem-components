@@ -20,6 +20,12 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             'true' : function() {
                 return !this.hasMod('disabled');
             }
+        },
+
+        'focused' : {
+            '' : function() {
+                return !this._inPointerPress;
+            }
         }
     },
 
@@ -199,7 +205,25 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
     },
 
     _onDocPointerPress : function(e) {
-        this._refocusOnBlur = dom.contains(this._popup.domElem, $(e.target));
+        if(this._isEventInPopup(e)) {
+            this._inPointerPress = true;
+            this._button._inPointerPress = true;
+            this.bindToDoc('pointerrelease', this._onDocPointerRelease);
+        }
+    },
+
+    _onDocPointerRelease : function(e) {
+        this._inPointerPress = false;
+        this._button._inPointerPress = false;
+        this.unbindFromDoc('pointerrelease', this._onDocPointerRelease);
+
+        this._isEventInPopup(e)?
+            this._button._focus() :
+            this._button._blur();
+    },
+
+    _isEventInPopup : function(e) {
+        return dom.contains(this._popup.domElem, $(e.target));
     }
 }, /** @lends select */{
     live : function() {

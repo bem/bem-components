@@ -175,7 +175,7 @@
     },
     switcher : {
         block : 'button',
-        mods : { togglable : 'check' },
+        mods : { togglable : 'true' },
         text : 'custom button'
     },
     popup : 'Popup message'

@@ -6,47 +6,51 @@
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
     ],
-    content : [
-        {
-            block : 'link',
-            content : 'Empty link 1'
-        },
-        {
-            block : 'link',
-            url : {
-                block : 'link-content',
-                tag : '',
-                content : '/action'
-            },
-            content : 'url with bemjson'
-        },
-        {
-            block : 'link',
-            url : 'http://yandex.ru',
-            content : 'yandex.ru'
-        },
-        {
-            block : 'link',
-            url : 'http://yandex.com',
-            title : 'One of the largest internet companies in Europe',
-            content : 'yandex.com'
-        },
-        {
-            block : 'link',
-            url : 'http://yandex.com.tr',
-            title : 'One of the largest internet companies in Europe',
-            target : '_blank',
-            content : 'yandex.com.tr'
-        },
-        {
-            block : 'link',
-            mods : { pseudo : true },
-            content : 'Pseudo link'
-        },
-        {
-            block : 'link',
-            tabIndex : -1,
-            content : 'yandex.ru'
-        }
-    ].map(function(l) { return { tag : 'div', content : l } })
+    content : ['default', 'simple', 'normal'].map(function(theme, i) {
+        var content = [
+                { block : 'link', content : 'with no url' },
+                { block : 'link', url : 'http://example.com/', content : 'plain url' },
+                {
+                    block : 'link',
+                    url : {
+                        block : 'link-content',
+                        tag : '',
+                        content : '/action'
+                    },
+                    content : 'bemjson url'
+                },
+                {
+                    block : 'link',
+                    url : 'http://example.com/',
+                    title : 'One of the largest internet companies in Europe',
+                    content : 'with title'
+                },
+                {
+                    block : 'link',
+                    url : 'http://example.com/',
+                    title : 'One of the largest internet companies in Europe',
+                    target : '_blank',
+                    content : 'blank target'
+                },
+                { block : 'link', mods : { pseudo : true }, content : 'pseudo link' },
+                {
+                    block : 'link',
+                    url : 'http://example.com/',
+                    tabIndex : -1,
+                    content : 'out of tab order'
+                }
+            ].map(function(link, j) {
+                link.mods || (link.mods = {});
+                i && (link.mods.theme = theme);
+                return [
+                    j > 0 && { tag : 'br' },
+                    link
+                ]
+            });
+
+        content.unshift({ tag : 'h2', content : theme });
+        i && content.unshift({ tag : 'hr' });
+
+        return content;
+    })
 })

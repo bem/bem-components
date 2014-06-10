@@ -27,7 +27,6 @@
         display: inline-block;
 
         box-sizing: border-box;
-        margin-top: -1px; /* Hack for IE 9+ (any negative value allowed) */
         padding: 0;
         width: 100%;
 
@@ -138,7 +137,7 @@
     &.input_size_s
     {
         font-size: 13px;
-        line-height: 24px;
+        line-height: 15px;
 
         .input__control
         {
@@ -156,7 +155,7 @@
     &.input_size_m
     {
         font-size: 13px;
-        line-height: 28px;
+        line-height: 15px;
 
         .input__control
         {
@@ -191,7 +190,7 @@
     &.input_size_l
     {
         font-size: 15px;
-        line-height: 32px;
+        line-height: 17px;
 
         .input__control
         {
@@ -208,7 +207,7 @@
     &.input_size_xl
     {
         font-size: 18px;
-        line-height: 38px;
+        line-height: 22px;
 
         .input__control
         {

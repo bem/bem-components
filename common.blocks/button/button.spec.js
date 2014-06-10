@@ -16,23 +16,19 @@ describe('button', function() {
     });
 
     describe('focus/blur', function() {
-        it('should be focused on press', function() {
+        it('should be focused on pressrelease on itself', function() {
             button.hasMod('focused').should.be.false;
-            button.domElem.trigger('pointerpress');
+            button.domElem
+                .trigger('pointerpress')
+                .trigger('pointerrelease');
             button.hasMod('focused').should.be.true;
         });
 
-        it('should refocus itself on self click', function(done) {
-            // NOTE: some browsers (at least FF, Safari) trigger blur while button is clicked
-            button.setMod('focused');
-            button.domElem
-                .trigger('pointerpress')
-                .trigger('blur');
-
-            setTimeout(function() {
-                button.hasMod('focused').should.be.true;
-                done();
-            }, 30);
+        it('should not be focused on pressrelease on outside', function() {
+            button.hasMod('focused').should.be.false;
+            button.domElem.trigger('pointerpress');
+            $('body').trigger('pointerrelease');
+            button.hasMod('focused').should.be.false;
         });
     });
 

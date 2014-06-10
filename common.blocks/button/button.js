@@ -4,8 +4,8 @@
 
 modules.define(
     'button',
-    ['i-bem__dom', 'base-control', 'jquery', 'dom', 'functions', 'keyboard__codes'],
-    function(provide, BEMDOM, BaseControl, $, dom, functions, keyCodes) {
+    ['i-bem__dom', 'base-control', 'jquery', 'dom', 'functions', 'keyboard__codes', 'events'],
+    function(provide, BEMDOM, BaseControl, $, dom, functions, keyCodes, events) {
 
 /**
  * @exports
@@ -19,6 +19,16 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
             'true' : function() {
                 return !this.hasMod('disabled') || this.hasMod('togglable');
             }
+        },
+
+        'focused' : {
+            '' : function() {
+                if(this._preventLoseFocus) return false;
+
+                var e = new events.Event('before-blur'); // NOTE: to prevent deleting focused mod from other blocks
+                this.emit(e);
+                return !e.isDefaultPrevented();
+            }
         }
     },
 
@@ -26,7 +36,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                this._refocusOnBlur = false;
+                this._preventLoseFocus = false;
             }
         },
 
@@ -69,7 +79,6 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
      */
     setText : function(text) {
         this.elem('text').text(text);
-
         return this;
     },
 
@@ -77,38 +86,26 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
         this.delMod('focused');
     },
 
-    _onBlur : function() {
-        this._focused = false;
-        if(this._refocusOnBlur) {
-            this._refocusOnBlur = false;
-            this.nextTick(this._focus);
-        } else {
-            this.delMod('focused');
-        }
-    },
-
     _onPointerPress : function() {
-        this._refocusOnBlur = true;
-        this.nextTick(this._clearRefocusOnBlur);
-
+        this._preventLoseFocus = true;
         this.hasMod('disabled') ||
             this
                 .bindToDoc('pointerrelease', this._onPointerRelease)
-                .setMod('pressed')
-                .setMod('focused');
-    },
-
-    _clearRefocusOnBlur : function() {
-        this._refocusOnBlur = false;
+                .setMod('pressed');
     },
 
     _onPointerRelease : function(e) {
+        this._preventLoseFocus = false;
         this.unbindFromDoc('pointerrelease', this._onPointerRelease);
 
-        dom.contains(this.elem('control'), $(e.target)) &&
+        if(dom.contains(this.elem('control'), $(e.target))) {
+            this._focus();
             this
                 ._updateChecked()
                 .emit('click');
+        } else {
+            this._blur();
+        }
 
         this.delMod('pressed');
     },

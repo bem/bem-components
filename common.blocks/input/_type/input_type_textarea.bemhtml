@@ -1,17 +1,15 @@
 block('input').mod('type', 'textarea').tag()('div')
 
-block('input').mod('type', 'textarea').elem('box').tag()('div')
+block('input').mod('type', 'textarea').elem('box').tag()(false)
 
 block('input').mod('type', 'textarea').elem('control')(
     tag()('textarea'),
 
     attrs()(function() {
-        var attrs = applyNext(),
-            input = this._input;
+        var attrs = applyNext();
         delete attrs.value;
-        return this.extend(
-            { rows: input.rows || 10, cols: input.cols || 10 },
-            attrs);
+
+        return attrs;
     }),
 
     content()(function() { return this._input.val })

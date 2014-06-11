@@ -174,7 +174,7 @@ Following example demonstrates this:
   <tr>
     <th align="center">Size/Values</th>
     <th align="center">Font size</th>
-    <th align="center">Button hight</th>
+    <th align="center">Button height</th>
     <th align="center">Example</th>
   </tr>
   <tr>
@@ -366,7 +366,7 @@ Available for all themes of block.
 
 #### `_focused`
 
-If `focused` modifier has a `true` value the button is always focused. You can press the focused button using `Space` or `Enter` buttons on your keyboard. To switch between controls use a `Tab` button.
+If `focused` modifier has a `true` value the button is always focused. You can click the focused button using `Space` button on your keyboard. To switch between controls use a `Tab` button.
 
 Available for all themes of block.
 

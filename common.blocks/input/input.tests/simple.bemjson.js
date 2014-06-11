@@ -30,6 +30,12 @@
             val : 'search',
             placeholder : 'query'
         } },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { type : 'textarea' },
+            val : 'textarea',
+            placeholder : 'placeholder'
+        } },
 
         { tag : 'hr' },
 
@@ -62,6 +68,12 @@
             mods : { theme : 'simple', 'has-clear' : true, type : 'search' },
             val : 'search',
             placeholder : 'query'
+        } },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { theme : 'simple', 'has-clear' : true, type : 'textarea' },
+            val : 'textarea',
+            placeholder : 'placeholder'
         } },
 
         { tag : 'hr' },
@@ -98,6 +110,12 @@
             mods : { theme : 'normal', 'has-clear' : true, size : 'm', type : 'search' },
             val : 'search',
             placeholder : 'query'
+        } },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : { theme : 'normal', 'has-clear' : true, size : 'm', type : 'textarea' },
+            val : 'textarea',
+            placeholder : 'placeholder'
         } },
 
         { tag : 'h3', content : 'label' },

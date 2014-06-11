@@ -1,6 +1,6 @@
 # spin
 
-Блок **spin** визуально иллюстрирует ход выполнения какого-либо процесса. Например, загрузки сайта или медиа-файла.
+Блок `spin` визуально иллюстрирует ход выполнения какого-либо процесса. Например, загрузки сайта или медиа-файла.
 
 Вращается прелоадер при помощи только CSS3-анимации.
 
@@ -8,20 +8,23 @@
 
 ### Темы оформления `_theme`
 
-Обязательный модификатор, так как блок не имеет кастомного состояния.
+Обязательный модификатор, так как блок не имеет нативного состояния контрола.
 
-Блок представлен в темах *simple* и *normal*.
+Блок представлен в следующих темах:
 
-#### simple
+ * simple
+ * normal
+
+**simple**
 
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'simple', size : 's', progress : true }
+    mods : { theme : 'simple', progress : true }
 }
 ```
 
-#### normal
+**normal**
 
 ```bemjson
 {
@@ -32,166 +35,76 @@
 
 ### Размеры `_size`
 
-Обязательный модификатор.
+Задает размер блоку `spin`. Обязательный модификатор.
 
-Для каждой темы доступно пять размеров реализации блока:
+Реализован только в теме *normal*.
+
+Доступно пять размеров реализации блока: **xs**, **s**, **m**, **l**, **xl**.
+
+
 
 <table>
     <tr>
-        <th>Размер</th>
-        <td align="center">xs</td>
-        <td align="center">s</td>
-        <td align="center">m</td>
-        <td align="center">l</td>
-        <td align="center">xl</td>
-    </tr>
-    <tr>
+        <th>Размер<br>блока</th>
         <th>Размер, px</th>
-        <td align="center">16px</td>
-        <td align="center">24px</td>
-        <td align="center">28px</td>
-        <td align="center">32px</td>
-        <td align="center">38px</td>
-    </tr>
-</table>
-
-<table>
-    <tr>
-        <th>Тема/Размер</th>
-        <th>simple</th>
-        <th>normal</th>
+        <th>Реализация</th>
     </tr>
     <tr>
-        <th>xs</th>
+        <th>XS</th>
+        <td>16px</td>
         <td>
             <pre><code>
 {
     block : 'spin',
-    mods : { 
-        theme : 'simple', 
-        size : 'xs', 
-        progress : true 
-    }
-}
-            </code></pre>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'spin',
-    mods : { 
-        theme : 'normal', 
-        size : 'xs', 
-        progress : true 
-    }
+    mods : { theme : 'normal', size : 'xs', progress : true }
 }
             </code></pre>
         </td>
     </tr>
     <tr>
-        <th>s</th>
+        <th>S</th>
+        <td>24px</td>
         <td>
             <pre><code>
 {
     block : 'spin',
-    mods : { 
-        theme : 'simple', 
-        size : 's', 
-        progress : true 
-    }
-}
-            </code></pre>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'spin',
-    mods : { 
-        theme : 'normal', 
-        size : 's', 
-        progress : true 
-    }
+    mods : { theme : 'normal', size : 's', progress : true }
 }
             </code></pre>
         </td>
     </tr>
     <tr>
-        <th>m</th>
+        <th>M</th>
+        <td>28px</td>
         <td>
             <pre><code>
 {
     block : 'spin',
-    mods : { 
-        theme : 'simple', 
-        size : 'm', 
-        progress : true 
-    }
-}
-            </code></pre>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'spin',
-    mods : { 
-        theme : 'normal', 
-        size : 'm', 
-        progress : true 
-    }
+    mods : { theme : 'normal', size : 'm', progress : true }
 }
             </code></pre>
         </td>
     </tr>
     <tr>
-        <th>l</th>
+        <th>L</th>
+        <td>32px</td>
         <td>
             <pre><code>
 {
     block : 'spin',
-    mods : { 
-        theme : 'simple', 
-        size : 'l', 
-        progress : true 
-    }
-}
-            </code></pre>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'spin',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        progress : true 
-    }
+    mods : { theme : 'normal', size : 'l', progress : true }
 }
             </code></pre>
         </td>
     </tr>
     <tr>
-        <th>xl</th>
+        <th>XL</th>
+        <td>38px</td>
         <td>
             <pre><code>
 {
     block : 'spin',
-    mods : { 
-        theme : 'simple', 
-        size : 'xl', 
-        progress : true 
-    }
-}
-            </code></pre>
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'spin',
-    mods : { 
-        theme : 'normal', 
-        size : 'xl', 
-        progress : true 
-    }
+    mods : { theme : 'normal', size : 'xl', progress : true }
 }
             </code></pre>
         </td>
@@ -200,10 +113,6 @@
 
 ### Вращение прелоадера `_progress`
 
-`{ progress : true }`
+Модификатор `_progress` в значении `_true` задает вращение прелоадера и показывает его на странице. Когда прелоадер виден, он крутится.
 
-Модификатор `progress` в значении `true` показывает вращение прелоадера. Когда прелоадер виден, он крутится.
-
-`{ progress : false }`
-
-Модификатор `progress` в значении `false` останавливает прелоадер и скрывает его на странице.
+Модификатор `_progress` в значении `_false` останавливает прелоадер и скрывает его со страницы.

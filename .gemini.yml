@@ -2,16 +2,26 @@ gridUrl: http://ondemand.saucelabs.com/wd/hub
 rootUrl: http://localhost:8000/
 
 browsers:
-- name: firefox
-  version: 29
-- name: firefox
-  version: 28
-#- name: chrome
-#  version: 34
-#- name: opera
-#  version: 12
-#- name: internet explorer
-#  version: 9
+  firefox-v29:
+    browserName: firefox
+    version: 29
+    platform: Linux
+  firefox-v28:
+    browserName: firefox
+    version: 28
+    platform: Linux
+#  chrome-v34:
+#    browserName: chrome
+#    version: 34
+#    platform: Linux
+#  opera-v12:
+#    browserName: opera
+#    version: 12
+#    platform: Windows 7
+#  ie9:
+#    browserName: internet explorer
+#    version: 9
+#    platform: Windows 7
 
 http:
   timeout: 30000

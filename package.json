@@ -30,7 +30,7 @@
     "enb-roole": "0.2.1",
     "enb-bh": "0.1.1",
     "enb-autoprefixer": "0.1.0",
-    "gemini": "^0.3.4",
+    "gemini": "git://github.com/bem/gemini.git#578e9a1e2560310e4d8dd616411741d5666a9e6c",
     "git-hooks": "0.0.6",
     "http-server": "^0.6.1",
     "istanbul": "^0.2.7",

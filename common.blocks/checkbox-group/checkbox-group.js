@@ -45,7 +45,7 @@ provide(BEMDOM.decl(this.name, /** @lends checkbox-group.prototype */{
                     i = 0, checkbox;
 
                 while(checkbox = checkboxes[i++]) {
-                    if(checkbox.setMod('focused').hasMod('focused')) // we need to be sure that radio has got focus
+                    if(checkbox.setMod('focused').hasMod('focused')) // we need to be sure that checkbox has got focus
                         return;
                 }
             },

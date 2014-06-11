@@ -12,7 +12,10 @@ block('select').elem('button')(
                 checked : mods.type !== 'radio' && !!this._checkedOptions.length
             },
             textMaxWidth : this._select.textMaxWidth,
-            content : apply('content')
+            content : [
+                apply('content'),
+                { block : 'icon', mix : { block : 'select', elem : 'tick' } }
+            ]
         });
     })
 )

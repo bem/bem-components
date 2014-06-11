@@ -1,0 +1,19 @@
+.select_theme_normal
+{
+    .select__button
+    {
+        text-align: left;
+    }
+
+    .select__tick
+    {
+        background-image: url(../../theme/_normal/arrow.svg);
+
+        transition: transform 0.1s ease-out;
+    }
+
+    &.select_opened .select__tick
+    {
+        transform: rotate(-180deg);
+    }
+}

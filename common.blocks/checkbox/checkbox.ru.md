@@ -70,38 +70,38 @@
 
 **default**
 
-    ```bemjson
-    {
-        block : 'checkbox',
-        text : 'default',
-        name: 'default',
-        value: '1'
-    }
-    ```
+```bemjson
+{
+    block : 'checkbox',
+    text : 'default',
+    name: 'default',
+    value: '1'
+}
+```
 
 **simple**
 
-    ```bemjson
-    {
-        block : 'checkbox',
-        mods : { theme : 'simple' },
-        text : 'Тема Simple',
-        name: 'simple',
-        value: '2'
-    }
-    ```
+```bemjson
+{
+    block : 'checkbox',
+    mods : { theme : 'simple' },
+    text : 'Тема Simple',
+    name: 'simple',
+    value: '2'
+}
+```
 
 **normal**
 
-    ```bemjson
-    {
-        block : 'checkbox',
-        mods : { theme : 'normal', size : 'm' },
-        text : 'Тема Normal',
-        name: 'normal',
-        value: '3'
-    }
-    ```
+```bemjson
+{
+    block : 'checkbox',
+    mods : { theme : 'normal', size : 'm' },
+    text : 'Тема Normal',
+    name: 'normal',
+    value: '3'
+}
+```
 
 ### Размер `_size`
 

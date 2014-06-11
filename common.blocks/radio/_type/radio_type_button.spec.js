@@ -45,6 +45,19 @@ describe('radio_type_button', function() {
             radioOption.findBlockOn('button').hasMod('disabled').should.be.false;
         });
     });
+
+    describe('focused', function() {
+        it('should set "focused" mod on click', function() {
+            radioOption.domElem.trigger('pointerclick');
+            radioOption.hasMod('focused').should.be.true;
+        });
+
+        it('should not set "focused" mod on click while disabled', function() {
+            radioOption.setMod('disabled');
+            radioOption.domElem.trigger('pointerclick');
+            radioOption.hasMod('focused').should.be.false;
+        });
+    });
 });
 
 provide();

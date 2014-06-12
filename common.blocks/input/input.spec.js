@@ -15,6 +15,12 @@ describe('input', function() {
     });
 
     describe('val', function() {
+        it('should return new value when value changed', function() {
+            input
+                .setVal('blabla')
+                .getVal().should.be.equal('blabla');
+        });
+
         it('should update control elem value when value changed', function() {
             input.setVal('blabla');
             input.elem('control').val().should.be.equal('blabla');

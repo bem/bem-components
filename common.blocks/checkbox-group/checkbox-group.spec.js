@@ -58,12 +58,23 @@ describe('checkbox-group', function() {
         });
 
         it('should not set wrong value', function() {
-            var checkboxes = checkboxGroup.getCheckboxes(),
-                spy = sinon.spy();
+            checkboxGroup.setVal(['val44']);
+            checkboxGroup.getVal().should.be.eql(['val2']);
+        });
+
+        it('should not change "checked" mod on set wrong value', function() {
+            var checkboxes = checkboxGroup.getCheckboxes();
 
             checkboxGroup.setVal(['val44']);
             checkboxes[1].hasMod('checked').should.be.true;
-            checkboxGroup.getVal().should.be.eql(['val2']);
+        });
+
+        it('should not trigger "change" when wrong value is set', function() {
+            var spy = sinon.spy();
+
+            checkboxGroup
+                .on('change', spy)
+                .setVal(['val44']);
             spy.should.not.have.been.called;
         });
     });

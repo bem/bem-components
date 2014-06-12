@@ -61,12 +61,23 @@ describe('radio-group', function() {
         });
 
         it('should not set wrong value', function() {
-            var options = radioGroup.getRadios(),
-                spy = sinon.spy();
+            radioGroup.setVal('val44');
+            radioGroup.getVal().should.be.equal('val2');
+        });
+
+        it('should not change "checked" mod on set wrong value', function() {
+            var options = radioGroup.getRadios();
 
             radioGroup.setVal('val44');
             options[1].hasMod('checked').should.be.true;
-            radioGroup.getVal().should.be.equal('val2');
+        });
+
+        it('should not trigger "change" event on set wrong value', function() {
+            var spy = sinon.spy();
+
+            radioGroup
+                .on('change', spy)
+                .setVal('val44');
             spy.should.not.have.been.called;
         });
     });

@@ -4,12 +4,13 @@ gemini.suite('link', function(root) {
     var linkSelector = '.gemini-test-link';
     root.setUrl('desktop.tests/link/gemini/gemini.html');
 
-    ['default', 'normal', 'simple']
+    ['normal-no-url', 'normal-url', 'normal-pseudo']
         .forEach(function(test) {
-            var thisLinkThemeSelector = linkSelector + '-' + test,
-                thisLinkThemeSelectoriSPseudo = thisLinkThemeSelector + '-pseudo'; 
+            // var thisLinkThemeSelector = linkSelector + '-' + test,
+            //     thisLinkThemeSelectoriSPseudo = thisLinkThemeSelector + '-pseudo'; 
+            var thisLinkThemeSelector = '.' + test;
 
-            gemini.suite('Test_results_when_link_state=link_theme_' + test, function(suite) {
+            gemini.suite(test, function(suite) {
                 suite
                     .setCaptureElements(thisLinkThemeSelector)
                     .before(function(actions, find) {
@@ -19,33 +20,36 @@ gemini.suite('link', function(root) {
                     .capture('plain')
                     .capture('hovered', function(actions) {
                         actions.mouseMove(this.link);
+                        actions.wait(300);
                     })
                     .capture('pressed', function(actions) {
                         actions.mouseDown(this.link);
                     })
                     .capture('focused', function(actions) {
-                        actions.sendKeys(this.link, gemini.TAB);
-                    });
-            });
-
-            gemini.suite('Test_result_when_link_is_pseudo_and_link_theme_' + test , function(suite) {
-                suite
-                    .setCaptureElements(thisLinkThemeSelectoriSPseudo)
-                    .before(function(actions, find) {
-                        this.link = find(thisLinkThemeSelectoriSPseudo);
-                    })
-
-                    .capture('plain')
-                    .capture('hovered', function(actions) {
-                       actions.mouseMove(this.link);
-                    })
-                    .capture('pressed', function(actions) {
-                        actions.mouseDown(this.link);
-                    })
-                    .capture('focused', function(actions) {
-                        actions.sendKeys(this.link, gemini.TAB);
+                        actions.sendKeys(find('.page'), gemini.TAB);
                     });
             });
 
         }); 
+
+    gemini.suite('normal-title', function(suite) {
+        suite
+            .setCaptureElements('.page')
+            .before(function(actions, find) {
+                this.link = find('.normal-title');
+            })
+
+            .capture('plain')
+            .capture('hovered', function(actions) {
+                actions.mouseMove(this.link);
+                actions.wait(5000);
+            })
+            .capture('pressed', function(actions) {
+                actions.mouseDown(this.link);
+            })
+            .capture('focused', function(actions) {
+                actions.sendKeys(this.link, gemini.TAB);
+            });
+            
+    });
 });

@@ -1,0 +1,19 @@
+var gemini = require('gemini');
+
+gemini.suite('spin', function(root) {
+	root.setUrl('desktop.tests/spin/simple/simple.html');
+
+	['gemini-test-spin-xs', 'gemini-test-spin-s', 'gemini-test-spin-m', 'gemini-test-spin-l', 'gemini-test-spin-xl']
+		.forEach(function(test) {
+			var testSize = '.' + test;
+			gemini.suite(test, function(suite) {
+				suite
+				    .setCaptureElements(testSize)
+				    .before(function(actions, find) {
+				        this.link = find(testSize);
+				    })
+
+				    .capture('plain');
+			});
+		});
+});

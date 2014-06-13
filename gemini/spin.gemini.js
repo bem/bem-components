@@ -9,10 +9,6 @@ gemini.suite('spin', function(root) {
 			gemini.suite(test, function(suite) {
 				suite
 				    .setCaptureElements(testSize)
-				    .before(function(actions, find) {
-				        this.link = find(testSize);
-				    })
-
 				    .capture('plain');
 			});
 		});

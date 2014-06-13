@@ -2,7 +2,7 @@ var gemini = require('gemini');
 
 gemini.suite('link', function(root) {
     var linkSelector = '.gemini-test-link';
-    root.setUrl('desktop.tests/link/simple/simple.html');
+    root.setUrl('desktop.tests/link/gemini/gemini.html');
 
     ['default', 'normal', 'simple']
         .forEach(function(test) {

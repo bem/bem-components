@@ -9,99 +9,128 @@
     content : [
 
         { tag : 'h2', content : 'default' },
-        { tag : 'p', content : [
-            {
+        {
+            tag : 'p', content : {
                 block : 'checkbox',
-                text : 'first',
-                cls : 'gemini-test-checkbox-default-enabled'
+                text : 'first'   
             },
-            ' ',
-            {
+            attrs : { style : 'width : 100px;' },
+            cls : 'default-enabled'
+        },
+        {   
+            tag : 'p', content : {
                 block : 'checkbox',
                 mods : { disabled : true },
-                text : 'third',
-                cls : 'gemini-test-checkbox-default-disabled'
+                text : 'second',    
             },
-        ] },
+            attrs : { style : 'width : 100px;' },
+            cls : 'default-disabled'
+        },
+        {
+            tag : 'p', content : {
+                block : 'checkbox',
+                mods : { disabled : true, checked : true },
+                text : 'third',   
+            },
+            attrs : { style : 'width : 100px;' },
+            cls : 'default-disabled-checked'
+        },
 
         { tag : 'hr' },
 
-        
-
-        { tag : 'h3', content : 'normal' },
-        { tag : 'p', content : [
+        { tag : 'h2', content : 'normal' },
+        [
             {
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'm' },
-                val : 1,
-                name : 'r1',
                 text : 'size_m',
-                cls : 'gemini-test-checkbox-normal-size_m-enabled'
+                cls : 'normal-size_m-enabled'
             },
-            ' ',
             {
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'm', disabled : true },
-                val : 3,
-                name : 'r1',
                 text : 'size_m',
-                cls : 'gemini-test-checkbox-normal-size_m-disabled'
+                cls : 'normal-size_m-disabled'
             },
-            ' ',
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm', disabled : true, checked : true },
+                text : 'size_m',
+                cls : 'normal-size_m-disabled-checked'
+            },
             {
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'l' },
-                val : 1,
-                name : 'r1',
                 text : 'size_l',
-                cls : 'gemini-test-checkbox-normal-size_l-enabled'
+                cls : 'normal-size_l-enabled'
             },
-            ' ',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'l' , disabled : true },
-                val : 1,
-                name : 'r1',
+                mods : { theme : 'normal', size : 'l', disabled : true },
                 text : 'size_l',
-                cls : 'gemini-test-checkbox-normal-size_l-disabled'
+                cls : 'normal-size_l-disabled'
+            },
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'l', disabled : true, checked : true },
+                text : 'size_l',
+                cls : 'normal-size_l-disabled-checked'
             }
-        ] },
+        ].map(function(block) {
+            return { 
+                tag : 'p', 
+                content : block 
+            };
+        }),
 
-        { tag : 'h3', content : 'button' },
-        { tag : 'p', content : [
+        { tag : 'hr' },
+
+        { tag : 'h2', content : 'normal-button' },
+        [
             {
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'm', type : 'button' },
-                val : 1,
-                name : 'r1',
                 text : 'first',
-                cls : 'gemini-test-checkbox-normal-button-enabled'
+                mix : [{ block : 'normal-button-enabled' }]
             },
-            '&nbsp;',
             {
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
-                val : 3,
-                name : 'r1',
-                text : 'third',
-                cls : 'gemini-test-checkbox-normal-button-disabled'
+                text : 'second',
+                mix : [{ block : 'normal-button-disabled' }]
             },
-            '&nbsp;',
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm', type : 'button', disabled : true, checked : true },
+                text : 'third',
+                mix : [{ block : 'normal-button-disabled-checked' }]
+            },
             {
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'm', type : 'button' },
                 text : 'icon',
                 icon : { block : 'icon', mods : { social : 'twitter' } },
-                cls : 'gemini-test-checkbox-normal-button-icon-enabled'
+                mix : [{ block : 'normal-button-icon-enabled' }]
             },
-            '&nbsp;',
             {
                 block : 'checkbox',
                 mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
                 text : 'icon',
                 icon : { block : 'icon', mods : { social : 'twitter' } },
-                cls : 'gemini-test-checkbox-normal-button-icon-disabled'
+                mix : [{ block : 'normal-button-icon-disabled' }]
+            },
+            {
+                block : 'checkbox',
+                mods : { theme : 'normal', size : 'm', type : 'button', disabled : true, checked : true },
+                text : 'icon',
+                icon : { block : 'icon', mods : { social : 'twitter' } },
+                mix : [{ block : 'normal-button-icon-disabled-checked' }]
             }
-        ] }
+        ].map(function(block) {
+            return { 
+                tag : 'p', 
+                content : block 
+            };
+        }) 
     ]
 });

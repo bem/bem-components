@@ -1,54 +1,12 @@
-var exampleSets = require('enb-bem-examples');
+var exampleSets = require('enb-bem-examples'),
+    docSets = require('enb-bem-docs');
 
 module.exports = function(config) {
-    var docTools = require('enb-bem-docs')(config);
-    var examples = exampleSets.create('examples', config);
-    var tests = exampleSets.create('tests', config);
+    var docs = docSets.create('docs', config),
+        examples = exampleSets.create('examples', config),
+        tests = exampleSets.create('tests', config);
 
     config.setLanguages(['en', 'ru']);
-
-    docTools.configureSets({
-        sets : {
-            destPath : 'desktop.sets',
-            levels : getDesktopLibLevels(config)
-        },
-        jsdocs : {
-            _suffixes : ['vanilla.js', 'node.js', 'browser.js', 'js']
-        },
-        examples : {
-            levels : getDesktopLevels(config),
-            _sublevelSuffixes : ['tests'],
-            _techs : [
-                [require('enb/techs/file-copy'), {
-                    sourceTarget : '?.bemjson.js',
-                    destTarget : '_?.bemjson.js'
-                }],
-                require('enb-roole/techs/css-roole'),
-                [require('enb-modules/techs/prepend-modules'), {
-                    target : '?.js',
-                    source : '?.pre.js'
-                }],
-                [require('enb-diverse-js/techs/browser-js'), {
-                    target : '?.pre.js'
-                }],
-                [require('enb-bemxjst/techs/bemhtml'), { devMode : false }],
-                [require('enb/techs/i18n-merge-keysets'), { lang : 'all' }],
-                [require('enb/techs/i18n-merge-keysets'), { lang : '{lang}' }],
-                [require('enb/techs/i18n-lang-js'), { lang : 'all' }],
-                [require('enb/techs/i18n-lang-js'), { lang : '{lang}' }],
-                [require('enb/techs/html-from-bemjson-i18n'), { lang : '{lang}' }],
-                [require('enb/techs/file-copy'), { sourceTarget : '?.{lang}.html', destTarget : '_?.{lang}.html' }]
-            ],
-            _targets : [
-                '?.css', '?.js', '_?.bemjson.js',
-                '?.bemhtml.js', '_?.{lang}.html'
-            ],
-            _optimizeTargets : [
-                '?.css',
-                '?.js'
-            ]
-        }
-    });
 
     examples.build({
         destPath : 'desktop.examples',
@@ -60,6 +18,12 @@ module.exports = function(config) {
         destPath : 'desktop.tests',
         levels : getDesktopLibLevels(config),
         suffixes : ['tests']
+    });
+
+    docs.build({
+        destPath : 'desktop.docs',
+        levels : getDesktopLibLevels(config),
+        examplesPattern : 'desktop.examples/?'
     });
 
     examples.build({
@@ -74,6 +38,12 @@ module.exports = function(config) {
         suffixes : ['tests']
     });
 
+    docs.build({
+        destPath : 'touch-pad.docs',
+        levels : getTouchPadLibLevels(config),
+        examplesPattern : 'touch-pad.examples/?'
+    });
+
     examples.build({
         destPath : 'touch-phone.examples',
         levels : getTouchPhoneLibLevels(config),
@@ -84,6 +54,12 @@ module.exports = function(config) {
         destPath : 'touch-phone.tests',
         levels : getTouchPhoneLibLevels(config),
         suffixes : ['tests']
+    });
+
+    docs.build({
+        destPath : 'touch-phone.docs',
+        levels : getTouchPhoneLibLevels(config),
+        examplesPattern : 'touch-phone.examples/?'
     });
 
     config.nodes(['*.pages/*', '*.tests/*/*', '*.examples/*/*'], function(nodeConfig) {

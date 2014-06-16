@@ -1,6 +1,10 @@
-modules.define('button', function(provide, Button) {
+/** @module base-control */
 
-provide(Button.decl({
+modules.define(
+    'base-control',
+    function(provide, BaseControl) {
+
+provide(BaseControl.decl({
     beforeSetMod : {
         'hovered' : {
             'true' : function() {

@@ -9,8 +9,9 @@ env:
     - ISTANBUL_COVERAGE: yes
 
 branches:
-  only:
-    - v2
+  except:
+    - v1
+    - master
 
 after_success:
   - npm install coveralls

@@ -20,9 +20,9 @@ matrix:
   fast_finish: true
 
 branches:
-  only:
-    - v2
-    - feature/gemini
+  except:
+    - v1
+    - master
 
 before_script:
   - |

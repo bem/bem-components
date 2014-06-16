@@ -173,8 +173,8 @@
         theme : 'normal',
         disabled : true
     },
-    url : '#'
-    content : '_disabled',
+    url : '#',
+    content : '_disabled'
 }
 ```
 

@@ -40,22 +40,6 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
             }
         },
 
-        'focused' : {
-            'true' : function() {
-                this.__base.apply(this, arguments); // should be called before binds
-                this
-                    .bindToWin('unload', this._onUnload) // TODO: WTF???
-                    .bindTo('control', 'keydown', this._onKeyDown);
-            },
-
-            '' : function() {
-                this
-                    .unbindFromWin('unload', this._onUnload)
-                    .unbindFrom('control', 'keydown', this._onKeyDown)
-                    .__base.apply(this, arguments);
-            }
-        },
-
         'disabled' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
@@ -80,6 +64,20 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
     setText : function(text) {
         this.elem('text').text(text);
         return this;
+    },
+
+    _onFocus : function() {
+        this.__base.apply(this, arguments);
+        this
+            .bindToWin('unload', this._onUnload) // TODO: WTF???
+            .bindTo('control', 'keydown', this._onKeyDown);
+    },
+
+    _onBlur : function() {
+        this
+            .unbindFromWin('unload', this._onUnload)
+            .unbindFrom('control', 'keydown', this._onKeyDown)
+            .__base.apply(this, arguments);
     },
 
     _onUnload : function() {

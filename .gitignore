@@ -17,6 +17,7 @@ libs
 /coverage.json
 /gemini-report/
 
+/*.docs
 /*.examples
 /*.specs
 /*.tests

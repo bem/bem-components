@@ -15,6 +15,7 @@ libs
 /coverage
 /coverage.json
 
+/*.docs
 /*.examples
 /*.specs
 /*.tests

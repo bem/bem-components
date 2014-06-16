@@ -30,7 +30,7 @@
     "bower-npm-install": "~0.5.4",
     "istanbul": "^0.2.7",
     "enb": "0.13.4",
-    "enb-bem-docs": "git://github.com/andrewblond/enb-bem-docs.git#3cd156684d92af632d9cf6337b023fa2c29c0587",
+    "enb-bem-docs": "0.1.2",
     "enb-bem-examples": "0.2.3",
     "enb-modules": "0.1.2",
     "enb-diverse-js": "0.1.0",

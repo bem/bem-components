@@ -5,13 +5,13 @@ gemini.suite('checkbox', function(root) {
     //need cls for block with type button and icon    
     ['default', 'normal-size_m', /*'normal-button', 'normal-button-icon',*/ 'normal-size_l']
         .forEach(function(test) {
-            var checkboxSelector = '.gemini-test-checkbox-' + test,
+            var checkboxSelector = '.' + test,
                 checkboxEnabledSelector = checkboxSelector + '-enabled',
                 checkboxDisabledSelector = checkboxSelector + '-disabled';
 
             gemini.suite(test + '-enabled', function(suite) {
                 suite
-                    .setCaptureElements(checkboxEnabledSelector)
+                    .setCaptureElements(checkboxEnabledSelector, checkboxEnabledSelector + ' .checkbox__box')
                     .before(function(actions, find) {
                         this.checkbox = find(checkboxEnabledSelector);
                     })
@@ -19,10 +19,11 @@ gemini.suite('checkbox', function(root) {
                     .capture('checked', function(actions) {
                         actions.click(this.checkbox);
                     })
+                    .capture('focused-checked')
                     .capture('unchecked', function(actions) {
                         actions.click(this.checkbox);
                     })
-                    .capture('focused');
+                    .capture('focused-unchecked');
             });
 
             gemini.suite(test + '-disabled', function(suite) {

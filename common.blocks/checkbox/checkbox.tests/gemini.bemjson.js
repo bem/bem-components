@@ -13,14 +13,14 @@
             {
                 block : 'checkbox',
                 text : 'first',
-                cls : 'gemini-test-checkbox-default-enabled'
+                cls : 'default-enabled'
             },
             ' ',
             {
                 block : 'checkbox',
                 mods : { disabled : true },
                 text : 'third',
-                cls : 'gemini-test-checkbox-default-disabled'
+                cls : 'default-disabled'
             },
         ] },
 
@@ -36,7 +36,7 @@
                 val : 1,
                 name : 'r1',
                 text : 'size_m',
-                cls : 'gemini-test-checkbox-normal-size_m-enabled'
+                cls : 'normal-size_m-enabled'
             },
             ' ',
             {
@@ -45,7 +45,7 @@
                 val : 3,
                 name : 'r1',
                 text : 'size_m',
-                cls : 'gemini-test-checkbox-normal-size_m-disabled'
+                cls : 'normal-size_m-disabled'
             },
             ' ',
             {
@@ -54,7 +54,7 @@
                 val : 1,
                 name : 'r1',
                 text : 'size_l',
-                cls : 'gemini-test-checkbox-normal-size_l-enabled'
+                cls : 'normal-size_l-enabled'
             },
             ' ',
             {
@@ -63,7 +63,7 @@
                 val : 1,
                 name : 'r1',
                 text : 'size_l',
-                cls : 'gemini-test-checkbox-normal-size_l-disabled'
+                cls : 'normal-size_l-disabled'
             }
         ] },
 
@@ -75,7 +75,7 @@
                 val : 1,
                 name : 'r1',
                 text : 'first',
-                cls : 'gemini-test-checkbox-normal-button-enabled'
+                cls : 'normal-button-enabled'
             },
             '&nbsp;',
             {
@@ -84,7 +84,7 @@
                 val : 3,
                 name : 'r1',
                 text : 'third',
-                cls : 'gemini-test-checkbox-normal-button-disabled'
+                cls : 'normal-button-disabled'
             },
             '&nbsp;',
             {
@@ -92,7 +92,7 @@
                 mods : { theme : 'normal', size : 'm', type : 'button' },
                 text : 'icon',
                 icon : { block : 'icon', mods : { social : 'twitter' } },
-                cls : 'gemini-test-checkbox-normal-button-icon-enabled'
+                cls : 'normal-button-icon-enabled'
             },
             '&nbsp;',
             {
@@ -100,7 +100,7 @@
                 mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
                 text : 'icon',
                 icon : { block : 'icon', mods : { social : 'twitter' } },
-                cls : 'gemini-test-checkbox-normal-button-icon-disabled'
+                cls : 'normal-button-icon-disabled'
             }
         ] }
     ]

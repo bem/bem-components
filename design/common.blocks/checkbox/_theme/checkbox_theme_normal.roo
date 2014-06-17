@@ -9,7 +9,7 @@
 
     .checkbox__control
     {
-        position: absolute;
+        position: relative;
         z-index: -1;
 
         margin: 0;
@@ -23,19 +23,24 @@
 
         display: inline-block;
 
-        border: 0;
         border-radius: 3px;
-        background: #fff;
-        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.2);
 
-        &::after
+        &:before
         {
-            visibility: hidden;
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            bottom: 1px;
+            left: 1px;
 
-            content: '\00A0';
+            content: '';
+
+            border-radius: 2px;
+            background: #fff;
         }
 
-        &::before
+        &:after
         {
             position: absolute;
             top: -5px;
@@ -62,9 +67,9 @@
 
             width: 14px;
             height: 14px;
-            margin-right: 6px;
+            margin-right: 5px;
 
-            &::before
+            &:after
             {
                 width: 15px;
                 height: 15px;
@@ -84,9 +89,9 @@
 
             width: 17px;
             height: 17px;
-            margin-right: 8px;
+            margin-right: 7px;
 
-            &::before
+            &:after
             {
                 width: 18px;
                 height: 18px;
@@ -100,10 +105,15 @@
     {
         .checkbox__box
         {
-            background: #ffeba0;
-            box-shadow: inset 0 0 0 1px rgba(153, 122, 0, 0.5);
+            background: rgba(153, 122, 0, 0.5);
 
-            &::before {
+            &:before
+            {
+                background: #ffeba0;
+            }
+
+            &:after
+            {
                 opacity: 1;
                 transform: translateY(0px);
             }
@@ -114,8 +124,7 @@
     {
         .checkbox__box
         {
-            box-shadow: inset 0 0 0 1px rgba(178, 142, 0, 0.6),
-                        0 0 10px #fc0;
+            box-shadow: 0 0 10px #fc0;
         }
     }
 
@@ -128,18 +137,26 @@
         .checkbox__box
         {
             background: rgba(0, 0, 0, 0.08);
-            box-shadow: none;
+
+            &:before
+            {
+                display: none;
+            }
         }
 
-        &.checkbox_checked
+        &.checkbox_checked .checkbox__box:after
         {
-            .checkbox__box
-            {
-                &::before
-                {
-                    opacity: 0.4;
-                }
-            }
+            opacity: 0.4;
+        }
+    }
+
+    &.checkbox_type_button
+    {
+        display: inline-block;
+
+        .checkbox__control
+        {
+            position: absolute;
         }
     }
 

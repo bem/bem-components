@@ -8,28 +8,22 @@
     content : [
         { tag : 'h2', content : 'image' },
         {
-            block : 'test',
-            content : {
-                block : 'image',
-                url : '../../../test.blocks/icon/_action/download.svg',
-                alt : 'Download',
-                title : 'Download image',
-                cls : 'image-nosize'
-            }
+            block : 'image',
+            url : '../../../test.blocks/icon/_action/download.svg',
+            alt : 'Download',
+            title : 'Download image',
+            cls : 'image-nosize'
         },
         { tag : 'br' },
         { tag : 'h3', content : 'with specified size' },
         {
-            block : 'test',
-            content : {
-                block : 'image',
-                url : '../../../test.blocks/icon/_action/download.svg',
-                width : 50,
-                height : 50,
-                alt : 'Download',
-                title : 'Download image',
-                cls : 'image-size'
-            }
+            block : 'image',
+            url : '../../../test.blocks/icon/_action/download.svg',
+            width : 50,
+            height : 50,
+            alt : 'Download',
+            title : 'Download image',
+            cls : 'image-size'
         }
     ]
 });

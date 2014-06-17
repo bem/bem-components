@@ -1,17 +1,40 @@
-var exampleSets = require('enb-bem-examples'),
-    docSets = require('enb-bem-docs');
+var DEFAULT_LANGS = ['ru', 'en'],
+    fs = require('fs'),
+    path = require('path'),
+    docSets = require('enb-bem-docs'),
+    exampleSets = require('enb-bem-examples'),
+    levels = require('enb/techs/levels'),
+    provide = require('enb/techs/file-provider'),
+    bemdeclFromDepsByTech = require('enb/techs/bemdecl-from-deps-by-tech'),
+    bemdecl = require('enb/techs/bemdecl-from-bemjson'),
+    deps = require('enb/techs/deps-old'),
+    files = require('enb/techs/files'),
+    mergeBemdecl = require('enb/techs/bemdecl-merge'),
+    css = require('enb-roole/techs/css-roole'),
+    autoprefixer = require('enb-autoprefixer/techs/css-autoprefixer'),
+    js = require('enb-diverse-js/techs/browser-js'),
+    ym = require('enb-modules/techs/prepend-modules'),
+    bemhtml = require('enb-bemxjst/techs/bemhtml-old'),
+    bemtree = require('enb-bemxjst/techs/bemtree-old'),
+    html = require('enb-bemxjst/techs/html-from-bemjson'),
+    bh = require('enb-bh/techs/bh-server'),
+    bhHtml = require('enb-bh/techs/html-from-bemjson'),
+    copyFile = require('enb/techs/file-copy'),
+    mergeFiles = require('enb/techs/file-merge'),
+    borschik = require('enb-borschik/techs/borschik');
 
 module.exports = function(config) {
     var docs = docSets.create('docs', config),
         examples = exampleSets.create('examples', config),
-        tests = exampleSets.create('tests', config);
+        tests = exampleSets.create('tests', config),
+        langs = process.env.BEM_I18N_LANGS;
 
-    config.setLanguages(['en', 'ru']);
+    config.setLanguages(langs? langs.split(' ') : [].concat(DEFAULT_LANGS));
 
     examples.build({
         destPath : 'desktop.examples',
         levels : getDesktopLibLevels(config),
-        inlineBemjson : true
+        inlineBemjson : false
     });
 
     tests.build({
@@ -23,13 +46,13 @@ module.exports = function(config) {
     docs.build({
         destPath : 'desktop.docs',
         levels : getDesktopLibLevels(config),
-        examplesPattern : 'desktop.examples/?'
+        examplesPattern : 'desktop.tests/?'
     });
 
     examples.build({
         destPath : 'touch-pad.examples',
         levels : getTouchPadLibLevels(config),
-        inlineBemjson : true
+        inlineBemjson : false
     });
 
     tests.build({
@@ -41,13 +64,13 @@ module.exports = function(config) {
     docs.build({
         destPath : 'touch-pad.docs',
         levels : getTouchPadLibLevels(config),
-        examplesPattern : 'touch-pad.examples/?'
+        examplesPattern : 'touch-pad.tests/?'
     });
 
     examples.build({
         destPath : 'touch-phone.examples',
         levels : getTouchPhoneLibLevels(config),
-        inlineBemjson : true
+        inlineBemjson : false
     });
 
     tests.build({
@@ -59,54 +82,114 @@ module.exports = function(config) {
     docs.build({
         destPath : 'touch-phone.docs',
         levels : getTouchPhoneLibLevels(config),
-        examplesPattern : 'touch-phone.examples/?'
+        examplesPattern : 'touch-phone.tests/?'
     });
 
-    config.nodes(['*.pages/*', '*.tests/*/*', '*.examples/*/*'], function(nodeConfig) {
-        nodeConfig.addTechs([
-            [require('enb/techs/file-provider'), { target : '?.bemjson.js' }],
-            [require('enb/techs/bemdecl-from-bemjson')],
-            [require('enb/techs/bemdecl-from-deps-by-tech'), {
-                sourceTech : 'js',
-                destTech : 'bemhtml',
-                target : '?.bemhtml.bemdecl.js'
-            }],
-            [require('enb/techs/deps')],
-            [require('enb/techs/files')],
-            [require('enb/techs/files'), {
-                depsTarget : '?.bemhtml.bemdecl.js',
-                filesTarget : '?.bemhtml.files',
-                dirsTarget : '?.bemhtml.dirs'
-            }],
-            [require('enb-roole/techs/css-roole'), { target : '?.noprefix.css' }],
-            [require('enb-diverse-js/techs/browser-js')],
-            [require('enb-bemxjst/techs/bemhtml-old'), { devMode : false }],
-            [require('enb-bh/techs/bh-server')],
-            [require('enb-bemxjst/techs/bemhtml-old'), {
-                target : '?.browser.bemhtml.js',
-                filesTraget : '?.bemhtml.files',
-                devMode : false
-            }],
-            [require('enb/techs/file-merge'), {
-                sources : ['?.browser.bemhtml.js', '?.browser.js'],
-                target : '?.pre.js'
-            }],
-            [require('enb-modules/techs/prepend-modules'), {
-                source : '?.pre.js',
-                target : '?.js'
-            }],
-            [require('enb-bemxjst/techs/html-from-bemjson')],
-            [require('enb-bh/techs/html-from-bemjson'), { destTarget : '?.bh.html' }]
-        ]);
+    config.nodes(['desktop.examples/*/*', 'desktop.pages/*'], function(nodeConfig) {
+        var nodeDir = nodeConfig.getNodePath(),
+            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
+            sublevelDir = path.join(nodeDir, 'blocks'),
+            extendedLevels = [].concat(getDesktopLevels(config));
 
-        nodeConfig.addTargets([
-            '_?.css', '_?.js', '?.html', '?.bh.html'
-        ]);
+        if(fs.existsSync(blockSublevelDir)) {
+            extendedLevels.push(blockSublevelDir);
+        }
+
+        if(fs.existsSync(sublevelDir)) {
+            extendedLevels.push(sublevelDir);
+        }
+
+        nodeConfig.addTech([levels, { levels : extendedLevels }]);
+    });
+
+    config.nodes(['desktop.tests/*/*'], function(nodeConfig) {
+        var nodeDir = nodeConfig.getNodePath(),
+            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
+            sublevelDir = path.join(nodeDir, 'blocks'),
+            extendedLevels = [].concat(getDesktopTestLevels(config));
+
+        if(fs.existsSync(blockSublevelDir)) {
+            extendedLevels.push(blockSublevelDir);
+        }
+
+        if(fs.existsSync(sublevelDir)) {
+            extendedLevels.push(sublevelDir);
+        }
+
+        nodeConfig.addTech([levels, { levels : extendedLevels }]);
+    });
+
+    config.nodes(['touch-pad.examples/*/*', 'touch-pad.pages/*'], function(nodeConfig) {
+        var nodeDir = nodeConfig.getNodePath(),
+            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
+            sublevelDir = path.join(nodeDir, 'blocks'),
+            extendedLevels = [].concat(getTouchPadLevels(config));
+
+        if(fs.existsSync(blockSublevelDir)) {
+            extendedLevels.push(blockSublevelDir);
+        }
+
+        if(fs.existsSync(sublevelDir)) {
+            extendedLevels.push(sublevelDir);
+        }
+
+        nodeConfig.addTech([levels, { levels : extendedLevels }]);
+    });
+
+    config.nodes(['touch-pad.tests/*/*'], function(nodeConfig) {
+        var nodeDir = nodeConfig.getNodePath(),
+            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
+            sublevelDir = path.join(nodeDir, 'blocks'),
+            extendedLevels = [].concat(getTouchPadTestLevels(config));
+
+        if(fs.existsSync(blockSublevelDir)) {
+            extendedLevels.push(blockSublevelDir);
+        }
+
+        if(fs.existsSync(sublevelDir)) {
+            extendedLevels.push(sublevelDir);
+        }
+
+        nodeConfig.addTech([levels, { levels : extendedLevels }]);
+    });
+
+    config.nodes(['touch-phone.examples/*/*', 'touch-phone.pages/*'], function(nodeConfig) {
+        var nodeDir = nodeConfig.getNodePath(),
+            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
+            sublevelDir = path.join(nodeDir, 'blocks'),
+            extendedLevels = [].concat(getTouchPhoneLevels(config));
+
+        if(fs.existsSync(blockSublevelDir)) {
+            extendedLevels.push(blockSublevelDir);
+        }
+
+        if(fs.existsSync(sublevelDir)) {
+            extendedLevels.push(sublevelDir);
+        }
+
+        nodeConfig.addTech([levels, { levels : extendedLevels }]);
+    });
+
+    config.nodes(['touch-phone.tests/*/*'], function(nodeConfig) {
+        var nodeDir = nodeConfig.getNodePath(),
+            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
+            sublevelDir = path.join(nodeDir, 'blocks'),
+            extendedLevels = [].concat(getTouchPhoneTestLevels(config));
+
+        if(fs.existsSync(blockSublevelDir)) {
+            extendedLevels.push(blockSublevelDir);
+        }
+
+        if(fs.existsSync(sublevelDir)) {
+            extendedLevels.push(sublevelDir);
+        }
+
+        nodeConfig.addTech([levels, { levels : extendedLevels }]);
     });
 
     config.nodes(['desktop.pages/*', 'desktop.tests/*/*', 'desktop.examples/*/*'], function(nodeConfig) {
         nodeConfig.addTechs([
-            [require('enb-autoprefixer/techs/css-autoprefixer'), {
+            [autoprefixer, {
                 sourceTarget : '?.noprefix.css',
                 destTarget : '?.css',
                 browserSupport : getDesktopBrowsers()
@@ -116,7 +199,7 @@ module.exports = function(config) {
 
     config.nodes(['touch-pad.pages/*', 'touch-pad.tests/*/*', 'touch-pad.examples/*/*'], function(nodeConfig) {
         nodeConfig.addTechs([
-            [require('enb-autoprefixer/techs/css-autoprefixer'), {
+            [autoprefixer, {
                 sourceTarget : '?.noprefix.css',
                 destTarget : '?.css',
                 browserSupport : getTouchPadBrowsers()
@@ -126,7 +209,7 @@ module.exports = function(config) {
 
     config.nodes(['touch-phone.pages/*', 'touch-phone.tests/*/*', 'touch-phone.examples/*/*'], function(nodeConfig) {
         nodeConfig.addTechs([
-            [require('enb-autoprefixer/techs/css-autoprefixer'), {
+            [autoprefixer, {
                 sourceTarget : '?.noprefix.css',
                 destTarget : '?.css',
                 browserSupport : getTouchPhoneBrowsers()
@@ -134,47 +217,80 @@ module.exports = function(config) {
         ]);
     });
 
-    config.nodes(['desktop.pages/*', 'desktop.examples/*/*'], function(nodeConfig) {
+    config.nodes(['*.tests/*/*', '*.examples/*/*', '*.pages/*'], function(nodeConfig) {
+        // Base techs
         nodeConfig.addTechs([
-            [require('enb/techs/levels'), { levels : getDesktopLevels(config) }]
+            [provide, { target : '?.bemjson.js' }],
+            [bemdecl],
+            [deps],
+            [files]
         ]);
-    });
 
-    config.nodes(['touch-pad.pages/*', 'touch-pad.examples/*/*'], function(nodeConfig) {
+        // Client techs
         nodeConfig.addTechs([
-            [require('enb/techs/levels'), { levels : getTouchPadLevels(config) }]
+            [css, { target : '?.noprefix.css' }],
+            [js],
+            [mergeFiles, {
+                target : '?.pre.js',
+                sources : ['?.browser.bemhtml.js', '?.browser.js']
+            }],
+            [ym, {
+                source : '?.pre.js',
+                target : '?.js'
+            }]
         ]);
-    });
 
-    config.nodes(['touch-phone.pages/*', 'touch-phone.examples/*/*'], function(nodeConfig) {
+        // Client BEMHTML
         nodeConfig.addTechs([
-            [require('enb/techs/levels'), { levels : getTouchPhoneLevels(config) }]
+            [bemdeclFromDepsByTech, {
+                target : '?.js.bemhtml.bemdecl.js',
+                sourceTech : 'js',
+                destTech : 'bemhtml'
+            }],
+            [mergeBemdecl, {
+                bemdeclSources : ['?.js.bemhtml.bemdecl.js', '?.bemdecl.js'],
+                bemdeclTarget : '?.bemhtml.bemdecl.js'
+            }],
+
+            [deps, {
+                depsTarget : '?.bemhtml.deps.js',
+                bemdeclTarget : '?.bemhtml.bemdecl.js'
+            }],
+            [files, {
+                depsTarget : '?.bemhtml.deps.js',
+                filesTarget : '?.bemhtml.files',
+                dirsTarget : '?.bemhtml.dirs'
+            }],
+
+            [bemhtml, {
+                target : '?.browser.bemhtml.js',
+                filesTarget : '?.bemhtml.files',
+                devMode : false
+            }]
         ]);
-    });
 
-    config.nodes('desktop.tests/*/*', function(nodeConfig) {
+        // Template techs
         nodeConfig.addTechs([
-            [require('enb/techs/levels'), { levels : getDesktopTestLevels(config) }]
+            [bemhtml],
+            [bh]
         ]);
-    });
 
-    config.nodes('touch-pad.tests/*/*', function(nodeConfig) {
+        // Build htmls
         nodeConfig.addTechs([
-            [require('enb/techs/levels'), { levels : getTouchPadTestLevels(config) }]
+            [html],
+            [bhHtml, { target : '?.bh.html' }]
         ]);
-    });
 
-    config.nodes('touch-phone.tests/*/*', function(nodeConfig) {
-        nodeConfig.addTechs([
-            [require('enb/techs/levels'), { levels : getTouchPhoneTestLevels(config) }]
+        nodeConfig.addTargets([
+            '_?.css', '_?.js', '?.html', '?.bh.html'
         ]);
     });
 
     config.mode('development', function() {
         config.nodes(['*.pages/*', '*.tests/*/*', '*.examples/*/*'], function(nodeConfig) {
             nodeConfig.addTechs([
-                [require('enb/techs/file-copy'), { sourceTarget : '?.css', destTarget : '_?.css' }],
-                [require('enb/techs/file-copy'), { sourceTarget : '?.js', destTarget : '_?.js' }]
+                [copyFile, { source : '?.css', target : '_?.css' }],
+                [copyFile, { source : '?.js', target : '_?.js' }]
             ]);
         });
     });
@@ -182,8 +298,8 @@ module.exports = function(config) {
     config.mode('production', function() {
         config.nodes(['*.pages/*', '*.tests/*/*', '*.examples/*/*'], function(nodeConfig) {
             nodeConfig.addTechs([
-                [require('enb-borschik/techs/borschik'), { sourceTarget : '?.css', destTarget : '_?.css' }],
-                [require('enb-borschik/techs/borschik'), { sourceTarget : '?.js', destTarget : '_?.js' }]
+                [borschik, { source : '?.css', target : '_?.css', freeze : true }],
+                [borschik, { source : '?.js', target : '_?.js', freeze : true }]
             ]);
         });
     });

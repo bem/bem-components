@@ -11,7 +11,7 @@
     block : 'checkbox',
     text : 'Вариант 1',
     name: 'name1',
-    value: '1'
+    val: '1'
 }
 ```
 
@@ -37,14 +37,14 @@
         <td>
             <code>String</code>
         </td>
-        <td>Задает имя чекбокса. Обязательный атрибут. Является частью пары имя / значение (name / value), используемой с целью отправки формы.</td>
+        <td>Задает имя чекбокса. Обязательный атрибут. Является частью пары имя / значение (name / val), используемой с целью отправки формы.</td>
     </tr>
     <tr>
         <td>val</td>
         <td>
             <code>String</code>
         </td>
-        <td>Задает значение чекбокса. Является частью пары имя / значение (name / value), используемой с целью отправки формы.</td>
+        <td>Задает значение чекбокса. Является частью пары имя / значение (name / val), используемой с целью отправки формы.</td>
     </tr>
     <tr>
         <td>icon</td>
@@ -75,7 +75,7 @@
     block : 'checkbox',
     text : 'default',
     name: 'default',
-    value: '1'
+    val: '1'
 }
 ```
 
@@ -87,7 +87,7 @@
     mods : { theme : 'simple' },
     text : 'Тема Simple',
     name: 'simple',
-    value: '2'
+    val: '2'
 }
 ```
 
@@ -99,7 +99,7 @@
     mods : { theme : 'normal', size : 'm' },
     text : 'Тема Normal',
     name: 'normal',
-    value: '3'
+    val: '3'
 }
 ```
 
@@ -132,7 +132,7 @@
     },
     text : 'Размер M',
     name: 'name2',
-    value: '2'
+    val: '2'
 }
             </code></pre>
         </td>
@@ -151,7 +151,7 @@
     },
     text : 'Размер L',
     name: 'name3',
-    value: '3'
+    val: '3'
 }
             </code></pre>
         </td>
@@ -168,7 +168,7 @@
     mods : { theme : 'normal', size : 'm', type : 'button' },
     text : 'Кнопка Normal',
     name: 'button',
-    value: '1'
+    val: '1'
 }
 ```
 

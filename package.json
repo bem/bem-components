@@ -31,7 +31,7 @@
     "istanbul": "^0.2.7",
     "enb": "0.13.4",
     "enb-bem-docs": "0.1.4",
-    "enb-bem-examples": "0.2.4",
+    "enb-bem-examples": "0.2.6",
     "enb-modules": "0.1.2",
     "enb-diverse-js": "0.1.0",
     "enb-bemxjst": "1.2.0",

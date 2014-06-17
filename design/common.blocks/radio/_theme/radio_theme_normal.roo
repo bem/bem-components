@@ -1,5 +1,7 @@
 .radio_theme_normal
 {
+    font-family: Arial, Helvetica, sans-serif;
+
     &:hover
     {
         cursor: pointer;
@@ -41,6 +43,8 @@
 
     &.radio_size_m
     {
+        font-size: 13px;
+
         .radio__box
         {
             line-height: 14px;
@@ -62,6 +66,8 @@
 
     &.radio_size_l
     {
+        font-size: 15px;
+
         .radio__box
         {
             line-height: 17px;

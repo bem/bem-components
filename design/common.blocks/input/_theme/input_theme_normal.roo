@@ -116,6 +116,7 @@
             display: none;
         }
 
+        .input__label,
         .input__box,
         .input__control
         {

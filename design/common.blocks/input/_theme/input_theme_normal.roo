@@ -116,11 +116,12 @@
             display: none;
         }
 
+        .input__label,
         .input__box,
         .input__control
         {
             color: rgba(0, 0, 0, 0.4);
-            cursor: auto;
+            cursor: default;
         }
     }
 

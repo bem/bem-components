@@ -131,6 +131,19 @@
             label : 'label',
             placeholder : 'placeholder'
         } },
+        { tag : 'p', content : {
+            block : 'input',
+            mods : {
+                theme : 'normal',
+                'has-clear' : true,
+                'has-label' : true,
+                size : 'm',
+                disabled : true
+            },
+            val : 'monolithic',
+            label : 'label',
+            placeholder : 'placeholder'
+        } },
         { tag : 'p', content : [
             {
                 block : 'input',

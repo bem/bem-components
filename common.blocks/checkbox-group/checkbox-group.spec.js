@@ -1,18 +1,18 @@
 modules.define(
     'spec',
     ['checkbox-group', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
-    function(provide, RadioGroup, BEMDOM, $, dom, BEMHTML, sinon) {
+    function(provide, CheckboxGroup, BEMDOM, $, dom, BEMHTML, sinon) {
 
 describe('checkbox-group', function() {
     var checkboxGroup;
 
-    function buildRadio(bemjson) {
+    function buildCheckboxGroup(bemjson) {
         return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))
             .bem('checkbox-group');
     }
 
     beforeEach(function() {
-        checkboxGroup = buildRadio({
+        checkboxGroup = buildCheckboxGroup({
             block : 'checkbox-group',
             name : 'name',
             options : [
@@ -35,8 +35,8 @@ describe('checkbox-group', function() {
         it('should have correct initial empty value', function() {
             BEMDOM.destruct(checkboxGroup.domElem);
 
-            checkboxGroup = buildRadio({
-                block : 'radio-group',
+            checkboxGroup = buildCheckboxGroup({
+                block : 'checkbox-group',
                 name : 'name',
                 options : [{ val : 'val1', label : 'label1' }]
             });

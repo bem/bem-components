@@ -218,6 +218,8 @@ module.exports = function(config) {
     });
 
     config.nodes(['*.tests/*/*', '*.examples/*/*', '*.pages/*'], function(nodeConfig) {
+        var langs = config.getLanguages();
+
         // Base techs
         nodeConfig.addTechs([
             [provide, { target : '?.bemjson.js' }],
@@ -280,6 +282,13 @@ module.exports = function(config) {
             [html],
             [bhHtml, { target : '?.bh.html' }]
         ]);
+
+        langs.forEach(function(lang) {
+            var destTarget = '?.' + lang + '.html';
+
+            nodeConfig.addTech([copyFile, { source : '?.html', target : destTarget }]);
+            nodeConfig.addTarget(destTarget);
+        });
 
         nodeConfig.addTargets([
             '_?.css', '_?.js', '?.html', '?.bh.html'

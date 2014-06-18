@@ -1,4 +1,5 @@
-.button_theme_normal
+$ctx = '.button_theme_normal';
+$ctx
 {
     font-family: Arial, Helvetica, sans-serif;
 
@@ -281,9 +282,11 @@
     {
         margin-right: 0;
     }
+}
 
-    .checkbox-group &,
-    .radio-group &
+.control-group
+{
+    $ctx
     {
         border-radius: 0;
 
@@ -307,26 +310,28 @@
                 left: 0;
             }
         }
+    }
 
-        &:first-child
+    > $ctx:first-child,
+    > :first-child $ctx
+    {
+        border-radius: 3px 0 0 3px;
+
+        &:before
         {
-            border-radius: 3px 0 0 3px;
-
-            &:before
-            {
-                border-radius: 2px 0 0 2px;
-            }
+            border-radius: 2px 0 0 2px;
         }
+    }
 
-        &:last-child
+    > $ctx:last-child,
+    > :last-child $ctx
+    {
+        border-radius: 0 3px 3px 0;
+
+        &:before
         {
-            border-radius :0 3px 3px 0;
-
-            &:before
-            {
-                border-radius: 0 2px 2px 0;
-                right: 1px;
-            }
+            border-radius: 0 2px 2px 0;
+            right: 1px;
         }
     }
 }

@@ -3,12 +3,13 @@ module.exports = function(bh) {
     bh.match('checkbox-group', function(ctx, json) {
         ctx
             .tag('span')
-            .js(true);
+            .js(true)
+            .mix({ block : 'control-group' });
 
         var mods = ctx.mods();
         ctx.content((json.options || []).map(function(option, i) {
             return [
-                !!i && !ctx.mods().type && { tag : 'br' },
+                !!i && !mods.type && { tag : 'br' },
                 {
                     block : 'checkbox',
                     mods : {

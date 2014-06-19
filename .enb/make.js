@@ -274,7 +274,7 @@ module.exports = function(config) {
         // Template techs
         nodeConfig.addTechs([
             [bemhtml],
-            [bh]
+            [bh, { jsAttrName : 'data-bem', jsAttrScheme : 'json' }]
         ]);
 
         // Build htmls

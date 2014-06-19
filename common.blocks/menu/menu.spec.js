@@ -92,6 +92,14 @@ describe('menu', function() {
             spy.args[0][1].should.be.equal(menuItems[1]);
         });
     });
+
+    describe('setContent()', function() {
+        it('should update menu content', function() {
+            menu
+                .setContent('content')
+                .domElem.html().should.be.equal('content');
+        });
+    });
 });
 
 provide();

@@ -3,7 +3,7 @@ module.exports = function(bh) {
         ctx.tag('span');
 
         var _button = ctx.tParam('_button');
-        _button.textMaxWidth &&
+        _button && _button.textMaxWidth &&
             ctx.attr('style', 'max-width:' + _button.textMaxWidth + 'px');
     });
 };

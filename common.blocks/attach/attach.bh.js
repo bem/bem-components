@@ -22,8 +22,6 @@ module.exports = function(bh) {
             buttonMods['theme'] || (buttonMods['theme'] = attachMods['theme']);
             buttonMods['disabled'] || (buttonMods['disabled'] = attachMods['disabled']);
 
-            ctx.applyBase(button);
-
             ctx.content([
                 button,
                 {

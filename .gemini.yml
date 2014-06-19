@@ -10,10 +10,10 @@ browsers:
     browserName: firefox
     version: 28
     platform: Linux
-#  chrome-v34:
-#    browserName: chrome
-#    version: 34
-#    platform: Linux
+  chrome-v35:
+    browserName: chrome
+    version: 35
+    platform: Linux
 #  opera-v12:
 #    browserName: opera
 #    version: 12

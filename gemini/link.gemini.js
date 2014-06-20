@@ -1,10 +1,17 @@
 var gemini = require('gemini');
 
 gemini.suite('link', function(root) {
+
     root.setUrl('desktop.tests/link/gemini/gemini.html');
 
-    ['default-no-url', 'default-url', 'default-pseudo',
-    'normal-no-url', 'normal-url', 'normal-pseudo']
+    [
+        'default-no-url',
+        'default-url',
+        'default-pseudo',
+        'normal-no-url',
+        'normal-url',
+        'normal-pseudo'
+    ]
         .forEach(function(test) {
             var linkSelector = '.' + test;
 

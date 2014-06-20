@@ -24,7 +24,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
 
         'focused' : {
             '' : function() {
-                return !this._preventLoseFocus;
+                return !this._isPointerPressInProgress;
             }
         }
     },
@@ -33,8 +33,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
         'js' : {
             'inited' : function() {
                 this._button = this.findBlockInside('button')
-                    .on('click', this._onButtonClick, this)
-                    .on('before-blur', this._onButtonBeforeBlur, this);
+                    .on('click', this._onButtonClick, this);
 
                 this._popup = this.findBlockInside('popup')
                     .setTarget(this._button)
@@ -46,7 +45,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
                         'item-click' : this._onMenuItemClick
                     }, this);
 
-                this._preventLoseFocus = false;
+                this._isPointerPressInProgress = false;
 
                 this.hasMod('focused') && this._focus();
 
@@ -190,10 +189,6 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
         this.toggleMod('opened');
     },
 
-    _onButtonBeforeBlur : function(e) {
-        this._preventLoseFocus && e.preventDefault();
-    },
-
     _onButtonFocusChange : function(e, data) {
         this.setMod('focused', data.modVal);
     },
@@ -204,19 +199,18 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
 
     _onDocPointerPress : function(e) {
         if(this._isEventInPopup(e)) {
-            this._preventLoseFocus = true;
+            e.preventDefault(); // prevents button blur in most browsers
+            this._isPointerPressInProgress = true;
             this.bindToDoc('pointerrelease', this._onDocPointerRelease);
         }
     },
 
     _onDocPointerRelease : function(e) {
-        this._preventLoseFocus = false;
-        this.unbindFromDoc('pointerrelease', this._onDocPointerRelease);
-
-        var buttonDomElem = this._button.domElem;
-        this._isEventInPopup(e)?
-            buttonDomElem.focus() : // NOTE: restore dom-focus for consistency with button focused mod
-            buttonDomElem.blur();
+        this._isPointerPressInProgress = false;
+        this
+            .unbindFromDoc('pointerrelease', this._onDocPointerRelease)
+            ._button
+                .toggleMod('focused', true, '', this._isEventInPopup(e));
     },
 
     _isEventInPopup : function(e) {

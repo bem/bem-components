@@ -4,8 +4,8 @@
 
 modules.define(
     'button',
-    ['i-bem__dom', 'base-control', 'jquery', 'dom', 'functions', 'keyboard__codes', 'events'],
-    function(provide, BEMDOM, BaseControl, $, dom, functions, keyCodes, events) {
+    ['i-bem__dom', 'base-control', 'jquery', 'dom', 'functions', 'keyboard__codes'],
+    function(provide, BEMDOM, BaseControl, $, dom, functions, keyCodes) {
 
 /**
  * @exports
@@ -23,11 +23,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
 
         'focused' : {
             '' : function() {
-                if(this._isPointerPressInProgress) return false;
-
-                var e = new events.Event('before-blur'); // NOTE: to prevent deleting focused mod from other blocks
-                this.emit(e);
-                return !e.isDefaultPrevented();
+                return !this._isPointerPressInProgress;
             }
         }
     },
@@ -87,11 +83,12 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
     },
 
     _onPointerPress : function() {
-        this._isPointerPressInProgress = true;
-        this.hasMod('disabled') ||
+        if(!this.hasMod('disabled')) {
+            this._isPointerPressInProgress = true;
             this
                 .bindToDoc('pointerrelease', this._onPointerRelease)
                 .setMod('pressed');
+        }
     },
 
     _onPointerRelease : function(e) {

@@ -23,7 +23,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
 
         'focused' : {
             '' : function() {
-                if(this._preventLoseFocus) return false;
+                if(this._isPointerPressInProgress) return false;
 
                 var e = new events.Event('before-blur'); // NOTE: to prevent deleting focused mod from other blocks
                 this.emit(e);
@@ -36,7 +36,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                this._preventLoseFocus = false;
+                this._isPointerPressInProgress = false;
             }
         },
 
@@ -67,6 +67,8 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
     },
 
     _onFocus : function() {
+        if(this._isPointerPressInProgress) return;
+
         this.__base.apply(this, arguments);
         this
             .bindToWin('unload', this._onUnload) // TODO: WTF???
@@ -85,7 +87,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
     },
 
     _onPointerPress : function() {
-        this._preventLoseFocus = true;
+        this._isPointerPressInProgress = true;
         this.hasMod('disabled') ||
             this
                 .bindToDoc('pointerrelease', this._onPointerRelease)
@@ -93,7 +95,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends b
     },
 
     _onPointerRelease : function(e) {
-        this._preventLoseFocus = false;
+        this._isPointerPressInProgress = false;
         this.unbindFromDoc('pointerrelease', this._onPointerRelease);
 
         if(dom.contains(this.elem('control'), $(e.target))) {

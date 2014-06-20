@@ -1,0 +1,32 @@
+gridUrl: http://ondemand.saucelabs.com/wd/hub
+rootUrl: http://localhost:8000/
+
+browsers:
+  firefox-v30:
+    browserName: firefox
+    version: 30
+    platform: Linux
+  chrome-v35:
+    browserName: chrome
+    version: 35
+    platform: Linux
+#  opera-v12:
+#    browserName: opera
+#    version: 12
+#    platform: Windows 7
+#  ie9:
+#    browserName: internet explorer
+#    version: 9
+#    platform: Windows 7
+
+http:
+  timeout: 30000
+  retries: 4
+  retryDelay: 1000
+
+debug: false
+
+capabilities:
+  record-screenshots: false
+  record-video: false
+  screen-resolution: 1024x768

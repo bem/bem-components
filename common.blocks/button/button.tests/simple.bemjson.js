@@ -9,7 +9,10 @@
     content : [
 
         { tag : 'h2', content : 'default' },
-        { tag : 'p', content : { block : 'button', text : 'default' } },
+        { tag : 'p', content : {
+            block : 'button',
+            text : 'default'
+        } },
         { tag : 'p', content : {
             block : 'button',
             text : 'disabled',
@@ -25,7 +28,7 @@
             block : 'button',
             mods : { type : 'link', disabled : true },
             url : '#',
-            text : 'link'
+            text : 'disabled link'
         } },
 
         { tag : 'hr' },
@@ -179,6 +182,12 @@
                 mods : { theme : 'normal', size : 's' },
                 // Здесь иконка прописана через content, чтобы появилась в deps.js
                 content : { block : 'icon', mods : { action : 'download' } }
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'normal', size : 's', disabled : true },
+                icon : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {

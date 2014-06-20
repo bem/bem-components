@@ -200,7 +200,6 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     calcPossibleDrawingParams : function() {
         var owner = this._calcOwnerDimensions(),
             viewport = this._calcViewportDimensions(),
-            popup = this._calcPopupDimensions(),
             params = this.params,
             mainOffset = params.mainOffset,
             secondaryOffset = params.secondaryOffset,
@@ -212,31 +211,30 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                     width : 0,
                     height : 0,
                     left : 0,
-                    top : 0,
-                    factor : 0
+                    top : 0
                 };
 
             if(checkMainDirection(direction, 'bottom')) {
                 subRes.top = owner.top + owner.height + mainOffset;
                 subRes.height = viewport.bottom - subRes.top - viewportOffset;
             } else if(checkMainDirection(direction, 'top')) {
-                subRes.top = owner.top - popup.height - mainOffset;
                 subRes.height = owner.top - viewport.top - mainOffset - viewportOffset;
-            } else if(checkMainDirection(direction, 'left', 'right')) {
+                subRes.top = owner.top - subRes.height - mainOffset;
+            } else {
                 if(checkSecondaryDirection(direction, 'center')) {
-                    subRes.top = owner.top + owner.height / 2 - popup.height / 2;
                     subRes.height = viewport.bottom - viewport.top - 2 * viewportOffset;
+                    subRes.top = owner.top + owner.height / 2 - subRes.height / 2;
                 } else if(checkSecondaryDirection(direction, 'bottom')) {
-                    subRes.top = owner.top + owner.height - popup.height - secondaryOffset;
                     subRes.height = owner.top + owner.height - viewport.top - secondaryOffset - viewportOffset;
+                    subRes.top = owner.top + owner.height - subRes.height - secondaryOffset;
                 } else if(checkSecondaryDirection(direction, 'top')) {
                     subRes.top = owner.top + secondaryOffset;
                     subRes.height = viewport.bottom - subRes.top - viewportOffset;
                 }
 
                 if(checkMainDirection(direction, 'left')) {
-                    subRes.left = owner.left - popup.width - mainOffset;
                     subRes.width = owner.left - viewport.left - mainOffset - viewportOffset;
+                    subRes.left = owner.left - subRes.width - mainOffset;
                 } else {
                     subRes.left = owner.left + owner.width + mainOffset;
                     subRes.width = viewport.right - subRes.left - viewportOffset;
@@ -244,54 +242,52 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             }
 
             if(checkSecondaryDirection(direction, 'right')) {
-                subRes.left = owner.left + owner.width - popup.width - secondaryOffset;
                 subRes.width = owner.left + owner.width - viewport.left - secondaryOffset - viewportOffset;
+                subRes.left = owner.left + owner.width - subRes.width - secondaryOffset;
             } else if(checkSecondaryDirection(direction, 'left')) {
                 subRes.left = owner.left + secondaryOffset;
                 subRes.width = viewport.right - subRes.left - viewportOffset;
             } else if(checkSecondaryDirection(direction, 'center')) {
                 if(checkMainDirection(direction, 'top', 'bottom')) {
-                    subRes.left = owner.left + owner.width / 2 - popup.width / 2;
                     subRes.width = viewport.right - viewport.left - 2 * viewportOffset;
+                    subRes.left = owner.left + owner.width / 2 - subRes.width / 2;
                 }
             }
-
-            var intersectionLeft = Math.max(subRes.left, viewport.left + viewportOffset),
-                intersectionRight = Math.min(subRes.left + popup.width, viewport.right - viewportOffset),
-                intersectionTop = Math.max(subRes.top, viewport.top + viewportOffset),
-                intersectionBottom = Math.min(subRes.top + popup.height, viewport.bottom - viewportOffset);
-
-            subRes.factor = intersectionLeft < intersectionRight && intersectionTop < intersectionBottom?
-                (intersectionRight - intersectionLeft) *
-                    (intersectionBottom - intersectionTop) /
-                    popup.area :
-                0;
 
             return subRes;
         }, this);
     },
 
     _calcBestDrawingParams : function() {
-        var possibleDrawingParams = this.calcPossibleDrawingParams(),
+        var popup = this._calcPopupDimensions(),
+            owner = this._calcOwnerDimensions(),
+            viewport = this._calcViewportDimensions(),
+            directions = this.params.directions,
             i = 0,
-            drawingParams,
-            bestDrawingParams;
+            direction,
+            pos,
+            viewportFactor,
+            bestDirection,
+            bestPos,
+            bestViewportFactor;
 
-        while(drawingParams = possibleDrawingParams[i++]) {
+        while(direction = directions[i++]) {
+            pos = this._calcPos(direction, owner, popup);
+            viewportFactor = this._calcViewportFactor(pos, viewport, popup);
             if(i === 1 ||
-                    drawingParams.factor > bestDrawingParams.factor ||
-                    (bestDrawingParams.factor < VIEWPORT_ACCURACY_FACTOR &&
-                        this.hasMod('direction', drawingParams.direction))) {
-                bestDrawingParams = drawingParams;
+                    viewportFactor > bestViewportFactor ||
+                    (!bestViewportFactor && this.hasMod('direction', direction))) {
+                bestDirection = direction;
+                bestViewportFactor = viewportFactor;
+                bestPos = pos;
             }
-
-            if(bestDrawingParams.factor >= VIEWPORT_ACCURACY_FACTOR) break;
+            if(bestViewportFactor > VIEWPORT_ACCURACY_FACTOR) break;
         }
 
         return {
-            direction : bestDrawingParams.direction,
-            left : bestDrawingParams.left,
-            top : bestDrawingParams.top
+            direction : bestDirection,
+            left : bestPos.left,
+            top : bestPos.top
         };
     },
 
@@ -331,6 +327,54 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             bottom : winTop + winHeight,
             right : winLeft + winWidth
         };
+    },
+
+    _calcPos : function(direction, owner, popup) {
+        var res = {},
+            mainOffset = this.params.mainOffset,
+            secondaryOffset = this.params.secondaryOffset;
+
+        if(checkMainDirection(direction, 'bottom')) {
+            res.top = owner.top + owner.height + mainOffset;
+        } else if(checkMainDirection(direction, 'top')) {
+            res.top = owner.top - popup.height - mainOffset;
+        } else if(checkMainDirection(direction, 'left')) {
+            res.left = owner.left - popup.width - mainOffset;
+        } else if(checkMainDirection(direction, 'right')) {
+            res.left = owner.left + owner.width + mainOffset;
+        }
+
+        if(checkSecondaryDirection(direction, 'right')) {
+            res.left = owner.left + owner.width - popup.width - secondaryOffset;
+        } else if(checkSecondaryDirection(direction, 'left')) {
+            res.left = owner.left + secondaryOffset;
+        } else if(checkSecondaryDirection(direction, 'bottom')) {
+            res.top = owner.top + owner.height - popup.height - secondaryOffset;
+        } else if(checkSecondaryDirection(direction, 'top')) {
+            res.top = owner.top + secondaryOffset;
+        } else if(checkSecondaryDirection(direction, 'center')) {
+            if(checkMainDirection(direction, 'top', 'bottom')) {
+                res.left = owner.left + owner.width / 2 - popup.width / 2;
+            } else if(checkMainDirection(direction, 'left', 'right')) {
+                res.top = owner.top + owner.height / 2 - popup.height / 2;
+            }
+        }
+
+        return res;
+    },
+
+    _calcViewportFactor : function(pos, viewport, popup) {
+        var viewportOffset = this.params.viewportOffset,
+            intersectionLeft = Math.max(pos.left, viewport.left + viewportOffset),
+            intersectionRight = Math.min(pos.left + popup.width, viewport.right - viewportOffset),
+            intersectionTop = Math.max(pos.top, viewport.top + viewportOffset),
+            intersectionBottom = Math.min(pos.top + popup.height, viewport.bottom - viewportOffset);
+
+        return intersectionLeft < intersectionRight && intersectionTop < intersectionBottom? // has intersection
+            (intersectionRight - intersectionLeft) *
+                (intersectionBottom - intersectionTop) /
+                popup.area :
+            0;
     },
 
     /**

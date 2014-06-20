@@ -9,19 +9,22 @@
     content : [
 
         { tag : 'h2', content : 'default' },
-        { tag : 'p', content : {
-            block : 'attach',
-            button : 'file',
-            noFileText : 'no file selected',
-            cls : 'default-enabled'
-        } },
-        { tag : 'p', content : {
-            block : 'attach',
-            mods : { disabled : true },
-            button : 'file',
-            noFileText : 'no file selected',
-            cls : 'default-disabled'
-        } }
+        { tag : 'p', cls : 'default-enabled', attrs : { style : 'display: inline-block;' },
+            content : {
+                block : 'attach',
+                button : 'file',
+                noFileText : 'no file selected'
+            }
+        },
+        { tag : 'br' },
+        { tag : 'p', cls : 'default-disabled', attrs : { style : 'display: inline-block;' },
+            content : {
+                block : 'attach',
+                mods : { disabled : true },
+                button : 'file',
+                noFileText : 'no file selected'
+            }
+        }
 
     ]
 });

@@ -1,0 +1,28 @@
+block('select').mod('type', 'radio')(
+    def().match(this._checkedOptions)(function() {
+        var checkedOptions = this._checkedOptions,
+            firstOption = this._firstOption;
+        if(!checkedOptions.length) {
+            firstOption.checked = true;
+            checkedOptions.push(firstOption);
+        }
+        applyNext({ _checkedOption : checkedOptions[0] });
+    }),
+
+    content()(function() {
+        return [
+            {
+                elem : 'control',
+                val : this._checkedOption.val
+            },
+            applyNext()
+        ];
+    }),
+
+    elem('button').content()(function() {
+        return [
+            { elem : 'text', content : this._checkedOption.text }
+            // TODO: with icons
+        ];
+    })
+)

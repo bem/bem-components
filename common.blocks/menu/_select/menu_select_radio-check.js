@@ -14,7 +14,7 @@ provide(Menu.decl({ modName : 'select', modVal : 'radio-check' }, /** @lends men
      * @override
      */
     _getVal : function() {
-        var items = this._getItems(),
+        var items = this.getItems(),
             i = 0, item;
         while(item = items[i++])
             if(item.hasMod('checked'))
@@ -28,7 +28,7 @@ provide(Menu.decl({ modName : 'select', modVal : 'radio-check' }, /** @lends men
         var isValUndefined = typeof val === 'undefined',
             wasChanged = false,
             hasVal = false,
-            itemsCheckedVals = this._getItems().map(function(item) {
+            itemsCheckedVals = this.getItems().map(function(item) {
                 if(isValUndefined) {
                     item.hasMod('checked') && (wasChanged = true);
                     return false;
@@ -53,7 +53,7 @@ provide(Menu.decl({ modName : 'select', modVal : 'radio-check' }, /** @lends men
     _onItemClick : function(clickedItem) {
         this.__base.apply(this, arguments);
 
-        this._getItems().forEach(function(item) {
+        this.getItems().forEach(function(item) {
             item === clickedItem?
                 item.toggleMod('checked') :
                 item.delMod('checked');

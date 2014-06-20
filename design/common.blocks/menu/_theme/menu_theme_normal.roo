@@ -8,6 +8,8 @@ $paddingHor = [10, 13, 15, 20];
 
 .menu_theme_normal
 {
+    box-sizing: border-box;
+
     user-select: none;
 
     outline: 0;

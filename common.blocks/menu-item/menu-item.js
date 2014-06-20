@@ -40,8 +40,16 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
         return this.params.val;
     },
 
+    /**
+     * Returns item text
+     * @returns {String}
+     */
+    getText : function() {
+        return this.params.text || this.domElem.text();
+    },
+
     _onPointerClick : function() {
-        this.hasMod('disabled') || this.emit('click');
+        this.hasMod('disabled') || this.emit('click', { source : 'pointer' });
     }
 }, /** @lends menu-item */{
     live : function() {

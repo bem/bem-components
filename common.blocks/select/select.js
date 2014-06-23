@@ -69,12 +69,12 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
 
         'opened' : {
             '*' : function(_, modVal) {
-                this._popup.setMod('visible', modVal);
                 this._menu.setMod('focused', modVal);
             },
 
             'true' : function() {
                 this._updateMenuHeight();
+                this._popup.setMod('visible');
                 this
                     .bindToDoc('pointerpress', this._onDocPointerPress)
                     .setMod('focused')
@@ -82,7 +82,9 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             },
 
             '' : function() {
-                this.unbindFromDoc('pointerpress', this._onDocPointerPress);
+                this
+                    .unbindFromDoc('pointerpress', this._onDocPointerPress)
+                    ._popup.delMod('visible');
             }
         },
 
@@ -230,7 +232,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             'type="hidden" ' +
             'name="' + name + '" ' +
             'class="' + this.buildClass('control') + '" ' +
-            'value="' + escape.attr(JSON.stringify(val)) + '"/>';
+            'value="' + escape.attr(typeof val === 'object'? JSON.stringify(val) : val) + '"/>';
     }
 }));
 

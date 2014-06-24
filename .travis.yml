@@ -28,6 +28,7 @@ before_script:
 after_success:
   - |
       if [ "${TEST_SCOPE}" == "specs" ]; then
+        echo "=== Run examples $(date)"
         npm run examples
 
         # Here we build private id_rsa from enviroment variables like $rsa_1, $rsa_2, ...
@@ -44,6 +45,7 @@ after_success:
             --prune-empty-dirs \
             --include-from=rsync.txt \
             ./ "bem@persidskiy.me:/var/bem/bem-components/$dir/"
+        echo "=== Examples synced $(date)"
 
         npm install coveralls
         node_modules/.bin/istanbul report lcovonly

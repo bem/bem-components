@@ -12,6 +12,7 @@ libs
 !*.pages/.bem/*
 !*.pages/*/blocks
 !*.pages/*/*.bemjson.js
+*.pages/*/_*.bemjson.js
 
 /coverage
 /coverage.json

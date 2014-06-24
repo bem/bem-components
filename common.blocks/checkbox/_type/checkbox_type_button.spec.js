@@ -45,6 +45,16 @@ describe('checkbox_type_button', function() {
             checkbox.findBlockOn('button').hasMod('disabled').should.be.false;
         });
     });
+
+    describe('focused', function() {
+        it('should set/unset "disabled" mod for button according to self', function() {
+            checkbox.setMod('focused');
+            checkbox.findBlockOn('button').hasMod('focused').should.be.true;
+
+            checkbox.delMod('focused');
+            checkbox.findBlockOn('button').hasMod('focused').should.be.false;
+        });
+    });
 });
 
 provide();

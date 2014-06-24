@@ -2,31 +2,36 @@ modules.define('radio', function(provide, Radio) {
 
 provide(Radio.decl({ modName : 'type', modVal : 'button' }, {
     onSetMod : {
-        'checked' : proxyMod,
-        'disabled' : proxyMod
-    },
+        'js' : {
+            'inited' : function() {
+                this.__base.apply(this, arguments);
+                this._button = this.findBlockOn('button')
+                    .on(
+                        { modName : 'checked', modVal : '*' },
+                        proxyModFromButton,
+                        this)
+                    .on(
+                        { modName : 'focused', modVal : '*' },
+                        proxyModFromButton,
+                        this);
+            }
+        },
 
-    _getButton : function() {
-        return this.findBlockOn('button');
-    },
-
-    _onPointerClick : function() {
-        this.hasMod('disabled') || this.setMod('focused');
-    }
-}, {
-    live : function() {
-        return this
-            .liveBindTo(
-                { modName : 'type', modVal : 'button' },
-                'pointerclick',
-                this.prototype._onPointerClick)
-            .__base.apply(this, arguments);
+        'checked' : proxyModToButton,
+        'disabled' : proxyModToButton,
+        'focused' : function(modName, modVal) {
+            proxyModToButton.call(this, modName, modVal, false);
+        }
     }
 }));
 
-function proxyMod(modName, modVal) {
-    this._getButton().setMod(modName, modVal);
-    this.__base.apply(this, arguments);
+function proxyModToButton(modName, modVal, callBase) {
+    callBase !== false && this.__base.apply(this, arguments);
+    this._button.setMod(modName, modVal);
+}
+
+function proxyModFromButton(_, data) {
+    this.setMod(data.modName, data.modVal);
 }
 
 });

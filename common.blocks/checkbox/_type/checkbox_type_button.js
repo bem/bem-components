@@ -2,23 +2,36 @@ modules.define('checkbox', function(provide, Checkbox) {
 
 provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, {
     onSetMod : {
-        'checked' : proxyMod,
-        'disabled' : proxyMod
-    },
+        'js' : {
+            'inited' : function() {
+                this.__base.apply(this, arguments);
+                this._button = this.findBlockOn('button')
+                    .on(
+                        { modName : 'checked', modVal : '*' },
+                        proxyModFromButton,
+                        this)
+                    .on(
+                        { modName : 'focused', modVal : '*' },
+                        proxyModFromButton,
+                        this);
+            }
+        },
 
-    _getButton : function() {
-        return this.findBlockOn('button');
-    },
-
-    _onChange : function() {
-        this.__base.apply(this, arguments);
-        this.hasMod('disabled') || this.setMod('focused');
+        'checked' : proxyModToButton,
+        'disabled' : proxyModToButton,
+        'focused' : function(modName, modVal) {
+            proxyModToButton.call(this, modName, modVal, false);
+        }
     }
 }));
 
-function proxyMod(modName, modVal) {
-    this._getButton().setMod(modName, modVal);
-    this.__base.apply(this, arguments);
+function proxyModToButton(modName, modVal, callBase) {
+    callBase !== false && this.__base.apply(this, arguments);
+    this._button.setMod(modName, modVal);
+}
+
+function proxyModFromButton(_, data) {
+    this.setMod(data.modName, data.modVal);
 }
 
 });

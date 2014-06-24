@@ -27,7 +27,6 @@ block('radio').mod('type', 'button')(
         applyCtx({
             block : 'button',
             mix : { block : 'radio', mods : mods, js : true },
-            tag : 'label',
             mods : buttonMods,
             content : buttonContent
         });

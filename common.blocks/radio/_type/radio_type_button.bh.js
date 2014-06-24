@@ -27,7 +27,6 @@ module.exports = function(bh) {
         return {
             block : 'button',
             mix : { block : 'radio', mods : mods, js : true },
-            tag : 'label',
             mods : buttonMods,
             content : buttonContent
         };

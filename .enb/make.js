@@ -34,7 +34,7 @@ module.exports = function(config) {
     examples.build({
         destPath : 'desktop.examples',
         levels : getDesktopLibLevels(config),
-        inlineBemjson : false
+        inlineBemjson : true
     });
 
     tests.build({
@@ -46,13 +46,14 @@ module.exports = function(config) {
     docs.build({
         destPath : 'desktop.docs',
         levels : getDesktopLibLevels(config),
-        examplesPattern : 'desktop.tests/?'
+        examplePattern : ['desktop.examples/?/*', 'desktop.tests/?/*'],
+        inlineExamplePattern : 'desktop.examples/?/*'
     });
 
     examples.build({
         destPath : 'touch-pad.examples',
         levels : getTouchPadLibLevels(config),
-        inlineBemjson : false
+        inlineBemjson : true
     });
 
     tests.build({
@@ -64,13 +65,14 @@ module.exports = function(config) {
     docs.build({
         destPath : 'touch-pad.docs',
         levels : getTouchPadLibLevels(config),
-        examplesPattern : 'touch-pad.tests/?'
+        examplePattern : ['touch-pad.examples/?/*', 'touch-pad.tests/?/*'],
+        inlineExamplePattern : 'touch-pad.examples/?/*'
     });
 
     examples.build({
         destPath : 'touch-phone.examples',
         levels : getTouchPhoneLibLevels(config),
-        inlineBemjson : false
+        inlineBemjson : true
     });
 
     tests.build({
@@ -82,7 +84,8 @@ module.exports = function(config) {
     docs.build({
         destPath : 'touch-phone.docs',
         levels : getTouchPhoneLibLevels(config),
-        examplesPattern : 'touch-phone.tests/?'
+        examplePattern : ['touch-phone.examples/?/*', 'touch-phone.tests/?/*'],
+        inlineExamplePattern : 'touch-phone.examples/?/*'
     });
 
     config.nodes(['desktop.examples/*/*', 'desktop.pages/*'], function(nodeConfig) {
@@ -223,6 +226,7 @@ module.exports = function(config) {
         // Base techs
         nodeConfig.addTechs([
             [provide, { target : '?.bemjson.js' }],
+            [copyFile, { source : '?.bemjson.js', target : '_?.bemjson.js' }],
             [bemdecl],
             [deps],
             [files]
@@ -291,7 +295,7 @@ module.exports = function(config) {
         });
 
         nodeConfig.addTargets([
-            '_?.css', '_?.js', '?.html', '?.bh.html'
+            '_?.bemjson.js', '_?.css', '_?.js', '?.html', '?.bh.html'
         ]);
     });
 

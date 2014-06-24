@@ -18,4 +18,9 @@
 
         margin: 5px;
     }
+
+    .menu[class*='menu_theme']
+    {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
 }

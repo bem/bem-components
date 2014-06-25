@@ -10,10 +10,7 @@ $tipSize = [14, 14, 15, 15];
 {
     position: relative;
 
-    overflow: hidden;
-
     white-space: nowrap;
-    text-overflow: ellipsis;
 
     &.menu-item_disabled
     {
@@ -75,7 +72,7 @@ $tipSize = [14, 14, 15, 15];
         &[class*='menu_select'] .menu-item_theme_normal,
         .menu__group-title ~ .menu-item_theme_normal
         {
-            padding-left: $paddingLeft[$i]px;
+            padding: 0 $paddingLeft[$i]px;
         }
     }
 }

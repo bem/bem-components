@@ -20,6 +20,7 @@ block('button')(
                 attrs = { role : 'button' };
 
             ctx.tabIndex && (attrs.tabindex = ctx.tabIndex);
+            ctx.id && (attrs.id = ctx.id);
 
             return attrs;
         },

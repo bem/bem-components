@@ -11,6 +11,7 @@ block('select').elem('button')(
                 disabled : mods.disabled,
                 checked : mods.type !== 'radio' && !!this._checkedOptions.length
             },
+            id : this._select.id,
             textMaxWidth : this._select.textMaxWidth,
             content : [
                 apply('content'),

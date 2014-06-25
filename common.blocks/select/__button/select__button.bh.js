@@ -15,6 +15,7 @@ module.exports = function(bh) {
                 disabled : mods.disabled,
                 checked : mods.type !== 'radio' && !!checkedOptions.length
             },
+            id : select.id,
             textMaxWidth : select.textMaxWidth,
             content : [
                 ctx.content(),

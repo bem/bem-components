@@ -10,6 +10,7 @@ module.exports = function(bh) {
             .mix({ elem : 'control' }); // Implements `base-control`'s interface
 
         json.tabIndex && ctx.attr('tabindex', json.tabIndex);
+        json.id && ctx.attr('id', json.id);
 
         // Attributes for button variant
         if(!ctx.mod('type')) {

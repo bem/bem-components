@@ -306,10 +306,6 @@ The block is available in `simple` and `normal` themes.
 
 ---
 
-### `_has-label`
-
-A lable (`__label` element) above the input field is available if a block has a `_has-label` modifier with `true` value.
-
 The block is available in `simple` and `normal` themes.
 
 <table>
@@ -324,7 +320,6 @@ The block is available in `simple` and `normal` themes.
 {
     block : 'input',
     mods : { 'has-clear' : true },
-    label : 'Label',
     placeholder : 'default'
 }
             </code></pre>
@@ -335,9 +330,7 @@ The block is available in `simple` and `normal` themes.
     block : 'input',
     mods : {
         theme : 'simple',
-        'has-label' : true
     },
-    label : 'Label',
     placeholder : 'simple'
 }
             </code></pre>
@@ -348,9 +341,7 @@ The block is available in `simple` and `normal` themes.
     block : 'input',
     mods : {
         theme : 'normal',
-        'has-label' : true
     },
-    label : 'Label',
     placeholder : 'normal'
 }
             </code></pre>
@@ -376,7 +367,6 @@ The cross element is unavailable if a block has a `has-clear` modifier with `fal
 {
     block : 'input',
     mods : { theme : 'normal', 'has-clear' : true },
-    label : 'label'
 }
 ```
 
@@ -386,24 +376,6 @@ A mandatory element.
 
 This element is processed by BEMHTML or BH template engine to native `<input>` or `<textarea>` control.
 
-### __label
-
-This element provides a label for an input field. In HTML is rendered as a `<label>` tag. The label is linked with an `<input>` tag by the unique `id` identifier.
-
-Input gets focus when label is clicked.
-
-```bemjson
-[{
-    block: 'input', elem: 'label',
-    id: 'my-input',
-    content: 'Label for input'
-},
-{
-    block : 'input',
-    id: 'my-input',
-    mods : { theme : 'normal', size : 'm'},
-}]
-```
 
 ## Block's dependencies
 

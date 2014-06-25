@@ -19,13 +19,6 @@
         } },
         { tag : 'p', content : {
             block : 'input',
-            mods : { 'has-clear' : true, 'has-label' : true },
-            val : 'value',
-            label : 'label',
-            placeholder : 'placeholder'
-        } },
-        { tag : 'p', content : {
-            block : 'input',
             mods : { type : 'search' },
             val : 'search',
             placeholder : 'query'
@@ -54,13 +47,6 @@
             block : 'input',
             mods : { theme : 'simple', 'has-clear' : true, disabled : true },
             val : 'disabled',
-            placeholder : 'placeholder'
-        } },
-        { tag : 'p', content : {
-            block : 'input',
-            mods : { theme : 'simple', 'has-clear' : true, 'has-label' : true },
-            val : 'value',
-            label : 'label',
             placeholder : 'placeholder'
         } },
         { tag : 'p', content : {
@@ -120,7 +106,7 @@
 
         { tag : 'h3', content : 'label' },
         { tag : 'p', content : [
-            { block : 'input', elem : 'label', id : 'with-label', content : 'label' },
+            { tag : 'label', attrs : { 'for' : 'with-label' }, content : 'label' },
             ': ',
             {
                 block : 'input',

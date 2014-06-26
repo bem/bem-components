@@ -28,16 +28,18 @@ before_script:
 after_success:
   - |
       if [ "${TEST_SCOPE}" == "specs" ]; then
-        echo "=== Run examples $(date)"
-        npm run examples
+        npm install coveralls
+        node_modules/.bin/istanbul report lcovonly
+        cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
+      elif [ "${TEST_SCOPE}" == "gemini" ]
+        npm run pages
 
         # Here we build private id_rsa from enviroment variables like $rsa_1, $rsa_2, ...
         echo -n $rsa_{1..30} >> ~/.ssh/id_rsa_base64
         base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
 
-        if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then dir="branch-$TRAVIS_BRANCH";
-        else dir="pr-$TRAVIS_PULL_REQUEST"; fi
+        [ "$TRAVIS_PULL_REQUEST" = "false" ] && dir="branch-$TRAVIS_BRANCH" || dir="pr-$TRAVIS_PULL_REQUEST"
 
         rsync -avh -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' \
             --stats \
@@ -45,11 +47,6 @@ after_success:
             --prune-empty-dirs \
             --include-from=rsync.txt \
             ./ "bem@persidskiy.me:/var/bem/bem-components/$dir/"
-        echo "=== Examples synced $(date)"
-
-        npm install coveralls
-        node_modules/.bin/istanbul report lcovonly
-        cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
       fi
 env:
   matrix:

@@ -59,6 +59,6 @@
     "gemini": "http-server -c \"no-cache, no-store\" -s -p 8000 & p=$!; gemini test --reporter html --reporter tree; e=$?; kill -9 ${p}; exit ${e}",
     "gemini-gather": "http-server -c \"no-cache, no-store\" -s -p 8000 & p=$!; gemini gather; kill -9 ${p}",
     "coverage": "ISTANBUL_COVERAGE=yes npm run specs",
-    "examples": "enb make examples"
+    "pages": "enb make desktop.pages touch-phone.pages touch-pad.pages"
   }
 }

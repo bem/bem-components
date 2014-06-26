@@ -2,16 +2,11 @@ block('input')(
     tag()('span'),
     js()(true),
     def()(function() {
-        var ctx = this.ctx;
-        ctx.id = ctx.id || this.generateId();
-        applyNext({ _input: ctx })
+        applyNext({ _input : this.ctx })
     }),
     content()(
         function() {
-            var ctx = this.ctx, content = [{ elem: 'control' }];
-            // NOTE: not made in separate templates for perf optimization
-            ctx.label && this.mods['has-label'] && content.unshift({ elem: 'label', content: ctx.label });
-            return content;
+            return { elem : 'box', content : { elem : 'control' } };
         },
         match(function() { return typeof this.ctx.content !== 'undefined' })(function() {
             return this.ctx.content;

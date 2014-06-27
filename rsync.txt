@@ -1,4 +1,5 @@
 - node_modules
+- gemini
 - /libs/*/*.docs/**
 
 # Exclude unnecessary files under the build results
@@ -9,6 +10,9 @@
 # Include tests & pages build targets
 + /*.tests/**
 + /*.pages/**
+
+# Include gemini report
++ /gemini-report/**
 
 # Keep the graphics from all directories
 + */

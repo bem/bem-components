@@ -25,14 +25,9 @@ before_script:
         cat .gemini.yml
       fi
 
-after_success:
+after_script:
   - |
-      if [ "${TEST_SCOPE}" == "specs" ]; then
-        npm install coveralls
-        node_modules/.bin/istanbul report lcovonly
-        cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
-      elif [ "${TEST_SCOPE}" == "gemini" ]; then
-
+       if [ "${TEST_SCOPE}" == "gemini" ]; then
         # Here we build private id_rsa from enviroment variables like $rsa_1, $rsa_2, ...
         echo -n $rsa_{1..30} >> ~/.ssh/id_rsa_base64
         base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
@@ -46,6 +41,14 @@ after_success:
             --prune-empty-dirs \
             --include-from=rsync.txt \
             ./ "bem@persidskiy.me:/var/bem/bem-components/$dir/"
+        fi
+
+after_success:
+  - |
+      if [ "${TEST_SCOPE}" == "specs" ]; then
+        npm install coveralls
+        node_modules/.bin/istanbul report lcovonly
+        cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
       fi
 env:
   matrix:

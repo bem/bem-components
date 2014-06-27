@@ -33,6 +33,7 @@ after_script:
         base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
 
+        echo "$TRAVIS_BRANCH $TRAVIS_PULL_REQUEST"
         [ "$TRAVIS_PULL_REQUEST" = "false" ] && dir="branch-$TRAVIS_BRANCH" || dir="pr-$TRAVIS_PULL_REQUEST"
 
         rsync -avh -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' \

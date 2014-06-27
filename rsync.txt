@@ -1,0 +1,21 @@
+- node_modules
+- gemini
+- /libs/*/*.docs/**
+
+# Include gemini report
++ /gemini-report/**
+
+# Exclude unnecessary files under the build results
+- [^_]*.js
+- [^_]*.css
+- *.bemhtml.js
+
+# Include tests & pages build targets
++ /*.tests/**
++ /*.pages/**
+
+# Keep the graphics from all directories
++ */
++ *.svg
++ *.png
+- *

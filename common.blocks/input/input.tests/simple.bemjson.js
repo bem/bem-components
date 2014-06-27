@@ -49,6 +49,12 @@
             val : 'disabled',
             placeholder : 'placeholder'
         } },
+        { tag : 'p', attrs : { style : 'width: 350px;' }, content : {
+            block : 'input',
+            mods : { theme : 'simple', width : 'available', 'has-clear' : true, size : 'm' },
+            val : 'width',
+            placeholder : 'placeholder'
+        } },
         { tag : 'p', content : {
             block : 'input',
             mods : { theme : 'simple', 'has-clear' : true, type : 'search' },
@@ -81,6 +87,14 @@
             block : 'input',
             mods : { theme : 'normal', 'has-clear' : true, size : 'm' },
             val : 'has-clear',
+            placeholder : 'placeholder'
+        } },
+
+        { tag : 'h3', content : 'width' },
+        { tag : 'p', attrs : { style : 'width: 350px;' }, content : {
+            block : 'input',
+            mods : { theme : 'normal', width : 'available', 'has-clear' : true, size : 'm' },
+            val : 'available',
             placeholder : 'placeholder'
         } },
 

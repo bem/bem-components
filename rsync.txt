@@ -2,6 +2,9 @@
 - gemini
 - /libs/*/*.docs/**
 
+# Include gemini report
++ /gemini-report/**
+
 # Exclude unnecessary files under the build results
 - [^_]*.js
 - [^_]*.css
@@ -10,9 +13,6 @@
 # Include tests & pages build targets
 + /*.tests/**
 + /*.pages/**
-
-# Include gemini report
-+ /gemini-report/**
 
 # Keep the graphics from all directories
 + */

@@ -263,6 +263,35 @@
                             }
                         ]
                     }
+                ],
+                [
+                    { tag : 'h3', content : 'disabled' },
+                    {
+                        block : 'menu',
+                        mods : { select : 'radio', theme : theme, size : 'm', disabled : true },
+                        content : [
+                            {
+                                block : 'menu-item',
+                                val : 1,
+                                content : 'item 1'
+                            },
+                            {
+                                block : 'menu-item',
+                                val : 2,
+                                content : 'item 2'
+                            },
+                            {
+                                block : 'menu-item',
+                                val : 3,
+                                content : 'item 3'
+                            },
+                            {
+                                block : 'menu-item',
+                                val : 4,
+                                content : 'item 4'
+                            }
+                        ]
+                    }
                 ]
             ].map(function(test) {
                 return {

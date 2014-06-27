@@ -49,6 +49,17 @@ describe('menu', function() {
             menu.delMod('disabled');
             control.attr('tabindex').should.be.equal('0');
         });
+
+        it('should pass disabled mod to menu items', function() {
+            menu.setMod('disabled');
+            menuItems.forEach(function(menuItem) {
+                menuItem.hasMod('disabled').should.be.true;
+            });
+            menu.delMod('disabled');
+            menuItems.forEach(function(menuItem) {
+                menuItem.hasMod('disabled').should.be.false;
+            });
+        });
     });
 
     describe('hover on items', function() {

@@ -1,9 +1,14 @@
 module.exports = function(bh) {
 
     bh.match('menu', function(ctx) {
+        var menuMods = {
+            theme : ctx.mod('theme'),
+            disabled : ctx.mod('disabled')
+        };
+
         ctx
             .js(true)
-            .tParam('_menuTheme', ctx.mod('theme'))
+            .tParam('_menuMods', menuMods)
             .mix({ elem : 'control' });
 
         var attrs = { role : 'menu' };
@@ -12,7 +17,12 @@ module.exports = function(bh) {
     });
 
     bh.match('menu-item', function(ctx) {
-        ctx.mod('theme', ctx.tParam('_menuTheme'));
+        var menuMods = ctx.tParam('_menuMods');
+
+        ctx.mods({
+            theme : menuMods.theme,
+            disabled : menuMods.disabled
+        });
     });
 
 };

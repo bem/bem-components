@@ -263,6 +263,20 @@
                             }
                         ]
                     }
+                ],
+                [
+                    { tag : 'h3', content : 'scroll' },
+                    {
+                        block : 'menu',
+                        mods : { theme : theme, size : 'm' },
+                        attrs : { style : 'width: 90px; height: 100px' },
+                        content : [1, 2, 3, 4, 5, 6].map(function(v, i) {
+                            return {
+                                block : 'menu-item',
+                                content : i === 0 ? 'Long long long long description' : 'item ' + v
+                            };
+                        })
+                    }
                 ]
             ].map(function(test) {
                 return {

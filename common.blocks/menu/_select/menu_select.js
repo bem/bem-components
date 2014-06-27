@@ -22,10 +22,20 @@ provide(Menu.decl({ modName : 'select' }, /** @lends menu.prototype */{
 
     _onKeyDown : function(e) {
         if(e.keyCode === keyCodes.ENTER || e.keyCode === keyCodes.SPACE) {
+            this
+                .unbindFromDoc('keydown', this._onKeyDown)
+                .bindToDoc('keyup', this._onKeyUp);
+
             e.keyCode === keyCodes.SPACE && e.preventDefault();
             this._onItemClick(this._hoveredItem, { source : 'keyboard' });
         }
         this.__base.apply(this, arguments);
+    },
+
+    _onKeyUp : function() {
+        this
+            .unbindFromDoc('keyup', this._onKeyUp)
+            .bindToDoc('keydown', this._onKeyDown);
     },
 
     /**

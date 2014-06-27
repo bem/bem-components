@@ -3,22 +3,27 @@ module.exports = function(bh) {
     bh.match('link', function(ctx, json) {
         ctx
             .tag('a')
-            .js(true)
             .mix({ elem : 'control' });
 
-        var attrs = {
-                tabindex : json.tabIndex
-            },
-            url = json.url,
-            typeOfUrl = typeof url;
+        var url = typeof json.url === 'object'? // url could contain bemjson
+                bh.apply(json.url) :
+                json.url,
+            attrs = {},
+            tabIndex;
 
-        typeOfUrl !== 'undefined' && (attrs.href = typeOfUrl === 'string'?
-            url :
-            bh.apply(url));
+        if(!ctx.mod('disabled')) {
+            if(url) {
+                attrs.href = url;
+                tabIndex = json.tabIndex;
+            } else {
+                tabIndex = json.tabIndex || 0;
+            }
+            ctx.js(true);
+        } else {
+            ctx.js(url? { url : url } : true);
+        }
 
-        typeof attrs.href === 'undefined' &&
-            typeof attrs.tabindex === 'undefined' &&
-            (attrs.tabindex = 0);
+        typeof tabIndex === 'undefined' || (attrs.tabindex = tabIndex);
 
         json.title && (attrs.title = json.title);
         json.target && (attrs.target = json.target);

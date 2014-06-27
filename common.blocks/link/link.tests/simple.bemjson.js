@@ -12,6 +12,12 @@
                 { block : 'link', url : 'http://example.com/', content : 'plain url' },
                 {
                     block : 'link',
+                    mods : { disabled : true },
+                    url : 'http://example.com/',
+                    content : 'disabled'
+                },
+                {
+                    block : 'link',
                     url : {
                         block : 'link-content',
                         tag : '',

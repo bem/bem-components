@@ -1,4 +1,11 @@
 block('link')(
+    def()(function() {
+        var ctx = this.ctx;
+        typeof ctx.url === 'object' && // url could contain bemjson
+            (ctx.url = this.reapply(ctx.url));
+        applyNext();
+    }),
+
     tag()('a'),
 
     js()(true),
@@ -8,24 +15,28 @@ block('link')(
 
     attrs()(function() {
         var ctx = this.ctx,
-            attrs = {
-                tabindex : ctx.tabIndex
-            },
-            url = ctx.url,
-            typeOfUrl = typeof url;
+            attrs = {},
+            tabIndex;
 
-        typeOfUrl !== 'undefined' && (attrs.href = typeOfUrl === 'string'?
-            url :
-            this.reapply(url)); // url could contain bemjson
+        if(!this.mods.disabled) {
+            if(ctx.url) {
+                attrs.href = ctx.url;
+                tabIndex = ctx.tabIndex;
+            } else {
+                tabIndex = ctx.tabIndex || 0;
+            }
+        }
 
-        // default value for tabindex in case of link \wo href, so link could be focusable
-        typeof attrs.href === 'undefined' &&
-            typeof attrs.tabindex === 'undefined' &&
-            (attrs.tabindex = 0);
+        typeof tabIndex === 'undefined' || (attrs.tabindex = tabIndex);
 
         ctx.title && (attrs.title = ctx.title);
         ctx.target && (attrs.target = ctx.target);
 
         return attrs;
-    })
+    }),
+
+    mod('disabled', true)
+        .js()(function() {
+            return this.extend(applyNext(), { url : this.ctx.url });
+        })
 )

@@ -309,5 +309,5 @@ The `control` element is added to the block on a template engine level.
 ## Block's dependencies
 
 * `i-bem__dom`
-* `base-control`
+* `control`
 * `button`

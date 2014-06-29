@@ -1,4 +1,4 @@
-# base-control
+# control
 
 Вспомогательный блок. Используется для работы большинства блоков библиотеки [bem-components](https://github.com/bem/bem-components):
 

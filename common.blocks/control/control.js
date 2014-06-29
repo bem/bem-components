@@ -1,17 +1,17 @@
-/** @module base-control */
+/** @module control */
 
 modules.define(
-    'base-control',
+    'control',
     ['i-bem__dom', 'dom', 'next-tick'],
     function(provide, BEMDOM, dom, nextTick) {
 
 /**
  * @exports
- * @class base-control
+ * @class control
  * @abstract
  * @bem
  */
-provide(BEMDOM.decl(this.name, /** @lends base-control.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -97,7 +97,7 @@ provide(BEMDOM.decl(this.name, /** @lends base-control.prototype */{
     _blur : function() {
         this.elem('control').blur();
     }
-}, /** @lends base-control */{
+}, /** @lends control */{
     live : function() {
         this
             .liveBindTo('control', 'focusin', this.prototype._onFocus)

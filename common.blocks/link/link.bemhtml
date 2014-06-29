@@ -10,7 +10,7 @@ block('link')(
 
     js()(true),
 
-    // Implements `base-control`'s interface
+    // NOTE: mix below is to satisfy interface of `control`
     mix()([{ elem : 'control' }]),
 
     attrs()(function() {

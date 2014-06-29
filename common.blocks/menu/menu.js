@@ -4,16 +4,16 @@
 
 modules.define(
     'menu',
-    ['i-bem__dom', 'base-control', 'keyboard__codes', 'menu-item'],
-    function(provide, BEMDOM, BaseControl, keyCodes) {
+    ['i-bem__dom', 'control', 'keyboard__codes', 'menu-item'],
+    function(provide, BEMDOM, Control, keyCodes) {
 
 /**
  * @exports
  * @class menu
- * @augments base-control
+ * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends menu.prototype */{
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {

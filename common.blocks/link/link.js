@@ -2,15 +2,15 @@
  * @module link
  */
 
-modules.define('link', ['i-bem__dom', 'base-control'], function(provide, BEMDOM, BaseControl) {
+modules.define('link', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
 
 /**
  * @exports
  * @class link
- * @augments base-control
+ * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends link.prototype */{
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends link.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {

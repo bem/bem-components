@@ -1,10 +1,10 @@
-/** @module base-control */
+/** @module control */
 
 modules.define(
-    'base-control',
-    function(provide, BaseControl) {
+    'control',
+    function(provide, Control) {
 
-provide(BaseControl.decl({
+provide(Control.decl({
     beforeSetMod : {
         'hovered' : {
             'true' : function() {

@@ -244,7 +244,7 @@
 Блок `radio` зависит от следующего набора блоков и элементов:
 
 * `i-bem__dom`
-* `base-control`
+* `control`
 * `jquery__event`
 * `__box`
 * `__control`

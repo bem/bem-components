@@ -4,16 +4,16 @@
 
 modules.define(
     'radio',
-    ['i-bem__dom', 'base-control'],
-    function(provide, BEMDOM, BaseControl) {
+    ['i-bem__dom', 'control'],
+    function(provide, BEMDOM, Control) {
 
 /**
  * @exports
  * @class radio
- * @augments base-control
+ * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends radio.prototype */{
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends radio.prototype */{
     onSetMod : {
         'checked' : function(modName, modVal) {
             this.elem('control').prop(modName, modVal);

@@ -85,7 +85,7 @@ MAKE.decl('BundleNode', {
             'bemjson.js',
             'bemdecl.js',
             'deps.js',
-            'roole',
+            'stylus',
             'css',
             'bemhtml',
             'browser.js+bemhtml',
@@ -98,7 +98,7 @@ MAKE.decl('BundleNode', {
      * @returns {Array}
      */
     getForkedTechs : function() {
-        return this.__base().concat(['browser.js+bemhtml', 'roole']);
+        return this.__base().concat(['browser.js+bemhtml', 'stylus']);
     },
 
     /**
@@ -179,7 +179,7 @@ MAKE.decl('BundleNode', {
     },
 
     'create-css-node' : function(tech, bundleNode, magicNode) {
-        var source = this.getBundlePath('roole');
+        var source = this.getBundlePath('stylus');
         if(this.ctx.arch.hasNode(source)) {
             return this.createAutoprefixerNode(tech, this.ctx.arch.getNode(source), bundleNode, magicNode);
         }
@@ -232,7 +232,7 @@ MAKE.decl('SpecNode', {
             'bemjson.js',
             'bemdecl.js',
             'deps.js',
-            'roole',
+            'stylus',
             'css',
             'spec.js+browser.js+bemhtml',
             'bemhtml',

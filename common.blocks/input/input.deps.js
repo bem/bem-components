@@ -5,7 +5,7 @@
             mods : ['disabled', 'focused'],
             elems : ['box', 'control']
         },
-        'base-control'
+        'control'
     ]
 },
 {

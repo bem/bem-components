@@ -7,7 +7,7 @@ module.exports = function(bh) {
 
         ctx
             .attr('role', 'button') // Common attributes)
-            .mix({ elem : 'control' }); // Implements `base-control`'s interface
+            .mix({ elem : 'control' }); // NOTE: satisfy interface of `control`
 
         json.tabIndex && ctx.attr('tabindex', json.tabIndex);
         json.id && ctx.attr('id', json.id);

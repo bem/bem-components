@@ -298,6 +298,6 @@
 
 ## Зависимости
 
-* `base-control`
+* `control`
 * `i-bem__dom`
 * `keyboard`

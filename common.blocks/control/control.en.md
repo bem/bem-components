@@ -1,4 +1,4 @@
-# base-control
+# control
 
 Auxiliary block designed to implement the common functionality of the most blocks of [bem-components](https://github.com/bem/bem-components) library to provide them `focused` and `disabled` states: [attach](https://github.com/bem/bem-components/blob/v2/common.blocks/attach/attach.en.md), [button](https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.en.md), [checkbox](https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox/checkbox.en.title.txt), [input], [link], [menu], [radio].
 

@@ -9,7 +9,7 @@
         { block : 'keyboard', elem : 'codes' },
         'functions',
         'events',
-        'base-control'
+        'control'
     ]
 },
 {

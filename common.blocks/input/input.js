@@ -2,15 +2,15 @@
  * @module input
  */
 
-modules.define('input', ['i-bem__dom', 'base-control'], function(provide, BEMDOM, BaseControl) {
+modules.define('input', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
 
 /**
  * @exports
  * @class input
- * @augments base-control
+ * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends input.prototype */{
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {

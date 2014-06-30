@@ -113,7 +113,7 @@
 
 ### Зависимости блока
 
-* `base-control`
+* `control`
 * `i-bem__dom`
 * `icon`
 * `button`

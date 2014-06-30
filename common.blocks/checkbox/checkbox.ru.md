@@ -267,5 +267,5 @@
 ## Зависимости блока
 
 * `i-bem__dom`
-* `base-control`
+* `control`
 * `button`

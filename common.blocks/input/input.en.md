@@ -381,5 +381,5 @@ This element is processed by BEMHTML or BH template engine to native `<input>` o
 
 An **input** block depends on:
 
-* `base-control`, that provides public API;
+* `control`, that provides public API;
 * `i-bem__dom` block.

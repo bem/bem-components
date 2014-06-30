@@ -3,7 +3,7 @@ module.exports = function(bh) {
     bh.match('link', function(ctx, json) {
         ctx
             .tag('a')
-            .mix({ elem : 'control' });
+            .mix({ elem : 'control' }); // satisfy interface of `control`
 
         var url = typeof json.url === 'object'? // url could contain bemjson
                 bh.apply(json.url) :

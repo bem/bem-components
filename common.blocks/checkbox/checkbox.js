@@ -2,15 +2,15 @@
  * @module checkbox
  */
 
-modules.define('checkbox', ['i-bem__dom', 'base-control'], function(provide, BEMDOM, BaseControl) {
+modules.define('checkbox', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
 
 /**
  * @exports
  * @class checkbox
- * @augments base-control
+ * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends checkbox.prototype */{
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends checkbox.prototype */{
     onSetMod : {
         'checked' : function(modName, modVal) {
             this.elem('control').prop(modName, modVal);

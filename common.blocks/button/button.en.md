@@ -570,5 +570,5 @@ This element intended to set a text position in the button.
 
 The `button` block depends on
 
-* `base-control`, that provides public API for the controls.`i-bem__dom`
+* `control`, that provides public API for the controls
 * `i-bem__dom`

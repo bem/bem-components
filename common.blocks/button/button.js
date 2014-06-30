@@ -4,16 +4,16 @@
 
 modules.define(
     'button',
-    ['i-bem__dom', 'base-control', 'jquery', 'dom', 'functions', 'keyboard__codes'],
-    function(provide, BEMDOM, BaseControl, $, dom, functions, keyCodes) {
+    ['i-bem__dom', 'control', 'jquery', 'dom', 'functions', 'keyboard__codes'],
+    function(provide, BEMDOM, Control, $, dom, functions, keyCodes) {
 
 /**
  * @exports
  * @class button
- * @augments base-control
+ * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends button.prototype */{
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends button.prototype */{
     beforeSetMod : {
         'pressed' : {
             'true' : function() {

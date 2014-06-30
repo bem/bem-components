@@ -4,16 +4,16 @@
 
 modules.define(
     'attach',
-    ['i-bem__dom', 'base-control', 'jquery', 'BEMHTML', 'strings__escape'],
-    function(provide, BEMDOM, BaseControl, $, BEMHTML, escape) {
+    ['i-bem__dom', 'control', 'jquery', 'BEMHTML', 'strings__escape'],
+    function(provide, BEMDOM, Control, $, BEMHTML, escape) {
 
 /**
  * @exports
  * @class attach
- * @augments base-control
+ * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : BaseControl }, /** @lends attach.prototype */{
+provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attach.prototype */{
     onSetMod : {
         'disabled' : function(modName, modVal) {
             this.__base.apply(this, arguments);

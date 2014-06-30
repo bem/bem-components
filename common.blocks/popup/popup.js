@@ -406,15 +406,29 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             if(this.tagName === 'BODY') return false;
 
             var parent = $(this),
-                parentOffset = parent.offset(),
-                parentTopOffset = Math.floor(parentOffset.top),
-                parentLeftOffset = Math.floor(parentOffset.left);
+                overflowY = parent.css('overflow-y'),
+                checkOverflowY = overflowY === 'scroll' || overflowY === 'hidden' || overflowY === 'auto',
+                overflowX = parent.css('overflow-x'),
+                checkOverflowX = overflowX === 'scroll' || overflowX === 'hidden' || overflowX === 'auto';
 
-            return res = !(
-                (vertBorder < parentTopOffset) ||
-                (parentTopOffset + parent.outerHeight() < vertBorder) ||
-                (horizBorder < parentLeftOffset) ||
-                (parentLeftOffset + parent.outerWidth() < horizBorder));
+            if(!checkOverflowY && !checkOverflowX)
+                return !(res = true);
+
+            var parentOffset = parent.offset();
+
+            if(checkOverflowY) {
+                var parentTopOffset = Math.floor(parentOffset.top);
+                if(vertBorder < parentTopOffset || parentTopOffset + parent.outerHeight() < vertBorder) {
+                    return res = false;
+                }
+            }
+
+            if(checkOverflowX) {
+                var parentLeftOffset = Math.floor(parentOffset.left);
+                return res = !(
+                    horizBorder < parentLeftOffset ||
+                    parentLeftOffset + parent.outerWidth() < horizBorder);
+            }
         });
 
         return res;

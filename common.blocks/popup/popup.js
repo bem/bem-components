@@ -411,23 +411,22 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 overflowX = parent.css('overflow-x'),
                 checkOverflowX = overflowX === 'scroll' || overflowX === 'hidden' || overflowX === 'auto';
 
-            if(!checkOverflowY && !checkOverflowX)
-                return !(res = true);
+            if(checkOverflowY || checkOverflowX) {
+                var parentOffset = parent.offset();
 
-            var parentOffset = parent.offset();
-
-            if(checkOverflowY) {
-                var parentTopOffset = Math.floor(parentOffset.top);
-                if(vertBorder < parentTopOffset || parentTopOffset + parent.outerHeight() < vertBorder) {
-                    return res = false;
+                if(checkOverflowY) {
+                    var parentTopOffset = Math.floor(parentOffset.top);
+                    if(vertBorder < parentTopOffset || parentTopOffset + parent.outerHeight() < vertBorder) {
+                        return res = false;
+                    }
                 }
-            }
 
-            if(checkOverflowX) {
-                var parentLeftOffset = Math.floor(parentOffset.left);
-                return res = !(
-                    horizBorder < parentLeftOffset ||
-                    parentLeftOffset + parent.outerWidth() < horizBorder);
+                if(checkOverflowX) {
+                    var parentLeftOffset = Math.floor(parentOffset.left);
+                    return res = !(
+                        horizBorder < parentLeftOffset ||
+                        parentLeftOffset + parent.outerWidth() < horizBorder);
+                }
             }
         });
 

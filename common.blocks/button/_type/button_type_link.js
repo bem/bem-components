@@ -35,7 +35,7 @@ provide(Button.decl({ modName : 'type', modVal : 'link' }, {
     /**
      * Sets url
      * @param {String} url
-     * @returns {this}
+     * @returns {button} this
      */
     setUrl : function(url) {
         this._url = url;

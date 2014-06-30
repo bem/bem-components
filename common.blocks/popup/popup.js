@@ -101,7 +101,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
      * Sets target
      * @param {Number|jQuery|BEMDOM} left x-coordinate or owner DOM elem or owner BEMDOM block
      * @param {Number} [top] y-coordinate
-     * @returns {this}
+     * @returns {popup} this
      */
     setTarget : function(left, top) {
         this
@@ -145,7 +145,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     /**
      * Sets content
      * @param {String|jQuery} content
-     * @returns {this}
+     * @returns {popup} this
      */
     setContent : function(content) {
         BEMDOM.update(this.domElem, content);
@@ -154,7 +154,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
     /**
      * Redraws popup
-     * @returns {this}
+     * @returns {popup} this
      */
     redraw : function() {
         if(!this.hasMod('visible')) return this;

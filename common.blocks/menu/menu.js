@@ -51,7 +51,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
     /**
      * Sets content
      * @param {String|jQuery} content
-     * @returns {this}
+     * @returns {menu} this
      */
     setContent : function(content) {
         BEMDOM.update(this.domElem, content);

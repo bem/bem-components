@@ -62,7 +62,7 @@ provide(Menu.decl({ modName : 'select' }, /** @lends menu.prototype */{
     /**
      * Sets menu value
      * @param {*} val
-     * @returns {this}
+     * @returns {menu} this
      */
     setVal : function(val) {
         if(this._setVal(val)) {

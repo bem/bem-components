@@ -44,7 +44,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends link.
     /**
      * Sets url
      * @param {String} url
-     * @returns {this}
+     * @returns {link} this
      */
     setUrl : function(url) {
         this._url = url;

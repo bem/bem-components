@@ -33,7 +33,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input
      * Sets control value
      * @param {String} val value
      * @param {Object} [data] additional data
-     * @returns {this}
+     * @returns {input} this
      */
     setVal : function(val, data) {
         val = String(val);

@@ -74,7 +74,7 @@ provide(BEMDOM.decl(this.name, /** @lends checkbox-group.prototype */{
      * Sets control value
      * @param {Array[String]} val value
      * @param {Object} [data] additional data
-     * @returns {this}
+     * @returns {checkbox-group} this
      */
     setVal : function(val, data) {
         val = val.map(String);

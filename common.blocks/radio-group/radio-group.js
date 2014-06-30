@@ -81,7 +81,7 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
      * Sets control value
      * @param {String} val value
      * @param {Object} [data] additional data
-     * @returns {this}
+     * @returns {radio-group} this
      */
     setVal : function(val, data) {
         val = String(val);

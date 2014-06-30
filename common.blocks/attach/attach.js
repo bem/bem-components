@@ -24,7 +24,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
     /**
      * Clear control value
      * @param {Object} [data] additional data
-     * @returns {this}
+     * @returns {attach} this
      */
     clear : function(data) {
         if(!this.getVal()) return this;

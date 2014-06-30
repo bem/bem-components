@@ -112,7 +112,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
     /**
      * Set value
      * @param {*} val
-     * @returns {this}
+     * @returns {select} this
      */
     setVal : function(val) {
         this._menu.setVal(val);

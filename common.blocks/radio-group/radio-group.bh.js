@@ -3,7 +3,8 @@ module.exports = function(bh) {
     bh.match('radio-group', function(ctx, json) {
         ctx
             .tag('span')
-            .js(true);
+            .js(true)
+            .mix({ block : 'control-group' });
 
         var mods = ctx.mods();
         ctx.content((json.options || []).map(function(option, i) {

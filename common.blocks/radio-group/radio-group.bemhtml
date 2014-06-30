@@ -3,6 +3,8 @@ block('radio-group')(
 
     js()(true),
 
+    mix()([{ block : 'control-group' }]),
+
     content()(function() {
         var mods = this.mods,
             ctx = this.ctx;

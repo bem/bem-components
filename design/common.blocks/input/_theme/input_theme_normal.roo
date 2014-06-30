@@ -1,13 +1,27 @@
-.input_theme_normal
+$ctx = '.input_theme_normal';
+$ctx
 {
     font-family: Arial, Helvetica, sans-serif;
 
+    position: relative;
+
     display: inline-block;
 
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
-    background: #fff;
+    background: rgba(0, 0, 0, 0.2);
 
-    transition: box-shadow 0.05s ease-out;
+    /* Decorative element (inner background) */
+    &:before
+    {
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        bottom: 1px;
+        left: 1px;
+
+        content: '';
+
+        background: #fff;
+    }
 
     .input__box
     {
@@ -97,15 +111,17 @@
 
     &.input_focused
     {
-        box-shadow: inset 0 0 0 1px rgba(178, 142, 0, 0.6),
-                    0 0 10px #fc0;
+        z-index: 1;
+
+        background: rgba(178, 142, 0, 0.6);
+        box-shadow: 0 0 10px #fc0;
     }
 
     &.input_disabled
     {
         background: rgba(0, 0, 0, 0.08);
-        box-shadow: none;
 
+        &:before,
         .input__clear
         {
             display: none;
@@ -283,6 +299,23 @@
                     padding-right: 30px;
                 }
             }
+        }
+    }
+}
+
+.control-group
+{
+    $ctx:before
+    {
+        right: 0;
+    }
+
+    > $ctx:last-child,
+    > :last-child $ctx
+    {
+        &:before
+        {
+            right: 1px;
         }
     }
 }

@@ -33,6 +33,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
             'inited' : function() {
                 this.__base.apply(this, arguments);
                 this._isPointerPressInProgress = false;
+                this._focusedByPointer = false;
             }
         },
 
@@ -40,6 +41,18 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
             'true' : function() {
                 this.__base.apply(this, arguments);
                 this.hasMod('togglable') || this.delMod('pressed');
+            }
+        },
+
+        'focused' : {
+            'true' : function() {
+                this.__base.apply(this, arguments);
+                this._focusedByPointer || this.setMod('focused-hard');
+            },
+
+            '' : function() {
+                this.__base.apply(this, arguments);
+                this.delMod('focused-hard');
             }
         }
     },
@@ -96,7 +109,9 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
         this.unbindFromDoc('pointerrelease', this._onPointerRelease);
 
         if(dom.contains(this.elem('control'), $(e.target))) {
+            this._focusedByPointer = true;
             this._focus();
+            this._focusedByPointer = false;
             this
                 ._updateChecked()
                 .emit('click');

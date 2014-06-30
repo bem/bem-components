@@ -91,8 +91,12 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this
                     .unbindFrom('pointerclick', this._onPointerClick)
                     ._unbindFromParentPopup()
-                    ._unbindFromScrollAndResize()
-                    ._ownerParents = null;
+                    ._unbindFromScrollAndResize();
+
+                if(this._owner) {
+                    this._ownerParents = null;
+                    this._isTargetVisible = undef;
+                }
             }
         }
     },

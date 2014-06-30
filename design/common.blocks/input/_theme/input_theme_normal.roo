@@ -224,6 +224,11 @@
         }
     }
 
+    &.input_width_available
+    {
+        width: 100%;
+    }
+
     &.input_type_textarea
     {
         position: relative;

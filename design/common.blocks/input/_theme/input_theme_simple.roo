@@ -109,6 +109,11 @@
         }
     }
 
+    &.input_width_available
+    {
+        width: 100%;
+    }
+
     &.input_focused
     {
         .input__box,

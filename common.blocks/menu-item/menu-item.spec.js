@@ -14,6 +14,29 @@ describe('menu-item', function() {
         BEMDOM.destruct(menuItem.domElem);
     });
 
+    describe('hovered', function() {
+        it('should be hovered/unhovered on pointerover/pointerleave', function() {
+            menuItem.hasMod('hovered').should.be.false;
+
+            menuItem.domElem.trigger('pointerover');
+            menuItem.hasMod('hovered').should.be.true;
+
+            menuItem.domElem.trigger('pointerleave');
+            menuItem.hasMod('hovered').should.be.false;
+        });
+
+        it('should not set hovered state if disabled', function() {
+            menuItem
+                .setMod('hovered')
+                .setMod('disabled')
+                .hasMod('hovered').should.be.false;
+
+            menuItem
+                .setMod('hovered')
+                .hasMod('hovered').should.be.false;
+        });
+    });
+
     describe('events', function() {
         it('emit event on pointer click if it is not disabled', function() {
             var spy = sinon.spy();

@@ -20,6 +20,21 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
         }
     },
 
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this.bindTo('pointerleave', this._onPointerLeave);
+            }
+        },
+
+        'disabled' : {
+            'true' : function() {
+                this.__base.apply(this, arguments);
+                this.delMod('hovered');
+            }
+        }
+    },
+
     /**
      * Checks whether given value is equal to current value
      * @param {*} val
@@ -48,12 +63,23 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
         return this.params.text || this.domElem.text();
     },
 
+    _onPointerOver : function() {
+        this.setMod('hovered');
+    },
+
+    _onPointerLeave : function() {
+        this.delMod('hovered');
+    },
+
     _onPointerClick : function() {
         this.hasMod('disabled') || this.emit('click', { source : 'pointer' });
     }
 }, /** @lends menu-item */{
     live : function() {
-        this.liveBindTo('pointerclick', this.prototype._onPointerClick);
+        var ptp = this.prototype;
+        this
+            .liveBindTo('pointerover', ptp._onPointerOver)
+            .liveBindTo('pointerclick', ptp._onPointerClick);
     }
 }));
 

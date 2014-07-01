@@ -1,6 +1,11 @@
 block('menu')(
     def()(function() {
-        applyNext({ _menuTheme : this.mods.theme });
+        applyNext({
+            _menuMods : {
+                theme : this.mods.theme,
+                disabled : this.mods.disabled
+            }
+        });
         delete this._menuTheme;
     }),
     attrs()(function() {
@@ -12,7 +17,8 @@ block('menu')(
     mix()([{ elem : 'control' }])
 )
 
-block('menu-item').match(this._menuTheme).def()(function() {
-    this.mods.theme = this._menuTheme;
+block('menu-item').match(this._menuMods).def()(function() {
+    this.mods.theme = this._menuMods.theme;
+    this.mods.disabled = this.mods.disabled || this._menuMods.disabled;
     applyNext();
 });

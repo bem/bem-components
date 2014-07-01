@@ -37,6 +37,12 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
                     .__base.apply(this, arguments);
                 this._hoveredItem && this._hoveredItem.delMod('hovered');
             }
+        },
+
+        'disabled' : function(modName, modVal) {
+            this.getItems().forEach(function(menuItem){
+                menuItem.setMod(modName, modVal);
+            });
         }
     },
 

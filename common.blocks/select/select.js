@@ -203,7 +203,10 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
         if(this._isEventInPopup(e)) {
             e.pointerType === 'mouse' && e.preventDefault(); // prevents button blur in most desktop browsers
             this._isPointerPressInProgress = true;
-            this.bindToDoc('pointerrelease', this._onDocPointerRelease);
+            this.bindToDoc(
+                'pointerrelease',
+                { focusedHardMod : this._button.getMod('focused-hard') },
+                this._onDocPointerRelease);
         }
     },
 
@@ -212,7 +215,8 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
         this
             .unbindFromDoc('pointerrelease', this._onDocPointerRelease)
             ._button
-                .toggleMod('focused', true, '', this._isEventInPopup(e));
+                .toggleMod('focused', true, '', this._isEventInPopup(e))
+                .setMod('focused-hard', e.data.focusedHardMod);
     },
 
     _isEventInPopup : function(e) {

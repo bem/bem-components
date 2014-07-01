@@ -197,7 +197,16 @@
                             content : [
                                 { block : 'button', text : 'default' },
                                 ' ',
-                                { block : 'button', icon : { block : 'icon' } },
+                                {
+                                    block : 'button',
+                                    text : 'with icon',
+                                    icon : { block : 'icon', mods : { action : 'download' } }
+                                },
+                                ' ',
+                                {
+                                    block : 'button',
+                                    icon : { block : 'icon', mods : { action : 'download' } }
+                                },
                                 ' ',
                                 { block : 'button', mods : { 'type' : 'link' }, url : '#', text : 'link' }
                             ]
@@ -235,6 +244,13 @@
                                     block : 'button',
                                     mods : { theme : 'normal', size : 'm' },
                                     text : 'button'
+                                },
+                                ' ',
+                                {
+                                    block : 'button',
+                                    mods : { theme : 'normal', size : 'm' },
+                                    text : 'with icon',
+                                    icon : { block : 'icon', mods : { action : 'download' } }
                                 },
                                 ' ',
                                 {

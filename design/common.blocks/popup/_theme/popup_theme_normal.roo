@@ -1,4 +1,5 @@
-.popup_theme_normal
+$ctx = '.popup_theme_normal';
+$ctx
 {
     visibility: hidden;
 
@@ -19,79 +20,79 @@
 
         margin: 0;
     }
+}
 
-    @for $rule in [
-        [bottom Y 10]
-        [top Y -10]
-        [right X 10]
-        [left X -10]
-    ] {
-        @keyframes popup_theme_normal_{$rule[0]}
+@for $rule in [
+    [bottom Y 10]
+    [top Y -10]
+    [right X 10]
+    [left X -10]
+] {
+    @keyframes popup_theme_normal_{$rule[0]}
+    {
+        0%
         {
-            0%
-            {
-                visibility: visible;
+            visibility: visible;
 
-                margin: 0;
+            margin: 0;
 
-                transform: translate{$rule[1]}(0);
+            transform: translate{$rule[1]}(0);
 
-                opacity: 1;
-            }
-
-            99%
-            {
-                margin: 0;
-
-                transform: translate{$rule[1]}({$rule[2]}px);
-            }
-
-            100%
-            {
-                visibility: hidden;
-
-                margin: -1000px 0 0 -1000px;
-
-                opacity: 0;
-            }
+            opacity: 1;
         }
 
-        @keyframes popup_theme_normal_{$rule[0]}_visible
+        99%
         {
-            0%
-            {
-                opacity: 0;
+            margin: 0;
 
-                transform: translate{$rule[1]}({$rule[2]}px);
-            }
+            transform: translate{$rule[1]}({$rule[2]}px);
+        }
 
-            100%
-            {
-                opacity: 1;
+        100%
+        {
+            visibility: hidden;
 
-                transform: translate{$rule[1]}(0);
-            }
+            margin: -1000px 0 0 -1000px;
+
+            opacity: 0;
         }
     }
 
-    /* Divided into two parts for better optimization */
-    @for $rule in [
-        [bottom [left center right]]
-        [top [left center right]]
-        [right [top center bottom]]
-        [left [top center bottom]]
-    ] {
-        @for $secondary in $rule[1] {
-            &.popup_direction_{$rule[0]}-{$secondary}
-            {
-                animation-name: popup_theme_normal_{$rule[0]};
-            }
+    @keyframes popup_theme_normal_{$rule[0]}_visible
+    {
+        0%
+        {
+            opacity: 0;
+
+            transform: translate{$rule[1]}({$rule[2]}px);
         }
-        @for $secondary in $rule[1] {
-            &.popup_direction_{$rule[0]}-{$secondary}.popup_visible
-            {
-                animation-name: popup_theme_normal_{$rule[0]}_visible;
-            }
+
+        100%
+        {
+            opacity: 1;
+
+            transform: translate{$rule[1]}(0);
+        }
+    }
+}
+
+/* Divided into two parts for better optimization */
+@for $rule in [
+    [bottom [left center right]]
+    [top [left center right]]
+    [right [top center bottom]]
+    [left [top center bottom]]
+] {
+    @for $secondary in $rule[1] {
+        $ctx.popup_direction_{$rule[0]}-{$secondary}
+        {
+            animation-name: popup_theme_normal_{$rule[0]};
+        }
+    }
+    @for $secondary in $rule[1] {
+        $ctx.popup_direction_{$rule[0]}-{$secondary}.popup_visible
+        {
+            animation-name: popup_theme_normal_{$rule[0]}_visible;
         }
     }
 }

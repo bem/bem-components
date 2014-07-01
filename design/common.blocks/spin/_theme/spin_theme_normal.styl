@@ -39,29 +39,27 @@
         backface-visibility: hidden; /* Accelerate animation */
     }
 
-    $sizeList = [16, 24, 28, 32, 38];
+    sizeList = (16 24 28 32 38);
 
-    @for $sizeVal, $i in xs s m l xl
-    {
-        &.spin_size_$sizeVal
+    for sizeVal, i in xs s m l xl {
+        &.spin_size_{sizeVal}
         {
-            line-height: $sizeList[$i]px;
+            line-height: sizeList[i]px;
 
-            width: $sizeList[$i]px;
-            height: $sizeList[$i]px;
+            width: sizeList[i]px;
+            height: sizeList[i]px;
 
-            background-position: 0 $i * -40px;
+            background-position: 0 i * -40px;
 
             &:before
             {
-                height: $sizeList[$i]px;
+                height: sizeList[i]px;
             }
         }
     }
 }
 
-@keyframes spin_theme_normal
-{
+@keyframes spin_theme_normal {
     from
     {
         color: #fc0;

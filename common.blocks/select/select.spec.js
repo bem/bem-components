@@ -95,6 +95,20 @@ describe('select', function() {
             button.delMod('focused');
             select.hasMod('focused').should.be.false;
         });
+
+        it('should keep focused and focused-hard state on popup click', function() {
+            select
+                .setMod('focused')
+                .setMod('opened');
+
+            // try to emulate some browsers behaviour where blur can't be prevented
+            popup.domElem.trigger('pointerpress');
+            button.domElem.blur();
+            popup.domElem.trigger('pointerrelease');
+
+            button.hasMod('focused').should.be.true;
+            button.hasMod('focused-hard').should.be.true;
+        });
     });
 
     describe('enable/disable', function() {

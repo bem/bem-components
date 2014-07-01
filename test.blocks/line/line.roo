@@ -10,7 +10,7 @@
 
     white-space: nowrap;
 
-    &::after
+    &:after
     {
         font-size: inherit;
         line-height: inherit;

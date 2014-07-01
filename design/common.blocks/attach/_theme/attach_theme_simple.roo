@@ -41,7 +41,7 @@
 
         cursor: pointer;
 
-        &::before
+        &:before
         {
             content: '×';
         }

@@ -5,7 +5,7 @@
     &.menu_focused
     {
         border-color: rgba(0, 0, 0, 0.2);
-        box-shadow: 0 0 5px 1px rgba(255, 204, 0, 1);
+        box-shadow: 0 0 5px 1px #fc0;
     }
 
     .menu__group-title

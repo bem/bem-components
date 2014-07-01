@@ -59,7 +59,7 @@
 
         user-select: none;
 
-        &::after
+        &:after
         {
             font-size: 140%;
             font-weight: bold;
@@ -119,7 +119,7 @@
         .input__box,
         &.input_type_textarea .input__control
         {
-            box-shadow: 0 0 5px 1px rgba(255, 204, 0, 1);
+            box-shadow: 0 0 5px 1px #fc0;
         }
     }
 

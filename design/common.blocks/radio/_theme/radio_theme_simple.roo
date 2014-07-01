@@ -8,7 +8,7 @@
         opacity: 0;
     }
 
-    .radio__box::before
+    .radio__box:before
     {
         line-height: 1em;
 
@@ -32,12 +32,12 @@
         opacity: 0.6;
     }
 
-    &.radio_focused .radio__box::before
+    &.radio_focused .radio__box:before
     {
-        box-shadow: 0 0 5px 1px rgba(255, 204, 0, 1);
+        box-shadow: 0 0 5px 1px #fc0;
     }
 
-    &.radio_checked .radio__box::before
+    &.radio_checked .radio__box:before
     {
         content: '\2022';
 

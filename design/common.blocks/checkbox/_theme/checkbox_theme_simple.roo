@@ -8,7 +8,7 @@
         visibility: hidden;
     }
 
-    .checkbox__box::before
+    .checkbox__box:before
     {
         line-height: 0.6em;
 
@@ -31,7 +31,7 @@
         opacity: 0.6;
     }
 
-    &.checkbox_checked .checkbox__box::before
+    &.checkbox_checked .checkbox__box:before
     {
         content: '\2713';
 

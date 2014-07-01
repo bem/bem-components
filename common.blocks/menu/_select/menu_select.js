@@ -33,9 +33,9 @@ provide(Menu.decl({ modName : 'select' }, /** @lends menu.prototype */{
     },
 
     _onKeyUp : function() {
-        this
-            .unbindFromDoc('keyup', this._onKeyUp)
-            .bindToDoc('keydown', this._onKeyDown);
+        this.unbindFromDoc('keyup', this._onKeyUp);
+        // it could be unfocused while is key being pressed
+        this.hasMod('focused') && this.bindToDoc('keydown', this._onKeyDown);
     },
 
     /**

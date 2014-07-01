@@ -201,7 +201,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
 
     _onDocPointerPress : function(e) {
         if(this._isEventInPopup(e)) {
-            e.preventDefault(); // prevents button blur in most browsers
+            e.pointerType === 'mouse' && e.preventDefault(); // prevents button blur in most desktop browsers
             this._isPointerPressInProgress = true;
             this.bindToDoc('pointerrelease', this._onDocPointerRelease);
         }

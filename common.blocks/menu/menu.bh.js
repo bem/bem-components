@@ -19,7 +19,7 @@ module.exports = function(bh) {
     bh.match('menu-item', function(ctx) {
         var menuMods = ctx.tParam('_menuMods');
 
-        ctx.mods({
+        menuMods && ctx.mods({
             theme : menuMods.theme,
             disabled : menuMods.disabled
         });

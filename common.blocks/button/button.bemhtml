@@ -1,6 +1,5 @@
 block('button')(
     def()(function() {
-        var mods = this.mods;
         applyNext({ _button : this.ctx });
     }),
 
@@ -11,39 +10,41 @@ block('button')(
     js()(true),
 
     // NOTE: mix below is to satisfy interface of `control`
-    mix()([{ elem : 'control' }]),
+    mix()({ elem : 'control' }),
 
     attrs()(
         // Common attributes
         function() {
-            var ctx = this.ctx,
-                attrs = { role : 'button' };
+            var ctx = this.ctx;
 
-            ctx.tabIndex && (attrs.tabindex = ctx.tabIndex);
-            ctx.id && (attrs.id = ctx.id);
-
-            return attrs;
+            return {
+                role : 'button',
+                tabindex : ctx.tabIndex,
+                id : ctx.id
+            };
         },
 
         // Attributes for button variant
-        match(function() { return !this.mods.type })(function() {
+        match(function() { return !this.mods.type; })(function() {
             var ctx = this.ctx,
-                attrs = {};
+                attrs = {
+                    name : ctx.name,
+                    value : ctx.val
+                };
 
             ctx.tag || (attrs.type = ctx.type || 'button');
 
-            ctx.name && (attrs.name = ctx.name);
-            ctx.val && (attrs.value = ctx.val);
             this.mods.disabled && (attrs.disabled = 'disabled');
 
-            return this._.extend(applyNext(), attrs);
+            return this.extend(applyNext(), attrs);
         })
     ),
 
     content()(
         function() {
-            var ctx = this.ctx, content = [this.ctx.icon];
-            // NOTE: не вынесли в отдельные шаблоны ради оптимизации
+            var ctx = this.ctx,
+                content = [ctx.icon];
+            // NOTE: wasn't moved to separate template for optimization
             ctx.text && content.push({ elem : 'text', content : ctx.text });
             return content;
         },

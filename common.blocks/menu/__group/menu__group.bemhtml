@@ -1,6 +1,6 @@
 block('menu').elem('group')(
     attrs()({ role : 'group' }),
-    match(function() { return typeof this.ctx.title !== 'undefined' })(
+    match(function() { return typeof this.ctx.title !== 'undefined'; })(
         attrs()(function() {
             return this.extend(applyNext(), { 'aria-label' : this.ctx.title });
         }),
@@ -11,4 +11,4 @@ block('menu').elem('group')(
             ];
         })
     )
-)
+);

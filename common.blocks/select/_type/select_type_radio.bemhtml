@@ -25,4 +25,4 @@ block('select').mod('type', 'radio')(
             // TODO: with icons
         ];
     })
-)
+);

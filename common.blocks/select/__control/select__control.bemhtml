@@ -9,4 +9,4 @@ block('select').elem('control')(
             disabled : this.mods.disabled? 'disabled' : undefined
         };
     })
-)
+);

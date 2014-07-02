@@ -1,6 +1,5 @@
 block('button')(
     def()(function() {
-        var mods = this.mods;
         applyNext({ _button : this.ctx });
     }),
 
@@ -26,7 +25,7 @@ block('button')(
         },
 
         // Attributes for button variant
-        match(function() { return !this.mods.type })(function() {
+        match(function() { return !this.mods.type; })(function() {
             var ctx = this.ctx,
                 attrs = {};
 
@@ -47,8 +46,8 @@ block('button')(
             ctx.text && content.push({ elem : 'text', content : ctx.text });
             return content;
         },
-        match(function() { return typeof this.ctx.content !== 'undefined' })(function() {
+        match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {
             return this.ctx.content;
         })
     )
-)
+);

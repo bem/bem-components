@@ -17,4 +17,4 @@ block('dropdown')(
             popup
         ];
     })
-)
+);

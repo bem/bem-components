@@ -10,7 +10,7 @@ block('select').mod('type', 'radio-check')(
         ];
     }),
 
-    match(function() { return this._checkedOptions[0] })(
+    match(function() { return this._checkedOptions[0]; })(
         content()(function() {
             return [
                 {
@@ -21,4 +21,4 @@ block('select').mod('type', 'radio-check')(
             ];
         })
     )
-)
+);

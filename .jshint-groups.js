@@ -55,9 +55,34 @@ module.exports = {
             includes : ['*.blocks/**/*.spec.js']
         },
 
+        bemhtml : {
+            options : {
+                predef : [
+                    'apply',
+                    'applyCtx',
+                    'applyNext',
+                    'attrs',
+                    'bem',
+                    'block',
+                    'cls',
+                    'content',
+                    'def',
+                    'elem',
+                    'js',
+                    'local',
+                    'match',
+                    'mix',
+                    'mod',
+                    'mode',
+                    'tag'
+                ]
+            },
+            includes : ['*.blocks/**/*.bemhtml']
+        },
+
         bhjs : {
             options : {
-                predef : ['module']
+                node : true
             },
             includes : [
                 '*.blocks/**/*.bh.js',

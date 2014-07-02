@@ -31,4 +31,4 @@ block('checkbox').mod('type', 'button')(
             content : buttonContent
         });
     })
-)
+);

@@ -9,7 +9,7 @@
     content : [
 
         { tag : 'h2', content : 'default' },
-        { 
+        {
             block : 'test', content : {
                 block : 'checkbox-group',
                 options : [
@@ -17,9 +17,9 @@
                     { text : 'second', checked : true }
                 ]
             },
-            cls : 'default-enabled' 
+            cls : 'default-enabled'
         },
-        { 
+        {
             block : 'test', content : {
                 block : 'checkbox-group',
                 mods : { disabled : true },
@@ -28,7 +28,7 @@
                     { text : 'second', checked : true }
                 ]
             },
-            cls : 'default-disabled' 
+            cls : 'default-disabled'
         },
 
         { tag : 'hr' },
@@ -36,7 +36,7 @@
         { tag : 'h2', content : 'normal' },
         ['m', 'l'].map(function(size) {
             return [
-                { 
+                {
                     block : 'test', content : {
                         block : 'checkbox-group',
                         mods : { theme : 'normal', size : size },
@@ -45,9 +45,9 @@
                             { text : 'second', checked : true }
                         ]
                     },
-                    cls : 'normal-size_' + size + '-enabled' 
+                    cls : 'normal-size_' + size + '-enabled'
                 },
-                { 
+                {
                     block : 'test', content : {
                         block : 'checkbox-group',
                         mods : { theme : 'normal', size : size, disabled : true },
@@ -55,7 +55,7 @@
                             { text : 'first' },
                             { text : 'second', checked : true }
                         ]
-                    } ,
+                    },
                     cls : 'normal-size_' + size + '-disabled'
                 }
             ]
@@ -64,7 +64,7 @@
         { tag : 'h3', content : 'line' },
         ['m', 'l'].map(function(size){
             return [
-                { 
+                {
                     block : 'test', content : {
                         block : 'checkbox-group',
                         mods : { theme : 'normal', size : size, type : 'line' },
@@ -74,9 +74,9 @@
                         ]
                     },
                     attrs : { style : 'margin-bottom: 5px;' },
-                    cls : 'line-size_' + size + '-enabled' 
+                    cls : 'line-size_' + size + '-enabled'
                 },
-                { 
+                {
                     block : 'test', content : {
                         block : 'checkbox-group',
                         mods : { theme : 'normal', size : size, type : 'line', disabled : true },
@@ -84,7 +84,7 @@
                             { text : 'first' },
                             { text : 'second', checked : true }
                         ]
-                    } ,
+                    },
                     cls : 'line-size_' + size + '-disabled'
                 }
             ]

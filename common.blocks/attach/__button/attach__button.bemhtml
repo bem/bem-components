@@ -5,6 +5,6 @@ block('button')
             return [
                 { block : 'attach', elem : 'control' },
                 applyNext()
-            ]
+            ];
         })
-    )
+    );

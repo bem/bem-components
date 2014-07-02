@@ -5,12 +5,12 @@ block('input').elem('control')(
     attrs()(function() {
         var input = this._input,
             attrs = {
-                id: input.id,
-                name: input.name,
-                value: input.val,
-                maxlength: input.maxLength,
-                tabindex: input.tabIndex,
-                placeholder: input.placeholder
+                id : input.id,
+                name : input.name,
+                value : input.val,
+                maxlength : input.maxLength,
+                tabindex : input.tabIndex,
+                placeholder : input.placeholder
             };
 
         input.autocomplete === false && (attrs.autocomplete = 'off');
@@ -18,4 +18,4 @@ block('input').elem('control')(
 
         return attrs;
     })
-)
+);

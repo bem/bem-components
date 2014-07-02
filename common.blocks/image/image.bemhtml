@@ -10,4 +10,4 @@ block('image')(
             title : ctx.title
         };
     })
-)
+);

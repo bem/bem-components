@@ -1,1 +1,1 @@
-block('checkbox').elem('box').tag()('span')
+block('checkbox').elem('box').tag()('span');

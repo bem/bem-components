@@ -26,7 +26,7 @@ block('select')(
         });
     }),
 
-    js()(function () {
+    js()(function() {
         var ctx = this.ctx;
         return {
             name : ctx.name,
@@ -45,4 +45,4 @@ block('select')(
             }
         ];
     })
-)
+);

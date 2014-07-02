@@ -6,7 +6,6 @@ block('dropdown').mod('switcher', 'link').elem('switcher').content()(function() 
         { block : 'link', mods : { pseudo : true }, content : content } :
         content;
 
-
     if(res.block === 'link') {
         var resMods = res.mods || (res.mods = {}),
             dropdownMods = this.mods;
@@ -15,4 +14,4 @@ block('dropdown').mod('switcher', 'link').elem('switcher').content()(function() 
     }
 
     return res;
-})
+});

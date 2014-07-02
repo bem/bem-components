@@ -1,6 +1,6 @@
 block('button').elem('text')(
     tag()('span'),
-    match(function() { return typeof this._button.textMaxWidth === 'number' }).attrs()(function() {
+    match(function() { return typeof this._button.textMaxWidth === 'number'; }).attrs()(function() {
         return { style : 'max-width:' + this._button.textMaxWidth + 'px' };
     })
-)
+);

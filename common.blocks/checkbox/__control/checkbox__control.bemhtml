@@ -13,4 +13,4 @@ block('checkbox').elem('control')(
 
         return attrs;
     })
-)
+);

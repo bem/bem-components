@@ -6,17 +6,21 @@ module.exports = function(bh) {
         ctx.js(true);
 
         ctx
-            .attr('role', 'button') // Common attributes)
+            // Common attributes
+            .attrs({
+                role : 'button',
+                tabindex : json.tabIndex,
+                id : json.id
+            })
             .mix({ elem : 'control' }); // NOTE: satisfy interface of `control`
-
-        json.tabIndex && ctx.attr('tabindex', json.tabIndex);
-        json.id && ctx.attr('id', json.id);
 
         // Attributes for button variant
         if(!ctx.mod('type')) {
+            ctx.attrs({
+                name : json.name,
+                value : json.val
+            });
             json.tag || ctx.attr('type', json.type || 'button');
-            json.name && ctx.attr('name', json.name);
-            json.val && ctx.attr('value', json.val);
             ctx.mod('disabled') && ctx.attr('disabled', 'disabled');
         }
 

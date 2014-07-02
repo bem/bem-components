@@ -39,7 +39,7 @@
     "jscs": "1.5.3",
     "jshint": "2.3.0",
     "jshint-groups": "0.6.0",
-    "stylus": "0.46.3",
+    "stylus": "0.47.1",
     "svgo": "0.4.1"
   },
   "optionalDependencies": {},

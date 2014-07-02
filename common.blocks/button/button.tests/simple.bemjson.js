@@ -199,6 +199,16 @@
             ' ',
             {
                 block : 'button',
+                text : 'layers',
+                mods : { theme : 'normal', size : 's' },
+                icon : {
+                    block : 'icon',
+                    content : '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 16 16" class="image"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
+                }
+            },
+            ' ',
+            {
+                block : 'button',
                 mods : { theme : 'normal', size : 's' },
                 content : [
                     { elem : 'text', content : 'down' },
@@ -251,6 +261,16 @@
             ' ',
             {
                 block : 'button',
+                text : 'layers',
+                mods : { theme : 'normal', size : 'm' },
+                icon : {
+                    block : 'icon',
+                    content : '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="-5 -5 26 26" class="image"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
+                }
+            },
+            ' ',
+            {
+                block : 'button',
                 mods : { theme : 'normal', size : 'm' },
                 content : [
                     { block : 'icon', mods : { action : 'left' } },
@@ -268,6 +288,16 @@
             ' ',
             {
                 block : 'button',
+                text : 'layers',
+                mods : { theme : 'normal', size : 'l' },
+                icon : {
+                    block : 'icon',
+                    content : '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="1 1 14 14" class="image"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
+                }
+            },
+            ' ',
+            {
+                block : 'button',
                 mods : { theme : 'normal', size : 'l' },
                 content : [
                     { block : 'icon', mods : { action : 'left' } },
@@ -281,6 +311,19 @@
                 block : 'button',
                 mods : { theme : 'normal', size : 'xl' },
                 icon : { block : 'icon', mods : { action : 'download' } }
+            },
+            ' ',
+            {
+                block : 'button',
+                text : 'layers',
+                mods : { theme : 'normal', size : 'xl' },
+                icon : {
+                    block : 'icon',
+                    content : {
+                        block : 'image',
+                        url : '../../../test.blocks/icon/_action/download.svg'
+                    }
+                }
             },
             ' ',
             {

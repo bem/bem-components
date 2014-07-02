@@ -2,14 +2,14 @@ block('input')(
     tag()('span'),
     js()(true),
     def()(function() {
-        applyNext({ _input : this.ctx })
+        applyNext({ _input : this.ctx });
     }),
     content()(
         function() {
             return { elem : 'box', content : { elem : 'control' } };
         },
-        match(function() { return typeof this.ctx.content !== 'undefined' })(function() {
+        match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {
             return this.ctx.content;
         })
     )
-)
+);

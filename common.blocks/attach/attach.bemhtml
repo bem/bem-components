@@ -1,5 +1,5 @@
 block('attach')(
-    def()(function() { applyNext({ _attach : this.ctx }) }),
+    def()(function() { applyNext({ _attach : this.ctx }); }),
 
     tag()('span'),
 
@@ -30,8 +30,8 @@ block('attach')(
                 }
             ];
         },
-        match(function() { return typeof this.ctx.content !== 'undefined' })(function() {
+        match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {
             return this.ctx.content;
         })
     )
-)
+);

@@ -1,6 +1,6 @@
-block('input').mod('type', 'textarea').tag()('div')
+block('input').mod('type', 'textarea').tag()('div');
 
-block('input').mod('type', 'textarea').elem('box').tag()(false)
+block('input').mod('type', 'textarea').elem('box').tag()(false);
 
 block('input').mod('type', 'textarea').elem('control')(
     tag()('textarea'),
@@ -12,5 +12,5 @@ block('input').mod('type', 'textarea').elem('control')(
         return attrs;
     }),
 
-    content()(function() { return this._input.val })
-)
+    content()(function() { return this._input.val; })
+);

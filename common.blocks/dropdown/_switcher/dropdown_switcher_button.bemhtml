@@ -15,4 +15,4 @@ block('dropdown').mod('switcher', 'button').elem('switcher').content()(function(
     }
 
     return res;
-})
+});

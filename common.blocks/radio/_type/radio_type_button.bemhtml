@@ -31,4 +31,4 @@ block('radio').mod('type', 'button')(
             content : buttonContent
         });
     })
-)
+);

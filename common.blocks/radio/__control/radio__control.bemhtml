@@ -16,4 +16,4 @@ block('radio').elem('control')(
 
         return attrs;
     })
-)
+);

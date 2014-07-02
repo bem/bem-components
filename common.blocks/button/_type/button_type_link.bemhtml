@@ -17,4 +17,4 @@ block('button').mod('type', 'link')(
         .js()(function() {
             return this._.extend(applyNext(), { url : this.ctx.url });
         })
-)
+);

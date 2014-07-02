@@ -19,14 +19,14 @@ block('select').mod('type', 'check')(
         ];
     }),
 
-    match(function() { return this._checkedOptions[0] }).content()(function() {
+    match(function() { return this._checkedOptions[0]; }).content()(function() {
         var res = this._checkedOptions.map(function(option) {
             return {
                 elem : 'control',
                 val : option.val
-            }
+            };
         });
         res.push(applyNext());
         return res;
     })
-)
+);

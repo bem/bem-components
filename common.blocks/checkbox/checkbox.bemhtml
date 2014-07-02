@@ -4,18 +4,21 @@ block('checkbox')(
     js()(true),
 
     content()(function() {
+        var ctx = this.ctx,
+            mods = this.mods;
+
         return [
             {
                 elem : 'box',
                 content : {
                     elem : 'control',
-                    checked : this.mods.checked,
-                    disabled : this.mods.disabled,
-                    name : this.ctx.name,
-                    val : this.ctx.val
+                    checked : mods.checked,
+                    disabled : mods.disabled,
+                    name : ctx.name,
+                    val : ctx.val
                 }
             },
-            this.ctx.text
+            ctx.text
         ];
     })
-)
+);

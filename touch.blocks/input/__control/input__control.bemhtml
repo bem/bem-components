@@ -1,7 +1,7 @@
 block('input').elem('control')(
 
-    attrs().match(function() { return !this.ctx._input__controlAttrs })(function() {
-        var baseAttrs = applyNext({ 'ctx._input__controlAttrs': true }),
+    attrs().match(function() { return !this.ctx._input__controlAttrs; })(function() {
+        var baseAttrs = applyNext({ 'ctx._input__controlAttrs' : true }),
             attrs = this.ctx.attrs || {};
 
         attrs.autocomplete = attrs.autocomplete || 'off';
@@ -12,4 +12,4 @@ block('input').elem('control')(
         return this.extend(baseAttrs, attrs);
     })
 
-)
+);

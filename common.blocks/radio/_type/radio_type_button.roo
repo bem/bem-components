@@ -1,4 +1,0 @@
-.radio_type_button .radio__control
-{
-    visibility: hidden;
-}

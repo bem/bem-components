@@ -1,5 +1,5 @@
-.popup_theme_normal
-{
+ctx = '.popup_theme_normal'
+{ctx} {
     visibility: hidden;
 
     margin: -1000px 0 0 -1000px;
@@ -8,8 +8,7 @@
     animation-timing-function: ease-out;
 
     background: #fff;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
-                0 10px 20px -5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.4);
 
     animation-fill-mode: forwards;
 
@@ -19,27 +18,11 @@
 
         margin: 0;
     }
-
-    /* Divided into two parts for better optimization */
-    for rule in ((bottom (left center right)) (top (left center right)) (right (top center bottom)) (left (top center bottom))) {
-        for secondary in rule[1] {
-            &.popup_direction_{rule[0]}-{secondary} {
-                animation-name: popup_theme_normal_ + rule[0];
-            }
-        }
-        for secondary in rule[1] {
-            &.popup_direction_{rule[0]}-{secondary}.popup_visible {
-                animation-name: popup_theme_normal_ + rule[0] + _visible;
-            }
-        }
-    }
 }
 
 for rule in ((bottom Y 10) (top Y -10) (right X 10) (left X -10)) {
-    @keyframes popup_theme_normal_{rule[0]}
-    {
-        0%
-        {
+    @keyframes popup_theme_normal_{rule[0]} {
+        0% {
             visibility: visible;
 
             margin: 0;
@@ -49,15 +32,13 @@ for rule in ((bottom Y 10) (top Y -10) (right X 10) (left X -10)) {
             opacity: 1;
         }
 
-        99%
-        {
+        99% {
             margin: 0;
 
             transform: translate + rule[1] + unquote('(' + rule[2] + 'px)');
         }
 
-        100%
-        {
+        100% {
             visibility: hidden;
 
             margin: -1000px 0 0 -1000px;
@@ -67,18 +48,29 @@ for rule in ((bottom Y 10) (top Y -10) (right X 10) (left X -10)) {
     }
 
     @keyframes popup_theme_normal_{rule[0]}_visible {
-        0%
-        {
+        0% {
             opacity: 0;
 
             transform: translate + rule[1] + unquote('(' + rule[2] + 'px)');
         }
 
-        100%
-        {
+        100% {
             opacity: 1;
 
             transform: translate + rule[1] + '(0)';
+        }
+    }
+}
+
+for rule in ((bottom (left center right)) (top (left center right)) (right (top center bottom)) (left (top center bottom))) {
+    for secondary in rule[1] {
+        {ctx}.popup_direction_{rule[0]}-{secondary} {
+            animation-name: popup_theme_normal_ + rule[0];
+        }
+    }
+    for secondary in rule[1] {
+        {ctx}.popup_direction_{rule[0]}-{secondary}.popup_visible {
+            animation-name: popup_theme_normal_ + rule[0] + _visible;
         }
     }
 }

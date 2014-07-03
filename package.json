@@ -26,6 +26,7 @@
     "enb-autoprefixer": "0.1.1",
     "enb-bem-docs": "0.2.0",
     "enb-bem-examples": "0.2.7",
+    "enb-bem-tmpl-specs": "git://github.com/andrewblond/enb-bem-tmpl-specs.git#6a6865161d0b794da6919990e0a1aace7764e28a",
     "enb-bemxjst": "1.2.0",
     "enb-bh": "0.2.0",
     "enb-borschik": "1.0.4",

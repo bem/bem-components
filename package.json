@@ -28,6 +28,7 @@
     "enb-bem-docs": "0.2.6",
     "enb-bem-examples": "0.2.7",
     "enb-bem-specs": "0.2.2",
+    "enb-bem-tmpl-specs": "git://github.com/andrewblond/enb-bem-tmpl-specs.git#833aa4f8392976f3df31c9fa33c94a31195b9c22",
     "enb-bemxjst": "1.2.0",
     "enb-bh": "0.2.0",
     "enb-borschik": "1.0.4",

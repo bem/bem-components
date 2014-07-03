@@ -3,6 +3,7 @@ var DEFAULT_LANGS = ['ru', 'en'],
     path = require('path'),
     docSets = require('enb-bem-docs'),
     exampleSets = require('enb-bem-examples'),
+    tmplSets = require('enb-bem-tmpl-specs'),
     levels = require('enb/techs/levels'),
     provide = require('enb/techs/file-provider'),
     bemdeclFromDepsByTech = require('enb/techs/bemdecl-from-deps-by-tech'),
@@ -27,6 +28,7 @@ module.exports = function(config) {
     var docs = docSets.create('docs', config),
         examples = exampleSets.create('examples', config),
         tests = exampleSets.create('tests', config),
+        tmplSpecs = tmplSets.create('tmpl-specs', config),
         langs = process.env.BEM_I18N_LANGS;
 
     config.setLanguages(langs? langs.split(' ') : [].concat(DEFAULT_LANGS));
@@ -50,6 +52,12 @@ module.exports = function(config) {
         inlineExamplePattern : 'desktop.examples/?/*'
     });
 
+    tmplSpecs.configure({
+        destPath : 'desktop.tmpl-specs',
+        levels : getDesktopLibLevels(config),
+        sourceLevels : getDesktopLevels(config)
+    });
+
     examples.build({
         destPath : 'touch-pad.examples',
         levels : getTouchPadLibLevels(config),
@@ -69,6 +77,12 @@ module.exports = function(config) {
         inlineExamplePattern : 'touch-pad.examples/?/*'
     });
 
+    tmplSpecs.configure({
+        destPath : 'touch-pad.tmpl-specs',
+        levels : getTouchPadLibLevels(config),
+        sourceLevels : getTouchPadLevels(config)
+    });
+
     examples.build({
         destPath : 'touch-phone.examples',
         levels : getTouchPhoneLibLevels(config),
@@ -86,6 +100,12 @@ module.exports = function(config) {
         levels : getTouchPhoneLibLevels(config),
         examplePattern : ['touch-phone.examples/?/*', 'touch-phone.tests/?/*'],
         inlineExamplePattern : 'touch-phone.examples/?/*'
+    });
+
+    tmplSpecs.configure({
+        destPath : 'touch-phone.tmpl-specs',
+        levels : getTouchPhoneLibLevels(config),
+        sourceLevels : getTouchPhoneLevels(config)
     });
 
     config.nodes(['desktop.examples/*/*', 'desktop.pages/*'], function(nodeConfig) {

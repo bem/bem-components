@@ -4,7 +4,13 @@ gemini.suite('spin', function(root) {
 
     root.setUrl('desktop.tests/spin/gemini/gemini.html');
 
-    ['normal-xs', 'normal-s', 'normal-m', 'normal-l', 'normal-xl']
+    [
+        'normal-xs',
+        'normal-s',
+        'normal-m',
+        'normal-l',
+        'normal-xl'
+    ]
         .forEach(function(test) {
             var testSize = '.' + test;
 

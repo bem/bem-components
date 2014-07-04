@@ -1,30 +1,26 @@
 module.exports = function(bh) {
 
     bh.match('button', function(ctx, json) {
-        ctx.tParam('_button', json);
-
-        ctx.js(true);
+        var modType = ctx.mod('type'),
+            isRealButton = !modType || modType === 'submit';
 
         ctx
-            // Common attributes
+            .tParam('_button', json)
+            .tag(json.tag || 'button')
+            .js(true)
             .attrs({
                 role : 'button',
                 tabindex : json.tabIndex,
-                id : json.id
+                id : json.id,
+                type : isRealButton? modType : '',
+                name : json.name,
+                value : json.val
             })
             .mix({ elem : 'control' }); // NOTE: satisfy interface of `control`
 
-        // Attributes for button variant
-        if(!ctx.mod('type')) {
-            ctx.attrs({
-                name : json.name,
-                value : json.val
-            });
-            json.tag || ctx.attr('type', json.type || 'button');
-            ctx.mod('disabled') && ctx.attr('disabled', 'disabled');
-        }
-
-        ctx.tag(json.tag || 'button');
+        isRealButton &&
+            ctx.mod('disabled') &&
+            ctx.attr('disabled', 'disabled');
 
         var content = ctx.content();
         if(typeof content === 'undefined') {

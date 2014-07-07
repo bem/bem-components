@@ -25,14 +25,13 @@ block('button')(
         },
 
         // Attributes for button variant
-        match(function() { return !this.mods.type; })(function() {
+        match(function() { return !this.mods.type || this.mods.type === 'submit'; })(function() {
             var ctx = this.ctx,
                 attrs = {
+                    type : this.mods.type,
                     name : ctx.name,
                     value : ctx.val
                 };
-
-            ctx.tag || (attrs.type = ctx.type || 'button');
 
             this.mods.disabled && (attrs.disabled = 'disabled');
 

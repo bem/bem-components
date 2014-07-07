@@ -20,6 +20,11 @@
         } },
         { tag : 'p', content : {
             block : 'button',
+            text : 'submit',
+            mods : { type : 'submit' }
+        } },
+        { tag : 'p', content : {
+            block : 'button',
             mods : { type : 'link' },
             url : '#',
             text : 'link'
@@ -55,6 +60,12 @@
             block : 'button',
             mods : { theme : 'simple' },
             icon : { block : 'icon', mods : { social : 'vk' } }
+        } },
+
+        { tag : 'p', content : {
+            block : 'button',
+            mods : { theme : 'simple', type : 'submit' },
+            text : 'submit'
         } },
 
         { tag : 'p', content : {
@@ -139,6 +150,17 @@
             block : 'button',
             mods : { theme : 'normal', size : 'xl' },
             text : 'size xl'
+        } },
+
+        { tag : 'h3', content : 'submit' },
+        { tag : 'p', content : {
+            block : 'button',
+            mods : {
+                theme : 'normal',
+                size : 'm',
+                type : 'submit'
+            },
+            text : 'submit'
         } },
 
         { tag : 'h3', content : 'link' },

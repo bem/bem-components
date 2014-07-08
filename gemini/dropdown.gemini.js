@@ -12,7 +12,6 @@ gemini.suite('dropdown', function(root) {
     ]
         .forEach(function(test) {
             var dropdownSelector = '.' + test + (!!~test.indexOf('button') ? ' .button' : ' .link');
-            console.log(dropdownSelector);
 
                 gemini.suite(test, function(suite) {
                     suite

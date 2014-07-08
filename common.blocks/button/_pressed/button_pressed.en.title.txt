@@ -1,0 +1,1 @@
+Specifies "pressed" state

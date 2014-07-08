@@ -11,4 +11,11 @@
 {
     tech : 'spec.js',
     mustDeps : { tech : 'bemhtml', block : 'menu' }
+},
+{
+    tech : 'tmpl-spec.js',
+    mustDeps : [
+        { tech : 'bemhtml', block : 'link' },
+        { tech : 'bemhtml', block : 'menu-item', mods : { type : 'link' } }
+    ]
 }]

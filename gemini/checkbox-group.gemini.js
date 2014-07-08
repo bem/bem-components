@@ -7,15 +7,20 @@ gemini.suite('checkbox-group', function(root) {
     function testing(test, innerSelector) {
         var checkboxGroupSelector = '.' + test,
             checkboxGroupEnabledSelector = checkboxGroupSelector + '-enabled',
-            checkboxGroupDisabledSelector = checkboxGroupSelector + '-disabled';
+            checkboxGroupDisabledSelector = checkboxGroupSelector + '-disabled',
+            // for focused state we need different elements
+            element = !!~test.indexOf('button') ? ' .checkbox' : ' .checkbox__control';
 
         gemini.suite(test + '-enabled', function(suite) {
             suite
                 .setCaptureElements(checkboxGroupEnabledSelector, checkboxGroupEnabledSelector + innerSelector)
                 .before(function(actions, find) {
-                    this.checkbox = find(checkboxGroupEnabledSelector + ' .checkbox');
+                    this.checkbox = find(checkboxGroupEnabledSelector + element);
                 })
                 .capture('plain')
+                .capture('focused-hard', function(actions) {
+                    actions.sendKeys(this.checkbox, 'focused-hard'); //send not empty string
+                })
                 .capture('focused-checked', function(actions) {
                     actions.click(this.checkbox);
                 })
@@ -31,12 +36,23 @@ gemini.suite('checkbox-group', function(root) {
         });
     }
 
-    ['button-size_m', 'button-size_l', 'button-icon-size_m', 'button-icon-size_l']
+    [
+        'button-size_m',
+        'button-size_l',
+        'button-icon-size_m',
+        'button-icon-size_l'
+    ]
         .forEach(function(test) {
             testing(test, ' .checkbox');
     });
 
-    ['default', 'normal-size_m', 'normal-size_l', 'line-size_m', 'line-size_l']
+    [
+        'default',
+        'normal-size_m',
+        'normal-size_l',
+        'line-size_m',
+        'line-size_l'
+    ]
         .forEach(function(test) {
             testing(test, ' .checkbox__box');
     });

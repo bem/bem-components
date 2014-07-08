@@ -1,0 +1,1 @@
+<a class="button button_type_link button__control i-bem" data-bem="{&quot;button&quot;:{}}" role="button" target="_blank" href="//ya.ru/yandsearch?text=&lt;script type=&quot;javascript&quot;&gt;&amp;amp;=test">content</a>

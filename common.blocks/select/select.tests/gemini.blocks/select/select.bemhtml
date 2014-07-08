@@ -1,0 +1,15 @@
+block('select')(
+    content()(function() {
+
+        return [
+            { elem : 'button' },
+            {
+                block : 'popup',
+                mods : { theme : this.mods.theme, autoclosable : true },
+                cls : this.ctx.cls + '-popup',
+                js : { directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'] },
+                content : { block : this.block, mods : this.mods, elem : 'menu' }
+            }
+        ];
+    })
+);

@@ -4,7 +4,15 @@ gemini.suite('button', function(root) {
 
     root.setUrl('desktop.tests/button/gemini/gemini.html');
 
-    ['default', 'default-link', 'normal', 'pseudo', 'action', 'normal-link', 'normal-icon']
+    [
+        'default',
+        'default-link',
+        'normal',
+        'pseudo',
+        'action',
+        'normal-link',
+        'normal-icon'
+    ]
         .forEach(function(test) {
             var buttonSelector = '.gemini-test-button-' + test,
                 buttonEnabledSelector = buttonSelector + '-enabled',

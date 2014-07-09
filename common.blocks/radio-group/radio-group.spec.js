@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['radio-group', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'chai', 'sinon'],
-    function(provide, RadioGroup, BEMDOM, $, dom, BEMHTML, chai, sinon) {
+    ['radio-group', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai', 'sinon'],
+    function(provide, RadioGroup, BEMDOM, $, BEMHTML, chai, sinon) {
 
 var expect = chai.expect;
 
@@ -63,6 +63,14 @@ describe('radio-group', function() {
         it('should not set wrong value', function() {
             radioGroup.setVal('val44');
             radioGroup.getVal().should.be.equal('val2');
+        });
+
+        it('should properly unset value', function() {
+            radioGroup.setVal(undefined);
+            expect(radioGroup.getVal()).to.be.undefined;
+            radioGroup.getRadios().forEach(function(option) {
+                option.hasMod('checked').should.be.false;
+            });
         });
 
         it('should not change "checked" mod on set wrong value', function() {

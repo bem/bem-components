@@ -14,6 +14,7 @@ module.exports = function(bh) {
                     block : 'radio',
                     mods : {
                         type : mods.type,
+                        mode : mods.mode,
                         theme : mods.theme,
                         size : mods.size,
                         checked : option.checked,

@@ -3,7 +3,9 @@ module.exports = function(bh) {
     bh.match('radio_type_button', function(ctx, json) {
         var mods = ctx.mods(),
             buttonMods = {
-                togglable : 'radio',
+                togglable : mods.mode === 'radio-check'?
+                    'check' :
+                    'radio',
                 checked : mods.checked,
                 disabled : mods.disabled,
                 theme : mods.theme,

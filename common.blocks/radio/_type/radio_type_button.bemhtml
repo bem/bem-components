@@ -3,7 +3,9 @@ block('radio').mod('type', 'button')(
         var ctx = this.ctx,
             mods = this.mods,
             buttonMods = {
-                togglable : 'radio',
+                togglable : mods.mode === 'radio-check'?
+                    'check' :
+                    'radio',
                 checked : mods.checked,
                 disabled : mods.disabled,
                 theme : mods.theme,

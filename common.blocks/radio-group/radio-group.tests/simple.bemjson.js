@@ -196,6 +196,17 @@
                     checked : true
                 }
             ]
+        } },
+
+        { tag : 'h3', content : 'radio-check mode' },
+        { tag : 'p', content : {
+            block : 'radio-group',
+            name : 'normal-button4',
+            mods : { theme : 'normal', size : 'm', type : 'button', mode : 'radio-check' },
+            options : [
+                { val : 1, text : 'first' },
+                { val : 2, text : 'second' }
+            ]
         } }
     ]
 });

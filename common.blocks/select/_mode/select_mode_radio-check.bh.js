@@ -1,6 +1,6 @@
 module.exports = function(bh) {
 
-    bh.match('select_type_radio-check', function(ctx, json) {
+    bh.match('select_mode_radio-check', function(ctx, json) {
         ctx
             .applyBase()
             .extend(ctx.js(), { text : json.text });
@@ -23,7 +23,7 @@ module.exports = function(bh) {
         }
     });
 
-    bh.match('select_type_radio-check__button', function(ctx) {
+    bh.match('select_mode_radio-check__button', function(ctx) {
         ctx.content({
             elem : 'text',
             content : (ctx.tParam('_checkedOption') || ctx.tParam('_select')).text

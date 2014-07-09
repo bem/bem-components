@@ -9,7 +9,7 @@ modules.define('select', ['jquery'], function(provide, $, Select) {
  * @class select
  * @bem
  */
-provide(Select.decl({ modName : 'type', modVal : 'radio-check' }, /** @lends select.prototype */{
+provide(Select.decl({ modName : 'mode', modVal : 'radio-check' }, /** @lends select.prototype */{
     _updateControl : function() {
         var val = this.getVal(),
             control = this.elem('control');

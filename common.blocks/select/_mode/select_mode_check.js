@@ -12,7 +12,7 @@ modules.define(
  * @class select
  * @bem
  */
-provide(Select.decl({ modName : 'type', modVal : 'check' }, /** @lends select.prototype */{
+provide(Select.decl({ modName : 'mode', modVal : 'check' }, /** @lends select.prototype */{
     _updateControl : function() {
         this.elem('control').remove();
         this.dropElemCache('control');

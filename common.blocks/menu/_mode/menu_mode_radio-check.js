@@ -9,15 +9,13 @@ modules.define('menu', function(provide, Menu) {
  * @class menu
  * @bem
  */
-provide(Menu.decl({ modName : 'select', modVal : 'radio' }, /** @lends menu.prototype */{
+provide(Menu.decl({ modName : 'mode', modVal : 'radio-check' }, /** @lends menu.prototype */{
     /**
      * @override
      */
     _getVal : function() {
         var items = this.getItems(),
-            i = 0,
-            item;
-
+            i = 0, item;
         while(item = items[i++])
             if(item.hasMod('checked'))
                 return item.getVal();
@@ -27,16 +25,22 @@ provide(Menu.decl({ modName : 'select', modVal : 'radio' }, /** @lends menu.prot
      * @override
      */
     _setVal : function(val) {
-        var wasChanged = false,
+        var isValUndefined = typeof val === 'undefined',
+            wasChanged = false,
             hasVal = false,
             itemsCheckedVals = this.getItems().map(function(item) {
+                if(isValUndefined) {
+                    item.hasMod('checked') && (wasChanged = true);
+                    return false;
+                }
+
                 if(!item.isValEq(val)) return false;
 
                 item.hasMod('checked') || (wasChanged = true);
                 return hasVal = true;
             });
 
-        if(!hasVal) return false;
+        if(!isValUndefined && !hasVal) return false;
 
         this._updateItemsCheckedMod(itemsCheckedVals);
 
@@ -49,19 +53,13 @@ provide(Menu.decl({ modName : 'select', modVal : 'radio' }, /** @lends menu.prot
     _onItemClick : function(clickedItem) {
         this.__base.apply(this, arguments);
 
-        var isChanged = false;
         this.getItems().forEach(function(item) {
-            if(item === clickedItem) {
-                if(!item.hasMod('checked')) {
-                    item.setMod('checked', true);
-                    this._isValValid = false;
-                    isChanged = true;
-                }
-            } else {
+            item === clickedItem?
+                item.toggleMod('checked') :
                 item.delMod('checked');
-            }
-        }, this);
-        isChanged && this.emit('change');
+        });
+        this._isValValid = false;
+        this.emit('change');
     }
 }));
 

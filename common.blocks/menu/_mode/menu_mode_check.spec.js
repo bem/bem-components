@@ -1,15 +1,15 @@
 modules.define(
     'spec',
-    ['menu', 'i-bem__dom', 'jquery', 'chai', 'sinon', 'BEMHTML'],
-    function(provide, Menu, BEMDOM, $, chai, sinon, BEMHTML) {
+    ['menu', 'i-bem__dom', 'jquery', 'sinon', 'BEMHTML'],
+    function(provide, Menu, BEMDOM, $, sinon, BEMHTML) {
 
-describe('menu_select_radio-check', function() {
+describe('menu_mode_check', function() {
     var menu, menuItems;
 
     beforeEach(function() {
         menu = buildMenu({
             block : 'menu',
-            mods : { select : 'radio-check' },
+            mods : { mode : 'check' },
             content : [
                 {
                     block : 'menu-item',
@@ -29,6 +29,7 @@ describe('menu_select_radio-check', function() {
                 },
                 {
                     block : 'menu-item',
+                    mods : { checked : true },
                     val : 4,
                     content : 'item 4'
                 }
@@ -43,13 +44,13 @@ describe('menu_select_radio-check', function() {
 
     describe('value', function() {
         it('should return initial value', function() {
-            menu.getVal().should.be.eql(2);
+            menu.getVal().should.be.eql([2, 4]);
         });
 
         it('should return initial value in case of none checked', function() {
             var nonCheckedMenu = buildMenu({
                 block : 'menu',
-                mods : { select : 'radio-check' },
+                mods : { mode : 'check' },
                 content : [
                     {
                         block : 'menu-item',
@@ -63,25 +64,26 @@ describe('menu_select_radio-check', function() {
                     }
                 ]
             });
-            chai.should().not.exist(nonCheckedMenu.getVal());
+            nonCheckedMenu.getVal().should.be.eql([]);
             BEMDOM.destruct(nonCheckedMenu.domElem);
         });
 
         it('should modify value after clicks on items', function() {
             menuItems[0].emit('click', { source : 'pointer' });
-            menu.getVal().should.be.eql(1);
-            menuItems[0].emit('click', { source : 'pointer' });
-            chai.should().not.exist(menu.getVal());
+            menu.getVal().should.be.eql([1, 2, 4]);
+            menuItems[1].emit('click', { source : 'pointer' });
+            menu.getVal().should.be.eql([1, 4]);
         });
 
         it('should change value', function() {
-            menu.setVal(1).getVal().should.be.eql(1);
+            menu.setVal([1, 4]).getVal().should.be.eql([1, 4]);
         });
 
         it('should change checked state of items', function() {
-            menu.setVal(1);
+            menu.setVal([1, 4]);
             menuItems[0].hasMod('checked').should.be.true;
             menuItems[1].hasMod('checked').should.be.false;
+            menuItems[3].hasMod('checked').should.be.true;
         });
     });
 
@@ -94,22 +96,17 @@ describe('menu_select_radio-check', function() {
         });
 
         it('should emit change event if value was changed', function() {
-            menu.setVal(1);
+            menu.setVal([1, 4]);
             spy.should.have.been.called;
         });
 
         it('should not emit change event if value was not changed', function() {
-            menu.setVal(2);
+            menu.setVal([2, 4]);
             spy.should.not.have.been.called;
         });
 
-        it('should emit change event on non checked items clicks', function() {
+        it('should emit change event on items clicks', function() {
             menuItems[0].emit('click', { source : 'pointer' });
-            spy.should.have.been.called;
-        });
-
-        it('should emit change event on checked items clicks', function() {
-            menuItems[1].emit('click', { source : 'pointer' });
             spy.should.have.been.called;
         });
     });

@@ -28,7 +28,7 @@ block('select').elem('menu')(
                 size : mods.size,
                 theme : mods.theme,
                 disabled : mods.disabled,
-                select : mods.type
+                mode : mods.mode
             },
             attrs : { tabindex : undefined },
             content : this._select.options.map(function(optionOrGroup) {

@@ -1,7 +1,7 @@
 [{
     shouldDeps : [
         'jquery',
-        { block : 'menu', mods : { select : 'radio-check' } }
+        { block : 'menu', mods : { mode : 'radio-check' } }
     ]
 },
 {

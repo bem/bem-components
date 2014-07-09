@@ -13,7 +13,7 @@ module.exports = function(bh) {
                 theme : mods.theme,
                 focused : mods.focused,
                 disabled : mods.disabled,
-                checked : mods.type !== 'radio' && !!checkedOptions.length
+                checked : mods.mode !== 'radio' && !!checkedOptions.length
             },
             id : select.id,
             textMaxWidth : select.textMaxWidth,

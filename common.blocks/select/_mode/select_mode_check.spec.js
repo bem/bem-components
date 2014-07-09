@@ -3,13 +3,13 @@ modules.define(
     ['select', 'i-bem__dom', 'jquery', 'BEMHTML'],
     function(provide, Select, BEMDOM, $, BEMHTML) {
 
-describe('select_type_check', function() {
+describe('select_mode_check', function() {
     var select, menu, button;
 
     beforeEach(function() {
         select = buildSelect({
             block : 'select',
-            mods : { type : 'check' },
+            mods : { mode : 'check' },
             name : 'select1',
             text : 'text',
             options : [
@@ -44,7 +44,7 @@ describe('select_type_check', function() {
         it('should return initial value in case of none checked', function() {
             var nonCheckedSelect = buildSelect({
                 block : 'select',
-                mods : { type : 'check' },
+                mods : { mode : 'check' },
                 name : 'select1',
                 options : [
                     { val : 1, text : 'first' },

@@ -9,7 +9,7 @@
     content : [
         {
             block : 'select',
-            mods : { type : 'radio-check', theme : 'normal', size : 's' },
+            mods : { mode : 'radio-check', theme : 'normal', size : 's' },
             options : [
                 { text : '' },
                 { text : 'some text' },
@@ -19,7 +19,7 @@
         },
         {
             block : 'select',
-            mods : { type : 'radio', theme : 'normal', size : 'l' },
+            mods : { mode : 'radio', theme : 'normal', size : 'l' },
             text : '-',
             options : [
                 { text : 'first', checked : true },
@@ -30,7 +30,7 @@
         },
         {
             block : 'select',
-            mods : { type : 'radio-check', theme : 'normal', size : 'xl' },
+            mods : { mode : 'radio-check', theme : 'normal', size : 'xl' },
             text : '—',
             options : [
                 { text : 'first', checked : true },
@@ -41,7 +41,7 @@
         },
         {
             block : 'select',
-            mods : { type : 'radio', theme : 'normal', size : 's', disabled : true },
+            mods : { mode : 'radio', theme : 'normal', size : 's', disabled : true },
             text : 'disabled',
             options : [
                 { text : 'first', checked : true },
@@ -52,7 +52,7 @@
         },
         {
             block : 'select',
-            mods : { type : 'check', theme : 'normal', size : 's' },
+            mods : { mode : 'check', theme : 'normal', size : 's' },
             text : 'group',
             options : [
                 {
@@ -75,7 +75,7 @@
         },
         {
             block : 'select',
-            mods : { type : 'check', theme : 'normal', size : 'm' },
+            mods : { mode : 'check', theme : 'normal', size : 'm' },
             text : 'icon',
             options : [
                 {
@@ -92,7 +92,7 @@
         },
         {
             block : 'select',
-            mods : { type : 'check', theme : 'normal', size : 'm', width : 'available' },
+            mods : { mode : 'check', theme : 'normal', size : 'm', width : 'available' },
             text : 'some text some text some text some text',
             options : [
                 { text : 'first first first first first first first first first', checked : true },

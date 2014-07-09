@@ -3,13 +3,13 @@ modules.define(
     ['select', 'i-bem__dom', 'jquery', 'dom', 'chai', 'BEMHTML'],
     function(provide, Select, BEMDOM, $, dom, chai, BEMHTML) {
 
-describe('select_type_radio-check', function() {
+describe('select_mode_radio-check', function() {
     var select, menu, button;
 
     beforeEach(function() {
         select = buildSelect({
             block : 'select',
-            mods : { type : 'radio-check' },
+            mods : { mode : 'radio-check' },
             name : 'select1',
             text : 'text',
             options : [
@@ -43,7 +43,7 @@ describe('select_type_radio-check', function() {
         it('should return initial value in case of none checked', function() {
             var nonCheckedSelect = buildSelect({
                 block : 'select',
-                mods : { type : 'radio-check' },
+                mods : { mode : 'radio-check' },
                 name : 'select1',
                 options : [
                     { val : 1, text : 'first' },
@@ -98,7 +98,7 @@ describe('select_type_radio-check', function() {
         it('should create control in case of none checked', function() {
             var nonCheckedSelect = buildSelect({
                 block : 'select',
-                mods : { type : 'radio-check' },
+                mods : { mode : 'radio-check' },
                 name : 'select1',
                 options : [
                     { val : 1, text : 'first' },

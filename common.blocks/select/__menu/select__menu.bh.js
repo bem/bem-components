@@ -29,7 +29,7 @@ module.exports = function(bh) {
                 size : mods.size,
                 theme : mods.theme,
                 disabled : mods.disabled,
-                select : mods.type
+                mode : mods.mode
             },
             attrs : { tabindex : null },
             content : select.options.map(function(optionOrGroup) {

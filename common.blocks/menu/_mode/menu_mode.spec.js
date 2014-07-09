@@ -3,13 +3,13 @@ modules.define(
     ['menu', 'i-bem__dom', 'jquery', 'sinon', 'BEMHTML'],
     function(provide, Menu, BEMDOM, $, sinon, BEMHTML) {
 
-describe('menu_select_check', function() {
+describe('menu_mode_check', function() {
     var menu, menuVal;
 
     beforeEach(function() {
         menuVal = 'bla';
 
-        Menu.decl({ modName : 'select', modVal : 'bla' }, {
+        Menu.decl({ modName : 'mode', modVal : 'bla' }, {
             _getVal : function() {
                 return menuVal;
             }
@@ -17,7 +17,7 @@ describe('menu_select_check', function() {
 
         menu = buildMenu({
             block : 'menu',
-            mods : { select : 'bla' }
+            mods : { mode : 'bla' }
         });
     });
 

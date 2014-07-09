@@ -9,7 +9,7 @@ modules.define('menu', ['keyboard__codes'], function(provide, keyCodes, Menu) {
  * @class menu
  * @bem
  */
-provide(Menu.decl({ modName : 'select' }, /** @lends menu.prototype */{
+provide(Menu.decl({ modName : 'mode' }, /** @lends menu.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {

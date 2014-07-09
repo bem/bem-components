@@ -3,13 +3,13 @@ modules.define(
     ['menu', 'i-bem__dom', 'jquery', 'sinon', 'BEMHTML'],
     function(provide, Menu, BEMDOM, $, sinon, BEMHTML) {
 
-describe('menu_select_radio', function() {
+describe('menu_mode_radio', function() {
     var menu, menuItems;
 
     beforeEach(function() {
         menu = buildMenu({
             block : 'menu',
-            mods : { select : 'radio' },
+            mods : { mode : 'radio' },
             content : [
                 {
                     block : 'menu-item',

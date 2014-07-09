@@ -68,7 +68,7 @@
                             { tag : 'br' },
                             {
                                 block : 'menu',
-                                mods : { select : 'check', theme : 'normal', size : cell.size },
+                                mods : { mode : 'check', theme : 'normal', size : cell.size },
                                 content : [
                                     {
                                         elem : 'group',

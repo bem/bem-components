@@ -1,0 +1,1 @@
+<label class="radio radio_checked radio_disabled i-bem" data-bem="{&quot;radio&quot;:{}}"><span class="radio__box"><input class="radio__control" type="radio" autocomplete="off" name="radio" value="1" checked="checked" disabled="disabled"/></span>radio</label>

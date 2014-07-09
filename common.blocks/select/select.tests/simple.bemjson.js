@@ -9,7 +9,7 @@
     content : [
         {
             block : 'select',
-            mods : { type : 'radio', theme : 'normal', size : 'm', focused : true },
+            mods : { mode : 'radio', theme : 'normal', size : 'm', focused : true },
             name : 'select1',
             textMaxWidth : 100,
             optionsMaxHeight : 100,
@@ -32,7 +32,7 @@
         },
         {
             block : 'select',
-            mods : { type : 'radio-check', theme : 'normal', size : 'm' },
+            mods : { mode : 'radio-check', theme : 'normal', size : 'm' },
             name : 'select2',
             text : '—',
             options : [
@@ -43,7 +43,7 @@
         },
         {
             block : 'select',
-            mods : { type : 'check', theme : 'normal', size : 'm' },
+            mods : { mode : 'check', theme : 'normal', size : 'm' },
             name : 'select3',
             text : '—',
             options : [
@@ -54,7 +54,7 @@
         },
         {
             block : 'select',
-            mods : { type : 'check', theme : 'normal', size : 'm' },
+            mods : { mode : 'check', theme : 'normal', size : 'm' },
             name : 'select4',
             options : [
                 { val : { id : 1 }, text : 'first', checkedText : '1' },
@@ -64,7 +64,7 @@
         },
         {
             block : 'select',
-            mods : { type : 'check', theme : 'normal', size : 'm' },
+            mods : { mode : 'check', theme : 'normal', size : 'm' },
             name : 'select5',
             text : '—',
             options : [
@@ -85,7 +85,7 @@
         },
         {
             block : 'select',
-            mods : { type : 'check', theme : 'normal', size : 'm' },
+            mods : { mode : 'check', theme : 'normal', size : 'm' },
             text : 'empty',
             options : [
                 {
@@ -109,7 +109,7 @@
             tag : 'div', attrs : { style : 'width : 200px; display : inline-block;' },
             content : {
                 block : 'select',
-                mods : { type : 'radio-check', theme : 'normal', size : 'm', width : 'available' },
+                mods : { mode : 'radio-check', theme : 'normal', size : 'm', width : 'available' },
                 name : 'select333',
                 text : '—',
                 options : [

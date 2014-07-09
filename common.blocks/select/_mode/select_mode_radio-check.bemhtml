@@ -1,4 +1,4 @@
-block('select').mod('type', 'radio-check')(
+block('select').mod('mode', 'radio-check')(
     js()(function() {
         return this.extend(applyNext(), { text : this.ctx.text });
     }),

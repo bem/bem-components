@@ -9,7 +9,7 @@ block('select').elem('button')(
                 theme : mods.theme,
                 focused : mods.focused,
                 disabled : mods.disabled,
-                checked : mods.type !== 'radio' && !!this._checkedOptions.length
+                checked : mods.mode !== 'radio' && !!this._checkedOptions.length
             },
             id : this._select.id,
             textMaxWidth : this._select.textMaxWidth,

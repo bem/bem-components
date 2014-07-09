@@ -27,7 +27,7 @@
     mods : { 
         theme : 'normal',
         size : 'm', 
-        select : 'radio' 
+        mode : 'radio'
     },
     content : [
         {
@@ -45,7 +45,7 @@
             </code></pre>
         </td>
     <tr>
-        <td>Селект с множественным выбором (<code>_select_check</code>)</td>
+        <td>Селект с множественным выбором (<code>_mode_check</code>)</td>
         <td>При щелчке мышью по пункту меню его состояние меняется на противоположное. Если пункт был активен – он деактивируется, и наоборот.</td>
         <td>
             <pre><code>
@@ -54,7 +54,7 @@
     mods : { 
         theme : 'normal', 
         size : 'm',
-        select : 'check' 
+        mode : 'check'
     },
     content : [
         {
@@ -73,7 +73,7 @@
         </td>
     </tr>
 <tr>
-        <td>Простой список (без модификатора <code>_select</code>)</td>
+        <td>Простой список (без модификатора <code>_mode</code>)</td>
         <td>При щелчке мышью по пункту меню его состояние не меняется. Модификатор <code>_cheked</code> не устанавливается.</td>
         <td>
             <pre><code>
@@ -82,7 +82,7 @@
     mods : { 
         theme : 'normal', 
         size : 'm',
-        select : 'check' 
+        mode : 'check'
     },
     content : [
         {
@@ -122,7 +122,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { select : 'check' },
+    mods : { mode : 'check' },
     content : [
         {
             block : 'menu-item',
@@ -143,7 +143,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'simple', select : 'check' },
+    mods : { theme : 'simple', mode : 'check' },
     content : [
         {
             block : 'menu-item',
@@ -164,7 +164,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', select : 'check', size : 'xl' },
+    mods : { theme : 'normal', mode : 'check', size : 'xl' },
     content : [
         {
             block : 'menu-item',
@@ -209,7 +209,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        select : 'check', 
+        mode : 'check',
         size : 's' 
     },
     content : [
@@ -240,7 +240,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        select : 'check', 
+        mode : 'check',
         size : 'm' 
     },
     content : [
@@ -271,7 +271,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        select : 'check', 
+        mode : 'check',
         size : 'l' 
     },
     content : [
@@ -302,7 +302,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        select : 'check', 
+        mode : 'check',
         size : 'xl' 
     },
     content : [
@@ -324,9 +324,9 @@
 </table>
 
 
-### Способ выбора пунктов `_select`
+### Способ выбора пунктов `_mode`
 
-Модификатор `_select` управляет поведением пунктов меню при щелчке по ним мышью, например, возможностью множественного выбора пунктов меню.
+Модификатор `_mode` управляет поведением пунктов меню при щелчке по ним мышью, например, возможностью множественного выбора пунктов меню.
 
 Доступны следующие значения модификатора:
 
@@ -343,7 +343,7 @@
         <th>Пример</th>
     </tr>
     <tr>
-        <td>Только один (<code>_select_radio</code>)</td>
+        <td>Только один (<code>_mode_radio</code>)</td>
         <td>
             <pre><code>
 {
@@ -351,7 +351,7 @@
     mods : { 
         theme : 'normal', 
         size : 'l', 
-        select : 'radio' 
+        mode : 'radio'
     },
     content : [
         {
@@ -371,7 +371,7 @@
         </td>
     </tr>
     <tr>
-        <td>Множественный выбор или ни одного (<code>_select_check</code>)</td>
+        <td>Множественный выбор или ни одного (<code>_mode_check</code>)</td>
         <td>
             <pre><code>
 {
@@ -379,7 +379,7 @@
     mods : { 
         theme : 'normal', 
         size : 'l', 
-        select : 'check' 
+        mode : 'check'
     },
     content : [
         {
@@ -399,7 +399,7 @@
         </td>
     </tr>
     <tr>
-        <td>Один или ни одного (<code>_select_radio-check</code>)</td>
+        <td>Один или ни одного (<code>_mode_radio-check</code>)</td>
         <td>
             <pre><code>
 {
@@ -407,7 +407,7 @@
     mods : { 
         theme : 'normal', 
         size : 'l', 
-        select : 'radio-check' 
+        mode : 'radio-check'
     },
     content : [
         {
@@ -443,7 +443,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        select : 'check', 
+        mode : 'check',
         size : 'xl',
         focused : true 
     },
@@ -476,7 +476,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'xl', select : 'radio', focused : true  },
+    mods : { theme : 'normal', size : 'xl', mode : 'radio', focused : true  },
     content : [
         {
             block : 'menu-item',
@@ -521,7 +521,7 @@
     mods : { 
         theme : 'normal', 
         size : 'xl', 
-        select : 'radio', 
+        mode : 'radio',
         focused : true  
     },
     content : [

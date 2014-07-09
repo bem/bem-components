@@ -14,7 +14,7 @@
                     { tag : 'h3', content : 'radio' },
                     {
                         block : 'menu',
-                        mods : { select : 'radio', focused : true, theme : theme, size : 'm' },
+                        mods : { mode : 'radio', focused : true, theme : theme, size : 'm' },
                         content : [
                             {
                                 block : 'menu-item',
@@ -47,7 +47,7 @@
                     { tag : 'h3', content : 'check' },
                     {
                         block : 'menu',
-                        mods : { select : 'check', theme : theme, size : 'm' },
+                        mods : { mode : 'check', theme : theme, size : 'm' },
                         content : [
                             {
                                 block : 'menu-item',
@@ -82,7 +82,7 @@
                     { tag : 'h3', content : 'radio-check' },
                     {
                         block : 'menu',
-                        mods : { select : 'radio-check', theme : theme, size : 'm' },
+                        mods : { mode : 'radio-check', theme : theme, size : 'm' },
                         content : [
                             {
                                 block : 'menu-item',
@@ -242,7 +242,7 @@
                     { tag : 'br' },
                     {
                         block : 'menu',
-                        mods : { select : 'radio', theme : theme, size : 'm' },
+                        mods : { mode : 'radio', theme : theme, size : 'm' },
                         content : [
                             {
                                 block : 'menu-item',
@@ -268,7 +268,7 @@
                     { tag : 'h3', content : 'disabled' },
                     {
                         block : 'menu',
-                        mods : { select : 'radio', theme : theme, size : 'm', disabled : true },
+                        mods : { mode : 'radio', theme : theme, size : 'm', disabled : true },
                         content : [
                             {
                                 block : 'menu-item',

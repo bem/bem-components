@@ -1,5 +1,5 @@
 [{
-    shouldDeps : { block : 'menu', mods : { select : 'check' } }
+    shouldDeps : { block : 'menu', mods : { mode : 'radio' } }
 },
 {
     tech : 'spec.js',

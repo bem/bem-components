@@ -1,7 +1,7 @@
 module.exports = function(bh) {
 
     bh.match('select', function(ctx, json) {
-        if(!ctx.mod('type')) throw Error('Can\'t build select without type modifier');
+        if(!ctx.mod('mode')) throw Error('Can\'t build select without mode modifier');
 
         ctx.js({
             name : json.name,

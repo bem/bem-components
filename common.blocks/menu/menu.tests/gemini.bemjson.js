@@ -12,7 +12,7 @@
                 { tag : 'h3', content : 'size ' + size },
                 {
                     block : 'menu',
-                    mods : { select : 'radio', theme : 'normal', size : size },
+                    mods : { mode :'radio', theme : 'normal', size : size },
                     cls : 'normal-radio-' + size,
                     content : [
                         {
@@ -53,7 +53,7 @@
                 { tag : 'h3', content : 'check' },
                 {
                     block : 'menu',
-                    mods : { select : 'check', theme : 'normal', size : 'm' },
+                    mods : { mode :'check', theme : 'normal', size : 'm' },
                     cls : 'normal-check',
                     content : [
                         {

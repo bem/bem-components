@@ -1,4 +1,4 @@
-block('select').mod('type', 'radio')(
+block('select').mod('mode', 'radio')(
     def().match(this._checkedOptions)(function() {
         var checkedOptions = this._checkedOptions,
             firstOption = this._firstOption;

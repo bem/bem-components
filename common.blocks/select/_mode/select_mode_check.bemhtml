@@ -1,4 +1,4 @@
-block('select').mod('type', 'check')(
+block('select').mod('mode', 'check')(
     js()(function() {
         return this.extend(applyNext(), { text : this.ctx.text });
     }),

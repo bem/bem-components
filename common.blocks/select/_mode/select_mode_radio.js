@@ -9,7 +9,7 @@ modules.define('select', function(provide, Select) {
  * @class select
  * @bem
  */
-provide(Select.decl({ modName : 'type', modVal : 'radio' }, /** @lends select.prototype */{
+provide(Select.decl({ modName : 'mode', modVal : 'radio' }, /** @lends select.prototype */{
     _updateControl : function() {
         var val = this.getVal();
         this.elem('control').val(typeof val === 'object'? JSON.stringify(val) : val);

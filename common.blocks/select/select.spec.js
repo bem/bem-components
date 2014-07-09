@@ -9,7 +9,7 @@ describe('select', function() {
     beforeEach(function() {
         select = buildSelect({
             block : 'select',
-            mods : { type : 'custom' },
+            mods : { mode : 'custom' },
             name : 'select1',
             options : [
                 { val : 1, text : 'first' },

@@ -599,7 +599,7 @@
                             elem : 'cell',
                             content : {
                                 block : 'menu',
-                                mods : { select : 'check' },
+                                mods : { mode : 'check' },
                                 content : [
                                     {
                                         block : 'menu-item',
@@ -625,7 +625,7 @@
                             elem : 'cell',
                             content : {
                                 block : 'menu',
-                                mods : { theme : 'simple', select : 'radio' },
+                                mods : { theme : 'simple', mode : 'radio' },
                                 content : [
                                     {
                                         block : 'menu-item',
@@ -651,7 +651,7 @@
                             elem : 'cell',
                             content : {
                                 block : 'menu',
-                                mods : { theme : 'normal', size : 'm', select : 'radio' },
+                                mods : { theme : 'normal', size : 'm', mode : 'radio' },
                                 content : [
                                     {
                                         block : 'menu-item',

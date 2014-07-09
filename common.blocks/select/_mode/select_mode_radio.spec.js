@@ -3,13 +3,13 @@ modules.define(
     ['select', 'i-bem__dom', 'jquery', 'BEMHTML'],
     function(provide, Select, BEMDOM, $, BEMHTML) {
 
-describe('select_type_radio', function() {
+describe('select_mode_radio', function() {
     var select, menu, button;
 
     beforeEach(function() {
         select = buildSelect({
             block : 'select',
-            mods : { type : 'radio' },
+            mods : { mode : 'radio' },
             name : 'select1',
             options : [
                 { val : 1, text : 'first' },

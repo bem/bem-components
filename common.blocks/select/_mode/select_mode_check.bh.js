@@ -1,6 +1,6 @@
 module.exports = function(bh) {
 
-    bh.match('select_type_check', function(ctx, json) {
+    bh.match('select_mode_check', function(ctx, json) {
         ctx
             .applyBase()
             .extend(ctx.js(), { text : json.text });
@@ -26,7 +26,7 @@ module.exports = function(bh) {
         }
     });
 
-    bh.match('select_type_check__button', function(ctx) {
+    bh.match('select_mode_check__button', function(ctx) {
         var checkedOptions = ctx.tParam('_checkedOptions');
 
         ctx.content({

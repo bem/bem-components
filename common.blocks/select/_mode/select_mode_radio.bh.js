@@ -1,6 +1,6 @@
 module.exports = function(bh) {
 
-    bh.match('select_type_radio', function(ctx, json) {
+    bh.match('select_mode_radio', function(ctx, json) {
         ctx.applyBase();
 
         var checkedOptions = json._checkedOptions,
@@ -14,7 +14,7 @@ module.exports = function(bh) {
         ctx
             .tParam('_select', json)
             .tParam('_checkedOption', checkedOptions[0])
-            .tParam('_checkedOptions', checkedOptions); // TODO: разобраться с tParam во всех type'ах
+            .tParam('_checkedOptions', checkedOptions); // TODO: разобраться с tParam во всех mode'ах
 
         ctx.content([
             {
@@ -25,7 +25,7 @@ module.exports = function(bh) {
         ], true);
     });
 
-    bh.match('select_type_radio__button', function(ctx) {
+    bh.match('select_mode_radio__button', function(ctx) {
         ctx.content({
             elem : 'text',
             content : ctx.tParam('_checkedOption').text

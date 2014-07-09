@@ -1,6 +1,6 @@
 block('select')(
     def().match(!this._select)(function() { // TODO: check BEM-XJST for proper applyNext
-        if(!this.mods.type) throw Error('Can\'t build select without type modifier');
+        if(!this.mods.mode) throw Error('Can\'t build select without mode modifier');
 
         var options = this.ctx.options,
             i = 0, j,

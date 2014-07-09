@@ -9,7 +9,7 @@ modules.define('menu', function(provide, Menu) {
  * @class menu
  * @bem
  */
-provide(Menu.decl({ modName : 'select', modVal : 'check' }, /** @lends menu.prototype */{
+provide(Menu.decl({ modName : 'mode', modVal : 'check' }, /** @lends menu.prototype */{
     /**
      * @override
      */

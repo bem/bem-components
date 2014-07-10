@@ -2,141 +2,117 @@
 
 This block indicates the progress of some process (e.g. site page or some media file loading).
 
-Rotation of the **spin** block is implemented by CSS3 animation.
+Rotation of the `spin` block is implemented by CSS3 animation.
 
 ## Block Modifiers
 
-The **spin** block requires the block modifiers listed below:
+### _theme
 
-### Themes of a block `_theme`
+Mandatory modifier. The `spin` block doesn't have native control representation (*default*).
 
-#### simple
+This block supports following themes:
+
+* simple
+* normal
+
+Following examples demonstrate this:
+
+**simple**
 
 ```bemjson
-    {
-        block : 'spin',
-        mods : { theme : 'simple', size : 's', progress : true }
-    }
+{
+    block : 'spin',
+    mods : { theme : 'simple', progress : true }
+}
 ```
 
-#### normal
+**normal**
 
-````bemjson
-    {
-        block : 'spin',
-        mods : { theme : 'normal', size : 's', progress : true }
-    }
-````
+```bemjson
+{
+    block : 'spin',
+    mods : { theme : 'normal', size : 's', progress : true }
+}
+```
 
-### Sizes `_size`
+### _size
 
-There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
+Mandatory modifier.
+
+There are five sizes available: **XS**, **S**, **M**, **L**, **XL**.
+
+Following examples demonstrate this:
 
 <table>
-  <tr>
-    <th>Theme/Size</th>
-    <th>simple</th>
-    <th>normal</th>
-  </tr>
-  <tr>
-    <th>xs</th>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'simple', size : 'xs', progress : true }
-            }
-        </code></pre>
-    </td>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'normal', size : 'xs', progress : true }
-            }
-        </code></pre>
-    </td>
-  </tr>
-  <tr>
-    <th>s</th>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'simple', size : 's', progress : true }
-            }
-        </code></pre>
-    </td>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'normal', size : 's', progress : true }
-            }
-        </code></pre>
-    </td>
-  </tr>
-  <tr>
-    <th>m</th>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'simple', size : 'm', progress : true }
-            }
-        </code></pre>
-    </td>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'normal', size : 'm', progress : true }
-            }
-        </code></pre>
-    </td>
-  </tr>
-  <tr>
-    <th>l</th>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'simple', size : 'l', progress : true }
-            }
-        </code></pre>
-    </td>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'normal', size : 'l', progress : true }
-            }
-        </code></pre>
-    </td>
-  </tr>
-  <tr>
-    <th>xl</th>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'simple', size : 'xl', progress : true }
-            }
-        </code></pre>
-    </td>
-    <td>
-        <pre><code>
-            {
-                block : 'spin',
-                mods : { theme : 'normal', size : 'xl', progress : true }
-            }
-        </code></pre>
-    </td>
-  </tr>
+    <tr>
+        <th>Block's size</th>
+        <th>Size, px</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <th>XS</th>
+        <td>16px</td>
+        <td>
+            <pre><code>
+{
+    block : 'spin',
+    mods : { theme : 'normal', size : 'xs', progress : true }
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>S</th>
+        <td>24px</td>
+        <td>
+            <pre><code>
+{
+    block : 'spin',
+    mods : { theme : 'normal', size : 's', progress : true }
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>M</th>
+        <td>28px</td>
+        <td>
+            <pre><code>
+{
+    block : 'spin',
+    mods : { theme : 'normal', size : 'm', progress : true }
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>L</th>
+        <td>32px</td>
+        <td>
+            <pre><code>
+{
+    block : 'spin',
+    mods : { theme : 'normal', size : 'l', progress : true }
+}
+            </code></pre>
+        </td>
+    </tr>
+    <tr>
+        <th>XL</th>
+        <td>38px</td>
+        <td>
+            <pre><code>
+{
+    block : 'spin',
+    mods : { theme : 'normal', size : 'xl', progress : true }
+}
+            </code></pre>
+        </td>
+    </tr>
 </table>
 
-### Spin progress `_progress`
+### _progress
 
-The `{ progress : true }` modifier activates the spin. The **spin** block rotates in visible state.
+`progress` modifier with `true` value activates the spin. `spin` block rotates only in visible state.
 
-The `{ progress : false }` modifies paused rotation process. The `false` value is used when a **spin** block is invisible.
+`progress` modifies with `false` value paused rotation of `spin` block and hides it from the page.

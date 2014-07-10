@@ -1,25 +1,25 @@
 # menu
 
-Блок `menu` используется для создания различных типов меню и селектов.
+A `menu` block is used for creation of various types of menus and lists. It allows to manage state, behavior and appearance of menus.
 
-Он предоставляет возможность изменять размер и внешний вид блоков меню, управлять поведением вложенных блоков – пунктов меню или селекта.
+As a result of BEMHTML transformations, a block will be rendered to a `<div>` HTML element, with `role="menu"` attribute set. The block's HTML element contains a set of switches – the `menu-item` blocks.
 
-В результате BEMHTML-преобразований на странице блок становится HTML-элементом с тегом `<div>` и свойством `role="menu"`. HTML-элементом, содащим набор переключателей – пунктов меню (блок `menu-item`).
+It allow to manage the appearance, state and size of a menu blocks as well as manage the nested `menu-items` block's appearance.
 
 
-## Варианты использования меню
+## menu use cases
 
-Блок `menu` служит для создания различных типов меню:
+A `menu` block is used for creation of following menu types:
 
 <table>
     <tr>
-        <th>Тип</th>
-        <th>Описание</th>
-        <th>Пример</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Example</th>
     </tr>
     <tr>
-        <td>Меню-переключатель</td>
-        <td>Применяется для создания меню или селектов, позволяющих только одиночный выбор.</td>
+        <td>Switch menu</td>
+        <td>Used for creation of lists with a single selectable item.</td>
         <td>
             <pre><code>
 {
@@ -27,7 +27,7 @@
     mods : { 
         theme : 'normal',
         size : 'm', 
-        mode : 'radio'
+        mode : 'radio' 
     },
     content : [
         {
@@ -45,8 +45,8 @@
             </code></pre>
         </td>
     <tr>
-        <td>Селект с множественным выбором (<code>_mode_check</code>)</td>
-        <td>При щелчке мышью по пункту меню его состояние меняется на противоположное. Если пункт был активен – он деактивируется и наоборот.</td>
+        <td>A multi selectable list. (<code>_mode_check</code>)</td>
+        <td>Clicking on a list items will perform item's state switching to opposite. If an item was active it will be deactivated, and vice versa.</td>
         <td>
             <pre><code>
 {
@@ -54,7 +54,7 @@
     mods : { 
         theme : 'normal', 
         size : 'm',
-        mode : 'check'
+        mode : 'check' 
     },
     content : [
         {
@@ -73,16 +73,15 @@
         </td>
     </tr>
 <tr>
-        <td>Простой список (без модификатора <code>_mode</code>)</td>
-        <td>При щелчке мышью по пункту меню его состояние не меняется. Модификатор <code>_cheked</code> не устанавливается.</td>
+        <td>Basic list (with <code>_mode</code> modifier is unset)</td>
+        <td>Menu item's state will not change on mouse click. A <code>_cheked</code> state modifier will not be toggled.</td>
         <td>
             <pre><code>
 {
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        size : 'm',
-        mode : 'check'
+        size : 'm'
     },
     content : [
         {
@@ -99,22 +98,19 @@
 }
             </code></pre>
         </td>
-    </tr>   
+    </tr>
 </table>
 
+## Block's modifiers
 
-## Модификаторы блока
-
-### Темы блока `_theme`
-
-Блок представлен в следующих темах:
+### The themes `_theme`
 
  * simple
  * normal
 
-Без указания темы к блоку применяются значения, установленные браузером по умолчанию (*default*).
+If a `_theme` modifier is not set, browser defaults (`default`) will be applied to the block.
 
-Наглядно показано на примерах ниже:
+For example:
 
 #### default
 
@@ -137,7 +133,6 @@
 }
 ```
 
-
 #### simple
 
 ```bemjson
@@ -158,7 +153,6 @@
     ]
 }
 ```
-
 
 #### normal
 
@@ -181,23 +175,21 @@
 }
 ```
 
+### The sizes `_size`
 
-### Размеры меню `_size`
+Mandatory modifier. Available for *normal* theme only.
+Provides a size value to all types of radio groups.
 
-Задает размер всем типам меню. Обязательный модификатор.
-
-Реализован только в теме *normal*.
-
-Доступно четыре размера реализации блока: **s**, **m**, **l**, **xl**.
+There are four sizes available: **S**, **M**, **L**, **XL**.
 
 <table>
     <tr>
-        <th>Размер/Параметры</th>
-        <th>Размер шрифта</th>
-        <th>Высота строки <code>line-heigh</code></th>
-        <th>Левый отступ <code>padding-left</code></th>
-        <th>Отступ <code>padding</code></th>
-        <th>Размер "галочки" для темы normal</code></th>
+        <th>A `_size` value</th>
+        <th>Font size</th>
+        <th>Line height <code>line-heigh</code></th>
+        <th>Left padding <code>padding-left</code></th>
+        <th>Global <code>padding</code></th>
+        <th>The tick's icon size for normal theme</code></th>
     </tr>
     <tr>
         <td>s</td>
@@ -211,7 +203,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        mode : 'check',
+        mode : 'check', 
         size : 's' 
     },
     content : [
@@ -242,7 +234,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        mode : 'check',
+        mode : 'check', 
         size : 'm' 
     },
     content : [
@@ -273,7 +265,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        mode : 'check',
+        mode : 'check', 
         size : 'l' 
     },
     content : [
@@ -304,7 +296,7 @@
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        mode : 'check',
+        mode : 'check', 
         size : 'xl' 
     },
     content : [
@@ -325,27 +317,26 @@
     </tr>
 </table>
 
+### Menu item selection options `_mode`
 
-### Способ выбора пунктов `_mode`
+A `_mode` modifier defines a menu item's reaction on mouse click. For example, it controls multiple items selectability.
 
-Модификатор `_mode` управляет поведением пунктов меню при щелчке по ним мышью, например, возможностью множественного выбора пунктов меню.
+Following modifier values are available:
 
-Доступны следующие значения модификатора:
-
-* `check` – селект. Пункт, по которому был произведен щелчек мышью, изменит состояние на противоположное и будет менять состояние при повторных щелчках. Доступна возможность множественного выбора пунктов;
-* `radio` – переключатель. При щелчке мышью будет производиться переключение активных пунктов меню. При повторном щелчке пункт, по которому он был произведен, останется __активным__. Множественный выбор недоступен;
-* `radio-check` – переключатель. При щелчке мышью будет производиться переключение активных пунктов меню. При повторном щелчке пункт, по которому он был произведен, станет __неактивным__. Множественный выбор недоступен.
+* `check` – a selectable list. A menu item will change it's state to opposite on each mouse click. An active item will become inactive and vice versa. Multiple choice is available;
+* `radio` – a switcher. Inactive menu item will be activated on mouse click. On re-clicking the menu item will remain **active**. Multiple choice not available;
+* `radio-check` – a switcher. Inactive menu item will be activated on mouse click. On re-clicking the active menu item will become **inactive**. Multiple choice not available.
 
 
-Реализован во всех темах блока.
+Available for all block themes.
 
 <table>
     <tr>
-        <th>Выбор пунктов</th>
-        <th>Пример</th>
+        <th>List items selectability</th>
+        <th>Example</th>
     </tr>
     <tr>
-        <td>Только один (<code>_mode_radio</code>)</td>
+        <td>Only one (<code>_mode_radio</code>)</td>
         <td>
             <pre><code>
 {
@@ -353,7 +344,7 @@
     mods : { 
         theme : 'normal', 
         size : 'l', 
-        mode : 'radio'
+        mode : 'radio' 
     },
     content : [
         {
@@ -373,7 +364,7 @@
         </td>
     </tr>
     <tr>
-        <td>Множественный выбор или ни одного (<code>_mode_check</code>)</td>
+        <td>Plural selection or none (<code>_mode_check</code>)</td>
         <td>
             <pre><code>
 {
@@ -381,7 +372,7 @@
     mods : { 
         theme : 'normal', 
         size : 'l', 
-        mode : 'check'
+        mode : 'check' 
     },
     content : [
         {
@@ -401,7 +392,7 @@
         </td>
     </tr>
     <tr>
-        <td>Один или ни одного (<code>_mode_radio-check</code>)</td>
+        <td>One or none (<code>_mode_radio-check</code>)</td>
         <td>
             <pre><code>
 {
@@ -409,7 +400,7 @@
     mods : { 
         theme : 'normal', 
         size : 'l', 
-        mode : 'radio-check'
+        mode : 'radio-check' 
     },
     content : [
         {
@@ -431,21 +422,20 @@
 </table>
 
 
-### Состояния блока
+### Block's states
 
+#### In focus `_focused`
 
-#### В фокусе `_focused`
+A `_focused` modifier is automatically toggles for the block when it is in focus. For example, on mouse click or by `Tab` key press.
 
-Модификатор `_focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
-
-Реализован во всех темах блока.
+Available for all block themes.
 
 ```bemjson
 {
     block : 'menu',
     mods : { 
         theme : 'normal', 
-        mode : 'check',
+        mode : 'check', 
         size : 'xl',
         focused : true 
     },
@@ -464,16 +454,15 @@
 }
 ```
 
+## The block's elements
 
-## Элементы блока
-
-Визуально представлен следующими элементами:
+The `menu` block is visually represented by following elements:
 
 ### __group
 
-Элемент `__group` служит для группировки пунктов меню. Пункты, которые нужно сгруппировать, помещаются в поле `content` элемента. Группы визуально отделяются серой чертой.
+A `__group` element is used for menu items grouping. An Items that needed grouping should be placed to the element BEMJSON declaration's `content` field. The group elements are visually separated by a gray line.
 
-Например:
+For example:
 
 ```bemjson
 {
@@ -513,9 +502,9 @@
 
 ### __group-title
 
-Элемент позволяет задать заголовок для группы пунктов меню, создаваемой с помощью элемента `__group`.
+This element allows to create a title for a menu items group, created using a `_group` element.
 
-Например:
+For example:
 
 ```bemjson
 {
@@ -523,7 +512,7 @@
     mods : { 
         theme : 'normal', 
         size : 'xl', 
-        mode : 'radio',
+        mode : 'radio', 
         focused : true  
     },
     content : [
@@ -553,13 +542,12 @@
 }
 ```
 
+## Dependencies
 
-### Зависимости блока
-
-Блок `menu` зависит от следующего набора блоков и элементов:
+The block depends on:
 
 * `i-bem__dom`
 * `menu-item`
 * `dom`
 * `keyboard`
-* `control`
+* `base-control`

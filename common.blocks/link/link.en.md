@@ -183,5 +183,5 @@ Available for all block themes.
 
 The block depends on:
 
-* `base-control`
+* `control`
 * `i-bem__dom`

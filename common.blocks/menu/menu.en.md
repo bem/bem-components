@@ -550,4 +550,4 @@ The block depends on:
 * `menu-item`
 * `dom`
 * `keyboard`
-* `base-control`
+* `control`

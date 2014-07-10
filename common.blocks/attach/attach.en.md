@@ -1,76 +1,68 @@
 # attach
 
-The **attach** block is used to send a file to a server.
+`attach` block is used to upload a file to be sent to a server.
 
-The block is visually represented by:
+This block is visually represented by:
 
-* button (`__button` based on the [button](../button/) block) that opens a system window for a file download
-* deletion cross element (`__clear`)
+* button (`button` element is based on the [button](https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.en.md) block) that opens a system window for a file upload;
+* text message "No file selected".
+
+When file upload is complete, the following elements become available:
+
+* file icon (`icon` block);
+* file name (`text` element);
+* deletion cross element (`clear` element).
 
 Block functionality does not support:
 
-* more than one file attaching
-* drag-and-drop
-
-Block **attach** provides native control functionality. The control is hidden. In MSIE8 block **attach** is rendered as native control `<input type="file">`.
+* more than one file attaching;
+* drag-and-drop.
 
 ## Block's modifiers
 
-### Themes of a block
-`_theme`
+### _theme
 
-The block supports only the *simple* theme.
+The block supports only a theme called *simple*.
 
-If theme is not specified, the block applies only default values:
+If theme is not specified, only native representation of the block is available (*default*).
 
-* Theme of a button: native representation of a button by the browser.
-* Localization: en
-* Button's message text (`__button`): "Choose file"
-* Text message rendered with no file selected (`__no-file`): "no file selected"
+See the following examples for demonstration:
 
-Following example demonstrates this:
+**default**
 
 ```bemjson
-    {
-        block : 'attach',
-        button : 'file',
-        noFileText : 'no file selected'
-    }
+{
+    block : 'attach',
+    button : 'Select file',
+    noFileText : 'No file selected'
+}
+```
+**simple**
+
+```bemjson
+{
+    block : 'attach',
+    mods : { theme : 'simple' },
+    button : 'Select file',
+    noFileText : 'No file selected'
+}
 ```
 
-```bemjson
-    {
-        block : 'attach',
-        mods : { theme : 'simple' },
-        button : 'file',
-        noFileText : 'no file selected'
-    }
-```
+### Block states
 
-### Block state
-`_disabled_true`
+#### _disabled
 
-* disabled
-If block is disabled a file selection button becomes unavailable for user's manipulations.
+If block is disabled, a file selection button becomes unavailable for user's manipulations.
 
-The button is active by default.
+The button is active by default, even if `disabled` modifier is not specified.
 
 ```bemjson
-    {
-        block : 'attach',
-        mods : { disabled : true },
-        button : 'file',
-        noFileText : 'no file selected'
-    }
-```
-
-```bemjson
-    {
-        block : 'attach',
-        mods : { theme : 'simple', disabled : true },
-        button : 'file',
-        noFileText : 'no file selected'
-    }
+{
+    block : 'attach',
+    mods : { theme : 'simple', disabled : true },
+    button : 'Select file',
+    noFileText : 'No file selected'
+}
 ```
 
 ## Block's elements
@@ -81,27 +73,28 @@ The block is visually represented by the following elements:
 
 A mandatory element.
 
-A file selection button. It aims to open the system window for a file download. It is based on a [button](../button/) block and inherites its behavior (JS) and formatting (CSS).
-
-If a theme *simple* is not declared, the button's text "Choose file" is used by default.
+A file selection button. It is designed for opening a system window for file upload. It is based on [button](https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.en.md) block and inherits its behavior (JS) and formatting (CSS). Content of a button should be specified in input data.
 
 ```bemjson
-    {
-        block : 'attach',
+{
+    block : 'attach',
+    mods : { theme : 'simple' },
+    button : {
+        block : 'button',
         mods : { theme : 'simple' },
-        button : {
-            block : 'button',
-            mods : { theme : 'simple' },
-            icon : { elem : 'icon' }
-        },
-        noFileText : 'no file selected'
-    }
+        icon : { block : 'icon', mods : { action : 'download' },
+        text: 'Select file'
+        }
+    },
+    noFileText : 'No file selected'
+}
 ```
+
 ### __control
 
-A native control of file attaching.
+A native control for file attaching.
 
-It is rendered by BEMHTML and BH template engines as a native control of file attaching with attributes: `<input class="file-name" type="file">`.
+It is rendered by BEMHTML and BH template engines as a native control of file attaching with attributes: `<input class="attach__control" type="file">`.
 
 ### __no-file
 
@@ -111,19 +104,21 @@ If a theme *simple* is not declared, the text message "no file selected" is used
 
 ### __file
 
-A container for a attached file information.
+A container with attached file information.
 
-It consists of the following block's elements:
+It consists of the following elements of the block:
 
-* `__text`
-* `__clear`
+* `text`
+* `clear`
+
+The element could contain an `icon` block. Depending on a file type an `icon` block could obtain corresponding modifier that specifies a type file icon to be assigned.
 
 ### __text
 
-File name. It appears after some file is attached.
+File name. It becomes available when you have attached the file.
 
 ### __clear
 
-Clear attachment button (deletion cross element). It appears after some file is attached.
+Clear attachment button (deletion cross element). It becomes available when you have attched the file.
 
-The element is available for a *simple* theme of **attach** block.
+The element is available for a *simple* theme of `attach` block.

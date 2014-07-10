@@ -76,7 +76,7 @@
                 },
                 {
                     block : 'select',
-                    mods : { type : 'radio', theme : 'normal', size : 'm' },
+                    mods : { mode : 'radio', theme : 'normal', size : 'm' },
                     options : [
                         { val : 'usd', text : '$', checked : true },
                         { val : 'euro', text : '€' }

@@ -1,5 +1,6 @@
 .popup_theme_normal
 {
+    display: none;
     visibility: hidden;
 
     margin: -1000px 0 0 -1000px;
@@ -12,6 +13,11 @@
                 0 10px 20px -5px rgba(0, 0, 0, 0.4);
 
     animation-fill-mode: forwards;
+
+    &.popup_js_inited
+    {
+        display: block;
+    }
 
     &.popup_visible
     {

@@ -16,6 +16,7 @@ block('radio-group')(
                     block : 'radio',
                     mods : {
                         type : mods.type,
+                        mode : mods.mode,
                         theme : mods.theme,
                         size : mods.size,
                         checked : option.checked,

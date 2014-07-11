@@ -25,14 +25,14 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var checkedRadio = this.findBlockInside({
-                        block : 'radio',
-                        modName : 'checked',
-                        modVal : true
-                    });
+                this._checkedRadio = this.findBlockInside({
+                    block : 'radio',
+                    modName : 'checked',
+                    modVal : true
+                });
 
                 this._inSetVal = false;
-                this._val = checkedRadio? checkedRadio.getVal() : undef;
+                this._val = this._checkedRadio? this._checkedRadio.getVal() : undef;
                 this._radios = undef;
             }
         },
@@ -84,19 +84,27 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
      * @returns {radio-group} this
      */
     setVal : function(val, data) {
-        val = String(val);
+        var isValUndef = val === undef;
+
+        isValUndef || (val = String(val));
 
         if(this._val !== val) {
-            var radio = this._getRadioByVal(val);
-            if(radio) {
-                this._inSetVal = true;
-
-                this._val !== undef && this._getRadioByVal(this._val).delMod('checked');
-                this._val = radio.getVal();
-                radio.setMod('checked');
-
-                this._inSetVal = false;
+            if(isValUndef) {
+                this._val = undef;
+                this._checkedRadio.delMod('checked');
                 this.emit('change', data);
+            } else {
+                var radio = this._getRadioByVal(val);
+                if(radio) {
+                    this._inSetVal = true;
+
+                    this._val !== undef && this._getRadioByVal(this._val).delMod('checked');
+                    this._val = radio.getVal();
+                    radio.setMod('checked');
+
+                    this._inSetVal = false;
+                    this.emit('change', data);
+                }
             }
         }
 
@@ -131,7 +139,7 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
     },
 
     _onRadioCheck : function(e) {
-        var radioVal = e.target.getVal();
+        var radioVal = (this._checkedRadio = e.target).getVal();
         if(!this._inSetVal) {
             if(this._val === radioVal) {
                 // on block init value set in constructor, we need remove old checked and emit "change" event

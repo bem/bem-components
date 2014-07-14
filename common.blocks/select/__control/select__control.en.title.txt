@@ -1,0 +1,1 @@
+Auxiliary element that forms select items to be chosen (element is hidden)

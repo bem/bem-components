@@ -1,0 +1,1 @@
+Switcher. Inactive menu item will activates on mouse click. On re-clicking the menu item will remain active. Multiple choice not available

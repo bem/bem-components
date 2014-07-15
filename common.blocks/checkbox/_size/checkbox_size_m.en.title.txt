@@ -1,1 +1,1 @@
-Font size M
+Checkbox height is 14px

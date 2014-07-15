@@ -1,0 +1,1 @@
+Selectable list. A menu item will change it's state to opposite on each mouse click. Multiple choice is available

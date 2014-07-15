@@ -1,1 +1,1 @@
-Defines a state of the pressed button when the first click presses the button, and the second returns it to its original state
+Switching to a pressed state

@@ -244,13 +244,3 @@ A `__box` element is used in basic block's implementation as a container with ne
 ### `__control`
 
 A `__control` element is a radio switch controller. It renders to an `<input>` HTML element with the `type="radio"` attribute is set. In all block themes it is hidden by default. Block uses only the control's logic.
-
-## Dependencies
-
-The block depends on:
-
-* `i-bem__dom`
-* `control`
-* `jquery__event`
-* `__box`
-* `__control`

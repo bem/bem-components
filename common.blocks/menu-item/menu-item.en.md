@@ -28,8 +28,8 @@ The block helps to create following menu item types:
             </code></pre>
         </td>
     <tr>
-        <td>A link element (<code>_type_link</code>)</td>
-        <td>An element with nested depended link. A <code>link</code> block should be placed into block's BEMJSON declaration <code>content</code> field. The <code>_type_link</code> modifier is required.
+        <td>A link element (<code>menu-item_type_link</code>)</td>
+        <td>An element with nested depended link. A <code>link</code> block should be placed into block's BEMJSON declaration <code>content</code> field. The <code>menu-item_type_link</code> modifier is required.
         </td>
         <td>
             <pre><code>
@@ -68,12 +68,12 @@ Valid block's attributes can be specified in the corresponding fields of block's
 
 ## Block's modifiers
 
-### The themes `_theme`
+### The themes `theme`
 
  * simple
  * normal
 
-If a `_theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
+If a `theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
 
 For example:
 
@@ -115,11 +115,11 @@ For example:
 
 ### Block's states
 
-### Inactive `_disabled`
+### Inactive `disabled`
 
-A `_disabled` modifier helps to create an inactive menu item. Inactive menu item is displayed, but not available for user actions.  
+A `disabled` modifier helps to create an inactive menu item. Inactive menu item is displayed, but not available for user actions.  
 
-If a `_type_link` modifier is set for the block with a nested link, the link will not be followed on mouse click.
+If a `menu-item_type_link` modifier is set for the block with a nested link, the link will not be followed on mouse click.
 
 Available for all block themes.
 
@@ -131,12 +131,12 @@ Available for all block themes.
         size : 'm', 
         disabled : true 
     },
-    content : '_disabled'
+    content : 'disabled'
 }
 ```
     
 
-#### Mouse over `_hovered`
+#### Mouse over `hovered`
 
 This modifier is automatically toggled when the mouse pointer is over the block. 
 
@@ -150,12 +150,12 @@ Available for all block themes.
         size : 'm', 
         hovered : true 
     },
-    content : '_hovered'
+    content : 'hovered'
 }
 ```
 
 
-#### Selected menu item `_checked`
+#### Selected menu item `checked`
 
 Modifier defines the selected menu item.
 
@@ -172,7 +172,7 @@ Modifier defines the selected menu item.
 ```
 
 
-For the `menu-item` blocks nested in a `menu` block `_checked` state toggles automatically on mouse click. 
+For the `menu-item` blocks nested in a `menu` block `checked` state toggles automatically on mouse click. 
 
 ```bemjson
 {
@@ -196,11 +196,3 @@ For the `menu-item` blocks nested in a `menu` block `_checked` state toggles aut
     ]
 }
 ```
-
-## Dependencies
-
-The block depends on:
-
-* `i-bem__dom `
-* `jquery`
-* `dom`

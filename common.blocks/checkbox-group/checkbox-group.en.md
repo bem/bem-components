@@ -39,12 +39,12 @@ In an `options` array any valid `checkbox` block attributes can be passed. For e
 
 ## Block's modifiers
 
-### The themes `_theme`
+### The themes `theme`
 
  * simple
  * normal
 
-If a `_theme` modifier is not set, browser defaults (`default`) will be applied to the block.
+If a `theme` modifier is not set, browser defaults (`default`) will be applied to the block.
 
 For example:
 
@@ -92,20 +92,20 @@ For example:
 ```
 
 
-### The sizes `_size`
+### The sizes `size`
 
 Mandatory modifier. Available for *normal* theme only.
 Provides all types of checkbox groups with the size value.
 
 There are four sizes available: **S**, **M**, **L**, **XL**.
 
-Depending on a `_type` modifier value following sizes are available:
+Depending on a `type` modifier value following sizes are available:
 
 <table>
     <tr>
         <th>Size</th>
-        <th>Normal checkbox group and <code>_type_line</code></th>
-        <th>Button checkbox group (<code>_type_button</code>)</th>
+        <th>Normal checkbox group and <code>checkbox-group_type_line</code></th>
+        <th>Button checkbox group (<code>checkbox-group_type_button</code>)</th>
     </tr>
     <tr>
         <th>s</th>
@@ -129,7 +129,7 @@ Depending on a `_type` modifier value following sizes are available:
 </table>
 
 
-Here are some examples with *normal* theme and the `_type_button` modifier is set:
+Here are some examples with *normal* theme and the `checkbox-group_type_button` modifier is set:
 
 <table>
     <tr>
@@ -219,9 +219,9 @@ Here are some examples with *normal* theme and the `_type_button` modifier is se
 </table>
 
 
-### Checkbox group type `_type`
+### Checkbox group type `type`
 
-A `_type` modifier can have following values:
+A `type` modifier can have following values:
 
 * `button`. It is used for creation of button checkbox group – a block of button switches;
 * `line`. It is used for line-aligned checkbox group creation. Right gap is automatically added after each switch of the group except the last one. Available only for *normal* theme.
@@ -270,7 +270,7 @@ Modifier is available for all block themes.
         </td>
     </tr>
     <tr>
-        <td>Line-aligned checkbox group (<code>_type_line</code>)</td>
+        <td>Line-aligned checkbox group (<code>checkbox-group_type_line</code>)</td>
         <td>
             <pre><code>
 {
@@ -292,16 +292,16 @@ Modifier is available for all block themes.
 </table>
 
 
-### Inactive `_disabled`
+### Inactive `disabled`
 
-A `_disabled` modifier helps to create an inactive menu item. Inactive menu item is displayed, but not available for user actions.
+A `disabled` modifier helps to create an inactive menu item. Inactive menu item is displayed, but not available for user actions.
 
-Such a group will not obtain a focus (`_focused` modifier will not be toggled).
+Such a group will not obtain a focus (`focused` modifier will not be toggled).
 
 When a `_disabled` modifier is set for the group, all it's switches also will be disabled. As a result, the following will not be performed on switches:
 
-* state modifiers `_hovered`, `_pressed` and `_focused` toggling;
-* switching between `_checked` modifier's values.
+* state modifiers `hovered`, `pressed` and `focused` toggling;
+* switching between `checked` modifier's values.
 
 Modifier is available for all block themes.
 
@@ -325,10 +325,10 @@ Modifier is available for all block themes.
 
 ### Block's states
 
-#### `_focused`
+#### `focused`
 
-A `_focused` 
-_focused modifier is automatically toggled when one of the block's elements is in focus. For example, on mouse click or by `Tab` key press. 
+A `focused` 
+focused modifier is automatically toggled when one of the block's elements is in focus. For example, on mouse click or by `Tab` key press. 
 
 Available for all block themes.
 
@@ -348,12 +348,3 @@ Available for all block themes.
     ]
 }
 ```
-
-
-## Dependencies
-
-The block depends on:
-
-* `i-bem__dom `
-* `checkbox`
-* `jquery`

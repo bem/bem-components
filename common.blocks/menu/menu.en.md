@@ -45,7 +45,7 @@ A `menu` block is used for creation of following menu types:
             </code></pre>
         </td>
     <tr>
-        <td>A multi selectable list. (<code>_mode_check</code>)</td>
+        <td>A multi selectable list. (<code>menu_mode_check</code>)</td>
         <td>Clicking on a list items will perform item's state switching to opposite. If an item was active it will be deactivated, and vice versa.</td>
         <td>
             <pre><code>
@@ -73,8 +73,8 @@ A `menu` block is used for creation of following menu types:
         </td>
     </tr>
 <tr>
-        <td>Basic list (with <code>_mode</code> modifier is unset)</td>
-        <td>Menu item's state will not change on mouse click. A <code>_cheked</code> state modifier will not be toggled.</td>
+        <td>Basic list (with <code>mode</code> modifier is unset)</td>
+        <td>Menu item's state will not change on mouse click. A <code>cheked</code> state modifier will not be toggled.</td>
         <td>
             <pre><code>
 {
@@ -103,12 +103,12 @@ A `menu` block is used for creation of following menu types:
 
 ## Block's modifiers
 
-### The themes `_theme`
+### The themes `theme`
 
  * simple
  * normal
 
-If a `_theme` modifier is not set, browser defaults (`default`) will be applied to the block.
+If a `theme` modifier is not set, browser defaults (`default`) will be applied to the block.
 
 For example:
 
@@ -175,7 +175,7 @@ For example:
 }
 ```
 
-### The sizes `_size`
+### The sizes `size`
 
 Mandatory modifier. Available for *normal* theme only.
 Provides a size value to all types of radio groups.
@@ -184,7 +184,7 @@ There are four sizes available: **S**, **M**, **L**, **XL**.
 
 <table>
     <tr>
-        <th>A `_size` value</th>
+        <th>A `size` value</th>
         <th>Font size</th>
         <th>Line height <code>line-heigh</code></th>
         <th>Left padding <code>padding-left</code></th>
@@ -317,9 +317,9 @@ There are four sizes available: **S**, **M**, **L**, **XL**.
     </tr>
 </table>
 
-### Menu item selection options `_mode`
+### Menu item selection options `mode`
 
-A `_mode` modifier defines a menu item's reaction on mouse click. For example, it controls multiple items selectability.
+A `mode` modifier defines a menu item's reaction on mouse click. For example, it controls multiple items selectability.
 
 Following modifier values are available:
 
@@ -336,7 +336,7 @@ Available for all block themes.
         <th>Example</th>
     </tr>
     <tr>
-        <td>Only one (<code>_mode_radio</code>)</td>
+        <td>Only one (<code>menu_mode_radio</code>)</td>
         <td>
             <pre><code>
 {
@@ -364,7 +364,7 @@ Available for all block themes.
         </td>
     </tr>
     <tr>
-        <td>Plural selection or none (<code>_mode_check</code>)</td>
+        <td>Plural selection or none (<code>menu_mode_check</code>)</td>
         <td>
             <pre><code>
 {
@@ -392,7 +392,7 @@ Available for all block themes.
         </td>
     </tr>
     <tr>
-        <td>One or none (<code>_mode_radio-check</code>)</td>
+        <td>One or none (<code>menu_mode_radio-check</code>)</td>
         <td>
             <pre><code>
 {
@@ -424,9 +424,9 @@ Available for all block themes.
 
 ### Block's states
 
-#### In focus `_focused`
+#### In focus `focused`
 
-A `_focused` modifier is automatically toggles for the block when it is in focus. For example, on mouse click or by `Tab` key press.
+A `focused` modifier is automatically toggles for the block when it is in focus. For example, on mouse click or by `Tab` key press.
 
 Available for all block themes.
 
@@ -541,13 +541,3 @@ For example:
     ]
 }
 ```
-
-## Dependencies
-
-The block depends on:
-
-* `i-bem__dom`
-* `menu-item`
-* `dom`
-* `keyboard`
-* `control`

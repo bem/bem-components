@@ -100,7 +100,7 @@ Depending on a `type` modifier value following sizes are available:
     <tr>
         <th>Size</th>
         <th>Normal radio group</th>
-        <th>Button radio group (<code>_type_button</code>)</th>
+        <th>Button radio group (<code>radio-group_type_button</code>)</th>
     </tr>
     <tr>
         <th>s</th>
@@ -263,7 +263,7 @@ A `type` modifier can have following values:
         </td>
     </tr>
     <tr>
-        <td>Line-aligned radio group (<code>_type_line</code>)</td>
+        <td>Line-aligned radio group (<code>radio-group_type_line</code>)</td>
         <td>
             <pre><code>
 {
@@ -340,13 +340,3 @@ Available for all block themes.
     ]
 }
 ```
-
-
-## Dependencies
-
-The block depends on:
-
-* `i-bem__dom `
-* `radio`
-* `jquery`
-* `radio-group_type_button` (which is depends on `button` block)

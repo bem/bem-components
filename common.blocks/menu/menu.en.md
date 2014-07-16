@@ -2,7 +2,7 @@
 
 A `menu` block is used for creation of various types of menus and lists. It allows to manage state, behavior and appearance of menus.
 
-As a result of BEMHTML transformations, a block will be rendered to a `<div>` HTML element, with `role="menu"` attribute set. The block's HTML element contains a set of switches – the `menu-item` blocks.
+As a result of template application the block will be rendered to a `<div>` HTML element, with `role="menu"` attribute set. The block's HTML element contains a set of switches – the `menu-item` blocks.
 
 It allow to manage the appearance, state and size of a menu blocks as well as manage the nested `menu-items` block's appearance.
 
@@ -502,7 +502,7 @@ For example:
 
 ### __group-title
 
-This element allows to create a title for a menu items group, created using a `_group` element.
+This element allows to create a title for a menu items group, created using a `__group` element.
 
 For example:
 

@@ -2,7 +2,7 @@
 
 A `menu-item` block is used for creation of various types of menu and list items. It is used inside a `menu` block. The `menu-item` block allows to manage state, content and type of menu items.
 
-As a result of BEMHTML transformations block will be rendered to a `<div>` HTML element, with `role="menuitem"` attribute set.
+As a result of template application the block will be rendered to a `<div>` HTML element, with `role="menuitem"` attribute set.
 
 
 ## menu item use cases

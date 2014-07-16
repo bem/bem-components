@@ -34,7 +34,7 @@ Also, BEMJSON declaration can contain an arbitrary fields used for templating.
 
 ## Block's modifiers
 
-### The themes `_theme`
+### The themes `theme`
 
  * simple
  * normal
@@ -102,7 +102,7 @@ Available for all block themes.
 
 ### `disabled`
 
-If a `_disabled` modifier is set, the dropdown is displayed but not available for user's actions.
+If a `disabled` modifier is set, the dropdown is displayed but not available for user's actions.
 
 For such disabled block an `opened` state will not be toggled on mouse click.
 
@@ -152,7 +152,7 @@ An `opened` modifier toggles automatically on mouse click on the control compone
 ```
 
 
-Modifier can be removed by re-clicking on the control component or outside popup's window (in case of `_autoclosable` modifier availability for `popup` block).
+Modifier can be removed by re-clicking on the control component or outside popup's window (in case of `autoclosable` modifier availability for `popup` block).
 
 
 ## BEMJSON value of `switcher` and `popup` attributes 

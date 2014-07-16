@@ -77,12 +77,12 @@ Valid block's attributes can be specified in the corresponding fields of block's
 
 ## Block's modifiers
 
-### The themes `_theme`
+### The themes `theme`
 
  * simple
  * normal
 
-If a `_theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
+If a `theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
 
 For example:
 
@@ -120,7 +120,7 @@ For example:
 ```
 
 
-### Pseudo link `_pseudo`
+### Pseudo link `pseudo`
 
 ```bemjson
 {
@@ -151,7 +151,7 @@ Available for all block themes.
         focused : true
     },
     url : '#',
-    content : '_focused'
+    content : 'focused'
 }
 ```
 
@@ -175,6 +175,6 @@ Available for all block themes.
         disabled : true
     },
     url : '#',
-    content : '_disabled'
+    content : 'disabled'
 }
 ```

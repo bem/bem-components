@@ -175,6 +175,6 @@
         disabled : true
     },
     url : '#',
-    content : '_disabled'
+    content : 'disabled'
 }
 ```

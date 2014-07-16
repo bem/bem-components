@@ -28,7 +28,7 @@ block('button')(
         match(function() { return !this.mods.type || this.mods.type === 'submit'; })(function() {
             var ctx = this.ctx,
                 attrs = {
-                    type : this.mods.type,
+                    type : this.mods.type || 'button',
                     name : ctx.name,
                     value : ctx.val
                 };

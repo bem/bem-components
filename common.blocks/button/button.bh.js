@@ -12,7 +12,7 @@ module.exports = function(bh) {
                 role : 'button',
                 tabindex : json.tabIndex,
                 id : json.id,
-                type : isRealButton? modType : undefined,
+                type : isRealButton? modType || 'button' : undefined,
                 name : json.name,
                 value : json.val
             })

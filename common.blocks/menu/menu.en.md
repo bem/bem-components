@@ -9,7 +9,7 @@ It allow to manage the appearance, state and size of a menu blocks as well as ma
 
 ## menu use cases
 
-`menu` block is used for creation of following menu types:
+`menu` block is used for creation of the following menu types:
 
 <table>
     <tr>
@@ -456,7 +456,7 @@ Available for all block themes.
 
 ## The block's elements
 
-`menu` block is visually represented by following elements:
+`menu` block is visually represented by the following elements:
 
 ### __group
 

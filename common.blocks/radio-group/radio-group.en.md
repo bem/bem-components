@@ -94,7 +94,7 @@ Provides the size value to all types of radio groups.
 
 There are four sizes available: **S**, **M**, **L**, **XL**.
 
-Depending on `type` modifier value following sizes are available:
+Depending on `type` modifier value the following sizes are available:
 
 <table>
     <tr>
@@ -216,7 +216,7 @@ Here are some examples with *normal* theme and and with set `radio-group_type_bu
 
 ### Radio group type `type`
 
-`type` modifier can have following values:
+`type` modifier can have the following values:
 
 * `button`. It is used for creation of a button radio group – a block of button switcher;
 * `line`. Is used for a line-aligned radio group creation. Right gap is automatically added after each switch of the group except the last one. Available only for *normal* theme.

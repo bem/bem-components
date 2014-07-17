@@ -7,7 +7,7 @@ As a result of template application the block will be rendered to `<div>` HTML e
 
 ## menu item use cases
 
-The block helps to create following menu item types:
+The block helps to create the following menu item types:
 
 <table>
     <tr>

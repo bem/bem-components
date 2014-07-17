@@ -99,7 +99,7 @@ Provides all types of checkbox groups with the size value.
 
 There are four sizes available: **S**, **M**, **L**, **XL**.
 
-Depending on `type` modifier value following sizes are available:
+Depending on `type` modifier value the following sizes are available:
 
 <table>
     <tr>

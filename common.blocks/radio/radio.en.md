@@ -4,7 +4,7 @@
 
 `radio` blocks are used inside `radio-group` block as a group elements.
 
-As a result of block's template application, it will be rendered to `<label>` HTML element, with following set of nested items:
+As a result of block's template application, it will be rendered to `<label>` HTML element, with the following set of nested items:
 
 * `radio__box` element with hidden nested `input` HTML element (`__control` element);
 * a radio switch label, if `text` BEMJSON attribute is passed.
@@ -229,7 +229,7 @@ The modifier is seted on:
 
 #### States available with `radio_type_button` modifier
 
-If `radio_type_button` modifier is set, `radio` block is mixed up to `button` block. As a result, for `radio` block with `radio_type_button` modifier are available following `button` block's states:
+If `radio_type_button` modifier is set, `radio` block is mixed up to `button` block. As a result, for `radio` block with `radio_type_button` modifier are available the following `button` block's states:
 
 *  `hovered` – mouse pointer over the block;
 *  `pressed` – button is pressed.

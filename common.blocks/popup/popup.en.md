@@ -74,7 +74,7 @@ Modifier controls the position of popup window relative to the block which opene
 
 Chosen alignment will affect the opening animation direction.
 
-By default following admissible directions array is used:
+By default the following admissible directions array is used:
 
 
 <table>

@@ -1,6 +1,15 @@
+/**
+ * @module menu-item
+ */
+
 modules.define('menu-item', ['link'], function(provide, _, MenuItem) {
 
-provide(MenuItem.decl({ modName : 'type', modVal : 'link' }, {
+/**
+ * @exports
+ * @class menu-item
+ * @bem
+ */
+provide(MenuItem.decl({ modName : 'type', modVal : 'link' }, /** @lends menu-item.prototype */{
     onSetMod : {
         'hovered' : {
             'true' : function() {
@@ -31,7 +40,7 @@ provide(MenuItem.decl({ modName : 'type', modVal : 'link' }, {
     _onFocus : function() {
         this.setMod('hovered');
     }
-}, {
+}, /** @lends menu-item */{
     live : function() {
         this.liveBindTo('focusin', this.prototype._onFocus);
         return this.__base.apply(this, arguments);

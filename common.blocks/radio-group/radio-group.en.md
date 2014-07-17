@@ -285,6 +285,30 @@ A `type` modifier can have following values:
 </table>
 
 
+### Switch's selection mode `mode`
+
+The `mode` modifier allows to control the switch's reaction on mouse click. For example, it controls an ability of inactivation the selected switch on click.  Available only with the `radio-group_type_button` modifier set.
+
+The following modifier value is available:
+
+* `radio-check` – the radio-checkbox button mode. The switch will be activated on click, and inactivates on re-clicking. For example:
+
+```bemjson
+{
+    block : 'radio-group',
+    name : 'with-radio-check-mode',
+    mods : { theme : 'normal', size : 'm', type : 'button', mode : 'radio-check' },
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second' }
+    ]
+}
+```
+
+
+
+### Radio group's states
+
 ### Inactive `disabled`
 
 A `radio-group_disabled` modifier is used for an inactive radio group creation. An inactive group is displayed but not available for user actions.  
@@ -315,8 +339,6 @@ Modifier is available for all block themes.
 }
 ```
 
-
-### Radio group's states
 
 #### `focused`
 

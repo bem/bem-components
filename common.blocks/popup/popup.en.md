@@ -6,6 +6,14 @@ Popup can be displayed by different page elements like pseudo links or buttons.
 
 At the moment of first display (`visible` modifier toggle) block's DOM element is created in the end of document `<body>`.
 
+## Block's initialization
+
+Before `popup` can be displayed on the `visible` modifier toggling, it should be initialized with `setTarget` method. `setTarget` needs to determine the popup position on web page. It can be performed:
+
+* according to parent block's position. In this case the parent DOM element or BEM block should be passed as an argument to `setTarget`;
+* by direct coordinates defining. The first argument passed to `setTarget` defines left indent from the edge of the page, second defines the top indent: `setTarget(x-coordinate, y-coordinate)`.
+
+The method returns `this`.
 
 ## Block's modifiers
 
@@ -17,6 +25,7 @@ At the moment of first display (`visible` modifier toggle) block's DOM element i
 If a `theme` modifier is not set, browser defaults (`default`) will be applied to block.
 
 #### default
+
 ```bemjson
 {
     block : 'popup',

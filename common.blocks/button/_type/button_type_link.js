@@ -1,5 +1,14 @@
+/**
+ * @module button
+ */
+
 modules.define('button', function(provide, Button) {
 
+/**
+ * @exports
+ * @class button
+ * @bem
+ */
 provide(Button.decl({ modName : 'type', modVal : 'link' }, {
     onSetMod : {
         'js' : {

@@ -1,6 +1,15 @@
+/**
+ * @module checkbox
+ */
+
 modules.define('checkbox', function(provide, Checkbox) {
 
-provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, {
+/**
+ * @exports
+ * @class checkbox
+ * @bem
+ */
+provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, /** @lends checkbox.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {

@@ -1,6 +1,6 @@
 # popup
 
-A `popup` block is used for popups creation. It allows to manage state, behavior and appearance of popups. Block is displayed in front of all other page elements.
+`popup` block is used for popups creation. It allows to manage state, behavior and appearance of popups. Block is displayed in front of all other page elements.
 
 Popup can be displayed by different page elements like pseudo links or buttons.
 
@@ -8,7 +8,7 @@ At the moment of first display (`visible` modifier toggle) block's DOM element i
 
 ## Block's initialization
 
-Before `popup` can be displayed on the `visible` modifier toggling, it should be initialized with `setTarget` method. `setTarget` needs to determine the popup position on web page. It can be performed:
+Before `popup` can be displayed on `visible` modifier toggling, it should be initialized with `setTarget` method. `setTarget` needs to determine the popup position on web page. It can be performed:
 
 * according to parent block's position. In this case the parent DOM element or BEM block should be passed as an argument to `setTarget`;
 * by direct coordinates defining. The first argument passed to `setTarget` defines left indent from the edge of the page, second defines the top indent: `setTarget(x-coordinate, y-coordinate)`.
@@ -22,7 +22,7 @@ The method returns `this`.
  * simple
  * normal
 
-If a `theme` modifier is not set, browser defaults (`default`) will be applied to block.
+If `theme` modifier is not set, browser defaults (`default`) will be applied to block.
 
 #### default
 
@@ -57,7 +57,7 @@ If a `theme` modifier is not set, browser defaults (`default`) will be applied t
 
 ### Visibility `visible`
 
-A `visible` modifier allow to control block visibility. If it's not set, block will not be displayed.
+`visible` modifier allow to control block visibility. If it's not set, block will not be displayed.
 
 ```bemjson
 {
@@ -133,7 +133,7 @@ By default following admissible directions array is used:
 
 To control the popup window position you can provide directions array with desired directions set only. According to parent block's position on a page the most suitable directions will be chosen among the provided values.
 
-For example, if the popup window should be opened at the top of the parent block:
+For example, if the popup should be opened at the top of the parent block:
 
 ```bemjson
 {
@@ -159,7 +159,7 @@ Or if it should be opened strictly at the center-right position:
 
 ### Automatic closure  `autoclosable`
 
-With `autoclosable` modifier toggled block will automatically hide away on mouse click outside popup window (`visible` modifier will be removed).
+With `autoclosable` modifier set block will automatically hide away on mouse click outside popup (`visible` modifier will be removed).
 
 ```bemjson
 {
@@ -176,6 +176,6 @@ As long as popup's parent block itself can be nested in another popup block ther
 
 If there were no such relations, the parent popup block will be closed on mouse click on the child block regardless of the fact that `autoclosable` modifier is set to `true`.
 
-This means that with `autoclosable` modifier toggled block will close itself and close all of it children on mouse click outside block's window or it child's window.
+This means that if `autoclosable` modifier set block will close itself and close all of it children on mouse click outside block's window or it child's window.
 
 Child popup blocks can be regarded as a chain of 1 → 2 → 3 → 4. By clicking on the second element of chain, third and forth will be closed. By clicking on first, the second, third and forth will be closed. On click outside of any popup window of the chain element all popups will be closed.

@@ -1,8 +1,8 @@
 # menu item
 
-A `menu-item` block is used for creation of various types of menu and list items. It is used inside a `menu` block. The `menu-item` block allows to manage state, content and type of menu items.
+`menu-item` block is used for creation of various types of menu and list items. It is used inside `menu` block. `menu-item` block allows to manage state, content and type of menu items.
 
-As a result of template application the block will be rendered to a `<div>` HTML element, with `role="menuitem"` attribute set.
+As a result of template application the block will be rendered to `<div>` HTML element, with `role="menuitem"` attribute set.
 
 
 ## menu item use cases
@@ -16,7 +16,7 @@ The block helps to create following menu item types:
         <th>An example</th>
     </tr>
     <tr>
-        <td>A switch element</td>
+        <td>Switch element</td>
         <td>Is used to set up a dropdowns, tab menus, lists and menu items, etc.</td>
         <td>
             <pre><code>
@@ -28,8 +28,8 @@ The block helps to create following menu item types:
             </code></pre>
         </td>
     <tr>
-        <td>A link element (<code>menu-item_type_link</code>)</td>
-        <td>An element with nested depended link. A <code>link</code> block should be placed into block's BEMJSON declaration <code>content</code> field. The <code>menu-item_type_link</code> modifier is required.
+        <td>Link element (<code>menu-item_type_link</code>)</td>
+        <td>An element with nested depended link. <code>link</code> block should be placed into block's BEMJSON declaration <code>content</code> field. <code>menu-item_type_link</code> modifier is required.
         </td>
         <td>
             <pre><code>
@@ -73,7 +73,7 @@ Valid block's attributes can be specified in the corresponding fields of block's
  * simple
  * normal
 
-If a `theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
+If `theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
 
 For example:
 
@@ -117,9 +117,9 @@ For example:
 
 ### Inactive `disabled`
 
-A `disabled` modifier helps to create an inactive menu item. Inactive menu item is displayed, but not available for user actions.  
+`disabled` modifier helps to create an inactive menu item. Inactive menu item is displayed, but not available for user actions.  
 
-If a `menu-item_type_link` modifier is set for the block with a nested link, the link will not be followed on mouse click.
+If `menu-item_type_link` modifier is set for the block with a nested link, the link will not be followed on mouse click.
 
 Available for all block themes.
 
@@ -138,7 +138,7 @@ Available for all block themes.
 
 #### Mouse over `hovered`
 
-This modifier is automatically toggled when the mouse pointer is over the block. 
+This modifier is automatically seted when the mouse pointer is over the block. 
 
 Available for all block themes.
 
@@ -172,7 +172,7 @@ Modifier defines the selected menu item.
 ```
 
 
-For the `menu-item` blocks nested in a `menu` block `checked` state toggles automatically on mouse click. 
+For `menu-item` blocks nested in `menu` block `checked` state toggles automatically on mouse click. 
 
 ```bemjson
 {

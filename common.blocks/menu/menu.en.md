@@ -1,15 +1,15 @@
 # menu
 
-A `menu` block is used for creation of various types of menus and lists. It allows to manage state, behavior and appearance of menus.
+`menu` block is used for creation of various types of menus and lists. It allows to manage state, behavior and appearance of menus.
 
-As a result of template application the block will be rendered to a `<div>` HTML element, with `role="menu"` attribute set. The block's HTML element contains a set of switches – the `menu-item` blocks.
+As a result of template application the block will be rendered to `<div>` HTML element, with `role="menu"` attribute set. The block's HTML element contains a set of switches – `menu-item` blocks.
 
 It allow to manage the appearance, state and size of a menu blocks as well as manage the nested `menu-items` block's appearance.
 
 
 ## menu use cases
 
-A `menu` block is used for creation of following menu types:
+`menu` block is used for creation of following menu types:
 
 <table>
     <tr>
@@ -74,7 +74,7 @@ A `menu` block is used for creation of following menu types:
     </tr>
 <tr>
         <td>Basic list (with <code>mode</code> modifier is unset)</td>
-        <td>Menu item's state will not change on mouse click. A <code>cheked</code> state modifier will not be toggled.</td>
+        <td>Menu item's state will not change on mouse click. <code>cheked</code> state modifier will not be toggled.</td>
         <td>
             <pre><code>
 {
@@ -108,7 +108,7 @@ A `menu` block is used for creation of following menu types:
  * simple
  * normal
 
-If a `theme` modifier is not set, browser defaults (`default`) will be applied to the block.
+If `theme` modifier is not set, browser defaults (`default`) will be applied to the block.
 
 For example:
 
@@ -319,7 +319,7 @@ There are four sizes available: **S**, **M**, **L**, **XL**.
 
 ### Menu item selection options `mode`
 
-A `mode` modifier defines a menu item's reaction on mouse click. For example, it controls multiple items selectability.
+`mode` modifier defines a menu item's reaction on mouse click. For example, it controls multiple items selectability.
 
 Following modifier values are available:
 
@@ -426,7 +426,7 @@ Available for all block themes.
 
 #### In focus `focused`
 
-A `focused` modifier is automatically toggles for the block when it is in focus. For example, on mouse click or by `Tab` key press.
+`focused` modifier is set automatically for the block when it is in focus. For example, on mouse click or by `Tab` key press.
 
 Available for all block themes.
 
@@ -456,11 +456,11 @@ Available for all block themes.
 
 ## The block's elements
 
-The `menu` block is visually represented by following elements:
+`menu` block is visually represented by following elements:
 
 ### __group
 
-A `__group` element is used for menu items grouping. An Items that needed grouping should be placed to the element BEMJSON declaration's `content` field. The group elements are visually separated by a gray line.
+`__group` element is used for menu items grouping. An Items that needed grouping should be placed to the element BEMJSON declaration's `content` field. The group elements are visually separated by a gray line.
 
 For example:
 
@@ -502,7 +502,7 @@ For example:
 
 ### __group-title
 
-This element allows to create a title for a menu items group, created using a `__group` element.
+This element allows to create a title for a menu items group, created using `__group` element.
 
 For example:
 

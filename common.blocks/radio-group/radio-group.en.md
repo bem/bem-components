@@ -1,8 +1,8 @@
 # radio-group
 
-A `radio-group` block is a set of dependent switches – radio buttons (a `radio` block). It is used for a single option selection from the list of options. 
+`radio-group` block is a set of dependent switches – radio buttons (`radio` block). It is used for a single option selection from the list of options. 
 
-On a web page, a `radio-group` block will be rendered to a `<span>` HTML element, with nested set of a switches (radio buttons).
+On a web page, `radio-group` block will be rendered to `<span>` HTML element, with nested set of a switches (radio buttons).
 
 
 ## Valid block's attributes
@@ -27,9 +27,9 @@ Valid block's attributes can be specified in the corresponding fields of block's
     </tr>    
 </table>
 
-Among the attributes passing to an `option` field for the switch the following are mandatory:
+Among the attributes passing to `option` field for the switch the following are mandatory:
 
-* `val` (`String` | `Number`) – value returned by selected switcher (a 'radio__control' element);
+* `val` (`String` | `Number`) – value returned by selected switcher (`radio__control` element);
 * `text` (`String`) – a text label for the current switch.
 
 ## Block's modifiers
@@ -39,7 +39,7 @@ Among the attributes passing to an `option` field for the switch the following a
  * simple
  * normal
 
-If a `theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
+If `theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
 
 For example:
 
@@ -94,7 +94,7 @@ Provides the size value to all types of radio groups.
 
 There are four sizes available: **S**, **M**, **L**, **XL**.
 
-Depending on a `type` modifier value following sizes are available:
+Depending on `type` modifier value following sizes are available:
 
 <table>
     <tr>
@@ -216,7 +216,7 @@ Here are some examples with *normal* theme and and with set `radio-group_type_bu
 
 ### Radio group type `type`
 
-A `type` modifier can have following values:
+`type` modifier can have following values:
 
 * `button`. It is used for creation of a button radio group – a block of button switcher;
 * `line`. Is used for a line-aligned radio group creation. Right gap is automatically added after each switch of the group except the last one. Available only for *normal* theme.
@@ -287,7 +287,7 @@ A `type` modifier can have following values:
 
 ### Switch's selection mode `mode`
 
-The `mode` modifier allows to control the switch's reaction on mouse click. For example, it controls an ability of inactivation the selected switch on click.  Available only with the `radio-group_type_button` modifier set.
+`mode` modifier allows to control the switch's reaction on mouse click. For example, it controls an ability of inactivation the selected switch on click.  Available only with `radio-group_type_button` modifier set.
 
 The following modifier value is available:
 
@@ -311,13 +311,13 @@ The following modifier value is available:
 
 ### Inactive `disabled`
 
-A `radio-group_disabled` modifier is used for an inactive radio group creation. An inactive group is displayed but not available for user actions.  
+`radio-group_disabled` modifier is used for an inactive radio group creation. An inactive group is displayed but not available for user actions.  
 
-Such a group will not obtain focus (`radio-group_focused` modifier will not be toggled).
+Such a group will not obtain focus (`radio-group_focused` modifier will not be set).
 
 When a `disabled` modifier is set to the group all it's switches will also be disabled. As a result, for the group's switches will not be performed:
 
-* state modifiers `hovered`, `pressed` and `focused` toggling;
+* state modifiers `hovered`, `pressed` and `focused` seting;
 * switching between `checked` modifier's values.
 
 Modifier is available for all block themes.
@@ -342,7 +342,7 @@ Modifier is available for all block themes.
 
 #### `focused`
 
-A `radio-group_focused` modifier is automaticly toggles when one of the block elements is in focus. For example, on mouse click or by `Tab` key press. 
+`radio-group_focused` modifier is automaticly seted when one of the block elements is in focus. For example, on mouse click or by `Tab` key press. 
 
 Available for all block themes.
 

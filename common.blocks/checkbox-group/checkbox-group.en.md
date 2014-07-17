@@ -1,6 +1,6 @@
 # checkbox-group
 
-A `checkbox-group` block is a set of independed switches – checkboxes (a `checkbox` block). Any of group's switches can be either active or not regardless of other switches state.
+`checkbox-group` block is a set of independed switches – checkboxes (`checkbox` block). Any of group's switches can be either active or not regardless of other switches state.
 
 The block allows to manage the appearance and state of a nested switches.
 
@@ -29,12 +29,12 @@ Valid block's attributes could be specified in the corresponding fields of block
     </tr>    
 </table>
 
-Following attributes should be passed in an `option` field for each switch:
+Following attributes should be passed in `option` field for each switch:
 
-* `val` (`String` | `Number`) – value returned by selected switcher (a 'checkbox__control' element);
+* `val` (`String` | `Number`) – value returned by selected switcher (`checkbox__control` element);
 * `text` (`String`) – a text label for the current switch.
 
-In an `options` array any valid `checkbox` block attributes can be passed. For example, a `checked` or `disabled` modifiers can be set for the `checkbox`.
+In `options` array any valid `checkbox` block attributes can be passed. For example, `checked` or `disabled` modifiers can be set for the `checkbox`.
 
 
 ## Block's modifiers
@@ -44,7 +44,7 @@ In an `options` array any valid `checkbox` block attributes can be passed. For e
  * simple
  * normal
 
-If a `theme` modifier is not set, browser defaults (`default`) will be applied to the block.
+If `theme` modifier is not set, browser defaults (`default`) will be applied to the block.
 
 For example:
 
@@ -99,7 +99,7 @@ Provides all types of checkbox groups with the size value.
 
 There are four sizes available: **S**, **M**, **L**, **XL**.
 
-Depending on a `type` modifier value following sizes are available:
+Depending on `type` modifier value following sizes are available:
 
 <table>
     <tr>
@@ -129,7 +129,7 @@ Depending on a `type` modifier value following sizes are available:
 </table>
 
 
-Here are some examples with *normal* theme and the `checkbox-group_type_button` modifier is set:
+Here are some examples with *normal* theme and `checkbox-group_type_button` modifier is set:
 
 <table>
     <tr>
@@ -296,11 +296,11 @@ Modifier is available for all block themes.
 
 `disabled` modifier helps to create an inactive menu item. Inactive menu item is displayed, but not available for user actions.
 
-Such a group will not obtain a focus (`focused` modifier will not be toggled).
+Such a group will not obtain a focus (`focused` modifier will not be set).
 
-When a `disabled` modifier is set for the group, all it's switches also will be disabled. As a result, the following will not be performed on switches:
+When `disabled` modifier is set for the group, all it's switches also will be disabled. As a result, the following will not be performed on switches:
 
-* state modifiers `hovered`, `pressed` and `focused` toggling;
+* state modifiers `hovered`, `pressed` and `focused` seting;
 * switching between `checked` modifier's values.
 
 Modifier is available for all block themes.
@@ -327,7 +327,7 @@ Modifier is available for all block themes.
 
 #### `focused`
 
-`focused` modifier is automatically toggled when one of the block's elements is in focus. For example, on mouse click or by `Tab` key press. 
+`focused` modifier is automatically seted when one of the block's elements is in focus. For example, on mouse click or by `Tab` key press. 
 
 Available for all block themes.
 

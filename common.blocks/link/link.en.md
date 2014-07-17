@@ -1,6 +1,6 @@
 # link
 
-A `link` block is used for a various types of links creation. It allows to manage state, behaviour and appearance of links.
+`link` block is used for a various types of links creation. It allows to manage state, behaviour and appearance of links.
 
 ## link use cases
 
@@ -65,7 +65,7 @@ Valid block's attributes can be specified in the corresponding fields of block's
     <tr>
         <td>target</td>
         <td><code>String</code></td>
-        <td>Target window. Mainly used with a <code>blank</code> value to open the link in the new window.</td>
+        <td>Target window. Mainly used with the <code>blank</code> value to open the link in the new window.</td>
     </tr>
     <tr>
         <td>tabIndex</td>
@@ -82,7 +82,7 @@ Valid block's attributes can be specified in the corresponding fields of block's
  * simple
  * normal
 
-If a `theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
+If `theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
 
 For example:
 
@@ -129,7 +129,7 @@ For example:
         theme : 'normal',
         pseudo : true
     },
-    title : 'pseudo mod are toggled',
+    title : 'pseudo mod is set',
     content : 'link'
 }
 ```
@@ -139,7 +139,7 @@ For example:
 
 #### In focus `focused`
 
-A `focused` modifier is automaticly toggled on the block when it is in focus. For example, on mouse click or by `Tab` key press. Focused link can be followed by Enter key press.
+`focused` modifier is automaticly sets for the block when it is in focus. For example, on mouse click or by `Tab` key press. Focused link can be followed by Enter key press.
 
 Available for all block themes.
 
@@ -157,12 +157,12 @@ Available for all block themes.
 
 ### Inactive `disabled`
 
-A `disabled` modifier helps to create an inactive link. Inactive link is displayed but not available for user actions.  
+`disabled` modifier helps to create an inactive link. Inactive link is displayed but not available for user actions.  
 
 For such a link will not be performed:
 
-* `focused` state modifier toggling, when in focus;
-* redirection to the link address if an `url` attribute is provided;
+* `focused` state modifier seting, when in focus;
+* redirection to the link address if `url` attribute value is provided;
 * `click` BEM event emiting.
 
 Available for all block themes.

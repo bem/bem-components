@@ -119,6 +119,10 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
         return this;
     },
 
+    /**
+     * Get name
+     * @returns {String}
+     */
     getName : function() {
         return this.params.name;
     },

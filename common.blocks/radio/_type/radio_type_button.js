@@ -1,6 +1,15 @@
+/**
+ * @module radio
+ */
+
 modules.define('radio', function(provide, Radio) {
 
-provide(Radio.decl({ modName : 'type', modVal : 'button' }, {
+/**
+ * @exports
+ * @class radio
+ * @bem
+ */
+provide(Radio.decl({ modName : 'type', modVal : 'button' }, /** @lends radio.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {

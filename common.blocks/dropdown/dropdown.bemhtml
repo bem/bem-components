@@ -5,7 +5,7 @@ block('dropdown')(
         var popup = this.ctx.popup;
 
         if(this.isSimple(popup) || popup.block !== 'popup') {
-            (popup = { block : 'popup', content : popup });
+            popup = { block : 'popup', content : popup };
         }
 
         var popupMods = popup.mods || (popup.mods = {});

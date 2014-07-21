@@ -19,7 +19,7 @@
   "devDependencies": {
     "bem": "~0.8.0",
     "bem-tools-autoprefixer": "~0.0.3",
-    "bh": "~1.2.0",
+    "bh": "~2.2.0",
     "bower-npm-install": "~0.5.4",
     "bower": "1.3.8",
     "csscomb": "~2.0.0",
@@ -30,7 +30,7 @@
     "enb-bem-specs": "0.2.2",
     "enb-bem-tmpl-specs": "git://github.com/andrewblond/enb-bem-tmpl-specs.git#833aa4f8392976f3df31c9fa33c94a31195b9c22",
     "enb-bemxjst": "1.2.0",
-    "enb-bh": "0.2.0",
+    "enb-bh": "0.2.1",
     "enb-borschik": "1.0.4",
     "enb-diverse-js": "0.1.0",
     "enb-modules": "0.1.2",

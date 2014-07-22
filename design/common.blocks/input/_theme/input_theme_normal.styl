@@ -83,6 +83,11 @@ ctx = '.input_theme_normal'
         }
     }
 
+    &.input_has-clear .input__control
+    {
+        text-overflow: ellipsis;
+    }
+
     .input__clear
     {
         position: absolute;
@@ -299,6 +304,11 @@ ctx = '.input_theme_normal'
                 }
             }
         }
+    }
+
+    &.input_type_password .input__control
+    {
+        text-overflow: clip;
     }
 }
 

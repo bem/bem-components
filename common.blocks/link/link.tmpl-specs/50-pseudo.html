@@ -1,0 +1,1 @@
+<span class="link link_pseudo link__control i-bem" data-bem="{&quot;link&quot;:{}}" tabindex="0">link</span>

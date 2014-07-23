@@ -1,0 +1,1 @@
+<a class="link link__control i-bem" data-bem="{&quot;link&quot;:{}}" href="#">link</a>

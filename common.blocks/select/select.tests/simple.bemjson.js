@@ -109,8 +109,22 @@
             tag : 'div', attrs : { style : 'width : 200px; display : inline-block;' },
             content : {
                 block : 'select',
-                mods : { mode : 'radio-check', theme : 'normal', size : 'm', width : 'available' },
+                mods : { mode : 'radio-check', theme : 'normal', size : 'm' },
                 name : 'select333',
+                text : '—',
+                options : [
+                    { val : 1, text : 'first' },
+                    { val : 2, text : 'second second second second second second second second' },
+                    { val : 3, text : 'third' }
+                ]
+            }
+        },
+        {
+            tag : 'div', attrs : { style : 'width : 200px; display : inline-block;' },
+            content : {
+                block : 'select',
+                mods : { mode : 'radio-check', theme : 'normal', size : 'm', width : 'available' },
+                name : 'select444',
                 text : '—',
                 options : [
                     { val : 1, text : 'first' },

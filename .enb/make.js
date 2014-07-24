@@ -3,6 +3,7 @@ var DEFAULT_LANGS = ['ru', 'en'],
     path = require('path'),
     docSets = require('enb-bem-docs'),
     exampleSets = require('enb-bem-examples'),
+    specSets = require('enb-bem-specs'),
     levels = require('enb/techs/levels'),
     provide = require('enb/techs/file-provider'),
     bemdeclFromDepsByTech = require('enb/techs/bemdecl-from-deps-by-tech'),
@@ -27,6 +28,7 @@ module.exports = function(config) {
     var docs = docSets.create('docs', config),
         examples = exampleSets.create('examples', config),
         tests = exampleSets.create('tests', config),
+        specs = specSets.create('specs', config),
         langs = process.env.BEM_I18N_LANGS;
 
     config.setLanguages(langs? langs.split(' ') : [].concat(DEFAULT_LANGS));
@@ -41,6 +43,12 @@ module.exports = function(config) {
         destPath : 'desktop.tests',
         levels : getDesktopLibLevels(config),
         suffixes : ['tests']
+    });
+
+    specs.configure({
+        destPath : 'desktop.specs',
+        levels : getDesktopLibLevels(config),
+        sourceLevels : getDesktopSpecLevels(config)
     });
 
     docs.build({
@@ -62,6 +70,12 @@ module.exports = function(config) {
         suffixes : ['tests']
     });
 
+    specs.configure({
+        destPath : 'touch-pad.specs',
+        levels : getTouchPadLibLevels(config),
+        sourceLevels : getTouchPadSpecLevels(config)
+    });
+
     docs.build({
         destPath : 'touch-pad.docs',
         levels : getTouchPadLibLevels(config),
@@ -79,6 +93,12 @@ module.exports = function(config) {
         destPath : 'touch-phone.tests',
         levels : getTouchPhoneLibLevels(config),
         suffixes : ['tests']
+    });
+
+    specs.configure({
+        destPath : 'touch-phone.specs',
+        levels : getTouchPhoneLibLevels(config),
+        sourceLevels : getTouchPhoneSpecLevels(config)
     });
 
     docs.build({
@@ -428,6 +448,52 @@ function getTouchPhoneTestLevels(config) {
         'design/touch.blocks',
         'design/touch-phone.blocks',
         'test.blocks'
+    ].map(function(level) {
+        return config.resolvePath(level);
+    });
+}
+
+function getDesktopSpecLevels(config) {
+    return [
+        { path : 'libs/bem-core/common.blocks', check : false },
+        { path : 'libs/bem-core/desktop.blocks', check : false },
+        { path : 'libs/bem-pr/spec.blocks', check : false },
+        'common.blocks',
+        'desktop.blocks',
+        'design/common.blocks',
+        'design/desktop.blocks',
+        'test.blocks'
+    ].map(function(level) {
+        return config.resolvePath(level);
+    });
+}
+
+function getTouchPadSpecLevels(config) {
+    return [
+        { path : 'libs/bem-core/common.blocks', check : false },
+        { path : 'libs/bem-core/touch.blocks', check : false },
+        { path : 'libs/bem-pr/spec.blocks', check : false },
+        'common.blocks',
+        'touch.blocks',
+        'design/common.blocks',
+        'design/touch.blocks',
+        'design/touch-pad.blocks',
+        'test.blocks'
+    ].map(function(level) {
+        return config.resolvePath(level);
+    });
+}
+
+function getTouchPhoneSpecLevels(config) {
+    return [
+        { path : 'libs/bem-core/common.blocks', check : false },
+        { path : 'libs/bem-core/touch.blocks', check : false },
+        { path : 'libs/bem-pr/spec.blocks', check : false },
+        'common.blocks',
+        'touch.blocks',
+        'design/common.blocks',
+        'design/touch.blocks',
+        'design/touch-phone.blocks'
     ].map(function(level) {
         return config.resolvePath(level);
     });

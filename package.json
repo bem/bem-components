@@ -37,7 +37,7 @@
     "gemini": "^0.4.1",
     "git-hooks": "~0.0.6",
     "http-server": "^0.6.1",
-    "istanbul": "^0.2.7",
+    "istanbul": "0.3.0",
     "jscs": "1.5.3",
     "jshint": "2.3.0",
     "jshint-groups": "0.6.0",

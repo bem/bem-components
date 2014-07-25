@@ -1,27 +1,27 @@
 .icon
 {
-    position: relative;
-
     display: inline-block;
+
+    text-align: center;
 
     background: 50% no-repeat;
 
     /* Hack for correct baseline positioning */
-    &:after
+    &:empty:after
     {
         visibility: hidden;
 
         content: '\00A0';
     }
 
+    /*
+     * Чтобы иконка правильно позиционировалась внутри блочного контекста,
+     * нужно прописать родителю свойство line-height со значением, равным высоте иконки
+     */
     .image
     {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        margin: -5.18em 0 -5em; /* 0.18 — magic number, empirically found */
 
-        margin: auto;
+        vertical-align: middle;
     }
 }

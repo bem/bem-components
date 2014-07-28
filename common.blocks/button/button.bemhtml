@@ -20,7 +20,8 @@ block('button')(
             return {
                 role : 'button',
                 tabindex : ctx.tabIndex,
-                id : ctx.id
+                id : ctx.id,
+                title : ctx.title
             };
         },
 

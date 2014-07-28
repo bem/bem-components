@@ -14,7 +14,8 @@ module.exports = function(bh) {
                 id : json.id,
                 type : isRealButton? modType || 'button' : undefined,
                 name : json.name,
-                value : json.val
+                value : json.val,
+                title : json.title
             })
             .mix({ elem : 'control' }); // NOTE: satisfy interface of `control`
 

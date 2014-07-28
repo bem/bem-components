@@ -197,6 +197,17 @@
             text : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
         } },
 
+        { tag : 'h3', content : 'with title' },
+        { tag : 'p', content : {
+            block : 'button',
+            mods : {
+                theme : 'normal',
+                size : 'm'
+            },
+            text : 'click me',
+            title : 'this button is very useful, it would be kind of you to click it'
+        } },
+
         { tag : 'h3', content : 'icon' },
         { tag : 'p', content : [
             {

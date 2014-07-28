@@ -44,14 +44,14 @@ Block provides the following attributes that could be specified in corresponding
         <td>
             <code>BEMJSON</code>
         </td>
-        <td>Defines a list of <code>menu-items</code>. Each item has mandatory attribute <code>val</code> realized by hidden element <code>control</code>.</td>
+        <td>Defines a list of <code>menu-items</code>. Each item has mandatory attribute <code>val</code> implemented by hidden element <code>control</code>.</td>
     </tr>
     <tr>
         <td>textMaxWidth</td>
         <td>
             <code>String</code>
         </td>
-        <td>Defines maximum width of <code>button</code> from <code>select</code> block. <code>popup</code> width depends on width of <code>menu-item</code>.</td>
+        <td>Defines maximum width of <code>button</code> from <code>select</code> block. <code>popup</code> width depends on width of <code>menu-item</code> text. It could be defined also using CSS styles.</td>
     </tr>
     <tr>
         <td>optionsMaxHeight</td>
@@ -59,7 +59,7 @@ Block provides the following attributes that could be specified in corresponding
             <code>String</code>
         </td>
         <td>Defines maximum height of <code>popup</code>.
-            <br> If all <code>menu-items</code> cannot be located within <code>popup</code>, scroll element appears.
+            <br> If all <code>menu-items</code> cannot be fit within <code>popup</code>, scroll element appears.
             <br> If value of <code>optionsMaxHeight</code> attribute is not specified, height of <code>popup</code> depends on total height of all <code>menu-items</code>'.</td>
     </tr>
     <tr>

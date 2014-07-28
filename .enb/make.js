@@ -51,7 +51,7 @@ module.exports = function(config) {
         sourceLevels : getDesktopSpecLevels(config)
     });
 
-    docs.build({
+    docs.configure({
         destPath : 'desktop.docs',
         levels : getDesktopLibLevels(config),
         examplePattern : ['desktop.examples/?/*', 'desktop.tests/?/*'],
@@ -76,7 +76,7 @@ module.exports = function(config) {
         sourceLevels : getTouchPadSpecLevels(config)
     });
 
-    docs.build({
+    docs.configure({
         destPath : 'touch-pad.docs',
         levels : getTouchPadLibLevels(config),
         examplePattern : ['touch-pad.examples/?/*', 'touch-pad.tests/?/*'],
@@ -101,7 +101,7 @@ module.exports = function(config) {
         sourceLevels : getTouchPhoneSpecLevels(config)
     });
 
-    docs.build({
+    docs.configure({
         destPath : 'touch-phone.docs',
         levels : getTouchPhoneLibLevels(config),
         examplePattern : ['touch-phone.examples/?/*', 'touch-phone.tests/?/*'],

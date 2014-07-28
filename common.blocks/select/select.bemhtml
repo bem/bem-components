@@ -9,7 +9,7 @@ block('select')(
         while(optionOrGroup = options[i++]) { // NOTE: because of possible performance bust
             if(optionOrGroup.group) {
                 j = 0;
-                while(option = optionOrGroup[j++]) {
+                while(option = optionOrGroup.group[j++]) {
                     i === 1 && j === 1 && (firstOption = option);
                     option.checked && checkedOptions.push(option);
                 }

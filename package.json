@@ -33,7 +33,7 @@
     "enb-borschik": "1.0.4",
     "enb-diverse-js": "0.1.0",
     "enb-modules": "0.1.2",
-    "enb-stylus": "1.0.0",
+    "enb-stylus": "https://github.com/tadatuta/enb-stylus/archive/master.tar.gz",
     "gemini": "^0.4.1",
     "git-hooks": "~0.0.6",
     "http-server": "^0.6.1",

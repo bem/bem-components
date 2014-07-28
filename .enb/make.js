@@ -22,223 +22,35 @@ var DEFAULT_LANGS = ['ru', 'en'],
     bhHtml = require('enb-bh/techs/html-from-bemjson'),
     copyFile = require('enb/techs/file-copy'),
     mergeFiles = require('enb/techs/file-merge'),
-    borschik = require('enb-borschik/techs/borschik');
+    borschik = require('enb-borschik/techs/borschik'),
+    PLATFORMS = {
+        'desktop' : ['common', 'desktop'],
+        'touch-phone' : ['common', 'touch'],
+        'touch-pad' : ['common', 'touch']
+    };
 
 module.exports = function(config) {
-    var docs = docSets.create('docs', config),
-        examples = exampleSets.create('examples', config),
-        tests = exampleSets.create('tests', config),
-        specs = specSets.create('specs', config),
+    var sets = {
+            docs : docSets.create('docs', config),
+            examples : exampleSets.create('examples', config),
+            tests : exampleSets.create('tests', config),
+            specs : specSets.create('specs', config)
+        },
         langs = process.env.BEM_I18N_LANGS;
 
     config.setLanguages(langs? langs.split(' ') : [].concat(DEFAULT_LANGS));
 
-    examples.build({
-        destPath : 'desktop.examples',
-        levels : getDesktopLibLevels(config),
-        inlineBemjson : true
-    });
+    configureSets('desktop', config, sets);
+    configureSets('touch-pad', config, sets);
+    configureSets('touch-phone', config, sets);
 
-    tests.build({
-        destPath : 'desktop.tests',
-        levels : getDesktopLibLevels(config),
-        suffixes : ['tests']
-    });
+    configureLevels('desktop', config, sets);
+    configureLevels('touch-pad', config, sets);
+    configureLevels('touch-phone', config, sets);
 
-    specs.configure({
-        destPath : 'desktop.specs',
-        levels : getDesktopLibLevels(config),
-        sourceLevels : getDesktopSpecLevels(config)
-    });
-
-    docs.configure({
-        destPath : 'desktop.docs',
-        levels : getDesktopLibLevels(config),
-        examplePattern : ['desktop.examples/?/*', 'desktop.tests/?/*'],
-        inlineExamplePattern : 'desktop.examples/?/*'
-    });
-
-    examples.build({
-        destPath : 'touch-pad.examples',
-        levels : getTouchPadLibLevels(config),
-        inlineBemjson : true
-    });
-
-    tests.build({
-        destPath : 'touch-pad.tests',
-        levels : getTouchPadLibLevels(config),
-        suffixes : ['tests']
-    });
-
-    specs.configure({
-        destPath : 'touch-pad.specs',
-        levels : getTouchPadLibLevels(config),
-        sourceLevels : getTouchPadSpecLevels(config)
-    });
-
-    docs.configure({
-        destPath : 'touch-pad.docs',
-        levels : getTouchPadLibLevels(config),
-        examplePattern : ['touch-pad.examples/?/*', 'touch-pad.tests/?/*'],
-        inlineExamplePattern : 'touch-pad.examples/?/*'
-    });
-
-    examples.build({
-        destPath : 'touch-phone.examples',
-        levels : getTouchPhoneLibLevels(config),
-        inlineBemjson : true
-    });
-
-    tests.build({
-        destPath : 'touch-phone.tests',
-        levels : getTouchPhoneLibLevels(config),
-        suffixes : ['tests']
-    });
-
-    specs.configure({
-        destPath : 'touch-phone.specs',
-        levels : getTouchPhoneLibLevels(config),
-        sourceLevels : getTouchPhoneSpecLevels(config)
-    });
-
-    docs.configure({
-        destPath : 'touch-phone.docs',
-        levels : getTouchPhoneLibLevels(config),
-        examplePattern : ['touch-phone.examples/?/*', 'touch-phone.tests/?/*'],
-        inlineExamplePattern : 'touch-phone.examples/?/*'
-    });
-
-    config.nodes(['desktop.examples/*/*', 'desktop.pages/*'], function(nodeConfig) {
-        var nodeDir = nodeConfig.getNodePath(),
-            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
-            sublevelDir = path.join(nodeDir, 'blocks'),
-            extendedLevels = [].concat(getDesktopLevels(config));
-
-        if(fs.existsSync(blockSublevelDir)) {
-            extendedLevels.push(blockSublevelDir);
-        }
-
-        if(fs.existsSync(sublevelDir)) {
-            extendedLevels.push(sublevelDir);
-        }
-
-        nodeConfig.addTech([levels, { levels : extendedLevels }]);
-    });
-
-    config.nodes(['desktop.tests/*/*'], function(nodeConfig) {
-        var nodeDir = nodeConfig.getNodePath(),
-            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
-            sublevelDir = path.join(nodeDir, 'blocks'),
-            extendedLevels = [].concat(getDesktopTestLevels(config));
-
-        if(fs.existsSync(blockSublevelDir)) {
-            extendedLevels.push(blockSublevelDir);
-        }
-
-        if(fs.existsSync(sublevelDir)) {
-            extendedLevels.push(sublevelDir);
-        }
-
-        nodeConfig.addTech([levels, { levels : extendedLevels }]);
-    });
-
-    config.nodes(['touch-pad.examples/*/*', 'touch-pad.pages/*'], function(nodeConfig) {
-        var nodeDir = nodeConfig.getNodePath(),
-            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
-            sublevelDir = path.join(nodeDir, 'blocks'),
-            extendedLevels = [].concat(getTouchPadLevels(config));
-
-        if(fs.existsSync(blockSublevelDir)) {
-            extendedLevels.push(blockSublevelDir);
-        }
-
-        if(fs.existsSync(sublevelDir)) {
-            extendedLevels.push(sublevelDir);
-        }
-
-        nodeConfig.addTech([levels, { levels : extendedLevels }]);
-    });
-
-    config.nodes(['touch-pad.tests/*/*'], function(nodeConfig) {
-        var nodeDir = nodeConfig.getNodePath(),
-            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
-            sublevelDir = path.join(nodeDir, 'blocks'),
-            extendedLevels = [].concat(getTouchPadTestLevels(config));
-
-        if(fs.existsSync(blockSublevelDir)) {
-            extendedLevels.push(blockSublevelDir);
-        }
-
-        if(fs.existsSync(sublevelDir)) {
-            extendedLevels.push(sublevelDir);
-        }
-
-        nodeConfig.addTech([levels, { levels : extendedLevels }]);
-    });
-
-    config.nodes(['touch-phone.examples/*/*', 'touch-phone.pages/*'], function(nodeConfig) {
-        var nodeDir = nodeConfig.getNodePath(),
-            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
-            sublevelDir = path.join(nodeDir, 'blocks'),
-            extendedLevels = [].concat(getTouchPhoneLevels(config));
-
-        if(fs.existsSync(blockSublevelDir)) {
-            extendedLevels.push(blockSublevelDir);
-        }
-
-        if(fs.existsSync(sublevelDir)) {
-            extendedLevels.push(sublevelDir);
-        }
-
-        nodeConfig.addTech([levels, { levels : extendedLevels }]);
-    });
-
-    config.nodes(['touch-phone.tests/*/*'], function(nodeConfig) {
-        var nodeDir = nodeConfig.getNodePath(),
-            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
-            sublevelDir = path.join(nodeDir, 'blocks'),
-            extendedLevels = [].concat(getTouchPhoneTestLevels(config));
-
-        if(fs.existsSync(blockSublevelDir)) {
-            extendedLevels.push(blockSublevelDir);
-        }
-
-        if(fs.existsSync(sublevelDir)) {
-            extendedLevels.push(sublevelDir);
-        }
-
-        nodeConfig.addTech([levels, { levels : extendedLevels }]);
-    });
-
-    config.nodes(['desktop.pages/*', 'desktop.tests/*/*', 'desktop.examples/*/*'], function(nodeConfig) {
-        nodeConfig.addTechs([
-            [autoprefixer, {
-                sourceTarget : '?.noprefix.css',
-                destTarget : '?.css',
-                browserSupport : getDesktopBrowsers()
-            }]
-        ]);
-    });
-
-    config.nodes(['touch-pad.pages/*', 'touch-pad.tests/*/*', 'touch-pad.examples/*/*'], function(nodeConfig) {
-        nodeConfig.addTechs([
-            [autoprefixer, {
-                sourceTarget : '?.noprefix.css',
-                destTarget : '?.css',
-                browserSupport : getTouchPadBrowsers()
-            }]
-        ]);
-    });
-
-    config.nodes(['touch-phone.pages/*', 'touch-phone.tests/*/*', 'touch-phone.examples/*/*'], function(nodeConfig) {
-        nodeConfig.addTechs([
-            [autoprefixer, {
-                sourceTarget : '?.noprefix.css',
-                destTarget : '?.css',
-                browserSupport : getTouchPhoneBrowsers()
-            }]
-        ]);
-    });
+    configureAutoprefixer('desktop', config, sets);
+    configureAutoprefixer('touch-pad', config, sets);
+    configureAutoprefixer('touch-phone', config, sets);
 
     config.nodes(['*.tests/*/*', '*.examples/*/*', '*.pages/*'], function(nodeConfig) {
         var langs = config.getLanguages();
@@ -338,187 +150,124 @@ module.exports = function(config) {
     });
 };
 
-function getDesktopLibLevels(config) {
-    return [
-        'common.blocks',
-        'desktop.blocks'
-    ].map(function(level) {
+function configureLevels(platform, config) {
+    config.nodes([platform + '.examples/*/*', platform + '.pages/*', platform + '.tests/*/*'], function(nodeConfig) {
+        var nodeDir = nodeConfig.getNodePath(),
+            blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
+            sublevelDir = path.join(nodeDir, 'blocks'),
+            extendedLevels = [].concat(getTestLevels(platform, config));
+
+        if(fs.existsSync(blockSublevelDir)) {
+            extendedLevels.push(blockSublevelDir);
+        }
+
+        if(fs.existsSync(sublevelDir)) {
+            extendedLevels.push(sublevelDir);
+        }
+
+        nodeConfig.addTech([levels, { levels : extendedLevels }]);
+    });
+}
+
+function configureAutoprefixer(platform, config) {
+    config.nodes([platform + '.pages/*', platform + '.tests/*/*', platform + '.examples/*/*'], function(nodeConfig) {
+        nodeConfig.addTechs([
+            [autoprefixer, {
+                sourceTarget : '?.noprefix.css',
+                destTarget : '?.css',
+                browserSupport : getBrowsers(platform)
+            }]
+        ]);
+    });
+}
+
+function configureSets(platform, config, sets) {
+    sets.examples.build({
+        destPath : platform + '.examples',
+        levels : getLibLevels(platform, config),
+        inlineBemjson : true
+    });
+
+    sets.tests.build({
+        destPath : platform + '.tests',
+        levels : getLibLevels(platform, config),
+        suffixes : ['tests']
+    });
+
+    sets.specs.configure({
+        destPath : platform + '.specs',
+        levels : getLibLevels(platform, config),
+        sourceLevels : getSpecLevels(platform, config)
+    });
+
+    sets.docs.configure({
+        destPath : platform + '.docs',
+        levels : getLibLevels(platform, config),
+        examplePattern : [platform + '.examples/?/*', platform + '.tests/?/*'],
+        inlineExamplePattern : platform + '.examples/?/*'
+    });
+}
+
+function getLibLevels(platform, config) {
+    return PLATFORMS[platform].map(function(level) {
+        return config.resolvePath(level + '.blocks');
+    });
+}
+
+function getSourceLevels(platform, config) {
+    var platformNames = PLATFORMS[platform];
+    var levels = [];
+
+    platformNames.forEach(function(name) {
+        levels.push({ path : path.join('libs', 'bem-core', name + '.blocks'), check : false });
+    });
+
+    platformNames.forEach(function(name) {
+        levels.push({ path : name + '.blocks', check : false });
+    });
+
+    platformNames.forEach(function(name) {
+        levels.push({ path : path.join('design', name + '.blocks'), check : false });
+    });
+
+    return levels.map(function(level) {
         return config.resolvePath(level);
     });
 }
 
-function getTouchPadLibLevels(config) {
-    return [
-        'common.blocks',
-        'touch.blocks'
-    ].map(function(level) {
-        return config.resolvePath(level);
-    });
+function getTestLevels(platform, config) {
+    return [].concat(
+        getSourceLevels(platform, config),
+        config.resolvePath('test.blocks')
+    );
 }
 
-function getTouchPhoneLibLevels(config) {
-    return [
-        'common.blocks',
-        'touch.blocks'
-    ].map(function(level) {
-        return config.resolvePath(level);
-    });
+function getSpecLevels(platform, config) {
+    return [].concat(
+        config.resolvePath({ path : path.join('libs', 'bem-pr', 'spec.blocks'), check : false }),
+        getSourceLevels(platform, config)
+    );
 }
 
-function getDesktopLevels(config) {
-    return [
-        { path : 'libs/bem-core/common.blocks', check : false },
-        { path : 'libs/bem-core/desktop.blocks', check : false },
-        'common.blocks',
-        'desktop.blocks',
-        'design/common.blocks',
-        'design/desktop.blocks',
-        'test.blocks'
-    ].map(function(level) {
-        return config.resolvePath(level);
-    });
-}
-
-function getTouchPadLevels(config) {
-    return [
-        { path : 'libs/bem-core/common.blocks', check : false },
-        { path : 'libs/bem-core/touch.blocks', check : false },
-        'common.blocks',
-        'touch.blocks',
-        'design/common.blocks',
-        'design/touch.blocks',
-        'design/touch-pad.blocks',
-        'test.blocks'
-    ].map(function(level) {
-        return config.resolvePath(level);
-    });
-}
-
-function getTouchPhoneLevels(config) {
-    return [
-        { path : 'libs/bem-core/common.blocks', check : false },
-        { path : 'libs/bem-core/touch.blocks', check : false },
-        'common.blocks',
-        'touch.blocks',
-        'design/common.blocks',
-        'design/touch.blocks',
-        'design/touch-phone.blocks',
-        'test.blocks'
-    ].map(function(level) {
-        return config.resolvePath(level);
-    });
-}
-
-function getDesktopTestLevels(config) {
-    return [
-        { path : 'libs/bem-core/common.blocks', check : false },
-        { path : 'libs/bem-core/desktop.blocks', check : false },
-        'common.blocks',
-        'desktop.blocks',
-        'design/common.blocks',
-        'design/desktop.blocks',
-        'test.blocks'
-    ].map(function(level) {
-        return config.resolvePath(level);
-    });
-}
-
-function getTouchPadTestLevels(config) {
-    return [
-        { path : 'libs/bem-core/common.blocks', check : false },
-        { path : 'libs/bem-core/touch.blocks', check : false },
-        'common.blocks',
-        'touch.blocks',
-        'design/common.blocks',
-        'design/touch.blocks',
-        'design/touch-pad.blocks',
-        'test.blocks'
-    ].map(function(level) {
-        return config.resolvePath(level);
-    });
-}
-
-function getTouchPhoneTestLevels(config) {
-    return [
-        { path : 'libs/bem-core/common.blocks', check : false },
-        { path : 'libs/bem-core/touch.blocks', check : false },
-        'common.blocks',
-        'touch.blocks',
-        'design/common.blocks',
-        'design/touch.blocks',
-        'design/touch-phone.blocks',
-        'test.blocks'
-    ].map(function(level) {
-        return config.resolvePath(level);
-    });
-}
-
-function getDesktopSpecLevels(config) {
-    return [
-        { path : 'libs/bem-core/common.blocks', check : false },
-        { path : 'libs/bem-core/desktop.blocks', check : false },
-        { path : 'libs/bem-pr/spec.blocks', check : false },
-        'common.blocks',
-        'desktop.blocks',
-        'design/common.blocks',
-        'design/desktop.blocks',
-        'test.blocks'
-    ].map(function(level) {
-        return config.resolvePath(level);
-    });
-}
-
-function getTouchPadSpecLevels(config) {
-    return [
-        { path : 'libs/bem-core/common.blocks', check : false },
-        { path : 'libs/bem-core/touch.blocks', check : false },
-        { path : 'libs/bem-pr/spec.blocks', check : false },
-        'common.blocks',
-        'touch.blocks',
-        'design/common.blocks',
-        'design/touch.blocks',
-        'design/touch-pad.blocks',
-        'test.blocks'
-    ].map(function(level) {
-        return config.resolvePath(level);
-    });
-}
-
-function getTouchPhoneSpecLevels(config) {
-    return [
-        { path : 'libs/bem-core/common.blocks', check : false },
-        { path : 'libs/bem-core/touch.blocks', check : false },
-        { path : 'libs/bem-pr/spec.blocks', check : false },
-        'common.blocks',
-        'touch.blocks',
-        'design/common.blocks',
-        'design/touch.blocks',
-        'design/touch-phone.blocks'
-    ].map(function(level) {
-        return config.resolvePath(level);
-    });
-}
-
-function getDesktopBrowsers() {
-    return [
-        'last 2 versions',
-        'ie 10',
-        'ff 24',
-        'opera 12.16'
-    ];
-}
-
-function getTouchPadBrowsers() {
-    return [
-        'android 4',
-        'ios 5'
-    ];
-}
-
-function getTouchPhoneBrowsers() {
-    return [
-        'android 4',
-        'ios 6',
-        'ie 10'
-    ];
+function getBrowsers(platform) {
+    switch(platform) {
+        case 'desktop':
+            return [
+                'last 2 versions',
+                'ie 10',
+                'ff 24',
+                'opera 12.16'
+            ];
+        case 'touch-pad':
+            return [
+                'android 4',
+                'ios 5'
+            ];
+        case 'touch-phone':
+            return [
+                'android 4',
+                'ios 6',
+                'ie 10'
+            ];
+    }
 }

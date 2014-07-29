@@ -45,7 +45,7 @@ block('button')(
             var ctx = this.ctx,
                 content = [ctx.icon];
             // NOTE: wasn't moved to separate template for optimization
-            ctx.text && content.push({ elem : 'text', content : ctx.text });
+            'text' in ctx && content.push({ elem : 'text', content : ctx.text });
             return content;
         },
         match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {

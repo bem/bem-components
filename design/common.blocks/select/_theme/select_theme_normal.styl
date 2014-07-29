@@ -12,6 +12,11 @@
         .button__text
         {
             display: block;
+
+            &:empty:before
+            {
+                content: '\00a0';
+            }
         }
 
         &.button_size_s .button__text

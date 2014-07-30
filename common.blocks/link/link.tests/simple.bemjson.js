@@ -44,6 +44,30 @@
                     url : 'http://example.com/',
                     tabIndex : -1,
                     content : 'out of tab order'
+                },
+                {
+                    block : 'link',
+                    url : 'http://example.com/',
+                    content : [
+                        {
+                            block : 'icon',
+                            attrs : { style : 'width: 22px' },
+                            mods : { action : 'download' }
+                        },
+                        'with icon'
+                    ]
+                },
+                {
+                    block : 'link',
+                    url : 'http://example.com/',
+                    content : [
+                        {
+                            block : 'icon',
+                            attrs : { style : 'width: 22px' },
+                            content : '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="1 1 14 14" class="image"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
+                        },
+                        'with icon + image'
+                    ]
                 }
             ].map(function(link, j) {
                 link.mods || (link.mods = {});

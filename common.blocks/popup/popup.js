@@ -14,7 +14,6 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
         'right-top', 'right-center', 'right-bottom',
         'left-top', 'left-center', 'left-bottom'
     ],
-    BASE_ZINDEX = 10000,
     UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
 
     win = BEMDOM.win,
@@ -50,6 +49,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this._ownerParents = null;
                 this._popupOwner = null;
                 this._pos = null;
+                this._initialZIndex = this.domElem.css('z-index');
                 this._zIndex = null;
                 this._isAttachedToScope = false;
                 this._isTargetVisible = undef;
@@ -75,8 +75,15 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
         'visible' : {
             'true' : function() {
-                this._zIndex = captureZIndex();
+                this._zIndex = this._getParentPopup() ?
+                    this._getParentPopup().domElem.css('z-index') :
+                    this._initialZIndex;
+
                 this._owner && (this._ownerParents = this._owner.parents());
+
+                if(BEMDOM.scope.children('.' + this.__self.getName()).last().not(this.domElem)) {
+                    BEMDOM.scope.append(this.domElem);
+                }
 
                 this
                     .bindTo('pointerclick', this._onPointerClick)
@@ -86,8 +93,6 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             },
 
             '' : function() {
-                releaseZIndex(this._zIndex);
-
                 this
                     .unbindFrom('pointerclick', this._onPointerClick)
                     ._unbindFromParentPopup()
@@ -480,9 +485,8 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     },
 
     _bindToParentPopup : function() {
-        this._owner &&
-            (this._parentPopup = this.findBlockOutside(this._owner, this.__self.getName())) &&
-            this._parentPopup.on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
+        this._getParentPopup() &&
+            this._getParentPopup().on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
 
         return this;
     },
@@ -516,6 +520,12 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         BEMDOM.destruct(this.domElem);
     },
 
+    _getParentPopup : function() {
+        return this._parentPopup ||
+            (this._owner && (this._parentPopup = this.findBlockOutside(this._owner, this.__self.getName()))) ||
+            null;
+    },
+
     getDefaultParams : function() {
         return {
             mainOffset : 0,
@@ -527,17 +537,6 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 }, /** @lends popup */{
     live : true
 }));
-
-var visiblePopupsZIndexes = [BASE_ZINDEX];
-
-function captureZIndex() {
-    return visiblePopupsZIndexes[
-        visiblePopupsZIndexes.push(visiblePopupsZIndexes[visiblePopupsZIndexes.length - 1] + 1) - 1];
-}
-
-function releaseZIndex(zIndex) {
-    visiblePopupsZIndexes.splice(visiblePopupsZIndexes.indexOf(zIndex), 1);
-}
 
 function checkMainDirection(direction, mainDirection1, mainDirection2) {
     return !direction.indexOf(mainDirection1) || (mainDirection2 && !direction.indexOf(mainDirection2));

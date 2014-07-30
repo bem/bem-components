@@ -81,9 +81,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
                 this._owner && (this._ownerParents = this._owner.parents());
 
-                if(BEMDOM.scope.children('.' + this.__self.getName()).last().not(this.domElem)) {
-                    BEMDOM.scope.append(this.domElem);
-                }
+                BEMDOM.scope.append(this.domElem);
 
                 this
                     .bindTo('pointerclick', this._onPointerClick)

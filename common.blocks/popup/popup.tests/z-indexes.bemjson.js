@@ -10,18 +10,6 @@
         block : 'test',
         content : [
             { elem : 'header', content : [
-//                {
-//                    block : 'link',
-//                    mix: { block : 'test', elem : 'attach-1' },
-//                    mods : { pseudo: true },
-//                    content: 'attach to me'
-//                },
-//                {
-//                    block : 'link',
-//                    mix: { block : 'test', elem : 'open' },
-//                    mods : { pseudo: true },
-//                    content: 'open popup'
-//                },
                 {
                     block : 'dropdown',
                     mods : { switcher : 'link' },
@@ -49,12 +37,6 @@
                 }
             ] },
             { elem : 'content', content : [
-//                {
-//                    block : 'link',
-//                    mix : { block : 'test', elem : 'attach-2' },
-//                    mods : { pseudo : true },
-//                    content : 'attach to me'
-//                },
                 {
                     block : 'dropdown',
                     mods : { switcher : 'link' },

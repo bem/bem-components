@@ -10,7 +10,7 @@
     "libs"
   ],
   "dependencies": {
-    "bem-core": "git://github.com/bem/bem-core.git#v2.3.0"
+    "bem-core": "git://github.com/bem/bem-core.git#v2.4.0"
   },
   "devDependencies": {
     "bem-pr": "git://github.com/narqo/bem-pr.git#0.8.1-beta3"

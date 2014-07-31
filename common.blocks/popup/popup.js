@@ -27,7 +27,6 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
  * @param {Number} [mainOffset=0] offset along the main direction
  * @param {Number} [secondaryOffset=0] offset along the secondary direction
  * @param {Number} [viewportOffset=0] offset from the viewport (window)
- * @param {Number} [zIndex] z-index
  * @param {Array[String]} [directions] allowed directions
  *
  * @bemmod visible Represents visible state
@@ -119,7 +118,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
             this._bindToPopupOwner();
 
-            if(this.hasMod('visible')){
+            if(this.hasMod('visible')) {
                 this._bindToParentsAndRedraw();
             } else {
                 this._ownerParents = null;
@@ -138,18 +137,16 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
     _bindToParentsAndRedraw : function() {
         this._owner && (this._ownerParents = this._owner.parents());
-
         this
             ._bindToParentPopup()
             ._bindToScrollAndResize();
 
-        this._zIndex = this.params.zIndex === undef ?
-            this._parentPopup?
-                this._parentPopup.domElem.css('z-index') :
-                this._initialZIndex :
-            this.params.zIndex;
+        this._zIndex = this._parentPopup?
+            this._parentPopup.domElem.css('z-index'):
+            this._initialZIndex;
 
         BEMDOM.scope.append(this.domElem);
+
         return this.redraw();
     },
 

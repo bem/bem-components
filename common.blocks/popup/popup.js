@@ -27,6 +27,7 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
  * @param {Number} [mainOffset=0] offset along the main direction
  * @param {Number} [secondaryOffset=0] offset along the secondary direction
  * @param {Number} [viewportOffset=0] offset from the viewport (window)
+ * @param {Number} [zIndex] z-index
  * @param {Array[String]} [directions] allowed directions
  *
  * @bemmod visible Represents visible state
@@ -51,7 +52,6 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this._pos = null;
                 this._initialZIndex = this.domElem.css('z-index');
                 this._zIndex = null;
-                this._isAttachedToScope = false;
                 this._isTargetVisible = undef;
                 this._lastDrawingCss = {
                         left : undef,
@@ -75,19 +75,9 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
         'visible' : {
             'true' : function() {
-                this._zIndex = this._getParentPopup() ?
-                    this._getParentPopup().domElem.css('z-index') :
-                    this._initialZIndex;
-
-                this._owner && (this._ownerParents = this._owner.parents());
-
-                BEMDOM.scope.append(this.domElem);
-
                 this
                     .bindTo('pointerclick', this._onPointerClick)
-                    ._bindToParentPopup()
-                    ._bindToScrollAndResize()
-                    .redraw();
+                    ._bindToParentsAndRedraw();
             },
 
             '' : function() {
@@ -130,10 +120,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             this._bindToPopupOwner();
 
             if(this.hasMod('visible')){
-                this._ownerParents = this._owner.parents();
-                this
-                    ._bindToScrollAndResize()
-                    .redraw();
+                this._bindToParentsAndRedraw();
             } else {
                 this._ownerParents = null;
             }
@@ -147,6 +134,23 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         }
 
         return this;
+    },
+
+    _bindToParentsAndRedraw : function() {
+        this._owner && (this._ownerParents = this._owner.parents());
+
+        this
+            ._bindToParentPopup()
+            ._bindToScrollAndResize();
+
+        this._zIndex = this.params.zIndex === undef ?
+            this._parentPopup?
+                this._parentPopup.domElem.css('z-index') :
+                this._initialZIndex :
+            this.params.zIndex;
+
+        BEMDOM.scope.append(this.domElem);
+        return this.redraw();
     },
 
     /**
@@ -165,11 +169,6 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
      */
     redraw : function() {
         if(!this.hasMod('visible')) return this;
-
-        if(!this._isAttachedToScope) {
-            BEMDOM.scope.append(this.domElem);
-            this._isAttachedToScope = true;
-        }
 
         var bestDrawingParams = this._calcBestDrawingParams();
 
@@ -483,8 +482,9 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
     },
 
     _bindToParentPopup : function() {
-        this._getParentPopup() &&
-            this._getParentPopup().on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
+        this._owner &&
+            (this._parentPopup = this.findBlockOutside(this._owner, this.__self.getName())) &&
+            this._parentPopup.on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
 
         return this;
     },
@@ -516,12 +516,6 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
     _onPopupOwnerDestruct : function() {
         BEMDOM.destruct(this.domElem);
-    },
-
-    _getParentPopup : function() {
-        return this._parentPopup ||
-            (this._owner && (this._parentPopup = this.findBlockOutside(this._owner, this.__self.getName()))) ||
-            null;
     },
 
     getDefaultParams : function() {

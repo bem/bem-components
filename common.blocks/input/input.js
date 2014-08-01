@@ -48,11 +48,16 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input
         }
 
         return this;
+    },
+
+    _tryToUpdateVal : function() {
+        this.setVal(this.elem('control').val());
     }
 }, {
     live : function() {
-        this.__base.apply(this, arguments);
-        return false;
+        return this
+            .liveBindTo('control', 'input', this.prototype._tryToUpdateVal)
+            .__base();
     }
 }));
 

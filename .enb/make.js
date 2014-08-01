@@ -4,6 +4,7 @@ var DEFAULT_LANGS = ['ru', 'en'],
     docSets = require('enb-bem-docs'),
     exampleSets = require('enb-bem-examples'),
     specSets = require('enb-bem-specs'),
+    tmplSets = require('enb-bem-tmpl-specs'),
     levels = require('enb/techs/levels'),
     provide = require('enb/techs/file-provider'),
     bemdeclFromDepsByTech = require('enb/techs/bemdecl-from-deps-by-tech'),
@@ -34,7 +35,8 @@ module.exports = function(config) {
             docs : docSets.create('docs', config),
             examples : exampleSets.create('examples', config),
             tests : exampleSets.create('tests', config),
-            specs : specSets.create('specs', config)
+            specs : specSets.create('specs', config),
+            tmplSpecs : tmplSets.create('tmpl-specs', config)
         },
         langs = process.env.BEM_I18N_LANGS;
 
@@ -196,6 +198,12 @@ function configureSets(platform, config, sets) {
 
     sets.specs.configure({
         destPath : platform + '.specs',
+        levels : getLibLevels(platform, config),
+        sourceLevels : getSpecLevels(platform, config)
+    });
+
+    sets.tmplSpecs.configure({
+        destPath : platform + '.tmpl-specs',
         levels : getLibLevels(platform, config),
         sourceLevels : getSpecLevels(platform, config)
     });

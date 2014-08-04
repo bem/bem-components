@@ -14,9 +14,7 @@ env:
   matrix:
     - TEST_SCOPE: lint
     - TEST_SCOPE: specs
-    # gemini is disabled due to many SauceLabs timeout errors.
-    # Will be re-enabled after problems are fixed.
-    #- TEST_SCOPE: gemini
+    - TEST_SCOPE: gemini
 
 matrix:
   fast_finish: true
@@ -29,10 +27,9 @@ branches:
 before_script:
   - |
       if [ "${TEST_SCOPE}" == "gemini" ]; then
-        curl -L https://gist.githubusercontent.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
+        curl -L https://gist.githubusercontent.com/henrikhodne/9322897/raw/sauce-connect.sh | bash
         sudo apt-get update -qq
         sudo apt-get install -qq -y graphicsmagick
-        echo "capabilities:" >> .gemini.yml
         echo "  tunnel-identifier: '${TRAVIS_JOB_NUMBER}'" >> .gemini.yml
         echo "  build: '${TRAVIS_BUILD_NUMBER}'" >> .gemini.yml
         echo "  tags:" >> .gemini.yml

@@ -59,28 +59,28 @@
             '&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', pseudo : true },
+                mods : { theme : 'normal', size : 'm', view : 'pseudo' },
                 text : 'pseudo',
                 cls : 'gemini-test-button-pseudo-enabled'
             },
             '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', pseudo : true, disabled : true },
+                mods : { theme : 'normal', size : 'm', view : 'pseudo', disabled : true },
                 text : 'pseudo',
                 cls : 'gemini-test-button-pseudo-disabled'
             },
             '&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', action : true },
+                mods : { theme : 'normal', size : 'm', view : 'action' },
                 text : 'action',
                 cls : 'gemini-test-button-action-enabled'
             },
             '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', action : true, disabled : true },
+                mods : { theme : 'normal', size : 'm', view : 'action', disabled : true },
                 text : 'action',
                 cls : 'gemini-test-button-action-disabled'
             }

@@ -220,6 +220,7 @@ ctx = '.button_theme_normal'
         .icon
         {
             width: 24px;
+            margin: 0 1px 0 5px;
         }
 
         .button__text
@@ -236,6 +237,7 @@ ctx = '.button_theme_normal'
         .icon
         {
             width: 28px;
+            margin: 0 -1px 0 3px;
         }
 
         .button__text
@@ -252,6 +254,7 @@ ctx = '.button_theme_normal'
         .icon
         {
             width: 32px;
+            margin: 0 -3px 0 2px;
         }
 
         .button__text
@@ -268,6 +271,7 @@ ctx = '.button_theme_normal'
         .icon
         {
             width: 38px;
+            margin: 0 -2px 0 1px;
         }
 
         .button__text
@@ -279,6 +283,11 @@ ctx = '.button_theme_normal'
     & .icon + .button__text
     {
         margin-left: 0;
+    }
+
+    & .icon:only-child
+    {
+        margin: 0;
     }
 
     .button__text:not(:last-child)

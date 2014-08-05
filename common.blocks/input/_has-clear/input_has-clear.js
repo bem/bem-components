@@ -1,6 +1,15 @@
+/**
+ * @module input
+ */
+
 modules.define('input', function(provide, Input) {
 
-provide(Input.decl({ modName : 'has-clear', modVal : true }, {
+/**
+ * @exports
+ * @class input
+ * @bem
+ */
+provide(Input.decl({ modName : 'has-clear', modVal : true }, /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -22,7 +31,7 @@ provide(Input.decl({ modName : 'has-clear', modVal : true }, {
     _updateClear : function() {
         this.toggleMod(this.elem('clear'), 'visible', true, !!this._val);
     }
-}, {
+}, /** @lends input */{
     live : function() {
         this.liveBindTo('clear', 'pointerclick', function() {
             this._onClearClick();

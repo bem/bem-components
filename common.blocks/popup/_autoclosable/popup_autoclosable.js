@@ -45,7 +45,7 @@ provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup
            this._inPopupPointerClick = null :
            this.delMod('visible');
     }
-}, {
+}, /** @lends popup */{
     live : function() {
         BEMDOM.doc.on(KEYDOWN_EVENT, onDocKeyDown);
     }

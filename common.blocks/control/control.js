@@ -1,4 +1,6 @@
-/** @module control */
+/**
+ * @module control
+ */
 
 modules.define(
     'control',

@@ -1,8 +1,8 @@
 var DEFAULT_LANGS = ['ru', 'en'],
     fs = require('fs'),
     path = require('path'),
+    naming = require('bem-naming'),
     docSets = require('enb-bem-docs'),
-    exampleSets = require('enb-bem-examples'),
     specSets = require('enb-bem-specs'),
     tmplSets = require('enb-bem-tmpl-specs'),
     levels = require('enb/techs/levels'),
@@ -31,10 +31,12 @@ var DEFAULT_LANGS = ['ru', 'en'],
     };
 
 module.exports = function(config) {
+    config.includeConfig('enb-bem-examples');
+
     var sets = {
             docs : docSets.create('docs', config),
-            examples : exampleSets.create('examples', config),
-            tests : exampleSets.create('tests', config),
+            examples : config.module('enb-bem-examples').createConfigurator('examples'),
+            tests : config.module('enb-bem-examples').createConfigurator('tests'),
             specs : specSets.create('specs', config),
             tmplSpecs : tmplSets.create('tmpl-specs', config)
         },
@@ -184,13 +186,14 @@ function configureAutoprefixer(platform, config) {
 }
 
 function configureSets(platform, config, sets) {
-    sets.examples.build({
+    sets.examples.configure({
         destPath : platform + '.examples',
         levels : getLibLevels(platform, config),
-        inlineBemjson : true
+        inlineBemjson : true,
+        processBemjson : wrapInPage
     });
 
-    sets.tests.build({
+    sets.tests.configure({
         destPath : platform + '.tests',
         levels : getLibLevels(platform, config),
         suffixes : ['tests']
@@ -214,6 +217,60 @@ function configureSets(platform, config, sets) {
         examplePattern : [platform + '.examples/?/*', platform + '.tests/?/*'],
         inlineExamplePattern : platform + '.examples/?/*'
     });
+}
+
+function wrapInPage(bemjson, meta) {
+    var basename = path.basename(meta.filename, '.bemjson.js');
+    var res = {
+        block : 'page',
+        title : naming.stringify(meta.notation),
+        head : [
+            { elem : 'css', url : '_' + basename + '.css' },
+            { elem : 'js', url : '_' + basename + '.js' }
+        ],
+        content : bemjson
+    };
+    var theme = getThemeFromBemjson(bemjson);
+
+    if(theme) {
+        res.mods = { theme : theme };
+    }
+
+    return res;
+}
+
+function getThemeFromBemjson(bemjson) {
+    var theme;
+
+    if(Array.isArray(bemjson)) {
+        for(var i = 0; i < bemjson.length; ++i) {
+            theme = getThemeFromBemjson(bemjson[i]);
+
+            if(theme) {
+                return theme;
+            }
+        }
+    }else {
+        for(var key in bemjson) {
+            if(bemjson.hasOwnProperty(key)) {
+                var value = bemjson[key];
+
+                if(key === 'mods') {
+                    var mods = bemjson[key];
+
+                    theme = mods && mods.theme;
+
+                    if(theme) {
+                        return theme;
+                    }
+                }
+
+                if(key === 'content' && Array.isArray(value) || (typeof value === 'object' && value !== null)) {
+                    return getThemeFromBemjson(bemjson[key]);
+                }
+            }
+        }
+    }
 }
 
 function getLibLevels(platform, config) {

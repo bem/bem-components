@@ -106,26 +106,26 @@
         { tag : 'p', content : [
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', pseudo : true },
+                mods : { theme : 'normal', size : 'm', view : 'pseudo' },
                 text : 'pseudo'
             },
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', pseudo : true, disabled : true },
+                mods : { theme : 'normal', size : 'm', view : 'pseudo', disabled : true },
                 text : 'pseudo'
             }
         ] },
         { tag : 'p', content : [
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', action : true },
+                mods : { theme : 'normal', size : 'm', view : 'action' },
                 text : 'action'
             },
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', action : true, disabled : true },
+                mods : { theme : 'normal', size : 'm', view : 'action', disabled : true },
                 text : 'action'
             }
         ] },
@@ -385,13 +385,13 @@
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', togglable : 'check', pseudo : true },
+                mods : { theme : 'normal', size : 'm', togglable : 'check', view : 'pseudo' },
                 text : 'check'
             },
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', togglable : 'radio', pseudo : true },
+                mods : { theme : 'normal', size : 'm', togglable : 'radio', view : 'pseudo' },
                 text : 'radio'
             }
         ] }

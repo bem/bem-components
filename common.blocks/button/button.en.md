@@ -198,6 +198,43 @@ This button type has mandatory attribute `url` that should be specified in BEMJS
 }
 ```
 
+### _view
+
+#### _action
+
+Visually highlights a button on a page.
+
+```bemjson
+{
+    block : 'button',
+    mods : { theme : 'normal', size : 'm', view : 'action' },
+    type : 'submit',
+    text : 'Action'
+}
+```
+
+#### _pseudo
+
+With `view` modifier set to `pseudo`, the background of button becomes transparent.
+
+```bemjson
+{
+    block : 'button',
+    mods : { theme : 'normal', size : 'm', view : 'pseudo' },
+    text : 'pseudo'
+}
+```
+
+If pseudo button is disabled, its borders disappear.
+
+```bemjson
+{
+    block : 'button',
+    mods : { theme : 'normal', size : 'm', view : 'pseudo', disabled : true },
+    text : 'pseudo'
+}
+```
+
 ### Button's states
 
 #### _disabled
@@ -243,41 +280,6 @@ Defines a state of the pressed button when the first click presses the button, a
     block : 'button',
     text : 'Togglable',
     mods : { theme : 'normal', size : 'm', togglable : true }
-}
-```
-
-#### _action
-
-Visually highlights a button on a page.
-
-
-```bemjson
-{
-    block : 'button',
-    mods : { theme : 'normal', size : 'm', action : true },
-    type : 'submit',
-    text : 'Action'
-}
-```
-
-#### _pseudo
-
-If `pseudo` modifier has `true` value, the button background becomes transparent.
-
-```bemjson
-{
-    block : 'button',
-    mods : { theme : 'normal', size : 'm', pseudo : true },
-    text : 'pseudo'
-}
-```
-If pseudo button is disabled, its boarders disappear.
-
-```bemjson
-{
-    block : 'button',
-    mods : { theme : 'normal', size : 'm', pseudo : true, disabled : true },
-    text : 'pseudo'
 }
 ```
 

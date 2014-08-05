@@ -1,12 +1,21 @@
+/**
+ * @module radio-group
+ */
+
 modules.define('radio-group', function(provide, RadioGroup) {
 
 var undef;
 
-provide(RadioGroup.decl({ modName : 'mode', modVal : 'radio-check' }, {
+/**
+ * @exports
+ * @class radio-group
+ * @bem
+ */
+provide(RadioGroup.decl({ modName : 'mode', modVal : 'radio-check' }, /** @lends radio-group.prototype */{
     _onRadioUncheck : function(e) {
         this._checkedRadio === e.target && this.setVal(undef);
     }
-}, {
+}, /** @lends radio-group */{
     live : function() {
         this.liveInitOnBlockInsideEvent(
             { modName : 'checked', modVal : '' },

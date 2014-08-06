@@ -1,0 +1,19 @@
+block('rating').elem('rate') (
+    def()(function() {
+        return applyCtx([
+            {
+                elem : 'input',
+                attrs : {
+                    id : this.generateId(),
+                    name : this.ctx.name
+                }
+            },
+            {
+                elem : 'label',
+                attrs : {
+                    for : this.generateId()
+                }
+            }
+        ]);
+    })
+);

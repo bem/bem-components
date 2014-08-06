@@ -1,9 +1,1 @@
-block('rating').elem('label') (
-    tag()('label'),
-    attrs()(function() {
-        var attrs = {};
-
-        attrs.title = this.ctx.text;
-        return attrs;
-    })
-);
+block('rating').elem('label').tag()('label');

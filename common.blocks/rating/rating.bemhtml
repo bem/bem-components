@@ -1,4 +1,28 @@
 block('rating') (
     tag()('span'),
-    js()(true)
+    js()(true),
+    attrs()({
+        name : this.ctx.name
+    }),
+    content()(function() {
+        return this.ctx.content.map(function(rate, i) {
+            var ctx = this.ctx;
+
+            return [
+                {
+                    elem : 'input',
+                    attrs : {
+                        id : this.generateId() + i,
+                        name : ctx.name
+                    }
+                },
+                {
+                    elem : 'label',
+                    attrs : {
+                        for : this.generateId() + i
+                    }
+                }
+            ];
+        }, this);
+    })
 );

@@ -10,43 +10,27 @@
         {
             block : 'rating',
             mods : { theme : 'normal' },
-            //name : 'rating1',
-            //points : 0,
+            name : 'rating',
             content : [
                 {
-                    elem : 'input'
+                    elem : 'label',
+                    content : '1'
                 },
                 {
                     elem : 'label',
-                    text : '1'
-                },
-                {
-                    elem : 'input',
+                    content : '2'
                 },
                 {
                     elem : 'label',
-                    text : '2'
-                },
-                {
-                    elem : 'input'
+                    content : '3'
                 },
                 {
                     elem : 'label',
-                    text : '3'
-                },
-                {
-                    elem : 'input'
+                    content : '4'
                 },
                 {
                     elem : 'label',
-                    text : '4'
-                },
-                {
-                    elem : 'input'
-                },
-                {
-                    elem : 'label',
-                    text : '5'
+                    content : '5'
                 }
             ]
         }

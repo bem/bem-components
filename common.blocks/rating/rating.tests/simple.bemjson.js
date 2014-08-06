@@ -1,27 +1,42 @@
 ({
     block : 'rating',
-    mods : { theme : 'normal', size : 'm' },
-    name : 'rating1',
-    points : 0,
+    //mods : { theme : 'normal', size : 'm' },
+    //name : 'rating1',
+    //points : 0,
     content : [
         {
-            elem : 'rate',
+            elem : 'input'
+        },
+        {
+            elem : 'label',
             text : '1'
         },
         {
-            elem : 'rate',
+            elem : 'input',
+        },
+        {
+            elem : 'label',
             text : '2'
         },
         {
-            elem : 'rate',
+            elem : 'input'
+        },
+        {
+            elem : 'label',
             text : '3'
         },
         {
-            elem : 'rate',
+            elem : 'input'
+        },
+        {
+            elem : 'label',
             text : '4'
         },
         {
-            elem : 'rate',
+            elem : 'input'
+        },
+        {
+            elem : 'label',
             text : '5'
         }
     ]

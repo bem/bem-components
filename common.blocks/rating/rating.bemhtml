@@ -1,0 +1,4 @@
+block('rating') (
+    tag()('span'),
+    js()(true)
+);

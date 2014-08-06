@@ -1,0 +1,9 @@
+block('rating').elem('input') (
+    tag()('input'),
+
+    attrs()(function(){
+        var attrs = { type : 'radio' };
+
+        return attrs;
+    })
+);

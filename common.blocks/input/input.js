@@ -49,7 +49,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input
 
         return this;
     }
-}, {
+}, /** @lends input */{
     live : function() {
         this.__base.apply(this, arguments);
         return false;

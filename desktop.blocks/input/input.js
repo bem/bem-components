@@ -1,3 +1,7 @@
+/**
+ * @module input
+ */
+
 modules.define('input', ['tick', 'idle'], function(provide, tick, idle, Input) {
 
 var instances = [],
@@ -25,7 +29,12 @@ var instances = [],
         }
     };
 
-provide(Input.decl({
+/**
+ * @exports
+ * @class input
+ * @bem
+ */
+provide(Input.decl( /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {

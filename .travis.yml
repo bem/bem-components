@@ -11,6 +11,8 @@ env:
     - secure: "Z21+fRlqB/e47iLnKKyfp1J2R9aXbytXbToOQ6k6/7UJWp0Zg1VnYJ/m8g+uoTj1s7WqBx6hdly9bPVtiQ6/WWUIek50Q6xrx0j1X3aWWeLDCyCFE3nwBeLu0YNXQehF8TPfdWoxLNy9g4Y2tX0RPQCZ8aeV639d+6Hc4Etjp+E="
     # SAUCE_ACCESS_KEY
     - secure: "L0m7LKhlXK3hob+0jwVCAE7qGd9x+9shMN8OthTTV7lHyz83Ypv3FMEKQtDYho9d24i1SidJbtvpFrkKBLGkn94JzrNE/8UcKPNiIWLHc2bvQ15/aS2XH7nrloWLI8hoavs0A3dJUCFyPY8auRop4Z/vOnFZuDBGuziyZFuZeds="
+    # GH_TOKEN
+    - secure: "dFagbXO03ErbMonM+6/jZxskwcUAcD5w+/aKoRPqUWbvSKtgy1Fo1h6aY01Cd6o4/6tO0scgkbLhQUkLRwwTKN2qfDFM5mQX8fV9NWmQxaGJqUB4b9hoKVELM5J13EXSTL4ddssDmHdv+s57a7Bnj8AMIHNulwIaqiJ5V1xVuKU="
   matrix:
     - TEST_SCOPE: lint
     - TEST_SCOPE: specs
@@ -44,3 +46,6 @@ after_success:
         node_modules/.bin/istanbul report lcovonly
         cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
       fi
+
+after_failure:
+  sh publish_report.sh

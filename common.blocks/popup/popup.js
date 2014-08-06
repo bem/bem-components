@@ -14,7 +14,6 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
         'right-top', 'right-center', 'right-bottom',
         'left-top', 'left-center', 'left-bottom'
     ],
-    BASE_ZINDEX = 10000,
     UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
 
     win = BEMDOM.win,
@@ -50,8 +49,8 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this._ownerParents = null;
                 this._popupOwner = null;
                 this._pos = null;
+                this._initialZIndex = this.domElem.css('z-index');
                 this._zIndex = null;
-                this._isAttachedToScope = false;
                 this._isTargetVisible = undef;
                 this._lastDrawingCss = {
                         left : undef,
@@ -75,19 +74,12 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
         'visible' : {
             'true' : function() {
-                this._zIndex = captureZIndex();
-                this._owner && (this._ownerParents = this._owner.parents());
-
                 this
                     .bindTo('pointerclick', this._onPointerClick)
-                    ._bindToParentPopup()
-                    ._bindToScrollAndResize()
-                    .redraw();
+                    ._bindToParentsAndRedraw();
             },
 
             '' : function() {
-                releaseZIndex(this._zIndex);
-
                 this
                     .unbindFrom('pointerclick', this._onPointerClick)
                     ._unbindFromParentPopup()
@@ -126,11 +118,8 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
             this._bindToPopupOwner();
 
-            if(this.hasMod('visible')){
-                this._ownerParents = this._owner.parents();
-                this
-                    ._bindToScrollAndResize()
-                    .redraw();
+            if(this.hasMod('visible')) {
+                this._bindToParentsAndRedraw();
             } else {
                 this._ownerParents = null;
             }
@@ -144,6 +133,21 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         }
 
         return this;
+    },
+
+    _bindToParentsAndRedraw : function() {
+        this._owner && (this._ownerParents = this._owner.parents());
+        this
+            ._bindToParentPopup()
+            ._bindToScrollAndResize();
+
+        this._zIndex = this._parentPopup?
+            this._parentPopup.domElem.css('z-index'):
+            this._initialZIndex;
+
+        BEMDOM.scope.append(this.domElem);
+
+        return this.redraw();
     },
 
     /**
@@ -162,11 +166,6 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
      */
     redraw : function() {
         if(!this.hasMod('visible')) return this;
-
-        if(!this._isAttachedToScope) {
-            BEMDOM.scope.append(this.domElem);
-            this._isAttachedToScope = true;
-        }
 
         var bestDrawingParams = this._calcBestDrawingParams();
 
@@ -527,17 +526,6 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 }, /** @lends popup */{
     live : true
 }));
-
-var visiblePopupsZIndexes = [BASE_ZINDEX];
-
-function captureZIndex() {
-    return visiblePopupsZIndexes[
-        visiblePopupsZIndexes.push(visiblePopupsZIndexes[visiblePopupsZIndexes.length - 1] + 1) - 1];
-}
-
-function releaseZIndex(zIndex) {
-    visiblePopupsZIndexes.splice(visiblePopupsZIndexes.indexOf(zIndex), 1);
-}
 
 function checkMainDirection(direction, mainDirection1, mainDirection2) {
     return !direction.indexOf(mainDirection1) || (mainDirection2 && !direction.indexOf(mainDirection2));

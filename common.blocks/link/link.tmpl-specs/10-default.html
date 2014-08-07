@@ -1,0 +1,1 @@
+<a class="link link__control i-bem" data-bem="{&quot;link&quot;:{}}" href="//ya.ru/yandsearch?text=&lt;script type=&quot;javascript&quot;&gt;&amp;amp;=test" tabindex="1" title="title" target="_blank">link</a>

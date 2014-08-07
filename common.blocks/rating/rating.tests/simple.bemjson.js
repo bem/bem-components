@@ -13,23 +13,23 @@
             name : 'rating',
             content : [
                 {
-                    elem : 'label',
+                    elemName : 'label',
                     content : '1'
                 },
                 {
-                    elem : 'label',
+                    elemName : 'label',
                     content : '2'
                 },
                 {
-                    elem : 'label',
+                    elemName : 'label',
                     content : '3'
                 },
                 {
-                    elem : 'label',
+                    elemName : 'label',
                     content : '4'
                 },
                 {
-                    elem : 'label',
+                    elemName : 'label',
                     content : '5'
                 }
             ]

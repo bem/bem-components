@@ -2,7 +2,7 @@
     mustDeps : { block : 'i-bem', elems : 'dom' },
     shouldDeps : [
         {
-            elems : ['input']
+            elems : ['input', 'label']
         }
     ]
 }]

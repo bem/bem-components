@@ -19,7 +19,7 @@
                 {
                     block : 'popup',
                     mods : { theme : 'simple' },
-                    js : { directions : ['right-top', 'left-bottom'] },
+                    directions : ['right-top', 'left-bottom'],
                     content : {
                         tag : 'p',
                         content : [
@@ -54,7 +54,7 @@
                         {
                             block : 'popup',
                             mods : { theme : 'simple' },
-                            js : { directions : ['right-top', 'left-bottom'] },
+                            directions : ['right-top', 'left-bottom'],
                             content : {
                                 tag : 'p',
                                 content : [

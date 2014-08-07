@@ -21,7 +21,7 @@ describe('popup', function() {
             popupParentDomElem,
             {
                 block : 'popup',
-                js : { mainOffset : POPUP_MAIN_OFFSET },
+                mainOffset : POPUP_MAIN_OFFSET,
                 content : 'content'
             });
         popupDomElem = popup.domElem;

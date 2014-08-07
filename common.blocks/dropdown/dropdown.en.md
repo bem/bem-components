@@ -1,10 +1,10 @@
 # dropdown
 
-A `dropdown` block is used to create different types of dropdowns.  It allows to manage state, behavior and appearance of dropdowns. Block consist of two components – the control component and the popup window (`popup` block). Popup window is displayed in front of all other page elements.
+`dropdown` block is used to create different types of dropdowns.  It allows to manage state, behavior and appearance of dropdowns. Block consist of two components – the control component and the popup window (`popup` block). Popup window is displayed in front of all other page elements.
 
-On mouse click over control component it shows the popup window (toggles `_visible` modifier for the `popup` block).
+On mouse click over control component it shows the popup window (set `visible` modifier for `popup` block).
 
-Depending on a `_switcher` modifier value, either link, pseudo link or button can be used as a control component.
+Depending on `switcher` modifier value, either link, pseudo link or button can be used as a control component.
 
 
 ## Valid block's attributes
@@ -34,12 +34,12 @@ Also, BEMJSON declaration can contain an arbitrary fields used for templating.
 
 ## Block's modifiers
 
-### The themes `_theme`
+### The themes `theme`
 
  * simple
  * normal
 
-If a `_theme` modifier is not set, the browser defaults (`default`) will be applied to block.
+If `theme` modifier is not set, the browser defaults (`default`) will be applied to block.
 
 #### default
 
@@ -77,12 +77,12 @@ If a `_theme` modifier is not set, the browser defaults (`default`) will be appl
 ```
 
 
-### Control component type `_switcher`
+### Control component type `switcher`
 
 Mandatory modifier. It specifies which block to use as a control component. Next types are available:
 
-* `_switcher_link` - the pseudo link. `link` block is used as a base of the control component. 
-* `_switcher_button` - the button. `button` block is used as a base of the control component. 
+* `switcher_link` - the pseudo link. `link` block is used as a base of the control component. 
+* `switcher_button` - the button. `button` block is used as a base of the control component. 
 
 Available for all block themes.
 
@@ -100,19 +100,19 @@ Available for all block themes.
 ```
 
 
-### `_disabled`
+### `disabled`
 
-If a `_disabled` modifier is set, the dropdown is displayed but not available for user's actions.
+If `disabled` modifier is set, the dropdown is displayed but not available for user's actions.
 
-For such disabled block an `_opened` state will not be toggled on mouse click.
+For such disabled block `opened` state will not be set on mouse click.
 
-If a `_disabled` modifier set, it prevents the block components from the following actions:
+If `disabled` modifier set, it prevents the block components from the following actions:
 
-* `popup` block – `_visible` modifier toggle;
-* `link` control component – `_focused` state toggle. Link does not obtain focus on mouse click or by `Tab` key press;
+* `popup` block – `visible` modifier seting;
+* `link` control component – `focused` state seting. Link does not obtain focus on mouse click or by `Tab` key press;
 * `button` control component:
-    * `_focused` state toggle. Button will not obtain focus on mouse click or by `Tab` key press;
-    * `_hovered` state toggle on mouse pointer hover.
+    * `focused` state seting. Button will not obtain focus on mouse click or by `Tab` key press;
+    * `hovered` state seting on mouse pointer hover.
 
 Available for all block themes.
 
@@ -133,9 +133,9 @@ Available for all block themes.
 
 ### dropdown's states
 
-#### `_opened`
+#### `opened`
 
-`_opened` modifier toggles automatically on mouse click on the control component.
+`opened` modifier value toggles automatically on mouse click on the control component.
 
 ```bemjson
 {
@@ -152,7 +152,7 @@ Available for all block themes.
 ```
 
 
-Modifier can be removed by re-clicking on the control component or outside popup's window (in case of `_autoclosable` modifier availability for `popup` block).
+Modifier can be removed by re-clicking on the control component or outside popup's window (in case of `autoclosable` modifier availability for `popup` block).
 
 
 ## BEMJSON value of `switcher` and `popup` attributes 
@@ -161,7 +161,7 @@ As the control component and the popup attributes can contain BEM-entities it ca
 
 * control component warping or modifying;
 * passing additional attribute values to control component;
-* creating nested content in popup window.
+* creating nested content in popup.
 
 For example, you can make a control component's button toggleable:
 
@@ -216,13 +216,3 @@ Or make dropdown list selector based on block:
     }
 }
 ```
-
-
-## Dependencies
-
-The `dropdown` block depends on:
-
-* `i-bem__dom`
-* `dom`
-* `popup`
-* `button`/`link` (depending on `_switcher` control component type)

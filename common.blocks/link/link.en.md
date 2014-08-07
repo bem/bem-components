@@ -1,10 +1,10 @@
 # link
 
-A `link` block is used for a various types of links creation. It allows to manage state, behaviour and appearance of a links.
+`link` block is used for a various types of links creation. It allows to manage state, behaviour and appearance of links.
 
 ## link use cases
 
-The block is used for creation of following link types:
+The block is used for creation of the following link types:
 
 <table>
     <tr>
@@ -14,7 +14,7 @@ The block is used for creation of following link types:
     </tr>
     <tr>
         <td>Basic link</td>
-        <td>Is used to set up various kinds of links. A default type.</td>
+        <td>Is used to set up various kinds of links. The default type.</td>
         <td>
             <pre><code>
 {
@@ -65,7 +65,7 @@ Valid block's attributes can be specified in the corresponding fields of block's
     <tr>
         <td>target</td>
         <td><code>String</code></td>
-        <td>Target window. Mainly used with a <code>_blank</code> value to open the link in new window.</td>
+        <td>Target window. Mainly used with the <code>blank</code> value to open the link in the new window.</td>
     </tr>
     <tr>
         <td>tabIndex</td>
@@ -77,12 +77,12 @@ Valid block's attributes can be specified in the corresponding fields of block's
 
 ## Block's modifiers
 
-### The themes `_theme`
+### The themes `theme`
 
  * simple
  * normal
 
-If a `_theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
+If `theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
 
 For example:
 
@@ -120,7 +120,7 @@ For example:
 ```
 
 
-### Pseudo link `_pseudo`
+### Pseudo link `pseudo`
 
 ```bemjson
 {
@@ -129,7 +129,7 @@ For example:
         theme : 'normal',
         pseudo : true
     },
-    title : 'pseudo mod are toggled',
+    title : 'pseudo mod is set',
     content : 'link'
 }
 ```
@@ -137,9 +137,9 @@ For example:
 
 ### Link's states
 
-#### In focus `_focused`
+#### In focus `focused`
 
-A `_focused` modifier is automaticly toggles to the block when it is in focus. For example, on mouse click or by `Tab` key press. Focused link can be followed by Enter key press.
+`focused` modifier is automaticly sets for the block when it is in focus. For example, on mouse click or by `Tab` key press. Focused link can be followed by Enter key press.
 
 Available for all block themes.
 
@@ -151,18 +151,18 @@ Available for all block themes.
         focused : true
     },
     url : '#',
-    content : '_focused'
+    content : 'focused'
 }
 ```
 
-### Inactive `_disabled`
+### Inactive `disabled`
 
-A `_disabled` modifier helps to create an inactive link. Inactive link is displayed but not available for user actions.  
+`disabled` modifier helps to create an inactive link. Inactive link is displayed but not available for user actions.  
 
 For such a link will not be performed:
 
-* `_focused` state modifier toggling, when in focus;
-* redirection to the link address if an `url` attribute is provided;
+* `focused` state modifier seting, when in focus;
+* redirection to the link address if `url` attribute value is provided;
 * `click` BEM event emiting.
 
 Available for all block themes.
@@ -175,13 +175,6 @@ Available for all block themes.
         disabled : true
     },
     url : '#',
-    content : '_disabled'
+    content : 'disabled'
 }
 ```
-
-## Dependencies
-
-The block depends on:
-
-* `control`
-* `i-bem__dom`

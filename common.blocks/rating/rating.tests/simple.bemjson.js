@@ -11,7 +11,7 @@
             block : 'rating',
             mods : { theme : 'normal' },
             name : 'rating',
-            points : 4.6,
+            points : 5.5,
             length : '7', // строка, либо число, если убрать - сгенерирует по контенту
             content : [
                 {

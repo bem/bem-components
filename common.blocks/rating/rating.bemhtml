@@ -17,9 +17,10 @@ block('rating') (
                     }
                 },
                 {
-                    elem : 'label',
+                    elem : rate.elemName,
                     attrs : {
-                        for : this.generateId() + i
+                        for : this.generateId() + i,
+                        title : rate.content
                     }
                 }
             ];

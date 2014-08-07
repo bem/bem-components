@@ -11,6 +11,7 @@
             block : 'rating',
             mods : { theme : 'normal' },
             name : 'rating',
+            length : '20',
             content : [
                 {
                     elemName : 'label',

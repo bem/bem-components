@@ -1,25 +1,27 @@
 .rating_theme_normal {
     overflow: hidden;
     display: inline-block;
+    position: relative;
 }
 .rating__input {
     position: absolute;
     left: 0;
-    top: -50px;
+    top: -12px;
+    opacity: 0;
 }
 
 .rating_theme_normal:hover .rating__label:hover,
 .rating_theme_normal:hover .rating__label:hover ~ .rating__label,
 .rating__input:checked ~ .rating__label {
-    background-position: 16px 0;
+    background-position: 15px 0;
     cursor: pointer;
 }
 .rating__label,
 .rating_theme_normal:hover .rating__label {
     float: right;
     display: block;
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
     background: url('stars.png') 0 0;
 }
 

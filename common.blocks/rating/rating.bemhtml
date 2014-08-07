@@ -6,10 +6,34 @@ block('rating') (
     }),
     content()(function() {
         var ctx = this.ctx,
-            rates = [];
+            points = +ctx.points,
+            rates = [],
+            layerWidth = 0,
+            sumWidth = (function() {
+                var width,
+                    empty = true;
+
+                return function(points, step) {
+                    if((points ^ 0) === points && points <= step) {
+                        width = 16;
+                        empty = false;
+                    }
+
+                    if(empty && step < points && step + 1 > points) {
+                        width = +(points % 1).toFixed(6) * 16;
+                        empty = false;
+                    } else {
+                        empty? width = 16 : width = 0;
+                    }
+
+                    return width;
+                };
+            })();
 
         if(ctx.length && +ctx.length > 0) {
             for(var i = 0, len = ctx.length; i < len; i++) {
+                layerWidth += sumWidth(points, i);
+
                 rates.push(
                      {
                         elem : 'input',
@@ -26,9 +50,18 @@ block('rating') (
                     }
                 );
             }
+
+            rates.push({
+                elem : 'labelCut',
+                attrs : { style : 'width: ' + layerWidth + 'px;' }
+            });
+
             return rates;
+
         } else {
-            return this.ctx.content.map(function(rate, i) {
+            rates = ctx.content.map(function(rate, i) {
+                layerWidth += sumWidth(points, i);
+
                 return [
                     {
                         elem : 'input',
@@ -46,6 +79,13 @@ block('rating') (
                     }
                 ];
             }, this);
+
+            rates.push({
+                elem : 'labelCut',
+                attrs : { style : 'width: ' + layerWidth + 'px;' }
+            });
+
+            return rates;
         }
     })
 );

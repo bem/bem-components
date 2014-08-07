@@ -13,17 +13,27 @@
 .rating_theme_normal:hover .rating__label:hover,
 .rating_theme_normal:hover .rating__label:hover ~ .rating__label,
 .rating__input:checked ~ .rating__label {
-    background-position: 15px 0;
+    background-position: 0 -15px;
     cursor: pointer;
 }
 .rating__label,
 .rating_theme_normal:hover .rating__label {
     float: right;
     display: block;
-    width: 15px;
+    width: 16px;
     height: 15px;
     background: url('stars.png') 0 0;
 }
+
+.rating__labelCut {
+    position: absolute;
+    display: inline-block;
+    height: 15px;
+    background: url('stars.png') 0 -15px;
+    background-repeat: repeat-x;
+    z-index: -1;
+}
+
 
 /*.rating_theme_normal
 {

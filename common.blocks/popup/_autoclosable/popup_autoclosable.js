@@ -41,17 +41,17 @@ provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup
         if(this._owner && dom.contains(this._owner, $(e.target)))
             return;
 
-        this._inPopupPointerDown?
-           this._inPopupPointerDown = null :
+        this._inPopupPointerPress?
+           this._inPopupPointerPress = null :
            this.delMod('visible');
     }
 }, /** @lends popup */{
     live : function() {
-        BEMDOM.doc.on(KEYDOWN_EVENT, onDocKeyDown);
+        BEMDOM.doc.on(KEYDOWN_EVENT, onDocKeyPress);
     }
 }));
 
-function onDocKeyDown(e) {
+function onDocKeyPress(e) {
     e.keyCode === keyCodes.ESC &&
         // omit ESC in inputs, selects and etc.
         visiblePopupsStack.length &&

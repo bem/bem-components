@@ -14,15 +14,23 @@ describe('popup_autoclosable', function() {
         BEMDOM.destruct(rootDomElem);
     });
 
-    describe('pointerclick reactions', function() {
-        it('should be visible/hidden on click inside/outside', function(done) {
+    describe('pointer reactions', function() {
+        it('should be visible on click inside', function(done) {
             var popup = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible');
 
             nextTick(function() {
-                popup.domElem.trigger('pointerclick');
+                doPointerClick(popup.domElem);
                 popup.hasMod('visible').should.be.true;
 
-                rootDomElem.trigger('pointerclick');
+                done();
+            });
+        });
+
+        it('should be hidden on click outside', function(done) {
+            var popup = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible');
+
+            nextTick(function() {
+                doPointerClick(rootDomElem);
                 popup.hasMod('visible').should.be.false;
 
                 done();
@@ -35,7 +43,7 @@ describe('popup_autoclosable', function() {
                 popup = popupWithOwner.popup.setMod('visible');
 
             nextTick(function() {
-                ownerDomElem.trigger('pointerclick');
+                doPointerClick(ownerDomElem);
                 popup.hasMod('visible').should.be.true;
 
                 done();
@@ -49,14 +57,14 @@ describe('popup_autoclosable', function() {
                 popup4 = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible');
 
             nextTick(function() {
-                popup3.domElem.trigger('pointerclick');
+                doPointerClick(popup3.domElem);
 
                 popup1.hasMod('visible').should.be.true;
                 popup2.hasMod('visible').should.be.true;
                 popup3.hasMod('visible').should.be.true;
                 popup4.hasMod('visible').should.be.false;
 
-                popup2.domElem.trigger('pointerclick');
+                doPointerClick(popup2.domElem);
 
                 popup1.hasMod('visible').should.be.true;
                 popup2.hasMod('visible').should.be.true;
@@ -114,6 +122,13 @@ function buildPopupWithOwner(parentDomElem, isAutoclosable) {
             .bem('popup')
             .setTarget(ownerDomElem)
     };
+}
+
+function doPointerClick(target) {
+    return target
+        .trigger('pointerdown')
+        .trigger('pointerup')
+        .trigger('pointerclick');
 }
 
 });

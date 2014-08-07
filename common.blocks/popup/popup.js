@@ -79,7 +79,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this._owner && (this._ownerParents = this._owner.parents());
 
                 this
-                    .bindTo('pointerdown', this._onPointerDown)
+                    .bindTo('pointerpress', this._onPointerPress)
                     ._bindToParentPopup()
                     ._bindToScrollAndResize()
                     .redraw();
@@ -89,7 +89,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 releaseZIndex(this._zIndex);
 
                 this
-                    .unbindFrom('pointerdown', this._onPointerDown)
+                    .unbindFrom('pointerpress', this._onPointerPress)
                     ._unbindFromParentPopup()
                     ._unbindFromScrollAndResize();
 
@@ -472,10 +472,10 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         }
     },
 
-    _onPointerDown : function() {
+    _onPointerPress : function() {
         var curPopup = this;
         do {
-            curPopup._inPopupPointerDown = true;
+            curPopup._inPopupPointerPress = true;
         } while(curPopup = curPopup._parentPopup);
     },
 

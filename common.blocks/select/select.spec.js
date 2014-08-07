@@ -102,9 +102,11 @@ describe('select', function() {
                 .setMod('opened');
 
             // try to emulate some browsers behaviour where blur can't be prevented
-            popup.domElem.trigger('pointerpress');
+            popup.domElem.trigger('pointerdown');
             button.domElem.blur();
-            popup.domElem.trigger('pointerrelease');
+            popup.domElem
+                .trigger('pointerup')
+                .trigger('pointerclick');
 
             button.hasMod('focused').should.be.true;
             button.hasMod('focused-hard').should.be.true;

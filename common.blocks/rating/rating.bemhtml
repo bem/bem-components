@@ -5,25 +5,47 @@ block('rating') (
         name : this.ctx.name
     }),
     content()(function() {
-        return this.ctx.content.map(function(rate, i) {
-            var ctx = this.ctx;
+        var ctx = this.ctx,
+            rates = [];
 
-            return [
-                {
-                    elem : 'input',
-                    attrs : {
-                        id : this.generateId() + i,
-                        name : ctx.name
+        if(ctx.length && +ctx.length > 0) {
+            for(var i = 0, len = ctx.length; i < len; i++) {
+                rates.push(
+                     {
+                        elem : 'input',
+                        attrs : {
+                            id : this.generateId() + i,
+                            name : ctx.name
+                        }
+                    },
+                    {
+                        elem : 'label',
+                        attrs : {
+                            for : this.generateId() + i
+                        }
                     }
-                },
-                {
-                    elem : rate.elemName,
-                    attrs : {
-                        for : this.generateId() + i,
-                        title : rate.content
+                );
+            }
+            return rates;
+        } else {
+            return this.ctx.content.map(function(rate, i) {
+                return [
+                    {
+                        elem : 'input',
+                        attrs : {
+                            id : this.generateId() + i,
+                            name : ctx.name
+                        }
+                    },
+                    {
+                        elem : rate.elemName,
+                        attrs : {
+                            for : this.generateId() + i,
+                            title : rate.content
+                        }
                     }
-                }
-            ];
-        }, this);
+                ];
+            }, this);
+        }
     })
 );

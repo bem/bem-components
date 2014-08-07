@@ -1,3 +1,11 @@
 block('popup')(
-    js()(true)
+    js()(function() {
+        var ctx = this.ctx;
+        return {
+            mainOffset : ctx.mainOffset,
+            secondaryOffset : ctx.secondaryOffset,
+            viewportOffset : ctx.viewportOffset,
+            directions : ctx.directions
+        };
+    })
 );

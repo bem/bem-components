@@ -130,7 +130,7 @@ For example, if the popup window should be opened at the top of the parent block
 {
     block : 'popup',
     mods : { autoclosable : true, theme: 'simple' },
-    js : { directions : ['top-left', 'top-center', 'top-right'] },
+    directions : ['top-left', 'top-center', 'top-right'],
     content : 'Hello, world!'
 }
 ```
@@ -142,7 +142,7 @@ Or if it should be opened strictly at the center-right position:
 {
     block : 'popup',
     mods : { autoclosable : true, theme: 'simple' },
-    js : { directions : ['right-center'] },
+    directions : ['right-center'],
     content : 'Hello, world!'
 }
 ```

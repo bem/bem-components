@@ -62,7 +62,7 @@
                 }
             ]
         },
-        
+
         { tag : 'h2', content : 'normal' },
         {
             block : 'test-wrap',
@@ -100,7 +100,7 @@
                             block : 'popup',
                             mods : { theme : 'normal' },
                             cls : 'bottom-popup',
-                            js : { directions : ['bottom-left', 'bottom-center', 'bottom-right'] },
+                            directions : ['bottom-left', 'bottom-center', 'bottom-right'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -120,7 +120,7 @@
                             block : 'popup',
                             mods : { theme : 'normal' },
                             cls : 'top-popup',
-                            js : { directions : ['top-left', 'top-center', 'top-right'] },
+                            directions : ['top-left', 'top-center', 'top-right'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -140,7 +140,7 @@
                             block : 'popup',
                             mods : { theme : 'normal' },
                             cls : 'right-popup',
-                            js : { directions : ['right-top', 'right-center', 'right-bottom'] },
+                            directions : ['right-top', 'right-center', 'right-bottom'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -160,7 +160,7 @@
                             block : 'popup',
                             mods : { theme : 'normal' },
                             cls : 'left-popup',
-                            js : { directions : ['left-top', 'left-center', 'left-bottom'] },
+                            directions : ['left-top', 'left-center', 'left-bottom'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },

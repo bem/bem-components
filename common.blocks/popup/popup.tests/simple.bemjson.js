@@ -73,7 +73,7 @@
                         {
                             block : 'popup',
                             mods : { theme : 'simple' },
-                            js : { directions : ['bottom-left', 'bottom-center', 'bottom-right'] },
+                            directions : ['bottom-left', 'bottom-center', 'bottom-right'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -91,7 +91,7 @@
                         {
                             block : 'popup',
                             mods : { theme : 'simple' },
-                            js : { directions : ['top-left', 'top-center', 'top-right'] },
+                            directions : ['top-left', 'top-center', 'top-right'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -109,7 +109,7 @@
                         {
                             block : 'popup',
                             mods : { theme : 'simple' },
-                            js : { directions : ['right-top', 'right-center', 'right-bottom'] },
+                            directions : ['right-top', 'right-center', 'right-bottom'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -127,7 +127,7 @@
                         {
                             block : 'popup',
                             mods : { theme : 'simple' },
-                            js : { directions : ['left-top', 'left-center', 'left-bottom'] },
+                            directions : ['left-top', 'left-center', 'left-bottom'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -206,7 +206,7 @@
                         {
                             block : 'popup',
                             mods : { theme : 'normal' },
-                            js : { directions : ['bottom-left', 'bottom-center', 'bottom-right'] },
+                            directions : ['bottom-left', 'bottom-center', 'bottom-right'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -224,7 +224,7 @@
                         {
                             block : 'popup',
                             mods : { theme : 'normal' },
-                            js : { directions : ['top-left', 'top-center', 'top-right'] },
+                            directions : ['top-left', 'top-center', 'top-right'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -242,7 +242,7 @@
                         {
                             block : 'popup',
                             mods : { theme : 'normal' },
-                            js : { directions : ['right-top', 'right-center', 'right-bottom'] },
+                            directions : ['right-top', 'right-center', 'right-bottom'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -260,7 +260,7 @@
                         {
                             block : 'popup',
                             mods : { theme : 'normal' },
-                            js : { directions : ['left-top', 'left-center', 'left-bottom'] },
+                            directions : ['left-top', 'left-center', 'left-bottom'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },

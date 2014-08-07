@@ -105,7 +105,9 @@
                     switcher : { block : 'button', mods : { togglable : 'check' }, text : 'custom button' },
                     popup : {
                         block : 'popup',
-                        js : { directions : ['top-center'], offsets : [20, 20] },
+                        directions : ['top-center'],
+                        mainOffset : 20,
+                        secondaryOffset : 20,
                         content : 'custom popup'
                     }
                 },

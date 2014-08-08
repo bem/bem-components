@@ -1,17 +1,16 @@
-# radio-group  
+# radio-group
 
-Блок `radio-group` – «радиогруппа», состоящая из набора зависимых переключателей «радиокнопок» (блоков `radio`). Радиогруппа используется для выбора единственного варианта из списка. 
+Блок `radio-group` служит для создания группы зависимых переключателей, реализованных блоком [radio](../radio/radio.ru.md). Блок позволяет пользователю выбрать только одну опцию (пункт) из предопределенного набора (группы).
 
-Блок `radio-group` в результате BEMHTML-преобразований на странице становится HTML-элементом с тегом `<span>` – контейнером, содержащим группу переключателей (радиокнопок).
+Блок `radio-group` преобразуется в  HTML-элемент с тегом `<span>` – контейнером, содержащим группу переключателей.
 
+## Специализированные поля блока
 
-## Допустимые параметры блока
-
-Допустимые параметры блока задаются в одноименных полях входного BEMJSON блока:
+Список зарезервированных полей входного BEMJSON:
 
 <table>
     <tr>
-        <th>Атрибут</th>
+        <th>Поле</th>
         <th>Тип</th>
         <th>Описание</th>
     </tr>
@@ -23,28 +22,28 @@
     <tr>
         <td>options</td>
         <td><code>Array</code></td>
-        <td>Массив хешей. Каждый хеш соответствует одному переключателю и содержит набор его параметров. </td>
-    </tr>    
+        <td>Массив пар значений <code>text=val</code>, которые соответствуют одному радиопереключателю. На сервер отправляется пара <code>name=val</code>, где имя группы радиопереключателей задается ключом <code>name</code>, а значение каждого радипереключателя — ключом <code>val</code>.
+            <br>Модификатор <code>disabled</code> блока <code>radio</code> может быть передан радиопереглючателю из группы.</td>
+    </tr>
 </table>
 
-Среди параметров, передаваемых в атрибуте `option` для переключателя, обязательными являются:
-
-* `val` (`String` | `Number`) – значение, возвращаемое выбранным переключателем (элементом `radio__control`);
-* `text` (`String`) – подпись, отображаемая для текущего переключателя. 
-
+При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле `attrs` в BEMJSON.
 
 ## Модификаторы блока
 
-### Темы блока `theme`
+### Темы `_theme`
 
- * simple   
- * normal  
+Блок представлен в следующих темах:
 
-Без указания темы к блоку применяются значения по умолчанию (*default*), установленные браузером. 
+ * simple
+ * normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
 
-Наглядно видно на примерах ниже:
+Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
 
-#### default
+Наглядно показано на примерах ниже:
+
+<a name="native"></a>
+**default**
 
 ```bemjson
 {
@@ -57,8 +56,7 @@
 }
 ```
 
-
-#### simple
+**simple**
 
 ```bemjson
 {
@@ -72,13 +70,12 @@
 }
 ```
 
- 
-#### normal
+**normal**
 
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'l' },
+    mods : { theme : 'normal', size : 'm' },
     name : 'radio-normal',
     options : [
         { val : 1, text : 'first' },
@@ -87,21 +84,20 @@
 }
 ```
 
+### Размеры `_size`
 
+Реализован только в теме `normal`.
 
-### Размеры переключателей группы `size`
+Модификатор `size` устанавливает размер переключателей для всех типов радиогруппы.
 
-Задает размер переключателей для всех типов радиогрупп. Обязательный модификатор. 
-
-Реализован только в теме *normal*.
-
-В зависимости от значения модификатора `type` доступны следующие размеры реализации блока:
+В зависимости от значения модификатора [`type`](#mode) доступны следующие размеры реализации блока:
 
 <table>
     <tr>
         <th>Размер</th>
         <th>Обычная радиогруппа</th>
-        <th>Кнопочная радиогруппа (<code>_type_button</code>)</th>
+        <th>Кнопочная радиогруппа
+            <br>(<code>radio-group_type_button</code>)</th>
     </tr>
     <tr>
         <th>s</th>
@@ -124,230 +120,152 @@
         <td>+</td>
 </table>
 
+Наглядно показано на примерах ниже:
 
-Размеры на примере темы *normal* с модификатором `radio-group_type_button`:
-
-<table>
-    <tr>
-        <th>Размер</th>
-        <th>Пример</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>
-            <pre><code>
+```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 's', 
-        type : 'button' 
-    },
-    name : 'radio-S',
+    mods : { theme : 'normal', size : 's', type : 'button' },
+    name : 'Small',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'm', 
-        type : 'button' 
-    },
-    name : 'radio-M',
+    mods : { theme : 'normal', size : 'm', type : 'button' },
+    name : 'Medium',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'button' 
-    },
-    name : 'radio-L',
+    mods : { theme : 'normal', size : 'l', type : 'button' },
+    name : 'Large',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'xl', 
-        type : 'button' 
-    },
-    name : 'radio-XL',
+    mods : { theme : 'normal', size : 'xl', type : 'button' },
+    name : 'X-Large',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-</table>
+```
 
-### Тип радиогруппы `type`
+<a name="mode"></a>
+### Типы `_type`
 
-Модификатор `type` может иметь следующие значения:
+Доступны следующие значения модификатора `type`:
 
-* `button`. Используется для создания кнопочной радиогруппы – блока кнопок-переключателей;
-* `line`. Используется для создания радиогруппы с выравниванием в строку. После каждого переключателя группы кроме последнего автоматически добавляется отступ справа. Размер отступа зависит от значения модификатора `size`. Реализован только в теме *normal*.
+* `button`. Модификатор `type` в значении `button` позволяет реализовать блок `radio-group` с помощью блока [button](..button/button.ru.md). Все радиопереключатели группы в данном случае всегда располагаются в линию.
 
-Модификатор реализован во всех темах блока.
-
-<table>
-    <tr>
-        <th>Тип</th>
-
-        <th>Пример</th>
-    </tr>
-    <tr>
-        <td>Обычная радиогруппа</td>
-        <td>
-            <pre><code>
+```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'l' },
-    name : 'radio-normal',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-            </code></pre>
-        </td>
-    <tr>
-        <td>Кнопочная радиогруппа</td>
-        <td>
-            <pre><code>
-{
-    block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'button' 
-    },
+    mods : { theme : 'normal', size : 'm', type : 'button' },
     name : 'radio-button',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <td>Строчная радиогруппа (<code>_type_line</code>)</td>
-        <td>
-            <pre><code>
+```
+
+* `line`. Модификатор `type` в значении `line` применяется к радиогруппе для выравнивания переключателей в строку. После каждого радиопереключателя группы, кроме последнего, автоматически добавляется отступ справа. Размер отступа зависит от значения модификатора `size`. Реализован только в теме `normal`.
+
+```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'line' 
-    },
+    mods : { theme : 'normal', size : 'm', type : 'line' },
     name : 'radio-line',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>    
-</table>
+```
 
+### Состояния блока
 
-### Неактивна `disabled`
-   
-В состоянии "неактивна" радиогруппа отображается, но недоступна для действий пользователя.  
+#### Неактивен `_disabled`
 
-Такая радиогруппа не будет получать фокус (модификатор `focused`).
+В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу `Tab`, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.
 
-При установке модификатора `disabled` для радиогруппы всем ее переключателям также устанавливается модификатор `disabled`. Как следствие для них не будут:
+При установке модификатора `disabled` для группы всем радиопереключателям также устанавливается модификатор `disabled`. Как следствие, для них не будут:
 
 * устанавливаться модификаторы состояния `hovered`, `pressed` и `focused`;
 * изменяться значения модификатора `checked`.
 
-Модификатор реализован во всех темах блока.
-
 ```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'button',
-        disabled : true 
-    },
-    name : 'radio-normal',
+    mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
+    name : 'radio-button',
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 2, text : 'second', checked : true }
     ]
 }
 ```
 
-
-### Состояния блока 
-
-#### В фокусе `focused`
-
-Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда один из его элементов находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
-
-Реализован во всех темах блока.
-
 ```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'button',
-        focused : true 
-    },
-    name : 'radio-normal',
+    mods : { theme : 'normal', size : 'm', disabled : true },
+    name : 'radio-button',
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 2, text : 'second', checked : true }
     ]
 }
 ```
 
-## Зависимости блока
+Модификатор `disabled` может быть назначен отдельным переключателям в группе.
 
-Блок `radio-group` зависит от следующего набора блоков и элементов:
+```bemjson
+{
+    block : 'radio-group',
+    mods : { theme : 'normal', size : 'm', type : 'line' },
+    name : 'radio-line',
+    options : [
+        { val : 1, text : 'first', disabled : true },
+        { val : 2, text : 'second' },
+        { val : 3, text : 'third' }
+    ]
+}
+```
 
-* `i-bem__dom `
-* `radio`
-* `jquery`
-* `radio-group_type_button` (у которого в зависимостях есть блок `button`)
+```bemjson
+{
+    block : 'radio-group',
+    mods : { theme : 'normal', size : 'm', type : 'button' },
+    name : 'radio-line',
+    options : [
+        { val : 1, text : 'first', disabled : true },
+        { val : 2, text : 'second' },
+        { val : 3, text : 'third' }
+    ]
+}
+```
+
+#### В фокусе `_focused`
+
+Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.

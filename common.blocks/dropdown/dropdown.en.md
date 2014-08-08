@@ -1,178 +1,151 @@
 # dropdown
 
-A `dropdown` block is used to create different types of dropdowns.  It allows to manage state, behavior and appearance of dropdowns. Block consist of two components – the control component and the popup window (`popup` block). Popup window is displayed in front of all other page elements.
+`dropdown` block is used to create different dropdown types, manage their state, behavior and appearance on a page.
 
-On mouse click over control component it shows the popup window (toggles `_visible` modifier for the `popup` block).
+Block consist of two components:
 
-Depending on a `_switcher` modifier value, either link, pseudo link or button can be used as a control component.
+* control component. Button, link or pseudo link can be used as a control component. The value of [switcher](#switcher) modifier defines a control component type.
 
+* popup ([popup](../popup/popup.md) block). Mouse click on the control component opens `popup` that is always displayed above all other elements on a page. In this case `popup` automatically obtains `visible` and `opened` modifiers. Clicking outside the popup area hides it automatically (`{ autoclosable : true }`).
 
-## Valid block's attributes
+## Custom fields of a block
 
-Valid block's attributes can be specified in a corresponding fields of block's BEMJSON declaration:
+The following custom fields could be specified in BEMJSON declaration of the block:
 
 <table>
     <tr>
-        <th align="center">Attributes</th>
-        <th align="center">Type</th>
-        <th align="center">Description</th>
+        <th>Custom field name</th>
+        <th>Type</th>
+        <th>Description</th>
     </tr>
     <tr>
         <td>switcher</td>
-        <td><code>String|BEMJSON</code></td>
-        <td>Label for the control component. May contain a string with the text label or BEMJSON notation of nested BEM-entities. For example, it allows to wrap the control component with other block or pass it an additional attribute values.</td>
+        <td><code>String</code></td>
+        <td>Text of the control component. May contain a string with text label or BEMJSON description of nested BEM entities. For example, it allows to implement the control component by other block or propagate additional attribute values.</td>
     </tr>
        <tr>
         <td>popup</td>
         <td><code>String|BEMJSON</code></td>
-        <td>Text value or BEMJSON description of popup window content. In runtime BEMJSON entities will be rendered into HTML.</td>
+        <td>Text value or BEMJSON description of popup window content.</td>
     </tr>
 </table>
 
-Also, BEMJSON declaration can contain an arbitrary fields used for templating.
+Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
 
+## Modifiers of a block
 
-## Block's modifiers
+### _theme
 
-### The themes `_theme`
+Block supports the following themes:
 
  * simple
- * normal
+ * normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
 
-If a `_theme` modifier is not set, the browser defaults (`default`) will be applied to block.
+If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
-#### default
+See following examples:
+
+<a name="native"></a>
+**default**
 
 ```bemjson
 {
     block : 'dropdown',
     mods : { switcher : 'link' },
-    switcher : 'link',
+    switcher : 'Link',
     popup : 'Hello, world!'
 }
 ```
 
-
-#### simple
+**simple**
 
 ```bemjson
 {
     block : 'dropdown',
     mods : { switcher : 'link', theme : 'simple' },
-    switcher : 'link',
+    switcher : 'Link',
     popup : 'Hello, world!'
 }
 ```
 
-
-#### normal
+**normal**
 
 ```bemjson
 {
     block : 'dropdown',
-    mods : { switcher : 'link', theme : 'normal' },
-    switcher : 'link',
+    mods : { switcher : 'link', theme : 'normal', size : 'm' },
+    switcher : 'Link',
     popup : 'Hello, world!'
 }
 ```
 
+<a name="switcher"></a>
+### _switcher
 
-### Control component type `_switcher`
+`switcher` modifier is used to specify a control component. The following values are available:
 
-Mandatory modifier. It specifies which block to use as a control component. Next types are available:
+* `link` - creates a pseudo link that opens popup. Block `link` is used as a control component.
+* `button` - creates a button that opens popup. Block `button` is used as a control component.
 
-* `_switcher_link` - the pseudo link. `link` block is used as a base of the control component. 
-* `_switcher_button` - the button. `button` block is used as a base of the control component. 
-
-Available for all block themes.
 
 ```bemjson
 {
     block : 'dropdown',
-    mods : {
-        switcher : 'button',
-        theme : 'normal',
-        size : 'xl'
-    },
-    switcher : 'button',
+    mods : { switcher : 'button', theme : 'normal', size : 'm' },
+    switcher : 'Button',
     popup : 'Hello, world!'
 }
 ```
 
+### States of a block
 
-### `_disabled`
+#### _disabled
 
-If a `_disabled` modifier is set, the dropdown is displayed but not available for user's actions.
+`disabled` modifier is used to make block visible but not available for user action. In most cases to mark out the disabled block on a page, additional styles are applied.
 
-For such disabled block an `_opened` state will not be toggled on mouse click.
+`disabled` modifier prevents the following modifiers to be applied:
 
-If a `_disabled` modifier set, it prevents the block components from the following actions:
-
-* `popup` block – `_visible` modifier toggle;
-* `link` control component – `_focused` state toggle. Link does not obtain focus on mouse click or by `Tab` key press;
-* `button` control component:
-    * `_focused` state toggle. Button will not obtain focus on mouse click or by `Tab` key press;
-    * `_hovered` state toggle on mouse pointer hover.
-
-Available for all block themes.
+* `popup` cannot be opened by clicking a mouse and get `opened` modifier;
+* `popup` block cannot get `visible` modifier;
+* control component cannot be `focused`;
+* `button` control component cannot get `hovered` modifier.
 
 ```bemjson
 {
     block : 'dropdown',
-    mods : {
-        switcher : 'button',
-        theme : 'normal',
-        size : 'xl',
-        disabled : true
-    },
-    switcher : 'button',
+    mods : { switcher : 'button', theme : 'normal', size : 'm', disabled : true },
+    switcher : 'Button',
     popup : 'Hello, world!'
 }
 ```
 
+#### _opened
 
-### dropdown's states
-
-#### `_opened`
-
-`_opened` modifier toggles automatically on mouse click on the control component.
+`opened` modifier is set automatically on mouse click on a control component when `popup` is opened. The second click closes `popup` – `opened` modifier is removed.
 
 ```bemjson
 {
     block : 'dropdown',
-    mods : {
-        switcher : 'button',
-        theme : 'normal',
-        size : 'xl',
-        opened : true
-    },
-    switcher : 'button',
+    mods : { switcher : 'button', theme : 'normal', size : 'm', opened : true },
+    switcher : 'Button',`
     popup : 'Hello, world!'
 }
 ```
 
+## BEMJSON value of `switcher` and `popup` attributes
 
-Modifier can be removed by re-clicking on the control component or outside popup's window (in case of `_autoclosable` modifier availability for `popup` block).
+Control component and popup attributes can contain BEM entities that can be used for different purposes:
 
+* to wrap or modify a control component;
+* to propagate additional attribute values to a control component;
+* to create nested content in popup window.
 
-## BEMJSON value of `switcher` and `popup` attributes 
-
-As the control component and the popup attributes can contain BEM-entities it can be used for different purposes such as:
-
-* control component warping or modifying;
-* passing additional attribute values to control component;
-* creating nested content in popup window.
-
-For example, you can make a control component's button toggleable:
+For example, you can make a button control component toggleable:
 
 ```bemjson
 {
     block : 'dropdown',
-    mods : {
-        switcher : 'button',
-        theme : 'normal',
-        size : 'xl'
-    },
+    mods : { switcher : 'button', theme : 'normal', size : 'm' },
     switcher : {
         block : 'button',
         mods : { togglable : 'true' },
@@ -182,14 +155,13 @@ For example, you can make a control component's button toggleable:
 }
 ```
 
-
-Or make dropdown list selector based on block:
+Or make dropdown list selector based on a block:
 
 ```bemjson
 {
     block : 'dropdown',
     mods : {
-        switcher : 'button',
+        switcher : 'Button',
         theme : 'normal',
         size : 'xl'
     },
@@ -216,13 +188,3 @@ Or make dropdown list selector based on block:
     }
 }
 ```
-
-
-## Dependencies
-
-The `dropdown` block depends on:
-
-* `i-bem__dom`
-* `dom`
-* `popup`
-* `button`/`link` (depending on `_switcher` control component type)

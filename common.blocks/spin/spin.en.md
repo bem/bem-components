@@ -1,21 +1,19 @@
 # spin
 
-This block indicates the progress of some process (e.g. site page or some media file loading).
+`spin` block indicates the progress of some process (e.g. site page or some media file loading).
 
 Rotation of the `spin` block is implemented by CSS3 animation.
 
-## Block Modifiers
+## Modifiers of a block
 
 ### _theme
 
-Mandatory modifier. The `spin` block doesn't have native control representation (*default*).
+The `spin` block does not have native control representation.
 
-This block supports following themes:
+Block supports the following themes:
 
 * simple
-* normal
-
-Following examples demonstrate this:
+* normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
 
 **simple**
 
@@ -31,88 +29,85 @@ Following examples demonstrate this:
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 's', progress : true }
+    mods : { theme : 'normal', size : 'm', progress : true }
 }
 ```
 
+<a name="size"></a>
 ### _size
 
-Mandatory modifier.
+Implemented only for theme `normal`.
 
-There are five sizes available: **XS**, **S**, **M**, **L**, **XL**.
-
-Following examples demonstrate this:
+There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
 
 <table>
     <tr>
-        <th>Block's size</th>
+        <th>Block size</th>
         <th>Size, px</th>
-        <th>Example</th>
     </tr>
     <tr>
-        <th>XS</th>
+        <th>xs</th>
         <td>16px</td>
-        <td>
-            <pre><code>
+    </tr>
+    <tr>
+        <th>s</th>
+        <td>24px</td>
+    </tr>
+    <tr>
+        <th>m</th>
+        <td>28px</td>
+    </tr>
+    <tr>
+        <th>l</th>
+        <td>32px</td>
+    </tr>
+    <tr>
+        <th>xl</th>
+        <td>38px</td>
+    </tr>
+</table>
+
+See following examples:
+
+**XS**
+
+```bemjson
 {
     block : 'spin',
     mods : { theme : 'normal', size : 'xs', progress : true }
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>S</th>
-        <td>24px</td>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'spin',
     mods : { theme : 'normal', size : 's', progress : true }
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>M</th>
-        <td>28px</td>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'spin',
     mods : { theme : 'normal', size : 'm', progress : true }
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>L</th>
-        <td>32px</td>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'spin',
     mods : { theme : 'normal', size : 'l', progress : true }
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>XL</th>
-        <td>38px</td>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'spin',
     mods : { theme : 'normal', size : 'xl', progress : true }
 }
-            </code></pre>
-        </td>
-    </tr>
-</table>
+```
 
-### _progress
+### States of a block
 
-`progress` modifier with `true` value activates the spin. `spin` block rotates only in visible state.
+#### _progress
 
-`progress` modifies with `false` value paused rotation of `spin` block and hides it from the page.
+`progress` modifier with `true` value activates the spin. If `progress` modifier is not specified, rotation is paused and `spin` block is hidden from the page.

@@ -1,1 +1,1 @@
-Clear attachment button (deletion cross element)
+Clear attachment element

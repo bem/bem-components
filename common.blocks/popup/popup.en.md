@@ -1,22 +1,34 @@
 # popup
 
-A `popup` block is used for popups creation. It allows to manage state, behavior and appearance of popups. Block is displayed in front of all other page elements.
+`popup` block is used to create and manage state, behavior and appearance of popups. It can be triggered by a button or a pseudo link. Popup is always displayed above all other elements on a page.
 
-Popup can be displayed by different page elements like pseudo links or buttons.
+When `popup` is opened for the first time (`visible` modifier with `true` value is set) block's DOM element is created in the end of the document `<body>`.
 
-At the moment of first display (`_visible` modifier toggle) block's DOM element is created in the end of document `<body>`.
+## Initialization of a block
 
+To display `popup` when `visible` modifier is assigned, block should be initialized to `setTarget` method. `setTarget` needs to determine the popup position on a page. It can be performed:
 
-## Block's modifiers
+* according to a parent block position. In this case the parent DOM element or BEM block should be passed as an argument to `setTarget`;
+* by direct coordinates defining. The first and the second arguments passed to `setTarget` define left and top margins on a page: `setTarget(x-coordinate, y-coordinate)`.
 
-### The themes `_theme`
+The method returns `this`.
+
+## Modifiers of a block
+
+### _theme
+
+Block supports the following themes:
 
  * simple
  * normal
 
-If a `_theme` modifier is not set, browser defaults (`default`) will be applied to block.
+If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
-#### default
+See following examples:
+
+<a name="native"></a>
+**default**
+
 ```bemjson
 {
     block : 'popup',
@@ -24,8 +36,7 @@ If a `_theme` modifier is not set, browser defaults (`default`) will be applied 
 }
 ```
 
-
-#### simple
+**simple**
 
 ```bemjson
 {
@@ -35,8 +46,7 @@ If a `_theme` modifier is not set, browser defaults (`default`) will be applied 
 }
 ```
 
-
-#### normal
+**normal**
 
 ```bemjson
 {
@@ -46,85 +56,46 @@ If a `_theme` modifier is not set, browser defaults (`default`) will be applied 
 }
 ```
 
-### Visibility `_visible`
+### States of a block
 
-A `_visible` modifier allow to control block visibility. If it's not set, block will not be displayed.
+#### _visible
+
+`visible` modifier is set automatically when `popup` is displayed. When `popup` is hidden, `visible` modofier is removed.
+
+#### `_autoscalable`
+
+When `autoscalable` modifier with `true` is set to `popup` block, mouse click outside the popup area hides it automatically.
 
 ```bemjson
 {
     block : 'popup',
-    mods : { theme : 'normal', visible : true },
+    mods : { theme : 'normal', autoclosable : true },
     content : 'normal'
 }
 ```
 
+### Popup opening direction `_direction`
 
-### Alignment respect to its parent `_direction`
+This modifier controls position of `popup` ralative to the element that trigges it.
 
-Modifier controls the position of popup window relative to the block which opened it – popup's alignment. Popup window's position is detected automatically basing on the admissible directions array and the parent block's position.
+By default the following admissible directions are available:
 
-Chosen alignment will affect the opening animation direction.
+* bottom-left
+* bottom-center
+* bottom-right
+* top-left
+* top-center
+* top-right
+* right-top
+* right-center
+* right-bottom
+* left-top
+* left-center
+* left-bottom
 
-By default following admissible directions array is used:
+Required popup positions can be listed as JS parameters with `direction` key in BEMJSON declaration. The most suitable directions will be chosen among provided values  according to a parent block position on a page
 
-
-<table>
-    <tr>
-        <th> Direction </td>
-        <th> Index in array </td>
-    </tr>
-        <td> bottom-left </td>
-        <td> 0 </td>
-    </tr>
-    <tr>
-        <td> bottom-center </td>
-       <td> 1 </td>
-   </tr>
-    <tr>
-        <td> bottom-right</td>
-        <td> 2 </td>
-    </tr>
-    <tr>
-        <td> top-left </td>
-        <td> 3 </td>
-    </tr>
-    <tr>
-        <td> top-center </td>
-        <td> 4 </td>
-    </tr>
-    <tr>
-        <td> top-right </td>
-        <td> 5 </td>
-    </tr>
-    <tr>
-        <td> right-top </td>
-        <td> 6 </td>
-    </tr>
-    <tr>
-        <td> right-center </td>
-        <td> 7 </td>
-    </tr>
-    <tr>
-        <td> right-bottom </td>
-        <td> 8 </td>
-    </tr>
-    <tr>
-        <td> left-top </td>
-        <td> 9 </td>
-    </tr>
-    <tr>
-        <td> left-center </td>
-        <td> 10 </td>
-    </tr>
-    <tr>
-        <td> left-bottom </td>
-        <td> 11 </td>
-    </tr>
-</table>
-
-To control the popup window position you can provide directions array with desired directions set only. According to parent block's position on a page the most suitable directions will be chosen among the provided values.
-
-For example, if the popup window should be opened at the top of the parent block:
+For example, to open `popup` at the top of the parent block use `top-left`, `top-center` and `top-right` values:
 
 ```bemjson
 {
@@ -135,8 +106,7 @@ For example, if the popup window should be opened at the top of the parent block
 }
 ```
 
-
-Or if it should be opened strictly at the center-right position:
+To open `popup` strictly at the `center-right` position do the following:
 
 ```bemjson
 {
@@ -147,40 +117,10 @@ Or if it should be opened strictly at the center-right position:
 }
 ```
 
+## Relationship between popups
 
-### Automatic closure  `_autoclosable`
+`popup` block supports a nested stucture of multiple simultaneous popups. It means you can open popup (child) within another popup (parent) with the parent popup remaining opened.
 
-With `_autoclosable` modifier toggled block will automatically hide away on mouse click outside popup window (`_visible` modifier will be removed).
+If `autoscalable` modifier is specified, mouse click outside the parent popup area hides it and all its child automatically.
 
-```bemjson
-{
-    block : 'popup',
-    mods : { theme : 'normal', autoclosable : true },
-    content : 'normal'
-}
-```
-
-
-##Relations between popup's
-
-As long as popup's parent block itself can be nested in another popup block there is a need in a popup's relations handling. Block can handle Parent → [ Child, Child, ... ] relations by checking if the parent block is nested in another popup block. So, the children knows about the parent blocks existence.
-
-If there were no such relations, the parent popup block will be closed on mouse click on the child block regardless of the fact that `_autoclosable` modifier is set to `true`.
-
-This means that with `autoclosable` modifier toggled block will close itself and close all of it children on mouse click outside block's window or it child's window.
-
-Child popup blocks can be regarded as a chain of 1 → 2 → 3 → 4. By clicking on the second element of chain, third and forth will be closed. By clicking on first, the second, third and forth will be closed. On click outside of any popup window of the chain element all popups will be closed.
-
-
-## Dependencies
-
-The block depends on:
-
-* `i-bem__dom `
-* `jquery`
-* `dom`
-* `objects`
-* `functions__throttle`
-* `keyboard`
-* `ua`
-* `jquery__event_pointer`
+Child popup blocks can be regarded as a chain of `1` → `2` → `3` → `4`. By clicking on the second element of a chain, third and forth will be closed. By clicking on the first – the second, third and forth will be closed. Clicking outside any popup area of the chain elements will close all popups.

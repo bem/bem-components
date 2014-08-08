@@ -1,20 +1,14 @@
 # button
 
-The `button` block is used for different types of buttons creation. It allows you to manage size, sate, content and appearance of a button.
+`button` block is used to manage size, state, content and appearance of a button.
 
-## Button use cases
+## Custom fields of a block
 
-* button – is used to create the majority of web inteface buttons. Used by default.
-* link-button – a button that provides link functionality. Must have a mandatory modifier `type` with `link` value.
-* action button – a button designed to send data to the server (submit). Must be always located inside a form. Sets `type` modifier with `submit` value in BEMJSON to create an action button.
-
-## Valid block's attributes
-
-Valid block's attributes could be specified in corresponding fields of block's BEMJSON file:
+The following custom fields could be specified in BEMJSON declaration of the block:
 
 <table>
     <tr>
-        <th>Attributes</th>
+        <th>Custom field name</th>
         <th>Type</th>
         <th>Description</th>
     </tr>
@@ -23,33 +17,33 @@ Valid block's attributes could be specified in corresponding fields of block's B
         <td>
             <code>String</code>
         </td>
-        <td>Text of a button.</td>
+        <td>Text of a button. Specifies <code>text</code> HTML attribute to a button.</td>
     </tr>
     <tr>
         <td>icon</td>
         <td>
             <code>BEMJSON</code>
         </td>
-        <td>Button with an icon provided by an <code>icon</code> block.</td>
+        <td>Button with an icon realized by <a href="../icon/icon.en.md">icon</a> block.</td>
     </tr>
     <tr>
         <td>url</td>
         <td>
             <code>String</code>
         </td>
-        <td>URL address. It is used only if <code>button_type_link</code> modifier is specified. In this case a button
-            acts as a link and <code>url</code> value is represented as a <code>href</code> attribute.
-        </td>
+        <td>URL address. It is used only for a <a href="#link-button">button with link behavior</a>.
+            <br>Specifies <code>href</code> HTML attribute to a button.</td>
     </tr>
     <tr>
         <td>id</td>
         <td>
             <code>String</code>
         </td>
-        <td>Unique identifier of a button.</td>
+        <td>Unique identifier of a button.
+            <br><br>Specifies <code>id</code> HTML attribute to a button.</td>
     </tr>
     <tr>
-        <td>tabindex</td>
+        <td>tabIndex</td>
         <td>
             <code>String</code>
         </td>
@@ -60,31 +54,32 @@ Valid block's attributes could be specified in corresponding fields of block's B
         <td>
             <code>String</code>
         </td>
-        <td>Value to be sent to a server. It is empty by default.</td>
+        <td>Specifies value that will be sent to a server or obtained using client scripts. It is empty by default. Pair <code>"id=val"</code> is sent to a server, where id is set by <code>id</code> attribute and value – by <code>val</code> attribute.</td>
     </tr>
 </table>
 
-The other valid block's attributes could be specified in the `attrs` field in BEMJSON.
+Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
 
-## Block's modifiers
+## Modifiers of a block
 
 ### _theme
 
-The block supports the following themes:
+Block supports the following themes:
 
  * simple
- * normal
+ * normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
 
-If a `theme` modifier is not specified, the native representation (*default*) of a control is available.
+If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
-Following examples demonstrate this:
+See following examples:
 
+<a name="native"></a>
 **default**
 
 ```bemjson
 {
     block : 'button',
-    text : 'Theme is not specified'
+    text : 'No theme'
 }
 ```
 
@@ -93,8 +88,8 @@ Following examples demonstrate this:
 ```bemjson
 {
     block : 'button',
-    mods : { theme : 'simple' },
-    text : 'Simple theme'
+    text : 'Theme simple',
+    mods : { theme : 'simple' }
 }
 ```
 
@@ -103,145 +98,119 @@ Following examples demonstrate this:
 ```bemjson
 {
     block : 'button',
-    mods : { theme : 'normal', size : 'm' },
-    text : 'Normal theme'
+    text : 'Theme normal',
+    mods : { theme : 'normal', size : 'm' }
 }
 ```
 
+<a name="size"></a>
 ### _size
 
-Mandatory modifier that is available for *normal* theme only.
+Implemented only for theme `normal`.
 
-Provides all types of buttons with the `size` value.
+Provides all types of buttons with `size` value.
 
-There are four sizes available: **S**, **M**, **L**, **XL**.
-
-Following examples demonstrate this:
+There are four sizes available: **s**, **m**, **l**, **xl**.
 
 <table>
-  <tr>
-    <th>Size</th>
-    <th>Font size</th>
-    <th>Button height</th>
-    <th>Example</th>
-  </tr>
-  <tr>
-        <th>S</th>
+     <tr>
+        <th>Size</th>
+        <th>Font size</th>
+        <th>Button height</th>
+    </tr>
+    <tr>
+        <th>s</th>
         <td>13px</td>
         <td>24px</td>
-        <td>
-            <pre><code>
-{
-    block : 'button',
-    mods : { theme : 'normal', size : 's' },
-    text : 'Small'
-}
-            </code></pre>
-        </td>
     </tr>
     <tr>
-        <th>M</th>
+        <th>m</th>
         <td>13px</td>
         <td>28px</td>
-        <td>
-            <pre><code>
-{
-    block : 'button',
-    mods : { theme : 'normal', size : 'm' },
-    text : 'Medium'
-}
-            </code></pre>
-        </td>
     </tr>
     <tr>
-        <th>L</th>
+        <th>l</th>
         <td>15px</td>
         <td>32px</td>
-        <td>
-            <pre><code>
-{
-    block : 'button',
-    mods : { theme : 'normal', size : 'l' },
-    text : 'Large'
-}
-            </code></pre>
-        </td>
     </tr>
     <tr>
-        <th>XL</th>
+        <th>xl</th>
         <td>18px</td>
         <td>38px</td>
-        <td>
-            <pre><code>
-{
-    block : 'button',
-    mods : { theme : 'normal', size : 'xl' },
-    text : 'X-large'
-}
-            </code></pre>
-        </td>
     </tr>
 </table>
 
+See following examples:
+
+```bemjson
+{
+    block : 'button',
+    text : 'Small',
+    mods : { theme : 'normal', size : 's' }
+}
+```
+
+```bemjson
+{
+    block : 'button',
+    text : 'Medium',
+    mods : { theme : 'normal', size : 'm' }
+}
+```
+
+```bemjson
+{
+    block : 'button',
+    text : 'Large',
+    mods : { theme : 'normal', size : 'l' }
+}
+```
+
+```bemjson
+{
+    block : 'button',
+    text : 'X-large',
+    mods : { theme : 'normal', size : 'xl' }
+}
+```
+
 ### _type
 
-The block could be represented as a `link-button` (`button_type_link`).
+If `type` modifier is not specified for the block, normal button will be represented by default.
 
-This button type has mandatory attribute `url` that should be specified in BEMJSON input data. A link-button has an `<a>` attribute. `url` value becomes `href` attribute.
+<a name="link-button"></a>
+#### Button with link behavior
 
-```
+Use `type` modifier with `link` value to create a button that behaves like a link.
+
+Specify additional `url` attribute in BEMJSON input data for this button type.
+
+```bemjson
 {
     block : 'button',
-    mods : { theme : 'normal', size : 'm', type : 'link' },
     url : '#',
-    text : 'Link-button'
+    text : 'Link behavior',
+    mods : { theme : 'normal', size : 'm', type : 'link' }
 }
 ```
 
-### _view
+#### Form submit button
 
-#### _action
-
-Visually highlights a button on a page.
+Use `type` modifier with `submit` value to create a button for data sending to a server (submit). This button type implemented for buttons located inside a form.
 
 ```bemjson
 {
     block : 'button',
-    mods : { theme : 'normal', size : 'm', view : 'action' },
-    type : 'submit',
-    text : 'Action'
+    text : 'Submit',
+    mods : { theme : 'normal', size : 'm', type : 'submit' }
 }
 ```
 
-#### _pseudo
-
-With `view` modifier set to `pseudo`, the background of button becomes transparent.
-
-```bemjson
-{
-    block : 'button',
-    mods : { theme : 'normal', size : 'm', view : 'pseudo' },
-    text : 'pseudo'
-}
-```
-
-If pseudo button is disabled, its borders disappear.
-
-```bemjson
-{
-    block : 'button',
-    mods : { theme : 'normal', size : 'm', view : 'pseudo', disabled : true },
-    text : 'pseudo'
-}
-```
-
-### Button's states
+### States of a block
 
 #### _disabled
 
-If `disabled` modifier has `true` value, button is visible but not available for user action.
-
-Disabled button cannot be focused by pressing a `Tab` or on mouse click.
+`disabled` modifier is used to make block visible but not available for user action. It cannot be focused, pressed or hovered. In most cases to mark out the disabled block on a page, additional styles are applied.
 
 ```bemjsom
 {
@@ -253,7 +222,7 @@ Disabled button cannot be focused by pressing a `Tab` or on mouse click.
 
 #### _focused
 
-If `focused` modifier has `true` value, the button is always focused. You can click the focused button using `Space` or `Enter` button on your keyboard. To switch between controls use a `Tab` button.
+When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.
 
 ```bemjson
 {
@@ -263,46 +232,82 @@ If `focused` modifier has `true` value, the button is always focused. You can cl
 }
 ```
 
+#### _togglable
+
+Defines a behavior of the pressed button.
+
+The following values of `togglable` modifier are available:
+
+* `check` – the first click presses the button, and the second releases it.
+
+```bemjson
+{
+    block : 'button',
+    text : 'Check',
+    mods : { theme : 'normal', size : 'm', togglable : check },
+}
+```
+
+* `radio` – the first click presses the button and it cannot be released by the next click.
+
+```bemjson
+{
+    block : 'button',
+    text : 'Radio',
+    mods : { theme : 'normal', size : 'm', togglable : radio }
+}
+```
 #### _hovered
 
-Defines "hover" action.
+Defines "hovered" state of a button.
 
 #### _pressed
 
 Defines "pressed" state of a button.
 
-#### _togglable
+### _view
 
-Defines a state of the pressed button when the first click presses the button, and the second returns it to its original state.
+#### _action
+
+Implemented only for theme `normal`.
+
+Visually highlights a button with yellow colour on a page. Could be used as a promo button.
 
 ```bemjson
 {
     block : 'button',
-    text : 'Togglable',
-    mods : { theme : 'normal', size : 'm', togglable : true }
+    type : 'submit',
+    text : 'Action',
+    mods : { theme : 'normal', size : 'm', view : 'action' }
 }
 ```
 
-## Block's elements
+#### _pseudo
+
+Implemented only for theme `normal`.
+
+This modifier changes visual representation of a button. With `view` modifier set to `pseudo`, the background of a button becomes transparent.
+
+```bemjson
+{
+    block : 'button',
+    text : 'Pseudo',
+    mods : { theme : 'normal', size : 'm', view : 'pseudo' }
+}
+```
+
+If pseudo button is disabled, its borders disappear.
+
+```bemjson
+{
+    block : 'button',
+    text : 'Disabled',
+    mods : { theme : 'normal', size : 'm', view : 'pseudo', disabled : true }
+}
+```
+
+## Elements of a block
 
 ### __text
 
-This auxiliary element sets a text position inside the button.
-
-```bemjson
-{
-    block : 'button',
-    mods : { theme : 'normal', size : 'm' },
-    icon : {
-        block : 'icon',
-        mods : { action : 'download' }
-    },
-    text : 'With icon'
-}
-```
-
-## Block's dependencies
-
-* `control`, that provides public API for the controls
-* `i-bem__dom`
-* `keyboard`
+An auxiliary element that is added to the block on template engine level.

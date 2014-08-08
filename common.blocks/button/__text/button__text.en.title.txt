@@ -1,1 +1,1 @@
-Specifies text position inside a button
+Auxiliary element

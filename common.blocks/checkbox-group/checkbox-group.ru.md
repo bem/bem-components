@@ -1,19 +1,18 @@
-# checkbox-group  
+# checkbox-group
 
-Блок `checkbox-group` служит для отображения группы однотипных переключателей – чекбоксов (блоков `checkbox`). Любой из переключателей группы может быть либо активен, либо нет вне зависимости от состояния других переключателей.
+Блок `checkbox-group` служит для отображения группы однотипных переключателей – чекбоксов (блоков [checkbox](../checkbox/checkbox.ru.md)).
 
-Блок позволяет управлять внешним видом и состоянием вложенных переключателей. 
+Блок позволяет управлять внешним видом и состоянием вложенных независимых чекбоксов.
 
 В результате BEMHTML-преобразований блок `checkbox-group` становится HTML-элементом с тегом `<span>` – контейнером, содержащим группу чекбоксов и подписи к ним.
 
+## Специализированные поля блока
 
-## Допустимые параметры блока
-
-Допустимые атрибуты блока задаются в одноименных полях входного BEMJSON блока:
+Список зарезервированных полей входного BEMJSON:
 
 <table>
     <tr>
-        <th>Атрибут</th>
+        <th>Поле</th>
         <th>Тип</th>
         <th>Описание</th>
     </tr>
@@ -25,29 +24,28 @@
     <tr>
         <td>options</td>
         <td><code>Array</code></td>
-        <td>Массив хешей. Каждый хеш соответствует одному переключателю группы чекбоксов и содержит набор его параметров.</td>
-    </tr>    
+        <td>Массив пар значений <code>text=val</code>, которые соответствуют одному чекбоксу группы. На сервер отправляется пара <code>name=val</code>, где имя группы чекбоксов задается ключом <code>name</code>, а значение каждого чекбокса — ключом <code>val</code>.
+            <br>Независимый чекбокс из группы может получать модификаторы блока <code>checkbox</code>. Например, модификаторы <code>checked</code> или <code>disabled</code> могут быть заданы не блоку <code>checkbox-group</code>, а отдельным чекбоксам.</td>
+    </tr>
 </table>
 
-Среди параметров, передаваемых для переключателя в массиве хешей `option`, обязательными являются:
-
-* `val` (`String`|`Number`) – значение, возвращаемое выбранным чекбоксом (элемент `checkbox__control`);
-* `text`  (`String`) – подпись, отображаемая для текущего переключателя. 
-
-Помимо обязательных параметров в массиве `option` могут быть переданы любые параметры, допустимые для блока `checkbox`, например, модификаторы `_checked` или `_disabled`.
+При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле `attrs` в BEMJSON.
 
 ## Модификаторы блока
 
-### Темы блока `_theme`
+### Темы `_theme`
 
- * simple   
- * normal  
+Блок представлен в следующих темах:
 
-Без указания темы к блоку применяются значения, установленные браузером по умолчанию (*default*). 
+* simple
+* normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
+
+Без указания модификатора `theme` отображается [нативный](#default) вид контрола.
 
 Наглядно показано на примерах ниже:
 
-#### default
+<a name="default"></a>
+**default**
 
 ```bemjson
 {
@@ -60,8 +58,7 @@
 }
 ```
 
-
-#### simple
+**simple**
 
 ```bemjson
 {
@@ -75,13 +72,12 @@
 }
 ```
 
- 
-#### normal
+**normal**
 
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'l' },
+    mods : { theme : 'normal', size : 'm' },
     name : 'checkbox-normal',
     options : [
         { val : 1, text : 'first' },
@@ -90,21 +86,21 @@
 }
 ```
 
+<a name="size"></a>
+### Размеры `_size`
 
+Реализован только в теме `normal`.
 
-### Размер переключателей `_size`
+Модификатор `size` устанавливает размер переключателей для всех типов групп чекбоксов.
 
-Обязательный модификатор. Модификатор `_size` устанавливает размер переключателей для всех типов групп чекбоксов.
-
-Реализован только в теме *normal*.
-
-В зависимости от значения модификатора `_type` доступны следующие размеры реализации блока:
+В зависимости от значения модификатора [`type`](#type) доступны следующие размеры реализации блока:
 
 <table>
     <tr>
         <th>Размер</th>
-        <th>Обычная группа чекбоксов и <code>_type_line</code></th>
-        <th>Кнопочная группа чекбоксов (<code>_type_button</code>)</th>
+        <th>Группа чекбоксов без модификатора <code>type</code>.
+            <br>Группа чекбоксов c модификатором <code>type</code> в значении <code>link</code>.</th>
+        <th>Группа чекбоксов c модификатором <code>type</code> в значении <code>button</code>.</th>
     </tr>
     <tr>
         <th>s</th>
@@ -127,191 +123,104 @@
         <td>+</td>
 </table>
 
-Размеры на примере темы *normal* с модификатором `_type_button`:
+Наглядно показано на примерах ниже:
 
-<table>
-    <tr>
-        <th>Размер</th>
-        <th>Пример</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>
-            <pre><code>
+```bemjson
 {
     block : 'checkbox-group',
-    mods : { 
-        theme : 'normal', 
-        size : 's', 
-        type : 'button' 
-    },
+    mods : { theme : 'normal', size : 's', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'checkbox-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'm', 
-        type : 'button' 
-    },
+    mods : { theme : 'normal', size : 'm', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'checkbox-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'button' 
-    },
+    mods : { theme : 'normal', size : 'l', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'checkbox-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'xl', 
-        type : 'button' 
-    },
+    mods : { theme : 'normal', size : 'xl', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-</table>
+```
 
+<a name="type"></a>
+### Типы `_type`
 
-### Тип группы чекбоксов `_type`
+Доступны следующие значения модификатора `type`:
 
-Доступны следующие значения модификатор `_type`:
+* `button`. Модификатор `type` в значении `button` позволяет реализовать блок `checkbox-group` с помощью блока [button](..button/button.ru.md). Все чекбоксы группы в данном случае всегда располагаются в линию.
 
-* Модификатор `_type` со значением `button`. Используется для создания кнопочной группы чекбоксов – блока из кнопок-переключателей. 
-* Модификатор `_type` со значением `line` используется для создания группы чекбоксов с выравниванием в строку. После каждого переключателя группы, кроме последнего, автоматически добавляется отступ справа. Размер отступа зависит от значения модификатора `_size`. Реализован только в теме *normal*.
-
-Модификатор реализован во всех темах блока.
-
-<table>
-    <tr>
-        <th>Тип</th>
-
-        <th>Пример</th>
-    </tr>
-    <tr>
-        <td>Обычная группа чекбоксов</td>
-        <td>
-            <pre><code>
+```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'l' },
-    name : 'checkbox-normal',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-            </code></pre>
-        </td>
-    <tr>
-        <td>Кнопочная группа чекбоксов (<code>_type_button</code>)</td>
-        <td>
-            <pre><code>
-{
-    block : 'checkbox-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'button' 
-    },
+    mods : { theme : 'normal', size : 'm', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <td>Строчная группа чекбоксов (<code>_type_line</code>)</td>
-        <td>
-            <pre><code>
+```
+
+* `line`. Модификатор `type` в значении `line` применяется к группе чекбоксов для выравнивания их в строку. После каждого чекбокса группы, кроме последнего, автоматически добавляется отступ справа. Размер отступа зависит от значения модификатора `size`. Реализован только в теме *normal*.
+
+```bemjson
 {
     block : 'checkbox-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'line' 
-    },
+    mods : { theme : 'normal', size : 'm', type : 'line' },
     name : 'checkbox-line',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>    
-</table>
+```
 
+### Состояния блока
 
-### Неактивна `_disabled`
-   
-В состоянии "неактивна" группа чекбоксов отображается, но недоступна для действий пользователя.  
+#### Неактивен `_disabled`
 
-Такая группа чекбоксов не будет получать фокус (модификатор `_focused`).
+В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу `Tab`, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.
 
-При установке модификатора `_disabled` для группы всем переключателям группы также устанавливается модификатор `_disabled`. Как следствие, для них не будут:
+При установке модификатора `disabled` для группы всем чекбоксам группы также устанавливается модификатор `disabled`. Как следствие, для них не будут:
 
-* устанавливаться модификаторы состояния `_hovered`, `_pressed` и `_focused`;
-* изменяться значения модификатора `_checked`.
-
-Модификатор реализован во всех темах блока.
+* устанавливаться модификаторы состояния `hovered`, `pressed` и `focused`;
+* изменяться значения модификатора `checked`.
 
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'button',
-        disabled : true 
-    },
+    mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -320,37 +229,45 @@
 }
 ```
 
+```bemjson
+{
+    block : 'checkbox-group',
+    mods : { theme : 'normal', size : 'm', disabled : true },
+    name : 'checkbox-button',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second', checked : true }
+    ]
+}
+```
 
-### Состояния блока 
-
-#### В фокусе `_focused`
-
-Модификатор `_focused` в значении `true` автоматически выставляется блоку в момент, когда один из его элементов находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
-
-Реализован во всех темах блока.
+Модификатор `disabled` может быть назначен отдельным чекбоксам в группе.
 
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'button',
-        focused : true 
-    },
-    name : 'checkbox-button',
+    mods : { theme : 'normal', size : 'm', type : 'line' },
+    name : 'checkbox-line',
     options : [
-        { val : 1, text : 'first' },
+        { val : 1, text : 'first', disabled : true },
         { val : 2, text : 'second' }
     ]
 }
 ```
 
+```bemjson
+{
+    block : 'checkbox-group',
+    mods : { theme : 'normal', size : 'm', type : 'button' },
+    name : 'checkbox-line',
+    options : [
+        { val : 1, text : 'first', disabled : true },
+        { val : 2, text : 'second' }
+    ]
+}
+```
 
-## Зависимости блока
+#### В фокусе `_focused`
 
-Блок `checkbox-group` зависит от следующего набора блоков и элементов:
+Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
 
-* `i-bem__dom `
-* `checkbox`
-* `jquery`

@@ -1,1 +1,1 @@
-Element for a file name rendering 
+Element for a file name representation

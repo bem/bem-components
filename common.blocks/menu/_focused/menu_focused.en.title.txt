@@ -1,1 +1,1 @@
-Infocus state modifier
+Focused

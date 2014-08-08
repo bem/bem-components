@@ -16,23 +16,23 @@
             content : [
                 {
                     elemName : 'label',
-                    content : '1'
+                    content : 'Ужасно 1'
                 },
                 {
                     elemName : 'label',
-                    content : '2'
+                    content : 'Плохо 2'
                 },
                 {
                     elemName : 'label',
-                    content : '3'
+                    content : 'Сойдет 3'
                 },
                 {
                     elemName : 'label',
-                    content : '4'
+                    content : 'Хорошо 4'
                 },
                 {
                     elemName : 'label',
-                    content : '5'
+                    content : 'Отлично 5'
                 }
             ]
         }

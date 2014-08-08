@@ -4,30 +4,28 @@ modules.define('rating', ['i-bem__dom'], function(provide, BEMDOM) {
         onSetMod : {
             'js' : {
                 'inited' : function() {
+                    this._layerWidth = 0;
+                    this._on = true;
                 }
             }
         },
 
-        _LAYERWIDTH : 0,
-
-        _ON : true,
-
         setVal : function(point, total, votes) {
-            this._LAYERWIDTH = ( ( (point + total) / (votes + 1) ) * 16).toFixed(1);
-            this.findElem('labelCut').width(this._LAYERWIDTH);
+            this._layerWidth = ( ( (point + total) / (votes + 1) ) * 16).toFixed(1);
+            this.findElem('labelCut').width(this._layerWidth);
         },
 
         getVal : function(elemInput) {
             var val = Number(elemInput.context.value);
 
             this.setVal(val, 4, 1);
-            this._ON = false;
+            this._on = false;
             return val;
         }
     }, {
         live : function() {
             this.liveBindTo('input', 'click', function(e) {
-               (this._ON && this.getVal(e.currentTarget));
+               (this._on && this.getVal(e.currentTarget));
             });
             return false;
         }

@@ -14,7 +14,7 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
         'right-top', 'right-center', 'right-bottom',
         'left-top', 'left-center', 'left-bottom'
     ],
-    BASE_ZINDEX = 10000,
+    ZINDEX_FACTOR = 1000,
     UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
 
     win = BEMDOM.win,
@@ -51,6 +51,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this._popupOwner = null;
                 this._pos = null;
                 this._zIndex = null;
+                this._zIndexGroupLevel = undef;
                 this._isAttachedToScope = false;
                 this._isTargetVisible = undef;
                 this._lastDrawingCss = {
@@ -75,7 +76,10 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
 
         'visible' : {
             'true' : function() {
-                this._zIndex = captureZIndex();
+                this._zIndex = captureZIndex(
+                    typeof this._zIndexGroupLevel === 'undefined'?
+                        this._zIndexGroupLevel = this._calcZIndexGroupLevel() :
+                        this._zIndexGroupLevel);
                 this._owner && (this._ownerParents = this._owner.parents());
 
                 this
@@ -86,7 +90,7 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             },
 
             '' : function() {
-                releaseZIndex(this._zIndex);
+                releaseZIndex(this._zIndexGroupLevel, this._zIndex);
 
                 this
                     .unbindFrom('pointerpress', this._onPointerPress)
@@ -142,6 +146,8 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             this._popupOwner = null;
             this._isTargetVisible = true;
         }
+
+        this._zIndexGroupLevel = undef;
 
         return this;
     },
@@ -437,6 +443,17 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
         return res;
     },
 
+    _calcZIndexGroupLevel : function() {
+        var res = this.params.zIndexGroupLevel;
+        return this._popupOwner?
+            this._popupOwner.findBlocksOutside('z-index-group').reduce(
+                function(res, zIndexGroup) {
+                    return res + Number(zIndexGroup.getMod('level'));
+                },
+                res) :
+            res;
+    },
+
     _bindToScrollAndResize : function() {
         this._ownerParents &&
             this
@@ -521,22 +538,24 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
             mainOffset : 0,
             secondaryOffset : 0,
             viewportOffset : 0,
-            directions : DEFAULT_DIRECTIONS
+            directions : DEFAULT_DIRECTIONS,
+            zIndexGroupLevel : 0
         };
     }
 }, /** @lends popup */{
     live : true
 }));
 
-var visiblePopupsZIndexes = [BASE_ZINDEX];
+var visiblePopupsZIndexes = {};
 
-function captureZIndex() {
-    return visiblePopupsZIndexes[
-        visiblePopupsZIndexes.push(visiblePopupsZIndexes[visiblePopupsZIndexes.length - 1] + 1) - 1];
+function captureZIndex(level) {
+    var zIndexes = visiblePopupsZIndexes[level] || (visiblePopupsZIndexes[level] = [(level + 1) * ZINDEX_FACTOR]);
+    return zIndexes[zIndexes.push(zIndexes[zIndexes.length - 1] + 1) - 1];
 }
 
-function releaseZIndex(zIndex) {
-    visiblePopupsZIndexes.splice(visiblePopupsZIndexes.indexOf(zIndex), 1);
+function releaseZIndex(level, zIndex) {
+    var zIndexes = visiblePopupsZIndexes[level];
+    zIndexes.splice(zIndexes.indexOf(zIndex), 1);
 }
 
 function checkMainDirection(direction, mainDirection1, mainDirection2) {

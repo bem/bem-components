@@ -4,7 +4,8 @@ module.exports = function(bh) {
             mainOffset : json.mainOffset,
             secondaryOffset : json.secondaryOffset,
             viewportOffset : json.viewportOffset,
-            directions : json.directions
+            directions : json.directions,
+            zIndexGroupLevel : json.zIndexGroupLevel
         });
     });
 };

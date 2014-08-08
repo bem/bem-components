@@ -9,5 +9,6 @@
 },
 {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'popup' }
+    mustDeps : { tech : 'bemhtml', block : 'popup' },
+    shouldDeps : 'z-index-group'
 }]

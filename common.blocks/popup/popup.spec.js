@@ -28,9 +28,7 @@ describe('popup', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(popupDomElem);
-        popupParentDomElem.remove();
-        popupOwnerDomElem.remove();
+        BEMDOM.destruct(popupParentDomElem);
     });
 
     describe('setTarget', function() {
@@ -51,6 +49,8 @@ describe('popup', function() {
             var popupOffset = popupDomElem.offset();
             popupOffset.top.should.be.equal(coords.top + popup.params.mainOffset);
             popupOffset.left.should.be.equal(coords.left);
+
+            BEMDOM.destruct(popupDomElem);
         });
 
         it('should consume DOM elem as a target', function() {
@@ -77,6 +77,8 @@ describe('popup', function() {
                 .setTarget(0, 0)
                 .setMod('visible');
             popup.domElem.parent()[0].should.be.eql($('body')[0], 'misplaced on visible');
+
+            BEMDOM.destruct(popupDomElem);
         });
     });
 
@@ -115,6 +117,8 @@ describe('popup', function() {
                         .setMod('visible')
                         .getMod('direction')
                             .should.be.equal(data[2]);
+
+                    BEMDOM.destruct(popupDomElem);
                 });
             });
         });
@@ -220,6 +224,8 @@ describe('popup', function() {
             }));
 
             popup.getMod('direction').should.be.equal('left-center');
+
+            BEMDOM.destruct(popupDomElem);
         });
     });
 
@@ -240,6 +246,69 @@ describe('popup', function() {
             childPopup.setMod('visible');
             popup.delMod('visible');
             childPopup.hasMod('visible').should.be.false;
+        });
+    });
+
+    describe('z-index groups', function() {
+        beforeEach(function() {
+            popup.setTarget(popupOwnerDomElem);
+        });
+
+        it('should be z-indexed in open order by default', function() {
+            var popup2 = buildPopup(
+                popupParentDomElem,
+                { block : 'popup', content : 'content 2' })
+                    .setTarget(popupOwnerDomElem);
+
+            popup2.setMod('visible');
+            popup.setMod('visible');
+
+            Number(popup.domElem.css('z-index'))
+                .should.be.gt(Number(popup2.domElem.css('z-index')));
+        });
+
+        it('should properly use zIndexGroupLevel param', function() {
+            var popup2 = buildPopup(
+                popupParentDomElem,
+                { block : 'popup', zIndexGroupLevel : 1, content : 'content 2' })
+                    .setTarget(popupOwnerDomElem);
+
+            popup2.setMod('visible');
+            popup.setMod('visible');
+
+            Number(popup.domElem.css('z-index'))
+                .should.be.lt(Number(popup2.domElem.css('z-index')));
+        });
+
+        it('should properly use z-index-group blocks which may be in owner parents', function() {
+            var zIndexGroup1 = $(BEMHTML.apply({
+                        block : 'z-index-group',
+                        mods : { level : 1 },
+                        content : { tag : 'span', content : 'owner 2' }
+                    })).appendTo(popupParentDomElem),
+                popup2 = buildPopup(
+                    zIndexGroup1,
+                    { block : 'popup', content : 'content 2' })
+                        .setTarget(zIndexGroup1.find('span:first')),
+                zIndexGroup2 = $(BEMHTML.apply({
+                        block : 'z-index-group',
+                        mods : { level : 1 },
+                        content : { tag : 'span', content : 'owner 3' }
+                    })).appendTo(zIndexGroup1),
+                popup3 = buildPopup(
+                    zIndexGroup2,
+                    { block : 'popup', content : 'content 3' })
+                        .setTarget(zIndexGroup2.find('span:first'));
+
+            popup3.setMod('visible');
+            popup2.setMod('visible');
+            popup.setMod('visible');
+
+            Number(popup.domElem.css('z-index'))
+                .should.be.lt(Number(popup2.domElem.css('z-index')));
+
+            Number(popup2.domElem.css('z-index'))
+                .should.be.lt(Number(popup3.domElem.css('z-index')));
         });
     });
 

@@ -2,19 +2,16 @@
 
 Блок `control-group` – это обертка, предназначенная для визуальной группировки других блоков. Группируемые блоки помещаются в поле `content` BEMJSON декларации.
 
-Блок реализован в технологии CSS и не вводит никакой дополнительной логики. Для вложенных блоков должна быть установлена тема *normal*.
+Блок реализован только в технологии CSS. Для всех вложенных блоков должна быть установлена тема `normal`.
 
-В результате применения шаблонов, блок `control-group` становится на странице HTML-элементом с тегом `<div>`.
-
+В результате применения шаблонов блок `control-group` становится на странице HTML-элементом с тегом `<div>`.
 
 ## Варианты использования
 
 Блок позволяет визуально группировать следующие блоки:
 
-* `input` – поле ввода;
-* `button` – кнопка.
-
-Например:
+* [input](../input/input.ru.md)
+* [button](../button/button.ru.md)
 
 ```bemjson
 {
@@ -22,21 +19,20 @@
     content : [
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'l', type : 'search' },
+            mods : { theme : 'normal', size : 'm', type : 'search' },
             val : 'Your-query',
             placeholder : 'query'
         },
         {
             block : 'button',
-            mods : { theme : 'normal', size : 'l' },
+            mods : { theme : 'normal', size : 'm' },
             text : 'search'
         }
     ]
 }
 ```
 
-
-Кроме того, можно группировать блоки, использующие `input` или `button`, как один из компонентов. Например, в группу можно включить блок `select`, управляющим компонентом для которого служит блок `button`: 
+Кроме того, можно группировать блоки, использующие `input` или `button` как один из компонентов. Например, в группу можно включить блок `select`, управляющим компонентом которого служит блок `button`:
 
 ```bemjson
 {
@@ -64,21 +60,18 @@
 }
 ```
 
-Могут быть сгруппированы следующие блоки, использующие в качестве компонента блок `button`:
+Блоки, использующие в качестве компонента блок `button`, могут быть сгруппированы:
 
-* `select`;
-* `dropdown` (с модификатором `dropdown_switcher_button`);
-* `checkbox` (с модификатором `checkbox_type_button`);
-* `radio` (с модификатором `radio_type_button`).
-
+* [select](../select/select.ru.md);
+* [dropdown](../dropdown/dropdown.ru.md) (с модификатором `dropdown_switcher_button`);
+* [checkbox](../checkbox/checkbox.ru.md) (с модификатором `checkbox_type_button`);
+* [radio](../radio/radio.ru.md) (с модификатором `radio_type_button`).
 
 ## Влияние группировки на блоки
 
-### `input`
+### Болк `input`
 
-Для всех сгруппированных блоков `input`, кроме последнего, не отображается правая граница (CSS свойство `right` устанавливается равным нулю для псевдоэлемента `:before`). Для последнего блока группы толщина правой границы равна 1px.
-
-Например:
+Для всех сгруппированных блоков `input`, кроме последнего, не отображается правая граница (CSS свойство `right` устанавливается равным нулю для псевдоэлемента `:before`). У последнего блока группы толщина правой границы равна 1px.
 
 ```bemjson
 {
@@ -86,30 +79,29 @@
     content : [
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'xl', type : 'search' },
+            mods : { theme : 'normal', size : 'm', type : 'search' },
             val : 'First-query',
             placeholder : 'query'
         },
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'xl', type : 'search' },
+            mods : { theme : 'normal', size : 'm', type : 'search' },
             val : 'Second-query',
             placeholder : 'query'
         },
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'xl', type : 'search' },
+            mods : { theme : 'normal', size : 'm', type : 'search' },
             val : 'Another-query',
             placeholder : 'query'
-        }        
+        }
     ]
 }
 ```
 
+### Блок `button`
 
-### `button`
-
-Для блоков `button` группировка влияет на скругление углов и наличие правой границы. Внешний вид зависит от положения блока `button` внутри группы – первый и последний элементы группы визуально отличаются от прочих:
+Для блоков `button` группировка влияет на скругление углов и наличие правой границы. Внешний вид зависит от положения блока `button` в группе – первый и последний элементы группы визуально отличаются от остальных:
 
 <table>
     <tr>
@@ -128,10 +120,10 @@
         <td>+</td>
     </tr>
     <tr>
-        <td>Не из крайних</td>
+        <td>В середине</td>
         <td>Без скругления углов</td>
         <td>-</td>
-    </tr>    
+    </tr>
 </table>
 
 Например:
@@ -143,7 +135,7 @@
         {
             block : 'button',
             mods : { theme : 'normal', size : 'xl' },
-            text : 'First of group'
+            text : 'The first element'
         },
         {
             block : 'button',
@@ -153,7 +145,7 @@
         {
             block : 'button',
             mods : { theme : 'normal', size : 'xl' },
-            text : 'Last one'
+            text : 'The last element'
         }
     ]
 }

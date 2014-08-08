@@ -1,1 +1,4 @@
-block('rating').elem('label').tag()('label');
+block('rating').elem('label') (
+    tag()('label'),
+    js()(true)
+);

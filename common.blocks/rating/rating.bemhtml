@@ -33,7 +33,7 @@ block('rating') (
                 attrs : { style : 'width: ' + points * 16 + 'px;' }
             });
 
-            return rates;
+            return rates.reverse();
 
         } else {
             rates = ctx.content.map(function(rate, i) {
@@ -60,7 +60,7 @@ block('rating') (
                 attrs : { style : 'width: ' + points * 16 + 'px;' }
             });
 
-            return rates;
+            return rates.reverse();
         }
     })
 );

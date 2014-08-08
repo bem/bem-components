@@ -8,11 +8,12 @@ modules.define('rating', ['i-bem__dom'], function(provide, BEMDOM) {
             }
         },
 
-        setVal : function() {
-
+        setVal : function(points) {
+            this.findElem('labelCut').width(points);
         },
 
         getVal : function(elemInput) {
+            this.setVal(80);
             return  elemInput.context.value;
         }
     }, {

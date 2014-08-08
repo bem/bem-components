@@ -1,1 +1,1 @@
-Specifies "hover" action
+"Hovered" state

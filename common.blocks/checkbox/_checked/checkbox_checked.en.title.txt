@@ -1,1 +1,1 @@
-Checkbox is in active state (checked)
+Checkbox is checked

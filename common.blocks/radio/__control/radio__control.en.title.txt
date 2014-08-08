@@ -1,1 +1,1 @@
-A radio switch controller
+Radio switch control

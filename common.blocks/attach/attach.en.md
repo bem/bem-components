@@ -1,33 +1,34 @@
 # attach
 
-`attach` block is used to upload a file to be sent to a server.
+`attach` block is used to upload file to be sent to a server.
 
-This block is visually represented by:
+By default this block is visually represented by:
 
-* button (`button` element is based on the [button](https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.en.md) block) that opens a system window for a file upload;
-* text message "No file selected".
+* button (element `button` is based on a block [button](../button/button.en.md)) that opens a system window for file upload;
+* text message (for example, "No file selected").
 
 When file upload is complete, the following elements become available:
 
 * file icon (`icon` block);
 * file name (`text` element);
-* deletion cross element (`clear` element).
+* element for file deletion (`clear` element).
 
 Block functionality does not support:
 
 * more than one file attaching;
 * drag-and-drop.
 
-## Block's modifiers
+## Modifiers of a block
 
 ### _theme
 
-The block supports only a theme called *simple*.
+Block supports only a theme called `simple`.
 
-If theme is not specified, only native representation of the block is available (*default*).
+If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
-See the following examples for demonstration:
+See following examples:
 
+<a name="native"></a>
 **default**
 
 ```bemjson
@@ -37,6 +38,7 @@ See the following examples for demonstration:
     noFileText : 'No file selected'
 }
 ```
+
 **simple**
 
 ```bemjson
@@ -48,13 +50,11 @@ See the following examples for demonstration:
 }
 ```
 
-### Block states
+### States of a block
 
 #### _disabled
 
-If block is disabled, a file selection button becomes unavailable for user's manipulations.
-
-The button is active by default, even if `disabled` modifier is not specified.
+`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
 
 ```bemjson
 {
@@ -65,15 +65,13 @@ The button is active by default, even if `disabled` modifier is not specified.
 }
 ```
 
-## Block's elements
+## Elements of a block
 
-The block is visually represented by the following elements:
+Block is visually represented by the following elements:
 
 ### __button
 
-A mandatory element.
-
-A file selection button. It is designed for opening a system window for file upload. It is based on [button](https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.en.md) block and inherits its behavior (JS) and formatting (CSS). Content of a button should be specified in input data.
+File selection button for opening a system window for file upload. It is based on [button](../button/button.en.md) block and inherits its behavior (JS) and styling (CSS). Content of a button should be specified in BEMJSON data.
 
 ```bemjson
 {
@@ -92,33 +90,31 @@ A file selection button. It is designed for opening a system window for file upl
 
 ### __control
 
-A native control for file attaching.
-
-It is rendered by BEMHTML and BH template engines as a native control of file attaching with attributes: `<input class="attach__control" type="file">`.
+Native control for file attaching that is added to the block on template engine level.
 
 ### __no-file
 
-Element for description rendering with no file selected.
+An auxiliary element is added to the block on template engine level. Sets text when file is not selected.
 
-If a theme *simple* is not declared, the text message "no file selected" is used by default.
+If theme *simple* is not declared, text message "no file selected" is used by default.
 
 ### __file
 
-A container with attached file information.
+Container with attached file information. An auxiliary element is added to the block on template engine level.
 
 It consists of the following elements of the block:
 
 * `text`
 * `clear`
 
-The element could contain an `icon` block. Depending on a file type an `icon` block could obtain corresponding modifier that specifies a type file icon to be assigned.
+This element could contain `icon` block. Depending on a file type `icon` block could obtain corresponding modifier.
 
 ### __text
 
-File name. It becomes available when you have attached the file.
+File name. It becomes available when you have attached some file.
 
 ### __clear
 
-Clear attachment button (deletion cross element). It becomes available when you have attched the file.
+Clear attachment element. It becomes available when you have attached some file.
 
-The element is available for a *simple* theme of `attach` block.
+The element is used for `simple` theme of `attach` block.

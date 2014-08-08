@@ -1,49 +1,49 @@
 # radio-group
 
-A `radio-group` block is a set of dependent switches – radio buttons (a `radio` block). It is used for a single option selection from the list of options. 
+`radio-group` block is a set of related radio switches (block [radio](../radio/radio.en.md)). It allows a user to select a single option from a group of options.
 
-On a web page, a `radio-group` block will be rendered to a `<span>` HTML element, with nested set of a switches (radio buttons).
+On a page, a `radio-group` block is represented as `<span>` HTML element with nested set of radio switches.
 
+## Custom fields of a block
 
-## Valid block's attributes
-
-Valid block's attributes can be specified in the corresponding fields of block's BEMJSON declaration:
+The following custom fields could be specified in BEMJSON declaration of the block:
 
 <table>
     <tr>
-        <th align="center">Attributes</th>
-        <th align="center">Type</th>
-        <th align="center">Description</th>
+        <th>Custom field name</th>
+        <th>Type</th>
+        <th>Description</th>
     </tr>
     <tr>
         <td>name</td>
         <td><code>String</code></td>
-        <td>Radio button group's name. Renders to the nested <code>input</code> block's <code>name</code> HTML attribute.</td>
+        <td><code>radio-group</code> name that is used for its identification. Specifies <code>name</code> HTML attribute to a nested <code>input</code> block.</td>
     </tr>
     <tr>
         <td>options</td>
         <td><code>Array</code></td>
-        <td>Option objects array. Each object in the array are corresponds to one switch and contains it's attributes set.</td>
-    </tr>    
+        <td>An array of pairs that maps <code>text</code> to <code>val</code> for each switch in radio-group. Each pair <code>name=val</code> within the array corresponds to one radio switch. Pair <code>name=val</code> is sent to a server, where name of a radio group is set by <code>name</code> field and value of each radio switch – by <code>val</code> field.
+            <br><code>disabled</code> modifier of <code>radio</code> block could be propagated to each radio switch of <code>options</code> array.</td>
+    </tr>
 </table>
 
-Among the attributes passing to an `option` field for the switch the following are mandatory:
+Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
 
-* `val` (`String` | `Number`) – value returned by selected switcher (a 'radio__control' element);
-* `text` (`String`) – a text label for the current switch.
+## Modifiers of a block
 
-## Block's modifiers
+### _theme
 
-### The themes `theme`
+Block supports the following themes:
 
  * simple
- * normal
+ * normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
 
-If a `theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
+If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
-For example:
+See following examples:
 
-#### default
+<a name="native"></a>
+**default**
 
 ```bemjson
 {
@@ -56,8 +56,7 @@ For example:
 }
 ```
 
-
-#### simple
+**simple**
 
 ```bemjson
 {
@@ -71,13 +70,12 @@ For example:
 }
 ```
 
- 
-#### normal
+**normal**
 
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'l' },
+    mods : { theme : 'normal', size : 'm' },
     name : 'radio-normal',
     options : [
         { val : 1, text : 'first' },
@@ -86,21 +84,23 @@ For example:
 }
 ```
 
+<a name="size"></a>
+### _size
 
-### The sizes `size`
+Implemented only for theme `normal`.
 
-Mandatory modifier. Available for *normal* theme only.
-Provides the size value to all types of radio groups.
+Provides to all types of `radio-group` with the size value.
 
-There are four sizes available: **S**, **M**, **L**, **XL**.
+There are four sizes available: **s**, **m**, **l**, **xl**.
 
-Depending on a `type` modifier value following sizes are available:
+Depending on a [type](#mode) modifier value following sizes are available:
 
 <table>
     <tr>
         <th>Size</th>
-        <th>Normal radio group</th>
-        <th>Button radio group (<code>_type_button</code>)</th>
+        <th>Default radio group</th>
+        <th>Button-based radio group
+            <br>(<code>radio-group_type_button</code>)</th>
     </tr>
     <tr>
         <th>s</th>
@@ -123,230 +123,125 @@ Depending on a `type` modifier value following sizes are available:
         <td>+</td>
 </table>
 
+See following examples:
 
-Here are some examples with *normal* theme and and with set `radio-group_type_button` modifier:
 
-<table>
-    <tr>
-        <th>Размер</th>
-        <th>Пример</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>
-            <pre><code>
+```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 's', 
-        type : 'button' 
-    },
-    name : 'radio-S',
+    mods : { theme : 'normal', size : 's', type : 'button' },
+    name : 'Small',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'm', 
-        type : 'button' 
-    },
-    name : 'radio-M',
+    mods : { theme : 'normal', size : 'm', type : 'button' },
+    name : 'Medium',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'button' 
-    },
-    name : 'radio-L',
+    mods : { theme : 'normal', size : 'l', type : 'button' },
+    name : 'Large',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>
-            <pre><code>
+```
+
+```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'xl', 
-        type : 'button' 
-    },
-    name : 'radio-XL',
+    mods : { theme : 'normal', size : 'xl', type : 'button' },
+    name : 'X-Large',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-</table>
+```
 
+<a name="mode"></a>
+### _type
 
-### Radio group type `type`
+The following types of `radio-group` block are available:
 
-A `type` modifier can have following values:
+* `button`-based. Use `type` modifier with `button` value to create `radio-group` block implemented by [button](..button/button.en.md) block. Button-based radio switches of a group are always aligned in a line.
 
-* `button`. It is used for creation of a button radio group – a block of button switcher;
-* `line`. Is used for a line-aligned radio group creation. Right gap is automatically added after each switch of the group except the last one. Available only for *normal* theme.
-
-<table>
-    <tr>
-        <th>Type</th>
-
-        <th>Example</th>
-    </tr>
-    <tr>
-        <td>Normal radio group</td>
-        <td>
-            <pre><code>
+```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'l' },
-    name : 'radio-normal',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-            </code></pre>
-        </td>
-    <tr>
-        <td>Button radio group</td>
-        <td>
-            <pre><code>
-{
-    block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'button' 
-    },
+    mods : { theme : 'normal', size : 'm', type : 'button' },
     name : 'radio-button',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>
-    <tr>
-        <td>Line-aligned radio group (<code>_type_line</code>)</td>
-        <td>
-            <pre><code>
+```
+
+* `line`-aligned. Use `type` modifier with `line` value to align all radio switches in the group in a line. Right gap is automatically added after each switch in the group except for the last one. Implemented only for theme `normal`.
+
+```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'line' 
-    },
+    mods : { theme : 'normal', size : 'm', type : 'line' },
     name : 'radio-line',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
     ]
 }
-            </code></pre>
-        </td>
-    </tr>    
-</table>
+```
 
+### States of a block
 
-### Inactive `disabled`
+### _disabled
 
-A `radio-group_disabled` modifier is used for an inactive radio group creation. An inactive group is displayed but not available for user actions.  
+`disabled` modifier is used to make block visible but not available for user action. It cannot be focused, pressed or hovered. In most cases to mark out the disabled block on a page, additional styles are applied.
 
-Such a group will not obtain focus (`radio-group_focused` modifier will not be toggled).
-
-When a `disabled` modifier is set to the group all it's switches will also be disabled. As a result, for the group's switches will not be performed:
-
-* state modifiers `hovered`, `pressed` and `focused` toggling;
-* switching between `checked` modifier's values.
-
-Modifier is available for all block themes.
+If `checkbox-group` block is disabled, all checkboxes within this group are also disabled. `checked` modifier value cannot be changed in `disabled` state.
 
 ```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'button',
-        disabled : true 
-    },
-    name : 'radio-normal',
+    mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
+    name : 'radio-button',
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 2, text : 'second', checked : true },
+        { val : 3, text : 'third' }
     ]
 }
 ```
-
-
-### Radio group's states
-
-#### `focused`
-
-A `radio-group_focused` modifier is automaticly toggles when one of the block elements is in focus. For example, on mouse click or by `Tab` key press. 
-
-Available for all block themes.
+You can apply `disabled` modifier to separate switches in a group.
 
 ```bemjson
 {
     block : 'radio-group',
-    mods : { 
-        theme : 'normal', 
-        size : 'l', 
-        type : 'button',
-        focused : true 
-    },
-    name : 'radio-normal',
+    mods : { theme : 'normal', size : 'm', type : 'line' },
+    name : 'radio-line',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'first', disabled : true },
+        { val : 2, text : 'second' },
+        { val : 3, text : 'third' }
     ]
 }
 ```
 
+#### _focused
 
-## Dependencies
-
-The block depends on:
-
-* `i-bem__dom `
-* `radio`
-* `jquery`
-* `radio-group_type_button` (which is depends on `button` block)
+When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.

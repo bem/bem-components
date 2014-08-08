@@ -1,6 +1,6 @@
 # control
 
-Auxiliary block designed for common functionality implementation to provide the most blocks of [bem-components](https://github.com/bem/bem-components) library with `focused` and `disabled` states:
+`control` block is used to implement common functionality of the following blocks:
 
 * [attach](../attach/attach.en.md)
 * [button](../button/button.en.md)
@@ -10,9 +10,13 @@ Auxiliary block designed for common functionality implementation to provide the 
 * [menu](../menu/menu.en.md)
 * [radio](../radio/radio.en.md)
 
-The `control` block provides valid `tabIndex` attribute value depending on the current state of a block.
+`control` block provides:
 
-The block uses following methods:
+* with `focused` and` disabled` states implementation at `common.blocks` level;
+* with `hovered` state implementation at `desktop.blocks` level;
+* with valid `tabIndex` attribute value depending on current state of the block.
+
+Methods of a block:
 
 <table>
     <tr>
@@ -20,11 +24,11 @@ The block uses following methods:
         <th>Description</td>
     </tr>
     <tr>
-        <td>`getVal`</td>
-        <td>Returns a control's value.</td>
+        <td><code>getVal</code></td>
+        <td>Returns a control value.</td>
     </tr>
     <tr>
-        <td>`getName`</td>
-        <td>Returns the name of the control (if available). If control name is not available, returns an empty string.</td>
+        <td><code>getName</code></td>
+        <td>Returns a name of a control (if available). If control name is not available, returns an empty string.</td>
     </tr>
 </table>

@@ -1,6 +1,6 @@
 # image
 
-`<img>`-based block is designed for images pasting, using as a content (logo, for example).
+`<img>`-based block is used for images representation with different content types e.g., logo.
 
 ```bemjson
 {
@@ -13,13 +13,13 @@
 }
 ```
 
-## Valid block's attributes
+## Custom fields of a block
 
-Valid block's attributes could be specified within corresponding fields of block's BEMJSON file:
+The following custom fields could be specified in BEMJSON declaration of the block:
 
 <table>
     <tr>
-        <th>Attribute</th>
+        <th>Custom field name</th>
         <th>Type</th>
         <th>Description</th>
     </tr>
@@ -28,28 +28,29 @@ Valid block's attributes could be specified within corresponding fields of block
         <td>
             <code>String</code>
         </td>
-        <td>Specifies icon name.</td>
+        <td>Specifies icon name. Specifies <code>title</code> HTML attribute to an icon.</td>
     </tr>
     <tr>
         <td>alt</td>
         <td>
             <code>String</code></td>
-        <td>A mandatory attribute. Specifies an alternate text for images. This text type allows user to obtain text information about an image when it is impossible to download. <br> This block is recognized by screen readers for alternative playback.</td>
+        <td>Specifies an alternate text for images. It allows a user to view text information about an image when image downloading is impossible.
+            <br> This block is recognized by screen readers and other programs.</td>
     </tr>
     <tr>
         <td>url</td>
         <td>
             <code>String</code>
         </td>
-        <td>An url address to open image.</td>
+        <td>Url address to open an image.</td>
     </tr>
     <tr>
         <td>width, height</td>
         <td>
             <code>Number</code>
         </td>
-        <td>Values ​​that will be transferred to image's attributes with same names.</td>
+        <td>Values ​​that will be transferred to image attributes with the same names.</td>
     </tr>
 </table>
 
-Other valid block's attributes could be specified in `attrs` field in BEMJSON.
+Additional required HTML attributes could be specified in `attrs` field of BEMJSON.

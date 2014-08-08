@@ -1,1 +1,1 @@
-Normal theme
+Theme "normal"

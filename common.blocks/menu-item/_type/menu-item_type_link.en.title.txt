@@ -1,1 +1,1 @@
-Link menu item
+Link-based menu item

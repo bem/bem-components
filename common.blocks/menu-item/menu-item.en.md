@@ -1,83 +1,43 @@
-# menu item
+# menu-item
 
-A `menu-item` block is used for creation of various types of menu and list items. It is used inside a `menu` block. The `menu-item` block allows to manage state, content and type of menu items.
+`menu-item` block is used as independent switch element to form dropdowns, tab menus, lists and menu items. `menu-item` block allows to manage state, content and type of menu items.
 
-As a result of BEMHTML transformations block will be rendered to a `<div>` HTML element, with `role="menuitem"` attribute set.
+Block is represented as `<div>` HTML element with `role="menuitem"` attribute.
 
+## Custom fields of a block
 
-## menu item use cases
-
-The block helps to create following menu item types:
+The following custom fields could be specified in BEMJSON declaration of the block:
 
 <table>
     <tr>
+        <th>Custom field name</th>
         <th>Type</th>
         <th>Description</th>
-        <th>An example</th>
-    </tr>
-    <tr>
-        <td>A switch element</td>
-        <td>Is used to set up a dropdowns, tab menus, lists and menu items, etc.</td>
-        <td>
-            <pre><code>
-{
-    block : 'menu-item',
-    val : 1,
-    content : 'Selector value'
-}
-            </code></pre>
-        </td>
-    <tr>
-        <td>A link element (<code>_type_link</code>)</td>
-        <td>An element with nested depended link. A <code>link</code> block should be placed into block's BEMJSON declaration <code>content</code> field. The <code>_type_link</code> modifier is required.
-        </td>
-        <td>
-            <pre><code>
-{
-    block : 'menu-item',
-    mods : { type : 'link' },
-    val : 2,
-    content : {
-        block : 'link',
-        url : '#',
-        content : 'Link 1'
-    }
-}
-            </code></pre>
-        </td>
-    </tr>
-</table>
-
-
-## Valid block's attributes
-
-Valid block's attributes can be specified in the corresponding fields of block's BEMJSON declaration:
-
-<table>
-    <tr>
-        <th align="center">Attributes</th>
-        <th align="center">Type</th>
-        <th align="center">Description</th>
     </tr>
     <tr>
         <td>val</td>
-        <td><code>String|Number</code></td>
-        <td>A value returned by menu item if selected.</td>
+        <td><code>String</code></td>
+        <td>Value to be sent to a server if <code>menu-item</code> is selected.</td>
     </tr>
 </table>
 
-## Block's modifiers
+Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
 
-### The themes `_theme`
+## Modifiers of a block
 
- * simple
- * normal
+### _theme
 
-If a `_theme` modifier is not set, the browser defaults (`default`) will be applied to the block.
+Block supports the following themes:
 
-For example:
+* simple
+* normal (**NB!** Choosing a theme `normal` requires additional modifier `size`.)
 
-#### default
+If `theme` modifier is not specified, [native](#native) representation of a control is applied.
+
+See following examples:
+
+<a name="native"></a>
+**default**
 
 ```bemjson
 {
@@ -87,7 +47,7 @@ For example:
 }
 ```
 
-#### simple
+**simple**
 
 ```bemjson
 {
@@ -98,109 +58,62 @@ For example:
 }
 ```
 
-#### normal
+**normal**
 
 ```bemjson
 {
     block : 'menu-item',
-    mods : { 
-        theme : 'normal', 
-        size : 'l'
-    },
+    mods : { theme : 'normal', size : 'm' },
     content : 'normal',
     val : 'my value'
 }
 ```
 
+### _type
 
-### Block's states
-
-### Inactive `_disabled`
-
-A `_disabled` modifier helps to create an inactive menu item. Inactive menu item is displayed, but not available for user actions.  
-
-If a `_type_link` modifier is set for the block with a nested link, the link will not be followed on mouse click.
-
-Available for all block themes.
+Use `type` modifier with `link` value to create `menu-item` based on [`link`](../link/link.en.md) block. In this case link is used instead of switch element. All modifiers of `link` block could be propagated to this type of `menu-item`.
 
 ```bemjson
 {
     block : 'menu-item',
-    mods : { 
-        theme : 'normal', 
-        size : 'm', 
-        disabled : true 
-    },
-    content : '_disabled'
-}
-```
-    
-
-#### Mouse over `_hovered`
-
-This modifier is automatically toggled when the mouse pointer is over the block. 
-
-Available for all block themes.
-
-```bemjson
-{
-    block : 'menu-item',
-    mods : { 
-        theme : 'normal', 
-        size : 'm', 
-        hovered : true 
-    },
-    content : '_hovered'
-}
-```
-
-
-#### Selected menu item `_checked`
-
-Modifier defines the selected menu item.
-
-```bemjson
-{
-    block : 'menu-item',
-    content : '_checked',
-    mods : { 
-        theme : 'normal', 
-        size : 'm', 
-        checked : true 
+    mods : { type : 'link' },
+    val : 2,
+    content : {
+        block : 'link',
+        url : '#',
+        content : 'Link 1'
     }
 }
 ```
 
+### States of a block
 
-For the `menu-item` blocks nested in a `menu` block `_checked` state toggles automatically on mouse click. 
+#### _checked
+
+This modifier defines the selected menu item.
 
 ```bemjson
 {
-    block : 'menu',
-    mods : { 
-        theme : 'normal', 
-        size : 'l',
-        select : 'check'
-    },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
+    block : 'menu-item',
+    mods : { theme : 'normal', size : 'm', checked : true },
+    content : 'checked'
 }
 ```
 
-## Dependencies
+For `menu-item` blocks nested in `menu` block `checked` state can be set on mouse click automatically.
 
-The block depends on:
+### _disabled
 
-* `i-bem__dom `
-* `jquery`
-* `dom`
+`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
+
+```bemjson
+{
+    block : 'menu-item',
+    mods : { theme : 'normal', size : 'm', disabled : true },
+    content : 'disabled'
+}
+```
+
+#### _hovered
+
+This modifier is automatically set to `menu-item` when mouse pointer is over the block.

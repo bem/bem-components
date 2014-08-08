@@ -1,1 +1,1 @@
-Input with a deletion cross element
+Input with a clear element

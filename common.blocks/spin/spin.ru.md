@@ -13,7 +13,7 @@
 Блок представлен в следующих темах:
 
  * simple
- * normal
+ * normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
 
 **simple**
 
@@ -33,84 +33,91 @@
 }
 ```
 
+<a name="size"></a>
 ### Размеры `_size`
 
-Обязательный модификатор. Задает размер блоку `spin`.
+Реализован только в теме `normal`.
 
-Реализован только в теме *normal*.
+Задает размер блоку `spin`.
 
 Доступно пять размеров реализации блока: **xs**, **s**, **m**, **l**, **xl**.
 
 <table>
     <tr>
-        <th>Размер<br>блока</th>
+        <th>Размер блока</th>
         <th>Размер, px</th>
-        <th>Реализация</th>
     </tr>
     <tr>
         <th>XS</th>
         <td>16px</td>
-        <td>
-            <pre><code>
-{
-    block : 'spin',
-    mods : { theme : 'normal', size : 'xs', progress : true }
-}
-            </code></pre>
-        </td>
     </tr>
     <tr>
         <th>S</th>
         <td>24px</td>
-        <td>
-            <pre><code>
-{
-    block : 'spin',
-    mods : { theme : 'normal', size : 's', progress : true }
-}
-            </code></pre>
-        </td>
     </tr>
     <tr>
         <th>M</th>
         <td>28px</td>
-        <td>
-            <pre><code>
-{
-    block : 'spin',
-    mods : { theme : 'normal', size : 'm', progress : true }
-}
-            </code></pre>
-        </td>
     </tr>
     <tr>
         <th>L</th>
         <td>32px</td>
-        <td>
-            <pre><code>
-{
-    block : 'spin',
-    mods : { theme : 'normal', size : 'l', progress : true }
-}
-            </code></pre>
-        </td>
     </tr>
     <tr>
         <th>XL</th>
         <td>38px</td>
-        <td>
-            <pre><code>
+    </tr>
+</table>
+
+Наглядно показано на примерах ниже:
+
+**XS**
+
+```bemjson
+{
+    block : 'spin',
+    mods : { theme : 'normal', size : 'xs', progress : true }
+}
+```
+
+**S**
+
+```bemjson
+{
+    block : 'spin',
+    mods : { theme : 'normal', size : 's', progress : true }
+}
+```
+
+**M**
+
+```bemjson
+{
+    block : 'spin',
+    mods : { theme : 'normal', size : 'm', progress : true }
+}
+```
+
+**L**
+
+```bemjson
+{
+    block : 'spin',
+    mods : { theme : 'normal', size : 'l', progress : true }
+}
+```
+
+**XL**
+
+```bemjson
 {
     block : 'spin',
     mods : { theme : 'normal', size : 'xl', progress : true }
 }
-            </code></pre>
-        </td>
-    </tr>
-</table>
+```
 
 ### Вращение прелоадера `_progress`
 
-Модификатор `progress` в значении `true` задает вращение прелоадера и показывает его на странице. Когда прелоадер виден, он крутится.
+Модификатор `progress` в значении `true` задает вращение прелоадера и показывает его на странице.
 
-Модификатор `progress` в значении `false` останавливает прелоадер и скрывает его со страницы.
+Отсутствие модификатора останавливает блок и скрывает его со страницы.

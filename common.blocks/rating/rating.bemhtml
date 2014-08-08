@@ -16,7 +16,8 @@ block('rating') (
                         elem : 'input',
                         attrs : {
                             id : this.generateId() + i,
-                            name : ctx.name
+                            name : ctx.name,
+                            value : i + 1
                         }
                     },
                     {
@@ -42,7 +43,8 @@ block('rating') (
                         elem : 'input',
                         attrs : {
                             id : this.generateId() + i,
-                            name : ctx.name
+                            name : ctx.name,
+                            value : i + 1
                         }
                     },
                     {

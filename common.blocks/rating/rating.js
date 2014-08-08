@@ -11,12 +11,12 @@ modules.define('rating', ['i-bem__dom'], function(provide, BEMDOM) {
         },
 
         getVal : function(elemLabel) {
-            return elemLabel.context.title;
+            return elemLabel.context.value;
         }
 
     }, {
         live : function() {
-            this.liveBindTo('label', 'click', function(e) {
+            this.liveBindTo('input', 'click', function(e) {
                 this.getVal(e.currentTarget);
             });
             return false;

@@ -2,6 +2,7 @@
     overflow: hidden;
     display: inline-block;
     position: relative;
+    height: 15px;
 }
 .rating__input {
     position: absolute;
@@ -11,8 +12,8 @@
 }
 
 .rating_theme_normal:hover .rating__label:hover,
-.rating_theme_normal:hover .rating__label:hover ~ .rating__label,
-.rating__input:checked ~ .rating__label {
+.rating_theme_normal:hover .rating__label:hover ~ .rating__label {
+//.rating__input:checked ~ .rating__label {
     background-position: 0 -15px;
     cursor: pointer;
 }

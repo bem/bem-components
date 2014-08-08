@@ -8,19 +8,26 @@ modules.define('rating', ['i-bem__dom'], function(provide, BEMDOM) {
             }
         },
 
+        _LAYERWIDTH : 0,
+
+        _ON : true,
+
         setVal : function(point, total, votes) {
-            var layerWidth = ( ( (point + total) / (votes + 1) ) * 16).toFixed(1);
-            this.findElem('labelCut').width(layerWidth);
+            this._LAYERWIDTH = ( ( (point + total) / (votes + 1) ) * 16).toFixed(1);
+            this.findElem('labelCut').width(this._LAYERWIDTH);
         },
 
         getVal : function(elemInput) {
-            this.setVal(1, 5, 1);
-            return  elemInput.context.value;
+            var val = Number(elemInput.context.value);
+
+            this.setVal(val, 4, 1);
+            this._ON = false;
+            return val;
         }
     }, {
         live : function() {
             this.liveBindTo('input', 'click', function(e) {
-                this.getVal(e.currentTarget);
+               (this._ON && this.getVal(e.currentTarget));
             });
             return false;
         }

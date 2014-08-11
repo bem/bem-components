@@ -35,11 +35,6 @@ block('rating') (
                 );
             }
 
-            rates.push({
-                elem : 'labelCut',
-                attrs : { style : 'width: ' + points * 16 + 'px;' }
-            });
-
         } else {
             rates = ctx.content.map(function(rate, i) {
                 return [
@@ -60,12 +55,12 @@ block('rating') (
                     }
                 ];
             }, this);
-
-            rates.push({
-                elem : 'labelCut',
-                attrs : { style : 'width: ' + points * 16 + 'px;' }
-            });
         }
+
+        rates.push({
+            elem : 'labelCut',
+            attrs : { style : 'width: ' + points * 16 + 'px;' }
+        });
         return rates.reverse();
     })
 );

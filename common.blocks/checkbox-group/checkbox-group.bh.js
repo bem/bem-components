@@ -22,6 +22,7 @@ module.exports = function(bh) {
                     name : json.name,
                     val : option.val,
                     text : option.text,
+                    title : option.title,
                     icon : option.icon
                 }
             ];

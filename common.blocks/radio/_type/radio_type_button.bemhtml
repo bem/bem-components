@@ -30,6 +30,7 @@ block('radio').mod('type', 'button')(
             block : 'button',
             mix : { block : 'radio', mods : mods, js : true },
             mods : buttonMods,
+            title : ctx.title,
             content : buttonContent
         });
     })

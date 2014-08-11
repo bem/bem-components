@@ -28,6 +28,7 @@ module.exports = function(bh) {
             block : 'button',
             mix : [{ block : 'checkbox', mods : mods, js : json.js || true }].concat(ctx.mix() || []),
             mods : buttonMods,
+            title : json.title,
             content : buttonContent
         };
     });

@@ -28,6 +28,7 @@ block('checkbox').mod('type', 'button')(
             block : 'button',
             mix : [{ block : 'checkbox', mods : mods, js : ctx.js || true }].concat(ctx.mix || []),
             mods : buttonMods,
+            title : ctx.title,
             content : buttonContent
         });
     })

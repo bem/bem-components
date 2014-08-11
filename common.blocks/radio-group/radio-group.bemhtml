@@ -25,6 +25,7 @@ block('radio-group')(
                     name : ctx.name,
                     val : option.val,
                     text : option.text,
+                    title : option.title,
                     icon : option.icon
                 }
             ];

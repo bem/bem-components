@@ -30,6 +30,7 @@ module.exports = function(bh) {
             block : 'button',
             mix : { block : 'radio', mods : mods, js : true },
             mods : buttonMods,
+            title : json.title,
             content : buttonContent
         };
     });

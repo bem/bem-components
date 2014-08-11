@@ -1,15 +1,21 @@
 block('rating') (
     tag()('span'),
     js()({ 'points' : this.ctx.points }),
-    attrs()({
-        name : this.ctx.name
+    mix()({ elem : 'control' }),
+    attrs()(function() {
+        var attrs = {};
+
+        attrs.name = this.ctx.name,
+        attrs.role = 'rating';
+
+        return attrs;
     }),
     content()(function() {
         var ctx = this.ctx,
-            points = +ctx.points,
+            points = Number(ctx.points),
             rates = [];
 
-        if(ctx.length && +ctx.length > 0) {
+        if(ctx.length && Number(ctx.length) > 0) {
             for(var i = 0, len = ctx.length; i < len; i++) {
                 rates.push(
                      {

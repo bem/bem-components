@@ -12,4 +12,12 @@
 {
     tech : 'spec.js',
     mustDeps : { tech : 'bemhtml', block : 'checkbox' }
-}]
+},
+{
+    tech : 'tmpl-spec.js',
+    mustDeps : [
+        { tech : 'bemhtml', block : 'checkbox', mods : { type : 'button' } },
+        { tech : 'bemhtml', block : 'icon' }
+    ]
+}
+]

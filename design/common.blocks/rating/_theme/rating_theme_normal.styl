@@ -11,6 +11,11 @@
     opacity: 0;
 }
 
+.rating_focused {
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px 1px #fc0;
+}
+
 .rating_theme_normal:hover .rating__label:hover,
 .rating_theme_normal:hover .rating__label:hover ~ .rating__label {
 //.rating__input:checked ~ .rating__label {
@@ -38,6 +43,10 @@
 .rating_disabled {
     z-index: -2;
     opacity: .5;
+}
+
+.rating__label_hovered {
+    background-position: 0 -15px;
 }
 
 /*.rating_theme_normal

@@ -1,48 +1,111 @@
-.rating_theme_normal {
+.rating_theme_normal.rating_size_m {
     overflow: hidden;
     display: inline-block;
     position: relative;
-    height: 15px;
+
+    .rating__input
+    {
+        position: absolute;
+        left: 0;
+        top: -12px;
+        opacity: 0;
+    }
+
+    .rating_focused
+    {
+        border-color: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 5px 1px #fc0;
+    }
+
+    &.rating_disabled
+    {
+      z-index: -2;
+      opacity: .5;
+    }
+
+    .rating__label,
+    &:hover .rating__label
+    {
+        float: right;
+        display: block;
+        width: 16px;
+        height: 15px;
+        background: url('stars_size_m.png') 0 0;
+    }
+
+    .rating__label:hover,
+    .rating__label_hovered,
+    .rating__label_hovered ~ .rating__label,
+    .rating__label:hover ~ .rating__label
+    {
+        background-position: 0 -15px;
+        cursor: pointer;
+    }
+
+
+
+    .rating__labelCut
+    {
+        position: absolute;
+        height: 15px;
+        background: url('stars_size_m.png') 0 -15px;
+        z-index: -1;
+    }
+
 }
-.rating__input {
+
+.rating_theme_normal.rating_size_s {
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+
+  .rating__input
+  {
     position: absolute;
     left: 0;
     top: -12px;
     opacity: 0;
-}
+  }
 
-.rating_focused {
+  .rating_focused
+  {
     border-color: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 5px 1px #fc0;
-}
+  }
 
-.rating__label,
-.rating_theme_normal:hover .rating__label {
-    float: right;
-    display: block;
-    width: 16px;
-    height: 15px;
-    background: url('stars.png') 0 0;
-}
-
-.rating_theme_normal .rating__label:hover,
-.rating_theme_normal .rating__label_hovered,
-.rating_theme_normal .rating__label_hovered ~ .rating__label,
-.rating_theme_normal .rating__label:hover ~ .rating__label {
-    background-position: 0 -15px;
-    cursor: pointer;
-}
-
-.rating__labelCut {
-    position: absolute;
-    display: inline-block;
-    height: 15px;
-    background: url('stars.png') 0 -15px;
-    background-repeat: repeat-x;
-    z-index: -1;
-}
-
-.rating_disabled {
+  &.rating_disabled
+  {
     z-index: -2;
     opacity: .5;
+  }
+
+  .rating__label,
+  &:hover .rating__label
+  {
+    float: right;
+    display: block;
+    width: 12px;
+    height: 11px;
+    background: url('stars_size_s.png') 0 0;
+  }
+
+  .rating__label:hover,
+  .rating__label_hovered,
+  .rating__label_hovered ~ .rating__label,
+  .rating__label:hover ~ .rating__label
+  {
+    background-position: 0 -11px;
+    cursor: pointer;
+  }
+
+
+
+  .rating__labelCut
+  {
+    position: absolute;
+    height: 11px;
+    background: url('stars_size_s.png') 0 -11px;
+    z-index: -1;
+  }
+
 }

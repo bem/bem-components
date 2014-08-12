@@ -1,6 +1,10 @@
 block('rating') (
     tag()('span'),
-    js()({ 'points' : this.ctx.points }),
+    js()(function() {
+        return {
+            'points' : this.ctx.points
+        };
+    }),
     mix()({ elem : 'control' }),
     attrs()(function() {
         var attrs = {};

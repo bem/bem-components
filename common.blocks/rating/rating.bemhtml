@@ -1,8 +1,14 @@
 block('rating') (
     tag()('span'),
     js()(function() {
+        var conf = {
+            's' : 12,
+            'm' : 16
+        };
+
         return {
-            'points' : this.ctx.points
+            'points' : this.ctx.points,
+            'size' : conf[this.mods.size]
         };
     }),
     mix()({ elem : 'control' }),
@@ -17,7 +23,11 @@ block('rating') (
     content()(function() {
         var ctx = this.ctx,
             points = Number(ctx.points),
-            rates = [];
+            rates = [],
+            conf = {
+                's' : 12,
+                'm' : 16
+            };
 
         if(ctx.length && Number(ctx.length) > 0) {
             for(var i = 0, len = ctx.length; i < len; i++) {
@@ -63,7 +73,7 @@ block('rating') (
 
         rates.push({
             elem : 'labelCut',
-            attrs : { style : 'width: ' + points * 16 + 'px;' }
+            attrs : { style : 'width: ' + points * conf[this.mods.size] + 'px;' }
         });
         return rates.reverse();
     })

@@ -38,7 +38,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
         },
 
         setVal : function(point, total, votes) {
-            this._layerWidth = ( ( (point + total) / (votes + 1) ) * 16).toFixed(1);
+            this._layerWidth = ( ( (point + total) / (votes + 1) ) * this.params.size).toFixed(1);
             this.findElem('labelCut').width(this._layerWidth);
         },
 

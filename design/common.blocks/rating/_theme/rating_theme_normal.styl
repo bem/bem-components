@@ -16,12 +16,6 @@
     box-shadow: 0 0 5px 1px #fc0;
 }
 
-.rating_theme_normal:hover .rating__label:hover,
-.rating_theme_normal:hover .rating__label:hover ~ .rating__label {
-//.rating__input:checked ~ .rating__label {
-    background-position: 0 -15px;
-    cursor: pointer;
-}
 .rating__label,
 .rating_theme_normal:hover .rating__label {
     float: right;
@@ -29,6 +23,14 @@
     width: 16px;
     height: 15px;
     background: url('stars.png') 0 0;
+}
+
+.rating_theme_normal .rating__label:hover,
+.rating_theme_normal .rating__label_hovered,
+.rating_theme_normal .rating__label_hovered ~ .rating__label,
+.rating_theme_normal .rating__label:hover ~ .rating__label {
+    background-position: 0 -15px;
+    cursor: pointer;
 }
 
 .rating__labelCut {
@@ -44,40 +46,3 @@
     z-index: -2;
     opacity: .5;
 }
-
-.rating__label_hovered {
-    background-position: 0 -15px;
-}
-
-/*.rating_theme_normal
-{
-    overflow: hidden;
-    display: inline-block;
-
-    .rating__input
-    {
-        position: absolute;
-        left: 0;
-        top: -50px;
-    }
-
-    &:hover .rating__label:hover,
-    &:hover .rating__label:hover ~ .rating__label,
-    .rating__input:checked ~ .rating__label
-    {
-        background-position: 15px 0;
-    }
-    .rating__label,
-    &:hover
-    {
-        &.rating__label
-        {
-            float: right;
-            display: block;
-            width: 15px;
-            height: 15px;
-            background: url('stars.png') 0 0;
-        }
-    }
-}
-*/

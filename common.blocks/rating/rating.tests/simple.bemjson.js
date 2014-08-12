@@ -13,7 +13,7 @@
             mods : { theme : 'normal' },
             name : 'rating',
             points : 4,
-            //length : '7', // строка, либо число, если убрать - сгенерирует по контенту
+            //length : '17', // строка, либо число, если убрать - сгенерирует по контенту
             content : [
                 {
                     elemName : 'label',
@@ -41,9 +41,9 @@
         {
             block : 'rating',
             mods : { theme : 'normal', disabled : true },
-            name : 'rating',
+            name : 'rating1',
             points : 4,
-            //length : '7', // строка, либо число, если убрать - сгенерирует по контенту
+            length : '7', // строка, либо число, если убрать - сгенерирует по контенту
             content : [
                 {
                     elemName : 'label',

@@ -7,7 +7,7 @@
         { elem : 'js', url : '_simple.js' }
     ],
     content : [
-        { tag : 'h3', content : 'normal', },
+        { tag : 'h3', content : 'normal' },
         {
             block : 'rating',
             mods : { theme : 'normal' },

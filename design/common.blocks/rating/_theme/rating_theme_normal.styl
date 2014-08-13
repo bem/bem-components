@@ -1,4 +1,9 @@
-.rating_theme_normal.rating_size_m {
+width = (12 16);
+height = (11 15);
+background = (url('stars_size_s.png') url('stars_size_m.png'));
+bgTopPosition = (-11 -15);
+
+.rating_theme_normal {
     overflow: hidden;
     display: inline-block;
     position: relative;
@@ -19,8 +24,8 @@
 
     &.rating_disabled
     {
-      z-index: -2;
-      opacity: .5;
+        z-index: -2;
+        opacity: .5;
     }
 
     .rating__label,
@@ -28,9 +33,6 @@
     {
         float: right;
         display: block;
-        width: 16px;
-        height: 15px;
-        background: url('stars_size_m.png') 0 0;
     }
 
     .rating__label:hover,
@@ -38,69 +40,39 @@
     .rating__label_hovered ~ .rating__label,
     .rating__label:hover ~ .rating__label
     {
-        background-position: 0 -15px;
         cursor: pointer;
     }
 
     .rating__labelCut
     {
         position: absolute;
-        height: 15px;
-        background: url('stars_size_m.png') 0 -15px;
         z-index: -1;
     }
 
-}
+    for sizeVal, i in (s m) {
+        &.rating_size_{sizeVal}
+        {
+            .rating__label,
+            &:hover .rating__label
+            {
+                width: (width[i])px;
+                height: (height[i])px;
+                background: background[i];
+            }
 
-.rating_theme_normal.rating_size_s {
-  overflow: hidden;
-  display: inline-block;
-  position: relative;
+            .rating__label:hover,
+            .rating__label_hovered,
+            .rating__label_hovered ~ .rating__label,
+            .rating__label:hover ~ .rating__label
+            {
+                background-position: 0 (height[i])px;
+            }
 
-  .rating__input
-  {
-    position: absolute;
-    left: 0;
-    top: -12px;
-    opacity: 0;
-  }
-
-  &.rating_focused
-  {
-    border-color: rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 5px 1px #fc0;
-  }
-
-  &.rating_disabled
-  {
-    z-index: -2;
-    opacity: .5;
-  }
-
-  .rating__label,
-  &:hover .rating__label
-  {
-    float: right;
-    display: block;
-    width: 12px;
-    height: 11px;
-    background: url('stars_size_s.png') 0 0;
-  }
-
-  .rating__label:hover,
-  .rating__label_hovered,
-  .rating__label_hovered ~ .rating__label,
-  .rating__label:hover ~ .rating__label
-  {
-    background-position: 0 -11px;
-    cursor: pointer;
-  }
-
-  .rating__labelCut
-  {
-    position: absolute;
-    height: 11px;
-    background: url('stars_size_s.png') 0 -11px;
-    z-index: -1;
-  }
+            .rating__labelCut
+            {
+                height: (height[i])px;
+                background: background[i] 0 (height[i])px;
+            }
+        }
+    }
 }

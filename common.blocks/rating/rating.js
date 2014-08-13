@@ -45,8 +45,10 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
             var val = Number(elemInput.context.value);
 
             this._removeFocusFromElem();
+            this._resetToDefault();
             this.setVal(val, 4, 1); // временно, чтобы сразу оттестить новый голос
-            this._on = false; // можно поставить модификатор _disabled
+            this._on = false;
+            this.setMod('disabled');
             return val;
         },
 
@@ -88,6 +90,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
                 this._removeFocusFromElem();
                 this.findElem('input').eq(this._hoveredElem).click();
                 this._resetToDefault();
+                this.setMod('disabled');
             }
         },
 

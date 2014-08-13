@@ -8,7 +8,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
                 'inited' : function() {
                     this.__base.apply(this, arguments);
 
-                    this.elemLabels = this.getItems();
+                    this.elemLabels = this._getItems();
                     this.elemLen = this.elemLabels.length + 1;
                     this.hoveredElem = null;
                     this.startMove = true;
@@ -33,7 +33,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
 
         },
 
-        getItems : function() {
+        _getItems : function() {
             return this.findElem('label');
         },
 
@@ -45,6 +45,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
         getVal : function(elemInput) {
             var val = Number(elemInput.context.value);
 
+            this.delMod(this.elemLabels.eq(this.hoveredElem), 'hovered');
             this.setVal(val, 4, 1);
             this._on = false; // можно поставить модификатор _disabled
             return val;
@@ -68,6 +69,8 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
             this.hoveredElem = this.elemLen - 1;
             this.setMod(this.elemLabels.eq(this.hoveredElem), 'hovered');
             this.startMove = false;
+
+            keyCode === keyCodes.SPACE && (this.findElem('input').eq(this.hoveredElem).click());
         },
 
     }, {

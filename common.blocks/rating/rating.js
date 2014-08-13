@@ -8,10 +8,10 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
                 'inited' : function() {
                     this.__base.apply(this, arguments);
 
-                    this.elemLabels = this._getItems();
-                    this.elemLen = this.elemLabels.length + 1;
-                    this.hoveredElem = null;
-                    this.startMove = true;
+                    this._elemLabels = this._getItems();
+                    this._elemLen = this._elemLabels.length + 1;
+                    this._hoveredElem = null;
+                    this._startMove = true;
 
                     this._layerWidth = 0;
                     this._on = true;
@@ -28,13 +28,12 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
                     this
                         .unbindFromDoc('keydown', this._onKeyDown)
                         .__base.apply(this, arguments);
+
+                    this._removeFocusFromElem();
+                    this._resetToDefault();
                 }
             },
 
-        },
-
-        _getItems : function() {
-            return this.findElem('label');
         },
 
         setVal : function(point, total, votes) {
@@ -45,32 +44,51 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
         getVal : function(elemInput) {
             var val = Number(elemInput.context.value);
 
-            this.delMod(this.elemLabels.eq(this.hoveredElem), 'hovered');
-            this.setVal(val, 4, 1);
+            this._removeFocusFromElem();
+            this.setVal(val, 4, 1); // временно, чтобы сразу оттестить новый голос
             this._on = false; // можно поставить модификатор _disabled
             return val;
+        },
+
+        _getItems : function() {
+            return this.findElem('label');
+        },
+
+        _resetToDefault : function() {
+            this._elemLen = this._elemLabels.length + 1;
+            this._hoveredElem = null;
+            this._startMove = true;
+        },
+
+        _removeFocusFromElem : function() {
+            this.delMod(this._elemLabels.eq(this._hoveredElem), 'hovered');
         },
 
         _onKeyDown : function(e) {
             var keyCode = e.keyCode;
 
-            this.hoveredElem !== null && (this.delMod(this.elemLabels.eq(this.hoveredElem), 'hovered'));
-            this.elemLen < 0 && (this.elemLen = this.elemLabels.length - 1);
-            this.elemLen > this.elemLabels.length - 1 && (this.elemLen = 0);
+            this._hoveredElem !== null && (this._removeFocusFromElem());
+            this._elemLen < 0 && (this._elemLen = this._elemLabels.length - 1);
+            this._elemLen > this._elemLabels.length - 1 && (this._elemLen = 0);
 
             if(keyCode === keyCodes.DOWN && !e.shiftKey) {
-                this.elemLen += 1;
+                e.preventDefault();
+                this._elemLen++;
             }
 
             if(keyCode === keyCodes.UP && !e.shiftKey) {
-                !this.startMove && (this.elemLen -= 1);
+                !this._startMove && (this._elemLen--);
             }
 
-            this.hoveredElem = this.elemLen - 1;
-            this.setMod(this.elemLabels.eq(this.hoveredElem), 'hovered');
-            this.startMove = false;
+            this._hoveredElem = this._elemLen - 1;
+            this.setMod(this._elemLabels.eq(this._hoveredElem), 'hovered');
+            this._startMove = false;
 
-            keyCode === keyCodes.SPACE && (this.findElem('input').eq(this.hoveredElem).click());
+            if(this._on && keyCode === keyCodes.SPACE) {
+                this._removeFocusFromElem();
+                this.findElem('input').eq(this._hoveredElem).click();
+                this._resetToDefault();
+            }
         },
 
     }, {

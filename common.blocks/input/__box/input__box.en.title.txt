@@ -1,1 +1,0 @@
-Element for input fields rendering (native input fields are hidden)

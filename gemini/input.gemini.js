@@ -74,7 +74,7 @@ gemini.suite('input', function(root) {
                 })
                 .capture('plain')
                 .capture('click', function(actions) {
-                    actions.mouseDown(this.control);
+                    actions.click(this.control);
                 })
                 .capture('text', function(actions) {
                     actions.sendKeys(this.control, text);

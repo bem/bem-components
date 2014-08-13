@@ -20,13 +20,18 @@ browsers:
 #    platform: Windows 7
 
 http:
-  timeout: 30000
-  retries: 4
-  retryDelay: 1000
+  timeout: 40000
+  #retries can break the tests if command is
+  #actually performed by saucelabs, but response
+  #is not received. In this case same command may be
+  #executed twice.
+  retries: 0
 
 debug: false
+tolerance: 0.005
 
 capabilities:
   record-screenshots: false
   record-video: false
   screen-resolution: 1024x768
+  max-duration: 7200

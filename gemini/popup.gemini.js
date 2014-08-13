@@ -20,7 +20,8 @@ gemini.suite('popup', function(root) {
                     .setCaptureElements(popupSwitcher, popupSelector)
                     .capture('plain')
                     .capture('opened', function(actions) {
-                        actions.click(popupSwitcher);
+                        actions.click(popupSwitcher)
+                            .wait(300);
                     });
             });
         });

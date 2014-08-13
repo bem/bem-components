@@ -54,7 +54,7 @@ The following custom fields could be specified in BEMJSON declaration of the blo
         <td>
             <code>String</code>
         </td>
-        <td>Specifies value that will be sent to a server or obtained using client scripts. It is empty by default. Pair <code>"id=val"</code> is sent to a server, where id is set by <code>id</code> attribute and value – by <code>val</code> attribute.</td>
+        <td>Specifies value that will be sent to a server or obtained using client scripts. It is empty by default. Pair <code>id=val</code> is sent to a server, where id is set by <code>id</code> attribute and value – by <code>val</code> attribute.</td>
     </tr>
 </table>
 
@@ -259,11 +259,11 @@ The following values of `togglable` modifier are available:
 ```
 #### _hovered
 
-Defines "hovered" state of a button.
+Defines “hovered” state of a button.
 
 #### _pressed
 
-Defines "pressed" state of a button.
+Defines “pressed” state of a button.
 
 ### _view
 

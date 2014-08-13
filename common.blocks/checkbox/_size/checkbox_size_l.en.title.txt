@@ -1,1 +1,0 @@
-Checkbox height is 17px

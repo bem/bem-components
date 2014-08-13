@@ -5,7 +5,7 @@
 By default this block is visually represented by:
 
 * button (element `button` is based on a block [button](../button/button.en.md)) that opens a system window for file upload;
-* text message (for example, "No file selected").
+* text message (for example, “No file selected”).
 
 When file upload is complete, the following elements become available:
 
@@ -96,7 +96,7 @@ Native control for file attaching that is added to the block on template engine 
 
 An auxiliary element is added to the block on template engine level. Sets text when file is not selected.
 
-If theme *simple* is not declared, text message "no file selected" is used by default.
+If theme *simple* is not declared, text message “no file selected” is used by default.
 
 ### __file
 

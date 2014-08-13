@@ -1,1 +1,0 @@
-Control component for standard block implementation

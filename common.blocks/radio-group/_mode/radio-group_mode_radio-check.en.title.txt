@@ -1,1 +1,0 @@
-Checkbox radio button mode. Radio button became active on mouse click. On re-clicking button deactivates.

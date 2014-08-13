@@ -138,7 +138,7 @@ See following examples:
 Use `mode` modifier to define a type of `select`:
 
 <a name="multiple-choice"></a>
-* Multiple-choice select (`select_mode_check`) allows user to check more than one menu item from the list or leave all items unchecked. Clicking on menu item changes its value to the opposite.
+* Multiple-choice select (`select_mode_check`) allows a user to check more than one menu item from the list or leave all items unchecked. Clicking on menu item changes its value to the opposite.
 
 ```bemjson
 {
@@ -172,7 +172,7 @@ Text in the button of `select` block depends on a chosen menu item. The first it
 ```
 
 <a name="single-choice"></a>
-* Single-choice select (`select_mode_radio-check`) allows user to check only one menu item from the list or leave all items unchecked. Click on menu item changes its value to the opposite.
+* Single-choice select (`select_mode_radio-check`) allows a user to check only one menu item from the list or leave all items unchecked. Click on menu item changes its value to the opposite.
 
 ```bemjson
 {

@@ -93,7 +93,7 @@ Provides to all types of `radio-group` with the size value.
 
 There are four sizes available: **s**, **m**, **l**, **xl**.
 
-Depending on a [type](#mode) modifier value following sizes are available:
+Depending on a [type](#types) modifier value following sizes are available:
 
 <table>
     <tr>
@@ -174,7 +174,7 @@ See following examples:
 }
 ```
 
-<a name="mode"></a>
+<a name="types"></a>
 ### _type
 
 The following types of `radio-group` block are available:
@@ -200,6 +200,22 @@ The following types of `radio-group` block are available:
     block : 'radio-group',
     mods : { theme : 'normal', size : 'm', type : 'line' },
     name : 'radio-line',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second' }
+    ]
+}
+```
+
+### _mode
+
+`mode` modifier with `radio-check` value is implemented only for [`button`-based](#types) radio group (`radio-group_type_button`). This mode allows a user to check only one item from the group or leave all items unchecked. Click on a button changes its value to the opposite.
+
+```bemjson
+{
+    block : 'radio-group',
+    name : 'button-radio-check',
+    mods : { theme : 'normal', size : 'm', type : 'button', mode : 'radio-check' },
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }

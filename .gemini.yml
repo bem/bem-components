@@ -25,7 +25,7 @@ http:
   #actually performed by saucelabs, but response
   #is not received. In this case same command may be
   #executed twice.
-  retries: 0
+  retries: -1
 
 debug: false
 tolerance: 0.005

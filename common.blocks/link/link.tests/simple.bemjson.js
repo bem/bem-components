@@ -10,6 +10,8 @@
         var content = [
                 { block : 'link', content : 'with no url' },
                 { block : 'link', url : 'http://example.com/', content : 'plain url' },
+                { block : 'link', mods : { view : 'minor' }, url : 'http://example.com/help/', content : 'minor' },
+                { block : 'link', mods : { view : 'external' }, url : 'http://www.w3.org/', content : 'external' },
                 {
                     block : 'link',
                     mods : { disabled : true },
@@ -72,6 +74,7 @@
             ].map(function(link, j) {
                 link.mods || (link.mods = {});
                 i && (link.mods.theme = theme);
+                if(link.mods.view && theme !== 'normal') return;
                 return [
                     j > 0 && { tag : 'br' },
                     link

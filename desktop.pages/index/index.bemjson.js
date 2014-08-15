@@ -110,6 +110,20 @@
                                 ' ',
                                 {
                                     block : 'link',
+                                    mods : { theme : 'normal', view: 'external' },
+                                    url : '#',
+                                    content : 'external'
+                                },
+                                ' ',
+                                {
+                                    block : 'link',
+                                    mods : { theme : 'normal', view: 'minor' },
+                                    url : '#',
+                                    content : 'minor'
+                                },
+                                ' ',
+                                {
+                                    block : 'link',
                                     mods : { theme : 'normal', pseudo : true },
                                     content : 'pseudo'
                                 }

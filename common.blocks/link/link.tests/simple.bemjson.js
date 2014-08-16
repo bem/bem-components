@@ -74,11 +74,11 @@
             ].map(function(link, j) {
                 link.mods || (link.mods = {});
                 i && (link.mods.theme = theme);
-                if(link.mods.view && theme !== 'normal') return;
+                if(link.mods.view && theme !== 'normal') return '';
                 return [
                     j > 0 && { tag : 'br' },
                     link
-                ]
+                ];
             });
 
         content.unshift({ tag : 'h2', content : theme });

@@ -17,7 +17,7 @@
     "bem-environ": "~1.4.0"
   },
   "devDependencies": {
-    "bem": "~0.8.0",
+    "bem": "~0.9.0",
     "bem-tools-autoprefixer": "~0.0.3",
     "bh": "2.2.0",
     "bower-npm-install": "~0.5.4",

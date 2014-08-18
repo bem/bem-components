@@ -41,7 +41,7 @@ module.exports = function(bh) {
                 );
             }
         } else {
-            rates = ctx.content.map(function(rate, i) {
+            rates = ctx.content().map(function(rate, i) {  //problem with map
                 return [
                     {
                         elem : 'input',

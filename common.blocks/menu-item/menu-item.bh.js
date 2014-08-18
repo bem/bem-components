@@ -1,7 +1,7 @@
 module.exports = function(bh) {
     bh.match('menu-item', function(ctx, json) {
         ctx
-            .js({ val : json.val })
+            .js(ctx.extend({ val : json.val }, json.js), true)
             .attr('role', 'menuitem');
     });
 };

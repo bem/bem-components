@@ -32,7 +32,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
                     this._removeFocusFromElem();
                     this._resetToDefault();
                 }
-            },
+            }
 
         },
 
@@ -92,7 +92,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
                 this._resetToDefault();
                 this.setMod('disabled');
             }
-        },
+        }
 
     }, {
         live : function() {

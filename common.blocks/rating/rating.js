@@ -8,7 +8,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
                 'inited' : function() {
                     this.__base.apply(this, arguments);
 
-                    this._elemLabels = this._getItems();
+                    this._elemLabels = this.findElem('label');
                     this._elemLen = this._elemLabels.length + 1;
                     this._hoveredElem = null;
                     this._startMove = true;
@@ -50,10 +50,6 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
             this._on = false;
             this.setMod('disabled');
             return val;
-        },
-
-        _getItems : function() {
-            return this.findElem('label');
         },
 
         _resetToDefault : function() {

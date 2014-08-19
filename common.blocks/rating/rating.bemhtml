@@ -61,7 +61,7 @@ block('rating') (
                         }
                     },
                     {
-                        elem : rate.elemName,
+                        elem : 'label',
                         attrs : {
                             for : this.generateId() + i,
                             title : rate.content

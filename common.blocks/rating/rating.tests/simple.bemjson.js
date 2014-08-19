@@ -15,24 +15,19 @@
                 name : 'rating' + size,
                 points : 4,
                 content : [
-                    {
-                        elemName : 'label',
+                    {   // Вместо content может быть title? Кастомный content?
                         content : 'Ужасно 1'
                     },
                     {
-                        elemName : 'label',
                         content : 'Плохо 2'
                     },
                     {
-                        elemName : 'label',
                         content : 'Сойдет 3'
                     },
                     {
-                        elemName : 'label',
                         content : 'Хорошо 4'
                     },
                     {
-                        elemName : 'label',
                         content : 'Отлично 5'
                     }
                 ]

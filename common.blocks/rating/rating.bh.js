@@ -52,7 +52,7 @@ module.exports = function(bh) {
                         }
                     },
                     {
-                        elem : rate.elemName,
+                        elem : 'label',
                         attrs : {
                             for : ctx.generateId() + i,
                             title : rate.content

@@ -41,7 +41,7 @@ module.exports = function(bh) {
                 );
             }
         } else {
-            rates = ctx.content().map(function(rate, i) {  //problem with map
+            rates = ctx.content().map(function(rate, i) {
                 return [
                     {
                         elem : 'input',
@@ -66,7 +66,7 @@ module.exports = function(bh) {
             elem : 'labelCut',
             attrs : { style : 'width: ' + Number(json.points) * conf[size] + 'px;' }
         });
-        ctx.content(rates.reverse());
+        ctx.content(rates.reverse(), true);
     });
 
 };

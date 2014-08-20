@@ -1,15 +1,12 @@
 block('input').elem('control')(
 
-    attrs().match(function() { return !this.ctx._input__controlAttrs; })(function() {
-        var baseAttrs = applyNext({ 'ctx._input__controlAttrs' : true }),
-            attrs = this.ctx.attrs || {};
-
-        attrs.autocomplete = 'off';
-        attrs.autocorrect = 'off';
-        attrs.autocapitalize = 'off';
-        attrs.spellcheck = 'false';
-
-        return this.extend(baseAttrs, attrs);
+    attrs()(function() {
+        return this.extend({
+            autocomplete : 'off',
+            autocorrect : 'off',
+            autocapitalize : 'off',
+            spellcheck : 'false'
+        }, applyNext());
     })
 
 );

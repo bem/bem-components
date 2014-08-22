@@ -1,56 +1,28 @@
-block('rating') (
+block('rating')(
+    def()(function() {
+        applyNext({
+            _sizes : { s : 12, m : 16 }
+        });
+    }),
     tag()('span'),
     js()(function() {
-        var conf = {
-            's' : 12,
-            'm' : 16
-        };
-
         return {
-            'points' : this.ctx.points,
-            'size' : conf[this.mods.size]
+            points : this.ctx.points,
+            size : this._sizes[this.mods.size]
         };
     }),
     mix()({ elem : 'control' }),
     attrs()(function() {
-        var attrs = {};
-
-        attrs.name = this.ctx.name,
-        attrs.role = 'rating';
-
-        return attrs;
+        return this.extend({
+            name : this.ctx.name
+        }, applyNext());
     }),
     content()(function() {
         var ctx = this.ctx,
-            points = Number(ctx.points),
+            granulation = ctx.granulation,
+            points = +ctx.points,
             rates = [],
-            conf = {
-                's' : 12,
-                'm' : 16
-            };
-
-        if(ctx.length && Number(ctx.length) > 0) {
-            for(var i = 0, len = ctx.length; i < len; i++) {
-                rates.push(
-                     {
-                        elem : 'input',
-                        attrs : {
-                            id : this.generateId() + i,
-                            name : ctx.name,
-                            value : i + 1
-                        }
-                    },
-                    {
-                        elem : 'label',
-                        attrs : {
-                            for : this.generateId() + i
-                        }
-                    }
-                );
-            }
-
-        } else {
-            rates = ctx.content.map(function(rate, i) {
+            getRate = function(i, rate) {
                 return [
                     {
                         elem : 'input',
@@ -64,16 +36,25 @@ block('rating') (
                         elem : 'label',
                         attrs : {
                             for : this.generateId() + i,
-                            title : rate.content
+                            title : rate && rate.content
                         }
                     }
                 ];
-            }, this);
+            }.bind(this);
+
+        if(granulation) {
+            for(var i = 0; i < granulation; i++) {
+                rates = rates.concat(getRate(i));
+            }
+        } else {
+            rates = ctx.content.map(function(rate, i) {
+                return getRate(i, rate);
+            });
         }
 
         rates.push({
-            elem : 'labelCut',
-            attrs : { style : 'width: ' + points * conf[this.mods.size] + 'px;' }
+            elem : 'labelCut', // TODO: think about naming
+            attrs : { style : 'width: ' + points * this._sizes[this.mods.size] + 'px;' }
         });
         return rates.reverse();
     })

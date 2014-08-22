@@ -15,7 +15,7 @@
                 name : 'rating' + size,
                 points : 4,
                 content : [
-                    {   // Вместо content может быть title? Кастомный content?
+                    {
                         content : 'Ужасно 1'
                     },
                     {
@@ -38,7 +38,7 @@
                 mods : { theme : 'normal', size : size },
                 name : 'rating1' + size,
                 points : 4,
-                length : 10
+                granulation : 10
             },
             { tag : 'h3', content : 'normal ' + size + ' disabled' },
             {
@@ -46,7 +46,7 @@
                 mods : { theme : 'normal', size : size, disabled : true },
                 name : 'rating2' + size,
                 points : 4,
-                length : '7'
+                granulation : 10
             },
             { tag : 'hr' }
 

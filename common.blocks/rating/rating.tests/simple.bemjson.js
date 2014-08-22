@@ -13,6 +13,8 @@
                 block : 'rating',
                 mods : { theme : 'normal', size : size },
                 name : 'rating' + size,
+                total : 4,
+                votes : 1,
                 points : 4,
                 content : [
                     {
@@ -37,6 +39,8 @@
                 block : 'rating',
                 mods : { theme : 'normal', size : size },
                 name : 'rating1' + size,
+                total : 4,
+                votes : 1,
                 points : 4,
                 granulation : 10
             },
@@ -45,6 +49,8 @@
                 block : 'rating',
                 mods : { theme : 'normal', size : size, disabled : true },
                 name : 'rating2' + size,
+                total : 4,
+                votes : 1,
                 points : 4,
                 granulation : 10
             },

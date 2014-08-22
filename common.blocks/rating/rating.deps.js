@@ -5,7 +5,7 @@
         { block : 'keyboard', elem : 'codes' },
         { mods : { focused : true } },
         {
-            elems : ['input', 'label', 'labelCut']
+            elems : ['input', 'label', 'rate']
         }
     ]
 }]

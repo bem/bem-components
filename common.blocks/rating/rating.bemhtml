@@ -1,7 +1,8 @@
 block('rating')(
     def()(function() {
         applyNext({
-            _sizes : { s : 12, m : 16 }
+            _sizes : { s : 12, m : 16 },
+            _name : this.ctx.name
         });
     }),
     tag()('span'),
@@ -23,35 +24,17 @@ block('rating')(
         var ctx = this.ctx,
             granulation = ctx.granulation,
             points = +ctx.points,
-            rates = [],
-            getRate = function(i, rate) {
-                return [
-                    {
-                        elem : 'input',
-                        attrs : {
-                            id : this.generateId() + i,
-                            name : ctx.name,
-                            value : i + 1
-                        }
-                    },
-                    {
-                        elem : 'label',
-                        attrs : {
-                            for : this.generateId() + i,
-                            title : rate && rate.content
-                        }
-                    }
-                ];
-            }.bind(this);
+            rates = [];
 
         if(granulation) {
             for(var i = 0; i < granulation; i++) {
-                rates = rates.concat(getRate(i));
+                rates.push({ elem : 'rate', value : i + 1 });
             }
         } else {
             rates = ctx.content.map(function(rate, i) {
-                return getRate(i, rate);
-            });
+                rate.value = i + 1;
+                return rate;
+            }, this);
         }
 
         rates.push({

@@ -172,6 +172,17 @@
                 },
                 ' ',
                 {
+                    block : 'select',
+                    mods : { mode : 'radio-check', theme : 'normal', size : 's' },
+                    name : 'select',
+                    text : 'first',
+                    options : [
+                        { val : 1, text : 'first', checked: true },
+                        { val : 2, text : 'second' }
+                    ]
+                },
+                ' ',
+                {
                     block : 'spin',
                     mods : { theme : 'normal', size : 's', progress : true }
                 }
@@ -248,6 +259,17 @@
                     mods : { switcher : 'button', theme : 'normal', size : 'm' },
                     switcher : 'dropdown',
                     popup : { block : 'popup', mods : { theme : 'normal' }, content : 'popup' }
+                },
+                ' ',
+                {
+                    block : 'select',
+                    mods : { mode : 'radio-check', theme : 'normal', size : 'm' },
+                    name : 'select',
+                    text : 'first',
+                    options : [
+                        { val : 1, text : 'first', checked: true },
+                        { val : 2, text : 'second' }
+                    ]
                 },
                 ' ',
                 {
@@ -330,6 +352,17 @@
                 },
                 ' ',
                 {
+                    block : 'select',
+                    mods : { mode : 'radio-check', theme : 'normal', size : 'l' },
+                    name : 'select',
+                    text : 'first',
+                    options : [
+                        { val : 1, text : 'first', checked: true },
+                        { val : 2, text : 'second' }
+                    ]
+                },
+                ' ',
+                {
                     block : 'spin',
                     mods : { theme : 'normal', size : 'l', progress : true }
                 }
@@ -392,6 +425,17 @@
                     mods : { switcher : 'button', theme : 'normal', size : 'xl' },
                     switcher : 'dropdown',
                     popup : { block : 'popup', mods : { theme : 'normal' }, content : 'popup' }
+                },
+                ' ',
+                {
+                    block : 'select',
+                    mods : { mode : 'radio-check', theme : 'normal', size : 'xl' },
+                    name : 'select',
+                    text : 'first',
+                    options : [
+                        { val : 1, text : 'first', checked: true },
+                        { val : 2, text : 'second' }
+                    ]
                 },
                 ' ',
                 {

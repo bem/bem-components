@@ -53,7 +53,7 @@ block('rating')(
         }
 
         rates.push({
-            elem : 'labelCut', // TODO: think about naming
+            elem : 'staticLayer', // TODO: think about naming
             attrs : { style : 'width: ' + points * this._sizes[this.mods.size] + 'px;' }
         });
         return rates.reverse();

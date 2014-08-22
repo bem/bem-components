@@ -7,6 +7,8 @@ block('rating')(
     tag()('span'),
     js()(function() {
         return {
+            total : this.ctx.total,
+            votes : this.ctx.votes,
             points : this.ctx.points,
             size : this._sizes[this.mods.size]
         };

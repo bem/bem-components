@@ -42,6 +42,6 @@ block('rating')(
             elem : 'staticLayer', // TODO: think about naming
             attrs : { style : 'width: ' + points * this._sizes[this.mods.size] + 'px;' }
         });
-        return rates.reverse();
+        return this._theme === 'default' ? rates : rates.reverse();
     })
 );

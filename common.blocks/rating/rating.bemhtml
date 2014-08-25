@@ -34,7 +34,7 @@ block('rating')(
             rates = ctx.content.map(function(rate, i) {
                 rate.value = i + 1;
                 return rate;
-            }, this);
+            });
         }
 
         rates.push({

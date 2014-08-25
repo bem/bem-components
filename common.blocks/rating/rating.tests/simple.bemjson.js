@@ -7,6 +7,7 @@
         { elem : 'js', url : '_simple.js' }
     ],
     content : [
+        { tag : 'h3', content : 'default' },
         {
             block : 'rating',
             mods : { theme : 'default' },
@@ -37,6 +38,7 @@
                 }
             ]
         },
+        { tag : 'hr' },
         ['s', 'm'].map(function(size) {
             return [
                 { tag : 'h3', content : 'normal ' + size },

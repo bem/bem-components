@@ -6,13 +6,43 @@
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
     ],
-    content : ['default', 'normal'].map(function(theme) {
-        return ['s', 'm'].map(function(size) {
+    content : [
+        {
+            block : 'rating',
+            mods : { theme : 'default' },
+            name : 'default',
+            total : 4,
+            votes : 1,
+            points : 4,
+            content : [
+                {
+                    elem : 'rate',
+                    content : 'Ужасно 1'
+                },
+                {
+                    elem : 'rate',
+                    content : 'Плохо 2'
+                },
+                {
+                    elem : 'rate',
+                    content : 'Сойдет 3'
+                },
+                {
+                    elem : 'rate',
+                    content : 'Хорошо 4'
+                },
+                {
+                    elem : 'rate',
+                    content : 'Отлично 5'
+                }
+            ]
+        },
+        ['s', 'm'].map(function(size) {
             return [
-                { tag : 'h3', content : theme + ' ' + size },
+                { tag : 'h3', content : 'normal ' + size },
                 {
                     block : 'rating',
-                    mods : { theme : theme, size : size },
+                    mods : { theme : 'normal', size : size },
                     name : 'rating' + size,
                     total : 4,
                     votes : 1,
@@ -40,20 +70,20 @@
                         }
                     ]
                 },
-                { tag : 'h3', content : theme + ' ' + size + ' length (stars)' },
+                { tag : 'h3', content : 'normal ' + size + ' length (stars)' },
                 {
                     block : 'rating',
-                    mods : { theme : theme, size : size },
+                    mods : { theme : 'normal', size : size },
                     name : 'rating1' + size,
                     total : 4,
                     votes : 1,
                     points : 4,
                     granulation : 10
                 },
-                { tag : 'h3', content : theme + ' ' + size + ' disabled' },
+                { tag : 'h3', content : 'normal ' + size + ' disabled' },
                 {
                     block : 'rating',
-                    mods : { theme : theme, size : size, disabled : true },
+                    mods : { theme : 'normal', size : size, disabled : true },
                     name : 'rating2' + size,
                     total : 4,
                     votes : 1,
@@ -61,8 +91,7 @@
                     granulation : 10
                 },
                 { tag : 'hr' }
-
             ]
         })
-    })
+    ]
 });

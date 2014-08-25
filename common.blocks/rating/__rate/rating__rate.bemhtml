@@ -1,6 +1,14 @@
 block('rating').elem('rate') (
     def()(function() {
-        var ctx = this.ctx;
+        var ctx = this.ctx,
+            label = {
+                elem : 'label',
+                attrs : {
+                    for : this.generateId()
+                }
+            };
+
+        this._theme === 'normal' ? label.attrs.title = ctx.content : label.content = ctx.content;
         return applyCtx([
             {
                 elem : 'input',
@@ -10,13 +18,7 @@ block('rating').elem('rate') (
                     value : ctx.value
                 }
             },
-            {
-                elem : 'label',
-                attrs : {
-                    for : this.generateId(),
-                    title : ctx.content
-                }
-            }
+            label
         ]);
     })
 );

@@ -2,7 +2,8 @@ block('rating')(
     def()(function() {
         applyNext({
             _sizes : { s : 12, m : 16 },
-            _name : this.ctx.name
+            _name : this.ctx.name,
+            _theme : this.mods.theme
         });
     }),
     tag()('span'),

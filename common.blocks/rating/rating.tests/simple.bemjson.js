@@ -44,7 +44,7 @@
                 { tag : 'h3', content : 'normal ' + size },
                 {
                     block : 'rating',
-                    mods : { theme : 'normal', size : size },
+                    mods : { theme : 'normal', size : size, readonly : 'no' },
                     name : 'rating' + size,
                     total : 4,
                     votes : 1,

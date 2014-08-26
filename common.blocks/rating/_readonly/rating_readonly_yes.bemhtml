@@ -1,0 +1,21 @@
+block('rating').mod('readonly', 'yes') (
+    content()(function() {
+        var ctx = this.ctx,
+            mods = this.mods,
+            _sizes = {
+                s : 12,
+                m : 16
+            };
+
+        return [
+            {
+                elem : 'label',
+                attrs : { style : 'width: ' + ctx.granulation * _sizes[mods.size] + 'px;' }
+            },
+            {
+                elem : 'staticLayer',
+                attrs : { style : 'width: ' + ctx.points * _sizes[mods.size] + 'px;' }
+            }
+        ];
+    })
+);

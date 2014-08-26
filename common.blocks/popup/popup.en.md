@@ -13,6 +13,54 @@ To display `popup` when `visible` modifier is assigned, block should be initiali
 
 The method returns `this`.
 
+## Custom fields of a block
+
+The following custom fields could be specified in BEMJSON declaration of the block:
+
+<table>
+    <tr>
+        <th>Custom field name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><a href="#direction">directions</a></td>
+        <td>
+            <code>Array</code>
+        </td>
+        <td>Specifies position (e.g., <code>bottom-left</code>, where <code>bottom</code> is main direction and <code>left</code> - secondary) of `popup` relative to the element that triggers it.</td>
+    </tr>
+    <tr>
+        <td>mainOffset</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Specifies offset along the main direction.</td>
+    </tr>
+    <tr>
+        <td>secondaryOffset</td>
+        <td>
+            <code>String</code></td>
+        <td>Specifies offset along the secondary direction.</td>
+    </tr>
+    <tr>
+        <td>viewportOffset</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Specifies offset from the viewport (browser window).</td>
+    </tr>
+    <tr>
+        <td>zIndexGroupLevel</td>
+        <td>
+            <code>String</code>
+        </td>
+        <td>Specifies level of a layer for popups' opening. Uses <a href="../z-index-group/z-index.group.ru.md">z-index-group</a> block.</td>
+    </tr>
+</table>
+
+Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+
 ## Modifiers of a block
 
 ### _theme
@@ -62,6 +110,8 @@ See following examples:
 
 `visible` modifier is set automatically when `popup` is displayed. When `popup` is hidden, `visible` modofier is removed.
 
+**NB:** this block's version does not support manual selection of `visible` modifier in BEMJSON.
+
 #### `_autoscalable`
 
 When `autoscalable` modifier with `true` is set to `popup` block, mouse click outside the popup area hides it automatically.
@@ -74,9 +124,10 @@ When `autoscalable` modifier with `true` is set to `popup` block, mouse click ou
 }
 ```
 
-### Popup opening direction `_direction`
+<a name="direction">
+## Popup opening direction `_direction`
 
-This modifier controls position of `popup` ralative to the element that trigges it.
+This modifier controls position of `popup` relative to the element that triggers it.
 
 By default the following admissible directions are available:
 
@@ -117,9 +168,22 @@ To open `popup` strictly at the `center-right` position do the following:
 }
 ```
 
+Use `mainOffset` and/or `secondaryOffset` parameters to manage the offset direction:
+
+```bemjson
+{
+    block : 'popup',
+    mods : { autoclosable : true, theme: 'normal' },
+    direction : ['right-center'],
+    mainOffset : 100,
+    secondaryOffset : 100,
+    content : 'Hello, world!'
+}
+```
+
 ## Relationship between popups
 
-`popup` block supports a nested stucture of multiple simultaneous popups. It means you can open popup (child) within another popup (parent) with the parent popup remaining opened.
+`popup` block supports nested stucture of multiple simultaneous popups. It means you can open popup (child) within another popup (parent) with the parent popup remaining opened.
 
 If `autoscalable` modifier is specified, mouse click outside the parent popup area hides it and all its child automatically.
 

@@ -555,7 +555,7 @@ function captureZIndex(level) {
 
 function releaseZIndex(level, zIndex) {
     var zIndexes = visiblePopupsZIndexes[level];
-    zIndexes.splice(zIndexes.indexOf(zIndex), 1);
+    zIndexes && zIndexes.splice(zIndexes.indexOf(zIndex), 1);
 }
 
 function checkMainDirection(direction, mainDirection1, mainDirection2) {

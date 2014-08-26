@@ -1,8 +1,9 @@
 .spin_theme_normal
 {
-    position: relative;
+    position: absolute;
 
-    display: none;
+    display: inline-block;
+    visibility: hidden;
 
     color: transparent;
 
@@ -29,7 +30,9 @@
 
     &.spin_progress
     {
-        display: inline-block;
+        position: relative;
+
+        visibility: visible;
 
         animation: spin_theme_normal 1s infinite linear;
 
@@ -40,6 +43,7 @@
     }
 
     sizeList = (16 24 28 32 38);
+    bgShift = 0px;
 
     for sizeVal, i in xs s m l xl {
         &.spin_size_{sizeVal}
@@ -49,13 +53,15 @@
             width: sizeList[i]px;
             height: sizeList[i]px;
 
-            background-position: 0 i * -40px;
+            background-position: 0 bgShift;
 
             &:before
             {
                 height: sizeList[i]px;
             }
         }
+
+        bgShift -= sizeList[i] + 1;
     }
 }
 

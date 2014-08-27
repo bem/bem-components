@@ -34,16 +34,16 @@ bgTopPosition = (-11 -15);
     }
 
     .rating__label,
-    &:hover .rating__label
+    .rating_theme_normal_hovered .rating__label
     {
         float: right;
         display: block;
     }
 
-    .rating__label:hover,
+    /*.rating__label:hover,*/
     .rating__label_hovered,
-    .rating__label_hovered ~ .rating__label,
-    .rating__label:hover ~ .rating__label
+    .rating__label_hovered ~ .rating__label/*,
+    .rating__label:hover ~ .rating__label*/
     {
         cursor: pointer;
     }
@@ -58,17 +58,15 @@ bgTopPosition = (-11 -15);
         &.rating_size_{sizeVal}
         {
             .rating__label,
-            &:hover .rating__label
+            .rating_theme_normal_hovered .rating__label
             {
                 width: (width[i])px;
                 height: (height[i])px;
                 background: background[i];
             }
 
-            .rating__label:hover,
             .rating__label_hovered,
-            .rating__label_hovered ~ .rating__label,
-            .rating__label:hover ~ .rating__label
+            .rating__label_hovered ~ .rating__label
             {
                 background-position: 0 (height[i])px;
             }

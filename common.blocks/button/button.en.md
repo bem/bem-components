@@ -244,7 +244,7 @@ The following values of `togglable` modifier are available:
 {
     block : 'button',
     text : 'Check',
-    mods : { theme : 'normal', size : 'm', togglable : check },
+    mods : { theme : 'normal', size : 'm', togglable : 'check' },
 }
 ```
 
@@ -254,7 +254,7 @@ The following values of `togglable` modifier are available:
 {
     block : 'button',
     text : 'Radio',
-    mods : { theme : 'normal', size : 'm', togglable : radio }
+    mods : { theme : 'normal', size : 'm', togglable : 'radio' }
 }
 ```
 #### _hovered

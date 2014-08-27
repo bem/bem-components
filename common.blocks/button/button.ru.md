@@ -276,7 +276,7 @@
 {
     block : 'button',
     text : 'Radio',
-    mods : { theme : 'normal', size : 'm', togglable : radio }
+    mods : { theme : 'normal', size : 'm', togglable : 'radio' }
 }
 ```
 

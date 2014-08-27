@@ -182,7 +182,7 @@
     block : 'checkbox',
     text : 'Отмечен',
     name: 'name1',
-    val : '1',
+    val : 1,
     mods : { theme : 'normal', size : 'm', checked : true }
 }
 ```
@@ -192,7 +192,7 @@
     block : 'checkbox',
     text : 'Отмечен',
     name: 'name2',
-    val : '2',
+    val : 2,
     mods : { theme : 'normal', size : 'm', type : 'button', checked : true }
 }
 ```
@@ -205,7 +205,7 @@
     block : 'checkbox',
     text : 'Неактивен',
     name: 'name1',
-    val : '1',
+    val : 1,
     mods : { theme : 'normal', size : 'm', disabled : true }
 }
 ```
@@ -215,7 +215,7 @@
     block : 'checkbox',
     text : 'Неактивен',
     name: 'name2',
-    val : '2',
+    val : 2,
     mods : { theme : 'normal', size : 'm', type : 'button', disabled : true }
 }
 ```

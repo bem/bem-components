@@ -62,7 +62,13 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
 
                 this._onItemOut();
                 this._onItemHover(items.eq(nextIdx));
+                return this;
+            }
 
+            if(keyCode === keyCodes.SPACE) {
+                e.preventDefault();
+                this._on && this._hoveredItem[0].click();
+                return this;
             }
         },
 
@@ -72,6 +78,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
                 .setMod(item, 'hovered')
                 .setMod('hovered');
             this._hoveredItem = item;
+            return this;
         },
 
         _onItemOut : function() {
@@ -79,6 +86,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
                 .delMod(this._hoveredItem, 'hovered')
                 .delMod('hovered');
             this._hoveredItem = null;
+            return this;
         }
 
     }, {

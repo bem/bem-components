@@ -1,5 +1,4 @@
-width = (12 16);
-height = (12 16);
+size = (12 16);
 background = (url('stars_size_s.svg') url('stars_size_m.svg'));
 bgTopPosition = (-12 -16);
 
@@ -40,10 +39,8 @@ bgTopPosition = (-12 -16);
         display: block;
     }
 
-    /*.rating__label:hover,*/
     .rating__label_hovered,
-    .rating__label_hovered ~ .rating__label/*,
-    .rating__label:hover ~ .rating__label*/
+    .rating__label_hovered ~ .rating__label
     {
         cursor: pointer;
     }
@@ -60,21 +57,21 @@ bgTopPosition = (-12 -16);
             .rating__label,
             .rating_theme_normal_hovered .rating__label
             {
-                width: (width[i])px;
-                height: (height[i])px;
+                width: (size[i])px;
+                height: (size[i])px;
                 background: background[i];
             }
 
             .rating__label_hovered,
             .rating__label_hovered ~ .rating__label
             {
-                background-position: 0 (height[i])px;
+                background-position: 0 (size[i])px;
             }
 
             .rating__staticLayer
             {
-                height: (height[i])px;
-                background: background[i] 0 (height[i])px;
+                height: (size[i])px;
+                background: background[i] 0 (size[i])px;
             }
         }
     }

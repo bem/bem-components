@@ -32,6 +32,11 @@ provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, /** @lends checkb
             proxyModToButton.call(this, modName, modVal, false);
         }
     }
+}, /** @lends checkbox */{
+    live : function() {
+        this.liveInitOnBlockEvent({ modName : 'js', modVal : 'inited' }, 'button');
+        return this.__base.apply(this, arguments);
+    }
 }));
 
 function proxyModToButton(modName, modVal, callBase) {

@@ -32,6 +32,11 @@ provide(Radio.decl({ modName : 'type', modVal : 'button' }, /** @lends radio.pro
             proxyModToButton.call(this, modName, modVal, false);
         }
     }
+}, /** @lends radio */{
+    live : function() {
+        this.liveInitOnBlockEvent({ modName : 'js', modVal : 'inited' }, 'button');
+        return this.__base.apply(this, arguments);
+    }
 }));
 
 function proxyModToButton(modName, modVal, callBase) {

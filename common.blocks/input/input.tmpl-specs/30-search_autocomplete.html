@@ -1,0 +1,1 @@
+<span class="input input_type_search i-bem" data-bem="{&quot;input&quot;:{}}"><span class="input__box"><input class="input__control" type="search"/></span></span>

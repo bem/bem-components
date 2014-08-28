@@ -18,7 +18,8 @@ block('rating').mod('readonly', 'no') (
     mix()({ elem : 'control' }),
     attrs()(function() {
         return this.extend({
-            name : this.ctx.name
+            name : this.ctx.name,
+            role : 'menuitemradio'
         }, applyNext());
     }),
     content()(function() {

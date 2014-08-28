@@ -14,7 +14,7 @@ block('rating').mod('readonly', 'yes') (
             },
             {
                 elem : 'staticLayer',
-                attrs : { style : 'width: ' + ctx.points * _sizes[mods.size] + 'px;' }
+                attrs : { style : 'width: ' + (ctx.points || 0) * _sizes[mods.size] + 'px;' }
             }
         ];
     })

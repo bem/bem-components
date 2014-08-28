@@ -8,9 +8,8 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
                 'inited' : function() {
                     this.__base.apply(this, arguments);
 
-                    this._score = 0;
-                    this._on = true;
-                    this._hoveredItem = null;
+                    this._score = 0; // TODO: смотреть на js-params
+                    this._hoveredItem = null; // ?
                 }
             },
 
@@ -57,17 +56,17 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
                     hoveredIdx = this._hoveredItem ? items.index(this._hoveredItem) : -1,
                     nextIdx = hoveredIdx;
 
-                nextIdx += 38 - keyCode;
+                nextIdx += 38 - keyCode; // нужен коментарий
                 nextIdx = nextIdx < 0? len - 1 : nextIdx >= len? 0 : nextIdx;
 
-                this._onItemOut();
-                this._onItemHover(items.eq(nextIdx));
-                return this;
+                return this
+                    ._onItemOut()
+                    ._onItemHover(items.eq(nextIdx));
             }
 
             if(keyCode === keyCodes.SPACE) {
                 e.preventDefault();
-                this._on && this._hoveredItem[0].click();
+                this._hoveredItem[0].click();
                 return this;
             }
         },
@@ -76,8 +75,8 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
             this
                 .delMod(this._hoveredItem, 'hovered')
                 .setMod(item, 'hovered')
-                .setMod('hovered');
-            this._hoveredItem = item;
+                .setMod('hovered')
+                ._hoveredItem = item;
             return this;
         },
 
@@ -92,16 +91,15 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
     }, {
         live : function() {
             this.liveBindTo('input', 'click', function(e) {
-                (this._on && this._vote(+e.currentTarget.context.value));
+                this._vote(+e.currentTarget.context.value);
+                    // проверить context, возможно заворачивать currentTarget в $()
             });
 
             this.liveBindTo('label', 'mousemove', function(e) {
                 this._onItemHover(e.currentTarget);
             });
 
-            this.liveBindTo('label', 'mouseout', function() {
-                this._onItemOut();
-            });
+            this.liveBindTo('label', 'mouseout', this.prototype._onItemOut);
 
             return this.__base.apply(this, arguments);
         }

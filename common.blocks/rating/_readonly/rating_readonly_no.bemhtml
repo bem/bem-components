@@ -8,21 +8,14 @@ block('rating').mod('readonly', 'no') (
     }),
     tag()('span'),
     js()(function() {
-        if(!this.ctx.total || !this.ctx.votes || !this.ctx.points) {
-            return {
-                total : 0,
-                votes : 0,
-                points : 0,
-                size : this._sizes[this.mods.size]
-            };
-        } else {
-            return {
-                total : this.ctx.total,
-                votes : this.ctx.votes,
-                points : this.ctx.points,
-                size : this._sizes[this.mods.size]
-            };
-        }
+        var ctx = this.ctx;
+        // TODO: подумать о необходимости предварительной нормализации
+        return {
+            total : ctx.total || 0,
+            votes : ctx.votes || 0,
+            points : ctx.points || 0,
+            size : this._sizes[this.mods.size]
+        };
     }),
     mix()({ elem : 'control' }),
     attrs()(function() {
@@ -34,7 +27,7 @@ block('rating').mod('readonly', 'no') (
     content()(function() {
         var ctx = this.ctx,
             granulation = ctx.granulation,
-            points = (!this.ctx.total || !this.ctx.votes || !this.ctx.points) ? 0 : ctx.points,
+            points = (!ctx.total || !ctx.votes || !ctx.points) ? 0 : ctx.points,
             rates = [];
 
         if(granulation) {
@@ -50,11 +43,11 @@ block('rating').mod('readonly', 'no') (
 
         if(this._theme !== 'default') {
             rates.push({
-                elem : 'staticLayer', // TODO: think about naming
+                elem : 'static-layer', // TODO: think about naming
                 attrs : { style : 'width: ' + points * this._sizes[this.mods.size] + 'px;' }
             });
 
-            rates.reverse();
+            rates.reverse(); // добавить коммент, зачем реверс
         }
         return rates;
     })

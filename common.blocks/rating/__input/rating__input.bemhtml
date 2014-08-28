@@ -1,9 +1,4 @@
 block('rating').elem('input') (
     tag()('input'),
-
-    attrs()(function(){
-        return {
-            type : 'radio'
-        };
-    })
+    attrs()({ type : 'radio' })
 );

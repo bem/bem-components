@@ -8,7 +8,9 @@ block('rating').elem('rate') (
                 }
             };
 
-        this._theme === 'default' ? label.content = ctx.content : label.attrs.title = ctx.content;
+        this._theme === 'default' ?
+            label.content = ctx.content : label.attrs.title = ctx.content;
+
         return applyCtx([
             {
                 elem : 'input',

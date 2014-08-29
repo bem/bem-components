@@ -15,7 +15,7 @@ module.exports = function(bh) {
             title : json.title,
             content : [
                 json.icon,
-                json.text !== 'undefined'?
+                typeof json.text !== 'undefined'?
                     { elem : 'text', content : json.text } :
                     ''
             ]

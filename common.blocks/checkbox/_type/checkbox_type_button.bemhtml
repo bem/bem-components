@@ -15,7 +15,7 @@ block('checkbox').mod('type', 'button')(
             title : ctx.title,
             content : [
                 ctx.icon,
-                ctx.text !== 'undefined'?
+                typeof ctx.text !== 'undefined'?
                     { elem : 'text', content : ctx.text } :
                     ''
             ]

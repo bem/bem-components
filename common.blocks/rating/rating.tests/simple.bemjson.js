@@ -11,7 +11,7 @@
             { tag : 'h3', content : 'normal ' + size },
             {
                 block : 'rating',
-                mods : { theme : 'normal', size : size, readonly : 'no' },
+                mods : { theme : 'normal', size : size, readonly : 'off' },
                 name : 'rating' + size,
                 total : 4,
                 votes : 1,
@@ -42,7 +42,7 @@
             { tag : 'h3', content : 'normal ' + size + ' length (stars)' },
             {
                 block : 'rating',
-                mods : { theme : 'normal', size : size, readonly : 'no' },
+                mods : { theme : 'normal', size : size, readonly : 'off' },
                 name : 'rating1' + size,
                 total : 4,
                 votes : 1,
@@ -52,7 +52,7 @@
             { tag : 'h3', content : 'normal ' + size + ' disabled' },
             {
                 block : 'rating',
-                mods : { theme : 'normal', size : size, readonly : 'no', disabled : true },
+                mods : { theme : 'normal', size : size, readonly : 'off', disabled : true },
                 name : 'rating2' + size,
                 total : 4,
                 votes : 1,
@@ -62,7 +62,7 @@
             { tag : 'h3', content : 'normal ' + size + ' readonly' },
             {
                 block : 'rating',
-                mods : { theme : 'normal', size : size, readonly : 'yes' },
+                mods : { theme : 'normal', size : size, readonly : 'on' },
                 name : 'rating2' + size + 'readonly',
                 total : 4,
                 votes : 1,

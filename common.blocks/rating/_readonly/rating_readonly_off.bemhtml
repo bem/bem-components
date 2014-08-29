@@ -8,21 +8,12 @@ block('rating').mod('readonly', 'off') (
     }),
     tag()('span'),
     js()(function() {
-        if(!this.ctx.total || !this.ctx.votes || !this.ctx.points) {
-            return {
-                total : 0,
-                votes : 0,
-                points : 0,
-                size : this._sizes[this.mods.size]
-            };
-        } else {
-            return {
-                total : this.ctx.total,
-                votes : this.ctx.votes,
-                points : this.ctx.points,
-                size : this._sizes[this.mods.size]
-            };
-        }
+        return {
+            total : this.ctx.total || 0,
+            votes : this.ctx.votes || 0,
+            points : this.ctx.points || 0,
+            size : this._sizes[this.mods.size]
+        };
     }),
     mix()({ elem : 'control' }),
     attrs()(function() {
@@ -34,7 +25,7 @@ block('rating').mod('readonly', 'off') (
     content()(function() {
         var ctx = this.ctx,
             granulation = ctx.granulation,
-            points = (!this.ctx.total || !this.ctx.votes || !this.ctx.points) ? 0 : ctx.points,
+            points = ctx.points || 0,
             rates = [];
 
         if(granulation) {

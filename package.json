@@ -27,7 +27,7 @@
     "enb": "0.13.7",
     "enb-bem": "0.1.0-beta2",
     "enb-autoprefixer": "0.1.1",
-    "enb-bem-docs": "0.3.10",
+    "enb-bem-docs": "0.4.0",
     "enb-bem-examples": "0.4.8",
     "enb-bem-specs": "0.4.7",
     "enb-bem-tmpl-specs": "0.2.3",

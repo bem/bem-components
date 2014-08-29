@@ -200,7 +200,8 @@ module.exports = function(config) {
                 destPath : platform + '.docs',
                 levels : getLibLevels(platform, config),
                 exampleSets : [platform + '.examples'],
-                langs : config.getLanguages()
+                langs : config.getLanguages(),
+                jsSuffixes : ['vanilla.js', 'browser.js', 'js']
             });
 
             sets.specs.configure({

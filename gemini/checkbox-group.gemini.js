@@ -9,7 +9,7 @@ gemini.suite('checkbox-group', function(root) {
             checkboxGroupEnabledSelector = checkboxGroupSelector + '-enabled',
             checkboxGroupDisabledSelector = checkboxGroupSelector + '-disabled',
             // for focused state we need different elements
-            element = !!~test.indexOf('button') ? ' .checkbox' : ' .checkbox__control';
+            element = !!~test.indexOf('button') ? ' .button' : ' .checkbox__control';
 
         gemini.suite(test + '-enabled', function(suite) {
             suite
@@ -43,7 +43,7 @@ gemini.suite('checkbox-group', function(root) {
         'button-icon-size_l'
     ]
         .forEach(function(test) {
-            testing(test, ' .checkbox');
+            testing(test, ' .button');
     });
 
     [

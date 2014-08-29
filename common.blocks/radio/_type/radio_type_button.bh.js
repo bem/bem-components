@@ -1,8 +1,11 @@
 module.exports = function(bh) {
 
     bh.match('radio_type_button', function(ctx, json) {
-        var mods = ctx.mods(),
-            buttonMods = {
+        var mods = ctx.mods();
+
+        ctx.content([{
+            block : 'button',
+            mods : {
                 togglable : mods.mode === 'radio-check'?
                     'check' :
                     'radio',
@@ -11,28 +14,21 @@ module.exports = function(bh) {
                 theme : mods.theme,
                 size : mods.size
             },
-            buttonContent = [
-                {
-                    block : 'radio',
-                    elem : 'control',
-                    checked : mods.checked,
-                    disabled : mods.disabled,
-                    name : json.name,
-                    val : json.val
-                },
-                json.icon
-            ];
-
-        typeof json.text !== 'undefined' &&
-            buttonContent.push({ elem : 'text', content : json.text });
-
-        return {
-            block : 'button',
-            mix : { block : 'radio', mods : mods, js : true },
-            mods : buttonMods,
             title : json.title,
-            content : buttonContent
-        };
+            content : [
+                json.icon,
+                json.text !== 'undefined'?
+                    { elem : 'text', content : json.text } :
+                    ''
+            ]
+        }, {
+            block : 'radio',
+            elem : 'control',
+            checked : mods.checked,
+            disabled : mods.disabled,
+            name : json.name,
+            val : json.val
+        }]);
     });
 
 };

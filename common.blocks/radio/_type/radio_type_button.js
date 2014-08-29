@@ -2,7 +2,7 @@
  * @module radio
  */
 
-modules.define('radio', function(provide, Radio) {
+modules.define('radio', ['button'], function(provide, _, Radio) {
 
 /**
  * @exports
@@ -14,7 +14,7 @@ provide(Radio.decl({ modName : 'type', modVal : 'button' }, /** @lends radio.pro
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                this._button = this.findBlockOn('button')
+                this._button = this.findBlockInside('button')
                     .on(
                         { modName : 'checked', modVal : '*' },
                         proxyModFromButton,
@@ -34,7 +34,7 @@ provide(Radio.decl({ modName : 'type', modVal : 'button' }, /** @lends radio.pro
     }
 }, /** @lends radio */{
     live : function() {
-        this.liveInitOnBlockEvent({ modName : 'js', modVal : 'inited' }, 'button');
+        this.liveInitOnBlockInsideEvent({ modName : 'js', modVal : 'inited' }, 'button');
         return this.__base.apply(this, arguments);
     }
 }));

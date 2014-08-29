@@ -4,7 +4,7 @@ modules.define(
     function(provide, Radio, BEMDOM, $, dom, BEMHTML) {
 
 describe('radio_type_button', function() {
-    var radioOption;
+    var radio;
 
     function buildRadio() {
         return BEMDOM.init($(BEMHTML.apply({
@@ -19,40 +19,40 @@ describe('radio_type_button', function() {
     }
 
     beforeEach(function() {
-        radioOption = buildRadio();
+        radio = buildRadio();
     });
 
     afterEach(function() {
-        BEMDOM.destruct(radioOption.domElem);
+        BEMDOM.destruct(radio.domElem);
     });
 
     describe('checked', function() {
         it('should set/unset "checked" mod for button according to self', function() {
-            radioOption.setMod('checked');
-            radioOption.findBlockOn('button').hasMod('checked').should.be.true;
+            radio.setMod('checked');
+            radio.findBlockInside('button').hasMod('checked').should.be.true;
 
-            radioOption.delMod('checked');
-            radioOption.findBlockOn('button').hasMod('checked').should.be.false;
+            radio.delMod('checked');
+            radio.findBlockInside('button').hasMod('checked').should.be.false;
         });
     });
 
     describe('disabled', function() {
         it('should set/unset "disabled" mod for button according to self', function() {
-            radioOption.setMod('disabled');
-            radioOption.findBlockOn('button').hasMod('disabled').should.be.true;
+            radio.setMod('disabled');
+            radio.findBlockInside('button').hasMod('disabled').should.be.true;
 
-            radioOption.delMod('disabled');
-            radioOption.findBlockOn('button').hasMod('disabled').should.be.false;
+            radio.delMod('disabled');
+            radio.findBlockInside('button').hasMod('disabled').should.be.false;
         });
     });
 
     describe('focused', function() {
         it('should set/unset "disabled" mod for button according to self', function() {
-            radioOption.setMod('focused');
-            radioOption.findBlockOn('button').hasMod('focused').should.be.true;
+            radio.setMod('focused');
+            radio.findBlockInside('button').hasMod('focused').should.be.true;
 
-            radioOption.delMod('focused');
-            radioOption.findBlockOn('button').hasMod('focused').should.be.false;
+            radio.delMod('focused');
+            radio.findBlockInside('button').hasMod('focused').should.be.false;
         });
     });
 });

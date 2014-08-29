@@ -29,30 +29,30 @@ describe('checkbox_type_button', function() {
     describe('checked', function() {
         it('should set/unset "checked" mod for button according to self', function() {
             checkbox.setMod('checked');
-            checkbox.findBlockOn('button').hasMod('checked').should.be.true;
+            checkbox.findBlockInside('button').hasMod('checked').should.be.true;
 
             checkbox.delMod('checked');
-            checkbox.findBlockOn('button').hasMod('checked').should.be.false;
+            checkbox.findBlockInside('button').hasMod('checked').should.be.false;
         });
     });
 
     describe('disabled', function() {
         it('should set/unset "disabled" mod for button according to self', function() {
             checkbox.setMod('disabled');
-            checkbox.findBlockOn('button').hasMod('disabled').should.be.true;
+            checkbox.findBlockInside('button').hasMod('disabled').should.be.true;
 
             checkbox.delMod('disabled');
-            checkbox.findBlockOn('button').hasMod('disabled').should.be.false;
+            checkbox.findBlockInside('button').hasMod('disabled').should.be.false;
         });
     });
 
     describe('focused', function() {
         it('should set/unset "disabled" mod for button according to self', function() {
             checkbox.setMod('focused');
-            checkbox.findBlockOn('button').hasMod('focused').should.be.true;
+            checkbox.findBlockInside('button').hasMod('focused').should.be.true;
 
             checkbox.delMod('focused');
-            checkbox.findBlockOn('button').hasMod('focused').should.be.false;
+            checkbox.findBlockInside('button').hasMod('focused').should.be.false;
         });
     });
 });

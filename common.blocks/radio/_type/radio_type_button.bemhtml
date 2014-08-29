@@ -1,8 +1,11 @@
 block('radio').mod('type', 'button')(
-    def()(function() {
+    content()(function() {
         var ctx = this.ctx,
-            mods = this.mods,
-            buttonMods = {
+            mods = this.mods;
+
+        return [{
+            block : 'button',
+            mods : {
                 togglable : mods.mode === 'radio-check'?
                     'check' :
                     'radio',
@@ -11,27 +14,20 @@ block('radio').mod('type', 'button')(
                 theme : mods.theme,
                 size : mods.size
             },
-            buttonContent = [
-                {
-                    block : 'radio',
-                    elem : 'control',
-                    checked : mods.checked,
-                    disabled : mods.disabled,
-                    name : ctx.name,
-                    val : ctx.val
-                },
-                ctx.icon
-            ];
-
-        typeof ctx.text !== 'undefined' &&
-            buttonContent.push({ elem : 'text', content : ctx.text });
-
-        applyCtx({
-            block : 'button',
-            mix : { block : 'radio', mods : mods, js : true },
-            mods : buttonMods,
             title : ctx.title,
-            content : buttonContent
-        });
+            content : [
+                ctx.icon,
+                ctx.text !== 'undefined'?
+                    { elem : 'text', content : ctx.text } :
+                    ''
+            ]
+        }, {
+            block : 'radio',
+            elem : 'control',
+            checked : mods.checked,
+            disabled : mods.disabled,
+            name : ctx.name,
+            val : ctx.val
+        }];
     })
 );

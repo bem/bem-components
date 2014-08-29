@@ -8,9 +8,22 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
                 'inited' : function() {
                     this.__base.apply(this, arguments);
 
+                    this.defaultPoint = this.params.defaultPoint;
                     this._score = 0;
                     this._on = true;
                     this._hoveredItem = null;
+
+                    if(this.defaultPoint) {
+                        this.
+                            setMod(this.elem('label').eq(this.defaultPoint), 'hovered').
+                            setMod('hovered').
+                            _hoveredItem = this.elem('label').eq(this.defaultPoint);
+
+                    }
+                },
+
+                '' : function() {
+                    this.dropElemCache('label');
                 }
             },
 
@@ -41,6 +54,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
 
         setVal : function(score) {
             this.findElem('voting-result').width(score);
+            return this;
         },
 
         getVal : function() {
@@ -69,7 +83,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
             if(keyCode === keyCodes.SPACE) {
                 e.preventDefault();
                 (this._on && this._hoveredItem[0].click());
-                if(!!this.params.onceVote) this._on = false;
+                if(this.params.onceVote) this._on = false;
                 return this;
             }
         },
@@ -78,16 +92,16 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
             this
                 .delMod(this._hoveredItem, 'hovered')
                 .setMod(item, 'hovered')
-                .setMod('hovered');
-            this._hoveredItem = item;
+                .setMod('hovered')
+                ._hoveredItem = item;
             return this;
         },
 
         _onItemOut : function() {
             this
                 .delMod(this._hoveredItem, 'hovered')
-                .delMod('hovered');
-            this._hoveredItem = null;
+                .delMod('hovered')
+                ._hoveredItem = null;
             return this;
         }
 

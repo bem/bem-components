@@ -6,7 +6,7 @@
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
     ],
-    content : ['s', 'm'].map(function(size) {
+    content : ['m', 's'].map(function(size) {
         return [
             { tag : 'h3', content : 'normal ' + size },
             {
@@ -49,22 +49,23 @@
                 points : 4,
                 granulation : 10
             },
-            { tag : 'h3', content : 'normal ' + size + ' disabled' },
+            { tag : 'h3', content : 'normal ' + size + ' onceVote' },
             {
                 block : 'rating',
-                mods : { theme : 'normal', size : size, readonly : 'off', disabled : true },
-                name : 'rating2' + size,
+                mods : { theme : 'normal', size : size, readonly : 'off' },
+                name : 'rating2' + size + 'onceVote',
+                onceVote : true,
                 total : 4,
                 votes : 1,
                 points : 4,
                 granulation : 10
             },
-            { tag : 'h3', content : 'normal ' + size + ' onceVote' },
+            { tag : 'h3', content : 'normal ' + size + ' default point' },
             {
                 block : 'rating',
                 mods : { theme : 'normal', size : size, readonly : 'off' },
-                name : 'rating2' + size + 'readonly',
-                onceVote : true,
+                name : 'rating2' + size + 'defPoint',
+                defaultPoint : 3,
                 total : 4,
                 votes : 1,
                 points : 4,
@@ -74,7 +75,16 @@
             {
                 block : 'rating',
                 mods : { theme : 'normal', size : size, readonly : 'on' },
-                name : 'rating2' + size + 'readonly',
+                total : 4,
+                votes : 1,
+                points : 4,
+                granulation : 10
+            },
+            { tag : 'h3', content : 'normal ' + size + ' disabled' },
+            {
+                block : 'rating',
+                mods : { theme : 'normal', size : size, readonly : 'off', disabled : true },
+                name : 'rating2' + size,
                 total : 4,
                 votes : 1,
                 points : 4,

@@ -60,17 +60,6 @@
                 points : 4,
                 granulation : 10
             },
-            { tag : 'h3', content : 'normal ' + size + ' default point' },
-            {
-                block : 'rating',
-                mods : { theme : 'normal', size : size, readonly : 'off' },
-                name : 'rating2' + size + 'defPoint',
-                defaultPoint : 3,
-                total : 4,
-                votes : 1,
-                points : 4,
-                granulation : 10
-            },
             { tag : 'h3', content : 'normal ' + size + ' readonly' },
             {
                 block : 'rating',

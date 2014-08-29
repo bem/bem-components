@@ -8,19 +8,8 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
                 'inited' : function() {
                     this.__base.apply(this, arguments);
 
-                    this._defaultPoint = this.params.defaultPoint;
                     this._score = 0;
                     this._on = true;
-
-                    if(this._defaultPoint) {
-                        var label = this.findElem('label').eq(this._defaultPoint);
-
-                        this
-                            .setMod(label, 'hovered')
-                            .setMod('hovered')
-                            ._hoveredItem = label;
-
-                    }
                 }
             },
 
@@ -50,7 +39,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
         },
 
         setVal : function(score) {
-            this.findElem('voting-result').width(score);
+            this.findElem('result').width(score);
             return this;
         },
 

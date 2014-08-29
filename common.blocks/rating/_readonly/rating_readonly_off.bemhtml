@@ -44,7 +44,7 @@ block('rating').mod('readonly', 'off') (
         }
 
         rates.push({
-            elem : 'voting-result', // TODO: think about naming
+            elem : 'result', // TODO: think about naming
             attrs : { style : 'width: ' + points * this._sizes[this.mods.size] + 'px;' }
         });
 

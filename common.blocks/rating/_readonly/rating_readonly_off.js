@@ -36,6 +36,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
 
             this._score = ( ( (point + params.total) / (params.votes + 1) ) * params.size).toFixed(1);
             this.setVal(this._score);
+            if(params.onceVote) this._on = false;
         },
 
         setVal : function(score) {
@@ -67,7 +68,8 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
 
             if(keyCode === keyCodes.SPACE) {
                 e.preventDefault();
-                this._on && this._hoveredItem[0].click();
+                (this._on && this._hoveredItem[0].click());
+                if(!!this.params.onceVote) this._on = false;
                 return this;
             }
         },

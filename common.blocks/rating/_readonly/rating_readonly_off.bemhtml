@@ -8,10 +8,13 @@ block('rating').mod('readonly', 'off') (
     }),
     tag()('span'),
     js()(function() {
+        var ctx = this.ctx;
+
         return {
-            total : this.ctx.total || 0,
-            votes : this.ctx.votes || 0,
-            points : this.ctx.points || 0,
+            onceVote : ctx.onceVote || false,
+            total : ctx.total || 0,
+            votes : ctx.votes || 0,
+            points : ctx.points || 0,
             size : this._sizes[this.mods.size]
         };
     }),

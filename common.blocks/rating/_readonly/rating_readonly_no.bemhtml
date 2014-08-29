@@ -48,14 +48,11 @@ block('rating').mod('readonly', 'no') (
             });
         }
 
-        if(this._theme !== 'default') {
-            rates.push({
-                elem : 'staticLayer', // TODO: think about naming
-                attrs : { style : 'width: ' + points * this._sizes[this.mods.size] + 'px;' }
-            });
+        rates.push({
+            elem : 'staticLayer', // TODO: think about naming
+            attrs : { style : 'width: ' + points * this._sizes[this.mods.size] + 'px;' }
+        });
 
-            rates.reverse();
-        }
-        return rates;
+        return rates.reverse();
     })
 );

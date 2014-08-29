@@ -8,22 +8,19 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
                 'inited' : function() {
                     this.__base.apply(this, arguments);
 
-                    this.defaultPoint = this.params.defaultPoint;
+                    this._defaultPoint = this.params.defaultPoint;
                     this._score = 0;
                     this._on = true;
-                    this._hoveredItem = null;
 
-                    if(this.defaultPoint) {
-                        this.
-                            setMod(this.elem('label').eq(this.defaultPoint), 'hovered').
-                            setMod('hovered').
-                            _hoveredItem = this.elem('label').eq(this.defaultPoint);
+                    if(this._defaultPoint) {
+                        var label = this.findElem('label').eq(this._defaultPoint);
+
+                        this
+                            .setMod(label, 'hovered')
+                            .setMod('hovered')
+                            ._hoveredItem = label;
 
                     }
-                },
-
-                '' : function() {
-                    this.dropElemCache('label');
                 }
             },
 
@@ -75,9 +72,9 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
                 nextIdx += 38 - keyCode; // using the features of key codes for "left"/"right" ;-)
                 nextIdx = nextIdx < 0? len - 1 : nextIdx >= len? 0 : nextIdx;
 
-                this._onItemOut();
-                this._onItemHover(items.eq(nextIdx));
-                return this;
+                return this
+                    ._onItemOut()
+                    ._onItemHover(items.eq(nextIdx));
             }
 
             if(keyCode === keyCodes.SPACE) {

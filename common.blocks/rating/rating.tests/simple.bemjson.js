@@ -11,7 +11,7 @@
             { tag : 'h3', content : 'normal ' + size },
             {
                 block : 'rating',
-                mods : { theme : 'normal', size : size, readonly : 'off' },
+                mods : { theme : 'normal', size : size, base : true },
                 name : 'rating' + size,
                 total : 4,
                 votes : 1,
@@ -42,7 +42,7 @@
             { tag : 'h3', content : 'normal ' + size + ' length (stars)' },
             {
                 block : 'rating',
-                mods : { theme : 'normal', size : size, readonly : 'off' },
+                mods : { theme : 'normal', size : size, base : true },
                 name : 'rating1' + size,
                 total : 4,
                 votes : 1,
@@ -52,7 +52,7 @@
             { tag : 'h3', content : 'normal ' + size + ' onceVote' },
             {
                 block : 'rating',
-                mods : { theme : 'normal', size : size, readonly : 'off' },
+                mods : { theme : 'normal', size : size, base : true },
                 name : 'rating2' + size + 'onceVote',
                 onceVote : true,
                 total : 4,
@@ -63,7 +63,7 @@
             { tag : 'h3', content : 'normal ' + size + ' readonly' },
             {
                 block : 'rating',
-                mods : { theme : 'normal', size : size, readonly : 'on' },
+                mods : { theme : 'normal', size : size, readonly : true },
                 total : 4,
                 votes : 1,
                 points : 4,
@@ -72,7 +72,7 @@
             { tag : 'h3', content : 'normal ' + size + ' disabled' },
             {
                 block : 'rating',
-                mods : { theme : 'normal', size : size, readonly : 'off', disabled : true },
+                mods : { theme : 'normal', size : size, base : true, disabled : true },
                 name : 'rating2' + size,
                 total : 4,
                 votes : 1,

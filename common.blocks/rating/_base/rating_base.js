@@ -2,13 +2,12 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
 
     function(provide, BEMDOM, Control, keyCodes, $) {
 
-    provide(BEMDOM.decl({ block : this.name, modName : 'readonly', modVal : 'off', baseBlock : Control }, {
+    provide(BEMDOM.decl({ block : this.name, modName : 'base', modVal : true, baseBlock : Control }, {
         onSetMod : {
             'js' : {
                 'inited' : function() {
                     this.__base.apply(this, arguments);
 
-                    this._score = 0;
                     this._on = true;
                 }
             },
@@ -36,6 +35,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
             this._score = ( ( (point + params.total) / (params.votes + 1) ) * params.size).toFixed(1);
             this.setVal(this._score);
             if(params.onceVote) this._on = false;
+
         },
 
         setVal : function(score) {

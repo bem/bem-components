@@ -39,7 +39,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
         },
 
         setVal : function(score) {
-            this.findElem('staticLayer').width(score);
+            this.findElem('voting-result').width(score);
         },
 
         getVal : function() {

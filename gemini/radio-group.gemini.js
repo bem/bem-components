@@ -25,7 +25,7 @@ gemini.suite('radio-group', function(root) {
             // in different types we need different main elements
             if(!!~test.indexOf('button')) {
                 captureArea = radioItemSelectorEnabled + ' .button';
-                control = ' .radio';
+                control = ' .button';
             } else {
                 captureArea = radioItemSelectorEnabled + ' .radio__box';
                 control = ' .radio__control';

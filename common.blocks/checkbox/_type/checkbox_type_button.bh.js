@@ -1,36 +1,32 @@
 module.exports = function(bh) {
 
     bh.match('checkbox_type_button', function(ctx, json) {
-        var mods = ctx.mods(),
-            buttonMods = {
+        var mods = ctx.mods();
+
+        ctx.content([{
+            block : 'button',
+            mods : {
                 togglable : 'check',
                 checked : mods.checked,
                 disabled : mods.disabled,
                 theme : mods.theme,
                 size : mods.size
             },
-            buttonContent = [
-                {
-                    block : 'checkbox',
-                    elem : 'control',
-                    checked : mods.checked,
-                    disabled : mods.disabled,
-                    name : json.name,
-                    val : json.val
-                },
-                json.icon
-            ];
-
-        typeof json.text !== 'undefined' &&
-            buttonContent.push({ elem : 'text', content : json.text });
-
-        return {
-            block : 'button',
-            mix : [{ block : 'checkbox', mods : mods, js : json.js || true }].concat(ctx.mix() || []),
-            mods : buttonMods,
             title : json.title,
-            content : buttonContent
-        };
+            content : [
+                json.icon,
+                json.text !== 'undefined'?
+                    { elem : 'text', content : json.text } :
+                    ''
+            ]
+        }, {
+            block : 'checkbox',
+            elem : 'control',
+            checked : mods.checked,
+            disabled : mods.disabled,
+            name : json.name,
+            val : json.val
+        }]);
     });
 
 };

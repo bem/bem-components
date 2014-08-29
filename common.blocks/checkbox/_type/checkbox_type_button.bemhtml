@@ -1,35 +1,31 @@
 block('checkbox').mod('type', 'button')(
-    def()(function() {
+    content()(function() {
         var ctx = this.ctx,
-            mods = this.mods,
-            buttonMods = {
+            mods = this.mods;
+
+        return [{
+            block : 'button',
+            mods : {
                 togglable : 'check',
                 checked : mods.checked,
                 disabled : mods.disabled,
                 theme : mods.theme,
                 size : mods.size
             },
-            buttonContent = [
-                {
-                    block : 'checkbox',
-                    elem : 'control',
-                    checked : mods.checked,
-                    disabled : mods.disabled,
-                    name : ctx.name,
-                    val : ctx.val
-                },
-                ctx.icon
-            ];
-
-        typeof ctx.text !== 'undefined' &&
-            buttonContent.push({ elem : 'text', content : ctx.text });
-
-        applyCtx({
-            block : 'button',
-            mix : [{ block : 'checkbox', mods : mods, js : ctx.js || true }].concat(ctx.mix || []),
-            mods : buttonMods,
             title : ctx.title,
-            content : buttonContent
-        });
+            content : [
+                ctx.icon,
+                ctx.text !== 'undefined'?
+                    { elem : 'text', content : ctx.text } :
+                    ''
+            ]
+        }, {
+            block : 'checkbox',
+            elem : 'control',
+            checked : mods.checked,
+            disabled : mods.disabled,
+            name : ctx.name,
+            val : ctx.val
+        }];
     })
 );

@@ -1,6 +1,6 @@
-modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
+modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
 
-    function(provide, BEMDOM, Control, keyCodes) {
+    function(provide, BEMDOM, Control, keyCodes, $) {
 
     provide(BEMDOM.decl({ block : this.name, modName : 'readonly', modVal : 'off', baseBlock : Control }, {
         onSetMod : {
@@ -57,7 +57,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
                     hoveredIdx = this._hoveredItem ? items.index(this._hoveredItem) : -1,
                     nextIdx = hoveredIdx;
 
-                nextIdx += 38 - keyCode;
+                nextIdx += 38 - keyCode; // using the features of key codes for "left"/"right" ;-)
                 nextIdx = nextIdx < 0? len - 1 : nextIdx >= len? 0 : nextIdx;
 
                 this._onItemOut();
@@ -92,16 +92,14 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
     }, {
         live : function() {
             this.liveBindTo('input', 'click', function(e) {
-                (this._on && this._vote(+e.currentTarget.context.value));
+                (this._on && this._vote(+$(e.currentTarget).val()));
             });
 
             this.liveBindTo('label', 'mousemove', function(e) {
                 this._onItemHover(e.currentTarget);
             });
 
-            this.liveBindTo('label', 'mouseout', function() {
-                this._onItemOut();
-            });
+            this.liveBindTo('label', 'mouseout', this.prototype._onItemOut);
 
             return this.__base.apply(this, arguments);
         }

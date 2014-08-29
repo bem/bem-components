@@ -2,7 +2,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes'],
 
     function(provide, BEMDOM, Control, keyCodes) {
 
-    provide(BEMDOM.decl({ block : this.name, modName : 'readonly', modVal : 'no', baseBlock : Control }, {
+    provide(BEMDOM.decl({ block : this.name, modName : 'readonly', modVal : 'off', baseBlock : Control }, {
         onSetMod : {
             'js' : {
                 'inited' : function() {

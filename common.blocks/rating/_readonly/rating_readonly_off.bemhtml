@@ -1,4 +1,4 @@
-block('rating').mod('readonly', 'no') (
+block('rating').mod('readonly', 'off') (
     def()(function() {
         applyNext({
             _sizes : { s : 12, m : 16 },

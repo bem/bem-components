@@ -4,11 +4,11 @@ block('rating').elem('rate') (
             label = {
                 elem : 'label',
                 attrs : {
-                    for : this.generateId()
+                    for : this.generateId(),
+                    title : ctx.content
                 }
             };
 
-        this._theme === 'default' ? label.content = ctx.content : label.attrs.title = ctx.content;
         return applyCtx([
             {
                 elem : 'input',

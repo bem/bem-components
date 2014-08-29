@@ -13,7 +13,7 @@ block('rating').mod('readonly', 'on') (
                 attrs : { style : 'width: ' + ctx.granulation * _sizes[mods.size] + 'px;' }
             },
             {
-                elem : 'voting-result',
+                elem : 'result',
                 attrs : { style : 'width: ' + (ctx.points || 0) * _sizes[mods.size] + 'px;' }
             }
         ];

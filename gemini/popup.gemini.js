@@ -14,7 +14,7 @@ gemini.suite('popup', function(root) {
         .forEach(function(test) {
             var popupSwitcher = '.' + test + ' .link',
                 popupSelector = ' .' + test + '-popup';
-            
+
             gemini.suite(test, function(suite) {
                 suite
                     .setCaptureElements(popupSwitcher, popupSelector)
@@ -28,8 +28,13 @@ gemini.suite('popup', function(root) {
 
         gemini.suite('test-nested', function(suite) {
             suite
-                .setCaptureElements('.test-nested-first .link', '.test-nested-secondPopup', '.test-nested-lastPopup')
-                .capture('plain');
+                .setCaptureElements('.test-nested-popup', '.test-nested-link-1')
+                .capture('opened', function(actions) {
+                    actions
+                        .click('.test-nested-link-1')
+                        .click('.test-nested-link-2')
+                        .wait(300);
+                });
         });
 
 });

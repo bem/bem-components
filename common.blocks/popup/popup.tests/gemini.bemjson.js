@@ -9,61 +9,38 @@
     content : [
         {
             block : 'test-nested',
-            cls : 'test-nested-first',
             js : true,
             content : [
-                { block : 'link', mods : { pseudo : true }, content : 'open' },
+                { block : 'link', mods : { pseudo : true }, cls : 'test-nested-link-1', content : 'open' },
                 {
                     block : 'popup',
-                    mods : { theme : 'simple', autoclosable : true, visible : true },
+                    cls : 'test-nested-popup',
+                    mods : { theme : 'normal' },
                     content : [
-                        'popup is opened',
+                        'first popup',
                         {
-                            tag : 'p',
+                            block : 'test-nested',
+                            js : true,
                             content : [
+                                { tag : 'p', content : {
+                                    block : 'link',
+                                    mods : { pseudo : true },
+                                    cls : 'test-nested-link-2',
+                                    content : 'open second'
+                                } },
                                 {
-                                    block : 'test-nested',
-                                    js : true,
-                                    content : [
-                                        { block : 'link', mods : { pseudo : true }, content : 'open' },
-                                        {
-                                            block : 'popup',
-                                            cls : 'test-nested-secondPopup',
-                                            mods : { theme : 'simple', visible : true },
-                                            content : [
-                                                'popup is opened',
-                                                {
-                                                    tag : 'p',
-                                                    content : [
-                                                        {
-                                                            block : 'test-nested',
-                                                            js : true,
-                                                            content : [
-                                                                { block : 'link', mods : { pseudo : true }, content : 'open' },
-                                                                {
-                                                                    block : 'popup',
-                                                                    mods : { theme : 'simple', autoclosable : true, visible : true },
-                                                                    cls : 'test-nested-lastPopup',
-                                                                    content : 'popup is opened'
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                    block : 'popup',
+                                    cls : 'test-nested-popup',
+                                    mods : { theme : 'normal' },
+                                    content : 'second popup'
                                 }
                             ]
-
                         }
                     ]
                 }
             ]
         },
 
-        { tag : 'h2', content : 'normal' },
         {
             block : 'test-wrap',
             content : [

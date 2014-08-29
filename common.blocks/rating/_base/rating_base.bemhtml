@@ -1,4 +1,4 @@
-block('rating').mod('readonly', 'off') (
+block('rating').mod('base', true) (
     def()(function() {
         applyNext({
             _sizes : { s : 12, m : 16 },
@@ -11,7 +11,6 @@ block('rating').mod('readonly', 'off') (
         var ctx = this.ctx;
 
         return {
-            defaultPoint : -ctx.defaultPoint || false,
             onceVote : ctx.onceVote || false,
             total : ctx.total || 0,
             votes : ctx.votes || 0,

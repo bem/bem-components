@@ -1,4 +1,4 @@
-block('rating').mod('readonly', 'on') (
+block('rating').mod('readonly', true) (
     content()(function() {
         var ctx = this.ctx,
             mods = this.mods,

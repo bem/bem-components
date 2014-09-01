@@ -32,21 +32,33 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
         _vote : function(point) {
             var params = this.params;
 
-            this._score = ( ( (point + params.total) / (params.votes + 1) ) * params.size).toFixed(1);
-            this.setVal(this._score);
+            this
+                ._setScore(( ( (point + params.total) / (params.votes + 1) ) * params.size).toFixed(1))
+                ._setVal(point)
+                .findElem('result').width(this._score);
+
             if(params.onceVote) {
                 this._on = false;
                 this.setMod('disabled');
             }
         },
 
-        setVal : function(score) {
-            this.findElem('result').width(score);
+        _setScore : function(score) {
+            this._score = score;
+            return this;
+        },
+
+        getScore : function() {
+            return this._score;
+        },
+
+        _setVal : function(val) {
+            this._val = val;
             return this;
         },
 
         getVal : function() {
-            return this._score;
+            return this._val;
         },
 
         _onKeyDown : function(e) {

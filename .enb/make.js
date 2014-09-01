@@ -252,11 +252,11 @@ function getSourceLevels(platform, config) {
     });
 
     platformNames.forEach(function(name) {
-        levels.push({ path : name + '.blocks', check : false });
+        levels.push({ path : name + '.blocks', check : true });
     });
 
     platformNames.forEach(function(name) {
-        levels.push({ path : path.join('design', name + '.blocks'), check : false });
+        levels.push({ path : path.join('design', name + '.blocks'), check : true });
     });
 
     return levels.map(function(level) {

@@ -139,7 +139,7 @@ module.exports = function(config) {
             config.mode('production', function() {
                 config.nodes(nodes, function(nodeConfig) {
                     nodeConfig.addTechs([
-                        [borschik, { source : '?.css', target : '_?.css', freeze : true }],
+                        [borschik, { source : '?.css', target : '_?.css', freeze : true, tech : 'cleancss' }],
                         [borschik, { source : '?.js', target : '_?.js', freeze : true }]
                     ]);
                 });

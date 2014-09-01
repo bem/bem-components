@@ -37,6 +37,7 @@
     "enb-diverse-js": "0.1.0",
     "enb-modules": "0.2.0",
     "enb-stylus": "1.1.2",
+    "borschik-tech-cleancss": "1.0.2",
     "gemini": "^0.6.2",
     "git-hooks": "~0.0.6",
     "http-server": "^0.6.1",

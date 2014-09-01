@@ -9,6 +9,8 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
                     this.__base.apply(this, arguments);
 
                     this._on = true;
+                    this._items = this.findElem('label'); //using in _onKeyDown;
+                    this._len = this._items.length; //      ^^^^
                 }
             },
 
@@ -65,19 +67,17 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
             var keyCode = e.keyCode,
                 isArrow = keyCode === keyCodes.LEFT || keyCode === keyCodes.RIGHT;
 
+            e.preventDefault();
             if(isArrow && !e.shiftKey) {
-                e.preventDefault();
-                var items = this.findElem('label'),
-                    len = items.length,
-                    hoveredIdx = this._hoveredItem ? items.index(this._hoveredItem) : -1,
+                var hoveredIdx = this._hoveredItem ? this._items.index(this._hoveredItem) : -1,
                     nextIdx = hoveredIdx;
 
                 nextIdx += 38 - keyCode; // using the features of key codes for "left"/"right" ;-)
-                nextIdx = nextIdx < 0? len - 1 : nextIdx >= len? 0 : nextIdx;
+                nextIdx = nextIdx < 0? this._len - 1 : nextIdx >= this._len? 0 : nextIdx;
 
                 return this
                     ._onItemOut()
-                    ._onItemHover(items.eq(nextIdx));
+                    ._onItemHover(this._items.eq(nextIdx));
             }
 
             if(keyCode === keyCodes.SPACE) {

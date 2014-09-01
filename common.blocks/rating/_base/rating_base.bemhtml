@@ -1,7 +1,7 @@
 block('rating').mod('base', true) (
     def()(function() {
         applyNext({
-            _sizes : { s : 12, m : 16 },
+            _sizes : { s : 12, m : 16 }, // default sizes of rate
             _name : this.ctx.name,
             _theme : this.mods.theme
         });
@@ -11,7 +11,7 @@ block('rating').mod('base', true) (
         var ctx = this.ctx;
 
         return {
-            onceVote : ctx.onceVote || false,
+            onceVote : ctx.onceVote || false, // data for js params
             total : ctx.total || 0,
             votes : ctx.votes || 0,
             points : ctx.points || 0,
@@ -31,18 +31,18 @@ block('rating').mod('base', true) (
             points = ctx.points || 0,
             rates = [];
 
-        if(granulation) {
+        if(granulation) {  // generate rating content of granulation
             for(var i = 0; i < granulation; i++) {
                 rates.push({ elem : 'rate', value : i + 1 });
             }
-        } else {
+        } else { // generate rating content of ctx.content
             rates = ctx.content.map(function(rate, i) {
                 rate.value = i + 1;
                 return rate;
             });
         }
 
-        rates.push({
+        rates.push({    // push result layer on rating content
             elem : 'result',
             attrs : { style : 'width: ' + points * this._sizes[this.mods.size] + 'px;' }
         });

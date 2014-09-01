@@ -13,9 +13,9 @@
                 block : 'rating',
                 mods : { theme : 'normal', size : size, base : true },
                 name : 'rating' + size,
-                total : 4,
-                votes : 1,
-                points : 4,
+                total : 4, // the total sum of the rating
+                votes : 1, // the total number of votes
+                points : 4, // result now
                 content : [
                     {
                         elem : 'rate',
@@ -47,14 +47,14 @@
                 total : 4,
                 votes : 1,
                 points : 4,
-                granulation : 10
+                granulation : 10 // if not content, granulation(count) generate stars
             },
             { tag : 'h3', content : 'normal ' + size + ' onceVote' },
             {
                 block : 'rating',
                 mods : { theme : 'normal', size : size, base : true },
                 name : 'rating2' + size + 'onceVote',
-                onceVote : true,
+                onceVote : true, // can vote only once
                 total : 4,
                 votes : 1,
                 points : 4,

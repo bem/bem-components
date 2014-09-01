@@ -39,7 +39,7 @@
                     }
                 ]
             },
-            { tag : 'h3', content : 'normal ' + size + ' length (stars)' },
+            { tag : 'h3', content : 'normal ' + size + ' granulation' },
             {
                 block : 'rating',
                 mods : { theme : 'normal', size : size, base : true },

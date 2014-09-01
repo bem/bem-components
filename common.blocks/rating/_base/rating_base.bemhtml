@@ -43,10 +43,10 @@ block('rating').mod('base', true) (
         }
 
         rates.push({
-            elem : 'result', // TODO: think about naming
+            elem : 'result',
             attrs : { style : 'width: ' + points * this._sizes[this.mods.size] + 'px;' }
         });
 
-        return rates.reverse();
+        return rates.reverse(); // order DOM elems by increase value
     })
 );

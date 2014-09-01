@@ -65,23 +65,25 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
 
         _onKeyDown : function(e) {
             var keyCode = e.keyCode,
-                isArrow = keyCode === keyCodes.LEFT || keyCode === keyCodes.RIGHT;
+                isArrow = keyCode === keyCodes.LEFT || keyCode === keyCodes.RIGHT ||
+                    keyCode === keyCodes.UP || keyCode === keyCodes.DOWN;
 
-            e.preventDefault();
             if(isArrow && !e.shiftKey) {
-                var hoveredIdx = this._hoveredItem ? this._items.index(this._hoveredItem) : -1,
-                    nextIdx = hoveredIdx;
+                e.preventDefault();
+                if(keyCode === keyCodes.LEFT || keyCode === keyCodes.RIGHT) {
+                    var hoveredIdx = this._hoveredItem ? this._items.index(this._hoveredItem) : -1,
+                        nextIdx = hoveredIdx;
 
-                nextIdx += 38 - keyCode; // using the features of key codes for "left"/"right" ;-)
-                nextIdx = nextIdx < 0? this._len - 1 : nextIdx >= this._len? 0 : nextIdx;
+                    nextIdx += 38 - keyCode; // using the features of key codes for "left"/"right" ;-)
+                    nextIdx = nextIdx < 0? this._len - 1 : nextIdx >= this._len? 0 : nextIdx;
 
-                return this
-                    ._onItemOut()
-                    ._onItemHover(this._items.eq(nextIdx));
+                    return this
+                        ._onItemOut()
+                        ._onItemHover(this._items.eq(nextIdx));
+                }
             }
 
             if(keyCode === keyCodes.SPACE) {
-                e.preventDefault();
                 (this._on && this._hoveredItem[0].click());
                 if(this.params.onceVote) {
                     this._on = false;

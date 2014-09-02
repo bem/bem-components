@@ -16,9 +16,3 @@ block('menu')(
     js()(true),
     mix()([{ elem : 'control' }])
 );
-
-block('menu-item').match(this._menuMods).def()(function() {
-    this.mods.theme = this._menuMods.theme;
-    this.mods.disabled = this.mods.disabled || this._menuMods.disabled;
-    applyNext();
-});

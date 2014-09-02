@@ -6,7 +6,7 @@ module.exports = function(bh) {
             optionToMenuItem = function(option) {
                 var res = {
                         block : 'menu-item',
-                        mods : { checked : option.checked, disabled : option.disabled },
+                        mods : { checked : option.checked, disabled : mods.disabled || option.disabled },
                         val : option.val,
                         js : { checkedText : option.checkedText },
                         content : option.text

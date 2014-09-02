@@ -27,11 +27,6 @@ bgTopPosition = (-12 -16);
         opacity: .5;
     }
 
-    &.rating_readonly
-    {
-        z-index: -2;
-    }
-
     .rating__label,
     .rating_theme_normal_hovered .rating__label
     {
@@ -72,6 +67,12 @@ bgTopPosition = (-12 -16);
             {
                 height: (size[i])px;
                 background: background[i] 0 (size[i])px;
+            }
+
+            &.rating_readonly
+            {
+                height: (size[i])px;
+                background: background[i];
             }
         }
     }

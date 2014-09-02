@@ -8,21 +8,12 @@ module.exports = function(bh) {
 
         ctx
             .js(true)
-            .tParam('_menuMods', menuMods)
+            .tParam('menuMods', menuMods)
             .mix({ elem : 'control' });
 
         var attrs = { role : 'menu' };
         ctx.mod('disabled') || (attrs.tabindex = 0);
         ctx.attrs(attrs);
-    });
-
-    bh.match('menu-item', function(ctx) {
-        var menuMods = ctx.tParam('_menuMods');
-
-        menuMods && ctx.mods({
-            theme : menuMods.theme,
-            disabled : menuMods.disabled
-        });
     });
 
 };

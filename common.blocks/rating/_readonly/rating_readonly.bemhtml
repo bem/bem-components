@@ -4,6 +4,7 @@ block('rating').mod('readonly', true) (
             _sizes : { s : 12, m : 16 }
         });
     }),
+    tag()('span'),
     attrs()(function(){
         return this.extend({
             style : 'width: ' + this.ctx.granulation * this._sizes[this.mods.size] + 'px;'

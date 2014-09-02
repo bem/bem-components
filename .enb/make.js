@@ -152,7 +152,7 @@ module.exports = function(config) {
             var nodeDir = nodeConfig.getNodePath(),
                 blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
                 sublevelDir = path.join(nodeDir, 'blocks'),
-                extendedLevels = [].concat(getTestLevels(platform, config));
+                extendedLevels = [].concat(getTestLevels(platform));
 
             if(fs.existsSync(blockSublevelDir)) {
                 extendedLevels.push(blockSublevelDir);
@@ -182,7 +182,7 @@ module.exports = function(config) {
         platforms.forEach(function(platform) {
             sets.examples.configure({
                 destPath : platform + '.examples',
-                levels : getLibLevels(platform, config),
+                levels : getLibLevels(platform),
                 techSuffixes : ['examples'],
                 fileSuffixes : ['bemjson.js', 'title.txt'],
                 inlineBemjson : true,
@@ -191,30 +191,30 @@ module.exports = function(config) {
 
             sets.tests.configure({
                 destPath : platform + '.tests',
-                levels : getLibLevels(platform, config),
+                levels : getLibLevels(platform),
                 techSuffixes : ['tests'],
                 fileSuffixes : ['bemjson.js', 'title.txt']
             });
 
             sets.docs.configure({
                 destPath : platform + '.docs',
-                levels : getLibLevels(platform, config),
+                levels : getLibLevels(platform),
                 exampleSets : [platform + '.examples'],
                 langs : config.getLanguages(),
-                jsSuffixes : ['vanilla.js', 'browser.js', 'js']
+                jsdoc : { suffixes : ['vanilla.js', 'browser.js', 'js'] }
             });
 
             sets.specs.configure({
                 destPath : platform + '.specs',
-                levels : getLibLevels(platform, config),
-                sourceLevels : getSpecLevels(platform, config),
+                levels : getLibLevels(platform),
+                sourceLevels : getSpecLevels(platform),
                 jsSuffixes : ['vanilla.js', 'browser.js', 'js']
             });
 
             sets.tmplSpecs.configure({
                 destPath : platform + '.tmpl-specs',
-                levels : getLibLevels(platform, config),
-                sourceLevels : getSpecLevels(platform, config),
+                levels : getLibLevels(platform),
+                sourceLevels : getSpecLevels(platform),
                 engines : {
                     bh : {
                         tech : 'enb-bh/techs/bh-server',
@@ -237,13 +237,13 @@ module.exports = function(config) {
     }
 };
 
-function getLibLevels(platform, config) {
+function getLibLevels(platform) {
     return PLATFORMS[platform].map(function(level) {
-        return config.resolvePath(level + '.blocks');
+        return level + '.blocks';
     });
 }
 
-function getSourceLevels(platform, config) {
+function getSourceLevels(platform) {
     var platformNames = PLATFORMS[platform];
     var levels = [];
 
@@ -259,22 +259,20 @@ function getSourceLevels(platform, config) {
         levels.push({ path : path.join('design', name + '.blocks'), check : true });
     });
 
-    return levels.map(function(level) {
-        return config.resolvePath(level);
-    });
+    return levels;
 }
 
-function getTestLevels(platform, config) {
+function getTestLevels(platform) {
     return [].concat(
-        getSourceLevels(platform, config),
-        config.resolvePath('test.blocks')
+        getSourceLevels(platform),
+        'test.blocks'
     );
 }
 
-function getSpecLevels(platform, config) {
+function getSpecLevels(platform) {
     return [].concat(
-        config.resolvePath({ path : path.join('libs', 'bem-pr', 'spec.blocks'), check : false }),
-        getSourceLevels(platform, config)
+        { path : path.join('libs', 'bem-pr', 'spec.blocks'), check : false },
+        getSourceLevels(platform)
     );
 }
 

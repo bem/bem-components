@@ -21,6 +21,7 @@ block('checkbox-group')(
                         checked : option.checked,
                         disabled : option.disabled || mods.disabled
                     },
+                    mix : option.mix,
                     name : ctx.name,
                     val : option.val,
                     text : option.text,

@@ -20,6 +20,7 @@ module.exports = function(bh) {
                         checked : option.checked,
                         disabled : option.disabled || mods.disabled
                     },
+                    mix : option.mix,
                     name : json.name,
                     val : option.val,
                     text : option.text,

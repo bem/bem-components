@@ -13,6 +13,6 @@
     block : 'popup',
     mix : { block : 'z-index-group', mods : { level : 1 } },
     mods : { autoclosable : true, theme : 'normal' },
-    content : 'I am under the block with { level : 2 } value!!'
+    content : 'I am under the block with { level : 2 } value!'
 }
 ```

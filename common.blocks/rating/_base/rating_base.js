@@ -35,9 +35,9 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
             var params = this.params;
 
             this
-                ._setScore(( ( (point + params.total) / (params.votes + 1) ) * params.size).toFixed(1))
+                ._setScore((((point + params.total) / (params.votes + 1))).toFixed(1))
                 ._setVal(point)
-                ._reDrawResult(this._score);
+                ._reDrawResult(this._score * params.size);
 
             if(params.onceVote) {
                 this._on = false;

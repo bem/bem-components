@@ -315,7 +315,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'radio', focused : true  },
+    mods : { theme : 'normal', size : 'm', mode : 'radio' },
     content : [
         {
             block : 'menu-item',

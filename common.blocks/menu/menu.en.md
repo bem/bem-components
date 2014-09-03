@@ -321,7 +321,7 @@ For a theme `normal` a gray line separates groups from each other.
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'radio', focused : true  },
+    mods : { theme : 'normal', size : 'm', mode : 'radio' },
     content : [
         {
             block : 'menu-item',

@@ -224,14 +224,6 @@ Use `type` modifier with `submit` value to create a button for data sending to a
 
 When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.
 
-```bemjson
-{
-    block : 'button',
-    text : 'Focused',
-    mods : { theme : 'normal', size : 'm', focused : true }
-}
-```
-
 #### _togglable
 
 Defines a behavior of the pressed button.

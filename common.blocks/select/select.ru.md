@@ -99,7 +99,7 @@
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio', theme : 'simple', focused : true },
+    mods : { mode : 'radio', theme : 'simple' },
     name : 'select1',
     options : [
         { val : 1, text : 'first' },
@@ -114,7 +114,7 @@
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio', theme : 'normal', size : 'm', focused : true },
+    mods : { mode : 'radio', theme : 'normal', size : 'm' },
     name : 'select1',
     options : [
         { val : 1, text : 'first' },

@@ -1,3 +1,3 @@
 [{
-    mustDeps : { block : 'rating', mods : { base : true } }
+    mustDeps : { block : 'rating', mods : { base : true, readonly : true } }
 }]

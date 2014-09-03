@@ -5,10 +5,12 @@ module.exports = function(bh) {
                 's' : 12,
                 'm' : 16
             },
-            rates = [],
-            size = ctx.mod('size');
+            _name = json.name,
+            size = ctx.mod('size'),
+            rates = [];
 
         ctx
+            .tParam('_name', _name)
             .tag('span')
             .js({
                 onceVote : json.onceVote || false,

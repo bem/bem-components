@@ -1,8 +1,18 @@
 module.exports = function(bh) {
 
     bh.match('rating__rate', function(ctx, json) {
-        return ctx.content(
+        ctx
+            .tag('')
+            .content(
             [
+                {
+                    elem : 'input',
+                    attrs : {
+                        id : ctx.generateId(),
+                        name : ctx.tParam('_name'),
+                        value : json.value
+                    }
+                },
                 {
                     elem : 'label',
                     attrs : {
@@ -10,14 +20,6 @@ module.exports = function(bh) {
                         title : json.content
                     }
                 },
-                {
-                    elem : 'input',
-                    attrs : {
-                        id : ctx.generateId(),
-
-                        value : json.value
-                    }
-                }
             ], true
         );
     });

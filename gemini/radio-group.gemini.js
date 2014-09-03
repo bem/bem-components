@@ -5,12 +5,12 @@ gemini.suite('radio-group', function(root) {
     root.setUrl('desktop.tests/radio-group/gemini/gemini.html');
 
     [
-        'default',
-        'button-normal-m',
-        'button-normal-l',
-        'button-normal-m-icon',
-        'button-normal-l-icon',
-        'normal-l',
+        //'default',
+        //'button-normal-m',
+        //'button-normal-l',
+        //'button-normal-m-icon',
+        //'button-normal-l-icon',
+        //'normal-l',
         'normal-m',
         'line-normal-m',
         'line-normal-l'

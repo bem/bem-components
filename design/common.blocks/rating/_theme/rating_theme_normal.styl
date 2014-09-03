@@ -7,6 +7,118 @@ bgTopPosition = (-12 -16);
     display: inline-block;
     position: relative;
 
+    &:before
+    {
+        content: '';
+        position: absolute;
+        z-index: -1;
+    }
+
+    &.rating_score_0pr:before
+    {
+        width : 0%;
+    }
+
+    &.rating_score_5pr:before
+    {
+        width : 5%;
+    }
+
+    &.rating_score_10pr:before
+    {
+        width : 10%;
+    }
+
+    &.rating_score_15pr:before
+    {
+        width : 15%;
+    }
+
+    &.rating_score_20pr:before
+    {
+        width : 20%;
+    }
+
+    &.rating_score_25pr:before
+    {
+        width : 25%;
+    }
+
+    &.rating_score_30pr:before
+    {
+        width : 30%;
+    }
+
+    &.rating_score_35pr:before
+    {
+        width : 35%;
+    }
+
+    &.rating_score_40pr:before
+    {
+        width : 40%;
+    }
+
+    &.rating_score_45pr:before
+    {
+        width : 45%;
+    }
+
+    &.rating_width_50pr:before
+    {
+        width : 50%;
+    }
+
+    &.rating_score_55pr:before
+    {
+        width : 55%;
+    }
+
+    &.rating_score_60pr:before
+    {
+        width : 60%;
+    }
+
+    &.rating_score_65pr:before
+    {
+        width : 65%;
+    }
+
+    &.rating_score_70pr:before
+    {
+        width : 70%;
+    }
+
+    &.rating_score_75pr:before
+    {
+        width : 75%;
+    }
+
+    &.rating_score_80pr:before
+    {
+        width : 80%;
+    }
+
+    &.rating_score_85pr:before
+    {
+        width : 85%;
+    }
+
+    &.rating_score_90pr:before
+    {
+        width : 90%;
+    }
+
+    &.rating_score_95pr:before
+    {
+        width : 95%;
+    }
+
+    &.rating_score_100pr:before
+    {
+        width : 100%;
+    }
+
     .rating__input
     {
         position: absolute;
@@ -49,6 +161,13 @@ bgTopPosition = (-12 -16);
     for sizeVal, i in (s m) {
         &.rating_size_{sizeVal}
         {
+
+            &:before
+            {
+                height: (size[i])px;
+                background: background[i] 0 (size[i])px;
+            }
+
             .rating__label,
             .rating_theme_normal_hovered .rating__label
             {
@@ -61,12 +180,6 @@ bgTopPosition = (-12 -16);
             .rating__label_hovered ~ .rating__label
             {
                 background-position: 0 (size[i])px;
-            }
-
-            .rating__result
-            {
-                height: (size[i])px;
-                background: background[i] 0 (size[i])px;
             }
 
             &.rating_readonly

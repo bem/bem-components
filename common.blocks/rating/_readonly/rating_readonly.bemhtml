@@ -10,10 +10,10 @@ block('rating').mod('readonly', true) (
             style : 'width: ' + this.ctx.granulation * this._sizes[this.mods.size] + 'px;'
         }, applyNext());
     }),
-    content()(function() {
-        return {
-            elem : 'result',
-            attrs : { style : 'width: ' + (this.ctx.points || 0) * this. _sizes[this.mods.size] + 'px;' }
-        };
+    cls()(function(){
+        var point = this.ctx.points || 0,
+            itemLength = this.ctx.granulation || this.ctx.content.length;
+
+        return 'rating_score_' + point * 100 / itemLength + 'pr' ;
     })
 );

@@ -35,7 +35,7 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
             var params = this.params;
 
             this
-                ._setScore(( ( (point + params.total) / (params.votes + 1) ) * params.size).toFixed(1))
+                ._setScore(( ( (point + params.total) / (params.votes + 1) )).toFixed(1))
                 ._setVal(point)
                 ._reDrawResult(this._score);
 
@@ -64,7 +64,13 @@ modules.define('rating', ['i-bem__dom', 'control', 'keyboard__codes', 'jquery'],
         },
 
         _reDrawResult : function(score) {
-            this.elem('result').width(score);
+            var percent =  (score * 100 / this._len),
+                remainder = percent % 5;
+
+            if(remainder !== 0) {
+                remainder < 2.5 ? percent = percent - remainder : percent = percent + 5 - remainder;
+            }
+            this.setMod('score', percent.toFixed() + 'pr');
             return this;
         },
 

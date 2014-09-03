@@ -25,10 +25,15 @@ block('rating').mod('base', true) (
             role : 'menuitemradio'
         }, applyNext());
     }),
+    cls()(function() {
+        var point = this.ctx.points || 0,
+            itemLength = this.ctx.granulation || this.ctx.content.length;
+
+        return 'rating_score_' + point * 100 / itemLength + 'pr' ;
+    }),
     content()(function() {
         var ctx = this.ctx,
             granulation = ctx.granulation,
-            points = ctx.points || 0,
             rates = [];
 
         if(granulation) {  // generate rating content of granulation
@@ -41,11 +46,6 @@ block('rating').mod('base', true) (
                 return rate;
             });
         }
-
-        rates.push({    // push result layer on rating content
-            elem : 'result',
-            attrs : { style : 'width: ' + points * this._sizes[this.mods.size] + 'px;' }
-        });
 
         return rates.reverse(); // order DOM elems by increase value
     })

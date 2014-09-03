@@ -310,6 +310,24 @@ describe('popup', function() {
             Number(popup2.domElem.css('z-index'))
                 .should.be.lt(Number(popup3.domElem.css('z-index')));
         });
+
+        it('should consider zIndexGroupLevel of parent popup', function() {
+            var popup2 = buildPopup(
+               popupParentDomElem,
+               { block : 'popup', zIndexGroupLevel : 1,
+                   content : { tag : 'span', content : 'owner 2' } });
+
+            popup.setMod('visible');
+            popup2.setTarget(popupOwnerDomElem).setMod('visible');
+
+            Number(popup.domElem.css('z-index'))
+                .should.be.lt(Number(popup2.domElem.css('z-index')));
+
+            popup.setTarget(popup2.domElem.find('span:first'));
+
+            Number(popup.domElem.css('z-index'))
+                .should.be.gt(Number(popup2.domElem.css('z-index')));
+        });
     });
 
     describe('destructing', function() {

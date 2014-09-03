@@ -6,7 +6,7 @@
         { elem : 'css', url : '_z-index-group.css' },
         { elem : 'js', url : '_z-index-group.js' }
     ],
-    content : [
+    content : { block : 'test-wrapper', js : true, content : [
         {
             block : 'test',
             js : true,
@@ -18,7 +18,7 @@
                     block : 'popup',
                     mods : { theme : 'simple' },
                     content : [
-                        'popup is opened at 100&times;100',
+                        'this popup picks zIndexGroupLevel=1 from parent z-index-group block',
                         {
                             tag : 'p',
                             content : [
@@ -46,6 +46,7 @@
         {
             block : 'test',
             js : true,
+            attrs : { style : 'display: inline-block; margin-right: 30px' },
             content : [
                 'default level ',
                 { block : 'link', mods : { pseudo : true }, content : 'open 2' },
@@ -53,7 +54,7 @@
                     block : 'popup',
                     mods : { theme : 'simple' },
                     content : [
-                        'popup is opened at 100&times;100',
+                        'this popup has default zIndexGroupLevel=0',
                         {
                             tag : 'p',
                             content : [
@@ -75,6 +76,14 @@
                 }
             ]
         },
+
+        {
+            block : 'link',
+            mix : { block : 'test-wrapper', elem : 'summoner' },
+            mods : { pseudo : true },
+            content : 'summon the popup'
+        },
+
         {
             block : 'test',
             js : true,
@@ -85,28 +94,26 @@
                     mods : { theme : 'simple' },
                     zIndexGroupLevel : 2,
                     content : [
-                        'popup is opened at 100&times;100',
+                        'this popup has zIndexGroupLevel=2 in params',
                         {
                             tag : 'p',
-                            content : [
-                                {
-                                    block : 'input',
-                                    mods : { theme : 'normal' },
-                                    val : 'normal'
-                                },
-                                {
-                                    tag : 'select',
-                                    content : [
-                                        { tag : 'option', content : '1' },
-                                        { tag : 'option', content : '2' }
-                                    ]
-                                }
-                            ]
-
+                            content : {
+                                block : 'link',
+                                mix : { block : 'test-wrapper', elem : 'summoner' },
+                                mods : { pseudo : true },
+                                content : 'summon popup'
+                            }
                         }
                     ]
                 }
             ]
+        },
+
+        {
+            block : 'popup',
+            mix : { block : 'test-wrapper', elem : 'summon' },
+            mods : { theme : 'simple' },
+            content : 'I\'m summoned popup'
         }
-    ]
+    ] }
 });

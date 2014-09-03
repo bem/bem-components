@@ -15,20 +15,31 @@ gemini.suite('checkbox', function(root) {
             var checkboxSelector = '.' + test,
                 checkboxEnabledSelector = checkboxSelector + '-enabled',
                 checkboxDisabledSelector = checkboxSelector + '-disabled',
-                element = !!~test.indexOf('button') ? checkboxEnabledSelector : ' .checkbox__control';
+                element,
+                captureElements;
+            if(!!~test.indexOf('button')) {
+                element = checkboxEnabledSelector + ' .button';
+                captureElements = [
+                    checkboxEnabledSelector,
+                    element
+                ];
+            } else {
+                element = checkboxEnabledSelector + ' .checkbox__control';
+                captureElements = [checkboxEnabledSelector];
+            }
 
             gemini.suite(test + '-enabled', function(suite) {
                 suite
-                    .setCaptureElements(checkboxEnabledSelector)
+                    .setCaptureElements(captureElements)
                     .before(function(actions, find) {
-                        this.checkbox = find(checkboxEnabledSelector + element);
+                        this.checkbox = find(element);
                     })
                     .capture('plain')
                     .capture('hovered', function(actions) {
                         actions.mouseMove(this.checkbox);
                     })
                     .capture('focused-hard', function(actions) {
-                        actions.sendKeys(this.checkbox, 'focused-hard'); //send not empty string
+                        actions.focus(this.checkbox);
                     })
                     .capture('focused-checked', function(actions) {
                         actions.click(this.checkbox);

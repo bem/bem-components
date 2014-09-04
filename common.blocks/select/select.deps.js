@@ -3,7 +3,13 @@
     shouldDeps : [
         { mods : { focused : true } },
         { elems : ['control', 'button', 'menu'] },
-        { block : 'popup', mods : { autoclosable : true } },
+        {
+            block : 'popup',
+            mods : {
+                autoclosable : true,
+                target : 'anchor'
+            }
+        },
         { block : 'keyboard', elem : 'codes' },
         { block : 'strings', elem : 'escape' }
     ]

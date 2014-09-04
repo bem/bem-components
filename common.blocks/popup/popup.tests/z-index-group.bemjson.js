@@ -16,7 +16,7 @@
                 { block : 'link', mods : { pseudo : true }, content : 'open 1' },
                 {
                     block : 'popup',
-                    mods : { theme : 'simple' },
+                    mods : { target : 'anchor', theme : 'simple' },
                     content : [
                         'this popup picks zIndexGroupLevel=1 from parent z-index-group block',
                         {
@@ -52,7 +52,7 @@
                 { block : 'link', mods : { pseudo : true }, content : 'open 2' },
                 {
                     block : 'popup',
-                    mods : { theme : 'simple' },
+                    mods : { target : 'anchor', theme : 'simple' },
                     content : [
                         'this popup has default zIndexGroupLevel=0',
                         {
@@ -91,7 +91,7 @@
                 { block : 'link', mods : { pseudo : true }, content : 'open 3' },
                 {
                     block : 'popup',
-                    mods : { theme : 'simple' },
+                    mods : {  target : 'anchor', theme : 'simple' },
                     zIndexGroupLevel : 2,
                     content : [
                         'this popup has zIndexGroupLevel=2 in params',
@@ -112,7 +112,7 @@
         {
             block : 'popup',
             mix : { block : 'test-wrapper', elem : 'summon' },
-            mods : { theme : 'simple' },
+            mods : { target : 'anchor', theme : 'simple' },
             content : 'I\'m summoned popup'
         }
     ] }

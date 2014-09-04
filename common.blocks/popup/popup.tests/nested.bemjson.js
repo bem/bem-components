@@ -14,7 +14,7 @@
                 { block : 'link', mods : { pseudo : true }, content : 'open' },
                 {
                     block : 'popup',
-                    mods : { theme : 'simple', autoclosable : true },
+                    mods : { target : 'anchor', theme : 'simple', autoclosable : true },
                     content : [
                         'popup is opened',
                         {
@@ -32,7 +32,7 @@
                                         { block : 'link', mods : { pseudo : true }, content : 'open' },
                                         {
                                             block : 'popup',
-                                            mods : { theme : 'simple' },
+                                            mods : { target : 'anchor', theme : 'simple' },
                                             content : [
                                                 'popup is opened',
                                                 { tag : 'br' },
@@ -52,7 +52,7 @@
                                                                 { block : 'link', mods : { pseudo : true }, content : 'open' },
                                                                 {
                                                                     block : 'popup',
-                                                                    mods : { theme : 'simple', autoclosable : true },
+                                                                    mods : { target : 'anchor', theme : 'simple', autoclosable : true },
                                                                     content : 'popup is opened'
                                                                 },
                                                                 {

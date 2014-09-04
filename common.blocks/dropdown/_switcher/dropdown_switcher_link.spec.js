@@ -22,7 +22,7 @@ describe('dropdown', function() {
         BEMDOM.destruct(dropdown.domElem);
     });
 
-    it('should open on button click', function() {
+    it('should open on link click', function() {
         dropdown.getSwitcher().emit('click');
         dropdown.hasMod('opened').should.be.true;
     });

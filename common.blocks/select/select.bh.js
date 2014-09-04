@@ -32,7 +32,7 @@ module.exports = function(bh) {
             { elem : 'button' },
             {
                 block : 'popup',
-                mods : { theme : ctx.mod('theme'), autoclosable : true },
+                mods : { target : 'anchor', theme : ctx.mod('theme'), autoclosable : true },
                 directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'],
                 content : { block : json.block, mods : ctx.mods(), elem : 'menu' }
             }

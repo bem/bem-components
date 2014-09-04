@@ -79,7 +79,7 @@
 <a name="native"></a>
 **default**
 
-```bemjson
+```
 {
     block : 'popup',
     content : 'default'
@@ -88,7 +88,7 @@
 
 **simple**
 
-```bemjson
+```
 {
     block : 'popup',
     mods : { theme : 'simple' },
@@ -98,7 +98,7 @@
 
 **normal**
 
-```bemjson
+```
 {
     block : 'popup',
     mods : { theme : 'normal' },
@@ -116,7 +116,7 @@
 
 Модификатор `autoscalable` скрывает блок по щелчку мыши вне зоны попапа.
 
-```bemjson
+```
 {
     block : 'popup',
     mods : { theme : 'normal', autoclosable : true },
@@ -148,7 +148,7 @@
 
 Например, если требуется, чтобы попап раскрывался над родителем:
 
-```bemjson
+```
 {
     block : 'popup',
     mods : { autoclosable : true, theme: 'simple' },
@@ -159,7 +159,7 @@
 
 Или небходимо разместить попап справа по центру:
 
-```bemjson
+```
 {
     block : 'popup',
     mods : { autoclosable : true, theme: 'simple' },
@@ -170,7 +170,7 @@
 
 Используйте поля `mainOffset` и/или `secondaryOffset` для управления направлением смещения.
 
-```bemjson
+```
 {
     block : 'popup',
     mods : { autoclosable : true, theme: 'normal' },

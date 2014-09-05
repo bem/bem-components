@@ -77,7 +77,7 @@ See following examples:
 <a name="native"></a>
 **default**
 
-```bemjson
+```
 {
     block : 'popup',
     content : 'default'
@@ -86,7 +86,7 @@ See following examples:
 
 **simple**
 
-```bemjson
+```
 {
     block : 'popup',
     mods : { theme : 'simple' },
@@ -96,7 +96,7 @@ See following examples:
 
 **normal**
 
-```bemjson
+```
 {
     block : 'popup',
     mods : { theme : 'normal' },
@@ -116,7 +116,7 @@ See following examples:
 
 When `autoscalable` modifier with `true` is set to `popup` block, mouse click outside the popup area hides it automatically.
 
-```bemjson
+```
 {
     block : 'popup',
     mods : { theme : 'normal', autoclosable : true },
@@ -148,7 +148,7 @@ Required popup positions can be listed as JS parameters with `direction` key in 
 
 For example, to open `popup` at the top of the parent block use `top-left`, `top-center` and `top-right` values:
 
-```bemjson
+```
 {
     block : 'popup',
     mods : { autoclosable : true, theme: 'simple' },
@@ -159,7 +159,7 @@ For example, to open `popup` at the top of the parent block use `top-left`, `top
 
 To open `popup` strictly at the `center-right` position do the following:
 
-```bemjson
+```
 {
     block : 'popup',
     mods : { autoclosable : true, theme: 'simple' },
@@ -170,7 +170,7 @@ To open `popup` strictly at the `center-right` position do the following:
 
 Use `mainOffset` and/or `secondaryOffset` parameters to manage the offset direction:
 
-```bemjson
+```
 {
     block : 'popup',
     mods : { autoclosable : true, theme: 'normal' },

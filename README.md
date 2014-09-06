@@ -28,9 +28,31 @@
 
 ### Уровни
 
+* `common.blocks` — предназначен для любых устройств и браузеров
+* `desktop.blocks` — следует использовать для всех десктопных браузеров
+* `touch.blocks` — реализует некоторую специфику для тач-платформ
+
 ### Блоки
 
-### Технологии
+* [attach](https://github.com/bem/bem-components/blob/v2/common.blocks/attach/attach.ru.md)
+* [control](https://github.com/bem/bem-components/blob/v2/common.blocks/control/control.ru.md)
+* [control-group](https://github.com/bem/bem-components/blob/v2/common.blocks/control-group/control-group.ru.md)
+* [input](https://github.com/bem/bem-components/blob/v2/common.blocks/input/input.ru.md)
+* [button](https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.ru.md)
+* [checkbox](https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox/checkbox.ru.md)
+* [checkbox-group](https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox-group/checkbox-group.ru.md)
+* [icon](https://github.com/bem/bem-components/blob/v2/common.blocks/icon/icon.ru.md)
+* [image](https://github.com/bem/bem-components/blob/v2/common.blocks/image/image.ru.md)
+* [input](https://github.com/bem/bem-components/blob/v2/common.blocks/input/input.ru.md)
+* [spin](https://github.com/bem/bem-components/blob/v2/common.blocks/spin/spin.ru.md)
+* [dropdown](https://github.com/bem/bem-components/blob/v2/common.blocks/dropdown/dropdown.ru.md)
+* [link](https://github.com/bem/bem-components/blob/v2/common.blocks/link/link.ru.md)
+* [menu-item](https://github.com/bem/bem-components/blob/v2/common.blocks/menu-item/menu-item.ru.md)
+* [menu](https://github.com/bem/bem-components/blob/v2/common.blocks/menu/menu.ru.md)
+* [popup](https://github.com/bem/bem-components/blob/v2/common.blocks/popup/popup.ru.md)
+* [radio-group](https://github.com/bem/bem-components/blob/v2/common.blocks/radio-group/radio-group.ru.md)
+* [radio](https://github.com/bem/bem-components/blob/v2/common.blocks/radio/radio.ru.md)
+* [z-index-group](https://github.com/bem/bem-components/blob/v2/common.blocks/z-index-group/z-index-group.ru.md)
 
 ## История изменений
 
@@ -40,44 +62,50 @@
 
 Миграция описана на [отдельной странице](MIGRATION.md).
 
+## Команда разработчиков
+
+* [veged](https://github.com/veged)
+* [dfilatov](https://github.com/dfilatov)
+* [mishanga](https://github.com/mishanga)
+
 ## Разработка
 
 ### Рабочая копия
 
-1. 
+1.
   Получаем исходники:
   ```bash
   $ git clone -b v2 git://github.com/bem/bem-components.git
   $ cd bem-components
   ```
 
-1. 
+1.
   Устанавливаем зависимости:
   ```bash
   $ npm install
   ```
   Для последующего запуска локально установленных bem-tools нам потребуется `export PATH=./node_modules/.bin:$PATH` или любой альтернативный способ.
 
-1. 
+1.
   Устанавливаем зависимые библиотеки:
   ```bash
   $ bower-npm-install
   ```
 
-1. 
+1.
   Собираем примеры и тесты:
   ```bash
   $ bem make sets
   ```
 
-1. 
+1.
   Запускаем разработческий сервер:
   ```bash
   $ bem server
   ```
 
-1. 
-  Проверяем code-style
+1.
+  Проверяем code-style:
   ```bash
   $ npm run lint
   ```
@@ -96,9 +124,9 @@
 
 ### Модульное тестирование
 
-### Регрессионное тестирование вёрстки
+### Регрессионное тестирование верстки
 
-Для тестирования вёрстки мы используем [gemini](https://github.com/bem/gemini).
+Для тестирования верстки мы используем [gemini](https://github.com/bem/gemini).
 
 Тесты каждого блока находятся в отдельном файле вида `block-name.gemini.js` в директории `gemini/`. Запускаются тесты локально руками и в Travis автоматически. В качестве [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2) мы используем сервис [SauceLabs](https://saucelabs.com).
 
@@ -106,16 +134,16 @@
 
 Для запуска тестов:
 
-1. Настройте окружение (переменные среды `SAUCE_USERNAME` и `SAUCE_ACCESS_KEY`)
-2. Запустите утилиту `sc` (SauceConnect) и дождитесь, пока она поднимет туннель
-3. Запустите тесты командой `npm run gemini`
-4. Для сбора новых версий скриншотов используйте команду `npm run gemini-gather`
+1. Настройте окружение (переменные среды `SAUCE_USERNAME` и `SAUCE_ACCESS_KEY`).
+2. Запустите утилиту `sc` (SauceConnect) и дождитесь, пока она поднимет туннель.
+3. Запустите тесты командой `npm run gemini`.
+4. Для сбора новых версий скриншотов используйте команду `npm run gemini-gather`.
 
 Если вы разрабатываете новые тесты и хотите их запускать локально и быстрее, можно поднять свой собственный Selenium Server или phantomjs с WebDriver сервером. Для этого нужно:
 
-1. Установить и запустить [selenium-server](http://docs.seleniumhq.org/download/) или [phantomjs](http://phantomjs.org/)
-2. Исправить в файле `.gemini.yml` опцию `gridUrl` на `http://localhost:4444/`
-3. Запустить тесты (см. выше)
+1. Установить и запустить [selenium-server](http://docs.seleniumhq.org/download/) или [phantomjs](http://phantomjs.org/).
+2. Исправить в файле `.gemini.yml` опцию `gridUrl` на `http://localhost:4444/`.
+3. Запустить тесты (см. выше).
 
 Более подробно про запуск `gemini` с разными бекендами читайте в [документации](https://github.com/bem/gemini/blob/master/README.md).
 

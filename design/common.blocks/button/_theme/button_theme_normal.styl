@@ -331,4 +331,14 @@ ctx = '.button_theme_normal'
             right: 1px;
         }
     }
+
+    > :only-child {ctx}
+    {
+        border-radius: 3px;
+
+        &:before
+        {
+            border-radius: 2px;
+        }
+    }
 }

@@ -14,9 +14,8 @@ env:
     # GH_TOKEN
     - secure: "dFagbXO03ErbMonM+6/jZxskwcUAcD5w+/aKoRPqUWbvSKtgy1Fo1h6aY01Cd6o4/6tO0scgkbLhQUkLRwwTKN2qfDFM5mQX8fV9NWmQxaGJqUB4b9hoKVELM5J13EXSTL4ddssDmHdv+s57a7Bnj8AMIHNulwIaqiJ5V1xVuKU="
   matrix:
-    - TEST_SCOPE: lint
-    - TEST_SCOPE: tmpls
     - TEST_SCOPE: specs
+    - TEST_SCOPE: tmpls
     - TEST_SCOPE: gemini
 
 matrix:

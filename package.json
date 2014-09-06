@@ -62,7 +62,7 @@
     "test-specs": "enb make specs",
     "test-tmpls": "enb make tmpl-specs",
     "lint": "jshint-groups && jscs . && csscomb -vl .",
-    "specs": "npm run test-specs",
+    "specs": "npm run lint && npm run test-specs",
     "tmpls": "npm run test-tmpls",
     "unit": "npm run test-specs",
     "gemini": "http-server -s -p 8000 & p=$!; gemini test --reporter html --reporter flat; e=$?; kill -9 ${p}; exit ${e}",

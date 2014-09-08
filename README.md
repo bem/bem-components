@@ -1,17 +1,19 @@
 # BEM Components Library [![Build Status](https://travis-ci.org/bem/bem-components.svg?branch=v2)](https://travis-ci.org/bem/bem-components) [![Coverage Status](https://coveralls.io/repos/bem/bem-components/badge.png?branch=v2)](https://coveralls.io/r/bem/bem-components?branch=v2)
 
-## Что это?
+## What is this?
 
-Библиотека блоков для управления формами.
-Содержит абстрагированные от дизайна базовые реализации.
+`bem-components` is a library of blocks providing ready-made form controls and some other blocks.
+It contains base realizations of blocks that are abstracted from the design. Few optional design themes are available.
 
-## Использование
+## Usage
 
-Подключить библиотеку в проект любым известным способом.
+You can use any way you are familiar with to include this library into your project.
+E.g. you can use `bem-tools` or `ENB`.
 
-## Поддерживаемые браузеры
+## Supported browsers
+
 * Desktop:
-  * Firefox 24+
+  * Firefox 30+
   * Chrome last 2 versions
   * Safari 6.0+
   * Opera 12.1+
@@ -24,132 +26,151 @@
   * iOS 6+
   * Windows Phone 8+ (Internet Explorer 10+)
 
-## Состав
+## Inside
 
-### Уровни
+### Levels
 
-* `common.blocks` — предназначен для любых устройств и браузеров
-* `desktop.blocks` — следует использовать для всех десктопных браузеров
-* `touch.blocks` — реализует некоторую специфику для тач-платформ
+* `common.blocks` — suited for any devices and browsers
+* `desktop.blocks` — should be used for desktop browsers
+* `touch.blocks` — implement some touch-platforms specifics
 
-### Блоки
+### Blocks
 
-* [attach](https://github.com/bem/bem-components/blob/v2/common.blocks/attach/attach.ru.md)
-* [control](https://github.com/bem/bem-components/blob/v2/common.blocks/control/control.ru.md)
-* [control-group](https://github.com/bem/bem-components/blob/v2/common.blocks/control-group/control-group.ru.md)
-* [input](https://github.com/bem/bem-components/blob/v2/common.blocks/input/input.ru.md)
-* [button](https://github.com/bem/bem-components/blob/v2/common.blocks/button/button.ru.md)
-* [checkbox](https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox/checkbox.ru.md)
-* [checkbox-group](https://github.com/bem/bem-components/blob/v2/common.blocks/checkbox-group/checkbox-group.ru.md)
-* [icon](https://github.com/bem/bem-components/blob/v2/common.blocks/icon/icon.ru.md)
-* [image](https://github.com/bem/bem-components/blob/v2/common.blocks/image/image.ru.md)
-* [input](https://github.com/bem/bem-components/blob/v2/common.blocks/input/input.ru.md)
-* [spin](https://github.com/bem/bem-components/blob/v2/common.blocks/spin/spin.ru.md)
-* [dropdown](https://github.com/bem/bem-components/blob/v2/common.blocks/dropdown/dropdown.ru.md)
-* [link](https://github.com/bem/bem-components/blob/v2/common.blocks/link/link.ru.md)
-* [menu-item](https://github.com/bem/bem-components/blob/v2/common.blocks/menu-item/menu-item.ru.md)
-* [menu](https://github.com/bem/bem-components/blob/v2/common.blocks/menu/menu.ru.md)
-* [popup](https://github.com/bem/bem-components/blob/v2/common.blocks/popup/popup.ru.md)
-* [radio-group](https://github.com/bem/bem-components/blob/v2/common.blocks/radio-group/radio-group.ru.md)
-* [radio](https://github.com/bem/bem-components/blob/v2/common.blocks/radio/radio.ru.md)
-* [z-index-group](https://github.com/bem/bem-components/blob/v2/common.blocks/z-index-group/z-index-group.ru.md)
+* [attach](common.blocks/attach/attach.en.md)
+* [control](common.blocks/control/control.en.md)
+* [control-group](common.blocks/control-group/control-group.en.md)
+* [input](common.blocks/input/input.en.md)
+* [button](common.blocks/button/button.en.md)
+* [checkbox](common.blocks/checkbox/checkbox.en.md)
+* [checkbox-group](common.blocks/checkbox-group/checkbox-group.en.md)
+* [icon](common.blocks/icon/icon.en.md)
+* [image](common.blocks/image/image.en.md)
+* [input](common.blocks/input/input.en.md)
+* [spin](common.blocks/spin/spin.en.md)
+* [dropdown](common.blocks/dropdown/dropdown.en.md)
+* [link](common.blocks/link/link.en.md)
+* [menu-item](common.blocks/menu-item/menu-item.en.md)
+* [menu](common.blocks/menu/menu.en.md)
+* [popup](common.blocks/popup/popup.en.md)
+* [radio-group](common.blocks/radio-group/radio-group.en.md)
+* [radio](common.blocks/radio/radio.en.md)
+* [z-index-group](common.blocks/z-index-group/z-index-group.en.md)
 
-## История изменений
+### Technologies
 
-История изменений доступна на [отдельной странице](CHANGELOG.md).
+* [JS](https://bem.info/technology/i-bem/current/i-bem-js/)
+* [YModules](https://bem.info/tools/bem/modules/)
+* [BEMHTML](https://bem.info/technology/bemhtml/current/reference/)
+* BH
+* [BEMTREE](https://bem.info/technology/bemtree/current/bemtree/)
+* [Stylus](https://learnboost.github.io/stylus/)
 
-## Миграция
+## Changelog
 
-Миграция описана на [отдельной странице](MIGRATION.md).
+You can check the changelog at the [changelog page](CHANGELOG.md).
 
-## Команда разработчиков
+## Migration
+
+Migartion guide is [here](MIGRATION.md).
+
+## Maintainers
 
 * [veged](https://github.com/veged)
 * [dfilatov](https://github.com/dfilatov)
 * [mishanga](https://github.com/mishanga)
 
-## Разработка
+## Development
 
-### Рабочая копия
+### Working copy
 
-1.
-  Получаем исходники:
+1. Get the source code:
   ```bash
-  $ git clone -b v2 git://github.com/bem/bem-components.git
+  $ git clone git://github.com/bem/bem-components.git
   $ cd bem-components
   ```
 
-1.
-  Устанавливаем зависимости:
+1. Install the dependencies:
   ```bash
   $ npm install
   ```
-  Для последующего запуска локально установленных bem-tools нам потребуется `export PATH=./node_modules/.bin:$PATH` или любой альтернативный способ.
+  You need `export PATH=./node_modules/.bin:$PATH` or any alternative way to run locally-installed `ENB`.
 
 1.
-  Устанавливаем зависимые библиотеки:
+  Install all necessary libraries:
   ```bash
-  $ bower-npm-install
+  $ bower install
   ```
 
 1.
-  Собираем примеры и тесты:
+  Build and run tests and examples:
   ```bash
-  $ bem make sets
+  $ npm run build-all
   ```
 
 1.
-  Запускаем разработческий сервер:
+  Run development server:
   ```bash
-  $ bem server
+  $ enb server
   ```
 
 1.
-  Проверяем code-style:
+  Check the code-style:
   ```bash
   $ npm run lint
   ```
 
-### Внесение изменений
+### How to contribute
 
-1. [Создать issue](https://github.com/bem/bem-components/issues/new) с описанием сути изменений.
-1. Определить в какую версию необходимо внести изменения.
-1. Сделать feature-branch с указанием номера issue и версии (`issues/<номер issue>@v<номер версии>`) на основе ветки версии.
-Например для issue с номером 42 и версией 1: `git checkout -b issues/42@v1 v1`. Если изменения нужно внести в несколько версий, то для каждой из версий создаётся отдельная ветка.
-1. Внести изменения (для версии v2, можно локально проверить, что ничего не сломалось, запустив `npm test`).
-1. Закоммитить и сделать `push`. Если это необходимо, то нужно сделать `rebase` от базовой ветки версии.
-1. Создать pull-request на основе созданной ветки (или несколько pull-request'ов для случая изменений в нескольких версиях).
-1. Любым способом связать pull-request и issue (например, c помощью [комментария](https://github.com/blog/1506-closing-issues-via-pull-requests)).
-1. Ждать закрытия pull-request и issue ;-)
+1. Create an [issue](https://github.com/bem/bem-components/issues/new) with a proper description.
+1. Decide which version needs your changes.
+1. Create a feature branch with an issue number and a version (`issues/<issue_number>@v<version_number>`) based on a version branch. For example, for an issue #42 and a version 2: `git checkout -b issues/42@v2`. If you need changes for several versions, each of them has to have a feature branch.
+1. Commit changes (you can test your changes running `npm test`) and push. `Rebase` your branch on a corresponding version branch if needed.
+1. Create a pull request from your feature branch; or several pull requests if you changed several versions.
+1. Link your pull request with an issue number any way you like. For example, leave a [comment](https://github.com/blog/1506-closing-issues-via-pull-requests) with the issue number.
+1. Wait for your pull request and the issue to be closed ;-)
 
-### Модульное тестирование
+### Modular testing
 
-### Регрессионное тестирование верстки
+#### JavaScript unit tests
 
-Для тестирования верстки мы используем [gemini](https://github.com/bem/gemini).
+To run JS unit tests use `npm run test-specs` command. You may also specify the target, e.g. `enb make specs desktop.specs/input` to run just `input` tests.
 
-Тесты каждого блока находятся в отдельном файле вида `block-name.gemini.js` в директории `gemini/`. Запускаются тесты локально руками и в Travis автоматически. В качестве [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2) мы используем сервис [SauceLabs](https://saucelabs.com).
+All tests will be run automatically using [Travis](https://travis-ci.org) on each pull request.
 
-Для запуска тестов локально вам понадобится [OpenSauce](https://saucelabs.com/opensauce) аккаунт в SauceLabs и утилита [Sauce Connect](https://saucelabs.com/connect). Разработчики команды БЭМ могут использовать аккаунт `bem-components` (мы не публикуем логин и пароль, потому что на аккаунте лимит на 3 одновременно запущенных браузера; будет эффективнее использовать разные аккаунты для ручного запуска тестов, тем более что они бесплатные).
+#### Regrassion tests of layout
 
-Для запуска тестов:
+We use [gemini](https://github.com/bem/gemini) for layout testing.
 
-1. Настройте окружение (переменные среды `SAUCE_USERNAME` и `SAUCE_ACCESS_KEY`).
-2. Запустите утилиту `sc` (SauceConnect) и дождитесь, пока она поднимет туннель.
-3. Запустите тесты командой `npm run gemini`.
-4. Для сбора новых версий скриншотов используйте команду `npm run gemini-gather`.
+Tests for each block are stored in a separate file `block-name.gemini.js` in a directory `gemini/`. All tests could be executed manually or automatically using [Travis](https://travis-ci.org). We use [SauceLabs](https://saucelabs.com) service as a [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2).
 
-Если вы разрабатываете новые тесты и хотите их запускать локально и быстрее, можно поднять свой собственный Selenium Server или phantomjs с WebDriver сервером. Для этого нужно:
+Use [OpenSauce](https://saucelabs.com/opensauce) account in SauceLabs and [Sauce Connect](https://saucelabs.com/connect) utility to run tests locally.
 
-1. Установить и запустить [selenium-server](http://docs.seleniumhq.org/download/) или [phantomjs](http://phantomjs.org/).
-2. Исправить в файле `.gemini.yml` опцию `gridUrl` на `http://localhost:4444/`.
-3. Запустить тесты (см. выше).
+Developers of BEM team could use `bem-components` account (we do not publish login and password because of the limit for three concurrent browsers launch; it is much more efficiently to use different free accounts for manual testing).
 
-Более подробно про запуск `gemini` с разными бекендами читайте в [документации](https://github.com/bem/gemini/blob/master/README.md).
+For tests execution you need the following:
 
-**Важно!** Коммитить в репозиторий необходимо скриншоты, собранные в SauceLabs, чтобы избежать, например, незначительных отличий в отрисовке шрифтов.
+1. Set up environment variables (`SAUCE_USERNAME` and `SAUCE_ACCESS_KEY`).
+1. Run `sc` utility (SauceConnect) and wait for a tunnel initialization.
+1. Run the tests using `npm run gemini`.
+1. To collect new versions of the screenshots use `npm run gemini-gather`.
 
-Перед коммитом новых или изменённых эталонных изображений:
+In case you write new tests for local usage, you can run your own Selenium Server or PhantomJS with WebDriver server. For this:
 
-1. Внимательно проверьте их правильность. Если есть сомнения, используйте утилиту Araxis Merge или аналогичную, чтобы увидеть разницу между старой и новой версией изображения.
-2. Сожмите их утилитой [ImageOptim](http://imageoptim.com/) (это самый эффективный инструмент сжатия изображений на май 2014 года).
+1. Install and run [selenium-server](http://docs.seleniumhq.org/download/) or [phantomjs](http://phantomjs.org/).
+1. Correct `gridUrl` option to `http://localhost:4444/` in `.gemini.yml` file.
+1. Run tests (see above).
+
+Detailed description of `gemini` work with different types of backends find [here](https://bem.info/tools/testing/gemini/).
+
+**NB** You have to commit scrinshots to the repository from SauceLabs to avoid minor differencies in fonts rendering.
+
+Befor commit some new or modified pattern you have to:
+
+1. Check the validity. If in doubt, use Araxis Merge utility or something like this to see the difference between two versions of the pattern.
+2. Compress them using [ImageOptim](http://imageoptim.com/) utility (this is the most effective tool for images compression for May 2014).
+
+#### Tests for templates
+
+To run tests for templates use `npm run test-tmpls` command. You may also specify the target, e.g. `enb make tmpl-specs desktop.tmpl-specs/input` to run just `input` tests.
+
+All tests will be run automatically using [Travis](https://travis-ci.org) on each pull request.

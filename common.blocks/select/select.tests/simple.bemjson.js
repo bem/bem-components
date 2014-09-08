@@ -132,6 +132,29 @@
                     { val : 3, text : 'third' }
                 ]
             }
-        }
+        },
+        [
+            {
+                block : 'select',
+                mods : { mode : 'radio', theme : 'normal', size : 's' },
+                options : [
+                    { text : 'size s', checked : true }
+                ]
+            },
+            {
+                block : 'select',
+                mods : { mode : 'radio', theme : 'normal', size : 'm' },
+                options : [
+                    { text : 'size m', checked : true }
+                ]
+            },
+            {
+                block : 'select',
+                mods : { mode : 'radio', theme : 'normal', size : 'l' },
+                options : [
+                    { text : 'size l', checked : true }
+                ]
+            }
+        ].map(function(i) { return [i, ' '] })
     ].map(function(i) { return [{ block : 'test', js : true, content : i }, { tag : 'hr' }] })
 });

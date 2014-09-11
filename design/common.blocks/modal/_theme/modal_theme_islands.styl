@@ -1,0 +1,112 @@
+.modal_theme_islands
+{
+    display: none;
+    visibility: hidden;
+
+    background: rgba(50, 50, 50, .2);
+
+    &,
+    & .modal__content
+    {
+        animation-duration: 0.2s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out;
+    }
+
+    .modal__content
+    {
+        margin: 5px;
+
+        background-color: #fff;
+        border: 1px solid #bfbfbf;
+    }
+
+    &.modal_js_inited
+    {
+        display: block;
+    }
+
+    &.modal_has-animation
+    {
+        animation-name: modal_theme_islands;
+
+        .modal__content
+        {
+            animation-name: modal_theme_islands__content;
+        }
+    }
+
+    &.modal_visible
+    {
+        visibility: visible;
+
+        &.modal_has-animation
+        {
+            animation-name: modal_theme_islands_visible;
+
+            .modal__content
+            {
+                animation-name: modal_theme_islands_visible__content;
+            }
+        }
+
+    }
+}
+
+// closing modal
+@keyframes modal_theme_islands
+{
+    0%
+    {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    100%
+    {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+// opening modal
+@keyframes modal_theme_islands_visible
+{
+    0%
+    {
+        opacity: 0;
+    }
+
+    100%
+    {
+        opacity: 1;
+    }
+}
+
+// closing modal__content
+@keyframes modal_theme_islands__content
+{
+    0%
+    {
+        transform: scale(1);
+    }
+
+    100%
+    {
+        transform: scale(1.5);
+    }
+}
+
+// opening modal__content
+@keyframes modal_theme_islands_visible__content
+{
+    0%
+    {
+        transform: scale(.75);
+    }
+
+    100%
+    {
+        transform: scale(1);
+    }
+}

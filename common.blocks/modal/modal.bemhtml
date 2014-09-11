@@ -1,0 +1,24 @@
+block('modal')(
+
+    mix()(function() {
+        return {
+            block : 'popup',
+            js : { zIndexGroupLevel : this.ctx.zIndexGroupLevel || 19 }
+        };
+    }),
+
+    js()(true),
+
+    content()(function() {
+        return {
+            elem : 'table',
+            content : {
+                elem : 'cell',
+                content : {
+                    elem : 'content',
+                    content : this.ctx.content
+                }
+            }
+        };
+    })
+);

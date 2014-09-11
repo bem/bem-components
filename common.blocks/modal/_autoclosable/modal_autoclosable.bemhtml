@@ -1,0 +1,1 @@
+block('modal').mod('autoclosable', true).mix()({ block : 'popup', mods : { autoclosable : true } });

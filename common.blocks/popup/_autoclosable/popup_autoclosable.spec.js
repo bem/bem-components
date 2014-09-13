@@ -16,7 +16,7 @@ describe('popup_autoclosable', function() {
 
     describe('pointer reactions', function() {
         it('should be visible on click inside', function(done) {
-            var popup = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible');
+            var popup = buildPopupWithAnchor(rootDomElem, true).popup.setMod('visible');
 
             nextTick(function() {
                 doPointerClick(popup.domElem);
@@ -27,7 +27,7 @@ describe('popup_autoclosable', function() {
         });
 
         it('should be hidden on click outside', function(done) {
-            var popup = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible');
+            var popup = buildPopupWithAnchor(rootDomElem, true).popup.setMod('visible');
 
             nextTick(function() {
                 doPointerClick(rootDomElem);
@@ -37,13 +37,13 @@ describe('popup_autoclosable', function() {
             });
         });
 
-        it('should not be hidden on owner click', function(done) {
-            var popupWithOwner = buildPopupWithOwner(rootDomElem, true),
-                ownerDomElem = popupWithOwner.ownerDomElem,
+        it('should not be hidden on anchor click', function(done) {
+            var popupWithOwner = buildPopupWithAnchor(rootDomElem, true),
+                anchorDomElem = popupWithOwner.anchorDomElem,
                 popup = popupWithOwner.popup.setMod('visible');
 
             nextTick(function() {
-                doPointerClick(ownerDomElem);
+                doPointerClick(anchorDomElem);
                 popup.hasMod('visible').should.be.true;
 
                 done();
@@ -51,10 +51,10 @@ describe('popup_autoclosable', function() {
         });
 
         it('should not be hidden on click on child popup', function(done) {
-            var popup1 = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible'),
-                popup2 = buildPopupWithOwner(popup1.domElem).popup.setMod('visible'),
-                popup3 = buildPopupWithOwner(popup2.domElem, true).popup.setMod('visible'),
-                popup4 = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible');
+            var popup1 = buildPopupWithAnchor(rootDomElem, true).popup.setMod('visible'),
+                popup2 = buildPopupWithAnchor(popup1.domElem).popup.setMod('visible'),
+                popup3 = buildPopupWithAnchor(popup2.domElem, true).popup.setMod('visible'),
+                popup4 = buildPopupWithAnchor(rootDomElem, true).popup.setMod('visible');
 
             nextTick(function() {
                 doPointerClick(popup3.domElem);
@@ -77,15 +77,15 @@ describe('popup_autoclosable', function() {
 
     describe('on escape key reactions', function() {
         it('should be hidden on press escape', function() {
-            var popup = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible');
+            var popup = buildPopupWithAnchor(rootDomElem, true).popup.setMod('visible');
             rootDomElem.trigger($.Event('keydown', { keyCode : keyCodes.ESC }));
             popup.hasMod('visible').should.be.false;
         });
 
         it('should hide popups in back order of its showing', function() {
-            var popup1 = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible'),
-                popup2 = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible'),
-                popup3 = buildPopupWithOwner(rootDomElem, true).popup.setMod('visible'),
+            var popup1 = buildPopupWithAnchor(rootDomElem, true).popup.setMod('visible'),
+                popup2 = buildPopupWithAnchor(rootDomElem, true).popup.setMod('visible'),
+                popup3 = buildPopupWithAnchor(rootDomElem, true).popup.setMod('visible'),
                 event = $.Event('keydown', { keyCode : keyCodes.ESC });
 
             rootDomElem.trigger(event);
@@ -108,19 +108,23 @@ describe('popup_autoclosable', function() {
 
 provide();
 
-function buildPopupWithOwner(parentDomElem, isAutoclosable) {
-    var ownerDomElem = $(BEMHTML.apply({
+function buildPopupWithAnchor(parentDomElem, isAutoclosable) {
+    var anchorDomElem = $(BEMHTML.apply({
             tag : 'span',
-            content : 'owner'
+            content : 'anchor'
         })).appendTo(parentDomElem);
 
     return {
-        ownerDomElem : ownerDomElem,
+        anchorDomElem : anchorDomElem,
         popup : BEMDOM.init(
-            $(BEMHTML.apply({ block : 'popup', content : 'content', mods : { autoclosable : isAutoclosable } }))
+            $(BEMHTML.apply({
+                block : 'popup',
+                mods : { target : 'anchor', autoclosable : isAutoclosable },
+                content : 'content'
+            }))
                 .appendTo(parentDomElem))
-            .bem('popup')
-            .setTarget(ownerDomElem)
+                .bem('popup')
+                .setAnchor(anchorDomElem)
     };
 }
 

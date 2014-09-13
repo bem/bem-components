@@ -53,7 +53,7 @@ provide(BEMDOM.decl(this.name, /** @lends dropdown.prototype */{
     getPopup : function() {
         return this._popup ||
             (this._popup = this.findBlockInside('popup')
-                .setTarget(this.getSwitcher())
+                .setAnchor(this.getSwitcher())
                 .on({ modName : 'visible', modVal : '*' }, this._onPopupVisibilityChange, this));
     },
 

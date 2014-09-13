@@ -2,7 +2,13 @@
     mustDeps : { block : 'i-bem', elem : 'dom' },
     shouldDeps : [
         { elem : 'switcher' },
-        { block : 'popup', mods : { autoclosable : true } }
+        {
+            block : 'popup',
+            mods : {
+                autoclosable : true,
+                target : 'anchor'
+            }
+        }
     ]
 },
 {

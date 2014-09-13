@@ -19,7 +19,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'open at 100&times;100' },
                         {
                             block : 'popup',
-                            mods : { autoclosable : true, theme : 'simple' },
+                            mods : { target : 'position', autoclosable : true, theme : 'simple' },
                             content : [
                                 'popup is opened at 100&times;100',
                                 {
@@ -53,7 +53,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'all directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'simple' },
+                            mods : { target : 'anchor', theme : 'simple' },
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -72,7 +72,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'bottom-* directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'simple' },
+                            mods : { target : 'anchor', theme : 'simple' },
                             directions : ['bottom-left', 'bottom-center', 'bottom-right'],
                             content : [
                                 'There\'s content',
@@ -90,7 +90,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'top-* directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'simple' },
+                            mods : { target : 'anchor', theme : 'simple' },
                             directions : ['top-left', 'top-center', 'top-right'],
                             content : [
                                 'There\'s content',
@@ -108,7 +108,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'right-* directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'simple' },
+                            mods : { target : 'anchor', theme : 'simple' },
                             directions : ['right-top', 'right-center', 'right-bottom'],
                             content : [
                                 'There\'s content',
@@ -126,7 +126,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'left-* directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'simple' },
+                            mods : { target : 'anchor', theme : 'simple' },
                             directions : ['left-top', 'left-center', 'left-bottom'],
                             content : [
                                 'There\'s content',
@@ -152,7 +152,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'open at 100&times;100' },
                         {
                             block : 'popup',
-                            mods : { autoclosable : true, theme : 'normal' },
+                            mods : { target : 'position', autoclosable : true, theme : 'normal' },
                             content : [
                                 'popup is opened at 100&times;100',
                                 {
@@ -186,7 +186,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'all directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'normal' },
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -205,7 +205,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'bottom-* directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'normal' },
                             directions : ['bottom-left', 'bottom-center', 'bottom-right'],
                             content : [
                                 'There\'s content',
@@ -223,7 +223,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'top-* directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'normal' },
                             directions : ['top-left', 'top-center', 'top-right'],
                             content : [
                                 'There\'s content',
@@ -241,7 +241,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'right-* directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'normal' },
                             directions : ['right-top', 'right-center', 'right-bottom'],
                             content : [
                                 'There\'s content',
@@ -259,7 +259,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'left-* directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'normal' },
                             directions : ['left-top', 'left-center', 'left-bottom'],
                             content : [
                                 'There\'s content',

@@ -38,7 +38,7 @@ provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup
     },
 
     _onDocPointerClick : function(e) {
-        if(this._owner && dom.contains(this._owner, $(e.target)))
+        if(this.hasMod('target', 'anchor') && dom.contains(this._anchor, $(e.target)))
             return;
 
         this._inPopupPointerPress?

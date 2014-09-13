@@ -1,15 +1,11 @@
-block('select')(
-    content()(function() {
+block('select').def()(function() {
+    applyNext({ _selectCls : this.ctx.cls });
+});
 
-        return [
-            { elem : 'button' },
-            {
-                block : 'popup',
-                mods : { theme : this.mods.theme, autoclosable : true },
-                cls : this.ctx.cls + '-popup',
-                directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'],
-                content : { block : this.block, mods : this.mods, elem : 'menu' }
-            }
-        ];
-    })
-);
+block('popup').match(this._selectCls).def()(function() {
+    // NOTE: we "mark" popups which are inside select block
+    // with special classes, so gemini tests could find them
+    this.ctx.cls = this._selectCls + '-popup';
+    delete this._selectCls;
+    apply();
+});

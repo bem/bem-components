@@ -12,6 +12,8 @@ block('dropdown')(
         popupMods.theme || (popupMods.theme = this.mods.theme);
         popupMods.hasOwnProperty('autoclosable') || (popupMods.autoclosable = true);
 
+        popupMods.target = 'anchor';
+
         return [
             { elem : 'switcher', content : this.ctx.switcher },
             popup

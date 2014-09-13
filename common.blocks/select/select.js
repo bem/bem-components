@@ -36,7 +36,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
                     .on('click', this._onButtonClick, this);
 
                 this._popup = this.findBlockInside('popup')
-                    .setTarget(this._button)
+                    .setAnchor(this._button)
                     .on({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
 
                 this._menu = this._popup.findBlockInside('menu')

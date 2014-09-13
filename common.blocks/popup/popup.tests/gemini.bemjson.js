@@ -15,7 +15,7 @@
                 {
                     block : 'popup',
                     cls : 'test-nested-popup',
-                    mods : { theme : 'normal' },
+                    mods : { target : 'anchor', theme : 'normal' },
                     content : [
                         'first popup',
                         {
@@ -31,7 +31,7 @@
                                 {
                                     block : 'popup',
                                     cls : 'test-nested-popup',
-                                    mods : { theme : 'normal' },
+                                    mods : { target : 'anchor', theme : 'normal' },
                                     content : 'second popup'
                                 }
                             ]
@@ -53,7 +53,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'all directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'normal' },
                             cls : 'all-popup',
                             content : [
                                 'There\'s content',
@@ -75,7 +75,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'bottom-* directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'normal' },
                             cls : 'bottom-popup',
                             directions : ['bottom-left', 'bottom-center', 'bottom-right'],
                             content : [
@@ -95,7 +95,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'top-* directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'normal' },
                             cls : 'top-popup',
                             directions : ['top-left', 'top-center', 'top-right'],
                             content : [
@@ -115,7 +115,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'right-* directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'normal' },
                             cls : 'right-popup',
                             directions : ['right-top', 'right-center', 'right-bottom'],
                             content : [
@@ -135,7 +135,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'left-* directions' },
                         {
                             block : 'popup',
-                            mods : { theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'normal' },
                             cls : 'left-popup',
                             directions : ['left-top', 'left-center', 'left-bottom'],
                             content : [

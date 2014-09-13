@@ -18,7 +18,7 @@
                 { block : 'link', mods : { pseudo : true }, content : 'open' },
                 {
                     block : 'popup',
-                    mods : { theme : 'simple' },
+                    mods : { target : 'anchor', theme : 'simple' },
                     directions : ['right-top', 'left-bottom'],
                     content : {
                         tag : 'p',
@@ -53,7 +53,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'open' },
                         {
                             block : 'popup',
-                            mods : { theme : 'simple' },
+                            mods : { target : 'anchor', theme : 'simple' },
                             directions : ['right-top', 'left-bottom'],
                             content : {
                                 tag : 'p',

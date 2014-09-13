@@ -16,7 +16,7 @@
                 { block : 'link', mods : { pseudo : true }, content : 'destruct' },
                 {
                     block : 'popup',
-                    mods : { theme : 'simple', autoclosable : true },
+                    mods : { target : 'anchor', theme : 'simple', autoclosable : true },
                     content : 'popup is opened'
                 }
             ]

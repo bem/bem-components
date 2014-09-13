@@ -7,7 +7,7 @@ provide(BEMDOM.decl(this.name, {
                 var popup = this.findBlockInside('summon', 'popup');
                 this.findBlocksInside('summoner', 'link').forEach(function(link) {
                     link.on('click', function(e) {
-                        popup.setTarget(e.target).setMod('visible');
+                        popup.setAnchor(e.target).setMod('visible');
                     });
                 });
             }

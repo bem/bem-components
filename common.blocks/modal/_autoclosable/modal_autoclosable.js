@@ -28,7 +28,7 @@ provide(Modal.decl({ modName : 'autoclosable', modVal : true }, /** @lends modal
     },
 
     _onPointerClick : function(e) {
-        !dom.contains(this.elem('content'), $(e.target)) && this.delMod('visible');
+        dom.contains(this.elem('content'), $(e.target)) || this.delMod('visible');
     }
 }));
 

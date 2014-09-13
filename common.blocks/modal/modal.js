@@ -4,8 +4,8 @@
 
 modules.define(
     'modal',
-    ['i-bem__dom', 'events'],
-    function(provide, BEMDOM, events) {
+    ['i-bem__dom', 'popup'],
+    function(provide, BEMDOM) {
 
 /**
  * @exports
@@ -15,18 +15,6 @@ modules.define(
  * @bemmod visible Represents visible state
  */
 provide(BEMDOM.decl(this.name, /** @lends modal.prototype */{
-    beforeSetMod : {
-        'visible' : {
-            '' : function() {
-                var e = new events.Event('beforeClose');
-
-                this.emit(e);
-
-                return !e.isDefaultPrevented();
-            }
-        }
-    },
-
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -39,11 +27,15 @@ provide(BEMDOM.decl(this.name, /** @lends modal.prototype */{
                 // Apply the animation only at first opening, otherwise the animation will be played when page loaded.
                 this.setMod('animation');
 
-                this._popup.setMod('visible');
+                this._popup
+                    .setMod('visible')
+                    .on({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
             },
 
             '' : function() {
-                this._popup.delMod('visible');
+                this._popup
+                    .delMod('visible')
+                    .un({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
             }
         }
     },
@@ -52,10 +44,7 @@ provide(BEMDOM.decl(this.name, /** @lends modal.prototype */{
         this.delMod('visible');
     }
 }, /** @lends modal */{
-    live : function() {
-        this.liveInitOnBlockEvent({ modName : 'visible', modVal : '' }, 'popup', function() {
-            this._onPopupHide();
-        });
-    }
+    live : true
 }));
+
 });

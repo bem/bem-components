@@ -16,7 +16,7 @@ block('modal')(
                 elem : 'cell',
                 content : {
                     elem : 'content',
-                    content : this.ctx.content
+                    content : applyNext()
                 }
             }
         };

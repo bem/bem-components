@@ -1,13 +1,13 @@
 block('modal')(
+    js()(true),
 
     mix()(function() {
         return {
             block : 'popup',
-            js : { zIndexGroupLevel : this.ctx.zIndexGroupLevel || 20 }
+            js : { zIndexGroupLevel : this.ctx.zIndexGroupLevel || 20 },
+            mods : { autoclosable : this.mods.autoclosable }
         };
     }),
-
-    js()(true),
 
     content()(function() {
         return {

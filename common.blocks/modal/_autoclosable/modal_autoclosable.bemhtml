@@ -1,3 +1,0 @@
-block('modal').mod('autoclosable', true).mix()(function() {
-    return [{ block : 'popup', mods : { autoclosable : true } }].concat(applyNext());
-});

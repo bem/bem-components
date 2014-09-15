@@ -2,7 +2,6 @@
     block : 'page',
     title : 'bem-components : modal',
     mods : { theme : 'normal' },
-    zoom : true,
     head : [
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }

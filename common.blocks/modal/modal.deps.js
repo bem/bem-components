@@ -3,4 +3,8 @@
     shouldDeps : [
         'popup'
     ]
+},
+{
+    tech : 'spec.js',
+    mustDeps : { tech : 'bemhtml', block : 'modal' }
 }]

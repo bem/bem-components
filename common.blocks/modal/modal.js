@@ -27,21 +27,14 @@ provide(BEMDOM.decl(this.name, /** @lends modal.prototype */{
                 // Apply the animation only at first opening, otherwise the animation will be played when page loaded.
                 this.setMod('animation');
 
-                this._popup
-                    .setMod('visible')
-                    .on({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
+                this._popup.setMod('visible');
+
             },
 
             '' : function() {
-                this._popup
-                    .delMod('visible')
-                    .un({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
+                this._popup.delMod('visible');
             }
         }
-    },
-
-    _onPopupHide : function() {
-        this.delMod('visible');
     }
 }, /** @lends modal */{
     live : true

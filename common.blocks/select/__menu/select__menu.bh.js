@@ -2,7 +2,7 @@ module.exports = function(bh) {
 
     bh.match('select__menu', function(ctx, json) {
         var mods = ctx.mods(),
-            select = ctx.tParam('_select'),
+            select = ctx.tParam('select'),
             optionToMenuItem = function(option) {
                 var res = {
                         block : 'menu-item',

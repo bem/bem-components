@@ -6,7 +6,7 @@ module.exports = function(bh) {
             .tag('input')
             .attrs({
                 type : 'hidden',
-                name : ctx.tParam('_select').name,
+                name : ctx.tParam('select').name,
                 value : ctx.isSimple(val)? val : JSON.stringify(val),
                 disabled : json.blockMods.disabled? 'disabled' : undefined
             });

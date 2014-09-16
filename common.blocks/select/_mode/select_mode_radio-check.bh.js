@@ -5,12 +5,7 @@ module.exports = function(bh) {
             .applyBase()
             .extend(ctx.js(), { text : json.text });
 
-        var checkedOptions = json._checkedOptions;
-
-        ctx
-            .tParam('_select', json)
-            .tParam('_checkedOption', checkedOptions[0])
-            .tParam('_checkedOptions', checkedOptions);
+        var checkedOptions = ctx.tParam('checkedOptions');
 
         if(checkedOptions[0]) {
             ctx.content([
@@ -24,9 +19,11 @@ module.exports = function(bh) {
     });
 
     bh.match('select_mode_radio-check__button', function(ctx) {
+        var checkedOptions = ctx.tParam('checkedOptions');
+
         ctx.content({
             elem : 'text',
-            content : (ctx.tParam('_checkedOption') || ctx.tParam('_select')).text
+            content : (checkedOptions[0] || ctx.tParam('select')).text
         });
     });
 

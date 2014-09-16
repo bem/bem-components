@@ -5,11 +5,7 @@ module.exports = function(bh) {
             .applyBase()
             .extend(ctx.js(), { text : json.text });
 
-        var checkedOptions = json._checkedOptions;
-
-        ctx
-            .tParam('_select', json)
-            .tParam('_checkedOptions', checkedOptions);
+        var checkedOptions = ctx.tParam('checkedOptions');
 
         if(checkedOptions[0]) {
             var res = checkedOptions.map(function(option) {
@@ -27,7 +23,7 @@ module.exports = function(bh) {
     });
 
     bh.match('select_mode_check__button', function(ctx) {
-        var checkedOptions = ctx.tParam('_checkedOptions');
+        var checkedOptions = ctx.tParam('checkedOptions');
 
         ctx.content({
             elem : 'text',
@@ -36,7 +32,7 @@ module.exports = function(bh) {
                 checkedOptions.reduce(function(res, option) {
                     return res + (res? ', ' : '') + (option.checkedText || option.text);
                 }, '') ||
-                    ctx.tParam('_select').text
+                    ctx.tParam('select').text
         });
     });
 

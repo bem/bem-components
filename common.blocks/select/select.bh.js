@@ -25,8 +25,10 @@ module.exports = function(bh) {
             }
         }
 
-        json._checkedOptions = checkedOptions;
-        json._firstOption = firstOption;
+        ctx
+            .tParam('select', json)
+            .tParam('firstOption', firstOption)
+            .tParam('checkedOptions', checkedOptions);
 
         ctx.content([
             { elem : 'button' },

@@ -171,6 +171,46 @@ Befor commit some new or modified pattern you have to:
 
 #### Tests for templates
 
-To run tests for templates use `npm run test-tmpls` command. You may also specify the target, e.g. `enb make tmpl-specs desktop.tmpl-specs/input` to run just `input` tests.
+Build tools for the library allow you to build and run tests on BEMHTML and BH
+block templates.
 
-All tests will be run automatically using [Travis](https://travis-ci.org) on each pull request.
+To add a test for a block, you need to add a directory named `[block name].tmpl-specs` on your definition level. All test files will be stored in it.
+
+Each test consists of a pair of files implemented in following technologies: BEMJSON and HTML. Each block could have more then one pair of such files. You could give any name to the file. But the file names (without extensions) within the one pair for one test must coincide. For example, **10-default**.bemjson.js and **10-default**.html.
+
+For each block:
+* BEMJSON file contains an example for a block;
+* HTML file contains standard HTML-code – a block sample.
+
+Block sample in HTML is a block implementation result that becomes available after applying a template to the BEMJSON example.
+
+```
+desktop.blocks
+    └── myblocks
+        ├── myblock.bemhtml.js
+        ├── myblock.bh.js
+        ├── ...
+        └── myblock.tmpl-specs
+            ├── 10-default.bemjson.js
+            ├── 10-default.html
+            ├── 20-advanced.bemjson.js
+            └── 20-advanced.html
+```
+
+To run tests for templates use:
+
+`enb make tmpl-specs` or `npm run test-tmpls`
+
+To run tests for required definition level use:
+
+`enb make tmpl-specs desktop.tmpl-specs`
+
+To run tests for a specific block use:
+
+`enb make tmpl-specs desktop.tmpl-specs/button`
+
+If build procedure is successful, tests will be run automatically. After that you will see all test results.
+
+If the result of applying the template does not match with the block sample in HTML, then you will see errors in the log with description of the difference from the block sample.
+
+All tests will be run automatically using [Travis](https://travis-ci.org) for each pull request.

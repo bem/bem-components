@@ -23,10 +23,7 @@
     &.modal_js_inited
     {
         display: block;
-    }
 
-    &.modal_animation
-    {
         animation-name: modal_theme_normal;
 
         .modal__content {
@@ -38,16 +35,12 @@
     {
         visibility: visible;
 
-        &.modal_animation
+        animation-name: modal_theme_normal_visible;
+
+        .modal__content
         {
-            animation-name: modal_theme_normal_visible;
-
-            .modal__content
-            {
-                animation-name: modal_theme_normal_visible__content;
-            }
+            animation-name: modal_theme_normal_visible__content;
         }
-
     }
 }
 

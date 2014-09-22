@@ -112,9 +112,9 @@ See following examples:
 
 **NB:** this block's version does not support manual selection of `visible` modifier in BEMJSON.
 
-#### `_autoscalable`
+#### `_autoclosable`
 
-When `autoscalable` modifier with `true` is set to `popup` block, mouse click outside the popup area hides it automatically.
+When `autoclosable` modifier with `true` is set to `popup` block, mouse click outside the popup area hides it automatically.
 
 ```
 {
@@ -185,6 +185,6 @@ Use `mainOffset` and/or `secondaryOffset` parameters to manage the offset direct
 
 `popup` block supports nested stucture of multiple simultaneous popups. It means you can open popup (child) within another popup (parent) with the parent popup remaining opened.
 
-If `autoscalable` modifier is specified, mouse click outside the parent popup area hides it and all its child automatically.
+If `autoclosable` modifier is specified, mouse click outside the parent popup area hides it and all its child automatically.
 
 Child popup blocks can be regarded as a chain of `1` → `2` → `3` → `4`. By clicking on the second element of a chain, third and forth will be closed. By clicking on the first – the second, third and forth will be closed. Clicking outside any popup area of the chain elements will close all popups.

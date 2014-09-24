@@ -2,6 +2,11 @@ block('input').mod('type', 'textarea').tag()('div');
 
 block('input').mod('type', 'textarea').elem('box').tag()(false);
 
+block('input').mod('type', 'textarea').def()(function() {
+    this.mods['has-clear'] = false;
+    applyNext();
+});
+
 block('input').mod('type', 'textarea').elem('control')(
     tag()('textarea'),
 

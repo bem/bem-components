@@ -23,7 +23,7 @@
             val : 'search',
             placeholder : 'query'
         } },
-        { tag : 'p', content : {
+        { content : {
             block : 'input',
             mods : { type : 'textarea' },
             val : 'textarea',
@@ -61,7 +61,7 @@
             val : 'search',
             placeholder : 'query'
         } },
-        { tag : 'p', content : {
+        { content : {
             block : 'input',
             mods : { theme : 'simple', 'has-clear' : true, type : 'textarea' },
             val : 'textarea',
@@ -111,7 +111,7 @@
             val : 'search',
             placeholder : 'query'
         } },
-        { tag : 'p', content : {
+        { content : {
             block : 'input',
             mods : { theme : 'normal', 'has-clear' : true, size : 'm', type : 'textarea' },
             val : 'textarea',
@@ -155,6 +155,16 @@
             mods : { theme : 'normal', 'has-clear' : true, size : 'xl' },
             val : 'size xl',
             placeholder : 'placeholder'
+        } },
+        { content : {
+            block : 'input',
+            mods : { theme : 'normal', size : 'm', type : 'textarea' },
+            val : 'textarea size m'
+        } },
+        { content : {
+            block : 'input',
+            mods : { theme : 'normal', size : 'l', type : 'textarea' },
+            val : 'textarea size l'
         } }
     ]
 });

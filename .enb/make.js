@@ -2,12 +2,13 @@ var DEFAULT_LANGS = ['ru', 'en'],
     fs = require('fs'),
     path = require('path'),
     naming = require('bem-naming'),
-    levels = require('enb-bem/techs/levels'),
+    levels = require('enb-bem-techs/techs/levels'),
+    levelsToBemdecl = require('enb-bem-techs/techs/levels-to-bemdecl'),
     provide = require('enb/techs/file-provider'),
-    bemdeclFromDepsByTech = require('enb-bem/techs/bemdecl-from-deps-by-tech'),
-    bemdecl = require('enb-bem/techs/bemdecl-from-bemjson'),
-    deps = require('enb-bem/techs/deps-old'),
-    files = require('enb-bem/techs/files'),
+    depsByTechToBemdecl = require('enb-bem-techs/techs/deps-by-tech-to-bemdecl'),
+    bemdecl = require('enb-bem-techs/techs/bemjson-to-bemdecl'),
+    deps = require('enb-bem-techs/techs/deps-old'),
+    files = require('enb-bem-techs/techs/files'),
     css = require('enb-stylus/techs/css-stylus'),
     autoprefixer = require('enb-autoprefixer/techs/css-autoprefixer'),
     js = require('enb-diverse-js/techs/browser-js'),
@@ -15,6 +16,8 @@ var DEFAULT_LANGS = ['ru', 'en'],
     bemhtml = require('enb-bemxjst/techs/bemhtml-old'),
     html = require('enb-bemxjst/techs/html-from-bemjson'),
     bh = require('enb-bh/techs/bh-server'),
+    bhServerInclude = require('enb-bh/techs/bh-server-include'),
+    bhYm = require('enb-bh/techs/bh-client-module'),
     bhHtml = require('enb-bh/techs/html-from-bemjson'),
     copyFile = require('enb/techs/file-copy'),
     mergeFiles = require('enb/techs/file-merge'),
@@ -36,6 +39,7 @@ module.exports = function(config) {
 
     config.setLanguages(langs? langs.split(' ') : [].concat(DEFAULT_LANGS));
 
+    configureDist(platforms);
     configurePages(platforms);
     configureSets(platforms, {
         tests : config.module('enb-bem-examples').createConfigurator('tests'),
@@ -44,6 +48,78 @@ module.exports = function(config) {
         specs : config.module('enb-bem-specs').createConfigurator('specs'),
         tmplSpecs : config.module('enb-bem-tmpl-specs').createConfigurator('tmpl-specs')
     });
+
+    function configureDist(platforms) {
+        platforms.forEach(function(platform) {
+            config.node('dist/' + platform, function(nodeConfig) {
+                nodeConfig.addTechs([
+                    [levels, { levels : getSourceLevels(platform) }],
+                    [levelsToBemdecl],
+                    [deps],
+                    [files],
+                    [css, { target : '?.noprefix.css' }],
+                    [autoprefixer, {
+                        sourceTarget : '?.noprefix.css',
+                        destTarget : '?.prefix.css',
+                        browserSupport : getBrowsers(platform)
+                    }],
+                    [js, { target : '?.source.js' }],
+                    [ym, {
+                        source : '?.source.js',
+                        target : '?.ym.js'
+                    }],
+                    [bemhtml, { target : '?.pre.bemhtml.js', devMode : false }],
+                    [depsByTechToBemdecl,  {
+                        target : '?.bemhtml.bemdecl.js',
+                        sourceTech : 'js',
+                        destTech : 'bemhtml'
+                    }],
+                    [deps, {
+                        target : '?.bemhtml.deps.js',
+                        bemdeclFile : '?.bemhtml.bemdecl.js'
+                    }],
+                    [files, {
+                        depsFile : '?.bemhtml.deps.js',
+                        filesTarget : '?.bemhtml.files',
+                        dirsTarget : '?.bemhtml.dirs'
+                    }],
+                    [bemhtml, {
+                        target : '?.client.bemhtml.js',
+                        filesTarget : '?.bemhtml.files',
+                        devMode : false
+                    }],
+                    [bhServerInclude, { target : '?.pre.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
+                    [bhYm, { target : '?.client.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
+                    [mergeFiles, {
+                        target : '?.source+bemhtml.js',
+                        sources : ['?.source.js', '?.client.bemhtml.js']
+                    }],
+                    [ym, {
+                        source : '?.source+bemhtml.js',
+                        target : '?.pre.browser+bemhtml.js'
+                    }],
+                    [mergeFiles, {
+                        target : '?.source+bh.js',
+                        sources : ['?.source.js', '?.client.bh.js']
+                    }],
+                    [ym, {
+                        source : '?.source+bh.js',
+                        target : '?.pre.browser+bh.js'
+                    }],
+                    [borschik, { source : '?.prefix.css', target : '?.css' }],
+                    [borschik, { source : '?.ym.js', target : '?.browser.js' }],
+                    [borschik, { source : '?.pre.bemhtml.js', target : '?.bemhtml.js' }],
+                    [borschik, { source : '?.pre.bh.js', target : '?.bh.js' }],
+                    [borschik, { source : '?.pre.browser+bemhtml.js', target : '?.browser+bemhtml.js' }],
+                    [borschik, { source : '?.pre.browser+bh.js', target : '?.browser+bh.js' }]
+                ]);
+
+                nodeConfig.addTargets([
+                    '?.css', '?.browser.js', '?.bemhtml.js', '?.bh.js', '?.browser+bemhtml.js', '?.browser+bh.js'
+                ]);
+            });
+        });
+    }
 
     function configurePages(platforms) {
         platforms.forEach(function(platform) {
@@ -82,17 +158,17 @@ module.exports = function(config) {
 
                 // Client BEMHTML
                 nodeConfig.addTechs([
-                    [bemdeclFromDepsByTech, {
+                    [depsByTechToBemdecl, {
                         target : '?.bemhtml.bemdecl.js',
                         sourceTech : 'js',
                         destTech : 'bemhtml'
                     }],
                     [deps, {
                         target : '?.bemhtml.deps.js',
-                        sourceDepsFile : '?.bemhtml.bemdecl.js'
+                        bemdeclFile : '?.bemhtml.bemdecl.js'
                     }],
                     [files, {
-                        target : '?.bemhtml.deps.js',
+                        depsFile : '?.bemhtml.deps.js',
                         filesTarget : '?.bemhtml.files',
                         dirsTarget : '?.bemhtml.dirs'
                     }],

@@ -2,6 +2,7 @@ module.exports = function(bh) {
 
     bh.match('input_type_textarea', function(ctx) {
         ctx.tag('div', true);
+        ctx.mod('has-clear', false, true);
     });
 
     bh.match('input_type_textarea__box', function(ctx) {

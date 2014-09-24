@@ -302,7 +302,7 @@
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm', type : 'textarea', 'has-clear' : true },
+                mods : { theme : 'normal', size : 'l', type : 'textarea', 'has-clear' : true },
                 placeholder : 'placeholder',
                 cls : 'normal-textarea-placeholder-enabled'
             },
@@ -314,7 +314,7 @@
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm', type : 'textarea', 'has-clear' : true, disabled : true },
+                mods : { theme : 'normal', size : 'l', type : 'textarea', 'has-clear' : true, disabled : true },
                 placeholder : 'placeholder',
                 cls : 'normal-textarea-placeholder-disabled'
             }

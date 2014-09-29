@@ -25,7 +25,7 @@
     "csscomb": "~2.0.0",
     "bem-naming": "0.2.1",
     "enb": "0.13.8",
-    "enb-bem-techs": "0.1.0-beta10",
+    "enb-bem-techs": "0.1.0-beta11",
     "enb-autoprefixer": "0.1.1",
     "enb-bem-docs": "0.5.1",
     "enb-bem-examples": "0.4.12",

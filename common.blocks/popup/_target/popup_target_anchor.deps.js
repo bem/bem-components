@@ -1,0 +1,3 @@
+({
+    mustDeps : [{ mods : { target : true } }]
+})

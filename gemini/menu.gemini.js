@@ -5,13 +5,13 @@ gemini.suite('menu', function(root) {
     root.setUrl('desktop.tests/menu/gemini/gemini.html');
 
     [
-        'normal-radio-s',
-        'normal-radio-m',
-        'normal-radio-l',
-        'normal-radio-xl',
-        'normal-check',
-        'normal-link',
-        'normal-icon'
+        'islands-radio-s',
+        'islands-radio-m',
+        'islands-radio-l',
+        'islands-radio-xl',
+        'islands-check',
+        'islands-link',
+        'islands-icon'
     ]
         .forEach(function(test) {
             var menuSelector = '.' + test;

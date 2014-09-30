@@ -1,4 +1,4 @@
-.popup_theme_normal
+.popup_theme_islands
 {
     display: none;
     visibility: hidden;
@@ -30,19 +30,19 @@
     for rule in ((bottom (left center right)) (top (left center right)) (right (top center bottom)) (left (top center bottom))) {
         for secondary in rule[1] {
             &.popup_direction_{rule[0]}-{secondary} {
-                animation-name: popup_theme_normal_ + rule[0];
+                animation-name: popup_theme_islands_ + rule[0];
             }
         }
         for secondary in rule[1] {
             &.popup_direction_{rule[0]}-{secondary}.popup_visible {
-                animation-name: popup_theme_normal_ + rule[0] + _visible;
+                animation-name: popup_theme_islands_ + rule[0] + _visible;
             }
         }
     }
 }
 
 for rule in ((bottom Y 10) (top Y -10) (right X 10) (left X -10)) {
-    @keyframes popup_theme_normal_{rule[0]}
+    @keyframes popup_theme_islands_{rule[0]}
     {
         0%
         {
@@ -72,7 +72,7 @@ for rule in ((bottom Y 10) (top Y -10) (right X 10) (left X -10)) {
         }
     }
 
-    @keyframes popup_theme_normal_{rule[0]}_visible {
+    @keyframes popup_theme_islands_{rule[0]}_visible {
         0%
         {
             opacity: 0;

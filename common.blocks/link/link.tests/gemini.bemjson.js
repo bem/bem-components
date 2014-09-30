@@ -1,12 +1,12 @@
 ({
     block : 'page',
     title : 'bem-components: link',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_gemini.css' },
         { elem : 'js', url : '_gemini.js' }
     ],
-    content : ['default', 'normal'].map(function(theme, i) {
+    content : ['default', 'islands'].map(function(theme, i) {
         var content = [
                 { block : 'link', content : 'with no url', cls : theme + '-no-url' },
                 { block : 'link', url : '#', content : 'plain url', cls : theme + '-url' },

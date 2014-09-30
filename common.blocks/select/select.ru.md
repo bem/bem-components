@@ -72,7 +72,7 @@
 Блок представлен в следующих темах:
 
 * simple
-* normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
+* islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
 
 Если модификатор `theme` не указан, отображается [кастомная](#custom) реализация контрола без применения стилей.
 
@@ -109,12 +109,12 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio', theme : 'normal', size : 'm' },
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
     name : 'select1',
     options : [
         { val : 1, text : 'first' },
@@ -136,7 +136,7 @@
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'check', theme : 'normal', size : 'm' },
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select1',
     text : '—',
     options : [
@@ -154,7 +154,7 @@
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio', theme : 'normal', size : 'm' },
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
     name : 'select2',
     options : [
         { val : 1, text : 'first' },
@@ -170,7 +170,7 @@
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio-check', theme : 'normal', size : 'm' },
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
     name : 'select3',
     text : '—',
     options : [
@@ -190,7 +190,7 @@
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio-check', theme : 'normal', size : 'm', width : 'available' },
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm', width : 'available' },
     name : 'select4',
     text : '—',
     options : [
@@ -233,7 +233,7 @@
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'check', theme : 'normal', size : 'm' },
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
     text : '—',
     options : [
@@ -259,7 +259,7 @@
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'check', theme : 'normal', size : 'm' },
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
     text : 'empty',
     options : [

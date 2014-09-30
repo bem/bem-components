@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: destruct popup',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_destruct.css' },
         { elem : 'js', url : '_destruct.js' }

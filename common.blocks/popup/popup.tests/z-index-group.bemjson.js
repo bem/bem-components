@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: popup',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_z-index-group.css' },
         { elem : 'js', url : '_z-index-group.js' }
@@ -60,8 +60,8 @@
                             content : [
                                 {
                                     block : 'input',
-                                    mods : { theme : 'normal' },
-                                    val : 'normal'
+                                    mods : { theme : 'islands' },
+                                    val : 'islands'
                                 },
                                 {
                                     tag : 'select',

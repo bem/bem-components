@@ -39,7 +39,7 @@ Additional required HTML attributes could be specified in `attrs` field of BEMJS
 Block supports the following themes:
 
  * simple
- * normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
+ * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
@@ -68,12 +68,12 @@ See following examples:
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'dropdown',
-    mods : { switcher : 'link', theme : 'normal', size : 'm' },
+    mods : { switcher : 'link', theme : 'islands', size : 'm' },
     switcher : 'Link',
     popup : 'Hello, world!'
 }
@@ -91,7 +91,7 @@ See following examples:
 ```bemjson
 {
     block : 'dropdown',
-    mods : { switcher : 'button', theme : 'normal', size : 'm' },
+    mods : { switcher : 'button', theme : 'islands', size : 'm' },
     switcher : 'Button',
     popup : 'Hello, world!'
 }
@@ -113,7 +113,7 @@ See following examples:
 ```bemjson
 {
     block : 'dropdown',
-    mods : { switcher : 'button', theme : 'normal', size : 'm', disabled : true },
+    mods : { switcher : 'button', theme : 'islands', size : 'm', disabled : true },
     switcher : 'Button',
     popup : 'Hello, world!'
 }
@@ -126,7 +126,7 @@ See following examples:
 ```bemjson
 {
     block : 'dropdown',
-    mods : { switcher : 'button', theme : 'normal', size : 'm', opened : true },
+    mods : { switcher : 'button', theme : 'islands', size : 'm', opened : true },
     switcher : 'Button',`
     popup : 'Hello, world!'
 }
@@ -145,7 +145,7 @@ For example, you can make a button control component toggleable:
 ```bemjson
 {
     block : 'dropdown',
-    mods : { switcher : 'button', theme : 'normal', size : 'm' },
+    mods : { switcher : 'button', theme : 'islands', size : 'm' },
     switcher : {
         block : 'button',
         mods : { togglable : 'true' },
@@ -162,14 +162,14 @@ Or make dropdown list selector based on a block:
     block : 'dropdown',
     mods : {
         switcher : 'Button',
-        theme : 'normal',
+        theme : 'islands',
         size : 'xl'
     },
     switcher : 'Dropdown menu',
     popup : {
         block : 'menu',
         mods : {
-            theme : 'normal',
+            theme : 'islands',
             size : 'xl',
             select : 'check'
         },

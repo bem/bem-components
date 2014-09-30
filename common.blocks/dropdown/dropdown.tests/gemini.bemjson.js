@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: dropdown',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_gemini.css' },
         { elem : 'js', url : '_gemini.js' }
@@ -32,25 +32,25 @@
 
         { block : 'separator' },
 
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
         {
             block : 'test',
             content : {
                 block : 'dropdown',
-                mods : { switcher : 'link', theme : 'normal' },
+                mods : { switcher : 'link', theme : 'islands' },
                 switcher : 'link',
-                popup : { block : 'popup', mods : { autoclosable : true, 'normal-link' : true }, content : 'popup' },
-                cls : 'normal-link'
+                popup : { block : 'popup', mods : { autoclosable : true, 'islands-link' : true }, content : 'popup' },
+                cls : 'islands-link'
             }
         },
         {
             block : 'test',
             content : {
                 block : 'dropdown',
-                mods : { switcher : 'button', theme : 'normal', size : 's' },
+                mods : { switcher : 'button', theme : 'islands', size : 's' },
                 switcher : 'link',
-                popup : { block : 'popup', mods : { autoclosable : true, 'normal-button' : true }, content : 'popup' },
-                cls : 'normal-button'
+                popup : { block : 'popup', mods : { autoclosable : true, 'islands-button' : true }, content : 'popup' },
+                cls : 'islands-button'
             }
         }
     ]

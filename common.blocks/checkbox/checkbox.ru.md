@@ -65,7 +65,7 @@
 Блок представлен в следующих темах:
 
  * simple
- * normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
+ * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
 
 Без указания модификатора темы отображается [нативный](#native) вид контрола.
 
@@ -95,15 +95,15 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'checkbox',
-    text : 'Тема normal',
-    name: 'normal',
+    text : 'Тема islands',
+    name: 'islands',
     val: '3',
-    mods : { theme : 'normal', size : 'm' }
+    mods : { theme : 'islands', size : 'm' }
 }
 ```
 <a name="size"></a>
@@ -111,7 +111,7 @@
 
 Задает размер шрифта.
 
-Модификатор реализован только в теме *normal*.
+Модификатор реализован только в теме *islands*.
 
 Доступно два размера реализации блока: **m**, **l**.
 
@@ -139,7 +139,7 @@
     text : 'размер M',
     name: 'name2',
     val: '2',
-    mods : { theme : 'normal', size : 'm' }
+    mods : { theme : 'islands', size : 'm' }
 }
 ```
 
@@ -149,7 +149,7 @@
     text : 'размер L',
     name: 'name3',
     val: '3',
-    mods : { theme : 'normal', size : 'l' }
+    mods : { theme : 'islands', size : 'l' }
 }
 ```
 
@@ -165,7 +165,7 @@
     text : 'Кнопка-чекбокс',
     name: 'button',
     val: '1',
-    mods : { theme : 'normal', size : 's', type : 'button' }
+    mods : { theme : 'islands', size : 's', type : 'button' }
 }
 ```
 
@@ -183,7 +183,7 @@
     text : 'Отмечен',
     name: 'name1',
     val : 1,
-    mods : { theme : 'normal', size : 'm', checked : true }
+    mods : { theme : 'islands', size : 'm', checked : true }
 }
 ```
 
@@ -193,7 +193,7 @@
     text : 'Отмечен',
     name: 'name2',
     val : 2,
-    mods : { theme : 'normal', size : 'm', type : 'button', checked : true }
+    mods : { theme : 'islands', size : 'm', type : 'button', checked : true }
 }
 ```
 #### Неактивен `_disabled`
@@ -206,7 +206,7 @@
     text : 'Неактивен',
     name: 'name1',
     val : 1,
-    mods : { theme : 'normal', size : 'm', disabled : true }
+    mods : { theme : 'islands', size : 'm', disabled : true }
 }
 ```
 
@@ -216,7 +216,7 @@
     text : 'Неактивен',
     name: 'name2',
     val : 2,
-    mods : { theme : 'normal', size : 'm', type : 'button', disabled : true }
+    mods : { theme : 'islands', size : 'm', type : 'button', disabled : true }
 }
 ```
 

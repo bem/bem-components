@@ -36,7 +36,7 @@
 Блок представлен в следующих темах:
 
  * simple
- * normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
+ * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
 
 Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
 
@@ -70,13 +70,13 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm' },
-    name : 'radio-normal',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
@@ -86,7 +86,7 @@
 
 ### Размеры `_size`
 
-Реализован только в теме `normal`.
+Реализован только в теме `islands`.
 
 Модификатор `size` устанавливает размер переключателей для всех типов радиогруппы.
 
@@ -125,7 +125,7 @@
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 's', type : 'button' },
+    mods : { theme : 'islands', size : 's', type : 'button' },
     name : 'Small',
     options : [
         { val : 1, text : 'first' },
@@ -137,7 +137,7 @@
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm', type : 'button' },
+    mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'Medium',
     options : [
         { val : 1, text : 'first' },
@@ -149,7 +149,7 @@
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'l', type : 'button' },
+    mods : { theme : 'islands', size : 'l', type : 'button' },
     name : 'Large',
     options : [
         { val : 1, text : 'first' },
@@ -161,7 +161,7 @@
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'xl', type : 'button' },
+    mods : { theme : 'islands', size : 'xl', type : 'button' },
     name : 'X-Large',
     options : [
         { val : 1, text : 'first' },
@@ -180,7 +180,7 @@
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm', type : 'button' },
+    mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'radio-button',
     options : [
         { val : 1, text : 'first' },
@@ -189,12 +189,12 @@
 }
 ```
 
-* `line`. Модификатор `type` в значении `line` применяется к радиогруппе для выравнивания переключателей в строку. После каждого радиопереключателя группы, кроме последнего, автоматически добавляется отступ справа. Размер отступа зависит от значения модификатора `size`. Реализован только в теме `normal`.
+* `line`. Модификатор `type` в значении `line` применяется к радиогруппе для выравнивания переключателей в строку. После каждого радиопереключателя группы, кроме последнего, автоматически добавляется отступ справа. Размер отступа зависит от значения модификатора `size`. Реализован только в теме `islands`.
 
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm', type : 'line' },
+    mods : { theme : 'islands', size : 'm', type : 'line' },
     name : 'radio-line',
     options : [
         { val : 1, text : 'first' },
@@ -211,7 +211,7 @@
 {
     block : 'radio-group',
     name : 'button-radio-check',
-    mods : { theme : 'normal', size : 'm', type : 'button', mode : 'radio-check' },
+    mods : { theme : 'islands', size : 'm', type : 'button', mode : 'radio-check' },
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
@@ -233,7 +233,7 @@
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
+    mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
     name : 'radio-button',
     options : [
         { val : 1, text : 'first' },
@@ -245,7 +245,7 @@
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm', disabled : true },
+    mods : { theme : 'islands', size : 'm', disabled : true },
     name : 'radio-button',
     options : [
         { val : 1, text : 'first' },
@@ -259,7 +259,7 @@
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm', type : 'line' },
+    mods : { theme : 'islands', size : 'm', type : 'line' },
     name : 'radio-line',
     options : [
         { val : 1, text : 'first', disabled : true },
@@ -272,7 +272,7 @@
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm', type : 'button' },
+    mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'radio-line',
     options : [
         { val : 1, text : 'first', disabled : true },

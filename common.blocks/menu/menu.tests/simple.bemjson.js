@@ -1,12 +1,12 @@
 ({
     block : 'page',
     title : 'bem-components: menu',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
     ],
-    content : ['simple', 'normal'].map(function(theme) {
+    content : ['simple', 'islands'].map(function(theme) {
         return [
             { tag : 'h2', content : theme },
             [

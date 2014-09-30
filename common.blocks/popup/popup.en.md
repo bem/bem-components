@@ -68,7 +68,7 @@ Additional required HTML attributes could be specified in `attrs` field of BEMJS
 Block supports the following themes:
 
  * simple
- * normal
+ * islands
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
@@ -94,13 +94,13 @@ See following examples:
 }
 ```
 
-**normal**
+**islands**
 
 ```
 {
     block : 'popup',
-    mods : { theme : 'normal' },
-    content : 'normal'
+    mods : { theme : 'islands' },
+    content : 'islands'
 }
 ```
 
@@ -119,8 +119,8 @@ When `autoclosable` modifier with `true` is set to `popup` block, mouse click ou
 ```
 {
     block : 'popup',
-    mods : { theme : 'normal', autoclosable : true },
-    content : 'normal'
+    mods : { theme : 'islands', autoclosable : true },
+    content : 'islands'
 }
 ```
 
@@ -173,7 +173,7 @@ Use `mainOffset` and/or `secondaryOffset` parameters to manage the offset direct
 ```
 {
     block : 'popup',
-    mods : { autoclosable : true, theme: 'normal' },
+    mods : { autoclosable : true, theme: 'islands' },
     direction : ['right-center'],
     mainOffset : 100,
     secondaryOffset : 100,

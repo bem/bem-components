@@ -36,7 +36,7 @@ Additional required HTML attributes could be specified in `attrs` field of BEMJS
 Block supports the following themes:
 
  * simple
- * normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
+ * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
@@ -70,13 +70,13 @@ See following examples:
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm' },
-    name : 'radio-normal',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
@@ -87,7 +87,7 @@ See following examples:
 <a name="size"></a>
 ### _size
 
-Implemented only for theme `normal`.
+Implemented only for theme `islands`.
 
 Provides to all types of `radio-group` with the size value.
 
@@ -129,7 +129,7 @@ See following examples:
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 's', type : 'button' },
+    mods : { theme : 'islands', size : 's', type : 'button' },
     name : 'Small',
     options : [
         { val : 1, text : 'first' },
@@ -141,7 +141,7 @@ See following examples:
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm', type : 'button' },
+    mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'Medium',
     options : [
         { val : 1, text : 'first' },
@@ -153,7 +153,7 @@ See following examples:
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'l', type : 'button' },
+    mods : { theme : 'islands', size : 'l', type : 'button' },
     name : 'Large',
     options : [
         { val : 1, text : 'first' },
@@ -165,7 +165,7 @@ See following examples:
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'xl', type : 'button' },
+    mods : { theme : 'islands', size : 'xl', type : 'button' },
     name : 'X-Large',
     options : [
         { val : 1, text : 'first' },
@@ -184,7 +184,7 @@ The following types of `radio-group` block are available:
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm', type : 'button' },
+    mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'radio-button',
     options : [
         { val : 1, text : 'first' },
@@ -193,12 +193,12 @@ The following types of `radio-group` block are available:
 }
 ```
 
-* `line`-aligned. Use `type` modifier with `line` value to align all radio switches in the group in a line. Right gap is automatically added after each switch in the group except for the last one. Implemented only for theme `normal`.
+* `line`-aligned. Use `type` modifier with `line` value to align all radio switches in the group in a line. Right gap is automatically added after each switch in the group except for the last one. Implemented only for theme `islands`.
 
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm', type : 'line' },
+    mods : { theme : 'islands', size : 'm', type : 'line' },
     name : 'radio-line',
     options : [
         { val : 1, text : 'first' },
@@ -215,7 +215,7 @@ The following types of `radio-group` block are available:
 {
     block : 'radio-group',
     name : 'button-radio-check',
-    mods : { theme : 'normal', size : 'm', type : 'button', mode : 'radio-check' },
+    mods : { theme : 'islands', size : 'm', type : 'button', mode : 'radio-check' },
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
@@ -234,7 +234,7 @@ If `checkbox-group` block is disabled, all checkboxes within this group are also
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
+    mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
     name : 'radio-button',
     options : [
         { val : 1, text : 'first' },
@@ -248,7 +248,7 @@ You can apply `disabled` modifier to separate switches in a group.
 ```bemjson
 {
     block : 'radio-group',
-    mods : { theme : 'normal', size : 'm', type : 'line' },
+    mods : { theme : 'islands', size : 'm', type : 'line' },
     name : 'radio-line',
     options : [
         { val : 1, text : 'first', disabled : true },

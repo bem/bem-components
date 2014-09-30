@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: popup',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_gemini.css' },
         { elem : 'js', url : '_gemini.js' }
@@ -15,7 +15,7 @@
                 {
                     block : 'popup',
                     cls : 'test-nested-popup',
-                    mods : { target : 'anchor', theme : 'normal' },
+                    mods : { target : 'anchor', theme : 'islands' },
                     content : [
                         'first popup',
                         {
@@ -31,7 +31,7 @@
                                 {
                                     block : 'popup',
                                     cls : 'test-nested-popup',
-                                    mods : { target : 'anchor', theme : 'normal' },
+                                    mods : { target : 'anchor', theme : 'islands' },
                                     content : 'second popup'
                                 }
                             ]
@@ -53,7 +53,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'all directions' },
                         {
                             block : 'popup',
-                            mods : { target : 'anchor', theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'islands' },
                             cls : 'all-popup',
                             content : [
                                 'There\'s content',
@@ -75,7 +75,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'bottom-* directions' },
                         {
                             block : 'popup',
-                            mods : { target : 'anchor', theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'islands' },
                             cls : 'bottom-popup',
                             directions : ['bottom-left', 'bottom-center', 'bottom-right'],
                             content : [
@@ -95,7 +95,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'top-* directions' },
                         {
                             block : 'popup',
-                            mods : { target : 'anchor', theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'islands' },
                             cls : 'top-popup',
                             directions : ['top-left', 'top-center', 'top-right'],
                             content : [
@@ -115,7 +115,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'right-* directions' },
                         {
                             block : 'popup',
-                            mods : { target : 'anchor', theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'islands' },
                             cls : 'right-popup',
                             directions : ['right-top', 'right-center', 'right-bottom'],
                             content : [
@@ -135,7 +135,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'left-* directions' },
                         {
                             block : 'popup',
-                            mods : { target : 'anchor', theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'islands' },
                             cls : 'left-popup',
                             directions : ['left-top', 'left-center', 'left-bottom'],
                             content : [

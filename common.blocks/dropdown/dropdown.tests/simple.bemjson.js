@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: dropdown',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
@@ -68,40 +68,40 @@
 
         { tag : 'hr' },
 
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
         {
             block : 'test',
             content : [
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'link', theme : 'normal' },
+                    mods : { switcher : 'link', theme : 'islands' },
                     switcher : 'link',
                     popup : 'bemjson'
                 },
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'link', theme : 'normal' },
+                    mods : { switcher : 'link', theme : 'islands' },
                     switcher : { block : 'link', mods : { pseudo : true, bla : 'bla' }, content : 'custom link' },
-                    popup : { block : 'button', mods : { theme : 'normal', size : 'xl' }, text : 'popup button' }
+                    popup : { block : 'button', mods : { theme : 'islands', size : 'xl' }, text : 'popup button' }
                 },
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'button', theme : 'normal', size : 's' },
+                    mods : { switcher : 'button', theme : 'islands', size : 's' },
                     switcher : 'button',
-                    popup : { block : 'popup', mods : { autoclosable : true, theme : 'normal' }, content : 'custom popup' }
+                    popup : { block : 'popup', mods : { autoclosable : true, theme : 'islands' }, content : 'custom popup' }
                 },
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'button', theme : 'normal' },
+                    mods : { switcher : 'button', theme : 'islands' },
                     switcher : {
                         block : 'bla',
-                        content : { block : 'button', mods : { theme : 'normal', size : 'm' }, text : 'wrapped button' }
+                        content : { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'wrapped button' }
                     },
                     popup : 'bemjson'
                 },
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'button', theme : 'normal', size : 'l' },
+                    mods : { switcher : 'button', theme : 'islands', size : 'l' },
                     switcher : { block : 'button', mods : { togglable : 'check' }, text : 'custom button' },
                     popup : {
                         block : 'popup',
@@ -113,7 +113,7 @@
                 },
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'button', theme : 'normal', size : 'xl', disabled : true },
+                    mods : { switcher : 'button', theme : 'islands', size : 'xl', disabled : true },
                     switcher : 'disabled',
                     popup : 'bemjson'
                 }

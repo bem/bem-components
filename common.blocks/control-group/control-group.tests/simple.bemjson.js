@@ -1,19 +1,19 @@
 ({
     block : 'page',
     title : 'bem-components: control-group',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
     ],
     content : [
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
 
         { tag : 'h3', content : 'checkbox-group' },
         { tag : 'p', content : {
             block : 'checkbox-group',
-            name : 'normal-checkbox1',
-            mods : { theme : 'normal', size : 'm', type : 'button' },
+            name : 'islands-checkbox1',
+            mods : { theme : 'islands', size : 'm', type : 'button' },
             options : [
                 { val : 1, text : 'first', checked : true },
                 { val : 2, text : 'second' },
@@ -26,8 +26,8 @@
         { tag : 'h3', content : 'radio-group' },
         { tag : 'p', content : {
             block : 'radio-group',
-            name : 'normal-button1',
-            mods : { theme : 'normal', size : 'm', type : 'button' },
+            name : 'islands-button1',
+            mods : { theme : 'islands', size : 'm', type : 'button' },
             options : [
                 { val : 1, text : 'first', checked : true },
                 { val : 2, text : 'second' },
@@ -43,18 +43,18 @@
             content : [
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 'm' },
+                    mods : { theme : 'islands', size : 'm' },
                     icon : { block : 'icon', mods : { action : 'down' } }
                 },
                 {
                     block : 'input',
-                    mods : { theme : 'normal', size : 'm', type : 'search' },
+                    mods : { theme : 'islands', size : 'm', type : 'search' },
                     val : 'Saint-Petersburg',
                     placeholder : 'query'
                 },
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 'm' },
+                    mods : { theme : 'islands', size : 'm' },
                     text : 'search'
                 }
             ]
@@ -66,17 +66,17 @@
             content : [
                 {
                     block : 'input',
-                    mods : { theme : 'normal', size : 'm' },
+                    mods : { theme : 'islands', size : 'm' },
                     placeholder : 'price from'
                 },
                 {
                     block : 'input',
-                    mods : { theme : 'normal', size : 'm' },
+                    mods : { theme : 'islands', size : 'm' },
                     placeholder : 'to'
                 },
                 {
                     block : 'select',
-                    mods : { mode : 'radio', theme : 'normal', size : 'm' },
+                    mods : { mode : 'radio', theme : 'islands', size : 'm' },
                     options : [
                         { val : 'usd', text : '$', checked : true },
                         { val : 'euro', text : '€' }

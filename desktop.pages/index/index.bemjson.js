@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_index.css' },
         { elem : 'js', url : '_index.js' }
@@ -17,7 +17,7 @@
                         { elem : 'title', content : 'theme' },
                         { elem : 'title', content : '&mdash;' },
                         { elem : 'title', content : 'simple' },
-                        { elem : 'title', content : 'normal' }
+                        { elem : 'title', content : 'islands' }
                     ]
                 },
                 {
@@ -101,7 +101,7 @@
                             content : [
                                 {
                                     block : 'link',
-                                    mods : { theme : 'normal' },
+                                    mods : { theme : 'islands' },
                                     url : '#',
                                     title : 'link',
                                     target : '_blank',
@@ -110,21 +110,21 @@
                                 ' ',
                                 {
                                     block : 'link',
-                                    mods : { theme : 'normal', view: 'external' },
+                                    mods : { theme : 'islands', view: 'external' },
                                     url : '#',
                                     content : 'external'
                                 },
                                 ' ',
                                 {
                                     block : 'link',
-                                    mods : { theme : 'normal', view: 'minor' },
+                                    mods : { theme : 'islands', view: 'minor' },
                                     url : '#',
                                     content : 'minor'
                                 },
                                 ' ',
                                 {
                                     block : 'link',
-                                    mods : { theme : 'normal', pseudo : true },
+                                    mods : { theme : 'islands', pseudo : true },
                                     content : 'pseudo'
                                 }
                             ]
@@ -195,9 +195,9 @@
                             elem : 'cell',
                             content : {
                                 block : 'input',
-                                mods : { theme : 'normal', size : 'm', 'has-clear' : true },
+                                mods : { theme : 'islands', size : 'm', 'has-clear' : true },
                                 val : 'value',
-                                placeholder : 'normal'
+                                placeholder : 'islands'
                             }
                         }
                     ]
@@ -256,26 +256,26 @@
                             content : [
                                 {
                                     block : 'button',
-                                    mods : { theme : 'normal', size : 'm' },
+                                    mods : { theme : 'islands', size : 'm' },
                                     text : 'button'
                                 },
                                 ' ',
                                 {
                                     block : 'button',
-                                    mods : { theme : 'normal', size : 'm' },
+                                    mods : { theme : 'islands', size : 'm' },
                                     text : 'with icon',
                                     icon : { block : 'icon', mods : { action : 'download' } }
                                 },
                                 ' ',
                                 {
                                     block : 'button',
-                                    mods : { theme : 'normal', size : 'm' },
+                                    mods : { theme : 'islands', size : 'm' },
                                     icon : { block : 'icon', mods : { action : 'download' } }
                                 },
                                 ' ',
                                 {
                                     block : 'button',
-                                    mods : { theme : 'normal', size : 'm', type : 'link' },
+                                    mods : { theme : 'islands', size : 'm', type : 'link' },
                                     url : '#',
                                     text : 'link'
                                 }
@@ -355,28 +355,28 @@
                             content : [
                                 {
                                     block : 'checkbox',
-                                    mods : { theme : 'normal', size : 'm' },
+                                    mods : { theme : 'islands', size : 'm' },
                                     val : 1,
                                     text : 'label1'
                                 },
                                 ' ',
                                 {
                                     block : 'checkbox',
-                                    mods : { theme : 'normal', size : 'm', checked : true },
+                                    mods : { theme : 'islands', size : 'm', checked : true },
                                     val : 2,
                                     text : 'label2'
                                 },
                                 ' ',
                                 {
                                     block : 'checkbox',
-                                    mods : { theme : 'normal', size : 'm', type : 'button' },
+                                    mods : { theme : 'islands', size : 'm', type : 'button' },
                                     val : 1,
                                     text : 'label1'
                                 },
                                 ' ',
                                 {
                                     block : 'checkbox',
-                                    mods : { theme : 'normal', size : 'm', type : 'button', checked : true },
+                                    mods : { theme : 'islands', size : 'm', type : 'button', checked : true },
                                     val : 2,
                                     text : 'label2'
                                 }
@@ -440,8 +440,8 @@
                             content : [
                                 {
                                     block : 'radio-group',
-                                    mods : { theme : 'normal', size : 'm' },
-                                    name : 'radio-normal1',
+                                    mods : { theme : 'islands', size : 'm' },
+                                    name : 'radio-islands1',
                                     options : [
                                         { val : 1, text : 'first' },
                                         { val : 2, text : 'second', checked : true }
@@ -450,8 +450,8 @@
                                 ' ',
                                 {
                                     block : 'radio-group',
-                                    mods : { theme : 'normal', size : 'm', type : 'button' },
-                                    name : 'radio-normal2',
+                                    mods : { theme : 'islands', size : 'm', type : 'button' },
+                                    name : 'radio-islands2',
                                     options : [
                                         { val : 1, text : 'first' },
                                         { val : 2, text : 'second', checked : true }
@@ -477,7 +477,7 @@
                             elem : 'cell',
                             content : {
                                 block : 'spin',
-                                mods : { theme : 'normal', size : 'm', progress : true }
+                                mods : { theme : 'islands', size : 'm', progress : true }
                             }
                         }
                     ]
@@ -532,12 +532,12 @@
                                 content : [
                                     {
                                         block : 'link',
-                                        mods : { theme : 'normal', pseudo : true },
+                                        mods : { theme : 'islands', pseudo : true },
                                         content : 'show popup'
                                     },
                                     {
                                         block : 'popup',
-                                        mods : { autoclosable : true, theme: 'normal' },
+                                        mods : { autoclosable : true, theme: 'islands' },
                                         content : 'Hello, world!'
                                     }
                                 ]
@@ -590,14 +590,14 @@
                             content : [
                                 {
                                     block : 'dropdown',
-                                    mods : { switcher : 'button', theme : 'normal', size : 'm' },
+                                    mods : { switcher : 'button', theme : 'islands', size : 'm' },
                                     switcher : 'button',
                                     popup : 'Hello, world!'
                                 },
                                 ' ',
                                 {
                                     block : 'dropdown',
-                                    mods : { switcher : 'link', theme : 'normal' },
+                                    mods : { switcher : 'link', theme : 'islands' },
                                     switcher : 'link',
                                     popup : 'Hello, world!'
                                 }
@@ -665,7 +665,7 @@
                             elem : 'cell',
                             content : {
                                 block : 'menu',
-                                mods : { theme : 'normal', size : 'm', mode : 'radio' },
+                                mods : { theme : 'islands', size : 'm', mode : 'radio' },
                                 content : [
                                     {
                                         block : 'menu-item',

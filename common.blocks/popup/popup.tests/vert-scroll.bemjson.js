@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: popup within scrolling',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_vert-scroll.css' },
         { elem : 'js', url : '_vert-scroll.js' }

@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: checkbox-group',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_gemini.css' },
         { elem : 'js', url : '_gemini.js' }
@@ -33,30 +33,30 @@
 
         { tag : 'hr' },
 
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
         ['m', 'l'].map(function(size) {
             return [
                 {
                     block : 'test', content : {
                         block : 'checkbox-group',
-                        mods : { theme : 'normal', size : size },
+                        mods : { theme : 'islands', size : size },
                         options : [
                             { text : 'first' },
                             { text : 'second', checked : true }
                         ]
                     },
-                    cls : 'normal-size_' + size + '-enabled'
+                    cls : 'islands-size_' + size + '-enabled'
                 },
                 {
                     block : 'test', content : {
                         block : 'checkbox-group',
-                        mods : { theme : 'normal', size : size, disabled : true },
+                        mods : { theme : 'islands', size : size, disabled : true },
                         options : [
                             { text : 'first' },
                             { text : 'second', checked : true }
                         ]
                     },
-                    cls : 'normal-size_' + size + '-disabled'
+                    cls : 'islands-size_' + size + '-disabled'
                 }
             ]
         }),
@@ -67,7 +67,7 @@
                 {
                     block : 'test', content : {
                         block : 'checkbox-group',
-                        mods : { theme : 'normal', size : size, type : 'line' },
+                        mods : { theme : 'islands', size : size, type : 'line' },
                         options : [
                             { text : 'first' },
                             { text : 'second', checked : true }
@@ -79,7 +79,7 @@
                 {
                     block : 'test', content : {
                         block : 'checkbox-group',
-                        mods : { theme : 'normal', size : size, type : 'line', disabled : true },
+                        mods : { theme : 'islands', size : size, type : 'line', disabled : true },
                         options : [
                             { text : 'first' },
                             { text : 'second', checked : true }
@@ -95,7 +95,7 @@
             return [
                 { tag : 'p', content : {
                     block : 'checkbox-group',
-                    mods : { theme : 'normal', size : size, type : 'button' },
+                    mods : { theme : 'islands', size : size, type : 'button' },
                     options : [
                         { text : 'first' },
                         { text : 'second', checked : true }
@@ -104,7 +104,7 @@
                 } },
                 { tag : 'p', content : {
                     block : 'checkbox-group',
-                    mods : { theme : 'normal', size : size, type : 'button', disabled : true },
+                    mods : { theme : 'islands', size : size, type : 'button', disabled : true },
                     options : [
                         { text : 'first' },
                         { text : 'second', checked : true }
@@ -113,7 +113,7 @@
                 } },
                 { tag : 'p', content : {
                     block : 'checkbox-group',
-                    mods : { theme : 'normal', size : size, type : 'button' },
+                    mods : { theme : 'islands', size : size, type : 'button' },
                     options : [
                         {
                             text : 'VK',
@@ -129,7 +129,7 @@
                 } },
                 { tag : 'p', content : {
                     block : 'checkbox-group',
-                    mods : { theme : 'normal', size : size, type : 'button', disabled : true },
+                    mods : { theme : 'islands', size : size, type : 'button', disabled : true },
                     options : [
                         {
                             text : 'VK',

@@ -1,13 +1,13 @@
 ({
     block : 'page',
-    title : 'bem-components: normal theme',
-    mods : { theme : 'normal' },
+    title : 'bem-components: islands theme',
+    mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_normal.css' },
-        { elem : 'js', url : '_normal.js' }
+        { elem : 'css', url : '_islands.css' },
+        { elem : 'js', url : '_islands.js' }
     ],
     content : [
-        { tag : 'h2', content : 'Normal theme' },
+        { tag : 'h2', content : 'islands theme' },
 
         {
             block : 'table',
@@ -34,7 +34,7 @@
                         cell.content = [
                             {
                                 block : 'menu',
-                                mods : { theme : 'normal', size : cell.size },
+                                mods : { theme : 'islands', size : cell.size },
                                 content : [
                                     {
                                         block : 'menu-item',
@@ -68,7 +68,7 @@
                             { tag : 'br' },
                             {
                                 block : 'menu',
-                                mods : { mode : 'check', theme : 'normal', size : cell.size },
+                                mods : { mode : 'check', theme : 'islands', size : cell.size },
                                 content : [
                                     {
                                         elem : 'group',
@@ -122,34 +122,34 @@
                 'size s (24px height) ',
                 {
                     block : 'input',
-                    mods : { theme : 'normal', size : 's', 'has-clear' : true },
+                    mods : { theme : 'islands', size : 's', 'has-clear' : true },
                     val : 'value',
                     placeholder : 'placeholder'
                 },
                 ' ',
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 's' },
+                    mods : { theme : 'islands', size : 's' },
                     text : 'button'
                 },
                 ' ',
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 's' },
+                    mods : { theme : 'islands', size : 's' },
                     text : 'button',
                     icon : { block : 'icon', mods : { action : 'download' } }
                 },
                 ' ',
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 's' },
-                    icon : { block : 'spin', mods : { theme : 'normal', size : 'xs', progress : true } },
+                    mods : { theme : 'islands', size : 's' },
+                    icon : { block : 'spin', mods : { theme : 'islands', size : 'xs', progress : true } },
                     text : 'Loading...'
                 },
                 ' ',
                 {
                     block : 'radio-group',
-                    mods : { theme : 'normal', size : 's', type : 'button' },
+                    mods : { theme : 'islands', size : 's', type : 'button' },
                     name : 'radio-sizes-s',
                     options : [
                         { val : 1, text : 'first' },
@@ -159,21 +159,21 @@
                 ' ',
                 {
                     block : 'checkbox',
-                    mods : { theme : 'normal', size : 's', type : 'button' },
+                    mods : { theme : 'islands', size : 's', type : 'button' },
                     val : 1,
                     text : 'check'
                 },
                 ' ',
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'button', theme : 'normal', size : 's' },
+                    mods : { switcher : 'button', theme : 'islands', size : 's' },
                     switcher : 'dropdown',
-                    popup : { block : 'popup', mods : { theme : 'normal' }, content : 'popup' }
+                    popup : { block : 'popup', mods : { theme : 'islands' }, content : 'popup' }
                 },
                 ' ',
                 {
                     block : 'select',
-                    mods : { mode : 'radio-check', theme : 'normal', size : 's' },
+                    mods : { mode : 'radio-check', theme : 'islands', size : 's' },
                     name : 'select',
                     text : 'first',
                     options : [
@@ -184,7 +184,7 @@
                 ' ',
                 {
                     block : 'spin',
-                    mods : { theme : 'normal', size : 's', progress : true }
+                    mods : { theme : 'islands', size : 's', progress : true }
                 }
             ]
         },
@@ -198,34 +198,34 @@
                 'size m (28px height) ',
                 {
                     block : 'input',
-                    mods : { theme : 'normal', size : 'm', 'has-clear' : true },
+                    mods : { theme : 'islands', size : 'm', 'has-clear' : true },
                     val : 'value',
                     placeholder : 'placeholder'
                 },
                 ' ',
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 'm' },
+                    mods : { theme : 'islands', size : 'm' },
                     text : 'button'
                 },
                 ' ',
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 'm' },
+                    mods : { theme : 'islands', size : 'm' },
                     text : 'button',
                     icon : { block : 'icon', mods : { action : 'download' } }
                 },
                 ' ',
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 'm' },
-                    icon : { block : 'spin', mods : { theme : 'normal', size : 's', progress : true } },
+                    mods : { theme : 'islands', size : 'm' },
+                    icon : { block : 'spin', mods : { theme : 'islands', size : 's', progress : true } },
                     text : 'Loading...'
                 },
                 ' ',
                 {
                     block : 'radio-group',
-                    mods : { theme : 'normal', size : 'm', type : 'button' },
+                    mods : { theme : 'islands', size : 'm', type : 'button' },
                     name : 'radio-sizes-m',
                     options : [
                         { val : 1, text : 'first' },
@@ -235,35 +235,35 @@
                 ' ',
                 {
                     block : 'radio',
-                    mods : { theme : 'normal', size : 'm', checked : true },
+                    mods : { theme : 'islands', size : 'm', checked : true },
                     val : 1,
                     text : 'radio'
                 },
                 ' ',
                 {
                     block : 'checkbox',
-                    mods : { theme : 'normal', size : 'm', checked : true },
+                    mods : { theme : 'islands', size : 'm', checked : true },
                     val : 1,
                     text : 'check'
                 },
                 ' ',
                 {
                     block : 'checkbox',
-                    mods : { theme : 'normal', size : 'm', type : 'button', checked : true },
+                    mods : { theme : 'islands', size : 'm', type : 'button', checked : true },
                     val : 1,
                     text : 'check'
                 },
                 ' ',
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'button', theme : 'normal', size : 'm' },
+                    mods : { switcher : 'button', theme : 'islands', size : 'm' },
                     switcher : 'dropdown',
-                    popup : { block : 'popup', mods : { theme : 'normal' }, content : 'popup' }
+                    popup : { block : 'popup', mods : { theme : 'islands' }, content : 'popup' }
                 },
                 ' ',
                 {
                     block : 'select',
-                    mods : { mode : 'radio-check', theme : 'normal', size : 'm' },
+                    mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
                     name : 'select',
                     text : 'first',
                     options : [
@@ -274,7 +274,7 @@
                 ' ',
                 {
                     block : 'spin',
-                    mods : { theme : 'normal', size : 'm', progress : true }
+                    mods : { theme : 'islands', size : 'm', progress : true }
                 }
             ]
         },
@@ -288,34 +288,34 @@
                 'size l (32px height) ',
                 {
                     block : 'input',
-                    mods : { theme : 'normal', size : 'l', 'has-clear' : true },
+                    mods : { theme : 'islands', size : 'l', 'has-clear' : true },
                     val : 'value',
                     placeholder : 'placeholder'
                 },
                 ' ',
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 'l' },
+                    mods : { theme : 'islands', size : 'l' },
                     text : 'button'
                 },
                 ' ',
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 'l' },
+                    mods : { theme : 'islands', size : 'l' },
                     text : 'button',
                     icon : { block : 'icon', mods : { action : 'download' } }
                 },
                 ' ',
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 'l' },
-                    icon : { block : 'spin', mods : { theme : 'normal', size : 'm', progress : true } },
+                    mods : { theme : 'islands', size : 'l' },
+                    icon : { block : 'spin', mods : { theme : 'islands', size : 'm', progress : true } },
                     text : 'Loading...'
                 },
                 ' ',
                 {
                     block : 'radio-group',
-                    mods : { theme : 'normal', size : 'l', type : 'button' },
+                    mods : { theme : 'islands', size : 'l', type : 'button' },
                     name : 'radio-sizes-l',
                     options : [
                         { val : 1, text : 'first' },
@@ -325,35 +325,35 @@
                 ' ',
                 {
                     block : 'radio',
-                    mods : { theme : 'normal', size : 'l', checked : true },
+                    mods : { theme : 'islands', size : 'l', checked : true },
                     val : 1,
                     text : 'radio'
                 },
                 ' ',
                 {
                     block : 'checkbox',
-                    mods : { theme : 'normal', size : 'l', checked : true },
+                    mods : { theme : 'islands', size : 'l', checked : true },
                     val : 1,
                     text : 'check'
                 },
                 ' ',
                 {
                     block : 'checkbox',
-                    mods : { theme : 'normal', size : 'l', type : 'button' },
+                    mods : { theme : 'islands', size : 'l', type : 'button' },
                     val : 1,
                     text : 'check'
                 },
                 ' ',
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'button', theme : 'normal', size : 'l' },
+                    mods : { switcher : 'button', theme : 'islands', size : 'l' },
                     switcher : 'dropdown',
-                    popup : { block : 'popup', mods : { theme : 'normal' }, content : 'popup' }
+                    popup : { block : 'popup', mods : { theme : 'islands' }, content : 'popup' }
                 },
                 ' ',
                 {
                     block : 'select',
-                    mods : { mode : 'radio-check', theme : 'normal', size : 'l' },
+                    mods : { mode : 'radio-check', theme : 'islands', size : 'l' },
                     name : 'select',
                     text : 'first',
                     options : [
@@ -364,7 +364,7 @@
                 ' ',
                 {
                     block : 'spin',
-                    mods : { theme : 'normal', size : 'l', progress : true }
+                    mods : { theme : 'islands', size : 'l', progress : true }
                 }
             ]
         },
@@ -378,34 +378,34 @@
                 'size xl (38px height) ',
                 {
                     block : 'input',
-                    mods : { theme : 'normal', size : 'xl', 'has-clear' : true },
+                    mods : { theme : 'islands', size : 'xl', 'has-clear' : true },
                     val : 'value',
                     placeholder : 'placeholder'
                 },
                 ' ',
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 'xl' },
+                    mods : { theme : 'islands', size : 'xl' },
                     text : 'button'
                 },
                 ' ',
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 'xl' },
+                    mods : { theme : 'islands', size : 'xl' },
                     text : 'button',
                     icon : { block : 'icon', mods : { action : 'download' } }
                 },
                 ' ',
                 {
                     block : 'button',
-                    mods : { theme : 'normal', size : 'xl' },
-                    icon : { block : 'spin', mods : { theme : 'normal', size : 'l', progress : true } },
+                    mods : { theme : 'islands', size : 'xl' },
+                    icon : { block : 'spin', mods : { theme : 'islands', size : 'l', progress : true } },
                     text : 'Loading...'
                 },
                 ' ',
                 {
                     block : 'radio-group',
-                    mods : { theme : 'normal', size : 'xl', type : 'button' },
+                    mods : { theme : 'islands', size : 'xl', type : 'button' },
                     name : 'radio-sizes-xl',
                     options : [
                         { val : 1, text : 'first' },
@@ -415,21 +415,21 @@
                 ' ',
                 {
                     block : 'checkbox',
-                    mods : { theme : 'normal', size : 'xl', type : 'button' },
+                    mods : { theme : 'islands', size : 'xl', type : 'button' },
                     val : 1,
                     text : 'check'
                 },
                 ' ',
                 {
                     block : 'dropdown',
-                    mods : { switcher : 'button', theme : 'normal', size : 'xl' },
+                    mods : { switcher : 'button', theme : 'islands', size : 'xl' },
                     switcher : 'dropdown',
-                    popup : { block : 'popup', mods : { theme : 'normal' }, content : 'popup' }
+                    popup : { block : 'popup', mods : { theme : 'islands' }, content : 'popup' }
                 },
                 ' ',
                 {
                     block : 'select',
-                    mods : { mode : 'radio-check', theme : 'normal', size : 'xl' },
+                    mods : { mode : 'radio-check', theme : 'islands', size : 'xl' },
                     name : 'select',
                     text : 'first',
                     options : [
@@ -440,7 +440,7 @@
                 ' ',
                 {
                     block : 'spin',
-                    mods : { theme : 'normal', size : 'xl', progress : true }
+                    mods : { theme : 'islands', size : 'xl', progress : true }
                 }
             ]
         }

@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: button',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_gemini.css' },
         { elem : 'js', url : '_gemini.js' }
@@ -39,48 +39,48 @@
             }
         ] },
 
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
 
         { tag : 'h3', content : 'view' },
         { tag : 'p', content : [
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm' },
+                mods : { theme : 'islands', size : 'm' },
                 text : 'normal',
-                cls : 'gemini-test-button-normal-enabled'
+                cls : 'gemini-test-button-islands-enabled'
             },
             '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', disabled : true },
+                mods : { theme : 'islands', size : 'm', disabled : true },
                 text : 'normal',
-                cls : 'gemini-test-button-normal-disabled'
+                cls : 'gemini-test-button-islands-disabled'
             },
             '&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', view : 'pseudo' },
+                mods : { theme : 'islands', size : 'm', view : 'pseudo' },
                 text : 'pseudo',
                 cls : 'gemini-test-button-pseudo-enabled'
             },
             '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', view : 'pseudo', disabled : true },
+                mods : { theme : 'islands', size : 'm', view : 'pseudo', disabled : true },
                 text : 'pseudo',
                 cls : 'gemini-test-button-pseudo-disabled'
             },
             '&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', view : 'action' },
+                mods : { theme : 'islands', size : 'm', view : 'action' },
                 text : 'action',
                 cls : 'gemini-test-button-action-enabled'
             },
             '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', view : 'action', disabled : true },
+                mods : { theme : 'islands', size : 'm', view : 'action', disabled : true },
                 text : 'action',
                 cls : 'gemini-test-button-action-disabled'
             }
@@ -92,7 +92,7 @@
             .reduce(function(prev, size, i, arr) {
                 prev.push({
                     block : 'button',
-                    mods : { theme : 'normal', size : size },
+                    mods : { theme : 'islands', size : size },
                     text : 'size ' + size,
                     cls : 'gemini-test-button-size-' + size
                 });
@@ -109,26 +109,26 @@
             {
                 block : 'button',
                 mods : {
-                    theme : 'normal',
+                    theme : 'islands',
                     size : 'm',
                     type : 'link'
                 },
                 url : '#',
                 text : 'default link',
-                cls : 'gemini-test-button-normal-link-enabled'
+                cls : 'gemini-test-button-islands-link-enabled'
             },
             '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
                 mods : {
-                    theme : 'normal',
+                    theme : 'islands',
                     size : 'm',
                     type : 'link',
                     disabled : true
                 },
                 url : '#',
                 text : 'disabled link',
-                cls : 'gemini-test-button-normal-link-disabled'
+                cls : 'gemini-test-button-islands-link-disabled'
             }
         ] },
 
@@ -137,7 +137,7 @@
         { tag : 'p', content : {
             block : 'button',
             mods : {
-                theme : 'normal',
+                theme : 'islands',
                 size : 'm'
             },
             textMaxWidth : 100,
@@ -149,37 +149,37 @@
         { tag : 'p', content : [
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 's' },
+                mods : { theme : 'islands', size : 's' },
                 // Здесь иконка прописана через content, чтобы появилась в deps.js
                 content : { block : 'icon', mods : { action : 'download' } },
-                cls : 'gemini-test-button-normal-icon-enabled'
+                cls : 'gemini-test-button-islands-icon-enabled'
             },
             '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 's', disabled : true },
+                mods : { theme : 'islands', size : 's', disabled : true },
                 icon : { block : 'icon', mods : { action : 'download' } },
-                cls : 'gemini-test-button-normal-icon-disabled'
+                cls : 'gemini-test-button-islands-icon-disabled'
             }
             /* TODO: tests are not implemented
             '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
                 text : 'download',
-                mods : { theme : 'normal', size : 's' },
+                mods : { theme : 'islands', size : 's' },
                 icon : { block : 'icon', mods : { action : 'download' } }
             },
             '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
                 text : 'download',
-                mods : { theme : 'normal', size : 's', disabled : true },
+                mods : { theme : 'islands', size : 's', disabled : true },
                 icon : { block : 'icon', mods : { action : 'download' } }
             },
             '&nbsp;&nbsp;&nbsp;',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 's' },
+                mods : { theme : 'islands', size : 's' },
                 content : [
                     { block : 'icon', mods : { action : 'left' } },
                     { elem : 'text', content : 'set width' },
@@ -192,9 +192,9 @@
         { tag : 'h3', content : 'togglable' },
         { tag : 'p', content : {
             block : 'button',
-            mods : { theme : 'normal', size : 'm', togglable : 'check' },
+            mods : { theme : 'islands', size : 'm', togglable : 'check' },
             text : 'check',
-            cls : 'gemini-test-button-normal-check'
+            cls : 'gemini-test-button-islands-check'
         } }
     ]
 });

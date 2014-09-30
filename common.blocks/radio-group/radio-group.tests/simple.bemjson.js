@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: radio-group',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
@@ -93,11 +93,11 @@
 
         { tag : 'hr' },
 
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
         { tag : 'p', content : {
             block : 'radio-group',
-            name : 'normal1',
-            mods : { theme : 'normal', size : 'm' },
+            name : 'islands1',
+            mods : { theme : 'islands', size : 'm' },
             options : [
                 { val : 1, text : 'first' },
                 { val : 2, text : 'second', checked : true },
@@ -106,8 +106,8 @@
         } },
         { tag : 'p', content : {
             block : 'radio-group',
-            name : 'normal2',
-            mods : { theme : 'normal', size : 'm', disabled : true },
+            name : 'islands2',
+            mods : { theme : 'islands', size : 'm', disabled : true },
             options : [
                 { val : 1, text : 'first' },
                 { val : 2, text : 'second', checked : true }
@@ -117,8 +117,8 @@
         { tag : 'h3', content : 'size' },
         { tag : 'p', content : {
             block : 'radio-group',
-            name : 'normal-size1',
-            mods : { theme : 'normal', size : 'm' },
+            name : 'islands-size1',
+            mods : { theme : 'islands', size : 'm' },
             options : [
                 { val : 1, text : 'first' },
                 { val : 2, text : 'second', checked : true }
@@ -126,8 +126,8 @@
         } },
         { tag : 'p', content : {
             block : 'radio-group',
-            name : 'normal-size2',
-            mods : { theme : 'normal', size : 'l' },
+            name : 'islands-size2',
+            mods : { theme : 'islands', size : 'l' },
             options : [
                 { val : 1, text : 'first' },
                 { val : 2, text : 'second', checked : true }
@@ -137,8 +137,8 @@
         { tag : 'h3', content : 'line' },
         { tag : 'p', content : {
             block : 'radio-group',
-            name : 'normal-line1',
-            mods : { theme : 'normal', size : 'm', type : 'line' },
+            name : 'islands-line1',
+            mods : { theme : 'islands', size : 'm', type : 'line' },
             options : [
                 { val : 1, text : 'first' },
                 { val : 2, text : 'second', checked : true },
@@ -148,8 +148,8 @@
         } },
         { tag : 'p', content : {
             block : 'radio-group',
-            name : 'normal-line2',
-            mods : { theme : 'normal', size : 'l', type : 'line' },
+            name : 'islands-line2',
+            mods : { theme : 'islands', size : 'l', type : 'line' },
             options : [
                 { val : 1, text : 'first' },
                 { val : 2, text : 'second', checked : true },
@@ -161,8 +161,8 @@
         { tag : 'h3', content : 'button' },
         { tag : 'p', content : {
             block : 'radio-group',
-            name : 'normal-button1',
-            mods : { theme : 'normal', size : 'm', type : 'button' },
+            name : 'islands-button1',
+            mods : { theme : 'islands', size : 'm', type : 'button' },
             options : [
                 { val : 1, text : 'first' },
                 { val : 2, text : 'second', checked : true },
@@ -172,8 +172,8 @@
         } },
         { tag : 'p', content : {
             block : 'radio-group',
-            name : 'normal-button2',
-            mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
+            name : 'islands-button2',
+            mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
             options : [
                 { val : 1, text : 'first' },
                 { val : 2, text : 'second', checked : true }
@@ -181,8 +181,8 @@
         } },
         { tag : 'p', content : {
             block : 'radio-group',
-            name : 'normal-button3',
-            mods : { theme : 'normal', size : 'm', type : 'button' },
+            name : 'islands-button3',
+            mods : { theme : 'islands', size : 'm', type : 'button' },
             options : [
                 {
                     val : 'vk',
@@ -201,8 +201,8 @@
         { tag : 'h3', content : 'radio-check mode' },
         { tag : 'p', content : {
             block : 'radio-group',
-            name : 'normal-button4',
-            mods : { theme : 'normal', size : 'm', type : 'button', mode : 'radio-check' },
+            name : 'islands-button4',
+            mods : { theme : 'islands', size : 'm', type : 'button', mode : 'radio-check' },
             options : [
                 { val : 1, text : 'first' },
                 { val : 2, text : 'second' }

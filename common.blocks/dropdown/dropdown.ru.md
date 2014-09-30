@@ -38,7 +38,7 @@
 Блок представлен в следующих темах:
 
  * simple
- * normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
+ * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
 
 Без указания модификатора `theme` отображается [нативный](#default) вид контрола.
 
@@ -67,12 +67,12 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'dropdown',
-    mods : { switcher : 'link', theme : 'normal', size : 'm' },
+    mods : { switcher : 'link', theme : 'islands', size : 'm' },
     switcher : 'Ссылка',
     popup : 'Hello, world!'
 }
@@ -88,7 +88,7 @@
 ```bemjson
 {
     block : 'dropdown',
-    mods : { switcher : 'button', theme : 'normal', size : 'm' },
+    mods : { switcher : 'button', theme : 'islands', size : 'm' },
     switcher : 'Кнопка',
     popup : 'Hello, world!'
 }
@@ -110,7 +110,7 @@
 ```bemjson
 {
     block : 'dropdown',
-    mods : { switcher : 'button', theme : 'normal', size : 'm', disabled : true },
+    mods : { switcher : 'button', theme : 'islands', size : 'm', disabled : true },
     switcher : 'Кнопка',
     popup : 'Hello, world!'
 }
@@ -123,7 +123,7 @@
 ```bemjson
 {
     block : 'dropdown',
-    mods : { switcher : 'button', theme : 'normal', size : 'm', opened : true },
+    mods : { switcher : 'button', theme : 'islands', size : 'm', opened : true },
     switcher : 'Кнопка',
     popup : 'Hello, world!'
 }
@@ -138,7 +138,7 @@
 ```bemjson
 {
     block : 'dropdown',
-    mods : { switcher : 'button', theme : 'normal', size : 'm' },
+    mods : { switcher : 'button', theme : 'islands', size : 'm' },
     switcher : {
         block : 'button',
         mods : { togglable : 'true' },
@@ -155,14 +155,14 @@
     block : 'dropdown',
     mods : {
         switcher : 'Кнопка',
-        theme : 'normal',
+        theme : 'islands',
         size : 'xl'
     },
     switcher : 'Выпадающий список',
     popup : {
         block : 'menu',
         mods : {
-            theme : 'normal',
+            theme : 'islands',
             size : 'xl',
             select : 'check'
         },

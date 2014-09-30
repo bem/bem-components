@@ -6,14 +6,14 @@ gemini.suite('radio-group', function(root) {
 
     [
         //'default',
-        //'button-normal-m',
-        //'button-normal-l',
-        //'button-normal-m-icon',
-        //'button-normal-l-icon',
-        //'normal-l',
-        'normal-m',
-        'line-normal-m',
-        'line-normal-l'
+        //'button-islands-m',
+        //'button-islands-l',
+        //'button-islands-m-icon',
+        //'button-islands-l-icon',
+        //'islands-l',
+        'islands-m',
+        'line-islands-m',
+        'line-islands-l'
     ]
         .forEach(function(test) {
             var radioItemSelector = '.' + test,

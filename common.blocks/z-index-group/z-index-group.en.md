@@ -13,7 +13,7 @@ The example below shows popup block that does not cover another block (e.g., blo
 {
     block : 'popup',
     mix : { block : 'z-index-group', mods : { level : 1 } },
-    mods : { autoclosable : true, theme : 'normal' },
+    mods : { autoclosable : true, theme : 'islands' },
     content : 'I am under the block with { level : 2 } value!'
 }
 ```

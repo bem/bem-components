@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: attach',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }

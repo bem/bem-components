@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: icon',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_gemini.css' }
     ],

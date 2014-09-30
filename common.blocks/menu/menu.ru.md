@@ -20,7 +20,7 @@
 Блок представлен в следующих темах:
 
  * simple
- * normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
+ * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
 
 Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
 
@@ -69,12 +69,12 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', mode : 'check', size : 'm' },
+    mods : { theme : 'islands', mode : 'check', size : 'm' },
     content : [
         {
             block : 'menu-item',
@@ -92,7 +92,7 @@
 
 ### Размеры `_size`
 
-Реализован только в теме `normal`.
+Реализован только в теме `islands`.
 
 Доступно четыре размера реализации блока: **s**, **m**, **l**, **xl**.
 
@@ -129,7 +129,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', mode : 'check', size : 's' },
+    mods : { theme : 'islands', mode : 'check', size : 's' },
     content : [
         {
             block : 'menu-item',
@@ -148,7 +148,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', mode : 'check', size : 'm' },
+    mods : { theme : 'islands', mode : 'check', size : 'm' },
     content : [
         {
             block : 'menu-item',
@@ -167,7 +167,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', mode : 'check', size : 'l' },
+    mods : { theme : 'islands', mode : 'check', size : 'l' },
     content : [
         {
             block : 'menu-item',
@@ -186,7 +186,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', mode : 'check', size : 'xl' },
+    mods : { theme : 'islands', mode : 'check', size : 'xl' },
     content : [
         {
             block : 'menu-item',
@@ -211,7 +211,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm' },
+    mods : { theme : 'islands', size : 'm' },
     content : [
         {
             block : 'menu-item',
@@ -232,7 +232,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'radio' },
+    mods : { theme : 'islands', size : 'm', mode : 'radio' },
     content : [
         {
             block : 'menu-item',
@@ -253,7 +253,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'radio-check' },
+    mods : { theme : 'islands', size : 'm', mode : 'radio-check' },
     content : [
         {
             block : 'menu-item',
@@ -275,7 +275,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'check' },
+    mods : { theme : 'islands', size : 'm', mode : 'check' },
     content : [
         {
             block : 'menu-item',
@@ -310,12 +310,12 @@
 
 ### __group
 
-Элемент `__group` служит для группировки пунктов меню. Пункты, которые нужно сгруппировать, помещаются в поле `content` элемента `group`. В теме `normal` группы визуально разделяются серой чертой.
+Элемент `__group` служит для группировки пунктов меню. Пункты, которые нужно сгруппировать, помещаются в поле `content` элемента `group`. В теме `islands` группы визуально разделяются серой чертой.
 
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'radio' },
+    mods : { theme : 'islands', size : 'm', mode : 'radio' },
     content : [
         {
             block : 'menu-item',
@@ -354,7 +354,7 @@
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'radio' },
+    mods : { theme : 'islands', size : 'm', mode : 'radio' },
     content : [
         {
             block : 'menu-item',

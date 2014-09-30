@@ -13,7 +13,7 @@
 Блок представлен в следующих темах:
 
  * simple
- * normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
+ * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
 
 **simple**
 
@@ -24,19 +24,19 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 's', progress : true }
+    mods : { theme : 'islands', size : 's', progress : true }
 }
 ```
 
 <a name="size"></a>
 ### Размеры `_size`
 
-Реализован только в теме `normal`.
+Реализован только в теме `islands`.
 
 Задает размер блоку `spin`.
 
@@ -76,7 +76,7 @@
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 'xs', progress : true }
+    mods : { theme : 'islands', size : 'xs', progress : true }
 }
 ```
 
@@ -85,7 +85,7 @@
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 's', progress : true }
+    mods : { theme : 'islands', size : 's', progress : true }
 }
 ```
 
@@ -94,7 +94,7 @@
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 'm', progress : true }
+    mods : { theme : 'islands', size : 'm', progress : true }
 }
 ```
 
@@ -103,7 +103,7 @@
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 'l', progress : true }
+    mods : { theme : 'islands', size : 'l', progress : true }
 }
 ```
 
@@ -112,7 +112,7 @@
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 'xl', progress : true }
+    mods : { theme : 'islands', size : 'xl', progress : true }
 }
 ```
 

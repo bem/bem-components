@@ -20,7 +20,7 @@ For details see [`mode`](#types) section.
 Block supports the following themes:
 
  * simple
- * normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
+ * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
@@ -69,12 +69,12 @@ See following examples:
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'check' },
+    mods : { theme : 'islands', size : 'm', mode : 'check' },
     content : [
         {
             block : 'menu-item',
@@ -93,7 +93,7 @@ See following examples:
 <a name="size"></a>
 ### _size
 
-Implemented only for theme `normal`.
+Implemented only for theme `islands`.
 
 Provides to all types of menus with the `size` value.
 
@@ -132,7 +132,7 @@ See following examples:
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', mode : 'check', size : 's' },
+    mods : { theme : 'islands', mode : 'check', size : 's' },
     content : [
         {
             block : 'menu-item',
@@ -151,7 +151,7 @@ See following examples:
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', mode : 'check', size : 'm' },
+    mods : { theme : 'islands', mode : 'check', size : 'm' },
     content : [
         {
             block : 'menu-item',
@@ -170,7 +170,7 @@ See following examples:
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', mode : 'check', size : 'l' },
+    mods : { theme : 'islands', mode : 'check', size : 'l' },
     content : [
         {
             block : 'menu-item',
@@ -189,7 +189,7 @@ See following examples:
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', mode : 'check', size : 'xl' },
+    mods : { theme : 'islands', mode : 'check', size : 'xl' },
     content : [
         {
             block : 'menu-item',
@@ -215,7 +215,7 @@ Use `mode` modifier to define a type of menu list:
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm' },
+    mods : { theme : 'islands', size : 'm' },
     content : [
         {
             block : 'menu-item',
@@ -236,7 +236,7 @@ Use `mode` modifier to define a type of menu list:
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'radio' },
+    mods : { theme : 'islands', size : 'm', mode : 'radio' },
     content : [
         {
             block : 'menu-item',
@@ -257,7 +257,7 @@ Use `mode` modifier to define a type of menu list:
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'radio-check' },
+    mods : { theme : 'islands', size : 'm', mode : 'radio-check' },
     content : [
         {
             block : 'menu-item',
@@ -279,7 +279,7 @@ Use `mode` modifier to define a type of menu list:
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'check' },
+    mods : { theme : 'islands', size : 'm', mode : 'check' },
     content : [
         {
             block : 'menu-item',
@@ -316,12 +316,12 @@ When a block is focused, a modifier ‘focused’ with ‘true’ value is set a
 
 `__group` element is used to combine several `menu-items` blocks into the group. All `menu-items` from one group must be declared in BEMJSON in `content` field of `group` element.
 
-For a theme `normal` a gray line separates groups from each other.
+For a theme `islands` a gray line separates groups from each other.
 
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'radio' },
+    mods : { theme : 'islands', size : 'm', mode : 'radio' },
     content : [
         {
             block : 'menu-item',
@@ -360,7 +360,7 @@ This element is used to set titles for menu items group.
 ```bemjson
 {
     block : 'menu',
-    mods : { theme : 'normal', size : 'm', mode : 'radio' },
+    mods : { theme : 'islands', size : 'm', mode : 'radio' },
     content : [
         {
             block : 'menu-item',

@@ -2,7 +2,7 @@
 
 `control-group` block is a wrapper for blocks' visual grouping. Blocks that need grouping should be placed in block's BEMJSON declaration `content` field.
 
-Block's representation exists only for CSS with no additional functionality. Theme `normal` is required for nested blocks.
+Block's representation exists only for CSS with no additional functionality. Theme `islands` is required for nested blocks.
 
 On a page `control-group` block is represented by `<div>` HTML element.
 
@@ -19,13 +19,13 @@ On a page `control-group` block is represented by `<div>` HTML element.
     content : [
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm', type : 'search' },
+            mods : { theme : 'islands', size : 'm', type : 'search' },
             val : 'Your-query',
             placeholder : 'query'
         },
         {
             block : 'button',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             text : 'search'
         }
     ]
@@ -40,17 +40,17 @@ Besides, blocks that use `input` or `button` as one of their components could be
     content : [
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             placeholder : 'price from'
         },
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             placeholder : 'to'
         },
         {
             block : 'select',
-            mods : { mode : 'radio', theme : 'normal', size : 'm' },
+            mods : { mode : 'radio', theme : 'islands', size : 'm' },
             options : [
                 { val : 'usd', text : '$', checked : true },
                 { val : 'euro', text : '€' }
@@ -80,19 +80,19 @@ The right border will not be displayed for all grouped `input` blocks, except fo
     content : [
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm', type : 'search' },
+            mods : { theme : 'islands', size : 'm', type : 'search' },
             val : 'First-query',
             placeholder : 'query'
         },
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm', type : 'search' },
+            mods : { theme : 'islands', size : 'm', type : 'search' },
             val : 'Second-query',
             placeholder : 'query'
         },
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm', type : 'search' },
+            mods : { theme : 'islands', size : 'm', type : 'search' },
             val : 'Another-query',
             placeholder : 'query'
         }
@@ -135,17 +135,17 @@ For example:
     content : [
         {
             block : 'button',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             text : 'First of group'
         },
         {
             block : 'button',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             text : 'In the middle'
         },
         {
             block : 'button',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             text : 'Last one'
         }
     ]

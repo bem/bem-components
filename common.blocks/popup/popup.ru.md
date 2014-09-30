@@ -70,7 +70,7 @@
 Блок представлен в следующих темах:
 
  * simple
- * normal
+ * islands
 
 Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
 
@@ -96,13 +96,13 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```
 {
     block : 'popup',
-    mods : { theme : 'normal' },
-    content : 'normal'
+    mods : { theme : 'islands' },
+    content : 'islands'
 }
 ```
 
@@ -119,8 +119,8 @@
 ```
 {
     block : 'popup',
-    mods : { theme : 'normal', autoclosable : true },
-    content : 'normal'
+    mods : { theme : 'islands', autoclosable : true },
+    content : 'islands'
 }
 ```
 
@@ -173,7 +173,7 @@
 ```
 {
     block : 'popup',
-    mods : { autoclosable : true, theme: 'normal' },
+    mods : { autoclosable : true, theme: 'islands' },
     direction : ['right-center'],
     mainOffset : 100,
     secondaryOffset : 100,

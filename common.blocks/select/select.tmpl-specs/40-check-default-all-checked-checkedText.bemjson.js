@@ -1,6 +1,6 @@
 ({
     block : 'select',
-    mods : { mode : 'check', theme : 'normal' },
+    mods : { mode : 'check', theme : 'islands' },
     name : 'select',
     text : 'select-check',
     options : [

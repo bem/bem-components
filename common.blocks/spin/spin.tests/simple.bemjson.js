@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: spin',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_simple.css' }
     ],
@@ -14,41 +14,41 @@
 
         { tag : 'hr' },
 
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
         { tag : 'h3', content : 'size' },
         { tag : 'p', content : [
             'xs ',
             {
                 block : 'spin',
-                mods : { theme : 'normal', size : 'xs', progress : true }
+                mods : { theme : 'islands', size : 'xs', progress : true }
             }
         ] },
         { tag : 'p', content : [
             's ',
             {
                 block : 'spin',
-                mods : { theme : 'normal', size : 's', progress : true }
+                mods : { theme : 'islands', size : 's', progress : true }
             }
         ] },
         { tag : 'p', content : [
             'm ',
             {
                 block : 'spin',
-                mods : { theme : 'normal', size : 'm', progress : true }
+                mods : { theme : 'islands', size : 'm', progress : true }
             }
         ] },
         { tag : 'p', content : [
             'l ',
             {
                 block : 'spin',
-                mods : { theme : 'normal', size : 'l', progress : true }
+                mods : { theme : 'islands', size : 'l', progress : true }
             }
         ] },
         { tag : 'p', content : [
             'xl ',
             {
                 block : 'spin',
-                mods : { theme : 'normal', size : 'xl', progress : true }
+                mods : { theme : 'islands', size : 'xl', progress : true }
             }
         ] }
     ]

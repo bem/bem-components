@@ -38,7 +38,7 @@
 Блок представлен в следующих темах:
 
 * simple
-* normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
+* islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
 
 Без указания модификатора `theme` отображается [нативный](#default) вид контрола.
 
@@ -72,13 +72,13 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm' },
-    name : 'checkbox-normal',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'checkbox-islands',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
@@ -89,7 +89,7 @@
 <a name="size"></a>
 ### Размеры `_size`
 
-Реализован только в теме `normal`.
+Реализован только в теме `islands`.
 
 Модификатор `size` устанавливает размер переключателей для всех типов групп чекбоксов.
 
@@ -128,7 +128,7 @@
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 's', type : 'button' },
+    mods : { theme : 'islands', size : 's', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -140,7 +140,7 @@
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm', type : 'button' },
+    mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -152,7 +152,7 @@
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'l', type : 'button' },
+    mods : { theme : 'islands', size : 'l', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -164,7 +164,7 @@
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'xl', type : 'button' },
+    mods : { theme : 'islands', size : 'xl', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -183,7 +183,7 @@
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm', type : 'button' },
+    mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -192,12 +192,12 @@
 }
 ```
 
-* `line`. Модификатор `type` в значении `line` применяется к группе чекбоксов для выравнивания их в строку. После каждого чекбокса группы, кроме последнего, автоматически добавляется отступ справа. Размер отступа зависит от значения модификатора `size`. Реализован только в теме *normal*.
+* `line`. Модификатор `type` в значении `line` применяется к группе чекбоксов для выравнивания их в строку. После каждого чекбокса группы, кроме последнего, автоматически добавляется отступ справа. Размер отступа зависит от значения модификатора `size`. Реализован только в теме *islands*.
 
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm', type : 'line' },
+    mods : { theme : 'islands', size : 'm', type : 'line' },
     name : 'checkbox-line',
     options : [
         { val : 1, text : 'first' },
@@ -220,7 +220,7 @@
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
+    mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -232,7 +232,7 @@
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm', disabled : true },
+    mods : { theme : 'islands', size : 'm', disabled : true },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -246,7 +246,7 @@
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm', type : 'line' },
+    mods : { theme : 'islands', size : 'm', type : 'line' },
     name : 'checkbox-line',
     options : [
         { val : 1, text : 'first', disabled : true },
@@ -258,7 +258,7 @@
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm', type : 'button' },
+    mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'checkbox-line',
     options : [
         { val : 1, text : 'first', disabled : true },

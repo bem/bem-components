@@ -70,7 +70,7 @@ Additional required HTML attributes could be specified in `attrs` field of BEMJS
 Block supports the following themes:
 
  * simple
- * normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
+ * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
@@ -96,20 +96,20 @@ See following examples:
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size: 'm' },
-    placeholder : 'normal'
+    mods : { theme : 'islands', size: 'm' },
+    placeholder : 'islands'
 }
 ```
 
 <a name="size"></a>
 ### _size
 
-Implemented only for theme `normal`.
+Implemented only for theme `islands`.
 
 Provides with size values to all types of text fields.
 
@@ -148,7 +148,7 @@ See following examples:
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size: 's' },
+    mods : { theme : 'islands', size: 's' },
     placeholder : 'Small'
 }
 ```
@@ -156,7 +156,7 @@ See following examples:
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size: 'm' },
+    mods : { theme : 'islands', size: 'm' },
     placeholder : 'Medium'
 }
 ```
@@ -164,7 +164,7 @@ See following examples:
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size: 'l' },
+    mods : { theme : 'islands', size: 'l' },
     placeholder : 'Large'
 }
 ```
@@ -172,7 +172,7 @@ See following examples:
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size: 'xl' },
+    mods : { theme : 'islands', size: 'xl' },
     placeholder : 'X-Large'
 }
 ```
@@ -186,7 +186,7 @@ Following types of `input` block are available:
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size : 'm', type : 'textarea' },
+    mods : { theme : 'islands', size : 'm', type : 'textarea' },
     placeholder : 'Text area'
 }
 ```
@@ -196,7 +196,7 @@ Following types of `input` block are available:
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size: 'm', type : 'password' },
+    mods : { theme : 'islands', size: 'm', type : 'password' },
     placeholder : 'Password field'
 }
 ```
@@ -206,7 +206,7 @@ Following types of `input` block are available:
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size : 'm', type : 'search' },
+    mods : { theme : 'islands', size : 'm', type : 'search' },
     placeholder : 'Search form'
 }
 ```
@@ -223,7 +223,7 @@ If `type` modifier is not specified, `input` block obtains `<input type="text"/>
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size : 'm', disabled : true },
+    mods : { theme : 'islands', size : 'm', disabled : true },
     val : 'Disabled'
 }
 ```

@@ -1,6 +1,6 @@
 ({
     block : 'menu',
-    mods : { theme : 'normal', disabled : true },
+    mods : { theme : 'islands', disabled : true },
     content : [
         {
             block : 'menu-item',

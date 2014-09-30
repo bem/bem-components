@@ -30,7 +30,7 @@ Additional required HTML attributes could be specified in `attrs` field of BEMJS
 Block supports the following themes:
 
 * simple
-* normal (**NB!** Choosing a theme `normal` requires additional modifier `size`.)
+* islands (**NB!** Choosing a theme `islands` requires additional modifier `size`.)
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
@@ -58,13 +58,13 @@ See following examples:
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'menu-item',
-    mods : { theme : 'normal', size : 'm' },
-    content : 'normal',
+    mods : { theme : 'islands', size : 'm' },
+    content : 'islands',
     val : 'my value'
 }
 ```
@@ -95,7 +95,7 @@ This modifier defines the selected menu item.
 ```bemjson
 {
     block : 'menu-item',
-    mods : { theme : 'normal', size : 'm', checked : true },
+    mods : { theme : 'islands', size : 'm', checked : true },
     content : 'checked'
 }
 ```
@@ -109,7 +109,7 @@ For `menu-item` blocks nested in `menu` block `checked` state can be set on mous
 ```bemjson
 {
     block : 'menu-item',
-    mods : { theme : 'normal', size : 'm', disabled : true },
+    mods : { theme : 'islands', size : 'm', disabled : true },
     content : 'disabled'
 }
 ```

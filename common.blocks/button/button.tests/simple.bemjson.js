@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: button',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
@@ -77,55 +77,55 @@
 
         { tag : 'hr' },
 
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
         { tag : 'p', content : {
             block : 'button',
-            mods : { theme : 'normal', size : 'm' },
-            text : 'normal'
+            mods : { theme : 'islands', size : 'm' },
+            text : 'islands'
         } },
         { tag : 'p', content : {
             block : 'button',
             text : 'disabled',
-            mods : { theme : 'normal', size : 'm', disabled : true }
+            mods : { theme : 'islands', size : 'm', disabled : true }
         } },
 
         { tag : 'h3', content : 'view' },
         { tag : 'p', content : [
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm' },
-                text : 'normal'
+                mods : { theme : 'islands', size : 'm' },
+                text : 'islands'
             },
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', disabled : true },
-                text : 'normal'
+                mods : { theme : 'islands', size : 'm', disabled : true },
+                text : 'islands'
             }
         ] },
         { tag : 'p', content : [
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', view : 'pseudo' },
+                mods : { theme : 'islands', size : 'm', view : 'pseudo' },
                 text : 'pseudo'
             },
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', view : 'pseudo', disabled : true },
+                mods : { theme : 'islands', size : 'm', view : 'pseudo', disabled : true },
                 text : 'pseudo'
             }
         ] },
         { tag : 'p', content : [
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', view : 'action' },
+                mods : { theme : 'islands', size : 'm', view : 'action' },
                 text : 'action'
             },
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', view : 'action', disabled : true },
+                mods : { theme : 'islands', size : 'm', view : 'action', disabled : true },
                 text : 'action'
             }
         ] },
@@ -133,22 +133,22 @@
         { tag : 'h3', content : 'size' },
         { tag : 'p', content : {
             block : 'button',
-            mods : { theme : 'normal', size : 's' },
+            mods : { theme : 'islands', size : 's' },
             text : 'size s'
         } },
         { tag : 'p', content : {
             block : 'button',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             text : 'size m'
         } },
         { tag : 'p', content : {
             block : 'button',
-            mods : { theme : 'normal', size : 'l' },
+            mods : { theme : 'islands', size : 'l' },
             text : 'size l'
         } },
         { tag : 'p', content : {
             block : 'button',
-            mods : { theme : 'normal', size : 'xl' },
+            mods : { theme : 'islands', size : 'xl' },
             text : 'size xl'
         } },
 
@@ -156,7 +156,7 @@
         { tag : 'p', content : {
             block : 'button',
             mods : {
-                theme : 'normal',
+                theme : 'islands',
                 size : 'm',
                 type : 'submit'
             },
@@ -167,7 +167,7 @@
         { tag : 'p', content : {
             block : 'button',
             mods : {
-                theme : 'normal',
+                theme : 'islands',
                 size : 'm',
                 type : 'link'
             },
@@ -177,7 +177,7 @@
         { tag : 'p', content : {
             block : 'button',
             mods : {
-                theme : 'normal',
+                theme : 'islands',
                 size : 'm',
                 type : 'link',
                 disabled : true
@@ -190,7 +190,7 @@
         { tag : 'p', content : {
             block : 'button',
             mods : {
-                theme : 'normal',
+                theme : 'islands',
                 size : 'm'
             },
             textMaxWidth : 100,
@@ -201,7 +201,7 @@
         { tag : 'p', content : {
             block : 'button',
             mods : {
-                theme : 'normal',
+                theme : 'islands',
                 size : 'm'
             },
             text : 'click me',
@@ -212,28 +212,28 @@
         { tag : 'p', content : [
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 's' },
+                mods : { theme : 'islands', size : 's' },
                 // Здесь иконка прописана через content, чтобы появилась в deps.js
                 content : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 's', disabled : true },
+                mods : { theme : 'islands', size : 's', disabled : true },
                 icon : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {
                 block : 'button',
                 text : 'download',
-                mods : { theme : 'normal', size : 's', disabled : true },
+                mods : { theme : 'islands', size : 's', disabled : true },
                 icon : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {
                 block : 'button',
                 text : 'layers',
-                mods : { theme : 'normal', size : 's' },
+                mods : { theme : 'islands', size : 's' },
                 icon : {
                     block : 'icon',
                     content : '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 16 16" class="image"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
@@ -242,7 +242,7 @@
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 's' },
+                mods : { theme : 'islands', size : 's' },
                 content : [
                     { elem : 'text', content : 'down' },
                     { block : 'icon', mods : { action : 'down' } }
@@ -251,7 +251,7 @@
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 's' },
+                mods : { theme : 'islands', size : 's' },
                 content : [
                     { block : 'icon', mods : { action : 'left' } },
                     { elem : 'text', content : 'set width' },
@@ -261,7 +261,7 @@
             ' ololo ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 's' },
+                mods : { theme : 'islands', size : 's' },
                 content : [
                     { elem : 'text', content : 'o' },
                     { block : 'icon', mods : { action : 'left' } },
@@ -275,7 +275,7 @@
             ' trololo ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 's' },
+                mods : { theme : 'islands', size : 's' },
                 content : [
                     { block : 'icon', mods : { action : 'left' } },
                     { elem : 'text', content : '0' },
@@ -288,14 +288,14 @@
         { tag : 'p', content : [
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm' },
+                mods : { theme : 'islands', size : 'm' },
                 icon : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {
                 block : 'button',
                 text : 'layers',
-                mods : { theme : 'normal', size : 'm' },
+                mods : { theme : 'islands', size : 'm' },
                 icon : {
                     block : 'icon',
                     content : '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="-5 -5 26 26" class="image"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
@@ -304,7 +304,7 @@
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm' },
+                mods : { theme : 'islands', size : 'm' },
                 content : [
                     { block : 'icon', mods : { action : 'left' } },
                     { elem : 'text', content : 'set width' },
@@ -315,14 +315,14 @@
         { tag : 'p', content : [
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'l' },
+                mods : { theme : 'islands', size : 'l' },
                 icon : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {
                 block : 'button',
                 text : 'layers',
-                mods : { theme : 'normal', size : 'l' },
+                mods : { theme : 'islands', size : 'l' },
                 icon : {
                     block : 'icon',
                     content : '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="1 1 14 14" class="image"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
@@ -331,7 +331,7 @@
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'l' },
+                mods : { theme : 'islands', size : 'l' },
                 content : [
                     { block : 'icon', mods : { action : 'left' } },
                     { elem : 'text', content : 'set width' },
@@ -342,14 +342,14 @@
         { tag : 'p', content : [
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'xl' },
+                mods : { theme : 'islands', size : 'xl' },
                 icon : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {
                 block : 'button',
                 text : 'layers',
-                mods : { theme : 'normal', size : 'xl' },
+                mods : { theme : 'islands', size : 'xl' },
                 icon : {
                     block : 'icon',
                     content : {
@@ -361,7 +361,7 @@
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'xl' },
+                mods : { theme : 'islands', size : 'xl' },
                 content : [
                     { block : 'icon', mods : { action : 'left' } },
                     { elem : 'text', content : 'set width' },
@@ -373,25 +373,25 @@
         { tag : 'p', content : [
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', togglable : 'check' },
+                mods : { theme : 'islands', size : 'm', togglable : 'check' },
                 text : 'check'
             },
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', togglable : 'radio' },
+                mods : { theme : 'islands', size : 'm', togglable : 'radio' },
                 text : 'radio'
             },
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', togglable : 'check', view : 'pseudo' },
+                mods : { theme : 'islands', size : 'm', togglable : 'check', view : 'pseudo' },
                 text : 'check'
             },
             ' ',
             {
                 block : 'button',
-                mods : { theme : 'normal', size : 'm', togglable : 'radio', view : 'pseudo' },
+                mods : { theme : 'islands', size : 'm', togglable : 'radio', view : 'pseudo' },
                 text : 'radio'
             }
         ] }

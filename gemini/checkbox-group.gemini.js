@@ -48,8 +48,8 @@ gemini.suite('checkbox-group', function(root) {
 
     [
         'default',
-        'normal-size_m',
-        'normal-size_l',
+        'islands-size_m',
+        'islands-size_l',
         'line-size_m',
         'line-size_l'
     ]

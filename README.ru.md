@@ -33,9 +33,9 @@
 
 ### Уровни
 
-* `common.blocks` — предназначен для любых устройств и браузеров
-* `desktop.blocks` — следует использовать для всех десктопных браузеров
-* `touch.blocks` — реализует некоторую специфику для тач-платформ
+* `common.blocks` — предназначен для любых устройств и браузеров.
+* `desktop.blocks` — следует использовать для всех десктопных браузеров.
+* `touch.blocks` — реализует некоторую специфику для тач-платформ.
 
 ### Блоки
 
@@ -64,7 +64,7 @@
 * [i-bem.js](https://ru.bem.info/technology/i-bem/current/i-bem-js/)
 * [YModules](https://ru.bem.info/tools/bem/modules/)
 * [BEMHTML](https://ru.bem.info/technology/bemhtml/current/reference/)
-* [BH](https://github.com/bem/bh/blob/master/README.ru.md)
+* [BH](http://ru.bem.info/technology/bh/)
 * [BEMTREE](https://ru.bem.info/technology/bemtree/current/bemtree/)
 * [Stylus](https://learnboost.github.io/stylus/)
 

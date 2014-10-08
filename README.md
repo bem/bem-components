@@ -162,7 +162,7 @@ In case you write new tests for local usage, you can run your own Selenium Serve
 
 Detailed description of `gemini` work with different types of backends find [here](https://bem.info/tools/testing/gemini/).
 
-**NB** You have to commit scrinshots to the repository from SauceLabs to avoid minor differencies in fonts rendering.
+**NB** You have to commit screenshots to the repository from SauceLabs to avoid minor differencies in fonts rendering.
 
 Befor commit some new or modified pattern you have to:
 

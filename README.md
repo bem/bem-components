@@ -61,7 +61,7 @@ E.g. you can use `bem-tools` or `ENB`.
 * [JS](https://bem.info/technology/i-bem/current/i-bem-js/)
 * [YModules](https://bem.info/tools/bem/modules/)
 * [BEMHTML](https://bem.info/technology/bemhtml/current/reference/)
-* BH
+* [BH](https://bem.info/technology/bh/current/reference/)
 * [BEMTREE](https://bem.info/technology/bemtree/current/bemtree/)
 * [Stylus](https://learnboost.github.io/stylus/)
 

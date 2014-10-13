@@ -28,7 +28,6 @@ http:
   retries: 0
 
 debug: false
-tolerance: 0.005
 
 capabilities:
   record-screenshots: false

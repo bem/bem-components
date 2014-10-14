@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: input',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_gemini.css' },
         { elem : 'js', url : '_gemini.js' }
@@ -152,113 +152,113 @@
 
         { tag : 'hr' },
 
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
         [
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm' },
-                cls : 'normal-enabled'
+                mods : { theme : 'islands', size : 'm' },
+                cls : 'islands-enabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm', disabled : true },
-                cls : 'normal-disabled'
+                mods : { theme : 'islands', size : 'm', disabled : true },
+                cls : 'islands-disabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm' },
+                mods : { theme : 'islands', size : 'm' },
                 val : 'default',
-                cls : 'normal-val-enabled'
+                cls : 'islands-val-enabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm' },
+                mods : { theme : 'islands', size : 'm' },
                 placeholder : 'placeholder',
-                cls : 'normal-placeholder-enabled'
+                cls : 'islands-placeholder-enabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm', 'has-clear' : true, disabled : true },
+                mods : { theme : 'islands', size : 'm', 'has-clear' : true, disabled : true },
                 val : 'value',
-                cls : 'normal-val-disabled'
+                cls : 'islands-val-disabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm', 'has-clear' : true, disabled : true },
+                mods : { theme : 'islands', size : 'm', 'has-clear' : true, disabled : true },
                 placeholder : 'placeholder',
-                cls : 'normal-placeholder-disabled'
+                cls : 'islands-placeholder-disabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm', 'has-clear' : true },
+                mods : { theme : 'islands', size : 'm', 'has-clear' : true },
                 val : 'LongValLongValLongValLongValLongValLongVal',
-                cls : 'normal-longVal-enabled'
+                cls : 'islands-longVal-enabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm', 'has-clear' : true },
+                mods : { theme : 'islands', size : 'm', 'has-clear' : true },
                 placeholder : 'LongPlaceholderLongPlaceholderLongPlaceholder',
-                cls : 'normal-longPlaceholder-enabled'
+                cls : 'islands-longPlaceholder-enabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm', 'has-clear' : true, disabled : true },
+                mods : { theme : 'islands', size : 'm', 'has-clear' : true, disabled : true },
                 val : 'LongValLongValLongValLongValLongValLongVal',
-                cls : 'normal-longVal-disabled'
+                cls : 'islands-longVal-disabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm', 'has-clear' : true, disabled : true },
+                mods : { theme : 'islands', size : 'm', 'has-clear' : true, disabled : true },
                 placeholder : 'LongPlaceholderLongPlaceholderLongPlaceholder',
-                cls : 'normal-longPlaceholder-disabled'
+                cls : 'islands-longPlaceholder-disabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 's' },
+                mods : { theme : 'islands', size : 's' },
                 val : 'size s',
-                cls : 'normal-sizeS-enabled'
+                cls : 'islands-sizeS-enabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm' },
+                mods : { theme : 'islands', size : 'm' },
                 val : 'size m',
-                cls : 'normal-sizeM-enabled'
+                cls : 'islands-sizeM-enabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'l' },
+                mods : { theme : 'islands', size : 'l' },
                 val : 'size l',
-                cls : 'normal-sizeL-enabled'
+                cls : 'islands-sizeL-enabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'xl' },
+                mods : { theme : 'islands', size : 'xl' },
                 val : 'size xl',
-                cls : 'normal-sizeXL-enabled'
+                cls : 'islands-sizeXL-enabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 's', disabled : true },
+                mods : { theme : 'islands', size : 's', disabled : true },
                 val : 'size s',
-                cls : 'normal-sizeS-disabled'
+                cls : 'islands-sizeS-disabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm', disabled : true },
+                mods : { theme : 'islands', size : 'm', disabled : true },
                 val : 'size m',
-                cls : 'normal-sizeM-disabled'
+                cls : 'islands-sizeM-disabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'l', disabled : true },
+                mods : { theme : 'islands', size : 'l', disabled : true },
                 val : 'size l',
-                cls : 'normal-sizeL-disabled'
+                cls : 'islands-sizeL-disabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'xl', disabled : true },
+                mods : { theme : 'islands', size : 'xl', disabled : true },
                 val : 'size xl',
-                cls : 'normal-sizeXL-disabled'
+                cls : 'islands-sizeXL-disabled'
             }
         ].map(function(block) {
             return {
@@ -273,13 +273,13 @@
                 ': ',
                 {
                     block : 'input',
-                    mods : { theme : 'normal', size : 'm', 'has-clear' : true },
+                    mods : { theme : 'islands', size : 'm', 'has-clear' : true },
                     placeholder : 'placeholder',
                     val : 'some value'
                 }
             ],
             attrs : { style : 'margin-bottom: 10px;' },
-            cls : 'normal-label-enabled'
+            cls : 'islands-label-enabled'
         },
         {
             block : 'test',
@@ -288,35 +288,35 @@
                 ': ',
                 {
                     block : 'input',
-                    mods : { theme : 'normal', size : 'm', 'has-clear' : true, disabled : true }
+                    mods : { theme : 'islands', size : 'm', 'has-clear' : true, disabled : true }
                 }
             ],
-            cls : 'normal-label-disabled'
+            cls : 'islands-label-disabled'
         },
         [
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm', type : 'textarea', 'has-clear' : true },
+                mods : { theme : 'islands', size : 'm', type : 'textarea', 'has-clear' : true },
                 val : 'value',
-                cls : 'normal-textarea-val-enabled'
+                cls : 'islands-textarea-val-enabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'l', type : 'textarea', 'has-clear' : true },
+                mods : { theme : 'islands', size : 'l', type : 'textarea', 'has-clear' : true },
                 placeholder : 'placeholder',
-                cls : 'normal-textarea-placeholder-enabled'
+                cls : 'islands-textarea-placeholder-enabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'm', type : 'textarea', 'has-clear' : true, disabled : true },
+                mods : { theme : 'islands', size : 'm', type : 'textarea', 'has-clear' : true, disabled : true },
                 val : 'value',
-                cls : 'normal-textarea-val-disabled'
+                cls : 'islands-textarea-val-disabled'
             },
             {
                 block : 'input',
-                mods : { theme : 'normal', size : 'l', type : 'textarea', 'has-clear' : true, disabled : true },
+                mods : { theme : 'islands', size : 'l', type : 'textarea', 'has-clear' : true, disabled : true },
                 placeholder : 'placeholder',
-                cls : 'normal-textarea-placeholder-disabled'
+                cls : 'islands-textarea-placeholder-disabled'
             }
         ].map(function(block) {
             return {
@@ -326,9 +326,9 @@
         }),
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm', 'has-clear' : true },
+            mods : { theme : 'islands', size : 'm', 'has-clear' : true },
             val : 'some val',
-            cls : 'normal-clear-enabled'
+            cls : 'islands-clear-enabled'
         }
     ]
 });

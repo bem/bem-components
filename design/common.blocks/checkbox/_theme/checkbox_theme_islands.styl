@@ -1,4 +1,4 @@
-.radio_theme_normal
+.checkbox_theme_islands
 {
     font-family: Arial, Helvetica, sans-serif;
 
@@ -7,7 +7,7 @@
         cursor: pointer;
     }
 
-    .radio__control
+    .checkbox__control
     {
         position: absolute;
         z-index: -1;
@@ -17,13 +17,13 @@
         opacity: 0;
     }
 
-    .radio__box
+    .checkbox__box
     {
         position: relative;
 
         display: inline-block;
 
-        border-radius: 50%;
+        border-radius: 3px;
         background: rgba(0, 0, 0, 0.2);
 
         &:before
@@ -36,16 +36,32 @@
 
             content: '';
 
-            border-radius: 50%;
+            border-radius: 2px;
             background: #fff;
+        }
+
+        &:after
+        {
+            position: absolute;
+            top: -5px;
+            left: 2px;
+
+            content: '';
+
+            background-image: url(../../theme/_islands/tip.svg);
+            background-size: 100%;
+
+            opacity: 0;
+
+            transition: transform .05s ease-out, opacity .05s ease-out;
         }
     }
 
-    &.radio_size_m
+    &.checkbox_size_m
     {
         font-size: 13px;
 
-        .radio__box
+        .checkbox__box
         {
             line-height: 14px;
 
@@ -57,20 +73,19 @@
 
             &:after
             {
-                top: 4px;
-                left: 4px;
+                width: 15px;
+                height: 15px;
 
-                width: 6px;
-                height: 6px;
+                transform: translateY(-5px);
             }
         }
     }
 
-    &.radio_size_l
+    &.checkbox_size_l
     {
         font-size: 15px;
 
-        .radio__box
+        .checkbox__box
         {
             line-height: 17px;
 
@@ -82,18 +97,17 @@
 
             &:after
             {
-                top: 5px;
-                left: 5px;
+                width: 18px;
+                height: 18px;
 
-                width: 7px;
-                height: 7px;
+                transform: translateY(-7px);
             }
         }
     }
 
-    &.radio_checked
+    &.checkbox_checked
     {
-        .radio__box
+        .checkbox__box
         {
             background: rgba(153, 122, 0, 0.5);
 
@@ -104,44 +118,40 @@
 
             &:after
             {
-                position: absolute;
-
-                border-radius: 50%;
-                background: #000;
-
-                content: '';
+                opacity: 1;
+                transform: translateY(0px);
             }
         }
     }
 
-    &.radio_focused
+    &.checkbox_focused
     {
-        .radio__box
+        .checkbox__box
         {
             box-shadow: 0 0 10px #fc0;
         }
     }
 
-    &.radio_hovered
+    &.checkbox_hovered
     {
-        .radio__box
+        .checkbox__box
         {
-           background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.3);
         }
 
-        &.radio_checked .radio__box
+        &.checkbox_checked .checkbox__box
         {
-           background: rgba(129, 103, 0, 0.6);
+            background: rgba(129, 103, 0, 0.6);
         }
     }
 
-    &.radio_disabled
+    &.checkbox_disabled
     {
         cursor: default;
 
         color: #999;
 
-        .radio__box
+        .checkbox__box
         {
             background: rgba(0, 0, 0, 0.08);
 
@@ -149,27 +159,27 @@
             {
                 display: none;
             }
+        }
 
-            &:after
-            {
-                background: rgba(0, 0, 0, 0.4);
-            }
+        &.checkbox_checked .checkbox__box:after
+        {
+            opacity: 0.4;
         }
     }
 
-    &.radio_type_button
+    &.checkbox_type_button
     {
         display: inline-block;
     }
 
-    &.radio_type_line
+    &.checkbox_type_line
     {
-        &.radio_size_m
+        &.checkbox_size_m
         {
             margin-right: 13px;
         }
 
-        &.radio_size_l
+        &.checkbox_size_l
         {
             margin-right: 15px;
         }

@@ -72,7 +72,7 @@
 Блок представлен в следующих темах:
 
  * simple
- * normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
+ * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
 
 Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
 
@@ -98,19 +98,19 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size: 'm' },
-    placeholder : 'normal'
+    mods : { theme : 'islands', size: 'm' },
+    placeholder : 'islands'
 }
 ```
 
 ### Размеры `_size`
 
-Реализован только в теме `normal`.
+Реализован только в теме `islands`.
 
 Задает размер всем типам текстовых полей.
 
@@ -149,7 +149,7 @@
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size: 's' },
+    mods : { theme : 'islands', size: 's' },
     placeholder : 'Small'
 }
 ```
@@ -157,7 +157,7 @@
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size: 'm' },
+    mods : { theme : 'islands', size: 'm' },
     placeholder : 'Medium'
 }
 ```
@@ -165,7 +165,7 @@
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size: 'l' },
+    mods : { theme : 'islands', size: 'l' },
     placeholder : 'Large'
 }
 ```
@@ -173,7 +173,7 @@
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size: 'xl' },
+    mods : { theme : 'islands', size: 'xl' },
     placeholder : 'X-Large'
 }
 ```
@@ -187,7 +187,7 @@
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size : 'm', type : 'textarea' },
+    mods : { theme : 'islands', size : 'm', type : 'textarea' },
     placeholder : 'Text area'
 }
 ```
@@ -197,7 +197,7 @@
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size: 'm', type : 'password' },
+    mods : { theme : 'islands', size: 'm', type : 'password' },
     placeholder : 'Password field'
 }
 ```
@@ -207,7 +207,7 @@
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size : 'm', type : 'search' },
+    mods : { theme : 'islands', size : 'm', type : 'search' },
     placeholder : 'Search form'
 }
 ```
@@ -223,7 +223,7 @@
 ```bemjson
 {
     block : 'input',
-    mods : { theme : 'normal', size : 'm', disabled : true },
+    mods : { theme : 'islands', size : 'm', disabled : true },
     val : 'Неактивно'
 }
 ```

@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: nested popups',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_nested.css' },
         { elem : 'js', url : '_nested.js' }

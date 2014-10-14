@@ -3,6 +3,6 @@
     mods : { type : 'button' },
     mustDeps : {
         block : 'button',
-        mods : { theme : 'normal', togglable : 'radio' }
+        mods : { theme : 'islands', togglable : 'check' }
     }
 })

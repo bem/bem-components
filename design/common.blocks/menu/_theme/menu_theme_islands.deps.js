@@ -1,6 +1,6 @@
 ({
     shouldDeps : {
         block : 'menu-item',
-        mods : { theme : 'normal' }
+        mods : { theme : 'islands' }
     }
 })

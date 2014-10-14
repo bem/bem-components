@@ -64,7 +64,7 @@
 Блок представлен в следующих темах:
 
  * simple
- * normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
+ * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
 
 Без указания модификатора темы отображается [нативный](#default) вид контрола.
 
@@ -90,20 +90,20 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'button',
-    text : 'Тема normal',
-    mods : { theme : 'normal', size : 'm' }
+    text : 'Тема islands',
+    mods : { theme : 'islands', size : 'm' }
 }
 ```
 
 <a name="size"></a>
 ### Размеры кнопок `_size`
 
-Реализован только в теме `normal`. Задает размер всем типам кнопок.
+Реализован только в теме `islands`. Задает размер всем типам кнопок.
 
 Доступно четыре размера реализации блока: **s**, **m**, **l**, **xl**.
 
@@ -139,7 +139,7 @@
 {
     block : 'button',
     text : 'Small',
-    mods : { theme : 'normal', size : 's' }
+    mods : { theme : 'islands', size : 's' }
 }
 ```
 
@@ -147,7 +147,7 @@
 {
     block : 'button',
     text : 'Medium',
-    mods : { theme : 'normal', size : 'm' }
+    mods : { theme : 'islands', size : 'm' }
 }
 ```
 
@@ -155,7 +155,7 @@
 {
     block : 'button',
     text : 'Large',
-    mods : { theme : 'normal', size : 'l' }
+    mods : { theme : 'islands', size : 'l' }
 }
 ```
 
@@ -163,7 +163,7 @@
 {
     block : 'button',
     text : 'X-large',
-    mods : { theme : 'normal', size : 'xl' }
+    mods : { theme : 'islands', size : 'xl' }
 }
 ```
 
@@ -182,7 +182,7 @@
     block : 'button',
     url : '#',
     text : 'Кнопка-ссылка',
-    mods : { theme : 'normal', size : 'm', type : 'link' }
+    mods : { theme : 'islands', size : 'm', type : 'link' }
 }
 ```
 
@@ -195,7 +195,7 @@
     block : 'button',
     url : '#',
     text : 'Кнопка отправки формы',
-    mods : { theme : 'normal', size : 'm', type : 'submit' }
+    mods : { theme : 'islands', size : 'm', type : 'submit' }
 }
 ```
 
@@ -208,7 +208,7 @@
 ```bemjson
 {
     block : 'button',
-    mods : { theme : 'normal', size : 'm', view : 'action' },
+    mods : { theme : 'islands', size : 'm', view : 'action' },
     type : 'submit',
     text : 'Action'
 }
@@ -221,7 +221,7 @@
 ```bemjson
 {
     block : 'button',
-    mods : { theme : 'normal', size : 'm', view : 'pseudo' },
+    mods : { theme : 'islands', size : 'm', view : 'pseudo' },
     text : 'Псевдокнопка'
 }
 ```
@@ -231,7 +231,7 @@
 ```bemjson
 {
     block : 'button',
-    mods : { theme : 'normal', size : 'm', view : 'pseudo', disabled : true },
+    mods : { theme : 'islands', size : 'm', view : 'pseudo', disabled : true },
     text : 'Псевдокнопка'
 }
 ```
@@ -248,7 +248,7 @@
 {
     block : 'button',
     text : 'Неактивна',
-    mods : { theme : 'normal', size : 'm', disabled : true }
+    mods : { theme : 'islands', size : 'm', disabled : true }
 }
 ```
 
@@ -266,7 +266,7 @@
 {
     block : 'button',
     text : 'Check',
-    mods : { theme : 'normal', size : 'm', togglable : 'check' }
+    mods : { theme : 'islands', size : 'm', togglable : 'check' }
 }
 ```
 
@@ -276,7 +276,7 @@
 {
     block : 'button',
     text : 'Radio',
-    mods : { theme : 'normal', size : 'm', togglable : 'radio' }
+    mods : { theme : 'islands', size : 'm', togglable : 'radio' }
 }
 ```
 
@@ -299,19 +299,19 @@
     block : 'button',
     type : 'submit',
     text : 'Промокнопка',
-    mods : { theme : 'normal', size : 'm', view : 'action' }
+    mods : { theme : 'islands', size : 'm', view : 'action' }
 }
 ```
 
 #### Псевдокнопка `_pseudo`
 
-Реализован только в теме `normal` для визуального изменения кнопки. При выставлении модификатора `view` в значение `pseudo`, кнопка получает прозрачный фон.
+Реализован только в теме `islands` для визуального изменения кнопки. При выставлении модификатора `view` в значение `pseudo`, кнопка получает прозрачный фон.
 
 ```bemjson
 {
     block : 'button',
     text : 'Псевдокнопка',
-    mods : { theme : 'normal', size : 'm', view : 'pseudo' }
+    mods : { theme : 'islands', size : 'm', view : 'pseudo' }
 }
 ```
 
@@ -321,7 +321,7 @@
 {
     block : 'button',
     text : 'Псевдокнопка',
-    mods : { theme : 'normal', size : 'm', view : 'pseudo', disabled : true }
+    mods : { theme : 'islands', size : 'm', view : 'pseudo', disabled : true }
 }
 ```
 

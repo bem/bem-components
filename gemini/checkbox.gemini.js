@@ -6,10 +6,10 @@ gemini.suite('checkbox', function(root) {
 
     [
         'default',
-        'normal-size_m',
-        'normal-button',
-        'normal-button-icon',
-        'normal-size_l'
+        'islands-size_m',
+        'islands-button',
+        'islands-button-icon',
+        'islands-size_l'
     ]
         .forEach(function(test) {
             var checkboxSelector = '.' + test,

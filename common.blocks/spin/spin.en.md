@@ -13,7 +13,7 @@ The `spin` block does not have native control representation.
 Block supports the following themes:
 
 * simple
-* normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
+* islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
 
 **simple**
 
@@ -24,19 +24,19 @@ Block supports the following themes:
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 'm', progress : true }
+    mods : { theme : 'islands', size : 'm', progress : true }
 }
 ```
 
 <a name="size"></a>
 ### _size
 
-Implemented only for theme `normal`.
+Implemented only for theme `islands`.
 
 There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
 
@@ -74,35 +74,35 @@ See following examples:
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 'xs', progress : true }
+    mods : { theme : 'islands', size : 'xs', progress : true }
 }
 ```
 
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 's', progress : true }
+    mods : { theme : 'islands', size : 's', progress : true }
 }
 ```
 
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 'm', progress : true }
+    mods : { theme : 'islands', size : 'm', progress : true }
 }
 ```
 
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 'l', progress : true }
+    mods : { theme : 'islands', size : 'l', progress : true }
 }
 ```
 
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'normal', size : 'xl', progress : true }
+    mods : { theme : 'islands', size : 'xl', progress : true }
 }
 ```
 

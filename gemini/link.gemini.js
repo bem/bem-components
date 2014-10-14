@@ -8,9 +8,9 @@ gemini.suite('link', function(root) {
         'default-no-url',
         'default-url',
         'default-pseudo',
-        'normal-no-url',
-        'normal-url',
-        'normal-pseudo'
+        'islands-no-url',
+        'islands-url',
+        'islands-pseudo'
     ]
         .forEach(function(test) {
             var linkSelector = '.' + test;

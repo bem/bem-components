@@ -7,11 +7,11 @@ gemini.suite('button', function(root) {
     [
         'default',
         'default-link',
-        'normal',
+        'islands',
         'pseudo',
         'action',
-        'normal-link',
-        'normal-icon'
+        'islands-link',
+        'islands-icon'
     ]
         .forEach(function(test) {
             var buttonSelector = '.gemini-test-button-' + test,
@@ -45,8 +45,8 @@ gemini.suite('button', function(root) {
             });
         });
 
-    gemini.suite('normal-check', function(suite) {
-        var buttonSelector = '.gemini-test-button-normal-check';
+    gemini.suite('islands-check', function(suite) {
+        var buttonSelector = '.gemini-test-button-islands-check';
 
         suite
             .setCaptureElements(buttonSelector)

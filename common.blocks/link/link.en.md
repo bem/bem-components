@@ -44,7 +44,7 @@ Additional required HTML attributes could be specified in `attrs` field of BEMJS
 Block supports the following themes:
 
  * simple
- * normal
+ * islands
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
@@ -72,12 +72,12 @@ See following examples:
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'link',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     url : '#',
     content : 'link'
 }
@@ -90,7 +90,7 @@ A link type that does not lead to a new webpage.
 ```bemjson
 {
     block : 'link',
-    mods : { theme : 'normal', pseudo : true },
+    mods : { theme : 'islands', pseudo : true },
     title : 'pseudo mod',
     content : 'link'
 }
@@ -105,7 +105,7 @@ A link type that does not lead to a new webpage.
 ```bemjson
 {
     block : 'link',
-    mods : { theme : 'normal', disabled : true },
+    mods : { theme : 'islands', disabled : true },
     url : '#',
     content : 'disabled'
 }

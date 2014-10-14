@@ -67,7 +67,7 @@ Additional required HTML attributes could be specified in `attrs` field of BEMJS
 Block supports the following themes:
 
  * simple
- * normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
+ * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
@@ -93,20 +93,20 @@ See following examples:
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'button',
-    text : 'Theme normal',
-    mods : { theme : 'normal', size : 'm' }
+    text : 'Theme islands',
+    mods : { theme : 'islands', size : 'm' }
 }
 ```
 
 <a name="size"></a>
 ### _size
 
-Implemented only for theme `normal`.
+Implemented only for theme `islands`.
 
 Provides all types of buttons with `size` value.
 
@@ -146,7 +146,7 @@ See following examples:
 {
     block : 'button',
     text : 'Small',
-    mods : { theme : 'normal', size : 's' }
+    mods : { theme : 'islands', size : 's' }
 }
 ```
 
@@ -154,7 +154,7 @@ See following examples:
 {
     block : 'button',
     text : 'Medium',
-    mods : { theme : 'normal', size : 'm' }
+    mods : { theme : 'islands', size : 'm' }
 }
 ```
 
@@ -162,7 +162,7 @@ See following examples:
 {
     block : 'button',
     text : 'Large',
-    mods : { theme : 'normal', size : 'l' }
+    mods : { theme : 'islands', size : 'l' }
 }
 ```
 
@@ -170,13 +170,13 @@ See following examples:
 {
     block : 'button',
     text : 'X-large',
-    mods : { theme : 'normal', size : 'xl' }
+    mods : { theme : 'islands', size : 'xl' }
 }
 ```
 
 ### _type
 
-If `type` modifier is not specified for the block, normal button will be represented by default.
+If `type` modifier is not specified for the block, islands button will be represented by default.
 
 <a name="link-button"></a>
 #### Button with link behavior
@@ -190,7 +190,7 @@ Specify additional `url` attribute in BEMJSON input data for this button type.
     block : 'button',
     url : '#',
     text : 'Link behavior',
-    mods : { theme : 'normal', size : 'm', type : 'link' }
+    mods : { theme : 'islands', size : 'm', type : 'link' }
 }
 ```
 
@@ -202,7 +202,7 @@ Use `type` modifier with `submit` value to create a button for data sending to a
 {
     block : 'button',
     text : 'Submit',
-    mods : { theme : 'normal', size : 'm', type : 'submit' }
+    mods : { theme : 'islands', size : 'm', type : 'submit' }
 }
 ```
 
@@ -216,7 +216,7 @@ Use `type` modifier with `submit` value to create a button for data sending to a
 {
     block : 'button',
     text : 'Disabled',
-    mods : { theme : 'normal', size : 'm', disabled : true }
+    mods : { theme : 'islands', size : 'm', disabled : true }
 }
 ```
 
@@ -236,7 +236,7 @@ The following values of `togglable` modifier are available:
 {
     block : 'button',
     text : 'Check',
-    mods : { theme : 'normal', size : 'm', togglable : 'check' },
+    mods : { theme : 'islands', size : 'm', togglable : 'check' },
 }
 ```
 
@@ -246,7 +246,7 @@ The following values of `togglable` modifier are available:
 {
     block : 'button',
     text : 'Radio',
-    mods : { theme : 'normal', size : 'm', togglable : 'radio' }
+    mods : { theme : 'islands', size : 'm', togglable : 'radio' }
 }
 ```
 #### _hovered
@@ -261,7 +261,7 @@ Defines “pressed” state of a button.
 
 #### _action
 
-Implemented only for theme `normal`.
+Implemented only for theme `islands`.
 
 Visually highlights a button with yellow colour on a page. Could be used as a promo button.
 
@@ -270,13 +270,13 @@ Visually highlights a button with yellow colour on a page. Could be used as a pr
     block : 'button',
     type : 'submit',
     text : 'Action',
-    mods : { theme : 'normal', size : 'm', view : 'action' }
+    mods : { theme : 'islands', size : 'm', view : 'action' }
 }
 ```
 
 #### _pseudo
 
-Implemented only for theme `normal`.
+Implemented only for theme `islands`.
 
 This modifier changes visual representation of a button. With `view` modifier set to `pseudo`, the background of a button becomes transparent.
 
@@ -284,7 +284,7 @@ This modifier changes visual representation of a button. With `view` modifier se
 {
     block : 'button',
     text : 'Pseudo',
-    mods : { theme : 'normal', size : 'm', view : 'pseudo' }
+    mods : { theme : 'islands', size : 'm', view : 'pseudo' }
 }
 ```
 
@@ -294,7 +294,7 @@ If pseudo button is disabled, its borders disappear.
 {
     block : 'button',
     text : 'Disabled',
-    mods : { theme : 'normal', size : 'm', view : 'pseudo', disabled : true }
+    mods : { theme : 'islands', size : 'm', view : 'pseudo', disabled : true }
 }
 ```
 

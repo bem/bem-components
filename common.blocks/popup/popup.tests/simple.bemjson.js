@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: popup',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
@@ -141,7 +141,7 @@
 
         { tag : 'hr' },
 
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
         {
             block : 'test-wrap',
             content : [
@@ -152,7 +152,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'open at 100&times;100' },
                         {
                             block : 'popup',
-                            mods : { target : 'position', autoclosable : true, theme : 'normal' },
+                            mods : { target : 'position', autoclosable : true, theme : 'islands' },
                             content : [
                                 'popup is opened at 100&times;100',
                                 {
@@ -160,8 +160,8 @@
                                         content : [
                                             {
                                                 block : 'input',
-                                                mods : { theme : 'normal' },
-                                                val : 'normal'
+                                                mods : { theme : 'islands' },
+                                                val : 'islands'
                                             },
                                             {
                                                 tag : 'select',
@@ -186,7 +186,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'all directions' },
                         {
                             block : 'popup',
-                            mods : { target : 'anchor', theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'islands' },
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -205,7 +205,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'bottom-* directions' },
                         {
                             block : 'popup',
-                            mods : { target : 'anchor', theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'islands' },
                             directions : ['bottom-left', 'bottom-center', 'bottom-right'],
                             content : [
                                 'There\'s content',
@@ -223,7 +223,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'top-* directions' },
                         {
                             block : 'popup',
-                            mods : { target : 'anchor', theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'islands' },
                             directions : ['top-left', 'top-center', 'top-right'],
                             content : [
                                 'There\'s content',
@@ -241,7 +241,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'right-* directions' },
                         {
                             block : 'popup',
-                            mods : { target : 'anchor', theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'islands' },
                             directions : ['right-top', 'right-center', 'right-bottom'],
                             content : [
                                 'There\'s content',
@@ -259,7 +259,7 @@
                         { block : 'link', mods : { pseudo : true }, content : 'left-* directions' },
                         {
                             block : 'popup',
-                            mods : { target : 'anchor', theme : 'normal' },
+                            mods : { target : 'anchor', theme : 'islands' },
                             directions : ['left-top', 'left-center', 'left-bottom'],
                             content : [
                                 'There\'s content',

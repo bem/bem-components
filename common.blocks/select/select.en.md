@@ -81,7 +81,7 @@ Additional required HTML attributes could be specified in `attrs` field of BEMJS
 Block supports the following themes:
 
 * simple
-* normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
+* islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
 
 If `theme` modifier is not specified, [custom](#custom) representation of a control is applied (without CSS styles).
 
@@ -118,12 +118,12 @@ See following examples:
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio', theme : 'normal', size : 'm' },
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
     name : 'select1',
     options : [
         { val : 1, text : 'first' },
@@ -143,7 +143,7 @@ Use `mode` modifier to define a type of `select`:
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'check', theme : 'normal', size : 'm' },
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select1',
     text : '—',
     options : [
@@ -161,7 +161,7 @@ Text in the button of `select` block depends on a chosen menu item. The first it
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio', theme : 'normal', size : 'm' },
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
     name : 'select2',
     options : [
         { val : 1, text : 'first' },
@@ -177,7 +177,7 @@ Text in the button of `select` block depends on a chosen menu item. The first it
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio-check', theme : 'normal', size : 'm' },
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
     name : 'select3',
     text : '–',
     options : [
@@ -197,7 +197,7 @@ To set the ability of select button's width to fit the width of the chosen item,
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio-check', theme : 'normal', size : 'm', width : 'available' },
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm', width : 'available' },
     name : 'select4',
     text : '—',
     options : [
@@ -233,7 +233,7 @@ The following modifiers of a button could be propagated to `select` block:
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio-check', theme : 'normal', size : 'm', disabled : true },
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm', disabled : true },
     name : 'select5',
     text : '—',
     options : [
@@ -257,7 +257,7 @@ The following modifiers of a button could be propagated to `select` block:
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'check', theme : 'normal', size : 'm' },
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
     text : '—',
     options : [
@@ -283,7 +283,7 @@ The following modifiers of a button could be propagated to `select` block:
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'check', theme : 'normal', size : 'm' },
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
     text : 'empty',
     options : [

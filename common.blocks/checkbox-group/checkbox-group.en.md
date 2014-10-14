@@ -40,7 +40,7 @@ The following `checkbox-group` modifiers are propagated to each checkbox within 
 Block supports the following themes:
 
  * simple
- * normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
+ * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
@@ -74,13 +74,13 @@ See following examples:
 }
 ```
 
-#### normal
+#### islands
 
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'l' },
-    name : 'checkbox-normal',
+    mods : { theme : 'islands', size : 'l' },
+    name : 'checkbox-islands',
     options : [
         { val : 1, text : 'first' },
         { val : 2, text : 'second' }
@@ -90,7 +90,7 @@ See following examples:
 
 ### _size
 
-Implemented only for theme `normal`.
+Implemented only for theme `islands`.
 
 Provides all types of checkbox groups with the size value.
 
@@ -136,7 +136,7 @@ See following examples:
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 's', type : 'button' },
+    mods : { theme : 'islands', size : 's', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -148,7 +148,7 @@ See following examples:
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm', type : 'button' },
+    mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -160,7 +160,7 @@ See following examples:
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'l', type : 'button' },
+    mods : { theme : 'islands', size : 'l', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -172,7 +172,7 @@ See following examples:
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'xl', type : 'button' },
+    mods : { theme : 'islands', size : 'xl', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -191,7 +191,7 @@ The following types of `checkbox-group` block are available:
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm', type : 'button' },
+    mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -200,12 +200,12 @@ The following types of `checkbox-group` block are available:
 }
 ```
 
-* `line`-aligned. Use `type` modifier with `line` value to align all checkboxes of the group in a line. Right gap is automatically added after each checkbox of the group except the last one. Implemented only for theme `normal`.
+* `line`-aligned. Use `type` modifier with `line` value to align all checkboxes of the group in a line. Right gap is automatically added after each checkbox of the group except the last one. Implemented only for theme `islands`.
 
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm', type : 'line' },
+    mods : { theme : 'islands', size : 'm', type : 'line' },
     name : 'checkbox-line',
     options : [
         { val : 1, text : 'first' },
@@ -225,7 +225,7 @@ If `checkbox-group` block is disabled, all checkboxes within this group are also
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
+    mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
     name : 'checkbox-button',
     options : [
         { val : 1, text : 'first' },
@@ -238,7 +238,7 @@ You can apply `disabled` modifier to a separate checkbox of a group.
 ```bemjson
 {
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm', type : 'line' },
+    mods : { theme : 'islands', size : 'm', type : 'line' },
     name : 'checkbox-line',
     options : [
         { val : 1, text : 'first', disabled : true },

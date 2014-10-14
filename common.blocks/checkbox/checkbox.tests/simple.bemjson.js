@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: checkbox',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
@@ -99,11 +99,11 @@
 
         { tag : 'hr' },
 
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
         { tag : 'p', content : [
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm' },
+                mods : { theme : 'islands', size : 'm' },
                 val : 1,
                 name : 'r1',
                 text : 'first'
@@ -111,7 +111,7 @@
             ' ',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm', checked : true },
+                mods : { theme : 'islands', size : 'm', checked : true },
                 val : 2,
                 name : 'r1',
                 text : 'second'
@@ -119,7 +119,7 @@
             ' ',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm', disabled : true },
+                mods : { theme : 'islands', size : 'm', disabled : true },
                 val : 3,
                 name : 'r1',
                 text : 'third'
@@ -127,7 +127,7 @@
             ' ',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm', disabled : true, checked : true },
+                mods : { theme : 'islands', size : 'm', disabled : true, checked : true },
                 val : 4,
                 name : 'r1',
                 text : 'fourth'
@@ -138,7 +138,7 @@
         { tag : 'p', content : [
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm' },
+                mods : { theme : 'islands', size : 'm' },
                 val : 1,
                 name : 'r1',
                 text : 'size_m'
@@ -146,7 +146,7 @@
             ' ',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm', checked : true },
+                mods : { theme : 'islands', size : 'm', checked : true },
                 val : 2,
                 name : 'r1',
                 text : 'size_m'
@@ -155,7 +155,7 @@
         { tag : 'p', content : [
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'l' },
+                mods : { theme : 'islands', size : 'l' },
                 val : 1,
                 name : 'r1',
                 text : 'size_l'
@@ -163,7 +163,7 @@
             ' ',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'l', checked : true },
+                mods : { theme : 'islands', size : 'l', checked : true },
                 val : 2,
                 name : 'r1',
                 text : 'size_l'
@@ -174,7 +174,7 @@
         { tag : 'p', content : [
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm', type : 'button' },
+                mods : { theme : 'islands', size : 'm', type : 'button' },
                 val : 1,
                 name : 'r1',
                 text : 'first'
@@ -182,7 +182,7 @@
             '&nbsp;',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm', type : 'button', checked : true },
+                mods : { theme : 'islands', size : 'm', type : 'button', checked : true },
                 val : 2,
                 name : 'r1',
                 text : 'second'
@@ -190,7 +190,7 @@
             '&nbsp;',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
+                mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
                 val : 3,
                 name : 'r1',
                 text : 'third'
@@ -198,7 +198,7 @@
             '&nbsp;',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm', type : 'button', checked : true, disabled : true },
+                mods : { theme : 'islands', size : 'm', type : 'button', checked : true, disabled : true },
                 val : 4,
                 name : 'r1',
                 text : 'fourth'
@@ -206,7 +206,7 @@
             '&nbsp;',
             {
                 block : 'checkbox',
-                mods : { theme : 'normal', size : 'm', type : 'button' },
+                mods : { theme : 'islands', size : 'm', type : 'button' },
                 text : 'icon',
                 icon : { block : 'icon', mods : { social : 'twitter' } }
             }

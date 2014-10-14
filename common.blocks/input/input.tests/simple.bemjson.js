@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: input',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
@@ -70,22 +70,22 @@
 
         { tag : 'hr' },
 
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
         { tag : 'p', content : {
             block : 'input',
-            mods : { theme : 'normal', size : 'm' },
-            val : 'normal'
+            mods : { theme : 'islands', size : 'm' },
+            val : 'islands'
         } },
         { tag : 'p', content : {
             block : 'input',
-            mods : { theme : 'normal', 'has-clear' : true, size : 'm', disabled : true },
+            mods : { theme : 'islands', 'has-clear' : true, size : 'm', disabled : true },
             val : 'disabled'
         } },
 
         { tag : 'h3', content : 'clear' },
         { tag : 'p', content : {
             block : 'input',
-            mods : { theme : 'normal', 'has-clear' : true, size : 'm' },
+            mods : { theme : 'islands', 'has-clear' : true, size : 'm' },
             val : 'has-clear',
             placeholder : 'placeholder'
         } },
@@ -93,7 +93,7 @@
         { tag : 'h3', content : 'width' },
         { tag : 'p', attrs : { style : 'width: 350px;' }, content : {
             block : 'input',
-            mods : { theme : 'normal', width : 'available', 'has-clear' : true, size : 'm' },
+            mods : { theme : 'islands', width : 'available', 'has-clear' : true, size : 'm' },
             val : 'available',
             placeholder : 'placeholder'
         } },
@@ -101,19 +101,19 @@
         { tag : 'h3', content : 'type' },
         { tag : 'p', content : {
             block : 'input',
-            mods : { theme : 'normal', 'has-clear' : true, size : 'm', type : 'password' },
+            mods : { theme : 'islands', 'has-clear' : true, size : 'm', type : 'password' },
             val : 'password',
             placeholder : 'password'
         } },
         { tag : 'p', content : {
             block : 'input',
-            mods : { theme : 'normal', 'has-clear' : true, size : 'm', type : 'search' },
+            mods : { theme : 'islands', 'has-clear' : true, size : 'm', type : 'search' },
             val : 'search',
             placeholder : 'query'
         } },
         { content : {
             block : 'input',
-            mods : { theme : 'normal', 'has-clear' : true, size : 'm', type : 'textarea' },
+            mods : { theme : 'islands', 'has-clear' : true, size : 'm', type : 'textarea' },
             val : 'textarea',
             placeholder : 'textarea'
         } },
@@ -125,7 +125,7 @@
             {
                 block : 'input',
                 id : 'with-label',
-                mods : { theme : 'normal', 'has-clear' : true, size : 'm' },
+                mods : { theme : 'islands', 'has-clear' : true, size : 'm' },
                 val : 'separate',
                 placeholder : 'placeholder'
             }
@@ -134,36 +134,36 @@
         { tag : 'h3', content : 'size' },
         { tag : 'p', content : {
             block : 'input',
-            mods : { theme : 'normal', 'has-clear' : true, size : 's' },
+            mods : { theme : 'islands', 'has-clear' : true, size : 's' },
             val : 'size s',
             placeholder : 'placeholder'
         } },
         { tag : 'p', content : {
             block : 'input',
-            mods : { theme : 'normal', 'has-clear' : true, size : 'm' },
+            mods : { theme : 'islands', 'has-clear' : true, size : 'm' },
             val : 'size m',
             placeholder : 'placeholder'
         } },
         { tag : 'p', content : {
             block : 'input',
-            mods : { theme : 'normal', 'has-clear' : true, size : 'l' },
+            mods : { theme : 'islands', 'has-clear' : true, size : 'l' },
             val : 'size l',
             placeholder : 'placeholder'
         } },
         { tag : 'p', content : {
             block : 'input',
-            mods : { theme : 'normal', 'has-clear' : true, size : 'xl' },
+            mods : { theme : 'islands', 'has-clear' : true, size : 'xl' },
             val : 'size xl',
             placeholder : 'placeholder'
         } },
         { content : {
             block : 'input',
-            mods : { theme : 'normal', size : 'm', type : 'textarea' },
+            mods : { theme : 'islands', size : 'm', type : 'textarea' },
             val : 'textarea size m'
         } },
         { content : {
             block : 'input',
-            mods : { theme : 'normal', size : 'l', type : 'textarea' },
+            mods : { theme : 'islands', size : 'l', type : 'textarea' },
             val : 'textarea size l'
         } }
     ]

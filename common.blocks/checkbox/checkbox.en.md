@@ -65,7 +65,7 @@ Additional required HTML attributes could be specified in `attrs` field of BEMJS
 Block supports the following themes:
 
  * simple
- * normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
+ * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
@@ -95,22 +95,22 @@ See following examples:
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'checkbox',
-    text : 'Theme normal',
-    name: 'normal',
+    text : 'Theme islands',
+    name: 'islands',
     val: '3',
-    mods : { theme : 'normal', size : 'm' }
+    mods : { theme : 'islands', size : 'm' }
 }
 ```
 
 <a name="size"></a>
 ### _size
 
-Implemented only for theme `normal`.
+Implemented only for theme `islands`.
 
 Provides checkbox text elements with font size value.
 
@@ -142,7 +142,7 @@ See following examples:
     text : 'Size M',
     name: 'name2',
     val: '2',
-    mods : { theme : 'normal', size : 'm' }
+    mods : { theme : 'islands', size : 'm' }
 }
 ```
 
@@ -152,7 +152,7 @@ See following examples:
     text : 'Size L',
     name: 'name3',
     val: '3',
-    mods : { theme : 'normal', size : 'l' }
+    mods : { theme : 'islands', size : 'l' }
 }
 ```
 
@@ -168,7 +168,7 @@ All [button](../button/button.en.md) block modifiers are propagated to `checkbox
     text : 'Checkbox',
     name: 'button',
     val: '1',
-    mods : { theme : 'normal', size : 'm', type : 'button' }
+    mods : { theme : 'islands', size : 'm', type : 'button' }
 }
 ```
 
@@ -186,7 +186,7 @@ All [button](../button/button.en.md) block modifiers are propagated to `checkbox
     text : 'Checked',
     name: 'name1',
     val : 1,
-    mods : { theme : 'normal', size : 'm', checked : true }
+    mods : { theme : 'islands', size : 'm', checked : true }
 }
 ```
 
@@ -196,7 +196,7 @@ All [button](../button/button.en.md) block modifiers are propagated to `checkbox
     text : 'Checked',
     name: 'name2',
     val : 2,
-    mods : { theme : 'normal', size : 'm', type : 'button', checked : true }
+    mods : { theme : 'islands', size : 'm', type : 'button', checked : true }
 }
 ```
 
@@ -210,7 +210,7 @@ All [button](../button/button.en.md) block modifiers are propagated to `checkbox
     text : 'Disabled',
     name: 'name1',
     val : 1,
-    mods : { theme : 'normal', size : 'm', disabled : true }
+    mods : { theme : 'islands', size : 'm', disabled : true }
 }
 ```
 
@@ -220,7 +220,7 @@ All [button](../button/button.en.md) block modifiers are propagated to `checkbox
     text : 'Disabled',
     name: 'name2',
     val : 2,
-    mods : { theme : 'normal', size : 'm', type : 'button', disabled : true }
+    mods : { theme : 'islands', size : 'm', type : 'button', disabled : true }
 }
 ```
 

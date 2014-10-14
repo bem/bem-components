@@ -2,7 +2,7 @@
 
 Блок `control-group` – это обертка, предназначенная для визуальной группировки других блоков. Группируемые блоки помещаются в поле `content` BEMJSON-декларации.
 
-Блок реализован только в технологии CSS. Для всех вложенных блоков должна быть установлена тема `normal`.
+Блок реализован только в технологии CSS. Для всех вложенных блоков должна быть установлена тема `islands`.
 
 В результате применения шаблонов блок `control-group` становится на странице HTML-элементом с тегом `<div>`.
 
@@ -19,13 +19,13 @@
     content : [
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm', type : 'search' },
+            mods : { theme : 'islands', size : 'm', type : 'search' },
             val : 'Your-query',
             placeholder : 'query'
         },
         {
             block : 'button',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             text : 'search'
         }
     ]
@@ -40,17 +40,17 @@
     content : [
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             placeholder : 'price from'
         },
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             placeholder : 'to'
         },
         {
             block : 'select',
-            mods : { mode : 'radio', theme : 'normal', size : 'm' },
+            mods : { mode : 'radio', theme : 'islands', size : 'm' },
             options : [
                 { val : 'usd', text : '$', checked : true },
                 { val : 'euro', text : '€' }
@@ -79,19 +79,19 @@
     content : [
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm', type : 'search' },
+            mods : { theme : 'islands', size : 'm', type : 'search' },
             val : 'First-query',
             placeholder : 'query'
         },
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm', type : 'search' },
+            mods : { theme : 'islands', size : 'm', type : 'search' },
             val : 'Second-query',
             placeholder : 'query'
         },
         {
             block : 'input',
-            mods : { theme : 'normal', size : 'm', type : 'search' },
+            mods : { theme : 'islands', size : 'm', type : 'search' },
             val : 'Another-query',
             placeholder : 'query'
         }
@@ -134,17 +134,17 @@
     content : [
         {
             block : 'button',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             text : 'The first element'
         },
         {
             block : 'button',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             text : 'In the middle'
         },
         {
             block : 'button',
-            mods : { theme : 'normal', size : 'm' },
+            mods : { theme : 'islands', size : 'm' },
             text : 'The last element'
         }
     ]

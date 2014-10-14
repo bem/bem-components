@@ -7,8 +7,8 @@ gemini.suite('dropdown', function(root) {
     [
         'default-link',
         'default-button',
-        'normal-link',
-        'normal-button'
+        'islands-link',
+        'islands-button'
     ]
         .forEach(function(test) {
             var dropdownSelector = '.' + test + (!!~test.indexOf('button') ? ' .button' : ' .link');

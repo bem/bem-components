@@ -1,6 +1,6 @@
 ({
     block : 'checkbox',
-    mods : { type : 'button', checked : true, disabled : true, theme : 'normal', size : 'l' },
+    mods : { type : 'button', checked : true, disabled : true, theme : 'islands', size : 'l' },
     name : 'checkbox-name',
     val : 'checkbox-val',
     text : 'type-button',

@@ -1,0 +1,1 @@
+../../desktop.pages/islands/islands.bemjson.js

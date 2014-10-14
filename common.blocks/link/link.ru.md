@@ -41,7 +41,7 @@
 ### Темы `_theme`
 
  * simple
- * normal
+ * islands
 
 Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
 
@@ -68,12 +68,12 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'link',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     url : '#',
     content : 'link'
 }
@@ -86,7 +86,7 @@
 ```bemjson
 {
     block : 'link',
-    mods : { theme : 'normal', pseudo : true },
+    mods : { theme : 'islands', pseudo : true },
     title : 'pseudo mod',
     content : 'link'
 }
@@ -103,7 +103,7 @@
 ```bemjson
 {
     block : 'link',
-    mods : { theme : 'normal', disabled : true },
+    mods : { theme : 'islands', disabled : true },
     url : '#',
     content : 'disabled'
 }

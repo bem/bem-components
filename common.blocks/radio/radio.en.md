@@ -49,7 +49,7 @@ Additional required HTML attributes could be specified in `attrs` field of BEMJS
 Block supports the following themes:
 
 * simple
-* normal (**NB!** Choosing a theme `normal` requires additional modifier [`size`](#size).)
+* islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
@@ -77,13 +77,13 @@ See following examples:
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'radio',
-    mods : { theme : 'normal', size : 'm' },
-    name : 'radio-normal',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
     text : 'radio switch'
 }
 ```
@@ -91,7 +91,7 @@ See following examples:
 <a name="size"></a>
 ### _size
 
-Implemented only for theme `normal`.
+Implemented only for theme `islands`.
 Provides to all types of radio switches with the size value.
 
 Depending on `type` modifier the following sizes are available:
@@ -138,8 +138,8 @@ In addition `role="button"` HTML attribute is set to the block.
 ```bemjson
 {
     block : 'radio',
-    mods : { theme : 'normal', size : 'm', type : 'button' },
-    name : 'radio-normal',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
     text : 'radio switch'
 }
 ```
@@ -159,7 +159,7 @@ The modifier is set automatically:
 ```bemjson
 {
     block : 'radio',
-    mods : { theme : 'normal', size : 'm', checked : true },
+    mods : { theme : 'islands', size : 'm', checked : true },
     content : 'checked'
 }
 ```
@@ -171,8 +171,8 @@ The modifier is set automatically:
 ```bemjson
 {
     block : 'radio',
-    mods : { theme : 'normal', size : 'm', disabled : true },
-    name : 'radio-normal',
+    mods : { theme : 'islands', size : 'm', disabled : true },
+    name : 'radio-islands',
     text : 'disabled'
 }
 ```
@@ -180,8 +180,8 @@ The modifier is set automatically:
 ```bemjson
 {
     block : 'radio',
-    mods : { theme : 'normal', size : 'm', type : 'button', disabled : true },
-    name : 'radio-normal',
+    mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
+    name : 'radio-islands',
     text : 'disabled'
 }
 ```

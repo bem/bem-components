@@ -31,7 +31,7 @@
 Блок представлен в следующих темах:
 
  * simple
- * normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
+ * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
 
 Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
 Наглядно видно на примерах ниже:
@@ -58,13 +58,13 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'menu-item',
-    mods : { theme : 'normal', size : 'm' },
-    content : 'normal',
+    mods : { theme : 'islands', size : 'm' },
+    content : 'islands',
     val : 'my value'
 }
 ```
@@ -76,7 +76,7 @@
 ```bemjson
 {
     block : 'menu-item',
-    mods : { theme : 'normal', size : 'm', type : 'link' },
+    mods : { theme : 'islands', size : 'm', type : 'link' },
     content : {
         block : 'link',
         url : '#',
@@ -94,7 +94,7 @@
 ```bemjson
 {
     block : 'menu-item',
-    mods : { theme : 'normal', size : 'm', checked : true },
+    mods : { theme : 'islands', size : 'm', checked : true },
     content : '_checked'
 }
 ```
@@ -110,7 +110,7 @@
 ```bemjson
 {
     block : 'menu-item',
-    mods : { theme : 'normal', size : 'm', disabled : true },
+    mods : { theme : 'islands', size : 'm', disabled : true },
     content : '_disabled'
 }
 ```

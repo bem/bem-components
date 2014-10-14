@@ -1,6 +1,6 @@
 ({
     block : 'checkbox-group',
-    mods : { theme : 'normal', size : 'm' },
+    mods : { theme : 'islands', size : 'm' },
     name : 'default',
     options : [
         { val : 1, text : 'first' },

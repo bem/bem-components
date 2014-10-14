@@ -31,7 +31,7 @@
 {
     block : 'button',
     text : 'Кнопка с иконкой',
-    mods : { theme : 'normal', size : 'm' },
+    mods : { theme : 'islands', size : 'm' },
     icon : {
         block : 'icon',
         mods : { social : 'twitter' }
@@ -43,7 +43,7 @@
 {
     block : 'button',
     text : 'with icon',
-    mods : { theme : 'normal', size : 'm' },
+    mods : { theme : 'islands', size : 'm' },
     icon : {
         block : 'icon',
         url : '../../test.blocks/icon/_action/download.svg'

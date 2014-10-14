@@ -1,12 +1,12 @@
 ({
     block : 'page',
     title : 'bem-components: link',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_simple.css' },
         { elem : 'js', url : '_simple.js' }
     ],
-    content : ['default', 'simple', 'normal'].map(function(theme, i) {
+    content : ['default', 'simple', 'islands'].map(function(theme, i) {
         var content = [
                 { block : 'link', content : 'with no url' },
                 { block : 'link', url : 'http://example.com/', content : 'plain url' },
@@ -74,7 +74,7 @@
             ].map(function(link, j) {
                 link.mods || (link.mods = {});
                 i && (link.mods.theme = theme);
-                if(link.mods.view && theme !== 'normal') return '';
+                if(link.mods.view && theme !== 'islands') return '';
                 return [
                     j > 0 && { tag : 'br' },
                     link

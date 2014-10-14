@@ -5,11 +5,11 @@ gemini.suite('spin', function(root) {
     root.setUrl('desktop.tests/spin/gemini/gemini.html');
 
     [
-        'normal-xs',
-        'normal-s',
-        'normal-m',
-        'normal-l',
-        'normal-xl'
+        'islands-xs',
+        'islands-s',
+        'islands-m',
+        'islands-l',
+        'islands-xl'
     ]
         .forEach(function(test) {
             var testSize = '.' + test;

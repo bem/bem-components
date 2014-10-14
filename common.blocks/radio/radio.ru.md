@@ -46,7 +46,7 @@
 Блок представлен в следующих темах:
 
  * simple
- * normal (**Важно:** При выборе темы `normal` необходимо указывать обязательный модификатор [size](#size).)
+ * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
 
 Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
 
@@ -74,13 +74,13 @@
 }
 ```
 
-**normal**
+**islands**
 
 ```bemjson
 {
     block : 'radio',
-    mods : { theme : 'normal', size : 'm' },
-    name : 'radio-normal',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
     text : 'Radio switch'
 }
 ```
@@ -88,7 +88,7 @@
 <a name="size"></a>
 ### Размеры `_size`
 
-Реализован только в теме `normal`.
+Реализован только в теме `islands`.
 
 В зависимости от значения модификатора `type` доступны следующие размеры реализации блока:
 
@@ -135,8 +135,8 @@
 ```bemjson
 {
     block : 'radio',
-    mods : { theme : 'normal', size : 'm', type : 'button' },
-    name : 'radio-normal',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
     text : 'radio switch'
 }
 ```
@@ -155,7 +155,7 @@
 ```bemjson
 {
     block : 'radio',
-    mods : { theme : 'normal', size : 'm', checked : true },
+    mods : { theme : 'islands', size : 'm', checked : true },
     name : 'radio-norma',
     text : 'Radio switch'
 }
@@ -173,8 +173,8 @@
 ```bemjson
 {
     block : 'radio',
-    mods : { theme : 'normal', size : 'l', disabled : true },
-    name : 'radio-normal',
+    mods : { theme : 'islands', size : 'l', disabled : true },
+    name : 'radio-islands',
     text : 'Radio switch'
 }
 ```

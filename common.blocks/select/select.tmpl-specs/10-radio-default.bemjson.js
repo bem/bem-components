@@ -1,6 +1,6 @@
 ({
     block : 'select',
-    mods : { mode : 'radio', theme : 'normal', size : 'l', focused : true },
+    mods : { mode : 'radio', theme : 'islands', size : 'l', focused : true },
     name : 'select',
     id : 1,
     optionsMaxHeight : 100,

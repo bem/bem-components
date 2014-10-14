@@ -1,12 +1,12 @@
 ({
     block : 'page',
     title : 'bem-components: spin',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_gemini.css' }
     ],
     content : [
-        { tag : 'h2', content : 'normal' },
+        { tag : 'h2', content : 'islands' },
         ['xs', 's', 'm', 'l', 'xl'].map(function(size){
             return {
                 tag : 'p',
@@ -15,8 +15,8 @@
                     { tag : 'br' },
                     {
                         block : 'spin',
-                        mods : { paused : true, theme : 'normal', progress : true, size : size },
-                        cls : 'normal-' + size
+                        mods : { paused : true, theme : 'islands', progress : true, size : size },
+                        cls : 'islands-' + size
                     }
                 ]
             }

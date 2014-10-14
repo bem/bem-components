@@ -1,7 +1,7 @@
 ({
     block : 'page',
     title : 'bem-components: menu',
-    mods : { theme : 'normal' },
+    mods : { theme : 'islands' },
     head : [
         { elem : 'css', url : '_gemini.css' },
         { elem : 'js', url : '_gemini.js' }
@@ -12,8 +12,8 @@
                 { tag : 'h3', content : 'size ' + size },
                 {
                     block : 'menu',
-                    mods : { mode :'radio', theme : 'normal', size : size },
-                    cls : 'normal-radio-' + size,
+                    mods : { mode :'radio', theme : 'islands', size : size },
+                    cls : 'islands-radio-' + size,
                     content : [
                         {
                             block : 'menu-item',
@@ -53,8 +53,8 @@
                 { tag : 'h3', content : 'check' },
                 {
                     block : 'menu',
-                    mods : { mode :'check', theme : 'normal', size : 'm' },
-                    cls : 'normal-check',
+                    mods : { mode :'check', theme : 'islands', size : 'm' },
+                    cls : 'islands-check',
                     content : [
                         {
                             block : 'menu-item',
@@ -85,8 +85,8 @@
                 { tag : 'h3', content : 'link' },
                 {
                     block : 'menu',
-                    mods : { theme : 'normal', size : 'm' },
-                    cls : 'normal-link',
+                    mods : { theme : 'islands', size : 'm' },
+                    cls : 'islands-link',
                     content : [
                         {
                             block : 'menu-item',
@@ -122,8 +122,8 @@
                 { tag : 'h3', content : 'icon' },
                 {
                     block : 'menu',
-                    mods : { theme : 'normal', size : 'm' },
-                    cls : 'normal-icon',
+                    mods : { theme : 'islands', size : 'm' },
+                    cls : 'islands-icon',
                     content : [
                         {
                             block : 'menu-item',

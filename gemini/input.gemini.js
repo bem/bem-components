@@ -5,16 +5,16 @@ gemini.suite('input', function(root) {
     root.setUrl('desktop.tests/input/gemini/gemini.html');
 
     [
-        'normal',
-        'normal-val',
-        'normal-placeholder',
-        'normal-longVal',
-        'normal-longPlaceholder',
-        'normal-label',
-        'normal-sizeS',
-        'normal-sizeM',
-        'normal-sizeL',
-        'normal-sizeXL',
+        'islands',
+        'islands-val',
+        'islands-placeholder',
+        'islands-longVal',
+        'islands-longPlaceholder',
+        'islands-label',
+        'islands-sizeS',
+        'islands-sizeM',
+        'islands-sizeL',
+        'islands-sizeXL',
         'default',
         'default-val',
         'default-placeholder',
@@ -36,8 +36,8 @@ gemini.suite('input', function(root) {
         });
 
     [
-        'normal-textarea-val',
-        'normal-textarea-placeholder',
+        'islands-textarea-val',
+        'islands-textarea-placeholder',
         'default-textarea-val',
         'default-textarea-placeholder'
     ]
@@ -54,7 +54,7 @@ gemini.suite('input', function(root) {
         });
 
     gemini.suite('clear-hover', function(suite) {
-        var inputSelector = '.normal-clear-enabled';
+        var inputSelector = '.islands-clear-enabled';
 
         suite
             .setCaptureElements(inputSelector)

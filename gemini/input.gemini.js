@@ -35,31 +35,16 @@ gemini.suite('input', function(root) {
 
         });
 
-    [
-        'islands-textarea-val',
-        'islands-textarea-placeholder',
-        'default-textarea-val',
-        'default-textarea-placeholder'
-    ]
-        .forEach(function(test) {
-            var textareaSelector = '.' + test;
-
-            // tests for enabled textarea
-            getEnabledSuite(test, textareaSelector + '-enabled', 'test text long text test text long text test text ' +
-                'long text test text long text test text long text test text long text test text long text ');
-
-            // tests for disabled textarea
-            getDisabledSuite(test, textareaSelector + '-disabled');
-
-        });
-
     gemini.suite('clear-hover', function(suite) {
         var inputSelector = '.islands-clear-enabled';
 
         suite
             .setCaptureElements(inputSelector)
+            .capture('plain')
             .capture('hovered', function(actions, find) {
-                actions.mouseMove(find(inputSelector + ' .input__clear'), { x : 5, y : 5 });
+                actions
+                    .mouseMove(find(inputSelector + ' .input__clear'), { x : 5, y : 5 } )
+                    .wait(110);
             });
     });
 

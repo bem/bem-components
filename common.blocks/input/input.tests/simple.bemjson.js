@@ -23,12 +23,6 @@
             val : 'search',
             placeholder : 'query'
         } },
-        { content : {
-            block : 'input',
-            mods : { type : 'textarea' },
-            val : 'textarea',
-            placeholder : 'placeholder'
-        } },
 
         { tag : 'hr' },
 
@@ -60,12 +54,6 @@
             mods : { theme : 'simple', 'has-clear' : true, type : 'search' },
             val : 'search',
             placeholder : 'query'
-        } },
-        { content : {
-            block : 'input',
-            mods : { theme : 'simple', 'has-clear' : true, type : 'textarea' },
-            val : 'textarea',
-            placeholder : 'placeholder'
         } },
 
         { tag : 'hr' },
@@ -111,12 +99,6 @@
             val : 'search',
             placeholder : 'query'
         } },
-        { content : {
-            block : 'input',
-            mods : { theme : 'islands', 'has-clear' : true, size : 'm', type : 'textarea' },
-            val : 'textarea',
-            placeholder : 'textarea'
-        } },
 
         { tag : 'h3', content : 'label' },
         { tag : 'p', content : [
@@ -155,16 +137,6 @@
             mods : { theme : 'islands', 'has-clear' : true, size : 'xl' },
             val : 'size xl',
             placeholder : 'placeholder'
-        } },
-        { content : {
-            block : 'input',
-            mods : { theme : 'islands', size : 'm', type : 'textarea' },
-            val : 'textarea size m'
-        } },
-        { content : {
-            block : 'input',
-            mods : { theme : 'islands', size : 'l', type : 'textarea' },
-            val : 'textarea size l'
         } }
     ]
 });

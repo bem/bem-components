@@ -1,0 +1,51 @@
+.textarea_theme_simple
+{
+    position: relative;
+
+    display: inline-block;
+
+    .textarea__control
+    {
+        position: relative;
+
+        display: block;
+
+        font-family: inherit;
+        font-size: 100%;
+
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+
+        background: #fff;
+
+        border: 1px solid rgba(0, 0, 0, 0.3);
+
+        user-select: none;
+
+        -webkit-appearance: none;
+    }
+
+    &.textarea_disabled
+    {
+        opacity: 0.6;
+
+        .textarea__control
+        {
+            cursor: auto;
+        }
+    }
+
+    &.textarea_focused
+    {
+        .textarea__control
+        {
+            box-shadow: 0 0 5px 1px #fc0;
+
+            &:focus
+            {
+                outline: none;
+            }
+        }
+    }
+}

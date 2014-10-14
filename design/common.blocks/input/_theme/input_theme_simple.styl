@@ -2,8 +2,7 @@
 {
     display: inline-block;
 
-    .input__box,
-    &.input_type_textarea .input__control
+    .input__box
     {
         position: relative;
 
@@ -116,8 +115,7 @@
 
     &.input_focused
     {
-        .input__box,
-        &.input_type_textarea .input__control
+        .input__box
         {
             box-shadow: 0 0 5px 1px #fc0;
         }
@@ -126,31 +124,5 @@
     &.input_focused .input__control:focus
     {
         outline: none;
-    }
-
-    &.input_type_textarea
-    {
-        position: relative;
-
-        &.input_disabled
-        {
-            .input__control
-            {
-                resize: none;
-            }
-        }
-
-        &.input_has-clear
-        {
-            .input__clear
-            {
-                height: 18px;
-            }
-
-            .input__control
-            {
-                padding-right: 20px;
-            }
-        }
     }
 }

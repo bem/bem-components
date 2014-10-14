@@ -117,38 +117,6 @@
             ],
             cls : 'default-label-disabled'
         },
-        { tag : 'br' },
-        {
-            block : 'test',
-            content : {
-                block : 'input',
-                mods : { type : 'textarea', 'has-clear' : true },
-                val : 'value',
-                cls : 'default-textarea-val-enabled'
-            },
-            attrs : { style : 'padding-top: 5px;' }
-        },
-        { tag : 'br' },
-        { block : 'test', content : {
-            block : 'input',
-            mods : { type : 'textarea', 'has-clear' : true },
-            placeholder : 'placeholder',
-            cls : 'default-textarea-placeholder-enabled'
-        } },
-        { tag : 'br' },
-        { block : 'test', content : {
-            block : 'input',
-            mods : { type : 'textarea', 'has-clear' : true, disabled : true },
-            val : 'value',
-            cls : 'default-textarea-val-disabled'
-        } },
-        { tag : 'br' },
-        { block : 'test', content : {
-            block : 'input',
-            mods : { type : 'textarea', 'has-clear' : true, disabled : true },
-            placeholder : 'placeholder',
-            cls : 'default-textarea-placeholder-disabled'
-        } },
 
         { tag : 'hr' },
 
@@ -293,37 +261,6 @@
             ],
             cls : 'islands-label-disabled'
         },
-        [
-            {
-                block : 'input',
-                mods : { theme : 'islands', size : 'm', type : 'textarea', 'has-clear' : true },
-                val : 'value',
-                cls : 'islands-textarea-val-enabled'
-            },
-            {
-                block : 'input',
-                mods : { theme : 'islands', size : 'l', type : 'textarea', 'has-clear' : true },
-                placeholder : 'placeholder',
-                cls : 'islands-textarea-placeholder-enabled'
-            },
-            {
-                block : 'input',
-                mods : { theme : 'islands', size : 'm', type : 'textarea', 'has-clear' : true, disabled : true },
-                val : 'value',
-                cls : 'islands-textarea-val-disabled'
-            },
-            {
-                block : 'input',
-                mods : { theme : 'islands', size : 'l', type : 'textarea', 'has-clear' : true, disabled : true },
-                placeholder : 'placeholder',
-                cls : 'islands-textarea-placeholder-disabled'
-            }
-        ].map(function(block) {
-            return {
-                block : 'test',
-                content : block
-            };
-        }),
         {
             block : 'input',
             mods : { theme : 'islands', size : 'm', 'has-clear' : true },

@@ -21,6 +21,7 @@ var DEFAULT_LANGS = ['ru', 'en'],
     bhHtml = require('enb-bh/techs/html-from-bemjson'),
     copyFile = require('enb/techs/file-copy'),
     mergeFiles = require('enb/techs/file-merge'),
+    mergeBemdecl = require('enb-bem-techs/techs/merge-bemdecl'),
     borschik = require('enb-borschik/techs/borschik'),
     PLATFORMS = {
         'desktop' : ['common', 'desktop'],
@@ -145,7 +146,9 @@ module.exports = function(config) {
                 // Client techs
                 nodeConfig.addTechs([
                     [css, { target : '?.noprefix.css' }],
-                    [js],
+                    [js, {
+                        filesTarget : '?.js.files'
+                    }],
                     [mergeFiles, {
                         target : '?.pre.js',
                         sources : ['?.browser.bemhtml.js', '?.browser.js']
@@ -153,6 +156,28 @@ module.exports = function(config) {
                     [ym, {
                         source : '?.pre.js',
                         target : '?.js'
+                    }]
+                ]);
+
+                // js techs
+                nodeConfig.addTechs([
+                    [depsByTechToBemdecl, {
+                        target : '?.js-js.bemdecl.js',
+                        sourceTech : 'js',
+                        destTech : 'js'
+                    }],
+                    [mergeBemdecl, {
+                        sources : ['?.bemdecl.js', '?.js-js.bemdecl.js'],
+                        target : '?.js.bemdecl.js'
+                    }],
+                    [deps, {
+                        target : '?.js.deps.js',
+                        bemdeclFile : '?.js.bemdecl.js'
+                    }],
+                    [files, {
+                        depsFile : '?.js.deps.js',
+                        filesTarget : '?.js.files',
+                        dirsTarget : '?.js.dirs'
                     }]
                 ]);
 

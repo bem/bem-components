@@ -6,7 +6,7 @@ modules.define(
 var expect = chai.expect;
 
 describe('menu', function() {
-    var menu, menuItems;
+    var menu, menuItems, menu2, menuItems2;
 
     beforeEach(function() {
         menu = buildMenu({
@@ -32,6 +32,35 @@ describe('menu', function() {
             ]
         });
         menuItems = menu.findBlocksInside('menu-item');
+
+        menu2 = buildMenu({
+            block : 'menu',
+            content : [
+                {
+                    block : 'menu-item',
+                    content : 'first'
+                },
+                {
+                    block : 'menu-item',
+                    content : 'second'
+                },
+                {
+                    block : 'menu-item',
+                    mods : { disabled : true },
+                    content : 'third'
+                },
+                {
+                    block : 'menu-item',
+                    content : 'four'
+                },
+                {
+                    block : 'menu-item',
+                    content : 'fifth'
+                }
+            ]
+        });
+
+        menuItems2 = menu2.findBlocksInside('menu-item');
     });
 
     afterEach(function() {
@@ -92,6 +121,61 @@ describe('menu', function() {
             menuItems[3].hasMod('hovered').should.be.true; // cycle back (up)
         });
 
+        it('should select a item by pressing on a key', function() {
+            var TIMEOUT_KEYBOARD_SEARCH = 1500,
+                clock = sinon.useFakeTimers();
+
+            menu2.domElem.focus();
+
+            doKeyPress('S');
+            menuItems2[1].hasMod('hovered').should.be.true;
+
+            doKeyPress('F');
+            menuItems2[3].hasMod('hovered').should.be.false;
+
+            clock.tick(TIMEOUT_KEYBOARD_SEARCH + 1);
+
+            doKeyPresses('fif');
+            menuItems2[4].hasMod('hovered').should.be.true;
+
+            clock.restore();
+        });
+
+        it('should select a next item (starting with "f") by pressing on "f"', function() {
+            menu2.setMod('focused');
+
+            doKeyPress('F');
+            menuItems2[0].hasMod('hovered').should.be.true;
+
+            doKeyPress('f');
+            menuItems2[3].hasMod('hovered').should.be.true;
+
+            doKeyPress('F');
+            menuItems2[4].hasMod('hovered').should.be.true;
+
+            doKeyPress('f');
+            menuItems2[0].hasMod('hovered').should.be.true;
+        });
+
+        it('should not select a item by pressing a key with meta, ctrl or alt', function() {
+            menu2.domElem.focus();
+
+            doKeyPress('i', { metaKey : true });
+            menuItems2[0].hasMod('hovered').should.be.false;
+
+            doKeyPress('i', { altKey : true });
+            menuItems2[0].hasMod('hovered').should.be.false;
+
+            doKeyPress('i', { ctrlKey : true });
+            menuItems2[0].hasMod('hovered').should.be.false;
+
+            doKeyPress(0);
+            menuItems2[0].hasMod('hovered').should.be.false;
+
+            doKeyPress('f');
+            menuItems2[0].hasMod('hovered').should.be.true;
+        });
+
     });
 
     describe('events', function() {
@@ -118,6 +202,20 @@ provide();
 
 function doKeyDown(code) {
     $(document).trigger($.Event('keydown', { keyCode : code }));
+}
+
+function doKeyPress(char, keys) {
+    var obj = {
+        charCode : typeof char === 'string'? char.charCodeAt() : char
+    };
+
+    keys && $.extend(obj, keys);
+
+    $('body').trigger($.Event('keypress', obj));
+}
+
+function doKeyPresses(str) {
+    Array.prototype.forEach.call(str, doKeyPress);
 }
 
 function pressDownKey() {

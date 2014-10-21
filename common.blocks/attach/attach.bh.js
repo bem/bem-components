@@ -18,9 +18,9 @@ module.exports = function(bh) {
 
             var attachMods = ctx.mods(),
                 buttonMods = button.mods || (button.mods = {});
-            buttonMods['size'] || (buttonMods['size'] = attachMods['size']);
-            buttonMods['theme'] || (buttonMods['theme'] = attachMods['theme']);
-            buttonMods['disabled'] || (buttonMods['disabled'] = attachMods['disabled']);
+            ['size', 'theme', 'disabled', 'focused'].forEach(function(mod) {
+                buttonMods[mod] || (buttonMods[mod] = attachMods[mod]);
+            });
 
             ctx.content([
                 button,

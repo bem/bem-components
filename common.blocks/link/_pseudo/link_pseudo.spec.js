@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['link', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, Link, BEMDOM, $, BEMHTML) {
+    ['link', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon', 'keyboard__codes'],
+    function(provide, Link, BEMDOM, $, BEMHTML, sinon, keyCodes) {
 
 describe('link_pseudo', function() {
     var link;
@@ -24,6 +24,16 @@ describe('link_pseudo', function() {
         var e = $.Event('pointerclick');
         link.domElem.trigger(e);
         e.isDefaultPrevented().should.be.true;
+    });
+
+    it('should emit click on "enter" key when focused', function() {
+        var spy = sinon.spy();
+
+        link.setMod('focused');
+        link.on('click', spy);
+        link.domElem.trigger($.Event('keydown', { keyCode : keyCodes.ENTER }));
+
+        spy.should.have.been.calledOnce;
     });
 });
 

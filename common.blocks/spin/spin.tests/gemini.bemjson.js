@@ -15,7 +15,7 @@
                     { tag : 'br' },
                     {
                         block : 'spin',
-                        mods : { paused : true, theme : 'islands', progress : true, size : size },
+                        mods : { paused : true, theme : 'islands', visible : true, size : size },
                         cls : 'islands-' + size
                     }
                 ]

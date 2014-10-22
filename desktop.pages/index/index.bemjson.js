@@ -470,14 +470,14 @@
                             elem : 'cell',
                             content : {
                                 block : 'spin',
-                                mods : { theme : 'simple', progress : true }
+                                mods : { theme : 'simple', visible : true }
                             }
                         },
                         {
                             elem : 'cell',
                             content : {
                                 block : 'spin',
-                                mods : { theme : 'islands', size : 'm', progress : true }
+                                mods : { theme : 'islands', size : 'm', visible : true }
                             }
                         }
                     ]

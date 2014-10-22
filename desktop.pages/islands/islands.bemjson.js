@@ -143,7 +143,7 @@
                 {
                     block : 'button',
                     mods : { theme : 'islands', size : 's' },
-                    icon : { block : 'spin', mods : { theme : 'islands', size : 'xs', progress : true } },
+                    icon : { block : 'spin', mods : { theme : 'islands', size : 'xs', visible : true } },
                     text : 'Loading...'
                 },
                 ' ',
@@ -184,7 +184,7 @@
                 ' ',
                 {
                     block : 'spin',
-                    mods : { theme : 'islands', size : 's', progress : true }
+                    mods : { theme : 'islands', size : 's', visible : true }
                 }
             ]
         },
@@ -219,7 +219,7 @@
                 {
                     block : 'button',
                     mods : { theme : 'islands', size : 'm' },
-                    icon : { block : 'spin', mods : { theme : 'islands', size : 's', progress : true } },
+                    icon : { block : 'spin', mods : { theme : 'islands', size : 's', visible : true } },
                     text : 'Loading...'
                 },
                 ' ',
@@ -274,7 +274,7 @@
                 ' ',
                 {
                     block : 'spin',
-                    mods : { theme : 'islands', size : 'm', progress : true }
+                    mods : { theme : 'islands', size : 'm', visible : true }
                 }
             ]
         },
@@ -309,7 +309,7 @@
                 {
                     block : 'button',
                     mods : { theme : 'islands', size : 'l' },
-                    icon : { block : 'spin', mods : { theme : 'islands', size : 'm', progress : true } },
+                    icon : { block : 'spin', mods : { theme : 'islands', size : 'm', visible : true } },
                     text : 'Loading...'
                 },
                 ' ',
@@ -364,7 +364,7 @@
                 ' ',
                 {
                     block : 'spin',
-                    mods : { theme : 'islands', size : 'l', progress : true }
+                    mods : { theme : 'islands', size : 'l', visible : true }
                 }
             ]
         },
@@ -399,7 +399,7 @@
                 {
                     block : 'button',
                     mods : { theme : 'islands', size : 'xl' },
-                    icon : { block : 'spin', mods : { theme : 'islands', size : 'l', progress : true } },
+                    icon : { block : 'spin', mods : { theme : 'islands', size : 'l', visible : true } },
                     text : 'Loading...'
                 },
                 ' ',
@@ -440,7 +440,7 @@
                 ' ',
                 {
                     block : 'spin',
-                    mods : { theme : 'islands', size : 'xl', progress : true }
+                    mods : { theme : 'islands', size : 'xl', visible : true }
                 }
             ]
         }

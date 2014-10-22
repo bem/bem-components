@@ -20,7 +20,7 @@ Block supports the following themes:
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'simple', progress : true }
+    mods : { theme : 'simple', visible : true }
 }
 ```
 
@@ -29,7 +29,7 @@ Block supports the following themes:
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 'm', progress : true }
+    mods : { theme : 'islands', size : 'm', visible : true }
 }
 ```
 
@@ -74,40 +74,40 @@ See following examples:
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 'xs', progress : true }
+    mods : { theme : 'islands', size : 'xs', visible : true }
 }
 ```
 
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 's', progress : true }
+    mods : { theme : 'islands', size : 's', visible : true }
 }
 ```
 
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 'm', progress : true }
+    mods : { theme : 'islands', size : 'm', visible : true }
 }
 ```
 
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 'l', progress : true }
+    mods : { theme : 'islands', size : 'l', visible : true }
 }
 ```
 
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 'xl', progress : true }
+    mods : { theme : 'islands', size : 'xl', visible : true }
 }
 ```
 
 ### States of a block
 
-#### _progress
+#### _visible
 
-`progress` modifier with `true` value activates the spin. If `progress` modifier is not specified, rotation is paused and `spin` block is hidden from the page.
+`visible` modifier with `true` value activates the spin. If `visible` modifier is not specified, rotation is paused and `spin` block is hidden from the page.

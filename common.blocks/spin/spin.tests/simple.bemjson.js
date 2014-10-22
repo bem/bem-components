@@ -9,7 +9,7 @@
         { tag : 'h2', content : 'simple' },
         { tag : 'p', content : {
             block : 'spin',
-            mods : { theme : 'simple', size : 's', progress : true }
+            mods : { theme : 'simple', size : 's', visible : true }
         } },
 
         { tag : 'hr' },
@@ -20,35 +20,35 @@
             'xs ',
             {
                 block : 'spin',
-                mods : { theme : 'islands', size : 'xs', progress : true }
+                mods : { theme : 'islands', size : 'xs', visible : true }
             }
         ] },
         { tag : 'p', content : [
             's ',
             {
                 block : 'spin',
-                mods : { theme : 'islands', size : 's', progress : true }
+                mods : { theme : 'islands', size : 's', visible : true }
             }
         ] },
         { tag : 'p', content : [
             'm ',
             {
                 block : 'spin',
-                mods : { theme : 'islands', size : 'm', progress : true }
+                mods : { theme : 'islands', size : 'm', visible : true }
             }
         ] },
         { tag : 'p', content : [
             'l ',
             {
                 block : 'spin',
-                mods : { theme : 'islands', size : 'l', progress : true }
+                mods : { theme : 'islands', size : 'l', visible : true }
             }
         ] },
         { tag : 'p', content : [
             'xl ',
             {
                 block : 'spin',
-                mods : { theme : 'islands', size : 'xl', progress : true }
+                mods : { theme : 'islands', size : 'xl', visible : true }
             }
         ] }
     ]

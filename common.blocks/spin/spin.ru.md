@@ -20,7 +20,7 @@
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'simple', progress : true }
+    mods : { theme : 'simple', visible : true }
 }
 ```
 
@@ -29,7 +29,7 @@
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 's', progress : true }
+    mods : { theme : 'islands', size : 's', visible : true }
 }
 ```
 
@@ -76,7 +76,7 @@
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 'xs', progress : true }
+    mods : { theme : 'islands', size : 'xs', visible : true }
 }
 ```
 
@@ -85,7 +85,7 @@
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 's', progress : true }
+    mods : { theme : 'islands', size : 's', visible : true }
 }
 ```
 
@@ -94,7 +94,7 @@
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 'm', progress : true }
+    mods : { theme : 'islands', size : 'm', visible : true }
 }
 ```
 
@@ -103,7 +103,7 @@
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 'l', progress : true }
+    mods : { theme : 'islands', size : 'l', visible : true }
 }
 ```
 
@@ -112,12 +112,12 @@
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 'xl', progress : true }
+    mods : { theme : 'islands', size : 'xl', visible : true }
 }
 ```
 
-### Вращение прелоадера `_progress`
+### Вращение прелоадера `_visible`
 
-Модификатор `progress` в значении `true` задает вращение прелоадера и показывает его на странице.
+Модификатор `visible` в значении `true` задает вращение прелоадера и показывает его на странице.
 
 Отсутствие модификатора останавливает блок и скрывает его со страницы.

@@ -4,11 +4,10 @@
 
 В HTML представлен тегом `<img>`.
 
-
 ```bemjson
 {
     block : 'image',
-    url : 'http://bem.info/m/_/20zuV2gLiyoaqrHv9LoBRTmB0Ow.svg',
+    url : 'http://bem.info/m/_/IvuRSFeBStMXdBhBrBvKagSd5sE.svg',
     width : 100,
     height : 100,
     alt : 'BEM',
@@ -55,5 +54,3 @@
         <td>Значения, которые будут переданы в одноименные атрибуты картинки.</td>
     </tr>
 </table>
-
-При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле `attrs` в BEMJSON.

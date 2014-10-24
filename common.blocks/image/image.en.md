@@ -5,7 +5,7 @@
 ```bemjson
 {
     block : 'image',
-    url : 'http://bem.info/m/_/20zuV2gLiyoaqrHv9LoBRTmB0Ow.svg',
+    url : 'http://bem.info/m/_/IvuRSFeBStMXdBhBrBvKagSd5sE.svg',
     width : 100,
     height : 100,
     alt : 'BEM',
@@ -52,5 +52,3 @@ The following custom fields could be specified in BEMJSON declaration of the blo
         <td>Values ​​that will be transferred to image attributes with the same names.</td>
     </tr>
 </table>
-
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.

@@ -4,8 +4,8 @@
 
 modules.define(
     'attach',
-    ['i-bem__dom', 'control', 'jquery', 'BEMHTML', 'strings__escape'],
-    function(provide, BEMDOM, Control, $, BEMHTML, escape) {
+    ['i-bem__dom', 'i-bem__internal', 'control', 'jquery', 'strings__escape'],
+    function(provide, BEMDOM, INTERNAL, Control, $, escape) {
 
 /**
  * @exports
@@ -29,17 +29,17 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
     clear : function(data) {
         if(!this.getVal()) return this;
 
-        var control = this.elem('control');
+        var control = this.elem('control'),
+            name = control.attr('name'),
+            tabIndex = control.attr('tabindex');
         BEMDOM.replace(
             control,
-            BEMHTML.apply({
-                block : 'attach',
-                elem : 'control',
-                attrs : {
-                    name : control.attr('name'),
-                    tabindex : control.attr('tabindex')
-                }
-            }));
+            '<input' +
+                ' class="' + control.attr('class') + '"' +
+                ' type="file"' +
+                (name? ' name="' + name + '"' : '') +
+                (tabIndex? ' tabindex="' + tabIndex + '"' : '') +
+            '/>');
 
         BEMDOM.destruct(this.elem('file'));
 
@@ -72,18 +72,19 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
 
         BEMDOM.append(
             this.domElem,
-            BEMHTML.apply({
-                block : 'attach',
-                elem : 'file',
-                content : [
-                    {
-                        block : 'icon',
-                        mods : { file : extractExtensionFromFileName(fileName) }
-                    },
-                    { elem : 'text', content : escape.html(fileName) },
-                    { elem : 'clear' }
-                ]
-            }));
+            '<span class="' +
+                this.__self.buildClass('file') + '">' +
+                '<i class="' +
+                    INTERNAL.buildClasses(
+                        'icon',
+                        { file : extractExtensionFromFileName(fileName) }) +
+                '"/>' +
+                '<span class="' +
+                    this.__self.buildClass('text') + '">' +
+                    escape.html(fileName) +
+                '</span>' +
+                '<i class="' + this.__self.buildClass('clear') + '"/>' +
+            '</span>');
 
         return this.dropElemCache('file');
     },

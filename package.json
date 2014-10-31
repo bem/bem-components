@@ -19,7 +19,7 @@
   "devDependencies": {
     "bem": "~0.9.0",
     "bem-tools-autoprefixer": "~0.0.3",
-    "bh": "3.1.1",
+    "bh": "3.2.0",
     "bower-npm-install": "~0.5.4",
     "bower": "1.3.12",
     "csscomb": "~2.0.0",

@@ -141,13 +141,6 @@
                 },
                 ' ',
                 {
-                    block : 'button',
-                    mods : { theme : 'islands', size : 's' },
-                    icon : { block : 'spin', mods : { theme : 'islands', size : 'xs', visible : true } },
-                    text : 'Loading...'
-                },
-                ' ',
-                {
                     block : 'radio-group',
                     mods : { theme : 'islands', size : 's', type : 'button' },
                     name : 'radio-sizes-s',
@@ -214,13 +207,6 @@
                     mods : { theme : 'islands', size : 'm' },
                     text : 'button',
                     icon : { block : 'icon', mods : { action : 'download' } }
-                },
-                ' ',
-                {
-                    block : 'button',
-                    mods : { theme : 'islands', size : 'm' },
-                    icon : { block : 'spin', mods : { theme : 'islands', size : 's', visible : true } },
-                    text : 'Loading...'
                 },
                 ' ',
                 {
@@ -307,13 +293,6 @@
                 },
                 ' ',
                 {
-                    block : 'button',
-                    mods : { theme : 'islands', size : 'l' },
-                    icon : { block : 'spin', mods : { theme : 'islands', size : 'm', visible : true } },
-                    text : 'Loading...'
-                },
-                ' ',
-                {
                     block : 'radio-group',
                     mods : { theme : 'islands', size : 'l', type : 'button' },
                     name : 'radio-sizes-l',
@@ -394,13 +373,6 @@
                     mods : { theme : 'islands', size : 'xl' },
                     text : 'button',
                     icon : { block : 'icon', mods : { action : 'download' } }
-                },
-                ' ',
-                {
-                    block : 'button',
-                    mods : { theme : 'islands', size : 'xl' },
-                    icon : { block : 'spin', mods : { theme : 'islands', size : 'l', visible : true } },
-                    text : 'Loading...'
                 },
                 ' ',
                 {

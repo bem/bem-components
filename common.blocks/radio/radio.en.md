@@ -12,7 +12,7 @@ Block is used to create a single radio switch.
 | <a href=#checked>checked</a> | <code>true</code> | | Defines that radio switch is selected. |
 | <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | In focus. |
 | <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Makes block unavailabe. |
-| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Switch size. |
+| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Radio switch size. |
 | <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Styling. |
 
 ### Custom fields of a block

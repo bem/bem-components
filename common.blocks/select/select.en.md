@@ -10,7 +10,7 @@ Block is used to create a drop-down list.
 | ----------- | ------------------- | -------------------- | -------- |
 | <a href=#mode>mode</a> | <code>'check'</code>, <code>'radio'</code>, <code>'radio-check'</code> | | Type of select. |
 | <a href=#width>width</a> | <code>'available'</code> | | Width of select button. |
-| <a href=#focused>focused</a> | <code>true</code> | | In focus. |
+| <a href=#focused>focused</a> | <code>true</code> | BEMJSON | In focus. |
 | <a href=#theme>theme</a> | <code>'custom'</code>, <code>'simple'</code>, <code>'normal'</code> | <code>BEMJSON</code> | Styling. |
 
 ### Custom fields of a block
@@ -135,7 +135,7 @@ Example:
 
 Valid value: true.
 
-Use cases:
+Use cases: BEMJSON.
 
 When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
 
@@ -233,9 +233,9 @@ Defines maximum width of button from `select` block. `popup` width depends on wi
 
 Defines maximum height of `popup`. If all `menu-items` cannot be fit within `popup`, scroll element appears. If value of `optionsMaxHeight` attribute is not specified, height of `popup` depends on total height of all `menu-items`.
 
-## Elements of a block
+#### Elements of a block
 
-### __button
+##### __button
 
 `select` block is visually represented by a button (block [button](../button/button.en.md)) that contains an icon `<i>` (block [icon](../icon/icon.en.md)) with mixed element `tick`. Size of the icon is specified by `button` block size. Clicking the button opens popup with options.
 
@@ -261,7 +261,7 @@ The following modifiers of a button could be propagated to `select` block:
 }
 ```
 
-## __menu
+##### __menu
 
 `menu` element allows user to manage `menu-items` within selection list:
 
@@ -323,6 +323,6 @@ The following modifiers of a button could be propagated to `select` block:
 }
 ```
 
-## __control
+##### __control
 
 `control` element is added to the block on template engine level and used to draw `menu-item`s in `popup`.

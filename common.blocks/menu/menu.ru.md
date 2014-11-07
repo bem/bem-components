@@ -11,7 +11,7 @@
 | <a href=#mode>mode</a> | <code>'menu_mode_radio'</code>, <code>'menu_mode_radio-check'</code>, <code>'menu_mode_check'</code> | | Определяет тип меню. |
 | <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | В фокусе. |
 | <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Делает блок недоступным. |
-| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Размер радиопереключателя. |
+| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Размер блока. |
 | <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 
 ### Описание

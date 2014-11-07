@@ -10,7 +10,7 @@ Block is used to create a drop-down list.
 | ----------- | ------------------- | -------------------- | -------- |
 | <a href=#mode>mode</a> | <code>'check'</code>, <code>'radio'</code>, <code>'radio-check'</code> | | Type of select. |
 | <a href=#width>width</a> | <code>'available'</code> | | Width of select button. |
-| <a href=#focused>focused</a> | <code>true</code> | BEMJSON | In focus. |
+| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | In focus. |
 | <a href=#theme>theme</a> | <code>'custom'</code>, <code>'simple'</code>, <code>'normal'</code> | <code>BEMJSON</code> | Styling. |
 
 ### Custom fields of a block
@@ -133,9 +133,9 @@ Example:
 <a name="focused"></a>
 ##### `focused`
 
-Valid value: true.
+Valid value: `true`.
 
-Use cases: BEMJSON.
+Use cases: `BEMJSON`.
 
 When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
 

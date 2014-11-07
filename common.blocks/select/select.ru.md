@@ -8,21 +8,21 @@
 
 | Модификатор | Допустимые значения | Способы использования | Описание |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 | <a href=#mode>mode</a> | <code>'check'</code>, <code>'radio'</code>, <code>'radio-check'</code> | | Тип переключателя. |
 | <a href=#width>width</a> | <code>'available'</code> | | Ширина кнопки селекта. |
 | <a href=#focused>focused</a> | <code>true</code> | | В фокусе. |
+| <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 
 ### Специализированные поля блока
 
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
 | <a href=#name>name</a> | <code>String</code> | Задает имя выпадающего списка. |
+| <a href=#text>text</a> | <code>String</code> | Задает значение раскрывающегося списка выбора в случае, если ни один из пунктов не отмечен.  Применяется только для селектов с модификатором `mode` установленным в значение `check` или `radio-check`. |
 | <a href=#id>id</a> | <code>String</code> | Задает уникальный идентификатор селекта. |
 | <a href=#options>options</a> | <code>BEMJSON</code> | Задает массив пунктов списка. Каждый пункт имеет обязательный атрибут `val`, реализованный скрытым элементом `control`. |
 | <a href=#textmaxwidth>textMaxWidth</a> | <code>String</code> | Устанавливает максимальную ширину кнопки селекта. Ширина раскрывающегося списка при этом определяется самым широким текстом пункта или корректируется с помощью стилей. |
 | <a href=#optionsmaxheight>optionsMaxHeight</a> | <code>String</code> | Устанавливает максимальную высоту выпадающего списка. Если все пункты списка не вмещаются, появляется скролл. Если значение не указано, высота выпадающего списка по умолчанию будет вычисляться в зависимости от количества пунктов. |
-| <a href=#text>text</a> | <code>String</code> | Задает значение раскрывающегося списка выбора в случае, если ни один из пунктов не отмечен.  Применяется только для селектов с модификатором `mode` установленным в значение `check` или `radio-check`. |
 
 ### Описание
 
@@ -37,63 +37,6 @@
 ### Обзор блока
 
 #### Модификаторы блока
-
-<a name="theme"></a>
-##### Модификатор `theme`
-
-Допустимые значения: `'simple'`, `'islands'`.
-
-Способ использования: `BEMJSON`.
-
-Если модификатор `theme` не указан, отображается [кастомная](#custom) реализация контрола без применения стилей.
-
-Примеры:
-
-<a name="custom"></a>
-**custom**
-
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'radio' },
-    name : 'select1',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
-        { val : 3, text : 'third' }
-    ]
-}
-```
-
-**simple**
-
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'radio', theme : 'simple' },
-    name : 'select1',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
-        { val : 3, text : 'third' }
-    ]
-}
-```
-
-**islands**
-
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'radio', theme : 'islands', size : 'm' },
-    name : 'select1',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
-        { val : 3, text : 'third' }
-    ]
-}
-```
 
 <a name="mode"></a>
 ##### Модификатор `mode`
@@ -191,37 +134,94 @@
 
 Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
 
+<a name="theme"></a>
+##### Модификатор `theme`
+
+Допустимые значения: `'simple'`, `'islands'`.
+
+Способ использования: `BEMJSON`.
+
+Если модификатор `theme` не указан, отображается [кастомная](#custom) реализация контрола без применения стилей.
+
+Примеры:
+
+<a name="custom"></a>
+**custom**
+
+```bemjson
+{
+    block : 'select',
+    mods : { mode : 'radio' },
+    name : 'select1',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second', checked : true },
+        { val : 3, text : 'third' }
+    ]
+}
+```
+
+**simple**
+
+```bemjson
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'simple' },
+    name : 'select1',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second', checked : true },
+        { val : 3, text : 'third' }
+    ]
+}
+```
+
+**islands**
+
+```bemjson
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second', checked : true },
+        { val : 3, text : 'third' }
+    ]
+}
+```
+
 #### Специализированные поля блока
 
 <a name="name"></a>
-##### `name`
+#### `name`
 
 Задает имя выпадающего списка.
 
+<a name="text"></a>
+#### `text`
+
+Задает значение раскрывающегося списка выбора в случае, если ни один из пунктов не отмечен. Применяется только для селектов с модификатором `mode` установленным в значение `check` или `radio-check`.
+
 <a name="id"></a>
-##### `id`
+#### `id`
 
 Задает уникальный идентификатор селекта.
 
 <a name="options"></a>
-##### `options`
+#### `options`
 
 Задает массив пунктов списка. Каждый пункт имеет обязательный атрибут `val`, реализованный скрытым элементом `control`.
 
 <a name="textmaxwidth"></a>
-##### `textMaxWidth`
+#### `textMaxWidth`
 
 Устанавливает максимальную ширину кнопки селекта. Ширина раскрывающегося списка при этом определяется самым широким текстом пункта или корректируется с помощью стилей.
 
 <a name="optionsmaxheight"></a>
-##### `optionsMaxHeight`
+#### `optionsMaxHeight`
 
 Устанавливает максимальную высоту выпадающего списка. Если все пункты списка не вмещаются, появляется скролл. Если значение не указано, высота выпадающего списка по умолчанию будет вычисляться в зависимости от количества пунктов.
-
-<a name="text"></a>
-##### `text`
-
-Задает значение раскрывающегося списка выбора в случае, если ни один из пунктов не отмечен. Применяется только для селектов с модификатором `mode` установленным в значение `check` или `radio-check`.
 
 #### Элементы блока
 

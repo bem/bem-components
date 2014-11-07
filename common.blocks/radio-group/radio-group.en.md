@@ -12,7 +12,7 @@ The block is a set of related radio switches (block [radio](../radio/radio.en.md
 | <a href=#mode>mode</a> | <code>'radio-check'</code> | | Allows to choose one element or none. |
 | <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | In focus. |
 | <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Makes block unavailable. |
-| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Radio switcher size. |
+| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Radio switch size. |
 | <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Styling. |
 
 ### Custom fields of a block

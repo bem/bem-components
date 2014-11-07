@@ -10,7 +10,7 @@
 | ----------- | ------------------- | -------------------- | -------- |
 | <a href=#mode>mode</a> | <code>'check'</code>, <code>'radio'</code>, <code>'radio-check'</code> | | Тип переключателя. |
 | <a href=#width>width</a> | <code>'available'</code> | | Ширина кнопки селекта. |
-| <a href=#focused>focused</a> | <code>true</code> | BEMJSON | В фокусе. |
+| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | В фокусе. |
 | <a href=#theme>theme</a> | <code>'custom'</code>, <code>'simple'</code>, <code>'normal'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 
 ### Специализированные поля блока
@@ -128,9 +128,9 @@
 <a name="focused"></a>
 ##### Модификатор `focused`
 
-Допустимое значение: true.
+Допустимое значение: `true`.
 
-Способ использования: BEMJSON.
+Способ использования: `BEMJSON`.
 
 Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
 

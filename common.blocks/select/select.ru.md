@@ -11,7 +11,7 @@
 | <a href=#mode>mode</a> | <code>'check'</code>, <code>'radio'</code>, <code>'radio-check'</code> | | Тип переключателя. |
 | <a href=#width>width</a> | <code>'available'</code> | | Ширина кнопки селекта. |
 | <a href=#focused>focused</a> | <code>true</code> | | В фокусе. |
-| <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
+| <a href=#theme>theme</a> | <code>'custom'</code>, <code>'simple'</code>, <code>'normal'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 
 ### Специализированные поля блока
 
@@ -141,6 +141,11 @@
 
 Способ использования: `BEMJSON`.
 
+Блок представлен в следующих темах:
+
+* simple
+* normal (**Важно**: При выборе темы `normal` необходимо указывать обязательный модификатор `size`)
+
 Если модификатор `theme` не указан, отображается [кастомная](#custom) реализация контрола без применения стилей.
 
 Примеры:
@@ -176,12 +181,12 @@
 }
 ```
 
-**islands**
+**normal**
 
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    mods : { mode : 'radio', theme : 'normal', size : 'm' },
     name : 'select1',
     options : [
         { val : 1, text : 'first' },

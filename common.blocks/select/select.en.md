@@ -11,7 +11,7 @@ Block is used to create a drop-down list.
 | <a href=#mode>mode</a> | <code>'check'</code>, <code>'radio'</code>, <code>'radio-check'</code> | | Type of select. |
 | <a href=#width>width</a> | <code>'available'</code> | | Width of select button. |
 | <a href=#focused>focused</a> | <code>true</code> | | In focus. |
-| <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Styling. |
+| <a href=#theme>theme</a> | <code>'custom'</code>, <code>'simple'</code>, <code>'normal'</code> | <code>BEMJSON</code> | Styling. |
 
 ### Custom fields of a block
 
@@ -146,7 +146,12 @@ Valid values: `'simple'`, `'islands'`.
 
 Use case: `BEMJSON`.
 
-If theme modifier is not specified, [custom](#custom) representation of a control is applied (without CSS styles).
+Block supports the following themes:
+
+* simple
+* normal (**NB**: Choosing a theme `normal` requires additional modifier `size`)
+
+If `theme` modifier is not specified, [custom](#custom) representation of a control is applied (without CSS styles).
 
 Examples:
 
@@ -181,12 +186,12 @@ Examples:
 }
 ```
 
-**islands**
+**normal**
 
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    mods : { mode : 'radio', theme : 'normal', size : 'm' },
     name : 'select1',
     options : [
         { val : 1, text : 'first' },

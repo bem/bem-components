@@ -1,6 +1,22 @@
 # menu
 
-`menu` block is used to create various types of selects and menu lists. It allows a user to manage state, behavior and appearance of `menu` block and its nested components – [menu-item](../menu-item/menu-item.md) blocks.
+The block is used to create various types of selects and menu lists.
+
+## Short information
+
+### Modifiers of a block
+
+| Modifier | Valid values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href=#mode>mode</a> | <code>'menu_mode_radio'</code>, <code>'menu_mode_radio-check'</code>, <code>'menu_mode_check'</code> | | Declares menu type. |
+| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | In focus. |
+| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Makes block unavailable. |
+| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Block size. |
+| <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Styling. |
+
+### Description
+
+The block allows a user to manage state, behavior and appearance of `menu` and its nested components – [menu-item](../menu-item/menu-item.md) blocks.
 
 Block is represented as `<div>` HTML element with `role="menu"` attribute value.
 
@@ -11,202 +27,18 @@ The following types of `menu` are available:
 * single-choice list (`menu_mode_radio-check`);
 * multiple-choice list (`menu_mode_check`).
 
-For details see [`mode`](#types) section.
+For details see [`mode`](#mode) section.
 
-## Modifiers of a block
+### Block overview
 
-### _theme
+#### Modifiers of a block
 
-Block supports the following themes:
+<a name="mode"></a>
+##### `mode`
 
- * simple
- * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
+Valid values: `'menu_mode_radio'`, `'menu_mode_radio-check'`, `'menu_mode_check'`.
 
-If `theme` modifier is not specified, [native](#native) representation of a control is applied.
-
-See following examples:
-
-<a name="native"></a>
-**default**
-
-```bemjson
-{
-    block : 'menu',
-    mods : { mode : 'check' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-**simple**
-
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'simple', mode : 'check' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-**islands**
-
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'islands', size : 'm', mode : 'check' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-<a name="size"></a>
-### _size
-
-Implemented only for theme `islands`.
-
-Provides to all types of menus with the `size` value.
-
-There are four sizes available: **s**, **m**, **l**, **xl**.
-
-<table>
-    <tr>
-        <th>Block size</th>
-        <th>Font size</th>
-        <th>Line height <code>line-heigh</code></th>
-    </tr>
-    <tr>
-        <td>s</td>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <td>m</td>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <td>l</td>
-        <td>15px</td>
-        <td>28px</td>
-    </tr>
-    <tr>
-        <td>xl</td>
-        <td>15px</td>
-        <td>32px</td>
-    </tr>
-</table>
-
-See following examples:
-
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'islands', mode : 'check', size : 's' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'islands', mode : 'check', size : 'm' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'islands', mode : 'check', size : 'l' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'islands', mode : 'check', size : 'xl' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-<a name="types"></a>
-### _mode
+Use case:
 
 Use `mode` modifier to define a type of menu list:
 
@@ -296,23 +128,228 @@ Use `mode` modifier to define a type of menu list:
 }
 ```
 
-### States of a block
+<a name="focused"></a>
+##### `focused`
 
-#### _disabled
+Valid value: `true`.
+
+Use case: `BEMJSON`.
+
+When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
+
+<a name="disabled"></a>
+##### `disabled`
+
+Valid value: `true`.
+
+Use case: `BEMJSON`, `JS`.
 
 `disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
 
 If `menu` block is disabled, all nested `menu-item` blocks are also disabled.
 
-#### _focused
+<a name="size"></a>
+##### `size`
 
-When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.
+Valid values: `'s'`, `'m'`, `'l'`, `'xl'`.
 
-## Elements of a block
+Use case: `BEMJSON`.
+
+Implemented only for theme `islands`.
+
+Provides to all types of menus with the `size` value.
+
+<table>
+    <tr>
+        <th>Block size</th>
+        <th>Font size</th>
+        <th>Line height <code>line-heigh</code></th>
+    </tr>
+    <tr>
+        <td>s</td>
+        <td>13px</td>
+        <td>24px</td>
+    </tr>
+    <tr>
+        <td>m</td>
+        <td>13px</td>
+        <td>24px</td>
+    </tr>
+    <tr>
+        <td>l</td>
+        <td>15px</td>
+        <td>28px</td>
+    </tr>
+    <tr>
+        <td>xl</td>
+        <td>15px</td>
+        <td>32px</td>
+    </tr>
+</table>
+
+Examples:
+
+```bemjson
+{
+    block : 'menu',
+    mods : { theme : 'islands', mode : 'check', size : 's' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'First item'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Second item'
+        }
+    ]
+}
+```
+
+```bemjson
+{
+    block : 'menu',
+    mods : { theme : 'islands', mode : 'check', size : 'm' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'First item'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Second item'
+        }
+    ]
+}
+```
+
+```bemjson
+{
+    block : 'menu',
+    mods : { theme : 'islands', mode : 'check', size : 'l' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'First item'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Second item'
+        }
+    ]
+}
+```
+
+```bemjson
+{
+    block : 'menu',
+    mods : { theme : 'islands', mode : 'check', size : 'xl' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'First item'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Second item'
+        }
+    ]
+}
+```
+
+<a name="theme"></a>
+##### `theme`
+
+Valid values: `'simple'`, `'islands'`.
+
+Use case: `BEMJSON`.
+
+Block supports the following themes:
+
+ * simple
+ * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size))
+
+If `theme` modifier is not specified, [native](#native) representation of a control is applied.
+
+Examples:
+
+<a name="native"></a>
+**default**
+
+```bemjson
+{
+    block : 'menu',
+    mods : { mode : 'check' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'First item'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Second item'
+        }
+    ]
+}
+```
+
+**simple**
+
+```bemjson
+{
+    block : 'menu',
+    mods : { theme : 'simple', mode : 'check' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'First item'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Second item'
+        }
+    ]
+}
+```
+
+**islands**
+
+```bemjson
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'check' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'First item'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Second item'
+        }
+    ]
+}
+```
+
+#### Elements of a block
 
 `menu` block is visually represented by the following elements:
 
-### __group
+##### __group
 
 `__group` element is used to combine several `menu-items` blocks into the group. All `menu-items` from one group must be declared in BEMJSON in `content` field of `group` element.
 
@@ -353,7 +390,7 @@ For a theme `islands` a gray line separates groups from each other.
 }
 ```
 
-### __group-title
+##### __group-title
 
 This element is used to set titles for menu items group.
 

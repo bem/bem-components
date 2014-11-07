@@ -104,7 +104,7 @@ For `menu-item` blocks nested in `menu` block `checked` state can be set on mous
 
 ### _disabled
 
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
+`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing `Tab`, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
 
 ```bemjson
 {

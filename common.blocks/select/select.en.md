@@ -24,7 +24,7 @@ Block is used to create a drop-down list.
 | <a href=#textmaxwidth>textMaxWidth</a> | <code>String</code> | Defines maximum width of button from `select` block. `popup` width depends on width of `menu-item` text. It could be defined also using CSS styles. |
 | <a href=#optionsmaxheight>optionsMaxHeight</a> | <code>String</code> | Defines maximum height of `popup`. If all `menu-items` cannot be fit within `popup`, scroll element appears. If value of `optionsMaxHeight` attribute is not specified, height of `popup` depends on total height of all `menu-items`. |
 
-### Description
+## Block overview
 
 The block allows a user to set up different types of popups with menu-items list for selection. `select` is based on the following blocks:
 
@@ -41,11 +41,9 @@ Dropdown list allows user to choose:
 * a single, multiple or none values from the list ([`select_mode_check`](#multiple-choice));
 * a single or none values from the list ([`select_mode_radio-check`](#single-choice)).
 
-### Block overview
+### Modifiers of a block
 
-#### Modifiers of a block
-
-##### `mode`
+#### `mode`
 
 Valid values: `'radio'`, `'check`, `'radio-check'`.
 
@@ -106,7 +104,7 @@ Examples:
 ```
 
 <a name="width"></a>
-##### `width`
+#### `width`
 
 Valid value: `'available'`.
 
@@ -131,7 +129,7 @@ Example:
 ```
 
 <a name="focused"></a>
-##### `focused`
+#### `focused`
 
 Valid value: `true`.
 
@@ -140,7 +138,7 @@ Use cases: `BEMJSON`.
 When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
 
 <a name="theme"></a>
-##### `theme`
+#### `theme`
 
 Valid values: `'simple'`, `'islands'`.
 
@@ -201,7 +199,7 @@ Examples:
 }
 ```
 
-#### Custom fields of a block
+### Custom fields of a block
 
 <a name="name"></a>
 #### `name`
@@ -233,9 +231,9 @@ Defines maximum width of button from `select` block. `popup` width depends on wi
 
 Defines maximum height of `popup`. If all `menu-items` cannot be fit within `popup`, scroll element appears. If value of `optionsMaxHeight` attribute is not specified, height of `popup` depends on total height of all `menu-items`.
 
-#### Elements of a block
+### Elements of a block
 
-##### __button
+#### __button
 
 `select` block is visually represented by a button (block [button](../button/button.en.md)) that contains an icon `<i>` (block [icon](../icon/icon.en.md)) with mixed element `tick`. Size of the icon is specified by `button` block size. Clicking the button opens popup with options.
 
@@ -261,7 +259,7 @@ The following modifiers of a button could be propagated to `select` block:
 }
 ```
 
-##### __menu
+#### __menu
 
 `menu` element allows user to manage `menu-items` within selection list:
 
@@ -323,6 +321,6 @@ The following modifiers of a button could be propagated to `select` block:
 }
 ```
 
-##### __control
+#### __control
 
 `control` element is added to the block on template engine level and used to draw `menu-item`s in `popup`.

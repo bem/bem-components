@@ -2,9 +2,7 @@
 
 The block is used as a graphical element in other blocks.
 
-## Short information
-
-### Description
+## Block overview
 
 This is an `<i>`-based block for using as a graphical element in other blocks, not for independent usage. Icon is set as `background` property and unables to display fallback text if some problems with styles occure.
 

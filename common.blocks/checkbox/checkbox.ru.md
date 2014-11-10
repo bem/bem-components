@@ -12,6 +12,7 @@
 | <a href=#checked>checked</a> | <code>true</code> | | Указывает, что чекбокс отмечен. |
 | <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | В фокусе. |
 | <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Делает блок недоступным. |
+| <a href=#size>size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | Размер шрифта. |
 | <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 
 ### Специализированные поля блока
@@ -135,6 +136,56 @@
     mods : { theme : 'islands', size : 'm', type : 'button', disabled : true }
 }
 ```
+<a name="size"></a>
+#### Модификатор `size`
+
+Допустимые значения: `'m'`, `'l'`.
+
+Способ использования: `BEMJSON`.
+
+Задает размер шрифта.
+
+Модификатор реализован только в теме `islands`.
+
+<table>
+    <tr>
+        <th>Размер<br>блока</th>
+        <th>Размер<br>шрифта</th>
+        <th>Высота строки<br>элемента <code>__box</code></th>
+    </tr>
+    <tr>
+        <th>m</th>
+        <td>13px</td>
+        <td>14px</td>
+    </tr>
+    <tr>
+        <th>l</th>
+        <td>15px</td>
+        <td>17px</td>
+    </tr>
+</table>
+
+Примеры:
+
+```bemjson
+{
+    block : 'checkbox',
+    text : 'размер M',
+    name: 'name2',
+    val: '2',
+    mods : { theme : 'normal', size : 'm' }
+}
+```
+
+```bemjson
+{
+    block : 'checkbox',
+    text : 'размер L',
+    name: 'name3',
+    val: '3',
+    mods : { theme : 'normal', size : 'l' }
+}
+```
 
 <a name="theme"></a>
 #### Модификатор `theme`
@@ -146,7 +197,7 @@
 Блок представлен в следующих темах:
 
  * simple
- * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор `size`)
+ * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [`size`](#size))
 
 Без указания модификатора темы отображается [нативный](#native) вид контрола.
 

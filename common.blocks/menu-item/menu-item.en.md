@@ -22,18 +22,16 @@ The block is used as independent switch element to form dropdowns, tab menus, li
 
 Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
 
-### Description
+## Block overview
 
 `menu-item` block allows to manage state, content and type of menu items.
 
 Block is represented as `<div>` HTML element with `role="menuitem"` attribute.
 
-### Block overview
-
-#### Modifiers of a block
+### Modifiers of a block
 
 <a name="type"></a>
-##### `type`
+#### `type`
 
 Valid values: `'link'`.
 
@@ -57,7 +55,7 @@ Example:
 ```
 
 <a name="checked"></a>
-##### `checked`
+#### `checked`
 
 Valid value: `true`.
 
@@ -78,7 +76,7 @@ Example:
 For `menu-item` blocks nested in `menu` block `checked` state can be set on mouse click automatically.
 
 <a name="hovered"></a>
-##### `hovered`
+#### `hovered`
 
 Valid value: `true`.
 
@@ -87,7 +85,7 @@ Use case:
 This modifier is automatically set to `menu-item` when mouse pointer is over the block.
 
 <a name="disabled"></a>
-##### `disabled`
+#### `disabled`
 
 Valid value: `true`.
 
@@ -106,7 +104,7 @@ Example:
 ```
 
 <a name="theme"></a>
-##### `theme`
+#### `theme`
 
 Valid values: `'simple'`, `'islands'`.
 
@@ -154,9 +152,9 @@ See following examples:
 }
 ```
 
-#### Custom fields of a block
+### Custom fields of a block
 
 <a name="val"></a>
-##### `val`
+#### `val`
 
 Value to be sent to a server if `menu-item` is selected.

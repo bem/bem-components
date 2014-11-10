@@ -14,7 +14,8 @@ The blocks is used for images representation.
 | <a href=#width>width</a> | <code>Number</code> | Specifies icon width. |
 | <a href=#height>height</a> | <code>Number</code> | Specifies icon height. |
 
-### Description
+
+## Block overview
 
 `<img>`-based block is used for images representation with different content types e.g., logo.
 
@@ -29,31 +30,29 @@ The blocks is used for images representation.
 }
 ```
 
-### Block overview
-
-#### Custom fields of a block
+### Custom fields of a block
 
 <a name="title"></a>
-##### `title`
+#### `title`
 
 Specifies icon name. Specifies `title` HTML attribute to an icon.
 
 <a name="alt"></a>
-##### `alt`
+#### `alt`
 
 Specifies an alternate text for images. It allows a user to view text information about an image when image downloading is impossible. This block is recognized by screen readers and other programs.
 
 <a name="url"></a>
-##### `url`
+#### `url`
 
 URL address to open an image.
 
 <a name="width"></a>
-##### `width`
+#### `width`
 
 Specifies icon width.
 
 <a name="height"></a>
-##### `height`
+#### `height`
 
 Specifies icon height.

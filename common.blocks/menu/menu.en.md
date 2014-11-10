@@ -14,7 +14,7 @@ The block is used to create various types of selects and menu lists.
 | <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Block size. |
 | <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Styling. |
 
-### Description
+## Block overview
 
 The block allows a user to manage state, behavior and appearance of `menu` and its nested components – [menu-item](../menu-item/menu-item.md) blocks.
 
@@ -29,12 +29,10 @@ The following types of `menu` are available:
 
 For details see [`mode`](#mode) section.
 
-### Block overview
-
-#### Modifiers of a block
+### Modifiers of a block
 
 <a name="mode"></a>
-##### `mode`
+#### `mode`
 
 Valid values: `'menu_mode_radio'`, `'menu_mode_radio-check'`, `'menu_mode_check'`.
 
@@ -129,7 +127,7 @@ Use `mode` modifier to define a type of menu list:
 ```
 
 <a name="focused"></a>
-##### `focused`
+#### `focused`
 
 Valid value: `true`.
 
@@ -138,7 +136,7 @@ Use case: `BEMJSON`.
 When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
 
 <a name="disabled"></a>
-##### `disabled`
+#### `disabled`
 
 Valid value: `true`.
 
@@ -149,7 +147,7 @@ Use case: `BEMJSON`, `JS`.
 If `menu` block is disabled, all nested `menu-item` blocks are also disabled.
 
 <a name="size"></a>
-##### `size`
+#### `size`
 
 Valid values: `'s'`, `'m'`, `'l'`, `'xl'`.
 
@@ -266,7 +264,7 @@ Examples:
 ```
 
 <a name="theme"></a>
-##### `theme`
+#### `theme`
 
 Valid values: `'simple'`, `'islands'`.
 
@@ -345,11 +343,11 @@ Examples:
 }
 ```
 
-#### Elements of a block
+### Elements of a block
 
 `menu` block is visually represented by the following elements:
 
-##### __group
+#### __group
 
 `__group` element is used to combine several `menu-items` blocks into the group. All `menu-items` from one group must be declared in BEMJSON in `content` field of `group` element.
 
@@ -390,7 +388,7 @@ For a theme `islands` a gray line separates groups from each other.
 }
 ```
 
-##### __group-title
+#### __group-title
 
 This element is used to set titles for menu items group.
 

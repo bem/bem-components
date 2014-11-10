@@ -18,11 +18,11 @@ Block is used to create a drop-down list.
 | Field | Type | Description |
 | ---- | --- | -------- |
 | <a href=#name>name</a> | <code>String</code> | Name of `select`. |
-| <a href=#text>text</a> | <code>String</code> | Default text for a button when any `menu-item` is not specified. This attribute is used for select with the following specified modifiers: `select_mode_check` and `select_mode_radio-check`. |
+| <a href=#text>text</a> | <code>String</code> | Default text for a button when any `menu-item` is not specified. |
 | <a href=#id>id</a> | <code>String</code> | Unique identifier of `select` block. |
-| <a href=#options>options</a> | <code>BEMJSON</code> | Defines a list of menu-items. Each item has mandatory attribute `val` implemented by a hidden element `control`. |
-| <a href=#textmaxwidth>textMaxWidth</a> | <code>String</code> | Defines maximum width of button from `select` block. `popup` width depends on width of `menu-item` text. It could be defined also using CSS styles. |
-| <a href=#optionsmaxheight>optionsMaxHeight</a> | <code>String</code> | Defines maximum height of `popup`. If all `menu-items` cannot be fit within `popup`, scroll element appears. If value of `optionsMaxHeight` attribute is not specified, height of `popup` depends on total height of all `menu-items`. |
+| <a href=#options>options</a> | <code>BEMJSON</code> | Defines a list of menu-items. |
+| <a href=#textmaxwidth>textMaxWidth</a> | <code>String</code> | Defines maximum width of button from `select` block. |
+| <a href=#optionsmaxheight>optionsMaxHeight</a> | <code>String</code> | Defines maximum height of `popup`. |
 
 ## Block overview
 

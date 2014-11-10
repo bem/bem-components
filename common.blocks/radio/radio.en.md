@@ -19,8 +19,8 @@ Block is used to create a single radio switch.
 
 | Field | Type | Description |
 | ---- | --- | -------- |
-| <a href=#name>name</a> | <code>String</code> | Radio switch name that is used for its identification. Specifies `name` HTML attribute to a nested `input` block. |
-| <a href=#val>val</a> | <code>String</code> | Specifies value that will be sent to a server or obtained using client scripts. Pair `name=val` is sent to a server, where name is set by `name` attribute and value – by `val` attribute. Specifies `value` HTML attribute to a nested `input` block. |
+| <a href=#name>name</a> | <code>String</code> | Radio switch name that is used for its identification. |
+| <a href=#val>val</a> | <code>String</code> | Specifies value that will be sent to a server or obtained using client scripts. |
 | <a href=#text>text</a> | <code>String</code> | Specifies a label for the radio switch. |
 Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
 

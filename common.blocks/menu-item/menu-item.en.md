@@ -1,36 +1,121 @@
 # menu-item
 
-`menu-item` block is used as independent switch element to form dropdowns, tab menus, lists and menu items. `menu-item` block allows to manage state, content and type of menu items.
+The block is used as independent switch element to form dropdowns, tab menus, lists and menu items.
 
-Block is represented as `<div>` HTML element with `role="menuitem"` attribute.
+## Short information
 
-## Custom fields of a block
+### Modifiers of a block
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+| Modifier | Valid values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href=#type>type</a> | <code>'link'</code> | <code>BEMJSON</code> | Creates `menu-item` based on `link` block. |
+| <a href=#checked>checked</a> | <code>true</code> | | Defines that menu item is selected.  |
+| <a href=#hovered>hovered</a> | <code>true</code> | | Mouse pointer is over the block. |
+| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Makes block unavailable. |
+| <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Styling. |
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>val</td>
-        <td><code>String</code></td>
-        <td>Value to be sent to a server if <code>menu-item</code> is selected.</td>
-    </tr>
-</table>
+### Custom fields of a block
+
+| Field | Type | Description |
+| ---- | --- | -------- |
+| <a href=#val>val</a> | <code>String</code> | Value to be sent to a server if `menu-item` is selected. |
 
 Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
 
-## Modifiers of a block
+### Description
 
-### _theme
+`menu-item` block allows to manage state, content and type of menu items.
+
+Block is represented as `<div>` HTML element with `role="menuitem"` attribute.
+
+### Block overview
+
+#### Modifiers of a block
+
+<a name="type"></a>
+##### `type`
+
+Valid values: `'link'`.
+
+Use case:
+
+Use `type` modifier with `link` value to create `menu-item` based on [`link`](../link/link.en.md) block. In this case link is used instead of switch element. All modifiers of `link` block could be propagated to this type of `menu-item`.
+
+Example:
+
+```bemjson
+{
+    block : 'menu-item',
+    mods : { type : 'link' },
+    val : 2,
+    content : {
+        block : 'link',
+        url : '#',
+        content : 'Link 1'
+    }
+}
+```
+
+<a name="checked"></a>
+##### `checked`
+
+Valid value: `true`.
+
+Use case:
+
+This modifier defines the selected menu item.
+
+Example:
+
+```bemjson
+{
+    block : 'menu-item',
+    mods : { theme : 'islands', size : 'm', checked : true },
+    content : 'checked'
+}
+```
+
+For `menu-item` blocks nested in `menu` block `checked` state can be set on mouse click automatically.
+
+<a name="hovered"></a>
+##### `hovered`
+
+Valid value: `true`.
+
+Use case:
+
+This modifier is automatically set to `menu-item` when mouse pointer is over the block.
+
+<a name="disabled"></a>
+##### `disabled`
+
+Valid value: `true`.
+
+Use cases: `BEMJSON`, `JS`.
+
+`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing `Tab`, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
+
+Example:
+
+```bemjson
+{
+    block : 'menu-item',
+    mods : { theme : 'islands', size : 'm', disabled : true },
+    content : 'disabled'
+}
+```
+
+<a name="theme"></a>
+##### `theme`
+
+Valid values: `'simple'`, `'islands'`.
+
+Use case: `BEMJSON`.
 
 Block supports the following themes:
 
 * simple
-* islands (**NB!** Choosing a theme `islands` requires additional modifier `size`.)
+* islands (**NB!** Choosing a theme `islands` requires additional modifier `size`)
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
@@ -69,51 +154,9 @@ See following examples:
 }
 ```
 
-### _type
+#### Custom fields of a block
 
-Use `type` modifier with `link` value to create `menu-item` based on [`link`](../link/link.en.md) block. In this case link is used instead of switch element. All modifiers of `link` block could be propagated to this type of `menu-item`.
+<a name="val"></a>
+##### `val`
 
-```bemjson
-{
-    block : 'menu-item',
-    mods : { type : 'link' },
-    val : 2,
-    content : {
-        block : 'link',
-        url : '#',
-        content : 'Link 1'
-    }
-}
-```
-
-### States of a block
-
-#### _checked
-
-This modifier defines the selected menu item.
-
-```bemjson
-{
-    block : 'menu-item',
-    mods : { theme : 'islands', size : 'm', checked : true },
-    content : 'checked'
-}
-```
-
-For `menu-item` blocks nested in `menu` block `checked` state can be set on mouse click automatically.
-
-### _disabled
-
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
-
-```bemjson
-{
-    block : 'menu-item',
-    mods : { theme : 'islands', size : 'm', disabled : true },
-    content : 'disabled'
-}
-```
-
-#### _hovered
-
-This modifier is automatically set to `menu-item` when mouse pointer is over the block.
+Value to be sent to a server if `menu-item` is selected.

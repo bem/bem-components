@@ -24,7 +24,7 @@ Block is used to create a single radio switch.
 | <a href=#text>text</a> | <code>String</code> | Specifies a label for the radio switch. |
 Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
 
-### Description
+## Block overview
 
 The block can be implemented by a radio switch or by a button (block [button](../button/button.en.md)). `radio` block allows a user to manage state, content and type of radio switches.
 
@@ -37,12 +37,10 @@ As a result of template appliance, it will be rendered to `<label>` HTML element
 
 Block is implemented with native `input` HTML element with `type` attribute set to `radio`: `<input name="name" type="radio">`. If `theme` modifier is set, the `input` element is hidden by default.
 
-### Block overview
-
-#### Modifiers of a block
+### Modifiers of a block
 
 <a name="type"></a>
-##### `type`
+#### `type`
 
 Valid value: `'button'`.
 
@@ -69,7 +67,7 @@ Example:
 ```
 
 <a name="checked"></a>
-##### `checked`
+#### `checked`
 
 Valid value: `true`.
 
@@ -94,7 +92,7 @@ Example:
 ```
 
 <a name="focused"></a>
-##### `focused`
+#### `focused`
 
 Valid value: `true`.
 
@@ -103,7 +101,7 @@ Use case: `BEMJSON`.
 When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
 
 <a name="disabled"></a>
-##### `disabled`
+#### `disabled`
 
 Valid value: `true`.
 
@@ -123,7 +121,7 @@ Example:
 ```
 
 <a name="size"></a>
-##### `size`
+#### `size`
 
 Valid values: `'s'`, `'m'`, `'l'`, `'xl'`.
 
@@ -164,7 +162,7 @@ Depending on `type` modifier the following sizes are available:
 
 
 <a name="theme"></a>
-##### `theme`
+#### `theme`
 
 Valid values: `'simple'`, `'islands'`.
 
@@ -212,7 +210,7 @@ See following examples:
 }
 ```
 
-#### Custom fields of a block
+### Custom fields of a block
 
 <a name="name"></a>
 #### `name`
@@ -229,12 +227,12 @@ Specifies value that will be sent to a server or obtained using client scripts. 
 
 Specifies a label for the radio switch.
 
-#### Elements of a block
+### Elements of a block
 
-##### __box
+#### __box
 
 `box` element is used in basic block implementation as a container with nested control element (`control` element). It is represented as `<span>` HTML element. An auxiliary element is added to the block on template engine level.
 
-##### __control
+#### __control
 
 `control` element is represented as `<input>` HTML element with specified `type="radio"` attribute. An auxiliary element is added to the block on template engine level.

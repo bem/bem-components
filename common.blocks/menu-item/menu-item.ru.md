@@ -8,7 +8,7 @@
 
 | Модификатор | Допустимые значения | Способы использования | Описание |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href=#type>type</a> | <code>'link'</code> | <code>BEMJSON</code> | Реализует пункт меню через блок 'link'. |
+| <a href=#type>type</a> | <code>'link'</code> | <code>BEMJSON</code> | Реализует пункт меню через блок `link`. |
 | <a href=#checked>checked</a> | <code>true</code> | | Указывает, что пункт меню выбран. |
 | <a href=#hovered>hovered</a> | <code>true</code> | | Наведение курсором. |
 | <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Делает блок недоступным. |

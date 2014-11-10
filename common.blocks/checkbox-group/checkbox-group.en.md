@@ -249,4 +249,4 @@ You can apply `disabled` modifier to a separate checkbox of a group.
 
 #### _focused
 
-When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.
+When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.

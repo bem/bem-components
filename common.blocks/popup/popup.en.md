@@ -28,7 +28,7 @@ The following custom fields could be specified in BEMJSON declaration of the blo
         <td>
             <code>Array</code>
         </td>
-        <td>Specifies position (e.g., <code>bottom-left</code>, where <code>bottom</code> is main direction and <code>left</code> - secondary) of `popup` relative to the element that triggers it.</td>
+        <td>Specifies position (e.g., <code>bottom-left</code>, where <code>bottom</code> is main direction and <code>left</code> — secondary) of `popup` relative to the element that triggers it.</td>
     </tr>
     <tr>
         <td>mainOffset</td>
@@ -108,7 +108,7 @@ See following examples:
 
 #### _visible
 
-`visible` modifier is set automatically when `popup` is displayed. When `popup` is hidden, `visible` modofier is removed.
+`visible` modifier is set automatically when `popup` is displayed. When `popup` is hidden, `visible` modifier is removed.
 
 **NB:** this block's version does not support manual selection of `visible` modifier in BEMJSON.
 
@@ -183,7 +183,7 @@ Use `mainOffset` and/or `secondaryOffset` parameters to manage the offset direct
 
 ## Relationship between popups
 
-`popup` block supports nested stucture of multiple simultaneous popups. It means you can open popup (child) within another popup (parent) with the parent popup remaining opened.
+`popup` block supports nested structure of multiple simultaneous popups. It means you can open popup (child) within another popup (parent) with the parent popup remaining opened.
 
 If `autoclosable` modifier is specified, mouse click outside the parent popup area hides it and all its child automatically.
 

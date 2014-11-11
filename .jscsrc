@@ -25,6 +25,12 @@
     "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~", "!"],
     "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
     "disallowSpaceBeforeBinaryOperators": [","],
+    "disallowSpacesInConditionalExpression": {
+        "afterTest": true,
+        "beforeConsequent": false,
+        "afterConsequent": false,
+        "beforeAlternate": false
+    },
     "requireSpaceBeforeBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<=", "&&", "||"],
     "requireSpaceAfterBinaryOperators": [",", "+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<=", "&&", "||"],
     "disallowKeywords": ["with"],

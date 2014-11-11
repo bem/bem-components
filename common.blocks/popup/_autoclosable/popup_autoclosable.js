@@ -7,7 +7,7 @@ modules.define(
     ['jquery', 'i-bem__dom', 'ua', 'dom', 'keyboard__codes'],
     function(provide, $, BEMDOM, ua, dom, keyCodes, Popup) {
 
-var KEYDOWN_EVENT = (ua.opera && ua.version < 12.10)? 'keypress' : 'keydown',
+var KEYDOWN_EVENT = ua.opera && ua.version < 12.10? 'keypress' : 'keydown',
     visiblePopupsStack = [];
 
 /**

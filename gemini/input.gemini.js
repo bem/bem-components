@@ -25,7 +25,7 @@ gemini.suite('input', function(root) {
         .forEach(function(test) {
             var inputSelector = '.' + test,
                 inputEnabledSelector = inputSelector + '-enabled',
-                screenArea = !!~test.indexOf('label') ? inputEnabledSelector + ' .input' : inputEnabledSelector;
+                screenArea = !!~test.indexOf('label')? inputEnabledSelector + ' .input' : inputEnabledSelector;
 
             // tests for enabled input
             getEnabledSuite(test, [inputEnabledSelector, screenArea], 'test text');
@@ -64,7 +64,7 @@ gemini.suite('input', function(root) {
     });
 
     function getEnabledSuite(test, areaSelector, text) {
-        var controlSelector = typeof areaSelector === 'object' ? areaSelector[0] : areaSelector;
+        var controlSelector = typeof areaSelector === 'object'? areaSelector[0] : areaSelector;
 
         gemini.suite(test + '-enabled', function(suite) {
             suite

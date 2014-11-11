@@ -393,7 +393,7 @@ function getThemeFromBemjson(bemjson) {
     var theme, key;
 
     for(key in bemjson) {
-        if(theme = key === 'mods' ? bemjson.mods.theme :
+        if(theme = key === 'mods'? bemjson.mods.theme :
             getThemeFromBemjson(bemjson[key])) return theme;
     }
 }

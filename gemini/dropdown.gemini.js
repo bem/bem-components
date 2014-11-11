@@ -11,7 +11,7 @@ gemini.suite('dropdown', function(root) {
         'islands-button'
     ]
         .forEach(function(test) {
-            var dropdownSelector = '.' + test + (!!~test.indexOf('button') ? ' .button' : ' .link');
+            var dropdownSelector = '.' + test + (!!~test.indexOf('button')? ' .button' : ' .link');
 
                 gemini.suite(test, function(suite) {
                     suite

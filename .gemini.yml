@@ -2,10 +2,10 @@ gridUrl: http://ondemand.saucelabs.com/wd/hub
 rootUrl: http://localhost:8000/
 
 browsers:
-  firefox-v30:
-    browserName: firefox
-    version: 30
-    platform: Linux
+#  firefox-v30:
+#    browserName: firefox
+#    version: 30
+#    platform: Linux
   chrome-v35:
     browserName: chrome
     version: 35

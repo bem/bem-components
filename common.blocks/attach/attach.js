@@ -28,10 +28,14 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
      */
     clear : function(data) {
         if(!this.getVal()) return this;
+        return this._clear(data);
+    },
 
+    _clear : function(data) {
         var control = this.elem('control'),
             name = control.attr('name'),
             tabIndex = control.attr('tabindex');
+
         BEMDOM.replace(
             control,
             '<input' +
@@ -56,9 +60,11 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
 
     _onChange : function() {
         this.elem('no-file').detach();
-        this
-            ._updateFileElem()
-            ._emitChange();
+        this.getVal()?
+            this
+                ._updateFileElem()
+                ._emitChange() :
+            this._clear();
     },
 
     _emitChange : function(data) {

@@ -1,0 +1,22 @@
+block('textarea').elem('control')(
+    tag()('textarea'),
+
+    attrs()(function() {
+        var textarea = this._textarea,
+            attrs = {
+                id : textarea.id,
+                name : textarea.name,
+                tabindex : textarea.tabIndex,
+                placeholder : textarea.placeholder
+            };
+
+        textarea.autocomplete === false && (attrs.autocomplete = 'off');
+        this.mods.disabled && (attrs.disabled = 'disabled');
+
+        return attrs;
+    }),
+
+    content()(function() {
+        return this._textarea.val;
+    })
+);

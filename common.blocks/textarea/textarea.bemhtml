@@ -1,0 +1,10 @@
+block('textarea')(
+    js()(true),
+    def()(function() {
+        applyNext({ _textarea : this.ctx });
+    }),
+
+    content().match(function() {
+        return typeof this.ctx.content === 'undefined';
+    })({ elem : 'control' })
+);

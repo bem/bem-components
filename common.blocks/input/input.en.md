@@ -113,7 +113,7 @@ Implemented only for theme `islands`.
 
 Provides with size values to all types of text fields.
 
-There are four sizes available: **s**, **s**, **l**, **xl**.
+There are four sizes available: **s**, **m**, **l**, **xl**.
 
 <table>
     <tr>

@@ -26,10 +26,15 @@ var DEFAULT_LANGS = ['ru', 'en'],
         'desktop' : ['common', 'desktop'],
         'touch-phone' : ['common', 'touch'],
         'touch-pad' : ['common', 'touch']
+    },
+    SETS = {
+        'desktop' : ['common', 'desktop'],
+        'touch' : ['common', 'touch']
     };
 
 module.exports = function(config) {
-    var platforms = ['desktop', 'touch-pad', 'touch-phone'],
+    var platforms = Object.keys(PLATFORMS),
+        sets = Object.keys(SETS),
         langs = process.env.BEM_I18N_LANGS;
 
     config.includeConfig('enb-bem-examples');
@@ -41,7 +46,7 @@ module.exports = function(config) {
 
     configureDist(platforms);
     configurePages(platforms);
-    configureSets(platforms, {
+    configureSets(sets, {
         tests : config.module('enb-bem-examples').createConfigurator('tests'),
         examples : config.module('enb-bem-examples').createConfigurator('examples'),
         docs : config.module('enb-bem-docs').createConfigurator('docs', 'examples'),
@@ -314,13 +319,13 @@ module.exports = function(config) {
 };
 
 function getLibLevels(platform) {
-    return PLATFORMS[platform].map(function(level) {
+    return (PLATFORMS[platform] || SETS[platform]).map(function(level) {
         return level + '.blocks';
     });
 }
 
 function getSourceLevels(platform) {
-    var platformNames = PLATFORMS[platform];
+    var platformNames = (PLATFORMS[platform] || SETS[platform]);
     var levels = [];
 
     platformNames.forEach(function(name) {
@@ -360,6 +365,12 @@ function getBrowsers(platform) {
                 'ie 10',
                 'ff 24',
                 'opera 12.16'
+            ];
+        case 'touch':
+            return [
+                'android 4',
+                'ios >= 5',
+                'ie 10'
             ];
         case 'touch-pad':
             return [

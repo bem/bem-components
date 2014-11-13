@@ -55,7 +55,7 @@
     "dist": "npm run deps && enb make dist/desktop dist/touch-pad dist/touch-phone",
     "compiled": "find . -iname '*.styl' | xargs stylus",
     "build": "npm run build-${TEST_SCOPE:-all}",
-    "build-all": "npm run deps && enb make __magic__ desktop.examples desktop.tests desktop.docs touch-pad.examples touch-pad.tests touch-pad.docs touch-phone.examples touch-phone.tests touch-phone.docs && enb make *.pages/*",
+    "build-all": "npm run deps && enb make __magic__ desktop.examples desktop.tests desktop.docs touch.examples touch.tests touch.docs && enb make *.pages/*",
     "build-specs": "npm run deps",
     "build-tmpls": "npm run deps",
     "build-gemini": "npm run deps && enb make tests desktop.tests",

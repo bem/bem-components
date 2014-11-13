@@ -7,6 +7,9 @@ modules.define(
     ['i-bem__dom', 'control', 'keyboard__codes', 'menu-item'],
     function(provide, BEMDOM, Control, keyCodes) {
 
+/** @const Number */
+var TIMEOUT_KEYBOARD_SEARCH = 1500;
+
 /**
  * @exports
  * @class menu
@@ -21,6 +24,13 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
                 this._hoveredItem = null;
                 this._items = null;
 
+                this._lastTyping = {
+                    char : '',
+                    text : '',
+                    index : 0,
+                    time : 0
+                };
+
                 this.hasMod('focused') && this.bindToDoc('keydown', this._onKeyDown);
             }
         },
@@ -28,12 +38,15 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
         'focused' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
-                this.bindToDoc('keydown', this._onKeyDown); // NOTE: should be called after __base
+                this
+                    .bindToDoc('keydown', this._onKeyDown) // NOTE: should be called after __base
+                    .bindToDoc('keypress', this._onKeyPress);
             },
 
             '' : function() {
                 this
                     .unbindFromDoc('keydown', this._onKeyDown)
+                    .unbindFromDoc('keypress', this._onKeyPress)
                     .__base.apply(this, arguments);
                 this._hoveredItem && this._hoveredItem.delMod('hovered');
             }
@@ -64,6 +77,58 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
         this._hoveredItem = null;
         this._items = null;
         return this;
+    },
+
+    /**
+     * Search menu item by keyboard event
+     * @param {jQuery.Event} e
+     * @returns {menu-item}
+     */
+    searchItemByKeyboardEvent : function(e) {
+        var currentTime = +new Date(),
+            charCode = e.charCode,
+            char = String.fromCharCode(charCode).toLowerCase(),
+            lastTyping = this._lastTyping,
+            index = lastTyping.index,
+            isSameChar = char === lastTyping.char && lastTyping.text.length === 1,
+            items = this.getItems();
+
+        if(charCode <= keyCodes.SPACE || e.ctrlKey || e.altKey || e.metaKey) {
+            lastTyping.time = currentTime;
+            return null;
+        }
+
+        if(currentTime - lastTyping.time > TIMEOUT_KEYBOARD_SEARCH || isSameChar) {
+            lastTyping.text = char;
+        } else {
+            lastTyping.text += char;
+        }
+
+        lastTyping.char = char;
+        lastTyping.time = currentTime;
+
+        // If key is pressed again, then continue to search to next menu item
+        if(isSameChar && items[index].getText().search(lastTyping.char) === 0) {
+            index = index >= items.length - 1? 0 : index + 1;
+        }
+
+        // 2 passes: from index to items.length and from 0 to index.
+        var i = index, len = items.length;
+        while(i < len) {
+            if(this._doesItemMatchText(items[i], lastTyping.text)) {
+                lastTyping.index = i;
+                return items[i];
+            }
+
+            i++;
+
+            if(i === items.length) {
+                i = 0;
+                len = index;
+            }
+        }
+
+        return null;
     },
 
     _onItemHover : function(item) {
@@ -114,8 +179,20 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
                 if(++i === len) return; // if we have no next item to hover
             } while(items[nextIdx].hasMod('disabled'));
 
+            this._lastTyping.index = nextIdx;
+
             items[nextIdx].setMod('hovered');
         }
+    },
+
+    _onKeyPress : function(e) {
+        var item = this.searchItemByKeyboardEvent(e);
+        item && item.setMod('hovered');
+    },
+
+    _doesItemMatchText : function(item, text) {
+        return !item.hasMod('disabled') &&
+            item.getText().toLowerCase().search(text) === 0;
     }
 }, /** @lends menu */{
     live : function() {

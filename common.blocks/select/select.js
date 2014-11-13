@@ -61,6 +61,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             '' : function() {
                 this
                     .unbindFromDoc('keydown', this._onKeyDown)
+                    .unbindFromDoc('keypress', this._onKeyPress)
                     .delMod('opened')
                     ._button
                         .delMod('focused');
@@ -136,6 +137,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
     _focus : function() {
         this
             .bindToDoc('keydown', this._onKeyDown)
+            .bindToDoc('keypress', this._onKeyPress)
             ._button.setMod('focused');
     },
 
@@ -175,6 +177,18 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             e.preventDefault();
             this.setMod('opened');
         }
+    },
+
+    _onKeyPress : function(e) {
+        // press a key: closed select - set value, opened select - set hover on menu-item.
+        if(!this.hasMod('opened')) {
+            var item = this._menu.searchItemByKeyboardEvent(e);
+            item && this._setSingleVal(item.getVal());
+        }
+    },
+
+    _setSingleVal : function(value) {
+        this.setVal(value);
     },
 
     _onMenuChange : function() {

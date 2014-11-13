@@ -58,9 +58,22 @@ describe('select_mode_radio', function() {
                 .elem('control').val().should.be.equal('1');
         });
     });
+
+    describe('keyboard', function() {
+        it('should select "first" item by pressing on "f"', function() {
+            select.setMod('focused');
+            doKeyPress('f');
+            select.getVal().should.be.eql(1);
+        });
+    });
+
 });
 
 provide();
+
+function doKeyPress(char) {
+    $('body').trigger($.Event('keypress', { charCode : char.charCodeAt() }));
+}
 
 function buildSelect(bemjson) {
     return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))

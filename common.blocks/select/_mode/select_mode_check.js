@@ -39,6 +39,10 @@ provide(Select.decl({ modName : 'mode', modVal : 'check' }, /** @lends select.pr
                         this.params.text); // none checked
     },
 
+    _setSingleVal : function(value) {
+        this.setVal([value]);
+    },
+
     _onMenuItemClick : function(_, data) {
         data.source === 'keyboard' && (this._preventToToggleOpened = true);
     },

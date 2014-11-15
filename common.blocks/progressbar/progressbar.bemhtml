@@ -1,6 +1,6 @@
 block('progressbar')(
     js()(function(){
-        return { progress : this.ctx.progress };
+        return { progress : this.ctx.progress || 0 };
     }),
     content()(function() {
         var ctx = this.ctx,
@@ -9,14 +9,9 @@ block('progressbar')(
         return [
             {
                 elem : 'box',
-                content : {
-                    elem : 'bar'
-                }
+                content : { elem : 'bar' }
             },
-            mods.text && {
-                elem : 'text',
-                content : ctx.progress
-            }
+            mods.text && { elem : 'text' }
         ];
     })
 );

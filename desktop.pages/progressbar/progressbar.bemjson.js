@@ -14,13 +14,13 @@
             {
                 block : 'progressbar',
                 mods : { theme: 'hackaton', size : 's', text : true },
-                progress : 85
+                progress : 25
             },
             '<br>theme-hackaton, size-m: <br><br>',
             {
                 block : 'progressbar',
                 mods : { theme: 'hackaton', size : 'm', text : true },
-                progress : 35
+                progress : 95
             },
             '<br>theme-hackaton, size-m, no text (55%): <br><br>',
             {

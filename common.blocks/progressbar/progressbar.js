@@ -31,12 +31,16 @@ provide(BEMDOM.decl({ block : this.name }, /** @lends progressbar.prototype */{
     },
 
     _setBarWith : function(progress) {
-        this.elem('bar').css('width', 100 - this._checkProgressNum(progress) + '%');
+        this.elem('bar').css('width', this._checkProgressNum(progress) + '%');
     },
 
+    /**
+     * Sets bar's width and update text
+     * @param {Number|String} progress
+     */
     setProgress : function(progress) {
         this._setBarWith(progress);
-        BEMDOM.update(this.elem('text'), progress);
+        this.elem('text').text(progress);
     }
 }));
 

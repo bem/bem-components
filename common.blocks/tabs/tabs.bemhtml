@@ -1,0 +1,46 @@
+block('tabs')(
+    js()(true),
+
+    content()(function() {
+        var ctx = this.ctx,
+
+            radioGroup = {
+                block : 'radio-group',
+                mix : { block : 'tabs', elem : 'tabs-group' },
+                mods : Object.keys(ctx.mods).length === 0? { type : 'button' } : ctx.mods,
+                name : 'tabs',
+                options : []
+            },
+            hasSelected = false,
+            result = [radioGroup];
+
+        ctx.tabs && ctx.tabs.forEach(function(tab, ind) {
+            var tabContent = {
+                elem : 'box',
+                js : { id : ind },
+                content : tab.content
+            };
+
+            radioGroup.options.push({
+                val : ind,
+                text : tab.title,
+                mix : { block : 'tabs', elem : 'tab' }
+            });
+
+            if(tab.checked === true) {
+                radioGroup.options[ind].checked = true;
+                hasSelected = true;
+                tabContent.mods = { selected : true };
+            }
+
+            tab.content && tab.content.length && result.push(tabContent);
+        });
+
+        if(!hasSelected) {
+            radioGroup.options[0].checked = true;
+            result[1].mods = { selected : true };
+        }
+
+        return result;
+    })
+);

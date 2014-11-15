@@ -24,11 +24,19 @@ provide(BEMDOM.decl(this.name, {
 			}
 		},
 
-		'opened' : function() {
-			this.setMod((this.getSwitcher()), 'opened');
-			this.setMod((this.getContainer()), 'visible');
+		'opened' : {
+			'true' : function() {
+				this.setMod((this.getSwitcher()), 'opened');
+				this.setMod((this.getContainer()), 'visible');
 
-			this._switcherTextChange();
+				this._switcherTextChange();
+			},
+			'' : function() {
+				this.delMod((this.getSwitcher()), 'opened');
+				this.delMod((this.getContainer()), 'visible');
+
+				this._switcherTextChange();
+			}
 		}
 	},
 
@@ -46,13 +54,6 @@ provide(BEMDOM.decl(this.name, {
 		e.preventDefault();
 
 		this.toggleMod('opened');
-
-		if(!this.hasMod('opened')) {
-			this.delMod((this.getSwitcher()), 'opened');
-			this.delMod((this.getContainer()), 'visible');
-		}
-
-		this._switcherTextChange();
 	},
 
 	_switcherTextChange : function() {

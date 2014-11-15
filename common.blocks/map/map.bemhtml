@@ -1,0 +1,38 @@
+block('map')(
+    js()(function() {
+        var ctx = this.ctx,
+            objects = [];
+
+        ctx.geoObjects.forEach(function(geoObject) {
+            var geoOptions = geoObject.options,
+                preset = geoObject.iconContent &&
+                            (geoOptions && geoObject.options.preset || 'islands#blueStretchyIcon'),
+                // TODO: Добавление всех опций из geoObject.options в options
+                // geoOptions && (for (opt on geoOptions) {
+                //     options[opt] = geoOptions[opt]
+                // }),
+                options = {
+                    preset : preset,
+                    draggable : geoOptions && geoObject.options.draggable
+                };
+
+            objects.push({
+                type : geoObject.type || 'placemark',
+                coordinates : geoObject.coordinates,
+                properties : {
+                    iconContent : geoObject.iconContent,
+                    hintContent : geoObject.hintContent,
+                    balloonContent : geoObject.balloonContent
+                },
+                options : options
+            });
+        });
+
+        return {
+            center : ctx.center,
+            zoom : ctx.zoom,
+            controls : ctx.controls,
+            geoObjects : objects
+        };
+    })
+);

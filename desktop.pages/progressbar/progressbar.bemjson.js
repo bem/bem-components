@@ -22,13 +22,13 @@
                 mods : { theme: 'hackaton', size : 'm', text : true },
                 progress : 35
             },
-            '<br>theme-hackaton, size-m, no text: <br><br>',
+            '<br>theme-hackaton, size-m, no text (55%): <br><br>',
             {
                 block : 'progressbar',
                 mods : { theme: 'hackaton', size : 'm', text : false },
                 progress : 55
             },
-            '<br>theme-islands: <br><br>',
+            '<br>theme-islands (35%): <br><br>',
             {
                 block : 'progressbar',
                 mods : { theme: 'islands', text : false },

@@ -31,7 +31,7 @@ provide(BEMDOM.decl({ block : this.name }, /** @lends progressbar.prototype */{
     },
 
     _setBarWith : function(progress) {
-        this.elem('bar').css('width', this._checkProgressNum(progress) + '%');
+        this.elem('bar').css('width', 100 - this._checkProgressNum(progress) + '%');
     },
 
     setProgress : function(progress) {

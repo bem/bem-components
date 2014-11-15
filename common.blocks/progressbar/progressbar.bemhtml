@@ -1,0 +1,22 @@
+block('progressbar')(
+    js()(function(){
+        return { progress : this.ctx.progress };
+    }),
+    content()(function() {
+        var ctx = this.ctx,
+            mods = ctx.mods;
+
+        return [
+            {
+                elem : 'box',
+                content : {
+                    elem : 'bar'
+                }
+            },
+            mods.text && {
+                elem : 'text',
+                content : ctx.progress
+            }
+        ];
+    })
+);

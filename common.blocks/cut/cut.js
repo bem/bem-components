@@ -17,51 +17,53 @@ provide(BEMDOM.decl(this.name, {
 				this._popup = null;
 				this._params = {
 					expanded : this.params.expandedText  || 'Hide',
-					collapsed : this.getSwitcher().text()  || 'Show'
+					collapsed : this._getSwitcher().text()  || 'Show'
 				};
-
-				this.bindTo('switcher', 'click', this._onContainerVisibilityChange);
 			}
 		},
 
 		'opened' : {
 			'true' : function() {
-				this.setMod((this.getSwitcher()), 'opened');
-				this.setMod((this.getContainer()), 'visible');
+				this.setMod((this._getSwitcher()), 'opened');
+				this.setMod((this._getContainer()), 'visible');
 
 				this._switcherTextChange();
 			},
 			'' : function() {
-				this.delMod((this.getSwitcher()), 'opened');
-				this.delMod((this.getContainer()), 'visible');
+				this.delMod((this._getSwitcher()), 'opened');
+				this.delMod((this._getContainer()), 'visible');
 
 				this._switcherTextChange();
 			}
 		}
 	},
 
-	getSwitcher : function() {
+	_getSwitcher : function() {
 		return this._switcher ||
 			(this._switcher = this.elem('switcher'));
 	},
 
-	getContainer : function() {
+	_getContainer : function() {
 		return this._container ||
 			(this._container = this.elem('container'));
 	},
 
-	_onContainerVisibilityChange : function(e) {
+	_onSwitcherClick : function(e) {
 		e.preventDefault();
 
 		this.toggleMod('opened');
 	},
 
 	_switcherTextChange : function() {
-		BEMDOM.update(
-			this._switcher,
-			!this.hasMod('opened')? this._params.collapsed : this._params.expanded
-		);
+		this._switcher.html(!this.hasMod('opened')? this._params.collapsed : this._params.expanded);
 	}
-}));
+
+}, {
+	live : function() {
+		this.liveBindTo('switcher', 'click', function(e){
+			this._onSwitcherClick(e);
+		});
+	}
+} ));
 
 });

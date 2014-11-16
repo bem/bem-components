@@ -16,6 +16,15 @@ modules.define(
  */
 provide(BEMDOM.decl(this.name, /** @lends dragndrop.prototype */{
 
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this.setPos(this.domElem.offset().left, this.domElem.offset().top);
+                this.domElem.css('position', 'absolute');
+            }
+        }
+    },
+
     /**
      * Sets block's position
      * @param {Number} x Horisontal
@@ -36,7 +45,9 @@ provide(BEMDOM.decl(this.name, /** @lends dragndrop.prototype */{
         var x = this.blockOffset.left + this.moveDistance.x,
             y = this.blockOffset.top + this.moveDistance.y;
 
-        this.setPos(x, y);
+        this
+            .setMod('drag')
+            .setPos(x, y);
     },
 
     _getMousePos : function(e) {
@@ -51,10 +62,12 @@ provide(BEMDOM.decl(this.name, /** @lends dragndrop.prototype */{
     _unMove : function() {
         this
             .unbindFromDoc('mouseup', this._unMove)
-            .unbindFromDoc('mousemove', this._moveBlock);
+            .unbindFromDoc('mousemove', this._moveBlock)
+            .delMod('drag');
     },
 
     _onMouseDown : function(e){
+
         this.pos = this._getPos();
         this.mousePos = this._getMousePos(e);
         this.moveDistance = { x : 0, y : 0 };

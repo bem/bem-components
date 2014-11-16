@@ -16,8 +16,13 @@ modules.define(
  */
 provide(BEMDOM.decl(this.name, /** @lends dragndrop.prototype */{
 
+    /**
+     * Sets block's position
+     * @param {Number} x Horisontal
+     * @param {Number} y Vertical
+     */
     setPos : function(x, y) {
-        this.domElem.css('left', x).css('top', y);
+        this.domElem.css({ left : x, top : y });
     },
 
     _getPos : function() {

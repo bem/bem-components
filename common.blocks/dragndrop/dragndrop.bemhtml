@@ -1,3 +1,1 @@
-block('dragndrop')(
-    js()(true)
-);
+block('dragndrop').js()(true);

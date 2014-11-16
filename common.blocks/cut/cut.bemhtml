@@ -1,0 +1,17 @@
+block('cut')(
+
+    js()(true),
+
+    content()(function() {
+        return [
+            { elem : 'container', content : applyNext() },
+            {
+                block : 'link',
+                mods : { pseudo : true, theme : 'islands' },
+                mix : { block : 'cut', elem : 'switcher' },
+                content : this.ctx.switcher || 'Show'
+            }
+        ];
+    })
+
+);

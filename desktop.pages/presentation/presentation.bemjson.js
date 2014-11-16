@@ -9,7 +9,7 @@
     content : [
 
         { tag : 'h2', content : 'Презентация команды по написанию блоков' },
-        { tag : 'p', content : {
+        {
             block : 'tabs',
             mods: { theme : 'islands', size: 'l'},
             tabs : [
@@ -44,15 +44,27 @@
                 },
                 {
                     title: 'Cut',
-                    content: {
-                        block : 'cut',
-                        js : {
-                            expandedText : 'Hide'
+                    content: [
+                        {
+                            tag : 'p',
+                            content : [
+                                'Однажды, в далёкой-далёкой стране, компания Яндекс начала ',
+                                'разрабатывать поиск по Интернету и сопутствующие сервисы.'
+                            ]
                         },
-                        mods : { theme : 'simple' },
-                        switcher : 'Show',
-                        content : 'Text here'
-                    }
+                        {
+                            block : 'cut',
+                            js : {
+                                expandedText : 'Скрыть'
+                            },
+                            mods : { type: 'inline', theme : 'simple', size: 's' },
+                            switcher : 'Подробнее',
+                            content : [
+                                'Время шло, сервисы развивались и всё больше разработчиков ',
+                                'интерфейсов вкладывали свои усилия в развитие Яндекса.'
+                            ]
+                        }
+                    ]
 
                 },
                 {
@@ -60,6 +72,6 @@
                     content: 'Third tab content'
                 }
             ]
-        }}
+        }
     ]
 })

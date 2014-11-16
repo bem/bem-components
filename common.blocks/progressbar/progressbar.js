@@ -10,7 +10,7 @@ modules.define(
  * @class progressbar
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name }, /** @lends progressbar.prototype */{
+provide(BEMDOM.decl(this.name, /** @lends progressbar.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {

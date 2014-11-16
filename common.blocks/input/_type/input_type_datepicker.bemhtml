@@ -1,0 +1,18 @@
+block('input').mod('type', 'datepicker')(
+    content()(function(){
+        return [
+            applyNext(),
+            {
+                block : 'popup',
+                mods : { theme : 'simple', target : 'anchor' },
+                content : {
+                    block : 'calendar',
+                    mods : { theme : 'simple' }
+                }
+            }
+        ];
+    }),
+    elem('control').attrs()(function() {
+        return this.extend(applyNext(), { readonly : 'readonly' });
+    })
+);

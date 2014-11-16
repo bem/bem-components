@@ -10,60 +10,65 @@ modules.define('cut', ['i-bem__dom'], function(provide, BEMDOM) {
  * @bem
  */
 provide(BEMDOM.decl(this.name, {
-	onSetMod : {
-		'js' : {
-			'inited' : function() {
-				this._switcher = null;
-				this._popup = null;
-				this._params = {
-					expanded : this.params.expandedText  || 'Hide',
-					collapsed : this._getSwitcher().text()  || 'Show'
-				};
-			}
-		},
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                this._switcher = null;
+                this._popup = null;
+                this._params = {
+                    expanded : this.params.expandedText  || 'Hide',
+                    collapsed : this.getSwitcher().text() || 'Show'
+                };
+            }
+        },
 
-		'opened' : {
-			'true' : function() {
-				this.setMod((this._getSwitcher()), 'opened');
-				this.setMod((this._getContainer()), 'visible');
+        'opened' : function(modName, modVal) {
+            this.setMod((this.getSwitcher()), 'opened', modVal);
+            this.setMod((this.getContainer()), 'visible', modVal);
 
-				this._switcherTextChange();
-			},
-			'' : function() {
-				this.delMod((this._getSwitcher()), 'opened');
-				this.delMod((this._getContainer()), 'visible');
+            this._switcherTextChange();
+        }
+    },
 
-				this._switcherTextChange();
-			}
-		}
-	},
+    _switcherTextChange : function() {
+        var text = this.hasMod('opened')? this._params.expanded : this._params.collapsed;
 
-	_getSwitcher : function() {
-		return this._switcher ||
-			(this._switcher = this.elem('switcher'));
-	},
+        this._switcher.html(text);
+    },
 
-	_getContainer : function() {
-		return this._container ||
-			(this._container = this.elem('container'));
-	},
+    /**
+     * Returns switcher
+     * @returns {i-bem__dom}
+     */
+    getSwitcher : function() {
+        return this._switcher ||
+            (this._switcher = this.findElem('switcher', true));
+    },
 
-	_onSwitcherClick : function(e) {
-		e.preventDefault();
+    /**
+     * Returns container
+     * @returns {i-bem__dom}
+     */
+    getContainer : function() {
+        return this._container ||
+            (this._container = this.findElem('container', true));
+    },
 
-		this.toggleMod('opened');
-	},
+    /**
+     * On BEM click event handler
+     * @param {events:Event} e
+     * @protected
+     */
+    onSwitcherClick : function(e) {
+        e.preventDefault();
 
-	_switcherTextChange : function() {
-		this._switcher.html(!this.hasMod('opened')? this._params.collapsed : this._params.expanded);
-	}
+        this.toggleMod('opened');
+    }
 
 }, {
-	live : function() {
-		this.liveBindTo('switcher', 'click', function(e){
-			this._onSwitcherClick(e);
-		});
-	}
-} ));
+    live : function() {
+        this.liveBindTo('switcher', 'click', this.prototype.onSwitcherClick);
+    }
+}));
 
 });

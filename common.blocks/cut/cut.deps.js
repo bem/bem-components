@@ -3,7 +3,7 @@
         { block : 'i-bem', elem : 'dom' }
     ],
     shouldDeps : [
-        { elem : 'switcher' },
-        { elem : 'container' }
+        { elems : ['switcher', 'container'] },
+        { block : 'link', mods : { theme : 'islands', type : 'pseudo' } }
     ]
 }]

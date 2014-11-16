@@ -11,10 +11,10 @@
         {
             block : 'cut',
             js : {
-                expandedText : 'Hide&nbsp;&#8593;'
+                expandedText : 'Hide'
             },
             mods : { theme : 'simple' },
-            switcher : 'Show&nbsp;&#8595;',
+            switcher : 'Show',
             content : 'Text here'
         }
     ]

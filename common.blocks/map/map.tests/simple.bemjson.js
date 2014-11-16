@@ -18,16 +18,16 @@
                 controls : ['zoomControl'],
                 geoObjects : [
                     {
-                        coordinates :  [55.621515, 37.333333],
-                        hintContent : 'Я без текста :(',
+                        coordinates : [55.621515, 37.333333],
+                        hintContent : 'Я без текста :('
                     },
                     {
                         type : 'placemark',
-                        coordinates :  [55.641515, 37.353333],
-                        hintContent : 'И я без текста :(',
+                        coordinates : [55.641515, 37.353333],
+                        hintContent : 'И я без текста :('
                     },
                     {
-                        coordinates :  [55.751574, 37.573856],
+                        coordinates : [55.751574, 37.573856],
                         iconContent : 'Длинный текст'
                     }
                 ]
@@ -45,16 +45,20 @@
                 controls : ['default'],
                 geoObjects : [
                     {
-                        coordinates :  [55.751574, 37.573856],
-                        iconContent : 'Отсюда',
+                        coordinates : [55.751574, 37.573856],
+                        iconContent : 'Отсюда'
                     },
                     {
-                        coordinates :  [55.621515, 37.433333],
-                        iconContent : 'Сюда',
+                        coordinates : [55.621515, 37.433333],
+                        iconContent : 'Сюда'
                     },
                     {
                         type : 'polyline',
-                        coordinates :  [[55.751574, 37.573856], [55.751574, 37.503856], [55.621515, 37.433333]],
+                        coordinates : [
+                            [55.751574, 37.573856],
+                            [55.751574, 37.503856],
+                            [55.621515, 37.433333]
+                        ],
                         options : {
                             draggable : true
                         }
@@ -74,37 +78,50 @@
                 controls : ['default'],
                 geoObjects : [
                     {
-                        coordinates :  [55.751574, 37.573856],
-                        iconContent : 'Отсюда',
+                        coordinates : [55.751574, 37.573856],
+                        iconContent : 'Отсюда'
                     },
                     {
-                        coordinates :  [55.621515, 37.433333],
-                        iconContent : 'Сюда',
+                        coordinates : [55.621515, 37.433333],
+                        iconContent : 'Сюда'
                     },
                     {
                         type : 'polyline',
-                        coordinates :  [[55.751574, 37.573856], [55.751574, 37.503856], [55.621515, 37.433333]],
+                        coordinates : [
+                            [55.751574, 37.573856],
+                            [55.751574, 37.503856],
+                            [55.621515, 37.433333]
+                        ],
                         options : {
                             draggable : true
                         }
                     },
                     {
                         type : 'rectangle',
-                        coordinates : [[45.00866307, 34.00676225], [44.93750295, 34.03766130]],
+                        coordinates : [
+                            [45.00866307, 34.00676225],
+                            [44.93750295, 34.03766130]
+                        ],
                         options : {
                             draggable : true
                         }
                     },
                     {
                         type : 'rectangle',
-                        coordinates : [[45.04420979, 34.08572649], [45.00525331, 34.14340471]],
+                        coordinates : [
+                            [45.04420979, 34.08572649],
+                            [45.00525331, 34.14340471]
+                        ],
                         options : {
                             draggable : true
                         }
                     },
                     {
                         type : 'rectangle',
-                        coordinates : [[44.95578268, 34.13134795], [44.93879047, 34.20793889]],
+                        coordinates : [
+                            [44.95578268, 34.13134795],
+                            [44.93879047, 34.20793889]
+                        ],
                         options : {
                             draggable : true
                         }

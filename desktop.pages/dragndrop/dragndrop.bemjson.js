@@ -25,6 +25,16 @@
             block : 'dragndrop',
             attrs : { style : 'top: 275px;' },
             mods : { eye : true }
+        },
+        {
+            block : 'dragndrop',
+            attrs : { style : 'top: 375px;' },
+            mods : { hat : true }
+        },
+        {
+            block : 'dragndrop',
+            attrs : { style : 'top: 40px; right: 200px;' },
+            mods : { face : true }
         }
     ]
 })

@@ -1,0 +1,33 @@
+.dragndrop_hat
+{
+    width: 240px;
+    height: 100px;
+
+    background: #adff2f;
+
+    z-index: 1;
+
+    &:before,
+    &:after
+    {
+        content: '';
+
+        position: absolute;
+        top: 0;
+
+        width: 30px;
+        height: 70px;
+
+        background: #fff;
+    }
+
+    &:before
+    {
+        left: 0;
+    }
+
+    &:after
+    {
+        right: 0;
+    }
+}

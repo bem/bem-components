@@ -85,12 +85,12 @@
                                 geoObjects : [
                                     {
                                         coordinates :  [55.621515, 37.333333],
-                                        hintContent : 'Я без текста :(',
+                                        hintContent : 'Я без текста :('
                                     },
                                     {
                                         type : 'placemark',
                                         coordinates :  [55.641515, 37.353333],
-                                        hintContent : 'И я без текста :(',
+                                        hintContent : 'И я без текста :('
                                     },
                                     {
                                         coordinates :  [55.751574, 37.573856],
@@ -112,11 +112,11 @@
                                 geoObjects : [
                                     {
                                         coordinates :  [55.751574, 37.573856],
-                                        iconContent : 'Отсюда',
+                                        iconContent : 'Отсюда'
                                     },
                                     {
                                         coordinates :  [55.621515, 37.433333],
-                                        iconContent : 'Сюда',
+                                        iconContent : 'Сюда'
                                     },
                                     {
                                         type : 'polyline',
@@ -145,11 +145,11 @@
                                 geoObjects : [
                                     {
                                         coordinates :  [55.751574, 37.573856],
-                                        iconContent : 'Отсюда',
+                                        iconContent : 'Отсюда'
                                     },
                                     {
                                         coordinates :  [55.621515, 37.433333],
-                                        iconContent : 'Сюда',
+                                        iconContent : 'Сюда'
                                     },
                                     {
                                         type : 'polyline',
@@ -219,11 +219,22 @@
                 },
                 {
                     title : 'Calendar',
-                    content: {
-                        block: 'calendar',
-                        mods: { theme: 'simple' },
-                        switchers: ['', '']
-                    }
+                    content: [
+                        {
+                            block: 'calendar',
+                            mods: { theme: 'simple' },
+                            switchers: ['', '']
+                        },
+                        {
+                            block: 'calendar',
+                            mods: { theme: 'islands' },
+                            switchers: ['', '']
+                        }
+                    ]
+                },
+                {
+                    title : 'Результат',
+                    content: '6 блоков'
                 }
             ]
         }

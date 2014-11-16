@@ -3,7 +3,7 @@ block('calendar').elem('cell')(
 
     js()(function(){
         return {
-           date : this._date
+           date : this.ctx.date
        };
     })
 );

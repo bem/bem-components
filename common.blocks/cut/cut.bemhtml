@@ -7,9 +7,10 @@ block('cut')(
             { elem : 'container', content : applyNext() },
             {
                 block : 'link',
-                mods : { type : 'pseudo', theme : 'islands' },
+                mods : { pseudo : true, theme : 'islands' },
                 mix : { block : 'cut', elem : 'switcher' },
-                content : this.ctx.switcher || 'Show' }
+                content : this.ctx.switcher || 'Show'
+            }
         ];
     })
 

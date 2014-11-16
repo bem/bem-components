@@ -7,7 +7,7 @@ module.exports = function(bh) {
                 { elem : 'container', content : json.content },
                 {
                     block : 'link',
-                    mods : { type : 'pseudo', theme : 'islands' },
+                    mods : { pseudo : true, theme : 'islands' },
                     mix : { block : 'cut', elem : 'switcher' },
                     content : json.switcher || 'Show'
                 }

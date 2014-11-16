@@ -4,6 +4,6 @@
     ],
     shouldDeps : [
         { elems : ['switcher', 'container'] },
-        { block : 'link', mods : { theme : 'islands', type : 'pseudo' } }
+        { block : 'link', mods : { theme : 'islands', pseudo : true } }
     ]
 }]

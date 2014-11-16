@@ -9,7 +9,7 @@
         {
             block : 'cut',
             js : {
-                expandedText : 'subcut-text'
+                expandedText : 'subcut-hide'
             },
             switcher : 'subcut-show',
             content : 'subcut-text'

@@ -1,0 +1,19 @@
+block('calendar').elem('content')(
+    def()(function() {
+        var ctx = this.ctx;
+        applyNext({
+            _date : ctx.date || new Date(),
+            _selected : ctx.selected || true,
+            _switchers : ctx.switchers || ['prev', 'next']
+        });
+    }),
+
+    content()(function(){
+        return [
+            { block : 'calendar', elem : 'switcher', mods : { dest : 'prev' }, content : this._switchers[0] },
+            { block : 'calendar', elem : 'title' },
+            { block : 'calendar', elem : 'switcher', mods : { dest : 'next' }, content : this._switchers[1] },
+            { block : 'calendar', elem : 'grid' }
+        ];
+    })
+);

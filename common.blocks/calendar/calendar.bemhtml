@@ -1,17 +1,25 @@
-module.exports = function(bh) {
-    bh.match('calendar', function(ctx) {
-        var switchers = ctx.param('switcher') || ['prev', 'next'];
-        var date = ctx.param('date') || new Date();
-
-        ctx.js({
-            date : date,
-            switchers : switchers
+block('calendar')(
+    def()(function() {
+        var ctx = this.ctx;
+        applyNext({
+            _date : ctx.date || new Date(),
+            _switchers : ctx.switchers || ['prev', 'next']
         });
-        ctx.content({
+    }),
+
+    js()(function(){
+        return {
+            date : this._date,
+            switchers : this._switchers
+        };
+    }),
+
+    content()(function(){
+        return {
             block : 'calendar',
             elem : 'content',
-            date : date,
-            switchers : switchers
-        }, true);
-    });
-};
+            date : this._date,
+            switchers : this._switchers
+        };
+    })
+);

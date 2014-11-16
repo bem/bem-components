@@ -1,5 +1,7 @@
-module.exports = function(bh) {
-    bh.match('calendar__grid', function(ctx) {
+block('calendar').elem('grid')(
+    tag()('table'),
+
+    content()(function(){
 
         var getDaysInMonth = function(year, mount){
             return new Date(year, mount + 1, 0).getDate();
@@ -11,7 +13,7 @@ module.exports = function(bh) {
 
         var getGrid = function(date){
             var grid = [],
-                selected = ctx.tParam('selected') !== 'no';
+                selected = this._selected !== 'no';
 
             var year = date.getFullYear(),
                 month = date.getMonth(),
@@ -66,9 +68,7 @@ module.exports = function(bh) {
             return grid;
         };
 
-        var grid = getGrid(ctx.tParam('date'));
+        return getGrid(this._date);
 
-        ctx.content(grid, true);
-        ctx.tag('table');
-    });
-};
+    })
+);

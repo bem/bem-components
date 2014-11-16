@@ -1,0 +1,119 @@
+.calendar_theme_simple
+{
+    font-size: 14px;
+    text-align: center;
+    line-height: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.calendar_theme_simple .calendar__content
+{
+  position: relative;
+}
+
+.calendar_theme_simple .calendar__switcher, .calendar_theme_simple .calendar__title
+{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.calendar_theme_simple .calendar__title
+{
+  margin: 0 15px;
+}
+
+.calendar_theme_simple .calendar__cell
+{
+  padding: 4px 7px;
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  -ms-transition: background 0.3s;
+  -o-transition: background 0.3s;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.calendar_theme_simple .calendar__cell_state_active
+{
+  background: #fff4a8;
+}
+
+.calendar_theme_simple .calendar__cell_state_disable
+{
+  opacity: 0.3;
+}
+
+.calendar_theme_simple .calendar__cell_state_disable:hover
+{
+  background: none !important;
+  cursor: default !important;
+}
+
+.calendar_theme_simple .calendar__cell:hover
+{
+  background: #fff7db;
+}
+
+.calendar_theme_simple .calendar__grid
+{
+  margin: 10px auto 0;
+
+  border-top: 1px solid #fc0;
+  padding: 10px 0 0;
+}
+
+.calendar_theme_simple .calendar__switcher
+{
+  -webkit-transition: transform 0.3s;
+  -moz-transition: transform 0.3s;
+  -ms-transition: transform 0.3s;
+  -o-transition: transform 0.3s;
+  transition: transform 0.3s;
+
+  cursor: pointer;
+
+  position: absolute;
+  top: 4px;
+}
+
+.calendar__switcher_dest_prev
+{
+  left: 13px;
+}
+
+.calendar__switcher_dest_next
+{
+  right: 13px;
+}
+
+
+.calendar_theme_simple .calendar__switcher_dest_prev:before
+{
+  content: '← ';
+}
+
+.calendar_theme_simple .calendar__switcher_dest_prev:hover
+{
+  -webkit-transform: translateX(-3px);
+  -moz-transform: translateX(-3px);
+  -ms-transform: translateX(-3px);
+  -o-transform: translateX(-3px);
+  transform: translateX(-3px);
+}
+
+.calendar_theme_simple .calendar__switcher_dest_next:after
+{
+  content: ' →';
+}
+
+.calendar_theme_simple .calendar__switcher_dest_next:hover
+{
+
+  -webkit-transform: translateX(3px);
+  -moz-transform: translateX(3px);
+  -ms-transform: translateX(3px);
+  -o-transform: translateX(3px);
+  transform: translateX(3px);
+}
+
+

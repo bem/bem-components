@@ -7,6 +7,8 @@
         { elem : 'js', url : '_simple.js' }
     ],
     content : ['simple', 'islands'].map(function(theme) {
+        var size = theme == 'islands'? 'm' : undefined;
+
         return [
             { tag : 'h2', content : theme },
             [
@@ -14,7 +16,7 @@
                     { tag : 'h3', content : 'radio' },
                     {
                         block : 'menu',
-                        mods : { mode : 'radio', focused : true, theme : theme, size : 'm' },
+                        mods : { mode : 'radio', focused : true, theme : theme, size : size },
                         content : [
                             {
                                 block : 'menu-item',
@@ -47,7 +49,7 @@
                     { tag : 'h3', content : 'check' },
                     {
                         block : 'menu',
-                        mods : { mode : 'check', theme : theme, size : 'm' },
+                        mods : { mode : 'check', theme : theme, size : size },
                         content : [
                             {
                                 block : 'menu-item',
@@ -82,7 +84,7 @@
                     { tag : 'h3', content : 'radio-check' },
                     {
                         block : 'menu',
-                        mods : { mode : 'radio-check', theme : theme, size : 'm' },
+                        mods : { mode : 'radio-check', theme : theme, size : size },
                         content : [
                             {
                                 block : 'menu-item',
@@ -115,7 +117,7 @@
                     { tag : 'h3', content : 'link' },
                     {
                         block : 'menu',
-                        mods : { theme : theme, size : 'm' },
+                        mods : { theme : theme, size : size },
                         content : [
                             {
                                 block : 'menu-item',
@@ -151,7 +153,7 @@
                     { tag : 'h3', content : 'group' },
                     {
                         block : 'menu',
-                        mods : { theme : theme, size : 'm' },
+                        mods : { theme : theme, size : size },
                         content : [
                             {
                                 elem : 'group',
@@ -201,7 +203,7 @@
                     { tag : 'h3', content : 'icon' },
                     {
                         block : 'menu',
-                        mods : { theme : theme, size : 'm' },
+                        mods : { theme : theme, size : size },
                         content : [
                             {
                                 block : 'menu-item',
@@ -242,7 +244,7 @@
                     { tag : 'br' },
                     {
                         block : 'menu',
-                        mods : { mode : 'radio', theme : theme, size : 'm' },
+                        mods : { mode : 'radio', theme : theme, size : size },
                         content : [
                             {
                                 block : 'menu-item',
@@ -268,7 +270,7 @@
                     { tag : 'h3', content : 'disabled' },
                     {
                         block : 'menu',
-                        mods : { mode : 'radio', theme : theme, size : 'm', disabled : true },
+                        mods : { mode : 'radio', theme : theme, size : size, disabled : true },
                         content : [
                             {
                                 block : 'menu-item',

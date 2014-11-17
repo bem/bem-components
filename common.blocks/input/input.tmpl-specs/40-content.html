@@ -1,0 +1,1 @@
+<span class="input i-bem" data-bem="{&quot;input&quot;:{}}"><span class="input__box"><input class="input__control" value="input"/></span></span>

@@ -1,5 +1,4 @@
 block('input').elem('control')(
-
     tag()('input'),
 
     attrs()(function() {

@@ -4,7 +4,7 @@ module.exports = function(bh) {
         ctx
             .js(true)
             .tParam('_textarea', json)
-            .content({ elem : 'control' });
+            .content({ elem : 'control' }, true);
     });
 
 };

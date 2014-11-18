@@ -11,9 +11,9 @@
             block : 'select',
             mods : { mode : 'radio-check', theme : 'islands', size : 's' },
             options : [
-                { text : '' },
-                { text : 'some text' },
-                { text : 'text' }
+                { text : '', val : 1 },
+                { text : 'some text', val : 2 },
+                { text : 'text', val : 3 }
             ],
             cls : 'radio_check-no_text'
         },
@@ -22,9 +22,9 @@
             mods : { mode : 'radio', theme : 'islands', size : 'l' },
             text : '-',
             options : [
-                { text : 'first', checked : true },
-                { text : 'second' },
-                { text : 'third' }
+                { text : 'first', val : 1, checked : true },
+                { text : 'second', val : 2 },
+                { text : 'third', val : 3 }
             ],
             cls : 'size_l-radio-text'
         },
@@ -33,9 +33,9 @@
             mods : { mode : 'radio-check', theme : 'islands', size : 'xl' },
             text : '—',
             options : [
-                { text : 'first', checked : true },
-                { text : 'second', disabled : true },
-                { text : 'third' }
+                { text : 'first', val : 1, checked : true },
+                { text : 'second', val : 2, disabled : true },
+                { text : 'third', val : 3 }
             ],
             cls : 'size_xl-checked-disabled_item'
         },
@@ -44,9 +44,9 @@
             mods : { mode : 'radio', theme : 'islands', size : 's', disabled : true },
             text : 'disabled',
             options : [
-                { text : 'first', checked : true },
-                { text : 'second' },
-                { text : 'third' }
+                { text : 'first', val : 1, checked : true },
+                { text : 'second', val : 2 },
+                { text : 'third', val : 3 }
             ],
             cls : 'disabled'
         },
@@ -57,17 +57,17 @@
             options : [
                 {
                     group : [
-                        { text : 'first' },
-                        { text : 'second', checked : true },
-                        { text : 'third' }
+                        { text : 'first', val : 1 },
+                        { text : 'second', val : 2, checked : true },
+                        { text : 'third', val : 3 }
                     ],
                     title : 'title of group 1'
                 },
                 {
                     group : [
-                        { text : 'fourth' },
-                        { text : 'fifth', checked : true },
-                        { text : 'sixth', disabled : true }
+                        { text : 'fourth', val : 1 },
+                        { text : 'fifth', val : 2, checked : true },
+                        { text : 'sixth', val : 3, disabled : true }
                     ]
                 }
             ],
@@ -80,10 +80,12 @@
             options : [
                 {
                     text : 'Twitter',
+                    val : 1,
                     icon : { block : 'icon', mods : { social : 'twitter' } }
                 },
                 {
                     text : 'VKontakte',
+                    val : 2,
                     icon : { block : 'icon', mods : { social : 'vk' } },
                     checked : true
                 }
@@ -95,9 +97,9 @@
             mods : { mode : 'check', theme : 'islands', size : 'm', width : 'available' },
             text : 'some text some text some text some text',
             options : [
-                { text : 'first first first first first first first first first', checked : true },
-                { text : 'second' },
-                { text : 'third' }
+                { text : 'first first first first first first first first first', val : 1, checked : true },
+                { text : 'second', val : 2 },
+                { text : 'third', val : 3 }
             ],
             cls : 'size_m-check-much_text'
         }

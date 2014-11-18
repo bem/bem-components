@@ -1,0 +1,53 @@
+.tabs_theme_islands
+{
+    .radio-group_type_button
+    {
+        margin-bottom: 10px;
+    }
+
+    .radio_theme_islands.radio_type_line
+    {
+        font-size: 15px;
+        line-height: 36px;
+
+        position: relative;
+
+        display: inline-block;
+
+        margin-right: 16px;
+
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        color: #44b;
+
+        .radio__box
+        {
+            position: absolute;
+
+            visibility: hidden;
+        }
+
+        &.radio_checked
+        {
+            color: #000;
+
+            &:before
+            {
+                position: absolute;
+                top: -1px;
+                right: 0;
+                left: 0;
+
+                content: '';
+
+                border-bottom: 2px solid;
+            }
+        }
+
+        &:hover
+        {
+            color: #d00;
+        }
+    }
+}

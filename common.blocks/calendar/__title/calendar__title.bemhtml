@@ -1,0 +1,23 @@
+block('calendar').elem('title')(
+    content()(function(){
+        var monthName = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+        ];
+
+        var date = this._date;
+        var title = monthName[date.getMonth()] + ' '  + date.getFullYear();
+
+        return title;
+    })
+);

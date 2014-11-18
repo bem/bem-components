@@ -1,0 +1,70 @@
+.progressbar_theme_hackaton
+{
+    display: flex;
+    align-items: center;
+
+    padding: 0 8px;
+
+    background: #f4f4f4;
+
+    .progressbar__bar
+    {
+        height: 100%;
+
+        background: rgba(255,255,255,.7);
+    }
+
+    &.progressbar_size
+    {
+        &_s
+        {
+            height: 30px;
+
+            .progressbar__box
+            {
+                height: 15px;
+            }
+        }
+
+        &_m
+        {
+            height: 40px;
+
+            .progressbar__box
+            {
+                height: 20px;
+            }
+        }
+    }
+
+    .progressbar__box
+    {
+        padding: 1px;
+
+        background: linear-gradient(to right, rgba(45,226,84,1) 0%,rgba(71,160,229,1) 100%);
+
+        flex: 1 0 auto;
+    }
+
+    .progressbar__text
+    {
+
+        font-family: 'Verdana', sans-serif;
+
+        min-width: 3em;
+
+        padding-left: 5px;
+
+        text-align: right;
+
+        .progressbar_size_s &
+        {
+            font-size: 12px;
+        }
+
+        .progressbar_size_m &
+        {
+            font-size: 14px;
+        }
+    }
+}

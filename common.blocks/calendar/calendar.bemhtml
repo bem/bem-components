@@ -1,0 +1,25 @@
+block('calendar')(
+    def()(function() {
+        var ctx = this.ctx;
+        applyNext({
+            _date : ctx.date || new Date(),
+            _switchers : ctx.switchers || ['prev', 'next']
+        });
+    }),
+
+    js()(function(){
+        return {
+            date : this._date,
+            switchers : this._switchers
+        };
+    }),
+
+    content()(function(){
+        return {
+            block : 'calendar',
+            elem : 'content',
+            date : this._date,
+            switchers : this._switchers
+        };
+    })
+);

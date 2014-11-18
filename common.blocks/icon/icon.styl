@@ -18,9 +18,10 @@
      * Чтобы иконка правильно позиционировалась внутри блочного контекста,
      * нужно прописать родителю свойство line-height со значением, равным высоте иконки
      */
-    .image
+    & > img,
+    & > svg
     {
-        margin: -5.18em 0 -5em; /* 0.18 — magic number, empirically found */
+        margin: -5.15em 0 -5em; /* 0.15 — magic number, empirically found */
 
         vertical-align: middle;
     }

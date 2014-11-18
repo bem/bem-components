@@ -39,8 +39,17 @@ provide(BEMDOM.decl(this.name, /** @lends progressbar.prototype */{
      * @param {Number|String} progress
      */
     setProgress : function(progress) {
+        this.params.progress = progress;
         this._setBarWith(progress);
         this.elem('text').text(progress);
+    },
+
+    /**
+     * Get bar's value
+     * @param {Number} val
+     */
+    getVal : function() {
+        return this.params.progress;
     }
 }));
 

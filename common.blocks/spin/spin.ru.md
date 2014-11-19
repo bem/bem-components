@@ -6,16 +6,23 @@
 
 ## Модификаторы блока
 
-### Темы оформления `_theme`
+| Модификатор | Допустимое значение | Способ использования | Описание |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href=#spinthemes>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
+| <a href=#spinsize>size</a> | <code>'xs'</code>, <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер прелоадера. Используется только для <a href="#spinthemes">прелоадеров с модификатором</a> <code>theme</code> в значении <code>islands</code>.|
+| <a href=#spinvisible>visible</a> | <code>'true'</code> | <code>BEMJSON</code> | Активация прелоадера. |
+
+<a name="spinthemes"></a>
+
+### Модификатор `theme`
+
+Допустимое значение: `'simple'`, `'islands'`.
+
+Способы использования: `BEMJSON`.
 
 Обязательный модификатор, так как блок не имеет нативного состояния контрола.
 
-Блок представлен в следующих темах:
-
- * simple
- * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
-
-**simple**
+Пример:
 
 ```bemjson
 {
@@ -24,8 +31,6 @@
 }
 ```
 
-**islands**
-
 ```bemjson
 {
     block : 'spin',
@@ -33,45 +38,17 @@
 }
 ```
 
-<a name="size"></a>
-### Размеры `_size`
+<a name="spinsize"></a>
 
-Реализован только в теме `islands`.
+### Модификатор `size`
+
+Допустимое значение для темы `islands`: `'xs'` `'s'`, `'m'`, `'l'`, `'xl'`.
+
+Способы использования: `BEMJSON`.
 
 Задает размер блоку `spin`.
 
-Доступно пять размеров реализации блока: **xs**, **s**, **m**, **l**, **xl**.
-
-<table>
-    <tr>
-        <th>Размер блока</th>
-        <th>Размер, px</th>
-    </tr>
-    <tr>
-        <th>XS</th>
-        <td>16px</td>
-    </tr>
-    <tr>
-        <th>S</th>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <th>M</th>
-        <td>28px</td>
-    </tr>
-    <tr>
-        <th>L</th>
-        <td>32px</td>
-    </tr>
-    <tr>
-        <th>XL</th>
-        <td>38px</td>
-    </tr>
-</table>
-
-Наглядно показано на примерах ниже:
-
-**XS**
+Пример:
 
 ```bemjson
 {
@@ -80,16 +57,12 @@
 }
 ```
 
-**S**
-
 ```bemjson
 {
     block : 'spin',
     mods : { theme : 'islands', size : 's', visible : true }
 }
 ```
-
-**M**
 
 ```bemjson
 {
@@ -98,7 +71,6 @@
 }
 ```
 
-**L**
 
 ```bemjson
 {
@@ -107,16 +79,19 @@
 }
 ```
 
-**XL**
-
 ```bemjson
 {
     block : 'spin',
     mods : { theme : 'islands', size : 'xl', visible : true }
 }
 ```
+<a name="spinvisible"></a>
 
-### Вращение прелоадера `_visible`
+### Модификатор `visible`
+
+Допустимое значение: `'true'`.
+
+Способы использования: `BEMJSON`.
 
 Модификатор `visible` в значении `true` задает вращение прелоадера и показывает его на странице.
 

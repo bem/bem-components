@@ -1,6 +1,32 @@
 # select
 
-`select` block is used to create a drop-down list. It allows a user to set up different types of popups with menu-items list for selection. `select` is based on the following blocks:
+Block is used to create a drop-down list.
+
+## Short information
+
+### Modifiers of a block
+
+| Modifier | Valid values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href=#mode>mode</a> | <code>'check'</code>, <code>'radio'</code>, <code>'radio-check'</code> | | Type of select. |
+| <a href=#width>width</a> | <code>'available'</code> | | Width of select button. |
+| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | In focus. |
+| <a href=#theme>theme</a> | <code>'custom'</code>, <code>'simple'</code>, <code>'normal'</code> | <code>BEMJSON</code> | Styling. |
+
+### Custom fields of a block
+
+| Field | Type | Description |
+| ---- | --- | -------- |
+| <a href=#name>name</a> | <code>String</code> | Name of `select`. |
+| <a href=#text>text</a> | <code>String</code> | Default text for a button when any `menu-item` is not specified. |
+| <a href=#id>id</a> | <code>String</code> | Unique identifier of `select` block. |
+| <a href=#options>options</a> | <code>BEMJSON</code> | Defines a list of menu-items. |
+| <a href=#textmaxwidth>textMaxWidth</a> | <code>String</code> | Defines maximum width of button from `select` block. |
+| <a href=#optionsmaxheight>optionsMaxHeight</a> | <code>String</code> | Defines maximum height of `popup`. |
+
+## Block overview
+
+The block allows a user to set up different types of popups with menu-items list for selection. `select` is based on the following blocks:
 
 * [button](../button/button.en.md)
 * [popup](../popup/popup.en.md)
@@ -15,77 +41,117 @@ Dropdown list allows user to choose:
 * a single, multiple or none values from the list ([`select_mode_check`](#multiple-choice));
 * a single or none values from the list ([`select_mode_radio-check`](#single-choice)).
 
-## Custom fields of a block
+### Modifiers of a block
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+#### `mode`
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Name of <code>select</code>.</td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Unique identifier of <code>select</code> block.</td>
-    </tr>
-    <tr>
-        <td>options</td>
-        <td>
-            <code>BEMJSON</code>
-        </td>
-        <td>Defines a list of <code>menu-items</code>. Each item has mandatory attribute <code>val</code> implemented by a hidden element <code>control</code>.</td>
-    </tr>
-    <tr>
-        <td>textMaxWidth</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Defines maximum width of <code>button</code> from <code>select</code> block. <code>popup</code> width depends on width of <code>menu-item</code> text. It could be defined also using CSS styles.</td>
-    </tr>
-    <tr>
-        <td>optionsMaxHeight</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Defines maximum height of <code>popup</code>.
-            <br> If all <code>menu-items</code> cannot be fit within <code>popup</code>, scroll element appears.
-            <br> If value of <code>optionsMaxHeight</code> attribute is not specified, height of <code>popup</code> depends on total height of all <code>menu-items</code>'.</td>
-    </tr>
-    <tr>
-        <td>text</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Default text for a button when any <code>menu-item</code> is not specified.
-            <br> This attribute is used for <code>select</code> with the following specified modifiers: <code>select_mode_check</code> and <code>select_mode_radio-check</code>.</td>
-    </tr>
-</table>
+Valid values: `'radio'`, `'check`, `'radio-check'`.
 
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+Use cases:
 
-## Modifiers of a block
+Mandatory modifier.
 
-### _theme
+Examples:
+
+<a name="select_mode_check"></a>
+* Multiple-choice select (`select_mode_check`) allows a user to check more than one menu item from the list or leave all items unchecked. Clicking on menu item changes its value to the opposite.
+
+```bemjson
+{
+    block : 'select',
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
+    name : 'select1',
+    text : '—',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second', checked : true },
+        { val : 3, text : 'third', checked : true }
+    ]
+}
+```
+
+<a name="select_mode_radio"></a>
+* Radio-select (`select_mode_radio`) is used to allow user a single choice. Text in the button of `select` block depends on a chosen menu item. The first item is represented by a button text by default.
+
+```bemjson
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select2',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second', checked : true },
+        { val : 3, text : 'third' }
+    ]
+}
+```
+
+<a name="select_mode_radio-check"></a>
+* Single-choice select (`select_mode_radio-check`) allows a user to check only one menu item from the list or leave all items unchecked. Click on menu item changes its value to the opposite.
+
+```bemjson
+{
+    block : 'select',
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
+    name : 'select3',
+    text : '—',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second', checked : true },
+        { val : 3, text : 'third' }
+    ]
+}
+```
+
+<a name="width"></a>
+#### `width`
+
+Valid value: `'available'`.
+
+Use cases:
+
+To set the ability of select button's width to fit the width of the chosen item, use `width` modifier with `available` value.
+
+Example:
+
+```bemjson
+{
+    block : 'select',
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm', width : 'available' },
+    name : 'select4',
+    text : '—',
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second second second second second second second second' },
+        { val : 3, text : 'third' }
+    ]
+}
+```
+
+<a name="focused"></a>
+#### `focused`
+
+Valid value: `true`.
+
+Use cases: `BEMJSON`.
+
+When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
+
+<a name="theme"></a>
+#### `theme`
+
+Valid values: `'simple'`, `'islands'`.
+
+Use case: `BEMJSON`.
 
 Block supports the following themes:
 
 * simple
-* islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
+* normal (**NB**: Choosing a theme `normal` requires additional modifier `size`)
 
 If `theme` modifier is not specified, [custom](#custom) representation of a control is applied (without CSS styles).
 
-See following examples:
+Examples:
 
 <a name="custom"></a>
 **custom**
@@ -118,12 +184,12 @@ See following examples:
 }
 ```
 
-**islands**
+**normal**
 
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    mods : { mode : 'radio', theme : 'normal', size : 'm' },
     name : 'select1',
     options : [
         { val : 1, text : 'first' },
@@ -133,92 +199,41 @@ See following examples:
 }
 ```
 
-### _mode
+### Custom fields of a block
 
-Use `mode` modifier to define a type of `select`:
+<a name="name"></a>
+#### `name`
 
-<a name="multiple-choice"></a>
-* Multiple-choice select (`select_mode_check`) allows a user to check more than one menu item from the list or leave all items unchecked. Clicking on menu item changes its value to the opposite.
+Name of `select`.
 
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'check', theme : 'islands', size : 'm' },
-    name : 'select1',
-    text : '—',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
-        { val : 3, text : 'third', checked : true }
-    ]
-}
-```
+<a name="text"></a>
+#### `text`
 
-<a name="radio-select"></a>
-* Radio-select (`select_mode_radio`) is used to allow user a single choice.
-Text in the button of `select` block depends on a chosen menu item. The first item is represented by a button text by default.
+Default text for a button when any `menu-item` is not specified. This attribute is used for select with the following specified modifiers: `select_mode_check` and `select_mode_radio-check`.
 
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'radio', theme : 'islands', size : 'm' },
-    name : 'select2',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
-        { val : 3, text : 'third' }
-    ]
-}
-```
+<a name="id"></a>
+#### `id`
 
-<a name="single-choice"></a>
-* Single-choice select (`select_mode_radio-check`) allows a user to check only one menu item from the list or leave all items unchecked. Click on menu item changes its value to the opposite.
+Unique identifier of `select` block.
 
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
-    name : 'select3',
-    text : '–',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
-        { val : 3, text : 'third' }
-    ]
-}
-```
+<a name="options"></a>
+#### `options`
 
-### States of a block
+Defines a list of menu-items. Each item has mandatory attribute `val` implemented by a hidden element `control`.
 
-#### _width
+<a name="textmaxwidth"></a>
+#### `textMaxWidth`
 
-To set the ability of select button's width to fit the width of the chosen item, use `width` modifier with `available` value.
+Defines maximum width of button from `select` block. `popup` width depends on width of `menu-item` text. It could be defined also using CSS styles.
 
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'radio-check', theme : 'islands', size : 'm', width : 'available' },
-    name : 'select4',
-    text : '—',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second second second second second second second second' },
-        { val : 3, text : 'third' }
-    ]
-}
-```
+<a name="optionsmaxheight"></a>
+#### `optionsMaxHeight`
 
-#### _focused
+Defines maximum height of `popup`. If all `menu-items` cannot be fit within `popup`, scroll element appears. If value of `optionsMaxHeight` attribute is not specified, height of `popup` depends on total height of all `menu-items`.
 
-When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
+### Elements of a block
 
-#### _disabled
-
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing `Tab`, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
-
-## Elements of a block
-
-### __button
+#### __button
 
 `select` block is visually represented by a button (block [button](../button/button.en.md)) that contains an icon `<i>` (block [icon](../icon/icon.en.md)) with mixed element `tick`. Size of the icon is specified by `button` block size. Clicking the button opens popup with options.
 
@@ -244,7 +259,7 @@ The following modifiers of a button could be propagated to `select` block:
 }
 ```
 
-## __menu
+#### __menu
 
 `menu` element allows user to manage `menu-items` within selection list:
 
@@ -306,6 +321,6 @@ The following modifiers of a button could be propagated to `select` block:
 }
 ```
 
-## __control
+#### __control
 
 `control` element is added to the block on template engine level and used to draw `menu-item`s in `popup`.

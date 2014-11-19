@@ -1,5 +1,22 @@
 # image
 
+The blocks is used for images representation.
+
+## Short information
+
+### Custom fields of a block
+
+| Field | Type | Description |
+| ---- | --- | -------- |
+| <a href=#title>title</a> | <code>String</code> | Specifies icon name.  |
+| <a href=#alt>alt</a> | <code>String</code> | Specifies an alternate text for images. |
+| <a href=#url>url</a> | <code>String</code> | URL address to open an image. |
+| <a href=#width>width</a> | <code>Number</code> | Specifies icon width. |
+| <a href=#height>height</a> | <code>Number</code> | Specifies icon height. |
+
+
+## Block overview
+
 `<img>`-based block is used for images representation with different content types e.g., logo.
 
 ```bemjson
@@ -13,42 +30,29 @@
 }
 ```
 
-## Custom fields of a block
+### Custom fields of a block
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+<a name="title"></a>
+#### `title`
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>title</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies icon name. Specifies <code>title</code> HTML attribute to an icon.</td>
-    </tr>
-    <tr>
-        <td>alt</td>
-        <td>
-            <code>String</code></td>
-        <td>Specifies an alternate text for images. It allows a user to view text information about an image when image downloading is impossible.
-            <br> This block is recognized by screen readers and other programs.</td>
-    </tr>
-    <tr>
-        <td>url</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Url address to open an image.</td>
-    </tr>
-    <tr>
-        <td>width, height</td>
-        <td>
-            <code>Number</code>
-        </td>
-        <td>Values ​​that will be transferred to image attributes with the same names.</td>
-    </tr>
-</table>
+Specifies icon name. Specifies `title` HTML attribute to an icon.
+
+<a name="alt"></a>
+#### `alt`
+
+Specifies an alternate text for images. It allows a user to view text information about an image when image downloading is impossible. This block is recognized by screen readers and other programs.
+
+<a name="url"></a>
+#### `url`
+
+URL address to open an image.
+
+<a name="width"></a>
+#### `width`
+
+Specifies icon width.
+
+<a name="height"></a>
+#### `height`
+
+Specifies icon height.

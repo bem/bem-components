@@ -1,120 +1,147 @@
 # attach
 
-`attach` block is used to upload file to be sent to a server.
+`attach` block is used to upload a file to be sent to a server.
 
-By default this block is visually represented by:
+## Quick overview
 
-* button (element `button` is based on a block [button](../button/button.en.md)) that opens a system window for file upload;
-* text message (for example, “No file selected”).
+### Modifiers of the block
 
-When file upload is complete, the following elements become available:
+| Modifier | Available values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
+| <a href=#themes>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
 
-* file icon (`icon` block);
-* file name (`text` element);
-* element for file deletion (`clear` element).
+### Custom fields of the block
 
-Block functionality does not support:
+| Field | Type | Description |
+| ---- | --- | -------- |
+| <a href=#button>button</a> | <code>String</code>, <code>BEMJSON</code> | Visual appearance of a file selection button. |
+| <a href=#nofiletext>noFileText</a> | <code>String</code> | A text message when a file is not selected. |
 
-* more than one file attaching;
-* drag-and-drop.
+## Block overview
 
-## Modifiers of a block
+By default `attach` block is visually represented by:
 
-### _theme
+* A button ([button](../button/button.en.md) element that opens a system window for a file upload.
+* A text message.
 
-Block supports only a theme called `simple`.
+When the file upload is complete, the following elements are available:
 
-If `theme` modifier is not specified, [native](#native) representation of a control is applied.
+* A file icon ([icon](../icon/icon.en.md) block).
+* A file name (`text` element).
+* An element for file deletion (`clear` element).
 
-See following examples:
+The block functionality does not support:
 
-<a name="native"></a>
-**default**
+* More than one file attaching.
+* Drag-and-drop.
+
+### Modifiers of the block
+
+<a name="disabled"></a>
+
+#### `disabled` modifier
+
+Available value: `true`.
+
+Use cases: `BEMJSON`, `JS`.
+
+The modifier provides inactive/disabled state to the block. `disabled` modifier is used to make the block visible but not available for user actions.
 
 ```bemjson
 {
     block : 'attach',
+    mods : { theme : 'islands', disabled : true },
     button : 'Select file',
     noFileText : 'No file selected'
 }
 ```
 
-**simple**
+<a name="focused"></a>
+
+#### `focused` modifier
+
+Available value: `true`.
+
+Use cases: `BEMJSON`, `JS`.
+
+The modifier provides focus to the block.
 
 ```bemjson
 {
     block : 'attach',
-    mods : { theme : 'simple' },
+    mods : { theme : 'islands', focused : true },
     button : 'Select file',
     noFileText : 'No file selected'
 }
 ```
 
-### States of a block
+<a name="themes"></a>
 
-#### _disabled
+#### `theme` modifier
 
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
+Available value: `'islands'`.
+
+Use case: `BEMJSON`.
+
+If `theme` modifier is not specified, native representation of a control is applied.
 
 ```bemjson
 {
     block : 'attach',
-    mods : { theme : 'simple', disabled : true },
+    mods : { theme : 'islands' },
     button : 'Select file',
     noFileText : 'No file selected'
 }
 ```
 
-## Elements of a block
+### Custom fields of the block
 
-Block is visually represented by the following elements:
+<a name="button"></a>
 
-### __button
+#### `button` field
 
-File selection button for opening a system window for file upload. It is based on [button](../button/button.en.md) block and inherits its behavior (JS) and styling (CSS). Content of a button should be specified in BEMJSON data.
+Specifies visual appearance of a file selection button:
+
+* A text.
 
 ```bemjson
 {
     block : 'attach',
-    mods : { theme : 'simple' },
+    mods : { theme : 'islands' },
+    button : 'Select file'
+}
+```
+* Visual appearance and style.
+
+```bemjson
+{
+    block : 'attach',
+    mods : { theme : 'islands' },
     button : {
         block : 'button',
-        mods : { theme : 'simple' },
-        icon : { block : 'icon', mods : { action : 'download' },
+        mods : { theme : 'islands', size : 'm' },
+        icon : {
+            block : 'icon',
+            mods : { action : 'download' }
+        },
         text: 'Select file'
-        }
-    },
-    noFileText : 'No file selected'
+    }
 }
 ```
 
-### __control
+<a name="nofiletext"></a>
 
-Native control for file attaching that is added to the block on template engine level.
+#### `noFileText` field
 
-### __no-file
+Specifies a text message when a file is not selected.
 
-An auxiliary element is added to the block on template engine level. Sets text when file is not selected.
-
-If theme *simple* is not declared, text message “no file selected” is used by default.
-
-### __file
-
-Container with attached file information. An auxiliary element is added to the block on template engine level.
-
-It consists of the following elements of the block:
-
-* `text`
-* `clear`
-
-This element could contain `icon` block. Depending on a file type `icon` block could obtain corresponding modifier.
-
-### __text
-
-File name. It becomes available when you have attached some file.
-
-### __clear
-
-Clear attachment element. It becomes available when you have attached some file.
-
-The element is used for `simple` theme of `attach` block.
+```bemjson
+{
+    block : 'attach',
+    mods : { theme : 'islands' },
+    button : 'Select file',
+    noFileText : 'No file selected'
+}
+```

@@ -4,18 +4,31 @@
 
 Rotation of the `spin` block is implemented by CSS3 animation.
 
-## Modifiers of a block
+## Quick overview
 
-### _theme
+### Modifiers of the block
+
+| Modifier name| Available values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href=#spinthemes>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Custom design. |
+| <a href=#spinsize>size</a> | <code>'xs'</code>, <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Size of the  <code>'spin'</code> block. Used only for  <a href="#spinthemes">spin blocks with modifier</a> <code>theme</code> in the value <code>islands</code>.|
+| <a href=#spinvisible>visible</a> | <code>'true'</code> | <code>BEMJSON</code> | Activation of the spin. |
+
+## Block overview
+
+<a name="spinthemes"></a>
+
+### Modifiers of the block
+
+#### `theme` modifier
+
+Available values: `'simple'`, `'islands'`.
+
+Use case: `BEMJSON`.
 
 The `spin` block does not have native control representation.
 
-Block supports the following themes:
-
-* simple
-* islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
-
-**simple**
+Example:
 
 ```bemjson
 {
@@ -24,52 +37,24 @@ Block supports the following themes:
 }
 ```
 
-**islands**
-
 ```bemjson
 {
     block : 'spin',
-    mods : { theme : 'islands', size : 'm', visible : true }
+    mods : { theme : 'islands', size : 's', visible : true }
 }
 ```
 
-<a name="size"></a>
-### _size
+<a name="spinsize"></a>
 
-Implemented only for theme `islands`.
+#### `size` modifier
 
-There are five sizes available: **xs**, **s**, **m**, **l**, **xl**.
+Available values for the theme `islands`: `'xs'` `'s'`, `'m'`, `'l'`, `'xl'`.
 
-<table>
-    <tr>
-        <th>Block size</th>
-        <th>Size, px</th>
-    </tr>
-    <tr>
-        <th>xs</th>
-        <td>16px</td>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>28px</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>32px</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>38px</td>
-    </tr>
-</table>
+Use case: `BEMJSON`.
 
-See following examples:
+Sets the size of block `spin`.
 
-**XS**
+Example:
 
 ```bemjson
 {
@@ -92,6 +77,7 @@ See following examples:
 }
 ```
 
+
 ```bemjson
 {
     block : 'spin',
@@ -105,9 +91,12 @@ See following examples:
     mods : { theme : 'islands', size : 'xl', visible : true }
 }
 ```
+<a name="spinvisible"></a>
 
-### States of a block
+#### `visible` modifier
 
-#### _visible
+Available value: `'true'`.
+
+Use case: `BEMJSON`.
 
 `visible` modifier with `true` value activates the spin. If `visible` modifier is not specified, rotation is paused and `spin` block is hidden from the page.

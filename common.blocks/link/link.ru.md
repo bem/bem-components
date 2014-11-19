@@ -2,53 +2,47 @@
 
 Блок `link` используется для создания различных типов ссылок и предоставляет возможность изменять их состояние, внешний вид и поведение.
 
-## Атрибуты блока
+## Краткая информация
+
+### Модификаторы блока
+
+| Модификатор | Допустимые значения | Способы использования | Описание |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href=#theme>theme</a> | <code>simple</code>, <code>normal</code> | <code></code> | Стилевое оформление. |
+| <a href=#pseudo>pseudo</a> | <code>'true'</code> | <code></code> | Вызов сценариев. |
+| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
+| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Блок в фокусе. |
+
+
+### Атрибуты блока
 
 Список атрибутов блока, которые могут быть заданы в одноименных полях входного BEMJSON:
 
-<table>
-    <tr>
-        <th>Атрибут</th>
-        <th>Тип</th>
-        <th>Описание</th>
-    </tr>
-    <tr>
-        <td>url</td>
-        <td><code>String|BEMJSON</code></td>
-        <td>Адрес ссылки. Если указан, значение <code>url</code> становится HTML-атрибут <code>href</code>.</td>
-    </tr>
-    <tr>
-        <td>title</td>
-        <td><code>String</code></td>
-        <td>Текст всплывающей подсказки. Устанавливает ссылке HTML-атрибут <code>title</code>.</td>
-    </tr>
-    <tr>
-        <td>target</td>
-        <td><code>String</code></td>
-        <td>Целевое окно. В значении <code>blank</code> открывает адрес ссылки в новом окне.
-            <br>Устанавливает ссылке HTML-атрибут <code>target</code>.</td>
-    </tr>
-    <tr>
-        <td>tabIndex</td>
-        <td><code>Number</code></td>
-        <td> Индекс, задающий последовательность перехода между элементами страницы при нажатии на <code>Tab</code>. Преобразуется в на HTML-атрибут <code>tabindex</code>.</td>
-    </tr>
-</table>
+| Поле | Тип | Описание |
+| ---- | --- | -------- |
+| url | <code>String</code>, <code>BEMJSON</code> | Адрес ссылки. Если указан, значение <code>url</code> становится HTML-атрибут <code>href</code>. |
+| title | <code>String</code> | Текст всплывающей подсказки. Устанавливает ссылке HTML-атрибут <code>title</code>. |
+| target | <code>String</code> | Целевое окно. В значении <code>blank</code> открывает адрес ссылки в новом окне. Устанавливает ссылке HTML-атрибут <code>target</code>. |
+| tabIndex | <code>Number</code> | Индекс, задающий последовательность перехода между эелементами страницы при нажатии на <code>Tab</code>. Преобразуется в HTML-атрибут <code>tabindex</code>. |
 
+## Обзор блока
 
-## Модификаторы блока
+### Модификаторы блока
 
-### Темы `_theme`
+<a name="theme"></a>
 
- * simple
- * islands
+#### Модификатор `theme`
+
+Допустимое значение: `simple`, `normal`.
+
+Способы использования:
 
 Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
 
-Наглядно показано на примерах ниже:
+Пример:
 
-<a namme="native"></a>
-**default**
+<a name="native"></a>
+
 ```bemjson
 {
     block : 'link',
@@ -57,7 +51,6 @@
 }
 ```
 
-**simple**
 
 ```bemjson
 {
@@ -68,47 +61,63 @@
 }
 ```
 
-**islands**
 
 ```bemjson
 {
     block : 'link',
-    mods : { theme : 'islands' },
+    mods : { theme : 'normal' },
     url : '#',
     content : 'link'
 }
 ```
+<a name="pseudo"></a>
 
-### Псевдоссылка `_pseudo`
+#### Модификатор `pseudo`
+
+Допустимое значение: `true`.
+
+Способ использования:
 
 Тип ссылки, по которой не производится переход на новую страницу. Применяется для вызова сценариев.
+
+Пример:
 
 ```bemjson
 {
     block : 'link',
-    mods : { theme : 'islands', pseudo : true },
+    mods : { theme : 'normal', pseudo : true },
     title : 'pseudo mod',
     content : 'link'
 }
 ```
+<a name="disabled"></a>
 
-### Состояния блока
+#### Модификатор `disabled`
 
-#### Неактивен `_disabled`
+Допустимое значение: `true`.
+
+Способ использования:
 
 В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу `Tab`, мышью или другими способами. Переход по неактивной ссылке невозможен.
 
 В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.
 
+Пример:
+
 ```bemjson
 {
     block : 'link',
-    mods : { theme : 'islands', disabled : true },
+    mods : { theme : 'normal', disabled : true },
     url : '#',
     content : 'disabled'
 }
 ```
+<a name="focused"></a>
 
-#### В фокусе `_focused`
+#### Модификатор `focused`
+
+Допустимое значение: `true`
+
+Способ использования:
 
 Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.

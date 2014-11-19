@@ -7,77 +7,52 @@
 * password field;
 * search form.
 
-## Custom fields of a block
+
+## Quick overview
+
+### Modifiers of the block
+
+| Modifier | Available value| Use cases| Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href=#theme>theme</a> | <code>'simple', 'islands' </code> | <code>BEMJSON</code> | Custom design. |
+| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Size of text field. Ued only for <a href="#theme">text field with modifier</a> <code>theme</code> in the <code>islands</code> value.|
+| <a href=#type>type</a> | <code>'textarea'</code>, <code>'password'</code>, <code>'search'</code>  | <code>BEMJSON</code> | Types of text fields. |
+| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Disabled state. |
+| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
+| <a href=#has-clear>has-clear</a> | <code>true</code> | <code></code> | |
+
+### Custom fields of the block
 
 The following custom fields could be specified in BEMJSON declaration of the block:
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>val</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies value that will be sent to a server or obtained using client scripts. It is empty by default. Pair <code>name=val</code> is sent to a server, where name is set by <code>name</code> attribute and value – by <code>val</code> attribute.</td>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Defines name of an input field that is used for its identification.</td>
-    </tr>
-    <tr>
-        <td>placeholder</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>A hint that describes expected value of an input field.</td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Unique block identifier. Should be specified manually in BEMJSON file.</td>
-    </tr>
-    <tr>
-        <td>maxLength</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies maximum number of characters allowed in input field.</td>
-    </tr>
-    <tr>
-        <td>tabIndex</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies the position of current <code>input</code> block in the tabbing order for current page.</td>
-    </tr>
-</table>
+| Field | Type | Description |
+| ---- | --- | -------- |
+| val| <code>String</code> | Specifies value that will be sent to a server or obtained using client scripts. It is empty by default. Pair <code>name=val</code> is sent to a server, where name is set by <code>name</code> attribute and value – by <code>val</code> attribute.|
+| name | <code>String</code> | Defines name of an input field that is used for its identification. |
+| placeholder | <code>String</code> | A hint that describes expected value of an input field. |
+| id | <code>String</code> | Unique block identifier. Should be specified manually in BEMJSON file. |
+| maxLength | <code>String</code> | Specifies maximum number of characters allowed in input field. |
+| tabIndex | <code>String</code> | Specifies the position of current <code>input</code> block in the tabbing order for current page. |
 
 Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
 
-## Modifiers of a block
+## Block overview
 
-### _theme
+### Modifiers of the block
 
-Block supports the following themes:
+<a name="theme"></a>
 
- * simple
- * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
+#### `theme` modifier
+
+Available values: `simple`, `islands`.
+
+Use case:
 
 If `theme` modifier is not specified, [native](#native) representation of a control is applied.
 
-See following examples:
+Example:
 
 <a name="native"></a>
-**default**
 
 ```bemjson
 {
@@ -86,8 +61,6 @@ See following examples:
 }
 ```
 
-**simple**
-
 ```bemjson
 {
     block : 'input',
@@ -95,8 +68,6 @@ See following examples:
     placeholder : 'simple'
 }
 ```
-
-**islands**
 
 ```bemjson
 {
@@ -107,43 +78,16 @@ See following examples:
 ```
 
 <a name="size"></a>
-### _size
 
-Implemented only for theme `islands`.
+#### `size` modifier
+
+Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
+
+Use case: `BEMJSON`.
 
 Provides with size values to all types of text fields.
 
-There are four sizes available: **s**, **m**, **l**, **xl**.
-
-<table>
-    <tr>
-        <th>Size</th>
-        <th>Font size</th>
-        <th>String height</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>13px</td>
-        <td>28px</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>15px</td>
-        <td>32px</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>18px</td>
-        <td>38px</td>
-    </tr>
-</table>
-
-See following examples:
+Example:
 
 ```bemjson
 {
@@ -176,12 +120,17 @@ See following examples:
     placeholder : 'X-Large'
 }
 ```
+<a name="type"></a>
 
-### _type
+#### `type` modifier
 
-Following types of `input` block are available:
+Available values: `'textarea'`, `'password'`, `'search'`.
 
-* text area (`input_type_textarea`)
+Use case:
+
+If `type` modifier is not specified, `input` block obtains `<input type="text"/>` value by default.
+
+Example:
 
 ```bemjson
 {
@@ -191,7 +140,6 @@ Following types of `input` block are available:
 }
 ```
 
-* password field (`input_type_password`)
 
 ```bemjson
 {
@@ -201,7 +149,6 @@ Following types of `input` block are available:
 }
 ```
 
-* search form (`input_type_search`)
 
 ```bemjson
 {
@@ -210,29 +157,42 @@ Following types of `input` block are available:
     placeholder : 'Search form'
 }
 ```
+<a name="disabled"></a>
 
-If `type` modifier is not specified, `input` block obtains `<input type="text"/>` value by default.
+#### `disabled` modifier
 
+Available modifier: `true`.
 
-### States of a block
-
-#### _disabled
+Use case:
 
 `disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
+
+Example:
 
 ```bemjson
 {
     block : 'input',
     mods : { theme : 'islands', size : 'm', disabled : true },
-    val : 'Disabled'
+    val : 'Неактивно'
 }
 ```
+<a name="focused"></a>
 
-#### _focused
+#### `focused` modifier
 
-When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.
+Available value: `true`.
 
-### _has-clear
+Use case:
+
+When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
+
+<a name="has-clear"></a>
+
+#### `has-clear` modifier
+
+Available value: `true`.
+
+Use cas:
 
 `has-clear` modifier is set automatically when some data is entered into an input field. This modifier is used to add [`clear`](#clear_elem) element.
 
@@ -250,7 +210,6 @@ This element is used to clear `input` field content.
 Element for grouping native `<input>` field and additional elements (e.g `clear`).
 
 An auxiliary element is added to the block on template engine level.
-
 ### __control
 
 An auxiliary element is added to the block on template engine level.

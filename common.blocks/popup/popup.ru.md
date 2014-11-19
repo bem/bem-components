@@ -15,69 +15,45 @@
 
 Метод `setTarget` возвращает объект `this`.
 
-## Специализированные поля блока
+## Краткая инфорция
+
+### Специализированные поля блока
 
 Список зарезервированных полей входного BEMJSON:
 
-<table>
-    <tr>
-        <th>Поле</th>
-        <th>Тип</th>
-        <th>Описание</th>
-    </tr>
-    <tr>
-        <td>directions</td>
-        <td>
-            <code>Массив</code>
-        </td>
-        <td>Управляет <a href="#directions">направлением открытия попапа</a> (например, <code>bottom-left</code>, где <code>bottom</code> является основным параметром, <code>left</code> — второстепенным) на странице относительно вызвавшего его элемента.</td>
-    </tr>
-    <tr>
-        <td>mainOffset</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Задает смещение попапа относительно основного направления.</td>
-    </tr>
-    <tr>
-        <td>secondaryOffset</td>
-        <td>
-            <code>BEMJSON</code></td>
-        <td>Задает смещение попапа относительно второстепенного направления.</td>
-    </tr>
-    <tr>
-        <td>viewportOffset</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Задает смещение попапа от края окна браузера.</td>
-    </tr>
-    <tr>
-        <td>zIndexGroupLevel</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Позволяет задать уровень слоя для открывающихся попапов. Основан на блоке <a href="../z-index-group/z-index.group.ru.md">z-index-group</a></td>
-    </tr>
-</table>
+| Field | Type | Description |
+| ---- | --- | -------- |
+| <a href=#directions>directions</a> | <code>Array</code> | Управляет <a href="directions">направлением открытия попапа</a> (например, <code>bottom-left</code>, где <code>bottom</code> является основным параметром, <code>left</code> - второстепенным) на странице относительно вызвавшего его элемета. |
+| <a href=#mainOffset>mainOffset</a> | <code>String</code> | Задает смещение попапа относительно основного направления.|
+| <a href=#mainOffset>secondaryOffset</a> | <code>String</code>| Задает смещение попапа относительно второстепенного направления. |
+| viewportOffset | <code>String</code>| Задает смещение попапа от края окна браузера.|
+| zIndexGroupLevel | <code>String</code> | Позволяет задать уровень слоя для открывающихся попапов. Основан на блоке <a href="../z-index-group/z-index.group.ru.md">z-index-group</a>|
+
 
 При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле `attrs` в BEMJSON.
 
-## Модификаторы блока
+### Модификаторы блока
 
-### Темы `_theme`
+| Модификатор | Допустимое значение | Способ использования | Описание |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href=#popuptheme>theme</a> | <code>'simple'</code>, <code>'normal'</code> | <code>BEMJSON</code> | Стилевое оформление. |
+| <a href=#popupvisible>visible</a> | | | |
+| <a href=#popupautoscalable>autoscalable</a> | <code>'true'</code>| <code>BEMJSON</code> | |
 
-Блок представлен в следующих темах:
+<a name="popuptheme"></a>
 
- * simple
- * islands
+### Модификатор `theme`
+
+Допустимое значение: `'simple'`, `'normal'`.
+
+Способы использования:
 
 Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
 
-Наглядно видно на примерах ниже:
+Пример:
 
 <a name="native"></a>
-**default**
+
 
 ```
 {
@@ -86,7 +62,6 @@
 }
 ```
 
-**simple**
 
 ```
 {
@@ -96,38 +71,45 @@
 }
 ```
 
-**islands**
 
 ```
 {
     block : 'popup',
-    mods : { theme : 'islands' },
-    content : 'islands'
+    mods : { theme : 'normal' },
+    content : 'normal'
 }
 ```
+<a name="popupvisible"></a>
 
-### Видимый `_visible`
+### Модификатор `visible`
 
 Модификатор `visible` выставляется блоку автоматически при открытии попапа. Когда попап скрыт, модификатор удаляется.
 
 **NB:** данная реализация блока не поддерживает принудительную установку модификатора `visible` в BEMJSON-декларации.
 
-#### `_autoclosable`
+<a name="popupautoscalable"></a>
 
-Модификатор `autoclosable` скрывает блок по щелчку мыши вне зоны попапа.
+#### Модификатор `autoscalable`
+
+Допустимые значения: `'true'`
+
+Способы использования:
+
+Модификатор `autoscalable` скрывает блок по щелчку мыши вне зоны попапа.
 
 ```
 {
     block : 'popup',
-    mods : { theme : 'islands', autoclosable : true },
-    content : 'islands'
+    mods : { theme : 'normal', autoclosable : true },
+    content : 'normal'
 }
 ```
 
-<a href="direction"></a>
-## Расположение относительно родителя `_direction`
+<a name="directions"></a>
 
-Поле `direction` управляет направлением открытия попапа на странице относительно вызвавшего его элемента. Расположение блока определяется автоматически, исходя из массива допустимых направлений и положения родителя на странице.
+## Расположение относительно родителя `direction`
+
+Поле `direction` управляет направлением открытия попапа на странице относительно вызвавшего его элемета. Расположение блока определяется автоматически, исходя из массива допустимых направлений и положения родителя на странице.
 
 По умолчанию используется следующий массив допустимых направлений:
 
@@ -153,31 +135,32 @@
     block : 'popup',
     mods : { autoclosable : true, theme: 'simple' },
     directions : ['top-left', 'top-center', 'top-right'],
-    content : 'Hello, world!'
+    content : 'Popup message'
 }
 ```
 
-Или необходимо разместить попап справа по центру:
+Или небходимо разместить попап справа по центру:
 
 ```
 {
     block : 'popup',
     mods : { autoclosable : true, theme: 'simple' },
     directions : ['right-center'],
-    content : 'Hello, world!'
+    content : 'Popup message'
 }
 ```
+<a name="mainOffset"></a>
 
 Используйте поля `mainOffset` и/или `secondaryOffset` для управления направлением смещения.
 
 ```
 {
     block : 'popup',
-    mods : { autoclosable : true, theme: 'islands' },
+    mods : { autoclosable : true, theme: 'normal' },
     direction : ['right-center'],
     mainOffset : 100,
     secondaryOffset : 100,
-    content : 'Hello, world!'
+    content : 'Popup message'
 }
 ```
 
@@ -185,6 +168,6 @@
 
 Блок `popup` поддерживает вложенную структуру нескольких одновременно открытых попапов. Это означает, что один попап может вызывать второй, а второй, соответственно, может вызвать третий и так далее. И при этом все попапы будут оставаться открытыми.
 
-Если установлен модификатор `autoclosable` в значении `true`, то при щелчке мышью вне зоны попапа, попап закроется сам и закроет свои дочерние блоки.
+Если установлен модификатор `autoscalable` в значении `true`, то при щелчке мышью вне зоны попапа, попап закроется сам и закроет свои дочерние блоки.
 
 Дочерние блоки popup можно рассматривать в виде цепочки `1` → `2` → `3` → `4`. При клике на втором попапе – закрываются третий и четвертый. При клике в первом – закрываются второй, третий, четвертый. При клике за пределами любого попапа из цепочки – закроются все.

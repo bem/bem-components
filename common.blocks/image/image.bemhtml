@@ -1,13 +1,20 @@
 block('image')(
-    tag()('img'),
-    attrs()(function() {
-        var ctx = this.ctx;
-        return {
-            src : ctx.url,
-            width : ctx.width,
-            height : ctx.height,
-            alt : ctx.alt,
-            title : ctx.title
-        };
-    })
+    attrs()({ role : 'img' }),
+
+    tag()('span'),
+
+    match(function() { return typeof this.ctx.content === 'undefined'; })(
+        tag()('img'),
+        attrs()(function() {
+            var ctx = this.ctx;
+            return this.extend(applyNext(),
+                {
+                    src : ctx.url,
+                    width : ctx.width,
+                    height : ctx.height,
+                    alt : ctx.alt,
+                    title : ctx.title
+                });
+        })
+    )
 );

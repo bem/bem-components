@@ -11,6 +11,7 @@ module.exports = function(bh) {
             mods : {
                 size : mods.size,
                 theme : mods.theme,
+                view : mods.view,
                 focused : mods.focused,
                 disabled : mods.disabled,
                 checked : mods.mode !== 'radio' && !!checkedOptions.length

@@ -95,9 +95,10 @@ See following examples:
     block : 'select',
     mods : { mode : 'radio' },
     name : 'select1',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
+        { val : 2, text : 'second' },
         { val : 3, text : 'third' }
     ]
 }
@@ -110,9 +111,10 @@ See following examples:
     block : 'select',
     mods : { mode : 'radio', theme : 'simple' },
     name : 'select1',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
+        { val : 2, text : 'second' },
         { val : 3, text : 'third' }
     ]
 }
@@ -125,9 +127,10 @@ See following examples:
     block : 'select',
     mods : { mode : 'radio', theme : 'islands', size : 'm' },
     name : 'select1',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
+        { val : 2, text : 'second' },
         { val : 3, text : 'third' }
     ]
 }
@@ -146,10 +149,11 @@ Use `mode` modifier to define a type of `select`:
     mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select1',
     text : '—',
+    val : [2, 3],
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
-        { val : 3, text : 'third', checked : true }
+        { val : 2, text : 'second' },
+        { val : 3, text : 'third' }
     ]
 }
 ```
@@ -163,9 +167,10 @@ Text in the button of `select` block depends on a chosen menu item. The first it
     block : 'select',
     mods : { mode : 'radio', theme : 'islands', size : 'm' },
     name : 'select2',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
+        { val : 2, text : 'second' },
         { val : 3, text : 'third' }
     ]
 }
@@ -180,9 +185,10 @@ Text in the button of `select` block depends on a chosen menu item. The first it
     mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
     name : 'select3',
     text : '–',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
+        { val : 2, text : 'second' },
         { val : 3, text : 'third' }
     ]
 }
@@ -236,9 +242,10 @@ The following modifiers of a button could be propagated to `select` block:
     mods : { mode : 'radio-check', theme : 'islands', size : 'm', disabled : true },
     name : 'select5',
     text : '—',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
+        { val : 2, text : 'second' },
         { val : 3, text : 'third' }
     ]
 }
@@ -260,6 +267,7 @@ The following modifiers of a button could be propagated to `select` block:
     mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
     text : '—',
+    val : [{ id : 2 }],
     options : [
         {
             val : 1,
@@ -271,8 +279,7 @@ The following modifiers of a button could be propagated to `select` block:
             val : 2,
             text : 'VKontakte',
             checkedText : 'vk',
-            icon : { block : 'icon', mods : { social : 'vk' } },
-            checked : true
+            icon : { block : 'icon', mods : { social : 'vk' } }
         }
     ]
 }
@@ -286,11 +293,12 @@ The following modifiers of a button could be propagated to `select` block:
     mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
     text : 'empty',
+    val : [2, 5],
     options : [
         {
             group : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second', checked : true },
+                { val : 2, text : 'second' },
                 { val : 3, text : 'third' }
             ],
             title : 'title of group 1'
@@ -298,7 +306,7 @@ The following modifiers of a button could be propagated to `select` block:
         {
             group : [
                 { val : 4, text : 'fourth' },
-                { val : 5, text : 'fifth', checked : true },
+                { val : 5, text : 'fifth' },
                 { val : 6, text : 'sixth', disabled : true }
             ]
         }

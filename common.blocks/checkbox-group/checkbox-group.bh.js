@@ -6,7 +6,12 @@ module.exports = function(bh) {
             .js(true)
             .mix({ block : 'control-group' });
 
-        var mods = ctx.mods();
+        var mods = ctx.mods(),
+            val = json.val,
+            isValDef = typeof val !== 'undefined';
+
+        if(isValDef && !Array.isArray(val)) throw Error('checkbox-group: val must be an array');
+
         ctx.content((json.options || []).map(function(option, i) {
             return [
                 !!i && !mods.type && { tag : 'br' },
@@ -16,7 +21,7 @@ module.exports = function(bh) {
                         type : mods.type,
                         theme : mods.theme,
                         size : mods.size,
-                        checked : option.checked,
+                        checked : isValDef && val.indexOf(option.val) > -1,
                         disabled : option.disabled || mods.disabled
                     },
                     name : json.name,

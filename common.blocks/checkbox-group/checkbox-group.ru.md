@@ -25,7 +25,7 @@
         <td>options</td>
         <td><code>Array</code></td>
         <td>Массив пар значений <code>text=val</code>, которые соответствуют одному чекбоксу группы. На сервер отправляется пара <code>name=val</code>, где имя группы чекбоксов задается ключом <code>name</code>, а значение каждого чекбокса — ключом <code>val</code>.
-            <br>Независимый чекбокс из группы может получать модификаторы блока <code>checkbox</code>. Например, модификаторы <code>checked</code> или <code>disabled</code> могут быть заданы не блоку <code>checkbox-group</code>, а отдельным чекбоксам.</td>
+            <br>Независимый чекбокс из группы может получать модификаторы блока <code>checkbox</code>. Например, модификатор <code>disabled</code> может быть задан не блоку <code>checkbox-group</code>, а отдельным чекбоксам.</td>
     </tr>
 </table>
 
@@ -222,9 +222,10 @@
     block : 'checkbox-group',
     mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
     name : 'checkbox-button',
+    val : [2],
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true }
+        { val : 2, text : 'second' }
     ]
 }
 ```
@@ -234,9 +235,10 @@
     block : 'checkbox-group',
     mods : { theme : 'islands', size : 'm', disabled : true },
     name : 'checkbox-button',
+    val : [2],
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true }
+        { val : 2, text : 'second' }
     ]
 }
 ```

@@ -13,9 +13,10 @@
             name : 'select1',
             textMaxWidth : 100,
             optionsMaxHeight : 100,
+            val : 2,
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second', checked : true },
+                { val : 2, text : 'second' },
                 { val : 3, text : 'third' },
                 { val : 4, text : '4' },
                 { val : 5, text : '5' },
@@ -46,20 +47,22 @@
             mods : { mode : 'check', theme : 'islands', size : 'm' },
             name : 'select3',
             text : '—',
+            val : [2, 3],
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second', checked : true },
-                { val : 3, text : 'third', checked : true }
+                { val : 2, text : 'second' },
+                { val : 3, text : 'third' }
             ]
         },
         {
             block : 'select',
             mods : { mode : 'check', theme : 'islands', size : 'm' },
             name : 'select4',
+            val : [2, 3],
             options : [
                 { val : 1, text : 'first', checkedText : '1' },
-                { val : 2, text : 'second', checkedText : '2', checked : true },
-                { val : 3, text : 'third', checkedText : '3', checked : true }
+                { val : 2, text : 'second', checkedText : '2' },
+                { val : 3, text : 'third', checkedText : '3' }
             ]
         },
         {
@@ -67,6 +70,7 @@
             mods : { mode : 'check', theme : 'islands', size : 'm' },
             name : 'select5',
             text : '—',
+            val : [{ id : 2 }],
             options : [
                 {
                     val : 1,
@@ -78,8 +82,7 @@
                     val : 2,
                     text : 'VKontakte',
                     checkedText : 'vk',
-                    icon : { block : 'icon', mods : { social : 'vk' } },
-                    checked : true
+                    icon : { block : 'icon', mods : { social : 'vk' } }
                 }
             ]
         },
@@ -87,11 +90,12 @@
             block : 'select',
             mods : { mode : 'check', theme : 'islands', size : 'm' },
             text : 'empty',
+            val : [2, 5],
             options : [
                 {
                     group : [
                         { val : 1, text : 'first' },
-                        { val : 2, text : 'second', checked : true },
+                        { val : 2, text : 'second' },
                         { val : 3, text : 'third' }
                     ],
                     title : 'title of group 1'
@@ -99,7 +103,7 @@
                 {
                     group : [
                         { val : 4, text : 'fourth' },
-                        { val : 5, text : 'fifth', checked : true },
+                        { val : 5, text : 'fifth' },
                         { val : 6, text : 'sixth', disabled : true }
                     ]
                 }
@@ -137,22 +141,25 @@
             {
                 block : 'select',
                 mods : { mode : 'radio', theme : 'islands', size : 's' },
+                val : 1,
                 options : [
-                    { text : 'size s', checked : true }
+                    { text : 'size s', val : 1 }
                 ]
             },
             {
                 block : 'select',
                 mods : { mode : 'radio', theme : 'islands', size : 'm' },
+                val : 1,
                 options : [
-                    { text : 'size m', checked : true }
+                    { text : 'size m', val : 1 }
                 ]
             },
             {
                 block : 'select',
                 mods : { mode : 'radio', theme : 'islands', size : 'l' },
+                val : 1,
                 options : [
-                    { text : 'size l', checked : true }
+                    { text : 'size l', val : 1 }
                 ]
             }
         ].map(function(i) { return [i, ' '] })

@@ -7,7 +7,11 @@ block('checkbox-group')(
 
     content()(function() {
         var mods = this.mods,
-            ctx = this.ctx;
+            ctx = this.ctx,
+            val = ctx.val,
+            isValDef = typeof val !== 'undefined';
+
+        if(isValDef && !Array.isArray(val)) throw Error('checkbox-group: val must be an array');
 
         return (ctx.options || []).map(function(option, i) {
             return [
@@ -18,7 +22,7 @@ block('checkbox-group')(
                         type : mods.type,
                         theme : mods.theme,
                         size : mods.size,
-                        checked : option.checked,
+                        checked : isValDef && val.indexOf(option.val) > -1,
                         disabled : option.disabled || mods.disabled
                     },
                     name : ctx.name,

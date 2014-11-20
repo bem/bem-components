@@ -1,12 +1,45 @@
 block('menu')(
     def()(function() {
+        var ctx = this.ctx,
+            mods = this.mods,
+            firstItem,
+            checkedItems = [];
+
+        if(ctx.content) {
+            var isValDef = typeof ctx.val !== 'undefined',
+                containsVal = function(val) {
+                    return isValDef &&
+                        (mods.mode === 'check'?
+                            ctx.val.indexOf(val) > -1 :
+                            ctx.val === val);
+                },
+                iterateItems = function(content) {
+                    var i = 0, itemOrGroup;
+                    while(itemOrGroup = content[i++]) {
+                        if(itemOrGroup.block === 'menu-item') {
+                            firstItem || (firstItem = itemOrGroup);
+                            if(containsVal(itemOrGroup.val)) {
+                                (itemOrGroup.mods = itemOrGroup.mods || {}).checked = true;
+                                checkedItems.push(itemOrGroup);
+                            }
+                        } else { // menu__group
+                            iterateItems(itemOrGroup.content);
+                        }
+                    }
+                };
+
+            iterateItems(ctx.content);
+        }
+
+        this._firstItem = firstItem;
+        this._checkedItems = checkedItems;
+
         applyNext({
             _menuMods : {
-                theme : this.mods.theme,
-                disabled : this.mods.disabled
+                theme : mods.theme,
+                disabled : mods.disabled
             }
         });
-        delete this._menuTheme;
     }),
     attrs()(function() {
         var attrs = { role : 'menu' };

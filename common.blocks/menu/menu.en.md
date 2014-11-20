@@ -258,6 +258,7 @@ Use `mode` modifier to define a type of menu list:
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'radio-check' },
+    val : 2,
     content : [
         {
             block : 'menu-item',
@@ -266,7 +267,6 @@ Use `mode` modifier to define a type of menu list:
         },
         {
             block : 'menu-item',
-            mods : { checked : true },
             val : 2,
             content : 'Second item'
         }
@@ -280,6 +280,7 @@ Use `mode` modifier to define a type of menu list:
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'check' },
+    val : [2],
     content : [
         {
             block : 'menu-item',
@@ -288,7 +289,6 @@ Use `mode` modifier to define a type of menu list:
         },
         {
             block : 'menu-item',
-            mods : { checked : true },
             val : 2,
             content : 'Second item'
         }
@@ -322,6 +322,7 @@ For a theme `islands` a gray line separates groups from each other.
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'radio' },
+    val : 2,
     content : [
         {
             block : 'menu-item',
@@ -333,7 +334,6 @@ For a theme `islands` a gray line separates groups from each other.
             content : [
                 {
                     block : 'menu-item',
-                    mods : { checked : true },
                     val : 2,
                     content : 'Open'
                 },
@@ -361,6 +361,7 @@ This element is used to set titles for menu items group.
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'radio' },
+    val : 2,
     content : [
         {
             block : 'menu-item',
@@ -373,7 +374,6 @@ This element is used to set titles for menu items group.
             content : [
                 {
                     block : 'menu-item',
-                    mods : { checked : true },
                     val : 2,
                     content : 'Open'
                 },

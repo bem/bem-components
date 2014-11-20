@@ -14,8 +14,9 @@ describe('select_mode_radio-check', function() {
             text : 'text',
             options : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second', checked : true }
-            ]
+                { val : 2, text : 'second' }
+            ],
+            val : 2
         });
         menu = select.findBlockInside('menu');
         button = select.findBlockInside('button');

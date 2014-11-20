@@ -2,9 +2,9 @@ block('select').mod('mode', 'radio')(
     def().match(this._checkedOptions)(function() {
         var checkedOptions = this._checkedOptions,
             firstOption = this._firstOption;
-        if(!checkedOptions.length) {
+        if(firstOption && !checkedOptions.length) {
             firstOption.checked = true;
-            checkedOptions.push(firstOption);
+            checkedOptions = [firstOption];
         }
         applyNext({ _checkedOption : checkedOptions[0] });
     }),

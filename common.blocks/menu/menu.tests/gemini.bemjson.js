@@ -14,6 +14,7 @@
                     block : 'menu',
                     mods : { mode :'radio', theme : 'islands', size : size },
                     cls : 'islands-radio-' + size,
+                    val : 2,
                     content : [
                         {
                             block : 'menu-item',
@@ -22,7 +23,6 @@
                         },
                         {
                             block : 'menu-item',
-                            mods : { checked : true },
                             val : 2,
                             content : 'item 2'
                         },
@@ -55,6 +55,7 @@
                     block : 'menu',
                     mods : { mode :'check', theme : 'islands', size : 'm' },
                     cls : 'islands-check',
+                    val : [2, 4],
                     content : [
                         {
                             block : 'menu-item',
@@ -63,7 +64,6 @@
                         },
                         {
                             block : 'menu-item',
-                            mods : { checked : true },
                             val : 2,
                             content : 'item 2'
                         },
@@ -74,7 +74,6 @@
                         },
                         {
                             block : 'menu-item',
-                            mods : { checked : true },
                             val : 4,
                             content : 'item 4'
                         }

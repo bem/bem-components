@@ -14,11 +14,12 @@
             block : 'checkbox-group',
             name : 'islands-checkbox1',
             mods : { theme : 'islands', size : 'm', type : 'button' },
+            val : [1, 4],
             options : [
-                { val : 1, text : 'first', checked : true },
+                { val : 1, text : 'first' },
                 { val : 2, text : 'second' },
                 { val : 3, text : 'third', disabled : true },
-                { val : 4, text : 'fourth', checked : true, disabled : true },
+                { val : 4, text : 'fourth', disabled : true },
                 { val : 5, text : 'fifth' }
             ]
         } },
@@ -28,11 +29,12 @@
             block : 'radio-group',
             name : 'islands-button1',
             mods : { theme : 'islands', size : 'm', type : 'button' },
+            val : [1, 4],
             options : [
-                { val : 1, text : 'first', checked : true },
+                { val : 1, text : 'first' },
                 { val : 2, text : 'second' },
                 { val : 3, text : 'third', disabled : true },
-                { val : 4, text : 'fourth', checked : true, disabled : true },
+                { val : 4, text : 'fourth', disabled : true },
                 { val : 5, text : 'fifth' }
             ]
         } },
@@ -77,8 +79,9 @@
                 {
                     block : 'select',
                     mods : { mode : 'radio', theme : 'islands', size : 'm' },
+                    val : 'usd',
                     options : [
-                        { val : 'usd', text : '$', checked : true },
+                        { val : 'usd', text : '$' },
                         { val : 'euro', text : '€' }
                     ]
                 }

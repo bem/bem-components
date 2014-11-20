@@ -12,9 +12,10 @@
         {
             block : 'test', content : {
                 block : 'checkbox-group',
+                val : [2],
                 options : [
-                    { text : 'first' },
-                    { text : 'second', checked : true }
+                    { text : 'first', val : 1 },
+                    { text : 'second', val : 2 }
                 ]
             },
             cls : 'default-enabled'
@@ -23,9 +24,10 @@
             block : 'test', content : {
                 block : 'checkbox-group',
                 mods : { disabled : true },
+                val : [2],
                 options : [
-                    { text : 'first' },
-                    { text : 'second', checked : true }
+                    { text : 'first', val : 1 },
+                    { text : 'second', val : 2 }
                 ]
             },
             cls : 'default-disabled'
@@ -40,9 +42,10 @@
                     block : 'test', content : {
                         block : 'checkbox-group',
                         mods : { theme : 'islands', size : size },
+                        val : [2],
                         options : [
-                            { text : 'first' },
-                            { text : 'second', checked : true }
+                            { text : 'first', val : 1 },
+                            { text : 'second', val : 2 }
                         ]
                     },
                     cls : 'islands-size_' + size + '-enabled'
@@ -51,9 +54,10 @@
                     block : 'test', content : {
                         block : 'checkbox-group',
                         mods : { theme : 'islands', size : size, disabled : true },
+                        val : [2],
                         options : [
-                            { text : 'first' },
-                            { text : 'second', checked : true }
+                            { text : 'first', val : 1 },
+                            { text : 'second', val : 2 }
                         ]
                     },
                     cls : 'islands-size_' + size + '-disabled'
@@ -68,9 +72,10 @@
                     block : 'test', content : {
                         block : 'checkbox-group',
                         mods : { theme : 'islands', size : size, type : 'line' },
+                        val : [2],
                         options : [
-                            { text : 'first' },
-                            { text : 'second', checked : true }
+                            { text : 'first', val : 1 },
+                            { text : 'second', val : 2 }
                         ]
                     },
                     attrs : { style : 'margin-bottom: 5px;' },
@@ -80,9 +85,10 @@
                     block : 'test', content : {
                         block : 'checkbox-group',
                         mods : { theme : 'islands', size : size, type : 'line', disabled : true },
+                        val : [2],
                         options : [
-                            { text : 'first' },
-                            { text : 'second', checked : true }
+                            { text : 'first', val : 1 },
+                            { text : 'second', val : 2 }
                         ]
                     },
                     cls : 'line-size_' + size + '-disabled'
@@ -96,33 +102,37 @@
                 { tag : 'p', content : {
                     block : 'checkbox-group',
                     mods : { theme : 'islands', size : size, type : 'button' },
+                    val : [2],
                     options : [
-                        { text : 'first' },
-                        { text : 'second', checked : true }
+                        { text : 'first', val : 1 },
+                        { text : 'second', val : 2 }
                     ],
                     cls : 'button-size_' + size + '-enabled'
                 } },
                 { tag : 'p', content : {
                     block : 'checkbox-group',
                     mods : { theme : 'islands', size : size, type : 'button', disabled : true },
+                    val : [2],
                     options : [
-                        { text : 'first' },
-                        { text : 'second', checked : true }
+                        { text : 'first', val : 1 },
+                        { text : 'second', val : 2 }
                     ],
                     cls : 'button-size_' + size + '-disabled'
                 } },
                 { tag : 'p', content : {
                     block : 'checkbox-group',
                     mods : { theme : 'islands', size : size, type : 'button' },
+                    val : [2],
                     options : [
                         {
                             text : 'VK',
-                            icon : { block : 'icon', mods : { social : 'vk' } }
+                            icon : { block : 'icon', mods : { social : 'vk' } },
+                            val : 1
                         },
                         {
                             text : 'Twitter',
                             icon : { block : 'icon', mods : { social : 'twitter' } },
-                            checked : true
+                            val : 2
                         }
                     ],
                     cls : 'button-icon-size_' + size + '-enabled'
@@ -130,15 +140,17 @@
                 { tag : 'p', content : {
                     block : 'checkbox-group',
                     mods : { theme : 'islands', size : size, type : 'button', disabled : true },
+                    val : [2],
                     options : [
                         {
                             text : 'VK',
-                            icon : { block : 'icon', mods : { social : 'vk' } }
+                            icon : { block : 'icon', mods : { social : 'vk' } },
+                            val : 1
                         },
                         {
                             text : 'Twitter',
                             icon : { block : 'icon', mods : { social : 'twitter' } },
-                            checked : true
+                            val : 2
                         }
                     ],
                     cls : 'button-icon-size_' + size + '-disabled'

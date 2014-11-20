@@ -227,9 +227,10 @@ If `checkbox-group` block is disabled, all checkboxes within this group are also
     block : 'checkbox-group',
     mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
     name : 'checkbox-button',
+    val : [2],
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true }
+        { val : 2, text : 'second' }
     ]
 }
 ```

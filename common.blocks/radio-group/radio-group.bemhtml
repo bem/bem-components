@@ -7,7 +7,8 @@ block('radio-group')(
 
     content()(function() {
         var mods = this.mods,
-            ctx = this.ctx;
+            ctx = this.ctx,
+            isValDef = typeof ctx.val !== 'undefined';
 
         return (ctx.options || []).map(function(option, i) {
             return [
@@ -19,7 +20,7 @@ block('radio-group')(
                         mode : mods.mode,
                         theme : mods.theme,
                         size : mods.size,
-                        checked : option.checked,
+                        checked : isValDef && ctx.val === option.val,
                         disabled : option.disabled || mods.disabled
                     },
                     name : ctx.name,

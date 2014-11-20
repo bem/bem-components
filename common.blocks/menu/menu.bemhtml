@@ -1,5 +1,66 @@
 block('menu')(
     def()(function() {
+        var ctx = this.ctx,
+            i = 0, iItem = 0,
+            itemOrGroup, firstItem, checkedItems = [],
+            toString = function(val) {
+                return typeof val === 'object'? JSON.stringify(val): String(val);
+            },
+            itemValues = ctx.mods.mode === 'check'? (ctx.val || []).map(toString): [toString(ctx.val)],
+            isValEq = function(val) {
+                return itemValues.indexOf(toString(val)) !== -1;
+            },
+            isGroup = function(item) {
+                return item.block === 'menu' && item.elem === 'group';
+            },
+            isItem = function(item) {
+                return item.block === 'menu-item';
+            },
+            checkGroup = function(group) {
+                var item,
+                    j = 0,
+                    jItem = 0,
+                    checked;
+
+                while(item = group.content[j++]) {
+                    if(isItem(item)) {
+                        jItem++;
+
+                        iItem === 1 && jItem === 1 && (firstItem = item);
+
+                        checked = isValEq(item.val);
+                        item.mods = item.mods || {};
+                        item.mods.checked = checked;
+                        checked && checkedItems.push(item);
+                    }
+                }
+            },
+            checkItem = function(item) {
+                iItem === 1 && (firstItem = item);
+
+                var checked = isValEq(item.val);
+                item.mods = item.mods || {};
+                item.mods.checked = checked;
+                checked && checkedItems.push(item);
+            };
+
+        if(ctx.content) {
+            while(itemOrGroup = ctx.content[i++]) { // NOTE: because of possible performance bust
+                if(!this.isSimple(itemOrGroup)) {
+                    if(isGroup(itemOrGroup)) {
+                        iItem++;
+                        checkGroup(itemOrGroup);
+                    } else if(isItem(itemOrGroup)) {
+                        iItem++;
+                        checkItem(itemOrGroup);
+                    }
+                }
+            }
+        }
+
+        this._firstItem = firstItem;
+        this._checkedItems = checkedItems;
+
         applyNext({
             _menuMods : {
                 theme : this.mods.theme,

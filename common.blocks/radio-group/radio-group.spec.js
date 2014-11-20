@@ -19,7 +19,7 @@ describe('radio-group', function() {
             name : 'name',
             options : [
                 { val : 'val1', label : 'label1' },
-                { val : 'val2', label : 'label2', checked : true },
+                { val : 'val2', label : 'label2' },
                 { val : 'val3', label : 'label3', disabled : true }
             ],
             val : 'val2'

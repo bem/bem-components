@@ -6,7 +6,7 @@ module.exports = function(bh) {
             optionToMenuItem = function(option) {
                 var res = {
                         block : 'menu-item',
-                        mods : { checked : option.checked, disabled : mods.disabled || option.disabled },
+                        mods : { disabled : mods.disabled || option.disabled },
                         val : option.val,
                         js : { checkedText : option.checkedText },
                         content : option.text
@@ -32,6 +32,7 @@ module.exports = function(bh) {
                 disabled : mods.disabled,
                 mode : mods.mode
             },
+            val : json.val,
             attrs : { tabindex : null },
             content : select.options.map(function(optionOrGroup) {
                 return optionOrGroup.group?

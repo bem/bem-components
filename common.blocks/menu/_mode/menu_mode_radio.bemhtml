@@ -1,0 +1,13 @@
+
+block('menu').mod('mode', 'radio')(
+    def().match(this._checkedItems)(function() {
+        var checkedItems = this._checkedItems,
+            firstItem = this._firstItem;
+
+        if(!checkedItems.length) {
+            firstItem.mods.checked = true;
+        }
+
+        applyNext();
+    })
+);

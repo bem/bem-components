@@ -6,7 +6,13 @@ module.exports = function(bh) {
             .js(true)
             .mix({ block : 'control-group' });
 
-        var mods = ctx.mods();
+        var mods = ctx.mods(),
+            val = json.val;
+
+        if(val !== undefined) {
+            val = val.map(String);
+        }
+
         ctx.content((json.options || []).map(function(option, i) {
             return [
                 !!i && !mods.type && { tag : 'br' },
@@ -16,7 +22,7 @@ module.exports = function(bh) {
                         type : mods.type,
                         theme : mods.theme,
                         size : mods.size,
-                        checked : option.checked,
+                        checked : val !== undefined && val.indexOf(String(option.val)) !== -1,
                         disabled : option.disabled || mods.disabled
                     },
                     name : json.name,

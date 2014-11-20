@@ -21,8 +21,9 @@
             block : 'select',
             mods : { mode : 'radio', theme : 'islands', size : 'l' },
             text : '-',
+            val : 1,
             options : [
-                { text : 'first', val : 1, checked : true },
+                { text : 'first', val : 1 },
                 { text : 'second', val : 2 },
                 { text : 'third', val : 3 }
             ],
@@ -32,8 +33,9 @@
             block : 'select',
             mods : { mode : 'radio-check', theme : 'islands', size : 'xl' },
             text : '—',
+            val : 1,
             options : [
-                { text : 'first', val : 1, checked : true },
+                { text : 'first', val : 1 },
                 { text : 'second', val : 2, disabled : true },
                 { text : 'third', val : 3 }
             ],
@@ -43,8 +45,9 @@
             block : 'select',
             mods : { mode : 'radio', theme : 'islands', size : 's', disabled : true },
             text : 'disabled',
+            val : 1,
             options : [
-                { text : 'first', val : 1, checked : true },
+                { text : 'first', val : 1 },
                 { text : 'second', val : 2 },
                 { text : 'third', val : 3 }
             ],
@@ -54,20 +57,21 @@
             block : 'select',
             mods : { mode : 'check', theme : 'islands', size : 's' },
             text : 'group',
+            val : [2, 5],
             options : [
                 {
                     group : [
                         { text : 'first', val : 1 },
-                        { text : 'second', val : 2, checked : true },
+                        { text : 'second', val : 2 },
                         { text : 'third', val : 3 }
                     ],
                     title : 'title of group 1'
                 },
                 {
                     group : [
-                        { text : 'fourth', val : 1 },
-                        { text : 'fifth', val : 2, checked : true },
-                        { text : 'sixth', val : 3, disabled : true }
+                        { text : 'fourth', val : 4 },
+                        { text : 'fifth', val : 5 },
+                        { text : 'sixth', val : 6, disabled : true }
                     ]
                 }
             ],
@@ -77,17 +81,17 @@
             block : 'select',
             mods : { mode : 'check', theme : 'islands', size : 'm' },
             text : 'icon',
+            val : ['vk'],
             options : [
                 {
                     text : 'Twitter',
-                    val : 1,
+                    val : 'twitter',
                     icon : { block : 'icon', mods : { social : 'twitter' } }
                 },
                 {
                     text : 'VKontakte',
-                    val : 2,
-                    icon : { block : 'icon', mods : { social : 'vk' } },
-                    checked : true
+                    val : 'vk',
+                    icon : { block : 'icon', mods : { social : 'vk' } }
                 }
             ],
             cls : 'select-icon'
@@ -96,8 +100,9 @@
             block : 'select',
             mods : { mode : 'check', theme : 'islands', size : 'm', width : 'available' },
             text : 'some text some text some text some text',
+            val : [1],
             options : [
-                { text : 'first first first first first first first first first', val : 1, checked : true },
+                { text : 'first first first first first first first first first', val : 1 },
                 { text : 'second', val : 2 },
                 { text : 'third', val : 3 }
             ],

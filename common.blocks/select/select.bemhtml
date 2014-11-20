@@ -2,19 +2,29 @@ block('select')(
     def().match(!this._select)(function() { // TODO: check BEM-XJST for proper applyNext
         if(!this.mods.mode) throw Error('Can\'t build select without mode modifier');
 
-        var options = this.ctx.options,
+        var ctx = this.ctx,
+            options = ctx.options,
             i = 0, j,
-            optionOrGroup, option, firstOption, checkedOptions = [];
+            optionOrGroup, option, firstOption, checkedOptions = [],
+            toString = function(val) {
+                return typeof val === 'object'? JSON.stringify(val): String(val);
+            },
+            optionValues = this.mods.mode === 'check'? (ctx.val || []).map(toString): [toString(ctx.val)],
+            isValEq = function(val) {
+                return optionValues.indexOf(toString(val)) !== -1;
+            };
 
         while(optionOrGroup = options[i++]) { // NOTE: because of possible performance bust
             if(optionOrGroup.group) {
                 j = 0;
                 while(option = optionOrGroup.group[j++]) {
                     i === 1 && j === 1 && (firstOption = option);
+                    option.checked = isValEq(option.val);
                     option.checked && checkedOptions.push(option);
                 }
             } else {
                 i === 1 && (firstOption = optionOrGroup);
+                optionOrGroup.checked = isValEq(optionOrGroup.val);
                 optionOrGroup.checked && checkedOptions.push(optionOrGroup);
             }
         }

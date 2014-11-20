@@ -86,9 +86,10 @@
     block : 'select',
     mods : { mode : 'radio' },
     name : 'select1',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
+        { val : 2, text : 'second' },
         { val : 3, text : 'third' }
     ]
 }
@@ -101,9 +102,10 @@
     block : 'select',
     mods : { mode : 'radio', theme : 'simple' },
     name : 'select1',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
+        { val : 2, text : 'second' },
         { val : 3, text : 'third' }
     ]
 }
@@ -116,9 +118,10 @@
     block : 'select',
     mods : { mode : 'radio', theme : 'islands', size : 'm' },
     name : 'select1',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
+        { val : 2, text : 'second' },
         { val : 3, text : 'third' }
     ]
 }
@@ -139,10 +142,11 @@
     mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select1',
     text : '—',
+    val : [ 2, 3 ],
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
-        { val : 3, text : 'third', checked : true }
+        { val : 2, text : 'second' },
+        { val : 3, text : 'third' }
     ]
 }
 ```
@@ -156,9 +160,10 @@
     block : 'select',
     mods : { mode : 'radio', theme : 'islands', size : 'm' },
     name : 'select2',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
+        { val : 2, text : 'second' },
         { val : 3, text : 'third' }
     ]
 }
@@ -173,9 +178,10 @@
     mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
     name : 'select3',
     text : '—',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true },
+        { val : 2, text : 'second' },
         { val : 3, text : 'third' }
     ]
 }
@@ -236,6 +242,7 @@
     mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
     text : '—',
+    val : [{ id : 2 }],
     options : [
         {
             val : { id : 1 },
@@ -247,8 +254,7 @@
             val : { id : 2 },
             text : 'VKontakte',
             checkedText : 'vk',
-            icon : { block : 'icon', mods : { social : 'vk' } },
-            checked : true
+            icon : { block : 'icon', mods : { social : 'vk' } }
         }
     ]
 }
@@ -262,11 +268,12 @@
     mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
     text : 'empty',
+    val : [ 2, 5, 6 ],
     options : [
         {
             group : [
                 { val : 1, text : 'first' },
-                { val : 2, text : 'second', checked : true },
+                { val : 2, text : 'second' },
                 { val : 3, text : 'third' }
             ],
             title : 'title of group 1'
@@ -274,8 +281,8 @@
         {
             group : [
                 { val : 4, text : 'fourth' },
-                { val : 5, text : 'fifth', checked : true },
-                { val : 6, text : 'sixth', disabled : true }
+                { val : 5, text : 'fifth' },
+                { val : 6, text : 'sixth' }
             ]
         }
     ]

@@ -7,7 +7,12 @@ block('checkbox-group')(
 
     content()(function() {
         var mods = this.mods,
-            ctx = this.ctx;
+            ctx = this.ctx,
+            val = ctx.val;
+
+        if(val !== undefined) {
+            val = val.map(String);
+        }
 
         return (ctx.options || []).map(function(option, i) {
             return [
@@ -18,7 +23,7 @@ block('checkbox-group')(
                         type : mods.type,
                         theme : mods.theme,
                         size : mods.size,
-                        checked : option.checked,
+                        checked : val !== undefined && val.indexOf(String(option.val)) !== -1,
                         disabled : option.disabled || mods.disabled
                     },
                     name : ctx.name,

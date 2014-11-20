@@ -19,7 +19,7 @@ block('radio-group')(
                         mode : mods.mode,
                         theme : mods.theme,
                         size : mods.size,
-                        checked : option.checked,
+                        checked : ctx.val !== undefined && String(ctx.val) === String(option.val),
                         disabled : option.disabled || mods.disabled
                     },
                     name : ctx.name,

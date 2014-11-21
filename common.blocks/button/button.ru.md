@@ -14,7 +14,7 @@
 | <a href=#buttonpressed>pressed</a> | <code>true</code> | Автоматически | Определяет действие «нажатие» на кнопку. |
 | <a href=#buttondisabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
 | <a href=#buttonfocused>focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Блок в фокусе. |
-| <a href=#buttonsize>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер кнопки. Используется только для <a href="#buttonthemes">кнопок с модификатором</a> <code>theme</code> в значении <code>islands</code>.|
+| <a href=#buttonsize>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер кнопки. Используется только для <a href=#buttonthemes>кнопок с модификатором</a> <code>theme</code> в значении <code>islands</code>.|
 | <a href=#buttonthemes>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 
 ### Специализированные поля блока

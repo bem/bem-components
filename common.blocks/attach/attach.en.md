@@ -1,6 +1,6 @@
 # attach
 
-`attach` block is used to upload a file to be sent to a server.
+A block is used to upload a file to be sent to a server.
 
 ## Quick overview
 

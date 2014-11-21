@@ -1,6 +1,6 @@
 # button
 
-`button` block is used to manage a size, state, content and appearance of a button.
+A block is used to manage a size, state, content and appearance of a button.
 
 ## Brief overview
 

@@ -1,4 +1,25 @@
 module.exports = function(bh) {
+    function toString(val) {
+        return typeof val === 'object'? JSON.stringify(val) : String(val);
+    }
+
+    function isValEq(itemValues, val) {
+        return itemValues.indexOf(toString(val)) !== -1;
+    }
+
+    function isGroup(item) {
+        return (!item.block || item.block === 'menu') && item.elem === 'group';
+    }
+
+    function isItem(item) {
+        return item.block === 'menu-item';
+    }
+
+    function checkItem(item, checked, checkedItems) {
+        item.mods = item.mods || {};
+        item.mods.checked = checked;
+        checkedItems.push(item);
+    }
 
     bh.match('menu', function(ctx, json) {
         var menuMods = {
@@ -17,19 +38,9 @@ module.exports = function(bh) {
 
         var i = 0, iItem = 0,
             itemOrGroup, firstItem, checkedItems = [],
-            toString = function(val) {
-                return typeof val === 'object'? JSON.stringify(val): String(val);
-            },
-            itemValues = ctx.mod('mode') === 'check'? (json.val || []).map(toString): [toString(json.val)],
-            isValEq = function(val) {
-                return itemValues.indexOf(toString(val)) !== -1;
-            },
-            isGroup = function(item) {
-                return item.block === 'menu' && item.elem === 'group';
-            },
-            isItem = function(item) {
-                return item.block === 'menu-item';
-            },
+            itemValues = ctx.mod('mode') === 'check'?
+                (json.val || []).map(toString) :
+                [toString(json.val)],
             checkGroup = function(group) {
                 var item,
                     j = 0,
@@ -42,32 +53,25 @@ module.exports = function(bh) {
 
                         iItem === 1 && jItem === 1 && (firstItem = item);
 
-                        checked = isValEq(item.val);
-                        item.mods = item.mods || {};
-                        item.mods.checked = checked;
-                        checked && checkedItems.push(item);
+                        checked = isValEq(itemValues, item.val);
+                        checked && checkItem(item, checked, checkedItems);
                     }
                 }
-            },
-            checkItem = function(item) {
-                iItem === 1 && (firstItem = item);
-
-                var checked = isValEq(item.val);
-                item.mods = item.mods || {};
-                item.mods.checked = checked;
-                checked && checkedItems.push(item);
             };
 
         if(json.content) {
             while(itemOrGroup = json.content[i++]) { // NOTE: because of possible performance bust
-                if(!ctx.isSimple(itemOrGroup)) {
-                    if(isGroup(itemOrGroup)) {
-                        iItem++;
-                        checkGroup(itemOrGroup);
-                    } else if(isItem(itemOrGroup)) {
-                        iItem++;
-                        checkItem(itemOrGroup);
-                    }
+                if(ctx.isSimple(itemOrGroup)) {
+                    // do nothing for simple item
+                } else if(isGroup(itemOrGroup)) {
+                    iItem++;
+                    checkGroup(itemOrGroup);
+                } else if(isItem(itemOrGroup)) {
+                    iItem++;
+                    iItem === 1 && (firstItem = itemOrGroup);
+
+                    var checked = isValEq(itemValues, itemOrGroup.val);
+                    checked && checkItem(itemOrGroup, checked, checkedItems);
                 }
             }
         }

@@ -1,4 +1,11 @@
 module.exports = function(bh) {
+    function toString(val) {
+        return typeof val === 'object'? JSON.stringify(val) : String(val);
+    }
+
+    function isValEq(optionValues, val) {
+        return optionValues.indexOf(toString(val)) !== -1;
+    }
 
     bh.match('select', function(ctx, json) {
         if(!ctx.mod('mode')) throw Error('Can\'t build select without mode modifier');
@@ -10,25 +17,21 @@ module.exports = function(bh) {
 
         var i = 0, j,
             optionOrGroup, option, firstOption, checkedOptions = [],
-            toString = function(val) {
-                return typeof val === 'object'? JSON.stringify(val): String(val);
-            },
-            optionValues = ctx.mod('mode') === 'check'? (json.val || []).map(toString): [toString(json.val)],
-            isValEq = function(val) {
-                return optionValues.indexOf(toString(val)) !== -1;
-            };
+            optionValues = ctx.mod('mode') === 'check'?
+                (json.val || []).map(toString) :
+                [toString(json.val)];
 
         while(optionOrGroup = json.options[i++]) { // NOTE: because of possible performance bust
             if(optionOrGroup.group) {
                 j = 0;
                 while(option = optionOrGroup.group[j++]) {
                     i === 1 && j === 1 && (firstOption = option);
-                    option.checked = isValEq(option.val);
+                    option.checked = isValEq(optionValues, option.val);
                     option.checked && checkedOptions.push(option);
                 }
             } else {
                 i === 1 && (firstOption = optionOrGroup);
-                optionOrGroup.checked = isValEq(optionOrGroup.val);
+                optionOrGroup.checked = isValEq(optionValues, optionOrGroup.val);
                 optionOrGroup.checked && checkedOptions.push(optionOrGroup);
             }
         }
@@ -44,7 +47,7 @@ module.exports = function(bh) {
                 block : 'popup',
                 mods : { target : 'anchor', theme : ctx.mod('theme'), autoclosable : true },
                 directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'],
-                content : { block : json.block, mods : ctx.mods(), val : json.val, elem : 'menu' }
+                content : { block : json.block, mods : ctx.mods(), elem : 'menu' }
             }
         ]);
     });

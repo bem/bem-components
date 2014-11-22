@@ -17,7 +17,7 @@ function apply(tmpl, data) {
 }
 
 function runBench(benchId, tmpl, data) {
-    var i = 100;
+    var i = 350;
 
     console.time(benchId);
     while(--i) {
@@ -37,9 +37,16 @@ function run() {
     //    runBench('do bench (bemhtml) ' + i, bemhtml, bemjson);
     //}
 
+    var memStart = process.memoryUsage().rss,
+        memMax;
+
     for(i = 0; i < n; i++) {
         runBench('do bench (bh) ' + i, bh, bemjson);
     }
+
+    memMax = process.memoryUsage().rss;
+
+    console.log('mem usage', (memMax - memStart) / 1024 / 1024, ' memMax', memMax);
 }
 
 run();

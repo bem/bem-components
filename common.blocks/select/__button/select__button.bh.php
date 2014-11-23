@@ -15,7 +15,7 @@ return function ($bh) {
                 'view' => $mods->view,
                 'focused' => $mods->focused,
                 'disabled' => $mods->disabled,
-                'checked' => $mods->mode !== 'radio' && $checkedOptions->length
+                'checked' => $mods->mode !== 'radio' && count($checkedOptions)
             ],
             'id' => $select->id,
             'textMaxWidth' => $select->textMaxWidth,

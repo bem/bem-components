@@ -5,12 +5,12 @@ return function ($bh) {
         $ctx->js(true);
 
         $popup = $json->popup;
-
-        if ($ctx->isSimple($popup) || $popup->block !== 'popup') {
+        if ($ctx->isSimple($popup) || @$popup['block'] !== 'popup') {
             $popup = [ 'block' => 'popup', 'content' => $popup ];
         }
+        $json->popup = $popup = $ctx->phpize($json->popup);
 
-        $popupMods = $popup->mods ?: ($popup->mods = (object)[]);
+        $popupMods = $popup->mods;
         $popupMods->theme || ($popupMods->theme = $ctx->mod('theme'));
         key_exists('autoclosable', $popupMods) || ($popupMods->autoclosable = true);
 

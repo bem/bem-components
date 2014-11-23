@@ -9,8 +9,8 @@ return function ($bh) {
 
         $mods = $ctx->mods();
         $content = [];
+
         foreach ($json->options as $i => $option) {
-            $option = (object)$option;
             if ($i && !$mods->type) {
                 $content[] = [ 'tag' => 'br' ];
             }
@@ -21,14 +21,14 @@ return function ($bh) {
                     'mode' => $mods->mode,
                     'theme' => $mods->theme,
                     'size' => $mods->size,
-                    'checked' => $option->checked,
-                    'disabled' => $option->disabled || $mods->disabled
+                    'checked' => @$option['checked'],
+                    'disabled' => @$option['disabled'] ?: $mods->disabled
                 ],
                 'name' => $json->name,
-                'val' => $option->val,
-                'text' => $option->text,
-                'title' => $option->title,
-                'icon' => $option->icon
+                'val' => @$option['val'],
+                'text' => @$option['text'],
+                'title' => @$option['title'],
+                'icon' => @$option['icon']
             ];
         }
 

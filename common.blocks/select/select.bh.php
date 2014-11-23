@@ -2,27 +2,27 @@
 return function ($bh) {
 
     $bh->match('select', function($ctx, $json) {
-        if(!$ctx->mod('mode')) throw Error('Can\'t build select without mode modifier');
+        if (!$ctx->mod('mode')) throw new \Exception('Can\'t build select without mode modifier');
 
         $ctx->js([
             'name' => $json->name,
             'optionsMaxHeight' => $json->optionsMaxHeight
         ]);
 
-        $options = $json->options;
-        $i = 0;
+        $firstOption = null;
         $checkedOptions = [];
-
-        while ($optionOrGroup = $options[$i++]) { // NOTE: because of possible performance bust
-            if($optionOrGroup->group) {
-                $j = 0;
-                while($option = $optionOrGroup['group'][$j++]) {
-                    $i === 1 && $j === 1 && ($firstOption = $option);
-                    empty($option['checked']) || ($checkedOptions[] = $option);
+        if (!empty($json->options) && is_array($json->options)) {
+            foreach ($json->options as $i => $optionOrGroup) {
+                if (isset($optionOrGroup['group']) && is_array($optionOrGroup['group'])) {
+                    foreach ($optionOrGroup['group'] as $j => $option) {
+                        $i === 1 && $j === 1 && ($firstOption = $option);
+                        empty($option['checked']) || ($checkedOptions[] = $option);
+                    }
                 }
-            } else {
-                $i === 1 && ($firstOption = $optionOrGroup);
-                empty($optionOrGroup['checked']) || ($checkedOptions[] = $optionOrGroup);
+                else {
+                    $i === 1 && ($firstOption = $optionOrGroup);
+                    empty($optionOrGroup['checked']) || ($checkedOptions[] = $optionOrGroup);
+                }
             }
         }
 

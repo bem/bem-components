@@ -7,17 +7,17 @@ return function ($bh) {
         $optionToMenuItem = function ($option) use ($mods) {
             $res = [
                 'block' => 'menu-item',
-                'mods' => [ 'checked' => $option->checked, 'disabled' => $mods->disabled ?: $option->disabled ],
-                'val' => $option->val,
-                'js' => [ 'checkedText' => $option->checkedText ],
-                'content' => $option->text
+                'mods' => [ 'checked' => @$option['checked'], 'disabled' => $mods->disabled ?: @$option['disabled'] ],
+                'val' => @$option['val'],
+                'js' => [ 'checkedText' => @$option['checkedText'] ],
+                'content' => @$option['text']
             ];
 
-            if($option->icon) {
-                $res->js->text = $option->text;
-                $res->content = [
-                    $option->icon,
-                    $res->content
+            if (!empty($option['icon'])) {
+                $res['js']['text'] = @$option['text'];
+                $res['content'] = [
+                    $option['icon'],
+                    $res['content']
                 ];
             }
 
@@ -38,9 +38,9 @@ return function ($bh) {
                 return isset($optionOrGroup['group'])?
                     [
                         'elem' => 'group',
-                        'mods' => [ 'has-title' => !!$optionOrGroup->title ],
-                        'title' => $optionOrGroup->title,
-                        'content' => array_map($optionToMenuItem, $optionOrGroup->group)
+                        'mods' => [ 'has-title' => !!@$optionOrGroup['title'] ],
+                        'title' => @$optionOrGroup['title'],
+                        'content' => array_map($optionToMenuItem, $optionOrGroup['group'])
                     ] :
                     $optionToMenuItem($optionOrGroup);
             }, $select->options)

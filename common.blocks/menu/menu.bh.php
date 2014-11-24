@@ -2,7 +2,7 @@
 return function ($bh) {
 
     $bh->match('menu', function($ctx) {
-        $menuMods = (object)[
+        $menuMods = [
             'theme' => $ctx->mod('theme'),
             'disabled' => $ctx->mod('disabled')
         ];

@@ -9,7 +9,7 @@ return function ($bh) {
                 'type' => 'hidden',
                 'name' => $ctx->tParam('select')->name,
                 'value' => $ctx->isSimple($val)? $val : json_encode($val),
-                'disabled' => $json->blockMods->disabled? 'disabled' : null
+                'disabled' => isset($json->blockMods) && $json->blockMods->disabled? 'disabled' : null
             ]);
     });
 

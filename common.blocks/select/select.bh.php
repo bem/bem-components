@@ -15,12 +15,12 @@ return function ($bh) {
             foreach ($json->options as $i => $optionOrGroup) {
                 if (isset($optionOrGroup['group']) && is_array($optionOrGroup['group'])) {
                     foreach ($optionOrGroup['group'] as $j => $option) {
-                        $i === 1 && $j === 1 && ($firstOption = $option);
+                        ($i === 0 && $j === 0) && ($firstOption = $option);
                         empty($option['checked']) || ($checkedOptions[] = $option);
                     }
                 }
                 else {
-                    $i === 1 && ($firstOption = $optionOrGroup);
+                    ($i === 0) && ($firstOption = $optionOrGroup);
                     empty($optionOrGroup['checked']) || ($checkedOptions[] = $optionOrGroup);
                 }
             }

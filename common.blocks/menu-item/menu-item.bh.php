@@ -1,11 +1,11 @@
 <?php
 return function ($bh) {
     $bh->match('menu-item', function($ctx, $json) {
-        $menuMods = $ctx->tParam('menuMods');
+        $menuMods = (array)$ctx->tParam('menuMods');
 
-        $menuMods && $ctx->mods([
-            'theme' => $menuMods->theme,
-            'disabled' => $menuMods->disabled
+        empty($menuMods) || $ctx->mods([
+            'theme' => @$menuMods['theme'],
+            'disabled' => @$menuMods['disabled']
         ]);
 
         $ctx

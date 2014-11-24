@@ -7,7 +7,8 @@ modules.define(
     ['i-bem__dom', 'jquery', 'objects', 'functions__throttle'],
     function(provide, BEMDOM, $, objects, throttle, Popup) {
 
-var UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
+var body = $(BEMDOM.doc[0].body),
+    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
     undef;
 
 /**
@@ -104,11 +105,12 @@ provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.p
      */
     _calcTargetDimensions : function() {
         var anchor = this._anchor,
-            anchorPos = anchor.offset();
+            anchorOffset = anchor.offset(),
+            bodyOffset = body.offset();
 
         return {
-            left : anchorPos.left,
-            top : anchorPos.top,
+            left : anchorOffset.left - bodyOffset.left,
+            top : anchorOffset.top - bodyOffset.top,
             width : anchor.outerWidth(),
             height : anchor.outerHeight()
         };

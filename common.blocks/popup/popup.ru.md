@@ -23,7 +23,7 @@
 | <a href=#mainOffset>mainOffset</a> | <code>Number</code> | Задает смещение попапа относительно основного направления. Используется только для <a href="#popuptarget">попапа с модификатором target</a>. |
 | <a href=#secondaryOffset>secondaryOffset</a> | <code>Number</code>| Задает смещение попапа относительно второстепенного направления. Используется только для <a href="#popuptarget">попапа с модификатором target</a>. |
 | <a href=#viewportOffset>viewportOffset</a> | <code>Number</code>| Задает минимально допустимое смещение попапа от края окна браузера. Используется только для <a href="#popuptarget">попапа с модификатором target</a>. |
-| <a href=#zIndexGroupLevel>zIndexGroupLevel</a> | <code>Number</code> | Позволяет задать уровень слоя для открывающихся попапов. Использует блок <a href="../z-index-group/z-index.group.ru.md">z-index-group</a>.|
+| <a href=#zIndexGroupLevel>zIndexGroupLevel</a> | <code>Number</code> | Позволяет задать уровень слоя для открывающихся попапов. Использует блок <a href="../z-index-group/z-index-group.ru.md">z-index-group</a>.|
 
 ## Обзор блока
 
@@ -43,7 +43,7 @@
 
 <a name="popuptarget-anchor"></a>
 
-##### Координаты (модификатор `target` в значении `anchor`)
+##### Якорь (модификатор `target` в значении `anchor`)
 
 Модификатор `target` в значении `anchor` позволяет использовать в качестве точки открытия попапа блок или элемент.
 
@@ -51,7 +51,7 @@
 
 Для осмысленного применения необходимо использовать метод [setAnchor](http://ru.bem.info/libs/bem-components/v2/desktop/popup/jsdoc/).
 
-##### Якорь (модификатор `target` в значении `position`)
+##### Координаты (модификатор `target` в значении `position`)
 
 Модификатор `target` в значении `position` позволяет задавать точку открытия попапа координатами.
 

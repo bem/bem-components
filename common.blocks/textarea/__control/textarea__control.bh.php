@@ -12,8 +12,8 @@ return function ($bh) {
 
         $textarea->autocomplete === false && ($attrs['autocomplete'] = 'off');
 
-        if($textarea->mods && $textarea->mods->disabled) {
-            $attrs->disabled = 'disabled';
+        if(isset($textarea->mods) && $textarea->mods->disabled) {
+            $attrs['disabled'] = 'disabled';
         }
 
         $ctx

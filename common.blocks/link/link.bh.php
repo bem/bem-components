@@ -25,7 +25,7 @@ return function ($bh) {
         }
 
 
-        $tabIndex === null || ($attrs['tabindex'] = $tabIndex);
+        ($tabIndex === null) || ($attrs['tabindex'] = $tabIndex);
 
         $json->title && ($attrs['title'] = $json->title);
         $json->target && ($attrs['target'] = $json->target);

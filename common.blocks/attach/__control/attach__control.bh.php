@@ -6,9 +6,9 @@ return function ($bh) {
         $attach = $ctx->tParam('_attach');
 
         // в js генерим html для attach__control без самого attach
-        if (!is_object($attach)) {
+        if ($attach) {
             $attrs['name'] = $attach->name;
-            $attach->mods && $attach->mods->disabled && ($attrs->disabled = 'disabled');
+            isset($attach->mods) && $attach->mods->disabled && ($attrs['disabled'] = 'disabled');
             $attach->tabIndex && ($attrs['tabindex'] = $attach->tabIndex);
         }
 

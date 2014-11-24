@@ -54,7 +54,7 @@
     block : 'attach',
     mods : { theme : 'islands', disabled : true },
     button : 'Выберите файл',
-    noFileText : 'файл не выбран'
+    noFileText : 'Файл не выбран'
 }
 ```
 
@@ -73,7 +73,7 @@
     block : 'attach',
     mods : { theme : 'islands', focused : true },
     button : 'Выберите файл',
-    noFileText : 'файл не выбран'
+    noFileText : 'Файл не выбран'
 }
 ```
 
@@ -94,7 +94,7 @@
     block : 'attach',
     mods : { theme : 'islands' },
     button : 'Выберите файл',
-    noFileText : 'файл не выбран'
+    noFileText : 'Файл не выбран'
 }
 ```
 
@@ -144,6 +144,6 @@
     block : 'attach',
     mods : { theme : 'islands' },
     button : 'Выберите файл',
-    noFileText : 'файл не выбран'
+    noFileText : 'Файл не выбран'
 }
 ```

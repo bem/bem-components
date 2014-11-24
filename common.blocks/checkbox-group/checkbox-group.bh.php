@@ -11,7 +11,6 @@ return function ($bh) {
         $content = [];
         if ($json->options) {
             foreach ($json->options as $i => $option) {
-                $option = (object)$option;
                 $content[] = [
                     $i && !$mods->type ? [ 'tag' => 'br' ] : null,
                     [
@@ -20,19 +19,19 @@ return function ($bh) {
                             'type' => $mods->type,
                             'theme' => $mods->theme,
                             'size' => $mods->size,
-                            'checked' => $option->checked,
-                            'disabled' => $option->disabled || $mods->disabled
+                            'checked' => @$option['checked'],
+                            'disabled' => @$option['disabled'] ?: $mods->disabled
                         ],
                         'name' => $json->name,
-                        'val' => $option->val,
-                        'text' => $option->text,
-                        'title' => $option->title,
-                        'icon' => $option->icon
+                        'val' => @$option['val'],
+                        'text' => @$option['text'],
+                        'title' => @$option['title'],
+                        'icon' => @$option['icon']
                     ]
                 ];
             }
         }
-        $ctx->content($options);
+        $ctx->content($content);
     });
 
 };

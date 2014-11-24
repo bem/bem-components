@@ -3,7 +3,7 @@ return function ($bh) {
 
     $bh->match('attach', function($ctx, $json) {
         $ctx
-            ->tParam('_attach', json)
+            ->tParam('_attach', $json)
 
             ->tag('span')
 
@@ -14,16 +14,17 @@ return function ($bh) {
         }
 
         $button = $json->button;
-        if ($ctx->isSimple($object)) {
+        if ($ctx->isSimple($button)) {
             $button = [
                 'block' => 'button',
                 'tag' => 'span',
                 'text' => $button
             ];
         }
+        $json->button = $button = $ctx->phpize($button);
 
         $attachMods = $ctx->mods();
-        $buttonMods = $button->mods ?: ($button->mods = (object)[]);
+        $buttonMods = $button->mods;
         foreach (['size', 'theme', 'disabled', 'focused'] as $mod) {
             $buttonMods->$mod || ($buttonMods->$mod = $attachMods->$mod);
         }

@@ -30,9 +30,9 @@ return function ($bh) {
             'content' => sizeof($checkedOptions) === 1?
                 $checkedOptions[0]['text'] :
                 array_reduce($checkedOptions, function ($res, $option) {
-                    return $res . ($res? ', ' : '') . ($option['checkedText'] ?: $option['text']);
+                    return $res . ($res? ', ' : '') . (@$option['checkedText'] ?: $option['text']);
                 }, '') ?:
-                    $ctx->tParam('select')['text']
+                    $ctx->tParam('select')->text
         ]);
     });
 

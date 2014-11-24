@@ -7,17 +7,17 @@ return function ($bh) {
         $checkedOptions = $ctx->tParam('checkedOptions');
         $firstOption = $ctx->tParam('firstOption');
 
-        if(!$checkedOptions->length) {
-            $firstOption->checked = true;
-            $checkedOptions->push($firstOption);
+        if (empty($checkedOptions)) {
+            $firstOption['checked'] = true;
+            $checkedOptions[] = $firstOption;
         }
 
-        $ctx->tParam('checkedOption', $checkedOptions[0]);
+        $ctx->tParam('checkedOption', @$checkedOptions[0]);
 
         $ctx->content([
             [
                 'elem' => 'control',
-                'val' => $checkedOptions[0]['val']
+                'val' => @$checkedOptions[0]['val']
             ],
             $ctx->content()
         ], true);
@@ -26,7 +26,7 @@ return function ($bh) {
     $bh->match('select_mode_radio__button', function($ctx) {
         $ctx->content([
             'elem' => 'text',
-            'content' => $ctx->tParam('checkedOption')->text
+            'content' => $ctx->tParam('checkedOption')['text']
         ]);
     });
 

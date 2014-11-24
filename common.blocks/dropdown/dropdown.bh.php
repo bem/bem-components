@@ -8,7 +8,7 @@ return function ($bh) {
         if ($ctx->isSimple($popup) || @$popup['block'] !== 'popup') {
             $popup = [ 'block' => 'popup', 'content' => $popup ];
         }
-        $json->popup = $popup = $ctx->phpize($json->popup);
+        $json->popup = $popup = $ctx->phpize($popup);
 
         $popupMods = $popup->mods;
         $popupMods->theme || ($popupMods->theme = $ctx->mod('theme'));

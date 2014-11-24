@@ -309,7 +309,7 @@
 
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
-| <code>val</code> | <code>String</code> | Значение, которое будет отправлено на сервер или получено с помощью клиентских скриптов. |
+| <code>val</code> | <code>String</code> | Значение, возвращаемое чекбоксом, если он выбран. |
 | <code>text</code> | <code>String</code> | Текст подписи к чекбоксу. |
 | <code>checked</code> | <code>Boolean</code> | Чекбокс отмечен. |
 | <code>disabled</code> | <code>Boolean</code> | Неактивное состояние. |

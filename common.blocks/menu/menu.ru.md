@@ -1,44 +1,52 @@
 # menu
 
-Используется для создания различных типов меню и селектов.
+Используется для создания различных типов меню, а также для реализации блока [select](../select/select.ru.md).
+
+Для своей реализации использует блок [menu-item](../menu-item/menu-item.ru.md).
 
 ## Краткая информация
 
 ### Модификаторы блока
 
 | Модификатор | Допустимые значения | Способы использования | Описание |
-| ----------- | ------------------- | -------------------- | -------- |
-| <a href=#mode>mode</a> | <code>'menu_mode_radio'</code>, <code>'menu_mode_radio-check'</code>, <code>'menu_mode_check'</code> | | Определяет тип меню. |
+| ----------- | ------------------- | --------------------- | -------- |
+| <a href=#mode>mode</a> | <code>'radio'</code>, <code>'radio-check'</code>, <code>'check'</code> | <code>BEMJSON</code> | Тип меню. |
+| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
 | <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | В фокусе. |
-| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Делает блок недоступным. |
 | <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Размер блока. |
 | <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 
+### Элементы блока
+
+| Элемент | Способы использования | Описание |
+| --------| --------------------- | -------- |
+| <a href=#group>group</a> | <code>BEMJSON</code> | Визуальная группировка пунктов меню. |
+
+
 ## Обзор блока
 
-Блок предоставляет возможность изменять размер и внешний вид меню, управлять поведением вложенных независимых блоков – пунктов меню (блок [menu-item](../menu-item/menu-item.ru.md)).
-
-В результате BEMHTML-преобразований на странице блок становится HTML-элементом с тегом `<div>` и свойством `role="menu"`.
-
-Доступны следующие типы `menu` (тип блока `menu` зависит от значения модификатора [`_mode`](#mode)):
-
-* простой список (модификатор `mode` не установлен);
-* меню-переключатель (`menu_mode_radio`);
-* меню с одиночным выбором (`menu_mode_radio-check`);
-* меню с множественным выбором (`menu_mode_check`).
+Блок предоставляет возможность изменять внешний вид меню и управлять поведением вложенных независимых блоков – [пунктов меню](../menu-item/menu-item.ru.md)).
 
 ### Модификаторы блока
 
 <a name="mode"></a>
 #### Модификатор `mode`
 
-Допустимые значения: `'menu_mode_radio'`, `'menu_mode_radio-check'`, `'menu_mode_check'`.
+Допустимые значения: `'check`, `'radio'`, `'radio-check'`.
 
-Способ использования:
+Способ использования: BEMJSON.
 
-Блок представлен следующими типами:
+Доступны следующие типы блока `menu`:
 
-* простой список (модификатор `mode` не установлен). Пункт меню не может быть выбран щелчком мышью или любым другим способом.
+* простой список ([модификатор mode не установлен](#mode-none));
+* меню с множественным выбором ([модификатор mode в значении check](#mode-check));
+* меню-переключатель ([модификатор mode в значении radio](#mode-radio));
+* меню с одиночным выбором ([модификатор mode в значении radio-check](#mode-radiocheck)).
+
+<a href="mode-none"></a>
+##### Простой список (модификатор mode не установлен)
+
+Без указания модификатора `mode` в каком-либо значении создается простой список без возможности выбрать пункт.
 
 ```bemjson
 {
@@ -59,50 +67,10 @@
 }
 ```
 
-* меню-переключатель (`menu_mode_radio`).  Применяется для создания меню, позволяющего только одиночный выбор.
+<a name="mode-check"></a>
+##### Меню с множественным выбором (модификатор `mode` в значении `check`)
 
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'islands', size : 'm', mode : 'radio' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-* меню с одиночным выбором (`menu_mode_radio-check`). Позволяет оставить список без выбранных элементов. При щелчке мышью по пункту списка, его состояние меняется на противоположное.
-
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'islands', size : 'm', mode : 'radio-check' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            mods : { checked : true },
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-* меню с множественным выбором (`menu_mode_check`). Позволяет оставить список без выбранных элементов. При щелчке мышью по пункту списка, его состояние меняется на противоположное.
+Модификатор `mode` в значении `check` позволяет выбрать произвольное количество пунктов меню.
 
 ```bemjson
 {
@@ -124,25 +92,142 @@
 }
 ```
 
-<a name="focused"></a>
-#### Модификатор `focused`
+<a name="mode-radio"></a>
+##### Меню-переключатель (модификатор `mode` в значении `radio`)
 
-Допустимое значение: `true`.
+Модификатор `mode` в значении `radio` позволяет создать меню, в котором обязательно выбран только один пункт.
 
-Способ использования: `BEMJSON`.
+Для такого типа меню текст в кнопке устанавливается в зависимости от выбранного пункта. Если пункт не выбран, то по умолчанию выбирается первое значение из списка.
 
-Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
+```bemjson
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'radio' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'First item'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Second item'
+        }
+    ]
+}
+```
+
+<a name="mode-radiocheck"></a>
+##### Меню с одиночным выбором (модификатор `mode` в значении `radio-check`)
+
+Модификатор `mode` в значении `radio-check` так же как и <a href="#mode-radio">модификатор mode в значении radio</a> позволяет выбрать только один пункт меню. Принципиальное отличие в том, что в значении `radio-check` есть возможность оставить меню без выбранных пунктов.
+
+```bemjson
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'radio-check' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'First item'
+        },
+        {
+            block : 'menu-item',
+            mods : { checked : true },
+            val : 2,
+            content : 'Second item'
+        }
+    ]
+}
+```
 
 <a name="disabled"></a>
+
 #### Модификатор `disabled`
 
 Допустимое значение: `true`.
 
-Способ использования: `BEMJSON`, `JS`.
+Способы использования: `BEMJSON`, `JS`.
 
-В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу `Tab`, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.
+Модификатор отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.
 
-Если блок `menu` получает модификатор `disabled`, то все вложенные в него блоки `menu-item` также становятся неактивными.
+Если блоку `menu` устанавливается модификатор `disabled`, то все вложенные в него блоки `menu-item` также становятся неактивными.
+
+
+```bemjson
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'radio-check', disabled : true },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'First item'
+        },
+        {
+            block : 'menu-item',
+            mods : { checked : true },
+            val : 2,
+            content : 'Second item'
+        }
+    ]
+}
+```
+
+Модификатор `disabled` в значении `true` может быть выставлен отдельным пунктам меню:
+
+```bemjson
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'radio-check' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'First item',
+            disabled : true
+        },
+        {
+            block : 'menu-item',
+            mods : { checked : true },
+            val : 2,
+            content : 'Second item'
+        }
+    ]
+}
+```
+
+<a name="focused"></a>
+
+#### Модификатор `focused`
+
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Модификатор `focused` отвечает за наличие фокуса на блоке.
+
+```js
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'radio-check', focused : true },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'First item'
+        },
+        {
+            block : 'menu-item',
+            mods : { checked : true },
+            val : 2,
+            content : 'Second item'
+        }
+    ]
+}
+```
 
 <a name="size"></a>
 #### Модификатор `size`
@@ -151,39 +236,11 @@
 
 Способ использования: `BEMJSON`.
 
-Реализован только в теме `islands`.
+Задает размер шрифта и отступы.
 
-Доступны следующие размеры реализации блока:
+Модификатор `size` используется, только если блоку установлен модификатор <a href="#theme">theme</a> в значении `islands`.
 
-<table>
-    <tr>
-        <th>Размер блока</th>
-        <th>Размер шрифта</th>
-        <th>Высота строки <code>line-heigh</code></th>
-    </tr>
-    <tr>
-        <td>s</td>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <td>m</td>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <td>l</td>
-        <td>15px</td>
-        <td>28px</td>
-    </tr>
-    <tr>
-        <td>xl</td>
-        <td>15px</td>
-        <td>32px</td>
-    </tr>
-</table>
-
-Примеры:
+**s**
 
 ```bemjson
 {
@@ -204,6 +261,8 @@
 }
 ```
 
+**m**
+
 ```bemjson
 {
     block : 'menu',
@@ -222,6 +281,7 @@
     ]
 }
 ```
+**l**
 
 ```bemjson
 {
@@ -241,6 +301,8 @@
     ]
 }
 ```
+
+**xl**
 
 ```bemjson
 {
@@ -264,63 +326,15 @@
 <a name="theme"></a>
 #### Модификатор `theme`
 
-Допустимое значение: `'simple'`, `'islands'`.
+Допустимое значение: `'islands'`.
 
 Способ использования: `BEMJSON`.
 
-Блок представлен в следующих темах:
+Модификатор отвечает за стилевое оформление блока.
 
- * simple
- * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size))
+При выборе модификатора `theme` в значении `islands` необходимо обязательно указывать модификатор <a href="#nsize">size</a>.
 
-Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
-
-Примеры:
-
-<a name="native"></a>
-**default**
-
-```bemjson
-{
-    block : 'menu',
-    mods : { mode : 'check' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-**simple**
-
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'simple', mode : 'check' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-**islands**
+Без указания модификатора `theme` отображается нативный вид контрола.
 
 ```bemjson
 {
@@ -343,11 +357,11 @@
 
 ### Элементы блока
 
-Визуально представлен следующими элементами:
+<a name="group"></a>
 
-#### __group
+#### Элемент `group`
 
-Элемент `__group` служит для группировки пунктов меню. Пункты, которые нужно сгруппировать, помещаются в поле `content` элемента `group`. В теме `islands` группы визуально разделяются серой чертой.
+Элемент `group` служит для визуальной группировки пунктов меню. Не влияет на общую логику выбора пунктов.
 
 ```bemjson
 {
@@ -384,9 +398,7 @@
 }
 ```
 
-#### __group-title
-
-Элемент позволяет задать заголовок для группы пунктов меню, создаваемой с помощью элемента `group`.
+Специализированное поле `title` определяет заголовок группе пунктов:
 
 ```bemjson
 {

@@ -37,7 +37,7 @@
 <a name="mode"></a>
 #### Модификатор `mode`
 
-Допустимые значения: `'radio'`, `'check`, `'radio-check'`.
+Допустимые значения: `'check`, `'radio'`, `'radio-check'`.
 
 Способ использования: BEMJSON.
 
@@ -45,9 +45,9 @@
 
 Раскрывающийся список имеет всего один уровень вложенности и позволяет выбрать:
 
-* один, несколько или ни одного пункта из списка ([`select_mode_check`](#mode-check));
-* только один пункт из списка ([`select_mode_radio`](#mode-radio));
-* один или ни одного пункта из списка ([`select_mode_radio-check`](#mode-radiocheck)).
+* один, несколько или ни одного пункта из списка ([модификатор mode в значении check](#mode-check));
+* только один пункт из списка ([модификатор mode в значении radio](#mode-radio));
+* один или ни одного пункта из списка ([модификатор mode в значении radio-check](#mode-radiocheck)).
 
 
 <a name="mode-check"></a>
@@ -93,7 +93,7 @@
 <a name="mode-radiocheck"></a>
 ##### Список с одиночным выбором (модификатор `mode` в значении `radio-check`)
 
-Модификатор `mode` в значении `radio-check` так же как и <a href="#select_mode_radio">модификатор mode в значении radio</a> позволяет выбрать только один пункт из выпадающего списка. Принципиальное отличие в том, что в значении `radio-check` есть возможность оставить список без выбранных пунктов.
+Модификатор `mode` в значении `radio-check` так же как и <a href="#mode-radio">модификатор mode в значении radio</a> позволяет выбрать только один пункт из выпадающего списка. Принципиальное отличие в том, что в значении `radio-check` есть возможность оставить список без выбранных пунктов.
 
 ```bemjson
 {
@@ -183,6 +183,7 @@
 ### Специализированные поля блока
 
 <a name="name"></a>
+
 #### `name`
 
 Определяет имя выпадающего списка.
@@ -234,14 +235,14 @@
 | <code>text</code> | <code>String</code> | Название пункта в списке. |
 | <code>checked</code> | <code>Boolean</code> | Пункт выбран. |
 | <code>title</code> | <code>String</code> | Название группы пунктов. |
-| <code>checkedText</code> | <code>String</code> | Текст, отображаемый вместо названия пункта в кнопке раскрывающегося списка. Задается только для списков с возможностью [множественного выбора](#mode-check). |
+| <code>checkedText</code> | <code>String</code> | Текст, отображаемый вместо названия пункта в кнопке раскрывающегося списка. Задается только для списков с возможностью <a href="#mode-check">множественного выбора</a>. |
 | <code>disabled</code> | <code>Boolean</code> | Неактивное состояние отдельного пункта. |
 | <code>icon</code> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. |
 
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'check', theme : 'normal', size : 'm' },
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
     text : '—',
     options : [
@@ -267,7 +268,7 @@
 ```bemjson
 {
     block : 'select',
-    mods : { mode : 'check', theme : 'normal', size : 'm' },
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
     text : 'empty',
     options : [
@@ -336,3 +337,17 @@
 #### `id`
 
 Определяет уникальный идентификатор раскрывающегося списка.
+
+```bemjson
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    id : 1,
+    options : [
+        { val : 1, text : 'first' },
+        { val : 2, text : 'second', checked : true },
+        { val : 3, text : 'third' }
+    ]
+}
+```

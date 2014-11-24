@@ -29,7 +29,7 @@
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
 | <a href=#checkboxname>name</a> | <code>String</code> | Имя чекбокса. |
-| <a href=#checkboxval>val</a> | <code>String</code> | Значение, которое будет отправлено на сервер или получено с помощью клиентских скриптов.  |
+| <a href=#checkboxval>val</a> | <code>String</code> | Значение, возвращаемое чекбоксом, если он выбран. |
 | <a href=#checkboxtext>text</a> | <code>String</code> | Текст подписи к чекбоксу. |
 | <a href=#checkboxicon>icon</a> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. Используется только для <a href=#checkboxtype>чекбокса с модификатором type в значении button</a>. |
 | <a href=#checkboxtitle>title</a> | <code>String</code> | Всплывающая подсказка. Используется только для <a href=#checkboxtype>чекбокса с модификатором type в значении button</a>. |
@@ -48,7 +48,7 @@
 
 Способ использования: `BEMJSON`.
 
-Модификатор `type` в значении `button` изменяет внешний вид блока на кнопочный. В таком случае выбор элемента происходит нажатием на [кнопку](../button/button.ru.md).
+Модификатор `type` в значении `button` используется для изменения внешнего вида блока на кнопочный. В таком случае выбор чекбокса происходит нажатием на [кнопку](../button/button.ru.md).
 
 ```bemjson
 {
@@ -68,7 +68,7 @@
 
 Способ использования: `BEMJSON`, `JS`.
 
-Модификатор `checked` в значении `true` определяет, что чекбокс отмечен (выбран).
+Модификатор `checked` в значении `true` используется для выбора чекбокса.
 
 ```bemjson
 {
@@ -146,7 +146,7 @@
 
 Способ использования: `BEMJSON`.
 
-Задает размер шрифта.
+Задает размер шрифта и отступов, либо размер кнопки.
 
 Модификатор `size` используется, только если блоку установлен модификатор <a href="#checkboxtheme">theme</a> в значении `islands`.
 
@@ -162,6 +162,16 @@
 }
 ```
 
+```bemjson
+{
+    block : 'checkbox',
+    text : 'Размер m',
+    name: 'name1',
+    val: '1',
+    mods : { theme : 'normal', size : 'm', type : 'button' }
+}
+```
+
 **l**
 
 ```bemjson
@@ -171,6 +181,16 @@
     name: 'name2',
     val: '2',
     mods : { theme : 'normal', size : 'l' }
+}
+```
+
+```bemjson
+{
+    block : 'checkbox',
+    text : 'Размер m',
+    name: 'name1',
+    val: '1',
+    mods : { theme : 'normal', size : 'l', type : 'button' }
 }
 ```
 

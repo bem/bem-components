@@ -1,6 +1,6 @@
 # radio
 
-Используется для создания одиночных радиопереключателей.
+Используется в составе блока [radio-group](../radio-group/radio-group.ru.md) для создания радиопереключателей.
 
 ## Краткая информация
 
@@ -8,31 +8,23 @@
 
 | Модификатор | Допустимые значения | Способы использования | Описание |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href=#type>type</a> | <code>'button'</code> | <code>BEMJSON</code> | Создаёт кнопочный переключатель. |
-| <a href=#checked>checked</a> | <code>true</code> | | Указывает, что радиопереключатель выбран. |
-| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | В фокусе. |
-| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Делает блок недоступным. |
-| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Размер радиопереключателя. |
-| <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
+| <a href=#type>type</a> | <code>'button'</code> | <code>BEMJSON</code> | Тип радиопереключателя. |
+| <a href=#checked>checked</a> | <code>true</code> | | Выбор радиопереключателя. |
+| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
+| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | Блок в фокусе. |
+| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Размер шрифта и отступов радиопереключателя. |
+| <a href=#theme>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 
 ### Специализированные поля блока
 
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
 | <a href=#name>name</a> | <code>String</code> | Имя радиопереключателя. |
-| <a href=#val>val</a> | <code>String</code> | Определяет значение, которое будет отправлено на сервер или получено с помощью клиентских скриптов. |
-| <a href=#text>text</a> | <code>String</code> | Подпись к радиопереключателю. |
-
-При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле `attrs` в BEMJSON.
+| <a href=#val>val</a> | <code>String</code> | Значение, возвращаемое радиопереключателем, если он выбран. |
+| <a href=#text>text</a> | <code>String</code> | Текст подписи к радиопереключателю. |
+| <a href=#icon>icon</a> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. Используется только для <a href=#type>радиопереключателя с модификатором type в значении button</a>. |
 
 ## Обзор блока
-
-В реализации блока используется функциональность нативного контрола `input` с атрибутом `type="radio"` – `<input name="name" type="radio">`, который скрывается при использовании модификатора `theme`.
-
-В результате применения шаблонов блок `radio` отображается на странице как HTML-тег `<label>`, содержащий:
-
-* элемент `box` со скрытым контролом `input` (элемент `control`);
-* подпись к радиопереключателю, если задан BEMJSON-параметр `text`.
 
 ### Модификаторы блока
 
@@ -43,23 +35,15 @@
 
 Способ использования: `BEMJSON`.
 
-Модификатор `type` со значением `button` используется для создания кнопочного радиопереключателя, реализованного на основе блока [button](../button/button.ru.md) с модификатором `button_togglable_radio`.
-
-При этом к блоку `button` примешивается блок `radio`, а контентом кнопки становится эелемент `control`. Как следствие, для блока с модификатором `radio_type_button` доступны состояния блока `button`:
-
-*  `hovered` – под курсором;
-*  `pressed` – кнопка нажата.
-
-При установленном модификаторе `radio_type_button` блоку задается HTML-атрибут `role="button"`.
-
-Пример:
+Модификатор `type` в значении `button` используется для изменения внешнего вида блока на кнопочный. В таком случае выбор радиопереключателя происходит нажатием на [кнопку](../button/button.ru.md).
 
 ```bemjson
 {
     block : 'radio',
     mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'radio-islands',
-    text : 'radio switch'
+    val : 1,
+    text : 'Использовать BEMHTML'
 }
 ```
 
@@ -68,55 +52,85 @@
 
 Допустимое значение: `true`.
 
-Способ использования:
+Способ использования: `BEMJSON`, `JS`.
 
-Модификатор `checked` указывает на то, что радиопереключатель выбран.
-
-Модификатор устанавливается по:
-
-* щелчку мыши (при повторных щелчках модификатор сохраняется);
-* нажатию клавиш `Enter` или `Space`, если радиокнопка находится в фокусе (возможность использования клавиши `Enter` зависит от браузера);
-* нажатию клавиш стрелок, если фокус установлен на соседний радиопереключатель в радиогруппе или в блоке, содержащем несколько блоков `radio`.
-
-Пример:
+Модификатор `checked` в значении `true` используется для выбора радиопереключателя.
 
 ```bemjson
 {
     block : 'radio',
     mods : { theme : 'islands', size : 'm', checked : true },
-    name : 'radio-norma',
-    text : 'Radio switch'
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
 }
 ```
-<a name="focused"></a>
-#### Модификатор `focused`
 
-Допустимое значение: `true`.
-
-Способ использования: `BEMJSON`.
-
-Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
+```bemjson
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button', checked : true },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
+}
+```
 
 <a name="disabled"></a>
 #### Модификатор `disabled`
 
 Допустимое значение: `true`.
 
-Способ использования: `BEMJSON`, `JS`.
+Способы использования: `BEMJSON`, `JS`.
 
-В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу `Tab`, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.
-
-При установке модификатора `disabled` для радиопереключателя не будут:
-
-* устанавливаться модификаторы состояния `hovered`, `pressed` и `focused`;
-* изменяться значение модификатора `checked`.
+Модификатор `disabled` в значении `true` отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.
 
 ```bemjson
 {
     block : 'radio',
-    mods : { theme : 'islands', size : 'l', disabled : true },
+    mods : { theme : 'islands', size : 'm', disabled : true },
     name : 'radio-islands',
-    text : 'Radio switch'
+    val : 1,
+    text : 'Использовать BEMHTML'
+}
+```
+
+```bemjson
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
+}
+```
+
+<a name="focused"></a>
+#### Модификатор `focused`
+
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Модификатор `focused` в значении `true` отвечает за наличие фокуса на блоке.
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', focused : true },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
+}
+```
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button', focused : true },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
 }
 ```
 
@@ -127,111 +141,165 @@
 
 Способ использования: `BEMJSON`.
 
-Реализован только в теме `islands`.
+Задает размер шрифта и отступов, либо размер кнопки.
 
-В зависимости от значения модификатора `type` доступны следующие размеры реализации блока:
+Модификатор `size` используется, только если блоку установлен модификатор <a href="#theme">theme</a> в значении `islands`.
 
-<table>
-    <tr>
-        <th>Размер</th>
-        <th>Обычный радиопереключатель</th>
-        <th>Кнопочный радиопереключатель
-            <br>(<code>radio_type_button</code>)</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>–</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>–</td>
-        <td>+</td>
-</table>
-
-
-<a name="theme"></a>
-#### Модификатор `theme`
-
-Допустимое значение: `'simple'`, `'islands'`.
-
-Способ использования: `BEMJSON`.
-
-Блок представлен в следующих темах:
-
- * simple
- * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size))
-
-Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
-
-Примеры:
-
-<a name="native"></a>
-**default**
+**s**
 
 ```bemjson
 {
     block : 'radio',
-    name : 'radio-simple',
-    text : 'Radio switch'
+    mods : { theme : 'islands', size : 's' },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
 }
 ```
-
-**simple**
 
 ```bemjson
 {
     block : 'radio',
-    mods : { theme : 'simple' },
-    name : 'radio-simple',
-    text : 'Radio switch'
+    mods : { theme : 'islands', size : 's', type : 'button' },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
 }
 ```
 
-**islands**
+**m**
 
 ```bemjson
 {
     block : 'radio',
     mods : { theme : 'islands', size : 'm' },
     name : 'radio-islands',
-    text : 'Radio switch'
+    val : 1,
+    text : 'Использовать BEMHTML'
+}
+```
+
+```bemjson
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
+}
+```
+
+**l**
+
+```bemjson
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'l' },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
+}
+```
+
+```bemjson
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'l', type : 'button' },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
+}
+```
+
+**xl**
+
+```bemjson
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'xl' },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
+}
+```
+
+```bemjson
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'xl', type : 'button' },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
+}
+```
+
+<a name="theme"></a>
+#### Модификатор `theme`
+
+Допустимое значение: `'islands'`.
+
+Способ использования: `BEMJSON`.
+
+Модификатор отвечает за стилевое оформление блока.
+
+При выборе модификатора `theme` в значении `islands` необходимо обязательно указывать модификатор <a href="#size">size</a>.
+
+Без указания модификатора `theme` отображается нативный вид контрола.
+
+```bemjson
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
+}
+```
+
+```bemjson
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 1,
+    text : 'Использовать BEMHTML'
 }
 ```
 
 ### Специализированные поля блока
 
 <a name="name"></a>
-#### `name`
+#### Поле `name`
 
-Имя радиопереключателя, предназначено для того, чтобы обработчик формы мог его идентифицировать. Преобразуется в HTML-атрибут `name` вложенного блока `input`.
+Имя радиопереключателя, предназначено для того, чтобы обработчик формы мог его идентифицировать. Определяет значение поля `name`, отправляемое на сервер. Всегда отправляется в паре со значением поля `val`, чтобы клиентская или серверная программа могла однозначно установить, какой пункт выбрал пользователь.
 
 <a name="val"></a>
-#### `val`
+#### Поле `val`
 
-Определяет значение, которое будет отправлено на сервер или получено с помощью клиентских скриптов. На сервер отправляется пара «имя=значение», где имя задается ключом `name` тега , а значение — ключом `val`. Преобразуется в HTML-атрибут `value` вложенного блока `input`.
+Определяет значение поля `val`, отправляемое на сервер. Всегда отправляется в паре со значением поля `name`, чтобы клиентская или серверная программа могла однозначно установить, какой пункт выбрал пользователь.
 
 <a name="text"></a>
 #### `text`
 
-Подпись к радиопереключателю.
+Определяет текст подписи к радиопереключателю.
 
-### Элементы
+<a name="icon"></a>
+#### Поле `icon`
 
-#### `__box`
+Определяет иконку, которая отображается с помощью блока `icon`.
 
-Элемент `box` используется в стандартной реализации блока как контейнер, содержащий контрол радиокнопки (элемент `control`). Вспомогательный скрытый элемент. Добавляется блоку на уровне шаблонизатора и становится HTML-элементом `<span>`.
+Используется только для <a href=#type>радиопереключателей с модификатором type в значении button</a>.
 
-#### `__control`
-
-Элемент `control` – вспомогательный скрытый элемент. Добавляется блоку на уровне шаблонизатора и становится HTML-элементом `<input>` с атрибутом `type="radio"`.
+```bemjson
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 1,
+    text : 'twitter',
+    icon : {
+        block : 'icon',
+        mods : { social : 'twitter' }
+    },
+}
+```

@@ -24,7 +24,7 @@ return function ($bh) {
             return $res;
         };
 
-        return [
+        return $select->options ? [
             'block' => 'menu',
             'mix' => [ 'block' => $json->block, 'elem' => $json->elem ],
             'mods' => [
@@ -44,7 +44,7 @@ return function ($bh) {
                     ] :
                     $optionToMenuItem($optionOrGroup);
             }, $select->options)
-        ];
+        ] : null;
     });
 
 };

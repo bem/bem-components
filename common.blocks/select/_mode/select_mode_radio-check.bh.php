@@ -21,7 +21,7 @@ return function ($bh) {
     $bh->match('select_mode_radio-check__button', function($ctx) {
         $checkedOptions = $ctx->tParam('checkedOptions');
 
-        $content = @$checkedOptions[0] ?: $ctx->tParam('select');
+        $content = (array)(@$checkedOptions[0] ?: $ctx->tParam('select'));
         $ctx->content([
             'elem' => 'text',
             'content' => @$content['text']

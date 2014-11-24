@@ -14,7 +14,7 @@ return function ($bh) {
                 'role' => 'button',
                 'tabindex' => $json->tabIndex,
                 'id' => $json->id,
-                'type' => $isRealButton? $modType ?: 'button' : null,
+                'type' => $isRealButton? ($modType ?: 'button') : null,
                 'name' => $json->name,
                 'value' => $json->val,
                 'title' => $json->title

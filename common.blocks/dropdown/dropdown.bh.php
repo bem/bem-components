@@ -5,7 +5,7 @@ return function ($bh) {
         $ctx->js(true);
 
         $popup = $json->popup;
-        if ($ctx->isSimple($popup) || @$popup['block'] !== 'popup') {
+        if ($ctx->isSimple($popup) || (@$popup['block'] ?: @$popup->block) !== 'popup') {
             $popup = [ 'block' => 'popup', 'content' => $popup ];
         }
         $json->popup = $popup = $ctx->phpize($popup);
@@ -17,7 +17,7 @@ return function ($bh) {
         $popupMods->target = 'anchor';
 
         $ctx->content([
-           [ 'elem' => 'switcher', 'content' => $json->switcher ],
+           [ 'elem' => 'switcher', 'content' => $ctx->phpize($json->switcher) ],
            $popup
         ], true);
     });

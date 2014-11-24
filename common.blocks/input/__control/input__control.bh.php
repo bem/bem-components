@@ -16,7 +16,7 @@ return function ($bh) {
 
         $input->autocomplete === false && ($attrs['autocomplete'] = 'off');
 
-        if($input->mods && $input->mods->disabled) {
+        if(isset($input->mods) && $input->mods->disabled) {
             $attrs['disabled'] = 'disabled';
         }
 

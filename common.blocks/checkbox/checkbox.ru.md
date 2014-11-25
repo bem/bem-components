@@ -18,7 +18,7 @@
 | Модификатор | Допустимые значения | Способы использования | Описание |
 | ----------- | ------------------- | -------------------- | -------- |
 | <a href=#checkboxtype>type</a> | <code>'button'</code> | <code>BEMJSON</code> | Тип кнопки. |
-| <a href=#checkboxchecked>checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Чекбокс отмечен. |
+| <a href=#checkboxchecked>checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Выбор чекбокса. |
 | <a href=#checkboxdisabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
 | <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | Блок в фокусе. |
 | <a href=#checkboxsize>size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | Размер чекбокса. Используется только для <a href=#checkboxtheme>чекбоксов с модификатором theme в значении islands</a>. |

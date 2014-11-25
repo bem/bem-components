@@ -9,7 +9,7 @@
 | Модификатор | Допустимые значения | Способы использования | Описание |
 | ----------- | ------------------- | -------------------- | -------- |
 | <a href=#type>type</a> | <code>'button'</code> | <code>BEMJSON</code> | Тип радиопереключателя. |
-| <a href=#checked>checked</a> | <code>true</code> | | Выбор радиопереключателя. |
+| <a href=#checked>checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Выбор радиопереключателя. |
 | <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
 | <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | Блок в фокусе. |
 | <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Размер шрифта и отступов радиопереключателя. |

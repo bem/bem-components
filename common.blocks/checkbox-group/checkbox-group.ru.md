@@ -19,7 +19,7 @@
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
 | <a href=#checkboxname>name</a> | <code>String</code> | Имя группы чекбоксов. |
-| <a href=#checkboxopt>options</a> | <code>Array</code> | Набор значений для каждого чекбокса группы. Каждому <a href="../..checkbox/checkbox.ru.md#checkboxtype"> типу чекбоксов</a> соответствует разный <a href="#checkboxoptset">набор значений</a>. Через поле <code>options</code> каждому чекбоксу группы можно установить модификатор `disabled` и `checked`.|
+| <a href=#checkboxopt>options</a> | <code>Array</code> | Набор значений для каждого чекбокса группы. Каждому <a href="../..checkbox/checkbox.ru.md#checkboxtype">типу чекбоксов</a> соответствует разный <a href="#checkboxoptset">набор значений</a>. Через поле <code>options</code> каждому чекбоксу группы можно установить модификатор `disabled` и `checked`.|
 
 ## Обзор блока
 
@@ -260,7 +260,7 @@
 
 Модификатор отвечает за стилевое оформление блока.
 
-При выборе модификатора `theme` в значении `islands` необходимо обязательно указывать модификатор <a href="#buttonsize">size</a>.
+При выборе модификатора `theme` в значении `islands` необходимо обязательно указывать модификатор <a href="#checkboxsize">size</a>.
 
 Без указания модификатора `theme` отображается нативный вид контрола.
 
@@ -305,7 +305,7 @@
 Определяет набор значений для каждого чекбокса группы.
 
 <a name="checkboxoptset">
-Каждому <a href="../..checkbox/checkbox.ru.md#checkboxtype"> типу чекбоксов</a> соответствует разный **набор значений**.
+Каждому <a href="../..checkbox/checkbox.ru.md#checkboxtype">типу чекбоксов</a> соответствует разный **набор значений**.
 
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
@@ -354,7 +354,7 @@
             val : 1,
             text : 'first',
             checked : true,
-            title : 'Follow BEM on twitter',
+            title : 'Подписаться на новости БЭМ',
             icon : {
                 block : 'icon',
                 mods : { social : 'twitter' }
@@ -364,21 +364,10 @@
             val : 2,
             text : 'second',
             disabled : true,
-            title : 'Follow BEM on Facebook',
+            title : 'Подписаться на новости БЭМ',
             icon : {
                 block : 'icon',
                 mods : { social : 'facebook' }
-            },
-        },
-        {
-            val : 3,
-            text : 'third',
-            checked : true,
-            disabled : true,
-            title : 'Follow BEM on bem.info',
-            icon : {
-                block : 'icon',
-                mods : { social : 'twitter' }
             },
         }
     ]

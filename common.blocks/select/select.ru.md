@@ -10,7 +10,7 @@
 | ----------- | ------------------- | -------------------- | -------- |
 | <a href=#mode>mode</a> | <code>'check'</code>, <code>'radio'</code>, <code>'radio-check'</code> | <code>BEMJSON</code> | Тип раскрывающегося списка. |
 | <a href=#width>width</a> | <code>'available'</code> | <code>BEMJSON</code> | Ширина кнопки раскрывающегося списка. |
-| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> <code>JS</code> | Блок в фокусе. |
+| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> <code>JS</code> | Фокус на блоке. |
 | <a href=#theme>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 
 ### Специализированные поля блока

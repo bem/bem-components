@@ -10,7 +10,7 @@
 | ----------- | ------------------- | -------------------- | -------- |
 | <a href=#type>type</a> | <code>'button'</code>, <code>'line'</code> | <code>BEMJSON</code> | Тип группы радиопереключателей. |
 | <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
-| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | Блок в фокусе. |
+| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | Фокус на блоке. |
 | <a href=#xsize>size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | Размер радиопереключателей в группе. Используется только для <a href=#theme>радиопереключателей с модификатором theme в значении islands</a>. |
 | <a href=#theme>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 

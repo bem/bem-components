@@ -12,7 +12,7 @@
 | ----------- | ------------------- | --------------------- | -------- |
 | <a href=#mode>mode</a> | <code>'radio'</code>, <code>'radio-check'</code>, <code>'check'</code> | <code>BEMJSON</code> | Тип меню. |
 | <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
-| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | В фокусе. |
+| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | Фокус на блоке. |
 | <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Размер блока. |
 | <a href=#theme>theme</a> | <code>'simple'</code>, <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 

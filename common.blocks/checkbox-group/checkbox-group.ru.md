@@ -10,8 +10,8 @@
 | ----------- | ------------------- | -------------------- | -------- |
 | <a href=#checkboxtype>type</a> | <code>'button'</code>, <code>'line'</code> | <code>BEMJSON</code> | Тип группы чекбоксов. |
 | <a href=#checkboxdisabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
-| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | Блок в фокусе. |
-| <a href=#checkboxsize>size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | Размер чекбоксов в группе. Используется только для <a href=#checkboxtheme>чекбоксов с модификатором theme в значении islands</a>. |
+| <a href=#checkboxfocused>focused</a> | <code>true</code> | <code>BEMJSON</code> | Фокус на блоке. |
+| <a href=#checkboxsize>size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | Размер чекбоксов в группе. Используется только для чекбоксов с <a href=#checkboxtheme>модификатором theme в значении islands</a>. |
 | <a href=#checkboxtheme>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 
 ### Специализированные поля блока
@@ -19,7 +19,7 @@
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
 | <a href=#checkboxname>name</a> | <code>String</code> | Имя группы чекбоксов. |
-| <a href=#checkboxopt>options</a> | <code>Array</code> | Набор значений для каждого чекбокса группы. Каждому <a href="../..checkbox/checkbox.ru.md#checkboxtype">типу чекбоксов</a> соответствует разный <a href="#checkboxoptset">набор значений</a>. Через поле <code>options</code> каждому чекбоксу группы можно установить модификатор `disabled` и `checked`.|
+| <a href=#checkboxopt>options</a> | <code>Array</code> | Набор значений для каждого чекбокса группы. Каждому <a href="#../checkbox/checkbox.ru.md#checkboxtype">типу чекбоксов</a> соответствует разный <a href="#checkboxoptset">набор значений</a>. Через поле <code>options</code> каждому чекбоксу группы можно установить модификатор `disabled` и `checked`.|
 
 ## Обзор блока
 

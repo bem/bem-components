@@ -20,8 +20,8 @@
 | <a href=#checkboxtype>type</a> | <code>'button'</code> | <code>BEMJSON</code> | Тип кнопки. |
 | <a href=#checkboxchecked>checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Выбор чекбокса. |
 | <a href=#checkboxdisabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
-| <a href=#focused>focused</a> | <code>true</code> | <code>BEMJSON</code> | Блок в фокусе. |
-| <a href=#checkboxsize>size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | Размер чекбокса. Используется только для <a href=#checkboxtheme>чекбоксов с модификатором theme в значении islands</a>. |
+| <a href=#checkboxfocused>focused</a> | <code>true</code> | <code>BEMJSON</code> | Фокус на блоке. |
+| <a href=#checkboxsize>size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | Размер чекбокса. Используется только для чекбоксов с <a href=#checkboxtheme>модификатором theme в значении islands</a>. |
 | <a href=#checkboxtheme>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 
 ### Специализированные поля блока
@@ -31,8 +31,8 @@
 | <a href=#checkboxname>name</a> | <code>String</code> | Имя чекбокса. |
 | <a href=#checkboxval>val</a> | <code>String</code> | Значение, возвращаемое чекбоксом, если он выбран. |
 | <a href=#checkboxtext>text</a> | <code>String</code> | Текст подписи к чекбоксу. |
-| <a href=#checkboxicon>icon</a> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. Используется только для <a href=#checkboxtype>чекбокса с модификатором type в значении button</a>. |
-| <a href=#checkboxtitle>title</a> | <code>String</code> | Всплывающая подсказка. Используется только для <a href=#checkboxtype>чекбокса с модификатором type в значении button</a>. |
+| <a href=#checkboxicon>icon</a> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. Используется только для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>. |
+| <a href=#checkboxtitle>title</a> | <code>String</code> | Всплывающая подсказка. Используется только для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>. |
 
 ## Обзор блока
 
@@ -66,7 +66,7 @@
 
 Допустимое значение: `true`.
 
-Способ использования: `BEMJSON`, `JS`.
+Способы использования: `BEMJSON`, `JS`.
 
 Модификатор `checked` в значении `true` используется для выбора чекбокса.
 
@@ -142,7 +142,7 @@
 
 #### Модификатор `size`
 
-Допустимые значения: `'m'`, `'l'`.
+Допустимые значения для темы `islands`: `'m'`, `'l'`.
 
 Способ использования: `BEMJSON`.
 
@@ -201,7 +201,7 @@
 
 Способ использования: `BEMJSON`.
 
-Модификатор отвечает за стилевое оформление блока.
+Модификатор `theme` отвечает за стилевое оформление блока.
 
 При выборе модификатора `theme` в значении `islands` необходимо обязательно указывать модификатор <a href="#checkboxsize">size</a>.
 
@@ -222,7 +222,7 @@
 <a name="checkboxname"></a>
 #### Поле `name`
 
-Имя чекбокса, предназначено для того, чтобы обработчик формы мог его идентифицировать. Определяет значение поля `name`, отправляемое на сервер. Всегда отправляется в паре со значением поля `val`, чтобы клиентская или серверная программа могла однозначно установить, какой пункт выбрал пользователь.
+Имя чекбокса. Используется для того, чтобы обработчик формы мог его идентифицировать. Определяет значение поля `name`, отправляемое на сервер. Всегда отправляется в паре со значением поля `val`, чтобы клиентская или серверная программа могла однозначно установить, какой пункт выбрал пользователь.
 
 <a name="checkboxval"></a>
 
@@ -240,7 +240,7 @@
 
 Определяет иконку, которая отображается с помощью блока `icon`.
 
-Используется только для <a href=#checkboxtype>чекбокса с модификатором type в значении button</a>.
+Используется только для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>.
 
 ```bemjson
 {
@@ -261,7 +261,7 @@
 
 Определяет содержание всплывающей подсказки. Вид такой подсказки зависит от браузера, настроек операционной системы и не может быть изменен с помощью HTML-кода или стилей.
 
-Используется только для <a href=#checkboxtype>чекбокса с модификатором type в значении button</a>.
+Используется только для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>.
 
 ```bemjson
 {

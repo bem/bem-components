@@ -38,6 +38,13 @@ before_script:
         echo "    - CI" >> .gemini.yml
         cat .gemini.yml
       fi
+  - |
+      if [ "${TEST_SCOPE}" == "tmpls" ]; then
+        sudo add-apt-repository ppa:ondrej/php5 -y
+        sudo apt-get update -qq
+        sudo apt-get install -qq -y php5-cli
+        git clone https://github.com/zxqfox/bh-php.git ./vendor/bem/bh
+      fi
 
 after_success:
   - |

@@ -248,7 +248,7 @@ The following modifiers of a button could be propagated to `select` block:
 
 `menu` element allows user to manage `menu-items` within selection list:
 
-* `val` – value to be sent to a server when menu item is chosen. This attribute could contain unique identifier `{ val : { id : 1 } }`.
+* `val` – value to be sent to a server when menu item is chosen. This attribute could contain unique identifier `{ val : id }`.
 * `text` – name of menu item.
 * `checked` – state that is set to `menu-item`, e.g. on mouse click.
 * `checkedText` – text represented within select's button instead of chosen menu item name. This attribute is used for [multiple-choice](#multiple-choice) select.
@@ -262,13 +262,13 @@ The following modifiers of a button could be propagated to `select` block:
     text : '—',
     options : [
         {
-            val : { id : 1 },
+            val : 1,
             text : 'Twitter',
             checkedText : 'tw',
             icon : { block : 'icon', mods : { social : 'twitter' } }
         },
         {
-            val : { id : 2 },
+            val : 2,
             text : 'VKontakte',
             checkedText : 'vk',
             icon : { block : 'icon', mods : { social : 'vk' } },

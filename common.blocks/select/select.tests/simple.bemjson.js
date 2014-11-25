@@ -57,9 +57,9 @@
             mods : { mode : 'check', theme : 'islands', size : 'm' },
             name : 'select4',
             options : [
-                { val : { id : 1 }, text : 'first', checkedText : '1' },
-                { val : { id : 2 }, text : 'second', checkedText : '2', checked : true },
-                { val : { id : 3 }, text : 'third', checkedText : '3', checked : true }
+                { val : 1, text : 'first', checkedText : '1' },
+                { val : 2, text : 'second', checkedText : '2', checked : true },
+                { val : 3, text : 'third', checkedText : '3', checked : true }
             ]
         },
         {
@@ -69,13 +69,13 @@
             text : '—',
             options : [
                 {
-                    val : { id : 1 },
+                    val : 1,
                     text : 'Twitter',
                     checkedText : 'tw',
                     icon : { block : 'icon', mods : { social : 'twitter' } }
                 },
                 {
-                    val : { id : 2 },
+                    val : 2,
                     text : 'VKontakte',
                     checkedText : 'vk',
                     icon : { block : 'icon', mods : { social : 'vk' } },

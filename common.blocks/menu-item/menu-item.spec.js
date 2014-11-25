@@ -64,15 +64,6 @@ describe('menu-item', function() {
             menuItem.isValEq('val1').should.be.true;
             menuItem.isValEq('val2').should.be.false;
         });
-
-        it('should properly compare complex own value with given', function() {
-            var menuItem = buildMenuItem({ blah : 'blah' });
-
-            menuItem.isValEq({ blah : 'blah' }).should.be.true;
-            menuItem.isValEq({ foo : 'bar' }).should.be.false;
-
-            BEMDOM.destruct(menuItem.domElem);
-        });
     });
 
 });

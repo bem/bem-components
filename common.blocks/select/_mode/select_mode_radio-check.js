@@ -25,7 +25,7 @@ provide(Select.decl({ modName : 'mode', modVal : 'radio-check' }, /** @lends sel
             control.remove();
         } else {
             control.parent().length || this.domElem.prepend(control);
-            control.val(typeof val === 'object'? JSON.stringify(val) : val);
+            control.val(val);
         }
     },
 

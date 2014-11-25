@@ -37,14 +37,12 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
 
     /**
      * Checks whether given value is equal to current value
-     * @param {*} val
+     * @param {String|Number} val
      * @returns {Boolean}
      */
     isValEq : function(val) {
-        var thisVal = this.params.val;
-        return typeof thisVal === 'object'?
-            JSON.stringify(thisVal) === JSON.stringify(val) :
-            thisVal === val;
+        // NOTE: String(true) == String(1) -> false
+        return String(this.params.val) === String(val);
     },
 
     /**

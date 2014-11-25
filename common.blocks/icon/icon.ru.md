@@ -1,46 +1,27 @@
 # icon
 
-Блок `icon` используется в качестве графического элемента в других блоках. Иконка задается через свойство `background` и, соответственно, не имеет возможности оставить резервный вариант отображения в случае проблем с применением стилей.
+Используется в качестве графического элемента в других блоках.
 
-## Специализированные поля блока
+## Краткая информация
 
-Список зарезервированных полей входного BEMJSON:
+### Модификаторы блока
 
-<table>
-    <tr>
-        <th>Поле</th>
-        <th>Тип</th>
-        <th>Описание</th>
-    </tr>
-    <tr>
-        <td>url</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Адрес иконки.</td>
-    </tr>
-</table>
+| Модификатор | Допустимые значения | Способы использования | Описание |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href=#social>social</a> | <code>'twitter'</code>, <code>'facebook'</code>, <code>'vk'</code> | <code>BEMJSON</code> | Социальные иконки. |
+| <a href=#action>action</a> | <code>'download'</code>, <code>'arrow'</code> | <code>BEMJSON</code> | Иконки действия. |
 
+### Специализированные поля блока
 
-Иконку можно задать используя:
+| Поле | Тип | Описание |
+| ---- | --- | -------- |
+| <a href=#url>url</a> | <code>String</code> | Адрес, по которому подгружается картинка.. |
 
-* модификатор
+## Обзор блока
 
-```bemjson
-{
-    block : 'icon',
-    mods : { social : 'twitter' }
-}
-```
-* поле `url`
+Блок `icon` задается через свойство `background` и, соответственно, не имеет возможности оставить резервный вариант отображения в случае проблем с применением стилей.
 
-```bemjson
-{
-    block : 'icon',
-    url : '../../test.blocks/icon/_action/download.svg'
-}
-```
-* поле `content`
+Иконка может быть добавлена через поле `content`:
 
 ```bemjson
 {
@@ -49,17 +30,66 @@
 }
 ```
 
-Примеры с использованием блока:
+### Модификаторы блока
+
+<a name="social"></a>
+
+#### Модификатор `social`
+
+Допустимое значение: `'twitter'`, `'facebook'`, `'vk'`.
+
+Способ использования: `BEMJSON`.
+
+Модификатор `social` используется для добавления иконок социальных сетей.
+
+```bemjson
+{
+    block : 'icon',
+    mods : { social : 'twitter' }
+}
+```
+
+<a name="action"></a>
+
+#### Модификатор `action`
+
+Допустимое значение: `'download'`, `'arrow'`.
+
+Способ использования: `BEMJSON`.
+
+Модификатор `action` используется для добавления иконок действия.
+
+```bemjson
+{
+    block : 'icon',
+    mods : { action : 'download' }
+}
+```
+
+### Специализированные поля блока
+
+<a name="url"></a>
+
+#### Поле `url`
+
+Определяет адрес иконки.
+
+```bemjson
+{
+    block : 'icon',
+    url : '../../test.blocks/icon/_action/download.svg'
+}
+```
+
+### Примеры с использованием блока
 
 ```bemjson
 {
     block : 'button',
-    text : 'Кнопка с иконкой',
-    mods : {
-        theme : 'normal',
-        size : 'm'
-    },
-    icon : {
+    text : 'twitter',
+    mods : { theme : 'normal', size : 'm' },
+    icon :
+    {
         block : 'icon',
         mods : { social : 'twitter' }
     }
@@ -69,12 +99,10 @@
 ```bemjson
 {
     block : 'button',
-    text : 'with icon',
-    mods : {
-        theme : 'normal',
-        size : 'm'
-    },
-    icon : {
+    text : 'Скачать',
+    mods : { theme : 'normal', size : 'm' },
+    icon :
+    {
         block : 'icon',
         url : '../../test.blocks/icon/_action/download.svg'
     }

@@ -3,7 +3,11 @@ return function ($bh) {
 
     $bh->match('dropdown_switcher_link__switcher', function($ctx, $json) {
         $content = $ctx->content();
-        if ($ctx->isArray($content)) return $content;
+        // if (Array.isArray(content)) return content
+        if ($ctx->isArray($content)) { // php!yolo. bug?
+            if (count($content) > 1) return $content;
+            $content = $content[0];
+        }
 
         $res = $ctx->isSimple($content)?
             [ 'block' => 'link', 'mods' => [ 'pseudo' => true ], 'content' => $content ] :

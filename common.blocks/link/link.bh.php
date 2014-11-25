@@ -12,7 +12,7 @@ return function ($bh) {
         $attrs = [];
 
         $tabIndex = null;
-        if(!$ctx->mod('disabled')) {
+        if (!$ctx->mod('disabled')) {
             if($url) {
                 $attrs['href'] = $url;
                 $tabIndex = $json->tabIndex;

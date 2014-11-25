@@ -9,6 +9,7 @@ return function ($bh) {
             $popup = [ 'block' => 'popup', 'content' => $popup ];
         }
         $json->popup = $popup = $ctx->phpize($popup);
+        $json->switcher = $ctx->phpize($json->switcher);
 
         $popupMods = $popup->mods;
         $popupMods->theme || ($popupMods->theme = $ctx->mod('theme'));
@@ -17,7 +18,7 @@ return function ($bh) {
         $popupMods->target = 'anchor';
 
         $ctx->content([
-           [ 'elem' => 'switcher', 'content' => $ctx->phpize($json->switcher) ],
+           [ 'elem' => 'switcher', 'content' => $json->switcher ],
            $popup
         ], true);
     });

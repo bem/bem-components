@@ -15,12 +15,18 @@ return function ($bh) {
             foreach ($json->options as $i => $optionOrGroup) {
                 if (isset($optionOrGroup['group']) && is_array($optionOrGroup['group'])) {
                     foreach ($optionOrGroup['group'] as $j => $option) {
-                        ($i === 0 && $j === 0) && ($firstOption = $option);
+                        if ($i === 0 && $j === 0) {
+                            $firstOption = $option;
+                            $firstOptionLocation = [$i, $j]; // php!yolo fix
+                        }
                         empty($option['checked']) || ($checkedOptions[] = $option);
                     }
                 }
                 else {
-                    ($i === 0) && ($firstOption = $optionOrGroup);
+                    if ($i === 0) {
+                        $firstOption = $optionOrGroup;
+                        $firstOptionLocation = [$i]; // php!yolo fix
+                    }
                     empty($optionOrGroup['checked']) || ($checkedOptions[] = $optionOrGroup);
                 }
             }
@@ -29,6 +35,7 @@ return function ($bh) {
         $ctx
             ->tParam('select', $json)
             ->tParam('firstOption', $firstOption)
+            ->tParam('firstOptionLocation', $firstOptionLocation) // php!yolo fix
             ->tParam('checkedOptions', $checkedOptions);
 
         $ctx->content([

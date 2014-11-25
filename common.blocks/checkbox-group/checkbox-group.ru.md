@@ -19,7 +19,7 @@
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
 | <a href=#checkboxname>name</a> | <code>String</code> | Имя группы чекбоксов. |
-| <a href=#checkboxopt>options</a> | <code>Array</code> | Набор значений для каждого чекбокса группы. Каждому <a href="#../checkbox/checkbox.ru.md">типу чекбоксов</a> соответствует разный <a href="#checkboxoptset">набор значений</a>. Через поле <code>options</code> каждому чекбоксу группы можно установить модификатор `disabled` и `checked`.|
+| <a href=#checkboxopt>options</a> | <code>Array</code> | Набор значений для каждого чекбокса группы. Каждому <a href="../checkbox/checkbox.ru.md">типу чекбоксов</a> соответствует разный <a href="#checkboxoptset">набор значений</a>. Через поле <code>options</code> каждому чекбоксу группы можно установить модификатор `disabled` и `checked`.|
 
 ## Обзор блока
 

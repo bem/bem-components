@@ -12,7 +12,7 @@ modules.define('select', function(provide, Select) {
 provide(Select.decl({ modName : 'mode', modVal : 'radio' }, /** @lends select.prototype */{
     _updateControl : function() {
         var val = this.getVal();
-        this.elem('control').val(typeof val === 'object'? JSON.stringify(val) : val);
+        this.elem('control').val(val);
     },
 
     _updateButton : function() {

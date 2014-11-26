@@ -1,11 +1,10 @@
 block('select').elem('control')(
     tag()('input'),
     attrs()(function() {
-        var val = this.ctx.val;
         return {
             type : 'hidden',
             name : this._select.name,
-            value : this.isSimple(val)? val : JSON.stringify(val),
+            value : this.ctx.val,
             disabled : this.mods.disabled? 'disabled' : undefined
         };
     })

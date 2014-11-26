@@ -254,7 +254,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             'type="hidden" ' +
             'name="' + name + '" ' +
             'class="' + this.buildClass('control') + '" ' +
-            'value="' + escape.attr(typeof val === 'object'? JSON.stringify(val) : val) + '"/>';
+            'value="' + escape.attr(val) + '"/>';
     }
 }));
 

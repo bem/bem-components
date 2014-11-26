@@ -161,7 +161,7 @@ module.exports = function(config) {
                 }],
                 [mergeFiles, {
                     target : '?.pre.js',
-                    sources : ['?.browser.bemhtml.js', '?.browser.js']
+                    sources : ['?.browser.bh.js', '?.browser.js']
                 }],
                 [ym, {
                     source : '?.pre.js',
@@ -191,26 +191,28 @@ module.exports = function(config) {
                 }]
             ]);
 
-            // Client BEMHTML
+            // Client BH
             nodeConfig.addTechs([
                 [depsByTechToBemdecl, {
-                    target : '?.bemhtml.bemdecl.js',
+                    target : '?.bh.bemdecl.js',
                     sourceTech : 'js',
                     destTech : 'bemhtml'
                 }],
                 [deps, {
-                    target : '?.bemhtml.deps.js',
-                    bemdeclFile : '?.bemhtml.bemdecl.js'
+                    target : '?.bh.deps.js',
+                    bemdeclFile : '?.bh.bemdecl.js'
                 }],
                 [files, {
-                    depsFile : '?.bemhtml.deps.js',
-                    filesTarget : '?.bemhtml.files',
-                    dirsTarget : '?.bemhtml.dirs'
+                    depsFile : '?.bh.deps.js',
+                    filesTarget : '?.bh.files',
+                    dirsTarget : '?.bh.dirs'
                 }],
-                [bemhtml, {
-                    target : '?.browser.bemhtml.js',
-                    filesTarget : '?.bemhtml.files',
-                    devMode : false
+                [bhYm, {
+                    target : '?.browser.bh.js',
+                    filesTarget : '?.bh.files',
+                    jsAttrName : 'data-bem',
+                    jsAttrScheme : 'json',
+                    mimic : 'BEMHTML'
                 }]
             ]);
 

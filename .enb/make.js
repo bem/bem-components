@@ -129,126 +129,130 @@ module.exports = function(config) {
 
     function configurePages(platforms) {
         platforms.forEach(function(platform) {
-            var nodes = [platform + '.tests/*/*', platform + '.examples/*/*', platform + '.pages/*'];
+            var nodes = [platform + '.pages/*'];
 
-            configureLevels(platform, nodes);
-            configureAutoprefixer(platform, nodes);
-
-            config.nodes([platform + '.pages/*'], function(nodeConfig) {
+            config.nodes(nodes, function(nodeConfig) {
                 nodeConfig.addTech([provide, { target : '?.bemjson.js' }]);
             });
 
+            configureNodes(platform, nodes);
+        });
+    }
+
+    function configureNodes(platform, nodes) {
+        configureLevels(platform, nodes);
+        configureAutoprefixer(platform, nodes);
+
+        config.nodes(nodes, function(nodeConfig) {
+            var langs = config.getLanguages();
+
+            // Base techs
+            nodeConfig.addTechs([
+                [bemdecl],
+                [deps],
+                [files]
+            ]);
+
+            // Client techs
+            nodeConfig.addTechs([
+                [css, { target : '?.noprefix.css' }],
+                [js, {
+                    filesTarget : '?.js.files'
+                }],
+                [mergeFiles, {
+                    target : '?.pre.js',
+                    sources : ['?.browser.bemhtml.js', '?.browser.js']
+                }],
+                [ym, {
+                    source : '?.pre.js',
+                    target : '?.js'
+                }]
+            ]);
+
+            // js techs
+            nodeConfig.addTechs([
+                [depsByTechToBemdecl, {
+                    target : '?.js-js.bemdecl.js',
+                    sourceTech : 'js',
+                    destTech : 'js'
+                }],
+                [mergeBemdecl, {
+                    sources : ['?.bemdecl.js', '?.js-js.bemdecl.js'],
+                    target : '?.js.bemdecl.js'
+                }],
+                [deps, {
+                    target : '?.js.deps.js',
+                    bemdeclFile : '?.js.bemdecl.js'
+                }],
+                [files, {
+                    depsFile : '?.js.deps.js',
+                    filesTarget : '?.js.files',
+                    dirsTarget : '?.js.dirs'
+                }]
+            ]);
+
+            // Client BEMHTML
+            nodeConfig.addTechs([
+                [depsByTechToBemdecl, {
+                    target : '?.bemhtml.bemdecl.js',
+                    sourceTech : 'js',
+                    destTech : 'bemhtml'
+                }],
+                [deps, {
+                    target : '?.bemhtml.deps.js',
+                    bemdeclFile : '?.bemhtml.bemdecl.js'
+                }],
+                [files, {
+                    depsFile : '?.bemhtml.deps.js',
+                    filesTarget : '?.bemhtml.files',
+                    dirsTarget : '?.bemhtml.dirs'
+                }],
+                [bemhtml, {
+                    target : '?.browser.bemhtml.js',
+                    filesTarget : '?.bemhtml.files',
+                    devMode : false
+                }]
+            ]);
+
+            // Template techs
+            nodeConfig.addTechs([
+                [bemhtml],
+                [bh, { jsAttrName : 'data-bem', jsAttrScheme : 'json' }]
+            ]);
+
+            // Build htmls
+            nodeConfig.addTechs([
+                [html],
+                [bhHtml, { target : '?.bh.html' }]
+            ]);
+
+            langs.forEach(function(lang) {
+                var destTarget = '?.' + lang + '.html';
+
+                nodeConfig.addTech([copyFile, { source : '?.html', target : destTarget }]);
+                nodeConfig.addTarget(destTarget);
+            });
+
+            nodeConfig.addTargets([
+                '_?.css', '_?.js', '?.html', '?.bh.html'
+            ]);
+        });
+
+        config.mode('development', function() {
             config.nodes(nodes, function(nodeConfig) {
-                var langs = config.getLanguages();
-
-                // Base techs
                 nodeConfig.addTechs([
-                    [bemdecl],
-                    [deps],
-                    [files]
-                ]);
-
-                // Client techs
-                nodeConfig.addTechs([
-                    [css, { target : '?.noprefix.css' }],
-                    [js, {
-                        filesTarget : '?.js.files'
-                    }],
-                    [mergeFiles, {
-                        target : '?.pre.js',
-                        sources : ['?.browser.bemhtml.js', '?.browser.js']
-                    }],
-                    [ym, {
-                        source : '?.pre.js',
-                        target : '?.js'
-                    }]
-                ]);
-
-                // js techs
-                nodeConfig.addTechs([
-                    [depsByTechToBemdecl, {
-                        target : '?.js-js.bemdecl.js',
-                        sourceTech : 'js',
-                        destTech : 'js'
-                    }],
-                    [mergeBemdecl, {
-                        sources : ['?.bemdecl.js', '?.js-js.bemdecl.js'],
-                        target : '?.js.bemdecl.js'
-                    }],
-                    [deps, {
-                        target : '?.js.deps.js',
-                        bemdeclFile : '?.js.bemdecl.js'
-                    }],
-                    [files, {
-                        depsFile : '?.js.deps.js',
-                        filesTarget : '?.js.files',
-                        dirsTarget : '?.js.dirs'
-                    }]
-                ]);
-
-                // Client BEMHTML
-                nodeConfig.addTechs([
-                    [depsByTechToBemdecl, {
-                        target : '?.bemhtml.bemdecl.js',
-                        sourceTech : 'js',
-                        destTech : 'bemhtml'
-                    }],
-                    [deps, {
-                        target : '?.bemhtml.deps.js',
-                        bemdeclFile : '?.bemhtml.bemdecl.js'
-                    }],
-                    [files, {
-                        depsFile : '?.bemhtml.deps.js',
-                        filesTarget : '?.bemhtml.files',
-                        dirsTarget : '?.bemhtml.dirs'
-                    }],
-                    [bemhtml, {
-                        target : '?.browser.bemhtml.js',
-                        filesTarget : '?.bemhtml.files',
-                        devMode : false
-                    }]
-                ]);
-
-                // Template techs
-                nodeConfig.addTechs([
-                    [bemhtml],
-                    [bh, { jsAttrName : 'data-bem', jsAttrScheme : 'json' }]
-                ]);
-
-                // Build htmls
-                nodeConfig.addTechs([
-                    [html],
-                    [bhHtml, { target : '?.bh.html' }]
-                ]);
-
-                langs.forEach(function(lang) {
-                    var destTarget = '?.' + lang + '.html';
-
-                    nodeConfig.addTech([copyFile, { source : '?.html', target : destTarget }]);
-                    nodeConfig.addTarget(destTarget);
-                });
-
-                nodeConfig.addTargets([
-                    '_?.css', '_?.js', '?.html', '?.bh.html'
+                    [copyFile, { source : '?.css', target : '_?.css' }],
+                    [copyFile, { source : '?.js', target : '_?.js' }]
                 ]);
             });
+        });
 
-            config.mode('development', function() {
-                config.nodes(nodes, function(nodeConfig) {
-                    nodeConfig.addTechs([
-                        [copyFile, { source : '?.css', target : '_?.css' }],
-                        [copyFile, { source : '?.js', target : '_?.js' }]
-                    ]);
-                });
-            });
-
-            config.mode('production', function() {
-                config.nodes(nodes, function(nodeConfig) {
-                    nodeConfig.addTechs([
-                        [borschik, { source : '?.css', target : '_?.css', freeze : true, tech : 'cleancss' }],
-                        [borschik, { source : '?.js', target : '_?.js', freeze : true }]
-                    ]);
-                });
+        config.mode('production', function() {
+            config.nodes(nodes, function(nodeConfig) {
+                nodeConfig.addTechs([
+                    [borschik, { source : '?.css', target : '_?.css', freeze : true, tech : 'cleancss' }],
+                    [borschik, { source : '?.js', target : '_?.js', freeze : true }]
+                ]);
             });
         });
     }
@@ -339,6 +343,8 @@ module.exports = function(config) {
                     }
                 }
             });
+
+            configureNodes(platform, [platform + '.tests/*/*', platform + '.examples/*/*']);
         });
     }
 };

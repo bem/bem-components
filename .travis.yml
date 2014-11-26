@@ -26,6 +26,10 @@ branches:
     - v1
     - master
 
+before_install:
+  - |
+      git diff $(git merge-base HEAD v2) --name-only | grep -v '\.md$' >/dev/null || (echo "Test skipped." && exit 0)
+
 before_script:
   - |
       if [ "${TEST_SCOPE}" == "gemini" ]; then

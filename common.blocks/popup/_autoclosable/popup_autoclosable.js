@@ -41,8 +41,8 @@ provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup
         if(this.hasMod('target', 'anchor') && dom.contains(this._anchor, $(e.target)))
             return;
 
-        this._inPopupPointerPress?
-           this._inPopupPointerPress = null :
+        this._preventHideByClick?
+           this._preventHideByClick = null :
            this.delMod('visible');
     }
 }, /** @lends popup */{

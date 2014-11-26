@@ -14,11 +14,10 @@ var DEFAULT_LANGS = ['ru', 'en'],
     js = require('enb-diverse-js/techs/browser-js'),
     ym = require('enb-modules/techs/prepend-modules'),
     bemhtml = require('enb-bemxjst/techs/bemhtml-old'),
-    html = require('enb-bemxjst/techs/html-from-bemjson'),
+    html = require('enb-bh/techs/html-from-bemjson'),
     bh = require('enb-bh/techs/bh-server'),
     bhServerInclude = require('enb-bh/techs/bh-server-include'),
     bhYm = require('enb-bh/techs/bh-client-module'),
-    bhHtml = require('enb-bh/techs/html-from-bemjson'),
     copyFile = require('enb/techs/file-copy'),
     mergeFiles = require('enb/techs/file-merge'),
     mergeBemdecl = require('enb-bem-techs/techs/merge-bemdecl'),
@@ -216,16 +215,10 @@ module.exports = function(config) {
                 }]
             ]);
 
-            // Template techs
-            nodeConfig.addTechs([
-                [bemhtml],
-                [bh, { jsAttrName : 'data-bem', jsAttrScheme : 'json' }]
-            ]);
-
             // Build htmls
             nodeConfig.addTechs([
-                [html],
-                [bhHtml, { target : '?.bh.html' }]
+                [bh, { jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
+                [html]
             ]);
 
             langs.forEach(function(lang) {
@@ -236,7 +229,7 @@ module.exports = function(config) {
             });
 
             nodeConfig.addTargets([
-                '_?.css', '_?.js', '?.html', '?.bh.html'
+                '_?.css', '_?.js', '?.html'
             ]);
         });
 

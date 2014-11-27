@@ -3,8 +3,5 @@ block('textarea')(
     def()(function() {
         applyNext({ _textarea : this.ctx });
     }),
-
-    content().match(function() {
-        return typeof this.ctx.content === 'undefined';
-    })({ elem : 'control' })
+    content()({ elem : 'control' })
 );

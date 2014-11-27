@@ -4,12 +4,5 @@ block('input')(
     def()(function() {
         applyNext({ _input : this.ctx });
     }),
-    content()(
-        function() {
-            return { elem : 'box', content : { elem : 'control' } };
-        },
-        match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {
-            return this.ctx.content;
-        })
-    )
+    content()({ elem : 'box', content : { elem : 'control' } })
 );

@@ -111,7 +111,7 @@ Migartion guide is [here](MIGRATION.md).
 1.
   Run development server:
   ```bash
-  $ enb server
+  $ npm start
   ```
 
 1.

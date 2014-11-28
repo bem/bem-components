@@ -10,6 +10,9 @@
 node_modules
 libs
 
+/vendor
+composer.*
+
 *.pages/*/*
 !*.pages/.bem/*
 !*.pages/*/blocks

@@ -340,6 +340,14 @@ module.exports = function(config) {
                     'bemhtml-prod' : {
                         tech : 'enb-bemxjst/techs/bemhtml-old',
                         options : { devMode : false }
+                    },
+                    'bh-php' : {
+                        tech : 'enb-bh-php/techs/bh-php-test',
+                        options : {
+                            jsAttrName : 'data-bem',
+                            jsAttrScheme : 'json',
+                            isAsync : true
+                        }
                     }
                 }
             });
@@ -435,7 +443,8 @@ function getThemeFromBemjson(bemjson) {
     var theme, key;
 
     for(key in bemjson) {
-        if(theme = key === 'mods'? bemjson.mods.theme :
-            getThemeFromBemjson(bemjson[key])) return theme;
+        theme = key === 'mods'? bemjson.mods.theme :
+            getThemeFromBemjson(bemjson[key]);
+        if(theme) return theme;
     }
 }

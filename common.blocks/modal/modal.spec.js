@@ -21,11 +21,9 @@ describe('modal', function() {
         });
 
         it('should set content from jQuery element', function() {
-            it('should set content as string', function() {
-                var elem = $('<div class="hello"></div>');
-                modal.setContent(elem);
-                modal.domElem.find(elem).length.should.be.equal(1);
-            });
+            var elem = $('<div class="hello"></div>');
+            modal.setContent(elem);
+            modal.domElem.find(elem).length.should.be.equal(1);
         });
     });
 

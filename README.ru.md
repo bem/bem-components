@@ -185,7 +185,7 @@ $ npm run build-all
 Запускаем сервер для разработки:
 
 ```bash
-$ enb server
+$ npm start
 ```
 
 Проверяем code-style:

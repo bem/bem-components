@@ -11,7 +11,8 @@
         "*.pages/**",
         "**/*.i18n/**",
         "libs/**",
-        "node_modules/**"
+        "node_modules/**",
+        "dist"
     ],
     "fileExtensions": [".js", ".bemtree", ".bemhtml"],
     "requireSpaceAfterKeywords": ["do", "else"],

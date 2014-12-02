@@ -79,20 +79,13 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
         if(this._isPointerPressInProgress) return;
 
         this.__base.apply(this, arguments);
-        this
-            .bindToWin('unload', this._onUnload) // TODO: WTF???
-            .bindTo('control', 'keydown', this._onKeyDown);
+        this.bindTo('control', 'keydown', this._onKeyDown);
     },
 
     _onBlur : function() {
         this
-            .unbindFromWin('unload', this._onUnload)
             .unbindFrom('control', 'keydown', this._onKeyDown)
             .__base.apply(this, arguments);
-    },
-
-    _onUnload : function() {
-        this.delMod('focused');
     },
 
     _onPointerPress : function() {

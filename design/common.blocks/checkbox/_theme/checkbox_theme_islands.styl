@@ -51,9 +51,10 @@
             background-image: url(../../theme/_islands/tip.svg);
             background-size: 100%;
 
+            visibility: hidden;
             opacity: 0;
 
-            transition: transform .05s ease-out, opacity .05s ease-out;
+            transition: transform .05s ease-out, opacity .05s ease-out, visibility 0s linear .05s;
         }
     }
 
@@ -118,8 +119,11 @@
 
             &:after
             {
+                visibility: visible;
                 opacity: 1;
                 transform: translateY(0px);
+
+                transition-delay: 0s;
             }
         }
     }

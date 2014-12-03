@@ -4,7 +4,7 @@
 
 ### Крупные изменения
 
-- Переход на модульную систему https://github.com/ymaps/modules.
+- Переход на модульную систему [YModules](https://github.com/ymaps/modules).
 
 ### Остальные изменения
 

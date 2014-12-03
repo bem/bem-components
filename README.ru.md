@@ -7,9 +7,9 @@
 
 ## Использование
 
-Подключить библиотеку в проект можно любым известным вам способом. Например, с помощью [bem-tools](http://ru.bem.info/tools/bem/bem-tools/) или `ENB`. Сделать это можно в конфигурационном файле выбранного вами сборщика.
+Подключить библиотеку в проект можно любым известным вам способом. Например, с помощью [bem-tools](https://ru.bem.info/tools/bem/bem-tools/) или [ENB](http://enb-make.info/). Сделать это можно в конфигурационном файле выбранного вами сборщика.
 
-Если вы используете [project-stub](http://ru.bem.info/tutorials/project-stub/) как основу проекта, то подключать библиотеку не нужно. Она подключена в проект по умолчанию.
+Если вы используете [project-stub](https://ru.bem.info/tutorials/project-stub/) как основу проекта, то подключать библиотеку не нужно. Она подключена в проект по умолчанию.
 
 <a name="supported-browsers"></a>
 
@@ -71,13 +71,13 @@
 
 ### Инструменты
 
-* [borschik](http://ru.bem.info/tools/optimizers/borschik/)
-* [bem-tools](http://ru.bem.info/tools/bem/bem-tools/)
+* [borschik](https://ru.bem.info/tools/optimizers/borschik/)
+* [bem-tools](https://ru.bem.info/tools/bem/bem-tools/)
 * [ENB](http://enb-make.info/)
 
 ### Оптимизаторы
 
-* [svgo](https://github.com/svg/svgo)
+* [SVGO](https://github.com/svg/svgo)
 * [clean-css](http://www.cleancss.com/about.php)
 * [ImageOptim](http://imageoptim.com/)
 
@@ -216,7 +216,7 @@ $ npm run lint
 
 ### Регрессионное тестирование верстки
 
-Для тестирования верстки мы используем [gemini](https://github.com/bem/gemini).
+Для тестирования верстки мы используем [Gemini](https://ru.bem.info/tools/testing/gemini/).
 
 Тесты каждого блока находятся в отдельном файле вида `block-name.gemini.js` в директории `gemini/`. Запускаются тесты локально руками и в Travis автоматически. В качестве [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2) мы используем сервис [SauceLabs](https://saucelabs.com).
 
@@ -231,11 +231,11 @@ $ npm run lint
 
 Если вы разрабатываете новые тесты и хотите их запускать локально и быстрее, можно поднять свой собственный Selenium Server или phantomjs с WebDriver сервером. Для этого нужно:
 
-1. Установить и запустить [selenium-server](http://docs.seleniumhq.org/download/) или [phantomjs](http://phantomjs.org/).
+1. Установить и запустить [Selenium Server](http://docs.seleniumhq.org/download/) или [PhantomJS](http://phantomjs.org/).
 1. Исправить в файле `.gemini.yml` опцию `gridUrl` на `http://localhost:4444/`.
 1. Запустить тесты (см. выше).
 
-Более подробно про запуск `gemini` с разными бекендами читайте в [документации](https://github.com/bem/gemini/blob/master/README.md).
+Более подробно про запуск `Gemini` с разными бекендами читайте в [документации](https://ru.bem.info/tools/testing/gemini/).
 
 **Важно!** Коммитить в репозиторий необходимо скриншоты, собранные в SauceLabs, чтобы избежать, например, незначительных отличий в отрисовке шрифтов.
 

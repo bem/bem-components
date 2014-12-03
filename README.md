@@ -68,11 +68,11 @@ E.g. you can use `bem-tools` or `ENB`.
 
 ## Changelog
 
-You can check the changelog at the [changelog page](CHANGELOG.md).
+You can check the changelog at the [Changelog](CHANGELOG.md) page.
 
 ## Migration
 
-Migartion guide is [here](MIGRATION.md).
+Check the migration details at the [Migration](MIGRATION.md) page.
 
 ## Maintainers
 
@@ -140,7 +140,7 @@ All tests will be run automatically using [Travis](https://travis-ci.org) on eac
 
 #### Regrassion tests of layout
 
-We use [gemini](https://github.com/bem/gemini) for layout testing.
+We use [Gemini](https://bem.info/tools/testing/gemini/) for layout testing.
 
 Tests for each block are stored in a separate file `block-name.gemini.js` in a directory `gemini/`. All tests could be executed manually or automatically using [Travis](https://travis-ci.org). We use [SauceLabs](https://saucelabs.com) service as a [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2).
 
@@ -157,11 +157,11 @@ For tests execution you need the following:
 
 In case you write new tests for local usage, you can run your own Selenium Server or PhantomJS with WebDriver server. For this:
 
-1. Install and run [selenium-server](http://docs.seleniumhq.org/download/) or [phantomjs](http://phantomjs.org/).
+1. Install and run [Selenium Server](http://docs.seleniumhq.org/download/) or [PhantomJS](http://phantomjs.org/).
 1. Correct `gridUrl` option to `http://localhost:4444/` in `.gemini.yml` file.
 1. Run tests (see above).
 
-Detailed description of `gemini` work with different types of backends find [here](https://bem.info/tools/testing/gemini/).
+Read a [detailed description](https://bem.info/tools/testing/gemini/) of `Gemini` work with different types of backends for additional information.
 
 **NB** You have to commit screenshots to the repository from SauceLabs to avoid minor differencies in fonts rendering.
 

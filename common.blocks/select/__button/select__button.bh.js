@@ -18,6 +18,7 @@ module.exports = function(bh) {
             },
             id : select.id,
             textMaxWidth : select.textMaxWidth,
+            tabIndex : select.tabIndex,
             content : [
                 ctx.content(),
                 { block : 'icon', mix : { block : 'select', elem : 'tick' } }

@@ -17,6 +17,7 @@
                     {
                         block : 'menu',
                         mods : { mode : 'radio', focused : true, theme : theme, size : size },
+                        val : 2,
                         content : [
                             {
                                 block : 'menu-item',
@@ -25,7 +26,6 @@
                             },
                             {
                                 block : 'menu-item',
-                                mods : { checked : true },
                                 val : 2,
                                 content : 'item 2'
                             },
@@ -50,6 +50,7 @@
                     {
                         block : 'menu',
                         mods : { mode : 'check', theme : theme, size : size },
+                        val : [2, 4],
                         content : [
                             {
                                 block : 'menu-item',
@@ -58,7 +59,6 @@
                             },
                             {
                                 block : 'menu-item',
-                                mods : { checked : true },
                                 val : 2,
                                 content : 'item 2'
                             },
@@ -69,7 +69,6 @@
                             },
                             {
                                 block : 'menu-item',
-                                mods : { checked : true },
                                 val : 4,
                                 content : 'item 4'
                             }
@@ -85,6 +84,7 @@
                     {
                         block : 'menu',
                         mods : { mode : 'radio-check', theme : theme, size : size },
+                        val : 3,
                         content : [
                             {
                                 block : 'menu-item',
@@ -98,7 +98,6 @@
                             },
                             {
                                 block : 'menu-item',
-                                mods : { checked : true },
                                 val : 3,
                                 content : 'item 3'
                             },
@@ -245,10 +244,10 @@
                     {
                         block : 'menu',
                         mods : { mode : 'radio', theme : theme, size : size },
+                        val : 1,
                         content : [
                             {
                                 block : 'menu-item',
-                                mods : { checked : true },
                                 val : 1,
                                 content : [
                                     { elem : 'icon', elemMods : { social : 'twitter' } },

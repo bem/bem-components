@@ -51,8 +51,9 @@ Besides, blocks that use `input` or `button` as one of their components could be
         {
             block : 'select',
             mods : { mode : 'radio', theme : 'islands', size : 'm' },
+            val : 'usd',
             options : [
-                { val : 'usd', text : '$', checked : true },
+                { val : 'usd', text : '$' },
                 { val : 'euro', text : '€' }
             ]
         }

@@ -26,7 +26,7 @@ gemini.suite('select', function(root) {
                     })
                     .capture('plain')
                     .capture('focused-hard', function(actions){
-                        actions.sendKeys(this.button, 'focused-hard');
+                        actions.sendKeys(this.button, '-');
                     })
                     .capture('pressed', function(actions) {
                         actions

@@ -1,4 +1,5 @@
 ({
     block : 'checkbox-group',
-    options : [{ checked : true }]
+    val : [1],
+    options : [{ val : 1 }]
 })

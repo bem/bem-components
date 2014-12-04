@@ -10,6 +10,7 @@ describe('menu_mode_check', function() {
         menu = buildMenu({
             block : 'menu',
             mods : { mode : 'check' },
+            val : [2, 4],
             content : [
                 {
                     block : 'menu-item',
@@ -18,7 +19,6 @@ describe('menu_mode_check', function() {
                 },
                 {
                     block : 'menu-item',
-                    mods : { checked : true },
                     val : 2,
                     content : 'item 2'
                 },
@@ -29,7 +29,6 @@ describe('menu_mode_check', function() {
                 },
                 {
                     block : 'menu-item',
-                    mods : { checked : true },
                     val : 4,
                     content : 'item 4'
                 }

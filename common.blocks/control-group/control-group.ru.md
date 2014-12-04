@@ -51,8 +51,9 @@
         {
             block : 'select',
             mods : { mode : 'radio', theme : 'islands', size : 'm' },
+            val: 'usd',
             options : [
-                { val : 'usd', text : '$', checked : true },
+                { val : 'usd', text : '$' },
                 { val : 'euro', text : '€' }
             ]
         }

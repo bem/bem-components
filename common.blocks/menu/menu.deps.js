@@ -16,6 +16,7 @@
     tech : 'tmpl-spec.js',
     mustDeps : [
         { tech : 'bemhtml', block : 'link' },
-        { tech : 'bemhtml', block : 'menu-item', mods : { type : 'link' } }
+        { tech : 'bemhtml', block : 'menu-item', mods : { type : 'link' } },
+        { tech : 'bemhtml', block : 'menu', mods : { mode : 'radio' } }
     ]
 }]

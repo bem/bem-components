@@ -254,6 +254,7 @@
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'radio-check' },
+    val : 2,
     content : [
         {
             block : 'menu-item',
@@ -262,7 +263,6 @@
         },
         {
             block : 'menu-item',
-            mods : { checked : true },
             val : 2,
             content : 'Second item'
         }
@@ -276,6 +276,7 @@
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'check' },
+    val : [2],
     content : [
         {
             block : 'menu-item',
@@ -284,7 +285,6 @@
         },
         {
             block : 'menu-item',
-            mods : { checked : true },
             val : 2,
             content : 'Second item'
         }
@@ -316,6 +316,7 @@
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'radio' },
+    val : 2,
     content : [
         {
             block : 'menu-item',
@@ -327,7 +328,6 @@
             content : [
                 {
                     block : 'menu-item',
-                    mods : { checked : true },
                     val : 2,
                     content : 'Open'
                 },
@@ -355,6 +355,7 @@
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'radio' },
+    val : 2,
     content : [
         {
             block : 'menu-item',
@@ -367,7 +368,6 @@
             content : [
                 {
                     block : 'menu-item',
-                    mods : { checked : true },
                     val : 2,
                     content : 'Open'
                 },

@@ -235,9 +235,10 @@
     block : 'radio-group',
     mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
     name : 'radio-button',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true }
+        { val : 2, text : 'second' }
     ]
 }
 ```
@@ -247,9 +248,10 @@
     block : 'radio-group',
     mods : { theme : 'islands', size : 'm', disabled : true },
     name : 'radio-button',
+    val : 2,
     options : [
         { val : 1, text : 'first' },
-        { val : 2, text : 'second', checked : true }
+        { val : 2, text : 'second' }
     ]
 }
 ```

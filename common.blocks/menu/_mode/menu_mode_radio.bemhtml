@@ -1,0 +1,7 @@
+block('menu')
+    .mod('mode', 'radio')
+    .match(this._firstItem && this._checkedItems && !this._checkedItems.length)(
+        def()(function() {
+            (this._firstItem.mods = this._firstItem.mods || {}).checked = true;
+            applyNext();
+        }));

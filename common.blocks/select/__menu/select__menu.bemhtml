@@ -4,7 +4,7 @@ block('select').elem('menu')(
             optionToMenuItem = function(option) {
                 var res = {
                         block : 'menu-item',
-                        mods : { checked : option.checked, disabled : option.disabled },
+                        mods : { disabled : mods.disabled || option.disabled },
                         val : option.val,
                         js : { checkedText : option.checkedText },
                         content : option.text
@@ -30,6 +30,7 @@ block('select').elem('menu')(
                 disabled : mods.disabled,
                 mode : mods.mode
             },
+            val : this._select.val,
             attrs : { tabindex : undefined },
             content : this._select.options.map(function(optionOrGroup) {
                 return optionOrGroup.group?

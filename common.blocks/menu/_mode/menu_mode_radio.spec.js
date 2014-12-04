@@ -10,6 +10,7 @@ describe('menu_mode_radio', function() {
         menu = buildMenu({
             block : 'menu',
             mods : { mode : 'radio' },
+            val : 2,
             content : [
                 {
                     block : 'menu-item',
@@ -18,7 +19,6 @@ describe('menu_mode_radio', function() {
                 },
                 {
                     block : 'menu-item',
-                    mods : { checked : true },
                     val : 2,
                     content : 'item 2'
                 },

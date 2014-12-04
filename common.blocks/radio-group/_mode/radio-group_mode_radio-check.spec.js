@@ -18,11 +18,11 @@ describe('radio-group_mode-radio-check', function() {
             block : 'radio-group',
             mods : { type : 'button', mode : 'radio-check' },
             name : 'name',
+            val : 'val2',
             options : [
                 { val : 'val1', label : 'label1' },
-                { val : 'val2', label : 'label2', checked : true }
-            ],
-            val : 'val2'
+                { val : 'val2', label : 'label2' }
+            ]
         });
     });
 

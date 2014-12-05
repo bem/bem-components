@@ -113,6 +113,24 @@
             ],
             cls : 'default-label-disabled'
         },
+        {
+            block : 'test',
+            attrs : { style : 'width: 350px;' },
+            content : {
+                block : 'textarea',
+                mods : { width : 'available' }
+            },
+            cls : 'default-width-available-enabled'
+        },
+        {
+            block : 'test',
+            attrs : { style : 'width: 350px;' },
+            content : {
+                block : 'textarea',
+                mods : { width : 'available', disabled : true }
+            },
+            cls : 'default-width-available-disabled'
+        },
 
         { tag : 'hr' },
 
@@ -256,6 +274,24 @@
                 }
             ],
             cls : 'islands-label-disabled'
+        },
+        {
+            block : 'test',
+            attrs : { style : 'width: 350px;' },
+            content : {
+                block : 'textarea',
+                mods : { theme : 'islands', size : 'm', width : 'available' }
+            },
+            cls : 'islands-width-available-enabled'
+        },
+        {
+            block : 'test',
+            attrs : { style : 'width: 350px;' },
+            content : {
+                block : 'textarea',
+                mods : { theme : 'islands', size : 'm', width : 'available', disabled : true }
+            },
+            cls : 'islands-width-available-disabled'
         },
         {
             block : 'textarea',

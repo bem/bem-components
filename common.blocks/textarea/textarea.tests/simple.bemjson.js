@@ -36,9 +36,9 @@
             val : 'disabled',
             placeholder : 'placeholder'
         } },
-        { tag : 'p', attrs : { style : 'width: 350px;' }, content : {
+        { attrs : { style : 'width: 350px;' }, content : {
             block : 'textarea',
-            mods : { theme : 'simple', size : 'm' },
+            mods : { theme : 'simple', size : 'm', width : 'available' },
             val : 'width',
             placeholder : 'placeholder'
         } },
@@ -54,6 +54,13 @@
             block : 'textarea',
             mods : { theme : 'islands', size : 'm', disabled : true },
             val : 'disabled'
+        } },
+
+        { attrs : { style : 'width: 350px;' }, content : {
+            block : 'textarea',
+            mods : { theme : 'islands', size : 'm', width : 'available' },
+            val : 'width',
+            placeholder : 'placeholder'
         } },
 
         { tag : 'h3', content : 'size' },

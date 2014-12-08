@@ -18,7 +18,17 @@ paddingHor = (10 13 15 20);
             font-size: (fontSize[i])px;
             line-height: (lineHeight[i])px;
 
-            padding: (paddingVert[i])px 0;
+            /* Using pseudo-elements intead of paddings because of Firefox bug with bottom padding (#1158):
+             * https://bugzilla.mozilla.org/show_bug.cgi?id=748518 */
+            &::before,
+            &::after
+            {
+                display: block;
+
+                height: (paddingVert[i])px;
+
+                content: '';
+            }
 
             .menu-item + .menu__group
             {

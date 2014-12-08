@@ -16,6 +16,7 @@
                     { tag : 'h3', content : 'radio' },
                     {
                         block : 'menu',
+                        attrs : { style : 'height: 80px' },
                         mods : { mode : 'radio', focused : true, theme : theme, size : size },
                         val : 2,
                         content : [
@@ -39,6 +40,11 @@
                                 block : 'menu-item',
                                 val : 4,
                                 content : 'item 4'
+                            },
+                            {
+                                block : 'menu-item',
+                                val : 5,
+                                content : 'item 5'
                             }
                         ]
                     },
@@ -225,14 +231,14 @@
                                     {
                                         block : 'menu-item',
                                         content : [
-                                            { elem : 'icon', elemMods : { social : 'twitter' } },
+                                            { block : 'icon', mods : { social : 'twitter' } },
                                             'Twitter'
                                         ]
                                     },
                                     {
                                         block : 'menu-item',
                                         content : [
-                                            { elem : 'icon', elemMods : { social : 'vk' } },
+                                            { block : 'icon', mods : { social : 'vk' } },
                                             'VK'
                                         ]
                                     }
@@ -250,7 +256,7 @@
                                 block : 'menu-item',
                                 val : 1,
                                 content : [
-                                    { elem : 'icon', elemMods : { social : 'twitter' } },
+                                    { block : 'icon', mods : { social : 'twitter' } },
                                     'Twitter'
                                 ]
                             },
@@ -258,7 +264,7 @@
                                 block : 'menu-item',
                                 val : 2,
                                 content : [
-                                    { elem : 'icon', elemMods : { social : 'vk' } },
+                                    { block : 'icon', mods : { social : 'vk' } },
                                     'VK'
                                 ]
                             }

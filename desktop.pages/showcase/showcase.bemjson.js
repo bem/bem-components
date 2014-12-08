@@ -199,11 +199,26 @@
                         {
                             elem : 'cell',
                             content : {
-                                block : 'link',
-                                mods : { theme : 'islands' },
-                                url : 'https://yandex.ru/yandsearch?text=good%20mood',
-                                target : '_blank',
-                                content : 'Link to a good mood'
+                                block : 'test',
+                                js : true,
+                                content : [
+                                    {
+                                        block : 'link',
+                                        mods : { theme : 'islands', pseudo : true },
+                                        content : 'Open your mind'
+                                    },
+                                    {
+                                        block : 'modal',
+                                        mods : { theme : 'islands', autoclosable : true },
+                                        content : [
+                                            {
+                                                block : 'text',
+                                                content : 'Your mind was opened!'
+                                            },
+                                            '(Click outside the box to close)'
+                                        ]
+                                    }
+                                ]
                             }
                         }
                     ]

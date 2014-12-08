@@ -289,6 +289,12 @@ ctx = '.button_theme_islands'
 
 .control-group
 {
+    .radio_checked + .radio {ctx}:before
+    .checkbox_checked + .checkbox {ctx}:before
+    {
+        left: 0;
+    }
+
     {ctx} {
         border-radius: 0;
 
@@ -299,7 +305,8 @@ ctx = '.button_theme_islands'
             border-radius: 0;
         }
 
-        &.button_checked
+        &.button_checked,
+        &.button_focused-hard.button /* Weight of selector should be greater for focused button (#1170) */
         {
             &:before
             {

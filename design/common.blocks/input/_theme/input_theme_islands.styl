@@ -257,9 +257,16 @@ ctx = '.input_theme_islands'
 
 .control-group
 {
-    {ctx}:before
-    {
-        right: 0;
+    {ctx} {
+        &:before
+        {
+            right: 0;
+        }
+
+        &.input_focused:before
+        {
+            right: 1px;
+        }
     }
 
     > {ctx}:last-child,

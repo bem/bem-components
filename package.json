@@ -24,7 +24,7 @@
     "bower": "1.3.12",
     "csscomb": "~2.0.0",
     "bem-naming": "0.3.0",
-    "enb": "0.13.9",
+    "enb": "0.13.11",
     "enb-bem-techs": "1.0.0-rc",
     "enb-autoprefixer": "0.1.2",
     "enb-magic-platform": "0.4.1",

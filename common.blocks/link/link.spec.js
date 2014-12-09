@@ -52,6 +52,35 @@ describe('link', function() {
         });
     });
 
+    describe('getUrl()', function() {
+        it('should return right name', function() {
+            link.getUrl().should.be.equal('/');
+        });
+    });
+
+    describe('setUrl()', function() {
+        it('should change "href" attribute', function() {
+            var url = '/example/';
+            link.setUrl(url);
+            link.getUrl().should.be.equal(url);
+            expect(link.domElem.attr('href')).to.be.equal(url);
+        });
+
+        it('should save url and remove "href" attribute on disable', function() {
+            var url = '/example/';
+
+            link.setMod('disabled');
+
+            link.setUrl(url);
+            link.getUrl().should.be.equal(url);
+            expect(link.domElem.attr('href')).to.be.undefined;
+
+            link.delMod('disabled');
+
+            link.getUrl().should.be.equal(url);
+            expect(link.domElem.attr('href')).to.be.equal(url);
+        });
+    });
 });
 
 provide();

@@ -68,6 +68,14 @@ describe('select_mode_radio', function() {
         });
     });
 
+    describe('show/hide', function() {
+        it('should close popup after click on option', function() {
+            select.setMod('opened');
+            menu.getItems()[0].domElem.click();
+
+            select.hasMod('opened').should.be.false;
+        });
+    });
 });
 
 provide();

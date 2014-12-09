@@ -92,6 +92,25 @@ describe('checkbox-group', function() {
             checkboxGroup.getCheckboxes()[1].hasMod('focused').should.be.false;
         });
     });
+
+    describe('disabled', function() {
+        it('should disable all radios in group', function() {
+            checkboxGroup.setMod('disabled');
+
+            var disabled = true;
+            checkboxGroup.getCheckboxes().forEach(function(checkbox) {
+                checkbox.hasMod('disabled') || (disabled = false);
+            });
+
+            disabled.should.be.true;
+        });
+    });
+
+    describe('getName()', function() {
+        it('should return right name', function() {
+           checkboxGroup.getName().should.be.equal('name');
+        });
+    });
 });
 
 provide();

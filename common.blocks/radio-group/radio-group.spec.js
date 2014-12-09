@@ -114,6 +114,25 @@ describe('radio-group', function() {
             radioGroup.getRadios()[1].hasMod('focused').should.be.false;
         });
     });
+
+    describe('disabled', function() {
+        it('should disable all radios in group', function() {
+            radioGroup.setMod('disabled');
+
+            var disabled = true;
+            radioGroup.getRadios().forEach(function(radio) {
+                radio.hasMod('disabled') || (disabled = false);
+            });
+
+            disabled.should.be.true;
+        });
+    });
+
+    describe('getName()', function() {
+        it('should return right name', function() {
+           radioGroup.getName().should.be.equal('name');
+        });
+    });
 });
 
 provide();

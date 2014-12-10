@@ -15,7 +15,6 @@ module.exports = {
         quotmark : 'single',
         sub : true,
         supernew : true,
-        trailing : true,
         undef : true,
         unused : true
     },

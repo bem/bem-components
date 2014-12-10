@@ -15,6 +15,8 @@
     ],
     "fileExtensions": [".js", ".bemtree", ".bemhtml"],
     "requireSpaceAfterKeywords": ["do", "else"],
+    "disallowOperatorBeforeLineBreak": ["."],
+    "disallowSpacesInCallExpression": true,
     "disallowSpaceAfterKeywords": ["if", "for", "while", "switch"],
     "disallowSpacesInFunctionExpression": {
         "beforeOpeningRoundBrace": true
@@ -31,6 +33,11 @@
         "afterConsequent": false,
         "beforeAlternate": false
     },
+    "requireSpaceBeforeKeywords": [
+        "else",
+        "while",
+        "catch"
+    ],
     "requireSpaceBeforeBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<=", "&&", "||"],
     "requireSpaceAfterBinaryOperators": [",", "+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<=", "&&", "||"],
     "disallowKeywords": ["with"],

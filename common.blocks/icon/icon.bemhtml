@@ -1,6 +1,9 @@
 block('icon')(
     tag()('i'),
-    attrs().match(function() { return this.ctx.url; })(function() {
-        return { style : 'background-image:url(' + this.ctx.url + ')' };
+    attrs()(function() {
+        var attrs = { 'aria-hidden' : 'true' },
+            url = this.ctx.url;
+        if(url) attrs.style = 'background-image:url(' + url + ')';
+        return attrs;
     })
 );

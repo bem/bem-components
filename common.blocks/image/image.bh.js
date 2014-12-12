@@ -1,13 +1,19 @@
 module.exports = function(bh) {
     bh.match('image', function(ctx, json) {
-        ctx
-            .tag('img')
-            .attrs({
-                src : json.url,
-                width : json.width,
-                height : json.height,
-                alt : json.alt,
-                title : json.title
-            });
+        ctx.attr('role', 'img');
+
+        if(typeof json.content !== 'undefined') {
+            ctx.tag('span');
+        } else {
+            ctx
+                .tag('img')
+                .attrs({
+                    src : json.url,
+                    width : json.width,
+                    height : json.height,
+                    alt : json.alt,
+                    title : json.title
+                });
+        }
     });
 };

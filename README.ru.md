@@ -91,7 +91,7 @@ BEM Components Library
 ### Оптимизаторы
 
 * [SVGO](https://ru.bem.info/tools/optimizers/svgo/svgo/)
-* [clean-css](http://www.cleancss.com/about.php)
+* [CleanCSS](http://www.cleancss.com/about.php)
 * [ImageOptim](http://imageoptim.com/)
 
 <a name="linters"></a>

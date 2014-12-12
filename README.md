@@ -88,7 +88,7 @@ The library contains base realizations of the blocks that are abstracted from th
 ### Optimizers
 
 * [SVGO](https://bem.info/tools/optimizers/svgo/svgo/)
-* [clean-css](http://www.cleancss.com/about.php)
+* [CleanCSS](http://www.cleancss.com/about.php)
 * [ImageOptim](http://imageoptim.com/)
 
 <a name="linters"></a>

@@ -240,6 +240,7 @@ $ npm run build-all
 
 ```bash
 $ npm start
+$ open http://localhost:8080/
 ```
 
 **NB** Возможность точечной сборки описана в разделе [Тесты на шаблоны](#template-tests).

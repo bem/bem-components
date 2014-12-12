@@ -234,6 +234,7 @@ Run development server:
 
 ```bash
 $ npm start
+$ open http://localhost:8080/
 ```
 
 Check the code-style:

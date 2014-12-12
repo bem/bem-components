@@ -237,7 +237,7 @@ $ npm start
 $ open http://localhost:8080/
 ```
 
-Check the code-style:
+Check the coding style:
 
 ```bash
 $ npm run lint

@@ -245,7 +245,7 @@ $ open http://localhost:8080/
 
 **NB** Возможность точечной сборки описана в разделе [Тесты на шаблоны](#template-tests).
 
-Проверяем code style:
+Проверяем стиль кода:
 
 ```bash
 $ npm run lint

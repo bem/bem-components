@@ -14,6 +14,7 @@ block('checkbox')(
                     elem : 'control',
                     checked : mods.checked,
                     disabled : mods.disabled,
+                    tabIndex : ctx.tabIndex,
                     name : ctx.name,
                     val : ctx.val
                 }

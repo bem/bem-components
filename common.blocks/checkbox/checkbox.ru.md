@@ -51,7 +51,8 @@
     mods : { theme : 'islands', size : 'm', type : 'button' },
     name: 'button',
     val: 'val_1',
-    text : 'Конфеты'
+    text : 'Конфеты',
+    tabIndex : 1
 }
 ```
 

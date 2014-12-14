@@ -10,8 +10,9 @@ Block creates a container that includes a native checkbox control (`control` ele
 {
     block : 'checkbox',
     text : 'Item 1',
-    name: 'name1',
-    val: '1'
+    name : 'name1',
+    val : '1',
+    tabIndex : 1
 }
 ```
 

@@ -48,9 +48,10 @@ Use the `type` modifier with the `button` value to change the appearance of the 
 {
     block : 'checkbox',
     mods : { theme : 'islands', size : 'm', type : 'button' },
-    name: 'button',
-    val: 'val_1',
+    name : 'button',
+    val : 'val_1',
     text : 'Candies'
+    tabIndex : 1
 }
 ```
 

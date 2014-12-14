@@ -14,6 +14,7 @@ block('select').elem('button')(
             },
             id : this._select.id,
             textMaxWidth : this._select.textMaxWidth,
+            tabIndex : this._select.tabIndex,
             content : [
                 apply('content'),
                 { block : 'icon', mix : { block : 'select', elem : 'tick' } }

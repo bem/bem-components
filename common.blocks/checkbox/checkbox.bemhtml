@@ -12,6 +12,7 @@ block('checkbox')(
                 elem : 'box',
                 content : {
                     elem : 'control',
+                    id : ctx.id,
                     checked : mods.checked,
                     disabled : mods.disabled,
                     tabIndex : ctx.tabIndex,

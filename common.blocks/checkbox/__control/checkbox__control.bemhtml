@@ -8,6 +8,7 @@ block('checkbox').elem('control')(
 
         attrs.name = ctx.name;
         attrs.value = ctx.val;
+        ctx.id && (attrs.id = ctx.id);
         ctx.checked && (attrs.checked = 'checked');
         ctx.disabled && (attrs.disabled = 'disabled');
         ctx.tabIndex && (attrs.tabindex = ctx.tabIndex);

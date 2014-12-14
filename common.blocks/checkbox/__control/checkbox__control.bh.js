@@ -8,6 +8,7 @@ module.exports = function(bh) {
 
         attrs.name = json.name;
         attrs.value = json.val;
+        json.id && (attrs.id = json.id);
         json.checked && (attrs.checked = 'checked');
         json.disabled && (attrs.disabled = 'disabled');
         json.tabIndex && (attrs.tabindex = json.tabIndex);

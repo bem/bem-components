@@ -8,6 +8,7 @@ module.exports = function(bh) {
                     elem : 'box',
                     content : {
                         elem : 'control',
+                        id : json.id,
                         checked : ctx.mod('checked'),
                         disabled : ctx.mod('disabled'),
                         tabIndex : json.tabIndex,

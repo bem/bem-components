@@ -280,6 +280,42 @@ describe('popup', function() {
         });
     });
 
+    describe('possible drawing params', function() {
+        beforeEach(function() {
+            popup.setAnchor(popupAnchorDomElem);
+        });
+
+        it('should be calculated properly', function() {
+            var drawingParams = remapParamsByDirection(popup.calcPossibleDrawingParams());
+
+            drawingParams['bottom-left']    .should.eql({ width : 400, height : 276, left : 0, top : 24 });
+            drawingParams['bottom-center']  .should.eql({ width : 400, height : 276, left : -175.5, top : 24 });
+            drawingParams['bottom-right']   .should.eql({ width : 49, height : 276, left : 0, top : 24 });
+            drawingParams['top-left']       .should.eql({ width : 400, height : -5, left : 0, top : 0 });
+            drawingParams['top-center']     .should.eql({ width : 400, height : -5, left : -175.5, top : 0 });
+            drawingParams['top-right']      .should.eql({ width : 49, height : -5, left : 0, top : 0 });
+            drawingParams['right-top']      .should.eql({ width : 346, height : 300, left : 54, top : 0 });
+            drawingParams['right-center']   .should.eql({ width : 346, height : 300, left : 54, top : -140.5 });
+            drawingParams['right-bottom']   .should.eql({ width : 346, height : 19, left : 54, top : 0 });
+            drawingParams['left-top']       .should.eql({ width : -5, height : 300, left : 0, top : 0 });
+            drawingParams['left-center']    .should.eql({ width : -5, height : 300, left : 0, top : -140.5 });
+            drawingParams['left-bottom']    .should.eql({ width : -5, height : 19, left : 0, top : 0 });
+        });
+
+        function remapParamsByDirection(drawingParams) {
+            var mapped = {};
+            drawingParams.forEach(function(el) {
+                mapped[el.direction] = {
+                    width : el.width,
+                    height : el.height,
+                    left : el.left,
+                    top : el.top
+                };
+            });
+            return mapped;
+        }
+    });
+
     describe('destructing', function() {
         it('should be destructed on anchor destruct', function() {
             popup

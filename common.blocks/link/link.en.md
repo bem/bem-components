@@ -83,6 +83,68 @@ See following examples:
 }
 ```
 
+<a name="size"></a>
+### _size
+
+Implemented only for theme `islands`.
+
+There are four sizes available: **s**, **m**, **l**, **xl**.
+
+<table>
+     <tr>
+        <th>Size</th>
+        <th>Font size</th>
+    </tr>
+    <tr>
+        <th>s</th>
+        <td>13px</td>
+    </tr>
+    <tr>
+        <th>m</th>
+        <td>13px</td>
+    </tr>
+    <tr>
+        <th>l</th>
+        <td>15px</td>
+    </tr>
+    <tr>
+        <th>xl</th>
+        <td>18px</td>
+    </tr>
+</table>
+
+```bemjson
+{
+    block : 'link',
+    content : 'Small',
+    mods : { theme : 'islands', size : 's' }
+}
+```
+
+```bemjson
+{
+    block : 'link',
+    content : 'Medium',
+    mods : { theme : 'islands', size : 'm' }
+}
+```
+
+```bemjson
+{
+    block : 'link',
+    content : 'Large',
+    mods : { theme : 'islands', size : 'l' }
+}
+```
+
+```bemjson
+{
+    block : 'link',
+    content : 'X-large',
+    mods : { theme : 'islands', size : 'xl' }
+}
+```
+
 ### _pseudo
 
 A link type that does not lead to a new webpage.

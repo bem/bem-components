@@ -121,6 +121,12 @@
             content : [
                 'size s (24px height) ',
                 {
+                    block : 'link',
+                    mods : { theme : 'islands', size : 's' },
+                    content : 'link'
+                },
+                ' ',
+                {
                     block : 'input',
                     mods : { theme : 'islands', size : 's', 'has-clear' : true },
                     val : 'value',
@@ -189,6 +195,12 @@
             mods : { size : 'm' },
             content : [
                 'size m (28px height) ',
+                {
+                    block : 'link',
+                    mods : { theme : 'islands', size : 'm' },
+                    content : 'link'
+                },
+                ' ',
                 {
                     block : 'input',
                     mods : { theme : 'islands', size : 'm', 'has-clear' : true },
@@ -273,6 +285,12 @@
             content : [
                 'size l (32px height) ',
                 {
+                    block : 'link',
+                    mods : { theme : 'islands', size : 'l' },
+                    content : 'link'
+                },
+                ' ',
+                {
                     block : 'input',
                     mods : { theme : 'islands', size : 'l', 'has-clear' : true },
                     val : 'value',
@@ -355,6 +373,12 @@
             mods : { size : 'xl' },
             content : [
                 'size xl (38px height) ',
+                {
+                    block : 'link',
+                    mods : { theme : 'islands', size : 'xl' },
+                    content : 'link'
+                },
+                ' ',
                 {
                     block : 'input',
                     mods : { theme : 'islands', size : 'xl', 'has-clear' : true },

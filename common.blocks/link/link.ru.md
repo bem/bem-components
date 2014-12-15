@@ -79,6 +79,68 @@
 }
 ```
 
+<a name="size"></a>
+### Размеры ссылок `_size`
+
+Реализован только в теме `islands`.
+
+Доступно четыре размера реализации блока: **s**, **m**, **l**, **xl**.
+
+<table>
+     <tr>
+        <th>Размер ссылки</th>
+        <th>Размер шрифта</th>
+    </tr>
+    <tr>
+        <th>s</th>
+        <td>13px</td>
+    </tr>
+    <tr>
+        <th>m</th>
+        <td>13px</td>
+    </tr>
+    <tr>
+        <th>l</th>
+        <td>15px</td>
+    </tr>
+    <tr>
+        <th>xl</th>
+        <td>18px</td>
+    </tr>
+</table>
+
+```bemjson
+{
+    block : 'link',
+    content : 'Small',
+    mods : { theme : 'islands', size : 's' }
+}
+```
+
+```bemjson
+{
+    block : 'link',
+    content : 'Medium',
+    mods : { theme : 'islands', size : 'm' }
+}
+```
+
+```bemjson
+{
+    block : 'link',
+    content : 'Large',
+    mods : { theme : 'islands', size : 'l' }
+}
+```
+
+```bemjson
+{
+    block : 'link',
+    content : 'X-large',
+    mods : { theme : 'islands', size : 'xl' }
+}
+```
+
 ### Псевдоссылка `_pseudo`
 
 Тип ссылки, по которой не производится переход на новую страницу. Применяется для вызова сценариев.

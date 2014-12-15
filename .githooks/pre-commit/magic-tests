@@ -1,0 +1,65 @@
+#!/bin/bash
+#
+# Check changed js files using jshint and jscs
+#
+
+PATCH_FILE="working-tree.patch"
+NPM_BIN="./node_modules/.bin"
+
+function cleanup {
+    exit_code=$?
+    if [ -f "$PATCH_FILE" ]; then
+        patch -p0 < "$PATCH_FILE"
+        rm "$PATCH_FILE"
+    fi
+    exit $exit_code
+}
+
+function make_targets_list {
+    local bundlespath=$1
+    local extensions=$2 # or? $(echo "$@"|tr ' ' '|');
+    # filter by extensions, fetch element name, skip invalid,
+    # expand and finally filter dups and prepend bundlespath
+    grep -E '\.('"$extensions"')$' \
+        | sed -r -e 's/.*\/([-a-z0-9_]+)\..*$/\1/i' \
+        | grep -v '/' \
+        | expand_targets \
+        | sort -u \
+        | while read line; do echo "$bundlespath/$line"; done \
+        | xargs echo
+}
+
+function expand_targets {
+    sed -r -e 's/([-a-z0-9]+)(__[-a-z0-9]+)?(_[-a-z0-9]+)?(_[-a-z0-9]+)?/\1,\2,\3,\4/i' \
+        | while read target; do
+            local block=$(echo $target | cut -d, -f1)
+            local elem=$(echo $target | cut -d, -f2)
+            local mod=$(echo $target | cut -d, -f3)
+            local val=$(echo $target | cut -d, -f4)
+
+            echo $block;
+            [ "$elem" ] && echo "$block$elem"
+            [ "$mod" ] && echo "$block$elem$mod"
+            [ "$val"] && echo "$block$elem$mod$val"
+        done
+}
+
+trap cleanup EXIT SIGINT SIGHUP
+
+# Cancel any changes to the working tree that are not going to be committed
+git diff --no-prefix > "$PATCH_FILE"
+git checkout -- .
+
+git_cached_files=$(git diff --cached --name-only --diff-filter=ACMR)
+
+# gemini_targets=$(make_targets_list 'styl')
+specs_targets=$(echo "$git_cached_files" | make_targets_list desktop.specs 'js|bemhtml')
+tmpls_targets=$(echo "$git_cached_files" | make_targets_list desktop.tmpl-specs 'deps.js|bh.js|bemhtml')
+
+if [ "$specs_targets" ] || [ "$tmpls_targets" ]; then
+    echo "Making targets:"
+    echo "- specs targets: $specs_targets"
+    echo "- tmpl-specs targets: $tmpls_targets"
+    echo
+    $NPM_BIN/magic make $specs_targets $tmplspecs_targets || exit 1
+fi

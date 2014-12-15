@@ -179,7 +179,7 @@
                                     mods : { theme : 'simple' },
                                     button : {
                                         block : 'button',
-                                        mods : { theme : 'islands', size : 'm' },
+                                        mods : { theme : 'islands', size : 'l' },
                                         icon : { block : 'icon', mods : { action : 'download' } },
                                         text : 'Load image'
                                     },
@@ -204,7 +204,7 @@
                                 content : [
                                     {
                                         block : 'link',
-                                        mods : { theme : 'islands', pseudo : true },
+                                        mods : { theme : 'islands', size : 'l', pseudo : true },
                                         content : 'Open your mind'
                                     },
                                     {

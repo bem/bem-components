@@ -29,22 +29,13 @@ ctx = '.button_theme_islands'
 
     .button__text
     {
+        position: relative;
+
+        display: inline-block;
         overflow: hidden;
 
         text-overflow: ellipsis;
         vertical-align: top;
-    }
-
-    .button__text
-    {
-        /*
-         * These rules fixes Opera 12+ && IE 9 bug with extra top margin when pressed
-         * Warning: bug still can be reproduced by clicking on button's border
-         * TODO: try to fix
-         */
-        position: relative;
-
-        display: inline-block;
     }
 
     .icon
@@ -117,6 +108,31 @@ ctx = '.button_theme_islands'
         }
     }
 
+    &.button_view_plain
+    {
+        background: none;
+
+        &:before
+        {
+            display: none;
+        }
+
+        &.button_pressed
+        {
+            background: #f6f5f3;
+        }
+
+        &.button_checked
+        {
+            background: #ffeba0;
+
+            &.button_pressed
+            {
+                background: #fee481;
+            }
+        }
+    }
+
     &.button_view_action
     {
         background: rgba(191, 153, 0, 0.8);
@@ -141,11 +157,11 @@ ctx = '.button_theme_islands'
     {
         overflow: hidden;
 
-        background: 0;
+        background: none;
 
         &:before
         {
-            background: 0;
+            background: none;
             box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
         }
 

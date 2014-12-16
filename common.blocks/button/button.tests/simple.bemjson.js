@@ -106,6 +106,19 @@
         { tag : 'p', content : [
             {
                 block : 'button',
+                mods : { theme : 'islands', size : 'm', view : 'plain' },
+                text : 'plain'
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'islands', size : 'm', view : 'plain', disabled : true },
+                text : 'plain'
+            }
+        ] },
+        { tag : 'p', content : [
+            {
+                block : 'button',
                 mods : { theme : 'islands', size : 'm', view : 'pseudo' },
                 text : 'pseudo'
             },

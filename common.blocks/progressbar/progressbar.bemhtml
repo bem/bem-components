@@ -1,0 +1,18 @@
+block('progressbar')(
+
+    js()(function(){
+        return { value : this.ctx.value };
+    }),
+
+    content()(
+        function() {
+            return {
+                elem : 'bar',
+                attrs : { style : 'width:' + this.ctx.value + '%' }
+            };
+        },
+        match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {
+            return this.ctx.content;
+        })
+    )
+);

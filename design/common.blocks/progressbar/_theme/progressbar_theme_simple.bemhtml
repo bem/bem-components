@@ -1,0 +1,12 @@
+block('progressbar').mod('theme', 'simple').content()(function() {
+    return applyCtx([
+        {
+            elem : 'box',
+            content : applyNext()
+        },
+        {
+            elem : 'text',
+            content : this.ctx.value
+        }
+    ]);
+});

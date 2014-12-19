@@ -377,7 +377,6 @@ describe('popup', function() {
                 return { top : top, height : height, left : left, width : width };
             }
         }
-
     });
 
     describe('destructing', function() {
@@ -391,7 +390,6 @@ describe('popup', function() {
             popup.hasMod('js').should.be.false;
         });
     });
-
 });
 
 provide();

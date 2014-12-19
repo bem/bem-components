@@ -281,39 +281,103 @@ describe('popup', function() {
     });
 
     describe('possible drawing params', function() {
-        beforeEach(function() {
-            popup.setAnchor(popupAnchorDomElem);
-        });
+        var winTop = win.scrollTop(),
+            winLeft = win.scrollLeft(),
+            winBottom = winTop + winHeight,
+            winRight = winLeft + winWidth;
 
-        it('should be calculated properly', function() {
-            var drawingParams = remapParamsByDirection(popup.calcPossibleDrawingParams());
+        var variants = [
+            { anchorSide : 2, popupViewportOffset : 0, popupSecondaryOffset : 0 },
+            { anchorSide : 3, popupViewportOffset : 0, popupSecondaryOffset : 0 },
+            { anchorSide : 4, popupViewportOffset : 0, popupSecondaryOffset : 0 },
+            { anchorSide : 5, popupViewportOffset : 0, popupSecondaryOffset : 0 }
+        ];
 
-            drawingParams['bottom-left']    .should.eql({ width : 400, height : 276, left : 0, top : 24 });
-            drawingParams['bottom-center']  .should.eql({ width : 400, height : 276, left : -175.5, top : 24 });
-            drawingParams['bottom-right']   .should.eql({ width : 49, height : 276, left : 0, top : 24 });
-            drawingParams['top-left']       .should.eql({ width : 400, height : -5, left : 0, top : 0 });
-            drawingParams['top-center']     .should.eql({ width : 400, height : -5, left : -175.5, top : 0 });
-            drawingParams['top-right']      .should.eql({ width : 49, height : -5, left : 0, top : 0 });
-            drawingParams['right-top']      .should.eql({ width : 346, height : 300, left : 54, top : 0 });
-            drawingParams['right-center']   .should.eql({ width : 346, height : 300, left : 54, top : -140.5 });
-            drawingParams['right-bottom']   .should.eql({ width : 346, height : 19, left : 54, top : 0 });
-            drawingParams['left-top']       .should.eql({ width : -5, height : 300, left : 0, top : 0 });
-            drawingParams['left-center']    .should.eql({ width : -5, height : 300, left : 0, top : -140.5 });
-            drawingParams['left-bottom']    .should.eql({ width : -5, height : 19, left : 0, top : 0 });
-        });
+        variants.forEach(function(v) {
+            // precalculate anchor position
+            v.anchorTop = winTop + Math.round((winHeight - v.anchorSide) / 2);
+            v.anchorLeft = winLeft + Math.round((winWidth - v.anchorSide) / 2);
 
-        function remapParamsByDirection(drawingParams) {
-            var mapped = {};
-            drawingParams.forEach(function(el) {
-                mapped[el.direction] = {
-                    width : el.width,
-                    height : el.height,
-                    left : el.left,
-                    top : el.top
-                };
+            it('should properly calculate for anchorSide: ' + v.anchorSide, function() {
+                var precalculatedParams = precalculate(v);
+
+                popupAnchorDomElem.css({
+                    position : 'absolute',
+                    display : 'block',
+                    overflow : 'hidden',
+                    width : v.anchorSide,
+                    height : v.anchorSide,
+                    left : v.anchorLeft,
+                    top : v.anchorTop
+                });
+                popup
+                    .setAnchor(popupAnchorDomElem)
+                    .setMod('visible');
+
+                popup.calcPossibleDrawingParams().forEach(function(params) {
+                    var direction = params.direction,
+                        expectedParams = precalculatedParams[direction];
+
+                    delete params.direction;
+                    params.should.eql(expectedParams, direction + ' ok');
+                });
             });
-            return mapped;
+        });
+
+        function precalculate(v) {
+            var POPUP_VIEWPORT_OFFSET = v.popupViewportOffset,
+                POPUP_SECONDARY_OFFSET = v.popupSecondaryOffset;
+
+            // precalculateParams by anchorSide, anchorLeft, anchorTop, and offsets
+            var bottomsTop = v.anchorTop + v.anchorSide + POPUP_MAIN_OFFSET,
+                bottomsHeight = winBottom - bottomsTop - POPUP_VIEWPORT_OFFSET,
+                topsTop = winTop + POPUP_VIEWPORT_OFFSET,
+                topsHeight = v.anchorTop - topsTop - POPUP_MAIN_OFFSET,
+
+                rightsLeft = v.anchorLeft + v.anchorSide + POPUP_MAIN_OFFSET,
+                rightsWidth = winRight - rightsLeft - POPUP_VIEWPORT_OFFSET,
+                leftsLeft = winLeft + POPUP_VIEWPORT_OFFSET,
+                leftsWidth = v.anchorLeft - leftsLeft - POPUP_MAIN_OFFSET,
+
+                leftAlignedLeft = v.anchorLeft + POPUP_SECONDARY_OFFSET,
+                leftAlignedWidth = winRight - leftAlignedLeft - POPUP_VIEWPORT_OFFSET,
+                rightAlignedLeft = winLeft + POPUP_VIEWPORT_OFFSET,
+                rightAlignedWidth = v.anchorLeft + v.anchorSide - rightAlignedLeft - POPUP_SECONDARY_OFFSET,
+
+                topAlignedTop = v.anchorTop + POPUP_SECONDARY_OFFSET,
+                topAlignedHeight = winBottom - topAlignedTop - POPUP_VIEWPORT_OFFSET,
+                bottomAlignedTop = winTop + POPUP_VIEWPORT_OFFSET,
+                bottomAlignedHeight = v.anchorTop + v.anchorSide - bottomAlignedTop - POPUP_SECONDARY_OFFSET,
+
+                horizCenterWidth = winWidth - POPUP_VIEWPORT_OFFSET * 2,
+                horizCenterLeft = v.anchorLeft - (horizCenterWidth - v.anchorSide) / 2,
+                vertCenterHeight = winHeight - POPUP_VIEWPORT_OFFSET * 2,
+                vertCenterTop = v.anchorTop - (vertCenterHeight - v.anchorSide) / 2;
+
+            return {
+                'bottom-left' : dimHash(bottomsTop, bottomsHeight, leftAlignedLeft, leftAlignedWidth),
+                'bottom-center' : dimHash(bottomsTop, bottomsHeight, horizCenterLeft, horizCenterWidth),
+                'bottom-right' : dimHash(bottomsTop, bottomsHeight, rightAlignedLeft, rightAlignedWidth),
+
+                'top-left' : dimHash(topsTop, topsHeight, leftAlignedLeft, leftAlignedWidth),
+                'top-center' : dimHash(topsTop, topsHeight, horizCenterLeft, horizCenterWidth),
+                'top-right' : dimHash(topsTop, topsHeight, rightAlignedLeft, rightAlignedWidth),
+
+                'right-top' : dimHash(topAlignedTop, topAlignedHeight, rightsLeft, rightsWidth),
+                'right-center' : dimHash(vertCenterTop, vertCenterHeight, rightsLeft, rightsWidth),
+                'right-bottom' : dimHash(bottomAlignedTop, bottomAlignedHeight, rightsLeft, rightsWidth),
+
+                'left-top' : dimHash(topAlignedTop, topAlignedHeight, leftsLeft, leftsWidth),
+                'left-center' : dimHash(vertCenterTop, vertCenterHeight, leftsLeft, leftsWidth),
+                'left-bottom' : dimHash(bottomAlignedTop, bottomAlignedHeight, leftsLeft, leftsWidth)
+            };
+
+            /** convert dimensions array to object */
+            function dimHash(top, height, left, width) {
+                return { top : top, height : height, left : left, width : width };
+            }
         }
+
     });
 
     describe('destructing', function() {
@@ -327,6 +391,7 @@ describe('popup', function() {
             popup.hasMod('js').should.be.false;
         });
     });
+
 });
 
 provide();

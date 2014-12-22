@@ -21,9 +21,11 @@ provide(BEMDOM.decl(this.name, /** @lends progressbar.prototype */{
     /**
      * Sets bar's width
      * @param {Number} value
+     * @returns {progressbar} this
      */
     setVal : function(value) {
-        this._setBarWidth(this._val = value);
+        this.elem('bar').css('width', (this._val = value) + '%');
+        return this;
     },
 
     /**
@@ -32,10 +34,6 @@ provide(BEMDOM.decl(this.name, /** @lends progressbar.prototype */{
      */
     getVal : function() {
         return this._val;
-    },
-
-    _setBarWidth : function(value) {
-        this.elem('bar').css('width', value + '%');
     }
 
 }, /** @lends progressbar */{

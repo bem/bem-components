@@ -16,8 +16,9 @@ provide(Progressbar.decl({ modName : 'theme', modVal : 'simple' }, /** @lends pr
      * @override
      */
     setVal : function() {
-        this.__base.apply(this, arguments);
+        var res = this.__base.apply(this, arguments);
         this.elem('text').text(this._val);
+        return res;
     }
 
 }));

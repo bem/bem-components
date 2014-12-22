@@ -1,4 +1,5 @@
 var DEFAULT_LANGS = ['ru', 'en'],
+    BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     fs = require('fs'),
     path = require('path'),
     naming = require('bem-naming'),
@@ -14,10 +15,11 @@ var DEFAULT_LANGS = ['ru', 'en'],
     js = require('enb-diverse-js/techs/browser-js'),
     ym = require('enb-modules/techs/prepend-modules'),
     bemhtml = require('enb-bemxjst/techs/bemhtml-old'),
-    html = require('enb-bh/techs/html-from-bemjson'),
+    html = require('enb-bemxjst/techs/html-from-bemjson'),
     bh = require('enb-bh/techs/bh-server'),
     bhServerInclude = require('enb-bh/techs/bh-server-include'),
     bhYm = require('enb-bh/techs/bh-client-module'),
+    bhHtml = require('enb-bh/techs/html-from-bemjson'),
     copyFile = require('enb/techs/file-copy'),
     mergeFiles = require('enb/techs/file-merge'),
     mergeBemdecl = require('enb-bem-techs/techs/merge-bemdecl'),
@@ -160,7 +162,7 @@ module.exports = function(config) {
                 }],
                 [mergeFiles, {
                     target : '?.pre.js',
-                    sources : ['?.browser.bh.js', '?.browser.js']
+                    sources : [BEM_TEMPLATE_ENGINE === 'BH'? '?.browser.bh.js' : '?.browser.bemhtml.js', '?.browser.js']
                 }],
                 [ym, {
                     source : '?.pre.js',
@@ -190,34 +192,44 @@ module.exports = function(config) {
                 }]
             ]);
 
-            // Client BH
+            // Client Template Engine
             nodeConfig.addTechs([
                 [depsByTechToBemdecl, {
-                    target : '?.bh.bemdecl.js',
+                    target : '?.template.bemdecl.js',
                     sourceTech : 'js',
                     destTech : 'bemhtml'
                 }],
                 [deps, {
-                    target : '?.bh.deps.js',
-                    bemdeclFile : '?.bh.bemdecl.js'
+                    target : '?.template.deps.js',
+                    bemdeclFile : '?.template.bemdecl.js'
                 }],
                 [files, {
-                    depsFile : '?.bh.deps.js',
-                    filesTarget : '?.bh.files',
-                    dirsTarget : '?.bh.dirs'
+                    depsFile : '?.template.deps.js',
+                    filesTarget : '?.template.files',
+                    dirsTarget : '?.template.dirs'
                 }],
-                [bhYm, {
+                BEM_TEMPLATE_ENGINE === 'BH'? [bhYm, {
                     target : '?.browser.bh.js',
-                    filesTarget : '?.bh.files',
+                    filesTarget : '?.template.files',
                     jsAttrName : 'data-bem',
                     jsAttrScheme : 'json',
                     mimic : 'BEMHTML'
+                }] : [bemhtml, {
+                    target : '?.browser.bemhtml.js',
+                    filesTarget : '?.template.files',
+                    devMode : false
                 }]
             ]);
 
             // Build htmls
-            nodeConfig.addTechs([
-                [bh, { jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
+            nodeConfig.addTechs(BEM_TEMPLATE_ENGINE === 'BH'? [
+                [bh, {
+                    jsAttrName : 'data-bem',
+                    jsAttrScheme : 'json'
+                }],
+                [bhHtml]
+            ] : [
+                [bemhtml, { devMode : false }],
                 [html]
             ]);
 

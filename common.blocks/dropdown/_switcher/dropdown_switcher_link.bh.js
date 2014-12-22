@@ -2,7 +2,10 @@ module.exports = function(bh) {
 
     bh.match('dropdown_switcher_link__switcher', function(ctx, json) {
         var content = ctx.content();
-        if(Array.isArray(content)) return content;
+        if(Array.isArray(content)) {
+            if(content.length > 1) return content;
+            content = content[0];
+        }
 
         var res = ctx.isSimple(content)?
             { block : 'link', mods : { pseudo : true }, content : content } :

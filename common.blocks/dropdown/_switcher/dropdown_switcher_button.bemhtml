@@ -1,6 +1,9 @@
 block('dropdown').mod('switcher', 'button').elem('switcher').content()(function() {
     var content = this.ctx.content;
-    if(this.isArray(content)) return content;
+    if(this.isArray(content)) {
+        if(content.length > 1) return content;
+        content = content[0];
+    }
 
     var res = this.isSimple(content)?
         { block : 'button', text : content } :

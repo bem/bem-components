@@ -23,117 +23,6 @@
                 {
                     elem : 'row',
                     content : [
-                        { elem : 'cell', content : 'image' },
-                        {
-                            elem : 'cell',
-                            content : {
-                                block : 'image',
-                                url : '../../test.blocks/icon/_social/twitter.png',
-                                width : 16,
-                                height : 16,
-                                alt : 'Twitter',
-                                title : 'Follow us on Twitter'
-                            }
-                        },
-                        { elem : 'cell', content : '&mdash;' },
-                        { elem : 'cell', content : '&mdash;' }
-                    ]
-                },
-                {
-                    elem : 'row',
-                    content : [
-                        { elem : 'cell', content : 'icon' },
-                        {
-                            elem : 'cell',
-                            content : [
-                                { block : 'icon', mods : { social : 'twitter' } },
-                                ' ',
-                                { block : 'icon', url : '../../test.blocks/icon/_social/vk.png' }
-                            ]
-                        },
-                        { elem : 'cell', content : '&mdash;' },
-                        { elem : 'cell', content : '&mdash;' }
-                    ]
-                },
-                {
-                    elem : 'row',
-                    content : [
-                        { elem : 'cell', content : 'link' },
-                        {
-                            elem : 'cell',
-                            content : [
-                                {
-                                    block : 'link',
-                                    url : '#',
-                                    title : 'link',
-                                    target : '_blank',
-                                    content : 'link'
-                                },
-                                ' ',
-                                {
-                                    block : 'link',
-                                    mods : { pseudo : true },
-                                    content : 'pseudo'
-                                }
-                            ]
-                        },
-                        {
-                            elem : 'cell',
-                            content : [
-                                {
-                                    block : 'link',
-                                    mods : { theme : 'simple' },
-                                    url : '#',
-                                    title : 'link',
-                                    target : '_blank',
-                                    content : 'link'
-                                },
-                                ' ',
-                                {
-                                    block : 'link',
-                                    mods : { theme : 'simple', pseudo : true },
-                                    content : 'pseudo'
-                                }
-                            ]
-                        },
-                        {
-                            elem : 'cell',
-                            content : [
-                                {
-                                    block : 'link',
-                                    mods : { theme : 'islands' },
-                                    url : '#',
-                                    title : 'link',
-                                    target : '_blank',
-                                    content : 'link'
-                                },
-                                ' ',
-                                {
-                                    block : 'link',
-                                    mods : { theme : 'islands', view: 'external' },
-                                    url : '#',
-                                    content : 'external'
-                                },
-                                ' ',
-                                {
-                                    block : 'link',
-                                    mods : { theme : 'islands', view: 'minor' },
-                                    url : '#',
-                                    content : 'minor'
-                                },
-                                ' ',
-                                {
-                                    block : 'link',
-                                    mods : { theme : 'islands', pseudo : true },
-                                    content : 'pseudo'
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    elem : 'row',
-                    content : [
                         { elem : 'cell', content : 'attach' },
                         {
                             elem : 'cell',
@@ -168,38 +57,6 @@
                             ]
                         },
                         { elem : 'cell', content : '&mdash;' }
-                    ]
-                },
-                {
-                    elem : 'row',
-                    content : [
-                        { elem : 'cell', content : 'input' },
-                        {
-                            elem : 'cell',
-                            content : {
-                                block : 'input',
-                                val : 'value',
-                                placeholder : 'default'
-                            }
-                        },
-                        {
-                            elem : 'cell',
-                            content : {
-                                block : 'input',
-                                mods : { theme : 'simple', 'has-clear' : true },
-                                val : 'value',
-                                placeholder : 'simple'
-                            }
-                        },
-                        {
-                            elem : 'cell',
-                            content : {
-                                block : 'input',
-                                mods : { theme : 'islands', size : 'm', 'has-clear' : true },
-                                val : 'value',
-                                placeholder : 'islands'
-                            }
-                        }
                     ]
                 },
                 {
@@ -387,167 +244,6 @@
                 {
                     elem : 'row',
                     content : [
-                        { elem : 'cell', content : 'radio-group' },
-                        {
-                            elem : 'cell',
-                            content : [
-                                {
-                                    block : 'radio-group',
-                                    name : 'radio-default1',
-                                    options : [
-                                        { val : 1, text : 'first' },
-                                        { val : 2, text : 'second', checked : true }
-                                    ]
-                                },
-                                ' ',
-                                {
-                                    block : 'radio-group',
-                                    mods : { type : 'button' },
-                                    name : 'radio-default2',
-                                    options : [
-                                        { val : 1, text : 'first' },
-                                        { val : 2, text : 'second', checked : true }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            elem : 'cell',
-                            content : [
-                                {
-                                    block : 'radio-group',
-                                    mods : { theme : 'simple' },
-                                    name : 'radio-simple1',
-                                    options : [
-                                        { val : 1, text : 'first' },
-                                        { val : 2, text : 'second', checked : true }
-                                    ]
-                                },
-                                ' ',
-                                {
-                                    block : 'radio-group',
-                                    mods : { theme : 'simple', type : 'button' },
-                                    name : 'radio-simple2',
-                                    options : [
-                                        { val : 1, text : 'first' },
-                                        { val : 2, text : 'second', checked : true }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            elem : 'cell',
-                            content : [
-                                {
-                                    block : 'radio-group',
-                                    mods : { theme : 'islands', size : 'm' },
-                                    name : 'radio-islands1',
-                                    options : [
-                                        { val : 1, text : 'first' },
-                                        { val : 2, text : 'second', checked : true }
-                                    ]
-                                },
-                                ' ',
-                                {
-                                    block : 'radio-group',
-                                    mods : { theme : 'islands', size : 'm', type : 'button' },
-                                    name : 'radio-islands2',
-                                    options : [
-                                        { val : 1, text : 'first' },
-                                        { val : 2, text : 'second', checked : true }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    elem : 'row',
-                    content : [
-                        { elem : 'cell', content : 'spin' },
-                        { elem : 'cell', content : '&mdash;' },
-                        {
-                            elem : 'cell',
-                            content : {
-                                block : 'spin',
-                                mods : { theme : 'simple', visible : true }
-                            }
-                        },
-                        {
-                            elem : 'cell',
-                            content : {
-                                block : 'spin',
-                                mods : { theme : 'islands', size : 'm', visible : true }
-                            }
-                        }
-                    ]
-                },
-                {
-                    elem : 'row',
-                    content : [
-                        { elem : 'cell', content : 'popup' },
-                        {
-                            elem : 'cell',
-                            content : {
-                                block : 'link-popup',
-                                js : true,
-                                content : [
-                                    {
-                                        block : 'link',
-                                        mods : { pseudo : true },
-                                        content : 'show popup'
-                                    },
-                                    {
-                                        block : 'popup',
-                                        mods : { autoclosable : true },
-                                        content : 'Hello, world!'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            elem : 'cell',
-                            content : {
-                                block : 'link-popup',
-                                js : true,
-                                content : [
-                                    {
-                                        block : 'link',
-                                        mods : { theme : 'simple', pseudo : true },
-                                        content : 'show popup'
-                                    },
-                                    {
-                                        block : 'popup',
-                                        mods : { autoclosable : true, theme: 'simple' },
-                                        content : 'Hello, world!'
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            elem : 'cell',
-                            content : {
-                                block : 'link-popup',
-                                js : true,
-                                content : [
-                                    {
-                                        block : 'link',
-                                        mods : { theme : 'islands', pseudo : true },
-                                        content : 'show popup'
-                                    },
-                                    {
-                                        block : 'popup',
-                                        mods : { autoclosable : true, theme: 'islands' },
-                                        content : 'Hello, world!'
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                },
-                {
-                    elem : 'row',
-                    content : [
                         { elem : 'cell', content : 'dropdown' },
                         {
                             elem : 'cell',
@@ -608,12 +304,156 @@
                 {
                     elem : 'row',
                     content : [
+                        { elem : 'cell', content : 'icon' },
+                        {
+                            elem : 'cell',
+                            content : [
+                                { block : 'icon', mods : { social : 'twitter' } },
+                                ' ',
+                                { block : 'icon', url : '../../test.blocks/icon/_social/vk.png' }
+                            ]
+                        },
+                        { elem : 'cell', content : '&mdash;' },
+                        { elem : 'cell', content : '&mdash;' }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'image' },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'image',
+                                url : '../../test.blocks/icon/_social/twitter.png',
+                                width : 16,
+                                height : 16,
+                                alt : 'Twitter',
+                                title : 'Follow us on Twitter'
+                            }
+                        },
+                        { elem : 'cell', content : '&mdash;' },
+                        { elem : 'cell', content : '&mdash;' }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'input' },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'input',
+                                val : 'value',
+                                placeholder : 'default'
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'input',
+                                mods : { theme : 'simple', 'has-clear' : true },
+                                val : 'value',
+                                placeholder : 'simple'
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'input',
+                                mods : { theme : 'islands', size : 'm', 'has-clear' : true },
+                                val : 'value',
+                                placeholder : 'islands'
+                            }
+                        }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'link' },
+                        {
+                            elem : 'cell',
+                            content : [
+                                {
+                                    block : 'link',
+                                    url : '#',
+                                    title : 'link',
+                                    target : '_blank',
+                                    content : 'link'
+                                },
+                                ' ',
+                                {
+                                    block : 'link',
+                                    mods : { pseudo : true },
+                                    content : 'pseudo'
+                                }
+                            ]
+                        },
+                        {
+                            elem : 'cell',
+                            content : [
+                                {
+                                    block : 'link',
+                                    mods : { theme : 'simple' },
+                                    url : '#',
+                                    title : 'link',
+                                    target : '_blank',
+                                    content : 'link'
+                                },
+                                ' ',
+                                {
+                                    block : 'link',
+                                    mods : { theme : 'simple', pseudo : true },
+                                    content : 'pseudo'
+                                }
+                            ]
+                        },
+                        {
+                            elem : 'cell',
+                            content : [
+                                {
+                                    block : 'link',
+                                    mods : { theme : 'islands' },
+                                    url : '#',
+                                    title : 'link',
+                                    target : '_blank',
+                                    content : 'link'
+                                },
+                                ' ',
+                                {
+                                    block : 'link',
+                                    mods : { theme : 'islands', view: 'external' },
+                                    url : '#',
+                                    content : 'external'
+                                },
+                                ' ',
+                                {
+                                    block : 'link',
+                                    mods : { theme : 'islands', view: 'minor' },
+                                    url : '#',
+                                    content : 'minor'
+                                },
+                                ' ',
+                                {
+                                    block : 'link',
+                                    mods : { theme : 'islands', pseudo : true },
+                                    content : 'pseudo'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
                         { elem : 'cell', content : 'menu' },
                         {
                             elem : 'cell',
                             content : {
                                 block : 'menu',
                                 mods : { mode : 'check' },
+                                val : [ 2 ],
                                 content : [
                                     {
                                         block : 'menu-item',
@@ -622,7 +462,6 @@
                                     },
                                     {
                                         block : 'menu-item',
-                                        mods : { checked : true },
                                         val : 2,
                                         content : 'Open'
                                     },
@@ -640,6 +479,7 @@
                             content : {
                                 block : 'menu',
                                 mods : { theme : 'simple', mode : 'radio' },
+                                val : 2,
                                 content : [
                                     {
                                         block : 'menu-item',
@@ -648,7 +488,6 @@
                                     },
                                     {
                                         block : 'menu-item',
-                                        mods : { checked : true },
                                         val : 2,
                                         content : 'Open'
                                     },
@@ -666,6 +505,7 @@
                             content : {
                                 block : 'menu',
                                 mods : { theme : 'islands', size : 'm', mode : 'radio' },
+                                val : 2,
                                 content : [
                                     {
                                         block : 'menu-item',
@@ -674,7 +514,6 @@
                                     },
                                     {
                                         block : 'menu-item',
-                                        mods : { checked : true },
                                         val : 2,
                                         content : 'Open'
                                     },
@@ -685,6 +524,299 @@
                                         content : 'Open Recent'
                                     }
                                 ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'modal' },
+                        {
+                            elem : 'cell',
+                            content : '&mdash;'
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'modal-example',
+                                js : true,
+                                content : [
+                                    {
+                                        block : 'link',
+                                        mods : { pseudo : true },
+                                        content : 'open modal'
+                                    },
+                                    {
+                                        block : 'modal',
+                                        mods : { theme : 'simple', autoclosable : true },
+                                        content : [
+                                            {
+                                                block : 'text',
+                                                content : 'Modal was opened!'
+                                            },
+                                            '(Click outside the box to close)'
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'modal-example',
+                                js : true,
+                                content : [
+                                    {
+                                        block : 'link',
+                                        mods : { pseudo : true },
+                                        content : 'open modal'
+                                    },
+                                    {
+                                        block : 'modal',
+                                        mods : { theme : 'islands', autoclosable : true },
+                                        content : [
+                                            {
+                                                block : 'text',
+                                                content : 'Modal was opened!'
+                                            },
+                                            '(Click outside the box to close)'
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'popup' },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'link-popup',
+                                js : true,
+                                content : [
+                                    {
+                                        block : 'link',
+                                        mods : { pseudo : true },
+                                        content : 'show popup'
+                                    },
+                                    {
+                                        block : 'popup',
+                                        mods : {
+                                            autoclosable : true,
+                                            target : 'anchor'
+                                        },
+                                        content : 'Hello, world!'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'link-popup',
+                                js : true,
+                                content : [
+                                    {
+                                        block : 'link',
+                                        mods : { theme : 'simple', pseudo : true },
+                                        content : 'show popup'
+                                    },
+                                    {
+                                        block : 'popup',
+                                        mods : {
+                                            autoclosable : true,
+                                            target : 'anchor',
+                                            theme: 'simple'
+                                        },
+                                        content : 'Hello, world!'
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'link-popup',
+                                js : true,
+                                content : [
+                                    {
+                                        block : 'link',
+                                        mods : { theme : 'islands', pseudo : true },
+                                        content : 'show popup'
+                                    },
+                                    {
+                                        block : 'popup',
+                                        mods : {
+                                            autoclosable : true,
+                                            target : 'anchor',
+                                            theme: 'islands',
+                                        },
+                                        content : 'Hello, world!'
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'progressbar' },
+                        { elem : 'cell', content : '&mdash;' },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'progressbar',
+                                mods : { theme : 'simple' },
+                                value : 50
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'progressbar',
+                                mods : { theme : 'islands', size : 'm' },
+                                value : 50
+                            }
+                        }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'radio-group' },
+                        {
+                            elem : 'cell',
+                            content : [
+                                {
+                                    block : 'radio-group',
+                                    name : 'radio-default1',
+                                    val : 2,
+                                    options : [
+                                        { val : 1, text : 'first' },
+                                        { val : 2, text : 'second' }
+                                    ]
+                                },
+                                ' ',
+                                {
+                                    block : 'radio-group',
+                                    mods : { type : 'button' },
+                                    name : 'radio-default2',
+                                    val : 2,
+                                    options : [
+                                        { val : 1, text : 'first' },
+                                        { val : 2, text : 'second' }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            elem : 'cell',
+                            content : [
+                                {
+                                    block : 'radio-group',
+                                    mods : { theme : 'simple' },
+                                    name : 'radio-simple1',
+                                    val : 2,
+                                    options : [
+                                        { val : 1, text : 'first' },
+                                        { val : 2, text : 'second' }
+                                    ]
+                                },
+                                ' ',
+                                {
+                                    block : 'radio-group',
+                                    mods : { theme : 'simple', type : 'button' },
+                                    name : 'radio-simple2',
+                                    val : 2,
+                                    options : [
+                                        { val : 1, text : 'first' },
+                                        { val : 2, text : 'second' }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            elem : 'cell',
+                            content : [
+                                {
+                                    block : 'radio-group',
+                                    mods : { theme : 'islands', size : 'm' },
+                                    name : 'radio-islands1',
+                                    val : 2,
+                                    options : [
+                                        { val : 1, text : 'first' },
+                                        { val : 2, text : 'second' }
+                                    ]
+                                },
+                                ' ',
+                                {
+                                    block : 'radio-group',
+                                    mods : { theme : 'islands', size : 'm', type : 'button' },
+                                    name : 'radio-islands2',
+                                    val : 2,
+                                    options : [
+                                        { val : 1, text : 'first' },
+                                        { val : 2, text : 'second' }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'spin' },
+                        { elem : 'cell', content : '&mdash;' },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'spin',
+                                mods : { theme : 'simple', visible : true }
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'spin',
+                                mods : { theme : 'islands', size : 'm', visible : true }
+                            }
+                        }
+                    ]
+                },
+                {
+                    elem : 'row',
+                    content : [
+                        { elem : 'cell', content : 'textarea' },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'textarea',
+                                val : 'value',
+                                placeholder : 'default'
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'textarea',
+                                mods : { theme : 'simple' },
+                                val : 'value',
+                                placeholder : 'simple'
+                            }
+                        },
+                        {
+                            elem : 'cell',
+                            content : {
+                                block : 'textarea',
+                                mods : { theme : 'islands', size : 'm' },
+                                val : 'value',
+                                placeholder : 'islands'
                             }
                         }
                     ]

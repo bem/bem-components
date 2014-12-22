@@ -1,4 +1,4 @@
-modules.define('content', ['i-bem__dom', 'tick'], function(provide, BEMDOM, tick) {
+modules.define('progressbar-example', ['i-bem__dom', 'tick'], function(provide, BEMDOM, tick) {
 
 provide(BEMDOM.decl(this.name, {
     onSetMod : {
@@ -13,16 +13,15 @@ provide(BEMDOM.decl(this.name, {
     _progressProcess : function() {
         var i = this._progressbar.getVal(),
             isChecked = this._button.hasMod('checked');
-
         if (isChecked) {
+            tick.un('tick');
+        } else {
             tick
                 .on('tick', function(){
                     (i > 100) && (i = 0);
                     this._progressbar.setVal(i++);
                 }, this)
                 .start();
-        } else {
-            tick.un('tick');
         }
     }
 

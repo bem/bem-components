@@ -69,6 +69,7 @@
                             {
                                 block : 'menu',
                                 mods : { mode : 'check', theme : 'islands', size : cell.size },
+                                val : [ 'twitter' ],
                                 content : [
                                     {
                                         elem : 'group',
@@ -76,10 +77,12 @@
                                         content : [
                                             {
                                                 block : 'menu-item',
+                                                val : 'batch',
                                                 content : 'Batch'
                                             },
                                             {
                                                 block : 'menu-item',
+                                                val : 'droplet',
                                                 content : 'Create Droplet'
                                             }
                                         ]
@@ -89,7 +92,7 @@
                                         content : [
                                             {
                                                 block : 'menu-item',
-                                                mods : { checked : true },
+                                                val : 'twitter',
                                                 content : [
                                                     { block : 'icon', mods : { social : 'twitter' } },
                                                     'Twitter'
@@ -97,6 +100,7 @@
                                             },
                                             {
                                                 block : 'menu-item',
+                                                val : 'vk',
                                                 content : [
                                                     { block : 'icon', mods : { social : 'vk' } },
                                                     'VK'
@@ -150,9 +154,10 @@
                     block : 'radio-group',
                     mods : { theme : 'islands', size : 's', type : 'button' },
                     name : 'radio-sizes-s',
+                    val : 2,
                     options : [
                         { val : 1, text : 'first' },
-                        { val : 2, text : 'second', checked : true }
+                        { val : 2, text : 'second' }
                     ]
                 },
                 ' ',
@@ -175,8 +180,9 @@
                     mods : { mode : 'radio-check', theme : 'islands', size : 's' },
                     name : 'select',
                     text : 'first',
+                    val : 1,
                     options : [
-                        { val : 1, text : 'first', checked: true },
+                        { val : 1, text : 'first' },
                         { val : 2, text : 'second' }
                     ]
                 },
@@ -225,9 +231,10 @@
                     block : 'radio-group',
                     mods : { theme : 'islands', size : 'm', type : 'button' },
                     name : 'radio-sizes-m',
+                    val : 2,
                     options : [
                         { val : 1, text : 'first' },
-                        { val : 2, text : 'second', checked : true }
+                        { val : 2, text : 'second' }
                     ]
                 },
                 ' ',
@@ -264,8 +271,9 @@
                     mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
                     name : 'select',
                     text : 'first',
+                    val : 1,
                     options : [
-                        { val : 1, text : 'first', checked: true },
+                        { val : 1, text : 'first' },
                         { val : 2, text : 'second' }
                     ]
                 },
@@ -314,9 +322,10 @@
                     block : 'radio-group',
                     mods : { theme : 'islands', size : 'l', type : 'button' },
                     name : 'radio-sizes-l',
+                    val : 2,
                     options : [
                         { val : 1, text : 'first' },
-                        { val : 2, text : 'second', checked : true }
+                        { val : 2, text : 'second' }
                     ]
                 },
                 ' ',
@@ -353,8 +362,9 @@
                     mods : { mode : 'radio-check', theme : 'islands', size : 'l' },
                     name : 'select',
                     text : 'first',
+                    val : 1,
                     options : [
-                        { val : 1, text : 'first', checked: true },
+                        { val : 1, text : 'first' },
                         { val : 2, text : 'second' }
                     ]
                 },
@@ -403,9 +413,10 @@
                     block : 'radio-group',
                     mods : { theme : 'islands', size : 'xl', type : 'button' },
                     name : 'radio-sizes-xl',
+                    val : 2,
                     options : [
                         { val : 1, text : 'first' },
-                        { val : 2, text : 'second', checked : true }
+                        { val : 2, text : 'second' }
                     ]
                 },
                 ' ',
@@ -428,8 +439,9 @@
                     mods : { mode : 'radio-check', theme : 'islands', size : 'xl' },
                     name : 'select',
                     text : 'first',
+                    val : 1,
                     options : [
-                        { val : 1, text : 'first', checked: true },
+                        { val : 1, text : 'first' },
                         { val : 2, text : 'second' }
                     ]
                 },

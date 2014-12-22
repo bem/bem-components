@@ -25,11 +25,12 @@
                                 block : 'checkbox-group',
                                 name : 'islands',
                                 mods : { theme : 'islands', size : 'l' },
+                                val : [ 2, 4 ],
                                 options : [
                                     { val : 1, text : 'Small' },
-                                    { val : 2, text : 'Normal', checked : true },
+                                    { val : 2, text : 'Normal' },
                                     { val : 3, text : 'Big', disabled : true },
-                                    { val : 4, text : 'Beautiful', disabled : true, checked : true }
+                                    { val : 4, text : 'Beautiful', disabled : true }
                                 ]
                             }
                         },
@@ -45,6 +46,7 @@
                                 {
                                     block : 'menu',
                                     mods : { mode : 'radio', theme : 'islands', size : 'l', custom : true },
+                                    val : 3,
                                     content : [
                                         {
                                             block : 'menu-item',
@@ -58,7 +60,6 @@
                                         },
                                         {
                                             block : 'menu-item',
-                                            mods : { checked : true },
                                             val : 3,
                                             content : 'Search in your pocket'
                                         }
@@ -102,9 +103,10 @@
                                     block : 'radio-group',
                                     name : 'islands-radios-1',
                                     mods : { theme : 'islands', size : 'l' },
+                                    val : 2,
                                     options : [
                                         { val : 1, text : 'Radio is off' },
-                                        { val : 2, text : 'Radio is on', checked : true }
+                                        { val : 2, text : 'Radio is on' }
                                     ]
                                 },
                                 { tag : 'br' },
@@ -112,12 +114,17 @@
                                     block : 'radio-group',
                                     name : 'islands-radios-2',
                                     mods : { theme : 'islands', size : 'l' },
+                                    val : 2,
                                     options : [
                                         { val : 1, text : 'No, you can\'t', disabled : true },
-                                        { val : 2, text : 'You have no choice', disabled : true, checked : true }
+                                        { val : 2, text : 'You have no choice', disabled : true }
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            block: 'test2',
+                            js: true
                         },
                         {
                             elem : 'cell',
@@ -126,9 +133,10 @@
                                     block : 'radio-group',
                                     name : 'islands-button',
                                     mods : { theme : 'islands', size : 'l', type : 'button' },
+                                    val : 2,
                                     options : [
                                         { val : 1, text : 'Black & white' },
-                                        { val : 2, text : 'Colored', checked : true },
+                                        { val : 2, text : 'Colored' },
                                         { val : 3, text : 'Any colors' }
                                     ]
                                 },
@@ -140,6 +148,25 @@
                                             mods : { theme : 'islands', size : size, visible : true }
                                         };
                                     })
+                                },
+                                {
+                                    block: 'progressbar-example',
+                                    js: true,
+                                    content: [{
+                                        block : 'button',
+                                        mods : {
+                                            theme : 'islands',
+                                            size : 's',
+                                            togglable : 'check',
+                                            checked : true
+                                        },
+                                        text : 'Pause'
+                                    },
+                                    {
+                                        block : 'progressbar',
+                                        mods : { theme : 'islands' },
+                                        value : 25
+                                    }]
                                 }
                             ]
                         },

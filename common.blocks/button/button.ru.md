@@ -1,332 +1,453 @@
 # button
 
-Блок `button` используется для создания различных типов кнопок и предоставляет возможность изменять их размер, состояние, содержимое и внешний вид.
+Используется для создания различных типов кнопок.
 
-## Специализированные поля блока
+## Обзор блока
 
-Список зарезервированных полей входного BEMJSON:
+### Модификаторы блока
 
-<table>
-    <tr>
-        <th>Поле</th>
-        <th>Тип</th>
-        <th>Описание</th>
-    </tr>
-    <tr>
-        <td>text</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Задает текст кнопки.</td>
-    </tr>
-    <tr>
-        <td>icon</td>
-        <td>
-            <code>BEMJSON</code></td>
-        <td>Кнопка с иконкой, которая формируется блоком <a href="../icon/icon.ru.md">icon</a></td>
-    </tr>
-    <tr>
-        <td>url</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Адрес ссылки. Используется только для <a href="#link-button">кнопки-ссылки</a>.</td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Уникальный идентификатор кнопки.</td>
-    </tr>
-    <tr>
-        <td>tabindex</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Определяет последовательность перехода между кнопками при нажатии на `Tab`.</td>
-    </tr>
-    <tr>
-        <td>value</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Значение, отправляемое на сервер. Если поле не указано, по умолчанию отправляется пустое значение.</td>
-    </tr>
-</table>
+| Модификатор | Допустимые значения | Способы использования | Описание |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href=#buttontype>type</a> | <code>'link'</code>, <code>'submit'</code> | <code>BEMJSON</code> | Тип кнопки.|
+| <a href=#buttondisabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
+| <a href=#buttonfocused>focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
+| <a href=#buttontoggle>togglable</a> | <code>'check'</code>, <code>'radio'</code> | <code>BEMJSON</code> | Тип переключателя.|
+| <a href=#buttonpressed>pressed</a> | <code>true</code> | – | Действие «нажатие на кнопку». |
+| <a href=#hovered>hovered</a> | <code>true</code> | – | Наведение курсором. |
+| <a href=#buttonthemes>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
+| <a href=#buttonsize>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер кнопки. Используется для кнопок с <a href=#buttonthemes>модификатором theme в значении islands</a>.|
+| <a href=#buttonview>view</a> | <code>'action'</code>, <code>'pseudo'</code> | <code>BEMJSON</code> | Тип визуального выделения кнопки.|
 
-При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле `attrs` в BEMJSON.
+### Специализированные поля блока
 
-## Модификаторы блока
+| Поле | Тип | Описание |
+| ---- | --- | -------- |
+| <a href=#buttonname>name</a> | <code>String</code> | Уникальное имя блока. Не используется, если <a href="#link-button">модификатор type выставлен в значение link</a>. |
+| <a href=#buttonval>val</a> | <code>String</code>, <code>Number</code> | Значение, отправляемое на сервер. Не используется, если <a href="#link-button">модификатор type выставлен в значение link</a>. |
+| <a href=#buttontext>text</a> | <code>String</code>| Текст кнопки. |
+| <a href=#buttonurl>url</a> | <code>String</code>| Адрес. Используется только для кнопки с <a href="#link-button">модификатором type в значении link</a>. |
+| <a href=#buttonicon>icon</a> | <code>BEMJSON</code> | Иконка на кнопке. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. |
+| <a href=#buttontitle>title</a> | <code>String</code> | Текст всплывающей подсказки. |
+| <a href=#buttonid>id</a> | <code>String</code> | Уникальный идентификатор кнопки. |
+| <a href=#buttontab>tabIndex</a> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
 
-### Темы `_theme`
+## Описание блока
 
-Блок представлен в следующих темах:
+Блок `button` предоставляет возможность изменять размер, состояние, содержимое и внешний вид кнопок.
 
- * simple
- * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
+### Модификаторы блока
 
-Без указания модификатора темы отображается [нативный](#default) вид контрола.
+<a name="buttontype"></a>
 
-Наглядно показано на примерах ниже:
+#### Модификатор `type`
 
-<a href="default"></a>
-**default**
+Допустимые значения: `'link'`, `'submit'`.
 
-```bemjson
-{
-    block : 'button',
-    text : 'Тема не указана'
-}
-```
-
-**simple**
-
-```bemjson
-{
-    block : 'button',
-    text : 'Тема simple',
-    mods : { theme : 'simple' }
-}
-```
-
-**islands**
-
-```bemjson
-{
-    block : 'button',
-    text : 'Тема islands',
-    mods : { theme : 'islands', size : 'm' }
-}
-```
-
-<a name="size"></a>
-### Размеры кнопок `_size`
-
-Реализован только в теме `islands`. Задает размер всем типам кнопок.
-
-Доступно четыре размера реализации блока: **s**, **m**, **l**, **xl**.
-
-<table>
-     <tr>
-        <th>Размер кнопки</th>
-        <th>Размер шрифта</th>
-        <th>Высота кнопки</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>13px</td>
-        <td>28px</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>15px</td>
-        <td>32px</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>18px</td>
-        <td>38px</td>
-    </tr>
-</table>
-
-```bemjson
-{
-    block : 'button',
-    text : 'Small',
-    mods : { theme : 'islands', size : 's' }
-}
-```
-
-```bemjson
-{
-    block : 'button',
-    text : 'Medium',
-    mods : { theme : 'islands', size : 'm' }
-}
-```
-
-```bemjson
-{
-    block : 'button',
-    text : 'Large',
-    mods : { theme : 'islands', size : 'l' }
-}
-```
-
-```bemjson
-{
-    block : 'button',
-    text : 'X-large',
-    mods : { theme : 'islands', size : 'xl' }
-}
-```
-
-### Типы кнопок `_type`
-
-Если модификатор `type` не указан, по умолчанию отображается простая кнопка.
+Способ использования: `BEMJSON`.
 
 <a name="link-button"></a>
-#### Кнопка-ссылка
-Блок может быть представлен как кнопка, которая при нажатии ведет себя как ссылка. Для этого необходимо установить модификатор `type` в значение `link`.
 
-В случае использования кнопки-ссылки, необходимо дополнительно указать обязательный атрибут `url` во входных данных.
+##### Кнопка-ссылка (модификатор `type` в значении `link`)
 
-```bemjson
+Используется для создания кнопки, обеспечивающей переход по адресу, указанному в поле <a href="#buttonurl">url</a>.
+
+```js
 {
     block : 'button',
-    url : '#',
-    text : 'Кнопка-ссылка',
-    mods : { theme : 'islands', size : 'm', type : 'link' }
+    mods : { theme : 'islands', size : 'm', type : 'link' },
+    url : 'https://bem.info/',
+    text : 'Попробуй БЭМ'
 }
 ```
 
-#### Кнопка отправки формы
+##### Кнопка отправки формы (модификатор `type` в значении `submit`)
 
-Модификатор `type` в значении `submit` превращает обычную кнопку в кнопку отправки данных на сервер. Такой тип кнопки всегда должен располагаться в форме.
+Используется для создания кнопки, обеспечивающей отправку данных на сервер. Кнопка такого типа всегда должна располагаться в форме.
 
-```bemjson
+```js
 {
     block : 'button',
-    url : '#',
-    text : 'Кнопка отправки формы',
-    mods : { theme : 'islands', size : 'm', type : 'submit' }
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    text : 'Я отправляю данные'
 }
 ```
 
-### Внешний вид `_view`
 
-#### Визуальное выделение `_action`
+<a name="buttontoggle"></a>
 
-Визуально выделяет кнопку на странице.
+#### Модификатор `togglable`
 
-```bemjson
+Допустимые значения: `'check'`, `'radio'`.
+
+Способ использования: `BEMJSON`.
+
+Используется для реализации «залипания» кнопки. Определяет поведение нажатой кнопки.
+
+##### Кнопка-переключатель (модификатор `togglable` в значении `check`)
+
+Первое нажатие на кнопку вдавливает ее, второе – приводит в первоначальное состояние.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', togglable : 'check' },
+    text : 'Я нажата'
+}
+```
+
+##### Радиокнопка (модификатор `togglable` в значении `radio`)
+
+Нажатие на кнопку вдавливает ее, и она может быть приведена в первоначальное состояние только программно. Используется в составе [радиогруппы](../radio-group/radio-group.ru.md).
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', togglable : 'radio' },
+    text : 'Я «залипла» :)'
+}
+```
+
+Пример использования в радиогруппе:
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button', togglable : 'radio' },
+    name : 'radio-button',
+    options : [
+        { val : 1, text : 'Первый' },
+        { val : 2, text : 'Второй', checked : true },
+        { val : 3, text : 'Третий' }
+    ]
+}
+```
+
+<a name="buttondisabled"></a>
+
+#### Модификатор `disabled`
+
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', disabled : true },
+    text : 'Неактивна'
+}
+```
+
+<a name="buttonfocused"></a>
+
+#### Модификатор `focused`
+
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Отвечает за наличие фокуса на блоке.
+
+Выставляется автоматически при получении кнопки фокуса.
+
+```javascript
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', focused : true },
+    text : 'В фокусе'
+}
+```
+
+<a name="buttonpressed"></a>
+
+#### Модификатор `pressed`
+
+Допустимое значение: `true`.
+
+Способ использования: – .
+
+Определяет действие «нажатие на кнопку».
+
+Выставляется автоматически при нажатии на кнопку.
+
+<a name="hovered"></a>
+
+#### Модификатор `hovered`
+
+Допустимое значение: `true`.
+
+Способы использования: – .
+
+Выставляется блоку автоматически, когда курсор мыши находится в пределах контрола, но щелчка по нему не происходит.
+
+<a name="buttonthemes"></a>
+
+#### Модификатор `theme`
+
+Допустимое значение: `'islands'`.
+
+Способ использования: `BEMJSON`.
+
+Отвечает за стилевое оформление блока.
+
+Необходимо использовать с модификатором <a href="#buttonsize">size</a>.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm' },
+    text : 'Тема islands'
+}
+```
+
+<a name="buttonsize"></a>
+
+#### Модификатор `size`
+
+Допустимые значения для темы `islands`: `'s'`, `'m'`, `'l'`, `'xl'`.
+
+Способ использования: `BEMJSON`.
+
+Задает размер всем типам кнопок.
+
+Необходимо использовать с модификатором <a href="#buttonthemes">theme</a> в значении `islands`.
+
+**s**
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 's' },
+    text : 'Размер s'
+}
+```
+
+**m**
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm' },
+    text : 'Размер m'
+}
+```
+
+**l**
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'l' },
+    text : 'Размер l'
+}
+```
+
+**xl**
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'xl' },
+    text : 'Размер xl'
+}
+```
+
+<a name="buttonview"></a>
+
+#### Модификатор `view`
+
+Допустимые значения: `'action'`, `'pseudo'`.
+
+Способ использования: `BEMJSON`.
+
+##### Кнопка действия (модификатор `view` в значении `action`)
+
+Используется для визуального выделения кнопки на странице.
+
+```js
 {
     block : 'button',
     mods : { theme : 'islands', size : 'm', view : 'action' },
-    type : 'submit',
-    text : 'Action'
+    text : 'Купить сейчас!'
 }
 ```
 
-#### Псевдокнопка `_pseudo`
+##### Псевдокнопка (модификатор `view` в значении `pseudo`)
 
-При выставлении модификатора `view` в значение `pseudo`, кнопка получает прозрачный фон.
+Используется для изменения внешнего вида блока при необходимости сделать кнопку менее заметной на странице.
 
-```bemjson
+```js
 {
     block : 'button',
     mods : { theme : 'islands', size : 'm', view : 'pseudo' },
-    text : 'Псевдокнопка'
+    text : 'У меня прозрачный фон'
 }
 ```
 
-В неактивном состоянии границы псевдокнопки исчезают, и она сливается со страницей.
-
-```bemjson
+```js
 {
     block : 'button',
     mods : { theme : 'islands', size : 'm', view : 'pseudo', disabled : true },
-    text : 'Псевдокнопка'
+    text : 'У меня нет границ'
 }
 ```
 
-### Состояния
 
-#### Неактивна `_disabled`
+### Специализированные поля блока
 
-Если указан модификатор `disabled`, кнопка видна, но недоступна для действий пользователя.
+<a name="buttonname"></a>
 
-Такая кнопка не может получить фокус путем нажатия на клавишу `Tab`, мышью или другими способами.
+#### Поле `name`
 
-```bemjson
+Тип: `String`.
+
+Определяет уникальное имя блока.
+
+Не используется, если <a href="#link-button">модификатор type выставлен в значение link</a>.
+
+```js
 {
     block : 'button',
-    text : 'Неактивна',
-    mods : { theme : 'islands', size : 'm', disabled : true }
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    name : 'Test_1',
+    val : 'passed',
+    text : 'Проверить результат'
 }
 ```
 
-#### В фокусе `_focused`
+<a name="buttonval"></a>
 
-Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
+#### Поле `val`
 
-#### Залипание `_togglable`
+Тип данных: `String`, `Number`.
 
-Позволяет реализовать залипание кнопки. Допустимые значения:
+Определяет значение кнопки, которое будет отправлено на сервер.
 
-* `check` (первое нажатие на кнопку вдавливает ее, второе – приводит в первоначальное состояние)
+Не используется, если <a href="#link-button">модификатор type выставлен в значение link</a>.
 
-```bemjson
+```js
 {
     block : 'button',
-    text : 'Check',
-    mods : { theme : 'islands', size : 'm', togglable : 'check' }
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    name : 'Test_1',
+    val : 'passed',
+    text : 'Проверить результат'
 }
 ```
 
-* `radio` (нажатие на кнопку вдавливает ее и она не может быть приведена в первоначальное состояние)
+<a name="buttontext"></a>
 
-```bemjson
+#### Поле `text`
+
+Тип: `String`.
+
+Определяет текст, который отображается на кнопке.
+
+```js
 {
     block : 'button',
-    text : 'Radio',
-    mods : { theme : 'islands', size : 'm', togglable : 'radio' }
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    name : 'Test_1',
+    val : 'passed',
+    text : 'Проверить результат'
 }
 ```
 
-#### Наведение курсором `_hovered`
+<a name="buttonurl"></a>
 
-Определяет действие «наведение курсором» на кнопку.
+#### Поле `url`
 
-#### Нажатие `_pressed`
+Тип: `String`.
 
-Определяет действие «нажатие» на кнопку.
+Определяет адрес, по которому осуществляется переход при нажатии на кнопку с <a href="#link-button">модификатором type в значении link</a>.
 
-### Внешний вид `_view`
+Не используется с другими типами кнопок.
 
-#### Визуальное выделение `_action`
-
-Визуально выделяет кнопку на странице, добавляя ей желтую подсветку.
-
-```bemjson
+```js
 {
     block : 'button',
-    type : 'submit',
-    text : 'Промокнопка',
-    mods : { theme : 'islands', size : 'm', view : 'action' }
+    mods : { theme : 'islands', size : 'm', type : 'link' },
+    url : 'https://bem.info/',
+    text : 'Попробуй БЭМ'
 }
 ```
 
-#### Псевдокнопка `_pseudo`
+<a name="buttonicon"></a>
 
-Реализован только в теме `islands` для визуального изменения кнопки. При выставлении модификатора `view` в значение `pseudo`, кнопка получает прозрачный фон.
+#### Поле `icon`
 
-```bemjson
+Тип: `BEMJSON`.
+
+Определяет иконку, которая отображается на кнопке. Иконка задается с помощью блока [icon](../icon/icon.ru.md).
+
+```js
 {
     block : 'button',
-    text : 'Псевдокнопка',
-    mods : { theme : 'islands', size : 'm', view : 'pseudo' }
+    mods : { theme : 'islands', size : 'm' },
+    text : 'Twitter',
+    icon : {
+        block : 'icon',
+        mods : { social : 'twitter' }
+    }
 }
 ```
 
-В неактивном состоянии границы псевдокнопки исчезают и она сливается со страницей.
+<a name="buttontitle"></a>
 
-```bemjson
+#### Поле `title`
+
+Тип: `String`.
+
+Определяет содержание всплывающей подсказки. Вид такой подсказки зависит от браузера, настроек операционной системы и не может быть изменен с помощью HTML-кода или стилей.
+
+```js
 {
     block : 'button',
-    text : 'Псевдокнопка',
-    mods : { theme : 'islands', size : 'm', view : 'pseudo', disabled : true }
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    name : 'Тест №1',
+    val : 'Пройден успешно',
+    text : 'Проверить результат',
+    title : 'Кнопка отправки результатов теста'
 }
 ```
 
-## Элементы блока
+<a name="buttonid"></a>
 
-### __text
+#### Поле `id`
 
-Вспомогательный элемент. Добавляется блоку на уровне шаблонизатора.
+Тип: `String`.
+
+Определяет уникальный идентификатор кнопки.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    name : 'Тест №1',
+    val : 'Пройден успешно',
+    text : 'Проверить результат',
+    id : 'Unique_1'
+}
+```
+
+<a name="buttontab"></a>
+
+#### Поле `tabIndex`
+
+Тип: `Number`.
+
+Определяет порядок получения фокуса при переходе между контролами с помощью клавиши `Tab`.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    name : 'Тест №1',
+    val : 'Пройден успешно',
+    text : 'Проверить результат',
+    id :'val_1',
+    tabIndex : 2
+}
+```

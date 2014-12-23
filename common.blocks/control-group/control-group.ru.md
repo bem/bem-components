@@ -1,52 +1,94 @@
 # control-group
 
-Блок `control-group` – это обертка, предназначенная для визуальной группировки других блоков. Группируемые блоки помещаются в поле `content` BEMJSON-декларации.
-
-Блок реализован только в технологии CSS. Для всех вложенных блоков должна быть установлена тема `islands`.
-
-В результате применения шаблонов блок `control-group` становится на странице HTML-элементом с тегом `<div>`.
+Используется как обертка для **визуальной** группировки других блоков. Группируемые блоки помещаются в поле `content` BEMJSON-декларации.
 
 ## Варианты использования
 
 Блок позволяет визуально группировать следующие блоки:
 
 * [input](../input/input.ru.md)
-* [button](../button/button.ru.md)
 
-```bemjson
+```js
 {
     block : 'control-group',
     content : [
         {
             block : 'input',
             mods : { theme : 'islands', size : 'm', type : 'search' },
-            val : 'Your-query',
-            placeholder : 'query'
+            placeholder : 'Имя'
         },
         {
-            block : 'button',
-            mods : { theme : 'islands', size : 'm' },
-            text : 'search'
+            block : 'input',
+            mods : { theme : 'islands', size : 'm', type : 'search' },
+            placeholder : 'Фамилия'
+        },
+        {
+            block : 'input',
+            mods : { theme : 'islands', size : 'm', type : 'search' },
+            placeholder : 'Электронный адрес'
         }
     ]
 }
 ```
 
-Кроме того, можно группировать блоки, использующие `input` или `button` как один из компонентов. Например, в группу можно включить блок `select`, управляющим компонентом которого служит блок `button`:
+* [button](../button/button.ru.md)
 
-```bemjson
+```js
+{
+    block : 'control-group',
+    content : [
+        {
+            block : 'button',
+            mods : { theme : 'islands', size : 'm' },
+            text : 'Просмотреть корзину'
+        },
+        {
+            block : 'button',
+            mods : { theme : 'islands', size : 'm' },
+            text : 'История покупок'
+        },
+        {
+            block : 'button',
+            mods : { theme : 'islands', size : 'm' },
+            text : 'Проверить бонусный счет'
+        }
+    ]
+}
+```
+
+```js
+{
+    block : 'control-group',
+    content : [
+        {
+            block : 'input',
+            mods : { theme : 'islands', size : 'm', type : 'search' },
+            placeholder : 'Введите запрос'
+        },
+        {
+            block : 'button',
+            mods : { theme : 'islands', size : 'm' },
+            text : 'Поиск'
+        }
+    ]
+}
+```
+
+* [select](../select/select.ru.md)
+
+```js
 {
     block : 'control-group',
     content : [
         {
             block : 'input',
             mods : { theme : 'islands', size : 'm' },
-            placeholder : 'price from'
+            placeholder : 'Цена от'
         },
         {
             block : 'input',
             mods : { theme : 'islands', size : 'm' },
-            placeholder : 'to'
+            placeholder : 'до '
         },
         {
             block : 'select',
@@ -61,92 +103,53 @@
 }
 ```
 
-Блоки, использующие в качестве компонента блок `button`, могут быть сгруппированы:
+* [dropdown](../dropdown/dropdown.ru.md) (с модификатором `switcher` в значении `button`)
 
-* [select](../select/select.ru.md);
-* [dropdown](../dropdown/dropdown.ru.md) (с модификатором `dropdown_switcher_button`);
-* [checkbox](../checkbox/checkbox.ru.md) (с модификатором `checkbox_type_button`);
-* [radio](../radio/radio.ru.md) (с модификатором `radio_type_button`).
-
-## Влияние группировки на блоки
-
-### Блок `input`
-
-Для всех сгруппированных блоков `input`, кроме последнего, не отображается правая граница (CSS-свойство `right` устанавливается равным нулю для псевдоэлемента `:before`). У последнего блока группы толщина правой границы равна 1px.
-
-```bemjson
+```js
 {
     block : 'control-group',
     content : [
         {
-            block : 'input',
-            mods : { theme : 'islands', size : 'm', type : 'search' },
-            val : 'First-query',
-            placeholder : 'query'
+            block : 'button',
+            mods : { view : 'action', theme : 'islands', size : 'm' },
+            text : 'Купить сейчас!'
         },
         {
-            block : 'input',
-            mods : { theme : 'islands', size : 'm', type : 'search' },
-            val : 'Second-query',
-            placeholder : 'query'
-        },
-        {
-            block : 'input',
-            mods : { theme : 'islands', size : 'm', type : 'search' },
-            val : 'Another-query',
-            placeholder : 'query'
+            block : 'dropdown',
+            mods : { switcher : 'button', theme : 'islands', size : 'm' },
+            switcher : 'Действующие скидки',
+            popup : 'Воспользуйтесь нашим специальным предложением: «50% скидка на доставку каждого пятого груза».'
         }
     ]
 }
 ```
 
-### Блок `button`
+* [checkbox](../checkbox/checkbox.ru.md) (с модификатором `type` в значении `button`)
 
-Для блоков `button` группировка влияет на скругление углов и наличие правой границы. Внешний вид зависит от положения блока `button` в группе – первый и последний элементы группы визуально отличаются от остальных:
-
-<table>
-    <tr>
-        <th>Положение в группе</th>
-        <th>Скругление углов</th>
-        <th>Правый отступ</th>
-    </tr>
-    <tr>
-        <td>Первый</td>
-        <td>Скруглены левые углы, верхний и нижний</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>Последний</td>
-        <td>Скруглены правые углы, верхний и нижний</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <td>В середине</td>
-        <td>Без скругления углов</td>
-        <td>-</td>
-    </tr>
-</table>
-
-Например:
-
-```bemjson
+```js
 {
     block : 'control-group',
     content : [
         {
-            block : 'button',
-            mods : { theme : 'islands', size : 'm' },
-            text : 'The first element'
+            block : 'checkbox',
+            mods : { theme : 'islands', size : 'm', type : 'button' },
+            name: 'tv',
+            val: '1',
+            text : 'Телевизоры'
         },
         {
-            block : 'button',
-            mods : { theme : 'islands', size : 'm' },
-            text : 'In the middle'
+            block : 'checkbox',
+            mods : { theme : 'islands', size : 'm', type : 'button' },
+            name: 'photo',
+            val: '1',
+            text : 'Фотокамеры'
         },
         {
-            block : 'button',
-            mods : { theme : 'islands', size : 'm' },
-            text : 'The last element'
+            block : 'checkbox',
+            mods : { theme : 'islands', size : 'm', type : 'button' },
+            name: 'book',
+            val: '1',
+            text : 'Электронные книги'
         }
     ]
 }

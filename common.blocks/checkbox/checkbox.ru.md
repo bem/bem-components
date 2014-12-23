@@ -1,241 +1,363 @@
 # checkbox
 
-Блок `checkbox` («чекбокс», «флажок», «переключатель») позволяет управлять параметром выбора с двумя состояниями – включено и выключено. Используется, когда необходимо выбрать от нуля и более вариантов из предложенных.
+Используется для управления параметром выбора с двумя состояниями – «включено» и «выключено».
 
-Блок создает контейнер, содержащий нативный контрол чекбокс (элемент `control`) `<input class="checkbox__control" type="checkbox">`, который скрывается при использовании модификатора [theme](#theme).
+## Обзор блока
 
-Атрибут `autocomplete` принудительно переведен в состояние `off` для обеспечения корректной работы блока.
+### Модификаторы блока
 
-```bemjson
+| Модификатор | Допустимые значения | Способы использования | Описание |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href=#checkboxtype>type</a> | <code>'button'</code> | <code>BEMJSON</code> | Тип чекбокса. |
+| <a href=#checkboxchecked>checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Выбор чекбокса. |
+| <a href=#checkboxdisabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
+| <a href=#checkboxfocused>focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
+| <a href=#hovered>hovered</a> | <code>true</code> | – | Наведение курсором. |
+| <a href=#checkboxtheme>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
+| <a href=#checkboxsize>size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | Размер чекбокса. Используется для чекбоксов с <a href=#checkboxtheme>модификатором theme в значении islands</a>. |
+
+
+### Специализированные поля блока
+
+| Поле | Тип | Описание |
+| ---- | --- | -------- |
+| <a href=#checkboxname>name</a> | <code>String</code> | Уникальное имя чекбокса. |
+| <a href=#checkboxval>val</a> | <code>String</code>, <code>Number</code> | Значение чекбокса, которое будет отправлено на сервер, если он выбран. |
+| <a href=#checkboxtext>text</a> | <code>String</code> | Текст подписи к чекбоксу. |
+| <a href=#checkboxicon>icon</a> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. Используется для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>. |
+| <a href=#checkboxtitle>title</a> | <code>String</code> | Текст всплывающей подсказки. Используется для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>. |
+| <a href=#id>id</a> | <code>String</code> | Уникальный идентификатор чекбокса. |
+| <a href=#tab>tabIndex</a> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
+
+## Описание блока
+
+**Примечание** HTML-атрибут `autocomplete` принудительно переведен в состояние `off` для обеспечения корректной работы блока.
+
+### Модификаторы блока
+
+<a name="checkboxtype"></a>
+
+#### Модификатор `type`
+
+Допустимое значение: `'button'`.
+
+Способ использования: `BEMJSON`.
+
+Используется для изменения внешнего вида блока на кнопочный. В таком случае выбор чекбокса происходит нажатием на [кнопку](../button/button.ru.md).
+
+```js
 {
     block : 'checkbox',
-    text : 'Вариант 1',
-    name: 'name1',
-    val: '1'
-}
-```
-
-## Специализированные поля блока
-
-Список зарезервированных полей входного BEMJSON:
-
-<table>
-    <tr>
-        <th>Поле</th>
-        <th>Тип</th>
-        <th>Описание</th>
-    </tr>
-    <tr>
-        <td>text</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Задает текст чекбоксу.</td>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Имя чекбокса, предназначено для того, чтобы обработчик формы мог его идентифицировать. Преобразуется в HTML-атрибут <code>name</code> вложенного блока <code>input</code>.</td>
-    </tr>
-    <tr>
-        <td>val</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Определяет значение, которое будет отправлено на сервер или получено с помощью клиентских скриптов. На сервер отправляется пара «имя=значение», где имя задается ключом <code>name</code> тега <code><input></code>, а значение — ключом <code>val</code>. Определяет каждый элемент, с тем, чтобы клиентская или серверная программа могла однозначно установить, какой пункт выбрал пользователь.</td>
-    </tr>
-    <tr>
-        <td>icon</td>
-        <td>
-            <code>BEMJSON</code>
-        </td>
-        <td>Иконка, которая отображается с помощью блока <code>icon</code>.</td>
-    </tr>
-</table>
-
-При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле `attrs` в BEMJSON.
-
-##  Модификаторы блока
-
-<a name="theme"></a>
-### Темы `_theme`
-
-Блок представлен в следующих темах:
-
- * simple
- * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
-
-Без указания модификатора темы отображается [нативный](#native) вид контрола.
-
-Наглядно показано на примерах ниже:
-
-<a name="native"></a>
-**default**
-
-```bemjson
-{
-    block : 'checkbox',
-    text : 'Default',
-    name: 'default',
-    val: '1'
-}
-```
-
-**simple**
-
-```bemjson
-{
-    block : 'checkbox',
-    text : 'Тема simple',
-    name: 'simple',
-    val: '2',
-    mods : { theme : 'simple' }
-}
-```
-
-**islands**
-
-```bemjson
-{
-    block : 'checkbox',
-    text : 'Тема islands',
-    name: 'islands',
-    val: '3',
-    mods : { theme : 'islands', size : 'm' }
-}
-```
-<a name="size"></a>
-### Размеры `_size`
-
-Задает размер шрифта.
-
-Модификатор реализован только в теме *islands*.
-
-Доступно два размера реализации блока: **m**, **l**.
-
-<table>
-    <tr>
-        <th>Размер<br>блока</th>
-        <th>Размер<br>шрифта</th>
-        <th>Высота строки<br>элемента <code>__box</code></th>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>13px</td>
-        <td>14px</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>15px</td>
-        <td>17px</td>
-    </tr>
-</table>
-
-```bemjson
-{
-    block : 'checkbox',
-    text : 'размер M',
-    name: 'name2',
-    val: '2',
-    mods : { theme : 'islands', size : 'm' }
-}
-```
-
-```bemjson
-{
-    block : 'checkbox',
-    text : 'размер L',
-    name: 'name3',
-    val: '3',
-    mods : { theme : 'islands', size : 'l' }
-}
-```
-
-### Типы `_type`
-
-Блок может быть представлен в виде кнопки (модификатор `type` в значении `button`). В таком случае выбор элемента происходит нажатием на кнопку.
-
- Такой тип чекбокса приобретает все доступные модификаторы блока [button](..button/button.ru.md).
-
-```bemjson
-{
-    block : 'checkbox',
-    text : 'Кнопка-чекбокс',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
     name: 'button',
+    val: 'val_1',
+    text : 'Конфеты'
+}
+```
+
+<a name="checkboxchecked"></a>
+
+#### Модификатор `checked`
+
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Используется для выбора чекбокса.
+
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'm', checked : true },
+    name: 'name1',
+    val : 'val_1',
+    text : 'Конфеты'
+}
+```
+
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'm', type : 'button', checked : true },
+    name: 'name2',
+    val : 'val_2',
+    text : 'Конфеты'
+}
+```
+
+<a name="checkboxdisabled"></a>
+
+#### Модификатор `disabled`
+
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.
+
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'm', disabled : true },
+    name: 'name1',
+    val : 'val_0',
+    text : 'Конфеты закончились'
+}
+```
+
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
+    name: 'name2',
+    val : 'val_1',
+    text : 'Конфеты закончились'
+}
+```
+
+<a name="checkboxfocused"></a>
+
+#### Модификатор `focused`
+
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Отвечает за наличие фокуса на блоке.
+
+Выставляется автоматически при получении блока фокуса.
+
+```javascript
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', focused : true },
+    text : 'В фокусе'
+}
+```
+
+<a name="hovered"></a>
+
+#### Модификатор `hovered`
+
+Допустимое значение: `true`.
+
+Способы использования: – .
+
+Выставляется блоку автоматически, когда курсор мыши находится в пределах контрола.
+
+<a name="checkboxtheme"></a>
+#### Модификатор `theme`
+
+Допустимое значение: `'islands'`.
+
+Способ использования: `BEMJSON`.
+
+Отвечает за стилевое оформление блока.
+
+Необходимо использовать с модификатором <a href="#checkboxsize">size</a>.
+
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'm' },
+    name: 'islands',
+    val: 'val_3',
+    text : 'Тема islands'
+}
+```
+
+<a name="checkboxsize"></a>
+
+#### Модификатор `size`
+
+Допустимые значения для темы `islands`: `'m'`, `'l'`.
+
+Способ использования: `BEMJSON`.
+
+Задает размер блока.
+
+Необходимо использовать с модификатором <a href="#checkboxtheme">theme</a> в значении `islands`.
+
+**m**
+
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'm' },
+    name: 'name1',
+    val: 'val_1',
+    text : 'Размер m'
+}
+```
+
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name: 'name1',
+    val: 'val_1',
+    text : 'Размер m'
+}
+```
+
+**l**
+
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'l' },
+    name: 'name2',
+    val: 'val_2',
+    text : 'Размер l'
+}
+```
+
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'l', type : 'button' },
+    name: 'name1',
+    val: 'val_1',
+    text : 'Размер l'
+}
+```
+
+### Специализированные поля блока
+
+<a name="checkboxname"></a>
+#### Поле `name`
+
+Тип: `String`.
+
+Определяет уникальное имя чекбокса.
+
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name: 'name1',
+    val: 'val_1',
+    text : 'Конфеты'
+}
+```
+
+<a name="checkboxval"></a>
+
+#### Поле `val`
+
+Тип: `String`, `Number`.
+
+Значение чекбокса, которое будет отправлено на сервер.
+
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name: 'name2',
+    val: 'val_2',
+    text : 'Конфеты'
+}
+```
+
+<a name="checkboxtext"></a>
+#### Поле `text`
+
+Тип: `String`.
+
+Определяет текст подписи к чекбоксу или текст кнопки, если указан <a href="checkboxtype">модификатор type в значении button</a>.
+
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name: 'name1',
     val: '1',
-    mods : { theme : 'islands', size : 's', type : 'button' }
+    text : 'Размер m'
 }
 ```
 
-### Состояния
+<a name="checkboxicon"></a>
+#### Поле `icon`
 
-####  Выбран `_checked`
+Тип: `BEMJSON`.
 
-Модификатор `checked` в значении `true` определяет, что чекбокс отмечен (выбран).
+Определяет иконку, которая отображается с помощью блока [icon](../icon/icon.ru.md).
 
-Модификатор `checked` может быть применен ко всем чекбоксам в группе.
+Используется только для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>.
 
-```bemjson
+```js
 {
     block : 'checkbox',
-    text : 'Отмечен',
+    mods : { theme : 'islands', size : 'm', type : 'button', checked : true },
     name: 'name1',
     val : 1,
-    mods : { theme : 'islands', size : 'm', checked : true }
+    text : 'Поделиться',
+    icon : {
+        block : 'icon',
+        mods : { social : 'twitter' }
+    }
 }
 ```
 
-```bemjson
+<a name="checkboxtitle"></a>
+#### Поле `title`
+
+Тип: `String`.
+
+Определяет содержание всплывающей подсказки. Вид такой подсказки зависит от браузера, настроек операционной системы и не может быть изменен с помощью HTML-кода или стилей.
+
+Используется только для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>.
+
+```js
 {
     block : 'checkbox',
-    text : 'Отмечен',
-    name: 'name2',
-    val : 2,
-    mods : { theme : 'islands', size : 'm', type : 'button', checked : true }
-}
-```
-#### Неактивен `_disabled`
-
-В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу `Tab`, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.
-
-```bemjson
-{
-    block : 'checkbox',
-    text : 'Неактивен',
+    mods : { theme : 'islands', size : 'm', type : 'button', checked : true },
     name: 'name1',
     val : 1,
-    mods : { theme : 'islands', size : 'm', disabled : true }
+    text : 'Поделиться',
+    title : 'Кнопка выбора социальной сети',
+    icon : {
+        block : 'icon',
+        mods : { social : 'twitter' }
+    }
 }
 ```
 
-```bemjson
+
+<a name="id"></a>
+
+#### Поле `id`
+
+Тип: `String`.
+
+Определяет уникальный идентификатор чекбокса.
+
+```js
 {
     block : 'checkbox',
-    text : 'Неактивен',
-    name: 'name2',
-    val : 2,
-    mods : { theme : 'islands', size : 'm', type : 'button', disabled : true }
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name: 'name1',
+    val: '1',
+    text : 'Конфеты',
+    id : 'checkbox-id'
 }
 ```
 
-#### В фокусе `_focused`
+<a name="tab"></a>
 
-Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
+#### Поле `tabIndex`
 
-Чекбокс, реализованный с помощью кнопки, при получении модификатора `focused`, приобретает желтую тень.
+Тип: `Number`.
 
-## Элементы блока
+Определяет порядок получения фокуса при переходе между контролами с помощью клавиши `Tab`.
 
-### `__box`
-
-Элемент `box` служит для отрисовки чекбокса, нативный чекбокс скрыт.
-
-Добавляется блоку на уровне шаблонизатора.
-
-### Контрол `__control`
-
-Элемент `control` служит для использования функциональности нативного контрола чекбокса.
-
-Добавляется блоку на уровне шаблонизатора.
+```js
+{
+    block : 'checkbox',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name: 'name1',
+    val: '1',
+    text : 'Конфеты',
+    tabIndex : 3
+}
+```

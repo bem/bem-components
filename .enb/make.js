@@ -1,4 +1,5 @@
 var DEFAULT_LANGS = ['ru', 'en'],
+    BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     fs = require('fs'),
     path = require('path'),
     naming = require('bem-naming'),
@@ -161,7 +162,7 @@ module.exports = function(config) {
                 }],
                 [mergeFiles, {
                     target : '?.pre.js',
-                    sources : ['?.browser.bemhtml.js', '?.browser.js']
+                    sources : [BEM_TEMPLATE_ENGINE === 'BH'? '?.browser.bh.js' : '?.browser.bemhtml.js', '?.browser.js']
                 }],
                 [ym, {
                     source : '?.pre.js',
@@ -191,39 +192,45 @@ module.exports = function(config) {
                 }]
             ]);
 
-            // Client BEMHTML
+            // Client Template Engine
             nodeConfig.addTechs([
                 [depsByTechToBemdecl, {
-                    target : '?.bemhtml.bemdecl.js',
+                    target : '?.template.bemdecl.js',
                     sourceTech : 'js',
                     destTech : 'bemhtml'
                 }],
                 [deps, {
-                    target : '?.bemhtml.deps.js',
-                    bemdeclFile : '?.bemhtml.bemdecl.js'
+                    target : '?.template.deps.js',
+                    bemdeclFile : '?.template.bemdecl.js'
                 }],
                 [files, {
-                    depsFile : '?.bemhtml.deps.js',
-                    filesTarget : '?.bemhtml.files',
-                    dirsTarget : '?.bemhtml.dirs'
+                    depsFile : '?.template.deps.js',
+                    filesTarget : '?.template.files',
+                    dirsTarget : '?.template.dirs'
                 }],
-                [bemhtml, {
+                BEM_TEMPLATE_ENGINE === 'BH'? [bhYm, {
+                    target : '?.browser.bh.js',
+                    filesTarget : '?.template.files',
+                    jsAttrName : 'data-bem',
+                    jsAttrScheme : 'json',
+                    mimic : 'BEMHTML'
+                }] : [bemhtml, {
                     target : '?.browser.bemhtml.js',
-                    filesTarget : '?.bemhtml.files',
+                    filesTarget : '?.template.files',
                     devMode : false
                 }]
             ]);
 
-            // Template techs
-            nodeConfig.addTechs([
-                [bemhtml],
-                [bh, { jsAttrName : 'data-bem', jsAttrScheme : 'json' }]
-            ]);
-
             // Build htmls
-            nodeConfig.addTechs([
-                [html],
-                [bhHtml, { target : '?.bh.html' }]
+            nodeConfig.addTechs(BEM_TEMPLATE_ENGINE === 'BH'? [
+                [bh, {
+                    jsAttrName : 'data-bem',
+                    jsAttrScheme : 'json'
+                }],
+                [bhHtml]
+            ] : [
+                [bemhtml, { devMode : false }],
+                [html]
             ]);
 
             langs.forEach(function(lang) {
@@ -234,7 +241,7 @@ module.exports = function(config) {
             });
 
             nodeConfig.addTargets([
-                '_?.css', '_?.js', '?.html', '?.bh.html'
+                '_?.css', '_?.js', '?.html'
             ]);
         });
 

@@ -26,7 +26,7 @@ module.exports = function(bh) {
                     val : option.val,
                     text : option.text,
                     title : option.title,
-                    tabIndex : option.tabIndex,
+                    tabIndex : option.tabIndex || json.tabIndex,
                     icon : option.icon
                 }
             ];

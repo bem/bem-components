@@ -245,7 +245,7 @@ $ npm run lint
 
 ### How to contribute
 
-Look [the contiribution guide](/CONTRIBUTION.md).
+Check the contribution details at the [Contribution](/CONTRIBUTION.md) page.
 
 <a name="modlar-tests"></a>
 ### Modular testing

@@ -1,289 +1,451 @@
 # radio-group
 
-Блок `radio-group` служит для создания группы зависимых переключателей, реализованных блоком [radio](../radio/radio.ru.md). Блок позволяет пользователю выбрать только одну опцию (пункт) из предопределенного набора (группы).
+Используется для отображения группы однотипных переключателей, реализованных блоком [radio](../radio/radio.ru.md).
 
-Блок `radio-group` преобразуется в  HTML-элемент с тегом `<span>` – контейнером, содержащим группу переключателей.
+## Обзор блока
 
-## Специализированные поля блока
+### Модификаторы блока
 
-Список зарезервированных полей входного BEMJSON:
+| Модификатор | Допустимые значения | Способы использования | Описание |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#type">type</a> | <code>'button'</code>, <code>'line'</code> | <code>BEMJSON</code> | Тип группы радиопереключателей. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
+| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
+| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
+| <a href="#size">size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | Размер радиопереключателей в группе. Используется только для радиопереключателей с <a href="#theme">модификатором theme в значении islands</a>. |
 
-<table>
-    <tr>
-        <th>Поле</th>
-        <th>Тип</th>
-        <th>Описание</th>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td><code>String</code></td>
-        <td>Имя радиогруппы. Преобразуется в HTML-атрибут <code>name</code> вложенного блока <code>input</code>.</td>
-    </tr>
-    <tr>
-        <td>options</td>
-        <td><code>Array</code></td>
-        <td>Массив пар значений <code>text=val</code>, которые соответствуют одному радиопереключателю. На сервер отправляется пара <code>name=val</code>, где имя группы радиопереключателей задается ключом <code>name</code>, а значение каждого радипереключателя — ключом <code>val</code>.
-            <br>Модификатор <code>disabled</code> блока <code>radio</code> может быть передан радиопереключателю из группы.</td>
-    </tr>
-</table>
+### Специализированные поля блока
 
-При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле `attrs` в BEMJSON.
+| Поле | Тип | Описание |
+| ---- | --- | -------- |
+| <a href="#name">name</a> | <code>String</code> | Уникальное имя блока. |
+| <a href="#val">val</a> | <code>String</code>, <code>Number</code> | Значение выбранного радиопереключателя. |
+| <a href="#opt">options</a> | <code>Array</code> | Набор значений для каждого радиопереключателя группы. Каждому <a href="../..radio/radio.ru.md#type">типу радиопереключателя</a> соответствует разный <a href="#optset">набор значений</a>. |
 
-## Модификаторы блока
+## Обзор блока
 
-### Темы `_theme`
+Блок `radio-group` позволяет управлять внешним видом и состоянием вложенных радиопереключателей и выбирать только один пункт из предопределенного списка.
 
-Блок представлен в следующих темах:
+### Модификаторы блока
 
- * simple
- * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
+<a name="type"></a>
 
-Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
+#### Модификатор `type`
 
-Наглядно показано на примерах ниже:
+Допустимые значения: `'button'`, `'line'`.
 
-<a name="native"></a>
-**default**
+Способ использования: `BEMJSON`.
 
-```bemjson
-{
-    block : 'radio-group',
-    name : 'radio-default',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
+<a name="type-button"></a>
 
-**simple**
+##### Кнопочный радиопереключатель (модификатор `type` в значении `button`)
 
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'simple' },
-    name : 'radio-simple',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
+Позволяет реализовать блок `radio-group` с помощью радиопереключателей с типом [button](../radio/radio.ru.md/#type). Все радиопереключатели группы в данном случае всегда располагаются в линию.
 
-**islands**
-
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'islands', size : 'm' },
-    name : 'radio-islands',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-### Размеры `_size`
-
-Реализован только в теме `islands`.
-
-Модификатор `size` устанавливает размер переключателей для всех типов радиогруппы.
-
-В зависимости от значения модификатора [`type`](#types) доступны следующие размеры реализации блока:
-
-<table>
-    <tr>
-        <th>Размер</th>
-        <th>Обычная радиогруппа</th>
-        <th>Кнопочная радиогруппа
-            <br>(<code>radio-group_type_button</code>)</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>–</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>–</td>
-        <td>+</td>
-</table>
-
-Наглядно показано на примерах ниже:
-
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'islands', size : 's', type : 'button' },
-    name : 'Small',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'islands', size : 'm', type : 'button' },
-    name : 'Medium',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'islands', size : 'l', type : 'button' },
-    name : 'Large',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'islands', size : 'xl', type : 'button' },
-    name : 'X-Large',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-<a name="types"></a>
-### Типы `_type`
-
-Доступны следующие значения модификатора `type`:
-
-* `button`. Модификатор `type` в значении `button` позволяет реализовать блок `radio-group` с помощью блока [button](..button/button.ru.md). Все радиопереключатели группы в данном случае всегда располагаются в линию.
-
-```bemjson
+```js
 {
     block : 'radio-group',
     mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'radio-button',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
     ]
 }
 ```
 
-* `line`. Модификатор `type` в значении `line` применяется к радиогруппе для выравнивания переключателей в строку. После каждого радиопереключателя группы, кроме последнего, автоматически добавляется отступ справа. Размер отступа зависит от значения модификатора `size`. Реализован только в теме `islands`.
+<a name="type-line"></a>
 
-```bemjson
+##### Выравнивание (модификатор `type` в значении `line`)
+
+Применяется к группе радиопереключателей для выравнивания их в линию.
+
+```js
 {
     block : 'radio-group',
     mods : { theme : 'islands', size : 'm', type : 'line' },
     name : 'radio-line',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
     ]
 }
 ```
 
-### Режимы `_mode`
+<a name="disabled"></a>
 
-Модификатор `mode` в значении `radio-check` реализован только для радиогруппы, созданной на основе блока `button` (`radio-group_type_button`). Данный режим позволяет выбрать только один элемент из группы или оставить ее без выбранных элементов. При щелчке мышью по кнопке, ее состояние меняется на противоположное.
+#### Модификатор `disabled`
 
-```bemjson
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.
+
+Модификатор может быть установлен:
+
+* всей группе радиопереключателей
+
+
+```js
 {
     block : 'radio-group',
-    name : 'button-radio-check',
-    mods : { theme : 'islands', size : 'm', type : 'button', mode : 'radio-check' },
+    mods : { theme : 'islands', size : 'm', disabled : true },
+    name : 'radio',
+    val : 2,
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
     ]
 }
 ```
 
-### Состояния блока
-
-#### Неактивен `_disabled`
-
-В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу `Tab`, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.
-
-При установке модификатора `disabled` для группы всем радиопереключателям также устанавливается модификатор `disabled`. Как следствие, для них не будут:
-
-* устанавливаться модификаторы состояния `hovered`, `pressed` и `focused`;
-* изменяться значения модификатора `checked`.
-
-```bemjson
+```js
 {
     block : 'radio-group',
     mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
     name : 'radio-button',
     val : 2,
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
     ]
 }
 ```
 
-```bemjson
+* отдельному радиопереключателю в группе
+
+```js
 {
     block : 'radio-group',
-    mods : { theme : 'islands', size : 'm', disabled : true },
-    name : 'radio-button',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-line',
     val : 2,
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'Футбол', disabled : true },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
     ]
 }
 ```
 
-Модификатор `disabled` может быть назначен отдельным переключателям в группе.
-
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'islands', size : 'm', type : 'line' },
-    name : 'radio-line',
-    options : [
-        { val : 1, text : 'first', disabled : true },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
-    ]
-}
-```
-
-```bemjson
+```js
 {
     block : 'radio-group',
     mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'radio-line',
+    val : 2,
     options : [
-        { val : 1, text : 'first', disabled : true },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
+        { val : 1, text : 'Футбол', disabled : true },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
     ]
 }
 ```
 
-#### В фокусе `_focused`
+<a name="focused"></a>
 
-Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
+#### Модификатор `focused`
+
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Отвечает за наличие фокуса на блоке.
+
+Выставляется автоматически при получении блоком фокуса.
+
+```javascript
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button', focused : true },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
+    ]
+}
+```
+
+```javascript
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', focused : true },
+    name : 'radio',
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
+    ]
+}
+```
+
+<a name="theme"></a>
+
+#### Модификатор `theme`
+
+Допустимое значение: `'islands'`.
+
+Способ использования: `BEMJSON`.
+
+Отвечает за стилевое оформление блока.
+
+Необходимо использовать с модификатором <a href="#size">size</a>.
+
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
+    ]
+}
+```
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
+    ]
+}
+```
+
+<a name="size"></a>
+
+#### Модификатор `size`
+
+Допустимые значения для темы `islands`: `'m'`, `'l'`.
+
+Способ использования: `BEMJSON`.
+
+Задает размер всем радиопереключателям в группе.
+
+Необходимо использовать с модификатором <a href="#theme">theme</a> в значении `islands`.
+
+**m**
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
+    ]
+}
+```
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
+    ]
+}
+```
+
+**l**
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'l' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
+    ]
+}
+```
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'l', type : 'button' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
+    ]
+}
+```
+
+### Специализированные поля блока
+
+<a name="name"></a>
+#### Поле `name`
+
+Тип: `String`.
+
+Определяет имя группы радиопереключателей.
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
+    ]
+}
+```
+
+<a name="val"></a>
+#### Поле `val`
+
+Тип: `String`, `Number`.
+
+Опеределяет значение выбранного радиопереключателя.
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
+    ]
+}
+```
+
+Если поле `val` не задано, то по умолчанию выбирается первый радиопереключатель из группы.
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-button',
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол' }
+    ]
+}
+```
+
+<a name="opt"></a>
+
+#### Поле `options`
+
+Тип: `Array`.
+
+Определяет набор значений для каждого радиопереключателя группы.
+
+<a name="optset"></a>
+Каждому <a href="../radio/radio.ru.md">типу радиопереключателей</a> соответствует разный **набор значений**.
+
+| Поле | Тип | Описание |
+| ---- | --- | -------- |
+| <code>val</code> | <code>String</code>, <code>Number</code> | Значение радиопереключателя, которое будет отправлено на сервер, если он выбран. |
+| <code>text</code> | <code>String</code> | Текст подписи к радиопереключателю. |
+| <code>disabled</code> | <code>Boolean</code> | Неактивное состояние. |
+| <code>icon</code> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. Используется только с <a href="#type">модификатором type в значении button</a>. |
+| <code>title</code> | <code>String</code> | Текст всплывающей подсказки. Используется только с <a href="#type">модификатором type в значении button</a>. |
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол', disabled : true }
+    ]
+}
+```
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 3,
+    options : [
+        {
+            val : 1,
+            text : 'Футбол',
+            title : 'Просмотр турнирной таблицы и состава команд.'
+        },
+        {
+            val : 2,
+            disabled : true,
+            text : 'Баскетбол',
+            title : 'Просмотр турнирной таблицы и состава команд.'
+        },
+        {
+            val : 3,
+            disabled : true,
+            text : 'Гандбол',
+            title : 'Просмотр турнирной таблицы и состава команд.'
+        }
+    ]
+}
+```
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 1,
+    options : [
+        {
+            val : 1,
+            text : 'Новости по футболу',
+            title : 'Подписаться на новости в группе',
+            icon : {
+                block : 'icon',
+                mods : { social : 'twitter' }
+            },
+        },
+        {
+            val : 2,
+            disabled : true,
+            text : 'Новости по гандболу',
+            title : 'Подписаться на новости в группе',
+            icon : {
+                block : 'icon',
+                mods : { social : 'twitter' }
+            }
+        }
+    ]
+}
+```

@@ -16,7 +16,11 @@ provide(Select.decl({ modName : 'mode', modVal : 'radio' }, /** @lends select.pr
     },
 
     _updateButton : function() {
-        this._button.setText(this._getCheckedItems()[0].getText());
+        var checkedItems = this._getCheckedItems();
+
+        this._button.setText(checkedItems.length?
+            checkedItems[0].getText() :
+            (this.params.text || this._menu.getItems()[0].getText()));
     },
 
     _onMenuItemClick : function(_, data) {

@@ -2,26 +2,7 @@ module.exports = function(bh) {
 
     bh.match('select__menu', function(ctx, json) {
         var mods = ctx.mods(),
-            select = ctx.tParam('select'),
-            optionToMenuItem = function(option) {
-                var res = {
-                        block : 'menu-item',
-                        mods : { disabled : mods.disabled || option.disabled },
-                        val : option.val,
-                        js : { checkedText : option.checkedText },
-                        content : option.text
-                    };
-
-                if(option.icon) {
-                    res.js.text = option.text;
-                    res.content = [
-                        option.icon,
-                        res.content
-                    ];
-                }
-
-                return res;
-            };
+            select = ctx.tParam('select');
 
         return {
             block : 'menu',
@@ -34,17 +15,15 @@ module.exports = function(bh) {
             },
             val : select.val,
             attrs : { tabindex : null },
-            content : select.options.map(function(optionOrGroup) {
-                return optionOrGroup.group?
-                    {
-                        elem : 'group',
-                        mods : { 'has-title' : !!optionOrGroup.title },
-                        title : optionOrGroup.title,
-                        content : optionOrGroup.group.map(optionToMenuItem)
-                    } :
-                    optionToMenuItem(optionOrGroup);
-            })
+            content : {
+                elem : 'menu-content',
+                block : 'select',
+                mods : {
+                    disabled : mods.disabled,
+                    theme : mods.theme
+                },
+                options : select.options
+            }
         };
     });
-
 };

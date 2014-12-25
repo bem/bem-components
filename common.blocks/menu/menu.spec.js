@@ -196,6 +196,13 @@ describe('menu', function() {
                 .domElem.html().should.be.equal('content');
         });
     });
+
+    describe('getItems()', function() {
+        it('must return items array', function() {
+            menu.getItems().length.should.be.eql(4);
+            menu.getItems()[3].domElem.text().should.be.eql('item 4');
+        });
+    });
 });
 
 provide();

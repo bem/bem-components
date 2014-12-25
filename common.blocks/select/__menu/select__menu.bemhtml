@@ -1,25 +1,6 @@
 block('select').elem('menu')(
     def()(function() {
-        var mods = this.mods,
-            optionToMenuItem = function(option) {
-                var res = {
-                        block : 'menu-item',
-                        mods : { disabled : mods.disabled || option.disabled },
-                        val : option.val,
-                        js : { checkedText : option.checkedText },
-                        content : option.text
-                    };
-
-                if(option.icon) {
-                    res.js.text = option.text;
-                    res.content = [
-                        option.icon,
-                        res.content
-                    ];
-                }
-
-                return res;
-            };
+        var mods = this.mods;
 
         applyCtx({
             block : 'menu',
@@ -32,16 +13,15 @@ block('select').elem('menu')(
             },
             val : this._select.val,
             attrs : { tabindex : undefined },
-            content : this._select.options.map(function(optionOrGroup) {
-                return optionOrGroup.group?
-                    {
-                        elem : 'group',
-                        mods : { 'has-title' : !!optionOrGroup.title },
-                        title : optionOrGroup.title,
-                        content : optionOrGroup.group.map(optionToMenuItem)
-                    } :
-                    optionToMenuItem(optionOrGroup);
-            })
+            content : {
+                elem : 'menu-content',
+                block : 'select',
+                mods : {
+                    disabled : mods.disabled,
+                    theme : mods.theme
+                },
+                options : this._select.options
+            }
         });
     })
 );

@@ -1,0 +1,40 @@
+block('select').elem('menu-content')(
+    def()(function() {
+        var mods = this.mods,
+            optionToMenuItem = function(option) {
+                var res = {
+                        block : 'menu-item',
+                        mods : {
+                            checked : option.checked,
+                            disabled : mods.disabled || option.disabled,
+                            theme : mods.theme
+                        },
+                        val : option.val,
+                        js : { checkedText : option.checkedText },
+                        content : option.text
+                    };
+
+                if(option.icon) {
+                    res.js.text = option.text;
+                    res.content = [
+                        option.icon,
+                        res.content
+                    ];
+                }
+
+                return res;
+            };
+
+        applyCtx(this.ctx.options.map(function(optionOrGroup) {
+            return optionOrGroup.group?
+                {
+                    block : 'menu',
+                    elem : 'group',
+                    mods : { 'has-title' : !!optionOrGroup.title },
+                    title : optionOrGroup.title,
+                    content : optionOrGroup.group.map(optionToMenuItem)
+                } :
+                optionToMenuItem(optionOrGroup);
+        }));
+    })
+);

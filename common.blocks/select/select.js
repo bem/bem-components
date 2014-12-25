@@ -4,8 +4,8 @@
 
 modules.define(
     'select',
-    ['i-bem__dom', 'popup', 'menu', 'button', 'jquery', 'dom', 'keyboard__codes', 'strings__escape'],
-    function(provide, BEMDOM, Popup, Menu, Button, $, dom, keyCodes, escape) {
+    ['i-bem__dom', 'BEMHTML', 'popup', 'menu', 'button', 'jquery', 'dom', 'keyboard__codes', 'strings__escape'],
+    function(provide, BEMDOM, BEMHTML, Popup, Menu, Button, $, dom, keyCodes, escape) {
 
 /**
  * @exports
@@ -132,6 +132,22 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
         return {
             optionsMaxHeight : Number.POSITIVE_INFINITY
         };
+    },
+
+    /**
+     * Set select options list
+     * @param {Array.<Object>} options
+     * @returns {select} this
+     */
+    setOptions : function(options) {
+        this._menu.setContent(BEMHTML.apply({
+            block : 'select',
+            elem : 'menu-content',
+            mods : { theme : this.getMod('theme') },
+            options : options
+        }));
+
+        return this;
     },
 
     _focus : function() {

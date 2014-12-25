@@ -193,6 +193,27 @@ describe('select', function() {
             select.getName().should.be.equal('select1');
         });
     });
+
+    describe('setOptions()', function() {
+        it('should set new options', function() {
+            select.setOptions([{ val : 3, text : 'newOption' }]);
+            
+            menu.getItems().length.should.be.eql(1);
+            menu.getItems()[0].domElem.text().should.be.eql('newOption');
+        });
+
+        it('should set options with group', function() {
+            select.setOptions([{
+                group : [
+                    { val : 4, text : 'fourth' },
+                    { val : 5, text : 'fifth', checked : true },
+                    { val : 6, text : 'sixth', disabled : true }
+                ]
+            }]);
+
+            menu.getItems()[1].domElem.text().should.be.eql('fifth');
+        });
+    });
 });
 
 provide();

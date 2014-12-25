@@ -1,176 +1,221 @@
 # link
 
-Блок `link` используется для создания различных типов ссылок и предоставляет возможность изменять их состояние, внешний вид и поведение.
+Используется для создания различных типов ссылок.
 
-## Атрибуты блока
+## Обзор блока
 
-Список атрибутов блока, которые могут быть заданы в одноименных полях входного BEMJSON:
+### Модификаторы блока
 
-<table>
-    <tr>
-        <th>Атрибут</th>
-        <th>Тип</th>
-        <th>Описание</th>
-    </tr>
-    <tr>
-        <td>url</td>
-        <td><code>String|BEMJSON</code></td>
-        <td>Адрес ссылки. Если указан, значение <code>url</code> становится HTML-атрибут <code>href</code>.</td>
-    </tr>
-    <tr>
-        <td>title</td>
-        <td><code>String</code></td>
-        <td>Текст всплывающей подсказки. Устанавливает ссылке HTML-атрибут <code>title</code>.</td>
-    </tr>
-    <tr>
-        <td>target</td>
-        <td><code>String</code></td>
-        <td>Целевое окно. В значении <code>blank</code> открывает адрес ссылки в новом окне.
-            <br>Устанавливает ссылке HTML-атрибут <code>target</code>.</td>
-    </tr>
-    <tr>
-        <td>tabIndex</td>
-        <td><code>Number</code></td>
-        <td> Индекс, задающий последовательность перехода между элементами страницы при нажатии на <code>Tab</code>. Преобразуется в на HTML-атрибут <code>tabindex</code>.</td>
-    </tr>
-</table>
+| Модификатор | Допустимые значения | Способы использования | Описание |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#pseudo">pseudo</a> | <code>true</code> | <code>BEMJSON</code> | Псевдоссылка. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
+| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
+| <a href="#theme">theme</a> | <code>islands</code> | <code>BEMJSON</code> | Стилевое оформление. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер блока. Используется только с модификатором <a href="#theme">theme в значении islands</a>.|
 
+### Специализированные поля блока
 
-## Модификаторы блока
+| Поле | Тип | Описание |
+| ---- | --- | -------- |
+| <a href="#url">url</a> | <code>String</code> | Адрес ссылки. |
+| <a href="#title">title</a> | <code>String</code> | Текст всплывающей подсказки. |
+| <a href="#target">target</a> | <code>String</code> | Поведение ссылки. |
+| <a href="#tabIndex">tabIndex</a> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
 
-### Темы `_theme`
+## Описание блока
 
- * simple
- * islands
+Блок `link` предоставляет возможность изменять состояние ссылок, их поведение и внешний вид.
 
-Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
+### Модификаторы блока
 
-Наглядно показано на примерах ниже:
+<a name="pseudo"></a>
 
-<a namme="native"></a>
-**default**
-```bemjson
+#### Модификатор `pseudo`
+
+Допустимое значение: `true`.
+
+Способ использования: `BEMJSON`.
+
+Отличается от обычной ссылки тем, что при клике по ссылке переход на новую страницу не осуществляется.
+
+```javascript
 {
     block : 'link',
-    url : '#',
-    content : 'link'
+    mods : { theme : 'islands', size : 'm', pseudo : true },
+    content : 'Показать ответ'
 }
 ```
 
-**simple**
+<a name="disabled"></a>
 
-```bemjson
+#### Модификатор `disabled`
+
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.
+
+```js
 {
     block : 'link',
-    mods : { theme : 'simple' },
-    url : '#',
-    content : 'link'
+    mods : { theme : 'islands', size : 'm' , disabled : true },
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
-**islands**
+<a name="focused"></a>
 
-```bemjson
+#### Модификатор `focused`
+
+Допустимое значение: `true`
+
+Способы использования: `BEMJSON`, `JS`.
+
+Выставляется автоматически при получении блока фокуса.
+
+Отвечает за наличие фокуса на блоке.
+
+```javascript
 {
     block : 'link',
-    mods : { theme : 'islands' },
-    url : '#',
-    content : 'link'
+    mods : { theme : 'islands', size : 'm' , focused : true },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
+
+<a name="theme"></a>
+
+#### Модификатор `theme`
+
+Допустимое значение: `islands`.
+
+Способ использования: `BEMJSON`.
+
+Отвечает за стилевое оформление блока.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size : 'm' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
 <a name="size"></a>
-### Размеры ссылок `_size`
 
-Реализован только в теме `islands`.
+#### Модификатор `size`
 
-Доступно четыре размера реализации блока: **s**, **m**, **l**, **xl**.
+Допустимые значения для темы `islands`: `'s'`, `'m'`, `'l'`, `'xl'`.
 
-<table>
-     <tr>
-        <th>Размер ссылки</th>
-        <th>Размер шрифта</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>13px</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>13px</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>15px</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>18px</td>
-    </tr>
-</table>
+Способ использования: `BEMJSON`.
 
-```bemjson
+Необходимо использовать с модификатором <a href="#theme">theme</a> в значении `islands`.
+
+**s**
+
+```js
 {
     block : 'link',
-    content : 'Small',
-    mods : { theme : 'islands', size : 's' }
+    mods : { theme : 'islands', size: 's' },
+    placeholder : 'Размер s'
 }
 ```
 
-```bemjson
+**m**
+
+```js
 {
     block : 'link',
-    content : 'Medium',
-    mods : { theme : 'islands', size : 'm' }
+    mods : { theme : 'islands', size: 'm' },
+    placeholder : 'Размер m'
 }
 ```
 
-```bemjson
+**l**
+
+```js
 {
     block : 'link',
-    content : 'Large',
-    mods : { theme : 'islands', size : 'l' }
+    mods : { theme : 'islands', size: 'l' },
+    placeholder : 'Размер l'
 }
 ```
 
-```bemjson
+**xl**
+
+```js
 {
     block : 'link',
-    content : 'X-large',
-    mods : { theme : 'islands', size : 'xl' }
+    mods : { theme : 'islands', size: 'xl' },
+    placeholder : 'Размер xl'
 }
 ```
 
-### Псевдоссылка `_pseudo`
 
-Тип ссылки, по которой не производится переход на новую страницу. Применяется для вызова сценариев.
+### Специализированные поля блока
 
-```bemjson
+<a name="url"></a>
+
+#### Поле `url`
+
+Тип: `String`.
+
+Определяет адрес, по которому осуществляется переход при нажатии на ссылку.
+
+<a name="title"></a>
+
+#### Поле `title`
+
+Тип: `String`.
+
+Определяет содержание всплывающей подсказки. Вид такой подсказки зависит от браузера, настроек операционной системы и не может быть изменен с помощью HTML-кода или стилей.
+
+```js
 {
     block : 'link',
-    mods : { theme : 'islands', pseudo : true },
-    title : 'pseudo mod',
-    content : 'link'
+    mods : { theme : 'islands', size : 'm', pseudo : true },
+    content : 'Показать ответ',
+    title : 'Нажмите на ссылку для получения ответа.'
 }
 ```
 
-### Состояния блока
+<a name="target"></a>
 
-#### Неактивен `_disabled`
+#### Поле `target`
 
-В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу `Tab`, мышью или другими способами. Переход по неактивной ссылке невозможен.
+Тип: `String`.
 
-В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.
+Определяет поведение ссылки. Принимает все допустимые значения HTML-атрибута `target`: `_blank`, `_self` (используется по умолчанию), `_parent`, `_top`.
 
-```bemjson
+```js
 {
     block : 'link',
-    mods : { theme : 'islands', disabled : true },
-    url : '#',
-    content : 'disabled'
+    mods : { theme : 'islands', size : 'm' },
+    url : 'https://bem.info/',
+    content : 'bem.info',
+    target : '_blank'
 }
 ```
 
-#### В фокусе `_focused`
+<a name="tabIndex"></a>
 
-Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
+#### Поле `tabIndex`
+
+Тип: `Number`.
+
+Определяет последовательность перехода между контролами при нажатии на `Tab`.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size : 'm' },
+    url : 'https://bem.info/',
+    content : 'bem.info',
+    tabIndex : 1
+}
+```

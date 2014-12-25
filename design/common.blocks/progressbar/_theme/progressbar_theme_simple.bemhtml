@@ -1,5 +1,5 @@
 block('progressbar').mod('theme', 'simple').content()(function() {
-    return applyCtx([
+    return [
         {
             elem : 'box',
             content : applyNext()
@@ -8,5 +8,5 @@ block('progressbar').mod('theme', 'simple').content()(function() {
             elem : 'text',
             content : this.ctx.value
         }
-    ]);
+    ];
 });

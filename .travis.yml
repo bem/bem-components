@@ -59,6 +59,7 @@ after_success:
         npm install coveralls
         node_modules/.bin/istanbul report lcovonly
         cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
+        sh publish_showcase.sh
       fi
 
 after_failure:

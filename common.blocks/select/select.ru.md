@@ -1,248 +1,416 @@
 # select
 
-Блок `select` («селект») позволяет создать элемент интерфейса в виде раскрывающегося списка, а также список с одним или множественным выбором. Реализация блока основана на блоках [button](../button/button.ru.md), [popup](../popup/popup.ru.md), [menu](../menu/menu.ru.md) и [menu-item](../menu-item/menu-itemru.md). Визуально представлен кнопкой и выпадающим списком с элементами меню. Щелчок по кнопке раскрывает выпадающий список под или над кнопкой в зависимости от ее положения на странице (`{ directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'] }`). Щелчок вне зоны попапа автоматически скрывает его (`{ autoclosable : true }`).
+Используется для создания раскрывающегося списка с возможностью одиночного или множественного выбора.
 
-Раскрывающийся список имеет всего один уровень вложенности и позволяет выбрать:
+## Обзор блока
 
-* только один элемент из списка ([`select_mode_radio`](#radio-select));
-* один, несколько или ни одного элемента из списка ([`select_mode_check`](#multiple-choice));
-* один или ни одного элемента из списка ([`select_mode_radio-check`](#single-choice)).
+### Модификаторы блока
 
-## Специализированные поля блока
+| Модификатор | Допустимые значения | Способы использования | Описание |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#mode">mode</a> | <code>'check'</code>, <code>'radio'</code>, <code>'radio-check'</code> | <code>BEMJSON</code> | Режим выбора пунктов раскрывающегося списка. |
+| <a href="#width">width</a> | <code>'available'</code> | <code>BEMJSON</code> | Ширина кнопки раскрывающегося списка. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
+| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
+| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | Размер блока. |
 
-Список зарезервированных полей входного BEMJSON:
+### Специализированные поля блока
 
-<table>
-    <tr>
-        <th>Поле</th>
-        <th>Тип</th>
-        <th>Описание</th>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Задает имя выпадающего списка.</td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Задает уникальный идентификатор селекта.</td>
-    </tr>
-    <tr>
-        <td>options</td>
-        <td>
-            <code>BEMJSON</code>
-        </td>
-        <td>Задает массив пунктов списка. Каждый пункт имеет обязательный атрибут <code>val</code>, реализованный скрытым элементом <code>control</code>.</td>
-    </tr>
-    <tr>
-        <td>textMaxWidth</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Устанавливает максимальную ширину кнопки селекта. Ширина раскрывающегося списка при этом определяется самым широким текстом пункта или корректируется с помощью стилей.</td>
-    </tr>
-    <tr>
-        <td>optionsMaxHeight</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Устанавливает максимальную высоту выпадающего списка.<br>Если все пункты списка не вмещаются, появляется скролл.<br> Если значение не указано, высота выпадающего списка по умолчанию будет вычисляться в зависимости от количества пунктов.</td>
-    </tr>
-    <tr>
-        <td>text</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Задает значение раскрывающегося списка выбора в случае, если ни один из пунктов не отмечен.
-            <br> Применяется только для селектов с установленным модификатором <code>mode</code> в значении <code>check</code> или <code>radio-check</code>.</td>
-    </tr>
-</table>
+| Поле | Тип | Описание |
+| ---- | --- | -------- |
+| <a href="#name">name</a> | <code>String</code> | Имя раскрывающегося списка. |
+| <a href="#val">val</a> | <code>String</code>, <code>Number</code>, <code>Array</code> | Выбранное значение из списка. Если блоку установлен <a href="#mode-check">модификатор mode в значении check</a>, выбранные значения всегда оформляются в виде массива. |
+| <a href="#text">text</a> | <code>String</code> | Значение, которое отображается в кнопке раскрывающегося списка, в случае, если ни один из пунктов выбран. Используется только для кнопки с <a href="#mode-check">модификатором type в значении check</a> или <a href="#mode-radiocheck">в значении radio-check</a>. |
+| <a href="#options">options</a> | <code>Array</code> | Массив пунктов списка. |
+| <a href="#textmaxwidth">textMaxWidth</a> | <code>Number</code> | Максимальная ширина кнопки раскрывающегося списка. |
+| <a href="#optionsmaxheight">optionsMaxHeight</a> | <code>Number</code> | Максимальная высота выпадающего списка. |
+| <a href="#id">id</a> | <code>String</code> | Уникальный идентификатор раскрывающегося списка. |
+| <a href="#tab">tabIndex</a> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
 
-При необходимости дополнительные HTML-атрибуты блока могут быть заданы в зарезервированном поле `attrs` в BEMJSON.
 
-## Модификаторы блока
+## Описание блока
 
-### Темы `_theme`
+Блок визуально представлен кнопкой и выпадающим списком.
 
-Блок представлен в следующих темах:
+### Модификаторы блока
 
-* simple
-* islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
+<a name="mode"></a>
+#### Модификатор `mode`
 
-Если модификатор `theme` не указан, отображается [кастомная](#custom) реализация контрола без применения стилей.
+Допустимые значения: `'check`, `'radio'`, `'radio-check'`.
 
-Наглядно показано на примерах ниже:
-
-<a name="custom"></a>
-**custom**
-
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'radio' },
-    name : 'select1',
-    val : 2,
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
-    ]
-}
-```
-
-**simple**
-
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'radio', theme : 'simple' },
-    name : 'select1',
-    val : 2,
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
-    ]
-}
-```
-
-**islands**
-
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'radio', theme : 'islands', size : 'm' },
-    name : 'select1',
-    val : 2,
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
-    ]
-}
-```
-
-### Типы `_mode`
+Способ использования: `BEMJSON`.
 
 Обязательный модификатор.
 
-Блок представлен следующими типами:
+<a name="mode-check"></a>
+##### Список с множественным выбором (модификатор `mode` в значении `check`)
 
-<a name="multiple-choice"></a>
-* селект с множественным выбором, который позволяет оставить список без выбранных элементов (`select_mode_check`). При щелчке мышью по пункту списка его состояние меняется на противоположное.
+Позволяет выбрать произвольное количество пунктов в раскрывающемся списке.
 
-```bemjson
+```js
 {
     block : 'select',
     mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select1',
-    text : '—',
     val : [2, 3],
+    text : 'Программа конференции',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
     ]
 }
 ```
 
-<a name="radio-select"></a>
-* меню-переключатель (`select_mode_radio`). Применяется для создания селектов, которые позволяют выбрать только один пункт из списка.
-Для этого типа селекта текст в кнопке устанавливается в зависимости от выбранного элемента. Если элемент не выбран, то по умолчанию выбирается первый пункт из списка.
+<a name="mode-radio"></a>
+##### Список с одиночным обязательным выбором (модификатор `mode` в значении `radio`)
 
-```bemjson
+Позволяет создать раскрывающийся список, в котором выбран ровно один пункт.
+
+Если пункт не выбран, то по умолчанию выбирается первое значение из списка.
+
+```js
 {
     block : 'select',
     mods : { mode : 'radio', theme : 'islands', size : 'm' },
     name : 'select2',
     val : 2,
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
     ]
 }
 ```
 
-<a name="single-choice"></a>
-* селект с одиночным выбором, который позволяет оставить список без выбранных элементов (`select_mode_radio-check`). При щелчке мышью по пункту списка, его состояние меняется на противоположное.
+<a name="mode-radiocheck"></a>
+##### Список с одиночным необязательным выбором (модификатор `mode` в значении `radio-check`)
 
-```bemjson
+Модификатор `mode` в значении `radio-check`, так же как и <a href="#mode-radio">модификатор mode в значении radio</a>, позволяет выбрать ровно один пункт из выпадающего списка. Принципиальное отличие в том, что в значении `radio-check` есть возможность оставить список без выбранных пунктов.
+
+```js
 {
     block : 'select',
     mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
     name : 'select3',
-    text : '—',
     val : 2,
+    text : '—',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
     ]
 }
 ```
 
-### Состояния блока
+<a name="width"></a>
+#### Модификатор `width`
 
-#### Ширина кнопки селекта `_width`
+Допустимое значение: `'available'`.
 
-Модификатор `width` в значении `available` растягивает кнопку селекта по ширине в зависимости от длины выбранного пункта.
+Способ использования: `BEMJSON`.
 
-```bemjson
+Позволяет растягивать кнопку раскрывающегося списка на максимально допустимую ширину.
+
+```js
 {
     block : 'select',
     mods : { mode : 'radio-check', theme : 'islands', size : 'm', width : 'available' },
     name : 'select4',
+    val : 2,
     text : '—',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second second second second second second second second' },
-        { val : 3, text : 'third' }
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс наоборот: вы пишете БЭМ-проект, а мы подсказываем' },
+        { val : 3, text : 'Круглый стол' }
     ]
 }
 ```
 
-#### В фокусе `_focused`
+<a name="disabled"></a>
 
-Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
+#### Модификатор `disabled`
 
+Допустимое значение: `true`.
 
-## Элементы блока
+Способы использования: `BEMJSON`, `JS`.
 
-### Кнопка `__button`
+Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.
 
-Селект визуально представлен кнопкой (блок [button](../button/button.ru.md)), которая содержит иконку `<i>`, реализованную блоком [icon](../icon/icon.ru.md) с примиксованным элементом `tick`. Так как иконка является частью кнопки селекта, ее размер устанавливается размером кнопки. Щелчок по кнопке раскрывает список выбора.
+Модификатор может быть установлен:
 
-Селект реализован с помощью блока [button](../button/button.ru.md), поэтому ему можно задавать следующие модификаторы:
+* всему блоку
 
-* `theme`
-* `size`
-* `focused`
-* `checked`
-* `disabled`
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm', disabled : true },
+    name : 'select4',
+    val : 2,
+    text : '—',
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс наоборот: вы пишете БЭМ-проект, а мы подсказываем' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
 
-## Меню `__menu`
+* отдельному пункту списка
 
-Элемент `menu` позволяет управлять пунктами списка выбора:
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
+    name : 'select4',
+    val : 2,
+    text : '—',
+    options : [
+        { val : 1, text : 'Доклад', disabled : true },
+        { val : 2, text : 'Мастер-класс наоборот: вы пишете БЭМ-проект, а мы подсказываем' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
 
-* `val` – значение, возвращаемое пунктом из списка, если он выбран. Обязательный атрибут. Может содержать уникальный идентификатор `{ val : id }`.
-* `text` – название пункта в списке.
-* `checked` – присваивается пункту из списка, если он выбран. `{ checked : true }` – пункт выбран.
-* `checkedText` – текст, отображаемый вместо названия пункта в кнопке селекта. Задается только для блока `select` с возможностью [множественного выбора](#multiple-choice).
-* `icon` – графический элемент (иконка).
+<a name="focused"></a>
 
-```bemjson
+#### Модификатор `focused`
+
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Выставляется автоматически при получении блока фокуса.
+
+Отвечает за наличие фокуса на блоке.
+
+```javascript
+{
+    block : 'select',
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm', focused : true },
+    name : 'select4',
+    val : 2,
+    text : '—',
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
+
+<a name="theme"></a>
+#### Модификатор `theme`
+
+Допустимое значение: `'islands'`.
+
+Способ использования: `BEMJSON`.
+
+Модификатор отвечает за стилевое оформление блока.
+
+Необходимо использовать с модификатором <a href="#checkboxsize">size</a>.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    val : 2,
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
+
+<a name="size"></a>
+#### Модификатор `size`
+
+Допустимые значения: `'s'`, `'m'`, `'l'`, `'xl'`.
+
+Способ использования: `BEMJSON`.
+
+Задает размер блоку.
+
+Необходимо использовать с модификатором <a href="#theme">theme</a> в значении `islands`.
+
+**s**
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 's' },
+    name : 'select1',
+    val : 2,
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
+
+**m**
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    val : 2,
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
+
+**l**
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'l' },
+    name : 'select1',
+    val : 2,
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
+
+**xl**
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'xl' },
+    name : 'select1',
+    val : 2,
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
+
+### Специализированные поля блока
+
+<a name="name"></a>
+
+#### Поле `name`
+
+Тип: `String`.
+
+Определяет имя выпадающего списка.
+
+<a name="val"></a>
+#### Поля `val`
+
+Тип: `String`, `Number`, `Array` (если указан [модификатор mode в значении check](#mode-check)).
+
+Определяет:
+
+* выбранный пункт списка.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    val : 2,
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
+
+* список выбранных пунктов списка, если блоку установлен [модификатор mode в значении check](#mode-check), и используется тип поля `Array`.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
+    name : 'select1',
+    val : [2, 3],
+    text : 'Программа конференции',
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
+
+<a name="text"></a>
+#### Поле `text`
+
+Тип: `String`.
+
+Определяет значение, которое отображается в кнопке раскрывающегося списка, в случае, если ни один из пунктов выбран. Используется только для кнопки с <a href="#mode-check">модификатором type в значении check</a> или <a href="#mode-radiocheck">в значении radio-check</a>.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
+    name : 'select3',
+    text : 'Обучатор',
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
+    name : 'select1',
+    text : 'Ничего не выбрано',
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
+
+<a name="options"></a>
+#### Поле `options`
+
+Тип: `Array`.
+
+Определяет массив объектов (пунктов списка) либо групп с опциональным названием.
+
+Задает набор значений для каждого пункта.
+
+| Поле | Тип | Описание |
+| ---- | --- | -------- |
+| <code>val</code> | <code>String</code>, <code>Number</code> | Значение, которое будет отправлено на сервер при выборе пункта. Обязательное поле. |
+| <code>text</code> | <code>String</code> | Название пункта в списке. |
+| <code>checkedText</code> | <code>String</code> | Текст, отображаемый вместо названия пункта в кнопке раскрывающегося списка. Задается только для списков с возможностью <a href=#mode-check>множественного выбора</a>. |
+| <code>disabled</code> | <code>Boolean</code> | Неактивное состояние отдельного пункта. |
+| <code>icon</code> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. |
+
+```js
 {
     block : 'select',
     mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
-    text : '—',
-    val : [{ id : 2 }],
+    val : [2],
+    text : 'Подписаться на новости',
     options : [
         {
             val : 1,
@@ -260,35 +428,103 @@
 }
 ```
 
-Элементы списка могут быть объединены в группы. Для группировки пунктов выбора служит элемент `group`, в который вкладываются необходимые элементы списка. Название группы задается через атрибут `title`.
+Пункты раскрывающегося списка могут быть организованы в группы:
 
-```bemjson
+| Поле | Тип | Описание |
+| ---- | --- | -------- |
+| <code>title</code> | <code>String</code> | Название группы пунктов. |
+| <code>Group</code> | <code>Array</code> | Массив пунктов. |
+
+```js
 {
     block : 'select',
     mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
-    text : 'empty',
-    val : [2, 5, 6],
+    val : [2, 5],
+    text : 'Программа конференции',
     options : [
         {
+            title : 'Теория',
             group : [
-                { val : 1, text : 'first' },
-                { val : 2, text : 'second' },
-                { val : 3, text : 'third' }
-            ],
-            title : 'title of group 1'
+                { val : 1, text : 'Доклад №1' },
+                { val : 2, text : 'Доклад №2' },
+                { val : 3, text : 'Доклад №3' },
+            ]
         },
         {
+            title : 'Практика',
             group : [
-                { val : 4, text : 'fourth' },
-                { val : 5, text : 'fifth' },
-                { val : 6, text : 'sixth' }
+                { val : 4, text : 'Мастер-класс №1' },
+                { val : 5, text : 'Мастер-класс №2' }
             ]
         }
     ]
 }
 ```
 
-## Контрол `__control`
+<a name="textmaxwidth"></a>
+#### Поле `textMaxWidth`
 
-Вспомогательный скрытый элемент, который отвечает за формирование элементов списка выбора. Добавляется блоку на уровне шаблонизатора.
+Тип: `Number`.
+
+Определяет максимальную ширину кнопки раскрывающегося списка. Ширина списка при этом определяется самым широким текстом пункта или корректируется с помощью стилей.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    textMaxWidth : 100,
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
+
+<a name="optionsmaxheight"></a>
+
+#### Поле `optionsMaxHeight`
+
+Тип: `Number`.
+
+Определяет максимальную высоту раскрывающегося списка. Если все пункты списка не вмещаются, появляется полоса прокрутки.
+
+Если значение не указано, высота раскрывающегося списка по умолчанию будет вычисляться в зависимости от количества пунктов.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    textMaxWidth : 100,
+    optionsMaxHeight : 100,
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```
+
+<a name="id"></a>
+#### Поле `id`
+
+Тип: `String`.
+
+Определяет уникальный идентификатор раскрывающегося списка.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    id : 'Unique_1',
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}
+```

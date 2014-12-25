@@ -26,7 +26,6 @@
 | <a href=#checkboxtext>text</a> | <code>String</code> | Текст подписи к чекбоксу. |
 | <a href=#checkboxicon>icon</a> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. Используется для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>. |
 | <a href=#checkboxtitle>title</a> | <code>String</code> | Текст всплывающей подсказки. Используется для чекбокса с <a href=#checkboxtype>модификатором type в значении button</a>. |
-| <a href=#id>id</a> | <code>String</code> | Уникальный идентификатор чекбокса. |
 | <a href=#tab>tabIndex</a> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
 
 ## Описание блока
@@ -321,26 +320,6 @@
         block : 'icon',
         mods : { social : 'twitter' }
     }
-}
-```
-
-
-<a name="id"></a>
-
-#### Поле `id`
-
-Тип: `String`.
-
-Определяет уникальный идентификатор чекбокса.
-
-```js
-{
-    block : 'checkbox',
-    mods : { theme : 'islands', size : 'm', type : 'button' },
-    name: 'name1',
-    val: '1',
-    text : 'Конфеты',
-    id : 'checkbox-id'
 }
 ```
 

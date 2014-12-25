@@ -329,7 +329,7 @@ desktop.blocks
 To run tests for templates use:
 
 ```bash
-magic run tmpl-specs`
+magic run tmpl-specs
 ```
 
 To run tests for required definition level use:

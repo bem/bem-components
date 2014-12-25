@@ -11,6 +11,7 @@ block('dropdown').mod('switcher', 'link').elem('switcher').content()(function() 
             dropdownMods = this.mods;
         resMods.theme || (resMods.theme = dropdownMods.theme);
         resMods.disabled = dropdownMods.disabled;
+        res.tabIndex || (res.tabIndex = this.ctx.tabIndex);
     }
 
     return res;

@@ -13,6 +13,7 @@ module.exports = function(bh) {
                 dropdownMods = json.blockMods;
             resMods.theme || (resMods.theme = dropdownMods.theme);
             resMods.disabled = dropdownMods.disabled;
+            res.tabIndex || (res.tabIndex = json.tabIndex);
         }
 
         return res;

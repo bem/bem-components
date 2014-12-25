@@ -28,6 +28,7 @@ module.exports = function(bh) {
                     val : option.val,
                     text : option.text,
                     title : option.title,
+                    tabIndex : option.tabIndex,
                     icon : option.icon
                 }
             ];

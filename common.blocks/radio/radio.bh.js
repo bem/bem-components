@@ -11,6 +11,7 @@ module.exports = function(bh) {
                         elem : 'control',
                         checked : ctx.mod('checked'),
                         disabled : ctx.mod('disabled'),
+                        tabIndex : json.tabIndex,
                         name : json.name,
                         val : json.val
                     }

@@ -1,214 +1,63 @@
 # menu
 
-Блок `menu` используется для создания различных типов меню и селектов.
+Используется для создания различных типов меню.
 
-Он предоставляет возможность изменять размер и внешний вид блоков меню, управлять поведением вложенных независимых блоков – пунктов меню (блок [menu-item](../menu-item/menu-item.ru.md)).
+## Обзор блока
 
-В результате BEMHTML-преобразований на странице блок становится HTML-элементом с тегом `<div>` и свойством `role="menu"`.
+### Модификаторы блока
 
-Доступны следующие типы `menu` (тип блока `menu` зависит от значения модификатора [`_mode`](#types)):
+| Модификатор | Допустимые значения | Способы использования | Описание |
+| ----------- | ------------------- | --------------------- | -------- |
+| <a href="#mode">mode</a> | <code>'radio'</code>, <code>'radio-check'</code>, <code>'check'</code> | <code>BEMJSON</code> | Тип меню. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
+| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
+| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер блока. |
 
-* простой список (модификатор `mode` не установлен);
-* меню-переключатель (`menu_mode_radio`);
-* меню с одиночным выбором (`menu_mode_radio-check`);
-* меню с множественным выбором (`menu_mode_check`).
+### Специализированные поля блока
 
-## Модификаторы блока
+| Поле | Тип | Описание |
+| ---- | --- | -------- |
+| <a href="#val">val</a> | <code>String</code>, <code>Number</code>, <code>Array</code> | Выбранное значение из списка. Если блоку установлен <a href="#mode-check">модификатор mode в значении check</a>, выбранные значения всегда оформляются в виде массива. |
 
-### Темы `_theme`
+### Элементы блока
 
-Блок представлен в следующих темах:
+| Элемент | Способы использования | Описание |
+| --------| --------------------- | -------- |
+| <a href=#group>group</a> | <code>BEMJSON</code> | Визуальная группировка пунктов меню. |
 
- * simple
- * islands (**Важно:** При выборе темы `islands` необходимо указывать обязательный модификатор [size](#size).)
+### Специализированные поля элементов блока
 
-Без указания модификатора `theme` отображается [нативный](#native) вид контрола.
+| Элемент | Поле | Тип | Описание |
+| ------- | ---- | --- | -------- |
+| group | <a href="#group-title">title</a> | <code>String</code> | Заголовок группы пунктов. |
 
-Наглядно показано на примерах ниже:
+## Описание блока
 
-<a name="native"></a>
-**default**
+Блок предоставляет возможность изменять внешний вид меню и управлять поведением вложенных независимых блоков – [пунктов меню](../menu-item/menu-item.ru.md).
 
-```bemjson
-{
-    block : 'menu',
-    mods : { mode : 'check' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
+### Модификаторы блока
 
-**simple**
+<a name="mode"></a>
+#### Модификатор `mode`
 
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'simple', mode : 'check' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
+Допустимые значения: `'check`, `'radio'`, `'radio-check'`.
 
-**islands**
+Способ использования: `BEMJSON`.
 
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'islands', mode : 'check', size : 'm' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
+В зависимости от выбранного значения модификатора `mode` доступны следующие типы блока:
 
-### Размеры `_size`
+* простой список ([модификатор mode не установлен](#mode-none));
+* меню с множественным выбором ([модификатор mode в значении check](#mode-check));
+* меню с одиночным обязательным выбором ([модификатор mode в значении radio](#mode-radio));
+* меню с одиночным необязательным выбором ([модификатор mode в значении radio-check](#mode-radiocheck)).
 
-Реализован только в теме `islands`.
+<a name="mode-none"></a>
+##### Простой список (модификатор `mode` не установлен)
 
-Доступно четыре размера реализации блока: **s**, **m**, **l**, **xl**.
+Без указания модификатора `mode` создается простой список без возможности выбрать пункт.
 
-<table>
-    <tr>
-        <th>Размер блока</th>
-        <th>Размер шрифта</th>
-        <th>Высота строки <code>line-heigh</code></th>
-    </tr>
-    <tr>
-        <td>s</td>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <td>m</td>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <td>l</td>
-        <td>15px</td>
-        <td>28px</td>
-    </tr>
-    <tr>
-        <td>xl</td>
-        <td>15px</td>
-        <td>32px</td>
-    </tr>
-</table>
-
-Наглядно показано на примерах ниже:
-
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'islands', mode : 'check', size : 's' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'islands', mode : 'check', size : 'm' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'islands', mode : 'check', size : 'l' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-```bemjson
-{
-    block : 'menu',
-    mods : { theme : 'islands', mode : 'check', size : 'xl' },
-    content : [
-        {
-            block : 'menu-item',
-            val : 1,
-            content : 'First item'
-        },
-        {
-            block : 'menu-item',
-            val : 2,
-            content : 'Second item'
-        }
-    ]
-}
-```
-
-### Типы `_mode`
-
-Блок представлен следующими типами:
-
-* простой список (модификатор `mode` не установлен). Пункт меню не может быть выбран щелчком мышью или любым другим способом.
-
-```bemjson
+```js
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm' },
@@ -216,20 +65,55 @@
         {
             block : 'menu-item',
             val : 1,
-            content : 'First item'
+            content : 'Море'
         },
         {
             block : 'menu-item',
             val : 2,
-            content : 'Second item'
+            content : 'Горы'
         }
     ]
 }
 ```
 
-* меню-переключатель (`menu_mode_radio`).  Применяется для создания меню, позволяющего только одиночный выбор.
+<a name="mode-check"></a>
+##### Меню с множественным выбором (модификатор `mode` в значении `check`)
 
-```bemjson
+Позволяет выбрать произвольное количество пунктов меню.
+
+```js
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'check' },
+    val : [1, 3],
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'Отдых в горах'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Отдых на море'
+        },
+        {
+            block : 'menu-item',
+            val : 3,
+            content : 'Отдых на даче'
+        }
+    ]
+}
+```
+
+<a name="mode-radio"></a>
+##### Меню с одиночным обязательным выбором (модификатор `mode` в значении `radio`)
+
+Позволяет создать меню, в котором обязательно выбран ровно один пункт.
+
+Если пункт не выбран, то по умолчанию выбирается первое значение из списка.
+
+```js
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'radio' },
@@ -237,20 +121,23 @@
         {
             block : 'menu-item',
             val : 1,
-            content : 'First item'
+            content : 'Отдых в горах'
         },
         {
             block : 'menu-item',
             val : 2,
-            content : 'Second item'
+            content : 'Отдых на море'
         }
     ]
 }
 ```
 
-* меню с одиночным выбором (`menu_mode_radio-check`). Позволяет оставить список без выбранных элементов. При щелчке мышью по пункту списка, его состояние меняется на противоположное.
+<a name="mode-radiocheck"></a>
+##### Меню с одиночным необязательным выбором (модификатор `mode` в значении `radio-check`)
 
-```bemjson
+Модификатор `mode` в значении `radio-check`, так же как и <a href="#mode-radio">модификатор mode в значении radio</a>, позволяет выбрать ровно один пункт меню. Принципиальное отличие в том, что в значении `radio-check` есть возможность оставить меню без выбранных пунктов.
+
+```js
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'radio-check' },
@@ -259,20 +146,190 @@
         {
             block : 'menu-item',
             val : 1,
-            content : 'First item'
+            content : 'Отдых в горах'
         },
         {
             block : 'menu-item',
             val : 2,
-            content : 'Second item'
+            content : 'Отдых на море'
         }
     ]
 }
 ```
 
-* меню с множественным выбором (`menu_mode_check`). Позволяет оставить список без выбранных элементов. При щелчке мышью по пункту списка, его состояние меняется на противоположное.
+<a name="disabled"></a>
 
-```bemjson
+#### Модификатор `disabled`
+
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.
+
+Если блоку `menu` устанавливается модификатор `disabled`, то все вложенные в него блоки `menu-item` также становятся неактивными.
+
+```js
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'radio-check', disabled : true },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'Отдых в горах'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Отдых на море'
+        }
+    ]
+}
+```
+
+Модификатор `disabled` в значении `true` может быть выставлен отдельным пунктам меню:
+
+```js
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'radio-check' },
+    val : 2,
+    content : [
+        {
+            block : 'menu-item',
+            mods : { disabled : true },
+            val : 1,
+            content : 'Отдых в горах'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Отдых на море'
+        }
+    ]
+}
+```
+
+<a name="focused"></a>
+
+#### Модификатор `focused`
+
+Допустимое значение: `true`.
+
+Способы использования: `BEMJSON`, `JS`.
+
+Выставляется автоматически при получении блоком фокуса.
+
+Отвечает за наличие фокуса на блоке.
+
+```javascript
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'radio-check', focused : true },
+    val : 2,
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'Отдых в горах'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Отдых на море'
+        }
+    ]
+}
+```
+
+<a name="theme"></a>
+#### Модификатор `theme`
+
+Допустимое значение: `'islands'`.
+
+Способ использования: `BEMJSON`.
+
+Отвечает за стилевое оформление блока.
+
+Необходимо использовать с модификатором <a href="#size">size</a>.
+
+```js
+{
+    block : 'menu',
+    mods : { theme : 'islands', mode : 'check', size : 'm' },
+    val : 1,
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'Отдых в горах'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Отдых на море'
+        }
+    ]
+}
+```
+
+<a name="size"></a>
+#### Модификатор `size`
+
+Допустимые значения: `'s'`, `'m'`, `'l'`, `'xl'`.
+
+Способ использования: `BEMJSON`.
+
+Задает размер блоку.
+
+Необходимо использовать с модификатором <a href="#theme">theme</a> в значении `islands`.
+
+**s**
+
+```js
+{
+    block : 'menu',
+    mods : { theme : 'islands', mode : 'check', size : 's' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'Отдых в горах'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Отдых на море'
+        }
+    ]
+}
+```
+
+**m**
+
+```js
+{
+    block : 'menu',
+    mods : { theme : 'islands', mode : 'check', size : 'm' },
+    val : [2],
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'Отдых в горах'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Отдых на море'
+        }
+    ]
+}
+```
+**l**
+
+```js
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'check' },
@@ -281,38 +338,51 @@
         {
             block : 'menu-item',
             val : 1,
-            content : 'First item'
+            content : 'Отдых в горах'
         },
         {
             block : 'menu-item',
             val : 2,
-            content : 'Second item'
+            content : 'Отдых на море'
         }
     ]
 }
 ```
 
-### Состояния блока
+**xl**
 
-#### Неактивен `_disabled`
+```js
+{
+    block : 'menu',
+    mods : { theme : 'islands', mode : 'check', size : 'xl' },
+    val : [2],
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'Отдых в горах'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Отдых на море'
+        }
+    ]
+}
+```
 
-В состоянии «неактивен» блок виден, но недоступен для действий пользователя. Такой блок не может получить фокус путем нажатия на клавишу `Tab`, мышью или другими способами. В большинстве случаев к неактивному блоку применяются дополнительные стили, чтобы выделить его на странице.
+### Специализированные поля блока
 
-Если блок `menu` получает модификатор `disabled`, то все вложенные в него блоки `menu-item` также становятся неактивными.
+<a name="val"></a>
+#### Поля `val`
 
-#### В фокусе `_focused`
+Тип: `String`, `Number`, `Array`.
 
-Модификатор `focused` в значении `true` автоматически выставляется блоку в момент, когда он находится в фокусе. Например, по нажатию клавиши `Tab` или при щелчке мышью.
+Определяет:
 
-## Элементы блока
+* Выбранный пункт меню. В таком случае используется тип поля `String` или `Number`.
 
-Визуально представлен следующими элементами:
-
-### __group
-
-Элемент `__group` служит для группировки пунктов меню. Пункты, которые нужно сгруппировать, помещаются в поле `content` элемента `group`. В теме `islands` группы визуально разделяются серой чертой.
-
-```bemjson
+```js
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'radio' },
@@ -321,7 +391,56 @@
         {
             block : 'menu-item',
             val : 1,
-            content : 'New'
+            content : 'Отпуск на работе'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Отпуск на диване'
+        }
+    ]
+}
+```
+
+* Список выбранных пунктов меню, если блоку установлен [модификатор mode в значении check](#mode-check). В таком случае используется тип поля `Array`.
+
+```js
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'check' },
+    val : [1, 2],
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'Отдых в горах'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Отдых на море'
+        }
+    ]
+}
+```
+
+### Элементы блока
+<a name="group"></a>
+
+#### Элемент `group`
+
+Служит для визуальной группировки пунктов меню. Не влияет на общую логику выбора пунктов.
+
+```js
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'radio' },
+    val : 2,
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'Отпуск на работе'
         },
         {
             elem : 'group',
@@ -329,29 +448,34 @@
                 {
                     block : 'menu-item',
                     val : 2,
-                    content : 'Open'
+                    content : 'Отпуск в горах'
                 },
                 {
                     block : 'menu-item',
                     val : 3,
-                    content : 'Open Recent'
+                    content : 'Отпуск на море'
                 }
             ]
         },
         {
             block : 'menu-item',
             val : 4,
-            content : 'Open Not so Recent'
+            content : 'Отпуск на диване'
         }
     ]
 }
 ```
 
-### __group-title
+### Специализированные поля элементов блока
 
-Элемент позволяет задать заголовок для группы пунктов меню, создаваемой с помощью элемента `group`.
+<a name="group-title"></a>
+#### Специализированное поле `title` элемента `group`
 
-```bemjson
+Тип: `String`.
+
+Определяет заголовок группы пунктов.
+
+```js
 {
     block : 'menu',
     mods : { theme : 'islands', size : 'm', mode : 'radio' },
@@ -360,21 +484,21 @@
         {
             block : 'menu-item',
             val : 1,
-            content : 'New'
+            content : 'Работа'
         },
         {
             elem : 'group',
-            title : 'Cool title',
+            title : 'Активный отдых',
             content : [
                 {
                     block : 'menu-item',
                     val : 2,
-                    content : 'Open'
+                    content : 'В горах'
                 },
                 {
                     block : 'menu-item',
                     val : 3,
-                    content : 'Open Recent'
+                    content : 'На море'
                 }
             ]
         }

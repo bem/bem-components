@@ -19,7 +19,7 @@ gemini.suite('checkbox-group', function(root) {
                 })
                 .capture('plain')
                 .capture('focused-hard', function(actions) {
-                    actions.sendKeys(this.checkbox, 'focused-hard'); //send not empty string
+                    actions.sendKeys(this.checkbox, 'focused-hard'); // send not empty string
                 })
                 .capture('focused-checked', function(actions) {
                     actions.click(this.checkbox);

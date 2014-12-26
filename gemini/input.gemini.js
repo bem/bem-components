@@ -37,7 +37,7 @@ gemini.suite('input', function(root) {
             .capture('plain')
             .capture('hovered', function(actions, find) {
                 actions
-                    .mouseMove(find(inputSelector + ' .input__clear'), { x : 5, y : 5 } )
+                    .mouseMove(find(inputSelector + ' .input__clear'), { x : 5, y : 5 })
                     .wait(110);
             });
     });

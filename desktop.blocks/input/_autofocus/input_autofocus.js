@@ -54,11 +54,11 @@ function isTextKey(e) {
     var keyCode = e.charCode || e.keyCode || e.which || 0;
     // TODO: проверку можно сделать проще, если проверять обратное -- что нажата системная клавиша
     if(!e.ctrlKey && !e.altKey && !e.metaKey && (
-            (keyCode >= 48 && keyCode <= 57) ||     //isDigit
-            (keyCode >= 96 && keyCode <= 105) ||    //isNumpad
-            (keyCode >= 65 && keyCode <= 90) ||     //isLetter
-            (keyCode >= 1025 && keyCode <= 1071) || //isLetter (кирилица в Opera)
-            keyCode === 0))                         //isLetter (кирилица в FF)
+            (keyCode >= 48 && keyCode <= 57) ||     // isDigit
+            (keyCode >= 96 && keyCode <= 105) ||    // isNumpad
+            (keyCode >= 65 && keyCode <= 90) ||     // isLetter
+            (keyCode >= 1025 && keyCode <= 1071) || // isLetter (кирилица в Opera)
+            keyCode === 0))                         // isLetter (кирилица в FF)
         return true;
 }
 

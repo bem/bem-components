@@ -50,7 +50,7 @@
                 { block : 'test', cls : 'islands-' + size + '-disabled', content : {
                     block : 'radio-group',
                     name : 'islands2',
-                    mods : { theme : 'islands', size : size  },
+                    mods : { theme : 'islands', size : size },
                     val : 4,
                     options : [
                         { val : 3, text : 'third', disabled : true },

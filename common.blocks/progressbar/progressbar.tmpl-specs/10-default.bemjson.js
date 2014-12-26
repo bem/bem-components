@@ -1,4 +1,4 @@
 ({
     block : 'progressbar',
-    value : 24
+    val : 24
 })

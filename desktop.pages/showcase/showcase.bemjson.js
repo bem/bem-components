@@ -165,7 +165,7 @@
                                     {
                                         block : 'progressbar',
                                         mods : { theme : 'islands' },
-                                        value : 25
+                                        val : 25
                                     }]
                                 }
                             ]

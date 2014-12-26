@@ -672,7 +672,7 @@
                             content : {
                                 block : 'progressbar',
                                 mods : { theme : 'simple' },
-                                value : 50
+                                val : 50
                             }
                         },
                         {
@@ -680,7 +680,7 @@
                             content : {
                                 block : 'progressbar',
                                 mods : { theme : 'islands', size : 'm' },
-                                value : 50
+                                val : 50
                             }
                         }
                     ]

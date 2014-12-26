@@ -13,23 +13,23 @@ provide(BEMDOM.decl(this.name, /** @lends progressbar.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._val = this.params.value;
+                this._val = this.params.val;
             }
         }
     },
 
     /**
      * Sets bar's width
-     * @param {Number} value
+     * @param {Number} val
      * @returns {progressbar} this
      */
-    setVal : function(value) {
-        this.elem('bar').css('width', (this._val = value) + '%');
+    setVal : function(val) {
+        this.elem('bar').css('width', (this._val = val) + '%');
         return this;
     },
 
     /**
-     * Get bar's value
+     * Get bar's val
      * @returns {Number}
      */
     getVal : function() {

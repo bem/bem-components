@@ -14,7 +14,7 @@
             content : {
                 block : 'progressbar',
                 mods : { theme : 'simple' },
-                value : 25
+                val : 25
             }
         },
 
@@ -26,7 +26,7 @@
             content : {
                 block : 'progressbar',
                 mods : { theme : 'islands' },
-                value : 25
+                val : 25
             }
         }
 

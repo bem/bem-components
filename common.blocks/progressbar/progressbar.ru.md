@@ -12,7 +12,7 @@
 
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
-| <a href="#val">value</a> | <code>Number</code> | Степень выполнения процесса в процентах. |
+| <a href="#val">val</a> | <code>Number</code> | Степень выполнения процесса в процентах. |
 
 ## Описание блока
 
@@ -36,7 +36,7 @@
 {
     block : 'progressbar',
     mods : { theme : 'islands' },
-    value : 25
+    val : 25
 }
 ```
 
@@ -44,7 +44,7 @@
 
 <a name="val"></a>
 
-#### Поле `value`
+#### Поле `val`
 
 Тип: `Number`.
 
@@ -54,6 +54,6 @@
 {
     block : 'progressbar',
     mods : { theme : 'islands' },
-    value : 25
+    val : 25
 }
 ```

@@ -1,14 +1,14 @@
 block('progressbar')(
 
     js()(function(){
-        return { value : this.ctx.value };
+        return { val : this.ctx.val };
     }),
 
     content()(
         function() {
             return {
                 elem : 'bar',
-                attrs : { style : 'width:' + this.ctx.value + '%' }
+                attrs : { style : 'width:' + this.ctx.val + '%' }
             };
         },
         match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {

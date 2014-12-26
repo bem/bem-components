@@ -13,7 +13,7 @@
             content : {
                 block : 'progressbar',
                 mods : { theme : 'islands' },
-                value : 35,
+                val : 35,
                 cls : 'islands'
             }
         }

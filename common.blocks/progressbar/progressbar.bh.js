@@ -1,13 +1,13 @@
 module.exports = function(bh) {
 
     bh.match('progressbar', function(ctx, json) {
-        var value = json.value;
+        var val = json.val;
 
         ctx
-            .js({ value : value })
+            .js({ val : val })
             .content({
                 elem : 'bar',
-                attrs : { style : 'width:' + value + '%' }
+                attrs : { style : 'width:' + val + '%' }
             });
     });
 };

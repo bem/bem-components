@@ -7,7 +7,7 @@ describe('progressbar', function() {
     var progressbar;
 
     beforeEach(function() {
-        progressbar = BEMDOM.init($(BEMHTML.apply({ block : 'progressbar', value : 10 }))
+        progressbar = BEMDOM.init($(BEMHTML.apply({ block : 'progressbar', val : 10 }))
             .appendTo('body'))
             .bem('progressbar');
     });
@@ -18,14 +18,14 @@ describe('progressbar', function() {
 
     describe('setVal', function() {
         it('should set correct percents', function() {
-            var value = 15;
-            progressbar.setVal(value);
-            progressbar.elem('bar')[0].style.width.should.be.equal(value + '%');
+            var val = 15;
+            progressbar.setVal(val);
+            progressbar.elem('bar')[0].style.width.should.be.equal(val + '%');
         });
     });
 
     describe('getVal', function() {
-        it('should return actual value', function() {
+        it('should return actual val', function() {
             progressbar.getVal().should.be.equal(10);
             progressbar.setVal(20).getVal().should.be.equal(20);
         });

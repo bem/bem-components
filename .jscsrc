@@ -1,4 +1,7 @@
 {
+    "plugins": ["jscs-bem"],
+    "preset": "bem",
+
     "excludeFiles": [
         ".bem/cache/**",
         ".enb/tmp/**",
@@ -13,39 +16,5 @@
         "libs/**",
         "node_modules/**"
     ],
-    "fileExtensions": [".js", ".bemtree", ".bemhtml"],
-    "requireSpaceAfterKeywords": ["do", "else"],
-    "disallowOperatorBeforeLineBreak": ["."],
-    "disallowSpacesInCallExpression": true,
-    "disallowSpaceAfterKeywords": ["if", "for", "while", "switch"],
-    "disallowSpacesInFunctionExpression": {
-        "beforeOpeningRoundBrace": true
-    },
-    "disallowSpacesInsideArrayBrackets": true,
-    "requireSpacesInsideObjectBrackets": "all",
-    "requireSpaceAfterObjectKeys": true,
-    "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~", "!"],
-    "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
-    "disallowSpaceBeforeBinaryOperators": [","],
-    "disallowSpacesInConditionalExpression": {
-        "afterTest": true,
-        "beforeConsequent": false,
-        "afterConsequent": false,
-        "beforeAlternate": false
-    },
-    "requireSpaceBeforeKeywords": [
-        "else",
-        "while",
-        "catch"
-    ],
-    "requireSpaceBeforeBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<=", "&&", "||"],
-    "requireSpaceAfterBinaryOperators": [",", "+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<=", "&&", "||"],
-    "disallowKeywords": ["with"],
-    "disallowKeywordsOnNewLine": ["else"],
-    "requireLineFeedAtFileEnd": true,
-    "disallowMultipleLineBreaks": true,
-    "validateJSDoc": {
-        "checkParamNames": true,
-        "requireParamTypes": true
-    }
+    "fileExtensions": [".js", ".bemtree", ".bemhtml"]
 }

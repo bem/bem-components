@@ -287,10 +287,10 @@ describe('popup', function() {
             winRight = winLeft + winWidth;
 
         var variants = [
-            { anchorSide : 2, popupViewportOffset : 0, popupSecondaryOffset : 0 },
-            { anchorSide : 3, popupViewportOffset : 0, popupSecondaryOffset : 0 },
-            { anchorSide : 4, popupViewportOffset : 0, popupSecondaryOffset : 0 },
-            { anchorSide : 5, popupViewportOffset : 0, popupSecondaryOffset : 0 }
+            { anchorSide : 2, offset : 0 },
+            // { anchorSide : 2, offset : 200 },
+            { anchorSide : winHeight - 2, offset : 0 },
+            // { anchorSide : winHeight - 2, offset : 200 }
         ];
 
         variants.forEach(function(v) {
@@ -298,18 +298,22 @@ describe('popup', function() {
             v.anchorTop = winTop + Math.round((winHeight - v.anchorSide) / 2);
             v.anchorLeft = winLeft + Math.round((winWidth - v.anchorSide) / 2);
 
-            it('should properly calculate for anchorSide: ' + v.anchorSide, function() {
+            it('should properly calculate drawing params for anchorSide: ' + v.anchorSide +
+                ' and offset: ' + v.offset, function() {
+
                 var precalculatedParams = precalculate(v);
 
-                popupAnchorDomElem.css({
-                    position : 'absolute',
-                    display : 'block',
-                    overflow : 'hidden',
-                    width : v.anchorSide,
-                    height : v.anchorSide,
-                    left : v.anchorLeft,
-                    top : v.anchorTop
-                });
+                popupAnchorDomElem
+                    .css({
+                        position : 'absolute',
+                        display : 'block',
+                        overflow : 'hidden',
+                        width : v.anchorSide,
+                        height : v.anchorSide,
+                        left : v.anchorLeft,
+                        top : v.anchorTop
+                    });
+
                 popup
                     .setAnchor(popupAnchorDomElem)
                     .setMod('visible');
@@ -318,40 +322,42 @@ describe('popup', function() {
                     var direction = params.direction,
                         expectedParams = precalculatedParams[direction];
 
-                    delete params.direction;
-                    params.should.eql(expectedParams, direction + ' ok');
+                    params.left.should.be.eq(expectedParams.left, direction + ' left ok');
+                    params.top.should.be.eq(expectedParams.top, direction + ' top ok');
+                    params.width.should.be.eq(expectedParams.width, direction + ' width ok');
+                    params.height.should.be.eq(expectedParams.height, direction + ' height ok');
                 });
             });
         });
 
         function precalculate(v) {
-            var POPUP_VIEWPORT_OFFSET = v.popupViewportOffset,
-                POPUP_SECONDARY_OFFSET = v.popupSecondaryOffset;
+            v.viewportOffset = v.offset;
+            v.secondaryOffset = 0;
 
             // precalculateParams by anchorSide, anchorLeft, anchorTop, and offsets
             var bottomsTop = v.anchorTop + v.anchorSide + POPUP_MAIN_OFFSET,
-                bottomsHeight = winBottom - bottomsTop - POPUP_VIEWPORT_OFFSET,
-                topsTop = winTop + POPUP_VIEWPORT_OFFSET,
+                bottomsHeight = winBottom - bottomsTop - v.viewportOffset,
+                topsTop = winTop + v.viewportOffset,
                 topsHeight = v.anchorTop - topsTop - POPUP_MAIN_OFFSET,
 
                 rightsLeft = v.anchorLeft + v.anchorSide + POPUP_MAIN_OFFSET,
-                rightsWidth = winRight - rightsLeft - POPUP_VIEWPORT_OFFSET,
-                leftsLeft = winLeft + POPUP_VIEWPORT_OFFSET,
+                rightsWidth = winRight - rightsLeft - v.viewportOffset,
+                leftsLeft = winLeft + v.viewportOffset,
                 leftsWidth = v.anchorLeft - leftsLeft - POPUP_MAIN_OFFSET,
 
-                leftAlignedLeft = v.anchorLeft + POPUP_SECONDARY_OFFSET,
-                leftAlignedWidth = winRight - leftAlignedLeft - POPUP_VIEWPORT_OFFSET,
-                rightAlignedLeft = winLeft + POPUP_VIEWPORT_OFFSET,
-                rightAlignedWidth = v.anchorLeft + v.anchorSide - rightAlignedLeft - POPUP_SECONDARY_OFFSET,
+                leftAlignedLeft = v.anchorLeft + v.secondaryOffset,
+                leftAlignedWidth = winRight - leftAlignedLeft - v.viewportOffset,
+                rightAlignedLeft = winLeft + v.viewportOffset,
+                rightAlignedWidth = v.anchorLeft + v.anchorSide - rightAlignedLeft - v.secondaryOffset,
 
-                topAlignedTop = v.anchorTop + POPUP_SECONDARY_OFFSET,
-                topAlignedHeight = winBottom - topAlignedTop - POPUP_VIEWPORT_OFFSET,
-                bottomAlignedTop = winTop + POPUP_VIEWPORT_OFFSET,
-                bottomAlignedHeight = v.anchorTop + v.anchorSide - bottomAlignedTop - POPUP_SECONDARY_OFFSET,
+                topAlignedTop = v.anchorTop + v.secondaryOffset,
+                topAlignedHeight = winBottom - topAlignedTop - v.viewportOffset,
+                bottomAlignedTop = winTop + v.viewportOffset,
+                bottomAlignedHeight = v.anchorTop + v.anchorSide - bottomAlignedTop - v.secondaryOffset,
 
-                horizCenterWidth = winWidth - POPUP_VIEWPORT_OFFSET * 2,
+                horizCenterWidth = winWidth - v.viewportOffset * 2,
                 horizCenterLeft = v.anchorLeft - (horizCenterWidth - v.anchorSide) / 2,
-                vertCenterHeight = winHeight - POPUP_VIEWPORT_OFFSET * 2,
+                vertCenterHeight = winHeight - v.viewportOffset * 2,
                 vertCenterTop = v.anchorTop - (vertCenterHeight - v.anchorSide) / 2;
 
             return {

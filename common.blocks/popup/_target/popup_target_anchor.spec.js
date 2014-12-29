@@ -199,8 +199,7 @@ describe('popup', function() {
             popup2.setMod('visible');
             popup.setMod('visible');
 
-            Number(popup.domElem.css('z-index'))
-                .should.be.gt(Number(popup2.domElem.css('z-index')));
+            getZIndex(popup).should.be.gt(getZIndex(popup2));
         });
 
         it('should properly use zIndexGroupLevel param', function() {
@@ -216,8 +215,7 @@ describe('popup', function() {
             popup2.setMod('visible');
             popup.setMod('visible');
 
-            Number(popup.domElem.css('z-index'))
-                .should.be.lt(Number(popup2.domElem.css('z-index')));
+            getZIndex(popup).should.be.lt(getZIndex(popup2));
         });
 
         it('should properly use z-index-group blocks which may be in anchor parents', function() {
@@ -250,11 +248,9 @@ describe('popup', function() {
             popup2.setMod('visible');
             popup.setMod('visible');
 
-            Number(popup.domElem.css('z-index'))
-                .should.be.lt(Number(popup2.domElem.css('z-index')));
+            getZIndex(popup).should.be.lt(getZIndex(popup2));
 
-            Number(popup2.domElem.css('z-index'))
-                .should.be.lt(Number(popup3.domElem.css('z-index')));
+            getZIndex(popup2).should.be.lt(getZIndex(popup3));
         });
 
         it('should consider zIndexGroupLevel of parent popup', function() {
@@ -270,13 +266,36 @@ describe('popup', function() {
             popup.setMod('visible');
             popup2.setAnchor(popupAnchorDomElem).setMod('visible');
 
-            Number(popup.domElem.css('z-index'))
-                .should.be.lt(Number(popup2.domElem.css('z-index')));
+            getZIndex(popup).should.be.lt(getZIndex(popup2));
 
             popup.setAnchor(popup2.domElem.find('span:first'));
 
-            Number(popup.domElem.css('z-index'))
-                .should.be.gt(Number(popup2.domElem.css('z-index')));
+            getZIndex(popup).should.be.gt(getZIndex(popup2));
+        });
+
+        it('should recalculate z-index when anchor is changed', function() {
+            var anchorLevel1 = $(BEMHTML.apply({
+                    block : 'z-index-group',
+                    mods : { level : 1 },
+                    content : {
+                        block : 'anchor',
+                        tag : 'span',
+                        content : 'anchor 1'
+                    }
+                })).appendTo('body').find('.anchor');
+
+            popup.setAnchor(popupAnchorDomElem).setMod('visible');
+
+            var initialZIndex = getZIndex(popup);
+
+            popup.setAnchor(anchorLevel1);
+            getZIndex(popup).should.be.gt(initialZIndex, 'popup moved to z-index-group_level_1 while visible');
+
+            popup
+                .delMod('visible')
+                .setAnchor(popupAnchorDomElem)
+                .setMod('visible');
+            getZIndex(popup).should.be.equal(initialZIndex, 'popup moved from z-index-group_level_1 while hidden');
         });
     });
 
@@ -298,6 +317,10 @@ provide();
 function buildPopup(parentDomElem, bemjson) {
     return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo(parentDomElem))
         .bem('popup');
+}
+
+function getZIndex(popup) {
+    return Number(popup.domElem.css('z-index'));
 }
 
 });

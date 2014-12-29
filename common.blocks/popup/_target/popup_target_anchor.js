@@ -95,6 +95,7 @@ provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.p
                 .redraw();
         } else {
             this._anchorParents = null;
+            this._zIndexGroupLevel = null;
         }
 
         return this;

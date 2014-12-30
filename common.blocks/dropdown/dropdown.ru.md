@@ -8,18 +8,18 @@
 
 | Модификатор | Допустимые значения | Способы использования | Описание |
 | ----------- | ------------------- | -------------------- | --------- |
-| <a href=#modswitcher>switcher</a> | <code>'link'</code>, <code>'button'</code> | <code>BEMJSON</code> | Тип управляющего компонента. |
-| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
-| <a href=#opened>opened</a> | <code>true</code> | <code>JS</code> | Отображение всплывающего блока на странице. |
-| <a href=#theme>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
-| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер управляющего компонента.|
+| <a href="#modswitcher">switcher</a> | <code>'link'</code>, <code>'button'</code> | <code>BEMJSON</code> | Тип управляющего компонента. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
+| <a href="#opened">opened</a> | <code>true</code> | <code>JS</code> | Отображение всплывающего блока на странице. |
+| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер управляющего компонента.|
 
 ### Специализированные поля блока
 
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
-| <a href=#fieldswitcher>switcher</a> | <code>String</code>, <code>BEMJSON</code> | Содержимое <a href="#modswitcher">управляющего компонента</a>.  |
-| <a href=#popup>popup</a> | <code>String</code>, <code>BEMJSON</code> | Содержимое всплывающего окна. |
+| <a href="#fieldswitcher">switcher</a> | <code>String</code>, <code>BEMJSON</code> | Содержимое <a href="#modswitcher">управляющего компонента</a>.  |
+| <a href="#popup">popup</a> | <code>String</code>, <code>BEMJSON</code> | Содержимое всплывающего окна. |
 
 ## Описание блока
 

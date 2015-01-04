@@ -1,7 +1,9 @@
 module.exports = function(bh) {
 
     bh.match('dropdown', function(ctx, json) {
-        ctx.js(true);
+        ctx
+            .js(true)
+            .tParam('_has-tick', ctx.mod('has-tick'));
 
         var popup = json.popup;
 

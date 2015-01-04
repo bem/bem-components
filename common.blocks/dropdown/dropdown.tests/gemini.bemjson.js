@@ -52,6 +52,65 @@
                 popup : { block : 'popup', mods : { autoclosable : true, 'islands-button' : true }, content : 'popup' },
                 cls : 'islands-button'
             }
-        }
+        },
+
+        ['s', 'm', 'l', 'xl'].map(function(size) {
+            var sizeText = 'size ' + size,
+                cls = function(block, id) {
+                    return ['test-tick', block, size, id].join('-');
+                };
+
+            return {
+                attrs : { style : 'margin: 4em 0' }, content : [
+                    { block : 'test', content : {
+                        block : 'dropdown',
+                        cls : cls('dropdown', 'icon-only'),
+                        mods : { switcher : 'button', theme : 'islands', size : size,  'has-tick' : true },
+                        switcher : {
+                            block : 'button',
+                            icon : { block : 'icon', mix : { block : 'dropdown', elem : 'tick' } }
+                        },
+                        popup : {
+                            block : 'popup',
+                            cls : cls('popup', 'icon-only'),
+                            mods : { autoclosable : false },
+                            content : 'popup'
+                        }
+                    } },
+                    ' ',
+                    { block : 'test', content : {
+                        block : 'dropdown',
+                        cls : cls('dropdown', 'icon-right'),
+                        mods : { switcher : 'button', theme : 'islands', size : size,  'has-tick' : true },
+                        switcher : sizeText,
+                        popup : {
+                            block : 'popup',
+                            cls : cls('popup', 'icon-right'),
+                            mods : { autoclosable : false },
+                            content : 'popup'
+                        }
+                    } },
+                    ' ',
+                    { block : 'test', content : {
+                        block : 'dropdown',
+                        cls : cls('dropdown', 'icon-left'),
+                        mods : { switcher : 'button', theme : 'islands', size : size },
+                        switcher : {
+                            block : 'button',
+                            content : [
+                                { block : 'icon', mix : { block : 'dropdown', elem : 'tick' } },
+                                { elem : 'text', content : sizeText }
+                            ]
+                        },
+                        popup : {
+                            block : 'popup',
+                            mods : { autoclosable : false },
+                            cls : cls('popup', 'icon-left'),
+                            content : 'popup'
+                        }
+                    } }
+                ]
+            }
+        })
     ]
 });

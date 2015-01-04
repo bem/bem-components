@@ -17,5 +17,8 @@
 },
 {
     tech : 'tmpl-spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'dropdown', mods : { switcher : ['link', 'button'] } }
+    mustDeps : [
+        { tech : 'bemhtml', block : 'dropdown', mods : { switcher : ['link', 'button'] } },
+        { tech : 'bemhtml', block : 'icon' }
+    ]
 }]

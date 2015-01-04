@@ -3,7 +3,7 @@ block('dropdown').mod('switcher', 'link').elem('switcher').content()(function() 
     if(this.isArray(content)) return content;
 
     var res = this.isSimple(content)?
-        { block : 'link', mods : { pseudo : true }, content : content } :
+        { block : 'link', mods : { pseudo : true }, content : [content] } :
         content;
 
     if(res.block === 'link') {
@@ -11,6 +11,10 @@ block('dropdown').mod('switcher', 'link').elem('switcher').content()(function() 
             dropdownMods = this.mods;
         resMods.theme || (resMods.theme = dropdownMods.theme);
         resMods.disabled = dropdownMods.disabled;
+        this._hasTick && this.isArray(res.content) && res.content.push({
+            block : 'icon',
+            mix : { block : 'dropdown', elem : 'tick' }
+        });
     }
 
     return res;

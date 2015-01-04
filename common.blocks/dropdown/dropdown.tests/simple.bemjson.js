@@ -118,6 +118,54 @@
                     popup : 'bemjson'
                 }
             ].map(function(content) { return { tag : 'div', attrs : { style : 'margin: 1em 0' }, content : content }; })
-        }
+        },
+
+        { tag : 'h3', content : 'has-tick' },
+        {
+            attrs : { style : 'margin: 1em 0' },
+            content : {
+                block : 'dropdown',
+                mods : { switcher : 'link', theme : 'islands', 'has-tick' : true },
+                switcher : 'link',
+                popup : 'popup'
+            }
+        },
+        ['s', 'm', 'l', 'xl'].map(function(size) {
+            var sizeText = 'size ' + size;
+            return {
+                attrs : { style : 'margin: 1em 0' },
+                content : [
+                    {
+                        block : 'dropdown',
+                        mods : { switcher : 'button', theme : 'islands', size : size,  'has-tick' : true },
+                        switcher : {
+                            block : 'button',
+                            icon : { block : 'icon', mix : { block : 'dropdown', elem : 'tick' } }
+                        },
+                        popup : 'popup'
+                    },
+                    ' ',
+                    {
+                        block : 'dropdown',
+                        mods : { switcher : 'button', theme : 'islands', size : size,  'has-tick' : true },
+                        switcher : sizeText,
+                        popup : 'popup'
+                    },
+                    ' ',
+                    {
+                        block : 'dropdown',
+                        mods : { switcher : 'button', theme : 'islands', size : size },
+                        switcher : {
+                            block : 'button',
+                            content : [
+                                { block : 'icon', mix : { block : 'dropdown', elem : 'tick' } },
+                                { elem : 'text', content : sizeText }
+                            ]
+                        },
+                        popup : 'popup'
+                    }
+                ]
+            }
+        })
     ]
 });

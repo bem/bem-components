@@ -213,52 +213,42 @@
             {
                 block : 'button',
                 mods : { theme : 'islands', size : 's' },
-                // Здесь иконка прописана через content, чтобы появилась в deps.js
-                content : { block : 'icon', mods : { action : 'download' } }
+                content : [
+                    { block : 'icon', mods : { action : 'download' } },
+                    { block : 'icon', mods : { action : 'download' } }
+                ]
             },
             ' ',
             {
                 block : 'button',
+                text : 'disabled',
                 mods : { theme : 'islands', size : 's', disabled : true },
                 icon : { block : 'icon', mods : { action : 'download' } }
             },
             ' ',
             {
                 block : 'button',
-                text : 'download',
-                mods : { theme : 'islands', size : 's', disabled : true },
-                icon : { block : 'icon', mods : { action : 'download' } }
-            },
-            ' ',
-            {
-                block : 'button',
-                text : 'layers',
+                text : 'inlined svg icon',
                 mods : { theme : 'islands', size : 's' },
                 icon : {
                     block : 'icon',
-                    content : '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 16 16" class="image"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
+                    content : '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="image"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
                 }
             },
             ' ',
             {
                 block : 'button',
+                text : 'image icon',
                 mods : { theme : 'islands', size : 's' },
-                content : [
-                    { elem : 'text', content : 'down' },
-                    { block : 'icon', mods : { action : 'down' } }
-                ]
+                icon : {
+                    block : 'icon',
+                    content : {
+                        block : 'image',
+                        url : '../../../test.blocks/icon/_action/download.svg'
+                    }
+                }
             },
             ' ',
-            {
-                block : 'button',
-                mods : { theme : 'islands', size : 's' },
-                content : [
-                    { block : 'icon', mods : { action : 'left' } },
-                    { elem : 'text', content : 'set width' },
-                    { block : 'icon', mods : { action : 'right' } }
-                ]
-            },
-            ' ololo ',
             {
                 block : 'button',
                 mods : { theme : 'islands', size : 's' },
@@ -271,105 +261,48 @@
                     { block : 'icon', mods : { action : 'right' } },
                     { elem : 'text', content : 'o' }
                 ]
-            },
-            ' trololo ',
-            {
-                block : 'button',
-                mods : { theme : 'islands', size : 's' },
-                content : [
-                    { block : 'icon', mods : { action : 'left' } },
-                    { elem : 'text', content : '0' },
-                    { block : 'icon', mods : { action : 'up' } },
-                    { elem : 'text', content : 'o' },
-                    { block : 'icon', mods : { action : 'right' } }
-                ]
-            }
-        ] },
-        { tag : 'p', content : [
-            {
-                block : 'button',
-                mods : { theme : 'islands', size : 'm' },
-                icon : { block : 'icon', mods : { action : 'download' } }
-            },
-            ' ',
-            {
-                block : 'button',
-                text : 'layers',
-                mods : { theme : 'islands', size : 'm' },
-                icon : {
-                    block : 'icon',
-                    content : '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="-5 -5 26 26" class="image"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
-                }
-            },
-            ' ',
-            {
-                block : 'button',
-                mods : { theme : 'islands', size : 'm' },
-                content : [
-                    { block : 'icon', mods : { action : 'left' } },
-                    { elem : 'text', content : 'set width' },
-                    { block : 'icon', mods : { action : 'right' } }
-                ]
-            }
-        ] },
-        { tag : 'p', content : [
-            {
-                block : 'button',
-                mods : { theme : 'islands', size : 'l' },
-                icon : { block : 'icon', mods : { action : 'download' } }
-            },
-            ' ',
-            {
-                block : 'button',
-                text : 'layers',
-                mods : { theme : 'islands', size : 'l' },
-                icon : {
-                    block : 'icon',
-                    content : '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="1 1 14 14" class="image"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
-                }
-            },
-            ' ',
-            {
-                block : 'button',
-                mods : { theme : 'islands', size : 'l' },
-                content : [
-                    { block : 'icon', mods : { action : 'left' } },
-                    { elem : 'text', content : 'set width' },
-                    { block : 'icon', mods : { action : 'right' } }
-                ]
-            }
-        ] },
-        { tag : 'p', content : [
-            {
-                block : 'button',
-                mods : { theme : 'islands', size : 'xl' },
-                icon : { block : 'icon', mods : { action : 'download' } }
-            },
-            ' ',
-            {
-                block : 'button',
-                text : 'layers',
-                mods : { theme : 'islands', size : 'xl' },
-                icon : {
-                    block : 'icon',
-                    content : {
-                        block : 'image',
-                        url : '../../../test.blocks/icon/_action/download.svg'
-                    }
-                }
-            },
-            ' ',
-            {
-                block : 'button',
-                mods : { theme : 'islands', size : 'xl' },
-                content : [
-                    { block : 'icon', mods : { action : 'left' } },
-                    { elem : 'text', content : 'set width' },
-                    { block : 'icon', mods : { action : 'right' } }
-                ]
             }
         ] },
 
+        ['s', 'm', 'l', 'xl'].map(function(size) {
+            return { tag : 'p', content : [
+                {
+                    block : 'button',
+                    mods : { theme : 'islands', size : size },
+                    icon : { block : 'icon', mods : { action : 'download' } }
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'islands', size : size },
+                    icon : { block : 'icon', mods : { action : 'download' } },
+                    text : 'Download'
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'islands', size : size },
+                    content : [
+                        { elem : 'text', content : 'down' },
+                        { block : 'icon', mods : { action : 'down' } }
+                    ]
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'islands', size : size },
+                    content : [
+                        { block : 'icon', mods : { action : 'left' } },
+                        { elem : 'text', content : 'left' },
+                        { block : 'icon', mods : { action : 'up' } },
+                        { elem : 'text', content : 'right' },
+                        { block : 'icon', mods : { action : 'right' } }
+                    ]
+                }
+            ] };
+        }),
+
+        { tag : 'h3', content : 'togglable' },
         { tag : 'p', content : [
             {
                 block : 'button',

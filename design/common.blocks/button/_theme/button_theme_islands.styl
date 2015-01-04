@@ -212,78 +212,83 @@ ctx = '.button_theme_islands'
         }
     }
 
-    &.button_size_s
-    {
-        font-size: 13px;
-        line-height: 24px;
+    // line_height - line height (same as side of icon)
+    // icon_width  - icon width from guide
+    // text_offset - offset of text without icon from guide
+    // text_offset_with_icon - offset of text with icon from guide
+    inner-layout(line_height, icon_width, text_offset, text_offset_with_icon) {
+        icon_margin = (icon_width - line_height) / 2
+
+        line-height: line_height;
 
         .icon
         {
-            width: 24px;
+            width: line_height;
+            margin-left: icon_margin;
+
+            &:last-child
+            {
+                margin-right: icon_margin;
+            }
+
+            &:only-child
+            {
+                margin: 0;
+            }
         }
 
         .button__text
         {
-            margin: 0 10px;
+            margin: 0 text_offset;
         }
+
+        .icon + .button__text
+        {
+            margin-left: 0;
+        }
+
+        .icon:first-child + .button__text
+        {
+            margin-left: icon_margin - icon_width + text_offset_with_icon;
+        }
+
+        .button__text + .icon
+        {
+            margin-left: - text_offset;
+        }
+        .button__text + .icon:last-child
+        {
+            margin-left: text_offset_with_icon - icon_margin - line_height - text_offset;
+        }
+    }
+
+    &.button_size_s
+    {
+        font-size: 13px;
+        inner-layout: 24px, 34px, 10px, 30px;
     }
 
     &.button_size_m
     {
         font-size: 13px;
-        line-height: 28px;
-
-        .icon
-        {
-            width: 28px;
-        }
-
-        .button__text
-        {
-            margin: 0 13px;
-        }
+        inner-layout: 28px, 34px, 13px, 30px;
     }
 
     &.button_size_l
     {
         font-size: 15px;
-        line-height: 32px;
-
-        .icon
-        {
-            width: 32px;
-        }
-
-        .button__text
-        {
-            margin: 0 15px;
-        }
+        inner-layout: 32px, 36px, 15px, 31px;
     }
 
     &.button_size_xl
     {
         font-size: 18px;
-        line-height: 38px;
-
-        .icon
-        {
-            width: 38px;
-        }
-
-        .button__text
-        {
-            margin: 0 18px;
-        }
+        inner-layout: 38px, 40px, 18px, 35px;
     }
 
-    & .icon + .button__text
+    .icon + .icon
     {
         margin-left: 0;
-    }
-
-    .button__text:not(:last-child)
-    {
-        margin-right: 0;
     }
 }
 

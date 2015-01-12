@@ -309,7 +309,7 @@ Each test consists of a pair of files implemented in following technologies: BEM
 
 For each block:
 * BEMJSON file contains an example for a block;
-* HTML file contains standard HTML code – a block sample.
+* HTML file contains standard HTML code – a block sample.
 
 Block sample in HTML is a block implementation result that becomes available after applying a template to the BEMJSON example.
 

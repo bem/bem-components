@@ -14,6 +14,10 @@ browsers:
     browserName: internet explorer
     version: 9
     platform: Windows 7
+  ie11:
+    browserName: internet explorer
+    version: 11
+    platform: Windows 7
 #  opera-v12:
 #    browserName: opera
 #    version: 12

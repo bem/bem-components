@@ -258,7 +258,7 @@
 {
     block : 'menu',
     mods : { theme : 'islands', mode : 'check', size : 'm' },
-    val : 1,
+    val : [1],
     content : [
         {
             block : 'menu-item',

@@ -12,6 +12,8 @@ gemini.suite('checkbox-group', function(root) {
             element = !!~test.indexOf('button')? ' .button' : ' .checkbox__control';
 
         gemini.suite(test + '-enabled', function(suite) {
+            suite.skip('internet explorer');
+
             suite
                 .setCaptureElements(checkboxGroupEnabledSelector, checkboxGroupEnabledSelector + innerSelector)
                 .before(function(actions, find) {

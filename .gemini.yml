@@ -10,13 +10,13 @@ browsers:
     browserName: chrome
     version: 35
     platform: Linux
+  ie9:
+    browserName: internet explorer
+    version: 9
+    platform: Windows 7
 #  opera-v12:
 #    browserName: opera
 #    version: 12
-#    platform: Windows 7
-#  ie9:
-#    browserName: internet explorer
-#    version: 9
 #    platform: Windows 7
 
 http:

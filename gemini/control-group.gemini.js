@@ -4,6 +4,8 @@ gemini.suite('control-group', function(root) {
     root.setUrl('desktop.tests/control-group/gemini/gemini.html');
 
     gemini.suite('islands-search-form', function(suite) {
+        suite.skip('internet explorer');
+
         suite
             .setCaptureElements('.search-form')
             .before(function(actions, find) {
@@ -24,6 +26,8 @@ gemini.suite('control-group', function(root) {
     });
 
     gemini.suite('islands-multiple-form', function(suite) {
+        suite.skip('internet explorer');
+
         suite
             .setCaptureElements('.multiple-form')
             .before(function(actions, find) {

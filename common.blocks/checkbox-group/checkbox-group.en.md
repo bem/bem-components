@@ -1,253 +1,418 @@
 # checkbox-group
 
-`checkbox-group` block is a set of independent checkboxes ([checkbox](../checkbox/checkbox.en.md) block).
+A block is used to manage a group of [checkboxes](../checkbox/checkbox.en.md).
 
-Block implementation allows a user to manage the appearance and state of nested checkboxes.
+## Brief overview
 
-On a page `checkbox-group` block will be represented by `<span>` HTML element, with a nested set of checkboxes and their labels.
+### Modifiers of the block
 
-## Custom fields of a block
+| Modifier | Available values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#checkboxtype">type</a> | <code>'button'</code>, <code>'line'</code> | <code>BEMJSON</code> | A checkbox group type. |
+| <a href="#checkboxdisabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#checkboxfocused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
+| <a href="#checkboxtheme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design.  |
+| <a href="#checkboxsize">size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | A checkbox group size. Use sizes only for checkboxes with <a href="#checkboxtheme">theme modifier with islands value</a>. |
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+### Custom fields of the block
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td><code>String</code></td>
-        <td>Checkbox group name. Represented by HTML attribute <code>name</code> of a nested block <code>input</code>.</td>
-    </tr>
-    <tr>
-        <td>options</td>
-        <td><code>Array</code></td>
-        <td>An array of pairs that maps <code>text</code> to <code>val</code> for each checkbox. Each pair <code>name=val</code> within the array corresponds to one checkbox. Pair <code>name=val</code> is sent to a server, where name of a checkbox group is set by <code>name</code> field and its value – by <code>val</code> field.
-            <br>The following <code>checkbox</code> block modifiers can be propagated to each checkbox of <code>options</code> array: <code>checked</code>, <code>disabled</code>.</td>
-    </tr>
-</table>
+| Field | Type | description |
+| ---- | --- | -------- |
+| <a href="#checkboxname">name</a> | <code>String</code> | A unique block name. |
+| <a href="#val">val</a> | <code>Array</code> | A set of values of the selected checkboxes. |
+| <a href="#checkboxopt">options</a> | <code>Array</code> | A set of values for each checkbox of the group. Each checkbox has its own <a href="#checkboxoptset">set of values</a>. |
 
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+## Block overview
 
-## Modifiers of a block
+`checkbox-group` block is used to manage a size, state, and appearance of the embedded checkboxes.
 
-The following `checkbox-group` modifiers are propagated to each checkbox within the group:
+### Modifiers of the block
 
-### _theme
+<a name="checkboxtype"></a>
 
-Block supports the following themes:
+#### `type` modifier
 
- * simple
- * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
+Available values: `'button'`, `'line'`.
 
-If `theme` modifier is not specified, [native](#native) representation of a control is applied.
+Use case: `BEMJSON`.
 
-See following examples:
+<a name="checkboxtype-button"></a>
 
-<a name="native"></a>
-#### default
+##### A `button`-based checkbox group (`type` modifier with `button` value)
 
-```bemjson
-{
-    block : 'checkbox-group',
-    name : 'checkbox-default',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
+The modifier allows to implements `checkbox-group` block using on [button-based checkboxes](../checkbox/checkbox.en.md/#checkboxtype) type.
 
-#### simple
+Grouped button-based checkboxes are always aligned in a line.
 
-```bemjson
-{
-    block : 'checkbox-group',
-    mods : { theme : 'simple' },
-    name : 'checkbox-simple',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-#### islands
-
-```bemjson
-{
-    block : 'checkbox-group',
-    mods : { theme : 'islands', size : 'l' },
-    name : 'checkbox-islands',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-### _size
-
-Implemented only for theme `islands`.
-
-Provides all types of checkbox groups with the size value.
-
-There are four sizes available: **s**, **m**, **l**, **xl**.
-
-Depending on a [type](#type) modifier value the following sizes are available:
-
-<table>
-    <tr>
-        <th>Size</th>
-        <th>Plain checkbox-group and
-            <br>checkbox-group with
-            <br><code>type</code> modifier
-            <br>with <code>line</code> value
-            <br>(<code>checkbox-group_type_line</code>).</th>
-        <th>Checkbox group implemented
-            <br>by <code>button</code> block
-            <br>(<code>checkbox-group_type_button</code>).</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>–</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>–</td>
-        <td>+</td>
-</table>
-
-See following examples:
-
-```bemjson
-{
-    block : 'checkbox-group',
-    mods : { theme : 'islands', size : 's', type : 'button' },
-    name : 'checkbox-button',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-```bemjson
+```js
 {
     block : 'checkbox-group',
     mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'checkbox-button',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
     ]
 }
 ```
 
-```bemjson
-{
-    block : 'checkbox-group',
-    mods : { theme : 'islands', size : 'l', type : 'button' },
-    name : 'checkbox-button',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
+<a name="checkboxtype-line"></a>
 
-```bemjson
-{
-    block : 'checkbox-group',
-    mods : { theme : 'islands', size : 'xl', type : 'button' },
-    name : 'checkbox-button',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
+##### A `line`-aligned checkbox group (`type` modifier with `line` value)
 
-<a name="type"></a>
-### _type
+The modifier aligns all checkboxes of the group in a line.
 
-The following types of `checkbox-group` block are available:
-
-* `button`-based. Use `type` modifier with `button` value to create `checkbox-group` block implemented by [button](../button/button.en.md) block. Button-based checkboxes of a group are always aligned in line.
-
-```bemjson
-{
-    block : 'checkbox-group',
-    mods : { theme : 'islands', size : 'm', type : 'button' },
-    name : 'checkbox-button',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-* `line`-aligned. Use `type` modifier with `line` value to align all checkboxes of the group in a line. Right gap is automatically added after each checkbox of the group except the last one. Implemented only for theme `islands`.
-
-```bemjson
+```js
 {
     block : 'checkbox-group',
     mods : { theme : 'islands', size : 'm', type : 'line' },
     name : 'checkbox-line',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
     ]
 }
 ```
 
-### States of a block
+<a name="checkboxdisabled"></a>
 
-#### _disabled
+#### `disabled` modifier
 
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
+Available value: `true`.
 
-If `checkbox-group` block is disabled, all checkboxes within this group are also disabled. `checked` modifier value cannot be changed in disabled state.
+Use cases: `BEMJSON`, `JS`.
 
-```bemjson
+The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+
+The modifier could be applied to:
+
+* A checkbox-group:
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm', disabled : true },
+    name : 'checkbox',
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
+    ]
+}
+```
+
+```js
 {
     block : 'checkbox-group',
     mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
     name : 'checkbox-button',
-    val : [2],
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
     ]
 }
 ```
-You can apply `disabled` modifier to a separate checkbox of a group.
 
-```bemjson
+* A separate checkbox of the group:
+
+```js
 {
     block : 'checkbox-group',
-    mods : { theme : 'islands', size : 'm', type : 'line' },
+    mods : { theme : 'islands', size : 'm' },
     name : 'checkbox-line',
     options : [
-        { val : 1, text : 'first', disabled : true },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'Block', disabled : true },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
     ]
 }
 ```
 
-#### _focused
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'checkbox-line',
+    options : [
+        { val : 1, text : 'Block', disabled : true },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
+    ]
+}
+```
 
-When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
+<a name="checkboxfocused"></a>
+
+#### `focused` modifier
+
+Available value: `true`.
+
+Use cases: `BEMJSON`, `JS`.
+
+The modifier provides a focus to the block.
+
+```javascript
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm', focused : true },
+    name : 'checkbox',
+    val : [2],
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
+    ]
+}
+```
+
+```javascript
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm', type : 'button', focused : true },
+    name : 'checkbox-button',
+    val : [2],
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
+    ]
+}
+```
+
+<a name="checkboxtheme"></a>
+
+#### `theme` modifier
+
+Available value: `'islands'`.
+
+Use case: `BEMJSON`.
+
+The modifier provides a custom design to the block.
+
+`islands` theme requires <a href="#checkboxsize">size</a> modifier usage.
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'checkbox-islands',
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
+    ]
+}
+```
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'checkbox-islands',
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
+    ]
+}
+```
+
+<a name="checkboxsize"></a>
+
+#### `size` modifier
+
+Available values for `islands` theme: `'m'`, `'l'`.
+
+Use case: `BEMJSON`.
+
+Use `size` modifier only for blocks with `islands` <a href="#checkboxthemes">theme</a>.
+
+Provides all types of checkbox groups with `size` value.
+
+**m**
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'checkbox-button',
+    val : [1, 2],
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
+    ]
+}
+```
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'checkbox-button',
+    val : [2, 3],
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
+    ]
+}
+```
+
+**l**
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'l' },
+    name : 'checkbox-button',
+    val : [1, 2],
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
+    ]
+}
+```
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'l', type : 'button' },
+    name : 'checkbox-button',
+    val : [2, 3],
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
+    ]
+}
+```
+
+### Custom fields of the block
+
+<a name="checkboxname"></a>
+
+#### `name` field
+
+Type: `String`
+
+Specifies a unique name of the block.
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'checkbox-button-1',
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
+    ]
+}
+```
+
+<a name="val"></a>
+
+#### `val` field
+
+Type: `Array`.
+
+Specifies a set of the selected checkboxes values.
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'checkbox-button-1',
+    val : [1, 2],
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element' },
+        { val : 3, text : 'Modifier' }
+    ]
+}
+```
+
+<a name="checkboxopt"></a>
+
+#### `options` field
+
+Type: `Array`
+
+Specifies a set of values for each checkbox of the group.
+
+<a name="checkboxoptset"></a>
+
+Each checkbox has its own set of values.
+
+| Field | Type | description |
+| ---- | --- | -------- |
+| <code>val</code> | <code>String</code>, <code>Number</code> | A value that will be sent to a server if a checkbox is selected. |
+| <code>text</code> | <code>String</code> | A text of a checkbox or a text on a button if <code>type</code> modifier with <code>button</code> value is set to the checkbox. |
+| <code>disabled</code> | <code>Boolean</code> | A disabled state. |
+| <code>icon</code> | <code>BEMJSON</code> | An icon on a checkbox that is formed by <a href="../icon/icon.en.md">icon</a> block. Use icons only for checkboxes with <a href="#checkboxtype">type modifier with button value</a>. |
+| <code>title</code> | <code>String</code> | A tooltip content. Use tooltips only for checkboxes with <code>type</code> modifier with <code>button</code> value. |
+| <code>id</code> | <code>String</code> | A unique identifier of a checkbox. |
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'checkbox-islands',
+    val : [1, 3],
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element', disabled : true },
+        { val : 3, text : 'Modifier', disabled : true },
+        { val : 4, text : 'Modifier' }
+    ]
+}
+```
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'checkbox-islands',
+    val : [3],
+    options : [
+        { val : 1, text : 'Block' },
+        { val : 2, text : 'Element', disabled : true, title : 'Disabled' },
+        { val : 3, text : 'Modifier', disabled : true, title : 'Checked and disabled' }
+    ]
+}
+```
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'checkbox-islands',
+    val : [1],
+    options : [
+        {
+            val : 1,
+            text : 'Twitter',
+            title : 'Follow BEM on Twitter',
+            icon : {
+                block : 'icon',
+                mods : { social : 'twitter' }
+            },
+        },
+        {
+            val : 2,
+            text : 'VKontakte',
+            disabled : true,
+            title : 'Follow BEM on VKontakte',
+            icon : {
+                block : 'icon',
+                mods : { social : 'vk' }
+            },
+        }
+    ]
+}
+```

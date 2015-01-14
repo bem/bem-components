@@ -37,7 +37,9 @@
         animation: spin_theme_islands 1s infinite linear;
 
         background: 0 0 no-repeat url(spin_theme_islands.gif);
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)) !important;
+
+        /* `1deg` is needed to prevent FF bug after minification (`0deg` => `0`) */
+        background: linear-gradient(1deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
 
         backface-visibility: hidden; /* Accelerate animation */
     }

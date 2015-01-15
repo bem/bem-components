@@ -7,38 +7,6 @@
         { elem : 'js', url : '_gemini.js' }
     ],
     content : [
-        { tag : 'h2', content : 'default' },
-        { tag : 'p', content : [
-            {
-                block : 'button',
-                text : 'default',
-                cls : 'gemini-test-button-default-enabled'
-            },
-            '&nbsp;&nbsp;&nbsp;',
-            {
-                block : 'button',
-                text : 'disabled',
-                mods : { disabled : true },
-                cls : 'gemini-test-button-default-disabled'
-            },
-            '&nbsp;&nbsp;&nbsp;',
-            {
-                block : 'button',
-                mods : { type : 'link' },
-                url : '#',
-                text : 'link',
-                cls : 'gemini-test-button-default-link-enabled'
-            },
-            '&nbsp;&nbsp;&nbsp;',
-            {
-                block : 'button',
-                mods : { type : 'link', disabled : true },
-                url : '#',
-                text : 'disabled link',
-                cls : 'gemini-test-button-default-link-disabled'
-            }
-        ] },
-
         { tag : 'h2', content : 'islands' },
 
         { tag : 'h3', content : 'view' },

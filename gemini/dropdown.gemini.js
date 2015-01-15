@@ -5,8 +5,6 @@ gemini.suite('dropdown', function(root) {
     root.setUrl('desktop.tests/dropdown/gemini/gemini.html');
 
     [
-        'default-link',
-        'default-button',
         'islands-link',
         'islands-button'
     ]

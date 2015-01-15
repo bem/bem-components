@@ -6,7 +6,7 @@
         { elem : 'css', url : '_gemini.css' },
         { elem : 'js', url : '_gemini.js' }
     ],
-    content : ['default', 'islands'].map(function(theme, i) {
+    content : ['islands'].map(function(theme, i) {
         var content = [
                 { block : 'link', content : 'with no url', cls : theme + '-no-url' },
                 { block : 'link', url : '#', content : 'plain url', cls : theme + '-url' },

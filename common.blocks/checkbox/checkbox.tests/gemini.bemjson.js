@@ -7,34 +7,6 @@
         { elem : 'js', url : '_gemini.js' }
     ],
     content : [
-
-        { tag : 'h2', content : 'default' },
-        {
-            block  : 'test', content : {
-                block : 'checkbox',
-                text : 'first'
-            },
-            cls : 'default-enabled'
-        },
-        {
-            block  : 'test', content : {
-                block : 'checkbox',
-                mods : { disabled : true },
-                text : 'second'
-            },
-            cls : 'default-disabled'
-        },
-        {
-            block  : 'test', content : {
-                block : 'checkbox',
-                mods : { disabled : true, checked : true },
-                text : 'third'
-            },
-            cls : 'default-disabled-checked'
-        },
-
-        { tag : 'hr' },
-
         { tag : 'h2', content : 'islands' },
         {
             block : 'test',

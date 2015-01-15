@@ -47,7 +47,6 @@ gemini.suite('checkbox-group', function(root) {
     });
 
     [
-        'default',
         'islands-size_m',
         'islands-size_l',
         'line-size_m',

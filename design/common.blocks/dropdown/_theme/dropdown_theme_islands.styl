@@ -1,4 +1,51 @@
 .dropdown_theme_islands
 {
     display: inline-block;
+
+    .dropdown__tick
+    {
+        background-image: url(../../theme/_islands/arrow.svg);
+
+        transition: transform 0.1s ease-out;
+    }
+
+    &.dropdown_opened .dropdown__tick
+    {
+        transform: rotate(-180deg);
+    }
+
+    .button_theme_islands
+    {
+        &.button_size_s .dropdown__tick
+        {
+            width: 25px;
+        }
+
+        &.button_size_m .dropdown__tick
+        {
+            width: 29px;
+        }
+
+        &.button_size_l .dropdown__tick
+        {
+            width: 33px;
+        }
+
+        &.button_size_xl .dropdown__tick
+        {
+            width: 39px;
+        }
+
+        .dropdown__tick
+        {
+            &:last-child:not(:only-child) {
+                margin-left: -1px;
+            }
+
+            &:first-child, &:only-child
+            {
+                margin-right: -1px;
+            }
+        }
+    }
 }

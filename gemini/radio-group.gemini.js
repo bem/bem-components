@@ -5,12 +5,7 @@ gemini.suite('radio-group', function(root) {
     root.setUrl('desktop.tests/radio-group/gemini/gemini.html');
 
     [
-        //'default',
-        //'button-islands-m',
-        //'button-islands-l',
-        //'button-islands-m-icon',
-        //'button-islands-l-icon',
-        //'islands-l',
+        'islands-l',
         'islands-m',
         'line-islands-m',
         'line-islands-l'

@@ -14,13 +14,7 @@ gemini.suite('input', function(root) {
         'islands-sizeS',
         'islands-sizeM',
         'islands-sizeL',
-        'islands-sizeXL',
-        'default',
-        'default-val',
-        'default-placeholder',
-        'default-longVal',
-        'default-longPlaceholder',
-        'default-label'
+        'islands-sizeXL'
     ]
         .forEach(function(test) {
             var inputSelector = '.' + test,

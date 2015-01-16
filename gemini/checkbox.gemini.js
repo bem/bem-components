@@ -5,7 +5,6 @@ gemini.suite('checkbox', function(root) {
     root.setUrl('desktop.tests/checkbox/gemini/gemini.html');
 
     [
-        'default',
         'islands-size_m',
         'islands-button',
         'islands-button-icon',

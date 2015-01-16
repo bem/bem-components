@@ -6,30 +6,47 @@
         { elem : 'css', url : '_gemini.css' },
         { elem : 'js', url : '_gemini.js' }
     ],
-    content : [
-
-        {
-            tag : 'p',
-            cls : 'enabled',
-            attrs : { style : 'display: inline-block;' },
-            content : {
-                block : 'attach',
-                button : 'file',
-                noFileText : 'no file selected',
-                attrs : { tabindex : 0 } // для отлавливания фокуса в Chrome
-            }
-        },
-        {
-            tag : 'p',
-            cls : 'disabled',
-            attrs : { style : 'display: inline-block;' },
-            content : {
-                block : 'attach',
-                mods : { disabled : true },
-                button : 'file',
-                noFileText : 'no file selected'
-            }
-        }
-
-    ]
+    content : ['s', 'm', 'l', 'xl'].map(function(size) {
+        var cls = 'islands-size' + size.toUpperCase();
+        return {
+            tag : false,
+            content : [{
+                    tag : 'h2',
+                    content : cls,
+                },
+                {
+                    tag : 'p',
+                    attrs : { style : 'width: 300px' },
+                    cls : cls + '-enabled',
+                    content : {
+                        block : 'attach',
+                        button : 'file',
+                        noFileText : 'no file selected',
+                        mods : {
+                            theme : 'islands',
+                            size : size,
+                        },
+                        attrs : {
+                            tabindex : 0 // To trap focus in Chrome
+                        }
+                    }
+                },
+                {
+                    tag : 'p',
+                    attrs : { style : 'width: 300px' },
+                    cls : cls + '-disabled',
+                    content : {
+                        block : 'attach',
+                        mods : {
+                            theme : 'islands',
+                            size : size,
+                            disabled : true
+                        },
+                        button : 'file',
+                        noFileText : 'no file selected'
+                    }
+                }
+            ]
+        };
+    })
 });

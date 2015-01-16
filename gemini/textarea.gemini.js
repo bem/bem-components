@@ -15,14 +15,7 @@ gemini.suite('textarea', function(root) {
         'islands-sizeS',
         'islands-sizeM',
         'islands-sizeL',
-        'islands-sizeXL',
-        'default',
-        'default-val',
-        'default-placeholder',
-        'default-longVal',
-        'default-longPlaceholder',
-        'default-label',
-        'default-width-available'
+        'islands-sizeXL'
     ]
         .forEach(function(test) {
             var textareaSelector = '.' + test,

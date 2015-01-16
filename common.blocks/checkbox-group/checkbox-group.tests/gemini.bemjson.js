@@ -7,34 +7,6 @@
         { elem : 'js', url : '_gemini.js' }
     ],
     content : [
-
-        { tag : 'h2', content : 'default' },
-        {
-            block : 'test', content : {
-                block : 'checkbox-group',
-                val : [2],
-                options : [
-                    { text : 'first', val : 1 },
-                    { text : 'second', val : 2 }
-                ]
-            },
-            cls : 'default-enabled'
-        },
-        {
-            block : 'test', content : {
-                block : 'checkbox-group',
-                mods : { disabled : true },
-                val : [2],
-                options : [
-                    { text : 'first', val : 1 },
-                    { text : 'second', val : 2 }
-                ]
-            },
-            cls : 'default-disabled'
-        },
-
-        { tag : 'hr' },
-
         { tag : 'h2', content : 'islands' },
         ['m', 'l'].map(function(size) {
             return [

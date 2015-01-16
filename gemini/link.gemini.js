@@ -5,9 +5,6 @@ gemini.suite('link', function(root) {
     root.setUrl('desktop.tests/link/gemini/gemini.html');
 
     [
-        'default-no-url',
-        'default-url',
-        'default-pseudo',
         'islands-no-url',
         'islands-url',
         'islands-pseudo'

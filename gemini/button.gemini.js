@@ -5,8 +5,6 @@ gemini.suite('button', function(root) {
     root.setUrl('desktop.tests/button/gemini/gemini.html');
 
     [
-        'default',
-        'default-link',
         'islands',
         'pseudo',
         'action',

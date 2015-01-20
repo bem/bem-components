@@ -1,256 +1,345 @@
 # input
 
-`input` block is designed to create different types of text fields:
+A block is used to create different types of text fields.
 
-* input field (default value);
-* text area;
-* password field;
-* search form.
+## Brief overview
 
-## Custom fields of a block
+### Modifiers of the block
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+| Modifier | Available values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#type">type</a> | <code>'password'</code>, <code>'search'</code> | <code>BEMJSON</code> | A text field type. |
+| <a href="#width">width</a> | <code>'available'</code> | <code>BEMJSON</code> | A maximum allowed width of the text field. |
+| <a href="#has-clear">has-clear</a> | <code>true</code> | <code>BEMJSON</code> | An element that clears `input` field content. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
+| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A text field size. Use sizes only for text fields with <a href="#themes">theme modifier with islands value</a>.|
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>val</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies value that will be sent to a server or obtained using client scripts. It is empty by default. Pair <code>name=val</code> is sent to a server, where name is set by <code>name</code> attribute and value – by <code>val</code> attribute.</td>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Defines name of an input field that is used for its identification.</td>
-    </tr>
-    <tr>
-        <td>placeholder</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>A hint that describes expected value of an input field.</td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Unique block identifier. Should be specified manually in BEMJSON file.</td>
-    </tr>
-    <tr>
-        <td>maxLength</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies maximum number of characters allowed in input field.</td>
-    </tr>
-    <tr>
-        <td>tabIndex</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies the position of current <code>input</code> block in the tabbing order for current page.</td>
-    </tr>
-</table>
+### Custom fields of the block
 
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+| Field | Type | description |
+| ---- | --- | -------- |
+| <a href="#name">name</a> | <code>String</code> | A unique block name. |
+| <a href="#val">val</a> | <code>String</code>, <code>Number</code> | Default content of the text field. |
+| <a href="#placeholder">placeholder</a> | <code>String</code> | A hint in the text field. |
+| <a href="#maxLength">maxLength</a> | <code>String</code> | A maximum number of characters allowed in text field. |
+| <a href="#autocomplete">autocomplete</a> | <code>Boolean</code> | Browser predictions of the rest of a word while a user is typing. |
+| <a href="#id">id</a> | <code>String</code> | A unique identifier of the text field. |
+| <a href="#tab">tabIndex</a> | <code>Number</code> | A sequence that user follows when he uses the <code>Tab</code> key to navigate through a page. |
 
-## Modifiers of a block
+## Block overview
 
-### _theme
+`input` block is used to manage a size, state and appearance of a text fields.
 
-Block supports the following themes:
+### Modifiers of the block
 
- * simple
- * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
+<a name="type"></a>
 
-If `theme` modifier is not specified, [native](#native) representation of a control is applied.
+#### `type` modifier
 
-See following examples:
+Available values:`'password'`, `'search'`.
 
-<a name="native"></a>
-**default**
+Use case: `BEMJSON`.
 
-```bemjson
+The modifier changes types of the text fields.
+
+<a name="input"></a>
+If `type` modifier is not specified, `input` block is a common text field by default.
+
+```js
 {
     block : 'input',
-    placeholder : 'default'
+    mods : { theme : 'islands', size : 'm' },
+    placeholder : 'Enter your name'
 }
 ```
 
-**simple**
+##### A password field (`type` modifier with `password` value)
 
-```bemjson
+Use to create a specialized text fields for password entry. For security reasons, a password field does not show the characters that the user types. Instead, the field displays a character different from the one typed such as an asterisk '*' (depends on a browser).
+
+```js
 {
     block : 'input',
-    mods : { theme : 'simple' },
-    placeholder : 'simple'
+    mods : { theme : 'islands', size: 'm', type : 'password' },
+    placeholder : 'Enter the password'
 }
 ```
 
-**islands**
+##### A search field (`type` modifier wirh `search` value)
 
-```bemjson
+Use to create a search field.
+
+```js
 {
     block : 'input',
-    mods : { theme : 'islands', size: 'm' },
-    placeholder : 'islands'
+    mods : { theme : 'islands', size : 'm', type : 'search' },
+    placeholder : 'Enter your question'
+}
+```
+
+<a name="width"></a>
+
+#### `width` modifier
+
+Available value:`'available'`.
+
+Use cases: `BEMJSON`.
+
+Use to set the maximum available width to the text field.
+
+```js
+{
+    block : 'input',
+    mods : { theme : 'islands', size : 'm', width : 'available' },
+    placeholder : 'Enter your name'
+}
+```
+
+<a name="has-clear"></a>
+
+#### `has-clear` modifier
+
+Available value:`true`.
+
+Use cases: `BEMJSON`.
+
+Use to add `clear` element into the text field to remove entered content.
+
+```js
+{
+    block : 'input',
+    mods : { theme : 'islands', size : 'm', 'has-clear' : true },
+    val : 'Hello!'
+}
+```
+
+<a name="disabled"></a>
+
+#### `disabled` modifier
+
+Available value:`true`.
+
+Use cases: `BEMJSON`, `JS`.
+
+The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+
+```js
+{
+    block : 'input',
+    mods : { theme : 'islands', size : 'm', disabled : true },
+    placeholder : 'Enter your name'
+}
+```
+
+<a name="focused"></a>
+
+#### `focused` modifier
+
+Available value:`true`.
+
+Use cases: `BEMJSON`, `JS`.
+
+The modifier provides a focus to the block.
+
+```javascript
+{
+    block : 'input',
+    mods : { theme : 'islands', size : 'm', focused : true },
+    placeholder : 'Enter your name'
+}
+```
+<a name="theme"></a>
+
+#### `theme` modifier
+
+Available value:`'islands'`.
+
+Use case: `BEMJSON`.
+
+The modifier provides a custom design to the block.
+
+`islands` theme requires <a href="#size">size</a> modifier usage.
+
+```js
+{
+    block : 'input',
+    mods : { theme : 'islands', size: 'm', type : 'search' },
+    placeholder : 'Enter your question'
 }
 ```
 
 <a name="size"></a>
-### _size
 
-Implemented only for theme `islands`.
+#### `size` modifier
 
-Provides with size values to all types of text fields.
+Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
 
-There are four sizes available: **s**, **m**, **l**, **xl**.
+Use case: `BEMJSON`.
 
-<table>
-    <tr>
-        <th>Size</th>
-        <th>Font size</th>
-        <th>String height</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>13px</td>
-        <td>28px</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>15px</td>
-        <td>32px</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>18px</td>
-        <td>38px</td>
-    </tr>
-</table>
+Use `size` modifier only for blocks with `islands` <a href="#themes">theme</a>.
 
-See following examples:
+Provides all types of text fields with `size` value.
 
-```bemjson
+**s**
+
+```js
 {
     block : 'input',
     mods : { theme : 'islands', size: 's' },
-    placeholder : 'Small'
+    placeholder : 'Size s'
 }
 ```
 
-```bemjson
+**m**
+
+```js
 {
     block : 'input',
     mods : { theme : 'islands', size: 'm' },
-    placeholder : 'Medium'
+    placeholder : 'Size m'
 }
 ```
 
-```bemjson
+**l**
+
+```js
 {
     block : 'input',
     mods : { theme : 'islands', size: 'l' },
-    placeholder : 'Large'
+    placeholder : 'Size l'
 }
 ```
 
-```bemjson
+**xl**
+
+```js
 {
     block : 'input',
     mods : { theme : 'islands', size: 'xl' },
-    placeholder : 'X-Large'
+    placeholder : 'Size xl'
 }
 ```
 
-### _type
+### Custom fields of the block
 
-Following types of `input` block are available:
+<a name="name"></a>
 
-* text area (`input_type_textarea`)
+#### `name` field
 
-```bemjson
+Type: `String`.
+
+Specifies a unique name of the block.
+
+```js
 {
     block : 'input',
-    mods : { theme : 'islands', size : 'm', type : 'textarea' },
-    placeholder : 'Text area'
+    mods : { theme : 'islands', size: 'm' },
+    name : 'Statistics'
 }
 ```
 
-* password field (`input_type_password`)
+<a name="val"></a>
 
-```bemjson
+#### `val` field
+
+Type: `String`.
+
+Specifies content of the text field.
+
+```js
 {
     block : 'input',
-    mods : { theme : 'islands', size: 'm', type : 'password' },
-    placeholder : 'Password field'
+    mods : { theme : 'islands', size: 'm' },
+    name : 'Statistics',
+    val : 'Hello'
 }
 ```
 
-* search form (`input_type_search`)
+<a name="placeholder"></a>
 
-```bemjson
+#### `placeholder` field
+
+Type: `String`.
+
+Specifies a hint in the text field.
+
+```js
 {
     block : 'input',
-    mods : { theme : 'islands', size : 'm', type : 'search' },
-    placeholder : 'Search form'
+    mods : { theme : 'islands', size : 'm' },
+    placeholder : 'Enter your name'
 }
 ```
 
-If `type` modifier is not specified, `input` block obtains `<input type="text"/>` value by default.
+<a name="maxLength"></a>
 
+#### `maxLength` field
 
-### States of a block
+Type: `Number`.
 
-#### _disabled
+Specifies a maximum number of characters allowed in text field.
 
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
-
-```bemjson
+```js
 {
     block : 'input',
-    mods : { theme : 'islands', size : 'm', disabled : true },
-    val : 'Disabled'
+    mods : { theme : 'islands', size : 'm' },
+    placeholder : 'Enter your name',
+    maxLength : 20
 }
 ```
 
-#### _focused
+<a name="autocomplete"></a>
 
-When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.
+#### `autocomplete` field
 
-### _has-clear
+Type: `Boolean`.
 
-`has-clear` modifier is set automatically when some data is entered into an input field. This modifier is used to add [`clear`](#clear_elem) element.
+Specifies browser predictions of the rest of a word while a user is typing.
 
-## Block elements
+If `autocomplete` field is not specified, the autocomplete function is turned on by default.
 
-The following elements provide visual representation of `input` block:
+To turn off the autocomplete function use `false` value:
 
-<a name="clear_elem"></a>
-### __clear
+```js
+{
+    block : 'input',
+    mods : { theme : 'islands', size : 'm' },
+    placeholder : 'Enter your name',
+    autocomplete : false
+}
+```
 
-This element is used to clear `input` field content.
+<a name="id"></a>
+#### `id` field
 
-### __box
+Type: `String`.
 
-Element for grouping native `<input>` field and additional elements (e.g `clear`).
+Specifies a unique identifier of the text field.
 
-An auxiliary element is added to the block on template engine level.
+```js
+{
+    block : 'input',
+    mods : { theme : 'islands', size : 'm' },
+    placeholder : 'Enter your name',
+    id : 'Unique_1'
+}
+```
 
-### __control
+<a name="tab"></a>
 
-An auxiliary element is added to the block on template engine level.
+#### `tabIndex` field
+
+Type: `Number`.
+
+Specifies a tab order between controls on a page by pressing `Tab`.
+
+```js
+{
+    block : 'input',
+    mods : { theme : 'islands', size : 'm' },
+    placeholder : 'Enter your name',
+    tabIndex : 3
+}
+```

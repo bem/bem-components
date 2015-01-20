@@ -23,7 +23,7 @@
 | <a href="#name">name</a> | <code>String</code> | Уникальное имя блока. |
 | <a href="#val">val</a> | <code>String</code>, <code>Number</code> | Содержимое поля ввода, указанное по умолчанию. |
 | <a href="#placeholder">placeholder</a> | <code>String</code> | Подсказка в текстовом поле. |
-| <a href="#maxLength">maxLength</a> | <code>String</code> | Максимальное количество вводимых символов. Используется только для <a href="#inputfield">полей ввода</a>. |
+| <a href="#maxLength">maxLength</a> | <code>String</code> | Максимальное количество вводимых символов. |
 | <a href="#autocomplete">autocomplete</a> | <code>Boolean</code> | Браузерное автозаполнение в текстовом поле. |
 | <a href="#id">id</a> | <code>String</code> | Уникальный идентификатор текстового поля. |
 | <a href="#tab">tabIndex</a> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
@@ -104,14 +104,13 @@
 
 Способы использования: `BEMJSON`.
 
-Добавляет крестик для очистки поля ввода в текстовое поле.
-
+Добавляет крестик для очистки содержимого в текстовое поле.
 
 ```js
 {
     block : 'input',
-    mods : { theme : 'islands', size : 'm', width : 'available' },
-    has-clear : true
+    mods : { theme : 'islands', size : 'm', 'has-clear' : true },
+    val : 'Привет!'
 }
 ```
 
@@ -235,6 +234,14 @@
 
 Определяет уникальное имя блока.
 
+```js
+{
+    block : 'input',
+    mods : { theme : 'islands', size: 'm' },
+    name : 'Statistics'
+}
+```
+
 <a name="val"></a>
 
 #### Поле `val`
@@ -246,10 +253,9 @@
 ```js
 {
     block : 'input',
-    mods : { theme : 'islands', size: 'm', type : 'search' },
+    mods : { theme : 'islands', size: 'm' },
     name : 'Statistics',
-    val : 'Привет!',
-    placeholder : 'Введите запрос'
+    val : 'Привет!'
 }
 ```
 

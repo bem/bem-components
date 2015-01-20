@@ -1,120 +1,120 @@
 # textarea
 
-Используется для создания текстовой области.
+A block is used to create a text area that allows to enter multiple lines of a text.
 
-## Обзор блока
+## Brief overview
 
-### Модификаторы блока
+### Modifiers of the block
 
-| Модификатор | Допустимые значения | Способы использования | Описание |
+| Modifier | Available values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#width">width</a> | <code>'available'</code> | <code>BEMJSON</code> | Максимально допустимая ширина текстовой области. |
-| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
-| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
-| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
-| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер текстовой области. Используется только для текстовых областей с модификатором <a href="#theme">theme в значении islands</a>.|
+| <a href="#width">width</a> | <code>'available'</code> | <code>BEMJSON</code> | A maximum allowed width of the text area. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
+| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A text area size. Use sizes only for text areas with <a href="#themes">theme modifier with islands value</a>.|
 
-### Специализированные поля блока
+### Custom fields of the block
 
-| Поле | Тип | Описание |
+| Field | Type | description |
 | ---- | --- | -------- |
-| <a href="#name">name</a> | <code>String</code> | Имя текстовой области. |
-| <a href="#val">val</a> | <code>String</code>, <code>Number</code> | Содержимое текстовой области. |
-| <a href="#placeholder">placeholder</a> | <code>String</code> | Подсказка в текстовой области. |
-| <a href="#id">id</a> | <code>String</code> | Уникальный идентификатор текстовой области. |
-| <a href="#tab">tabIndex</a> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
+| <a href="#name">name</a> | <code>String</code> | A unique block name. |
+| <a href="#val">val</a> | <code>String</code>, <code>Number</code> | Default content of the text area. |
+| <a href="#placeholder">placeholder</a> | <code>String</code> | A hint in the text area. |
+| <a href="#id">id</a> | <code>String</code> | A unique identifier of the block. |
+| <a href="#tab">tabIndex</a> | <code>Number</code> | A sequence that user follows when he uses the <code>Tab</code> key to navigate through a page. |
 
-## Описание блока
+## Block overview
 
-Блок `textarea` используется для создания области, в которую можно вводить несколько строк текста.
+`textarea` block is used to create a text area that allows to enter multiple lines of a text.
 
-### Модификаторы блока
+### Modifiers of the block
 
 <a name="width"></a>
 
-#### Модификатор `width`
+#### `width` modifier
 
-Допустимое значение: `'available'`.
+Available value:`'available'`.
 
-Способы использования: `BEMJSON`.
+Use cases: `BEMJSON`.
 
-Позволяет растягивать текстовую область на максимально допустимую ширину.
+Use to set the maximum available width of the text area.
 
 ```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size : 'm', width : 'available' },
-    placeholder : 'Ваш текст должен быть здесь'
+    placeholder : 'Your text should be here'
 }
 ```
 
 <a name="disabled"></a>
 
-#### Модификатор `disabled`
+#### `disabled` modifier
 
-Допустимое значение: `true`.
+Available value:`true`.
 
-Способы использования: `BEMJSON`, `JS`.
+Use cases: `BEMJSON`, `JS`.
 
-Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.
+The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
 
 ```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size : 'm', disabled : true },
-    placeholder : 'Ваш текст должен быть здесь'
+    placeholder : 'Your text should be here'
 }
 ```
 
 <a name="focused"></a>
 
-#### Модификатор `focused`
+#### `focused` modifier
 
-Допустимое значение: `true`.
+Available value:`true`.
 
-Способы использования: `BEMJSON`, `JS`.
+Use cases: `BEMJSON`, `JS`.
 
-Выставляется автоматически при получении блоком фокуса.
-
-Отвечает за наличие фокуса на блоке.
+The modifier provides a focus to the block.
 
 ```javascript
 {
     block : 'textarea',
     mods : { theme : 'islands', size : 'm', focused : true },
-    placeholder : 'Ваш текст должен быть здесь'
+    placeholder : 'Your text should be here'
 }
 ```
 
 <a name="theme"></a>
 
-#### Модификатор `theme`
+#### `theme` modifier
 
-Допустимое значение: `'islands'`.
+Available value:`'islands'`.
 
-Способ использования: `BEMJSON`.
+Use case: `BEMJSON`.
 
-Отвечает за стилевое оформление блока.
+The modifier provides a custom design to the block.
 
-Необходимо использовать с модификатором <a href="#size">size</a>.
+`islands` theme requires <a href="#size">size</a> modifier usage.
 
 ```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size: 'm' },
-    placeholder : 'Ваш текст должен быть здесь'
+    placeholder : 'Your text should be here'
 }
 ```
 
 <a name="size"></a>
 
-#### Модификатор `size`
+#### `size` modifier
 
-Допустимые значения для темы `islands`: `'s'`, `'m'`, `'l'`, `'xl'`.
+Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
 
-Способ использования: `BEMJSON`.
+Use case: `BEMJSON`.
 
-Необходимо использовать с модификатором <a href="#theme">theme</a> в значении `islands`.
+Use `size` modifier only for blocks with `islands` <a href="#themes">theme</a>.
+
+Provides all types of text areas with `size` value.
 
 **s**
 
@@ -122,7 +122,7 @@
 {
     block : 'textarea',
     mods : { theme : 'islands', size: 's' },
-    placeholder : 'Размер s'
+    placeholder : 'Size s'
 }
 ```
 
@@ -132,7 +132,7 @@
 {
     block : 'textarea',
     mods : { theme : 'islands', size: 'm' },
-    placeholder : 'Размер m'
+    placeholder : 'Size m'
 }
 ```
 
@@ -142,7 +142,7 @@
 {
     block : 'textarea',
     mods : { theme : 'islands', size: 'l' },
-    placeholder : 'Размер l'
+    placeholder : 'Size l'
 }
 ```
 
@@ -152,90 +152,91 @@
 {
     block : 'textarea',
     mods : { theme : 'islands', size: 'xl' },
-    placeholder : 'Размер xl'
+    placeholder : 'Size xl'
 }
 ```
 
-### Специализированные поля блока
+### Custom fields of the block
 
 <a name="name"></a>
 
-#### Поле `name`
+#### `name` field
 
-Тип: `String`.
+Type: `String`.
 
-Определяет уникальное имя блока.
+Specifies a unique name of the block.
 
 ```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size: 'm' },
-    name : 'Обратная связь'
+    name : 'Feedback'
 }
 ```
 
 <a name="val"></a>
 
-#### Поле `val`
+#### `val` field
 
-Тип: `String`, `Number`.
+Type: `String`.
 
-Определяет содержимое текстовой области.
+Specifies content of the text area.
 
 ```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size: 'm' },
-    name : 'Обратная связь',
-    val : 'Этот текст можно и нужно заменить'
+    name : 'Feedback',
+    val : 'The text should be changed if necessary'
 }
 ```
 
 <a name="placeholder"></a>
 
-#### Поле `placeholder`
+#### `placeholder` field
 
-Тип: `String`.
+Type: `String`.
 
-Определяет текст подсказки.
+Specifies a hint in the text area.
 
 ```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size : 'm' },
-    placeholder : 'Ваш текст должен быть здесь'
+    placeholder : 'Your text should be here'
 }
 ```
 
 <a name="id"></a>
-#### Поле `id`
 
-Тип данных: `String`.
+#### `id` field
 
-Определяет уникальный идентификатор текстовой области.
+Type: `String`.
+
+Specifies a unique identifier of the text area.
 
 ```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size : 'm' },
-    placeholder : 'Ваш текст должен быть здесь',
+    placeholder : 'Your text should be here',
     id : 'Unique_1'
 }
 ```
 
 <a name="tab"></a>
 
-#### Поле `tabIndex`
+#### `tabIndex` field
 
-Тип: `Number`.
+Type: `Number`.
 
-Определяет последовательность перехода между контролами при нажатии на `Tab`.
+Specifies a tab order between controls on a page by pressing `Tab`.
 
 ```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size : 'm' },
-    placeholder : 'Ваш текст должен быть здесь',
+    placeholder : 'Your text should be here',
     tabIndex : 1
 }
 ```

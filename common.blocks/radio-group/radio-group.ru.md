@@ -88,7 +88,6 @@
 
 * всей группе радиопереключателей
 
-
 ```js
 {
     block : 'radio-group',
@@ -303,6 +302,7 @@
 ### Специализированные поля блока
 
 <a name="name"></a>
+
 #### Поле `name`
 
 Тип: `String`.
@@ -324,6 +324,7 @@
 ```
 
 <a name="val"></a>
+
 #### Поле `val`
 
 Тип: `String`, `Number`.
@@ -336,21 +337,6 @@
     mods : { theme : 'islands', size : 'm' },
     name : 'radio-button',
     val : 2,
-    options : [
-        { val : 1, text : 'Футбол' },
-        { val : 2, text : 'Баскетбол' },
-        { val : 3, text : 'Гандбол' }
-    ]
-}
-```
-
-Если поле `val` не задано, то по умолчанию выбирается первый радиопереключатель из группы.
-
-```js
-{
-    block : 'radio-group',
-    mods : { theme : 'islands', size : 'm' },
-    name : 'radio-button',
     options : [
         { val : 1, text : 'Футбол' },
         { val : 2, text : 'Баскетбол' },

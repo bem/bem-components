@@ -1,264 +1,438 @@
 # radio-group
 
-`radio-group` block is a set of related radio switches (block [radio](../radio/radio.en.md)). It allows a user to select a single option from a group of options.
+A block is used to create a group of related radio switches (based on [radio](../radio/radio.en.md) block).
 
-On a page, a `radio-group` block is represented as `<span>` HTML element with nested set of radio switches.
+## Brief overview
 
-## Custom fields of a block
+### Modifiers of the block
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+| Modifier | Available values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#type">type</a> | <code>'button'</code>, <code>'line'</code> | <code>BEMJSON</code> | A radio switches group type. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
+| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design.  |
+| <a href="#size">size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | A radio switches group size. Use sizes only for radio switches group with <a href="#theme">theme modifier with islands value</a>. |
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td><code>String</code></td>
-        <td><code>radio-group</code> name that is used for its identification. Specifies <code>name</code> HTML attribute to a nested <code>input</code> block.</td>
-    </tr>
-    <tr>
-        <td>options</td>
-        <td><code>Array</code></td>
-        <td>An array of pairs that maps <code>text</code> to <code>val</code> for each switch in radio-group. Each pair <code>name=val</code> within the array corresponds to one radio switch. Pair <code>name=val</code> is sent to a server, where name of a radio group is set by <code>name</code> field and value of each radio switch – by <code>val</code> field.
-            <br><code>disabled</code> modifier of <code>radio</code> block could be propagated to each radio switch of <code>options</code> array.</td>
-    </tr>
-</table>
+### Custom fields of the block
 
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+| Field | Type | description |
+| ---- | --- | -------- |
+| <a href="#name">name</a> | <code>String</code> | A unique block name. |
+| <a href="#val">val</a> | <code>Array</code> | A set of values of the selected radio switches. |
+| <a href="#opt">options</a> | <code>Array</code> | A set of values for each radio switch of the group. Each radio switch has its own <a href="#optset">set of values</a>. |
 
-## Modifiers of a block
+## Block overview
 
-### _theme
+`radio-group` block is used to manage a size, state, and appearance of the embedded radio switches. The block allows to choose the only one radio switch from the group.
 
-Block supports the following themes:
+### Modifiers of the block
 
- * simple
- * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
+<a name="type"></a>
 
-If `theme` modifier is not specified, [native](#native) representation of a control is applied.
+#### `type` modifier
 
-See following examples:
+Available values: `'button'`, `'line'`.
 
-<a name="native"></a>
-**default**
+Use case: `BEMJSON`.
 
-```bemjson
-{
-    block : 'radio-group',
-    name : 'radio-default',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
+<a name="type-button"></a>
 
-**simple**
+##### A button-based radio-group (`type` modifier with `button` value)
 
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'simple' },
-    name : 'radio-simple',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
+The modifier allows to implement `radio-group` block using on [button-based radio switches](../radio/radio.en.md/#type) type.
 
-**islands**
+Grouped button-based radio switches are always aligned in a line.
 
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'islands', size : 'm' },
-    name : 'radio-islands',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-<a name="size"></a>
-### _size
-
-Implemented only for theme `islands`.
-
-Provides to all types of `radio-group` with the size value.
-
-There are four sizes available: **s**, **m**, **l**, **xl**.
-
-Depending on a [type](#types) modifier value following sizes are available:
-
-<table>
-    <tr>
-        <th>Size</th>
-        <th>Default radio group</th>
-        <th>Button-based radio group
-            <br>(<code>radio-group_type_button</code>)</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>–</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>–</td>
-        <td>+</td>
-</table>
-
-See following examples:
-
-
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'islands', size : 's', type : 'button' },
-    name : 'Small',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'islands', size : 'm', type : 'button' },
-    name : 'Medium',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'islands', size : 'l', type : 'button' },
-    name : 'Large',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-```bemjson
-{
-    block : 'radio-group',
-    mods : { theme : 'islands', size : 'xl', type : 'button' },
-    name : 'X-Large',
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
-    ]
-}
-```
-
-<a name="types"></a>
-### _type
-
-The following types of `radio-group` block are available:
-
-* `button`-based. Use `type` modifier with `button` value to create `radio-group` block implemented by [button](..button/button.en.md) block. Button-based radio switches of a group are always aligned in a line.
-
-```bemjson
+```js
 {
     block : 'radio-group',
     mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'radio-button',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
     ]
 }
 ```
 
-* `line`-aligned. Use `type` modifier with `line` value to align all radio switches in the group in a line. Right gap is automatically added after each switch in the group except for the last one. Implemented only for theme `islands`.
+<a name="type-line"></a>
 
-```bemjson
+##### A line-aligned radio-group (`type` modifier with `line` value)
+
+The modifier aligns all radio switches of the group in a line.
+
+```js
 {
     block : 'radio-group',
     mods : { theme : 'islands', size : 'm', type : 'line' },
     name : 'radio-line',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
     ]
 }
 ```
 
-### _mode
+<a name="disabled"></a>
 
-`mode` modifier with `radio-check` value is implemented only for [`button`-based](#types) radio group (`radio-group_type_button`). This mode allows a user to check only one item from the group or leave all items unchecked. Click on a button changes its value to the opposite.
+#### `disabled` modifier
 
-```bemjson
+Available value: `true`.
+
+Use cases: `BEMJSON`, `JS`.
+
+The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+
+The modifier could be applied to:
+
+* A radio-group:
+
+```js
 {
     block : 'radio-group',
-    name : 'button-radio-check',
-    mods : { theme : 'islands', size : 'm', type : 'button', mode : 'radio-check' },
+    mods : { theme : 'islands', size : 'm', disabled : true },
+    name : 'radio',
+    val : 2,
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' }
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
     ]
 }
 ```
 
-### States of a block
-
-### _disabled
-
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused, pressed or hovered. In most cases to mark out the disabled block on a page, additional styles are applied.
-
-If `checkbox-group` block is disabled, all checkboxes within this group are also disabled. `checked` modifier value cannot be changed in `disabled` state.
-
-```bemjson
+```js
 {
     block : 'radio-group',
     mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
     name : 'radio-button',
     val : 2,
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
     ]
 }
 ```
-You can apply `disabled` modifier to separate switches in a group.
 
-```bemjson
+* A separate radio switch of the group:
+
+```js
 {
     block : 'radio-group',
-    mods : { theme : 'islands', size : 'm', type : 'line' },
+    mods : { theme : 'islands', size : 'm' },
     name : 'radio-line',
+    val : 2,
     options : [
-        { val : 1, text : 'first', disabled : true },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
+        { val : 1, text : 'Football', disabled : true },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
     ]
 }
 ```
 
-#### _focused
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-line',
+    val : 2,
+    options : [
+        { val : 1, text : 'Football', disabled : true },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
+    ]
+}
+```
 
-When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
+<a name="focused"></a>
+
+#### `focused` modifier
+
+Available value: `true`.
+
+Use cases: `BEMJSON`, `JS`.
+
+The modifier provides a focus to the block.
+
+```javascript
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button', focused : true },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
+    ]
+}
+```
+
+```javascript
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', focused : true },
+    name : 'radio',
+    val : 2,
+    options : [
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
+    ]
+}
+```
+
+<a name="theme"></a>
+
+#### `theme` modifier
+
+Available value: `'islands'`.
+
+Use case: `BEMJSON`.
+
+The modifier provides a custom design to the block.
+
+`islands` theme requires <a href="#size">size</a> modifier usage.
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    val : 2,
+    options : [
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
+    ]
+}
+```
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 2,
+    options : [
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
+    ]
+}
+```
+
+<a name="size"></a>
+
+#### `size` modifier
+
+Available values for `islands` theme: `'m'`, `'l'`.
+
+Use case: `BEMJSON`.
+
+Use `size` modifier only for blocks with `islands` <a href="#theme">theme</a>.
+
+Provides all types of radio-groups with `size` value.
+
+**m**
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
+    ]
+}
+```
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
+    ]
+}
+```
+
+**l**
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'l' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
+    ]
+}
+```
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'l', type : 'button' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
+    ]
+}
+```
+
+### Custom fields of the block
+
+<a name="name"></a>
+
+#### `name` field
+
+Type: `String`
+
+Specifies a unique name of the block.
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
+    ]
+}
+```
+
+<a name="val"></a>
+
+#### `val` field
+
+Type: `Array`.
+
+Specifies a set of the selected radio switches values.
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball' }
+    ]
+}
+```
+
+<a name="opt"></a>
+
+#### `options` field
+
+Type: `Array`
+
+Specifies a set of values for each radio switch of the group.
+
+<a name="optset"></a>
+
+Each radio switch has its own set of values.
+
+| Field | Type | description |
+| ---- | --- | -------- |
+| <code>val</code> | <code>String</code>, <code>Number</code> | A value that will be sent to a server if a radio switch is selected. |
+| <code>text</code> | <code>String</code> | A text of a radio switch or a text on a button if <code>type</code> modifier with <code>button</code> value is set to the radio switch. |
+| <code>disabled</code> | <code>Boolean</code> | A disabled state. |
+| <code>icon</code> | <code>BEMJSON</code> | An icon on a radio switch that is formed by <a href="../icon/icon.en.md">icon</a> block. Use icons only for radio switches with <a href="#type">type modifier with button value</a>. |
+| <code>title</code> | <code>String</code> | A tooltip content. Use tooltips only for radio switches with <code>type</code> modifier with <code>button</code> value. |
+| <code>id</code> | <code>String</code> | A unique identifier of a radio switch. |
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    val : 2,
+    options : [
+        { val : 1, text : 'Football' },
+        { val : 2, text : 'Basketball' },
+        { val : 3, text : 'Handball', disabled : true }
+    ]
+}
+```
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 3,
+    options : [
+        {
+            val : 1,
+            text : 'Football',
+            title : 'View standings'
+        },
+        {
+            val : 2,
+            disabled : true,
+            text : 'Basketball',
+            title : 'View standings'
+        },
+        {
+            val : 3,
+            disabled : true,
+            text : 'Handball',
+            title : 'View standings'
+        }
+    ]
+}
+```
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 1,
+    options : [
+        {
+            val : 1,
+            text : 'Football news',
+            title : 'Subscribe to the news',
+            icon : {
+                block : 'icon',
+                mods : { social : 'twitter' }
+            },
+        },
+        {
+            val : 2,
+            disabled : true,
+            text : 'Handball news',
+            title : 'Subscribe to the news',
+            icon : {
+                block : 'icon',
+                mods : { social : 'twitter' }
+            }
+        }
+    ]
+}
+```

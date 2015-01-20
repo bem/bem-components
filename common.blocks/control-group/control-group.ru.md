@@ -88,7 +88,7 @@
         {
             block : 'input',
             mods : { theme : 'islands', size : 'm' },
-            placeholder : 'до '
+            placeholder : 'до'
         },
         {
             block : 'select',

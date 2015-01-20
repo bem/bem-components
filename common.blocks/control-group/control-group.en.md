@@ -1,47 +1,89 @@
 # control-group
 
-`control-group` block is a wrapper for blocks' visual grouping. Blocks that need grouping should be placed in block's BEMJSON declaration `content` field.
-
-Block's representation exists only for CSS with no additional functionality. Theme `islands` is required for nested blocks.
-
-On a page `control-group` block is represented by `<div>` HTML element.
+A wrapper block that is used for blocks **visual** grouping. Blocks that need grouping should be placed in `content` field of block BEMJSON declaration.
 
 ## Use cases
 
 `control-group` allows a user to group the following blocks:
 
 * [input](../input/input.en.md)
-* [button](../button/button.en.md)
 
-```bemjson
+```js
 {
     block : 'control-group',
     content : [
         {
             block : 'input',
             mods : { theme : 'islands', size : 'm', type : 'search' },
-            val : 'Your-query',
-            placeholder : 'query'
+            placeholder : 'Name'
         },
         {
-            block : 'button',
-            mods : { theme : 'islands', size : 'm' },
-            text : 'search'
+            block : 'input',
+            mods : { theme : 'islands', size : 'm', type : 'search' },
+            placeholder : 'Surname'
+        },
+        {
+            block : 'input',
+            mods : { theme : 'islands', size : 'm', type : 'search' },
+            placeholder : 'Email'
         }
     ]
 }
 ```
 
-Besides, blocks that use `input` or `button` as one of their components could be grouped. For instance, `select` block could be included in to the group because it has `button` block as a controlling component:
+* [button](../button/button.en.md)
 
-```bemjson
+```js
+{
+    block : 'control-group',
+    content : [
+        {
+            block : 'button',
+            mods : { theme : 'islands', size : 'm' },
+            text : 'View Cart'
+        },
+        {
+            block : 'button',
+            mods : { theme : 'islands', size : 'm' },
+            text : 'Create a wish list'
+        },
+        {
+            block : 'button',
+            mods : { theme : 'islands', size : 'm' },
+            text : 'View your balance'
+        }
+    ]
+}
+```
+
+```js
+{
+    block : 'control-group',
+    content : [
+        {
+            block : 'input',
+            mods : { theme : 'islands', size : 'm', type : 'search' },
+            placeholder : 'Enter your question'
+        },
+        {
+            block : 'button',
+            mods : { theme : 'islands', size : 'm' },
+            text : 'Search'
+        }
+    ]
+}
+```
+
+* [select](../select/select.en.md)
+
+```js
 {
     block : 'control-group',
     content : [
         {
             block : 'input',
             mods : { theme : 'islands', size : 'm' },
-            placeholder : 'price from'
+            placeholder : 'Price from'
         },
         {
             block : 'input',
@@ -51,7 +93,7 @@ Besides, blocks that use `input` or `button` as one of their components could be
         {
             block : 'select',
             mods : { mode : 'radio', theme : 'islands', size : 'm' },
-            val : 'usd',
+            val: 'usd',
             options : [
                 { val : 'usd', text : '$' },
                 { val : 'euro', text : '€' }
@@ -61,93 +103,53 @@ Besides, blocks that use `input` or `button` as one of their components could be
 }
 ```
 
-The following `button`-based blocks could be grouped:
+* [dropdown](../dropdown/dropdown.en.md) (`switcher` modifier with `button` value)
 
-* [select](../select/select.en.md);
-* [dropdown](../dropdown/dropdown.en.md) (with `dropdown_switcher_button` modifier set);
-* [checkbox](../checkbox/checkbox.en.md) (with `checkbox_type_button` modifier set);
-* [radio](../radio/radio.en.md) (with `radio_type_button` modifier set).
-
-
-## Impact on other blocks
-
-### Block `input`
-
-The right border will not be displayed for all grouped `input` blocks, except for the last one (`right` CSS property will be set to zero for pseudo element `:before`). The last block will have 1px right border.
-
-```bemjson
+```js
 {
     block : 'control-group',
     content : [
         {
-            block : 'input',
-            mods : { theme : 'islands', size : 'm', type : 'search' },
-            val : 'First-query',
-            placeholder : 'query'
+            block : 'button',
+            mods : { view : 'action', theme : 'islands', size : 'm' },
+            text : 'Buy now!'
         },
         {
-            block : 'input',
-            mods : { theme : 'islands', size : 'm', type : 'search' },
-            val : 'Second-query',
-            placeholder : 'query'
-        },
-        {
-            block : 'input',
-            mods : { theme : 'islands', size : 'm', type : 'search' },
-            val : 'Another-query',
-            placeholder : 'query'
+            block : 'dropdown',
+            mods : { switcher : 'button', theme : 'islands', size : 'm' },
+            switcher : 'Sales',
+            popup : 'Take advantage of our special offer: ”50% discount on every fifth cargo delivery.“'
         }
     ]
 }
 ```
 
-### Block `button`
+* [checkbox](../checkbox/checkbox.en.md) (`type` modifier with `button` value)
 
-The grouping affects button corners rounding and the right gap for button blocks. Button appearance depends on block's position inside the group. The first and the last elements of the group visually differ from the rest:
-
-<table>
-    <tr>
-        <th>Position inside the group</th>
-        <th>Corners rounding</th>
-        <th>Right gap</th>
-    </tr>
-    <tr>
-        <td>The first element</td>
-        <td>Left corners are rounded.</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>The last element</td>
-        <td>Right corners are rounded.</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <td>Inside the group</td>
-        <td>Without corners rounding.</td>
-        <td>-</td>
-    </tr>
-</table>
-
-For example:
-
-```bemjson
+```js
 {
     block : 'control-group',
     content : [
         {
-            block : 'button',
-            mods : { theme : 'islands', size : 'm' },
-            text : 'First of group'
+            block : 'checkbox',
+            mods : { theme : 'islands', size : 'm', type : 'button' },
+            name: 'tv',
+            val: '1',
+            text : 'TV sets'
         },
         {
-            block : 'button',
-            mods : { theme : 'islands', size : 'm' },
-            text : 'In the middle'
+            block : 'checkbox',
+            mods : { theme : 'islands', size : 'm', type : 'button' },
+            name: 'photo',
+            val: '1',
+            text : 'Cameras'
         },
         {
-            block : 'button',
-            mods : { theme : 'islands', size : 'm' },
-            text : 'Last one'
+            block : 'checkbox',
+            mods : { theme : 'islands', size : 'm', type : 'button' },
+            name: 'book',
+            val: '1',
+            text : 'Electronic books'
         }
     ]
 }

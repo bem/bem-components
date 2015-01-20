@@ -1,119 +1,187 @@
 # menu-item
 
-`menu-item` block is used as independent switch element to form dropdowns, tab menus, lists and menu items. `menu-item` block allows to manage state, content and type of menu items.
+A block that is used as a part of [menu](../menu/menu.en.md) block.
 
-Block is represented as `<div>` HTML element with `role="menuitem"` attribute.
+## Brief overview
 
-## Custom fields of a block
+### Modifiers of the block
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+| Modifier | Available values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#type">type</a> | <code>'link'</code> | <code>BEMJSON</code> | A menu item implemented by <a href="../link/link.en.md">link</a> block. |
+| <a href="#checked">checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A menu item selection. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#hovered">hovered</a> | <code>true</code> | – | A hovered state. |
+| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A menu item size. Use sizes only for menu items with <a href="#theme">theme modifier with islands value</a>. |
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>val</td>
-        <td><code>String</code></td>
-        <td>Value to be sent to a server if <code>menu-item</code> is selected.</td>
-    </tr>
-</table>
+### Custom fields of the block
 
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+| Field | Type | description |
+| ---- | --- | -------- |
+| <a href="#val">val</a> | <code>Number</code>, <code>String</code> | A value of the menu item. |
 
-## Modifiers of a block
+## Block overview
 
-### _theme
+`menu-item` block is used to manage a size, state and appearance of menu items.
 
-Block supports the following themes:
+### Modifiers of the block
 
-* simple
-* islands (**NB!** Choosing a theme `islands` requires additional modifier `size`.)
+<a name="type"></a>
 
-If `theme` modifier is not specified, [native](#native) representation of a control is applied.
+#### `type` modifier
 
-See following examples:
+Available value: `'link'`.
 
-<a name="native"></a>
-**default**
+Use case: `BEMJSON`.
 
-```bemjson
+Use to create menu items implemented by [link](../link/link.en.md) block that must be declared in `content` field in BEMJSON.
+
+```js
 {
     block : 'menu-item',
-    content : 'default',
-    val : 'my value'
-}
-```
-
-**simple**
-
-```bemjson
-{
-    block : 'menu-item',
-    mods : { theme : 'simple' },
-    content : 'simple',
-    val : 'my value'
-}
-```
-
-**islands**
-
-```bemjson
-{
-    block : 'menu-item',
-    mods : { theme : 'islands', size : 'm' },
-    content : 'islands',
-    val : 'my value'
-}
-```
-
-### _type
-
-Use `type` modifier with `link` value to create `menu-item` based on [`link`](../link/link.en.md) block. In this case link is used instead of switch element. All modifiers of `link` block could be propagated to this type of `menu-item`.
-
-```bemjson
-{
-    block : 'menu-item',
-    mods : { type : 'link' },
-    val : 2,
+    mods : { theme : 'islands', size : 'm', type : 'link' },
     content : {
         block : 'link',
-        url : '#',
-        content : 'Link 1'
+        url : 'https://bem.info/',
+        content : 'bem.info'
     }
 }
 ```
 
-### States of a block
+<a name="checked"></a>
 
-#### _checked
+#### `checked` modifier
 
-This modifier defines the selected menu item.
+Available value: `true`.
 
-```bemjson
+Use case: `BEMJSON`, `JS`.
+
+Use to select the menu item.
+
+```js
 {
     block : 'menu-item',
     mods : { theme : 'islands', size : 'm', checked : true },
-    content : 'checked'
+    content : 'Choose BEM'
 }
 ```
 
-For `menu-item` blocks nested in `menu` block `checked` state can be set on mouse click automatically.
+<a name="disabled"></a>
 
-### _disabled
+#### `disabled` modifier
 
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing `Tab`, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
+Available value: `true`.
 
-```bemjson
+Use cases: `BEMJSON`, `JS`.
+
+The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+
+```js
 {
     block : 'menu-item',
     mods : { theme : 'islands', size : 'm', disabled : true },
-    content : 'disabled'
+    content : 'Choose BEM'
 }
 ```
 
-#### _hovered
+<a name="hovered"></a>
 
-This modifier is automatically set to `menu-item` when mouse pointer is over the block.
+#### `hovered` modifier
+
+Available value: `true`.
+
+Use case: – .
+
+The modifier is added to a block automatically at the moment when you mouse it over.
+
+<a name="theme"></a>
+
+#### `theme` modifier
+
+Available value: `'islands'`.
+
+Use case: `BEMJSON`.
+
+The modifier provides a custom design to the block.
+
+`islands` theme requires <a href="#size">size</a> modifier usage.
+
+```js
+{
+    block : 'menu-item',
+    mods : { theme : 'islands', size : 'm' },
+    content : 'Choose BEM'
+}
+```
+
+<a name="size"></a>
+
+#### `size` modifier
+
+Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
+
+Use case: `BEMJSON`.
+
+Use `size` modifier only for blocks with `islands` <a href="#themes">theme</a>.
+
+Provides menu items with `size` value.
+
+**s**
+
+```js
+{
+    block : 'menu-item',
+    mods : { theme : 'islands', size : 's' },
+    content : 'Size s'
+}
+```
+
+**m**
+
+```js
+{
+    block : 'menu-item',
+    mods : { theme : 'islands', size : 'm' },
+    content : 'Size m'
+}
+```
+
+**l**
+
+```js
+{
+    block : 'menu-item',
+    mods : { theme : 'islands', size : 'l' },
+    content : 'Size l'
+}
+```
+
+**xl**
+
+```js
+{
+    block : 'menu-item',
+    mods : { theme : 'islands', size : 'xl' },
+    content : 'Size xl'
+}
+```
+
+### Custom fields of the block
+
+<a name="val"></a>
+
+#### `val` field
+
+Type: `Number`, `String`.
+
+Specifies a value of the menu item.
+
+```js
+{
+    block : 'menu-item',
+    mods : { theme : 'islands', size : 'm' },
+    content : 'Choose BEM',
+    val : '1'
+}
+```

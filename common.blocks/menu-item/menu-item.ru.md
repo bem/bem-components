@@ -11,7 +11,7 @@
 | <a href="#type">type</a> | <code>'link'</code> | <code>BEMJSON</code> | Пункт меню, реализованный блоком <a href="../link/link.ru.md">link</a>. |
 | <a href="#checked">checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Выбор пункта меню. |
 | <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
-| <a href="#hovered">hovered</a> | <code>true</code> | <code>JS</code> | Наведение курсором. |
+| <a href="#hovered">hovered</a> | <code>true</code> | – | Наведение курсором. |
 | <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 | <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер пункта меню. |
 
@@ -90,7 +90,7 @@
 
 Допустимое значение: `true`.
 
-Способ использования: `JS`.
+Способ использования: – .
 
 Выставляется автоматически при наведении курсором на пункт меню.
 

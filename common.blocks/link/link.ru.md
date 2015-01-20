@@ -122,7 +122,8 @@
 {
     block : 'link',
     mods : { theme : 'islands', size: 's' },
-    placeholder : 'Размер s'
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
@@ -132,7 +133,8 @@
 {
     block : 'link',
     mods : { theme : 'islands', size: 'm' },
-    placeholder : 'Размер m'
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
@@ -142,7 +144,8 @@
 {
     block : 'link',
     mods : { theme : 'islands', size: 'l' },
-    placeholder : 'Размер l'
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
@@ -152,7 +155,8 @@
 {
     block : 'link',
     mods : { theme : 'islands', size: 'xl' },
-    placeholder : 'Размер xl'
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
@@ -166,6 +170,15 @@
 Тип: `String`.
 
 Определяет адрес, по которому осуществляется переход при нажатии на ссылку.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size : 'm' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
 
 <a name="title"></a>
 

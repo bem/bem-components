@@ -1,178 +1,236 @@
 # link
 
-`link` block is used to create various types of links, manage their states, behaviour and appearance on a page.
+A block is used to create different types of links.
 
-## Custom fields of a block
+## Brief overview
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+### Modifiers of the block
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>url</td>
-        <td><code>String</code></td>
-        <td>Specifies <code>href</code> HTML attribute to a link.</td>
-    </tr>
-    <tr>
-        <td>title</td>
-        <td><code>String</code></td>
-        <td>Specifies <code>title</code> HTML attribute to a link.</td>
-    </tr>
-    <tr>
-        <td>target</td>
-        <td><code>String</code></td>
-        <td>Target window. Used <code>blank</code> value to open link in a new window.
-            <br>Specifies <code>target</code> HTML attribute to a link.</td>
-    </tr>
-    <tr>
-        <td>tabIndex</td>
-        <td><code>Number</code></td>
-        <td>Defines tab order. Specifies <code>tabindex</code> HTML attribute to a link.</td>
-    </tr>
-</table>
+| Modifier | Available values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#pseudo">pseudo</a> | <code>true</code> | <code>BEMJSON</code> | A pseudo link. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
+| <a href="#theme">theme</a> | <code>islands</code> | <code>BEMJSON</code> | A custom design. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A link size. Use sizes only for links with <a href="#themes">theme modifier with islands value</a>.|
 
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+### Custom fields of the block
 
-## Modifiers of a block
+| Field | Type | description |
+| ---- | --- | -------- |
+| <a href="#url">url</a> | <code>String</code> | A link address. |
+| <a href="#title">title</a> | <code>String</code> | A tooltip content. |
+| <a href="#target">target</a> | <code>String</code> | A link behavior. |
+| <a href="#tabIndex">tabIndex</a> | <code>Number</code> | A sequence that user follows when he uses the `Tab` key to navigate through a page. |
 
-### _theme
+## Block overview
 
-Block supports the following themes:
+`link` block is used to manage a size, state, and appearance of a links.
 
- * simple
- * islands
+### Modifiers of the block
+<a name="pseudo"></a>
 
-If `theme` modifier is not specified, [native](#native) representation of a control is applied.
+#### `pseudo` modifier
 
-See following examples:
+Available value: `true`.
 
-<a name="native"></a>
-**default**
+Use case: `BEMJSON`.
 
-```bemjson
+Use to create a link that does not lead to a new webpage.
+
+```javascript
 {
     block : 'link',
-    url : '#',
-    content : 'link'
+    mods : { theme : 'islands', size : 'm', pseudo : true },
+    content : 'Show the answer'
 }
 ```
 
-**simple**
+<a name="disabled"></a>
 
-```bemjson
+#### `disabled` modifier
+
+Available value: `true`.
+
+Use case: `BEMJSON`, `JS`.
+
+The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+
+```js
 {
     block : 'link',
-    mods : { theme : 'simple' },
-    url : '#',
-    content : 'link'
+    mods : { theme : 'islands', size : 'm' , disabled : true },
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
-**islands**
+<a name="focused"></a>
 
-```bemjson
+#### `focused` modifier
+
+Available value: `true`.
+
+Use case: `BEMJSON`, `JS`.
+
+The modifier provides a focus to the block.
+
+```javascript
 {
     block : 'link',
-    mods : { theme : 'islands' },
-    url : '#',
-    content : 'link'
+    mods : { theme : 'islands', size : 'm' , focused : true },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
+
+<a name="theme"></a>
+
+#### `theme` modifier
+
+Available value: `'islands'`.
+
+Use case: `BEMJSON`.
+
+The modifier provides a custom design to the block.
+
+`islands` theme requires <a href="#size">size</a> modifier usage.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size : 'm' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
 <a name="size"></a>
-### _size
 
-Implemented only for theme `islands`.
+#### `size` modifier
 
-There are four sizes available: **s**, **m**, **l**, **xl**.
+Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
 
-<table>
-     <tr>
-        <th>Size</th>
-        <th>Font size</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>13px</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>13px</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>15px</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>18px</td>
-    </tr>
-</table>
+Use case: `BEMJSON`.
 
-```bemjson
+The modifier provides a custom design to the block.
+
+`islands` theme requires <a href="#size">size</a> modifier usage.
+
+**s**
+
+```js
 {
     block : 'link',
-    content : 'Small',
-    mods : { theme : 'islands', size : 's' }
+    mods : { theme : 'islands', size: 's' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
-```bemjson
+**m**
+
+```js
 {
     block : 'link',
-    content : 'Medium',
-    mods : { theme : 'islands', size : 'm' }
+    mods : { theme : 'islands', size: 'm' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
-```bemjson
+**l**
+
+```js
 {
     block : 'link',
-    content : 'Large',
-    mods : { theme : 'islands', size : 'l' }
+    mods : { theme : 'islands', size: 'l' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
-```bemjson
+**xl**
+
+```js
 {
     block : 'link',
-    content : 'X-large',
-    mods : { theme : 'islands', size : 'xl' }
+    mods : { theme : 'islands', size: 'xl' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
-### _pseudo
+### Custom fields of the block
 
-A link type that does not lead to a new webpage.
+<a name="url"></a>
 
-```bemjson
+#### `url` field
+
+Type: `String`.
+
+Specifies a link address that will be opened by clicking a link.
+
+```js
 {
     block : 'link',
-    mods : { theme : 'islands', pseudo : true },
-    title : 'pseudo mod',
-    content : 'link'
+    mods : { theme : 'islands', size : 'm' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
 }
 ```
 
-### States of a block
+<a name="title"></a>
 
-#### _disabled
+#### `title` title
 
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing `Tab`, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
+Type: `String`.
 
-```bemjson
+Specifies a tooltip content. The tooltip appearance depends on a browser and your operating system settings. You cannot change it applying HTML or different styles.
+
+```js
 {
     block : 'link',
-    mods : { theme : 'islands', disabled : true },
-    url : '#',
-    content : 'disabled'
+    mods : { theme : 'islands', size : 'm', pseudo : true },
+    content : 'Show the answer',
+    title : 'Click the link to see the answer'
 }
 ```
 
-#### _focused
+<a name="target"></a>
 
-When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
+#### `target` field
+
+Type: `String`.
+
+Specifies a link behavior.
+
+The field supports all `target` HTML attribute values: `_blank`, `_self` (default), `_parent`, `_top`.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size : 'm' },
+    url : 'https://bem.info/',
+    content : 'bem.info',
+    target : '_blank'
+}
+```
+
+<a name="tabIndex"></a>
+
+#### `tabIndex` field
+
+Type: `Number`.
+
+Specifies a tab order between controls on a page by pressing `Tab`.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size : 'm' },
+    url : 'https://bem.info/',
+    content : 'bem.info',
+    tabIndex : 1
+}
+```

@@ -190,7 +190,7 @@
 }
 ```
 
-* управляющему элементу, если в <a href="#fieldswitcher">поле switcher</a> пробрасывается BEMJSON блока [button](../button/button.ru.md).
+* управляющему элементу, если в <a href="#fieldswitcher">поле switcher</a> пробрасывается BEMJSON блока [link](../link/link.ru.md) или [button](../button/button.ru.md).
 
 ```js
 {
@@ -278,12 +278,12 @@
             {
                 block : 'menu-item',
                 val : 1,
-                content : 'First item'
+                content : 'Первый пункт'
             },
             {
                 block : 'menu-item',
                 val : 2,
-                content : 'Second item'
+                content : 'Второй пункт'
             }
         ]
     }

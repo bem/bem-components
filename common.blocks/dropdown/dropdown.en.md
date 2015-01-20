@@ -1,171 +1,277 @@
 # dropdown
 
+A composite block that consists of a [control component](#modswitcher) (for example, a button or a link) that triggers a [popup](../popup/popup.en.md).
+
+## Brief overview
+
+### Modifiers of the block
+
+| Modifier | Available values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | --------- |
+| <a href=#modswitcher>switcher</a> | <code>'link'</code>, <code>'button'</code> | <code>BEMJSON</code> | A control component type. |
+| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href=#opened>opened</a> | <code>true</code> | <code>JS</code> | Displaying the popup on a page. |
+| <a href=#theme>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
+| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A control component size. Use sizes only with <a href="#themes">theme modifier with islands value</a>. |
+
+### Custom fields of the block
+
+| Field | Type | description |
+| ---- | --- | -------- |
+| <a href=#fieldswitcher>switcher</a> | <code>String</code>, <code>BEMJSON</code> | Content of the <a href="#modswitcher">control component</a>.  |
+| <a href=#popup>popup</a> | <code>String</code>, <code>BEMJSON</code> | Content of the popup. |
+
+## Block overview
+
 `dropdown` block is used to create different dropdown types, manage their state, behavior and appearance on a page.
 
-Block consist of two components:
+### Modifiers of the block
 
-* control component. Button, link or pseudo link can be used as a control component. The value of [switcher](#switcher) modifier defines a control component type.
+<a name="modswitcher"></a>
 
-* popup ([popup](../popup/popup.md) block). Mouse click on the control component opens `popup` that is always displayed above all other elements on a page. In this case `popup` automatically obtains `visible` and `opened` modifiers. Clicking outside the popup area hides it automatically (`{ autoclosable : true }`).
+#### `switcher` modifier
 
-## Custom fields of a block
+Available values: `link`, `button`.
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+Use case: `BEMJSON`.
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>switcher</td>
-        <td><code>String</code></td>
-        <td>Text of the control component. May contain a string with text label or BEMJSON description of nested BEM entities. For example, it allows to implement the control component by other block or propagate additional attribute values.</td>
-    </tr>
-       <tr>
-        <td>popup</td>
-        <td><code>String|BEMJSON</code></td>
-        <td>Text value or BEMJSON description of popup window content.</td>
-    </tr>
-</table>
+`switcher` modifier specifies a type of the control component:
 
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+* A [link](#modswitcherlink)
+* A [button](#modswitcherbutton)
 
-## Modifiers of a block
+<a name="modswitcherlink"></a>
 
-### _theme
+##### A link as a control component (`switcher` modifier with `link` value)
 
-Block supports the following themes:
+Use to set [link](../link/link.en.md) block as the control component.
 
- * simple
- * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
+Clicking on the link triggers `popup` block.
 
-If `theme` modifier is not specified, [native](#native) representation of a control is applied.
-
-See following examples:
-
-<a name="native"></a>
-**default**
-
-```bemjson
-{
-    block : 'dropdown',
-    mods : { switcher : 'link' },
-    switcher : 'Link',
-    popup : 'Hello, world!'
-}
-```
-
-**simple**
-
-```bemjson
-{
-    block : 'dropdown',
-    mods : { switcher : 'link', theme : 'simple' },
-    switcher : 'Link',
-    popup : 'Hello, world!'
-}
-```
-
-**islands**
-
-```bemjson
+```js
 {
     block : 'dropdown',
     mods : { switcher : 'link', theme : 'islands', size : 'm' },
-    switcher : 'Link',
-    popup : 'Hello, world!'
+    switcher : 'New sales',
+    popup : '30% discount for a new collection. Enter a promotional code to start shopping.'
 }
 ```
 
-<a name="switcher"></a>
-### _switcher
+<a name="modswitcherbutton"></a>
 
-`switcher` modifier is used to specify a control component. The following values are available:
+##### A button as a control component (`switcher` modifier with `button` value)
 
-* `link` - creates a pseudo link that opens popup. Block `link` is used as a control component.
-* `button` - creates a button that opens popup. Block `button` is used as a control component.
+Use to set [button](../button/button.en.md) block as the control component.
 
-
-```bemjson
+```js
 {
     block : 'dropdown',
     mods : { switcher : 'button', theme : 'islands', size : 'm' },
-    switcher : 'Button',
-    popup : 'Hello, world!'
+    switcher : 'New sales',
+    popup : '30% discount for a new collection. Enter a promotional code to start shopping.'
 }
 ```
 
-### States of a block
+<a name="disabled"></a>
 
-#### _disabled
+#### `disabled` modifier
 
-`disabled` modifier is used to make block visible but not available for user action. In most cases to mark out the disabled block on a page, additional styles are applied.
+Available value: `true`.
 
-`disabled` modifier prevents the following modifiers to be applied:
+Use cases: `BEMJSON`, `JS`.
 
-* `popup` cannot be opened by clicking a mouse and get `opened` modifier;
-* `popup` block cannot get `visible` modifier;
-* control component cannot be `focused`;
-* `button` control component cannot get `hovered` modifier.
+The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
 
-```bemjson
+```js
+{
+    block : 'dropdown',
+    mods : { switcher : 'link', theme : 'islands', size : 'm', disabled : true },
+    switcher : 'New sales',
+    popup : '30% discount for a new collection. Enter a promotional code to start shopping.'
+}
+```
+
+```js
 {
     block : 'dropdown',
     mods : { switcher : 'button', theme : 'islands', size : 'm', disabled : true },
-    switcher : 'Button',
-    popup : 'Hello, world!'
+    switcher : 'New sales',
+    popup : '30% discount for a new collection. Enter a promotional code to start shopping.'
 }
 ```
 
-#### _opened
+<a name="opened"></a>
 
-`opened` modifier is set automatically on mouse click on a control component when `popup` is opened. The second click closes `popup` – `opened` modifier is removed.
+#### `opened` modifier
 
-```bemjson
+Available value: `true`.
+
+Use case: `JS`.
+
+The modifier is applied to the block automatically when the popup opens.
+
+<a name="theme"></a>
+
+#### `theme` modifier
+
+Available value: `islands`.
+
+Use cases: `BEMJSON`.
+
+The modifier provides a custom design to the block.
+
+`islands` theme requires <a href="#size">size</a> modifier usage.
+
+The modifier could be applied to:
+
+* A whole `dropdown` block
+
+```js
 {
     block : 'dropdown',
-    mods : { switcher : 'button', theme : 'islands', size : 'm', opened : true },
-    switcher : 'Button',`
-    popup : 'Hello, world!'
+    mods : { switcher : 'link', theme : 'islands', size : 'm' },
+    switcher : 'New sales',
+    popup : '30% discount for a new collection. Enter a promotional code to start shopping.'
 }
 ```
 
-## BEMJSON value of `switcher` and `popup` attributes
+```js
+{
+    block : 'dropdown',
+    mods : { switcher : 'button', theme : 'islands', size : 'm' },
+    switcher : 'New sales',
+    popup : '30% discount for a new collection. Enter a promotional code to start shopping.'
+}
+```
 
-Control component and popup attributes can contain BEM entities that can be used for different purposes:
+* A control component (if <a href="#fieldswitcher">switcher</a> field contains BEMJSON code of [link](../link/link.en.md) or [button](../button/button.en.md) block).
 
-* to wrap or modify a control component;
-* to propagate additional attribute values to a control component;
-* to create nested content in popup window.
+```js
+{
+    block : 'dropdown',
+    mods : { switcher : 'link', theme : 'islands', size : 'm' },
+    switcher : {
+        block : 'link',
+        mods : { pseudo : true, theme : 'islands', size : 'm' },
+        content : 'New sales'
+    },
+    popup : '30% discount for a new collection. Enter a promotional code to start shopping.'
+}
+```
 
-For example, you can make a button control component toggleable:
-
-```bemjson
+```js
 {
     block : 'dropdown',
     mods : { switcher : 'button', theme : 'islands', size : 'm' },
     switcher : {
         block : 'button',
-        mods : { togglable : 'true' },
-        text : 'custom button'
+        mods : { togglable : 'check', theme : 'islands', size : 'm', },
+        text : 'New sales'
     },
-    popup : 'Popup message'
+    popup : '30% discount for a new collection. Enter a promotional code to start shopping.'
 }
 ```
 
-Or make dropdown list selector based on a block:
+<a name="size"></a>
 
-```bemjson
+#### `size` modifier
+
+Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
+
+Use case: `BEMJSON`.
+
+Use `size` modifier only for blocks with `islands` <a href="#themes">theme</a>.
+
+The modifier could be applied to:
+
+* A whole `dropdown` block
+
+```js
+{
+    block : 'dropdown',
+    mods : { switcher : 'button', theme : 'islands', size : 'm' },
+    switcher : 'New sales',
+    popup : '30% discount for a new collection. Enter a promotional code to start shopping.'
+}
+```
+
+* A control component (if <a href="#fieldswitcher">switcher</a> field contains BEMJSON code of [link](../link/link.en.md) or [button](../button/button.en.md) block).
+
+```js
+{
+    block : 'dropdown',
+    mods : { switcher : 'button', theme : 'islands', size : 'm' },
+    switcher : {
+        block : 'button',
+        mods : { togglable : 'check', theme : 'islands', size : 'm' },
+        text : 'New sales'
+    },
+    popup : '30% discount for a new collection. Enter a promotional code to start shopping.'
+}
+```
+
+### Custom fields of the block
+
+<a name="fieldswitcher"></a>
+
+#### `switcher` field
+
+Type: `String`, `BEMJSON`.
+
+Specifies content of the <a href="#modswitcher">control component</a>.
+
+```js
+{
+    block : 'dropdown',
+    mods : { switcher : 'link', theme : 'islands', size : 'm' },
+    switcher : {
+        block : 'link',
+        mods : { pseudo : true },
+        content : 'New sales'
+    },
+    popup : '30% discount for a new collection. Enter a promotional code to start shopping.'
+}
+```
+
+```js
+{
+    block : 'dropdown',
+    mods : { switcher : 'button', theme : 'islands', size : 'm' },
+    switcher : {
+        block : 'button',
+        mods : { togglable : 'check' },
+        text : 'New sales'
+    },
+    popup : '30% discount for a new collection. Enter a promotional code to start shopping.'
+}
+```
+
+<a name="popup"></a>
+
+#### `popup` field
+
+Type: `String`, `BEMJSON`.
+
+Specifies content of the popup.
+
+```js
+{
+    block : 'dropdown',
+    mods : { switcher : 'link', theme : 'islands', size : 'm' },
+    switcher : 'New sales',
+    popup : 'Скидка 30%'
+}
+```
+
+```js
 {
     block : 'dropdown',
     mods : {
-        switcher : 'Button',
+        switcher : 'button',
         theme : 'islands',
         size : 'xl'
     },
-    switcher : 'Dropdown menu',
+    switcher : 'Dropdown list',
     popup : {
         block : 'menu',
         mods : {

@@ -1,133 +1,120 @@
 # popup
 
-`popup` block is used to create and manage state, behavior and appearance of popups. It can be triggered by a button or a pseudo link. Popup is always displayed above all other elements on a page.
+A block is used to create some blocks that are displayed above all other elements on a page.
 
-When `popup` is opened for the first time (`visible` modifier with `true` value is set) block's DOM element is created in the end of the document `<body>`.
+## Brief overview
 
-## Initialization of a block
+### Modifiers of the block
 
-To display `popup` when `visible` modifier is assigned, block should be initialized to `setTarget` method. `setTarget` needs to determine the popup position on a page. It can be performed:
+| Modifier | Available values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#target">target</a> | <code>'anchor'</code>, <code>'position'</code> | <code>BEMJSON</code> | A target point of the popup. |
+| <a href="#visible">visible</a> | <code>true</code> | <code>JS</code> | Displaying of the popup. |
+| <a href="#autoclosable">autoclosable</a> | <code>true</code>| <code>BEMJSON</code> | Autoclosing of the popup. |
+| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
 
-* according to a parent block position. In this case the parent DOM element or BEM block should be passed as an argument to `setTarget`;
-* by direct coordinates defining. The first and the second arguments passed to `setTarget` define left and top margins on a page: `setTarget(x-coordinate, y-coordinate)`.
+### Custom fields of the block
 
-The method returns `this`.
+| Field | Type | description |
+| ---- | --- | -------- |
+| <a href="#directions">directions</a> | <code>Array</code> | A popup position (in priority order) depending on the target point. Use only for popups with <a href="#popuptarget">target</a> modifier. |
+| <a href="#mainOffset">mainOffset</a> | <code>Number</code> | A popup offset (in pixels) along the main direction. Use only for popups with <a href="#popuptarget">target</a> modifier. |
+| <a href="#secondaryOffset">secondaryOffset</a> | <code>Number</code>| A popup offset (in pixels) along the secondary direction. Use only for popups with <a href="#popuptarget">target</a> modifier. |
+| <a href="#viewportOffset">viewportOffset</a> | <code>Number</code>| The minimum popup offset (in pixels) from a viewport border. Use only for popups with <a href="#popuptarget">target</a> modifier. |
+| <a href="#zIndexGroupLevel">zIndexGroupLevel</a> | <code>Number</code> | A level of a popup layer based on <a href="../z-index-group/z-index-group.en.md">z-index-group</a> block.|
 
-## Custom fields of a block
+## Block overview
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+`popup` block is used to create and manage state, behavior and appearance of the popups that are always displayed above all other elements on a page.
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td><a href="#direction">directions</a></td>
-        <td>
-            <code>Array</code>
-        </td>
-        <td>Specifies position (e.g., <code>bottom-left</code>, where <code>bottom</code> is main direction and <code>left</code> — secondary) of `popup` relative to the element that triggers it.</td>
-    </tr>
-    <tr>
-        <td>mainOffset</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies offset along the main direction.</td>
-    </tr>
-    <tr>
-        <td>secondaryOffset</td>
-        <td>
-            <code>String</code></td>
-        <td>Specifies offset along the secondary direction.</td>
-    </tr>
-    <tr>
-        <td>viewportOffset</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies offset from the viewport (browser window).</td>
-    </tr>
-    <tr>
-        <td>zIndexGroupLevel</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies level of a layer for popups' opening. Uses <a href="../z-index-group/z-index.group.ru.md">z-index-group</a> block.</td>
-    </tr>
-</table>
+### Modifiers of the block
 
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+<a name="target"></a>
 
-## Modifiers of a block
+#### `target` modifier
 
-### _theme
+Available values: `'anchor'`, `'position'`.
 
-Block supports the following themes:
+Use case: `BEMJSON`.
 
- * simple
- * islands
+Use to set a target point of the popup.
 
-If `theme` modifier is not specified, [native](#native) representation of a control is applied.
+<a name="target-anchor"></a>
 
-See following examples:
+##### An anchor (`target` modifier with `anchor` value)
 
-<a name="native"></a>
-**default**
+Use to set a block or an elements as a target point of the popup.
 
-```
-{
-    block : 'popup',
-    content : 'default'
-}
-```
+`popup` block supports a nested structure of multiple simultaneous popups. It means that it is possible to open a child popup within a parent one. When the parent popup closes, it hides all its childs popups.
 
-**simple**
+Use [setAnchor](https://bem.info/libs/bem-components/v2/desktop/popup/jsdoc/) method for correct work of the block.
 
-```
-{
-    block : 'popup',
-    mods : { theme : 'simple' },
-    content : 'simple'
-}
-```
+##### Position coordinates (`target` modifier with `position` value)
 
-**islands**
+The modifier allows to set the position coordinates as a target point of the popup.
 
-```
-{
-    block : 'popup',
-    mods : { theme : 'islands' },
-    content : 'islands'
-}
-```
+Use [setPosition](https://bem.info/libs/bem-components/v2/desktop/popup/jsdoc/) method for correct work of the block.
 
-### States of a block
+<a name="visible"></a>
 
-#### _visible
+#### `visible` modifier
 
-`visible` modifier is set automatically when `popup` is displayed. When `popup` is hidden, `visible` modifier is removed.
+Available value: `true`.
 
-**NB:** this block's version does not support manual selection of `visible` modifier in BEMJSON.
+Use cases: `JS`.
 
-#### `_autoclosable`
+The modifier is set automatically when the popup is displayed.
 
-When `autoclosable` modifier with `true` is set to `popup` block, mouse click outside the popup area hides it automatically.
+<a name="autoclosable"></a>
 
-```
+#### `autoclosable` modifier
+
+Available value: `true`.
+
+Use case: `BEMJSON`.
+
+The modifier with `true` allows to hide the popup automatically by clicking outside the popup area or pressing `Escape` button.
+
+```javascript
 {
     block : 'popup',
     mods : { theme : 'islands', autoclosable : true },
-    content : 'islands'
+    content : 'Click outside the popup area to close it'
 }
 ```
 
-<a name="direction">
-## Popup opening direction `_direction`
+<a name="theme"></a>
 
-This modifier controls position of `popup` relative to the element that triggers it.
+#### `theme` modifier
+
+Available value: `'islands'`.
+
+Use case: `BEMJSON`.
+
+The modifier provides a custom design to the block.
+
+```javascript
+{
+    block : 'popup',
+    mods : { theme : 'islands' },
+    content : 'Content of the popup'
+}
+```
+
+### Custom fields of the block
+
+<a name="directions"></a>
+
+#### `directions` field
+
+Type: `Array`.
+
+
+Specifies a popup position (in priority order) depending on the target point.
+Use only for popups with <a href="#popuptarget">target</a> modifier.
+
+<a name="directions-type"></a>
+The popup position is set automatically based on an available directions list and a target point position. The available positions have main and secondary parameters: for example, for `bottom-left` direction the main parameter is `bottom`, and the secondary one is `left`.
 
 By default the following admissible directions are available:
 
@@ -144,47 +131,93 @@ By default the following admissible directions are available:
 * left-center
 * left-bottom
 
-Required popup positions can be listed as JS parameters with `direction` key in BEMJSON declaration. The most suitable directions will be chosen among provided values  according to a parent block position on a page
+To set the popup position, an array of possible directions must be declared in BEMJSON. The most suitable direction will be selected automatically depending on the target point position on a page.
 
 For example, to open `popup` at the top of the parent block use `top-left`, `top-center` and `top-right` values:
 
-```
+```javascript
 {
     block : 'popup',
-    mods : { autoclosable : true, theme: 'simple' },
+    mods : { autoclosable : true, theme: 'islands', target : 'anchor' },
     directions : ['top-left', 'top-center', 'top-right'],
-    content : 'Hello, world!'
+    content : 'Content of the popup'
 }
 ```
 
-To open `popup` strictly at the `center-right` position do the following:
+An example of the `right-center` position:
 
-```
+```javascript
 {
     block : 'popup',
-    mods : { autoclosable : true, theme: 'simple' },
+    mods : { autoclosable : true, theme: 'islands', target : 'anchor' },
     directions : ['right-center'],
-    content : 'Hello, world!'
+    content : 'Content of the popup'
 }
 ```
+<a name="mainOffset"></a>
 
-Use `mainOffset` and/or `secondaryOffset` parameters to manage the offset direction:
+#### `mainOffset` field
 
-```
+Type: `Number`.
+
+Specifies a popup offset (in pixels) along the main direction.
+
+Use only for popups with <a href="#popuptarget">target</a> modifier.
+
+```javascript
 {
     block : 'popup',
-    mods : { autoclosable : true, theme: 'islands' },
-    direction : ['right-center'],
-    mainOffset : 100,
-    secondaryOffset : 100,
-    content : 'Hello, world!'
+    mods : { theme: 'islands', target : 'anchor' },
+    directions : ['right-center'],
+    content : 'Content of the popup',
+    mainOffset : 100
 }
 ```
 
-## Relationship between popups
+<a name="secondaryOffset"></a>
 
-`popup` block supports nested structure of multiple simultaneous popups. It means you can open popup (child) within another popup (parent) with the parent popup remaining opened.
+#### `secondaryOffset` field
 
-If `autoclosable` modifier is specified, mouse click outside the parent popup area hides it and all its child automatically.
+Type: `Number`.
 
-Child popup blocks can be regarded as a chain of `1` → `2` → `3` → `4`. By clicking on the second element of a chain, third and forth will be closed. By clicking on the first – the second, third and forth will be closed. Clicking outside any popup area of the chain elements will close all popups.
+Specifies a popup offset (in pixels) along the secondary direction.
+
+Use only for popups with <a href="#popuptarget">target</a> modifier.
+
+```javascript
+{
+    block : 'popup',
+    mods : { theme: 'islands', target : 'anchor' },
+    directions : ['right-center'],
+    content : 'Content of the popup',
+    secondaryOffset : 100
+}
+```
+
+<a name="viewportOffset"></a>
+
+#### `viewportOffset` field
+
+Type: `Number`.
+
+Specifies the minimum popup offset (in pixels) from a viewport border.
+
+Use only for popups with <a href="#popuptarget">target</a> modifier.
+
+```javascript
+{
+    block : 'popup',
+    mods : { theme: 'islands', target : 'anchor' },
+    directions : ['right-center'],
+    content : 'Content of the popup',
+    viewportOffset : 100
+}
+```
+
+<a name="zIndexGroupLevel"></a>
+
+#### `zIndexGroupLevel` field
+
+Type: `Number`.
+
+Specifies a level of a popup layer based on <a href="../z-index-group/z-index-group.en.md">z-index-group</a> block.

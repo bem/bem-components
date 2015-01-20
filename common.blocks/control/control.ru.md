@@ -1,6 +1,6 @@
 # control
 
-Служебный блок. Используется для работы большинства блоков библиотеки [bem-components](https://ru.bem.info/libs/bem-components/current/):
+Служебный блок. Используется для работы большинства блоков библиотеки `bem-components`:
 
 * [attach](../attach/attach.ru.md)
 * [button](../button/button.ru.md)

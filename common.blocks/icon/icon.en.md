@@ -1,52 +1,92 @@
 # icon
 
-`<i>`-based block for using as a graphical element in other blocks, not for independent usage. Icon is set as `background` property and unables to display fallback text if some problems with styles occur.
+A block is used to create an auxiliary graphical element in other blocks.
 
-In BEMJSON you can use both the modifier and the `url` field for an icon representation:
+## Brief overview
 
-```bemjson
+### Custom fields of the block
+
+| Field | Type | description |
+| ---- | --- | -------- |
+| <a href="#url">url</a> | <code>String</code> | An icon address. |
+| <a href="#content">content</a> | <code>BEMJSON</code>, <code>String</code> | An icon content in SVG format. |
+
+## Block overview
+
+`icon` block is used to create an auxiliary graphical element in other blocks.
+
+The block is adapted to align with the baseline.
+
+To create an independent image, use [image](../image/image.en.md) block.
+
+`icon` block could be declared through specific modifiers. For the examples below we implement modifiers on a service level called `test.blocks` of `bem-components` library.
+
+
+```js
 {
     block : 'icon',
     mods : { social : 'twitter' }
 }
 ```
 
-```bemjson
-{
-    block : 'icon',
-    url : '../../test.blocks/icon/_action/download.svg'
-}
-```
-
-You can also use the field `content` for an icon representation:
-
-```bemjson
-{
-    block : 'icon',
-    content : '<svg class="image" xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
-}
-```
-
-```bemjson
+```js
 {
     block : 'button',
-    text : 'with icon',
+    text : 'Download',
     mods : { theme : 'islands', size : 'm' },
     icon : {
         block : 'icon',
-        mods : { social : 'twitter' }
+        mods : { action : 'download' }
     }
 }
 ```
 
-```bemjson
+### Custom fields of the block
+
+<a name="url"></a>
+
+#### `url` field
+
+Type: `String`.
+
+Specifies an address of the icon.
+
+```js
 {
     block : 'button',
-    text : 'with icon',
-    mods : { theme : 'islands', size : 'm' },
-    icon : {
+    text : 'bem.info',
+    mods : { theme : 'islands', size : 'm', view : 'action' },
+    icon :
+    {
         block : 'icon',
-        url : '../../test.blocks/icon/_action/download.svg'
+        url : 'https://bem.info/m/_/wuyLRHj8p7lF3eT96kTKumCdXzM.svg'
     }
+}
+```
+
+<a name="content"></a>
+
+#### `content` field
+
+Type: `BEMJSON`, `String`.
+
+Specifies image content in SVG format.
+
+```js
+{
+    block: 'icon',
+    content: {
+        tag: 'svg',
+        cls: 'action_type_download',
+        attrs: { xmlns: '...', width: 16, height: 16 },
+        content: '<path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/>'
+    }
+}
+```
+
+```js
+{
+    block : 'icon',
+    content : '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M1 13v2h14v-2h-14zm13-7h-3v-5h-6v5.031l-3-.031 6 6 6-6z"/></svg>'
 }
 ```

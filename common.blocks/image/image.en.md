@@ -1,54 +1,119 @@
 # image
 
-`<img>`-based block is used for images representation with different content types e.g., logo.
+A block is used to create an independent image.
 
-```bemjson
+## Brief overview
+
+### Custom fields of the block
+
+| Field | Type | description |
+| ---- | --- | -------- |
+| <a href="#title">title</a> | <code>String</code> | A tooltip content. |
+| <a href="#alt">alt</a> | <code>String</code> | An alternate text of the image. |
+| <a href="#url">url</a> | <code>String</code> | An image address. |
+| <a href="#width">width</a> | <code>Number</code> | An image width in pixels. |
+| <a href="#height">height</a> | <code>Number</code> | An image height in pixels. |
+| <a href="#content">content</a> | <code>BEMJSON</code> | An image content in SVG format. |
+
+## Описание блока
+
+The block is used to create an independent image that is adapted for specific output modes (screen reader, print, programs for people with limited physical capacities).
+
+### Custom fields of the block
+
+<a name="title"></a>
+#### `title` field
+
+Type: `String`.
+
+Specifies a tooltip content.
+
+```js
 {
     block : 'image',
-    url : 'http://bem.info/m/_/IvuRSFeBStMXdBhBrBvKagSd5sE.svg',
-    width : 100,
-    height : 100,
-    alt : 'BEM',
-    title : 'Find us on bem.info'
+    url : 'https://bem.info/m/_/UDW_1du_HiznlY0CUbPFjWQH3iY.svg',
+    title : 'Find detailed description on bem.info'
 }
 ```
 
-## Custom fields of a block
+<a name="alt"></a>
+#### `alt` field
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+Type: `String`.
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>title</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies icon name. Specifies <code>title</code> HTML attribute to an icon.</td>
-    </tr>
-    <tr>
-        <td>alt</td>
-        <td>
-            <code>String</code></td>
-        <td>Specifies an alternate text for images. It allows a user to view text information about an image when image downloading is impossible.
-            <br> This block is recognized by screen readers and other programs.</td>
-    </tr>
-    <tr>
-        <td>url</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Url address to open an image.</td>
-    </tr>
-    <tr>
-        <td>width, height</td>
-        <td>
-            <code>Number</code>
-        </td>
-        <td>Values ​​that will be transferred to image attributes with the same names.</td>
-    </tr>
-</table>
+Specifies an alternate text of the image. The text provides useful information about the image if a browser cannot display it for some reasons.
+
+```js
+{
+    block : 'image',
+    url : 'https://bem.info/m/_/wuyLRHj8p7lF3eT96kTKumCdXzM.svg',
+    width : 100,
+    height : 100,
+    alt : 'BEM'
+}
+```
+
+<a name="url"></a>
+#### `url` field
+
+Type: `String`.
+
+Specifies an address for image uploading.
+
+```js
+{
+    block : 'image',
+    url : 'https://bem.info/m/_/lHGkpIFauDlxw9MGg869APxKdkc.svg',
+    width : 100,
+    height : 100
+}
+```
+
+<a name="width"></a>
+
+#### `width` field
+
+Type: `Number`.
+
+Specifies an image width in pixels.
+
+```js
+{
+    block : 'image',
+    url : 'https://img-fotki.yandex.ru/get/17848/259818507.0/0_12ab32_a798a820_X5L',
+    width : 200,
+    height : 100
+}
+```
+
+<a name="height"></a>
+
+#### `height` field
+
+Type: `Number`.
+
+Specifies an image height in pixels.
+
+```js
+{
+    block : 'image',
+    url : 'https://img-fotki.yandex.ru/get/17848/259818507.0/0_12ab32_a798a820_X5L',
+    width : 100,
+    height : 200
+}
+```
+
+<a name="content"></a>
+
+#### `content` field
+
+Type: `BEMJSON`.
+
+Specifies content of the image in SVG format.
+
+```js
+{
+    block : 'image',
+    content : '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="16"><path d="M13.5.5l-8 12L1.7 8l-1 1.6L5.6 15l9.1-13.4z"/></svg>'
+}
+```

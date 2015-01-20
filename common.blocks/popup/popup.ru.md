@@ -47,13 +47,13 @@
 
 Поддерживается многоуровневая вложенность всплывающих окон (из каждого открытого блока `popup` может быть вызван другой). Одновременно с закрытием всплывающего окна закрываются все его дочерние окна.
 
-Необходимо использовать метод [setAnchor](http://ru.bem.info/libs/bem-components/v2/desktop/popup/jsdoc/).
+Необходимо использовать метод [setAnchor](https://ru.bem.info/libs/bem-components/v2/desktop/popup/jsdoc/).
 
 ##### Координаты (модификатор `target` в значении `position`)
 
 Позволяет задавать точку открытия всплывающего окна координатами.
 
-Необходимо использовать метод [setPosition](http://ru.bem.info/libs/bem-components/v2/desktop/popup/jsdoc/).
+Необходимо использовать метод [setPosition](https://ru.bem.info/libs/bem-components/v2/desktop/popup/jsdoc/).
 
 <a name="visible"></a>
 
@@ -81,7 +81,7 @@
 {
     block : 'popup',
     mods : { theme : 'islands', autoclosable : true },
-    content : ''
+    content : 'Содержимое всплывающего окна'
 }
 ```
 

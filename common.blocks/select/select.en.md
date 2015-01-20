@@ -1,273 +1,440 @@
 # select
 
-`select` block is used to create a drop-down list. It allows a user to set up different types of popups with menu-items list for selection. `select` is based on the following blocks:
+A block is used to create a dropdown menu with the possibility of single- or multiple-choice. `select` block is implemented by a button and a dropdown menu list.
 
-* [button](../button/button.en.md)
-* [popup](../popup/popup.en.md)
-* [menu](../menu/menu.en/md)
-* [menu-item](../menu-item/menu-item.en.md)
+## Brief overview
 
-`select` is visually represented by a button and popup list of menu items. Mouse click opens popup above or below a button depending on its position on a page (`{ directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'] }`). Clicking outside the popup area hides it automatically (`{ autoclosable : true }`).
+### Modifiers of the block
 
-Dropdown list allows user to choose:
+| Modifier | Available values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#mode">mode</a> | <code>'check'</code>, <code>'radio'</code>, <code>'radio-check'</code> | <code>BEMJSON</code> | A selection mode for the dropdown menu list. |
+| <a href="#width">width</a> | <code>'available'</code> | <code>BEMJSON</code> | A button width. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
+| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code>  | <code>BEMJSON</code> | A dropdown menu list size. Use sizes only with <a href="#themes">theme modifier with islands value</a>. |
 
-* a single value from the list ([`select_mode_radio`](#radio-select));
-* a single, multiple or none values from the list ([`select_mode_check`](#multiple-choice));
-* a single or none values from the list ([`select_mode_radio-check`](#single-choice)).
+### Custom fields of the block
 
-## Custom fields of a block
+| Field | Type | description |
+| ---- | --- | -------- |
+| <a href="#name">name</a> | <code>String</code> | A unique block name. |
+| <a href="#val">val</a> | <code>String</code>, <code>Number</code>, <code>Array</code> | A selected value from the dropdown menu list. If <a href="#mode-check">mode modifier with check value</a> is applied to the block, the selected values must be declared as an <code>array</code>. |
+ |
+| <a href="#text">text</a> | <code>String</code> | Content of the button if any menu item is not selected. Use for the button with <a href="#mode-check">type modifier with check value</a> or with <a href="#mode-radiocheck">radio-check</a> value. |
+| <a href="#options">options</a> | <code>Array</code> | An array of the menu items. |
+| <a href="#textmaxwidth">textMaxWidth</a> | <code>Number</code> | The maximum width of the dropdown menu button. |
+| <a href="#optionsmaxheight">optionsMaxHeight</a> | <code>Number</code> | The maximum height of the dropdown menu. |
+| <a href="#id">id</a> | <code>String</code> | A unique identifier of the block. |
+| <a href="#tab">tabIndex</a> | <code>Number</code> | A sequence that user follows when he uses the <code>Tab</code> key to navigate through a page. |
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+## Block overview
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Name of <code>select</code>.</td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Unique identifier of <code>select</code> block.</td>
-    </tr>
-    <tr>
-        <td>options</td>
-        <td>
-            <code>BEMJSON</code>
-        </td>
-        <td>Defines a list of <code>menu-items</code>. Each item has mandatory attribute <code>val</code> implemented by a hidden element <code>control</code>.</td>
-    </tr>
-    <tr>
-        <td>textMaxWidth</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Defines maximum width of <code>button</code> from <code>select</code> block. <code>popup</code> width depends on width of <code>menu-item</code> text. It could be defined also using CSS styles.</td>
-    </tr>
-    <tr>
-        <td>optionsMaxHeight</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Defines maximum height of <code>popup</code>.
-            <br> If all <code>menu-items</code> cannot be fit within <code>popup</code>, scroll element appears.
-            <br> If value of <code>optionsMaxHeight</code> attribute is not specified, height of <code>popup</code> depends on total height of all <code>menu-items</code>'.</td>
-    </tr>
-    <tr>
-        <td>text</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Default text for a button when any <code>menu-item</code> is not specified.
-            <br> This attribute is used for <code>select</code> with the following specified modifiers: <code>select_mode_check</code> and <code>select_mode_radio-check</code>.</td>
-    </tr>
-</table>
+`select` block is implemented by a button and a dropdown menu list.
 
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+### Modifiers of the block
 
-## Modifiers of a block
+<a name="mode"></a>
 
-### _theme
+#### `mode` modifier
 
-Block supports the following themes:
+Available values: `'check`, `'radio'`, `'radio-check'`.
 
-* simple
-* islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
+Use case: `BEMJSON`.
 
-If `theme` modifier is not specified, [custom](#custom) representation of a control is applied (without CSS styles).
+The mandatory modifier.
 
-See following examples:
+<a name="mode-check"></a>
 
-<a name="custom"></a>
-**custom**
+##### A multiple-choice list (`mode` modifier with `check` value)
 
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'radio' },
-    name : 'select1',
-    val : 2,
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
-    ]
-}
-```
+Use to create a dropdown menu with the possibility to select any number of menu items.
 
-**simple**
-
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'radio', theme : 'simple' },
-    name : 'select1',
-    val : 2,
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
-    ]
-}
-```
-
-**islands**
-
-```bemjson
-{
-    block : 'select',
-    mods : { mode : 'radio', theme : 'islands', size : 'm' },
-    name : 'select1',
-    val : 2,
-    options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
-    ]
-}
-```
-
-### _mode
-
-Use `mode` modifier to define a type of `select`:
-
-<a name="multiple-choice"></a>
-* Multiple-choice select (`select_mode_check`) allows a user to check more than one menu item from the list or leave all items unchecked. Clicking on menu item changes its value to the opposite.
-
-```bemjson
+```js
 {
     block : 'select',
     mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select1',
-    text : '—',
     val : [2, 3],
+    text : 'Программа конференции',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
     ]
 }
 ```
 
-<a name="radio-select"></a>
-* Radio-select (`select_mode_radio`) is used to allow user a single choice.
-Text in the button of `select` block depends on a chosen menu item. The first item is represented by a button text by default.
+<a name="mode-radio"></a>
 
-```bemjson
+##### A mandatory single-choice list (`mode` modifier with `radio` value)
+
+Use to create a dropdown menu that has one mandatory selected item.
+
+If any item is not specified in BEMJSON as selected, the first menu item is selected by default.
+
+```js
 {
     block : 'select',
     mods : { mode : 'radio', theme : 'islands', size : 'm' },
     name : 'select2',
     val : 2,
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
     ]
 }
 ```
 
-<a name="single-choice"></a>
-* Single-choice select (`select_mode_radio-check`) allows a user to check only one menu item from the list or leave all items unchecked. Click on menu item changes its value to the opposite.
+<a name="mode-radiocheck"></a>
 
-```bemjson
+##### An optional single-choice list (`mode` modifier with `radio-check` value)
+
+Use to create a menu that has one mandatory selected item like in the `mandatory single-choice list`. The fundamental difference between these two menu types is that `menu` block with `mode` modifier with `radio-check` value has an opportunity to leave the menu without the selected items.
+
+```js
 {
     block : 'select',
     mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
     name : 'select3',
-    text : '–',
     val : 2,
+    text : '—',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
     ]
 }
 ```
 
-### States of a block
+<a name="width"></a>
 
-#### _width
+#### `width` modifier
 
-To set the ability of select button's width to fit the width of the chosen item, use `width` modifier with `available` value.
+Available value: `'available'`.
 
-```bemjson
+Use case: `BEMJSON`.
+
+Use to set the maximum available width of the button.
+
+```js
 {
     block : 'select',
     mods : { mode : 'radio-check', theme : 'islands', size : 'm', width : 'available' },
     name : 'select4',
+    val : 2,
     text : '—',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second second second second second second second second' },
-        { val : 3, text : 'third' }
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
     ]
 }
 ```
 
-#### _focused
+<a name="disabled"></a>
 
-When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
+#### `disabled` modifier
 
-#### _disabled
+Available value: `true`.
 
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing `Tab`, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
+Use cases: `BEMJSON`, `JS`.
 
-## Elements of a block
+The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
 
-### __button
+The modifier could be applied to:
 
-`select` block is visually represented by a button (block [button](../button/button.en.md)) that contains an icon `<i>` (block [icon](../icon/icon.en.md)) with mixed element `tick`. Size of the icon is specified by `button` block size. Clicking the button opens popup with options.
+* The whole block
 
-The following modifiers of a button could be propagated to `select` block:
-
-* `theme`
-* `size`
-* `focused`
-* `checked`
-* `disabled`
-
-```bemjson
+```js
 {
     block : 'select',
     mods : { mode : 'radio-check', theme : 'islands', size : 'm', disabled : true },
-    name : 'select5',
-    text : '—',
+    name : 'select4',
     val : 2,
+    text : '—',
     options : [
-        { val : 1, text : 'first' },
-        { val : 2, text : 'second' },
-        { val : 3, text : 'third' }
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
     ]
 }
 ```
 
-## __menu
+* A separate menu item
 
-`menu` element allows user to manage `menu-items` within selection list:
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
+    name : 'select4',
+    val : 2,
+    text : '—',
+    options : [
+        { val : 1, text : 'Report', disabled : true },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
 
-* `val` – value to be sent to a server when menu item is chosen. This attribute could contain unique identifier `{ val : id }`.
-* `text` – name of menu item.
-* `checked` – state that is set to `menu-item`, e.g. on mouse click.
-* `checkedText` – text represented within select's button instead of chosen menu item name. This attribute is used for [multiple-choice](#multiple-choice) select.
-* `icon` – graphical element (icon).
+<a name="focused"></a>
 
-```bemjson
+#### `focused` modifier
+
+Available value: `true`.
+
+Use cases: `BEMJSON`, `JS`.
+
+The modifier provides a focus to the block.
+
+```javascript
+{
+    block : 'select',
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm', focused : true },
+    name : 'select4',
+    val : 2,
+    text : '—',
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+<a name="theme"></a>
+
+#### `theme` modifier
+
+Available value: `'islands'`.
+
+Use case: `BEMJSON`.
+
+The modifier provides a custom design to the block.
+
+`islands` theme requires <a href="#size">size</a> modifier usage.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    val : 2,
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+<a name="size"></a>
+
+#### `size` modifier
+
+Available values: `'s'`, `'m'`, `'l'`, `'xl'`.
+
+Use case: `BEMJSON`.
+
+Use `size` modifier only for blocks with `islands` <a href="#themes">theme</a>.
+
+Provides all types of dropdown menus with `size` value.
+
+**s**
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 's' },
+    name : 'select1',
+    val : 2,
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+**m**
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    val : 2,
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+**l**
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'l' },
+    name : 'select1',
+    val : 2,
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+**xl**
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'xl' },
+    name : 'select1',
+    val : 2,
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+### Custom fields of the block
+
+<a name="name"></a>
+
+#### `name` field
+
+Type: `String`.
+
+Specifies a unique name of the block.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+<a name="val"></a>
+
+#### `val` field
+
+Type: `String`, `Number`, `Array`.
+
+Specifies:
+
+* A selected value from the dropdown menu. In this case the type of the filed is `String` or `Number`.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    val : 2,
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+* A set of selected values from the dropdown menu. This case is possible if the block has [mode modifier with check value](#mode-check). The field type is an array.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
+    name : 'select1',
+    val : [2, 3],
+    text : 'Программа конференции',
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+<a name="text"></a>
+
+#### `text` field
+
+Type: `String`.
+
+Specifies content of the button if any menu item is not selected.
+
+Use for the button with <a href="#mode-check">type modifier with check value</a> or with <a href="#mode-radiocheck">radio-check</a> value.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
+    name : 'select3',
+    text : 'Training',
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
+    name : 'select1',
+    text : 'Select a training',
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+<a name="options"></a>
+
+#### `options` field
+
+Type: `Array`.
+
+
+Specifies an array of menu items or groups with an optional name.
+
+Each menu item has its own set of values.
+
+| Field | Type | description |
+| ---- | --- | -------- |
+| <code>val</code> | <code>String</code>, <code>Number</code> | A value that will be sent to a server if a menu item is selected. A mandatory field. |
+| <code>text</code> | <code>String</code> | A name of the menu item. |
+| <code>checkedText</code> | <code>String</code> | A text on a button that is shown instead of the name of the selected menu item. Use only for a <a href="#mode-check">multiple-choice dropdown menu</a>. |
+| <code>disabled</code> | <code>Boolean</code> | A disabled state of a single menu item. |
+| <code>icon</code> | <code>BEMJSON</code> | An icon that is formed by <a href="../icon/icon.en.md">icon</a> block. Use icons only for menu items with <a href="#checkboxtype">type modifier with button value</a>. |
+
+```js
 {
     block : 'select',
     mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
-    text : '—',
-    val : [{ id : 2 }],
+    val : [2],
+    text : 'Subscribe',
     options : [
         {
             val : 1,
@@ -285,35 +452,108 @@ The following modifiers of a button could be propagated to `select` block:
 }
 ```
 
-`menu-items` could be grouped by `group` element. Group name is specified by `title` attribute.
+Dropdown menu items could be grouped:
 
-```bemjson
+| Field | Type | description |
+| ---- | --- | -------- |
+| <code>title</code> | <code>String</code> | A name of a menu items group. |
+| <code>Group</code> | <code>Array</code> | An array of menu items. |
+
+```js
 {
     block : 'select',
     mods : { mode : 'check', theme : 'islands', size : 'm' },
     name : 'select5',
-    text : 'empty',
     val : [2, 5],
+    text : 'A conference agenda',
     options : [
         {
+            title : 'Theory',
             group : [
-                { val : 1, text : 'first' },
-                { val : 2, text : 'second' },
-                { val : 3, text : 'third' }
-            ],
-            title : 'title of group 1'
+                { val : 1, text : 'Report #1' },
+                { val : 2, text : 'Report #2' },
+                { val : 3, text : 'Report #3' },
+            ]
         },
         {
+            title : 'Practice',
             group : [
-                { val : 4, text : 'fourth' },
-                { val : 5, text : 'fifth' },
-                { val : 6, text : 'sixth', disabled : true }
+                { val : 4, text : 'Workshop #1' },
+                { val : 5, text : 'Workshop #2' }
             ]
         }
     ]
 }
 ```
 
-## __control
+<a name="textmaxwidth"></a>
+#### `textMaxWidth` field
 
-`control` element is added to the block on template engine level and used to draw `menu-item`s in `popup`.
+Type: `Number`.
+
+Specifies the maximum width of the dropdown menu button.
+
+The maximum width of the dropdown menu depends on the text length of menu items. Or it could be defined by CSS rules.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    textMaxWidth : 100,
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+<a name="optionsmaxheight"></a>
+
+#### `optionsMaxHeight` field
+
+Type: `Number`.
+
+Specifies the maximum height of the dropdown menu.
+
+A vertical scrollbar appears automatically if all menu items cannot fit a specified popup height.
+
+If a value of `optionsMaxHeight` field is not specified, the popup height depends on the total height of all menu items.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    textMaxWidth : 100,
+    optionsMaxHeight : 100,
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
+<a name="id"></a>
+
+#### `id` field
+
+Type: `String`.
+
+Specifies a unique identifier of the block.
+
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    id : 'Unique_1',
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```

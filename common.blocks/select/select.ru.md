@@ -312,8 +312,21 @@
 
 Определяет имя выпадающего списка.
 
+```js
+{
+    block : 'select',
+    mods : { mode : 'radio', theme : 'islands', size : 'm' },
+    name : 'select1',
+    options : [
+        { val : 1, text : 'Report' },
+        { val : 2, text : 'Workshop' },
+        { val : 3, text : 'Round-table conference' }
+    ]
+}
+```
+
 <a name="val"></a>
-#### Поля `val`
+#### Поле `val`
 
 Тип: `String`, `Number`, `Array` (если указан [модификатор mode в значении check](#mode-check)).
 
@@ -400,7 +413,7 @@
 | ---- | --- | -------- |
 | <code>val</code> | <code>String</code>, <code>Number</code> | Значение, которое будет отправлено на сервер при выборе пункта. Обязательное поле. |
 | <code>text</code> | <code>String</code> | Название пункта в списке. |
-| <code>checkedText</code> | <code>String</code> | Текст, отображаемый вместо названия пункта в кнопке раскрывающегося списка. Задается только для списков с возможностью <a href=#mode-check>множественного выбора</a>. |
+| <code>checkedText</code> | <code>String</code> | Текст, отображаемый вместо названия пункта в кнопке раскрывающегося списка. Задается только для списков с возможностью <a href="#mode-check">множественного выбора</a>. |
 | <code>disabled</code> | <code>Boolean</code> | Неактивное состояние отдельного пункта. |
 | <code>icon</code> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. |
 

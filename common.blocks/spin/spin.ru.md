@@ -8,7 +8,7 @@
 
 | Модификатор | Допустимые значение | Способ использования | Описание |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#spinvisible">visible</a> | <code>true</code> | <code>BEMJSON</code> | Активация индикатора. |
+| <a href="#spinvisible">visible</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Активация индикатора. |
 | <a href="#spintheme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 | <a href="#spinsize">size</a> | <code>'xs'</code>, <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер индикатора. Используется только с <a href="#spintheme">модификатором theme в значении islands</a>. |
 
@@ -24,7 +24,7 @@
 
 Допустимое значение: `true`.
 
-Способ использования: `BEMJSON`.
+Способ использования: `BEMJSON`, `JS`.
 
 Делает индикатор видимым.
 

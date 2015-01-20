@@ -12,6 +12,7 @@
 | <a href="#checked">checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Выбор радиопереключателя. |
 | <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
 | <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
+| <a href="#hovered">hovered</a> | <code>true</code> | – | Наведение курсором. |
 | <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 | <a href="#size">size</a> | <code>'m'</code>, <code>'l'</code> | <code>BEMJSON</code> | Размер радиопереключателя. |
 
@@ -23,6 +24,9 @@
 | <a href="#val">val</a> | <code>String</code>, <code>Number</code> | Значение, возвращаемое радиопереключателем, если он выбран. |
 | <a href="#text">text</a> | <code>String</code> | Текст подписи к радиопереключателю. |
 | <a href="#icon">icon</a> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. Используется для радиопереключателя с <a href="#type">модификатором type в значении button</a>. |
+| <a href="#title">title</a> | <code>String</code> | Текст всплывающей подсказки. Используется для радиопереключателя с <a href="#type">модификатором type в значении button</a>. |
+| <a href="#tab">tabIndex</a> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
+
 
 ## Описание блока
 
@@ -137,6 +141,16 @@
     text : 'Использовать BEMHTML'
 }
 ```
+
+<a name="hovered"></a>
+
+#### Модификатор `hovered`
+
+Допустимое значение: `true`.
+
+Способы использования: – .
+
+Выставляется блоку автоматически, когда курсор мыши находится в пределах контрола.
 
 <a name="theme"></a>
 #### Модификатор `theme`
@@ -265,12 +279,22 @@
 
 Тип: `String`.
 
-Определяет текст подписи к радиопереключателю.
+Определяет текст подписи к радиопереключателю или текст кнопки, если указан <a href="type">модификатор type в значении button</a>..
 
 ```js
 {
     block : 'radio',
     mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Использовать BEMHTML'
+}
+```
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'radio-islands',
     val : 'BEMHTML',
     text : 'Использовать BEMHTML'
@@ -297,5 +321,48 @@
         block : 'icon',
         mods : { social : 'twitter' }
     }
+}
+```
+
+<a name="title"></a>
+#### Поле `title`
+
+Тип: `String`.
+
+Определяет содержание всплывающей подсказки. Вид такой подсказки зависит от браузера, настроек операционной системы и не может быть изменен с помощью HTML-кода или стилей.
+
+Используется только для радиопереключателей с <a href="#type">модификатором type в значении button</a>.
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'twitter',
+    title : 'Кнопка выбора социальной сети',
+    icon : {
+        block : 'icon',
+        mods : { social : 'twitter' }
+    }
+}
+```
+
+<a name="tab"></a>
+
+#### Поле `tabIndex`
+
+Тип: `Number`.
+
+Определяет порядок получения фокуса при переходе между контролами с помощью клавиши `Tab`.
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Использовать BEMHTML',
+    tabIndex : 3
 }
 ```

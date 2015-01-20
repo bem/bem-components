@@ -1,201 +1,374 @@
 # radio
 
-`radio` block is used to create a single radio switch. It can be implemented by a radio switch or by a button (block [button](../button/button.en.md)). `radio` block allows a user to manage state, content and type of radio switches.
+A block is used as a part of [radio-group](../radio-group/radio-group.en.md) block to create a single radio switch.
 
-[radio-group](../radio-group/radio-group.en.md) could be  composed by `radio` blocks.
+## Brief overview
 
-As a result of template appliance, it will be rendered to `<label>` HTML element, with following set of nested items:
+### Modifiers of the block
 
-* `box` element with hidden nested `input` HTML element;
-* a radio switch label, if the `text` BEMJSON attribute is specified.
+| Modifier | Available values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#type">type</a> | <code>'button'</code> | <code>BEMJSON</code> | A radio switch type. |
+| <a href="#checked">checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A radio switch selection. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
+| <a href="#hovered">hovered</a> | <code>true</code> | – | A hovered state. |
+| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
+| <a href="#size">size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | A radio switch size. Use sizes only for radio switches with <a href="#theme">theme modifier with islands value</a>. |
 
-Block is implemented with native `input` HTML element with `type` attribute set to `radio`: `<input name="name" type="radio">`. If `theme` modifier is set, the `input` element is hidden by default.
+### Custom fields of the block
 
-## Custom fields of a block
+| Field | Type | description |
+| ---- | --- | -------- |
+| <a href="#name">name</a> | <code>String</code> | A unique block name. |
+| <a href="#val">val</a> | <code>String</code>, <code>Number</code> | A value that will be sent to a server if a radio switch is selected. |
+| <a href="#text">text</a> | <code>String</code> | A radio switch text. |
+| <a href="#icon">icon</a> | <code>BEMJSON</code> | An icon on a radio switch that is formed by <a href="../icon/icon.en.md">icon</a> block. Use icons only for radio switches with <a href="#type">type modifier with button value</a>. |
+| <a href="#title">title</a> | <code>String</code> | A tooltip content. Use tooltips only for radio switches with <a href="#type">type modifier with button value</a>. |
+| <a href="#tab">tabIndex</a> | <code>Number</code> | A sequence that user follows when he uses the `Tab` key to navigate through a page. |
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+## Block overview
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td><code>name</code></td>
-        <td><code>String</code></td>
-        <td>Radio switch name that is used for its identification. Specifies <code>name</code> HTML attribute to a nested <code>input</code> block.</td>
-    </tr>
-    <tr>
-        <td><code>val</code></td>
-        <td><code>String</code></td>
-        <td>Specifies value that will be sent to a server or obtained using client scripts.
-            <br>Pair <code>name=val</code> is sent to a server, where name is set by <code>name</code> attribute and value – by <code>val</code> attribute.
-            <br>Specifies <code>value</code> HTML attribute to a nested <code>input</code> block.</td>
-    </tr>
-    <tr>
-        <td><code>text</code></td>
-        <td><code>String</code></td>
-        <td>Specifies a label for the radio switch.</td>
-    </tr>
-</table>
+`radio` block is used to manage a size, state, and appearance of a single radio switch.
 
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+### Modifiers of the block
 
-## Modifiers of a block
+<a name="type"></a>
 
-### _theme
+#### `type` modifier
 
-Block supports the following themes:
+Available value: `'button'`.
 
-* simple
-* islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
+Use case: `BEMJSON`.
 
-If `theme` modifier is not specified, [native](#native) representation of a control is applied.
+Use `type` modifier with `button` value to change the appearance of the block: a radio switch is implemented by [button](../button/button.en.md) block. Press the button to select the radio switch.
 
-See following examples:
-
-<a name="native"></a>
-**default**
-
-```bemjson
-{
-    block : 'radio',
-    name : 'radio-simple',
-    text : 'radio switch'
-}
-```
-
-**simple**
-
-```bemjson
-{
-    block : 'radio',
-    mods : { theme : 'simple' },
-    name : 'radio-simple',
-    text : 'radio switch'
-}
-```
-
-**islands**
-
-```bemjson
-{
-    block : 'radio',
-    mods : { theme : 'islands', size : 'm' },
-    name : 'radio-islands',
-    text : 'radio switch'
-}
-```
-
-<a name="size"></a>
-### _size
-
-Implemented only for theme `islands`.
-Provides to all types of radio switches with the size value.
-
-Depending on `type` modifier the following sizes are available:
-
-<table>
-    <tr>
-        <th>Size</th>
-        <th>Default radio switch</th>
-        <th>Button radio switch
-            <br>(<code>radio_type_button</code>)</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>–</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>+</td>
-        <td>+</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>–</td>
-        <td>+</td>
-</table>
-
-### _type
-
-Use `type` modifier with `button` value to create a radio switch based on [button](../button/button.en.md) block – `button_togglable_radio`.
-
-`radio` block is mixed with `button` block with nested `control` element. As a result, the following `button` block states could be propagated to this type os radio switch:
-
-*  `hovered`
-*  `pressed`
-
-In addition `role="button"` HTML attribute is set to the block.
-
-```bemjson
+```js
 {
     block : 'radio',
     mods : { theme : 'islands', size : 'm', type : 'button' },
     name : 'radio-islands',
-    text : 'radio switch'
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
 }
 ```
 
-### States of a block
+<a name="checked"></a>
 
-#### _checked
+#### `checked` modifier
 
-Modifier defines that radio switch is selected.
+Available value: `true`.
 
-The modifier is set automatically:
+Use case: `BEMJSON`, `JS`.
 
-* by clicking a mouse (next click does not release the radio switch);
-* by pressing `Enter` or `Space` key if radio switch is in focus (key type depends on a browser settings);
-* by pressing an arrow key if one of the next radio switches is in focus. Neighbour switch can be either a part of the same [radio group](../radio-group/radio-group.en.md) or independent switch nested in the same block.
+Use `checked` modifier with `true` value to select a radio switch.
 
-```bemjson
+```js
 {
     block : 'radio',
     mods : { theme : 'islands', size : 'm', checked : true },
-    content : 'checked'
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
 }
 ```
 
-#### _disabled
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button', checked : true },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
 
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
+<a name="disabled"></a>
 
-```bemjson
+#### `disabled` modifier
+
+Available value: `true`.
+
+Use case: `BEMJSON`, `JS`.
+
+The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+
+```js
 {
     block : 'radio',
     mods : { theme : 'islands', size : 'm', disabled : true },
     name : 'radio-islands',
-    text : 'disabled'
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
 }
 ```
 
-```bemjson
+```js
 {
     block : 'radio',
     mods : { theme : 'islands', size : 'm', type : 'button', disabled : true },
     name : 'radio-islands',
-    text : 'disabled'
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
 }
 ```
 
-#### _focused
+<a name="focused"></a>
 
-When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.
+#### `focused` modifier
 
-## Elements of a block
+Available value: `true`.
 
-### __box
+Use case: `BEMJSON`, `JS`.
 
-`box` element is used in basic block implementation as a container with nested control element (`control` element). It is represented as `<span>` HTML element. An auxiliary element is added to the block on template engine level.
+The modifier provides a focus to the block.
 
-### __control
+```javascript
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', focused : true },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
 
-`control` element is represented as `<input>` HTML element with specified `type="radio"` attribute. An auxiliary element is added to the block on template engine level.
+```javascript
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button', focused : true },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
+
+<a name="hovered"></a>
+
+#### `hovered` modifier
+
+Available value: `true`.
+
+Use case: – .
+
+The modifier is added to a block automatically at the moment when you mouse it over.
+
+<a name="theme"></a>
+
+#### `theme` modifier
+
+Available value: `'islands'`.
+
+Use case: `BEMJSON`.
+
+The modifier provides a custom design to the block.
+
+`islands` theme requires <a href="#size">size</a> modifier usage.
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
+
+<a name="size"></a>
+
+#### `size` modifier
+
+Available values for `islands` theme: `'m'`, `'l'`.
+
+Use case: `BEMJSON`.
+
+Use `size` modifier only for blocks with `islands` <a href="#themes">theme</a>.
+
+Provides all types of radio switches with `size` value.
+
+**m**
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
+
+**l**
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'l' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'l', type : 'button' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
+
+### Custom fields of the block
+
+<a name="name"></a>
+
+#### `name` field
+
+Type: `String`.
+
+Specifies a unique name of the block.
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
+
+<a name="val"></a>
+
+#### `val` field
+
+Type: `String`, `Number`.
+
+Specifies a radio switch value that is sent to a server.
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
+
+<a name="text"></a>
+
+#### `text` field
+
+Type: `String`.
+
+Specifies a text of a radio switch or a text on a button if <a href="type">type modifier with button value</a> is set to the block.
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML'
+}
+```
+
+<a name="icon"></a>
+
+#### `icon` field
+
+Type: `BEMJSON`.
+
+Specifies an [icon](../icon/icon.ru.md) on a radio switch implemented by a button (<a href="#type">type modifier with button value</a>).
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'twitter',
+    icon : {
+        block : 'icon',
+        mods : { social : 'twitter' }
+    }
+}
+```
+
+<a name="title"></a>
+
+#### `title` field
+
+Type: `String`.
+
+Specifies a tooltip content. The tooltip appearance depends on a browser and your operating system settings. You cannot change it applying HTML or different styles.
+
+Use `title` field for radio switches with <a href="#type">type modifier with button value</a> only.
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm', type : 'button' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Twitter',
+    title : 'Share in Twitter',
+    icon : {
+        block : 'icon',
+        mods : { social : 'twitter' }
+    }
+}
+```
+
+<a name="tab"></a>
+
+#### `tabIndex` field
+
+Type: `Number`.
+
+Specifies a tab order between controls on a page by pressing `Tab`.
+
+```js
+{
+    block : 'radio',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    val : 'BEMHTML',
+    text : 'Use BEMHTML',
+    tabIndex : 3
+}
+```

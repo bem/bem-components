@@ -6,6 +6,5 @@
     id : 'btn',
     text : 'button',
     icon : { block : 'icon', mods : { social : 'twitter' } },
-    tabIndex : 0,
-    textMaxWidth : 100
+    tabIndex : 0
 });

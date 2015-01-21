@@ -37,4 +37,22 @@ gemini.suite('popup', function(root) {
                 });
         });
 
+        gemini.suite('body-margin', function(suite) {
+            var popupSwither = '.all .link';
+            suite
+                .setCaptureElements(popupSwither, '.all-popup')
+                .capture('static-opened', function(actions) {
+                    actions
+                        .executeJS(function(window) { window.document.body.style.margin = '100px'; })
+                        .click(popupSwither)
+                        .wait(300);
+                })
+                .capture('relative-opened', function(actions) {
+                    actions
+                        .executeJS(function(window) { window.document.body.style.position = 'relative'; })
+                        .click(popupSwither)
+                        .click(popupSwither)
+                        .wait(300);
+                });
+        });
 });

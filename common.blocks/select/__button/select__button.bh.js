@@ -17,7 +17,6 @@ module.exports = function(bh) {
                 checked : mods.mode !== 'radio' && !!checkedOptions.length
             },
             id : select.id,
-            textMaxWidth : select.textMaxWidth,
             tabIndex : select.tabIndex,
             content : [
                 ctx.content(),

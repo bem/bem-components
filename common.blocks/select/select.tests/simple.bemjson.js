@@ -11,7 +11,6 @@
             block : 'select',
             mods : { mode : 'radio', theme : 'islands', size : 'm', focused : true },
             name : 'select1',
-            textMaxWidth : 100,
             optionsMaxHeight : 100,
             val : 2,
             options : [

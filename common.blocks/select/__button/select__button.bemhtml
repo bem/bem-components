@@ -13,7 +13,6 @@ block('select').elem('button')(
                 checked : mods.mode !== 'radio' && !!this._checkedOptions.length
             },
             id : this._select.id,
-            textMaxWidth : this._select.textMaxWidth,
             tabIndex : this._select.tabIndex,
             content : [
                 apply('content'),

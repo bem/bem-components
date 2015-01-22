@@ -6,6 +6,7 @@ gemini.suite('button', function(root) {
 
     [
         'islands',
+        'plain',
         'pseudo',
         'action',
         'islands-link',
@@ -27,6 +28,9 @@ gemini.suite('button', function(root) {
                     .capture('hovered', function(actions) {
                         actions.mouseMove(this.button);
                     })
+                    .capture('focused-hard', function(actions) {
+                        actions.focus(this.button);
+                    })
                     .capture('pressed', function(actions) {
                         actions.mouseDown(this.button);
                     })
@@ -43,21 +47,35 @@ gemini.suite('button', function(root) {
             });
         });
 
-    gemini.suite('islands-check', function(suite) {
-        var buttonSelector = '.gemini-test-button-islands-check';
+    [
+        'islands',
+        'plain'
+    ]
+        .forEach(function(test) {
+            gemini.suite(test + '-check', function(suite) {
+                var buttonSelector = '.gemini-test-button-' + test + '-check';
 
-        suite
-            .setCaptureElements(buttonSelector)
-            .before(function(actions, find) {
-                this.button = find(buttonSelector);
-            })
-            .capture('default')
-            .capture('clicked-checked', function(actions) {
-                actions.click(this.button);
-            })
-            .capture('clicked-unchecked', function(actions) {
-                actions.click(this.button);
+                suite
+                    .setCaptureElements(buttonSelector)
+                    .before(function(actions, find) {
+                        this.button = find(buttonSelector);
+                    })
+                    .capture('default')
+                    .capture('focused-hard-checked', function(actions) {
+                        actions.focus(this.button);
+                    })
+                    .capture('pressed', function(actions) {
+                        actions.mouseDown(this.button);
+                    })
+                    .capture('clicked-checked', function(actions) {
+                        actions.mouseUp(this.button);
+                    })
+                    .capture('pressed-unchecked', function(actions) {
+                        actions.mouseDown(this.button);
+                    })
+                    .capture('clicked-unchecked', function(actions) {
+                        actions.mouseUp(this.button);
+                    });
             });
-    });
-
+        });
 });

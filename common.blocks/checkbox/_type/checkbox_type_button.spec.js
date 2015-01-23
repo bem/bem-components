@@ -47,7 +47,7 @@ describe('checkbox_type_button', function() {
     });
 
     describe('focused', function() {
-        it('should set/unset "disabled" mod for button according to self', function() {
+        it('should set/unset "focused" mod for button according to self', function() {
             checkbox.setMod('focused');
             checkbox.findBlockInside('button').hasMod('focused').should.be.true;
 

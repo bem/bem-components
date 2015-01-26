@@ -20,7 +20,7 @@
 | ---- | --- | -------- |
 | <a href="#name">name</a> | <code>String</code> | Уникальное имя блока. |
 | <a href="#val">val</a> | <code>String</code>, <code>Number</code> | Значение выбранного радиопереключателя. |
-| <a href="#opt">options</a> | <code>Array</code> | Набор значений для каждого радиопереключателя группы. Каждому <a href="../..radio/radio.ru.md#type">типу радиопереключателя</a> соответствует разный <a href="#optset">набор значений</a>. |
+| <a href="#opt">options</a> | <code>Array</code> | Набор значений для каждого радиопереключателя группы. Каждому <a href="../radio/radio.ru.md#type">типу радиопереключателя</a> соответствует разный <a href="#optset">набор значений</a>. |
 
 ## Обзор блока
 

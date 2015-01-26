@@ -186,7 +186,7 @@ See following examples:
 
 The following types of `checkbox-group` block are available:
 
-* `button`-based. Use `type` modifier with `button` value to create `checkbox-group` block implemented by [button](..button/button.en.md) block. Button-based checkboxes of a group are always aligned in line.
+* `button`-based. Use `type` modifier with `button` value to create `checkbox-group` block implemented by [button](../button/button.en.md) block. Button-based checkboxes of a group are always aligned in line.
 
 ```bemjson
 {

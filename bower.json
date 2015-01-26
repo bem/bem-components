@@ -16,5 +16,6 @@
   "devDependencies": {
     "bem-pr": "~0.10.0"
   },
+  "license": "MPL-2.0",
   "private": true
 }

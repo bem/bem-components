@@ -356,3 +356,6 @@ magic make desktop.tmpl-specs/button
 шаблона не совпадает с эталонным HTML, то в логе будет ошибка с указанием отличий от эталона.
 
 Все тесты автоматически запускаются на [Travis](https://travis-ci.org) для каждого pull request'a.
+
+## Лицензия
+© 2012 YANDEX LLC. Код лицензирован [Mozilla Public License 2.0](LICENSE.txt).

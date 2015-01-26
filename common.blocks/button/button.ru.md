@@ -8,28 +8,28 @@
 
 | Модификатор | Допустимые значения | Способы использования | Описание |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href=#buttontype>type</a> | <code>'link'</code>, <code>'submit'</code> | <code>BEMJSON</code> | Тип кнопки.|
-| <a href=#buttondisabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
-| <a href=#buttonfocused>focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
-| <a href=#buttontoggle>togglable</a> | <code>'check'</code>, <code>'radio'</code> | <code>BEMJSON</code> | Тип переключателя.|
-| <a href=#buttonpressed>pressed</a> | <code>true</code> | – | Действие «нажатие на кнопку». |
-| <a href=#hovered>hovered</a> | <code>true</code> | – | Наведение курсором. |
-| <a href=#buttonthemes>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
-| <a href=#buttonsize>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер кнопки. Используется для кнопок с <a href=#buttonthemes>модификатором theme в значении islands</a>.|
-| <a href=#buttonview>view</a> | <code>'action'</code>, <code>'pseudo'</code> | <code>BEMJSON</code> | Тип визуального выделения кнопки.|
+| <a href="#buttontype">type</a> | <code>'link'</code>, <code>'submit'</code> | <code>BEMJSON</code> | Тип кнопки.|
+| <a href="#buttontoggle">togglable</a> | <code>'check'</code>, <code>'radio'</code> | <code>BEMJSON</code> | Тип переключателя.|
+| <a href="#buttondisabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
+| <a href="#buttonfocused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
+| <a href="#buttonpressed">pressed</a> | <code>true</code> | – | Действие «нажатие на кнопку». |
+| <a href="#hovered">hovered</a> | <code>true</code> | – | Наведение курсором. |
+| <a href='#buttonthemes'>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
+| <a href="#buttonsize">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер кнопки. Используется для кнопок с <a href="#buttonthemes">модификатором theme в значении islands</a>.|
+| <a href="#buttonview">view</a> | <code>'action'</code>, <code>'pseudo'</code> | <code>BEMJSON</code> | Тип визуального выделения кнопки.|
 
 ### Специализированные поля блока
 
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
-| <a href=#buttonname>name</a> | <code>String</code> | Уникальное имя блока. Не используется, если <a href="#link-button">модификатор type выставлен в значение link</a>. |
-| <a href=#buttonval>val</a> | <code>String</code>, <code>Number</code> | Значение, отправляемое на сервер. Не используется, если <a href="#link-button">модификатор type выставлен в значение link</a>. |
-| <a href=#buttontext>text</a> | <code>String</code>| Текст кнопки. |
-| <a href=#buttonurl>url</a> | <code>String</code>| Адрес. Используется только для кнопки с <a href="#link-button">модификатором type в значении link</a>. |
-| <a href=#buttonicon>icon</a> | <code>BEMJSON</code> | Иконка на кнопке. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. |
-| <a href=#buttontitle>title</a> | <code>String</code> | Текст всплывающей подсказки. |
-| <a href=#buttonid>id</a> | <code>String</code> | Уникальный идентификатор кнопки. |
-| <a href=#buttontab>tabIndex</a> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
+| <a href="#buttonname">name</a> | <code>String</code> | Уникальное имя блока. Не используется, если <a href="#link-button">модификатор type выставлен в значение link</a>. |
+| <a href="#buttonval">val</a> | <code>String</code>, <code>Number</code> | Значение, отправляемое на сервер. Не используется, если <a href="#link-button">модификатор type выставлен в значение link</a>. |
+| <a href="#buttontext">text</a> | <code>String</code>| Текст кнопки. |
+| <a href="#buttonurl">url</a> | <code>String</code>| Адрес. Используется только для кнопки с <a href="#link-button">модификатором type в значении link</a>. |
+| <a href="#buttonicon">icon</a> | <code>BEMJSON</code> | Иконка на кнопке. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. |
+| <a href="#buttontitle">title</a> | <code>String</code> | Текст всплывающей подсказки. |
+| <a href="#buttonid">id</a> | <code>String</code> | Уникальный идентификатор кнопки. |
+| <a href="#buttontab">tabIndex</a> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
 
 ## Описание блока
 
@@ -71,7 +71,6 @@
     text : 'Я отправляю данные'
 }
 ```
-
 
 <a name="buttontoggle"></a>
 

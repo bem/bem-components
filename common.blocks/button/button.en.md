@@ -1,305 +1,446 @@
 # button
 
-`button` block is used to manage size, state, content and appearance of a button.
+A block is used to create different types of buttons.
 
-## Custom fields of a block
+## Brief overview
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+### Modifiers of the block
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>text</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Text of a button. Specifies <code>text</code> HTML attribute to a button.</td>
-    </tr>
-    <tr>
-        <td>icon</td>
-        <td>
-            <code>BEMJSON</code>
-        </td>
-        <td>Button with an icon realized by <a href="../icon/icon.en.md">icon</a> block.</td>
-    </tr>
-    <tr>
-        <td>url</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>URL address. It is used only for a <a href="#link-button">button with link behavior</a>.
-            <br>Specifies <code>href</code> HTML attribute to a button.</td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Unique identifier of a button.
-            <br><br>Specifies <code>id</code> HTML attribute to a button.</td>
-    </tr>
-    <tr>
-        <td>tabIndex</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Defines tab order between the buttons.</td>
-    </tr>
-    <tr>
-        <td>value</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies value that will be sent to a server or obtained using client scripts. It is empty by default. Pair <code>id=val</code> is sent to a server, where id is set by <code>id</code> attribute and value – by <code>val</code> attribute.</td>
-    </tr>
-</table>
+| Modifier | Available values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#buttontype">type</a> | <code>'link'</code>, <code>'submit'</code> | <code>BEMJSON</code> | A button type.|
+| <a href="#buttontoggle">togglable</a> | <code>'check'</code>, <code>'radio'</code> | <code>BEMJSON</code> | A toggle type of a button.|
+| <a href="#buttondisabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#buttonfocused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
+| <a href="#buttonpressed">pressed</a> | <code>true</code> | – | A pressed state. |
+| <a href="#hovered">hovered</a> | <code>true</code> | – | A hovered state. |
+| <a href="#buttonthemes">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
+| <a href="#buttonsize">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A button size. Use sizes only for buttons with <a href="#buttonthemes">theme modifier with islands value</a>.|
+| <a href="#buttonview">view</a> | <code>'action'</code>, <code>'pseudo'</code> | <code>BEMJSON</code> | Visual highlighting.|
 
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+### Custom fields of the block
 
-## Modifiers of a block
+| Field | Type | description |
+| ---- | --- | -------- |
+| <a href="#buttonname">name</a> | <code>String</code> | A unique block name. Do not use for <a href="#link-button">type modifier with link value</a>. |
+| <a href="#buttonval">val</a> | <code>String</code> | A value that will be sent to a server. Do not use for <a href="#link-button">type modifier with link value</a>. |
+| <a href="#buttontext">text</a> | <code>String</code>| A button text. |
+| <a href="#buttonurl">url</a> | <code>String</code>| A link address. Use only for <a href="#link-button">type modifier with link value</a>. |
+| <a href="#buttonicon">icon</a> | <code>BEMJSON</code> | An icon on a button that is formed by <a href="../icon/icon.en.md">icon</a> block. |
+| <a href="#buttontitle">title</a> | <code>String</code> | A tooltip content. |
+| <a href="#buttonid">id</a> | <code>BEMJSON</code> | A unique identifier of a button. |
+| <a href="#buttontab">tabIndex</a> | <code>Number</code> | A sequence that user follows when he uses the `Tab` key to navigate through a page. |
 
-### _theme
+## Block overview
 
-Block supports the following themes:
+`button` block is used to manage a size, state, and appearance of a button.
 
- * simple
- * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
+### Modifiers of the block
 
-If `theme` modifier is not specified, [native](#native) representation of a control is applied.
+<a name="buttontype"></a>
 
-See following examples:
+#### `type` modifier
 
-<a name="native"></a>
-**default**
+Available values: `'link'`, `'submit'`.
 
-```bemjson
+Use case: `BEMJSON`.
+
+<a name="link-button"></a>
+
+##### A link-button (`type` modifier with `link` value)
+
+Use `type` modifier with `link` value to create a button that opens a page by an address specified in <a href="#buttonurl">url</a> field.
+
+```js
 {
     block : 'button',
-    text : 'No theme'
+    mods : { theme : 'islands', size : 'm', type : 'link' },
+    url : 'https://bem.info/',
+    text : 'Try BEM!'
 }
 ```
 
-**simple**
+##### A form submit button (`type` modifier with `submit` value)
 
-```bemjson
+Use `type` modifier with `submit` value to create a button that sends data to a server. This button type must be a part of a form.
+
+```js
 {
     block : 'button',
-    text : 'Theme simple',
-    mods : { theme : 'simple' }
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    text : 'Send data'
 }
 ```
 
-**islands**
+<a name="buttontoggle"></a>
 
-```bemjson
+#### `togglable` modifier
+
+Available values: `'check'`, `'radio'`.
+
+Use case: `BEMJSON`.
+
+Defines behavior of a pressed button.
+
+##### A toggle button (`togglable` modifier with `check` value)
+
+The first click presses the button, and the second one releases it.
+
+```js
 {
     block : 'button',
-    text : 'Theme islands',
-    mods : { theme : 'islands', size : 'm' }
+    mods : { theme : 'islands', size : 'm', togglable : 'check' },
+    text : 'I am pressed'
 }
 ```
 
-<a name="size"></a>
-### _size
+##### A radio-button (`togglable` modifier with `radio` value)
 
-Implemented only for theme `islands`.
+The first click presses the button, and it cannot be released manually.
+This button type is used as a part of [radio-group](../radio-group/radio-group.en.md).
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', togglable : 'radio' },
+    text : 'I am toggled'
+}
+```
+
+An example of the button usage as a part of the radio-group:
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm', type : 'button', togglable : 'radio' },
+    name : 'radio-button',
+    val : 2,
+    options : [
+        { val : 1, text : 'First' },
+        { val : 2, text : 'Second' },
+        { val : 3, text : 'Third' }
+    ]
+}
+```
+
+<a name="buttondisabled"></a>
+
+#### `disabled` modifier
+
+Available value: `true`.
+
+Use case: `BEMJSON`, `JS`.
+
+The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', disabled : true },
+    text : 'Disabled'
+}
+```
+
+<a name="buttonfocused"></a>
+
+#### `focused` modifier
+
+Available value: `true`.
+
+Use case: `BEMJSON`, `JS`.
+
+The modifier provides a focus to the block.
+
+```javascript
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', focused : true },
+    text : 'In focus'
+}
+```
+
+<a name="buttonpressed"></a>
+
+#### `pressed` modifier
+
+Available value: `true`.
+
+Use case: – .
+
+The modifier is added to a button automatically at the moment when the button is pressed.
+
+This modifier is used for buttons with <a href="#buttontoggle">togglable</a> modifier.
+
+<a name="hovered"></a>
+
+#### `hovered` modifier
+
+Available value: `true`.
+
+Use case: – .
+
+The modifier is added to a block automatically at the moment when you mouse over it.
+
+<a name="buttonthemes"></a>
+
+#### `theme` modifier
+
+Available value: `'islands'`.
+
+Use case: `BEMJSON`.
+
+The modifier provides a custom design to the block.
+
+`islands` theme requires <a href="#buttonsize">size</a> modifier usage.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm' },
+    text : 'Islands theme'
+}
+```
+
+<a name="buttonsize"></a>
+
+#### `size` modifier
+
+Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
+
+Use case: `BEMJSON`.
+
+Use `size` modifier only for blocks with `islands` <a href="#buttonthemes">theme</a>.
 
 Provides all types of buttons with `size` value.
 
-There are four sizes available: **s**, **m**, **l**, **xl**.
+**s**
 
-<table>
-     <tr>
-        <th>Size</th>
-        <th>Font size</th>
-        <th>Button height</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>13px</td>
-        <td>28px</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>15px</td>
-        <td>32px</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>18px</td>
-        <td>38px</td>
-    </tr>
-</table>
-
-See following examples:
-
-```bemjson
+```js
 {
     block : 'button',
-    text : 'Small',
-    mods : { theme : 'islands', size : 's' }
+    mods : { theme : 'islands', size : 's' },
+    text : 'Size s'
 }
 ```
 
-```bemjson
+**m**
+
+```js
 {
     block : 'button',
-    text : 'Medium',
-    mods : { theme : 'islands', size : 'm' }
+    mods : { theme : 'islands', size : 'm' },
+    text : 'Size m'
 }
 ```
 
-```bemjson
+**l**
+
+```js
 {
     block : 'button',
-    text : 'Large',
-    mods : { theme : 'islands', size : 'l' }
+    mods : { theme : 'islands', size : 'l' },
+    text : 'Size l'
 }
 ```
 
-```bemjson
+**xl**
+
+```js
 {
     block : 'button',
-    text : 'X-large',
-    mods : { theme : 'islands', size : 'xl' }
+    mods : { theme : 'islands', size : 'xl' },
+    text : 'Size xl'
 }
 ```
 
-### _type
+<a name="buttonview"></a>
 
-If `type` modifier is not specified for the block, islands button will be represented by default.
+#### `view` modifier
 
-<a name="link-button"></a>
-#### Button with link behavior
+Available values: `'action'`, `'pseudo'`.
 
-Use `type` modifier with `link` value to create a button that behaves like a link.
+Use case: `BEMJSON`.
 
-Specify additional `url` attribute in BEMJSON input data for this button type.
+##### An action button (`view` modifier with `action` value)
 
-```bemjson
+The modifier visually highlights a button on a page. For example, use it to create a promo button:
+
+```js
 {
     block : 'button',
-    url : '#',
-    text : 'Link behavior',
-    mods : { theme : 'islands', size : 'm', type : 'link' }
+    mods : { theme : 'islands', size : 'm', view : 'action' },
+    text : 'Buy now!'
 }
 ```
 
-#### Form submit button
+##### A pseudobutton (`view` modifier with `pseudo` value)
 
-Use `type` modifier with `submit` value to create a button for data sending to a server (submit). This button type implemented for buttons located inside a form.
+The modifier changes visual representation of a button. For example, use it if you do not need to focus attention on the button:
 
-```bemjson
+```js
 {
     block : 'button',
-    text : 'Submit',
-    mods : { theme : 'islands', size : 'm', type : 'submit' }
+    mods : { theme : 'islands', size : 'm', view : 'pseudo' },
+    text : 'With transparent background'
 }
 ```
 
-### States of a block
-
-#### _disabled
-
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused, pressed or hovered. In most cases to mark out the disabled block on a page, additional styles are applied.
-
-```bemjsom
+```js
 {
     block : 'button',
-    text : 'Disabled',
-    mods : { theme : 'islands', size : 'm', disabled : true }
+    mods : { theme : 'islands', size : 'm', view : 'pseudo', disabled : true },
+    text : 'Without boarders'
 }
 ```
 
-#### _focused
+### Custom fields of the block
 
-When a block is focused, a modifier `focused` with `true` value is set automatically, e.g. by pressing `Tab` or clicking a mouse.
+<a name="buttonname"></a>
 
-#### _togglable
+#### `name` field
 
-Defines a behavior of the pressed button.
+Type: `String`.
 
-The following values of `togglable` modifier are available:
+Specifies a unique name of the block.
 
-* `check` – the first click presses the button, and the second releases it.
+Do not use `name` field with <a href="#link-button">type modifier with link value</a>.
 
-```bemjson
+```js
 {
     block : 'button',
-    text : 'Check',
-    mods : { theme : 'islands', size : 'm', togglable : 'check' },
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    name : 'Test_1',
+    val : 'passed',
+    text : 'Check results'
 }
 ```
 
-* `radio` – the first click presses the button and it cannot be released by the next click.
+<a name="buttonval"></a>
 
-```bemjson
+#### `val` field
+
+Type: `String`, `Number`.
+
+Specifies a value that is sent to a server.
+
+Do not use `val` field for <a href="#link-button">type modifier with link value</a>.
+
+```js
 {
     block : 'button',
-    text : 'Radio',
-    mods : { theme : 'islands', size : 'm', togglable : 'radio' }
-}
-```
-#### _hovered
-
-Defines “hovered” state of a button.
-
-#### _pressed
-
-Defines “pressed” state of a button.
-
-### _view
-
-#### _action
-
-Implemented only for theme `islands`.
-
-Visually highlights a button with yellow colour on a page. Could be used as a promo button.
-
-```bemjson
-{
-    block : 'button',
-    type : 'submit',
-    text : 'Action',
-    mods : { theme : 'islands', size : 'm', view : 'action' }
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    name : 'Test_1',
+    val : 'passed',
+    text : 'Check results'
 }
 ```
 
-#### _pseudo
+#### `text` field
 
-Implemented only for theme `islands`.
+Type: `String`.
 
-This modifier changes visual representation of a button. With `view` modifier set to `pseudo`, the background of a button becomes transparent.
+Specifies a text on a button.
 
-```bemjson
+```js
 {
     block : 'button',
-    text : 'Pseudo',
-    mods : { theme : 'islands', size : 'm', view : 'pseudo' }
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    name : 'Test_1',
+    val : 'passed',
+    text : 'Check results'
 }
 ```
 
-If pseudo button is disabled, its borders disappear.
+<a name="buttonurl"></a>
 
-```bemjson
+#### `url` field
+
+Type: `String`.
+
+Specifies a link address that will be opened by clicking a <a href="#link-button">link-button</a>.
+
+Use `url` field for a <a href="#link-button">link-buttons</a> only.
+
+```js
 {
     block : 'button',
-    text : 'Disabled',
-    mods : { theme : 'islands', size : 'm', view : 'pseudo', disabled : true }
+    mods : { theme : 'islands', size : 'm', type : 'link' },
+    url : 'https://bem.info/',
+    text : 'Try BEM!'
 }
 ```
 
-## Elements of a block
+#### `icon` field
 
-### __text
+Type: `BEMJSON`.
 
-An auxiliary element that is added to the block on template engine level.
+Specifies an icon on a button. Declare the icon in BEMJSON using [icon](../icon/icon.en.md) block.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm' },
+    text : 'Twitter',
+    icon : {
+        block : 'icon',
+        mods : { social : 'twitter' }
+    }
+}
+```
+
+<a name="buttontitle"></a>
+
+#### `title` title
+
+Type: `String`.
+
+Specifies a tooltip content. The tooltip appearance depends on a browser and your operating system settings. You cannot change it applying HTML or different styles.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    name : 'Test #1',
+    val : 'Passed',
+    text : 'Check the result',
+    title : 'This button shows the test results'
+}
+```
+
+<a name="buttonid"></a>
+
+#### `id` field
+
+Type: `String`.
+
+Specifies a unique identifier of a button.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    name : 'Test #1',
+    val : 'Passed',
+    text : 'Check the result',
+    id : 'Unique_1'
+}
+```
+
+<a name="buttontab"></a>
+
+#### `tabIndex` field
+
+Type: `Number`.
+
+Specifies a tab order between controls on a page by pressing `Tab`.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', type : 'submit' },
+    name : 'Test #1',
+    val : 'Passed',
+    text : 'Check the result',
+    tabIndex : 3
+}
+```

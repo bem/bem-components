@@ -38,15 +38,6 @@ describe('attach', function() {
             setFile('\\usr\\local\\file.png');
             attach.elem('text').text().should.be.equal('file.png');
         });
-
-        it('should properly extract file extension', function() {
-            setFile('file.png');
-            attach.findBlockInside('icon').getMod('file').should.be.equal('png');
-            setFile('file.zip');
-            attach.findBlockInside('icon').getMod('file').should.be.equal('archive');
-            setFile('file.docx');
-            attach.findBlockInside('icon').getMod('file').should.be.equal('doc');
-        });
     });
 
     describe('clear', function() {

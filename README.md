@@ -349,3 +349,6 @@ If build procedure is successful, tests will be run automatically. After that yo
 If the result of applying the template does not match with the block sample in HTML, then you will see errors in the log with description of the difference from the block sample.
 
 All tests will be run automatically using [Travis](https://travis-ci.org) for each pull request.
+
+## License
+Code and documentation copyright 2012 YANDEX LLC. Code released under the [Mozilla Public License 2.0](LICENSE.txt).

@@ -4,7 +4,6 @@
     name : 'select',
     id : 1,
     optionsMaxHeight : 100,
-    textMaxWidth : 50,
     val : 2,
     options : [
         { val : 1, text : 'first' },

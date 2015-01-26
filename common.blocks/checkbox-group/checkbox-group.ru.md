@@ -367,7 +367,7 @@
     options : [
         { val : 1, text : 'Блок' },
         { val : 2, text : 'Элемент', disabled : true },
-        { val : 3, text : 'Модификатор' disabled : true },
+        { val : 3, text : 'Модификатор', disabled : true },
         { val : 4, text : 'Модификатор' }
     ]
 }
@@ -401,7 +401,7 @@
             icon : {
                 block : 'icon',
                 mods : { social : 'twitter' }
-            },
+            }
         },
         {
             val : 2,
@@ -411,7 +411,7 @@
             icon : {
                 block : 'icon',
                 mods : { social : 'vk' }
-            },
+            }
         }
     ]
 }

@@ -263,7 +263,7 @@ Specifies a checkbox value that is sent to a server.
 
 Type: `String`.
 
-Specifies a text of a checkbox or a text on a button if <a href="checkboxtype">type modifier with button value</a> is set to the block.
+Specifies a text of a checkbox or a text on a button if <a href="#checkboxtype">type modifier with button value</a> is set to the block.
 
 ```js
 {

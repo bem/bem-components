@@ -285,7 +285,7 @@ Specifies a radio switch value that is sent to a server.
 
 Type: `String`.
 
-Specifies a text of a radio switch or a text on a button if <a href="type">type modifier with button value</a> is set to the block.
+Specifies a text of a radio switch or a text on a button if <a href="#type">type modifier with button value</a> is set to the block.
 
 ```js
 {

@@ -107,7 +107,9 @@ provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.p
     _calcTargetDimensions : function() {
         var anchor = this._anchor,
             anchorOffset = anchor.offset(),
-            bodyOffset = body.offset();
+            bodyOffset = body.css('position') === 'static'?
+                { left : 0, top : 0 } :
+                body.offset();
 
         return {
             left : anchorOffset.left - bodyOffset.left,

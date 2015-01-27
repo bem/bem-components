@@ -1,39 +1,39 @@
 # button
 
-A block is used to create different types of buttons.
+Use this block for creating different types of buttons.
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#buttontype">type</a> | <code>'link'</code>, <code>'submit'</code> | <code>BEMJSON</code> | A button type.|
-| <a href="#buttontoggle">togglable</a> | <code>'check'</code>, <code>'radio'</code> | <code>BEMJSON</code> | A toggle type of a button.|
-| <a href="#buttondisabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#buttontype">type</a> | <code>'link'</code>, <code>'submit'</code> | <code>BEMJSON</code> | The type of button. |
+| <a href="#buttontoggle">togglable</a> | <code>'check'</code>, <code>'radio'</code> | <code>BEMJSON</code> | The toggle button.|
+| <a href="#buttondisabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
 | <a href="#buttonfocused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
-| <a href="#buttonpressed">pressed</a> | <code>true</code> | – | A pressed state. |
-| <a href="#hovered">hovered</a> | <code>true</code> | – | A hovered state. |
+| <a href="#buttonpressed">pressed</a> | <code>true</code> | – | The pressed state. |
+| <a href="#hovered">hovered</a> | <code>true</code> | – | The hovered state. |
 | <a href="#buttonthemes">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
-| <a href="#buttonsize">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A button size. Use sizes only for buttons with <a href="#buttonthemes">theme modifier with islands value</a>.|
+| <a href="#buttonsize">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the button. Use sizes only for buttons with the <a href="#buttonthemes">theme modifier set to islands</a>.|
 | <a href="#buttonview">view</a> | <code>'action'</code>, <code>'pseudo'</code> | <code>BEMJSON</code> | Visual highlighting.|
 
 ### Custom fields of the block
 
 | Field | Type | description |
 | ---- | --- | -------- |
-| <a href="#buttonname">name</a> | <code>String</code> | A unique block name. Do not use for <a href="#link-button">type modifier with link value</a>. |
-| <a href="#buttonval">val</a> | <code>String</code> | A value that will be sent to a server. Do not use for <a href="#link-button">type modifier with link value</a>. |
-| <a href="#buttontext">text</a> | <code>String</code>| A button text. |
-| <a href="#buttonurl">url</a> | <code>String</code>| A link address. Use only for <a href="#link-button">type modifier with link value</a>. |
-| <a href="#buttonicon">icon</a> | <code>BEMJSON</code> | An icon on a button that is formed by <a href="../icon/icon.en.md">icon</a> block. |
-| <a href="#buttontitle">title</a> | <code>String</code> | A tooltip content. |
-| <a href="#buttonid">id</a> | <code>BEMJSON</code> | A unique identifier of a button. |
-| <a href="#buttontab">tabIndex</a> | <code>Number</code> | A sequence that user follows when he uses the `Tab` key to navigate through a page. |
+| <a href="#buttonname">name</a> | <code>String</code> | The unique block name. Do not use when the <a href="#link-button">type modifier is set to link</a>. |
+| <a href="#buttonval">val</a> | <code>String</code> | The value to send to the server. Do not use when the <a href="#link-button">type modifier is set to link</a>. |
+| <a href="#buttontext">text</a> | <code>String</code>| Button lable. |
+| <a href="#buttonurl">url</a> | <code>String</code>| Link address. Use only when the <a href="#link-button">type modifier is set to link</a>. |
+| <a href="#buttonicon">icon</a> | <code>BEMJSON</code> | Button icon. It iscreated by the <a href="../icon/icon.en.md">icon</a> block. |
+| <a href="#buttontitle">title</a> | <code>String</code> | Tooltip content. |
+| <a href="#buttonid">id</a> | <code>BEMJSON</code> | The button unique identifier. |
+| <a href="#buttontab">tabIndex</a> | <code>Number</code> | The order when navigating through controls on a page by pressing the <code>Tab</code> key.|
 
-## Block overview
+## Block description
 
-`button` block is used to manage a size, state, and appearance of a button.
+Use the `button` block to control the size, state, and appearance of the button.
 
 ### Modifiers of the block
 
@@ -41,15 +41,15 @@ A block is used to create different types of buttons.
 
 #### `type` modifier
 
-Available values: `'link'`, `'submit'`.
+Acceptable values: `'link'`, `'submit'`.
 
 Use case: `BEMJSON`.
 
 <a name="link-button"></a>
 
-##### A link-button (`type` modifier with `link` value)
+##### Link-button (`type` modifier with `link` value)
 
-Use `type` modifier with `link` value to create a button that opens a page by an address specified in <a href="#buttonurl">url</a> field.
+Use the `type` modifier with the `link` value to create a button that does to the address specified in the <a href="#buttonurl">url</a> field.
 
 ```js
 {
@@ -60,9 +60,9 @@ Use `type` modifier with `link` value to create a button that opens a page by an
 }
 ```
 
-##### A form submit button (`type` modifier with `submit` value)
+##### Form submit button (`type` modifier with `submit` value)
 
-Use `type` modifier with `submit` value to create a button that sends data to a server. This button type must be a part of a form.
+Use the `type` modifier with the `submit` value for creating the button to send data to the server. This button type must be a part of a form.
 
 ```js
 {
@@ -76,13 +76,13 @@ Use `type` modifier with `submit` value to create a button that sends data to a 
 
 #### `togglable` modifier
 
-Available values: `'check'`, `'radio'`.
+Acceptable values: `'check'`, `'radio'`.
 
 Use case: `BEMJSON`.
 
-Defines behavior of a pressed button.
+Defines behavior of the pressed button.
 
-##### A toggle button (`togglable` modifier with `check` value)
+##### Toggle button (`togglable` modifier with `check` value)
 
 The first click presses the button, and the second one releases it.
 
@@ -94,10 +94,10 @@ The first click presses the button, and the second one releases it.
 }
 ```
 
-##### A radio-button (`togglable` modifier with `radio` value)
+##### Radio-button (`togglable` modifier with `radio` value)
 
 The first click presses the button, and it cannot be released manually.
-This button type is used as a part of [radio-group](../radio-group/radio-group.en.md).
+This button type is used as a part of a [radio-group](../radio-group/radio-group.en.md).
 
 ```js
 {
@@ -127,11 +127,11 @@ An example of the button usage as a part of the radio-group:
 
 #### `disabled` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`, `JS`.
 
-The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+The modifier makes the block inactive. The disabled block is visible but not available for user actions.
 
 ```js
 {
@@ -145,11 +145,11 @@ The modifier provides inactive state to the block. Disabled block is visible but
 
 #### `focused` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`, `JS`.
 
-The modifier provides a focus to the block.
+The modifier puts the focus on the block.
 
 ```javascript
 {
@@ -163,35 +163,35 @@ The modifier provides a focus to the block.
 
 #### `pressed` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: – .
 
-The modifier is added to a button automatically at the moment when the button is pressed.
+The modifier is added to the button automatically at the moment when the button is pressed.
 
-This modifier is used for buttons with <a href="#buttontoggle">togglable</a> modifier.
+This modifier is used for buttons with the <a href="#buttontoggle">togglable</a> modifier.
 
 <a name="hovered"></a>
 
 #### `hovered` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: – .
 
-The modifier is added to a block automatically at the moment when you mouse over it.
+The modifier is added to the block automatically at the moment when you mouse over it.
 
 <a name="buttonthemes"></a>
 
 #### `theme` modifier
 
-Available value: `'islands'`.
+Acceptable value: `'islands'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
-`islands` theme requires <a href="#buttonsize">size</a> modifier usage.
+The `islands` theme requires the <a href="#buttonsize">size</a> modifier.
 
 ```js
 {
@@ -205,13 +205,13 @@ The modifier provides a custom design to the block.
 
 #### `size` modifier
 
-Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
+Acceptable values for the `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
 
 Use case: `BEMJSON`.
 
-Use `size` modifier only for blocks with `islands` <a href="#buttonthemes">theme</a>.
+Use the `size` modifier only for blocks with the `islands` <a href="#buttonthemes">theme</a>.
 
-Provides all types of buttons with `size` value.
+Sets the size value for all types of buttons.
 
 **s**
 
@@ -257,13 +257,13 @@ Provides all types of buttons with `size` value.
 
 #### `view` modifier
 
-Available values: `'action'`, `'pseudo'`.
+Acceptable values: `'action'`, `'pseudo'`.
 
 Use case: `BEMJSON`.
 
-##### An action button (`view` modifier with `action` value)
+##### Action button (`view` modifier with `action` value)
 
-The modifier visually highlights a button on a page. For example, use it to create a promo button:
+The modifier visually highlights the button on a page. For example, use it to create a promo button:
 
 ```js
 {
@@ -273,9 +273,9 @@ The modifier visually highlights a button on a page. For example, use it to crea
 }
 ```
 
-##### A pseudobutton (`view` modifier with `pseudo` value)
+##### Pseudobutton (`view` modifier with `pseudo` value)
 
-The modifier changes visual representation of a button. For example, use it if you do not need to focus attention on the button:
+The modifier changes visual representation of the button. For example, use it if you do not need to focus attention on the button:
 
 ```js
 {
@@ -289,7 +289,7 @@ The modifier changes visual representation of a button. For example, use it if y
 {
     block : 'button',
     mods : { theme : 'islands', size : 'm', view : 'pseudo', disabled : true },
-    text : 'Without boarders'
+    text : 'Without borders'
 }
 ```
 
@@ -301,9 +301,9 @@ The modifier changes visual representation of a button. For example, use it if y
 
 Type: `String`.
 
-Specifies a unique name of the block.
+Specifies the block unique name.
 
-Do not use `name` field with <a href="#link-button">type modifier with link value</a>.
+Do not use the `name` field when <a href="#link-button">type modifier is set to link</a>.
 
 ```js
 {
@@ -321,9 +321,9 @@ Do not use `name` field with <a href="#link-button">type modifier with link valu
 
 Type: `String`, `Number`.
 
-Specifies a value that is sent to a server.
+Specifies the value to send to the server.
 
-Do not use `val` field for <a href="#link-button">type modifier with link value</a>.
+Do not use the `val` field when <a href="#link-button">type modifier is set to link</a>.
 
 ```js
 {
@@ -339,7 +339,7 @@ Do not use `val` field for <a href="#link-button">type modifier with link value<
 
 Type: `String`.
 
-Specifies a text on a button.
+Specifies the button lable.
 
 ```js
 {
@@ -357,9 +357,9 @@ Specifies a text on a button.
 
 Type: `String`.
 
-Specifies a link address that will be opened by clicking a <a href="#link-button">link-button</a>.
+Specifies the link address that will be opened by clicking the <a href="#link-button">link-button</a>.
 
-Use `url` field for a <a href="#link-button">link-buttons</a> only.
+Use the `url` field for <a href="#link-button">link-buttons</a> only.
 
 ```js
 {
@@ -374,7 +374,7 @@ Use `url` field for a <a href="#link-button">link-buttons</a> only.
 
 Type: `BEMJSON`.
 
-Specifies an icon on a button. Declare the icon in BEMJSON using [icon](../icon/icon.en.md) block.
+Specifies the icon on the button. Declare the icon in BEMJSON using the [icon](../icon/icon.en.md) block.
 
 ```js
 {
@@ -394,7 +394,7 @@ Specifies an icon on a button. Declare the icon in BEMJSON using [icon](../icon/
 
 Type: `String`.
 
-Specifies a tooltip content. The tooltip appearance depends on a browser and your operating system settings. You cannot change it applying HTML or different styles.
+Specifies the tooltip content. The tooltip appearance depends on the browser and your operating system settings. You cannot change it applying HTML or different styles.
 
 ```js
 {
@@ -413,7 +413,7 @@ Specifies a tooltip content. The tooltip appearance depends on a browser and you
 
 Type: `String`.
 
-Specifies a unique identifier of a button.
+Specifies the unique identifier of the button.
 
 ```js
 {
@@ -432,7 +432,7 @@ Specifies a unique identifier of a button.
 
 Type: `Number`.
 
-Specifies a tab order between controls on a page by pressing `Tab`.
+Specifies the tab order when pressing `Tab` to navigate between controls on a page.
 
 ```js
 {

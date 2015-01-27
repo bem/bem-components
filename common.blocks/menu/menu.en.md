@@ -1,40 +1,40 @@
 # menu
 
-A block is used to create different types of menu.
+Use this block for creating different types of menu.
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | --------------------- | -------- |
-| <a href="#mode">mode</a> | <code>'radio'</code>, <code>'radio-check'</code>, <code>'check'</code> | <code>BEMJSON</code> | A menu type. |
-| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#mode">mode</a> | <code>'radio'</code>, <code>'radio-check'</code>, <code>'check'</code> | <code>BEMJSON</code> | The type of the menu. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
 | <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
 | <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
-| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A menu size. Use sizes only for menus with <a href="#themes">theme modifier with islands value</a>. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the menu. Use sizes only for menus when the <a href="#themes">theme modifier is set to islands</a>. |
 
 ### Custom fields of the block
 
-| Field | Type | description |
+| Field | Type | Description |
 | ---- | --- | -------- |
-| <a href="#val">val</a> | <code>String</code>, <code>Number</code>, <code>Array</code> | A selected value from the menu. If <a href="#mode-check">mode modifier with check value</a> is applied to the block, the selected values must be declared as an <code>array</code>. |
+| <a href="#val">val</a> | <code>String</code>, <code>Number</code>, <code>Array</code> | The selected value from the menu. If the <a href="#mode-check">mode modifier with check value</a> is applied to the block, the selected values must be declared as an <code>array</code>. |
 
 ### Elements of the block
 
 | Element | Use cases | Description |
 | --------| --------------------- | -------- |
-| <a href=#group>group</a> | <code>BEMJSON</code> | A visual grouping of the menu items. |
+| <a href=#group>group</a> | <code>BEMJSON</code> | The menu items visual grouping. |
 
 ### Custom fields of the block elements
 
-| Field | Type | description |
+| Element | Field | Type | Description |
 | ------- | ---- | --- | -------- |
-| group | <a href="#group-title">title</a> | <code>String</code> | A name of the menu items group. |
+| group | <a href="#group-title">title</a> | <code>String</code> | The name of the menu items group. |
 
-## Block overview
+## Block description
 
-`menu` block allows a user to manage state, behavior and appearance of the menu and its nested components – [menu-item](../menu-item/menu-item.en.md) blocks.
+Use the `menu` block to control the state, behavior and appearance of the menu and its nested components – the [menu-item](../menu-item/menu-item.en.md) blocks.
 
 ### Modifiers of the block
 
@@ -42,21 +42,21 @@ A block is used to create different types of menu.
 
 #### `mode` modifier
 
-Available values: `'check`, `'radio'`, `'radio-check'`.
+Acceptable values: `'check`, `'radio'`, `'radio-check'`.
 
 Use case: `BEMJSON`.
 
-`mode` modifier changes a type of `menu` block depending on the selected value:
+The `mode` modifier changes the type of the `menu` block depending on the selected value:
 
-* A basic list ([mode modifier is not specified](#mode-none))
-* A multiple-choice list ([mode modifier with check value](#mode-check))
-* A mandatory single-choice list ([mode modifier with radio value](#mode-radio))
-* An optional single-choice list ([mode modifier with radio-check value](#mode-radiocheck)).
+* basic list ([mode modifier is not specified](#mode-none))
+* multiple-choice list ([mode modifier with check value](#mode-check))
+* mandatory single-choice list ([mode modifier with radio value](#mode-radio))
+* optional single-choice list ([mode modifier with radio-check value](#mode-radiocheck)).
 
 <a name="mode-none"></a>
-##### A basic list (`mode` modifier is not specified)
+##### Basic list (`mode` modifier is not specified)
 
-If `mode` modifier is not specified, a basic list without the possibility to create a menu item is created.
+If the `mode` modifier is not set to the block, the basic list without the possibility to select the menu item is created.
 
 ```js
 {
@@ -78,9 +78,9 @@ If `mode` modifier is not specified, a basic list without the possibility to cre
 ```
 
 <a name="mode-check"></a>
-##### A multiple-choice list (`mode` modifier with `check` value)
+##### Multiple-choice list (`mode` modifier with `check` value)
 
-Use to create a menu with the possibility to select any number of menu items.
+Use this modifier to create the menu with the possibility to select any number of menu items.
 
 ```js
 {
@@ -109,11 +109,11 @@ Use to create a menu with the possibility to select any number of menu items.
 
 <a name="mode-radio"></a>
 
-##### A mandatory single-choice list (`mode` modifier with `radio` value)
+##### Mandatory single-choice list (`mode` modifier with `radio` value)
 
-Use to create a menu that has one mandatory selected item.
+Use this modifier to create the menu that has one mandatory selected item.
 
-If any item is not specified in BEMJSON as selected, the first menu item is selected by default.
+If any item is not selected in BEMJSON declaration, the first menu item is selected by default.
 
 ```js
 {
@@ -135,9 +135,9 @@ If any item is not specified in BEMJSON as selected, the first menu item is sele
 ```
 
 <a name="mode-radiocheck"></a>
-##### An optional single-choice list (`mode` modifier with `radio-check` value)
+##### Optional single-choice list (`mode` modifier with `radio-check` value)
 
-Use to create a menu that has one mandatory selected item like in the `mandatory single-choice list`. The fundamental difference between these two menu types is that `menu` block with `mode` modifier with `radio-check` value has an opportunity to leave the menu without the selected items.
+Use this modifier to create the menu that has one mandatory selected item like in the `mandatory single-choice list`. The fundamental difference between these two menu types is that the `menu` block with the `mode` modifier with the `radio-check` value has the opportunity to leave the menu without the selected items.
 
 ```js
 {
@@ -163,11 +163,11 @@ Use to create a menu that has one mandatory selected item like in the `mandatory
 
 #### `disabled` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use cases: `BEMJSON`, `JS`.
 
-The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+The modifier makes the block inactive. The disabled block is visible but not available for user actions.
 
 If `menu` block is disabled, all nested `menu-item` blocks are also disabled:
 
@@ -190,7 +190,7 @@ If `menu` block is disabled, all nested `menu-item` blocks are also disabled:
 }
 ```
 
-`disabled` modifier with `true` value could be applied to a separate menu items:
+The `disabled` modifier with the `true` value could be set to a separate menu items:
 
 ```js
 {
@@ -217,11 +217,11 @@ If `menu` block is disabled, all nested `menu-item` blocks are also disabled:
 
 #### `focused` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use cases: `BEMJSON`, `JS`.
 
-The modifier provides a focus to the block.
+The modifier puts the focus on the block.
 
 ```javascript
 {
@@ -246,13 +246,13 @@ The modifier provides a focus to the block.
 <a name="theme"></a>
 #### `theme` modifier
 
-Available value: `'islands'`.
+Acceptable value: `'islands'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
-`islands` theme requires <a href="#size">size</a> modifier usage.
+The `islands` theme requires the <a href="#size">size</a> modifier.
 
 ```js
 {
@@ -277,13 +277,13 @@ The modifier provides a custom design to the block.
 <a name="size"></a>
 #### `size` modifier
 
-Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
+Acceptable values for the `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
 
 Use case: `BEMJSON`.
 
-Use `size` modifier only for blocks with `islands` <a href="#themes">theme</a>.
+Use the `size` modifier only for blocks with the `islands` <a href="#themes">theme</a>.
 
-Provides all types of menus with `size` value.
+Sets the size value for all types of menus.
 
 **s**
 
@@ -381,7 +381,7 @@ Type: `String`, `Number`, `Array`.
 
 Specifies:
 
-* A selected value from the menu. In this case the type of the filed is `String` or `Number`.
+* The selected value from the menu. In this case the field type is `String` or `Number`.
 
 ```js
 {
@@ -392,18 +392,18 @@ Specifies:
         {
             block : 'menu-item',
             val : 1,
-            content : 'Отпуск на работе'
+            content : 'Vacation at work'
         },
         {
             block : 'menu-item',
             val : 2,
-            content : 'Отпуск на диване'
+            content : 'Vacation on the couch'
         }
     ]
 }
 ```
 
-* A set of selected values from the menu. This case is possible if the block has [mode modifier with check value](#mode-check). The field type is an array.
+* The set of selected values from the menu. This case is possible if the block has the [mode modifier set to check](#mode-check). The field type is an `Array`.
 
 ```js
 {
@@ -476,7 +476,7 @@ A visual grouping of the menu items that does not affect the general logic of it
 
 Type: `String`.
 
-Specifies a name of the menu items group.
+Specifies the title for a group of menu items.
 
 ```js
 {

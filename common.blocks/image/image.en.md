@@ -1,21 +1,21 @@
 # image
 
-A block is used to create an independent image.
+Use this block for creating an independent image.
 
-## Brief overview
+## Overview
 
 ### Custom fields of the block
 
-| Field | Type | description |
+| Field | Type | Description |
 | ---- | --- | -------- |
-| <a href="#title">title</a> | <code>String</code> | A tooltip content. |
-| <a href="#alt">alt</a> | <code>String</code> | An alternate text of the image. |
-| <a href="#url">url</a> | <code>String</code> | An image address. |
-| <a href="#width">width</a> | <code>Number</code> | An image width in pixels. |
-| <a href="#height">height</a> | <code>Number</code> | An image height in pixels. |
-| <a href="#content">content</a> | <code>BEMJSON</code> | An image content in SVG format. |
+| <a href="#title">title</a> | <code>String</code> | Tooltip content. |
+| <a href="#alt">alt</a> | <code>String</code> | The alternate text of the image. |
+| <a href="#url">url</a> | <code>String</code> | Image address. |
+| <a href="#width">width</a> | <code>Number</code> | The width of the image in pixels. |
+| <a href="#height">height</a> | <code>Number</code> | The height of the image in pixels. |
+| <a href="#content">content</a> | <code>BEMJSON</code> | Image content in SVG format. |
 
-## Описание блока
+## Block description
 
 The block is used to create an independent image that is adapted for specific output modes (screen reader, print, programs for people with limited physical capacities).
 
@@ -26,7 +26,7 @@ The block is used to create an independent image that is adapted for specific ou
 
 Type: `String`.
 
-Specifies a tooltip content.
+Specifies the tooltip content.
 
 ```js
 {
@@ -41,7 +41,7 @@ Specifies a tooltip content.
 
 Type: `String`.
 
-Specifies an alternate text of the image. The text provides useful information about the image if a browser cannot display it for some reasons.
+Specifies the alternate text of the image. The text provides useful information about the image if a browser cannot display it for some reasons.
 
 ```js
 {
@@ -58,7 +58,7 @@ Specifies an alternate text of the image. The text provides useful information a
 
 Type: `String`.
 
-Specifies an address for image uploading.
+Specifies the address for the image uploading.
 
 ```js
 {
@@ -75,7 +75,7 @@ Specifies an address for image uploading.
 
 Type: `Number`.
 
-Specifies an image width in pixels.
+Specifies the image width in pixels.
 
 ```js
 {
@@ -92,7 +92,7 @@ Specifies an image width in pixels.
 
 Type: `Number`.
 
-Specifies an image height in pixels.
+Specifies the image height in pixels.
 
 ```js
 {

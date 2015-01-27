@@ -1,30 +1,30 @@
 # checkbox-group
 
-A block is used to manage a group of [checkboxes](../checkbox/checkbox.en.md).
+Use this block for managing a group of [checkboxes](../checkbox/checkbox.en.md).
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#checkboxtype">type</a> | <code>'button'</code>, <code>'line'</code> | <code>BEMJSON</code> | A checkbox group type. |
-| <a href="#checkboxdisabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#checkboxtype">type</a> | <code>'button'</code>, <code>'line'</code> | <code>BEMJSON</code> | The type of checkbox group. |
+| <a href="#checkboxdisabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
 | <a href="#checkboxfocused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
 | <a href="#checkboxtheme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design.  |
-| <a href="#checkboxsize">size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | A checkbox group size. Use sizes only for checkboxes with <a href="#checkboxtheme">theme modifier with islands value</a>. |
+| <a href="#checkboxsize">size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | The size of checkbox group. Use sizes only for checkboxes with the <a href="#checkboxtheme">theme modifier set to islands</a>. |
 
 ### Custom fields of the block
 
 | Field | Type | description |
 | ---- | --- | -------- |
-| <a href="#checkboxname">name</a> | <code>String</code> | A unique block name. |
-| <a href="#val">val</a> | <code>Array</code> | A set of values of the selected checkboxes. |
+| <a href="#checkboxname">name</a> | <code>String</code> | The block unique name. |
+| <a href="#val">val</a> | <code>Array</code> | A set of values for the selected checkboxes. |
 | <a href="#checkboxopt">options</a> | <code>Array</code> | A set of values for each checkbox of the group. Each checkbox has its own <a href="#checkboxoptset">set of values</a>. |
 
-## Block overview
+## Block description
 
-`checkbox-group` block is used to manage a size, state, and appearance of the embedded checkboxes.
+Use the `checkbox-group` block to control the size, state, and appearance of the checkboxes in the group.
 
 ### Modifiers of the block
 
@@ -32,7 +32,7 @@ A block is used to manage a group of [checkboxes](../checkbox/checkbox.en.md).
 
 #### `type` modifier
 
-Available values: `'button'`, `'line'`.
+Acceptable values: `'button'`, `'line'`.
 
 Use case: `BEMJSON`.
 
@@ -40,7 +40,7 @@ Use case: `BEMJSON`.
 
 ##### A `button`-based checkbox group (`type` modifier with `button` value)
 
-The modifier allows to implements `checkbox-group` block using on [button-based checkboxes](../checkbox/checkbox.en.md/#checkboxtype) type.
+Implements the `checkbox-group` block using the [button-based](../checkbox/checkbox.en.md/#checkboxtype) type of checkboxes.
 
 Grouped button-based checkboxes are always aligned in a line.
 
@@ -80,15 +80,15 @@ The modifier aligns all checkboxes of the group in a line.
 
 #### `disabled` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use cases: `BEMJSON`, `JS`.
 
-The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+The modifier makes the block inactive. The disabled block is visible but not available for user actions.
 
-The modifier could be applied to:
+The modifier can be applied to:
 
-* A checkbox-group:
+* The checkbox-group:
 
 ```js
 {
@@ -116,7 +116,7 @@ The modifier could be applied to:
 }
 ```
 
-* A separate checkbox of the group:
+* The separate checkbox of the group:
 
 ```js
 {
@@ -148,11 +148,11 @@ The modifier could be applied to:
 
 #### `focused` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use cases: `BEMJSON`, `JS`.
 
-The modifier provides a focus to the block.
+The modifier puts the focus on the block.
 
 ```javascript
 {
@@ -186,13 +186,13 @@ The modifier provides a focus to the block.
 
 #### `theme` modifier
 
-Available value: `'islands'`.
+Acceptable value: `'islands'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
-`islands` theme requires <a href="#checkboxsize">size</a> modifier usage.
+The islands theme requires the <a href="#checkboxsize">size</a> modifier.
 
 ```js
 {
@@ -224,13 +224,13 @@ The modifier provides a custom design to the block.
 
 #### `size` modifier
 
-Available values for `islands` theme: `'m'`, `'l'`.
+Acceptable values for the `islands` theme: `'m'`, `'l'`.
 
 Use case: `BEMJSON`.
 
-Use `size` modifier only for blocks with `islands` <a href="#checkboxthemes">theme</a>.
+Use the `size` modifier only for blocks with the `islands` <a href="#checkboxthemes">theme</a>.
 
-Provides all types of checkbox groups with `size` value.
+Sets the size value for all types of checkbox groups.
 
 **m**
 
@@ -300,7 +300,7 @@ Provides all types of checkbox groups with `size` value.
 
 Type: `String`
 
-Specifies a unique name of the block.
+Specifies the block unique name.
 
 ```js
 {
@@ -321,7 +321,7 @@ Specifies a unique name of the block.
 
 Type: `Array`.
 
-Specifies a set of the selected checkboxes values.
+Specifies a set of values for the selected checkboxes.
 
 ```js
 {
@@ -351,12 +351,12 @@ Each checkbox has its own set of values.
 
 | Field | Type | description |
 | ---- | --- | -------- |
-| <code>val</code> | <code>String</code>, <code>Number</code> | A value that will be sent to a server if a checkbox is selected. |
-| <code>text</code> | <code>String</code> | A text of a checkbox or a text on a button if <code>type</code> modifier with <code>button</code> value is set to the checkbox. |
-| <code>disabled</code> | <code>Boolean</code> | A disabled state. |
-| <code>icon</code> | <code>BEMJSON</code> | An icon on a checkbox that is formed by <a href="../icon/icon.en.md">icon</a> block. Use icons only for checkboxes with <a href="#checkboxtype">type modifier with button value</a>. |
-| <code>title</code> | <code>String</code> | A tooltip content. Use tooltips only for checkboxes with <code>type</code> modifier with <code>button</code> value. |
-| <code>id</code> | <code>String</code> | A unique identifier of a checkbox. |
+| <code>val</code> | <code>String</code>, <code>Number</code> | The value to send to the server if the checkbox is selected. |
+| <code>text</code> | <code>String</code> | The checkbox label, or the button label if the <code>type</code> modifier is set to <code>button</code>. |
+| <code>disabled</code> | <code>Boolean</code> | The disabled state. |
+| <code>icon</code> | <code>BEMJSON</code> | The checkbox icon, which is created by the <a href="../icon/icon.en.md">icon</a> block. Use icons only for checkboxes with the <code>type</code> modifier set to <code>button</code>. |
+| <code>title</code> | <code>String</code> | Tooltip content. Use tooltips only for checkboxes with <code>type</code> modifier set to <code>button</code>. |
+| <code>id</code> | <code>String</code> | The checkbox unique ID. |
 
 ```js
 {

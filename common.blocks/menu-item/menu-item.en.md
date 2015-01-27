@@ -1,29 +1,29 @@
 # menu-item
 
-A block that is used as a part of [menu](../menu/menu.en.md) block.
+Use this block as a part of the [menu](../menu/menu.en.md) block.
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#type">type</a> | <code>'link'</code> | <code>BEMJSON</code> | A menu item implemented by <a href="../link/link.en.md">link</a> block. |
-| <a href="#checked">checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A menu item selection. |
-| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
-| <a href="#hovered">hovered</a> | <code>true</code> | – | A hovered state. |
+| <a href="#type">type</a> | <code>'link'</code> | <code>BEMJSON</code> | The menu item implemented by the <a href="../link/link.en.md">link</a> block. |
+| <a href="#checked">checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Selection of the menu item. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
+| <a href="#hovered">hovered</a> | <code>true</code> | – | The hovered state. |
 | <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
-| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A menu item size. Use sizes only for menu items with <a href="#theme">theme modifier with islands value</a>. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the menu item. Use sizes only for menu items when the <a href="#theme">theme modifier is set to islands</a>. |
 
 ### Custom fields of the block
 
-| Field | Type | description |
+| Field | Type | Description |
 | ---- | --- | -------- |
-| <a href="#val">val</a> | <code>Number</code>, <code>String</code> | A value of the menu item. |
+| <a href="#val">val</a> | <code>Number</code>, <code>String</code> | The value of the menu item. |
 
-## Block overview
+## Block description
 
-`menu-item` block is used to manage a size, state and appearance of menu items.
+Use the `menu-item` block to control the size, state and appearance of the menu items.
 
 ### Modifiers of the block
 
@@ -31,11 +31,11 @@ A block that is used as a part of [menu](../menu/menu.en.md) block.
 
 #### `type` modifier
 
-Available value: `'link'`.
+Acceptable value: `'link'`.
 
 Use case: `BEMJSON`.
 
-Use to create menu items implemented by [link](../link/link.en.md) block that must be declared in `content` field in BEMJSON.
+Use this modifier to create the menu items implemented by the [link](../link/link.en.md) block that must be declared in the `content` field in BEMJSON.
 
 ```js
 {
@@ -53,11 +53,11 @@ Use to create menu items implemented by [link](../link/link.en.md) block that mu
 
 #### `checked` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`, `JS`.
 
-Use to select the menu item.
+Use this modifier to select the menu item.
 
 ```js
 {
@@ -71,11 +71,11 @@ Use to select the menu item.
 
 #### `disabled` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use cases: `BEMJSON`, `JS`.
 
-The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+The modifier makes the block inactive. The disabled block is visible but not available for user actions.
 
 ```js
 {
@@ -89,23 +89,23 @@ The modifier provides inactive state to the block. Disabled block is visible but
 
 #### `hovered` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: – .
 
-The modifier is added to a block automatically at the moment when you mouse it over.
+The modifier is added to the block automatically at the moment when you mouse it over.
 
 <a name="theme"></a>
 
 #### `theme` modifier
 
-Available value: `'islands'`.
+Acceptable value: `'islands'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
-`islands` theme requires <a href="#size">size</a> modifier usage.
+The `islands` theme requires the <a href="#size">size</a> modifier.
 
 ```js
 {
@@ -119,13 +119,13 @@ The modifier provides a custom design to the block.
 
 #### `size` modifier
 
-Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
+Acceptable values for the `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
 
 Use case: `BEMJSON`.
 
-Use `size` modifier only for blocks with `islands` <a href="#themes">theme</a>.
+Use the `size` modifier only for blocks with the `islands` <a href="#themes">theme</a>.
 
-Provides menu items with `size` value.
+Sets the size value for all types of menu items.
 
 **s**
 
@@ -175,7 +175,7 @@ Provides menu items with `size` value.
 
 Type: `Number`, `String`.
 
-Specifies a value of the menu item.
+Specifies the value of the menu item.
 
 ```js
 {

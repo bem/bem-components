@@ -1,42 +1,42 @@
 # link
 
-A block is used to create different types of links.
+Use this block for creating different types of links.
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#pseudo">pseudo</a> | <code>true</code> | <code>BEMJSON</code> | A pseudo link. |
-| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#pseudo">pseudo</a> | <code>true</code> | <code>BEMJSON</code> | Pseudo link. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
 | <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
 | <a href="#theme">theme</a> | <code>islands</code> | <code>BEMJSON</code> | A custom design. |
-| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A link size. Use sizes only for links with <a href="#themes">theme modifier with islands value</a>.|
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the link. Use sizes only for links when <a href="#themes">theme modifier is set to islands</a>.|
 
 ### Custom fields of the block
 
-| Field | Type | description |
+| Field | Type | Description |
 | ---- | --- | -------- |
-| <a href="#url">url</a> | <code>String</code> | A link address. |
-| <a href="#title">title</a> | <code>String</code> | A tooltip content. |
-| <a href="#target">target</a> | <code>String</code> | A link behavior. |
-| <a href="#tabIndex">tabIndex</a> | <code>Number</code> | A sequence that user follows when he uses the `Tab` key to navigate through a page. |
+| <a href="#url">url</a> | <code>String</code> | Link address. |
+| <a href="#title">title</a> | <code>String</code> | Tooltip content. |
+| <a href="#target">target</a> | <code>String</code> | Link behavior. |
+| <a href="#tabIndex">tabIndex</a> | <code>Number</code> | The order when navigating through controls on a page by pressing the <code>Tab</code> key.|
 
-## Block overview
+## Block description
 
-`link` block is used to manage a size, state, and appearance of a links.
+Use the `link` block control the size, state, and appearance of the links.
 
 ### Modifiers of the block
 <a name="pseudo"></a>
 
 #### `pseudo` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`.
 
-Use to create a link that does not lead to a new webpage.
+Use to create the link that does not lead to a new webpage.
 
 ```javascript
 {
@@ -50,11 +50,11 @@ Use to create a link that does not lead to a new webpage.
 
 #### `disabled` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`, `JS`.
 
-The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+The modifier makes the block inactive. The disabled block is visible but not available for user actions.
 
 ```js
 {
@@ -69,11 +69,11 @@ The modifier provides inactive state to the block. Disabled block is visible but
 
 #### `focused` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`, `JS`.
 
-The modifier provides a focus to the block.
+The modifier puts the focus on the block.
 
 ```javascript
 {
@@ -88,13 +88,13 @@ The modifier provides a focus to the block.
 
 #### `theme` modifier
 
-Available value: `'islands'`.
+Acceptable value: `'islands'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
-`islands` theme requires <a href="#size">size</a> modifier usage.
+The `islands` theme requires the <a href="#size">size</a> modifier.
 
 ```js
 {
@@ -109,13 +109,13 @@ The modifier provides a custom design to the block.
 
 #### `size` modifier
 
-Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
+Acceptable values for the `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+Use the `size` modifier only for blocks with the `islands` <a href="#theme">theme</a>.
 
-`islands` theme requires <a href="#size">size</a> modifier usage.
+Sets the size value for all types of links.
 
 **s**
 
@@ -169,7 +169,7 @@ The modifier provides a custom design to the block.
 
 Type: `String`.
 
-Specifies a link address that will be opened by clicking a link.
+Specifies the link address that will be opened by clicking the link.
 
 ```js
 {
@@ -186,7 +186,7 @@ Specifies a link address that will be opened by clicking a link.
 
 Type: `String`.
 
-Specifies a tooltip content. The tooltip appearance depends on a browser and your operating system settings. You cannot change it applying HTML or different styles.
+Specifies the tooltip content. The tooltip appearance depends on the browser and your operating system settings. You cannot change it applying HTML or different styles.
 
 ```js
 {
@@ -203,9 +203,9 @@ Specifies a tooltip content. The tooltip appearance depends on a browser and you
 
 Type: `String`.
 
-Specifies a link behavior.
+Specifies the link behavior.
 
-The field supports all `target` HTML attribute values: `_blank`, `_self` (default), `_parent`, `_top`.
+The field supports all HTML attribute values of the `target`: `_blank`, `_self` (default), `_parent`, `_top`.
 
 ```js
 {
@@ -223,7 +223,7 @@ The field supports all `target` HTML attribute values: `_blank`, `_self` (defaul
 
 Type: `Number`.
 
-Specifies a tab order between controls on a page by pressing `Tab`.
+Specifies the tab order when pressing `Tab` to navigate between controls on a page.
 
 ```js
 {

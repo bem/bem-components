@@ -1,10 +1,10 @@
 # control-group
 
-A wrapper block that is used for blocks **visual** grouping. Blocks that need grouping should be placed in `content` field of block BEMJSON declaration.
+Use this block as a wrapper block for blocks **visual** grouping. Blocks that need grouping should be placed in `content` field of block BEMJSON declaration.
 
 ## Use cases
 
-`control-group` allows a user to group the following blocks:
+The `control-group` allows a user to group the following blocks:
 
 * [input](../input/input.en.md)
 

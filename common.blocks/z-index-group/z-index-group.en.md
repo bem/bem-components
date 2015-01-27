@@ -1,18 +1,18 @@
 # z-index-group
 
-`z-index-group` block is used to create several layers of the blocks that are located one above the other on a page.
+Use this block for creating several layers of the blocks that are located one above the other on a page.
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available value | Use acse | Description |
+| Modifier | Acceptable value | Use acse | Description |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#index-level">level</a> | Integer number from 0 to 9 | <code>BEMJSON</code>, <code>JS</code> | A layer level. |
+| <a href="#index-level">level</a> | Integer number from 0 to 9 | <code>BEMJSON</code>, <code>JS</code> | The layer level. |
 
-## Block overview
+## Block description
 
-`z-index-group` block places the blocks in layers one above the others. [level](#index-level) modifier controls the block layer position on `z`-axis.
+Use the `z-index-group` block to place the blocks in layers one above the others. The [level](#index-level) modifier controls the block layer position on `z`-axis.
 
 ### Modifiers of the block
 
@@ -20,13 +20,13 @@
 
 #### `level` modifier
 
-Available values: integer number from 0 to 9.
+Acceptable values: integer number from 0 to 9.
 
 Use cases: `BEMJSON`, `JS`.
 
-When blocks overlap, `level` modifier determines which one covers the other.
+When blocks overlap, the `level` modifier determines which one covers the other.
 
-A block with a larger `level` value covers a block with a lower one. If two blocks have the same `level` value, the block that is declared in BEMJSON later will cover the other one.
+The block with the larger `level` value covers the block with the lower one. If two blocks have the same `level` value, the block that is declared in BEMJSON later will cover the other one.
 
 ```javascript
 {

@@ -1,26 +1,26 @@
 # progressbar
 
-A block is used to display a progress status of a process.
+Use this block for displaying a progress status of a process.
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | -------- |
 | <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
 
 ### Custom fields of the block
 
-| Field | Type | description |
+| Field | Type | Description |
 | ---- | --- | -------- |
-| <a href="#val">val</a> | <code>Number</code> | A status of process progress (in percent). |
+| <a href="#val">val</a> | <code>Number</code> | The status of the process progress (in percent). |
 
-## Block overview
+## Block description
 
-`progressbar` block displays progress of some process. The fundamental difference from [spin](../spin/spin.en.md) block is that `progressbar` shows a status of the process progress.
+Use the `progressbar` block to display the progress of some process. The fundamental difference from the [spin](../spin/spin.en.md) block is that the `progressbar` shows a status of the process progress.
 
-The block has a default width value: `progressbar` width is equal to the width of a parental block.
+The block has the default width value: the `progressbar` width is equal to the width of the parental block.
 
 ### Modifiers of the block
 
@@ -28,11 +28,11 @@ The block has a default width value: `progressbar` width is equal to the width o
 
 #### `theme` modifier
 
-Available value: `'islands'`.
+Acceptable value: `'islands'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
 ```js
 {
@@ -50,7 +50,7 @@ The modifier provides a custom design to the block.
 
 Type: `Number`.
 
-Specifies a status of process progress (in percent relative to its parental block).
+Specifies the status of the process progress (in percent relative to its parental block).
 
 ```js
 {

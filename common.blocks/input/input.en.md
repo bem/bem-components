@@ -1,36 +1,36 @@
 # input
 
-A block is used to create different types of text fields.
+Use this block for creating different types of text fields.
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#type">type</a> | <code>'password'</code>, <code>'search'</code> | <code>BEMJSON</code> | A text field type. |
-| <a href="#width">width</a> | <code>'available'</code> | <code>BEMJSON</code> | A maximum allowed width of the text field. |
-| <a href="#has-clear">has-clear</a> | <code>true</code> | <code>BEMJSON</code> | An element that clears `input` field content. |
-| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#type">type</a> | <code>'password'</code>, <code>'search'</code> | <code>BEMJSON</code> | The type of the text field. |
+| <a href="#width">width</a> | <code>'available'</code> | <code>BEMJSON</code> | The maximum allowed width of the text field. |
+| <a href="#has-clear">has-clear</a> | <code>true</code> | <code>BEMJSON</code> | The element that clears the `input` field content. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
 | <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
 | <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
-| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A text field size. Use sizes only for text fields with <a href="#themes">theme modifier with islands value</a>.|
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the text field. Use sizes only for text fields when the <a href="#themes">theme modifier is set to islands</a>.|
 
 ### Custom fields of the block
 
-| Field | Type | description |
+| Field | Type | Description |
 | ---- | --- | -------- |
-| <a href="#name">name</a> | <code>String</code> | A unique block name. |
+| <a href="#name">name</a> | <code>String</code> | The unique block name. |
 | <a href="#val">val</a> | <code>String</code>, <code>Number</code> | Default content of the text field. |
-| <a href="#placeholder">placeholder</a> | <code>String</code> | A hint in the text field. |
-| <a href="#maxLength">maxLength</a> | <code>String</code> | A maximum number of characters allowed in text field. |
+| <a href="#placeholder">placeholder</a> | <code>String</code> | The hint in the text field. |
+| <a href="#maxLength">maxLength</a> | <code>String</code> | The maximum number of characters allowed in the text field. |
 | <a href="#autocomplete">autocomplete</a> | <code>Boolean</code> | Browser predictions of the rest of a word while a user is typing. |
-| <a href="#id">id</a> | <code>String</code> | A unique identifier of the text field. |
-| <a href="#tab">tabIndex</a> | <code>Number</code> | A sequence that user follows when he uses the <code>Tab</code> key to navigate through a page. |
+| <a href="#id">id</a> | <code>String</code> | The unique identifier of the text field. |
+| <a href="#tab">tabIndex</a> | <code>Number</code> | The order when navigating through controls on a page by pressing the <code>Tab</code> key. |
 
-## Block overview
+## Block description
 
-`input` block is used to manage a size, state and appearance of a text fields.
+Use the `input` block to control the size, state and appearance of the text fields.
 
 ### Modifiers of the block
 
@@ -38,14 +38,14 @@ A block is used to create different types of text fields.
 
 #### `type` modifier
 
-Available values:`'password'`, `'search'`.
+Acceptable values:`'password'`, `'search'`.
 
 Use case: `BEMJSON`.
 
-The modifier changes types of the text fields.
+This modifier changes types of the text fields.
 
 <a name="input"></a>
-If `type` modifier is not specified, `input` block is a common text field by default.
+If the `type` modifier is not set, the `input` block is a common text field by default.
 
 ```js
 {
@@ -55,9 +55,9 @@ If `type` modifier is not specified, `input` block is a common text field by def
 }
 ```
 
-##### A password field (`type` modifier with `password` value)
+##### Password field (`type` modifier with `password` value)
 
-Use to create a specialized text fields for password entry. For security reasons, a password field does not show the characters that the user types. Instead, the field displays a character different from the one typed such as an asterisk '*' (depends on a browser).
+Use to create the specialized text fields for a password entry. For security reasons, the password field does not show the characters that the user types. Instead, the field displays the character different from the one typed such as an asterisk '*' (depends on a browser).
 
 ```js
 {
@@ -67,9 +67,9 @@ Use to create a specialized text fields for password entry. For security reasons
 }
 ```
 
-##### A search field (`type` modifier wirh `search` value)
+##### Search field (`type` modifier wirh `search` value)
 
-Use to create a search field.
+Use to create the search field.
 
 ```js
 {
@@ -83,7 +83,7 @@ Use to create a search field.
 
 #### `width` modifier
 
-Available value:`'available'`.
+Acceptable value:`'available'`.
 
 Use cases: `BEMJSON`.
 
@@ -101,11 +101,11 @@ Use to set the maximum available width to the text field.
 
 #### `has-clear` modifier
 
-Available value:`true`.
+Acceptable value:`true`.
 
 Use cases: `BEMJSON`.
 
-Use to add `clear` element into the text field to remove entered content.
+Use this modifier to add the `clear` element into the text field to remove entered content.
 
 ```js
 {
@@ -119,11 +119,11 @@ Use to add `clear` element into the text field to remove entered content.
 
 #### `disabled` modifier
 
-Available value:`true`.
+Acceptable value:`true`.
 
 Use cases: `BEMJSON`, `JS`.
 
-The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+The modifier makes the block inactive. The disabled block is visible but not available for user actions.
 
 ```js
 {
@@ -137,11 +137,11 @@ The modifier provides inactive state to the block. Disabled block is visible but
 
 #### `focused` modifier
 
-Available value:`true`.
+Acceptable value:`true`.
 
 Use cases: `BEMJSON`, `JS`.
 
-The modifier provides a focus to the block.
+The modifier puts the focus on the block.
 
 ```javascript
 {
@@ -154,13 +154,13 @@ The modifier provides a focus to the block.
 
 #### `theme` modifier
 
-Available value:`'islands'`.
+Acceptable value:`'islands'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
-`islands` theme requires <a href="#size">size</a> modifier usage.
+The `islands` theme requires the <a href="#size">size</a> modifier.
 
 ```js
 {
@@ -174,13 +174,13 @@ The modifier provides a custom design to the block.
 
 #### `size` modifier
 
-Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
+Acceptable values for the `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
 
 Use case: `BEMJSON`.
 
-Use `size` modifier only for blocks with `islands` <a href="#themes">theme</a>.
+Use the `size` modifier only for blocks with the `islands` <a href="#themes">theme</a>.
 
-Provides all types of text fields with `size` value.
+Sets the size value for all types of text fields.
 
 **s**
 
@@ -230,7 +230,7 @@ Provides all types of text fields with `size` value.
 
 Type: `String`.
 
-Specifies a unique name of the block.
+Specifies the block unique name.
 
 ```js
 {
@@ -246,7 +246,7 @@ Specifies a unique name of the block.
 
 Type: `String`.
 
-Specifies content of the text field.
+Specifies the content of the text field.
 
 ```js
 {
@@ -263,7 +263,7 @@ Specifies content of the text field.
 
 Type: `String`.
 
-Specifies a hint in the text field.
+Specifies the hint in the text field.
 
 ```js
 {
@@ -279,7 +279,7 @@ Specifies a hint in the text field.
 
 Type: `Number`.
 
-Specifies a maximum number of characters allowed in text field.
+Specifies the maximum number of characters allowed in the text field.
 
 ```js
 {
@@ -296,11 +296,11 @@ Specifies a maximum number of characters allowed in text field.
 
 Type: `Boolean`.
 
-Specifies browser predictions of the rest of a word while a user is typing.
+Specifies the browser predictions of the rest of the word while a user is typing.
 
-If `autocomplete` field is not specified, the autocomplete function is turned on by default.
+If the `autocomplete` field is not specified, the autocomplete function is turned on by default.
 
-To turn off the autocomplete function use `false` value:
+To turn off the autocomplete function, use the `false` value:
 
 ```js
 {
@@ -316,7 +316,7 @@ To turn off the autocomplete function use `false` value:
 
 Type: `String`.
 
-Specifies a unique identifier of the text field.
+Specifies the text field unique ID.
 
 ```js
 {
@@ -333,7 +333,7 @@ Specifies a unique identifier of the text field.
 
 Type: `Number`.
 
-Specifies a tab order between controls on a page by pressing `Tab`.
+Specifies the tab order when pressing `Tab` to navigate between controls on a page.
 
 ```js
 {

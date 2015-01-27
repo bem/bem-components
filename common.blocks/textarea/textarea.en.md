@@ -1,200 +1,242 @@
 # textarea
 
-`textarea` block is designed to create different types of text fields:
+Use this block for creating a text area that allows to enter multiple lines of a text.
 
-## Custom fields of a block
+## Overview
 
-The following custom fields could be specified in BEMJSON declaration of the block:
+### Modifiers of the block
 
-<table>
-    <tr>
-        <th>Custom field name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>val</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies value that will be sent to a server or obtained using client scripts. It is empty by default. Pair <code>name=val</code> is sent to a server, where name is set by <code>name</code> attribute and value – by <code>val</code> attribute.</td>
-    </tr>
-    <tr>
-        <td>name</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Defines name of an text area that is used for its identification.</td>
-    </tr>
-    <tr>
-        <td>placeholder</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>A hint that describes expected value of an text area.</td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Unique block identifier. Should be specified manually in BEMJSON file.</td>
-    </tr>
-    <tr>
-        <td>maxLength</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies maximum number of characters allowed in text area.</td>
-    </tr>
-    <tr>
-        <td>tabIndex</td>
-        <td>
-            <code>String</code>
-        </td>
-        <td>Specifies the position of current <code>textarea</code> block in the tabbing order for current page.</td>
-    </tr>
-</table>
+| Modifier | Acceptable values | Use cases | Description |
+| ----------- | ------------------- | -------------------- | -------- |
+| <a href="#width">width</a> | <code>'available'</code> | <code>BEMJSON</code> | The maximum allowed width of the text area. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
+| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
+| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the text area. Use sizes only for text areas when the <a href="#themes">theme modifier is set to islands</a>.|
 
-Additional required HTML attributes could be specified in `attrs` field of BEMJSON.
+### Custom fields of the block
 
-## Modifiers of a block
+| Field | Type | Description |
+| ---- | --- | -------- |
+| <a href="#name">name</a> | <code>String</code> | The unique block name. |
+| <a href="#val">val</a> | <code>String</code>, <code>Number</code> | Default content of the text area. |
+| <a href="#placeholder">placeholder</a> | <code>String</code> | The hint in the text area. |
+| <a href="#id">id</a> | <code>String</code> | The unique identifier of the block. |
+| <a href="#tab">tabIndex</a> | <code>Number</code> | The order when navigating through controls on a page by pressing the <code>Tab</code> key. |
 
-### _theme
+## Block description
 
-Block supports the following themes:
+Use the `textarea` block to create the text area that allows to enter multiple lines of the text.
 
- * simple
- * islands (**NB!** Choosing a theme `islands` requires additional modifier [`size`](#size).)
+### Modifiers of the block
 
-If `theme` modifier is not specified, [native](#native) representation of a control is applied.
+<a name="width"></a>
 
-See following examples:
+#### `width` modifier
 
-<a name="native"></a>
-**default**
+Acceptable value:`'available'`.
 
-```bemjson
+Use cases: `BEMJSON`.
+
+Use to set the maximum available width of the text area.
+
+```js
 {
     block : 'textarea',
-    placeholder : 'default'
+    mods : { theme : 'islands', size : 'm', width : 'available' },
+    placeholder : 'Your text should be here'
 }
 ```
 
-**simple**
+<a name="disabled"></a>
 
-```bemjson
+#### `disabled` modifier
+
+Acceptable value:`true`.
+
+Use cases: `BEMJSON`, `JS`.
+
+The modifier makes the block inactive. The disabled block is visible but not available for user actions.
+
+```js
 {
     block : 'textarea',
-    mods : { theme : 'simple' },
-    placeholder : 'simple'
+    mods : { theme : 'islands', size : 'm', disabled : true },
+    placeholder : 'Your text should be here'
 }
 ```
 
-**islands**
+<a name="focused"></a>
 
-```bemjson
+#### `focused` modifier
+
+Acceptable value:`true`.
+
+Use cases: `BEMJSON`, `JS`.
+
+The modifier puts the focus on the block.
+
+```javascript
+{
+    block : 'textarea',
+    mods : { theme : 'islands', size : 'm', focused : true },
+    placeholder : 'Your text should be here'
+}
+```
+
+<a name="theme"></a>
+
+#### `theme` modifier
+
+Acceptable value:`'islands'`.
+
+Use case: `BEMJSON`.
+
+The modifier gives the block a custom design.
+
+The `islands` theme requires the <a href="#size">size</a> modifier.
+
+```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size: 'm' },
-    placeholder : 'islands'
+    placeholder : 'Your text should be here'
 }
 ```
 
 <a name="size"></a>
-### _size
 
-Implemented only for theme `islands`.
+#### `size` modifier
 
-Provides with size values to all types of text fields.
+Acceptable values for the `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
 
-There are four sizes available: **s**, **m**, **l**, **xl**.
+Use case: `BEMJSON`.
 
-<table>
-    <tr>
-        <th>Size</th>
-        <th>Font size</th>
-        <th>String height</th>
-    </tr>
-    <tr>
-        <th>s</th>
-        <td>13px</td>
-        <td>24px</td>
-    </tr>
-    <tr>
-        <th>m</th>
-        <td>13px</td>
-        <td>28px</td>
-    </tr>
-    <tr>
-        <th>l</th>
-        <td>15px</td>
-        <td>32px</td>
-    </tr>
-    <tr>
-        <th>xl</th>
-        <td>18px</td>
-        <td>38px</td>
-    </tr>
-</table>
+Use the `size` modifier only for blocks with the `islands` <a href="#themes">theme</a>.
 
-See following examples:
+Sets the size value for all types of text areas.
 
-```bemjson
+**s**
+
+```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size: 's' },
-    placeholder : 'Small'
+    placeholder : 'Size s'
 }
 ```
 
-```bemjson
+**m**
+
+```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size: 'm' },
-    placeholder : 'Medium'
+    placeholder : 'Size m'
 }
 ```
 
-```bemjson
+**l**
+
+```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size: 'l' },
-    placeholder : 'Large'
+    placeholder : 'Size l'
 }
 ```
 
-```bemjson
+**xl**
+
+```js
 {
     block : 'textarea',
     mods : { theme : 'islands', size: 'xl' },
-    placeholder : 'X-Large'
+    placeholder : 'Size xl'
 }
 ```
 
-### States of a block
+### Custom fields of the block
 
-#### _disabled
+<a name="name"></a>
 
-`disabled` modifier is used to make block visible but not available for user action. It cannot be focused by pressing ‘Tab’, clicking a mouse, etc. In most cases to mark out the disabled block on a page, additional styles are applied.
+#### `name` field
 
-```bemjson
+Type: `String`.
+
+Specifies the block unique name.
+
+```js
 {
     block : 'textarea',
-    mods : { theme : 'islands', size : 'm', disabled : true },
-    val : 'Disabled'
+    mods : { theme : 'islands', size: 'm' },
+    name : 'Feedback'
 }
 ```
 
-#### _focused
+<a name="val"></a>
 
-When a block is focused, a modifier ‘focused’ with ‘true’ value is set automatically, e.g. by pressing ‘Tab’ or clicking a mouse.
+#### `val` field
 
+Type: `String`.
 
-## Block elements
+Specifies the content of the text area.
 
-The following elements provide visual representation of `textarea` block:
+```js
+{
+    block : 'textarea',
+    mods : { theme : 'islands', size: 'm' },
+    name : 'Feedback',
+    val : 'The text should be changed if necessary'
+}
+```
 
-### __control
+<a name="placeholder"></a>
 
-An auxiliary element is added to the block on template engine level.
+#### `placeholder` field
+
+Type: `String`.
+
+Specifies the hint in the text area.
+
+```js
+{
+    block : 'textarea',
+    mods : { theme : 'islands', size : 'm' },
+    placeholder : 'Your text should be here'
+}
+```
+
+<a name="id"></a>
+
+#### `id` field
+
+Type: `String`.
+
+Specifies the text area unique ID.
+
+```js
+{
+    block : 'textarea',
+    mods : { theme : 'islands', size : 'm' },
+    placeholder : 'Your text should be here',
+    id : 'Unique_1'
+}
+```
+
+<a name="tab"></a>
+
+#### `tabIndex` field
+
+Type: `Number`.
+
+Specifies the tab order when pressing `Tab` to navigate between controls on a page.
+
+```js
+{
+    block : 'textarea',
+    mods : { theme : 'islands', size : 'm' },
+    placeholder : 'Your text should be here',
+    tabIndex : 1
+}
+```

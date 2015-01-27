@@ -1,35 +1,35 @@
 # radio
 
-A block is used as a part of [radio-group](../radio-group/radio-group.en.md) block to create a single radio switch.
+Use this block as a part of the [radio-group](../radio-group/radio-group.en.md) block for creating a single radio switch.
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#type">type</a> | <code>'button'</code> | <code>BEMJSON</code> | A radio switch type. |
-| <a href="#checked">checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A radio switch selection. |
-| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#type">type</a> | <code>'button'</code> | <code>BEMJSON</code> | The type of the radio switch. |
+| <a href="#checked">checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Selection of the radio switch. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
 | <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
-| <a href="#hovered">hovered</a> | <code>true</code> | – | A hovered state. |
+| <a href="#hovered">hovered</a> | <code>true</code> | – | The hovered state. |
 | <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
-| <a href="#size">size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | A radio switch size. Use sizes only for radio switches with <a href="#theme">theme modifier with islands value</a>. |
+| <a href="#size">size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | The size of the radio switch. Use sizes only for radio switches when the <a href="#theme">theme modifier is set to islands</a>. |
 
 ### Custom fields of the block
 
-| Field | Type | description |
+| Field | Type | Description |
 | ---- | --- | -------- |
-| <a href="#name">name</a> | <code>String</code> | A unique block name. |
-| <a href="#val">val</a> | <code>String</code>, <code>Number</code> | A value that will be sent to a server if a radio switch is selected. |
-| <a href="#text">text</a> | <code>String</code> | A radio switch text. |
-| <a href="#icon">icon</a> | <code>BEMJSON</code> | An icon on a radio switch that is formed by <a href="../icon/icon.en.md">icon</a> block. Use icons only for radio switches with <a href="#type">type modifier with button value</a>. |
-| <a href="#title">title</a> | <code>String</code> | A tooltip content. Use tooltips only for radio switches with <a href="#type">type modifier with button value</a>. |
-| <a href="#tab">tabIndex</a> | <code>Number</code> | A sequence that user follows when he uses the `Tab` key to navigate through a page. |
+| <a href="#name">name</a> | <code>String</code> | The unique block name. |
+| <a href="#val">val</a> | <code>String</code>, <code>Number</code> | The value to send to the server if the radio switch is selected. |
+| <a href="#text">text</a> | <code>String</code> | Radio switch lable. |
+| <a href="#icon">icon</a> | <code>BEMJSON</code> | Radio switch icon. It is created by the <a href="../icon/icon.en.md">icon</a> block. Use icons only for radio switches when the <a href="#type">type modifier is set to button</a>. |
+| <a href="#title">title</a> | <code>String</code> | Tooltip content. Use tooltips only for radio switches when the <a href="#type">type modifier is set to button</a>. |
+| <a href="#tab">tabIndex</a> | <code>Number</code> | The order when navigating through controls on a page by pressing the Tab key.|
 
-## Block overview
+## Block descriptopn
 
-`radio` block is used to manage a size, state, and appearance of a single radio switch.
+Use the `radio` block to control the size, state and appearance of the single radio switch.
 
 ### Modifiers of the block
 
@@ -37,11 +37,11 @@ A block is used as a part of [radio-group](../radio-group/radio-group.en.md) blo
 
 #### `type` modifier
 
-Available value: `'button'`.
+Acceptable value: `'button'`.
 
 Use case: `BEMJSON`.
 
-Use `type` modifier with `button` value to change the appearance of the block: a radio switch is implemented by [button](../button/button.en.md) block. Press the button to select the radio switch.
+Use the `type` modifier with the  `button` value to change the appearance of the block: the radio switch is implemented by the [button](../button/button.en.md) block. Press the button to select the radio switch.
 
 ```js
 {
@@ -57,11 +57,11 @@ Use `type` modifier with `button` value to change the appearance of the block: a
 
 #### `checked` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`, `JS`.
 
-Use `checked` modifier with `true` value to select a radio switch.
+Use the `checked` modifier with the `true` value to select the radio switch.
 
 ```js
 {
@@ -87,11 +87,11 @@ Use `checked` modifier with `true` value to select a radio switch.
 
 #### `disabled` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`, `JS`.
 
-The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+The modifier makes the block inactive. The disabled block is visible but not available for user actions.
 
 ```js
 {
@@ -117,11 +117,11 @@ The modifier provides inactive state to the block. Disabled block is visible but
 
 #### `focused` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`, `JS`.
 
-The modifier provides a focus to the block.
+The modifier puts the focus on the block.
 
 ```javascript
 {
@@ -147,23 +147,23 @@ The modifier provides a focus to the block.
 
 #### `hovered` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: – .
 
-The modifier is added to a block automatically at the moment when you mouse it over.
+The modifier is added to the block automatically at the moment when you mouse it over.
 
 <a name="theme"></a>
 
 #### `theme` modifier
 
-Available value: `'islands'`.
+Acceptable value: `'islands'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
-`islands` theme requires <a href="#size">size</a> modifier usage.
+The `islands` theme requires the <a href="#size">size</a> modifier.
 
 ```js
 {
@@ -189,13 +189,13 @@ The modifier provides a custom design to the block.
 
 #### `size` modifier
 
-Available values for `islands` theme: `'m'`, `'l'`.
+Acceptable values for the `islands` theme: `'m'`, `'l'`.
 
 Use case: `BEMJSON`.
 
-Use `size` modifier only for blocks with `islands` <a href="#themes">theme</a>.
+Use the `size` modifier only for blocks with the `islands` <a href="#themes">theme</a>.
 
-Provides all types of radio switches with `size` value.
+Sets the size value for all types of radio switches.
 
 **m**
 
@@ -249,7 +249,7 @@ Provides all types of radio switches with `size` value.
 
 Type: `String`.
 
-Specifies a unique name of the block.
+Specifies the block unique name.
 
 ```js
 {
@@ -267,7 +267,7 @@ Specifies a unique name of the block.
 
 Type: `String`, `Number`.
 
-Specifies a radio switch value that is sent to a server.
+Specifies the radio switch value to send to the server.
 
 ```js
 {
@@ -285,7 +285,7 @@ Specifies a radio switch value that is sent to a server.
 
 Type: `String`.
 
-Specifies a text of a radio switch or a text on a button if <a href="#type">type modifier with button value</a> is set to the block.
+Specifies the radio switch lable or the text on the button if the <a href="#type">type modifier with the button value</a> is set to the block.
 
 ```js
 {
@@ -313,7 +313,7 @@ Specifies a text of a radio switch or a text on a button if <a href="#type">type
 
 Type: `BEMJSON`.
 
-Specifies an [icon](../icon/icon.ru.md) on a radio switch implemented by a button (<a href="#type">type modifier with button value</a>).
+Specifies the [icon](../icon/icon.ru.md) on the radio switch implemented by the button (the <a href="#type">type modifier is set to button</a>).
 
 ```js
 {
@@ -335,9 +335,9 @@ Specifies an [icon](../icon/icon.ru.md) on a radio switch implemented by a butto
 
 Type: `String`.
 
-Specifies a tooltip content. The tooltip appearance depends on a browser and your operating system settings. You cannot change it applying HTML or different styles.
+Specifies the tooltip content. The tooltip appearance depends on the browser and your operating system settings. You cannot change it applying HTML or different styles.
 
-Use `title` field for radio switches with <a href="#type">type modifier with button value</a> only.
+Use the `title` field for radio switches only with the <a href="#type">type modifier set to button</a>.
 
 ```js
 {
@@ -360,7 +360,7 @@ Use `title` field for radio switches with <a href="#type">type modifier with but
 
 Type: `Number`.
 
-Specifies a tab order between controls on a page by pressing `Tab`.
+Specifies the tab order when pressing Tab to navigate between controls on a page.
 
 ```js
 {

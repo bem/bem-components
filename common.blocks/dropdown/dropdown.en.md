@@ -2,17 +2,17 @@
 
 A composite block that consists of a [control component](#modswitcher) (for example, a button or a link) that triggers a [popup](../popup/popup.en.md).
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | --------- |
-| <a href=#modswitcher>switcher</a> | <code>'link'</code>, <code>'button'</code> | <code>BEMJSON</code> | A control component type. |
-| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href=#modswitcher>switcher</a> | <code>'link'</code>, <code>'button'</code> | <code>BEMJSON</code> | The type of the control component. |
+| <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
 | <a href=#opened>opened</a> | <code>true</code> | <code>JS</code> | Displaying the popup on a page. |
 | <a href=#theme>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
-| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A control component size. Use sizes only with <a href="#themes">theme modifier with islands value</a>. |
+| <a href=#size>size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the control component. Use sizes only when the <a href="#themes">theme modifier is set to islands</a>. |
 
 ### Custom fields of the block
 
@@ -21,9 +21,9 @@ A composite block that consists of a [control component](#modswitcher) (for exam
 | <a href=#fieldswitcher>switcher</a> | <code>String</code>, <code>BEMJSON</code> | Content of the <a href="#modswitcher">control component</a>.  |
 | <a href=#popup>popup</a> | <code>String</code>, <code>BEMJSON</code> | Content of the popup. |
 
-## Block overview
+## Block description
 
-`dropdown` block is used to create different dropdown types, manage their state, behavior and appearance on a page.
+Use the `dropdown` block to create different dropdown types, control their state, behavior and appearance on a page.
 
 ### Modifiers of the block
 
@@ -31,22 +31,22 @@ A composite block that consists of a [control component](#modswitcher) (for exam
 
 #### `switcher` modifier
 
-Available values: `link`, `button`.
+Acceptable values: `link`, `button`.
 
 Use case: `BEMJSON`.
 
-`switcher` modifier specifies a type of the control component:
+The `switcher` modifier specifies the type of the control component:
 
-* A [link](#modswitcherlink)
-* A [button](#modswitcherbutton)
+* [link](#modswitcherlink)
+* [button](#modswitcherbutton)
 
 <a name="modswitcherlink"></a>
 
-##### A link as a control component (`switcher` modifier with `link` value)
+##### Link as control component (`switcher` modifier with `link` value)
 
-Use to set [link](../link/link.en.md) block as the control component.
+Use to set the [link](../link/link.en.md) block as the control component.
 
-Clicking on the link triggers `popup` block.
+Clicking on the link triggers the `popup` block.
 
 ```js
 {
@@ -59,9 +59,9 @@ Clicking on the link triggers `popup` block.
 
 <a name="modswitcherbutton"></a>
 
-##### A button as a control component (`switcher` modifier with `button` value)
+##### Button as control component (`switcher` modifier with `button` value)
 
-Use to set [button](../button/button.en.md) block as the control component.
+Use to set the [button](../button/button.en.md) block as the control component.
 
 ```js
 {
@@ -76,11 +76,11 @@ Use to set [button](../button/button.en.md) block as the control component.
 
 #### `disabled` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use cases: `BEMJSON`, `JS`.
 
-The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+The modifier makes the block inactive. The disabled block is visible but not available for user actions.
 
 ```js
 {
@@ -104,7 +104,7 @@ The modifier provides inactive state to the block. Disabled block is visible but
 
 #### `opened` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `JS`.
 
@@ -114,17 +114,17 @@ The modifier is applied to the block automatically when the popup opens.
 
 #### `theme` modifier
 
-Available value: `islands`.
+Acceptable value: `islands`.
 
 Use cases: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
-`islands` theme requires <a href="#size">size</a> modifier usage.
+The `islands` theme requires the <a href="#size">size</a> modifier.
 
-The modifier could be applied to:
+The modifier can be applied to:
 
-* A whole `dropdown` block
+* The whole `dropdown` block
 
 ```js
 {
@@ -144,7 +144,7 @@ The modifier could be applied to:
 }
 ```
 
-* A control component (if <a href="#fieldswitcher">switcher</a> field contains BEMJSON code of [link](../link/link.en.md) or [button](../button/button.en.md) block).
+* The control component (if the <a href="#fieldswitcher">switcher</a> field contains BEMJSON code of the [link](../link/link.en.md) or [button](../button/button.en.md) blocks).
 
 ```js
 {
@@ -176,15 +176,15 @@ The modifier could be applied to:
 
 #### `size` modifier
 
-Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
+Acceptable values for the `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
 
 Use case: `BEMJSON`.
 
-Use `size` modifier only for blocks with `islands` <a href="#themes">theme</a>.
+Use the `size` modifier only for blocks with the `islands` <a href="#themes">theme</a>.
 
-The modifier could be applied to:
+The modifier can be applied to:
 
-* A whole `dropdown` block
+* The whole `dropdown` block
 
 ```js
 {
@@ -195,7 +195,7 @@ The modifier could be applied to:
 }
 ```
 
-* A control component (if <a href="#fieldswitcher">switcher</a> field contains BEMJSON code of [link](../link/link.en.md) or [button](../button/button.en.md) block).
+* The control component (if the <a href="#fieldswitcher">switcher</a> field contains BEMJSON code of the [link](../link/link.en.md) or [button](../button/button.en.md) blocks).
 
 ```js
 {
@@ -218,7 +218,7 @@ The modifier could be applied to:
 
 Type: `String`, `BEMJSON`.
 
-Specifies content of the <a href="#modswitcher">control component</a>.
+Specifies the content of the <a href="#modswitcher">control component</a>.
 
 ```js
 {
@@ -252,7 +252,7 @@ Specifies content of the <a href="#modswitcher">control component</a>.
 
 Type: `String`, `BEMJSON`.
 
-Specifies content of the popup.
+Specifies the content of the popup.
 
 ```js
 {

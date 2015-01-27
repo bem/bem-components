@@ -1,30 +1,30 @@
 # radio-group
 
-A block is used to create a group of related radio switches (based on [radio](../radio/radio.en.md) block).
+Use this block for creating a group of related radio switches (based on the [radio](../radio/radio.en.md) block).
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#type">type</a> | <code>'button'</code>, <code>'line'</code> | <code>BEMJSON</code> | A radio switches group type. |
-| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#type">type</a> | <code>'button'</code>, <code>'line'</code> | <code>BEMJSON</code> | The type of the radio switches group. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
 | <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
 | <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design.  |
-| <a href="#size">size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | A radio switches group size. Use sizes only for radio switches group with <a href="#theme">theme modifier with islands value</a>. |
+| <a href="#size">size</a> | <code>'m'</code>, <code>'l'</code>  | <code>BEMJSON</code> | The size of the radio switches group. Use sizes only for radio switches group when the <a href="#theme">theme modifier is set to islands</a>. |
 
 ### Custom fields of the block
 
-| Field | Type | description |
+| Field | Type | Description |
 | ---- | --- | -------- |
-| <a href="#name">name</a> | <code>String</code> | A unique block name. |
+| <a href="#name">name</a> | <code>String</code> | The unique block name. |
 | <a href="#val">val</a> | <code>Array</code> | A set of values of the selected radio switches. |
 | <a href="#opt">options</a> | <code>Array</code> | A set of values for each radio switch of the group. Each radio switch has its own <a href="#optset">set of values</a>. |
 
-## Block overview
+## Block description
 
-`radio-group` block is used to manage a size, state, and appearance of the embedded radio switches. The block allows to choose the only one radio switch from the group.
+Use the `radio-group` block to control the size, state, and appearance of the radio switches in the group. The block allows to choose the only one radio switch from the group.
 
 ### Modifiers of the block
 
@@ -32,15 +32,15 @@ A block is used to create a group of related radio switches (based on [radio](..
 
 #### `type` modifier
 
-Available values: `'button'`, `'line'`.
+Acceptable values: `'button'`, `'line'`.
 
 Use case: `BEMJSON`.
 
 <a name="type-button"></a>
 
-##### A button-based radio-group (`type` modifier with `button` value)
+##### Button-based radio-group (`type` modifier with `button` value)
 
-The modifier allows to implement `radio-group` block using on [button-based radio switches](../radio/radio.en.md/#type) type.
+Implements the `radio-group` block using the [button-based](../radio/radio.en.md/#type) radio switches.
 
 Grouped button-based radio switches are always aligned in a line.
 
@@ -59,7 +59,7 @@ Grouped button-based radio switches are always aligned in a line.
 
 <a name="type-line"></a>
 
-##### A line-aligned radio-group (`type` modifier with `line` value)
+##### Line-aligned radio-group (`type` modifier with `line` value)
 
 The modifier aligns all radio switches of the group in a line.
 
@@ -80,15 +80,15 @@ The modifier aligns all radio switches of the group in a line.
 
 #### `disabled` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use cases: `BEMJSON`, `JS`.
 
-The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+The modifier makes the block inactive. The disabled block is visible but not available for user actions.
 
 The modifier could be applied to:
 
-* A radio-group:
+* The radio-group:
 
 ```js
 {
@@ -118,7 +118,7 @@ The modifier could be applied to:
 }
 ```
 
-* A separate radio switch of the group:
+* The separate radio switch of the group:
 
 ```js
 {
@@ -152,11 +152,11 @@ The modifier could be applied to:
 
 #### `focused` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use cases: `BEMJSON`, `JS`.
 
-The modifier provides a focus to the block.
+The modifier puts the focus on the block.
 
 ```javascript
 {
@@ -188,15 +188,16 @@ The modifier provides a focus to the block.
 
 <a name="theme"></a>
 
+
 #### `theme` modifier
 
-Available value: `'islands'`.
+Acceptable value: `'islands'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
-`islands` theme requires <a href="#size">size</a> modifier usage.
+The `islands` theme requires the <a href="#size">size</a> modifier.
 
 ```js
 {
@@ -230,13 +231,13 @@ The modifier provides a custom design to the block.
 
 #### `size` modifier
 
-Available values for `islands` theme: `'m'`, `'l'`.
+Acceptable values for the `islands` theme: `'m'`, `'l'`.
 
 Use case: `BEMJSON`.
 
-Use `size` modifier only for blocks with `islands` <a href="#theme">theme</a>.
+Use the `size` modifier only for blocks with the `islands` <a href="#theme">theme</a>.
 
-Provides all types of radio-groups with `size` value.
+Sets the size value for all types of radio-groups.
 
 **m**
 
@@ -306,7 +307,7 @@ Provides all types of radio-groups with `size` value.
 
 Type: `String`
 
-Specifies a unique name of the block.
+Specifies the block unique name.
 
 ```js
 {
@@ -328,7 +329,7 @@ Specifies a unique name of the block.
 
 Type: `Array`.
 
-Specifies a set of the selected radio switches values.
+Specifies a set of values for the selected radio switches.
 
 ```js
 {
@@ -358,12 +359,12 @@ Each radio switch has its own set of values.
 
 | Field | Type | description |
 | ---- | --- | -------- |
-| <code>val</code> | <code>String</code>, <code>Number</code> | A value that will be sent to a server if a radio switch is selected. |
-| <code>text</code> | <code>String</code> | A text of a radio switch or a text on a button if <code>type</code> modifier with <code>button</code> value is set to the radio switch. |
+| <code>val</code> | <code>String</code>, <code>Number</code> | The value to send to the server if the radio switch is selected. |
+| <code>text</code> | <code>String</code> | The radio switch label, or the button label if the <code>type</code> modifier is set to <code>button</code>. |
 | <code>disabled</code> | <code>Boolean</code> | A disabled state. |
-| <code>icon</code> | <code>BEMJSON</code> | An icon on a radio switch that is formed by <a href="../icon/icon.en.md">icon</a> block. Use icons only for radio switches with <a href="#type">type modifier with button value</a>. |
-| <code>title</code> | <code>String</code> | A tooltip content. Use tooltips only for radio switches with <code>type</code> modifier with <code>button</code> value. |
-| <code>id</code> | <code>String</code> | A unique identifier of a radio switch. |
+| <code>icon</code> | <code>BEMJSON</code> | The radio switch icon, which is created by the <a href="../icon/icon.en.md">icon</a> block. Use icons only for radio switches with the <code>type</code> modifier set to <code>button</code>. |
+| <code>title</code> | <code>String</code> | Tooltip content. Use tooltips only for radio switches with <code>type</code> modifier set to <code>button</code>. |
+| <code>id</code> | <code>String</code> | The radio switch unique ID. |
 
 ```js
 {

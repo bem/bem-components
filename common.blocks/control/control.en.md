@@ -1,6 +1,6 @@
 # control
 
-A helper block that is used to implement the common functionality of many blocks of `bem-components` library:
+Use this block as a helper block for implementing the common functionality of many blocks of `bem-components` library:
 
 * [attach](../attach/attach.en.md)
 * [button](../button/button.en.md)

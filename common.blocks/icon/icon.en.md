@@ -1,26 +1,25 @@
 # icon
 
-A block is used to create an auxiliary graphical element in other blocks.
+Use this block for creating an auxiliary graphical element in other blocks.
 
-## Brief overview
+## Overview
 
 ### Custom fields of the block
 
-| Field | Type | description |
+| Field | Type | Description |
 | ---- | --- | -------- |
-| <a href="#url">url</a> | <code>String</code> | An icon address. |
-| <a href="#content">content</a> | <code>BEMJSON</code>, <code>String</code> | An icon content in SVG format. |
+| <a href="#url">url</a> | <code>String</code> | The address of the icon. |
+| <a href="#content">content</a> | <code>BEMJSON</code>, <code>String</code> | Icon content in SVG format. |
 
-## Block overview
+## Block description
 
-`icon` block is used to create an auxiliary graphical element in other blocks.
+Use the `icon` block to create the auxiliary graphical element in other blocks.
 
 The block is adapted to align with the baseline.
 
-To create an independent image, use [image](../image/image.en.md) block.
+To create an independent image, use the [image](../image/image.en.md) block.
 
-`icon` block could be declared through specific modifiers. For the examples below we implement modifiers on a service level called `test.blocks` of `bem-components` library.
-
+The `icon` block could be declared through specific modifiers. For the examples below we implement modifiers on the service level called `test.blocks` of `bem-components` library.
 
 ```js
 {
@@ -49,7 +48,7 @@ To create an independent image, use [image](../image/image.en.md) block.
 
 Type: `String`.
 
-Specifies an address of the icon.
+Specifies the address of the icon.
 
 ```js
 {

@@ -1,20 +1,20 @@
 # spin
 
-A block is used to indicate a progress of some process.
+Use this block to indicate a progress of some process.
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#spinvisible">visible</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Activation of the block. |
+| <a href="#spinvisible">visible</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Spin activation. |
 | <a href="#spintheme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
-| <a href="#spinsize">size</a> | <code>'xs'</code>, <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A spin size. Use sizes only for spin with <a href="#themes">theme modifier with islands value</a> |
+| <a href="#spinsize">size</a> | <code>'xs'</code>, <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the block. Use sizes only for spin when the <a href="#themes">theme modifier is set to islands</a>. |
 
-## Block overview
+## Block description
 
-`spin` block is used to indicate the progress of some process (for example, web page downloading process).
+Use the `spin` block to indicate the progress of some process (for example, web page downloading process).
 
 ### Modifiers of the block
 
@@ -22,7 +22,7 @@ A block is used to indicate a progress of some process.
 
 #### `visible` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`, `JS`.
 
@@ -38,13 +38,13 @@ The modifier activates and displays the spin.
 <a name="spintheme"></a>
 #### `theme` modifier
 
-Available value: `'islands'`.
+Acceptable value: `'islands'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
-`islands` theme requires <a href="#size">size</a> modifier usage.
+The `islands` theme requires the <a href="#size">size</a> modifier.
 
 ```js
 {
@@ -57,13 +57,13 @@ The modifier provides a custom design to the block.
 
 #### `size` modifier
 
-Available values for `islands` theme: `'xs'`, `'s'`, `'m'`, `'l'`, `'xl'`.
+Acceptable values for the `islands` theme: `'xs'`, `'s'`, `'m'`, `'l'`, `'xl'`.
 
 Use case: `BEMJSON`.
 
-Use `size` modifier only for blocks with `islands` <a href="#themes">theme</a>.
+Use the `size` modifier only for blocks with the `islands` <a href="#themes">theme</a>.
 
-Provides the block with `size` value.
+Sets the size value for the block.
 
 **xs**
 

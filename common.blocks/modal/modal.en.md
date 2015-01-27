@@ -1,12 +1,12 @@
 # modal
 
-A block is used to create a modal window.
+Use this block for creating a modal window.
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | -------- |
 | <a href="#visible">visible</a> | <code>true</code> | <code>JS</code> | Displaying of the modal window. |
 | <a href="#autoclosable">autoclosable</a> | <code>true</code>| <code>BEMJSON</code> | Autoclosing of the modal window. |
@@ -14,13 +14,13 @@ A block is used to create a modal window.
 
 ### Custom fields of the block
 
-| Field | Type | description |
+| Field | Type | Description |
 | ---- | --- | -------- |
-| <a href="#zIndexGroupLevel">zIndexGroupLevel</a> | <code>Number</code> | A level of a modal window layer based on <a href="../z-index-group/z-index-group.en.md">z-index-group</a> block.|
+| <a href="#zIndexGroupLevel">zIndexGroupLevel</a> | <code>Number</code> | The level of the modal window layer based on the <a href="../z-index-group/z-index-group.en.md">z-index-group</a> block.|
 
-## Block overview
+## Block description
 
-`modal` block is used to manage state, behavior and appearance of the modal windows.
+Use the `modal` block to control the state, behavior and appearance of the modal windows.
 
 ### Modifiers of the block
 
@@ -28,7 +28,7 @@ A block is used to create a modal window.
 
 #### `visible` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use cases: `JS`.
 
@@ -38,11 +38,11 @@ The modifier is set automatically when the modal window is displayed.
 
 #### `autoclosable` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`.
 
-The modifier with `true` allows to hide the modal window automatically by clicking outside the modal window area or pressing `Escape` button.
+This modifier with the `true` value allows to hide the modal window automatically by clicking outside the modal window area or pressing `Escape` button.
 
 ```javascript
 {
@@ -56,11 +56,11 @@ The modifier with `true` allows to hide the modal window automatically by clicki
 
 #### `theme` modifier
 
-Available value: `'islands'`.
+Acceptable value: `'islands'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
 ```javascript
 {
@@ -78,7 +78,7 @@ The modifier provides a custom design to the block.
 
 Type: `Number`.
 
-Specifies a level of a modal window layer based on <a href="../z-index-group/z-index-group.en.md">z-index-group</a> block.
+Specifies the level of the modal window layer based on the <a href="../z-index-group/z-index-group.en.md">z-index-group</a> block.
 
 ```javascript
 {

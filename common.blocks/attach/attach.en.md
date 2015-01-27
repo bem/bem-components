@@ -1,37 +1,37 @@
 # attach
 
-A block is used to upload a file for sending to a server.
+Use this block to upload a file for sending to a server.
 
-## Brief overview
+## Overview
 
 ### Modifiers of the block
 
-| Modifier | Available values | Use cases | Description |
+| Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | A disabled state. |
+| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
 | <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
 | <a href="#themes">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
-| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | A block size. Use sizes only with <a href="#themes">theme modifier with islands value</a>. |
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the block. Use sizes only with the <a href="#themes">theme modifier set to islands</a>. |
 
 ### Custom fields of the block
 
-| Field | Type | description |
+| Field | Type | Description |
 | ---- | --- | -------- |
-| <a href="#button">button</a> | <code>String</code>, <code>BEMJSON</code> | Content of a button for a file selection. |
-| <a href="#nofiletext">noFileText</a> | <code>String</code> | Text message that appears when the file is not selected. |
+| <a href="#button">button</a> | <code>String</code>, <code>BEMJSON</code> | Content of hte button for a file selection. |
+| <a href="#nofiletext">noFileText</a> | <code>String</code> | The text message that appears when the file is not selected. |
 
-## Block overview
+## Block description
 
 By default this block is visually represented by:
 
-* A [button](../button/button.en.md) that opens a system window to upload a file.
-* A text message.
+* The [button](../button/button.en.md) that opens the system window to upload a file.
+* The text message.
 
 The following elements became available when upload of the file is finished:
 
-* A file icon ([icon](../icon/icon.en.md) block).
-* A file name (`text` element).
-* An element for file deletion (`clear` element).
+* The file icon (the [icon](../icon/icon.en.md) block).
+* The file name (the `text` element).
+* The element for file deletion (the `clear` element).
 
 The block functionality does not support:
 
@@ -44,11 +44,11 @@ The block functionality does not support:
 
 #### `disabled` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`, `JS`.
 
-The modifier provides inactive state to the block. Disabled block is visible but not available for user actions.
+The modifier makes the block inactive. The disabled block is visible but not available for user actions.
 
 ```js
 {
@@ -63,11 +63,11 @@ The modifier provides inactive state to the block. Disabled block is visible but
 
 #### `focused` modifier
 
-Available value: `true`.
+Acceptable value: `true`.
 
 Use case: `BEMJSON`, `JS`.
 
-The modifier provides a focus to the block.
+The modifier puts the focus on the block.
 
 ```javascript
 {
@@ -82,13 +82,13 @@ The modifier provides a focus to the block.
 
 #### `theme` modifier
 
-Available value: `'islands'`.
+Acceptable value: `'islands'`.
 
 Use case: `BEMJSON`.
 
-The modifier provides a custom design to the block.
+The modifier gives the block a custom design.
 
-`islands` theme requires <a href="#buttonsize">size</a> modifier usage.
+The `islands` theme requires the <a href="#buttonsize">size</a> modifier usage.
 
 ```js
 {
@@ -103,13 +103,13 @@ The modifier provides a custom design to the block.
 
 #### `size` modifier
 
-Available values for `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
+Acceptable values for the `islands` theme: `'s'`, `'m'`, `'l'`, `'xl'`.
 
 Use case: `BEMJSON`.
 
-Use `size` modifier only for blocks with `islands` <a href="#buttonthemes">theme</a>.
+Use the `size` modifier only for blocks with the `islands` <a href="#buttonthemes">theme</a>.
 
-Provides all types of buttons with `size` value.
+Sets the size value for all types of attach forms.
 
 **s**
 
@@ -163,9 +163,9 @@ Provides all types of buttons with `size` value.
 
 Type: `String`, `BEMJSON`.
 
-Specifies content of a button:
+Specifies the button content:
 
-* A text (`String`)
+* The text (`String`)
 
 ```js
 {
@@ -175,7 +175,7 @@ Specifies content of a button:
 }
 ```
 
-* A type and appearance (`BEMJSON`)
+* The type and appearance (`BEMJSON`)
 
 ```js
 {
@@ -198,7 +198,7 @@ Specifies content of a button:
 
 Type: `String`.
 
-Specifies a text message when a file is not selected.
+Specifies the text message when the file is not selected.
 
 ```js
 {

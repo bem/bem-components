@@ -11,7 +11,7 @@
     "libs"
   ],
   "dependencies": {
-    "bem-core": "f58bfc5281259bca6f38a5e7d5191c5764dce422"
+    "bem-core": "2.5.1"
   },
   "devDependencies": {
     "bem-pr": "~0.10.0"

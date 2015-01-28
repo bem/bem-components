@@ -1,5 +1,8 @@
 .popup:after
 {
+    font-size: 10px;
+    line-height: 10px;
+
     position: absolute;
     top: 0;
     right: 0;
@@ -7,9 +10,6 @@
     display: block;
 
     content: 'z-index: ' attr(zindex);
-
-    font-size: 10px;
-    line-height: 10px;
 
     color: #ddd;
 }

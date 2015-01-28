@@ -70,7 +70,28 @@ module.exports = function(config) {
                         destTarget : '?.prefix.css',
                         browserSupport : getBrowsers(platform)
                     }],
-                    [js, { target : '?.source.js' }],
+                    [depsByTechToBemdecl, {
+                        target : '?.js-js.bemdecl.js',
+                        sourceTech : 'js',
+                        destTech : 'js'
+                    }],
+                    [mergeBemdecl, {
+                        sources : ['?.bemdecl.js', '?.js-js.bemdecl.js'],
+                        target : '?.js.bemdecl.js'
+                    }],
+                    [deps, {
+                        target : '?.js.deps.js',
+                        bemdeclFile : '?.js.bemdecl.js'
+                    }],
+                    [files, {
+                        depsFile : '?.js.deps.js',
+                        filesTarget : '?.js.files',
+                        dirsTarget : '?.js.dirs'
+                    }],
+                    [js, {
+                        filesTarget : '?.js.files',
+                        target : '?.source.js'
+                    }],
                     [ym, {
                         source : '?.source.js',
                         target : '?.ym.js'

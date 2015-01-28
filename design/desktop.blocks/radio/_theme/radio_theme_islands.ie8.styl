@@ -1,0 +1,55 @@
+.radio_theme_islands
+{
+    .radio__box
+    {
+        background: #cbcbcb;
+    }
+
+    .radio__control
+    {
+        outline: none;
+
+        filter: unquote('alpha(opacity=0)');
+    }
+
+    &.radio_checked .radio__box
+    {
+        background: #ccbd80;
+
+        &:before
+        {
+            content: ' ';
+        }
+    }
+
+    &.radio_hovered
+    {
+        .radio__box
+        {
+            background: #b3b3b3;
+        }
+
+        &.radio_checked .radio__box
+        {
+            background: #b2a265;
+        }
+    }
+
+    &.radio_focused.radio
+    {
+        .radio__box
+        {
+            background: #fc0;
+        }
+    }
+
+    &.radio_disabled .radio__box
+    {
+        background: #ebebeb;
+
+        &:after
+        {
+            background: #8d8d8d;
+        }
+    }
+}

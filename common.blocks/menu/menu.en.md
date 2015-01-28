@@ -36,6 +36,8 @@ Use this block for creating different types of menu.
 
 Use the `menu` block to control the state, behavior and appearance of the menu and its nested components – the [menu-item](../menu-item/menu-item.en.md) blocks.
 
+The block supports key-pad control. If `menu` block is in [focus](#focused) (`focused` modifier with `true` value), type a menu item name on your keyboard to switch to the menu item. Use `Space bar` or `Enter` buttons to select the menu item.
+
 ### Modifiers of the block
 
 <a name="mode"></a>

@@ -26,7 +26,7 @@ BEM Components Library
   * <a href="#supply">Варианты поставки библиотеки</a>
 * <a href="#development">Разработка</a>
   * <a href="#working-copy">Рабочая копия</a>
-  * <a href="#changes">Внесение изменений</a>
+  * <a href="#how-to-contribute">Внесение изменений</a>
   * <a href="#modular-tests">Модульное тестирование</a>
     * <a href="#unit-tests">Юнит-тесты на JavaScript</a>
     * <a href="#regression-tests">Регрессионное тестирование верстки</a>
@@ -61,6 +61,7 @@ BEM Components Library
 * [menu-item](common.blocks/menu-item/menu-item.ru.md)
 * [modal](common.blocks/modal/modal.ru.md)
 * [popup](common.blocks/popup/popup.ru.md)
+* [progressbar](common.blocks/progressbar/progressbar.ru.md)
 * [radio](common.blocks/radio/radio.ru.md)
 * [radio-group](common.blocks/radio-group/radio-group.ru.md)
 * [select](common.blocks/select/select.ru.md)
@@ -251,7 +252,7 @@ $ open http://localhost:8080/
 $ npm run lint
 ```
 
-<a name="changes"></a>
+<a name="how-to-contribute"></a>
 ### Внесение изменений
 
 1. [Создать issue](https://github.com/bem/bem-components/issues/new) с описанием сути изменений.

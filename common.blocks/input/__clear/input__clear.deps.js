@@ -1,3 +1,0 @@
-({
-    shouldDeps : { mod : 'visible' }
-})

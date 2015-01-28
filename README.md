@@ -26,7 +26,7 @@ The library contains base realizations of the blocks that are abstracted from th
   * <a href="#supply">Delivery cases</a>
 * <a href="#development">Development</a>
   * <a href="#working-copy">Working copy</a>
-  * <a href="#changes">How to contribute</a>
+  * <a href="#how-to-contribute">How to contribute</a>
   * <a href="#modular-tests">Modular testing</a>
     * <a href="#unit-tests">JavaScript unit tests</a>
     * <a href="#regression-tests">Regression tests of layout</a>
@@ -60,6 +60,7 @@ The library contains base realizations of the blocks that are abstracted from th
 * [menu-item](common.blocks/menu-item/menu-item.en.md)
 * [modal](common.blocks/modal/modal.en.md)
 * [popup](common.blocks/popup/popup.en.md)
+* [progressbar](common.blocks/progressbar/progressbar.en.md)
 * [radio](common.blocks/radio/radio.en.md)
 * [radio-group](common.blocks/radio-group/radio-group.en.md)
 * [select](common.blocks/select/select.en.md)
@@ -243,6 +244,7 @@ Check the coding style:
 $ npm run lint
 ```
 
+<a name="how-to-contribute"></a>
 ### How to contribute
 
 1. Create an [issue](https://github.com/bem/bem-components/issues/new) with a proper description.

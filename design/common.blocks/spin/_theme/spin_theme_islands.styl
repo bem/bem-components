@@ -5,23 +5,11 @@
     display: inline-block;
     visibility: hidden;
 
-    color: transparent;
+    box-sizing: border-box;
 
-    &:before
-    {
-        position: absolute;
-        left: 0;
-
-        box-sizing: border-box;
-        width: 100%;
-
-        content: '';
-
-        border: 2px solid;
-        border-bottom-color: transparent;
-        border-right-color: transparent;
-        border-radius: 50%;
-    }
+    borderWidth = 2px;
+    border: borderWidth solid transparent;
+    border-radius: 50%;
 
     &:after
     {
@@ -45,7 +33,7 @@
     }
 
     sizeList = (16 24 28 32 38);
-    bgShift = 0px;
+    bgShift = -(borderWidth);
 
     for sizeVal, i in xs s m l xl {
         &.spin_size_{sizeVal}
@@ -55,12 +43,7 @@
             width: sizeList[i]px;
             height: sizeList[i]px;
 
-            background-position: 0 bgShift;
-
-            &:before
-            {
-                height: sizeList[i]px;
-            }
+            background-position: -(borderWidth) bgShift;
         }
 
         bgShift -= sizeList[i] + 1;
@@ -71,12 +54,14 @@
 {
     from
     {
-        color: #fc0;
+        border-top-color: #fc0;
+        border-left-color: #fc0;
         transform: rotate(0);
     }
     to
     {
-        color: #fc0;
+        border-top-color: #fc0;
+        border-left-color: #fc0;
         transform: rotate(360deg);
     }
 }

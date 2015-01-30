@@ -3,7 +3,10 @@
     title : 'bem-components: select',
     mods : { theme : 'islands' },
     head : [
+        '<!--[if gt IE 8]><!-->',
         { elem : 'css', url : '_simple.css' },
+        '<!--<![endif]-->',
+        { elem : 'css', url : '_simple.ie8.css', ie : ' IE 8' },
         { elem : 'js', url : '_simple.js' }
     ],
     content : [

@@ -26,6 +26,12 @@ branches:
     - v1
     - master
 
+before_install:
+  - |
+      if [ "${TEST_SCOPE}" == "gemini" ] && [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
+        curl https://api.github.com/repos/bem/bem-components/pulls/$TRAVIS_PULL_REQUEST/files?per_page=100 | grep '"filename":.*"' | grep -v '\.md"' >/dev/null || (echo "Gemini tests skipped!" && exit 0)
+      fi
+
 before_script:
   - |
       if [ "${TEST_SCOPE}" == "gemini" ]; then

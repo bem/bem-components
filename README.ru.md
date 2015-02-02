@@ -339,7 +339,7 @@ desktop.blocks
 Команда для сборки и запуска тестов:
 
 ```bash
-magic run tmpl-specs`
+magic run tmpl-specs
 ```
 
 Сборка тестов на нужном уровне переопределения:

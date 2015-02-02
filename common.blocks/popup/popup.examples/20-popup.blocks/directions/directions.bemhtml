@@ -3,5 +3,5 @@ block('directions')(
 
     elem('row').tag()('tr'),
 
-    elem('cell').tag('td')
+    elem('cell').tag()('td')
 );

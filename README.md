@@ -115,33 +115,28 @@ If you use [project-stub](https://bem.info/tutorials/project-stub/) to start you
 <a name="supported-browsers"></a>
 ## Supported browsers
 
-* Desktop:
-  * Firefox 24+
-  * Chrome last 2 versions
-  * Safari last 2 versions
+* **Desktop**
+  * Firefox *(the last two stable versions)*
+  * Chrome *(the last two stable versions)*
+  * Safari *(the last two stable versions)*
+  * Yandex *(the last two stable versions)*
   * Opera 12.6+
   * Internet Explorer 10+
-* Touch-pad:
+
+* **Touch**
   * Android 4+
   * iOS 5+
-* Touch-phone:
-  * Android 4+
-  * iOS 6+
-  * Internet Explorer 10+
-*Touch:
-  * Android 4+
-  * iOS >=5
   * Internet Explorer 10+
 
 <a name="changelog"></a>
 ## Changelog
 
-Check the changelog details at the [Changelog](CHANGELOG.md) page.
+Check the changelog details at the Changelog page when available.
 
 <a name="migration"></a>
 ## Migration
 
-Check the migration details at the [Migration](MIGRATION.md) page.
+Check the migration details at the Migration page when available.
 
 <a name="maintain"></a>
 ## Maintainers

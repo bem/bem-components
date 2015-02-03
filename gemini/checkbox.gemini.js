@@ -28,6 +28,8 @@ gemini.suite('checkbox', function(root) {
             }
 
             gemini.suite(test + '-enabled', function(suite) {
+                suite.skip('internet explorer');
+
                 suite
                     .setCaptureElements(captureElements)
                     .before(function(actions, find) {

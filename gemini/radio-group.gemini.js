@@ -27,6 +27,8 @@ gemini.suite('radio-group', function(root) {
             }
 
             gemini.suite(test + '-enabled', function(suite) {
+                suite.skip('internet explorer');
+
                 suite
                     .setCaptureElements(radioItemSelectorEnabled, captureArea)
                     .before(function(actions, find) {

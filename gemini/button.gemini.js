@@ -19,6 +19,8 @@ gemini.suite('button', function(root) {
 
             // tests for enabled button
             gemini.suite(test + '-enabled', function(suite) {
+                suite.skip('internet explorer');
+
                 suite
                     .setCaptureElements(buttonEnabledSelector)
                     .before(function(actions, find) {

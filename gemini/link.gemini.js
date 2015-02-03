@@ -13,6 +13,8 @@ gemini.suite('link', function(root) {
             var linkSelector = '.' + test;
 
             gemini.suite(test, function(suite) {
+                suite.skip('internet explorer');
+
                 suite
                     .setCaptureElements(linkSelector)
                     .before(function(actions, find) {

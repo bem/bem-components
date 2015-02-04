@@ -1,22 +1,26 @@
 #!/usr/bin/env sh
 
+SHOWCASE_NAME="showcase"
+
 ROOT="$(dirname $0)"
 REPORTS_ROOT="$ROOT/reports"
-SOURCE_REPORT_DIR="$ROOT/desktop.pages/showcase"
-PUBLISH_REPORT_DIR="$ROOT/reports/$TRAVIS_BUILD_NUMBER"
+SOURCE_SHOWCASE_DIR="$ROOT/desktop.pages/$SHOWCASE_NAME"
+PUBLISH_SHOWCASE_DIR="$REPORTS_ROOT/$TRAVIS_BUILD_NUMBER/$SHOWCASE_NAME"
 
-echo '{"freeze_paths" : {"libs/**": ":base64:","*.blocks/**": ":base64:","design/*.blocks/**": ":base64:"}}' >> .borschik
-YENV=production node_modules/.bin/magic make desktop.pages/showcase
+echo '{"freeze_paths" : {"libs/**": ":base64:", "*.blocks/**": ":base64:", "design/*.blocks/**": ":base64:"}}' > .borschik
+YENV=production node_modules/.bin/magic make desktop.pages/$SHOWCASE_NAME
 
 git clone -q --branch gh-pages "https://$GH_TOKEN@github.com/bem/reports.git" "$REPORTS_ROOT"
-mkdir -p "$PUBLISH_REPORT_DIR"
-cp -R "$SOURCE_REPORT_DIR" "$PUBLISH_REPORT_DIR"
+mkdir -p $PUBLISH_SHOWCASE_DIR
+for f in $SHOWCASE_NAME.html _$SHOWCASE_NAME.css _$SHOWCASE_NAME.js; do
+    cp $SOURCE_SHOWCASE_DIR/$f $PUBLISH_SHOWCASE_DIR
+done
 
 cd "$REPORTS_ROOT"
 git config user.name "TravisCI"
 git config user.email "travis@example.com"
 git add -A -f
-git commit -q -m "Report for Travis Build $TRAVIS_BUILD_NUMBER"
+git commit -q -m "Showcase for Travis Build $TRAVIS_BUILD_NUMBER"
 git push -q origin gh-pages
 
-echo "Report is available at http://bem.github.io/reports/$TRAVIS_BUILD_NUMBER/showcase/showcase.html"
+echo "Showcase is available at http://bem.github.io/reports/$TRAVIS_BUILD_NUMBER/$SHOWCASE_NAME/$SHOWCASE_NAME.html"

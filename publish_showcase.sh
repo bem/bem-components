@@ -21,6 +21,10 @@ git config user.name "TravisCI"
 git config user.email "travis@example.com"
 git add -A -f
 git commit -q -m "Showcase for Travis Build $TRAVIS_BUILD_NUMBER"
+git pull -q --rebase origin gh-pages
 git push -q origin gh-pages
+cd -
 
-echo "Showcase is available at http://bem.github.io/reports/$TRAVIS_BUILD_NUMBER/$SHOWCASE_NAME/$SHOWCASE_NAME.html"
+msg="Showcase is available at http://bem.github.io/reports/$TRAVIS_BUILD_NUMBER/$SHOWCASE_NAME/$SHOWCASE_NAME.html"
+./post_comment.sh ":tada: $msg"
+echo $msg

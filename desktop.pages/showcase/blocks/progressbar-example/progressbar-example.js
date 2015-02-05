@@ -11,20 +11,19 @@ provide(BEMDOM.decl(this.name, {
     },
 
     _progressProcess : function() {
-        var i = this._progressbar.getVal(),
-            isChecked = this._button.hasMod('checked');
-        if (isChecked) {
-            tick.un('tick');
+        this._onTick = this._onTick || function() {
+            var val = this._progressbar.getVal();
+            this._progressbar.setVal(val >= 100? 0 : val + 1);
+        };
+
+        if(this._button.hasMod('checked')) {
+            tick.un('tick', this._onTick, this);
         } else {
             tick
-                .on('tick', function(){
-                    (i > 100) && (i = 0);
-                    this._progressbar.setVal(i++);
-                }, this)
+                .on('tick', this._onTick, this)
                 .start();
         }
     }
-
 }, {
     live : function() {
         this.liveInitOnBlockInsideEvent(

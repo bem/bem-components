@@ -10,52 +10,48 @@ gemini.suite('textarea', function(root) {
         'islands-placeholder',
         'islands-longVal',
         'islands-longPlaceholder',
-        'islands-label',
-        'islands-width-available',
         'islands-sizeS',
         'islands-sizeM',
         'islands-sizeL',
-        'islands-sizeXL'
+        'islands-sizeXL',
+        'islands-label',
+        'islands-width-available'
     ]
         .forEach(function(test) {
-            var textareaSelector = '.' + test,
-                textareaEnabledSelector = textareaSelector + '-enabled',
-                screenArea = !!~test.indexOf('label')? textareaEnabledSelector + ' .textarea' : textareaEnabledSelector;
+            var testSelector = '.' + test,
+                controlEnabledSelector = testSelector + '-enabled';
+
+            if(['islands-label', 'islands-width-available'].indexOf(test) > -1) {
+                controlEnabledSelector += ' .textarea';
+            }
 
             // tests for enabled textarea
-            getEnabledSuite(test, [textareaEnabledSelector, screenArea], 'test text');
+            getEnabledSuite(test, controlEnabledSelector, testSelector + '-enabled', 'test text');
 
             // tests for disabled textarea
-            getDisabledSuite(test, textareaSelector + '-disabled');
+            getDisabledSuite(test, testSelector + '-disabled');
 
         });
 
-    function getEnabledSuite(test, areaSelector, text) {
-        var controlSelector = typeof areaSelector === 'object'? areaSelector[0] : areaSelector;
-
+    function getEnabledSuite(test, controlSelector, areaSelector, text) {
         gemini.suite(test + '-enabled', function(suite) {
             suite
                 .setCaptureElements(areaSelector)
-                .before(function(actions, find) {
-                    this.control = find(controlSelector + ' .textarea__control');
-                })
                 .capture('plain')
-                .capture('click', function(actions) {
-                    actions.click(this.control);
+                .capture('click', function(actions, find) {
+                    actions.click(find(controlSelector));
                 })
-                .capture('text', function(actions) {
-                    actions.sendKeys(this.control, text);
+                .capture('text', function(actions, find) {
+                    actions.sendKeys(find(controlSelector), text);
                 });
         });
     }
 
-    function getDisabledSuite(test, screenArea) {
-
+    function getDisabledSuite(test, areaSelector) {
         gemini.suite(test + '-disabled', function(suite) {
             suite
-                .setCaptureElements(screenArea)
+                .setCaptureElements(areaSelector)
                 .capture('plain');
         });
     }
-
 });

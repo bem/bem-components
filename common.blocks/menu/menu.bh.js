@@ -42,6 +42,8 @@ module.exports = function(bh) {
                     }
                 };
 
+            if(!Array.isArray(json.content)) throw Error('menu: content must be an array of the menu items');
+
             iterateItems(json.content);
         }
 

@@ -18,6 +18,7 @@
 
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
+| <a href="content">content</a> | `Array` | Массив пунктов меню. |
 | <a href="#val">val</a> | <code>String</code>, <code>Number</code>, <code>Array</code> | Выбранное значение из списка. Если блоку установлен <a href="#mode-check">модификатор mode в значении check</a>, выбранные значения всегда оформляются в виде массива. |
 
 ### Элементы блока
@@ -375,8 +376,34 @@
 
 ### Специализированные поля блока
 
+<a name="content"></a>
+#### Поле `content`
+
+Тип: `Array`.
+
+Определяет перечень пунктов меню.
+
+```js
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'Отпуск на работе'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Отпуск на диване'
+        }
+    ]
+}
+```
+
 <a name="val"></a>
-#### Поля `val`
+#### Поле `val`
 
 Тип: `String`, `Number`, `Array`.
 

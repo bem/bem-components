@@ -67,7 +67,7 @@ Use to create the specialized text fields for a password entry. For security rea
 }
 ```
 
-##### Search field (`type` modifier wirh `search` value)
+##### Search field (`type` modifier with `search` value)
 
 Use to create the search field.
 

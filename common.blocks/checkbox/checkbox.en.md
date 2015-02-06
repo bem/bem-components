@@ -322,7 +322,7 @@ Use the `title` field for checkboxes only with the <a href="#checkboxtype">type 
     name: 'name1',
     val : 1,
     text : 'Share',
-    title : 'Share with freinds',
+    title : 'Share with friends',
     icon : {
         block : 'icon',
         mods : { social : 'twitter' }

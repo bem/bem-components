@@ -450,7 +450,7 @@
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
 | <code>title</code> | <code>String</code> | Название группы пунктов. |
-| <code>Group</code> | <code>Array</code> | Массив пунктов. |
+| <code>group</code> | <code>Array</code> | Массив пунктов. |
 
 ```js
 {

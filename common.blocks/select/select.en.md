@@ -460,7 +460,7 @@ Dropdown menu items could be grouped:
 | Field | Type | description |
 | ---- | --- | -------- |
 | <code>title</code> | <code>String</code> | The name of the menu items group. |
-| <code>Group</code> | <code>Array</code> | The array of menu items. |
+| <code>group</code> | <code>Array</code> | The array of the menu items. |
 
 ```js
 {

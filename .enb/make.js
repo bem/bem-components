@@ -1,5 +1,4 @@
-var DEFAULT_LANGS = ['ru', 'en'],
-    BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
+var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     fs = require('fs'),
     path = require('path'),
     naming = require('bem-naming'),
@@ -23,20 +22,19 @@ var DEFAULT_LANGS = ['ru', 'en'],
     mergeFiles = require('enb/techs/file-merge'),
     mergeBemdecl = require('enb-bem-techs/techs/merge-bemdecl'),
     borschik = require('enb-borschik/techs/borschik'),
+    langs = require('./langs'),
     browsers = require('./browsers'),
     sets = require('./sets'),
     distPlatforms = ['desktop', 'touch-pad', 'touch-phone'],
     platforms = ['desktop', 'touch'];
 
 module.exports = function(config) {
-    var langs = process.env.BEM_I18N_LANGS;
-
     config.includeConfig('enb-bem-examples');
     config.includeConfig('enb-bem-docs');
     config.includeConfig('enb-bem-specs');
     config.includeConfig('enb-bem-tmpl-specs');
 
-    config.setLanguages(langs? langs.split(' ') : [].concat(DEFAULT_LANGS));
+    config.setLanguages(langs);
 
     configureDist(distPlatforms);
     configurePages(platforms);
@@ -155,8 +153,6 @@ module.exports = function(config) {
         configureLevels(platform, nodes);
 
         config.nodes(nodes, function(nodeConfig) {
-            var langs = config.getLanguages();
-
             // Base techs
             nodeConfig.addTechs([
                 [bemdecl],
@@ -317,7 +313,7 @@ module.exports = function(config) {
                 destPath : platform + '.docs',
                 levels : getLibLevels(platform),
                 exampleSets : [platform + '.examples'],
-                langs : config.getLanguages(),
+                langs : langs,
                 jsdoc : { suffixes : ['vanilla.js', 'browser.js', 'js'] }
             });
 

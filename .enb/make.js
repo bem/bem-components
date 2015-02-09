@@ -24,6 +24,7 @@ var DEFAULT_LANGS = ['ru', 'en'],
     mergeFiles = require('enb/techs/file-merge'),
     mergeBemdecl = require('enb-bem-techs/techs/merge-bemdecl'),
     borschik = require('enb-borschik/techs/borschik'),
+    browsers = require('./browsers'),
     PLATFORMS = {
         'desktop' : ['common', 'desktop'],
         'touch-phone' : ['common', 'touch'],
@@ -68,7 +69,7 @@ module.exports = function(config) {
                     [autoprefixer, {
                         sourceTarget : '?.noprefix.css',
                         destTarget : '?.prefix.css',
-                        browserSupport : getBrowsers(platform)
+                        browserSupport : browsers[platform]
                     }],
                     [depsByTechToBemdecl, {
                         target : '?.js-js.bemdecl.js',
@@ -310,7 +311,7 @@ module.exports = function(config) {
                 [autoprefixer, {
                     sourceTarget : '?.noprefix.css',
                     destTarget : '?.css',
-                    browserSupport : getBrowsers(platform)
+                    browserSupport : browsers[platform]
                 }]
             ]);
         });
@@ -414,35 +415,6 @@ function getSpecLevels(platform) {
         { path : path.join('libs', 'bem-pr', 'spec.blocks'), check : false },
         getSourceLevels(platform)
     );
-}
-
-function getBrowsers(platform) {
-    switch(platform) {
-        case 'desktop':
-            return [
-                'last 2 versions',
-                'ie 10',
-                'ff 24',
-                'opera 12.16'
-            ];
-        case 'touch':
-            return [
-                'android 4',
-                'ios >= 5',
-                'ie 10'
-            ];
-        case 'touch-pad':
-            return [
-                'android 4',
-                'ios 5'
-            ];
-        case 'touch-phone':
-            return [
-                'android 4',
-                'ios 6',
-                'ie 10'
-            ];
-    }
 }
 
 function wrapInPage(bemjson, meta) {

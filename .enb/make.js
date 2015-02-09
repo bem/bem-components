@@ -10,8 +10,7 @@ var DEFAULT_LANGS = ['ru', 'en'],
     bemdecl = require('enb-bem-techs/techs/bemjson-to-bemdecl'),
     deps = require('enb-bem-techs/techs/deps-old'),
     files = require('enb-bem-techs/techs/files'),
-    css = require('enb-stylus/techs/css-stylus'),
-    autoprefixer = require('enb-autoprefixer/techs/css-autoprefixer'),
+    css = require('enb-stylus/techs/css-stylus-with-autoprefixer'),
     js = require('enb-diverse-js/techs/browser-js'),
     ym = require('enb-modules/techs/prepend-modules'),
     bemhtml = require('enb-bemxjst/techs/bemhtml-old'),
@@ -57,11 +56,9 @@ module.exports = function(config) {
                     [levelsToBemdecl],
                     [deps],
                     [files],
-                    [css, { target : '?.noprefix.css' }],
-                    [autoprefixer, {
-                        sourceTarget : '?.noprefix.css',
-                        destTarget : '?.prefix.css',
-                        browserSupport : browsers[platform]
+                    [css, {
+                        target : '?.prefix.css',
+                        browsers : browsers[platform]
                     }],
                     [depsByTechToBemdecl, {
                         target : '?.js-js.bemdecl.js',
@@ -156,7 +153,6 @@ module.exports = function(config) {
 
     function configureNodes(platform, nodes) {
         configureLevels(platform, nodes);
-        configureAutoprefixer(platform, nodes);
 
         config.nodes(nodes, function(nodeConfig) {
             var langs = config.getLanguages();
@@ -170,7 +166,9 @@ module.exports = function(config) {
 
             // Client techs
             nodeConfig.addTechs([
-                [css, { target : '?.noprefix.css' }],
+                [css, {
+                    browsers : browsers[platform]
+                }],
                 [js, {
                     filesTarget : '?.js.files'
                 }],
@@ -294,18 +292,6 @@ module.exports = function(config) {
             }
 
             nodeConfig.addTech([levels, { levels : extendedLevels }]);
-        });
-    }
-
-    function configureAutoprefixer(platform, nodes) {
-        config.nodes(nodes, function(nodeConfig) {
-            nodeConfig.addTechs([
-                [autoprefixer, {
-                    sourceTarget : '?.noprefix.css',
-                    destTarget : '?.css',
-                    browserSupport : browsers[platform]
-                }]
-            ]);
         });
     }
 

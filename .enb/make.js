@@ -1,7 +1,6 @@
 var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     fs = require('fs'),
     path = require('path'),
-    naming = require('bem-naming'),
     levels = require('enb-bem-techs/techs/levels'),
     levelsToBemdecl = require('enb-bem-techs/techs/levels-to-bemdecl'),
     provide = require('enb/techs/file-provider'),
@@ -31,18 +30,17 @@ var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     distPlatforms = ['desktop', 'touch-pad', 'touch-phone'];
 
 module.exports = function(config) {
-    config.includeConfig('enb-bem-examples');
     config.includeConfig('enb-bem-docs');
     config.includeConfig(__dirname + '/tasks/specs.js');
     config.includeConfig(__dirname + '/tasks/tmpl-specs.js');
     config.includeConfig(__dirname + '/tasks/tests.js');
+    config.includeConfig(__dirname + '/tasks/examples.js');
 
     config.setLanguages(langs);
 
     configureDist(distPlatforms);
     configurePages(platforms);
     configureSets(platforms, {
-        examples : config.module('enb-bem-examples').createConfigurator('examples'),
         docs : config.module('enb-bem-docs').createConfigurator('docs', 'examples')
     });
 
@@ -293,15 +291,6 @@ module.exports = function(config) {
 
     function configureSets(platforms, sets) {
         platforms.forEach(function(platform) {
-            sets.examples.configure({
-                destPath : platform + '.examples',
-                levels : getLibLevels(platform),
-                techSuffixes : ['examples'],
-                fileSuffixes : ['bemjson.js', 'title.txt'],
-                inlineBemjson : true,
-                processInlineBemjson : wrapInPage
-            });
-
             sets.docs.configure({
                 destPath : platform + '.docs',
                 levels : getLibLevels(platform),
@@ -342,27 +331,4 @@ function getTestLevels(platform) {
         getSourceLevels(platform),
         libLevels['test']
     );
-}
-
-function wrapInPage(bemjson, meta) {
-    var basename = '_' + path.basename(meta.filename, '.bemjson.js');
-    return {
-        block : 'page',
-        title : naming.stringify(meta.notation),
-        head : [{ elem : 'css', url : basename + '.css' }],
-        scripts : [{ elem : 'js', url : basename + '.js' }],
-        mods : { theme : getThemeFromBemjson(bemjson) },
-        content : bemjson
-    };
-}
-
-function getThemeFromBemjson(bemjson) {
-    if(typeof bemjson !== 'object') return;
-
-    var theme, key;
-
-    for(key in bemjson) {
-        if(theme = key === 'mods'? bemjson.mods.theme :
-            getThemeFromBemjson(bemjson[key])) return theme;
-    }
 }

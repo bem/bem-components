@@ -2,7 +2,6 @@ var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     fs = require('fs'),
     path = require('path'),
     levels = require('enb-bem-techs/techs/levels'),
-    levelsToBemdecl = require('enb-bem-techs/techs/levels-to-bemdecl'),
     provide = require('enb/techs/file-provider'),
     depsByTechToBemdecl = require('enb-bem-techs/techs/deps-by-tech-to-bemdecl'),
     bemdecl = require('enb-bem-techs/techs/bemjson-to-bemdecl'),
@@ -14,7 +13,6 @@ var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     bemhtml = require('enb-bemxjst/techs/bemhtml-old'),
     html = require('enb-bemxjst/techs/html-from-bemjson'),
     bh = require('enb-bh/techs/bh-server'),
-    bhServerInclude = require('enb-bh/techs/bh-server-include'),
     bhYm = require('enb-bh/techs/bh-client-module'),
     bhHtml = require('enb-bh/techs/html-from-bemjson'),
     copyFile = require('enb/techs/file-copy'),
@@ -26,108 +24,15 @@ var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     langs = require('./config/langs'),
     browsers = require('./config/browsers'),
     sets = require('./config/sets'),
-    platforms = require('./config/platforms'),
-    distPlatforms = ['desktop', 'touch-pad', 'touch-phone'];
+    platforms = require('./config/platforms');
 
 module.exports = function(config) {
     config.includeConfig(__dirname + '/tasks');
 
     config.setLanguages(langs);
 
-    configureDist(distPlatforms);
     configurePages(platforms);
     configureSets(platforms);
-
-    function configureDist(platforms) {
-        platforms.forEach(function(platform) {
-            config.node('dist/' + platform, function(nodeConfig) {
-                nodeConfig.addTechs([
-                    [levels, { levels : getSourceLevels(platform) }],
-                    [levelsToBemdecl],
-                    [deps],
-                    [files],
-                    [css, {
-                        target : '?.prefix.css',
-                        browsers : browsers[platform]
-                    }],
-                    [depsByTechToBemdecl, {
-                        target : '?.js-js.bemdecl.js',
-                        sourceTech : 'js',
-                        destTech : 'js'
-                    }],
-                    [mergeBemdecl, {
-                        sources : ['?.bemdecl.js', '?.js-js.bemdecl.js'],
-                        target : '?.js.bemdecl.js'
-                    }],
-                    [deps, {
-                        target : '?.js.deps.js',
-                        bemdeclFile : '?.js.bemdecl.js'
-                    }],
-                    [files, {
-                        depsFile : '?.js.deps.js',
-                        filesTarget : '?.js.files',
-                        dirsTarget : '?.js.dirs'
-                    }],
-                    [js, {
-                        filesTarget : '?.js.files',
-                        target : '?.source.js'
-                    }],
-                    [ym, {
-                        source : '?.source.js',
-                        target : '?.ym.js'
-                    }],
-                    [bemhtml, { target : '?.pre.bemhtml.js', devMode : false }],
-                    [depsByTechToBemdecl,  {
-                        target : '?.bemhtml.bemdecl.js',
-                        sourceTech : 'js',
-                        destTech : 'bemhtml'
-                    }],
-                    [deps, {
-                        target : '?.bemhtml.deps.js',
-                        bemdeclFile : '?.bemhtml.bemdecl.js'
-                    }],
-                    [files, {
-                        depsFile : '?.bemhtml.deps.js',
-                        filesTarget : '?.bemhtml.files',
-                        dirsTarget : '?.bemhtml.dirs'
-                    }],
-                    [bemhtml, {
-                        target : '?.client.bemhtml.js',
-                        filesTarget : '?.bemhtml.files',
-                        devMode : false
-                    }],
-                    [bhServerInclude, { target : '?.pre.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
-                    [bhYm, { target : '?.client.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
-                    [mergeFiles, {
-                        target : '?.source+bemhtml.js',
-                        sources : ['?.source.js', '?.client.bemhtml.js']
-                    }],
-                    [ym, {
-                        source : '?.source+bemhtml.js',
-                        target : '?.pre.browser+bemhtml.js'
-                    }],
-                    [mergeFiles, {
-                        target : '?.source+bh.js',
-                        sources : ['?.source.js', '?.client.bh.js']
-                    }],
-                    [ym, {
-                        source : '?.source+bh.js',
-                        target : '?.pre.browser+bh.js'
-                    }],
-                    [borschik, { source : '?.prefix.css', target : '?.css' }],
-                    [borschik, { source : '?.ym.js', target : '?.browser.js' }],
-                    [borschik, { source : '?.pre.bemhtml.js', target : '?.bemhtml.js' }],
-                    [borschik, { source : '?.pre.bh.js', target : '?.bh.js' }],
-                    [borschik, { source : '?.pre.browser+bemhtml.js', target : '?.browser+bemhtml.js' }],
-                    [borschik, { source : '?.pre.browser+bh.js', target : '?.browser+bh.js' }]
-                ]);
-
-                nodeConfig.addTargets([
-                    '?.css', '?.browser.js', '?.bemhtml.js', '?.bh.js', '?.browser+bemhtml.js', '?.browser+bh.js'
-                ]);
-            });
-        });
-    }
 
     function configurePages(platforms) {
         platforms.forEach(function(platform) {

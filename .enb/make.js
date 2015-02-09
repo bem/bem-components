@@ -30,19 +30,17 @@ var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     distPlatforms = ['desktop', 'touch-pad', 'touch-phone'];
 
 module.exports = function(config) {
-    config.includeConfig('enb-bem-docs');
     config.includeConfig(__dirname + '/tasks/specs.js');
     config.includeConfig(__dirname + '/tasks/tmpl-specs.js');
     config.includeConfig(__dirname + '/tasks/tests.js');
     config.includeConfig(__dirname + '/tasks/examples.js');
+    config.includeConfig(__dirname + '/tasks/docs.js');
 
     config.setLanguages(langs);
 
     configureDist(distPlatforms);
     configurePages(platforms);
-    configureSets(platforms, {
-        docs : config.module('enb-bem-docs').createConfigurator('docs', 'examples')
-    });
+    configureSets(platforms);
 
     function configureDist(platforms) {
         platforms.forEach(function(platform) {
@@ -289,24 +287,12 @@ module.exports = function(config) {
         });
     }
 
-    function configureSets(platforms, sets) {
+    function configureSets(platforms) {
         platforms.forEach(function(platform) {
-            sets.docs.configure({
-                destPath : platform + '.docs',
-                levels : getLibLevels(platform),
-                exampleSets : [platform + '.examples'],
-                langs : langs,
-                jsdoc : { suffixes : ['vanilla.js', 'browser.js', 'js'] }
-            });
-
             configureNodes(platform, [platform + '.tests/*/*', platform + '.examples/*/*']);
         });
     }
 };
-
-function getLibLevels(platform) {
-    return libLevels[platform];
-}
 
 function getSourceLevels(platform) {
     var levels = [];

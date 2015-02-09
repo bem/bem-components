@@ -31,17 +31,17 @@ var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     distPlatforms = ['desktop', 'touch-pad', 'touch-phone'];
 
 module.exports = function(config) {
-    config.includeConfig(__dirname + '/tasks/specs.js');
-    config.includeConfig(__dirname + '/tasks/tmpl-specs.js');
     config.includeConfig('enb-bem-examples');
     config.includeConfig('enb-bem-docs');
+    config.includeConfig(__dirname + '/tasks/specs.js');
+    config.includeConfig(__dirname + '/tasks/tmpl-specs.js');
+    config.includeConfig(__dirname + '/tasks/tests.js');
 
     config.setLanguages(langs);
 
     configureDist(distPlatforms);
     configurePages(platforms);
     configureSets(platforms, {
-        tests : config.module('enb-bem-examples').createConfigurator('tests'),
         examples : config.module('enb-bem-examples').createConfigurator('examples'),
         docs : config.module('enb-bem-docs').createConfigurator('docs', 'examples')
     });
@@ -300,13 +300,6 @@ module.exports = function(config) {
                 fileSuffixes : ['bemjson.js', 'title.txt'],
                 inlineBemjson : true,
                 processInlineBemjson : wrapInPage
-            });
-
-            sets.tests.configure({
-                destPath : platform + '.tests',
-                levels : getLibLevels(platform),
-                techSuffixes : ['tests'],
-                fileSuffixes : ['bemjson.js', 'title.txt']
             });
 
             sets.docs.configure({

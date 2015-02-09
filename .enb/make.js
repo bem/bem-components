@@ -22,6 +22,8 @@ var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     mergeFiles = require('enb/techs/file-merge'),
     mergeBemdecl = require('enb-bem-techs/techs/merge-bemdecl'),
     borschik = require('enb-borschik/techs/borschik'),
+    libLevels = require('./levels'),
+    libs = require('./libs'),
     langs = require('./langs'),
     browsers = require('./browsers'),
     sets = require('./sets'),
@@ -353,25 +355,22 @@ module.exports = function(config) {
 };
 
 function getLibLevels(platform) {
-    return (sets[platform]).map(function(level) {
-        return level + '.blocks';
-    });
+    return libLevels[platform];
 }
 
 function getSourceLevels(platform) {
-    var platformNames = (sets[platform]);
     var levels = [];
 
-    platformNames.forEach(function(name) {
-        levels.push({ path : path.join('libs', 'bem-core', name + '.blocks'), check : false });
+    libs['bem-core'].levels[platform].forEach(function(level) {
+        levels.push({ path : level, check : false });
     });
 
-    platformNames.forEach(function(name) {
-        levels.push({ path : name + '.blocks', check : true });
+    libLevels[platform].forEach(function(level) {
+        levels.push({ path : level, check : true });
     });
 
-    platformNames.forEach(function(name) {
-        levels.push({ path : path.join('design', name + '.blocks'), check : true });
+    libs['design'].levels[platform].forEach(function(level) {
+        levels.push({ path : level, check : false });
     });
 
     return levels;
@@ -380,13 +379,15 @@ function getSourceLevels(platform) {
 function getTestLevels(platform) {
     return [].concat(
         getSourceLevels(platform),
-        'test.blocks'
+        libLevels['test']
     );
 }
 
 function getSpecLevels(platform) {
     return [].concat(
-        { path : path.join('libs', 'bem-pr', 'spec.blocks'), check : false },
+        libs['bem-pr'].levels['spec'].map(function(level) {
+            return { path : level, check : false };
+        }),
         getSourceLevels(platform)
     );
 }

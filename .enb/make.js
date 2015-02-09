@@ -30,11 +30,7 @@ var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     distPlatforms = ['desktop', 'touch-pad', 'touch-phone'];
 
 module.exports = function(config) {
-    config.includeConfig(__dirname + '/tasks/specs.js');
-    config.includeConfig(__dirname + '/tasks/tmpl-specs.js');
-    config.includeConfig(__dirname + '/tasks/tests.js');
-    config.includeConfig(__dirname + '/tasks/examples.js');
-    config.includeConfig(__dirname + '/tasks/docs.js');
+    config.includeConfig(__dirname + '/tasks');
 
     config.setLanguages(langs);
 

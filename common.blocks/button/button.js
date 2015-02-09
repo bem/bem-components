@@ -37,6 +37,12 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
             }
         },
 
+        'checked' : {
+            '*' : function(modName, modValue) {
+                this.domElem.attr('aria-pressed', !!modValue);
+            }
+        },
+
         'disabled' : {
             'true' : function() {
                 this.__base.apply(this, arguments);

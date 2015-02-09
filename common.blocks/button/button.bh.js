@@ -10,14 +10,19 @@ module.exports = function(bh) {
             .js(true)
             .attrs({
                 role : 'button',
+                accesskey : json.accesskey,
                 tabindex : json.tabIndex,
                 id : json.id,
                 type : isRealButton? modType || 'button' : undefined,
                 name : json.name,
                 value : json.val,
-                title : json.title
+                title : json.title,
+                'aria-label' : json.ariaLabel,
+                'aria-labelledby' : json.ariaLabelledBy
             })
             .mix({ elem : 'control' }); // NOTE: satisfy interface of `control`
+
+        ctx.mod('togglable') && ctx.attr('aria-pressed', !!ctx.mod('checked'));
 
         isRealButton &&
             ctx.mod('disabled') &&

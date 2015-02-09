@@ -15,9 +15,12 @@ block('button')(
 
             return {
                 role : 'button',
+                accesskey : ctx.accesskey,
                 tabindex : ctx.tabIndex,
                 id : ctx.id,
-                title : ctx.title
+                title : ctx.title,
+                'aria-label' : ctx.ariaLabel,
+                'aria-labelledby' : ctx.ariaLabelledBy
             };
         },
 
@@ -29,6 +32,8 @@ block('button')(
                     name : ctx.name,
                     value : ctx.val
                 };
+
+            this.mods.togglable && (attrs['aria-pressed'] = !!this.mods.checked);
 
             this.mods.disabled && (attrs.disabled = 'disabled');
 

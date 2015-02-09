@@ -32,9 +32,9 @@ var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
 
 module.exports = function(config) {
     config.includeConfig(__dirname + '/tasks/specs.js');
+    config.includeConfig(__dirname + '/tasks/tmpl-specs.js');
     config.includeConfig('enb-bem-examples');
     config.includeConfig('enb-bem-docs');
-    config.includeConfig('enb-bem-tmpl-specs');
 
     config.setLanguages(langs);
 
@@ -43,8 +43,7 @@ module.exports = function(config) {
     configureSets(platforms, {
         tests : config.module('enb-bem-examples').createConfigurator('tests'),
         examples : config.module('enb-bem-examples').createConfigurator('examples'),
-        docs : config.module('enb-bem-docs').createConfigurator('docs', 'examples'),
-        tmplSpecs : config.module('enb-bem-tmpl-specs').createConfigurator('tmpl-specs')
+        docs : config.module('enb-bem-docs').createConfigurator('docs', 'examples')
     });
 
     function configureDist(platforms) {
@@ -318,29 +317,6 @@ module.exports = function(config) {
                 jsdoc : { suffixes : ['vanilla.js', 'browser.js', 'js'] }
             });
 
-            sets.tmplSpecs.configure({
-                destPath : platform + '.tmpl-specs',
-                levels : getLibLevels(platform),
-                sourceLevels : getSpecLevels(platform),
-                engines : {
-                    bh : {
-                        tech : 'enb-bh/techs/bh-server',
-                        options : {
-                            jsAttrName : 'data-bem',
-                            jsAttrScheme : 'json'
-                        }
-                    },
-                    'bemhtml-dev' : {
-                        tech : 'enb-bemxjst/techs/bemhtml-old',
-                        options : { devMode : true }
-                    },
-                    'bemhtml-prod' : {
-                        tech : 'enb-bemxjst/techs/bemhtml-old',
-                        options : { devMode : false }
-                    }
-                }
-            });
-
             configureNodes(platform, [platform + '.tests/*/*', platform + '.examples/*/*']);
         });
     }
@@ -372,15 +348,6 @@ function getTestLevels(platform) {
     return [].concat(
         getSourceLevels(platform),
         libLevels['test']
-    );
-}
-
-function getSpecLevels(platform) {
-    return [].concat(
-        libs['bem-pr'].levels['spec'].map(function(level) {
-            return { path : level, check : false };
-        }),
-        getSourceLevels(platform)
     );
 }
 

@@ -31,9 +31,9 @@ var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     distPlatforms = ['desktop', 'touch-pad', 'touch-phone'];
 
 module.exports = function(config) {
+    config.includeConfig(__dirname + '/tasks/specs.js');
     config.includeConfig('enb-bem-examples');
     config.includeConfig('enb-bem-docs');
-    config.includeConfig('enb-bem-specs');
     config.includeConfig('enb-bem-tmpl-specs');
 
     config.setLanguages(langs);
@@ -44,7 +44,6 @@ module.exports = function(config) {
         tests : config.module('enb-bem-examples').createConfigurator('tests'),
         examples : config.module('enb-bem-examples').createConfigurator('examples'),
         docs : config.module('enb-bem-docs').createConfigurator('docs', 'examples'),
-        specs : config.module('enb-bem-specs').createConfigurator('specs'),
         tmplSpecs : config.module('enb-bem-tmpl-specs').createConfigurator('tmpl-specs')
     });
 
@@ -317,13 +316,6 @@ module.exports = function(config) {
                 exampleSets : [platform + '.examples'],
                 langs : langs,
                 jsdoc : { suffixes : ['vanilla.js', 'browser.js', 'js'] }
-            });
-
-            sets.specs.configure({
-                destPath : platform + '.specs',
-                levels : getLibLevels(platform),
-                sourceLevels : getSpecLevels(platform),
-                jsSuffixes : ['vanilla.js', 'browser.js', 'js']
             });
 
             sets.tmplSpecs.configure({

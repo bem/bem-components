@@ -25,8 +25,8 @@ var BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     langs = require('./langs'),
     browsers = require('./browsers'),
     sets = require('./sets'),
-    distPlatforms = ['desktop', 'touch-pad', 'touch-phone'],
-    platforms = ['desktop', 'touch'];
+    platforms = require('./platforms'),
+    distPlatforms = ['desktop', 'touch-pad', 'touch-phone'];
 
 module.exports = function(config) {
     config.includeConfig('enb-bem-examples');

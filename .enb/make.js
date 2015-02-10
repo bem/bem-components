@@ -65,6 +65,7 @@ module.exports = function(config) {
                     [deps],
                     [files],
                     [css, { target : '?.noprefix.css' }],
+                    [css, { target : '?.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
                     [autoprefixer, {
                         sourceTarget : '?.noprefix.css',
                         destTarget : '?.prefix.css',
@@ -178,7 +179,7 @@ module.exports = function(config) {
             // Client techs
             nodeConfig.addTechs([
                 [css, { target : '?.noprefix.css' }],
-                [css, { target : '?.ie8.css', sourceSuffixes : ['styl', 'ie8.styl'] }],
+                [css, { target : '?.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
                 [js, {
                     filesTarget : '?.js.files'
                 }],
@@ -263,7 +264,7 @@ module.exports = function(config) {
             });
 
             nodeConfig.addTargets([
-                '_?.css', '_?.ie8.css', '_?.js', '?.html'
+                '_?.css', '_?.ie.css', '_?.js', '?.html'
             ]);
         });
 
@@ -271,7 +272,7 @@ module.exports = function(config) {
             config.nodes(nodes, function(nodeConfig) {
                 nodeConfig.addTechs([
                     [copyFile, { source : '?.css', target : '_?.css' }],
-                    [copyFile, { source : '?.ie8.css', target : '_?.ie8.css' }],
+                    [copyFile, { source : '?.ie.css', target : '_?.ie.css' }],
                     [copyFile, { source : '?.js', target : '_?.js' }]
                 ]);
             });
@@ -281,6 +282,7 @@ module.exports = function(config) {
             config.nodes(nodes, function(nodeConfig) {
                 nodeConfig.addTechs([
                     [borschik, { source : '?.css', target : '_?.css', freeze : true, tech : 'cleancss' }],
+                    [borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, tech : 'cleancss' }],
                     [borschik, { source : '?.js', target : '_?.js', freeze : true }]
                 ]);
             });

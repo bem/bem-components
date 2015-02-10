@@ -6,7 +6,7 @@
         '<!--[if gt IE 8]><!-->',
         { elem : 'css', url : '_simple.css' },
         '<!--<![endif]-->',
-        { elem : 'css', url : '_simple.ie8.css', ie : ' IE 8' },
+        { elem : 'css', url : '_simple.ie.css', ie : 'lt IE 9' },
         { elem : 'js', url : '_simple.js' }
     ],
     content : ['simple', 'islands'].map(function(theme) {

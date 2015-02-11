@@ -18,6 +18,7 @@ Use this block for creating different types of menu.
 
 | Field | Type | Description |
 | ---- | --- | -------- |
+| <a href="content">content</a> | `Array` | The array of the menu items. |
 | <a href="#val">val</a> | <code>String</code>, <code>Number</code>, <code>Array</code> | The selected value from the menu. If the <a href="#mode-check">mode modifier with check value</a> is applied to the block, the selected values must be declared as an <code>array</code>. |
 
 ### Elements of the block
@@ -34,7 +35,7 @@ Use this block for creating different types of menu.
 
 ## Block description
 
-Use the `menu` block to control the state, behavior and appearance of the menu and its nested components – the [menu-item](../menu-item/menu-item.en.md) blocks.
+Use the `menu` block to control the state, behavior and appearance of the menu and its nested components – the [menu-item](../menu-item/menu-item.en.md) blocks.
 
 The block supports key-pad control. If `menu` block is in [focus](#focused) (`focused` modifier with `true` value), type a menu item name on your keyboard to switch to the menu item. Use `Space bar` or `Enter` buttons to select the menu item.
 
@@ -374,6 +375,32 @@ Sets the size value for all types of menus.
 ```
 
 ### Custom fields of the block
+
+<a name="content"></a>
+#### `content` field
+
+Type: `Array`.
+
+Specifies the list of the menu items.
+
+```js
+{
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm' },
+    content : [
+        {
+            block : 'menu-item',
+            val : 1,
+            content : 'Vacation at work'
+        },
+        {
+            block : 'menu-item',
+            val : 2,
+            content : 'Vacation on the couch'
+        }
+    ]
+}
+```
 
 <a name="val"></a>
 

@@ -91,7 +91,7 @@
                 { block : 'link', mods : { pseudo : true }, content : 'open 3' },
                 {
                     block : 'popup',
-                    mods : {  target : 'anchor', theme : 'simple' },
+                    mods : { target : 'anchor', theme : 'simple' },
                     zIndexGroupLevel : 2,
                     content : [
                         'this popup has zIndexGroupLevel=2 in params',

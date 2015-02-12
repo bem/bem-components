@@ -19,6 +19,7 @@ checkedPressedColor = #fee481;
     &.button_focused-hard
     {
         border-color: #fc0 !important;
+        outline: 1px solid #fc0;
     }
 
     &.button_checked
@@ -126,7 +127,7 @@ checkedPressedColor = #fee481;
 
         &:after
         {
-            content: none;
+            content: none !important;
         }
     }
 
@@ -136,12 +137,8 @@ checkedPressedColor = #fee481;
         {
             .button_theme_islands.button_focused-hard
             {
-                overflow: visible;
-
                 &:after
                 {
-                    left: -1px;
-
                     content: ' ';
 
                     border-color: #fc0;

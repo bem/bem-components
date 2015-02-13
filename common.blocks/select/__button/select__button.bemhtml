@@ -14,6 +14,10 @@ block('select').elem('button')(
             },
             id : this._select.id,
             tabIndex : this._select.tabIndex,
+            attrs : {
+                'aria-expanded' : !!(this._select.mods && this._select.mods.opened),
+                'aria-haspopup' : true
+            },
             content : [
                 apply('content'),
                 { block : 'icon', mix : { block : 'select', elem : 'tick' } }

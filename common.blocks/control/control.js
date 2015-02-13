@@ -55,13 +55,18 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
 
             'true' : function() {
                 this.delMod('focused');
+
+                var control = this.elem('control');
+                control.attr('aria-disabled', true);
                 typeof this._tabIndex !== 'undefined' &&
-                    this.elem('control').removeAttr('tabindex');
+                    control.removeAttr('tabindex');
             },
 
             '' : function() {
+                var control = this.elem('control');
+                control.removeAttr('aria-disabled');
                 typeof this._tabIndex !== 'undefined' &&
-                    this.elem('control').attr('tabindex', this._tabIndex);
+                    control.attr('tabindex', this._tabIndex);
             }
         }
     },

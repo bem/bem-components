@@ -1,6 +1,8 @@
 block('radio')(
     tag()('label'),
+
     js()(true),
+
     content()(function() {
         var ctx = this.ctx;
         return [
@@ -11,7 +13,9 @@ block('radio')(
                     checked : this.mods.checked,
                     disabled : this.mods.disabled,
                     name : ctx.name,
-                    val : ctx.val
+                    val : ctx.val,
+                    ariaLabel : ctx.ariaLabel,
+                    ariaLabelledby : ctx.ariaLabelledby
                 }
             },
             ctx.text

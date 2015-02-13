@@ -18,7 +18,9 @@ block('link')(
             attrs = {},
             tabIndex;
 
-        if(!this.mods.disabled) {
+        if(this.mods.disabled) {
+            attrs['aria-disabled'] = true;
+        } else {
             if(ctx.url) {
                 attrs.href = ctx.url;
                 tabIndex = ctx.tabIndex;
@@ -31,6 +33,10 @@ block('link')(
 
         ctx.title && (attrs.title = ctx.title);
         ctx.target && (attrs.target = ctx.target);
+        ctx.id && (attrs.id = ctx.id);
+        ctx.name && (attrs.name = ctx.name);
+        ctx.ariaLabel && (attrs['aria-label'] = ctx.ariaLabel);
+        ctx.ariaLabelledby && (attrs['aria-labelledby'] = ctx.ariaLabelledby);
 
         return attrs;
     }),

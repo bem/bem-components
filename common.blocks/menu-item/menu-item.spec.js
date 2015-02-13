@@ -1,7 +1,9 @@
 modules.define(
     'spec',
-    ['menu-item', 'i-bem__dom', 'jquery', 'sinon', 'BEMHTML'],
-    function(provide, MenuItem, BEMDOM, $, sinon, BEMHTML) {
+    ['menu-item', 'i-bem__dom', 'jquery', 'sinon', 'chai', 'BEMHTML'],
+    function(provide, MenuItem, BEMDOM, $, sinon, chai, BEMHTML) {
+
+var expect = chai.expect;
 
 describe('menu-item', function() {
     var menuItem;
@@ -34,6 +36,29 @@ describe('menu-item', function() {
             menuItem
                 .setMod('hovered')
                 .hasMod('hovered').should.be.false;
+        });
+    });
+
+    describe('disabled', function() {
+        it('should set "aria-disabled" attribute if disabled', function() {
+            var domItem = menuItem.domElem;
+            expect(domItem.attr('aria-disabled')).to.be.undefined;
+
+            menuItem.setMod('disabled', true);
+            domItem.attr('aria-disabled').should.be.equal('true');
+
+            menuItem.delMod('disabled');
+            expect(domItem.attr('aria-disabled')).to.be.undefined;
+        });
+    });
+
+    describe('checked', function() {
+        it('should set "aria-checked" attribute if checked', function() {
+            menuItem.setMod('checked', true);
+            menuItem.domElem.attr('aria-checked').should.be.equal('true');
+
+            menuItem.delMod('checked');
+            menuItem.domElem.attr('aria-checked').should.be.equal('false');
         });
     });
 

@@ -11,7 +11,9 @@ block('textarea')(
                 id : ctx.id,
                 name : ctx.name,
                 tabindex : ctx.tabIndex,
-                placeholder : ctx.placeholder
+                placeholder : ctx.placeholder,
+                'aria-label' : ctx.ariaLabel,
+                'aria-labelledby' : ctx.ariaLabelledby
             };
 
         ctx.autocomplete === false && (attrs.autocomplete = 'off');

@@ -43,12 +43,15 @@ describe('button_togglable_check', function() {
 
             triggerPointerUpPointerDown(true);
             button.hasMod('checked').should.be.true;
+            button.domElem.attr('aria-pressed').should.be.equal('true');
 
             triggerPointerUpPointerDown(true);
             button.hasMod('checked').should.be.false;
+            button.domElem.attr('aria-pressed').should.be.equal('false');
 
             triggerPointerUpPointerDown(false);
             button.hasMod('checked').should.be.false;
+            button.domElem.attr('aria-pressed').should.be.equal('false');
         });
     });
 });

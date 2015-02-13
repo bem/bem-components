@@ -17,6 +17,9 @@ block('menu')(
                     var i = 0, itemOrGroup;
                     while(itemOrGroup = content[i++]) {
                         if(itemOrGroup.block === 'menu-item') {
+                            itemOrGroup.attrs = itemOrGroup.attrs || {};
+                            itemOrGroup.attrs.role = itemOrGroup.attrs.role || 'menuitem';
+
                             firstItem || (firstItem = itemOrGroup);
                             if(containsVal(itemOrGroup.val)) {
                                 (itemOrGroup.mods = itemOrGroup.mods || {}).checked = true;
@@ -44,8 +47,20 @@ block('menu')(
         });
     }),
     attrs()(function() {
-        var attrs = { role : 'menu' };
-        this.mods.disabled || (attrs.tabindex = 0);
+        var ctx = this.ctx,
+            attrs = {
+                role : 'menu',
+                id : ctx.id,
+                'aria-label' : ctx.ariaLabel,
+                'aria-labelledby' : ctx.ariaLabelledby
+            };
+
+        if(this.mods.disabled) {
+            attrs['aria-disabled'] = true;
+        } else {
+            attrs.tabindex = ctx.tabIndex || 0;
+        }
+
         return attrs;
     }),
     js()(true),

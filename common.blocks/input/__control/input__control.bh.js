@@ -10,7 +10,9 @@ module.exports = function(bh) {
                 value : input.val,
                 maxlength : input.maxLength,
                 tabindex : input.tabIndex,
-                placeholder : input.placeholder
+                placeholder : input.placeholder,
+                'aria-label' : input.ariaLabel,
+                'aria-labelledby' : input.ariaLabelledby
             };
 
         input.autocomplete === false && (attrs.autocomplete = 'off');

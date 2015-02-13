@@ -9,6 +9,19 @@ block('modal')(
         };
     }),
 
+    attrs()(function() {
+        var ctx = this.ctx,
+            visible = !!this.mods.visible;
+        return {
+            role : 'dialog',
+            'aria-expanded' : visible,
+            'aria-hidden' : !visible,
+            'aria-label' : ctx.ariaLabel,
+            'aria-labelledby' : ctx.ariaLabelledby,
+            'aria-describedby' : ctx.ariaDescribedby
+        };
+    }),
+
     content()(function() {
         return {
             elem : 'table',

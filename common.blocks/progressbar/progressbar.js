@@ -24,7 +24,11 @@ provide(BEMDOM.decl(this.name, /** @lends progressbar.prototype */{
      * @returns {progressbar} this
      */
     setVal : function(val) {
-        this.elem('bar').css('width', (this._val = val) + '%');
+        this._val = val;
+
+        this.elem('bar').css('width', val + '%');
+        this.domElem.attr('aria-valuenow', val);
+
         return this;
     },
 

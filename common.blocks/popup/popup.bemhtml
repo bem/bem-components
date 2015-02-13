@@ -8,5 +8,10 @@ block('popup')(
             directions : ctx.directions,
             zIndexGroupLevel : ctx.zIndexGroupLevel
         };
+    }),
+    attrs()(function() {
+        return {
+            id : this.ctx.id
+        };
     })
 );

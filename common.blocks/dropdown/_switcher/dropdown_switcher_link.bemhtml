@@ -11,6 +11,11 @@ block('dropdown').mod('switcher', 'link').elem('switcher').content()(function() 
             dropdownMods = this.mods;
         resMods.theme || (resMods.theme = dropdownMods.theme);
         resMods.disabled = dropdownMods.disabled;
+
+        res.attrs || (res.attrs = {});
+        res.attrs['aria-haspopup'] = true;
+        res.attrs['aria-expanded'] = !!dropdownMods.opened;
+        res.attrs['aria-controls'] = this._popupId;
     }
 
     return res;

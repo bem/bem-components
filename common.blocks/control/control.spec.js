@@ -1,7 +1,9 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'control', 'jquery', 'dom', 'objects', 'next-tick', 'BEMHTML'],
-    function(provide, BEMDOM, Control, $, dom, objects, nextTick, BEMHTML) {
+    ['i-bem__dom', 'control', 'jquery', 'dom', 'objects', 'next-tick', 'BEMHTML', 'chai'],
+    function(provide, BEMDOM, Control, $, dom, objects, nextTick, BEMHTML, chai) {
+
+var expect = chai.expect;
 
 describe('control', function() {
     var bemjson = {
@@ -111,6 +113,16 @@ describe('control', function() {
 
             control.delMod('disabled');
             controlElem.prop('disabled').should.be.false;
+        });
+
+        it('should set "aria-disabled" attribute on disabling', function() {
+            expect(controlElem.attr('aria-disabled')).to.be.undefined;
+
+            control.setMod('disabled');
+            controlElem.attr('aria-disabled').should.be.equal('true');
+
+            control.delMod('disabled');
+            expect(controlElem.attr('aria-disabled')).to.be.undefined;
         });
     });
 });

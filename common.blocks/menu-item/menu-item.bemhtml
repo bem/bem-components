@@ -2,11 +2,20 @@ block('menu-item')(
     js()(function() {
         return { val : this.ctx.val };
     }),
-    attrs()({ role : 'menuitem' }),
+    attrs()(function() {
+        var attrs = {},
+            mods = this.mods;
+
+        mods.disabled && (attrs['aria-disabled'] = true);
+        mods.checked && (attrs['aria-checked'] = true);
+
+        return this.extend(applyNext(), attrs);
+    }),
     match(this._menuMods).def()(function() {
         var mods = this.mods;
         mods.theme = mods.theme || this._menuMods.theme;
         mods.disabled = mods.disabled || this._menuMods.disabled;
+
         applyNext();
     })
 );

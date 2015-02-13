@@ -8,6 +8,9 @@ module.exports = function(bh) {
 
         attrs.name = json.name;
         attrs.value = json.val;
+        attrs['aria-label'] = json.ariaLabel;
+        attrs['aria-labelledby'] = json.ariaLabelledby;
+
         json.checked && (attrs.checked = 'checked');
         json.disabled && (attrs.disabled = 'disabled');
 

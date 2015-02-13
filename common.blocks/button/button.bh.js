@@ -15,9 +15,13 @@ module.exports = function(bh) {
                 type : isRealButton? modType || 'button' : undefined,
                 name : json.name,
                 value : json.val,
-                title : json.title
+                title : json.title,
+                'aria-label' : json.ariaLabel,
+                'aria-labelledby' : json.ariaLabelledby
             })
             .mix({ elem : 'control' }); // NOTE: satisfy interface of `control`
+
+        ctx.mod('togglable') && ctx.attr('aria-pressed', !!ctx.mod('checked'));
 
         isRealButton &&
             ctx.mod('disabled') &&

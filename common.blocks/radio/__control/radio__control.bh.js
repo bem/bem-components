@@ -8,7 +8,9 @@ module.exports = function(bh) {
                 type : 'radio',
                 autocomplete : 'off',
                 name : json.name,
-                value : json.val
+                value : json.val,
+                'aria-label' : json.ariaLabel,
+                'aria-labelledby' : json.ariaLabelledby
             };
 
         json.checked && (attrs.checked = 'checked');

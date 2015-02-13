@@ -31,7 +31,9 @@ block('select').elem('menu')(
                 mode : mods.mode
             },
             val : this._select.val,
-            attrs : { tabindex : undefined },
+            attrs : {
+                tabindex : undefined
+            },
             content : this._select.options.map(function(optionOrGroup) {
                 return optionOrGroup.group?
                     {

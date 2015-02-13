@@ -2,7 +2,8 @@ module.exports = function(bh) {
 
     bh.match('attach', function(ctx, json) {
         ctx
-            .tParam('_attach', json)
+            .tParam('attach', json)
+            .tParam('textId', ctx.generateId())
             .tag('span')
             .js(true);
 
@@ -23,6 +24,7 @@ module.exports = function(bh) {
             button,
             {
                 elem : 'no-file',
+                attrs : { 'aria-hidden' : true },
                 content : json.noFileText
             }
         ], true);

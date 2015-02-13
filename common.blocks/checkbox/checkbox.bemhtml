@@ -15,7 +15,9 @@ block('checkbox')(
                     checked : mods.checked,
                     disabled : mods.disabled,
                     name : ctx.name,
-                    val : ctx.val
+                    val : ctx.val,
+                    ariaLabel : ctx.ariaLabel,
+                    ariaLabelledby : ctx.ariaLabelledby
                 }
             },
             ctx.text

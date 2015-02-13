@@ -23,11 +23,13 @@ provide(Button.decl({ modName : 'type', modVal : 'link' }, /** @lends button.pro
         'disabled' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
+
                 this.domElem.removeAttr('href');
             },
 
             '' : function() {
                 this.__base.apply(this, arguments);
+
                 this.domElem.attr('href', this._url);
             }
         }

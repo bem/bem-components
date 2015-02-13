@@ -3,7 +3,9 @@ block('attach').elem('control')(
     tag()('input'),
 
     attrs()(function() {
-        var attrs = { type : 'file' },
+        var attrs = {
+                type : 'file'
+            },
             attach = this._attach;
 
         // в js генерим html для attach__control без самого attach
@@ -11,6 +13,8 @@ block('attach').elem('control')(
             attrs.name = attach.name;
             attach.mods && attach.mods.disabled && (attrs.disabled = 'disabled');
             attach.tabIndex && (attrs.tabindex = attach.tabIndex);
+            attrs['aria-label'] = attach.ariaLabel;
+            attrs['aria-labelledby'] = attach.ariaLabelledby || this._textId;
         }
 
         return attrs;

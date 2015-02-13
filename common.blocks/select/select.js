@@ -42,7 +42,8 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
                 this._menu = this._popup.findBlockInside('menu')
                     .on({
                         'change' : this._onMenuChange,
-                        'item-click' : this._onMenuItemClick
+                        'item-click' : this._onMenuItemClick,
+                        'item-hover' : this._onMenuItemHover
                     }, this);
 
                 this._isPointerPressInProgress = false;
@@ -66,6 +67,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
         'opened' : {
             '*' : function(_, modVal) {
                 this._menu.setMod('focused', modVal);
+                this.elem('button').attr('aria-expanded', !!modVal);
             },
 
             'true' : function() {
@@ -214,6 +216,16 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
 
     _onMenuItemClick : function() {},
 
+    _onMenuItemHover : function() {
+        var activeDescendant = this._menu.domElem.attr('aria-activedescendant'),
+            button = this.elem('button');
+        if(activeDescendant) {
+            button.attr('aria-activedescendant', activeDescendant);
+        } else {
+            button.removeAttr('aria-activedescendant');
+        }
+    },
+
     _updateControl : function() {},
 
     _updateButton : function() {},
@@ -253,6 +265,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
     _isEventInPopup : function(e) {
         return dom.contains(this._popup.domElem, $(e.target));
     }
+
 }, /** @lends select */{
     live : function() {
         this.liveInitOnBlockInsideEvent(

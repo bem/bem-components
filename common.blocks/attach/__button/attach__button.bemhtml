@@ -8,3 +8,10 @@ block('button')
             ];
         })
     );
+
+block('button').elem('text')
+    .match(this._attach)(
+        attrs()(function() {
+            return { id : this._textId };
+        })
+    );

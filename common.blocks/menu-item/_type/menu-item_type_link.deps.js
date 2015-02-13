@@ -1,5 +1,5 @@
 [{
-    shouldDeps : 'link'
+    mustDeps : 'link'
 },
 {
     tech : 'spec.js',

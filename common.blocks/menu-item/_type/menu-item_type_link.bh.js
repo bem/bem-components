@@ -1,6 +1,8 @@
 module.exports = function(bh) {
 
     bh.match('menu-item_type_link', function(ctx) {
+        ctx.applyBase();
+
         ctx.mod('disabled') && ctx.tParam('_menuItemDisabled', true);
     });
 

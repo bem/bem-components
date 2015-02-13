@@ -9,11 +9,8 @@
 | Модификатор | Допустимые значения | Способы использования | Описание |
 | ----------- | ------------------- | -------------------- | -------- |
 | <a href="#type">type</a> | <code>'link'</code> | <code>BEMJSON</code> | Пункт меню, реализованный блоком <a href="../link/link.ru.md">link</a>. |
-| <a href="#checked">checked</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Выбор пункта меню. |
 | <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
 | <a href="#hovered">hovered</a> | <code>true</code> | – | Наведение курсором. |
-| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
-| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер пункта меню. |
 
 ### Специализированные поля блока
 
@@ -23,7 +20,7 @@
 
 ## Описание блока
 
-Блок `menu-item` предоставляет возможность изменять состояние, содержимое и тип пунктов меню.
+Блок `menu-item` предоставляет возможность изменять состояние, содержимое и тип пунктов меню. Используется только в составе блока `menu`.
 
 ### Модификаторы блока
 
@@ -39,34 +36,30 @@
 
 ```js
 {
-    block : 'menu-item',
-    mods : { theme : 'islands', size : 'm', type : 'link' },
-    content : {
-        block : 'link',
-        url : 'https://bem.info/',
-        content : 'bem.info'
-    }
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm' },
+    content : [
+        {
+            block : 'menu-item',
+            mods : { type : 'link' },
+            content : {
+                block : 'link',
+                url : 'https://bem.info/',
+                content : 'bem.info'
+            }
+        },
+        {
+            block : 'menu-item',
+            mods : { type : 'link' },
+            content : {
+                block : 'link',
+                url : 'https://tech.yandex.ru/',
+                content : 'tech.yandex.ru'
+            }
+        }
+    ]
 }
 ```
-
-<a name="checked"></a>
-
-#### Модификатор `checked`
-
-Допустимое значение: `true`.
-
-Способ использования: `BEMJSON`, `JS`.
-
-Используется для выбора пункта меню.
-
-```js
-{
-    block : 'menu-item',
-    mods : { theme : 'islands', size : 'm', checked : true },
-    content : 'Понять БЭМ'
-}
-```
-
 <a name="disabled"></a>
 
 #### Модификатор `disabled`
@@ -79,9 +72,19 @@
 
 ```js
 {
-    block : 'menu-item',
-    mods : { theme : 'islands', size : 'm', disabled : true },
-    content : 'Понять БЭМ'
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm' },
+    content : [
+        {
+            block : 'menu-item',
+            mods : { disabled : true },
+            content : 'BH'
+        },
+        {
+            block : 'menu-item',
+            content : 'BEMHTML'
+        }
+    ]
 }
 ```
 
@@ -94,78 +97,6 @@
 
 Выставляется автоматически при наведении курсором на пункт меню.
 
-<a name="theme"></a>
-#### Модификатор `theme`
-
-Допустимое значение: `'islands'`.
-
-Способ использования: `BEMJSON`.
-
-Отвечает за стилевое оформление блока.
-
-Необходимо использовать с модификатором [size](#size).
-
-```js
-{
-    block : 'menu-item',
-    mods : { theme : 'islands', size : 'm' },
-    content : 'Понять БЭМ'
-}
-```
-
-<a name="size"></a>
-
-#### Модификатор `size`
-
-Допустимые значения для темы `islands`: `'s'`, `'m'`, `'l'`, `'xl'`.
-
-Способ использования: `BEMJSON`.
-
-Задает размер блоку.
-
-Необходимо использовать с модификатором <a href="#theme">theme</a> в значении `islands`.
-
-**s**
-
-```js
-{
-    block : 'menu-item',
-    mods : { theme : 'islands', size : 's' },
-    content : 'Понять БЭМ'
-}
-```
-
-**m**
-
-```js
-{
-    block : 'menu-item',
-    mods : { theme : 'islands', size : 'm' },
-    content : 'Понять БЭМ'
-}
-```
-
-**l**
-
-```js
-{
-    block : 'menu-item',
-    mods : { theme : 'islands', size : 'l' },
-    content : 'Понять БЭМ'
-}
-```
-
-**xl**
-
-```js
-{
-    block : 'menu-item',
-    mods : { theme : 'islands', size : 'xl' },
-    content : 'Понять БЭМ'
-}
-```
-
-
 ### Специализированные поля блока
 
 <a name="val"></a>
@@ -177,9 +108,20 @@
 
 ```js
 {
-    block : 'menu-item',
-    mods : { theme : 'islands', size : 'm' },
-    content : 'Понять БЭМ',
-    val : '1'
+    block : 'menu',
+    mods : { theme : 'islands', size : 'm', mode : 'radio' },
+    val : 'item-1',
+    content : [
+        {
+            block : 'menu-item',
+            val : 'item-1',
+            content : 'BH'
+        },
+        {
+            block : 'menu-item',
+            val : 'item-2',
+            content : 'BEMHTML'
+        }
+    ]
 }
 ```

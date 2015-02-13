@@ -8,5 +8,13 @@ block('popup')(
             directions : ctx.directions,
             zIndexGroupLevel : ctx.zIndexGroupLevel
         };
+    }),
+    attrs()(function() {
+        var visible = !!this.mods.visible;
+        return {
+            id : this.ctx.id,
+            'aria-expanded' : visible,
+            'aria-hidden' : !visible
+        };
     })
 );

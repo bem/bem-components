@@ -38,6 +38,22 @@ describe('popup', function() {
         });
     });
 
+    describe('visible', function() {
+        it('should change aria-* attributes on an opening', function() {
+            var elem = popup.domElem;
+            elem.attr('aria-expanded').should.be.equal('false');
+            elem.attr('aria-hidden').should.be.equal('true');
+
+            popup.setMod('visible');
+            elem.attr('aria-expanded').should.be.equal('true');
+            elem.attr('aria-hidden').should.be.equal('false');
+
+            popup.delMod('visible');
+            elem.attr('aria-expanded').should.be.equal('false');
+            elem.attr('aria-hidden').should.be.equal('true');
+        });
+    });
+
     describe('destructing', function() {
         it('should be hidden on destruct', function() {
             popup.setMod('visible');

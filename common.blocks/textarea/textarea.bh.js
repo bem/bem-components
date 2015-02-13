@@ -4,7 +4,10 @@ module.exports = function(bh) {
                 id : json.id,
                 name : json.name,
                 tabindex : json.tabIndex,
-                placeholder : json.placeholder
+                placeholder : json.placeholder,
+                accesskey : json.accesskey,
+                'aria-label' : json.ariaLabel,
+                'aria-labelledby' : json.ariaLabelledBy
             };
 
         json.autocomplete === false && (attrs.autocomplete = 'off');

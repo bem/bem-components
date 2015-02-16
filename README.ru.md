@@ -143,6 +143,7 @@ BEM Components Library
 
 Миграция на последующие версии будет описана на отдельной странице.
 
+<a name="maintain"></a>
 ## Команда основной разработки
 
 * [veged](https://github.com/veged)

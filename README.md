@@ -121,12 +121,39 @@ If you use [project-stub](https://bem.info/tutorials/project-stub/) to start you
   * Safari *(the last two stable versions)*
   * Yandex *(the last two stable versions)*
   * Opera 12.6+
-  * Internet Explorer 10+
+  * Internet Explorer 9+
+  * Partially supported of Internet Explorer 8 ([more info](#ie8))
 
 * **Touch**
   * Android 4+
   * iOS 5+
   * Internet Explorer 10+
+
+<a name="ie8"></a>
+## Support IE8
+
+To support IE8, you must connect `es5-shim` and additional styles with the `*.ie.styl` extension to the page. To do this add the conditional comments to the `page` block, as shown below:
+
+```
+{
+    block : 'page',
+    title : 'Support IE8',
+    head : [
+        '<!--[if gt IE 8]><!-->',
+        { elem : 'css', url : '_simple.css' }, // styles for all browsers, including IE9+
+        '<!--<![endif]-->',
+        { elem : 'css', url : '_simple.ie.css', ie : 'lt IE 9' } // styles for IE8 and lower
+    ],
+    scripts : [
+        '<!--[if lt IE 9]>',
+        { elem : 'js', url : '//yastatic.net/es5-shims/0.0.1/es5-shims.min.js' }, // adding es5-shim for IE8 and lower
+        '<![endif]-->',
+        { elem : 'js', url : '_simple.js' }
+    ]
+}
+```
+
+Also, you can do it on your template level.
 
 <a name="changelog"></a>
 ## Changelog

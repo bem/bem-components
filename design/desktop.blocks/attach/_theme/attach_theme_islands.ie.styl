@@ -1,0 +1,27 @@
+.attach_theme_islands
+{
+    .attach__control
+    {
+        position: static;
+
+        vertical-align: top;
+    }
+
+    attachHeight = (24 28 32 38)
+    for sizeVal, i in s m l xl
+    {
+        .button_size_{sizeVal}
+        {
+            .attach__control
+            {
+                height: attachHeight[i]px;
+            }
+        }
+    }
+
+    .attach__no-file,
+    .button__text
+    {
+        display: none;
+    }
+}

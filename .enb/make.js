@@ -65,6 +65,7 @@ module.exports = function(config) {
                     [deps],
                     [files],
                     [css, { target : '?.noprefix.css' }],
+                    [css, { target : '?.noprefix.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
                     [autoprefixer, {
                         sourceTarget : '?.noprefix.css',
                         destTarget : '?.prefix.css',
@@ -135,6 +136,7 @@ module.exports = function(config) {
                         target : '?.pre.browser+bh.js'
                     }],
                     [borschik, { source : '?.prefix.css', target : '?.css' }],
+                    [borschik, { source : '?.noprefix.ie.css', target : '?.ie.css' }],
                     [borschik, { source : '?.ym.js', target : '?.browser.js' }],
                     [borschik, { source : '?.pre.bemhtml.js', target : '?.bemhtml.js' }],
                     [borschik, { source : '?.pre.bh.js', target : '?.bh.js' }],
@@ -143,7 +145,7 @@ module.exports = function(config) {
                 ]);
 
                 nodeConfig.addTargets([
-                    '?.css', '?.browser.js', '?.bemhtml.js', '?.bh.js', '?.browser+bemhtml.js', '?.browser+bh.js'
+                    '?.css', '?.ie.css', '?.browser.js', '?.bemhtml.js', '?.bh.js', '?.browser+bemhtml.js', '?.browser+bh.js'
                 ]);
             });
         });
@@ -178,6 +180,7 @@ module.exports = function(config) {
             // Client techs
             nodeConfig.addTechs([
                 [css, { target : '?.noprefix.css' }],
+                [css, { target : '?.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
                 [js, {
                     filesTarget : '?.js.files'
                 }],
@@ -262,7 +265,7 @@ module.exports = function(config) {
             });
 
             nodeConfig.addTargets([
-                '_?.css', '_?.js', '?.html'
+                '_?.css', '_?.ie.css', '_?.js', '?.html'
             ]);
         });
 
@@ -270,6 +273,7 @@ module.exports = function(config) {
             config.nodes(nodes, function(nodeConfig) {
                 nodeConfig.addTechs([
                     [copyFile, { source : '?.css', target : '_?.css' }],
+                    [copyFile, { source : '?.ie.css', target : '_?.ie.css' }],
                     [copyFile, { source : '?.js', target : '_?.js' }]
                 ]);
             });
@@ -279,6 +283,7 @@ module.exports = function(config) {
             config.nodes(nodes, function(nodeConfig) {
                 nodeConfig.addTechs([
                     [borschik, { source : '?.css', target : '_?.css', freeze : true, tech : 'cleancss' }],
+                    [borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, tech : 'cleancss' }],
                     [borschik, { source : '?.js', target : '_?.js', freeze : true }]
                 ]);
             });

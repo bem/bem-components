@@ -3,7 +3,10 @@
     title : 'bem-components: popup',
     mods : { theme : 'islands' },
     head : [
+        '<!--[if gt IE 8]><!-->',
         { elem : 'css', url : '_simple.css' },
+        '<!--<![endif]-->',
+        { elem : 'css', url : '_simple.ie.css', ie : 'lt IE 9' },
         { elem : 'js', url : '_simple.js' }
     ],
     content : [

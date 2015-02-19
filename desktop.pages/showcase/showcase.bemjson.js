@@ -2,7 +2,12 @@
     block : 'page',
     title : 'Showcase',
     mods : { theme : 'islands' },
-    head : [{ elem : 'css', url : '_showcase.css' }],
+    head : [
+        '<!--[if gt IE 8]><!-->',
+        { elem : 'css', url : '_showcase.css' },
+        '<!--<![endif]-->',
+        { elem : 'css', url : '_showcase.ie.css', ie : 'lt IE 9' }
+    ],
     scripts : [{ elem : 'js', url : '_showcase.js' }],
     content : [
         {
@@ -203,7 +208,7 @@
                             content : [
                                 {
                                     block : 'attach',
-                                    mods : { theme : 'simple' },
+                                    mods : { theme : 'islands', size : 'l' },
                                     button : {
                                         block : 'button',
                                         mods : { theme : 'islands', size : 'l' },

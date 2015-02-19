@@ -11,8 +11,19 @@ module.exports = function(bh) {
             .tParam('menuMods', menuMods)
             .mix({ elem : 'control' });
 
-        var attrs = { role : 'menu' };
-        ctx.mod('disabled') || (attrs.tabindex = 0);
+        var attrs = {
+            role : 'menu',
+            id : json.id,
+            'aria-label' : json.ariaLabel,
+            'aria-labelledby' : json.ariaLabelledBy
+        };
+
+        if(ctx.mod('disabled')) {
+            attrs['aria-disabled'] = true;
+        } else {
+            attrs.tabindex = json.tabIndex || 0;
+        }
+
         ctx.attrs(attrs);
 
         var firstItem,

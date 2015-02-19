@@ -3,7 +3,8 @@ modules.define(
     ['menu', 'i-bem__dom', 'jquery', 'sinon', 'chai', 'keyboard__codes', 'BEMHTML'],
     function(provide, Menu, BEMDOM, $, sinon, chai, keyCodes, BEMHTML) {
 
-var expect = chai.expect;
+var expect = chai.expect,
+    should = chai.should();
 
 describe('menu', function() {
     var menu, menuItems, menu2, menuItems2;
@@ -176,6 +177,14 @@ describe('menu', function() {
             menuItems2[0].hasMod('hovered').should.be.true;
         });
 
+        it('should change "aria-activedescendant" attribute if hovered item', function() {
+            var item = menuItems[1];
+            item.setMod('hovered');
+
+            var id = item.domElem.attr('id');
+            should.exist(id);
+            menu.domElem.attr('aria-activedescendant').should.be.equal(id);
+        });
     });
 
     describe('events', function() {

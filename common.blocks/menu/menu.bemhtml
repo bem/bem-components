@@ -13,7 +13,7 @@ block('menu')(
                             ctx.val.indexOf(val) > -1 :
                             ctx.val === val);
                 },
-                iterateItems = function(content) {
+                iterateItems = (function(content) {
                     var i = 0, itemOrGroup;
                     while(itemOrGroup = content[i++]) {
                         if(itemOrGroup.block === 'menu-item') {
@@ -26,7 +26,7 @@ block('menu')(
                             iterateItems(itemOrGroup.content);
                         }
                     }
-                };
+                }).bind(this);
 
             if(!this.isArray(ctx.content)) throw Error('menu: content must be an array of the menu items');
 
@@ -44,8 +44,20 @@ block('menu')(
         });
     }),
     attrs()(function() {
-        var attrs = { role : 'menu' };
-        this.mods.disabled || (attrs.tabindex = 0);
+        var ctx = this.ctx,
+            attrs = {
+                role : 'menu',
+                id : ctx.id,
+                'aria-label' : ctx.ariaLabel,
+                'aria-labelledby' : ctx.ariaLabelledBy
+            };
+
+        if(this.mods.disabled) {
+            attrs['aria-disabled'] = true;
+        } else {
+            attrs.tabindex = ctx.tabIndex || 0;
+        }
+
         return attrs;
     }),
     js()(true),

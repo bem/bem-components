@@ -4,8 +4,8 @@
 
 modules.define(
     'menu',
-    ['i-bem__dom', 'control', 'keyboard__codes', 'menu-item'],
-    function(provide, BEMDOM, Control, keyCodes) {
+    ['i-bem__dom', 'control', 'keyboard__codes', 'identify', 'menu-item'],
+    function(provide, BEMDOM, Control, keyCodes, identify) {
 
 /** @const Number */
 var TIMEOUT_KEYBOARD_SEARCH = 1500;
@@ -30,6 +30,8 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
                     index : 0,
                     time : 0
                 };
+
+                this._activedescendant = identify();
 
                 this.hasMod('focused') && this.bindToDoc('keydown', this._onKeyDown);
             }
@@ -134,8 +136,16 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
     _onItemHover : function(item) {
         if(item.hasMod('hovered')) {
             this._hoveredItem && this._hoveredItem.delMod('hovered');
+
+            var id = this._activedescendant;
+            item.domElem.attr('id', id);
+            this.domElem.attr('aria-activedescendant', id);
+
             this._scrollToItem(this._hoveredItem = item);
         } else if(this._hoveredItem === item) {
+            item.domElem.removeAttr('id');
+            this.domElem.removeAttr('aria-activedescendant');
+
             this._hoveredItem = null;
         }
     },

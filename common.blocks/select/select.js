@@ -59,12 +59,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             },
 
             '' : function() {
-                this
-                    .unbindFromDoc('keydown', this._onKeyDown)
-                    .unbindFromDoc('keypress', this._onKeyPress)
-                    .delMod('opened')
-                    ._button
-                        .delMod('focused');
+                this._blur();
             }
         },
 
@@ -136,9 +131,22 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
 
     _focus : function() {
         this
-            .bindToDoc('keydown', this._onKeyDown)
-            .bindToDoc('keypress', this._onKeyPress)
+            .bindTo('button', {
+                keydown : this._onKeyDown,
+                keypress : this._onKeyPress
+            })
             ._button.setMod('focused');
+    },
+
+    _blur : function() {
+        this
+            .unbindFrom('button', {
+                keydown : this._onKeyDown,
+                keypress : this._onKeyPress
+            })
+            .delMod('opened')
+            ._button
+                .delMod('focused');
     },
 
     _updateMenuWidth : function() {
@@ -172,8 +180,13 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
     },
 
     _onKeyDown : function(e) {
-        if(!this.hasMod('opened') &&
-                (e.keyCode === keyCodes.UP || e.keyCode === keyCodes.DOWN) && !e.shiftKey) {
+        if(this.hasMod('opened')) {
+            if(e.keyCode === keyCodes.ESC) {
+                // NOTE: stop propagation to prevent from being listened by global handlers
+                e.stopPropagation();
+                this.delMod('opened');
+            }
+        } else if((e.keyCode === keyCodes.UP || e.keyCode === keyCodes.DOWN) && !e.shiftKey) {
             e.preventDefault();
             this.setMod('opened');
         }

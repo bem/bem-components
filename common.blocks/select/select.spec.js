@@ -153,24 +153,26 @@ describe('select', function() {
 
     describe('keyboard', function() {
         it('should be opened on "down" press if focused', function() {
-            pressDownKey();
+            var buttonElem = select.elem('button');
+            pressDownKey(buttonElem);
             select.hasMod('opened').should.be.false;
             select.setMod('focused');
-            pressDownKey();
+            pressDownKey(buttonElem);
             select.hasMod('opened').should.be.true;
         });
 
         it('should be opened on "up" press if focused', function() {
-            pressUpKey();
+            var buttonElem = select.elem('button');
+            pressUpKey(buttonElem);
             select.hasMod('opened').should.be.false;
             select.setMod('focused');
-            pressUpKey();
+            pressUpKey(buttonElem);
             select.hasMod('opened').should.be.true;
         });
 
         it('should be closed on "esc" press', function() {
             select.setMod('opened');
-            pressEscKey();
+            pressEscKey(select.elem('button'));
             select.hasMod('opened').should.be.false;
         });
     });
@@ -195,20 +197,20 @@ describe('select', function() {
 
 provide();
 
-function doKeyDown(code) {
-    $('body').trigger($.Event('keydown', { keyCode : code }));
+function doKeyDown(code, elem) {
+    elem.trigger($.Event('keydown', { keyCode : code }));
 }
 
-function pressDownKey() {
-    doKeyDown(keyCodes.DOWN);
+function pressDownKey(elem) {
+    doKeyDown(keyCodes.DOWN, elem);
 }
 
-function pressUpKey() {
-    doKeyDown(keyCodes.UP);
+function pressUpKey(elem) {
+    doKeyDown(keyCodes.UP, elem);
 }
 
-function pressEscKey() {
-    doKeyDown(keyCodes.ESC);
+function pressEscKey(elem) {
+    doKeyDown(keyCodes.ESC, elem);
 }
 
 function buildSelect(bemjson) {

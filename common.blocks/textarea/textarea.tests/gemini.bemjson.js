@@ -165,12 +165,6 @@
                 mods : { theme : 'islands', size : 'm', width : 'available', disabled : true }
             },
             cls : 'islands-width-available-disabled'
-        },
-        {
-            block : 'textarea',
-            mods : { theme : 'islands', size : 'm' },
-            val : 'some val',
-            cls : 'islands-clear-enabled'
         }
     ]
 });

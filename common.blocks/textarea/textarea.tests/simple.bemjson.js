@@ -42,7 +42,7 @@
         { attrs : { style : 'width: 350px;' }, content : {
             block : 'textarea',
             mods : { theme : 'simple', size : 'm', width : 'available' },
-            val : 'width',
+            val : 'width_available',
             placeholder : 'placeholder'
         } },
         { tag : 'hr' },
@@ -58,14 +58,12 @@
             mods : { theme : 'islands', size : 'm', disabled : true },
             val : 'disabled'
         } },
-
         { attrs : { style : 'width: 350px;' }, content : {
             block : 'textarea',
             mods : { theme : 'islands', size : 'm', width : 'available' },
-            val : 'width',
+            val : 'width_available',
             placeholder : 'placeholder'
         } },
-
         { tag : 'h3', content : 'size' },
         { tag : 'p', content : {
             block : 'textarea',

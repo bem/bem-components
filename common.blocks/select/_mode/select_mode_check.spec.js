@@ -96,7 +96,7 @@ describe('select_mode_check', function() {
     describe('keyboard', function() {
         it('should select "first" item by pressing on "f"', function() {
             select.setMod('focused');
-            doKeyPress('f');
+            doKeyPress('f', select.elem('button'));
             select.getVal().should.be.eql([1]);
         });
     });
@@ -105,8 +105,8 @@ describe('select_mode_check', function() {
 
 provide();
 
-function doKeyPress(char) {
-    $('body').trigger($.Event('keypress', { charCode : char.charCodeAt() }));
+function doKeyPress(char, elem) {
+    elem.trigger($.Event('keypress', { charCode : char.charCodeAt() }));
 }
 
 function buildSelect(bemjson) {

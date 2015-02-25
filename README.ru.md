@@ -126,12 +126,40 @@ BEM Components Library
   * Safari *(две последние стабильные версии)*
   * Yandex *(две последние стабильные версии)*
   * Opera 12.6+
-  * Internet Explorer 10+
+  * Internet Explorer 9+
+  * Частичная поддержка Internet Explorer 8 ([подробнее](#ie8))
 
 * **Touch**
   * Android 4+
   * iOS 5+
   * Internet Explorer 10+
+
+<a name="ie8"></a>
+### Поддержка IE8
+
+Для поддержки данного браузера необходимо подключить на страницу `es5-shim` и дополнительные стили с расширением `*.ie.styl`. Для этого нужно в блоке `page` добавить условные комментарии как показано ниже:
+
+```
+{
+    block : 'page',
+    title : 'Поддержка IE8',
+    head : [
+        '<!--[if gt IE 8]><!-->',
+        { elem : 'css', url : '_simple.css' }, // стили для всех браузеров, в т.ч. IE9+
+        '<!--<![endif]-->',
+        { elem : 'css', url : '_simple.ie.css', ie : 'lt IE 9' } // стили для IE8
+    ],
+    scripts : [
+        '<!--[if lt IE 9]>',
+        { elem : 'js', url : '//yastatic.net/es5-shims/0.0.1/es5-shims.min.js' }, // Подключение es5-shim для IE8 и ниже
+        '<![endif]-->',
+        { elem : 'js', url : '_simple.js' }
+    ]
+}
+```
+
+Также вы можете это сделать на уровне шаблонов.
+
 
 <a name="changelog"></a>
 ## История изменений

@@ -4,11 +4,22 @@ block('progressbar')(
         return { val : this.ctx.val };
     }),
 
+    attrs()(function() {
+        return {
+            role : 'progressbar',
+            'aria-label' : this.ctx.ariaLabel,
+            'aria-labelledby' : this.ctx.ariaLabelledBy,
+            'aria-valuemin' : 0,
+            'aria-valuemax' : 100,
+            'aria-valuenow' : this.ctx.val || 0
+        };
+    }),
+
     content()(
         function() {
             return {
                 elem : 'bar',
-                attrs : { style : 'width:' + this.ctx.val + '%' }
+                attrs : { style : 'width:' + (this.ctx.val || 0) + '%' }
             };
         },
         match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {

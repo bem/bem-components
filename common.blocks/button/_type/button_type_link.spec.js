@@ -52,6 +52,14 @@ describe('button_type_link', function() {
             button.delMod('disabled');
             button.domElem.attr('href').should.be.equal('/');
         });
+
+        it('should set "aria-disabled" attribute on disable', function() {
+            button.setMod('disabled');
+            expect(button.domElem.attr('aria-disabled')).to.be.equal('true');
+
+            button.delMod('disabled');
+            expect(button.domElem.attr('aria-disabled')).to.be.undefined;
+        });
     });
 
     function buildButton(bemjson) {

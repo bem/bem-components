@@ -6,5 +6,6 @@
     id : 'btn',
     text : 'button',
     icon : { block : 'icon', mods : { social : 'twitter' } },
-    tabIndex : 0
+    tabIndex : 0,
+    accesskey : 'c'
 });

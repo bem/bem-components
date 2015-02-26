@@ -46,6 +46,10 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                     ._captureZIndex()
                     ._bindToParentPopup()
                     .bindTo('pointerpress pointerclick', this._setPreventHideByClick);
+
+                this.domElem
+                    .attr('aria-expanded', 'true')
+                    .attr('aria-hidden', 'false');
             },
 
             '' : function() {
@@ -53,6 +57,10 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                     ._releaseZIndex()
                     ._unbindFromParentPopup()
                     .unbindFrom('pointerpress pointerclick', this._setPreventHideByClick);
+
+                this.domElem
+                    .attr('aria-expanded', 'false')
+                    .attr('aria-hidden', 'true');
             }
         }
     },

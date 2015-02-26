@@ -1,12 +1,13 @@
 block('dropdown')(
     js()(true),
-
     content()(function() {
         var popup = this.ctx.popup;
 
         if(this.isSimple(popup) || popup.block !== 'popup') {
             popup = { block : 'popup', content : popup };
         }
+
+        this._popupId = popup.id || (popup.id = this.identify());
 
         var popupMods = popup.mods || (popup.mods = {});
         popupMods.theme || (popupMods.theme = this.mods.theme);

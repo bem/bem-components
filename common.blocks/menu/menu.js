@@ -30,25 +30,6 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
                     index : 0,
                     time : 0
                 };
-
-                this.hasMod('focused') && this.bindToDoc('keydown', this._onKeyDown);
-            }
-        },
-
-        'focused' : {
-            'true' : function() {
-                this.__base.apply(this, arguments);
-                this
-                    .bindToDoc('keydown', this._onKeyDown) // NOTE: should be called after __base
-                    .bindToDoc('keypress', this._onKeyPress);
-            },
-
-            '' : function() {
-                this
-                    .unbindFromDoc('keydown', this._onKeyDown)
-                    .unbindFromDoc('keypress', this._onKeyPress)
-                    .__base.apply(this, arguments);
-                this._hoveredItem && this._hoveredItem.delMod('hovered');
             }
         },
 
@@ -129,6 +110,23 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
         }
 
         return null;
+    },
+
+    /** @override **/
+    _onFocus : function() {
+        this.__base.apply(this, arguments);
+        this
+            .bindToDoc('keydown', this._onKeyDown) // NOTE: should be called after __base
+            .bindToDoc('keypress', this._onKeyPress);
+    },
+
+    /** @override **/
+    _onBlur : function() {
+        this
+            .unbindFromDoc('keydown', this._onKeyDown)
+            .unbindFromDoc('keypress', this._onKeyPress)
+            .__base.apply(this, arguments);
+        this._hoveredItem && this._hoveredItem.delMod('hovered');
     },
 
     _onItemHover : function(item) {

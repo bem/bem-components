@@ -27,8 +27,8 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
             'inited' : function() {
                 this._focused = dom.containsFocus(this.elem('control'));
                 this._focused?
-                    // if control is already in focus, we need to set focused mod
-                    this.setMod('focused') :
+                    // if control is already in focus, we need to force _onFocus
+                    this._onFocus() :
                     // if block already has focused mod, we need to focus control
                     this.hasMod('focused') && this._focus();
 

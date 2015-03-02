@@ -47,13 +47,13 @@ provide(Popup.decl({ modName : 'target' }, /** @lends popup.prototype */{
             'true' : function() {
                 this.__base.apply(this, arguments);
                 this
-                    .bindToWin('scroll resize', this._onWinScollAndResize)
+                    .bindToWin('scroll resize', this._onWinScrollAndResize)
                     .redraw();
             },
 
             '' : function() {
                 this.__base.apply(this, arguments);
-                this.unbindFromWin('scroll resize', this._onWinScollAndResize);
+                this.unbindFromWin('scroll resize', this._onWinScrollAndResize);
             }
         }
     },
@@ -286,7 +286,7 @@ provide(Popup.decl({ modName : 'target' }, /** @lends popup.prototype */{
         return ~direction.indexOf('-' + secondaryDirection);
     },
 
-    _onWinScollAndResize : function() {
+    _onWinScrollAndResize : function() {
         this.redraw();
     },
 

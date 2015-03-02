@@ -219,7 +219,7 @@ provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.p
     /**
      * @override
      */
-    _onWinScollAndResize : function() {
+    _onWinScrollAndResize : function() {
         this.__base.apply(this, arguments);
         this._updateIsAnchorVisible();
     },

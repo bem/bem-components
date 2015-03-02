@@ -119,6 +119,11 @@ ctx = '.input_theme_islands'
 
         background: rgba(178, 142, 0, 0.6);
         box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
+
+        .input__control
+        {
+            text-overflow: clip; // fix ellipsis bug in Chrome
+        }
     }
 
     &.input_disabled

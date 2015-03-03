@@ -3,7 +3,9 @@
     display: none;
     visibility: hidden;
 
-    background: rgba(50, 50, 50, .2);
+    margin: -9999px 0 0 -9999px; // to prevent clickability and visiblity of internal elements with visiblity: visible
+
+    background: rgba(50, 50, 50, 0.2);
 
     &,
     & .modal__content
@@ -17,8 +19,8 @@
     {
         margin: 5px;
 
-        background-color: #fff;
         border: 1px solid #bfbfbf;
+        background-color: #fff;
     }
 
     &.modal_js_inited
@@ -40,6 +42,8 @@
     {
         visibility: visible;
 
+        margin: 0;
+
         &.modal_has-animation
         {
             animation-name: modal_theme_islands_visible;
@@ -49,7 +53,6 @@
                 animation-name: modal_theme_islands_visible__content;
             }
         }
-
     }
 }
 
@@ -59,12 +62,23 @@
     0%
     {
         visibility: visible;
+
+        margin: 0;
+
         opacity: 1;
+    }
+
+    99%
+    {
+        margin: 0;
     }
 
     100%
     {
         visibility: hidden;
+
+        margin: -9999px 0 0 -9999px;
+
         opacity: 0;
     }
 }

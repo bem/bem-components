@@ -11,13 +11,13 @@
     scripts : [{ elem : 'js', url : '_showcase.js' }],
     content : [
         {
-            block : 'table',
+            block : 'table-2',
             content : [
                 {
-                    elem : 'row',
+                    elem : 'row-2',
                     content : [
                         {
-                            elem : 'cell',
+                            elem : 'cell-2',
                             content : {
                                 block : 'button',
                                 mods : { theme : 'islands', size : 's' },
@@ -25,7 +25,7 @@
                             }
                         },
                         {
-                            elem : 'cell',
+                            elem : 'cell-2',
                             content : {
                                 block : 'checkbox-group',
                                 name : 'islands',
@@ -40,11 +40,11 @@
                             }
                         },
                         {
-                            elem : 'cell',
+                            elem : 'cell-2',
                             content : [
                                 {
                                     block : 'input',
-                                    mods : { theme : 'islands', 'has-clear' : true, size : 'l' },
+                                    mods : { 'has-clear' : true, size : 'l', type : 'search' },
                                     val : 'Find images',
                                     placeholder : 'type a question'
                                 },
@@ -73,7 +73,7 @@
                             ]
                         },
                         {
-                            elem : 'cell',
+                            elem : 'cell-2',
                             content : {
                                 block : 'select',
                                 mods : { mode : 'check', theme : 'islands', size : 'l' },
@@ -91,10 +91,10 @@
                     ]
                 },
                 {
-                    elem : 'row',
+                    elem : 'row-2',
                     content : [
                         {
-                            elem : 'cell',
+                            elem : 'cell-2',
                             content : {
                                 block : 'button',
                                 mods : { theme : 'islands', size : 'm', view : 'action' },
@@ -102,7 +102,7 @@
                             }
                         },
                         {
-                            elem : 'cell',
+                            elem : 'cell-2',
                             content : [
                                 {
                                     block : 'radio-group',
@@ -128,11 +128,7 @@
                             ]
                         },
                         {
-                            block: 'test2',
-                            js: true
-                        },
-                        {
-                            elem : 'cell',
+                            elem : 'cell-2',
                             content : [
                                 {
                                     block : 'radio-group',
@@ -176,7 +172,7 @@
                             ]
                         },
                         {
-                            elem : 'cell',
+                            elem : 'cell-2',
                             content : {
                                 block : 'select',
                                 mods : { mode : 'radio-check', theme : 'islands', size : 'l' },
@@ -192,10 +188,10 @@
                     ]
                 },
                 {
-                    elem : 'row',
+                    elem : 'row-2',
                     content : [
                         {
-                            elem : 'cell',
+                            elem : 'cell-2',
                             content : {
                                 block : 'button',
                                 mods : { theme : 'islands', size : 'l', togglable : 'check' },
@@ -204,7 +200,7 @@
 
                         },
                         {
-                            elem : 'cell',
+                            elem : 'cell-2',
                             content : [
                                 {
                                     block : 'attach',
@@ -220,7 +216,7 @@
                             ]
                         },
                         {
-                            elem : 'cell',
+                            elem : 'cell-2',
                             content : {
                                 block : 'textarea',
                                 mods : { theme : 'islands', size : 'l' },
@@ -229,7 +225,7 @@
                             }
                         },
                         {
-                            elem : 'cell',
+                            elem : 'cell-2',
                             content : {
                                 block : 'test',
                                 js : true,

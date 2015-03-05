@@ -1,1 +1,0 @@
-block('dropdown').elem('switcher').tag()(false);

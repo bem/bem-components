@@ -40,7 +40,7 @@
                     switcher : 'disabled',
                     popup : 'bemjson'
                 }
-            ].map(function(content) { return { tag : 'p', content : content }; })
+            ].map(function(content) { return { tag : 'div', attrs : { style : 'margin: 1em 0' }, content : content }; })
         },
 
         { tag : 'hr' },
@@ -73,7 +73,7 @@
                     switcher : 'disabled',
                     popup : 'bemjson'
                 }
-            ].map(function(content) { return { tag : 'p', content : content }; })
+            ].map(function(content) { return { tag : 'div', attrs : { style : 'margin: 1em 0' }, content : content }; })
         },
 
         { tag : 'hr' },
@@ -99,15 +99,6 @@
                     mods : { switcher : 'button', theme : 'islands', size : 's' },
                     switcher : 'button',
                     popup : { block : 'popup', mods : { autoclosable : true, theme : 'islands' }, content : 'custom popup' }
-                },
-                {
-                    block : 'dropdown',
-                    mods : { switcher : 'button', theme : 'islands' },
-                    switcher : {
-                        block : 'bla',
-                        content : { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'wrapped button' }
-                    },
-                    popup : 'bemjson'
                 },
                 {
                     block : 'dropdown',

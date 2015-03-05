@@ -1,17 +1,21 @@
-block('dropdown').mod('switcher', 'link').elem('switcher').content()(function() {
-    var content = this.ctx.content;
-    if(Array.isArray(content)) return content;
+block('dropdown').mod('switcher', 'link').elem('switcher').def()(function() {
+    var dropdown = this._dropdown,
+        switcher = dropdown.switcher;
 
-    var res = this.isSimple(content)?
-        { block : 'link', mods : { pseudo : true }, content : content } :
-        content;
+    if(Array.isArray(switcher)) return switcher;
+
+    var res = this.isSimple(switcher)?
+        { block : 'link', mods : { pseudo : true }, content : switcher } :
+        switcher;
 
     if(res.block === 'link') {
         var resMods = res.mods || (res.mods = {}),
             dropdownMods = this.mods;
         resMods.theme || (resMods.theme = dropdownMods.theme);
         resMods.disabled = dropdownMods.disabled;
+
+        res.mix = apply('mix');
     }
 
-    return res;
+    return applyCtx(res);
 });

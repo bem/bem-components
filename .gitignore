@@ -27,3 +27,4 @@ libs
 /*.tests
 /*.sets
 /*.tmpl-specs
+/test/dist/fixtures

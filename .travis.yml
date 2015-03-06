@@ -21,6 +21,7 @@ env:
     - TEST_SCOPE: specs
     - TEST_SCOPE: tmpls
     - TEST_SCOPE: gemini
+    - TEST_SCOPE: dists
 
 matrix:
   fast_finish: true

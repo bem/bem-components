@@ -153,6 +153,14 @@
                 val : 2,
                 name : 'r1',
                 text : 'size_m'
+            },
+            ' ',
+            {
+                block : 'checkbox',
+                mods : { theme : 'islands', size : 'm', checked : true, disabled : true },
+                val : 2,
+                name : 'r1',
+                text : 'size_m'
             }
         ] },
         { tag : 'p', content : [
@@ -167,6 +175,14 @@
             {
                 block : 'checkbox',
                 mods : { theme : 'islands', size : 'l', checked : true },
+                val : 2,
+                name : 'r1',
+                text : 'size_l'
+            },
+            ' ',
+            {
+                block : 'checkbox',
+                mods : { theme : 'islands', size : 'l', checked : true, disabled : true },
                 val : 2,
                 name : 'r1',
                 text : 'size_l'

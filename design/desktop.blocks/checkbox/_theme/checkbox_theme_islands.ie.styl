@@ -66,17 +66,14 @@
 
         &.checkbox_checked .checkbox__box:after
         {
-            filter: unquote('alpha(opacity=40)');
+            background-position: 0 100%;
         }
     }
 
-    for size, i in m l {
-        &.checkbox_size_{size} .checkbox__box
+    for size in m l {
+        &.checkbox_size_{size} .checkbox__box:after
         {
-            &:after
-            {
-                background-image: url('tip_size_'size'.png');
-            }
+            background-image: url('tip_size_'size'.png');
         }
     }
 }

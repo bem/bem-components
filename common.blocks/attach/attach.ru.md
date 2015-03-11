@@ -17,6 +17,7 @@
 
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
+| <a href="#name">name</a> | <code>String</code> | Уникальное имя блока. |
 | <a href="#button">button</a> | <code>String</code>, <code>BEMJSON</code> | Содержимое кнопки для выбора файла. |
 | <a href="#nofiletext">noFileText</a> | <code>String</code> | Текст сообщения, когда файл не выбран. |
 
@@ -157,6 +158,23 @@
 ```
 
 ### Специализированные поля блока
+
+<a name="name"></a>
+
+#### Поле `name`
+
+Тип: `String`.
+
+Определяет уникальное имя блока.
+
+```js
+{
+    block : 'attach',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'attach-logo'
+    button : 'Выберите файл'
+}
+```
 
 <a name="button"></a>
 

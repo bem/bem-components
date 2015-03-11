@@ -58,7 +58,7 @@ Specifies the address of the icon.
     icon :
     {
         block : 'icon',
-        url : 'https://bem.info/m/_/wuyLRHj8p7lF3eT96kTKumCdXzM.svg'
+        url : 'https://img-fotki.yandex.ru/get/5405/259818507.0/0_130be5_948d59aa_S'
     }
 }
 ```

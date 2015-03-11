@@ -31,7 +31,7 @@ Specifies the tooltip content.
 ```js
 {
     block : 'image',
-    url : 'https://bem.info/m/_/UDW_1du_HiznlY0CUbPFjWQH3iY.svg',
+    url : 'https://img-fotki.yandex.ru/get/16159/259818507.0/0_130be6_4116d8e7_S',
     title : 'Find detailed description on bem.info'
 }
 ```
@@ -46,9 +46,7 @@ Specifies the alternate text of the image. The text provides useful information 
 ```js
 {
     block : 'image',
-    url : 'https://bem.info/m/_/wuyLRHj8p7lF3eT96kTKumCdXzM.svg',
-    width : 100,
-    height : 100,
+    url : 'https://img-fotki.yandex.ru/get/6737/259818507.0/0_130be4_7315e1e0_S',
     alt : 'BEM'
 }
 ```
@@ -63,9 +61,7 @@ Specifies the address for the image uploading.
 ```js
 {
     block : 'image',
-    url : 'https://bem.info/m/_/lHGkpIFauDlxw9MGg869APxKdkc.svg',
-    width : 100,
-    height : 100
+    url : 'https://img-fotki.yandex.ru/get/5405/259818507.0/0_130be5_948d59aa_S'
 }
 ```
 

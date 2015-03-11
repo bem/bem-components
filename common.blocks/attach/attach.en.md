@@ -17,6 +17,7 @@ Use this block to upload a file for sending to a server.
 
 | Field | Type | Description |
 | ---- | --- | -------- |
+| <a href="#name">name</a> | <code>String</code> | The unique block name. |
 | <a href="#button">button</a> | <code>String</code>, <code>BEMJSON</code> | Content of hte button for a file selection. |
 | <a href="#nofiletext">noFileText</a> | <code>String</code> | The text message that appears when the file is not selected. |
 
@@ -156,6 +157,23 @@ Sets the size value for all types of attach forms.
 ```
 
 ### Custom fields of the block
+
+<a name="name"></a>
+
+#### `name` field
+
+Type: `String`.
+
+Specifies the block unique name.
+
+```js
+{
+    block : 'attach',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'attach-logo'
+    button : 'Select file'
+}
+```
 
 <a name="button"></a>
 

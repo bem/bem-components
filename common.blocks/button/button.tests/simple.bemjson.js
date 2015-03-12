@@ -3,12 +3,19 @@
     title : 'bem-components: button',
     mods : { theme : 'islands' },
     head : [
-        '<!--[if gt IE 8]><!-->',
-        { elem : 'css', url : '_simple.css' },
-        '<!--<![endif]-->',
-        { elem : 'css', url : '_simple.ie.css', ie : 'lt IE 9' },
-        { elem : 'js', url : '_simple.js' }
+        {
+            elem : 'conditional-comment',
+            condition : '> IE 8',
+            msieOnly : false,
+            content : { elem : 'css', url : '_simple.css' }
+        },
+        {
+            elem : 'conditional-comment',
+            condition : '<= IE 8',
+            content : { elem : 'css', url : '_simple.ie.css' }
+        }
     ],
+    scripts : [{ elem : 'js', url : '_simple.js' }],
     content : [
 
         { tag : 'h2', content : 'default' },

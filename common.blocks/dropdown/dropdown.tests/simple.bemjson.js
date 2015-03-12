@@ -3,9 +3,19 @@
     title : 'bem-components: dropdown',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_simple.css' },
-        { elem : 'js', url : '_simple.js' }
+        {
+            elem : 'conditional-comment',
+            condition : '> IE 8',
+            msieOnly : false,
+            content : { elem : 'css', url : '_simple.css' }
+        },
+        {
+            elem : 'conditional-comment',
+            condition : '<= IE 8',
+            content : { elem : 'css', url : '_simple.ie.css' }
+        }
     ],
+    scripts : [{ elem : 'js', url : '_simple.js' }],
     content : [
 
         { tag : 'h2', content : 'default' },

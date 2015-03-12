@@ -2,7 +2,17 @@
     block : 'page',
     title : '10-modal.js',
     head : [
-        { elem : 'css', url : '_10-modal.css' }
+        {
+            elem : 'conditional-comment',
+            condition : '> IE 8',
+            msieOnly : false,
+            content : { elem : 'css', url : '_10-modal.css' }
+        },
+        {
+            elem : 'conditional-comment',
+            condition : '<= IE 8',
+            content : { elem : 'css', url : '_10-modal.ie.css' }
+        }
     ],
     scripts : [
         { elem : 'js', url : '_10-modal.js' }

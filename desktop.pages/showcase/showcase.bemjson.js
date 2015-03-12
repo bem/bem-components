@@ -3,10 +3,17 @@
     title : 'Showcase',
     mods : { theme : 'islands' },
     head : [
-        '<!--[if gt IE 8]><!-->',
-        { elem : 'css', url : '_showcase.css' },
-        '<!--<![endif]-->',
-        { elem : 'css', url : '_showcase.ie.css', ie : 'lt IE 9' }
+        {
+            elem : 'conditional-comment',
+            condition : '> IE 8',
+            msieOnly : false,
+            content : { elem : 'css', url : '_showcase.css' }
+        },
+        {
+            elem : 'conditional-comment',
+            condition : '<= IE 8',
+            content : { elem : 'css', url : '_showcase.ie.css' }
+        }
     ],
     scripts : [{ elem : 'js', url : '_showcase.js' }],
     content : [

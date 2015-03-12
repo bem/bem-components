@@ -2,7 +2,17 @@
     block : 'page',
     title : '20-popup',
     head : [
-        { elem : 'css', url : '_20-popup.css' }
+        {
+            elem : 'conditional-comment',
+            condition : '> IE 8',
+            msieOnly : false,
+            content : { elem : 'css', url : '_20-popup.css' }
+        },
+        {
+            elem : 'conditional-comment',
+            condition : '<= IE 8',
+            content : { elem : 'css', url : '_20-popup.ie.css' }
+        }
     ],
     scripts : [
         { elem : 'js', url : '_20-popup.js' }

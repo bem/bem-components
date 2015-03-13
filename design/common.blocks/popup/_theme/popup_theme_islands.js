@@ -6,7 +6,7 @@ provide(Popup.decl({ modName : 'theme', modVal : 'islands' }, {
             this.__base(),
             {
                 mainOffset : 5,
-                viewportOffset : 5
+                viewportOffset : 10
             });
     }
 }));

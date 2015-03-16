@@ -171,7 +171,7 @@
 {
     block : 'attach',
     mods : { theme : 'islands', size : 'm' },
-    name : 'attach-logo'
+    name : 'attach-logo',
     button : 'Выберите файл'
 }
 ```

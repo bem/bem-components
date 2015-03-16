@@ -170,7 +170,7 @@ Specifies the block unique name.
 {
     block : 'attach',
     mods : { theme : 'islands', size : 'm' },
-    name : 'attach-logo'
+    name : 'attach-logo',
     button : 'Select file'
 }
 ```

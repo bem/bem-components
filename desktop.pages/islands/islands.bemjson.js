@@ -3,9 +3,19 @@
     title : 'bem-components: islands theme',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_islands.css' },
-        { elem : 'js', url : '_islands.js' }
+        {
+            elem : 'conditional-comment',
+            condition : '> IE 8',
+            msieOnly : false,
+            content : { elem : 'css', url : '_islands.css' }
+        },
+        {
+            elem : 'conditional-comment',
+            condition : '<= IE 8',
+            content : { elem : 'css', url : '_islands.ie.css' }
+        }
     ],
+    scripts : [ { elem : 'js', url : '_islands.js' } ],
     content : [
         { tag : 'h2', content : 'islands theme' },
 

@@ -142,17 +142,26 @@ BEM Components Library
 ```
 {
     block : 'page',
-    title : 'Поддержка IE8',
+    title : 'Support IE8',
     head : [
-        '<!--[if gt IE 8]><!-->',
-        { elem : 'css', url : '_simple.css' }, // стили для всех браузеров, в т.ч. IE9+
-        '<!--<![endif]-->',
-        { elem : 'css', url : '_simple.ie.css', ie : 'lt IE 9' } // стили для IE8
+        {
+            elem : 'conditional-comment',
+            condition : '> IE 8',
+            msieOnly : false,
+            content : { elem : 'css', url : '_simple.css' } // стили для всех браузеров, в т.ч. IE9+
+        },
+        {
+            elem : 'conditional-comment',
+            condition : '<= IE 8',
+            content : { elem : 'css', url : '_simple.ie.css' } // стили для IE8 и ниже
+        }
     ],
     scripts : [
-        '<!--[if lt IE 9]>',
-        { elem : 'js', url : '//yastatic.net/es5-shims/0.0.1/es5-shims.min.js' }, // Подключение es5-shim для IE8 и ниже
-        '<![endif]-->',
+        {
+            elem : 'conditional-comment',
+            condition : '< IE 9',
+            content : { elem : 'js', url : '//yastatic.net/es5-shims/0.0.1/es5-shims.min.js' }, // Подключение es5-shim для IE8 и ниже
+        },
         { elem : 'js', url : '_simple.js' }
     ]
 }

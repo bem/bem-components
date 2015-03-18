@@ -122,7 +122,7 @@ If you use [project-stub](https://bem.info/tutorials/project-stub/) to start you
   * Yandex *(the last two stable versions)*
   * Opera 12.6+
   * Internet Explorer 9+
-  * Partially supported of Internet Explorer 8 ([more info](#ie8))
+  * Partial support of Internet Explorer 8 ([more info](#ie8))
 
 * **Touch**
   * Android 4+
@@ -132,28 +132,37 @@ If you use [project-stub](https://bem.info/tutorials/project-stub/) to start you
 <a name="ie8"></a>
 ## Support IE8
 
-To support IE8, you must connect `es5-shim` and additional styles with the `*.ie.styl` extension to the page. To do this add the conditional comments to the `page` block, as shown below:
+To support IE8, you must include `es5-shim` and additional styles with the `*.ie.styl` extension to the page. To do this add the conditional comments to the `page` block, as shown below:
 
 ```
 {
     block : 'page',
     title : 'Support IE8',
     head : [
-        '<!--[if gt IE 8]><!-->',
-        { elem : 'css', url : '_simple.css' }, // styles for all browsers, including IE9+
-        '<!--<![endif]-->',
-        { elem : 'css', url : '_simple.ie.css', ie : 'lt IE 9' } // styles for IE8 and lower
+        {
+            elem : 'conditional-comment',
+            condition : '> IE 8',
+            msieOnly : false,
+            content : { elem : 'css', url : '_simple.css' } // styles for all browsers, including IE9+
+        },
+        {
+            elem : 'conditional-comment',
+            condition : '<= IE 8',
+            content : { elem : 'css', url : '_simple.ie.css' } // styles for IE8 and lower
+        }
     ],
     scripts : [
-        '<!--[if lt IE 9]>',
-        { elem : 'js', url : '//yastatic.net/es5-shims/0.0.1/es5-shims.min.js' }, // adding es5-shim for IE8 and lower
-        '<![endif]-->',
+        {
+            elem : 'conditional-comment',
+            condition : '< IE 9',
+            content : { elem : 'js', url : '//yastatic.net/es5-shims/0.0.1/es5-shims.min.js' }, // adding es5-shim for IE8 and lower
+        },
         { elem : 'js', url : '_simple.js' }
     ]
 }
 ```
 
-Also, you can do it on your template level.
+Also, you can do it with the help of templates on your own level.
 
 <a name="changelog"></a>
 ## Changelog

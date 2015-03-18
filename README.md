@@ -132,7 +132,7 @@ If you use [project-stub](https://bem.info/tutorials/project-stub/) to start you
 <a name="ie8"></a>
 ## Support IE8
 
-To support IE8, you must include `es5-shim` and additional styles with the `*.ie.styl` extension to the page. To do this add the conditional comments to the `page` block, as shown below:
+To support IE8, you must include `es5-shim` and additional style files with the `*.ie.styl` extension to the page. To do this add them to buid config (like [this](https://github.com/bem/bem-components/blob/1f218c8ba10183fda21660e28cfbb280cd8cde54/.enb/make.js#L174)) and add the conditional comments to the `page` block, as shown below:
 
 ```
 {

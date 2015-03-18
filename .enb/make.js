@@ -1,4 +1,5 @@
-var DEFAULT_LANGS = ['ru', 'en'],
+var LIB_NAME = 'bem-components',
+    DEFAULT_LANGS = ['ru', 'en'],
     BEM_TEMPLATE_ENGINE = process.env.BEM_TEMPLATE_ENGINE || 'BH',
     fs = require('fs'),
     path = require('path'),
@@ -57,95 +58,85 @@ module.exports = function(config) {
     });
 
     function configureDist(platforms) {
+        var pathToDist = path.resolve('dist'),
+            pathToBorschikConf = path.join(pathToDist, '.borschik');
+
+        fs.existsSync(pathToDist) || fs.mkdirSync(pathToDist);
+        fs.existsSync(pathToBorschikConf) || fs.writeFileSync(pathToBorschikConf, [
+            '{',
+            '    "freeze_paths" : {',
+            '        "../libs/**": ":base64:",',
+            '        "../libs/**/*.svg": ":encodeURIComponent:",',
+            '        "../*.blocks/**": ":base64:",',
+            '        "../*.blocks/**/*.svg": ":encodeURIComponent:",',
+            '        "../design/*.blocks/**": ":base64:",',
+            '        "../design/*.blocks/**/*.svg": ":encodeURIComponent:"',
+            '    }',
+            '}'
+        ].join('\n'));
+
         platforms.forEach(function(platform) {
             config.node('dist/' + platform, function(nodeConfig) {
                 nodeConfig.addTechs([
                     [levels, { levels : getSourceLevels(platform) }],
-                    [levelsToBemdecl],
-                    [deps],
-                    [files],
-                    [css, { target : '?.noprefix.css' }],
-                    [css, { target : '?.noprefix.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
+                    [levelsToBemdecl, { target : '.tmp.bemdecl.js' }],
+                    [deps, { bemdeclFile : '.tmp.bemdecl.js', target : '.tmp.deps.js' }],
+                    [files, { depsFile : '.tmp.deps.js' }],
+                    [css, { target : '.tmp.noprefix.css' }],
+                    [css, { target : LIB_NAME + '.dev.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
                     [autoprefixer, {
-                        sourceTarget : '?.noprefix.css',
-                        destTarget : '?.prefix.css',
+                        sourceTarget : '.tmp.noprefix.css',
+                        destTarget : LIB_NAME + '.dev.css',
                         browserSupport : getBrowsers(platform)
                     }],
                     [depsByTechToBemdecl, {
-                        target : '?.js-js.bemdecl.js',
+                        target : '.tmp.js-js.bemdecl.js',
                         sourceTech : 'js',
                         destTech : 'js'
                     }],
                     [mergeBemdecl, {
-                        sources : ['?.bemdecl.js', '?.js-js.bemdecl.js'],
-                        target : '?.js.bemdecl.js'
+                        sources : ['.tmp.bemdecl.js', '.tmp.js-js.bemdecl.js'],
+                        target : '.tmp.js.bemdecl.js'
                     }],
                     [deps, {
-                        target : '?.js.deps.js',
-                        bemdeclFile : '?.js.bemdecl.js'
+                        target : '.tmp.js.deps.js',
+                        bemdeclFile : '.tmp.js.bemdecl.js'
                     }],
                     [files, {
-                        depsFile : '?.js.deps.js',
-                        filesTarget : '?.js.files',
-                        dirsTarget : '?.js.dirs'
+                        depsFile : '.tmp.js.deps.js',
+                        filesTarget : '.tmp.js.files',
+                        dirsTarget : '.tmp.js.dirs'
                     }],
                     [js, {
-                        filesTarget : '?.js.files',
-                        target : '?.source.js'
+                        filesTarget : '.tmp.js.files',
+                        target : '.tmp.source.js'
                     }],
                     [ym, {
-                        source : '?.source.js',
-                        target : '?.ym.js'
+                        source : '.tmp.source.js',
+                        target : LIB_NAME + '.dev.js'
                     }],
-                    [bemhtml, { target : '?.pre.bemhtml.js', devMode : false }],
-                    [depsByTechToBemdecl,  {
-                        target : '?.bemhtml.bemdecl.js',
-                        sourceTech : 'js',
-                        destTech : 'bemhtml'
-                    }],
-                    [deps, {
-                        target : '?.bemhtml.deps.js',
-                        bemdeclFile : '?.bemhtml.bemdecl.js'
-                    }],
-                    [files, {
-                        depsFile : '?.bemhtml.deps.js',
-                        filesTarget : '?.bemhtml.files',
-                        dirsTarget : '?.bemhtml.dirs'
-                    }],
-                    [bemhtml, {
-                        target : '?.client.bemhtml.js',
-                        filesTarget : '?.bemhtml.files',
-                        devMode : false
-                    }],
-                    [bhServerInclude, { target : '?.pre.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
-                    [bhYm, { target : '?.client.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
+                    [bemhtml, { target : LIB_NAME + '.dev.bemhtml.js', devMode : false }],
+                    [bhServerInclude, { target : LIB_NAME + '.dev.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
+                    [bhYm, { target : '.tmp.browser.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
                     [mergeFiles, {
-                        target : '?.source+bemhtml.js',
-                        sources : ['?.source.js', '?.client.bemhtml.js']
-                    }],
-                    [ym, {
-                        source : '?.source+bemhtml.js',
-                        target : '?.pre.browser+bemhtml.js'
+                        target : LIB_NAME + '.dev.js+bemhtml.js',
+                        sources : [LIB_NAME + '.dev.js', LIB_NAME + '.dev.bemhtml.js']
                     }],
                     [mergeFiles, {
-                        target : '?.source+bh.js',
-                        sources : ['?.source.js', '?.client.bh.js']
+                        target : LIB_NAME + '.dev.js+bh.js',
+                        sources : [LIB_NAME + '.dev.js', '.tmp.browser.bh.js']
                     }],
-                    [ym, {
-                        source : '?.source+bh.js',
-                        target : '?.pre.browser+bh.js'
-                    }],
-                    [borschik, { source : '?.prefix.css', target : '?.css' }],
-                    [borschik, { source : '?.noprefix.ie.css', target : '?.ie.css' }],
-                    [borschik, { source : '?.ym.js', target : '?.browser.js' }],
-                    [borschik, { source : '?.pre.bemhtml.js', target : '?.bemhtml.js' }],
-                    [borschik, { source : '?.pre.bh.js', target : '?.bh.js' }],
-                    [borschik, { source : '?.pre.browser+bemhtml.js', target : '?.browser+bemhtml.js' }],
-                    [borschik, { source : '?.pre.browser+bh.js', target : '?.browser+bh.js' }]
+                    [borschik, { source : LIB_NAME + '.dev.css', target : LIB_NAME + '.css', tech : 'cleancss', freeze : true }],
+                    [borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', tech : 'cleancss', freeze : true }],
+                    [borschik, { source : LIB_NAME + '.dev.js', target : LIB_NAME + '.js', freeze : true }],
+                    [borschik, { source : LIB_NAME + '.dev.bemhtml.js', target : LIB_NAME + '.bemhtml.js', freeze : true }],
+                    [borschik, { source : LIB_NAME + '.dev.bh.js', target : LIB_NAME + '.bh.js', freeze : true }],
+                    [borschik, { source : LIB_NAME + '.dev.js+bemhtml.js', target : LIB_NAME + '.js+bemhtml.js', freeze : true }],
+                    [borschik, { source : LIB_NAME + '.dev.js+bh.js', target : LIB_NAME + '.js+bh.js', freeze : true }]
                 ]);
 
                 nodeConfig.addTargets([
-                    '?.css', '?.ie.css', '?.browser.js', '?.bemhtml.js', '?.bh.js', '?.browser+bemhtml.js', '?.browser+bh.js'
+                    LIB_NAME + '.css', LIB_NAME + '.ie.css', LIB_NAME + '.js', LIB_NAME + '.bemhtml.js', LIB_NAME + '.bh.js', LIB_NAME + '.js+bemhtml.js', LIB_NAME + '.js+bh.js'
                 ]);
             });
         });

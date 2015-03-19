@@ -35,8 +35,6 @@ block('link')(
         ctx.target && (attrs.target = ctx.target);
         ctx.id && (attrs.id = ctx.id);
         ctx.name && (attrs.name = ctx.name);
-        ctx.ariaLabel && (attrs['aria-label'] = ctx.ariaLabel);
-        ctx.ariaLabelledby && (attrs['aria-labelledby'] = ctx.ariaLabelledby);
 
         return attrs;
     }),

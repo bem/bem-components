@@ -30,8 +30,6 @@ module.exports = function(bh) {
         json.target && (attrs.target = json.target);
         json.id && (attrs.id = json.id);
         json.name && (attrs.name = json.name);
-        json.ariaLabel && (attrs['aria-label'] = json.ariaLabel);
-        json.ariaLabelledby && (attrs['aria-labelledby'] = json.ariaLabelledby);
 
         ctx.attrs(attrs);
     });

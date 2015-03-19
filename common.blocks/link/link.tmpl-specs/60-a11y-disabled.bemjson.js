@@ -7,8 +7,6 @@
     content : 'link',
     id : 'id',
     name : 1,
-    ariaLabel : 'label',
-    ariaLabelledby : 'labelledby',
     mods : {
         disabled : true
     }

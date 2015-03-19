@@ -167,7 +167,7 @@ Also, you can do it with the help of templates on your own level.
 <a name="changelog"></a>
 ## Changelog
 
-Check the changelog details at the Changelog page when available.
+You can check the changelog at the [Changelog](/CHANGELOG.md) page.
 
 <a name="migration"></a>
 ## Migration

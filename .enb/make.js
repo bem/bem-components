@@ -4,27 +4,7 @@ var LIB_NAME = 'bem-components',
     fs = require('fs'),
     path = require('path'),
     naming = require('bem-naming'),
-    levels = require('enb-bem-techs/techs/levels'),
-    levelsToBemdecl = require('enb-bem-techs/techs/levels-to-bemdecl'),
-    provide = require('enb/techs/file-provider'),
-    depsByTechToBemdecl = require('enb-bem-techs/techs/deps-by-tech-to-bemdecl'),
-    bemdecl = require('enb-bem-techs/techs/bemjson-to-bemdecl'),
-    deps = require('enb-bem-techs/techs/deps-old'),
-    files = require('enb-bem-techs/techs/files'),
-    css = require('enb-stylus/techs/css-stylus'),
-    cssWithAutoprefixer = require('enb-stylus/techs/css-stylus-with-autoprefixer'),
-    js = require('./techs/js-borschik-include.js'),
-    ym = require('enb-modules/techs/prepend-modules'),
-    bemhtml = require('enb-bemxjst/techs/bemhtml-old'),
-    html = require('enb-bemxjst/techs/html-from-bemjson'),
-    bh = require('enb-bh/techs/bh-server'),
-    bhServerInclude = require('enb-bh/techs/bh-server-include'),
-    bhYm = require('enb-bh/techs/bh-client-module'),
-    bhHtml = require('enb-bh/techs/html-from-bemjson'),
-    copyFile = require('enb/techs/file-copy'),
-    mergeFiles = require('enb/techs/file-merge'),
-    mergeBemdecl = require('enb-bem-techs/techs/merge-bemdecl'),
-    borschik = require('enb-borschik/techs/borschik'),
+    techs = require('./techs'),
     PLATFORMS = {
         'desktop' : ['common', 'desktop'],
         'touch-phone' : ['common', 'touch'],
@@ -78,62 +58,62 @@ module.exports = function(config) {
         platforms.forEach(function(platform) {
             config.node('dist/' + platform, function(nodeConfig) {
                 nodeConfig.addTechs([
-                    [levels, { levels : getSourceLevels(platform) }],
-                    [levelsToBemdecl, { target : '.tmp.bemdecl.js' }],
-                    [deps, { bemdeclFile : '.tmp.bemdecl.js', target : '.tmp.deps.js' }],
-                    [files, { depsFile : '.tmp.deps.js' }],
-                    [cssWithAutoprefixer, {
+                    [techs.bem.levels, { levels : getSourceLevels(platform) }],
+                    [techs.bem.levelsToBemdecl, { target : '.tmp.bemdecl.js' }],
+                    [techs.bem.depsOld, { bemdeclFile : '.tmp.bemdecl.js', target : '.tmp.deps.js' }],
+                    [techs.bem.files, { depsFile : '.tmp.deps.js' }],
+                    [techs.css.stylusWithAutoprefixer, {
                         target : LIB_NAME + '.dev.css',
                         browsers : getBrowsers(platform)
                     }],
-                    [css, {
+                    [techs.css.stylus, {
                         target : LIB_NAME + '.dev.ie.css',
                         sourceSuffixes : ['styl', 'ie.styl']
                     }],
-                    [depsByTechToBemdecl, {
+                    [techs.bem.depsByTechToBemdecl, {
                         target : '.tmp.js-js.bemdecl.js',
                         sourceTech : 'js',
                         destTech : 'js'
                     }],
-                    [mergeBemdecl, {
+                    [techs.bem.mergeBemdecl, {
                         sources : ['.tmp.bemdecl.js', '.tmp.js-js.bemdecl.js'],
                         target : '.tmp.js.bemdecl.js'
                     }],
-                    [deps, {
+                    [techs.bem.depsOld, {
                         target : '.tmp.js.deps.js',
                         bemdeclFile : '.tmp.js.bemdecl.js'
                     }],
-                    [files, {
+                    [techs.bem.files, {
                         depsFile : '.tmp.js.deps.js',
                         filesTarget : '.tmp.js.files',
                         dirsTarget : '.tmp.js.dirs'
                     }],
-                    [js, {
+                    [techs.js, {
                         filesTarget : '.tmp.js.files',
                         target : '.tmp.source.js'
                     }],
-                    [ym, {
+                    [techs.ym, {
                         source : '.tmp.source.js',
                         target : LIB_NAME + '.dev.js'
                     }],
-                    [bemhtml, { target : LIB_NAME + '.dev.bemhtml.js', devMode : false }],
-                    [bhServerInclude, { target : LIB_NAME + '.dev.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
-                    [bhYm, { target : '.tmp.browser.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
-                    [mergeFiles, {
+                    [techs.engines.bemhtml, { target : LIB_NAME + '.dev.bemhtml.js', devMode : false }],
+                    [techs.engines.bhServerInclude, { target : LIB_NAME + '.dev.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
+                    [techs.engines.bhClient, { target : '.tmp.browser.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
+                    [techs.files.merge, {
                         target : LIB_NAME + '.dev.js+bemhtml.js',
                         sources : [LIB_NAME + '.dev.js', LIB_NAME + '.dev.bemhtml.js']
                     }],
-                    [mergeFiles, {
+                    [techs.files.merge, {
                         target : LIB_NAME + '.dev.js+bh.js',
                         sources : [LIB_NAME + '.dev.js', '.tmp.browser.bh.js']
                     }],
-                    [borschik, { source : LIB_NAME + '.dev.css', target : LIB_NAME + '.css', tech : 'cleancss', freeze : true, minify : true }],
-                    [borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', tech : 'cleancss', freeze : true, minify : true }],
-                    [borschik, { source : LIB_NAME + '.dev.js', target : LIB_NAME + '.js', freeze : true, minify : true }],
-                    [borschik, { source : LIB_NAME + '.dev.bemhtml.js', target : LIB_NAME + '.bemhtml.js', freeze : true, minify : true }],
-                    [borschik, { source : LIB_NAME + '.dev.bh.js', target : LIB_NAME + '.bh.js', freeze : true, minify : true }],
-                    [borschik, { source : LIB_NAME + '.dev.js+bemhtml.js', target : LIB_NAME + '.js+bemhtml.js', freeze : true, minify : true }],
-                    [borschik, { source : LIB_NAME + '.dev.js+bh.js', target : LIB_NAME + '.js+bh.js', freeze : true, minify : true }]
+                    [techs.borschik, { source : LIB_NAME + '.dev.css', target : LIB_NAME + '.css', tech : 'cleancss', freeze : true, minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', tech : 'cleancss', freeze : true, minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.js', target : LIB_NAME + '.js', freeze : true, minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.bemhtml.js', target : LIB_NAME + '.bemhtml.js', freeze : true, minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.bh.js', target : LIB_NAME + '.bh.js', freeze : true, minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.js+bemhtml.js', target : LIB_NAME + '.js+bemhtml.js', freeze : true, minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.js+bh.js', target : LIB_NAME + '.js+bh.js', freeze : true, minify : true }]
                 ]);
 
                 nodeConfig.addTargets([
@@ -148,7 +128,7 @@ module.exports = function(config) {
             var nodes = [platform + '.pages/*'];
 
             config.nodes(nodes, function(nodeConfig) {
-                nodeConfig.addTech([provide, { target : '?.bemjson.js' }]);
+                nodeConfig.addTech([techs.files.provide, { target : '?.bemjson.js' }]);
             });
 
             configureNodes(platform, nodes);
@@ -163,23 +143,23 @@ module.exports = function(config) {
 
             // Base techs
             nodeConfig.addTechs([
-                [bemdecl],
-                [deps],
-                [files]
+                [techs.bem.bemjsonToBemdecl],
+                [techs.bem.depsOld],
+                [techs.bem.files]
             ]);
 
             // Client techs
             nodeConfig.addTechs([
-                [cssWithAutoprefixer, { browsers : getBrowsers(platform) }],
-                [css, { target : '?.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
-                [js, {
+                [techs.css.stylusWithAutoprefixer, { browsers : getBrowsers(platform) }],
+                [techs.css.stylus, { target : '?.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
+                [techs.js, {
                     filesTarget : '?.js.files'
                 }],
-                [mergeFiles, {
+                [techs.files.merge, {
                     target : '?.pre.js',
                     sources : [BEM_TEMPLATE_ENGINE === 'BH'? '?.browser.bh.js' : '?.browser.bemhtml.js', '?.browser.js']
                 }],
-                [ym, {
+                [techs.ym, {
                     source : '?.pre.js',
                     target : '?.js'
                 }]
@@ -187,20 +167,20 @@ module.exports = function(config) {
 
             // js techs
             nodeConfig.addTechs([
-                [depsByTechToBemdecl, {
+                [techs.bem.depsByTechToBemdecl, {
                     target : '?.js-js.bemdecl.js',
                     sourceTech : 'js',
                     destTech : 'js'
                 }],
-                [mergeBemdecl, {
+                [techs.bem.mergeBemdecl, {
                     sources : ['?.bemdecl.js', '?.js-js.bemdecl.js'],
                     target : '?.js.bemdecl.js'
                 }],
-                [deps, {
+                [techs.bem.depsOld, {
                     target : '?.js.deps.js',
                     bemdeclFile : '?.js.bemdecl.js'
                 }],
-                [files, {
+                [techs.bem.files, {
                     depsFile : '?.js.deps.js',
                     filesTarget : '?.js.files',
                     dirsTarget : '?.js.dirs'
@@ -209,27 +189,27 @@ module.exports = function(config) {
 
             // Client Template Engine
             nodeConfig.addTechs([
-                [depsByTechToBemdecl, {
+                [techs.bem.depsByTechToBemdecl, {
                     target : '?.template.bemdecl.js',
                     sourceTech : 'js',
                     destTech : 'bemhtml'
                 }],
-                [deps, {
+                [techs.bem.depsOld, {
                     target : '?.template.deps.js',
                     bemdeclFile : '?.template.bemdecl.js'
                 }],
-                [files, {
+                [techs.bem.files, {
                     depsFile : '?.template.deps.js',
                     filesTarget : '?.template.files',
                     dirsTarget : '?.template.dirs'
                 }],
-                BEM_TEMPLATE_ENGINE === 'BH'? [bhYm, {
+                BEM_TEMPLATE_ENGINE === 'BH'? [techs.engines.bhClient, {
                     target : '?.browser.bh.js',
                     filesTarget : '?.template.files',
                     jsAttrName : 'data-bem',
                     jsAttrScheme : 'json',
                     mimic : 'BEMHTML'
-                }] : [bemhtml, {
+                }] : [techs.engines.bemhtml, {
                     target : '?.browser.bemhtml.js',
                     filesTarget : '?.template.files',
                     devMode : false
@@ -238,20 +218,20 @@ module.exports = function(config) {
 
             // Build htmls
             nodeConfig.addTechs(BEM_TEMPLATE_ENGINE === 'BH'? [
-                [bh, {
+                [techs.engines.bhServer, {
                     jsAttrName : 'data-bem',
                     jsAttrScheme : 'json'
                 }],
-                [bhHtml]
+                [techs.html.bh]
             ] : [
-                [bemhtml, { devMode : false }],
-                [html]
+                [techs.engines.bemhtml, { devMode : false }],
+                [techs.html.bemhtml]
             ]);
 
             langs.forEach(function(lang) {
                 var destTarget = '?.' + lang + '.html';
 
-                nodeConfig.addTech([copyFile, { source : '?.html', target : destTarget }]);
+                nodeConfig.addTech([techs.files.copy, { source : '?.html', target : destTarget }]);
                 nodeConfig.addTarget(destTarget);
             });
 
@@ -263,9 +243,9 @@ module.exports = function(config) {
         config.mode('development', function() {
             config.nodes(nodes, function(nodeConfig) {
                 nodeConfig.addTechs([
-                    [borschik, { source : '?.css', target : '_?.css', freeze : true, minify : false }],
-                    [borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, minify : false }],
-                    [borschik, { source : '?.js', target : '_?.js', freeze : true, minify : false }]
+                    [techs.borschik, { source : '?.css', target : '_?.css', freeze : true, minify : false }],
+                    [techs.borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, minify : false }],
+                    [techs.borschik, { source : '?.js', target : '_?.js', freeze : true, minify : false }]
                 ]);
             });
         });
@@ -273,9 +253,9 @@ module.exports = function(config) {
         config.mode('production', function() {
             config.nodes(nodes, function(nodeConfig) {
                 nodeConfig.addTechs([
-                    [borschik, { source : '?.css', target : '_?.css', freeze : true, tech : 'cleancss', minify : true }],
-                    [borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, tech : 'cleancss', minify : true }],
-                    [borschik, { source : '?.js', target : '_?.js', freeze : true, minify : true }]
+                    [techs.borschik, { source : '?.css', target : '_?.css', freeze : true, tech : 'cleancss', minify : true }],
+                    [techs.borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, tech : 'cleancss', minify : true }],
+                    [techs.borschik, { source : '?.js', target : '_?.js', freeze : true, minify : true }]
                 ]);
             });
         });
@@ -296,7 +276,7 @@ module.exports = function(config) {
                 extendedLevels.push(sublevelDir);
             }
 
-            nodeConfig.addTech([levels, { levels : extendedLevels }]);
+            nodeConfig.addTech([techs.bem.levels, { levels : extendedLevels }]);
         });
     }
 

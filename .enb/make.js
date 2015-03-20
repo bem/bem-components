@@ -12,7 +12,7 @@ var LIB_NAME = 'bem-components',
     deps = require('enb-bem-techs/techs/deps-old'),
     files = require('enb-bem-techs/techs/files'),
     css = require('enb-stylus/techs/css-stylus'),
-    autoprefixer = require('enb-autoprefixer/techs/css-autoprefixer'),
+    cssWithAutoprefixer = require('enb-stylus/techs/css-stylus-with-autoprefixer'),
     js = require('./techs/js-borschik-include.js'),
     ym = require('enb-modules/techs/prepend-modules'),
     bemhtml = require('enb-bemxjst/techs/bemhtml-old'),
@@ -82,12 +82,13 @@ module.exports = function(config) {
                     [levelsToBemdecl, { target : '.tmp.bemdecl.js' }],
                     [deps, { bemdeclFile : '.tmp.bemdecl.js', target : '.tmp.deps.js' }],
                     [files, { depsFile : '.tmp.deps.js' }],
-                    [css, { target : '.tmp.noprefix.css' }],
-                    [css, { target : LIB_NAME + '.dev.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
-                    [autoprefixer, {
-                        sourceTarget : '.tmp.noprefix.css',
-                        destTarget : LIB_NAME + '.dev.css',
-                        browserSupport : getBrowsers(platform)
+                    [cssWithAutoprefixer, {
+                        target : LIB_NAME + '.dev.css',
+                        browsers : getBrowsers(platform)
+                    }],
+                    [css, {
+                        target : LIB_NAME + '.dev.ie.css',
+                        sourceSuffixes : ['styl', 'ie.styl']
                     }],
                     [depsByTechToBemdecl, {
                         target : '.tmp.js-js.bemdecl.js',
@@ -156,7 +157,6 @@ module.exports = function(config) {
 
     function configureNodes(platform, nodes) {
         configureLevels(platform, nodes);
-        configureAutoprefixer(platform, nodes);
 
         config.nodes(nodes, function(nodeConfig) {
             var langs = config.getLanguages();
@@ -170,7 +170,7 @@ module.exports = function(config) {
 
             // Client techs
             nodeConfig.addTechs([
-                [css, { target : '?.noprefix.css' }],
+                [cssWithAutoprefixer, { browsers : getBrowsers(platform) }],
                 [css, { target : '?.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
                 [js, {
                     filesTarget : '?.js.files'
@@ -297,18 +297,6 @@ module.exports = function(config) {
             }
 
             nodeConfig.addTech([levels, { levels : extendedLevels }]);
-        });
-    }
-
-    function configureAutoprefixer(platform, nodes) {
-        config.nodes(nodes, function(nodeConfig) {
-            nodeConfig.addTechs([
-                [autoprefixer, {
-                    sourceTarget : '?.noprefix.css',
-                    destTarget : '?.css',
-                    browserSupport : getBrowsers(platform)
-                }]
-            ]);
         });
     }
 

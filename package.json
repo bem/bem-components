@@ -27,7 +27,6 @@
     "bem-naming": "0.5.1",
     "enb": "0.15.0",
     "enb-bem-techs": "^1.0.3",
-    "enb-autoprefixer": "0.2.3",
     "enb-magic-platform": "0.4.5",
     "enb-bem-docs": "0.7.3",
     "enb-bem-examples": "0.5.9",

@@ -41,7 +41,6 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
     },
 
     /**
-     * Returns items
      * @returns {menu-item[]}
      */
     getItems : function() {
@@ -129,6 +128,10 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
         this._hoveredItem && this._hoveredItem.delMod('hovered');
     },
 
+    /**
+     * @param {menu-item} item
+     * @private
+     */
     _onItemHover : function(item) {
         if(item.hasMod('hovered')) {
             this._hoveredItem && this._hoveredItem.delMod('hovered');
@@ -138,6 +141,10 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
         }
     },
 
+    /**
+     * @param {menu-item} item
+     * @private
+     */
     _scrollToItem : function(item) {
         var domElemOffsetTop = this.domElem.offset().top,
             itemDomElemOffsetTop = item.domElem.offset().top,
@@ -153,10 +160,19 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
         }
     },
 
+    /**
+     * @param {menu-item} item
+     * @param {object} data
+     * @private
+     */
     _onItemClick : function(item, data) {
         this.emit('item-click', { item : item, source : data.source });
     },
 
+    /**
+     * @param {jQuery.Event} e
+     * @private
+     */
     _onKeyDown : function(e) {
         var keyCode = e.keyCode,
             isArrow = keyCode === keyCodes.UP || keyCode === keyCodes.DOWN;
@@ -183,11 +199,20 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
         }
     },
 
+    /**
+     * @param {jQuery.Event} e
+     * @private
+     */
     _onKeyPress : function(e) {
         var item = this.searchItemByKeyboardEvent(e);
         item && item.setMod('hovered');
     },
 
+    /**
+     * @param {menu-item} item
+     * @param {String} text
+     * @private
+     */
     _doesItemMatchText : function(item, text) {
         return !item.hasMod('disabled') &&
             item.getText().toLowerCase().search(text) === 0;

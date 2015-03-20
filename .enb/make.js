@@ -13,7 +13,7 @@ var LIB_NAME = 'bem-components',
     files = require('enb-bem-techs/techs/files'),
     css = require('enb-stylus/techs/css-stylus'),
     autoprefixer = require('enb-autoprefixer/techs/css-autoprefixer'),
-    js = require('enb-diverse-js/techs/browser-js'),
+    js = require('./techs/js-borschik-include.js'),
     ym = require('enb-modules/techs/prepend-modules'),
     bemhtml = require('enb-bemxjst/techs/bemhtml-old'),
     html = require('enb-bemxjst/techs/html-from-bemjson'),
@@ -126,13 +126,13 @@ module.exports = function(config) {
                         target : LIB_NAME + '.dev.js+bh.js',
                         sources : [LIB_NAME + '.dev.js', '.tmp.browser.bh.js']
                     }],
-                    [borschik, { source : LIB_NAME + '.dev.css', target : LIB_NAME + '.css', tech : 'cleancss', freeze : true }],
-                    [borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', tech : 'cleancss', freeze : true }],
-                    [borschik, { source : LIB_NAME + '.dev.js', target : LIB_NAME + '.js', freeze : true }],
-                    [borschik, { source : LIB_NAME + '.dev.bemhtml.js', target : LIB_NAME + '.bemhtml.js', freeze : true }],
-                    [borschik, { source : LIB_NAME + '.dev.bh.js', target : LIB_NAME + '.bh.js', freeze : true }],
-                    [borschik, { source : LIB_NAME + '.dev.js+bemhtml.js', target : LIB_NAME + '.js+bemhtml.js', freeze : true }],
-                    [borschik, { source : LIB_NAME + '.dev.js+bh.js', target : LIB_NAME + '.js+bh.js', freeze : true }]
+                    [borschik, { source : LIB_NAME + '.dev.css', target : LIB_NAME + '.css', tech : 'cleancss', freeze : true, minify : true }],
+                    [borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', tech : 'cleancss', freeze : true, minify : true }],
+                    [borschik, { source : LIB_NAME + '.dev.js', target : LIB_NAME + '.js', freeze : true, minify : true }],
+                    [borschik, { source : LIB_NAME + '.dev.bemhtml.js', target : LIB_NAME + '.bemhtml.js', freeze : true, minify : true }],
+                    [borschik, { source : LIB_NAME + '.dev.bh.js', target : LIB_NAME + '.bh.js', freeze : true, minify : true }],
+                    [borschik, { source : LIB_NAME + '.dev.js+bemhtml.js', target : LIB_NAME + '.js+bemhtml.js', freeze : true, minify : true }],
+                    [borschik, { source : LIB_NAME + '.dev.js+bh.js', target : LIB_NAME + '.js+bh.js', freeze : true, minify : true }]
                 ]);
 
                 nodeConfig.addTargets([
@@ -263,9 +263,9 @@ module.exports = function(config) {
         config.mode('development', function() {
             config.nodes(nodes, function(nodeConfig) {
                 nodeConfig.addTechs([
-                    [copyFile, { source : '?.css', target : '_?.css' }],
-                    [copyFile, { source : '?.ie.css', target : '_?.ie.css' }],
-                    [copyFile, { source : '?.js', target : '_?.js' }]
+                    [borschik, { source : '?.css', target : '_?.css', freeze : true, minify : false }],
+                    [borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, minify : false }],
+                    [borschik, { source : '?.js', target : '_?.js', freeze : true, minify : false }]
                 ]);
             });
         });
@@ -273,9 +273,9 @@ module.exports = function(config) {
         config.mode('production', function() {
             config.nodes(nodes, function(nodeConfig) {
                 nodeConfig.addTechs([
-                    [borschik, { source : '?.css', target : '_?.css', freeze : true, tech : 'cleancss' }],
-                    [borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, tech : 'cleancss' }],
-                    [borschik, { source : '?.js', target : '_?.js', freeze : true }]
+                    [borschik, { source : '?.css', target : '_?.css', freeze : true, tech : 'cleancss', minify : true }],
+                    [borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, tech : 'cleancss', minify : true }],
+                    [borschik, { source : '?.js', target : '_?.js', freeze : true, minify : true }]
                 ]);
             });
         });

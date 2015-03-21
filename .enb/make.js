@@ -90,8 +90,9 @@ module.exports = function(config) {
                     }],
                     [techs.js, {
                         filesTarget : '.tmp.js.files',
-                        target : '.tmp.source.js'
+                        target : '.tmp.pre-source.js'
                     }],
+                    [techs.borschik, { source : '.tmp.pre-source.js', target : '.tmp.source.js', freeze : false, minify : false }],
                     [techs.ym, {
                         source : '.tmp.source.js',
                         target : LIB_NAME + '.dev.js'

@@ -15,8 +15,6 @@ block('radio').mod('type', 'button')(
                 size : mods.size
             },
             title : ctx.title,
-            ariaLabel : ctx.ariaLabel,
-            ariaLabelledby : ctx.ariaLabelledby,
             content : [
                 ctx.icon,
                 typeof ctx.text !== 'undefined'?

@@ -13,9 +13,7 @@ block('radio')(
                     checked : this.mods.checked,
                     disabled : this.mods.disabled,
                     name : ctx.name,
-                    val : ctx.val,
-                    ariaLabel : ctx.ariaLabel,
-                    ariaLabelledby : ctx.ariaLabelledby
+                    val : ctx.val
                 }
             },
             ctx.text

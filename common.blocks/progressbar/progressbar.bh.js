@@ -8,8 +8,6 @@ module.exports = function(bh) {
             .attrs({
                 role : 'progressbar',
                 tabindex : json.tabIndex || 0,
-                'aria-label' : json.ariaLabel,
-                'aria-labelledby' : json.ariaLabelledby,
                 'aria-valuemin' : 0,
                 'aria-valuemax' : 100,
                 'aria-valuenow' : val

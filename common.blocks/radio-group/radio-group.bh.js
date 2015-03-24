@@ -26,9 +26,7 @@ module.exports = function(bh) {
                     val : option.val,
                     text : option.text,
                     title : option.title,
-                    icon : option.icon,
-                    ariaLabel : option.ariaLabel,
-                    ariaLabelledby : option.ariaLabelledby
+                    icon : option.icon
                 }
             ];
         }));

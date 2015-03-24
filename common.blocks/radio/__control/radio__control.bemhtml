@@ -8,9 +8,7 @@ block('radio').elem('control')(
                 type : 'radio',
                 autocomplete : 'off',
                 name : ctx.name,
-                value : ctx.val,
-                'aria-label' : ctx.ariaLabel,
-                'aria-labelledby' : ctx.ariaLabelledby
+                value : ctx.val
             };
 
         ctx.checked && (attrs.checked = 'checked');

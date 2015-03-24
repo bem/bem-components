@@ -8,8 +8,6 @@ block('checkbox').elem('control')(
 
         attrs.name = ctx.name;
         attrs.value = ctx.val;
-        attrs['aria-label'] = ctx.ariaLabel;
-        attrs['aria-labelledby'] = ctx.ariaLabelledby;
 
         ctx.checked && (attrs.checked = 'checked');
         ctx.disabled && (attrs.disabled = 'disabled');

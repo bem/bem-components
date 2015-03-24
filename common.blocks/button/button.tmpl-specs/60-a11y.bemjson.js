@@ -5,7 +5,5 @@
     val : 'value',
     id : 'btn',
     text : 'button',
-    tabIndex : 0,
-    ariaLabel : 'label',
-    ariaLabelledby : 'id'
+    tabIndex : 0
 });

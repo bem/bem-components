@@ -12,9 +12,7 @@ module.exports = function(bh) {
                         checked : ctx.mod('checked'),
                         disabled : ctx.mod('disabled'),
                         name : json.name,
-                        val : json.val,
-                        ariaLabel : json.ariaLabel,
-                        ariaLabelledby : json.ariaLabelledby
+                        val : json.val
                     }
                 },
                 json.text

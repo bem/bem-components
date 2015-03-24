@@ -4,7 +4,5 @@
     val : 'input',
     name : 'input1',
     id : 1,
-    tabIndex : 1,
-    ariaLabel : 'label',
-    ariaLabelledby : 'id'
+    tabIndex : 1
 });

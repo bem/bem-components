@@ -15,10 +15,7 @@ block('modal')(
         return {
             role : 'dialog',
             'aria-expanded' : visible,
-            'aria-hidden' : !visible,
-            'aria-label' : ctx.ariaLabel,
-            'aria-labelledby' : ctx.ariaLabelledby,
-            'aria-describedby' : ctx.ariaDescribedby
+            'aria-hidden' : !visible
         };
     }),
 

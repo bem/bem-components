@@ -15,8 +15,6 @@ module.exports = function(bh) {
                 size : mods.size
             },
             title : json.title,
-            ariaLabel : json.ariaLabel,
-            ariaLabelledby : json.ariaLabelledby,
             content : [
                 json.icon,
                 typeof json.text !== 'undefined'?

@@ -2,8 +2,6 @@
     block : 'menu',
     mods : { theme : 'islands', disabled : true },
     id : 'id',
-    ariaLabel : 'label',
-    ariaLabelledby : 'id0',
     content : [
         {
             block : 'menu-item',

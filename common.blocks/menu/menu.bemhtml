@@ -50,9 +50,7 @@ block('menu')(
         var ctx = this.ctx,
             attrs = {
                 role : 'menu',
-                id : ctx.id,
-                'aria-label' : ctx.ariaLabel,
-                'aria-labelledby' : ctx.ariaLabelledby
+                id : ctx.id
             };
 
         if(this.mods.disabled) {

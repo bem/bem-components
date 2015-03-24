@@ -13,10 +13,7 @@ module.exports = function(bh) {
             .attrs({
                 role : 'dialog',
                 'aria-expanded' : visible,
-                'aria-hidden' : !visible,
-                'aria-label' : json.ariaLabel,
-                'aria-labelledby' : json.ariaLabelledby,
-                'aria-describedby' : json.ariaDescribedby
+                'aria-hidden' : !visible
             })
             .content({
                 elem : 'table',

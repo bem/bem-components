@@ -13,9 +13,7 @@ module.exports = function(bh) {
 
         var attrs = {
             role : 'menu',
-            id : json.id,
-            'aria-label' : json.ariaLabel,
-            'aria-labelledby' : json.ariaLabelledby
+            id : json.id
         };
 
         if(ctx.mod('disabled')) {

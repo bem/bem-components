@@ -4,7 +4,5 @@
     name : 'radio',
     val : 1,
     text : 'radio',
-    icon : { block : 'icon', mods : { social : 'twitter' } },
-    ariaLabel : 'label',
-    ariaLabelledby : 'id'
+    icon : { block : 'icon', mods : { social : 'twitter' } }
 });

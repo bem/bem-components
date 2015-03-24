@@ -9,8 +9,6 @@ block('progressbar')(
         return {
             role : 'progressbar',
             tabindex : ctx.tabIndex || 0,
-            'aria-label' : ctx.ariaLabel,
-            'aria-labelledby' : ctx.ariaLabelledby,
             'aria-valuemin' : 0,
             'aria-valuemax' : 100,
             'aria-valuenow' : ctx.val || 0

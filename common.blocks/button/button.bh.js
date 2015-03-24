@@ -15,9 +15,7 @@ module.exports = function(bh) {
                 type : isRealButton? modType || 'button' : undefined,
                 name : json.name,
                 value : json.val,
-                title : json.title,
-                'aria-label' : json.ariaLabel,
-                'aria-labelledby' : json.ariaLabelledby
+                title : json.title
             })
             .mix({ elem : 'control' }); // NOTE: satisfy interface of `control`
 

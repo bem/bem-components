@@ -11,8 +11,7 @@ module.exports = function(bh) {
             attrs.name = attach.name;
             attach.mods && attach.mods.disabled && (attrs.disabled = 'disabled');
             attach.tabIndex && (attrs.tabindex = attach.tabIndex);
-            attrs['aria-label'] = attach.ariaLabel;
-            attrs['aria-labelledby'] = attach.ariaLabelledby || ctx.tParam('textId');
+            attrs['aria-labelledby'] = ctx.tParam('textId');
         }
 
         ctx

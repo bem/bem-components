@@ -65,6 +65,7 @@ describe('menu', function() {
 
     afterEach(function() {
         BEMDOM.destruct(menu.domElem);
+        BEMDOM.destruct(menu2.domElem);
     });
 
     describe('disable', function() {

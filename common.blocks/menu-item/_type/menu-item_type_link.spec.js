@@ -10,7 +10,7 @@ describe('menu-item_type_link', function() {
         menu = BEMDOM
             .init($(BEMHTML.apply({
                 block : 'menu',
-                content : {
+                content : [{
                     block : 'menu-item',
                     mods : { type : 'link' },
                     content : {
@@ -18,7 +18,7 @@ describe('menu-item_type_link', function() {
                         url : 'http://yandex.ru',
                         content : 'Link 1'
                     }
-                }
+                }]
             })).appendTo('body'))
             .bem('menu');
         menuItem = menu.findBlockInside('menu-item');

@@ -5,6 +5,7 @@
 ### Крупные изменения
 
 * Реализована опциональная поддержка Internet Explorer 8 с деградацией ([#1205](https://github.com/bem/bem-components/issues/1205)). Инструкцию по использованию см. [в README](/README.ru.md#Поддержка-ie8).
+* Изменена структура блока `textarea` – была удалена дополнительная обертка ([#1330](https://github.com/bem/bem-components/issues/1330)).
 * Библиотека `bem-core` была обновлена до версии [2.6.0](https://github.com/bem/bem-core/blob/v2/CHANGELOG.ru.md#260).
 
 

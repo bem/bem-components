@@ -1,6 +1,6 @@
 BEM Components Library
 ======================
-[![GitHub Release](http://img.shields.io/github/release/bem/bem-components.svg?style=flat)](https://github.com/bem/bem-components/releases)
+[![GitHub Release](https://img.shields.io/github/release/bem/bem-components.svg?style=flat)](https://github.com/bem/bem-components/releases)
 [![Build Status](https://img.shields.io/travis/bem/bem-components/v2.svg?style=flat)](https://travis-ci.org/bem/bem-components)
 [![Coverage Status](https://img.shields.io/coveralls/bem/bem-components/v2.svg?style=flat)](https://coveralls.io/r/bem/bem-components?branch=v2)
 [![devDependency Status](https://img.shields.io/david/dev/bem/bem-components.svg?style=flat)](https://david-dm.org/bem/bem-components#info=devDependencies)
@@ -311,7 +311,7 @@ $ npm run lint
 <a name="regression-tests"></a>
 ### Регрессионное тестирование верстки
 
-Для тестирования верстки мы используем [Gemini](http://ru.bem.info/tools/testing/gemini/).
+Для тестирования верстки мы используем [Gemini](https://ru.bem.info/tools/testing/gemini/).
 
 Тесты каждого блока находятся в отдельном файле вида `block-name.gemini.js` в директории `gemini/`. Локально тесты запускаются руками, тесты на Travis запускаются автоматически. В качестве [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2) мы используем сервис [SauceLabs](https://saucelabs.com).
 
@@ -331,7 +331,7 @@ $ npm run lint
 1. Исправить в файле `.gemini.yml` опцию `gridUrl` на `http://localhost:4444/`.
 1. [Запустить тесты](#run-test).
 
-Более подробно про запуск `Gemini` с разными бекендами читайте в статье [Введение в работу с Gemini](http://ru.bem.info/tools/testing/gemini/).
+Более подробно про запуск `Gemini` с разными бекендами читайте в статье [Введение в работу с Gemini](https://ru.bem.info/tools/testing/gemini/).
 
 **NB** В репозиторий необходимо коммитить скриншоты, собранные в SauceLabs. Это позволит избежать даже незначительных отличий в отрисовке шрифтов.
 

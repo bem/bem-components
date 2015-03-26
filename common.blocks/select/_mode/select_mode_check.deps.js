@@ -3,5 +3,5 @@
 },
 {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml' }
+    mustDeps : { tech : 'bemhtml', block : 'select', mod : 'mode', val : 'check' }
 }]

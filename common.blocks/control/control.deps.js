@@ -7,6 +7,6 @@
     ]
 }, {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml' },
+    mustDeps : { tech : 'bemhtml', block : 'control' },
     shouldDeps : 'objects'
 }]

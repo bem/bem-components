@@ -6,5 +6,5 @@
 },
 {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'input', mod : 'has-clear' }
+    mustDeps : { tech : 'bemhtml', block : 'input', mod : 'has-clear', val : true }
 }]

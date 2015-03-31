@@ -190,7 +190,7 @@
                                 name : 'select-radio',
                                 text : 'Your mood',
                                 options : [
-                                    { val : 1, text : 'Bed' },
+                                    { val : 1, text : 'Bad' },
                                     { val : 2, text : 'Normal' },
                                     { val : 3, text : 'Great!' }
                                 ]

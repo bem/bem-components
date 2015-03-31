@@ -9,7 +9,7 @@ modules.define('input', function(provide, Input) {
  * @class input
  * @bem
  */
-provide(Input.decl( /** @lends input.prototype */{
+provide(Input.decl(/** @lends input.prototype */{
     _onInputChanged : function() {
         this.setVal(this.elem('control').val());
     }

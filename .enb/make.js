@@ -349,8 +349,8 @@ function getLibLevels(platform) {
 }
 
 function getSourceLevels(platform) {
-    var platformNames = (PLATFORMS[platform] || SETS[platform]);
-    var levels = [];
+    var platformNames = (PLATFORMS[platform] || SETS[platform]),
+        levels = [];
 
     platformNames.forEach(function(name) {
         levels.push({ path : path.join('libs', 'bem-core', name + '.blocks'), check : false });

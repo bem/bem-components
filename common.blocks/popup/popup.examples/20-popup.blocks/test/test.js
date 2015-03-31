@@ -6,9 +6,8 @@ provide(BEMDOM.decl(this.name, {
             'inited' : function() {
                 var popup = this.findBlockInside('popup'),
                     destructor = this.findBlockOn('destructor', 'link'),
-                    position = this.params.position;
-
-                var link = this.findBlockInside('link');
+                    position = this.params.position,
+                    link = this.findBlockInside('link');
 
                 if(position) {
                     popup.setPosition.apply(popup, position);

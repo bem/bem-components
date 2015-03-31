@@ -34,7 +34,7 @@ var instances = [],
  * @class input
  * @bem
  */
-provide(Input.decl( /** @lends input.prototype */{
+provide(Input.decl(/** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {

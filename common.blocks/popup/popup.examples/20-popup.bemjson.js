@@ -39,33 +39,33 @@
         // directions table
         (function() {
             var test = function(direction) {
-                return {
-                    block : 'test', js : true, content : [
-                        { block : 'link', mods : { pseudo : true }, content : direction },
-                        {
-                            block : 'popup',
-                            mix : { block : 'test', elem : 'popup' },
-                            mods : { target : 'anchor', autoclosable : true, theme : 'islands' },
-                            directions : [direction],
-                            content : 'the popup'
-                        }
-                    ]
-                };
-            };
-
-            var positioned = { block : 'test', js : { position : [50, 50] }, content : [
-                {
-                    block : 'link',
-                    mods : { pseudo : true },
-                    content : 'popup at 50x50'
+                    return {
+                        block : 'test', js : true, content : [
+                            { block : 'link', mods : { pseudo : true }, content : direction },
+                            {
+                                block : 'popup',
+                                mix : { block : 'test', elem : 'popup' },
+                                mods : { target : 'anchor', autoclosable : true, theme : 'islands' },
+                                directions : [direction],
+                                content : 'the popup'
+                            }
+                        ]
+                    };
                 },
-                {
-                    block : 'popup',
-                    mix : { block : 'test', elem : 'popup' },
-                    mods : { target : 'position', theme : 'islands' },
-                    content : 'the popup'
-                }
-            ] };
+
+                positioned = { block : 'test', js : { position : [50, 50] }, content : [
+                    {
+                        block : 'link',
+                        mods : { pseudo : true },
+                        content : 'popup at 50x50'
+                    },
+                    {
+                        block : 'popup',
+                        mix : { block : 'test', elem : 'popup' },
+                        mods : { target : 'position', theme : 'islands' },
+                        content : 'the popup'
+                    }
+                ] };
 
             return {
                 block : 'directions',

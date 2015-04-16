@@ -93,11 +93,15 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
     },
 
     _focus : function() {
-        dom.isFocusable(this.elem('control')) && this.elem('control').focus();
+        dom.isFocusable(this.elem('control'))?
+            this.elem('control').focus() :
+            this._onFocus(); // issues/1456
     },
 
     _blur : function() {
-        this.elem('control').blur();
+        dom.isFocusable(this.elem('control'))?
+            this.elem('control').blur() :
+            this._onBlur();
     }
 }, /** @lends control */{
     live : function() {

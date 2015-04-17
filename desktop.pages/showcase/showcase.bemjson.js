@@ -1,4 +1,18 @@
-({
+/* global module */
+
+var addLinkToDoc = function(blockName, hash, text) {
+    return [
+        {
+            block : 'link',
+            mods : { theme : 'islands', size : 'l', type : 'docs' },
+            url : '../../common.blocks/' + blockName + '/' + blockName + '.ru.md' + (hash? hash : ''),
+            content : text || blockName
+        },
+        { tag : 'br'}
+    ];
+};
+
+module.exports = {
     block : 'page',
     title : 'Showcase',
     mods : { theme : 'islands' },
@@ -18,43 +32,52 @@
     scripts : [{ elem : 'js', url : '_showcase.js' }],
     content : [
         {
-            block : 'table',
+            block : 'layout',
             content : [
                 {
                     elem : 'row',
                     content : [
                         {
                             elem : 'cell',
-                            content : {
-                                block : 'button',
-                                mods : { theme : 'islands', size : 's' },
-                                text : 'size S'
-                            }
-                        },
-                        {
-                            elem : 'cell',
-                            content : {
-                                block : 'checkbox-group',
-                                name : 'islands',
-                                mods : { theme : 'islands', size : 'l' },
-                                val : [ 2, 4 ],
-                                options : [
-                                    { val : 1, text : 'Small' },
-                                    { val : 2, text : 'Normal' },
-                                    { val : 3, text : 'Big', disabled : true },
-                                    { val : 4, text : 'Beautiful', disabled : true }
-                                ]
-                            }
+                            content : [
+                                addLinkToDoc('button', '#Модификатор-view'),
+                                {
+                                    block : 'button',
+                                    mods : { theme : 'islands', size : 's' },
+                                    text : 'size S'
+                                }
+                            ]
                         },
                         {
                             elem : 'cell',
                             content : [
+                                addLinkToDoc('checkbox-group'),
+                                {
+                                    block : 'checkbox-group',
+                                    name : 'islands',
+                                    mods : { theme : 'islands', size : 'l' },
+                                    val : [ 2, 4 ],
+                                    options : [
+                                        { val : 1, text : 'Small' },
+                                        { val : 2, text : 'Normal' },
+                                        { val : 3, text : 'Big', disabled : true },
+                                        { val : 4, text : 'Beautiful', disabled : true }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            elem : 'cell',
+                            content : [
+                                addLinkToDoc('input'),
                                 {
                                     block : 'input',
-                                    mods : { theme : 'islands', 'has-clear' : true, size : 'l' },
+                                    mods : { theme: 'islands', 'has-clear' : true, size : 'l', type : 'search' },
                                     val : 'Find images',
                                     placeholder : 'type a question'
                                 },
+                                '<br><br>',
+                                addLinkToDoc('menu'),
                                 {
                                     block : 'menu',
                                     mods : { mode : 'radio', theme : 'islands', size : 'l', custom : true },
@@ -81,19 +104,22 @@
                         },
                         {
                             elem : 'cell',
-                            content : {
-                                block : 'select',
-                                mods : { mode : 'check', theme : 'islands', size : 'l' },
-                                name : 'select',
-                                text : 'Language',
-                                options : [
-                                    { val : 1, text : 'Русский' },
-                                    { val : 2, text : 'English' },
-                                    { val : 3, text : 'Deutsch' },
-                                    { val : 4, text : 'Português' },
-                                    { val : 5, text : '中國' }
-                                ]
-                            }
+                            content : [
+                                addLinkToDoc('select', '#mode', 'select_mode_check'),
+                                {
+                                    block : 'select',
+                                    mods : { mode : 'check', theme : 'islands', size : 'l' },
+                                    name : 'select',
+                                    text : 'Language',
+                                    options : [
+                                        { val : 1, text : 'Русский' },
+                                        { val : 2, text : 'English' },
+                                        { val : 3, text : 'Deutsch' },
+                                        { val : 4, text : 'Português' },
+                                        { val : 5, text : '中國' }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -102,15 +128,19 @@
                     content : [
                         {
                             elem : 'cell',
-                            content : {
-                                block : 'button',
-                                mods : { theme : 'islands', size : 'm', view : 'action' },
-                                text : 'Action'
-                            }
+                            content : [
+                                addLinkToDoc('button', '#Модификатор-view', 'button_view_action'),
+                                {
+                                    block : 'button',
+                                    mods : { theme : 'islands', size : 'm', view : 'action' },
+                                    text : 'Action'
+                                }
+                            ]
                         },
                         {
                             elem : 'cell',
                             content : [
+                                addLinkToDoc('radio-group'),
                                 {
                                     block : 'radio-group',
                                     name : 'islands-radios-1',
@@ -124,7 +154,7 @@
                                 { tag : 'br' },
                                 {
                                     block : 'radio-group',
-                                    name : 'islands-radios-2',
+                                    name : 'islands-radios',
                                     mods : { theme : 'islands', size : 'l' },
                                     val : 2,
                                     options : [
@@ -135,12 +165,9 @@
                             ]
                         },
                         {
-                            block: 'test2',
-                            js: true
-                        },
-                        {
                             elem : 'cell',
                             content : [
+                                addLinkToDoc('radio-group', '#type', 'radio-group_type_button'),
                                 {
                                     block : 'radio-group',
                                     name : 'islands-button',
@@ -152,6 +179,8 @@
                                         { val : 3, text : 'Any colors' }
                                     ]
                                 },
+                                '<br><br>',
+                                addLinkToDoc('spin'),
                                 {
                                     block : 'spin-container',
                                     content : ['s', 'm', 'l', 'xl'].map(function(size) {
@@ -174,6 +203,7 @@
                                         },
                                         text : 'Pause'
                                     },
+                                    addLinkToDoc('progressbar'),
                                     {
                                         block : 'progressbar',
                                         mods : { theme : 'islands' },
@@ -184,17 +214,21 @@
                         },
                         {
                             elem : 'cell',
-                            content : {
-                                block : 'select',
-                                mods : { mode : 'radio-check', theme : 'islands', size : 'l' },
-                                name : 'select-radio',
-                                text : 'Your mood',
-                                options : [
-                                    { val : 1, text : 'Bad' },
-                                    { val : 2, text : 'Normal' },
-                                    { val : 3, text : 'Great!' }
-                                ]
-                            }
+
+                            content : [
+                                addLinkToDoc('select', '#mode', 'select_mode_radio-check'),
+                                {
+                                    block : 'select',
+                                    mods : { mode : 'radio-check', theme : 'islands', size : 'l' },
+                                    name : 'select-radio',
+                                    text : 'Your mood',
+                                    options : [
+                                        { val : 1, text : 'Bad' },
+                                        { val : 2, text : 'Normal' },
+                                        { val : 3, text : 'Great!' }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -203,16 +237,20 @@
                     content : [
                         {
                             elem : 'cell',
-                            content : {
-                                block : 'button',
-                                mods : { theme : 'islands', size : 'l', togglable : 'check' },
-                                text : 'Togglable'
-                            }
+                            content : [
+                                addLinkToDoc('button', '#buttontoggle', 'button_togglable_check'),
+                                {
+                                    block : 'button',
+                                    mods : { theme : 'islands', size : 'l', togglable : 'check' },
+                                    text : 'Togglable'
+                                }
+                            ]
 
                         },
                         {
                             elem : 'cell',
                             content : [
+                                addLinkToDoc('attach'),
                                 {
                                     block : 'attach',
                                     mods : { theme : 'islands', size : 'l' },
@@ -228,12 +266,15 @@
                         },
                         {
                             elem : 'cell',
-                            content : {
-                                block : 'textarea',
-                                mods : { theme : 'islands', size : 'l' },
-                                val : 'Write a review',
-                                placeholder : 'nothing to say'
-                            }
+                            content : [
+                                addLinkToDoc('textarea'),
+                                {
+                                    block : 'textarea',
+                                    mods : { theme : 'islands', size : 'l' },
+                                    val : 'Write a review',
+                                    placeholder : 'nothing to say'
+                                }
+                            ]
                         },
                         {
                             elem : 'cell',
@@ -241,6 +282,7 @@
                                 block : 'test',
                                 js : true,
                                 content : [
+                                    addLinkToDoc('modal'),
                                     {
                                         block : 'link',
                                         mods : { theme : 'islands', size : 'l', pseudo : true },
@@ -265,4 +307,4 @@
             ]
         }
     ]
-})
+}

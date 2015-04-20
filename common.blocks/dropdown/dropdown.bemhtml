@@ -1,5 +1,6 @@
 block('dropdown')(
     js()(true),
+
     content()(function() {
         var popup = this.ctx.popup;
 

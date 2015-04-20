@@ -15,7 +15,6 @@ block('menu-item')(
         var mods = this.mods;
         mods.theme = mods.theme || this._menuMods.theme;
         mods.disabled = mods.disabled || this._menuMods.disabled;
-
         applyNext();
     })
 );

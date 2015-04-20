@@ -8,8 +8,6 @@ module.exports = function(bh) {
                 directions : json.directions,
                 zIndexGroupLevel : json.zIndexGroupLevel
             })
-            .attrs({
-                id : json.id
-            });
+            .attrs({ id : json.id });
     });
 };

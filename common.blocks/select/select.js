@@ -265,7 +265,6 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
     _isEventInPopup : function(e) {
         return dom.contains(this._popup.domElem, $(e.target));
     }
-
 }, /** @lends select */{
     live : function() {
         this.liveInitOnBlockInsideEvent(

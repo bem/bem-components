@@ -3,9 +3,7 @@ block('attach').elem('control')(
     tag()('input'),
 
     attrs()(function() {
-        var attrs = {
-                type : 'file'
-            },
+        var attrs = { type : 'file' },
             attach = this._attach;
 
         // в js генерим html для attach__control без самого attach

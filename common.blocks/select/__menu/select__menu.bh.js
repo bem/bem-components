@@ -33,9 +33,7 @@ module.exports = function(bh) {
                 mode : mods.mode
             },
             val : select.val,
-            attrs : {
-                tabindex : null
-            },
+            attrs : { tabindex : null },
             content : select.options.map(function(optionOrGroup) {
                 return optionOrGroup.group?
                     {

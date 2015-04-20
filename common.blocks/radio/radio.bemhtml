@@ -1,8 +1,6 @@
 block('radio')(
     tag()('label'),
-
     js()(true),
-
     content()(function() {
         var ctx = this.ctx;
         return [

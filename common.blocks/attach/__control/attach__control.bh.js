@@ -1,9 +1,7 @@
 module.exports = function(bh) {
 
     bh.match('attach__control', function(ctx) {
-        var attrs = {
-                type : 'file'
-            },
+        var attrs = { type : 'file' },
             attach = ctx.tParam('attach');
 
         // в js генерим html для attach__control без самого attach

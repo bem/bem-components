@@ -50,7 +50,7 @@ The modifier gives the block a custom design.
 
 Type: `Number`.
 
-Specifies the status of the process progress (in percent relative to its parental block).
+Specifies the status of the process progress (in percent relative to its parental block). By default process progress is equal to 0;
 
 ```js
 {

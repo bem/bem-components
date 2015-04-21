@@ -25,9 +25,9 @@
 Декларация блока в BEMJSON:
 
 ```bemjson
-content : {
-    block : 'test',
-    js : true,
+{
+    block : 'test', // Блок, созданный для примера
+    js : true, // Подключение JS-реализации блока
     content : [
         {
             block : 'link', // Блок, инициирующий появление модального окна
@@ -37,10 +37,7 @@ content : {
         {
             block : 'modal', // Модальное окно
             mods : { autoclosable : true, theme : 'islands' },
-            content : { // Содержимое модального окна
-                block : 'test'.
-                elem : 'content',
-                contents : [
+            content : [ // Содержимое модального окна
                     {
                         block : 'button',
                         mods : { theme : 'islands', size : 's' },
@@ -50,8 +47,7 @@ content : {
                         tag : 'p',
                         content : 'Lorem Ipsum ...'
                     }
-                ]
-            }
+            ]
         }
     ]
 }
@@ -74,8 +70,6 @@ provide(BEMDOM.decl(this.name, {
             }
         }
     }
-}, {
-    live : false
 }));
 
 });

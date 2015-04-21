@@ -25,7 +25,7 @@
             {
                 block : 'link',
                 mods : { pseudo : true, theme : 'islands' },
-                content : 'open islands modal with content interaction'
+                content : 'open modal with content interaction'
             },
             {
                 block : 'modal',

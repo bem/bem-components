@@ -20,6 +20,67 @@
 
 ## Описание блока
 
+### Работа с модальным окном
+
+Декларация блока в BEMJSON:
+
+```bemjson
+content : {
+    block : 'test',
+    js : true,
+    content : [
+        {
+            block : 'link', // Блок, инициирующий появление модального окна
+            mods : { pseudo : true, theme : 'islands' },
+            content : 'open modal with content interaction'
+        },
+        {
+            block : 'modal', // Модальное окно
+            mods : { autoclosable : true, theme : 'islands' },
+            content : { // Содержимое модального окна
+                block : 'test'.
+                elem : 'content',
+                contents : [
+                    {
+                        block : 'button',
+                        mods : { theme : 'islands', size : 's' },
+                        text : 'Кнопка'
+                    },
+                    {
+                        tag : 'p',
+                        content : 'Lorem Ipsum ...'
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+Описание поведения блока в JS:
+
+```js
+modules.define('test', ['i-bem__dom'], function(provide, BEMDOM) {
+
+provide(BEMDOM.decl(this.name, {
+    onSetMod : {
+        'js' : {
+            'inited' : function() {
+                var modal = this.findBlockInside('modal'); // Поиск блока `modal`
+
+                this.findBlockInside('link').on('click', function() { // Поиск блока `link`
+                    modal.toggleMod('visible'); // Установка модификатора `visible` по клику на ссылку.
+                });
+            }
+        }
+    }
+}, {
+    live : false
+}));
+
+});
+```
+
 ### Модификаторы блока
 
 <a name="visible"></a>

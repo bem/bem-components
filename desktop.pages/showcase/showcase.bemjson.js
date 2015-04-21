@@ -179,7 +179,7 @@ module.exports = {
                                         { val : 3, text : 'Any colors' }
                                     ]
                                 },
-                                '<br><br>',
+                                { tag: 'br' },
                                 addLinkToDoc('spin'),
                                 {
                                     block : 'spin-container',
@@ -189,32 +189,11 @@ module.exports = {
                                             mods : { theme : 'islands', size : size, visible : true }
                                         };
                                     })
-                                },
-                                {
-                                    block: 'progressbar-example',
-                                    js: true,
-                                    content: [{
-                                        block : 'button',
-                                        mods : {
-                                            theme : 'islands',
-                                            size : 's',
-                                            togglable : 'check',
-                                            checked : true
-                                        },
-                                        text : 'Pause'
-                                    },
-                                    addLinkToDoc('progressbar'),
-                                    {
-                                        block : 'progressbar',
-                                        mods : { theme : 'islands' },
-                                        val : 25
-                                    }]
                                 }
                             ]
                         },
                         {
                             elem : 'cell',
-
                             content : [
                                 addLinkToDoc('select', '#mode', 'select_mode_radio-check'),
                                 {
@@ -261,6 +240,26 @@ module.exports = {
                                         text : 'Load image'
                                     },
                                     noFileText : 'file is not selected'
+                                },
+                                {
+                                    block: 'progressbar-example',
+                                    js: true,
+                                    content: [{
+                                        block : 'button',
+                                        mods : {
+                                            theme : 'islands',
+                                            size : 's',
+                                            togglable : 'check',
+                                            checked : true
+                                        },
+                                        text : 'Pause'
+                                    },
+                                    addLinkToDoc('progressbar'),
+                                    {
+                                        block : 'progressbar',
+                                        mods : { theme : 'islands' },
+                                        val : 95
+                                    }]
                                 }
                             ]
                         },

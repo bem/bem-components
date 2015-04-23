@@ -50,6 +50,14 @@ describe('link', function() {
             link.domElem.attr('href').should.be.equal('/');
         });
 
+        it('should add "aria-disabled" attribute on disable', function() {
+            link.setMod('disabled');
+            link.domElem.attr('aria-disabled').should.be.equal('true');
+
+            link.delMod('disabled');
+            expect(link.domElem.attr('aria-disabled')).to.be.undefined;
+        });
+
         it('should prevent default action and do not emit "click" event if disabled', function() {
             var spy = sinon.spy(),
                 e = $.Event('pointerclick');

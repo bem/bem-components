@@ -4,8 +4,8 @@
 
 modules.define(
     'select',
-    ['i-bem__dom', 'popup', 'menu', 'button', 'jquery', 'dom', 'keyboard__codes', 'strings__escape'],
-    function(provide, BEMDOM, Popup, Menu, Button, $, dom, keyCodes, escape) {
+    ['i-bem__dom', 'popup', 'menu', 'menu-item', 'button', 'jquery', 'dom', 'keyboard__codes', 'strings__escape'],
+    function(provide, BEMDOM, Popup, Menu, MenuItem, Button, $, dom, keyCodes, escape) {
 
 /**
  * @exports
@@ -42,7 +42,8 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
                 this._menu = this._popup.findBlockInside('menu')
                     .on({
                         'change' : this._onMenuChange,
-                        'item-click' : this._onMenuItemClick
+                        'item-click' : this._onMenuItemClick,
+                        'item-hover' : this._onMenuItemHover
                     }, this);
 
                 this._isPointerPressInProgress = false;
@@ -89,11 +90,15 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             '*' : function(modName, modVal) {
                 this._button.setMod(modName, modVal);
                 this._menu.setMod(modName, modVal);
-                this.elem('control').prop('disabled', modVal);
             },
 
             'true' : function() {
+                this.elem('control').attr('disabled', true);
                 this._popup.delMod('visible');
+            },
+
+            '' : function() {
+                this.elem('control').removeAttr('disabled');
             }
         }
     },
@@ -217,6 +222,13 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
     },
 
     _onMenuItemClick : function() {},
+
+    _onMenuItemHover : function(e, data) {
+        var item = data.item;
+        item.hasMod('hovered')?
+            this._button.domElem.attr('aria-activedescendant', item.domElem.attr('id')) :
+            this._button.domElem.removeAttr('aria-activedescendant');
+    },
 
     _updateControl : function() {},
 

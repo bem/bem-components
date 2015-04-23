@@ -8,12 +8,13 @@ module.exports = function(bh) {
             ctx
                 .tag('img')
                 .attrs({
+                    role : null,
                     src : json.url,
                     width : json.width,
                     height : json.height,
                     alt : json.alt,
                     title : json.title
-                });
+                }, true);
         }
     });
 };

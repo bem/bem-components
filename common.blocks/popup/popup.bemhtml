@@ -8,5 +8,6 @@ block('popup')(
             directions : ctx.directions,
             zIndexGroupLevel : ctx.zIndexGroupLevel
         };
-    })
+    }),
+    attrs()({ 'aria-hidden' : true })
 );

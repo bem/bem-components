@@ -15,7 +15,7 @@ block('link')(
 
     attrs()(function() {
         var ctx = this.ctx,
-            attrs = {},
+            attrs = { role : 'link' },
             tabIndex;
 
         if(!this.mods.disabled) {
@@ -25,6 +25,8 @@ block('link')(
             } else {
                 tabIndex = ctx.tabIndex || 0;
             }
+        } else {
+            attrs['aria-disabled'] = true;
         }
 
         typeof tabIndex === 'undefined' || (attrs.tabindex = tabIndex);

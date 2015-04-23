@@ -1,6 +1,10 @@
 module.exports = function(bh) {
     bh.match('menu-item', function(ctx, json) {
-        var menuMods = ctx.tParam('menuMods');
+        var menuMods = ctx.tParam('menuMods'),
+            menuMode = menuMods && menuMods.mode,
+            role = menuMode?
+                        (menuMode === 'check'? 'menuitemcheckbox' : 'menuitemradio') :
+                        'menuitem';
 
         menuMods && ctx.mods({
             theme : menuMods.theme,
@@ -9,6 +13,11 @@ module.exports = function(bh) {
 
         ctx
             .js({ val : json.val })
-            .attr('role', 'menuitem');
+            .attrs({
+                role : role,
+                id : ctx.generateId(),
+                'aria-disabled' : ctx.mod('disabled') && 'true',
+                'aria-checked' : menuMode && String(!!ctx.mod('checked'))
+            });
     });
 };

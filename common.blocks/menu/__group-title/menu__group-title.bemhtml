@@ -1,1 +1,0 @@
-block('menu').elem('group-title').attrs()({ role : 'presentation' });

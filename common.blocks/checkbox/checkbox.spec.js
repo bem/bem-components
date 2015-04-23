@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['checkbox', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, Checkbox, BEMDOM, $, BEMHTML) {
+    ['checkbox', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
+    function(provide, Checkbox, BEMDOM, $, BEMHTML, chai) {
 
 describe('checkbox', function() {
     var checkbox;
@@ -30,20 +30,22 @@ describe('checkbox', function() {
             checkbox
                 .setMod('checked')
                 .elem('control').prop('checked').should.be.true;
+            checkbox.elem('control').attr('checked').should.be.equal('checked');
 
             checkbox
                 .delMod('checked')
                 .elem('control').prop('checked').should.be.false;
+            chai.expect(checkbox.elem('control').attr('checked')).to.be.undefined;
         });
 
         it('should switch "checked" mod on "change" event', function() {
             checkbox.elem('control')
-                .prop('checked', true)
+                .attr('checked', true)
                 .trigger('change');
             checkbox.hasMod('checked').should.be.true;
 
             checkbox.elem('control')
-                .prop('checked', false)
+                .removeAttr('checked')
                 .trigger('change');
             checkbox.hasMod('checked').should.be.false;
         });

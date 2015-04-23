@@ -15,8 +15,13 @@ modules.define(
  */
 provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends radio.prototype */{
     onSetMod : {
-        'checked' : function(modName, modVal) {
-            this.elem('control').prop(modName, modVal);
+        'checked' : {
+            'true' : function() {
+                this.elem('control').attr('checked', true);
+            },
+            '' : function() {
+                this.elem('control').removeAttr('checked');
+            }
         }
     },
 

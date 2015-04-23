@@ -33,6 +33,16 @@ describe('dropdown', function() {
         dropdown.delMod('opened');
         dropdown.getSwitcher().hasMod('checked').should.be.false;
     });
+
+    it('should update "aria-expanded" attribute properly', function() {
+        var switcher = dropdown.getSwitcher();
+
+        switcher.domElem.attr('aria-expanded').should.be.equal('false');
+        dropdown.setMod('opened');
+        switcher.domElem.attr('aria-expanded').should.be.equal('true');
+        dropdown.delMod('opened');
+        switcher.domElem.attr('aria-expanded').should.be.equal('false');
+    });
 });
 
 provide();

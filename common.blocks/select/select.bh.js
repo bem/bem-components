@@ -17,6 +17,7 @@ module.exports = function(bh) {
                     iterateOptions(option.group);
                 } else {
                     firstOption || (firstOption = option);
+                    optionIds.push(option.id = ctx.generateId());
                     if(containsVal(option.val)) {
                         option.checked = true;
                         checkedOptions.push(option);
@@ -27,7 +28,8 @@ module.exports = function(bh) {
 
         var isValDef = typeof json.val !== 'undefined',
             isModeCheck = ctx.mod('mode') === 'check',
-            firstOption, checkedOptions = [];
+            firstOption, checkedOptions = [],
+            optionIds = [];
 
         iterateOptions(json.options);
 
@@ -39,6 +41,7 @@ module.exports = function(bh) {
             .tParam('select', json)
             .tParam('firstOption', firstOption)
             .tParam('checkedOptions', checkedOptions)
+            .tParam('optionIds', optionIds)
             .content([
                 { elem : 'button' },
                 {

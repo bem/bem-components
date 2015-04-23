@@ -90,6 +90,15 @@ describe('menu', function() {
                 menuItem.hasMod('disabled').should.be.false;
             });
         });
+
+        it('should set/remove "aria-disabled" attribute properly', function() {
+            menu
+                .setMod('disabled')
+                .domElem.attr('aria-disabled').should.be.equal('true');
+
+            menu.delMod('disabled');
+            expect(menu.domElem.attr('aria-disabled')).to.be.undefined;
+        });
     });
 
     describe('hover on items', function() {
@@ -177,6 +186,18 @@ describe('menu', function() {
             menuItems2[0].hasMod('hovered').should.be.true;
         });
 
+        it('should update "aria-activedescendant" attribute properly', function() {
+            menu.domElem.focus();
+            pressDownKey();
+            menu.domElem.attr('aria-activedescendant').should.be.equal(menuItems[0].domElem.attr('id'));
+            pressDownKey();
+            menu.domElem.attr('aria-activedescendant').should.be.equal(menuItems[1].domElem.attr('id'));
+            pressDownKey();
+            menu.domElem.attr('aria-activedescendant').should.be.equal(menuItems[3].domElem.attr('id'));
+            menu.domElem.blur();
+            expect(menu.domElem.attr('aria-activedescendant')).to.be.undefined;
+        });
+
     });
 
     describe('events', function() {
@@ -187,6 +208,14 @@ describe('menu', function() {
             spy.should.have.been.called;
             spy.args[0][1].item.should.be.equal(menuItems[1]);
             spy.args[0][1].source.should.be.equal('pointer');
+        });
+
+        it('should emit "item-hover" event on item hover', function() {
+            var spy = sinon.spy();
+            menu.on('item-hover', spy);
+            menuItems[1].setMod('hovered', true);
+            spy.should.have.been.called;
+            spy.args[0][1].item.should.be.equal(menuItems[1]);
         });
     });
 

@@ -5,6 +5,8 @@ block('select').elem('menu')(
                 var res = {
                         block : 'menu-item',
                         mods : { disabled : mods.disabled || option.disabled },
+                        attrs : { role : 'option' },
+                        id : option.id,
                         val : option.val,
                         js : { checkedText : option.checkedText },
                         content : option.text
@@ -31,7 +33,7 @@ block('select').elem('menu')(
                 mode : mods.mode
             },
             val : this._select.val,
-            attrs : { tabindex : undefined },
+            attrs : { role : undefined, tabindex : undefined },
             content : this._select.options.map(function(optionOrGroup) {
                 return optionOrGroup.group?
                     {

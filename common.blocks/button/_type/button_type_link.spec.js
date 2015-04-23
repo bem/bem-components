@@ -45,12 +45,14 @@ describe('button_type_link', function() {
             expect(button.domElem.attr('href')).to.be.undefined;
         });
 
-        it('should remove "href" attribute on disable', function() {
+        it('should update attributes properly', function() {
             button.setMod('disabled');
+            button.domElem.attr('aria-disabled').should.be.equal('true');
             expect(button.domElem.attr('href')).to.be.undefined;
 
             button.delMod('disabled');
             button.domElem.attr('href').should.be.equal('/');
+            expect(button.domElem.attr('aria-disabled')).to.be.undefined;
         });
     });
 

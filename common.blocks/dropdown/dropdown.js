@@ -33,6 +33,7 @@ provide(BEMDOM.decl(this.name, /** @lends dropdown.prototype */{
 
         'opened' : function(_, modVal) {
             this.getPopup().setMod('visible', modVal);
+            this._switcher.domElem.attr('aria-expanded', !!modVal);
         },
 
         'disabled' : {

@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['select', 'i-bem__dom', 'jquery', 'sinon', 'keyboard__codes', 'next-tick', 'BEMHTML'],
-    function(provide, Select, BEMDOM, $, sinon, keyCodes, nextTick, BEMHTML) {
+    ['select', 'i-bem__dom', 'jquery', 'sinon', 'chai', 'keyboard__codes', 'next-tick', 'BEMHTML'],
+    function(provide, Select, BEMDOM, $, sinon, chai, keyCodes, nextTick, BEMHTML) {
 
 describe('select', function() {
     var select, button, popup, menu;
@@ -191,6 +191,28 @@ describe('select', function() {
     describe('getName()', function() {
         it('should return right name', function() {
             select.getName().should.be.equal('select1');
+        });
+    });
+
+    describe('a11y', function() {
+        it('should have proper aria-attributes', function() {
+            var buttonElem = select.elem('button');
+
+            function getHoveredOptionId() {
+                return menu.findBlockInside({
+                    block : 'menu-item',
+                    modName : 'hovered',
+                    modVal : true
+                }).domElem.attr('id');
+            }
+
+            select.setMod('focused');
+            pressDownKey(buttonElem);
+            buttonElem.attr('aria-activedescendant').should.be.equal(getHoveredOptionId());
+            pressUpKey(buttonElem);
+            buttonElem.attr('aria-activedescendant').should.be.equal(getHoveredOptionId());
+            pressEscKey(buttonElem);
+            chai.expect(buttonElem.attr('aria-activedescendant')).to.be.undefined;
         });
     });
 });

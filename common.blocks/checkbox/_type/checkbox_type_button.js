@@ -26,7 +26,12 @@ provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, /** @lends checkb
             }
         },
 
-        'checked' : proxyModToButton,
+        'checked' : function(_, checked) {
+            proxyModToButton.apply(this, arguments);
+            this._button.domElem
+                .removeAttr('aria-pressed') // checkbox accepts aria-checked instead of aria-pressed
+                .attr('aria-checked', !!checked);
+        },
         'disabled' : proxyModToButton,
         'focused' : function(modName, modVal) {
             proxyModToButton.call(this, modName, modVal, false);

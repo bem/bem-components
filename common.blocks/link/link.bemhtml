@@ -15,7 +15,7 @@ block('link')(
 
     attrs()(function() {
         var ctx = this.ctx,
-            attrs = {},
+            attrs = { role : 'link' },
             tabIndex;
 
         if(!this.mods.disabled) {
@@ -35,8 +35,12 @@ block('link')(
         return attrs;
     }),
 
-    mod('disabled', true)
-        .js()(function() {
+    mod('disabled', true)(
+        js()(function() {
             return this.extend(applyNext(), { url : this.ctx.url });
+        }),
+        attrs()(function() {
+            return this.extend(applyNext(), { 'aria-disabled' : true });
         })
+    )
 );

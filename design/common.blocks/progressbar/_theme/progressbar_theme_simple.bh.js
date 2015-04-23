@@ -11,7 +11,7 @@ module.exports = function(bh) {
                 },
                 {
                     elem : 'text',
-                    content : json.val
+                    content : json.val || 0
                 }
             ], true);
 

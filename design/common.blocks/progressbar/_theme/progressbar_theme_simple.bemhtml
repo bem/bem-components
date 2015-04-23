@@ -6,7 +6,7 @@ block('progressbar').mod('theme', 'simple').content()(function() {
         },
         {
             elem : 'text',
-            content : this.ctx.val
+            content : this.ctx.val || 0
         }
     ];
 });

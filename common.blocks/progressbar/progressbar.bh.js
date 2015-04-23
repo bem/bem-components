@@ -1,7 +1,7 @@
 module.exports = function(bh) {
 
     bh.match('progressbar', function(ctx, json) {
-        var val = json.val;
+        var val = json.val || 0;
 
         ctx
             .js({ val : val })

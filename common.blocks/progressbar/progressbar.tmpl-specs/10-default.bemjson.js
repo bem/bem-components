@@ -1,4 +1,3 @@
 ({
-    block : 'progressbar',
-    val : 24
+    block : 'progressbar'
 })

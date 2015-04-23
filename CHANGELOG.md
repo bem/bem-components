@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.1
+
+### Bug fixes
+* The regression of keyboard support in `select` was fixed ([#1456](https://github.com/bem/bem-components/issues/1456)).
+
+### Other changes
+* Now the `val` field is assigned to zero in `progressbar` by default ([#1468](https://github.com/bem/bem-components/issues/1468)).
+* Description of `button_view_plain` was added to documentation ([#1454](https://github.com/bem/bem-components/issues/1454)).
+
 ## 2.1.0
 
 ### Major changes

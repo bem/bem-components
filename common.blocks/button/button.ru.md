@@ -16,7 +16,7 @@
 | <a href="#hovered">hovered</a> | <code>true</code> | – | Наведение курсором. |
 | <a href='#buttonthemes'>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
 | <a href="#buttonsize">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер кнопки. Используется для кнопок с <a href="#buttonthemes">модификатором theme в значении islands</a>.|
-| <a href="#buttonview">view</a> | <code>'action'</code>, <code>'pseudo'</code> | <code>BEMJSON</code> | Тип визуального выделения кнопки.|
+| <a href="#buttonview">view</a> | <code>'action'</code>, <code>'pseudo'</code>, <code>'plain'</code> | <code>BEMJSON</code> | Тип визуального выделения кнопки.|
 
 ### Специализированные поля блока
 
@@ -257,7 +257,7 @@
 
 #### Модификатор `view`
 
-Допустимые значения: `'action'`, `'pseudo'`.
+Допустимые значения: `'action'`, `'pseudo'`, `'plain'`.
 
 Способ использования: `BEMJSON`.
 
@@ -293,6 +293,28 @@
 }
 ```
 
+##### Кнопка без границ (модификатор `view` в значении `plain`)
+
+Используется при необходимости представить кнопкой другой блок, например, иконку ([icon](../icon/icon.ru.md)).
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', view : 'plain' },
+    text : 'Кнопка без границ'
+}
+```
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', view : 'plain' },
+    icon : {
+        block : 'icon',
+        mods : { social : 'twitter' }
+    }
+}
+```
 
 ### Специализированные поля блока
 

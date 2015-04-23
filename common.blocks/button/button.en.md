@@ -16,7 +16,7 @@ Use this block for creating different types of buttons.
 | <a href="#hovered">hovered</a> | <code>true</code> | – | The hovered state. |
 | <a href="#buttonthemes">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |
 | <a href="#buttonsize">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the button. Use sizes only for buttons with the <a href="#buttonthemes">theme modifier set to islands</a>.|
-| <a href="#buttonview">view</a> | <code>'action'</code>, <code>'pseudo'</code> | <code>BEMJSON</code> | Visual highlighting.|
+| <a href="#buttonview">view</a> | <code>'action'</code>, <code>'pseudo'</code>, <code>'plain'</code> | <code>BEMJSON</code> | Visual highlighting.|
 
 ### Custom fields of the block
 
@@ -257,7 +257,7 @@ Sets the size value for all types of buttons.
 
 #### `view` modifier
 
-Acceptable values: `'action'`, `'pseudo'`.
+Acceptable values: `'action'`, `'pseudo'`, `'plain'`.
 
 Use case: `BEMJSON`.
 
@@ -290,6 +290,29 @@ The modifier changes visual representation of the button. For example, use it if
     block : 'button',
     mods : { theme : 'islands', size : 'm', view : 'pseudo', disabled : true },
     text : 'Without borders'
+}
+```
+
+##### Borderless button (`view` modifier with `plain` value)
+
+Use this modifier to create a button based on the other block. For example, iconed-button ([icon](../icon/icon.en.md)).
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', view : 'plain' },
+    text : 'Borderless button'
+}
+```
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', view : 'plain' },
+    icon : {
+        block : 'icon',
+        mods : { social : 'twitter' }
+    }
 }
 ```
 

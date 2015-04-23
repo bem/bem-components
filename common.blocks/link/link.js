@@ -26,12 +26,16 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends link.
         'disabled' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
-                this.domElem.removeAttr('href');
+                this.domElem
+                    .removeAttr('href')
+                    .attr('aria-disabled', true);
             },
 
             '' : function() {
                 this.__base.apply(this, arguments);
-                this.domElem.attr('href', this._url);
+                this.domElem
+                    .attr('href', this._url)
+                    .removeAttr('aria-disabled');
             }
         }
     },

@@ -1,0 +1,3 @@
+({
+    shouldDeps : { elem : 'conditional-comment' }
+})

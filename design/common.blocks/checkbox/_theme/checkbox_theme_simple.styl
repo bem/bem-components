@@ -8,22 +8,28 @@
         visibility: hidden;
     }
 
-    .checkbox__box:before
+    .checkbox__box
     {
-        line-height: 0.6em;
-
         display: inline-block;
+        pointer-events: none; // fix #1472 (see ftlabs/fastclick#351 for details)
 
-        width: 0.75em;
-        height: 0.75em;
-        margin: 0.1em 0.2em 0.3em;
+        &:before
+        {
+            line-height: 0.6em;
 
-        content: ' ';
-        vertical-align: middle;
+            display: inline-block;
 
-        border-radius: 2px;
-        background: #fff;
-        box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.5);
+            width: 0.75em;
+            height: 0.75em;
+            margin: 0.1em 0.2em 0.3em;
+
+            content: ' ';
+            vertical-align: middle;
+
+            border-radius: 2px;
+            background: #fff;
+            box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.5);
+        }
     }
 
     &.checkbox_disabled

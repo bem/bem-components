@@ -4,11 +4,12 @@ provide(BEMDOM.decl(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._modal = this.findBlockInside('modal');
+                var modal = this.findBlockInside('modal'),
+                    trigger = this.findBlockInside({ block : 'link', modName : 'show-modal', modVal : true });
 
-                this.findBlockInside('link').on('click', function() {
-                    this._modal.toggleMod('visible');
-                }, this);
+                trigger.on('click', function() {
+                    modal.setMod('visible');
+                });
             }
         }
     }

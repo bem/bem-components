@@ -284,7 +284,7 @@ module.exports = {
                                     addLinkToDoc('modal'),
                                     {
                                         block : 'link',
-                                        mods : { theme : 'islands', size : 'l', pseudo : true },
+                                        mods : { theme : 'islands', size : 'l', pseudo : true, 'show-modal' : true },
                                         content : 'Open your mind'
                                     },
                                     {

@@ -15,10 +15,14 @@ block('link')(
 
     attrs()(function() {
         var ctx = this.ctx,
-            attrs = { role : 'link' },
+            isDisabled = !!this.mods.disabled,
+            attrs = {
+                role : 'link',
+                'aria-disabled' : isDisabled
+            },
             tabIndex;
 
-        if(!this.mods.disabled) {
+        if(!isDisabled) {
             if(ctx.url) {
                 attrs.href = ctx.url;
                 tabIndex = ctx.tabIndex;
@@ -35,12 +39,8 @@ block('link')(
         return attrs;
     }),
 
-    mod('disabled', true)(
-        js()(function() {
+    mod('disabled', true)
+        .js()(function() {
             return this.extend(applyNext(), { url : this.ctx.url });
-        }),
-        attrs()(function() {
-            return this.extend(applyNext(), { 'aria-disabled' : true });
         })
-    )
 );

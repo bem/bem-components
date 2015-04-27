@@ -55,7 +55,7 @@ describe('link', function() {
             link.domElem.attr('aria-disabled').should.be.equal('true');
 
             link.delMod('disabled');
-            expect(link.domElem.attr('aria-disabled')).to.be.undefined;
+            link.domElem.attr('aria-disabled').should.be.equal('false');
         });
 
         it('should prevent default action and do not emit "click" event if disabled', function() {

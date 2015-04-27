@@ -35,7 +35,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends link.
                 this.__base.apply(this, arguments);
                 this.domElem
                     .attr('href', this._url)
-                    .removeAttr('aria-disabled');
+                    .attr('aria-disabled', false);
             }
         }
     },

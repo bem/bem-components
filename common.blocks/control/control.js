@@ -106,7 +106,9 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
 }, /** @lends control */{
     live : function() {
         this
-            .liveBindTo('control', 'focusin', this.prototype._onFocus)
+            .liveBindTo('control', 'focusin', function() {
+                this._focused || this._onFocus(); // to prevent double call of _onFocus in case of init by focus
+            })
             .liveBindTo('control', 'focusout', this.prototype._onBlur);
 
         var focused = dom.getFocused();

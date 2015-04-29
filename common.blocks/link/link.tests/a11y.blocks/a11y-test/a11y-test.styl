@@ -1,0 +1,35 @@
+.a11y-test
+{
+    display: table;
+
+    &__head
+    {
+        display: table-header-group;
+
+        .a11y-test__cell
+        {
+            font-weight: bold;
+        }
+    }
+
+    &__body
+    {
+        display: table-row-group;
+    }
+
+    &__row
+    {
+        display: table-row;
+
+        &_current
+        {
+            background-color: #ffeba0;
+        }
+    }
+
+    &__cell
+    {
+        display: table-cell;
+        padding: 1em;
+    }
+}

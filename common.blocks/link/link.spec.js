@@ -30,6 +30,17 @@ describe('link', function() {
         spy.should.have.been.calledOnce;
     });
 
+    it('should emit "click" event and prevent default action', function() {
+        var e = $.Event('pointerclick');
+
+        link.on('click', function(e) {
+            e.preventDefault();
+        });
+        link.domElem.trigger(e);
+
+        e.isDefaultPrevented().should.be.true;
+    });
+
     describe('disabled', function() {
         it('should remove "href" attribute on disable', function() {
             link.setMod('disabled');

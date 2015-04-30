@@ -2,7 +2,10 @@
  * @module link
  */
 
-modules.define('link', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
+modules.define(
+    'link',
+    ['i-bem__dom', 'control', 'events'],
+    function(provide, BEMDOM, Control, events) {
 
 /**
  * @exports
@@ -53,9 +56,13 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends link.
     },
 
     _onPointerClick : function(e) {
-        this.hasMod('disabled')?
-            e.preventDefault() :
-            this.emit('click');
+        if(this.hasMod('disabled')) {
+            e.preventDefault();
+        } else {
+            var event = new events.Event('click');
+            this.emit(event);
+            event.isDefaultPrevented() && e.preventDefault();
+        }
     }
 }, /** @lends link */{
     live : function() {

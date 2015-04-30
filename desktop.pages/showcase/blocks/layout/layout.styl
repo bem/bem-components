@@ -1,28 +1,16 @@
 .layout
 {
-    &__row
-    {
-        display: flex;
+    display: flex;
 
-        justify-content: space-between;
-    }
+    max-width: 1440px;
+
+    flex-wrap: wrap;
+    justify-content: space-between;
 
     &__cell
     {
         padding: 20px;
 
         vertical-align: top;
-
-        flex-shrink: 0;
-    }
-}
-
-@media (max-width: 800px)
-{
-    .layout__row
-    {
-        flex-direction: column;
-
-        align-items: center;
     }
 }

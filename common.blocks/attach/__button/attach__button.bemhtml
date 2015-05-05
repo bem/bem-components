@@ -1,5 +1,5 @@
 block('button')
-    .match(this._attach)(
+    .match(function() { return this._attach; })(
         tag()('span'),
         content()(function() {
             return [

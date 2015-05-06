@@ -7,5 +7,5 @@ block('popup').match(function() { return this._selectCls; }).def()(function() {
     // with special classes, so gemini tests could find them
     this.ctx.cls = this._selectCls + '-popup';
     delete this._selectCls;
-    return apply();
+    return applyNext();
 });

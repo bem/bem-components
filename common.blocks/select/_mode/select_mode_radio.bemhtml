@@ -1,7 +1,5 @@
 block('select').mod('mode', 'radio')(
-    def().match(function() {
-        return this._checkedOptions;
-    })(function() {
+    def().match(function() { return this._checkedOptions; })(function() {
         var checkedOptions = this._checkedOptions,
             firstOption = this._firstOption;
         if(firstOption && !checkedOptions.length) {

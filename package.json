@@ -28,7 +28,7 @@
     "enb": "0.15.0",
     "enb-bem-techs": "^1.0.3",
     "enb-magic-platform": "0.4.5",
-    "enb-bem-docs": "0.7.3",
+    "enb-bem-docs": "0.8.0",
     "enb-bem-examples": "0.5.9",
     "enb-bem-specs": "0.5.6",
     "enb-bem-tmpl-specs": "0.7.0",

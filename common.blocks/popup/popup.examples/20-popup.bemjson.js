@@ -72,30 +72,30 @@
                 content : [
                     { elem : 'row', content : [
                         { elem : 'cell' },
-                        { elem : 'cell', mods : { align : 'left' }, content : test('top-left') },
-                        { elem : 'cell', mods : { align : 'center' }, content : test('top-center') },
-                        { elem : 'cell', mods : { align : 'right' }, content : test('top-right') },
+                        { elem : 'cell', elemMods : { align : 'left' }, content : test('top-left') },
+                        { elem : 'cell', elemMods : { align : 'center' }, content : test('top-center') },
+                        { elem : 'cell', elemMods : { align : 'right' }, content : test('top-right') },
                         { elem : 'cell' }
                     ] },
                     { elem : 'row', content : [
-                        { elem : 'cell', mods : { align : 'right' }, content : test('left-top') },
-                        { elem : 'cell', mods : { align : 'center', border : 'yes' }, attrs : { colspan : 3, rowspan : 3 },
+                        { elem : 'cell', elemMods : { align : 'right' }, content : test('left-top') },
+                        { elem : 'cell', elemMods : { align : 'center', border : 'yes' }, attrs : { colspan : 3, rowspan : 3 },
                             content : positioned },
-                        { elem : 'cell', mods : { align : 'left' }, content : test('right-top') }
+                        { elem : 'cell', elemMods : { align : 'left' }, content : test('right-top') }
                     ] },
                     { elem : 'row', content : [
-                        { elem : 'cell', mods : { align : 'right' }, content : test('left-center') },
-                        { elem : 'cell', mods : { align : 'left' }, content : test('right-center') }
+                        { elem : 'cell', elemMods : { align : 'right' }, content : test('left-center') },
+                        { elem : 'cell', elemMods : { align : 'left' }, content : test('right-center') }
                     ] },
                     { elem : 'row', content : [
-                        { elem : 'cell', mods : { align : 'right' }, content : test('left-bottom') },
-                        { elem : 'cell', mods : { align : 'left' }, content : test('right-bottom') }
+                        { elem : 'cell', elemMods : { align : 'right' }, content : test('left-bottom') },
+                        { elem : 'cell', elemMods : { align : 'left' }, content : test('right-bottom') }
                     ] },
                     { elem : 'row', content : [
                         { elem : 'cell' },
-                        { elem : 'cell', mods : { align : 'left' }, content : test('bottom-left') },
-                        { elem : 'cell', mods : { align : 'center' }, content : test('bottom-center') },
-                        { elem : 'cell', mods : { align : 'right' }, content : test('bottom-right') },
+                        { elem : 'cell', elemMods : { align : 'left' }, content : test('bottom-left') },
+                        { elem : 'cell', elemMods : { align : 'center' }, content : test('bottom-center') },
+                        { elem : 'cell', elemMods : { align : 'right' }, content : test('bottom-right') },
                         { elem : 'cell' }
                     ] }
                 ]

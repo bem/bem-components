@@ -318,6 +318,9 @@ module.exports = function(config) {
                 destPath : platform + '.tmpl-specs',
                 levels : getLibLevels(platform),
                 sourceLevels : getSpecLevels(platform),
+                htmlDiffer : {
+                    ignoreAttributes : ['id', 'for', 'aria-labelledby', 'aria-controls']
+                },
                 engines : {
                     bh : {
                         tech : 'enb-bh/techs/bh-server',

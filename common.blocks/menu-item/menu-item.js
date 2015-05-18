@@ -31,6 +31,18 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
             'true' : function() {
                 this.__base.apply(this, arguments);
                 this.delMod('hovered');
+                this.domElem.attr('aria-disabled', 'true');
+            },
+            '' : function() {
+                this.__base.apply(this, arguments);
+                this.domElem.removeAttr('aria-disabled');
+            }
+        },
+
+        'checked' : {
+            '*' : function(modName, modValue) {
+                this.__base.apply(this, arguments);
+                this.domElem.attr('aria-checked', !!modValue);
             }
         }
     },

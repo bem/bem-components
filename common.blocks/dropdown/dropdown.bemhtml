@@ -8,6 +8,8 @@ block('dropdown')(
             popup = { block : 'popup', content : popup };
         }
 
+        this._popupId = popup.id || (popup.id = this.identify());
+
         var popupMods = popup.mods || (popup.mods = {});
         popupMods.theme || (popupMods.theme = this.mods.theme);
         popupMods.hasOwnProperty('autoclosable') || (popupMods.autoclosable = true);

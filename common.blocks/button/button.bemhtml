@@ -30,6 +30,8 @@ block('button')(
                     value : ctx.val
                 };
 
+            this.mods.togglable && (attrs['aria-pressed'] = !!this.mods.checked);
+
             this.mods.disabled && (attrs.disabled = 'disabled');
 
             return this.extend(applyNext(), attrs);

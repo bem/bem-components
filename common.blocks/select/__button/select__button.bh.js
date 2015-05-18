@@ -18,6 +18,10 @@ module.exports = function(bh) {
             },
             id : select.id,
             tabIndex : select.tabIndex,
+            attrs : {
+                'aria-expanded' : !!(select.mods && select.mods.opened),
+                'aria-haspopup' : true
+            },
             content : [
                 ctx.content(),
                 { block : 'icon', mix : { block : 'select', elem : 'tick' } }

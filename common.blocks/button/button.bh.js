@@ -19,6 +19,8 @@ module.exports = function(bh) {
             })
             .mix({ elem : 'control' }); // NOTE: satisfy interface of `control`
 
+        ctx.mod('togglable') && ctx.attr('aria-pressed', !!ctx.mod('checked'));
+
         isRealButton &&
             ctx.mod('disabled') &&
             ctx.attr('disabled', 'disabled');

@@ -9,6 +9,8 @@ module.exports = function(bh) {
             popup = { block : 'popup', content : popup };
         }
 
+        ctx.tParam('popupId', popup.id || (popup.id = ctx.generateId()));
+
         var popupMods = popup.mods || (popup.mods = {});
         popupMods.theme || (popupMods.theme = ctx.mod('theme'));
         popupMods.hasOwnProperty('autoclosable') || (popupMods.autoclosable = true);

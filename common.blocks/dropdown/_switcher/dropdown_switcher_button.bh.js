@@ -14,6 +14,11 @@ module.exports = function(bh) {
             resMods.size || (resMods.size = dropdownMods.size);
             resMods.theme || (resMods.theme = dropdownMods.theme);
             resMods.disabled = dropdownMods.disabled;
+
+            res.attrs || (res.attrs = {});
+            res.attrs['aria-haspopup'] = true;
+            res.attrs['aria-expanded'] = !!dropdownMods.opened;
+            res.attrs['aria-controls'] = ctx.tParam('popupId');
         }
 
         return res;

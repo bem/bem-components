@@ -22,6 +22,12 @@ describe('progressbar', function() {
             progressbar.setVal(val);
             progressbar.elem('bar')[0].style.width.should.be.equal(val + '%');
         });
+
+        it('should set "aria-valuenow" attribute', function() {
+            var val = 25;
+            progressbar.setVal(val);
+            progressbar.domElem.attr('aria-valuenow').should.be.equal('' + val);
+        });
     });
 
     describe('getVal', function() {

@@ -1,5 +1,7 @@
 block('attach')(
-    def()(function() { applyNext({ _attach : this.ctx }); }),
+    def()(function() {
+        applyNext({ _attach : this.ctx, _textId : this.identify() });
+    }),
 
     tag()('span'),
 
@@ -26,6 +28,7 @@ block('attach')(
                 button,
                 {
                     elem : 'no-file',
+                    attrs : { 'aria-hidden' : true },
                     content : this.ctx.noFileText
                 }
             ];

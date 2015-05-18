@@ -1,12 +1,19 @@
 module.exports = function(bh) {
 
     bh.match('modal', function(ctx, json) {
+        var visible = !!ctx.mod('visible');
+
         ctx
             .js(true)
             .mix({
                 block : 'popup',
                 js : { zIndexGroupLevel : json.zIndexGroupLevel || 20 },
                 mods : { autoclosable : ctx.mod('autoclosable') }
+            })
+            .attrs({
+                role : 'dialog',
+                'aria-expanded' : visible,
+                'aria-hidden' : !visible
             })
             .content({
                 elem : 'table',

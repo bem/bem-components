@@ -22,6 +22,7 @@ BEM Components Library
 * <a href="#supply">Варианты поставки библиотеки</a>
 * <a href="#development">Разработка</a>
 * <a href="#maintain">Команда основной разработки</a>
+* <a href="#workflow">Рабочий процесс</a>
 
 **Дополнительная информация**
 
@@ -316,6 +317,18 @@ magic make desktop.tmpl-specs/button
 * [dfilatov](https://github.com/dfilatov)
 * [mishanga](https://github.com/mishanga)
 * [narqo](https://github.com/narqo)
+
+<a name="workflow"></a>
+## Рабочий процесс
+
+Список текущих задач отображается на специальном [Agile Board](https://waffle.io/bem/bem-components).
+
+Статусы задач:
+
+- **backlog** — неразобранные задачи, которые требуют обсуждения командой для оценки и принятия решения о реализации. В таком статусе также могут находиться задачи, по которым нужна дополнительная информация.
+- **ready** — разобранные задачи, решение о реализации которых принято.
+- **in progress** — задачи с конкретным исполнителем, которые находятся в работе.
+- **done** — задачи, закрытые за последние семь дней (это временное техническое ограничение выбранного Agile Board).
 
 ## Лицензия
 © 2012 YANDEX LLC. Код лицензирован [Mozilla Public License 2.0](LICENSE.txt).

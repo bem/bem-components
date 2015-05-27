@@ -32,6 +32,7 @@ The library contains base realizations of the blocks that are abstracted from th
     * <a href="#unit-tests">JavaScript unit tests</a>
     * <a href="#regression-tests">Regression tests of layout</a>
     * <a href="#template-tests">Tests for templates</a>
+* <a href="#workflow">Workflow</a>
 
 <a name="content"></a>
 ## Structure
@@ -383,6 +384,18 @@ If build procedure is successful, tests will be run automatically. After that yo
 If the result of applying the template does not match with the block sample in HTML, then you will see errors in the log with description of the difference from the block sample.
 
 All tests will be run automatically using [Travis](https://travis-ci.org) for each pull request.
+
+<a name="workflow"></a>
+### Workflow
+
+The issue list included in the current scope is displayed on a special [Agile Board](https://waffle.io/bem/bem-components).
+
+Issues on the Agile Board can be in four statuses:
+
+- **backlog** — issues that need to disassemble, evaluate and make a decision about their implementation. In this status can also be issues that need clarifying information.
+- **ready** — disassembled issues the decision about which implementation is adopted.
+- **in progress** — issues with a specific assignee which is already in work.
+- **done** — resolved issues, which were closed during the last seven days (this is a temprorary technical limitation of the selected Agile Board).
 
 ## License
 Code and documentation copyright 2012 YANDEX LLC. Code released under the [Mozilla Public License 2.0](LICENSE.txt).

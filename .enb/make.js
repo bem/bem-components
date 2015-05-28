@@ -364,6 +364,8 @@ function getSourceLevels(platform) {
         levels.push({ path : path.join('design', name + '.blocks'), check : true });
     });
 
+    levels.push('test.blocks');
+
     return levels;
 }
 

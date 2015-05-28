@@ -8,14 +8,10 @@ module.exports = function(bh) {
         var url = typeof json.url === 'object'? // url could contain bemjson
                 bh.apply(json.url) :
                 json.url,
-            isDisabled = !!ctx.mod('disabled'),
-            attrs = {
-                role : 'link',
-                'aria-disabled' : isDisabled
-            },
+            attrs = { role : 'link' },
             tabIndex;
 
-        if(!isDisabled) {
+        if(!ctx.mod('disabled')) {
             if(url) {
                 attrs.href = url;
                 tabIndex = json.tabIndex;
@@ -25,6 +21,7 @@ module.exports = function(bh) {
             ctx.js(true);
         } else {
             ctx.js(url? { url : url } : true);
+            attrs['aria-disabled'] = true;
         }
 
         typeof tabIndex === 'undefined' || (attrs.tabindex = tabIndex);

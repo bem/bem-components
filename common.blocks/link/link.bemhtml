@@ -15,20 +15,18 @@ block('link')(
 
     attrs()(function() {
         var ctx = this.ctx,
-            isDisabled = !!this.mods.disabled,
-            attrs = {
-                role : 'link',
-                'aria-disabled' : isDisabled
-            },
+            attrs = { role : 'link' },
             tabIndex;
 
-        if(!isDisabled) {
+        if(!this.mods.disabled) {
             if(ctx.url) {
                 attrs.href = ctx.url;
                 tabIndex = ctx.tabIndex;
             } else {
                 tabIndex = ctx.tabIndex || 0;
             }
+        } else {
+            attrs['aria-disabled'] = true;
         }
 
         typeof tabIndex === 'undefined' || (attrs.tabindex = tabIndex);

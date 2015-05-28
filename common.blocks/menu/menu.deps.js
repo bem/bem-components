@@ -10,7 +10,7 @@
 },
 {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'menu' }
+    mustDeps : { tech : 'bemhtml', block : 'menu', mods : { mode : 'radio' } }
 },
 {
     tech : 'tmpl-spec.js',

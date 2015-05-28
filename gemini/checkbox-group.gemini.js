@@ -8,8 +8,16 @@ gemini.suite('checkbox-group', function(root) {
         var checkboxGroupSelector = '.' + test,
             checkboxGroupEnabledSelector = checkboxGroupSelector + '-enabled',
             checkboxGroupDisabledSelector = checkboxGroupSelector + '-disabled',
-            // for focused state we need different elements
-            element = !!~test.indexOf('button')? ' .button' : ' .checkbox__control';
+            element,
+            focusedElement;
+        // for focused state we need different elements
+        if(!!~test.indexOf('button')) {
+            element = ' .button';
+            focusedElement = element;
+        } else {
+            element = ' .checkbox';
+            focusedElement = element + '__control';
+        }
 
         gemini.suite(test + '-enabled', function(suite) {
             suite
@@ -19,7 +27,9 @@ gemini.suite('checkbox-group', function(root) {
                 })
                 .capture('plain')
                 .capture('focused-hard', function(actions) {
-                    actions.sendKeys(this.checkbox, 'focused-hard'); // send not empty string
+                    // NOTE: can't focus on `<label class="checkbox">`, so find `.checkbox__control` explicitly
+                    // see https://github.com/gemini-testing/gemini/issues/172
+                    actions.focus(find(checkboxGroupEnabledSelector + focusElement));
                 })
                 .capture('focused-checked', function(actions) {
                     actions.click(this.checkbox);

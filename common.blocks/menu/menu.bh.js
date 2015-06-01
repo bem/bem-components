@@ -36,7 +36,7 @@ module.exports = function(bh) {
                                 (itemOrGroup.mods = itemOrGroup.mods || {}).checked = true;
                                 checkedItems.push(itemOrGroup);
                             }
-                        } else { // menu__group
+                        } else if(itemOrGroup.content) { // menu__group
                             iterateItems(itemOrGroup.content);
                         }
                     }

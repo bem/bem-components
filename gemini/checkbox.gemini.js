@@ -23,7 +23,7 @@ gemini.suite('checkbox', function(root) {
                     element
                 ];
             } else {
-                element = checkboxEnabledSelector + ' .checkbox__control';
+                element = checkboxEnabledSelector + ' .checkbox';
                 captureElements = [checkboxEnabledSelector];
             }
 
@@ -37,8 +37,10 @@ gemini.suite('checkbox', function(root) {
                     .capture('hovered', function(actions) {
                         actions.mouseMove(this.checkbox);
                     })
-                    .capture('focused-hard', function(actions) {
-                        actions.focus(this.checkbox);
+                    .capture('focused-hard', function(actions, find) {
+                        // NOTE: can't focus on `<label class="checkbox">`, so find `.checkbox__control` explicitly
+                        // see https://github.com/gemini-testing/gemini/issues/172
+                        actions.focus(find(element + '__control'));
                     })
                     .capture('focused-checked', function(actions) {
                         actions.click(this.checkbox);

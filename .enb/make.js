@@ -98,8 +98,8 @@ module.exports = function(config) {
                         target : LIB_NAME + '.dev.js'
                     }],
                     [techs.engines.bemhtml, { target : LIB_NAME + '.dev.bemhtml.js', devMode : false }],
-                    [techs.engines.bhServerInclude, { target : LIB_NAME + '.dev.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
-                    [techs.engines.bhClient, { target : '.tmp.browser.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json' }],
+                    [techs.engines.bhServerInclude, { target : LIB_NAME + '.dev.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json', mimic : ['BH', 'BEMHTML'] }],
+                    [techs.engines.bhClient, { target : '.tmp.browser.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json', mimic : ['BH', 'BEMHTML'] }],
                     [techs.files.merge, {
                         target : LIB_NAME + '.dev.js+bemhtml.js',
                         sources : [LIB_NAME + '.dev.js', LIB_NAME + '.dev.bemhtml.js']

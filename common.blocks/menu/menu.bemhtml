@@ -33,10 +33,9 @@ block('menu')(
             iterateItems(ctx.content);
         }
 
-        this._firstItem = firstItem;
-        this._checkedItems = checkedItems;
-
         applyNext({
+            _firstItem : firstItem,
+            _checkedItems : checkedItems,
             _menuMods : {
                 theme : mods.theme,
                 disabled : mods.disabled

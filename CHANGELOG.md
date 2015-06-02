@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.2.0
+
+### Bug fixes
+* The issue in `select` which prevented it to be opened with `space` button was fixed ([#1486](https://github.com/bem/bem-components/issues/1486)).
+* The issue in `checkbox` on touch devices was fixed ([#1472](https://github.com/bem/bem-components/issues/1472)).
+
+### Other changes
+* Now there is an ability to prevent native behaviour in `link` block ([#1485](https://github.com/bem/bem-components/issues/1485)).
+* Additional check for existance of a group in templates of `menu` was added ([#1513](https://github.com/bem/bem-components/issues/1513)).
+* BH bundles in `dist` now mimic to BEMHTML ([#1530](https://github.com/bem/bem-components/issues/1530)).
+* Small fixes in documentation were added.
+
 ## 2.1.1
 
 ### Bug fixes

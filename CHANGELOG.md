@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.1
+
+### Bug fixes
+* The issue in `checkbox` which leads to impossible toggle by click in most browsers was fixed ([#1538](https://github.com/bem/bem-components/issues/1538)).
+
 ## 2.2.0
 
 ### Bug fixes

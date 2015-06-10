@@ -27,6 +27,11 @@
             placeholder : 'placeholder',
             mods : { disabled : true }
         } },
+        { attrs : { style : 'width: 350px;' }, content : {
+            block : 'textarea',
+            mods : { width : 'available' },
+            val : 'width_available'
+        } },
         { tag : 'hr' },
 
         { tag : 'h2', content : 'simple' },

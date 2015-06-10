@@ -33,6 +33,11 @@
             val : 'search',
             placeholder : 'query'
         } },
+        { attrs : { style : 'width: 350px;' }, content : {
+            block : 'input',
+            mods : { width : 'available' },
+            val : 'width_available'
+        } },
 
         { tag : 'hr' },
 

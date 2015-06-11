@@ -1,6 +1,4 @@
 block('image')(
-    attrs()({ role : 'img' }),
-
     tag()('span'),
 
     match(function() { return typeof this.ctx.content === 'undefined'; })(

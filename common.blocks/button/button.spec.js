@@ -83,6 +83,16 @@ describe('button', function() {
 
             button.hasMod('pressed').should.be.false;
         });
+
+        it('should update "aria-disabled" attr on set "disabled" mod', function () {
+            button
+                .setMod('disabled')
+                .domElem.attr('aria-disabled').should.be.equal('true');
+
+            button
+                .delMod('disabled')
+                .domElem.attr('aria-disabled').should.be.equal('false');
+        });
     });
 
     describe('click', function() {

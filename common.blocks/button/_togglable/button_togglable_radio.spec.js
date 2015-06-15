@@ -51,6 +51,13 @@ describe('button_togglable_radio', function() {
             triggerPointerUpPointerDown(false);
             button.hasMod('checked').should.be.false;
         });
+
+        it('should add correct a11y attributes', function() {
+            button.setMod('checked');
+            button.domElem.attr('aria-pressed').should.be.equal('true');
+            button.delMod('checked');
+            button.domElem.attr('aria-pressed').should.be.equal('false');
+        });
     });
 });
 

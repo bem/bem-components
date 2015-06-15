@@ -1,7 +1,9 @@
 module.exports = function(bh) {
 
     bh.match('button_type_link', function(ctx, json) {
-        ctx.tag('a');
+        ctx
+            .tag('a')
+            .attr('role', 'link');
 
         json.target && ctx.attr('target', json.target);
         ctx.mod('disabled')?

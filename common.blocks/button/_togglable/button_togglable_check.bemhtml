@@ -1,0 +1,3 @@
+block('button').mod('togglable', 'check').attrs()(function() {
+    return this.extend(applyNext(), { 'aria-pressed' : this.mods.checked || false });
+});

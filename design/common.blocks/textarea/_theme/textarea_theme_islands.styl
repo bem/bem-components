@@ -35,14 +35,21 @@
         box-shadow: 0 0 0 1px #ffcc00;
     }
 
+    &.textarea_width_available
+    {
+        width: 100%;
+
+        resize: vertical;
+    }
+
     &.textarea_disabled
     {
-      resize: none;
-      cursor: default;
+        resize: none;
+        cursor: default;
 
-      color: rgba(0, 0, 0, .4);
-      border-color: transparent;
-      background: rgba(0, 0, 0, .08);
+        color: rgba(0, 0, 0, .4);
+        border-color: transparent;
+        background: rgba(0, 0, 0, .08);
     }
 
     &.textarea_size_s

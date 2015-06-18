@@ -76,7 +76,7 @@ The library contains base realizations of the blocks that are abstracted from th
 * [JS](https://bem.info/technology/i-bem/current/i-bem-js/)
 * [YModules](https://bem.info/tools/bem/modules/)
 * [BEMHTML](https://bem.info/technology/bemhtml/current/reference/)
-* [BH](https://bem.info/technology/bh/current/reference/)
+* [BH](https://bem.info/technology/bh/current/about/)
 * [BEMTREE](https://bem.info/technology/bemtree/current/bemtree/)
 * [Stylus](https://learnboost.github.io/stylus/)
 

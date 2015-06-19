@@ -8,7 +8,7 @@ module.exports = function(bh) {
         var url = typeof json.url === 'object'? // url could contain bemjson
                 bh.apply(json.url) :
                 json.url,
-            attrs = {},
+            attrs = { role : 'link' },
             tabIndex;
 
         if(!ctx.mod('disabled')) {
@@ -21,6 +21,7 @@ module.exports = function(bh) {
             ctx.js(true);
         } else {
             ctx.js(url? { url : url } : true);
+            attrs['aria-disabled'] = true;
         }
 
         typeof tabIndex === 'undefined' || (attrs.tabindex = tabIndex);

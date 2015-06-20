@@ -34,7 +34,7 @@ describe('button_togglable_check', function() {
     });
 
     describe('check/uncheck', function() {
-        it('should switch "checked" mod on "pointerpress"/"pointerreleaase" only if "pointerrelease" target is in block', function() {
+        it('should switch "checked" mod on "pointerpress"/"pointerrelease" only if "pointerrelease" target is in block', function() {
             function triggerPointerUpPointerDown(onBlock) {
                 button.domElem
                     .trigger('pointerpress')
@@ -49,6 +49,13 @@ describe('button_togglable_check', function() {
 
             triggerPointerUpPointerDown(false);
             button.hasMod('checked').should.be.false;
+        });
+
+        it('should add correct a11y attributes', function() {
+            button.setMod('checked');
+            button.domElem.attr('aria-pressed').should.be.equal('true');
+            button.delMod('checked');
+            button.domElem.attr('aria-pressed').should.be.equal('false');
         });
     });
 });

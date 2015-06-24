@@ -1,0 +1,6 @@
+block('control-group').attrs()(function() {
+    return {
+        role : 'group',
+        'aria-label' : '.'
+    };
+});

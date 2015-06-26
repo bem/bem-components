@@ -3,7 +3,7 @@
     shouldDeps : [
         {
             elems : ['text'],
-            mods : { focused : 'yes', hovered : 'yes', disabled : 'yes', pressed : 'yes' }
+            mods : { focused : true, hovered : true, disabled : true, pressed : true }
         },
         { block : 'jquery', elem : 'event', mods : { type : 'pointer' } },
         { block : 'keyboard', elem : 'codes' },

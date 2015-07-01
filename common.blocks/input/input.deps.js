@@ -2,7 +2,7 @@
     mustDeps : { block : 'i-bem', elems : 'dom' },
     shouldDeps : [
         {
-            mods : ['disabled', 'focused'],
+            mods : { disabled : true, focused : true },
             elems : ['box', 'control']
         },
         'control'

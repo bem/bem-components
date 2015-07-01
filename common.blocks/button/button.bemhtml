@@ -1,4 +1,11 @@
 block('button')(
+    def()(function() {
+        var tag = apply('tag'),
+            isRealButton = (tag === 'button') && (!this.mods.type || this.mods.type === 'submit');
+
+        applyNext({ _isRealButton : isRealButton });
+    }),
+
     tag()(function() {
         return this.ctx.tag || 'button';
     }),
@@ -11,18 +18,22 @@ block('button')(
     attrs()(
         // Common attributes
         function() {
-            var ctx = this.ctx;
+            var ctx = this.ctx,
+                attrs = {
+                    role : 'button',
+                    tabindex : ctx.tabIndex,
+                    id : ctx.id,
+                    title : ctx.title
+                };
 
-            return {
-                role : 'button',
-                tabindex : ctx.tabIndex,
-                id : ctx.id,
-                title : ctx.title
-            };
+            this.mods.disabled &&
+                !this._isRealButton && (attrs['aria-disabled'] = true);
+
+            return attrs;
         },
 
         // Attributes for button variant
-        match(function() { return !this.mods.type || this.mods.type === 'submit'; })(function() {
+        match(function() { return this._isRealButton; })(function() {
             var ctx = this.ctx,
                 attrs = {
                     type : this.mods.type || 'button',

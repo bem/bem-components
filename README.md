@@ -1,401 +1,365 @@
 BEM Components Library
 ======================
+
 [![GitHub Release](https://img.shields.io/github/release/bem/bem-components.svg?style=flat)](https://github.com/bem/bem-components/releases)
 [![Build Status](https://img.shields.io/travis/bem/bem-components/v2.svg?style=flat)](https://travis-ci.org/bem/bem-components)
 [![Coverage Status](https://img.shields.io/coveralls/bem/bem-components/v2.svg?style=flat)](https://coveralls.io/r/bem/bem-components?branch=v2)
 [![devDependency Status](https://img.shields.io/david/dev/bem/bem-components.svg?style=flat)](https://david-dm.org/bem/bem-components#info=devDependencies)
 
-## What is this?
+What is this?
+-------------
 
-`bem-components` is a library of blocks that provides ready-made form controls and some other blocks.
-The library contains base realizations of the blocks that are abstracted from the design. Few optional design themes are available.
+BEM is an open-source library that provides a set of ready-made visual components (blocks) for creating web interfaces.
 
-* <a href="#content">Structure</a>
-  * <a href="#levels">Levels</a>
-  * <a href="#blocks">Blocks</a>
-  * <a href="#techs">Technologies</a>
-  * <a href="#tools">Tools</a>
-  * <a href="#optimize">Optomizers</a>
-  * <a href="#linters">Linters</a>
-  * <a href="#autopref">Autoprefixer</a>
-* <a href="#usage">Usage</a>
-* <a href="#supported-browsers">Supported browsers</a>
-* <a href="#migration">Migration</a>
-* <a href="#changelog">Changelog</a>
-* <a href="#maintain">Maintainers</a>
-* <a href="#devprinciples">Development principles</a>
-  * <a href="#supply">Delivery cases</a>
-* <a href="#development">Development</a>
-  * <a href="#working-copy">Working copy</a>
-  * <a href="#how-to-contribute">How to contribute</a>
-  * <a href="#modular-tests">Modular testing</a>
-    * <a href="#unit-tests">JavaScript unit tests</a>
-    * <a href="#regression-tests">Regression tests of layout</a>
-    * <a href="#template-tests">Tests for templates</a>
-* <a href="#workflow">Workflow</a>
+The library provides design themes. This version introduces the "islands" theme, which implements the new Yandex design. Features include supporting multiple themes at once, and creating new themes.
 
-<a name="content"></a>
-## Structure
+Contents
+--------
+
+-   <a href="#levels">Levels</a>
+-   <a href="#blocks">Blocks</a>
+-   <a href="#supported-browsers">Supported browsers</a>
+-   <a href="#techs">Technologies</a>
+-   <a href="#tools">Tools</a>
+-   <a href="#usage">Usage</a>
+-   <a href="#supply">Library distributions</a>
+-   <a href="#development">Development</a>
+-   <a href="#maintain">Maintainers</a>
+-   <a href="#workflow">Workflow</a>
+
+**Additional information**
+
+-   [Changelog](/CHANGELOG.en.md)
+-   [Migration to future versions](/MIGRATION.en.md)
 
 <a name="levels"></a>
-### Levels
 
-* `common.blocks` — support of any devices and browsers.
-* `desktop.blocks` — support of desktop browsers.
-* `touch.blocks` — implementation of some touch platforms specifics.
+Levels
+------
+
+-   `common.blocks` — support of any devices and browsers.
+-   `desktop.blocks` — support of desktop browsers.
+-   `touch.blocks` — implementation of specific features for touch platforms.
+-   `touch-phone.blocks` — implementation of specific features for smartphones.
+-   `touch-pad.blocks` — implementation of specific features for tablets.
+-   `design/<common|desktop|touch|touch-phone|touch-pad>.blocks` — implementation of various designs (themes).
 
 <a name="blocks"></a>
-### Blocks
 
-* [attach](common.blocks/attach/attach.en.md)
-* [button](common.blocks/button/button.en.md)
-* [checkbox](common.blocks/checkbox/checkbox.en.md)
-* [checkbox-group](common.blocks/checkbox-group/checkbox-group.en.md)
-* [control](common.blocks/control/control.en.md)
-* [control-group](common.blocks/control-group/control-group.en.md)
-* [dropdown](common.blocks/dropdown/dropdown.en.md)
-* [icon](common.blocks/icon/icon.en.md)
-* [image](common.blocks/image/image.en.md)
-* [input](common.blocks/input/input.en.md)
-* [link](common.blocks/link/link.en.md)
-* [menu](common.blocks/menu/menu.en.md)
-* [menu-item](common.blocks/menu-item/menu-item.en.md)
-* [modal](common.blocks/modal/modal.en.md)
-* [popup](common.blocks/popup/popup.en.md)
-* [progressbar](common.blocks/progressbar/progressbar.en.md)
-* [radio](common.blocks/radio/radio.en.md)
-* [radio-group](common.blocks/radio-group/radio-group.en.md)
-* [select](common.blocks/select/select.en.md)
-* [spin](common.blocks/spin/spin.en.md)
-* [textarea](common.blocks/textarea/textarea.en.md)
-* [z-index-group](common.blocks/z-index-group/z-index-group.en.md)
+Blocks
+------
 
-<a name="techs"></a>
-### Technologies
-
-* [JS](https://bem.info/technology/i-bem/current/i-bem-js/)
-* [YModules](https://bem.info/tools/bem/modules/)
-* [BEMHTML](https://bem.info/technology/bemhtml/current/reference/)
-* [BH](https://bem.info/technology/bh/current/about/)
-* [BEMTREE](https://bem.info/technology/bemtree/current/bemtree/)
-* [Stylus](https://learnboost.github.io/stylus/)
-
-<a name="tools"></a>
-### Tools
-
-* [borschik](https://bem.info/tools/optimizers/borschik/)
-* [bem-tools](https://bem.info/tools/bem/bem-tools/)
-* [ENB](http://enb-make.info/)
-
-<a name="optimize"></a>
-### Optimizers
-
-* [SVGO](https://bem.info/tools/optimizers/svgo/svgo/)
-* [CleanCSS](http://www.cleancss.com/about.php)
-* [ImageOptim](http://imageoptim.com/)
-
-<a name="linters"></a>
-### Linters
-
-* [jshint](http://www.jshint.com/)
-* [jscs](https://github.com/jscs-dev/node-jscs)
-
-<a name="autopref"></a>
-### Autoprefixer
-
-* [Autoprefixer](https://github.com/ai/autoprefixer/)
-
-<a name="usage"></a>
-## Usage
-
-You can use any way you are familiar with to include the library into your project.
-For example, you can use [bem-tools](https://bem.info/tools/bem/bem-tools/) or [ENB](http://enb-make.info/). To connect the library to your project use the configuration file of the selected building tool.
-
-If you use [project-stub](https://bem.info/tutorials/project-stub/) to start your project, you do not need to connect the library – it is connected by default.
+-   [attach](common.blocks/attach/attach.en.md)
+-   [button](common.blocks/button/button.en.md)
+-   [checkbox](common.blocks/checkbox/checkbox.en.md)
+-   [checkbox-group](common.blocks/checkbox-group/checkbox-group.en.md)
+-   [control](common.blocks/control/control.en.md)
+-   [control-group](common.blocks/control-group/control-group.en.md)
+-   [dropdown](common.blocks/dropdown/dropdown.en.md)
+-   [icon](common.blocks/icon/icon.en.md)
+-   [image](common.blocks/image/image.en.md)
+-   [input](common.blocks/input/input.en.md)
+-   [link](common.blocks/link/link.en.md)
+-   [menu](common.blocks/menu/menu.en.md)
+-   [menu-item](common.blocks/menu-item/menu-item.en.md)
+-   [modal](common.blocks/modal/modal.en.md)
+-   [popup](common.blocks/popup/popup.en.md)
+-   [progressbar](common.blocks/progressbar/progressbar.en.md)
+-   [radio](common.blocks/radio/radio.en.md)
+-   [radio-group](common.blocks/radio-group/radio-group.en.md)
+-   [select](common.blocks/select/select.en.md)
+-   [spin](common.blocks/spin/spin.en.md)
+-   [textarea](common.blocks/textarea/textarea.en.md)
+-   [z-index-group](common.blocks/z-index-group/z-index-group.en.md)
 
 <a name="supported-browsers"></a>
-## Supported browsers
 
-* **Desktop**
-  * Firefox *(the last two stable versions)*
-  * Chrome *(the last two stable versions)*
-  * Safari *(the last two stable versions)*
-  * Yandex *(the last two stable versions)*
-  * Opera 12.6+
-  * Internet Explorer 9+
-  * Partial support of Internet Explorer 8 ([more info](#ie8))
+Supported browsers
+------------------
 
-* **Touch**
-  * Android 4+
-  * iOS 5+
-  * Internet Explorer 10+
+-   **Desktop**
+-   Firefox *(the last two stable versions)*
+-   Chrome *(the last two stable versions)*
+-   Safari *(the last two stable versions)*
+-   Yandex *(the last two stable versions)*
+-   Opera 12.6+
+-   Internet Explorer 9+
+-   [Partial support](#ie8) for Internet Explorer 8
+
+-   **Touch**
+-   Android 4+
+-   iOS 5+
+-   Internet Explorer 10+
 
 <a name="ie8"></a>
-## Support IE8
 
-To support IE8, you must include `es5-shim` and additional style files with the `*.ie.styl` extension to the page. To do this add them to buid config (like [this](https://github.com/bem/bem-components/blob/1f218c8ba10183fda21660e28cfbb280cd8cde54/.enb/make.js#L174)) and add the conditional comments to the `page` block, as shown below:
+### Support for Internet Explorer 8
 
-```
-{
-    block : 'page',
-    title : 'Support IE8',
-    head : [
-        {
-            elem : 'conditional-comment',
-            condition : '> IE 8',
-            msieOnly : false,
-            content : { elem : 'css', url : '_simple.css' } // styles for all browsers, including IE9+
-        },
-        {
-            elem : 'conditional-comment',
-            condition : '<= IE 8',
-            content : { elem : 'css', url : '_simple.ie.css' } // styles for IE8 and lower
-        }
-    ],
-    scripts : [
-        {
-            elem : 'conditional-comment',
-            condition : '< IE 9',
-            content : { elem : 'js', url : '//yastatic.net/es5-shims/0.0.1/es5-shims.min.js' }, // adding es5-shim for IE8 and lower
-        },
-        { elem : 'js', url : '_simple.js' }
-    ]
-}
-```
+To support Internet Explorer 8, you must add
 
-Also, you can do it with the help of templates on your own level.
+-   [es5-shim](https://www.npmjs.com/package/es5-shim);
+-   style files with the `*.ie.styl` extension to the page. To do this, specify them in the build config (see this [example](https://github.com/bem/bem-components/blob/1f218c8ba10183fda21660e28cfbb280cd8cde54/.enb/make.js#L174)) and add comments in the `page` section (see this [example](https://gist.github.com/innabelaya/904ab01666fd1a19d312)). You can also enable styles for Internet Explorer 8 at the template level.
 
-<a name="changelog"></a>
-## Changelog
+<a name="techs"></a>
 
-You can check the changelog at the [Changelog](/CHANGELOG.md) page.
+Technologies
+------------
 
-<a name="migration"></a>
-## Migration
+-   [YModules](https://en.bem.info/tools/bem/modules/)
+-   [i-bem.js](https://en.bem.info/tutorials/bem-js-tutorial/)
+-   [BEMHTML](https://en.bem.info/technology/bemhtml/current/reference/)
+-   [BH](https://en.bem.info/technology/bh/current/about/)
+-   [DEPS](https://en.bem.info/technology/deps/about/)
+-   [Stylus](https://learnboost.github.io/stylus/)
 
-Check the migration details at the Migration page when available.
+<a name="tools"></a>
 
-<a name="maintain"></a>
-## Maintainers
+Tools
+-----
 
-* [veged](https://github.com/veged)
-* [dfilatov](https://github.com/dfilatov)
-* [mishanga](https://github.com/mishanga)
+**Assemblers**
 
-<a name="devprinciples"></a>
-## Development principles
+-   [bem-tools](https://en.bem.info/tools/bem/bem-tools/)
+-   [ENB](https://en.bem.info/tools/bem/enb-bem/)
+-   [borschik](https://en.bem.info/tools/optimizers/borschik/)
 
-The base of all development principles of bem-components is the experience of our development team. For our library we take the best solutions from the past to create a new well-thought-out product called bem-components.
+**Optimizers**
 
-**Open source project**
+-   [SVGO](https://en.bem.info/tools/optimizers/svgo/svgo/)
+-   [CleanCSS](http://www.cleancss.com/about.php)
+-   [ImageOptim](http://imageoptim.com/)
 
-[GitHub](https://github.com/bem/bem-components) is a platform for bem-components library development. We set all tasks, development raodmap and milestones using GitHub. Any developer could participate in the project: everyone could create an issue with some problems description or send a pull request with some code improvements.
+**Code analysis**
 
-**Automatization**
+-   [jshint](http://www.jshint.com/)
+-   [jscs](https://github.com/jscs-dev/node-jscs)
 
-We try to automize all possible processes: a developer should not perform repetitive actions, there are robots for this.
+**Other**
 
-**Bleeding edge**
+-   [Autoprefixer](https://github.com/ai/autoprefixer/) — used during assembly to generate vendor prefixes for supported browsers based on the configuration.
 
-We develop our library with a focus on the future: we supports only the latest [browsers](#supported-browsers) and tools. The library must not lose its relevance during the development process.
+<a name="usage"></a>
 
-**Optimization**
+Usage
+-----
 
-We apply the optimization solutions for each block during the development to avoid the optimization of the already released code.
+Use [bem-tools](https://en.bem.info/tools/bem/bem-tools/) or [ENB](http://enb-make.info/) to connect the library to the project. Specify the library name and version in the configuration file for your chosen assembly tool.
 
-**Muli-themes support**
-
-bem-components supports more then one theme simultaneously. For today the main theme of the library is `islands`. This theme implements the new Yandex design.
-
-There is an additional temporary theme called `simple` in the library design. This theme was created to check the correct work of the library with more then one connected theme.
-
-**Selectors in a theme context**
-
-The library allows you to use different themes within a one page of the project. Besides, you could use native controls of your browser, for this do not use theme design in your project.
-
-**Platforms support**
-
-The library supports the following platforms: `desktop` and `touch` (mobile + tablet). All blocks of the library work correct on all available platforms.
+For projects developed on [project-stub](https://en.bem.info/tutorials/project-stub/), the library is enabled by default.
 
 <a name="supply"></a>
-### Delivery cases
+
+Library distributions
+---------------------
 
 **Source**
 
-Used for the technically identical projects that use the same preprocessor and template engine.
+For technically identical services and projects that use a preprocessor and template engine listed in the [Tools](#tools) section.
 
 **Compiled**
 
-Used for the projects that use any other preprocessor or do not use it at all.
+For services and projects that do not use a preprocessor or use one that is not listed in the [Tools](#tools) section.
 
 **Library**
 
-Used for the possibility to connect the library using links (like jQuery or Bootstrap).
+To include the library by linking to a page, similar to jQuery or Bootstrap.
+
+To choose this method, execute `npm run dist` in the library root after setting up `npm` dependencies. As a result, bundles are generated in the `dist` folder.
 
 <a name="development"></a>
-## Development
+
+Development
+-----------
+
+-   <a href="#working-copy">Working copy</a>
+-   <a href="#how-to-contribute">How to contribute</a>
+-   <a href="#modular-tests">Testing</a>
+-   <a href="#unit-tests">JavaScript unit tests</a>
+-   <a href="#regression-tests">Regression tests for layout</a>
+-   <a href="#template-tests">Tests for templates</a>
 
 <a name="working-copy"></a>
+
 ### Working copy
 
-Get the source code:
+Get sources:
 
-```bash
+``` bash
 $ git clone git://github.com/bem/bem-components.git
 $ cd bem-components
 ```
 
-Install the dependencies:
+Install dependencies (of tools):
 
-```bash
+``` bash
 $ npm install
 ```
-You need `export PATH=./node_modules/.bin:$PATH` or any alternative way to run locally-installed `ENB`.
 
-Install all necessary libraries:
+To then run locally installed tools, use `export PATH=./node_modules/.bin:$PATH` or any alternative method.
 
-```bash
+Install dependent libraries:
+
+``` bash
 $ bower install
 ```
 
-Build and run tests and examples:
+Build examples and tests:
 
-```bash
+``` bash
 $ npm run build-all
 ```
 
-Run development server:
+Start the development server:
 
-```bash
+``` bash
 $ npm start
 $ open http://localhost:8080/
 ```
 
-Check the coding style:
+**Note:** For information about assembling individual blocks, see the section [Tests for templates](#template-tests).
 
-```bash
+Code analysis:
+
+``` bash
 $ npm run lint
 ```
 
 <a name="how-to-contribute"></a>
+
 ### How to contribute
 
-1. Create an [issue](https://github.com/bem/bem-components/issues/new) with a proper description.
-1. Decide which version needs your changes.
-1. Create a feature branch with an issue number and a version (`issues/<issue_number>@v<version_number>`) based on a version branch. For example, for an issue #42 and a version 2: `git checkout -b issues/42@v2`. If you need changes for several versions, each of them has to have a feature branch.
-1. Commit changes (you can test your changes running `npm test`) and push. `Rebase` your branch on a corresponding version branch if needed.
-1. Create a pull request from your feature branch; or several pull requests if you changed several versions.
-1. Link your pull request with an issue number any way you like. For example, leave a [comment](https://github.com/blog/1506-closing-issues-via-pull-requests) with the issue number.
-1. Wait for your pull request and the issue closes ;-)
+1.  Create an [issue](https://github.com/bem/bem-components/issues/new) with a proper description of changes.
+2.  Determine the library version to make changes to.
+3.  Create a feature branch with the issue number and version (`issues/<issue_number>@v<version_number>`) based on a version branch.
+    For example, for issue \#42 and version 2: `git checkout -b issues/42@v2`. If you are making changes to multiple versions, each of them must have its own feature branch.
+4.  Make changes. To check the results of your changes locally for errors, run `npm test`.
+5.  Commit your changes and push them to the remote repository. If necessary, `rebase` your branch from the base version branch.
+6.  Create a pull request from your feature branch. If you changed multiple versions, create a pull request for each version.
+7.  Link your pull request with an issue number (for example, leave a [comment](https://github.com/blog/1506-closing-issues-via-pull-requests) with the issue number).
+8.  Wait for the pull request to be accepted and the issue to be closed.
 
-<a name="modlar-tests"></a>
-### Modular testing
+<a name="modular-tests"></a>
+
+### Testing
 
 <a name="unit-tests"></a>
+
 #### JavaScript unit tests
 
-To run JS unit tests use `npm run test-specs` command. You may also specify the target, e.g. `enb make specs desktop.specs/input` to run just `input` tests.
+The `npm run test-specs` command launches unit tests on JS.
 
-All tests will be run automatically using [Travis](https://travis-ci.org) on each pull request.
+To launch point-based assembly, use the command `enb make specs desktop.specs/<block-name>` (for example, `enb make specs desktop.specs/input`).
+
+Tests will be run automatically on [Travis](https://travis-ci.org) for each pull request.
 
 <a name="regression-tests"></a>
-#### Regression tests of layout
 
-We use [Gemini](https://github.com/bem/gemini) for layout testing.
+#### Regression tests for layout
 
-Tests for each block are stored in a separate file `block-name.gemini.js` in a directory `gemini/`. All tests could be executed manually or automatically using [Travis](https://travis-ci.org). We use [SauceLabs](https://saucelabs.com) service as a [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2).
+[Gemini](https://en.bem.info/tools/testing/gemini/) is used for layout testing.
 
-Use [OpenSauce](https://saucelabs.com/opensauce) account in SauceLabs and [Sauce Connect](https://saucelabs.com/connect) utility to run tests locally.
-
-Developers of BEM team could use `bem-components` account (we do not publish login and password because of the limit for three concurrent browsers launch; it is much more efficiently to use different free accounts for manual testing).
-
-For tests execution you need the following:
+Tests for each block are stored in a separate `block-name.gemini.js` file in the `gemini/` directory. Locally, test are executed manually. On Travis, tests are executed automatically. For [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2), the [SauceLabs](https://saucelabs.com) service is used.
 
 <a name="run-test"></a>
-1. Set up environment variables (`SAUCE_USERNAME` and `SAUCE_ACCESS_KEY`).
-1. Run `sc` utility (SauceConnect) and wait for a tunnel initialization.
-1. Run the tests using `npm run gemini`.
-1. To collect new versions of the screenshots use `npm run gemini-gather`.
+For executing tests locally, you need to:
 
-In case you write new tests for local usage, you can run your own Selenium Server or PhantomJS with WebDriver server. For this:
+1.  Create an [OpenSauce](https://saucelabs.com/opensauce) account in SauceLabs.
+2.  Install the [Sauce Connect](https://saucelabs.com/connect) utility.
+3.  Set up environment variables (`SAUCE_USERNAME` and `SAUCE_ACCESS_KEY`).
+4.  Launch the `src` utility (SauceConnect) and wait for the tunnel to be opened.
+5.  Run the tests using `npm run gemini`.
+6.  If you need to make new versions of screenshots, use the command `npm run gemini-gather`.
 
-1. Install and run [selenium-server](http://docs.seleniumhq.org/download/) or [PhantomJS](http://phantomjs.org/).
-1. Correct `gridUrl` option to `http://localhost:4444/` in `.gemini.yml` file.
-1. [Run tests](#run-test).
+When developing new tests to speed up local execution:
 
-Read a [detailed description](https://bem.info/tools/testing/gemini/) of `Gemini` work with different types of backends for additional information.
+1.  Install and run [Selenium Server](http://docs.seleniumhq.org/download/) or [PhantomJS](http://phantomjs.org/).
+2.  In the `.gemini.yml` file, change the `gridUrl` option to `http://localhost:4444/`.
+3.  [Run the tests](#run-test).
 
-**NB** You have to commit screenshots to the repository from SauceLabs to avoid minor differences in fonts rendering.
+For more information about using `Gemini` with various backends, read the article [Gemini quick start](https://en.bem.info/tools/testing/gemini/).
 
-Before commit some new or modified pattern you have to:
+**Note:** You need to save screenshots from SauceLabs in the repository. This helps to avoid discrepancies when rendering fonts.
 
-1. Check the validity. If in doubt, use Araxis Merge utility or something like this to see the difference between two versions of the pattern.
-2. Compress them using [ImageOptim](http://imageoptim.com/) utility (this is the most effective tool for images compression for May 2014).
+Before commiting new or modified reference images, you must:
+
+1.  Make sure the images are correct. To find differences between the old and new versions, use the Araxis Merge utility or something similar.
+2.  Use [ImageOptim](http://imageoptim.com/) to compress the images (this is the most effective tool for compressing images as of May, 2014).
 
 <a name="template-tests"></a>
+
 #### Tests for templates
 
-Build tools for the library allow you to build and run tests on BEMHTML and BH
-block templates.
+Build tools for the library allow you to build and run tests on BEMHTML and BH block templates.
 
-To add a test for a block, you need to add a directory named `[block name].tmpl-specs` on your definition level. All test files will be stored in it.
+**Add a test for a block**
 
-Each test consists of a pair of files implemented in following technologies: BEMJSON and HTML. Each block could have more then one pair of such files. You could give any name to the file. But the file names (without extensions) within the one pair for one test must coincide. For example, **10-default**.bemjson.js and **10-default**.html.
+-   Create a directory named `[block name].tmpl-specs` in the block's directory at the necessary level. Test files will be stored in this directory.
+-   Create a pair of BEMJSON and HTML files for each test. The BEMJSON file contains an example for the block, and the HTML file contains the sample HTML code that should
+    result after applying the block template to the BEMJSON example.
+    File names must match (other than the extensions)
+    for the same test. For example, **10-default**.bemjson.js and **10-default**.html.
 
-For each block:
-* BEMJSON file contains an example for a block;
-* HTML file contains standard HTML code – a block sample.
+Multiple tests can be written for a block and, accordingly, each test consists of two files (BEMJSON and HTML) with the same name.
 
-Block sample in HTML is a block implementation result that becomes available after applying a template to the BEMJSON example.
+    desktop.blocks
+        └── myblocks
+            ├── myblock.bemhtml.js
+            ├── myblock.bh.js
+            ├── ...
+            └── myblock.tmpl-specs
+                ├── 10-default.bemjson.js
+                ├── 10-default.html
+                ├── 20-advanced.bemjson.js
+                └── 20-advanced.html
 
-```
-desktop.blocks
-    └── myblocks
-        ├── myblock.bemhtml.js
-        ├── myblock.bh.js
-        ├── ...
-        └── myblock.tmpl-specs
-            ├── 10-default.bemjson.js
-            ├── 10-default.html
-            ├── 20-advanced.bemjson.js
-            └── 20-advanced.html
-```
+To build and run tests, use:
 
-To run tests for templates use:
-
-```bash
+``` bash
 magic run tmpl-specs
 ```
 
-To run tests for required definition level use:
+To build tests on the required definition level, use:
 
-```bash
+``` bash
 magic make desktop.tmpl-specs
 ```
 
-To run tests for a specific block use:
+To build tests only for a specific block, use:
 
-```bash
+``` bash
 magic make desktop.tmpl-specs/button
 ```
 
-If build procedure is successful, tests will be run automatically. After that you will see all test results.
+If the build procedure is successful, tests are run automatically, and you will see all test results. If the result of applying
+the template does not match with the block sample in HTML, you will see an error in the log indicating how it differs from the block sample.
 
-If the result of applying the template does not match with the block sample in HTML, then you will see errors in the log with description of the difference from the block sample.
+All tests are run automatically using [Travis](https://travis-ci.org) on each pull request.
 
-All tests will be run automatically using [Travis](https://travis-ci.org) for each pull request.
+<a name="maintain"></a>
+
+Maintainers
+-----------
+
+-   [veged](https://github.com/veged)
+-   [dfilatov](https://github.com/dfilatov)
+-   [mishanga](https://github.com/mishanga)
+-   [narqo](https://github.com/narqo)
 
 <a name="workflow"></a>
-### Workflow
 
-The issue list included in the current scope is displayed on a special [Agile Board](https://waffle.io/bem/bem-components).
+Workflow
+--------
 
-Issues on the Agile Board can be in four statuses:
+Current tasks are listed on a special [Agile Board](https://waffle.io/bem/bem-components).
 
-- **backlog** — issues that need to disassemble, evaluate and make a decision about their implementation. In this status can also be issues that need clarifying information.
-- **ready** — disassembled issues the decision about which implementation is adopted.
-- **in progress** — issues with a specific assignee which is already in work.
-- **done** — resolved issues, which were closed during the last seven days (this is a temprorary technical limitation of the selected Agile Board).
+Task statuses:
 
-## License
-Code and documentation copyright 2012 YANDEX LLC. Code released under the [Mozilla Public License 2.0](LICENSE.txt).
+-   **backlog** — Unsorted tasks that need to be discussed by the team to evaluate them and decide how to implement them. This status also applies to tasks that need additional information.
+-   **ready** — Tasks that have been investigated and a decision has been made on how to implement them.
+-   **in progress** — Tasks that have a specific assignee and are currently in progress.
+-   **done** — Tasks that have been closed over the last seven days (this is a temporary technical limitation of our Agile Board).
+
+License
+-------
+
+Code and documentation © 2012 YANDEX LLC. Code released under the [Mozilla Public License 2.0](LICENSE.txt).

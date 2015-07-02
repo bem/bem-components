@@ -4,12 +4,11 @@
         {
             mods : ['disabled', 'focused']
         },
-        'control'
+        'control',
+        // NOTE: no proper support for depsByTech in current build tools,
+        // so we can't (easily) use `textarea.js->input.js` dependency here (see #1565 for discussion)
+        'input'
     ]
-},
-{
-    tech : 'js',
-    shouldDeps : { tech : 'js', block : 'input' }
 },
 {
     tech : 'spec.js',

@@ -3,6 +3,10 @@ language: node_js
 node_js:
   - "0.10"
 
+# sudo=false to run builds inside container infrastructure
+# see https://github.com/bem/bem-components/issues/1528
+sudo: false
+
 env:
   global:
     - GH_REF: github.com/bem/bem-components.git
@@ -36,8 +40,6 @@ before_script:
   - |
       if [ "${TEST_SCOPE}" == "gemini" ]; then
         curl -L https://gist.githubusercontent.com/henrikhodne/9322897/raw/sauce-connect.sh | bash
-        sudo apt-get update -qq
-        sudo apt-get install -qq -y graphicsmagick
         echo "  tunnel-identifier: '${TRAVIS_JOB_NUMBER}'" >> .gemini.yml
         echo "  build: '${TRAVIS_BUILD_NUMBER}'" >> .gemini.yml
         echo "  tags:" >> .gemini.yml

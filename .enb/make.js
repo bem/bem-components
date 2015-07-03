@@ -377,8 +377,7 @@ function getTestLevels(platform) {
 function getSpecLevels(platform) {
     return [].concat(
         { path : path.join('libs', 'bem-pr', 'spec.blocks'), check : false },
-        getSourceLevels(platform),
-        'specs.blocks'
+        getSourceLevels(platform)
     );
 }
 

@@ -8,5 +8,11 @@ block('popup')(
             directions : ctx.directions,
             zIndexGroupLevel : ctx.zIndexGroupLevel
         };
+    }),
+    attrs()(function() {
+        return {
+            role : 'dialog',
+            'aria-hidden' : !this.mods.visible
+        };
     })
 );

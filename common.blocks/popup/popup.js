@@ -45,14 +45,16 @@ provide(BEMDOM.decl(this.name, /** @lends popup.prototype */{
                 this
                     ._captureZIndex()
                     ._bindToParentPopup()
-                    .bindTo('pointerpress pointerclick', this._setPreventHideByClick);
+                    .bindTo('pointerpress pointerclick', this._setPreventHideByClick)
+                    .domElem.removeAttr('aria-hidden');
             },
 
             '' : function() {
                 this
                     ._releaseZIndex()
                     ._unbindFromParentPopup()
-                    .unbindFrom('pointerpress pointerclick', this._setPreventHideByClick);
+                    .unbindFrom('pointerpress pointerclick', this._setPreventHideByClick)
+                    .domElem.attr('aria-hidden', true);
             }
         }
     },

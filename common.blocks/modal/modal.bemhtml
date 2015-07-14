@@ -9,6 +9,13 @@ block('modal')(
         };
     }),
 
+    attrs()(function() {
+        return {
+            role : 'dialog',
+            'aria-hidden' : !this.mods.visible
+        };
+    }),
+
     content()(function() {
         return {
             elem : 'table',

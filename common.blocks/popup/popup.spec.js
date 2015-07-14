@@ -1,8 +1,9 @@
 modules.define(
     'spec',
-    ['popup', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, Popup, BEMDOM, $, BEMHTML) {
+    ['popup', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
+    function(provide, Popup, BEMDOM, $, BEMHTML, chai) {
 
+var expect = chai.expect;
 describe('popup', function() {
     var popup, popupDomElem, popupParentDomElem;
 
@@ -43,6 +44,17 @@ describe('popup', function() {
             popup.setMod('visible');
             BEMDOM.destruct(popupDomElem);
             popup.hasMod('visible').should.be.false;
+        });
+    });
+
+    describe('visible', function() {
+        it('should set/remove "aria-hidden" attribute on visible mod', function() {
+            popup.setMod('visible');
+            expect(popup.domElem.attr('aria-hidden')).to.be.undefined;
+
+            popup
+                .delMod('visible')
+                .domElem.attr('aria-hidden').should.be.equal('true');
         });
     });
 });

@@ -21,7 +21,7 @@ module.exports = function(bh) {
             .mix({ elem : 'control' }); // NOTE: satisfy interface of `control`
 
         if(ctx.mod('disabled')) {
-            isRealButton? ctx.attr('disabled', 'disabled') : ctx.attr('aria-disabled', true);
+            isRealButton? ctx.attr('disabled', 'disabled') : ctx.attr('aria-disabled', 'true');
         }
 
         var content = ctx.content();

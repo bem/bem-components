@@ -1,7 +1,7 @@
 module.exports = function(bh) {
 
     bh.match('select__button', function(ctx, json) {
-        var mods = json.blockMods,
+        var mods = json.mods,
             select = ctx.tParam('select'),
             checkedOptions = ctx.tParam('checkedOptions');
 

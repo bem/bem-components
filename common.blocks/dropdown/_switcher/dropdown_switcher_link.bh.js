@@ -10,7 +10,7 @@ module.exports = function(bh) {
 
         if(res.block === 'link') {
             var resMods = res.mods || (res.mods = {}),
-                dropdownMods = json.blockMods;
+                dropdownMods = json.blockMods || json.mods;
             resMods.theme || (resMods.theme = dropdownMods.theme);
             resMods.disabled = dropdownMods.disabled;
         }

@@ -320,7 +320,7 @@ module.exports = function(config) {
                 sourceLevels : getSpecLevels(platform),
                 engines : {
                     bh : {
-                        tech : 'enb-bh/techs/bh-server',
+                        tech : 'enb-bh/techs/bh-commonjs',
                         options : {
                             jsAttrName : 'data-bem',
                             jsAttrScheme : 'json'

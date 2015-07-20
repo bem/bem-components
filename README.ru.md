@@ -1,4 +1,4 @@
-BEM Components Library
+bem-components
 ======================
 [![GitHub Release](https://img.shields.io/github/release/bem/bem-components.svg?style=flat)](https://github.com/bem/bem-components/releases)
 [![Build Status](https://img.shields.io/travis/bem/bem-components/v2.svg?style=flat)](https://travis-ci.org/bem/bem-components)
@@ -19,7 +19,6 @@ BEM Components Library
 * <a href="#techs">Технологии</a>
 * <a href="#tools">Инструменты</a>
 * <a href="#usage">Использование</a>
-* <a href="#supply">Варианты поставки библиотеки</a>
 * <a href="#development">Разработка</a>
 * <a href="#maintain">Команда основной разработки</a>
 * <a href="#workflow">Рабочий процесс</a>
@@ -127,26 +126,187 @@ BEM Components Library
 <a name="usage"></a>
 ## Использование
 
-Библиотека в проект подключается с помощью [bem-tools](https://ru.bem.info/tools/bem/bem-tools/) или [ENB](http://enb-make.info/). Укажите название и версию библиотеки в конфигурационном файле выбранного вами сборщика.
+Существует несколько способов начать работу с `bem-components`. Выбор подходящего способа использования зависит от требований проекта и его совместимости с [технологиями](#techs) и [инструментами](#tools) библиотеки, а также от вашего опыта работы с БЭМ-проектами.
 
-При разработке проекта на основе [project-stub](https://ru.bem.info/tutorials/project-stub/) библиотека подключена по умолчанию.
+Выберите способ поставки, наиболее подходящий вашему проекту:
 
-<a name="supply"></a>
-## Варианты поставки библиотеки
+| Dist | Source | Compiled |
+|---------|--------|----------|
+| Предсобранный CSS- и JavaScript-код и шаблоны библиотеки. Подключается ссылками на страницу. Не требует сборки и совместимости с вашим проектом.| Полный исходный код библиотеки. Для использования необходима предварительная сборка. Требует полной совместимости проекта с [технологиями](#techs) и [инструментами](#tools) библиотеки. | Полный исходный код библиотеки. Для использования необходима предварительная сборка. Отличается от способа «Source» тем, что [Stylus](#techs) скомпилирован в CSS. Подходит для проектов, не использующих [Stylus](https://learnboost.github.io/stylus/). |
 
-**Source**
+Способ использования библиотеки определяет порядок ее подключения в проект:
 
-Для технически идентичных сервисов и проектов, которые используют препроцессор и шаблонизатор, указанные в разделе [Инструменты](#tools).
+* [Подключение исходного кода библиотеки (Source и Compiled)](#)
+* [Подключение предсобранных файлов библиотеки (Dist)](#)
 
-**Compiled**
+### Подключение исходного кода библиотеки (Source и Compiled)
 
-Для сервисов и проектов, которые не используют препроцессор или используют отличный от указанного в разделе [Инструменты](#tools).
+Рекомендуемый способ подключения — использование инструментов [ENB](http://enb-make.info/) или [bem-tools](https://ru.bem.info/tools/bem/bem-tools/).
 
-**Library**
+В качестве примера воспользуйтесь [project-stub](https://ru.bem.info/tutorials/project-stub/), где библиотека подключена по умолчанию. Также можно создать проект и подключить в него библиотеку с помощью [генератора на Yo](https://ru.bem.info/tools/bem/bem-stub/), который позволяет создать необходимую конфигурацию проекта.
 
-Для возможности подключения библиотеки ссылками на страницу, по аналогии с jQuery или Bootstrap.
+### Подключение предсобранных файлов библиотеки (Dist)
 
-Для выбора этого варианта поставки необходимо выполнить `npm run dist` в корне библиотеки после установки `npm`-зависимостей. В результате бандлы сформируются в папке `dist`.
+Самый простой способ подключить библиотеку в проект — скачать предварительно собранные файлы библиотеки и добавить их в HTML страницы с помощью элементов `<link>` и `<script>`. Сделать это можно разными способами:
+
+* [Подключить файлы с CDN](#Подключение-файлов-с-cdn) — самый быстрый способ.
+* [Скачать в виде архива](#Загрузка-в-виде-архива) — возможность выбрать нужную версию сборки.
+* [Самостоятельно собрать файлы из исходного кода](#Сбор-файлов-из-исходного-кода) — возможность собрать еще не выпущенную версию библиотеки.
+* [Установить с помощью Bower](#Установка-с-помощью-bower)
+
+О том, как работать с подключенными файлами библиотеки, читайте в разделе [Работа с библиотекой](#Работа-с-библиотекой).
+
+**Состав предсобранной библиотеки**
+
+Доступны отдельные наборы файлов для трех платформ:
+* desktop
+* touch-pad
+* touch-phone
+
+Каждый набор включает в себя:
+* `bem-components.css` — стили
+* `bem-components.ie.css` — стили для IE8 ([подробнее](#Поддержка-internet-explorer-8))
+* `bem-components.js` — JavaScript
+* `bem-components.bemhtml.js` — BEMHTML-шаблоны
+* `bem-components.bh.js` — BH-шаблоны
+* `bem-components.js+bemhtml.js` — объединение JavaScript-кода и BEMHTML-шаблонов для использования шаблонов в браузере
+* `bem-components.js+bh.js` — объединение JavaScript-кода и BH-шаблонов для использования шаблонов в браузере
+
+В каждый набор также включены аналогичные dev-версии (с сохранением форматирования и комментариев).
+
+#### Подключение файлов с CDN
+
+Самый быстрый и простой способ подключить библиотеку в проект — добавить элементы `<link>` и `<script>` в HTML страницы:
+
+```html
+<link rel="stylesheet" href="https://yastatic.net/bem-components/latest/desktop/bem-components.css">
+<script src="https://yastatic.net/bem-components/latest/desktop/bem-components.js+bh.js"></script>
+```
+
+Схема подключения файла с CDN: `//yastatic.net/название-библиотеки/версия/платформа/имя-файла`.
+
+Пример: `//yastatic.net/bem-components/latest/desktop/bem-components.dev.js+bh.js`.
+
+#### Загрузка в виде архива
+
+Выберите необходимую версию библиотеки и скачайте [архив](https://github.com/bem/bem-components-dist/releases). Распакуйте. Добавьте файлы на страницу с помощью элементов `<link>` и `<script>`:
+
+```html
+<link rel="stylesheet" href="desktop/bem-components.css">
+<script src="desktop/bem-components.js+bh.js"></script>
+```
+
+#### Сбор файлов из исходного кода
+
+Код библиотеки находится на Github: [https://github.com/bem/bem-components](https://github.com/bem/bem-components).
+
+Для сборки выполните следующие команды:
+
+```
+# Клонируйте исходный код библиотеки
+git clone https://github.com/bem/bem-components.git
+# Перейдите в папку библиотеки
+cd bem-components
+# Установите необходимые зависимости
+npm install
+# Соберите Dist
+npm run dist
+```
+
+В результате сборки файлы будут доступны в папке `bem-components-dist`. Подключите файлы в HTML страницы:
+
+```html
+<link rel="stylesheet" href="bower_components/bem-components-dist/desktop/bem-components.css">
+<script src="bower_components/bem-components-dist/desktop/bem-components.js+bh.js"></script>
+```
+
+#### Установка с помощью Bower
+
+При условии, что [Bower](http://bower.io/) уже установлен в ваш проект, выполните следующую команду:
+
+```
+bower i bem/bem-components-dist
+```
+
+В результате сборки файлы будут доступны в папке `bem-components-dist`. Подключение не отличается от предыдущего способа:
+
+```html
+<link rel="stylesheet" href="bower_components/bem-components-dist/desktop/bem-components.css">
+<script src="bower_components/bem-components-dist/desktop/bem-components.js+bh.js"></script>
+```
+
+#### Работа с библиотекой
+
+Работу с библиотекой можно разбить на два шага:
+
+1. Найти нужный блок на сайте библиотеки: [bem.info](https://ru.bem.info). Например, [select](https://ru.bem.info/libs/bem-components/current/desktop/select/#Список-с-одиночным-обязательным-выбором-модификатор-mode-в-значении-radio).
+1. Получить необходимый HTML.
+
+Первый шаг всегда одинаковый. Второй — выполняется тремя разными способами, которые можно произвольно комбинировать:
+
+**Способ I.** Скопировать нужный HTML из примера. Для этого перейдите во вкладку `HTML` в шапке примера.
+
+Этот вариант максимально простой, но при обновлении шаблонов в последующих версиях библиотеки потребуется вручную вносить изменения в каждый обновленный блок.
+
+**Способ II.** Использовать шаблонизацию в браузере. Сборка библиотеки `Dist` включает предсобранные шаблоны BEMHTML и BH на выбор.
+
+Для этого скопируйте из документации BEMJSON-код примера и вставьте его в HTML страницы. Используйте вкладку `BEMJSON` в шапке примера.
+
+HTML страницы будет выглядеть следующим образом:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>bem-components as a library</title>
+    <link rel="stylesheet" href="https://yastatic.net/bem-components/latest/desktop/bem-components.css">
+</head>
+<body class="page page_theme_islands">
+    <form class="form" action="/"></form>
+<script src="https://yastatic.net/bem-components/latest/desktop/bem-components.js+bemhtml.js"></script>
+<script>
+modules.require(['i-bem__dom', 'BEMHTML', 'jquery'], function(BEMDOM, BEMHTML, $) {
+    var html = BEMHTML.apply({
+        block : 'select',
+        mods : { mode : 'check', theme : 'islands', size : 'm' },
+        name : 'select1',
+        val : [2, 3],
+        text : 'Программа конференции',
+        options : [
+            { val : 1, text : 'Доклад' },
+            { val : 2, text : 'Мастер-класс' },
+            { val : 3, text : 'Круглый стол' }
+        ]
+    });
+
+    BEMDOM.append($('.form'), html);    # https://ru.bem.info/libs/bem-core/current/desktop/i-bem/jsdoc/#append-1
+});
+</script>
+</body>
+</html>
+```
+
+Такой код не потребует изменений в разметке при обновлении библиотеки до новой версии в отличие от способа I. Однако генерируемая на клиенте разметка может хуже индексироваться поисковыми системами.
+
+**Способ III.** Выполнять `{BEMHTML,BH}.apply()` в Node.js и отдавать браузеру уже готовый HTML:
+
+```
+var BEMHTML = require('./dist/desktop/bem-components.bemhtml.js').BEMHTML;
+
+BEMHTML.apply({
+    block : 'select',
+    mods : { mode : 'check', theme : 'islands', size : 'm' },
+    name : 'select1',
+    val : [2, 3],
+    text : 'Программа конференции',
+    options : [
+        { val : 1, text : 'Доклад' },
+        { val : 2, text : 'Мастер-класс' },
+        { val : 3, text : 'Круглый стол' }
+    ]
+}); // возвращает HTML-строку
+```
 
 <a name="development"></a>
 ## Разработка

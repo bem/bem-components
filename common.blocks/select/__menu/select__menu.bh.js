@@ -38,7 +38,6 @@ module.exports = function(bh) {
                 return optionOrGroup.group?
                     {
                         elem : 'group',
-                        mods : { 'has-title' : !!optionOrGroup.title },
                         title : optionOrGroup.title,
                         content : optionOrGroup.group.map(optionToMenuItem)
                     } :

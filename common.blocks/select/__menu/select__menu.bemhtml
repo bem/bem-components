@@ -36,7 +36,6 @@ block('select').elem('menu')(
                 return optionOrGroup.group?
                     {
                         elem : 'group',
-                        mods : { 'has-title' : !!optionOrGroup.title },
                         title : optionOrGroup.title,
                         content : optionOrGroup.group.map(optionToMenuItem)
                     } :

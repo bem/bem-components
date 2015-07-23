@@ -170,9 +170,14 @@
             }
         }
 
-        &.checkbox_checked .checkbox__box:after
+        &.checkbox_checked .checkbox__box
         {
-            opacity: 0.4;
+            background: rgba(0, 0, 0, 0.15);
+
+            &:after
+            {
+                opacity: 0.4;
+            }
         }
     }
 

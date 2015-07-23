@@ -46,10 +46,9 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
                     }, this);
 
                 this._isPointerPressInProgress = false;
+                this._buttonWidth = null;
 
                 this.hasMod('focused') && this._focus();
-
-                this._updateMenuWidth();
             }
         },
 
@@ -69,6 +68,8 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             },
 
             'true' : function() {
+                this._buttonWidth === null && this._updateMenuWidth();
+
                 this._updateMenuHeight();
                 this._popup.setMod('visible');
                 this
@@ -150,7 +151,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
     },
 
     _updateMenuWidth : function() {
-        this._menu.domElem.css('min-width', this._button.domElem.outerWidth());
+        this._menu.domElem.css('min-width', this._buttonWidth = this._button.domElem.outerWidth());
 
         this._popup.redraw();
     },
@@ -207,7 +208,10 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
     _onMenuChange : function() {
         this._updateControl();
         this._updateButton();
-        this._updateMenuWidth();
+
+        this.hasMod('opened')?
+            this._updateMenuWidth() :
+            this._buttonWidth = null;
 
         this.emit('change');
     },

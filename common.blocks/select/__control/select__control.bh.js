@@ -7,7 +7,7 @@ module.exports = function(bh) {
                 type : 'hidden',
                 name : ctx.tParam('select').name,
                 value : json.val,
-                disabled : json.blockMods.disabled? 'disabled' : undefined
+                disabled : json.mods.disabled? 'disabled' : undefined
             });
     });
 

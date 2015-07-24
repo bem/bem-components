@@ -1,12 +1,12 @@
 block('select').mod('mode', 'radio')(
-    def().match(this._checkedOptions)(function() {
+    def().match(function() { return this._checkedOptions; })(function() {
         var checkedOptions = this._checkedOptions,
             firstOption = this._firstOption;
         if(firstOption && !checkedOptions.length) {
             firstOption.checked = true;
             checkedOptions = [firstOption];
         }
-        applyNext({ _checkedOption : checkedOptions[0] });
+        return applyNext({ _checkedOption : checkedOptions[0] });
     }),
 
     content()(function() {

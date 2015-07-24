@@ -1,7 +1,7 @@
 block('select').elem('button')(
     def()(function() {
         var mods = this.mods;
-        applyCtx({
+        return applyCtx({
             block : 'button',
             mix : { block : this.block, elem : this.elem },
             mods : {

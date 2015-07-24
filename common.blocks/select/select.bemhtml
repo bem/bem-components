@@ -1,5 +1,5 @@
 block('select')(
-    def().match(!this._select)(function() { // TODO: check BEM-XJST for proper applyNext
+    def().match(function() { return !this._select; })(function() { // TODO: check BEM-XJST for proper applyNext
         if(!this.mods.mode) throw Error('Can\'t build select without mode modifier');
 
         var ctx = this.ctx,
@@ -29,7 +29,7 @@ block('select')(
 
         iterateOptions(ctx.options);
 
-        applyNext({
+        return applyNext({
             _select : this.ctx,
             _checkedOptions : checkedOptions,
             _firstOption : firstOption

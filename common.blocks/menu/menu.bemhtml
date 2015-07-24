@@ -33,7 +33,7 @@ block('menu')(
             iterateItems(ctx.content);
         }
 
-        applyNext({
+        return applyNext({
             _firstItem : firstItem,
             _checkedItems : checkedItems,
             _menuMods : {

@@ -3,7 +3,7 @@ block('link')(
         var ctx = this.ctx;
         typeof ctx.url === 'object' && // url could contain bemjson
             (ctx.url = this.reapply(ctx.url));
-        applyNext();
+        return applyNext();
     }),
 
     tag()('a'),

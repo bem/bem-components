@@ -21,7 +21,7 @@ block('select').elem('menu')(
                 return res;
             };
 
-        applyCtx({
+        return applyCtx({
             block : 'menu',
             mix : { block : this.block, elem : this.elem },
             mods : {

@@ -1,5 +1,5 @@
 block('attach')(
-    def()(function() { applyNext({ _attach : this.ctx }); }),
+    def()(function() { return applyNext({ _attach : this.ctx }); }),
 
     tag()('span'),
 

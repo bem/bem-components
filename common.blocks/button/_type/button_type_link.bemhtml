@@ -3,9 +3,7 @@ block('button').mod('type', 'link')(
 
     attrs()(function() {
         var ctx = this.ctx,
-            attrs = {
-                role : 'link'
-            };
+            attrs = { role : 'link' };
 
         ctx.target && (attrs.target = ctx.target);
         this.mods.disabled?

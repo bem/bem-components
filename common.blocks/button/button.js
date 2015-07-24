@@ -38,13 +38,14 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
         },
 
         'disabled' : {
-            '*' : function(_, modVal) {
-                this.__base.apply(this, arguments);
-                this.domElem.attr('aria-disabled', !!modVal);
-            },
             'true' : function() {
                 this.__base.apply(this, arguments);
                 this.hasMod('togglable') || this.delMod('pressed');
+                this.domElem.attr('aria-disabled', true);
+            },
+            '' : function() {
+                this.__base.apply(this, arguments);
+                this.domElem.removeAttr('aria-disabled');
             }
         },
 

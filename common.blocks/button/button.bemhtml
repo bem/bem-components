@@ -3,7 +3,7 @@ block('button')(
         var tag = apply('tag'),
             isRealButton = (tag === 'button') && (!this.mods.type || this.mods.type === 'submit');
 
-        applyNext({ _isRealButton : isRealButton });
+        return applyNext({ _isRealButton : isRealButton });
     }),
 
     tag()(function() {

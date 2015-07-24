@@ -12,7 +12,7 @@ block('popup')(
     attrs()(function() {
         return {
             role : 'dialog',
-            'aria-hidden' : !this.mods.visible
+            'aria-hidden' : !this.mods.visible || undefined
         };
     })
 );

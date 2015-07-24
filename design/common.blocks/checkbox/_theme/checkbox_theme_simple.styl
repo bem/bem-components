@@ -1,5 +1,7 @@
 .checkbox_theme_simple
 {
+    position: relative;
+
     .checkbox__control
     {
         position: absolute;
@@ -11,7 +13,6 @@
     .checkbox__box
     {
         display: inline-block;
-        pointer-events: none; // fix #1472 (see ftlabs/fastclick#351 for details)
 
         &:before
         {
@@ -43,4 +44,10 @@
 
         background: #fff7db;
     }
+}
+
+/* hack for Safari only */
+_::-webkit-full-page-media, _:future, :root .checkbox_theme_islands .checkbox__box
+{
+    pointer-events: none; // NOTE: Fix #1472 and #1590
 }

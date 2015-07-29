@@ -388,7 +388,7 @@ function getBrowsers(platform) {
                 'last 2 versions',
                 'ie 10',
                 'ff 24',
-                'opera 12.16'
+                'opera 12.1'
             ];
         case 'touch':
             return [

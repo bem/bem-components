@@ -1,6 +1,13 @@
 block('checkbox-group')(
     tag()('span'),
 
+    attrs()(function() {
+        return {
+            role : 'group',
+            'aria-label' : '.'
+        };
+    }),
+
     js()(true),
 
     mix()([{ block : 'control-group' }]),

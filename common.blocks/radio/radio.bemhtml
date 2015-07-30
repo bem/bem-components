@@ -14,7 +14,10 @@ block('radio')(
                     val : ctx.val
                 }
             },
-            ctx.text
+            ctx.text && {
+                elem : 'text',
+                content : ctx.text
+            }
         ];
     })
 );

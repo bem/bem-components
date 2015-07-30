@@ -3,6 +3,10 @@ module.exports = function(bh) {
     bh.match('radio-group', function(ctx, json) {
         ctx
             .tag('span')
+            .attrs({
+                role : 'radiogroup',
+                'aria-label' : '.'
+            })
             .js(true)
             .mix({ block : 'control-group' });
 

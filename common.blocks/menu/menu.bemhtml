@@ -38,13 +38,18 @@ block('menu')(
             _checkedItems : checkedItems,
             _menuMods : {
                 theme : mods.theme,
-                disabled : mods.disabled
+                disabled : mods.disabled,
+                mode : mods.mode
             }
         });
     }),
     attrs()(function() {
         var attrs = { role : 'menu' };
-        this.mods.disabled || (attrs.tabindex = 0);
+
+        this.mods.disabled?
+            attrs['aria-disabled'] = true :
+            attrs.tabindex = 0;
+
         return attrs;
     }),
     js()(true),

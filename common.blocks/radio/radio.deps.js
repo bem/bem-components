@@ -2,7 +2,7 @@
     mustDeps : { block : 'i-bem', elems : ['dom'] },
     shouldDeps : [
         {
-            elems : ['box', 'control'],
+            elems : ['box', 'control', 'text'],
             mods : { disabled : true, checked : true, focused : true }
         },
         { block : 'jquery', elem : 'event', mods : { type : 'pointer' } },

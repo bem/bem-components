@@ -33,10 +33,27 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
             }
         },
 
-        'disabled' : function(modName, modVal) {
-            this.getItems().forEach(function(menuItem){
-                menuItem.setMod(modName, modVal);
-            });
+        'disabled' : {
+            '*' : function(modName, modVal) {
+                this.getItems().forEach(function(menuItem){
+                    menuItem.setMod(modName, modVal);
+                });
+            },
+            'true' : function() {
+                this.__base.apply(this, arguments);
+                this.domElem.attr('aria-disabled', true);
+            },
+            '' : function() {
+                this.__base.apply(this, arguments);
+                this.domElem.removeAttr('aria-disabled');
+            }
+        },
+
+        'focused' : {
+            '*' : function(_, modVal) {
+                this.__base.apply(this, arguments);
+                this._activedescendantControl(modVal);
+            }
         }
     },
 
@@ -135,9 +152,12 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
      */
     _onItemHover : function(item) {
         if(item.hasMod('hovered')) {
+            var itemId = item.domElem.attr('id');
             this._hoveredItem && this._hoveredItem.delMod('hovered');
+            this.domElem.attr('aria-activedescendant', itemId);
             this._scrollToItem(this._hoveredItem = item);
         } else if(this._hoveredItem === item) {
+            this.domElem.removeAttr('aria-activedescendant');
             this._hoveredItem = null;
         }
     },
@@ -217,6 +237,20 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
     _doesItemMatchText : function(item, text) {
         return !item.hasMod('disabled') &&
             item.getText().toLowerCase().search(text) === 0;
+    },
+
+    /**
+     * @param {Boolean} isFocused
+     * @private
+     */
+    _activedescendantControl : function(isFocused) {
+        var firstItemId = this.getItems()[0].domElem.attr('id');
+
+        if(isFocused) {
+            this.domElem.attr('aria-activedescendant', firstItemId);
+        } else {
+            this.domElem.removeAttr('aria-activedescendant');
+        }
     }
 }, /** @lends menu */{
     live : function() {

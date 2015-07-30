@@ -1,0 +1,6 @@
+block('checkbox').elem('text')(
+    tag()('span'),
+    attrs()(function() {
+        return { 'aria-hidden' : true };
+    })
+);

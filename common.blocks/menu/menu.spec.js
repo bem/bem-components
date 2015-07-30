@@ -90,6 +90,15 @@ describe('menu', function() {
                 menuItem.hasMod('disabled').should.be.false;
             });
         });
+
+        it('should set/remove "aria-disabled" attributes on disable', function() {
+            menu
+                .setMod('disabled')
+                .domElem.attr('aria-disabled').should.be.equal('true');
+
+            menu.delMod('disabled');
+            expect(menu.domElem.attr('aria-disabled')).to.be.undefined;
+        });
     });
 
     describe('hover on items', function() {
@@ -175,6 +184,14 @@ describe('menu', function() {
 
             doKeyPress('f');
             menuItems2[0].hasMod('hovered').should.be.true;
+        });
+
+        it('should properly set/remove "aria-activedescendant" attribute', function() {
+            var menuId = menuItems[0].domElem.attr('id');
+            menu.domElem.focus();
+            menu.domElem.attr('aria-activedescendant').should.be.equal(menuId);
+            menu.domElem.blur();
+            expect(menu.domElem.attr('aria-activedescendant')).to.be.undefined;
         });
 
     });

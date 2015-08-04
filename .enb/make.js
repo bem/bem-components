@@ -63,11 +63,11 @@ module.exports = function(config) {
                     [techs.bem.depsOld, { bemdeclFile : '.tmp.bemdecl.js', target : '.tmp.deps.js' }],
                     [techs.bem.files, { depsFile : '.tmp.deps.js' }],
                     [techs.css.stylusWithAutoprefixer, {
-                        target : LIB_NAME + '.dev.css',
+                        target : '.tmp.dev.css',
                         browsers : getBrowsers(platform)
                     }],
                     [techs.css.stylus, {
-                        target : LIB_NAME + '.dev.ie.css',
+                        target : '.tmp.dev.ie.css',
                         sourceSuffixes : ['styl', 'ie.styl']
                     }],
                     [techs.bem.depsByTechToBemdecl, {
@@ -108,6 +108,8 @@ module.exports = function(config) {
                         target : LIB_NAME + '.dev.js+bh.js',
                         sources : [LIB_NAME + '.dev.js', '.tmp.browser.bh.js']
                     }],
+                    [techs.borschik, { source : '.tmp.dev.css', target : LIB_NAME + '.dev.css', tech : 'cleancss', freeze : true, minify : false }],
+                    [techs.borschik, { source : '.tmp.dev.ie.css', target : LIB_NAME + '.dev.ie.css', tech : 'cleancss', freeze : true, minify : false }],
                     [techs.borschik, { source : LIB_NAME + '.dev.css', target : LIB_NAME + '.css', tech : 'cleancss', freeze : true, minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', tech : 'cleancss', freeze : true, minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.js', target : LIB_NAME + '.js', freeze : true, minify : true }],

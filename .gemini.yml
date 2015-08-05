@@ -10,6 +10,11 @@ browsers:
     browserName: chrome
     version: 42
     platform: Linux
+    chromeOptions:
+      prefs:
+        browser:
+          # Disable spellchecker
+          enable_spellchecking: false
 #  opera-v12:
 #    browserName: opera
 #    version: 12

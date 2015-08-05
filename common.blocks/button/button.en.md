@@ -358,6 +358,8 @@ Do not use the `val` field when <a href="#link-button">type modifier is set to l
 }
 ```
 
+<a name="buttontext"></a>
+
 #### `text` field
 
 Type: `String`.
@@ -392,6 +394,8 @@ Use the `url` field for <a href="#link-button">link-buttons</a> only.
     text : 'Try BEM!'
 }
 ```
+
+<a name="buttonicon"></a>
 
 #### `icon` field
 

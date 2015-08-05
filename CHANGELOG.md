@@ -1,5 +1,28 @@
 # Changelog
 
+## 2.3.0
+
+### Major changes
+* `bem-core` dependency was updated to [2.7.0](https://en.bem.info/libs/bem-core/v2.7.0/changelog/#270).
+* BH 4.x support added ([#1587](https://github.com/bem/bem-components/issues/1587)).
+* BEM-XJST 2.x support added ([#1495](https://github.com/bem/bem-components/pull/1495)).
+* Theme-specific styles of the `_width_available` modifier of `input`, `textarea` and `select` blocks were moved back from `common` level to `design` ([#1548](https://github.com/bem/bem-components/issues/1548)).
+
+### Bug fixes
+* An issue in `checkbox` was fixed. The block didn't work in MSIE 11/Edge ([#1590](https://github.com/bem/bem-components/issues/1590)).
+* An issue in `attach` was fixed. The block didn't work in MSIE 11/Edge ([#1596](https://github.com/bem/bem-components/issues/1596)).
+* An ability to use HTML tags other than `button` was added ([#1566](https://github.com/bem/bem-components/issues/1566)).
+* An issue in `textarea` was fixed. The block didn't resolve it's own dependencies properly ([#1565](https://github.com/bem/bem-components/issues/1565)).
+
+### Other changes
+* The English version of library description was updated ([#1552](https://github.com/bem/bem-components/pull/1552)).
+* New “Understanding of the library principles” section was added to the russian documentation ([#1613](https://github.com/bem/bem-components/pull/1613)).
+* The information about `dist` was added to the russian documentation ([#1584](https://github.com/bem/bem-components/pull/1584)).
+* Images in CSS files are freezed in the development version of the `dist` now ([#1568](https://github.com/bem/bem-components/issues/1568)).
+* The initialization of `select` was boosted ([#1595](https://github.com/bem/bem-components/pull/1595)).
+* The view of `input_theme_islands` without `_has-clear` modifier was improved ([#1610](https://github.com/bem/bem-components/issues/1610)).
+* Selected text representation of `input_theme_islands` was fixed ([#1608](https://github.com/bem/bem-components/issues/1608)).
+
 ## 2.2.1
 
 ### Bug fixes

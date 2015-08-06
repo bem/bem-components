@@ -308,7 +308,8 @@ module.exports = function(config) {
                 destPath : platform + '.specs',
                 levels : getLibLevels(platform),
                 sourceLevels : getSpecLevels(platform),
-                jsSuffixes : ['vanilla.js', 'browser.js', 'js']
+                jsSuffixes : ['vanilla.js', 'browser.js', 'js'],
+                depsTech : techs.bem.depsOld
             });
 
             sets.tmplSpecs.configure({
@@ -334,7 +335,8 @@ module.exports = function(config) {
                         tech : 'enb-bemxjst/techs/bemhtml-old',
                         options : { devMode : false }
                     }
-                }
+                },
+                depsTech : techs.bem.depsOld
             });
 
             configureNodes(platform, [platform + '.tests/*/*', platform + '.examples/*/*']);

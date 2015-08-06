@@ -13,13 +13,12 @@ module.exports = {
     ym : require('enb-modules/techs/prepend-modules'),
     engines : {
         bemhtml : require('enb-bemxjst/techs/bemhtml-old'),
-        bhServer : require('enb-bh/techs/bh-server'),
-        bhServerInclude : require('enb-bh/techs/bh-server-include'),
-        bhClient : require('enb-bh/techs/bh-client-module')
+        bhCommonJS : require('enb-bh/techs/bh-commonjs'),
+        bhBundle : require('enb-bh/techs/bh-bundle')
     },
     html : {
         bemhtml : require('enb-bemxjst/techs/html-from-bemjson'),
-        bh : require('enb-bh/techs/html-from-bemjson')
+        bh : require('enb-bh/techs/bemjson-to-html')
     },
     borschik : require('enb-borschik/techs/borschik')
 };

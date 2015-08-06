@@ -98,8 +98,8 @@ module.exports = function(config) {
                         target : LIB_NAME + '.dev.js'
                     }],
                     [techs.engines.bemhtml, { target : LIB_NAME + '.dev.bemhtml.js', devMode : false }],
-                    [techs.engines.bhServerInclude, { target : LIB_NAME + '.dev.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json', mimic : ['BH', 'BEMHTML'] }],
-                    [techs.engines.bhClient, { target : '.tmp.browser.bh.js', jsAttrName : 'data-bem', jsAttrScheme : 'json', mimic : ['BH', 'BEMHTML'] }],
+                    [techs.engines.bhBundle, { target : LIB_NAME + '.dev.bh.js', mimic : ['BH', 'BEMHTML'] }],
+                    [techs.engines.bhBundle, { target : '.tmp.browser.bh.js', mimic : ['BH', 'BEMHTML'] }],
                     [techs.files.merge, {
                         target : LIB_NAME + '.dev.js+bemhtml.js',
                         sources : [LIB_NAME + '.dev.js', LIB_NAME + '.dev.bemhtml.js']
@@ -206,11 +206,9 @@ module.exports = function(config) {
                     filesTarget : '?.template.files',
                     dirsTarget : '?.template.dirs'
                 }],
-                BEM_TEMPLATE_ENGINE === 'BH'? [techs.engines.bhClient, {
+                BEM_TEMPLATE_ENGINE === 'BH'? [techs.engines.bhBundle, {
                     target : '?.browser.bh.js',
                     filesTarget : '?.template.files',
-                    jsAttrName : 'data-bem',
-                    jsAttrScheme : 'json',
                     mimic : 'BEMHTML'
                 }] : [techs.engines.bemhtml, {
                     target : '?.browser.bemhtml.js',
@@ -221,10 +219,7 @@ module.exports = function(config) {
 
             // Build htmls
             nodeConfig.addTechs(BEM_TEMPLATE_ENGINE === 'BH'? [
-                [techs.engines.bhServer, {
-                    jsAttrName : 'data-bem',
-                    jsAttrScheme : 'json'
-                }],
+                [techs.engines.bhCommonJS],
                 [techs.html.bh]
             ] : [
                 [techs.engines.bemhtml, { devMode : false }],
@@ -321,8 +316,11 @@ module.exports = function(config) {
                 levels : getLibLevels(platform),
                 sourceLevels : getSpecLevels(platform),
                 engines : {
-                    bh : {
-                        tech : 'enb-bh/techs/bh-server',
+                    'bh@4' : {
+                        tech : 'enb-bh/techs/bh-commonjs'
+                    },
+                    'bh@3' : {
+                        tech : 'enb-bh-05x/techs/bh-server',
                         options : {
                             jsAttrName : 'data-bem',
                             jsAttrScheme : 'json'

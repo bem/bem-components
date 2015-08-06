@@ -18,7 +18,7 @@
 
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
-| <a href="content">content</a> | `Array` | Массив пунктов меню. |
+| <a href="#content">content</a> | `Array` | Массив пунктов меню. |
 | <a href="#val">val</a> | <code>String</code>, <code>Number</code>, <code>Array</code> | Выбранное значение из списка. Если блоку установлен <a href="#mode-check">модификатор mode в значении check</a>, выбранные значения всегда оформляются в виде массива. |
 
 ### Элементы блока

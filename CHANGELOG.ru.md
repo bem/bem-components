@@ -1,5 +1,28 @@
 # История изменений
 
+## 2.3.0
+
+### Крупные изменения
+* Библиотека `bem-core` была обновлена до версии [2.7.0](https://ru.bem.info/libs/bem-core/v2.7.0/changelog/#270).
+* Добавлена поддержка BH 4.x ([#1587](https://github.com/bem/bem-components/issues/1587)).
+* Добавлена поддержка BEM-XJST 2.x ([#1495](https://github.com/bem/bem-components/pull/1495)).
+* В `input`, `textarea` и `select` специфичные для темы стили модификатора `_width_available` вынесены из `common`-уровня обратно на `design`-уровень переопределения ([#1548](https://github.com/bem/bem-components/issues/1548)).
+
+### В релиз вошли следующие исправления ошибок
+* В `checkbox` иправлена ошибка в MSIE 11/Edge ([#1590](https://github.com/bem/bem-components/issues/1590)).
+* В `attach` иправлена ошибка в MSIE 11/Edge ([#1596](https://github.com/bem/bem-components/issues/1596)).
+* В `button` исправлена поддержка нестандартных HTML-тегов для собственных реализаций кнопки ([#1566](https://github.com/bem/bem-components/issues/1566)).
+* В `textarea` исправлена ошибка, из-за которой блок неправильно обрабатывал собственные зависимости ([#1565](https://github.com/bem/bem-components/issues/1565)).
+
+### Также в релиз вошли следующие изменения
+* Обновлена английская версия описания библиотеки ([#1552](https://github.com/bem/bem-components/pull/1552)).
+* В русскую документацию добавлен раздел «Понимание принципов библиотеки» и внесены другие мелкие исправления ([#1613](https://github.com/bem/bem-components/pull/1613)).
+* В русскую документацию добавлена информация об использовании `dist`-сборки ([#1584](https://github.com/bem/bem-components/pull/1584)).
+* В разработческой версии `dist` картинки теперь «замораживаются» внутри CSS-файлов ([#1568](https://github.com/bem/bem-components/issues/1568)).
+* В `select` ускорена инициализация ([#1595](https://github.com/bem/bem-components/pull/1595)).
+* Улучшено отображение `input_theme_islands` без модификатора `_has-clear` ([#1610](https://github.com/bem/bem-components/issues/1610)).
+* В `input_theme_islands` исправлено отображение выделенного текста ([#1608](https://github.com/bem/bem-components/issues/1608)).
+
 ## 2.2.1
 
 ### В релиз вошли следующие исправления ошибок

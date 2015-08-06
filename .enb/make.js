@@ -98,8 +98,8 @@ module.exports = function(config) {
                         target : LIB_NAME + '.dev.js'
                     }],
                     [techs.engines.bemhtml, { target : LIB_NAME + '.dev.bemhtml.js', devMode : false }],
-                    [techs.engines.bhBundle, { target : LIB_NAME + '.dev.bh.js', mimic : ['BH', 'BEMHTML'] }],
-                    [techs.engines.bhBundle, { target : '.tmp.browser.bh.js', mimic : ['BH', 'BEMHTML'] }],
+                    [techs.engines.bhBundle, { target : LIB_NAME + '.dev.bh.js', mimic : ['bh', 'BEMHTML'] }],
+                    [techs.engines.bhBundle, { target : '.tmp.browser.bh.js', mimic : ['bh', 'BEMHTML'] }],
                     [techs.files.merge, {
                         target : LIB_NAME + '.dev.js+bemhtml.js',
                         sources : [LIB_NAME + '.dev.js', LIB_NAME + '.dev.bemhtml.js']

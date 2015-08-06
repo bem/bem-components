@@ -80,8 +80,8 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
             this.domElem,
             '<span class="' +
                 this.__self.buildClass('file') + '">' +
-                '<span class="' +
-                    this.__self.buildClass('text') + '">' +
+                '<span class="' + this.__self.buildClass('text') + '"' +
+                    ' aria-hidden="true">' +
                     escape.html(fileName) +
                 '</span>' +
                 '<i class="' + this.__self.buildClass('clear') + '"/>' +

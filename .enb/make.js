@@ -5,6 +5,7 @@ var LIB_NAME = 'bem-components',
     path = require('path'),
     naming = require('bem-naming'),
     techs = require('./techs'),
+    page = require('./helpers/page'),
     PLATFORMS = {
         'desktop' : ['common', 'desktop'],
         'touch-phone' : ['common', 'touch'],
@@ -27,8 +28,28 @@ module.exports = function(config) {
 
     config.setLanguages(langs? langs.split(' ') : [].concat(DEFAULT_LANGS));
 
+    platforms.forEach(function(platform) {
+        config.nodes([platform + '.pages/*'], function(node) {
+            var dir = node.getNodePath(),
+                levels = getTestLevels(platform),
+                sublevel = path.join(dir, 'blocks');
+
+            if(fs.existsSync(sublevel)) {
+                levels.push(sublevel);
+            }
+
+            node.addTech([techs.files.provide, { target : '?.bemjson.js' }]);
+
+            page(node, {
+                levels : levels,
+                browsers : getBrowsers(platform),
+                langs : langs,
+                templateEngine : BEM_TEMPLATE_ENGINE
+            });
+        });
+    });
+
     configureDist(platforms);
-    configurePages(platforms);
     configureSets(sets, {
         tests : config.module('enb-bem-examples').createConfigurator('tests'),
         examples : config.module('enb-bem-examples').createConfigurator('examples'),
@@ -126,163 +147,6 @@ module.exports = function(config) {
         });
     }
 
-    function configurePages(platforms) {
-        platforms.forEach(function(platform) {
-            var nodes = [platform + '.pages/*'];
-
-            config.nodes(nodes, function(nodeConfig) {
-                nodeConfig.addTech([techs.files.provide, { target : '?.bemjson.js' }]);
-            });
-
-            configureNodes(platform, nodes);
-        });
-    }
-
-    function configureNodes(platform, nodes) {
-        configureLevels(platform, nodes);
-
-        config.nodes(nodes, function(nodeConfig) {
-            var langs = config.getLanguages();
-
-            // Base techs
-            nodeConfig.addTechs([
-                [techs.bem.bemjsonToBemdecl],
-                [techs.bem.depsOld],
-                [techs.bem.files]
-            ]);
-
-            // Client techs
-            nodeConfig.addTechs([
-                [techs.css.stylusWithAutoprefixer, { browsers : getBrowsers(platform) }],
-                [techs.css.stylus, { target : '?.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
-                [techs.js, {
-                    filesTarget : '?.js.files'
-                }],
-                [techs.files.merge, {
-                    target : '?.pre.js',
-                    sources : [BEM_TEMPLATE_ENGINE === 'BH'? '?.browser.bh.js' : '?.browser.bemhtml.js', '?.browser.js']
-                }],
-                [techs.ym, {
-                    source : '?.pre.js',
-                    target : '?.js'
-                }]
-            ]);
-
-            // js techs
-            nodeConfig.addTechs([
-                [techs.bem.depsByTechToBemdecl, {
-                    target : '?.js-js.bemdecl.js',
-                    sourceTech : 'js',
-                    destTech : 'js'
-                }],
-                [techs.bem.mergeBemdecl, {
-                    sources : ['?.bemdecl.js', '?.js-js.bemdecl.js'],
-                    target : '?.js.bemdecl.js'
-                }],
-                [techs.bem.depsOld, {
-                    target : '?.js.deps.js',
-                    bemdeclFile : '?.js.bemdecl.js'
-                }],
-                [techs.bem.files, {
-                    depsFile : '?.js.deps.js',
-                    filesTarget : '?.js.files',
-                    dirsTarget : '?.js.dirs'
-                }]
-            ]);
-
-            // Client Template Engine
-            nodeConfig.addTechs([
-                [techs.bem.depsByTechToBemdecl, {
-                    target : '?.template.bemdecl.js',
-                    sourceTech : 'js',
-                    destTech : 'bemhtml'
-                }],
-                [techs.bem.depsOld, {
-                    target : '?.template.deps.js',
-                    bemdeclFile : '?.template.bemdecl.js'
-                }],
-                [techs.bem.files, {
-                    depsFile : '?.template.deps.js',
-                    filesTarget : '?.template.files',
-                    dirsTarget : '?.template.dirs'
-                }],
-                BEM_TEMPLATE_ENGINE === 'BH'? [techs.engines.bhClient, {
-                    target : '?.browser.bh.js',
-                    filesTarget : '?.template.files',
-                    jsAttrName : 'data-bem',
-                    jsAttrScheme : 'json',
-                    mimic : 'BEMHTML'
-                }] : [techs.engines.bemhtml, {
-                    target : '?.browser.bemhtml.js',
-                    filesTarget : '?.template.files',
-                    devMode : false
-                }]
-            ]);
-
-            // Build htmls
-            nodeConfig.addTechs(BEM_TEMPLATE_ENGINE === 'BH'? [
-                [techs.engines.bhServer, {
-                    jsAttrName : 'data-bem',
-                    jsAttrScheme : 'json'
-                }],
-                [techs.html.bh]
-            ] : [
-                [techs.engines.bemhtml, { devMode : false }],
-                [techs.html.bemhtml]
-            ]);
-
-            langs.forEach(function(lang) {
-                var destTarget = '?.' + lang + '.html';
-
-                nodeConfig.addTech([techs.files.copy, { source : '?.html', target : destTarget }]);
-                nodeConfig.addTarget(destTarget);
-            });
-
-            nodeConfig.addTargets([
-                '_?.css', '_?.ie.css', '_?.js', '?.html'
-            ]);
-        });
-
-        config.mode('development', function() {
-            config.nodes(nodes, function(nodeConfig) {
-                nodeConfig.addTechs([
-                    [techs.borschik, { source : '?.css', target : '_?.css', freeze : true, minify : false }],
-                    [techs.borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, minify : false }],
-                    [techs.borschik, { source : '?.js', target : '_?.js', freeze : true, minify : false }]
-                ]);
-            });
-        });
-
-        config.mode('production', function() {
-            config.nodes(nodes, function(nodeConfig) {
-                nodeConfig.addTechs([
-                    [techs.borschik, { source : '?.css', target : '_?.css', freeze : true, tech : 'cleancss', minify : true }],
-                    [techs.borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, tech : 'cleancss', minify : true }],
-                    [techs.borschik, { source : '?.js', target : '_?.js', freeze : true, minify : true }]
-                ]);
-            });
-        });
-    }
-
-    function configureLevels(platform, nodes) {
-        config.nodes(nodes, function(nodeConfig) {
-            var nodeDir = nodeConfig.getNodePath(),
-                blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
-                sublevelDir = path.join(nodeDir, 'blocks'),
-                extendedLevels = [].concat(getTestLevels(platform));
-
-            if(fs.existsSync(blockSublevelDir)) {
-                extendedLevels.push(blockSublevelDir);
-            }
-
-            if(fs.existsSync(sublevelDir)) {
-                extendedLevels.push(sublevelDir);
-            }
-
-            nodeConfig.addTech([techs.bem.levels, { levels : extendedLevels }]);
-        });
-    }
-
     function configureSets(platforms, sets) {
         platforms.forEach(function(platform) {
             sets.examples.configure({
@@ -339,7 +203,26 @@ module.exports = function(config) {
                 }
             });
 
-            configureNodes(platform, [platform + '.tests/*/*', platform + '.examples/*/*']);
+            config.nodes([platform + '.tests/*/*', platform + '.examples/*/*'], function(node) {
+                var dir = node.getNodePath(),
+                    sublevels = [
+                        path.join(dir, '..', '.blocks'),
+                        path.join(dir, 'blocks')
+                    ].filter(function(sublevel) {
+                        return fs.existsSync(sublevel);
+                    }),
+                    levels = [].concat(
+                        getTestLevels(platform),
+                        sublevels
+                    );
+
+                page(node, {
+                    levels : levels,
+                    browsers : getBrowsers(platform),
+                    langs : langs,
+                    templateEngine : BEM_TEMPLATE_ENGINE
+                });
+            });
         });
     }
 };

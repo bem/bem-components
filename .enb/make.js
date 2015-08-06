@@ -334,6 +334,12 @@ module.exports = function(config) {
                     'bemhtml-prod' : {
                         tech : 'enb-bemxjst/techs/bemhtml-old',
                         options : { devMode : false }
+                    },
+                    'bemhtml@bem-xjst-4' : {
+                        tech : 'enb-bemxjst-2/techs/bemhtml',
+                        options : {
+                            exportName : 'BEMHTML'
+                        }
                     }
                 },
                 depsTech : techs.bem.depsOld

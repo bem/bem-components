@@ -20,6 +20,7 @@
 | ---- | --- | -------- |
 | <a href=#fieldswitcher>switcher</a> | <code>String</code>, <code>BEMJSON</code> | Содержимое <a href="#modswitcher">управляющего компонента</a>.  |
 | <a href=#popup>popup</a> | <code>String</code>, <code>BEMJSON</code> | Содержимое всплывающего окна. |
+| <a href=#tab>tabIndex</a> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
 
 ## Описание блока
 
@@ -287,5 +288,36 @@
             }
         ]
     }
+}
+```
+
+<a name="tab"></a>
+#### Поле `tabIndex`
+
+Тип: `Number`
+
+Определяет порядок перехода между контролами при нажатии на <code>Tab</code>.
+
+```js
+{
+    block : 'dropdown',
+    mods : { switcher : 'link', theme : 'islands', size : 'm' },
+    tabIndex : 5,
+    switcher : 'Узнать об акциях на сайте',
+    popup : 'Скидка 30%'
+}
+```
+
+```js
+{
+    block : 'dropdown',
+    mods : { switcher : 'button', theme : 'islands', size : 'm' },
+    switcher : {
+        block : 'button',
+        tabIndex : 5,
+        mods : { togglable : 'check' },
+        text : 'Узнать об акциях на сайте'
+    },
+    popup : 'Скидка 30% на новую коллекцию. Для активации акции нужно ввести промокод.'
 }
 ```

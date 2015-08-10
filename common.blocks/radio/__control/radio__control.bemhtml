@@ -13,6 +13,7 @@ block('radio').elem('control')(
 
         ctx.checked && (attrs.checked = 'checked');
         ctx.disabled && (attrs.disabled = 'disabled');
+        ctx.tabIndex && (attrs.tabindex = ctx.tabIndex);
 
         return attrs;
     })

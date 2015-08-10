@@ -12,6 +12,7 @@ block('dropdown').mod('switcher', 'button').elem('switcher').content()(function(
         resMods.size || (resMods.size = dropdownMods.size);
         resMods.theme || (resMods.theme = dropdownMods.theme);
         resMods.disabled = dropdownMods.disabled;
+        res.tabIndex || (res.tabIndex = this.ctx.tabIndex);
     }
 
     return res;

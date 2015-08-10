@@ -16,7 +16,7 @@ module.exports = function(bh) {
         popupMods.target = 'anchor';
 
         ctx.content([
-           { elem : 'switcher', content : json.switcher },
+           { elem : 'switcher', content : json.switcher, tabIndex : json.tabIndex },
            popup
         ], true);
     });

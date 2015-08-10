@@ -13,6 +13,7 @@ module.exports = function(bh) {
                 size : mods.size
             },
             title : json.title,
+            tabIndex : json.tabIndex,
             content : [
                 json.icon,
                 typeof json.text !== 'undefined'?

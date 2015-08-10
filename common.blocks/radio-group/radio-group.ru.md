@@ -21,6 +21,7 @@
 | <a href="#name">name</a> | <code>String</code> | Уникальное имя блока. |
 | <a href="#val">val</a> | <code>String</code>, <code>Number</code> | Значение выбранного радиопереключателя. |
 | <a href="#opt">options</a> | <code>Array</code> | Набор значений для каждого радиопереключателя группы. Каждому <a href="../radio/radio.ru.md#type">типу радиопереключателя</a> соответствует разный <a href="#optset">набор значений</a>. |
+| <a href="#tab">tabIndex</code> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>, значение по умолчанию. |
 
 ## Обзор блока
 
@@ -363,6 +364,7 @@
 | <code>disabled</code> | <code>Boolean</code> | Неактивное состояние. |
 | <code>icon</code> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. Используется только с <a href="#type">модификатором type в значении button</a>. |
 | <code>title</code> | <code>String</code> | Текст всплывающей подсказки. Используется только с <a href="#type">модификатором type в значении button</a>. |
+| <code>tabIndex</code> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
 
 ```js
 {
@@ -432,6 +434,50 @@
                 mods : { social : 'twitter' }
             }
         }
+    ]
+}
+```
+
+<a name="tab"></a>
+#### Поле `tabIndex`
+
+Тип: `Number`
+
+Определяет порядок перехода между контролами при нажатии на <code>Tab</code>.
+
+Значение может быть установлено:
+
+* всей группе радиопереключателей
+
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    tabIndex : 5,
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол' },
+        { val : 2, text : 'Баскетбол' },
+        { val : 3, text : 'Гандбол', disabled : true }
+    ]
+}
+```
+
+* отдельному радиопереключателю в группе
+
+```js
+{
+    block : 'radio-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'radio-islands',
+    tabIndex : 10,
+    val : 2,
+    options : [
+        { val : 1, text : 'Футбол', tabIndex : 12 },
+        { val : 2, text : 'Баскетбол', tabIndex : 11 },
+        { val : 3, text : 'Гандбол', disabled : true }
     ]
 }
 ```

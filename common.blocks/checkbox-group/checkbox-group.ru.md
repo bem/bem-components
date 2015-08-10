@@ -21,6 +21,7 @@
 | <a href="#checkboxname">name</a> | <code>String</code> | Уникальное имя блока. |
 | <a href="#val">val</a> | <code>Array</code> | Набор значений выбранных чекбоксов. |
 | <a href="#checkboxopt">options</a> | <code>Array</code> | Набор значений для каждого чекбокса группы. Каждому типу чекбоксов соответствует разный <a href="#checkboxoptset">набор значений</a>. |
+| <a href="#checkboxtab">tabIndex</code> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>, значение по умолчанию. |
 
 ## Описание блока
 
@@ -357,6 +358,7 @@
 | <code>icon</code> | <code>BEMJSON</code> | Иконка. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. Используется только для группы чекбоксов с <a href="#checkboxtype-button">модификатором type в значении button</a>. |
 | <code>title</code> | <code>String</code> | Текст сплывающей подсказки. Используется только для группы чекбоксов с модификатором <code>type</code> в значении <code>button</code>. |
 | <code>id</code> | <code>String</code> | Уникальный идентификатор чекбокса. |
+| <code>tabIndex</code> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
 
 ```js
 {
@@ -413,6 +415,51 @@
                 mods : { social : 'vk' }
             }
         }
+    ]
+}
+```
+
+<a name="checkboxtab"></a>
+#### Поле `tabIndex`
+
+Тип: `Number`
+
+Определяет порядок перехода между контролами при нажатии на <code>Tab</code>.
+
+Значение может быть установлено:
+
+* всей группе чекбоксов
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'checkbox-islands',
+    tabIndex : 5,
+    val : [1, 3],
+    options : [
+        { val : 1, text : 'Блок' },
+        { val : 2, text : 'Элемент', disabled : true },
+        { val : 3, text : 'Модификатор', disabled : true },
+        { val : 4, text : 'Модификатор' }
+    ]
+}
+```
+
+* отдельному чекбоксу в группе
+
+```js
+{
+    block : 'checkbox-group',
+    mods : { theme : 'islands', size : 'm' },
+    name : 'checkbox-islands',
+    tabIndex : 10,
+    val : [1, 3],
+    options : [
+        { val : 1, text : 'Блок', tabIndex : 11 },
+        { val : 2, text : 'Элемент', disabled : true },
+        { val : 3, text : 'Модификатор', disabled : true },
+        { val : 4, text : 'Модификатор' }
     ]
 }
 ```

@@ -10,6 +10,7 @@ module.exports = function(bh) {
         attrs.value = json.val;
         json.checked && (attrs.checked = 'checked');
         json.disabled && (attrs.disabled = 'disabled');
+        json.tabIndex && (attrs.tabindex = json.tabIndex);
 
         ctx.attrs(attrs);
     });

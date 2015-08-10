@@ -15,7 +15,7 @@ block('dropdown')(
         popupMods.target = 'anchor';
 
         return [
-            { elem : 'switcher', content : this.ctx.switcher },
+            { elem : 'switcher', content : this.ctx.switcher, tabIndex : this.ctx.tabIndex },
             popup
         ];
     })

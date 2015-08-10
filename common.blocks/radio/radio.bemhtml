@@ -10,6 +10,7 @@ block('radio')(
                     elem : 'control',
                     checked : this.mods.checked,
                     disabled : this.mods.disabled,
+                    tabIndex : ctx.tabIndex,
                     name : ctx.name,
                     val : ctx.val
                 }

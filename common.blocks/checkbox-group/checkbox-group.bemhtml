@@ -29,6 +29,7 @@ block('checkbox-group')(
                     val : option.val,
                     text : option.text,
                     title : option.title,
+                    tabIndex : option.tabIndex || ctx.tabIndex,
                     icon : option.icon
                 }
             ];

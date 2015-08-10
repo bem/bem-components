@@ -14,6 +14,7 @@ module.exports = function(bh) {
             resMods.size || (resMods.size = dropdownMods.size);
             resMods.theme || (resMods.theme = dropdownMods.theme);
             resMods.disabled = dropdownMods.disabled;
+            res.tabIndex || (res.tabIndex = json.tabIndex);
         }
 
         return res;

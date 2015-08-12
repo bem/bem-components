@@ -60,6 +60,7 @@ ctx = '.button_theme_islands'
         left: 1px;
 
         content: '';
+        transition: background 0.1s ease-out;
 
         border-radius: 2px;
         background: #fff;
@@ -76,13 +77,12 @@ ctx = '.button_theme_islands'
     {
         z-index: 1;
 
-        background: rgba(178, 142, 0, 0.6);
         box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
     }
 
     &.button_pressed:before
     {
-        background: #f6f5f3;
+        background: #ffe688;
     }
 
     &.button_checked
@@ -91,7 +91,7 @@ ctx = '.button_theme_islands'
 
         &:before
         {
-            background: #ffeba0;
+            background: #ffeca4;
         }
 
         &.button_pressed
@@ -126,7 +126,7 @@ ctx = '.button_theme_islands'
 
         &.button_checked
         {
-            background: #ffeba0;
+            background: #ffeca4;
 
             &.button_pressed
             {
@@ -142,11 +142,20 @@ ctx = '.button_theme_islands'
 
     &.button_view_action
     {
-        background: rgba(191, 153, 0, 0.8);
-
         &:before
         {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            border-radius: 3px;
             background: #ffdb4d;
+        }
+
+        &.button_hovered:before
+        {
+            background: #ffd633;
         }
 
         &.button_pressed:before
@@ -154,9 +163,14 @@ ctx = '.button_theme_islands'
             background: #fc0;
         }
 
-        &.button_hovered
+        &.button_focused
         {
-            background: rgba(159, 127, 0, 0.8);
+            box-shadow: none;
+
+            &:before
+            {
+                animation: button-action-focus 0.5s infinite linear alternate;
+            }
         }
     }
 
@@ -177,11 +191,6 @@ ctx = '.button_theme_islands'
             box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
         }
 
-        &.button_focused-hard:before
-        {
-            box-shadow: 0 0 0 1px rgba(178, 142, 0, 0.6);
-        }
-
         &.button_pressed:before
         {
             background: rgba(0, 0, 0, 0.05);
@@ -191,7 +200,7 @@ ctx = '.button_theme_islands'
         {
             &:before
             {
-                background: #ffeba0;
+                background: #ffeca4;
                 box-shadow: 0 0 0 1px rgba(153, 122, 0, 0.5);
             }
 
@@ -206,6 +215,11 @@ ctx = '.button_theme_islands'
                 box-shadow: 0 0 0 1px rgba(129, 103, 0, 0.6);
             }
         }
+
+        &.button.button_focused-hard:before
+        {
+            box-shadow: none;
+        }
     }
 
     &.button_disabled
@@ -217,21 +231,22 @@ ctx = '.button_theme_islands'
             display: none;
         }
 
-        &.button_checked:before
+        &.button_checked
         {
-            display: block;
+            background: #d9d9d9;
 
-            background: #ffeba0;
+            &:before
+            {
+                display: block;
+
+                background: #d9d9d9;
+            }
         }
 
-        .button__text
-        {
-            color: #aaa;
-        }
-
+        .button__text,
         .icon
         {
-            opacity: 0.3;
+            opacity: 0.5;
         }
     }
 
@@ -370,5 +385,17 @@ ctx = '.button_theme_islands'
         {
             border-radius: 2px;
         }
+    }
+}
+
+@keyframes button-action-focus
+{
+    from
+    {
+        background-color: #ffdb4d;
+    }
+    to
+    {
+        background-color: #fc0;
     }
 }

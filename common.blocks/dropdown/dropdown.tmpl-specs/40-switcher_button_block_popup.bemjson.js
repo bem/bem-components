@@ -1,5 +1,6 @@
 ({
     block : 'dropdown',
+    js : { id : 'uniq14257605137441' },
     mods : { switcher : 'button' },
     switcher : {
         block : 'button',

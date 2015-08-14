@@ -52,7 +52,7 @@ provide(BEMDOM.decl(this.name, /** @lends dropdown.prototype */{
      */
     getPopup : function() {
         return this._popup ||
-            (this._popup = this.findBlockInside('popup')
+            (this._popup = this.findBlockOn('popup')
                 .setAnchor(this.getSwitcher())
                 .on({ modName : 'visible', modVal : '*' }, this._onPopupVisibilityChange, this));
     },
@@ -63,7 +63,7 @@ provide(BEMDOM.decl(this.name, /** @lends dropdown.prototype */{
      */
     getSwitcher : function() {
         return this._switcher ||
-            (this._switcher = this.findBlockInside(this.getMod('switcher')));
+            (this._switcher = this.findBlockOn(this.getMod('switcher')));
     },
 
     _onPopupVisibilityChange : function(_, data) {

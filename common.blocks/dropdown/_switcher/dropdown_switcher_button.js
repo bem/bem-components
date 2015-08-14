@@ -19,7 +19,7 @@ provide(Dropdown.decl({ modName : 'switcher', modVal : 'button' }, /** @lends dr
     }
 }, /** @lends dropdown */{
     live : function() {
-        this.liveInitOnBlockInsideEvent('click', 'button', this.onSwitcherClick);
+        this.liveInitOnBlockEvent('click', 'button', this.onSwitcherClick);
         return this.__base.apply(this, arguments);
     }
 }));

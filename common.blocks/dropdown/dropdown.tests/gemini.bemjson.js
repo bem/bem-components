@@ -13,9 +13,8 @@
             content : {
                 block : 'dropdown',
                 mods : { switcher : 'link', theme : 'islands' },
-                switcher : 'link',
-                popup : { block : 'popup', mods : { autoclosable : true, 'islands-link' : true }, content : 'popup' },
-                cls : 'islands-link'
+                switcher : { block : 'link', content : 'link', cls : 'islands-link' },
+                popup : { block : 'popup', mods : { autoclosable : true, 'islands-link' : true }, content : 'popup' }
             }
         },
         {
@@ -23,9 +22,8 @@
             content : {
                 block : 'dropdown',
                 mods : { switcher : 'button', theme : 'islands', size : 's' },
-                switcher : 'link',
-                popup : { block : 'popup', mods : { autoclosable : true, 'islands-button' : true }, content : 'popup' },
-                cls : 'islands-button'
+                switcher : { block : 'button', text : 'link', cls : 'islands-button' },
+                popup : { block : 'popup', mods : { autoclosable : true, 'islands-button' : true }, content : 'popup' }
             }
         }
     ]

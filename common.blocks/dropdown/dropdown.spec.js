@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['dropdown', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, Dropdown, BEMDOM, $, BEMHTML) {
+    ['dropdown', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, Dropdown, BEMDOM, $, BEMHTML, sinon) {
 
 describe('dropdown', function() {
     var body = $('body'),
@@ -67,6 +67,18 @@ describe('dropdown', function() {
                 .setMod('opened')
                 .setMod('disabled')
                 .hasMod('opened').should.be.false;
+        });
+    });
+
+    describe('destruct', function() {
+        it('should destruct properly', function() {
+            var spy = sinon.spy();
+
+            dropdown.getPopup().on({ modName : 'js', modVal : '' }, spy);
+            dropdown.setMod('opened');
+            BEMDOM.destruct(dropdown.domElem);
+
+            spy.should.have.been.calledOnce;
         });
     });
 });

@@ -16,8 +16,8 @@ module.exports = function(bh) {
             .attrs({
                 role : role,
                 id : ctx.generateId(),
-                'aria-disabled' : ctx.mod('disabled'),
-                'aria-checked' : menuMode && !!ctx.mod('checked')
+                'aria-disabled' : ctx.mod('disabled') && 'true',
+                'aria-checked' : menuMode && String(!!ctx.mod('checked'))
             });
     });
 };

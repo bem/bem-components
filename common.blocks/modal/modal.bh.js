@@ -10,7 +10,7 @@ module.exports = function(bh) {
             })
             .attrs({
                 role : 'dialog',
-                'aria-hidden' : !ctx.mod('visible')
+                'aria-hidden' : !ctx.mod('visible')? 'true' : undefined
             })
             .content({
                 elem : 'table',

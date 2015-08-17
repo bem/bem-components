@@ -1,6 +1,6 @@
 block('progressbar')(
     def()(function() {
-        applyNext({ _val : this.ctx.val || 0 });
+        return applyNext({ _val : this.ctx.val || 0 });
     }),
 
     js()(function(){

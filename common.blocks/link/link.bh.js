@@ -21,7 +21,7 @@ module.exports = function(bh) {
             ctx.js(true);
         } else {
             ctx.js(url? { url : url } : true);
-            attrs['aria-disabled'] = true;
+            attrs['aria-disabled'] = 'true';
         }
 
         typeof tabIndex === 'undefined' || (attrs.tabindex = tabIndex);

@@ -15,7 +15,7 @@ module.exports = function(bh) {
             .mix({ elem : 'control' });
 
         mods.disabled?
-            attrs['aria-disabled'] = true :
+            attrs['aria-disabled'] = 'true' :
             attrs.tabindex = 0;
 
         ctx.attrs(attrs);

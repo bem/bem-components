@@ -10,7 +10,7 @@ module.exports = function(bh) {
             })
             .attrs({
                 role : 'dialog',
-                'aria-hidden' : !ctx.mod('visible') || undefined
+                'aria-hidden' : !ctx.mod('visible')? 'true' : undefined
             });
     });
 };

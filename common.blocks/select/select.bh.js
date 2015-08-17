@@ -27,7 +27,8 @@ module.exports = function(bh) {
 
         var isValDef = typeof json.val !== 'undefined',
             isModeCheck = ctx.mod('mode') === 'check',
-            firstOption, checkedOptions = [];
+            firstOption, checkedOptions = [],
+            popupId = ctx.generateId();
 
         iterateOptions(json.options);
 
@@ -39,11 +40,18 @@ module.exports = function(bh) {
             .tParam('select', json)
             .tParam('firstOption', firstOption)
             .tParam('checkedOptions', checkedOptions)
+            .tParam('popupId', popupId)
+            .attrs({
+                role : 'listbox',
+                'aria-multiselectable' : String(isModeCheck),
+                'aria-disabled' : ctx.mod('disabled') && 'true'
+            })
             .content([
                 { elem : 'button' },
                 {
                     block : 'popup',
                     mods : { target : 'anchor', theme : ctx.mod('theme'), autoclosable : true },
+                    attrs : { id : popupId },
                     directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'],
                     content : { block : json.block, mods : ctx.mods(), elem : 'menu' }
                 }

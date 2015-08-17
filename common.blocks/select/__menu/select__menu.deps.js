@@ -1,3 +1,3 @@
 ({
-    shouldDeps : 'menu'
+    mustDeps : 'menu'
 })

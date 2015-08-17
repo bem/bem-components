@@ -16,6 +16,11 @@ module.exports = function(bh) {
                 disabled : mods.disabled,
                 checked : mods.mode !== 'radio' && !!checkedOptions.length
             },
+            attrs : {
+                'aria-haspopup' : 'true',
+                'aria-expanded' : String(!!mods.opened),
+                'aria-controls' : ctx.tParam('popupId')
+            },
             id : select.id,
             tabIndex : select.tabIndex,
             content : [

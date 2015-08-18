@@ -43,13 +43,21 @@
         }
     }
 
-    &.radio_disabled .radio__box
+    &.radio_disabled
     {
-        background: #ebebeb;
-
-        &:after
+        .radio__box
         {
-            background: #8d8d8d;
+            background: #ebebeb;
+
+            &:after
+            {
+                background: #8d8d8d;
+            }
+        }
+
+        &.radio_checked .radio__box
+        {
+            background: #d9d9d9;
         }
     }
 }

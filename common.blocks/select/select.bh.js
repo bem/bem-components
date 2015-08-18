@@ -41,17 +41,12 @@ module.exports = function(bh) {
             .tParam('firstOption', firstOption)
             .tParam('checkedOptions', checkedOptions)
             .tParam('popupId', popupId)
-            .attrs({
-                role : 'listbox',
-                'aria-multiselectable' : String(isModeCheck),
-                'aria-disabled' : ctx.mod('disabled') && 'true'
-            })
             .content([
                 { elem : 'button' },
                 {
                     block : 'popup',
                     mods : { target : 'anchor', theme : ctx.mod('theme'), autoclosable : true },
-                    attrs : { id : popupId },
+                    attrs : { id : popupId, role : 'presentation' },
                     directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'],
                     content : { block : json.block, mods : ctx.mods(), elem : 'menu' }
                 }

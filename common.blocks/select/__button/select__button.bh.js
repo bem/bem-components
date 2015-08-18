@@ -17,9 +17,13 @@ module.exports = function(bh) {
                 checked : mods.mode !== 'radio' && !!checkedOptions.length
             },
             attrs : {
+                role : 'listbox',
+                'aria-multiselectable' : String(mods.mode === 'check'),
+                'aria-disabled' : mods.disabled && 'true',
                 'aria-haspopup' : 'true',
                 'aria-expanded' : String(!!mods.opened),
-                'aria-controls' : ctx.tParam('popupId')
+                'aria-controls' : ctx.tParam('popupId'),
+                'aria-label' : ctx.tParam('checkedText')
             },
             id : select.id,
             tabIndex : select.tabIndex,

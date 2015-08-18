@@ -23,10 +23,14 @@ module.exports = function(bh) {
     });
 
     bh.match('select_mode_radio__button', function(ctx) {
-        ctx.content({
-            elem : 'text',
-            content : ctx.tParam('checkedOption').text
-        });
+        var checkedText = ctx.tParam('checkedOption').text;
+
+        ctx
+            .tParam('checkedText', checkedText)
+            .content({
+                elem : 'text',
+                content : checkedText
+            });
     });
 
 };

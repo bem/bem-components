@@ -26,7 +26,7 @@
                     block : 'test',
                     js : { target : [100, 100] },
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'open at 100&times;100' },
+                        { block : 'button', mods : { theme : 'simple', size : 'm' }, text : 'open at 100&times;100' },
                         {
                             block : 'popup',
                             mods : { target : 'position', autoclosable : true, theme : 'simple' },
@@ -60,7 +60,7 @@
                     mods : { direction : 'all' },
                     js : true,
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'all directions' },
+                        { block : 'button', mods : { theme : 'simple', size : 'm' }, text : 'all directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'simple' },
@@ -79,7 +79,7 @@
                     mods : { direction : 'bottom' },
                     js : true,
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'bottom-* directions' },
+                        { block : 'button', mods : { theme : 'simple', size : 'm' }, text : 'bottom-* directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'simple' },
@@ -97,7 +97,7 @@
                     mods : { direction : 'top' },
                     js : true,
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'top-* directions' },
+                        { block : 'button', mods : { theme : 'simple', size : 'm' }, text : 'top-* directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'simple' },
@@ -115,7 +115,7 @@
                     mods : { direction : 'right' },
                     js : true,
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'right-* directions' },
+                        { block : 'button', mods : { theme : 'simple', size : 'm' }, text : 'right-* directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'simple' },
@@ -133,7 +133,7 @@
                     mods : { direction : 'left' },
                     js : true,
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'left-* directions' },
+                        { block : 'button', mods : { theme : 'simple', size : 'm' }, text : 'left-* directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'simple' },
@@ -159,7 +159,7 @@
                     block : 'test',
                     js : { target : [100, 100] },
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'open at 100&times;100' },
+                        { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'open at 100&times;100' },
                         {
                             block : 'popup',
                             mods : { target : 'position', autoclosable : true, theme : 'islands' },
@@ -193,7 +193,7 @@
                     mods : { direction : 'all' },
                     js : true,
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'all directions' },
+                        { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'all directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'islands' },
@@ -212,11 +212,11 @@
                     mods : { direction : 'bottom' },
                     js : true,
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'bottom-* directions' },
+                        { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'direction: bottom-left' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'islands' },
-                            directions : ['bottom-left', 'bottom-center', 'bottom-right'],
+                            directions : ['bottom-left'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -230,11 +230,11 @@
                     mods : { direction : 'top' },
                     js : true,
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'top-* directions' },
+                        { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'top-* directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'islands' },
-                            directions : ['top-left', 'top-center', 'top-right'],
+                            directions : ['top-right'],
                             content : [
                                 'There\'s content',
                                 { tag : 'br' },
@@ -248,7 +248,7 @@
                     mods : { direction : 'right' },
                     js : true,
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'right-* directions' },
+                        { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'right-* directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'islands' },
@@ -266,7 +266,7 @@
                     mods : { direction : 'left' },
                     js : true,
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'left-* directions' },
+                        { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'left-* directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'islands' },

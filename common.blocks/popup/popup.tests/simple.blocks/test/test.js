@@ -4,20 +4,20 @@ provide(BEMDOM.decl(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var link = this.findBlockInside('link'),
+                var button = this.findBlockInside('button'),
                     popup = this.findBlockInside('popup'),
                     updateLink = popup.findBlockInside('link'),
                     target = this.params.target;
 
                 target?
                     popup.setPosition(target[0], target[1]) :
-                    popup.setAnchor(link);
+                    popup.setAnchor(button);
 
                 updateLink && updateLink.on('click', function() {
                     popup.setContent('content updated');
                 });
 
-                link.on('click', function() {
+                button.on('click', function() {
                     popup.toggleMod('visible');
                 });
             }

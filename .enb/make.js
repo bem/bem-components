@@ -62,11 +62,13 @@ module.exports = function(config) {
                     [techs.bem.levelsToBemdecl, { target : '.tmp.bemdecl.js' }],
                     [techs.bem.depsOld, { bemdeclFile : '.tmp.bemdecl.js', target : '.tmp.deps.js' }],
                     [techs.bem.files, { depsFile : '.tmp.deps.js' }],
-                    [techs.css.stylusWithAutoprefixer, {
+                    [techs.stylus, {
                         target : '.tmp.dev.css',
-                        browsers : getBrowsers(platform)
+                        autoprefixer : {
+                            browsers : getBrowsers(platform)
+                        }
                     }],
-                    [techs.css.stylus, {
+                    [techs.stylus, {
                         target : '.tmp.dev.ie.css',
                         sourceSuffixes : ['styl', 'ie.styl']
                     }],
@@ -153,8 +155,12 @@ module.exports = function(config) {
 
             // Client techs
             nodeConfig.addTechs([
-                [techs.css.stylusWithAutoprefixer, { browsers : getBrowsers(platform) }],
-                [techs.css.stylus, { target : '?.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
+                [techs.stylus, {
+                    autoprefixer : {
+                        browsers : getBrowsers(platform)
+                    }
+                }],
+                [techs.stylus, { target : '?.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
                 [techs.js, {
                     filesTarget : '?.js.files'
                 }],

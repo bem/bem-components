@@ -5,10 +5,7 @@ module.exports = {
         merge : require('enb/techs/file-merge')
     },
     bem : require('enb-bem-techs'),
-    css : {
-        stylus : require('enb-stylus/techs/css-stylus'),
-        stylusWithAutoprefixer : require('enb-stylus/techs/css-stylus-with-autoprefixer')
-    },
+    stylus : require('enb-stylus/techs/stylus'),
     js : require('./techs/js-borschik-include'),
     ym : require('enb-modules/techs/prepend-modules'),
     engines : {

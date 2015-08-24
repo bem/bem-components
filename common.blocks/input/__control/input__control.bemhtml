@@ -3,14 +3,19 @@ block('input').elem('control')(
 
     attrs()(function() {
         var input = this._input,
-            attrs = {
-                id : input.id,
-                name : input.name,
-                value : input.val,
-                maxlength : input.maxLength,
-                tabindex : input.tabIndex,
-                placeholder : input.placeholder
-            };
+            attrs = this.extend(
+                applyNext(),
+                {
+                    id : input.id,
+                    name : input.name,
+                    value : input.val,
+                    maxlength : input.maxLength,
+                    tabindex : input.tabIndex,
+                    placeholder : input.placeholder,
+                    type : input.type,
+                    required : input.required
+                }
+            );
 
         input.autocomplete === false && (attrs.autocomplete = 'off');
         this.mods.disabled && (attrs.disabled = 'disabled');

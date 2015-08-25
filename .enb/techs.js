@@ -6,7 +6,7 @@ module.exports = {
     },
     bem : require('enb-bem-techs'),
     stylus : require('enb-stylus/techs/stylus'),
-    js : require('./techs/js-borschik-include'),
+    js : require('enb-borschik/techs/js-borschik-include'),
     ym : require('enb-modules/techs/prepend-modules'),
     engines : {
         bemhtml : require('enb-bemxjst/techs/bemhtml-old'),

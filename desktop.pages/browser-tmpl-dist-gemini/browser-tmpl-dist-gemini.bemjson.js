@@ -13,9 +13,9 @@ module.exports = {
         { elem : 'js', content : [
             'modules.require(["jquery", "BEMHTML", "BH"], function($, BEMHTML, BH) {',
             '   var json = ' + JSON.stringify(content) + ';',
-            '   var bemhtmlResult = BEMHTML.apply(json);',
-            '   var bhResult = BH.apply(json);',
-            '   $(".page").append(bemhtmlResult, "<br/>", bhResult);',
+            '   var bemhtmlResult = "<div class=\'bemhtml\'>" + BEMHTML.apply(json) + "</div>";',
+            '   var bhResult = "<div class=\'bh\'>" + BH.apply(json) + "</div>";',
+            '   $(".page").append(bemhtmlResult, bhResult);',
             '});'
         ]}
     ],

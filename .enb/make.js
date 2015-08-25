@@ -92,7 +92,8 @@ module.exports = function(config) {
                     }],
                     [techs.js, {
                         filesTarget : '.tmp.js.files',
-                        target : '.tmp.pre-source.js'
+                        target : '.tmp.pre-source.js',
+                        sourceSuffixes : ['vanilla.js', 'browser.js', 'js'],
                     }],
                     [techs.borschik, { source : '.tmp.pre-source.js', target : '.tmp.source.js', freeze : false, minify : false }],
                     [techs.ym, {
@@ -110,15 +111,15 @@ module.exports = function(config) {
                         target : LIB_NAME + '.dev.js+bh.js',
                         sources : [LIB_NAME + '.dev.js', '.tmp.browser.bh.js']
                     }],
-                    [techs.borschik, { source : '.tmp.dev.css', target : LIB_NAME + '.dev.css', tech : 'cleancss', freeze : true, minify : false }],
-                    [techs.borschik, { source : '.tmp.dev.ie.css', target : LIB_NAME + '.dev.ie.css', tech : 'cleancss', freeze : true, minify : false }],
-                    [techs.borschik, { source : LIB_NAME + '.dev.css', target : LIB_NAME + '.css', tech : 'cleancss', freeze : true, minify : true }],
-                    [techs.borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', tech : 'cleancss', freeze : true, minify : true }],
-                    [techs.borschik, { source : LIB_NAME + '.dev.js', target : LIB_NAME + '.js', freeze : true, minify : true }],
-                    [techs.borschik, { source : LIB_NAME + '.dev.bemhtml.js', target : LIB_NAME + '.bemhtml.js', freeze : true, minify : true }],
-                    [techs.borschik, { source : LIB_NAME + '.dev.bh.js', target : LIB_NAME + '.bh.js', freeze : true, minify : true }],
-                    [techs.borschik, { source : LIB_NAME + '.dev.js+bemhtml.js', target : LIB_NAME + '.js+bemhtml.js', freeze : true, minify : true }],
-                    [techs.borschik, { source : LIB_NAME + '.dev.js+bh.js', target : LIB_NAME + '.js+bh.js', freeze : true, minify : true }]
+                    [techs.borschik, { source : '.tmp.dev.css', target : LIB_NAME + '.dev.css', tech : 'cleancss', minify : false }],
+                    [techs.borschik, { source : '.tmp.dev.ie.css', target : LIB_NAME + '.dev.ie.css', tech : 'cleancss', minify : false }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.css', target : LIB_NAME + '.css', tech : 'cleancss', minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', tech : 'cleancss', minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.js', target : LIB_NAME + '.js', minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.bemhtml.js', target : LIB_NAME + '.bemhtml.js', minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.bh.js', target : LIB_NAME + '.bh.js', minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.js+bemhtml.js', target : LIB_NAME + '.js+bemhtml.js', minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.js+bh.js', target : LIB_NAME + '.js+bh.js', minify : true }]
                 ]);
 
                 nodeConfig.addTargets([
@@ -162,6 +163,8 @@ module.exports = function(config) {
                 }],
                 [techs.stylus, { target : '?.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
                 [techs.js, {
+                    target : '?.browser.js',
+                    sourceSuffixes : ['vanilla.js', 'browser.js', 'js'],
                     filesTarget : '?.js.files'
                 }],
                 [techs.files.merge, {
@@ -247,9 +250,9 @@ module.exports = function(config) {
         config.mode('development', function() {
             config.nodes(nodes, function(nodeConfig) {
                 nodeConfig.addTechs([
-                    [techs.borschik, { source : '?.css', target : '_?.css', freeze : true, minify : false }],
-                    [techs.borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, minify : false }],
-                    [techs.borschik, { source : '?.js', target : '_?.js', freeze : true, minify : false }]
+                    [techs.borschik, { source : '?.css', target : '_?.css', minify : false }],
+                    [techs.borschik, { source : '?.ie.css', target : '_?.ie.css', minify : false }],
+                    [techs.borschik, { source : '?.js', target : '_?.js', minify : false }]
                 ]);
             });
         });
@@ -257,9 +260,9 @@ module.exports = function(config) {
         config.mode('production', function() {
             config.nodes(nodes, function(nodeConfig) {
                 nodeConfig.addTechs([
-                    [techs.borschik, { source : '?.css', target : '_?.css', freeze : true, tech : 'cleancss', minify : true }],
-                    [techs.borschik, { source : '?.ie.css', target : '_?.ie.css', freeze : true, tech : 'cleancss', minify : true }],
-                    [techs.borschik, { source : '?.js', target : '_?.js', freeze : true, minify : true }]
+                    [techs.borschik, { source : '?.css', target : '_?.css', tech : 'cleancss', minify : true }],
+                    [techs.borschik, { source : '?.ie.css', target : '_?.ie.css', tech : 'cleancss', minify : true }],
+                    [techs.borschik, { source : '?.js', target : '_?.js', minify : true }]
                 ]);
             });
         });

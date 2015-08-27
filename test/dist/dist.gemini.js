@@ -6,7 +6,7 @@ gemini.suite('dist', function(root) {
         .setUrl('desktop.pages/browser-tmpl-dist-gemini/browser-tmpl-dist-gemini.html')
         .setCaptureElements('.page')
         .capture('plain', function(actions) {
-            actions.wait(3000);
+            actions.wait(5000); // wait for BH and BEMHTML
         });
 
 });

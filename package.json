@@ -33,7 +33,7 @@
     "enb-bem-examples": "^0.5.10",
     "enb-bem-specs": "^0.6.0",
     "enb-bem-tmpl-specs": "^0.13.0",
-    "enb-bemxjst": "^1.3.5",
+    "enb-bemxjst": "^2.0.0",
     "enb-bemxjst-2": "https://github.com/tadatuta/enb-bemxjst/archive/bem-xjst-2x.tar.gz",
     "enb-bh": "^1.0.0",
     "enb-borschik": "^2.0.0",

@@ -104,7 +104,7 @@ module.exports = function(config) {
                         source : '.tmp.source.js',
                         target : LIB_NAME + '.dev.js'
                     }],
-                    [techs.engines.bemhtml, { target : LIB_NAME + '.dev.bemhtml.js', devMode : false }],
+                    [techs.engines.bemhtml, { target : LIB_NAME + '.dev.bemhtml.js' }],
                     [techs.engines.bhBundle, {
                         target : LIB_NAME + '.dev.bh.js',
                         mimic : ['bh', 'BEMHTML'],
@@ -234,8 +234,7 @@ module.exports = function(config) {
                     bhOptions : bhOptions
                 }] : [techs.engines.bemhtml, {
                     target : '?.browser.bemhtml.js',
-                    filesTarget : '?.template.files',
-                    devMode : false
+                    filesTarget : '?.template.files'
                 }]
             ]);
 
@@ -244,7 +243,7 @@ module.exports = function(config) {
                 [techs.engines.bhCommonJS, { bhOptions : bhOptions }],
                 [techs.html.bh]
             ] : [
-                [techs.engines.bemhtml, { devMode : false }],
+                [techs.engines.bemhtml],
                 [techs.html.bemhtml]
             ]);
 
@@ -353,11 +352,11 @@ module.exports = function(config) {
                         }
                     },
                     'bemhtml-dev' : {
-                        tech : 'enb-bemxjst/techs/bemhtml-old',
+                        tech : 'enb-bemxjst/techs/bemhtml',
                         options : { devMode : true }
                     },
                     'bemhtml-prod' : {
-                        tech : 'enb-bemxjst/techs/bemhtml-old',
+                        tech : 'enb-bemxjst/techs/bemhtml',
                         options : { devMode : false }
                     },
                     'bemhtml@bem-xjst-4' : {

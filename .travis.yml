@@ -39,7 +39,7 @@ before_install:
 
 before_script:
   - |
-      if [ "${TEST_SCOPE}" == "gemini" ]; then
+      if [ "${TEST_SCOPE}" == "gemini" -o "${TEST_SCOPE}" == "dists" ]; then
         curl -L https://gist.githubusercontent.com/henrikhodne/9322897/raw/sauce-connect.sh | bash
         echo "  tunnel-identifier: '${TRAVIS_JOB_NUMBER}'" >> .gemini.yml
         echo "  build: '${TRAVIS_BUILD_NUMBER}'" >> .gemini.yml

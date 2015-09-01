@@ -10,9 +10,14 @@ block('dropdown').mod('switcher', 'link').elem('switcher').def()(function() {
 
     if(res.block === 'link') {
         var resMods = res.mods || (res.mods = {}),
+            resAttrs = res.attrs || (res.attrs = {}),
             dropdownMods = this.mods;
         resMods.theme || (resMods.theme = dropdownMods.theme);
         resMods.disabled = dropdownMods.disabled;
+
+        resAttrs['aria-haspopup'] = true;
+        resAttrs['aria-controls'] = this._popupId;
+        resAttrs['aria-expanded'] = String(!!dropdownMods.opened);
 
         res.mix = apply('mix');
     }

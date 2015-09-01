@@ -7,6 +7,7 @@ module.exports = function(bh) {
             ctx
                 .js(ctx.extend({ id : ctx.generateId() }, ctx.js()))
                 .tParam('dropdown', dropdown)
+                .tParam('popupId', ctx.generateId())
                 .tParam('theme', ctx.mod('theme'))
                 .tParam('mix', [dropdown].concat(
                     dropdown.switcher.mix || [],
@@ -23,12 +24,12 @@ module.exports = function(bh) {
                 popup = { block : 'popup', content : popup };
             }
 
-            var popupMods = popup.mods || (popup.mods = {});
+            var popupMods = popup.mods || (popup.mods = {}),
+                popupAttrs = popup.attrs || (popup.attrs = {});
             popupMods.theme || (popupMods.theme = ctx.tParam('theme'));
             popupMods.hasOwnProperty('autoclosable') || (popupMods.autoclosable = true);
-
             popupMods.target = 'anchor';
-
+            popupAttrs.id = ctx.tParam('popupId');
             popup.mix = [dropdown].concat(popup.mix || []);
 
             return popup;

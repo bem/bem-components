@@ -19,12 +19,15 @@ module.exports = function(bh) {
     });
 
     bh.match('select_mode_radio-check__button', function(ctx) {
-        var checkedOptions = ctx.tParam('checkedOptions');
+        var checkedOptions = ctx.tParam('checkedOptions'),
+            checkedText = (checkedOptions[0] || ctx.tParam('select')).text;
 
-        ctx.content({
-            elem : 'text',
-            content : (checkedOptions[0] || ctx.tParam('select')).text
-        });
+        ctx
+            .tParam('checkedText', checkedText)
+            .content({
+                elem : 'text',
+                content : checkedText
+            });
     });
 
 };

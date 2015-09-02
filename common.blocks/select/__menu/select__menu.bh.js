@@ -7,6 +7,11 @@ module.exports = function(bh) {
                 var res = {
                         block : 'menu-item',
                         mods : { disabled : mods.disabled || option.disabled },
+                        attrs : {
+                            role : 'option',
+                            'aria-checked' : null,
+                            'aria-selected' : String(!!option.checked)
+                        },
                         val : option.val,
                         js : { checkedText : option.checkedText },
                         content : option.text

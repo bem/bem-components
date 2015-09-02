@@ -1,8 +1,9 @@
 modules.define(
     'spec',
-    ['select', 'i-bem__dom', 'jquery', 'sinon', 'keyboard__codes', 'next-tick', 'BEMHTML'],
-    function(provide, Select, BEMDOM, $, sinon, keyCodes, nextTick, BEMHTML) {
+    ['select', 'i-bem__dom', 'jquery', 'sinon', 'keyboard__codes', 'next-tick', 'BEMHTML', 'chai'],
+    function(provide, Select, BEMDOM, $, sinon, keyCodes, nextTick, BEMHTML, chai) {
 
+var expect = chai.expect;
 describe('select', function() {
     var select, button, popup, menu;
 
@@ -191,6 +192,34 @@ describe('select', function() {
     describe('getName()', function() {
         it('should return right name', function() {
             select.getName().should.be.equal('select1');
+        });
+    });
+
+    describe('a11y', function() {
+        it('should set/remove "aria-expanded" attribute for button on show/hide', function() {
+            select.setMod('opened');
+            button.domElem.attr('aria-expanded').should.be.equal('true');
+
+            select.delMod('opened');
+            button.domElem.attr('aria-expanded').should.be.equal('false');
+        });
+
+        it('should set "aria-disabled" attribute on disabled state', function() {
+            select
+                .setMod('disabled')
+                .domElem.attr('aria-disabled').should.be.equal('true');
+
+            select.delMod('disabled');
+            expect(select.domElem.attr('aria-disabled')).to.be.undefined;
+        });
+
+        it('should set/remove "aria-activedescendant" to button on "opened" state', function() {
+            select.setMod('opened');
+            var menuAriaAttr = menu.domElem.attr('aria-activedescendant');
+            button.domElem.attr('aria-activedescendant').should.be.equal(menuAriaAttr);
+            
+            select.delMod('opened');
+            expect(button.domElem.attr('aria-activedescendant')).to.be.undefined;
         });
     });
 });

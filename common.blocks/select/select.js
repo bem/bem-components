@@ -42,7 +42,8 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
                 this._menu = this._popup.findBlockInside('menu')
                     .on({
                         'change' : this._onMenuChange,
-                        'item-click' : this._onMenuItemClick
+                        'item-click' : this._onMenuItemClick,
+                        'item-hover' :  this._onItemHover
                     }, this);
 
                 this._isPointerPressInProgress = false;
@@ -65,6 +66,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
         'opened' : {
             '*' : function(_, modVal) {
                 this._menu.setMod('focused', modVal);
+                this._button.domElem.attr('aria-expanded', !!modVal);
             },
 
             'true' : function() {
@@ -82,6 +84,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
                 this
                     .unbindFromDoc('pointerpress', this._onDocPointerPress)
                     ._popup.delMod('visible');
+                this._button.domElem.removeAttr('aria-activedescendant');
             }
         },
 
@@ -94,6 +97,11 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
 
             'true' : function() {
                 this._popup.delMod('visible');
+                this.domElem.attr('aria-disabled', 'true');
+            },
+
+            '' : function() {
+                this.domElem.removeAttr('aria-disabled');
             }
         }
     },
@@ -214,6 +222,11 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             this._buttonWidth = null;
 
         this.emit('change');
+    },
+
+    _onItemHover : function() {
+        var activeDescendant = this._menu.domElem.attr('aria-activedescendant');
+        this.elem('button').attr('aria-activedescendant', activeDescendant);
     },
 
     _onMenuItemClick : function() {},

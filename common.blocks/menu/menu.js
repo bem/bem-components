@@ -156,6 +156,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
             this._hoveredItem && this._hoveredItem.delMod('hovered');
             this.domElem.attr('aria-activedescendant', itemId);
             this._scrollToItem(this._hoveredItem = item);
+            this.emit('item-hover');
         } else if(this._hoveredItem === item) {
             this.domElem.removeAttr('aria-activedescendant');
             this._hoveredItem = null;

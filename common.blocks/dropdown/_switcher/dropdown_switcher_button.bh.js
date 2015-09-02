@@ -12,10 +12,15 @@ module.exports = function(bh) {
 
         if(res.block === 'button') {
             var resMods = res.mods || (res.mods = {}),
+                resAttrs = res.attrs || (res.attrs = {}),
                 dropdownMods = json.blockMods || json.mods;
             resMods.size || (resMods.size = dropdownMods.size);
             resMods.theme || (resMods.theme = dropdownMods.theme);
             resMods.disabled = dropdownMods.disabled;
+
+            resAttrs['aria-haspopup'] = 'true';
+            resAttrs['aria-controls'] = ctx.tParam('popupId');
+            resAttrs['aria-expanded'] = String(!!dropdownMods.opened);
 
             res.mix = ctx.tParam('mix');
         }

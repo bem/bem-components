@@ -12,9 +12,14 @@ module.exports = function(bh) {
 
         if(res.block === 'link') {
             var resMods = res.mods || (res.mods = {}),
+                resAttrs = res.attrs || (res.attrs = {}),
                 dropdownMods = json.blockMods || json.mods;
             resMods.theme || (resMods.theme = dropdownMods.theme);
             resMods.disabled = dropdownMods.disabled;
+
+            resAttrs['aria-haspopup'] = 'true';
+            resAttrs['aria-controls'] = ctx.tParam('popupId');
+            resAttrs['aria-expanded'] = String(!!dropdownMods.opened);
 
             res.mix = ctx.tParam('mix');
         }

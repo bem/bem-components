@@ -19,12 +19,12 @@ module.exports = function(bh) {
                 disabled : mods.disabled,
                 checked : mods.mode !== 'radio' && !!checkedOptions.length
             },
+            id : select.id,
             attrs : {
                 role : 'listbox',
-                'aria-multiselectable' : String(mods.mode === 'check'),
+                'aria-multiselectable' : mods.mode === 'check'? 'true' : null,
                 'aria-labelledby' : selectTextId
             },
-            id : select.id,
             tabIndex : select.tabIndex,
             content : [
                 ctx.content(),

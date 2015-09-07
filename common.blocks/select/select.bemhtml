@@ -50,6 +50,7 @@ block('select')(
             {
                 block : 'popup',
                 mods : { target : 'anchor', theme : this.mods.theme, autoclosable : true },
+                attrs : { role : undefined },
                 directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'],
                 content : { block : this.block, mods : this.mods, elem : 'menu' }
             }

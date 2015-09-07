@@ -49,6 +49,20 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
                 this._buttonWidth = null;
 
                 this.hasMod('focused') && this._focus();
+
+                var menuItemIds = Array.prototype.map.call(
+                    this.domElem.find('.menu-item'),
+                    function(item) {
+                        return $(item).attr('id');
+                    });
+
+                this._button.domElem
+                    .attr('aria-activedescendant', menuItemIds[0])
+                    .attr('aria-owns', menuItemIds.join(' '));
+
+                BEMDOM.blocks['menu-item'].on(
+                    this._popup.domElem,
+                    { modName : 'hovered', modVal : true }, this._onItemHovered, this);
             }
         },
 
@@ -128,6 +142,10 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
         return {
             optionsMaxHeight : Number.POSITIVE_INFINITY
         };
+    },
+
+    _onItemHovered : function(e) {
+        this._button.domElem.attr('aria-activedescendant', e.target.domElem.attr('id'));
     },
 
     _focus : function() {

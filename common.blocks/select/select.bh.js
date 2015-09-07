@@ -44,6 +44,7 @@ module.exports = function(bh) {
                 {
                     block : 'popup',
                     mods : { target : 'anchor', theme : ctx.mod('theme'), autoclosable : true },
+                    attrs : { role : null },
                     directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'],
                     content : { block : json.block, mods : ctx.mods(), elem : 'menu' }
                 }

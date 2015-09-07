@@ -29,20 +29,17 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
 
         'disabled' : {
             'true' : function() {
-                this.__base.apply(this, arguments);
                 this
                     .delMod('hovered')
                     .domElem.attr('aria-disabled', true);
             },
             '' : function() {
-                this.__base.apply(this, arguments);
                 this.domElem.removeAttr('aria-disabled');
             }
         },
 
         'checked' : {
             '*' : function(_, modVal) {
-                this.__base.apply(this, arguments);
                 this.domElem.attr('aria-checked', !!modVal);
             }
         }

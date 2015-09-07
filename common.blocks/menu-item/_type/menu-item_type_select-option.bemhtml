@@ -1,0 +1,9 @@
+block('menu-item').mod('type', 'select-option')(
+    attrs()(function() {
+        return this.extend(applyNext(), {
+            role : 'option',
+            'aria-checked' : undefined,
+            'aria-selected' : String(!!this.mods.checked)
+        });
+    })
+);

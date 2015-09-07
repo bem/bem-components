@@ -50,15 +50,11 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
 
                 this.hasMod('focused') && this._focus();
 
-                var menuItemIds = Array.prototype.map.call(
-                    this.domElem.find('.menu-item'),
-                    function(item) {
-                        return $(item).attr('id');
-                    });
+                var menuItemIds = this._menu.getItems().map(function(item) {
+                    return item.domElem.attr('id');
+                });
 
-                this._button.domElem
-                    .attr('aria-activedescendant', menuItemIds[0])
-                    .attr('aria-owns', menuItemIds.join(' '));
+                this._button.domElem.attr('aria-owns', menuItemIds.join(' '));
 
                 BEMDOM.blocks['menu-item'].on(
                     this._popup.domElem,
@@ -96,6 +92,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
                 this
                     .unbindFromDoc('pointerpress', this._onDocPointerPress)
                     ._popup.delMod('visible');
+                this._button.domElem.removeAttr('aria-activedescendant');
             }
         },
 

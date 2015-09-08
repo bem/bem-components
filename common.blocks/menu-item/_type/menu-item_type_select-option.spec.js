@@ -22,7 +22,7 @@ describe('menu-item_type_select-option', function() {
     });
 
     describe('a11y', function() {
-        it('should have proper aria-attributes', function() {
+        it('should update aria-attributes properly', function() {
             expect(menuItem.domElem.attr('aria-checked')).to.be.undefined;
             menuItem.domElem.attr('aria-selected').should.be.equal('false');
 

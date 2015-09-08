@@ -50,7 +50,7 @@ describe('link', function() {
             link.domElem.attr('href').should.be.equal('/');
         });
 
-        it('should add "aria-disabled" attribute on disable', function() {
+        it('should set/remove "aria-disabled" attribute properly', function() {
             link.setMod('disabled');
             link.domElem.attr('aria-disabled').should.be.equal('true');
 

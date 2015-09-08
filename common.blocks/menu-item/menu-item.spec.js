@@ -69,7 +69,7 @@ describe('menu-item', function() {
     });
 
     describe('a11y', function () {
-        it('should set/remove "aria-disabled" attribute on "disabled" mod', function() {
+        it('should set/remove "aria-disabled" attribute on disable', function() {
             menuItem.setMod('disabled');
             menuItem.domElem.attr('aria-disabled').should.be.equal('true');
 
@@ -77,7 +77,7 @@ describe('menu-item', function() {
             expect(menuItem.domElem.attr('aria-disabled')).to.be.undefined;
         });
 
-        it('should set/remove "aria-checked" attribute on "checked" mod', function() {
+        it('should set/remove "aria-checked" attribute on "checked" modifier change', function() {
             menuItem.setMod('checked');
             menuItem.domElem.attr('aria-checked').should.be.equal('true');
 

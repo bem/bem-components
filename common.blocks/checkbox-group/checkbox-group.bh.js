@@ -5,7 +5,7 @@ module.exports = function(bh) {
             .tag('span')
             .attrs({
                 role : 'group',
-                'aria-label' : '.'
+                'aria-label' : '.' // NOTE: workaround for JAWS (look #1522 discussion for details)
             })
             .js(true)
             .mix({ block : 'control-group' });

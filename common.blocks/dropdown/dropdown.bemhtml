@@ -36,6 +36,7 @@ block('dropdown')(
             popupAttrs = popup.attrs || (popup.attrs = {});
         popupMods.theme || (popupMods.theme = this.mods.theme);
         popupMods.hasOwnProperty('autoclosable') || (popupMods.autoclosable = true);
+
         popupMods.target = 'anchor';
         popupAttrs.id = this._popupId;
 

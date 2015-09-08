@@ -86,7 +86,7 @@ describe('button', function() {
             button.hasMod('pressed').should.be.false;
         });
 
-        it('should update "aria-disabled" attr on set "disabled" mod', function () {
+        it('should set/remove "aria-disabled" attribute properly', function () {
             button
                 .setMod('disabled')
                 .domElem.attr('aria-disabled').should.be.equal('true');

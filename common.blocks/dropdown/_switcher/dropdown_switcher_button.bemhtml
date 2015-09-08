@@ -18,7 +18,7 @@ block('dropdown').mod('switcher', 'button').elem('switcher').def()(function() {
 
         resAttrs['aria-haspopup'] = true;
         resAttrs['aria-controls'] = this._popupId;
-        resAttrs['aria-expanded'] = String(!!dropdownMods.opened);
+        resAttrs['aria-expanded'] = false;
 
         res.mix = apply('mix');
     }

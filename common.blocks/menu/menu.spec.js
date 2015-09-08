@@ -91,7 +91,7 @@ describe('menu', function() {
             });
         });
 
-        it('should set/remove "aria-disabled" attributes on disable', function() {
+        it('should set/remove "aria-disabled" attribute properly', function() {
             menu
                 .setMod('disabled')
                 .domElem.attr('aria-disabled').should.be.equal('true');
@@ -186,10 +186,14 @@ describe('menu', function() {
             menuItems2[0].hasMod('hovered').should.be.true;
         });
 
-        it('should properly set/remove "aria-activedescendant" attribute', function() {
-            var menuId = menuItems[0].domElem.attr('id');
+        it('should update "aria-activedescendant" attribute properly', function() {
             menu.domElem.focus();
-            menu.domElem.attr('aria-activedescendant').should.be.equal(menuId);
+            pressDownKey();
+            menu.domElem.attr('aria-activedescendant').should.be.equal(menuItems[0].domElem.attr('id'));
+            pressDownKey();
+            menu.domElem.attr('aria-activedescendant').should.be.equal(menuItems[1].domElem.attr('id'));
+            pressDownKey();
+            menu.domElem.attr('aria-activedescendant').should.be.equal(menuItems[3].domElem.attr('id'));
             menu.domElem.blur();
             expect(menu.domElem.attr('aria-activedescendant')).to.be.undefined;
         });

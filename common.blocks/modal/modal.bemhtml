@@ -9,11 +9,9 @@ block('modal')(
         };
     }),
 
-    attrs()(function() {
-        return {
-            role : 'dialog',
-            'aria-hidden' : !this.mods.visible
-        };
+    attrs()({
+        role : 'dialog',
+        'aria-hidden' : true
     }),
 
     content()(function() {

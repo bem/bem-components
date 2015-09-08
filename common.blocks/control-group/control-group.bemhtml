@@ -1,6 +1,6 @@
-block('control-group').attrs()(function() {
-    return {
+block('control-group')(
+    attrs()({
         role : 'group',
-        'aria-label' : '.'
-    };
-});
+        'aria-label' : '.' /* NOTE: workaround for JAWS (look #1522 discussion for details) */
+    })
+);

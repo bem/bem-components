@@ -36,11 +36,7 @@ block('menu')(
         return applyNext({
             _firstItem : firstItem,
             _checkedItems : checkedItems,
-            _menuMods : {
-                theme : mods.theme,
-                disabled : mods.disabled,
-                mode : mods.mode
-            }
+            _menuMods : mods
         });
     }),
     attrs()(function() {

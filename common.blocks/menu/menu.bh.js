@@ -2,16 +2,11 @@ module.exports = function(bh) {
 
     bh.match('menu', function(ctx, json) {
         var mods = ctx.mods(),
-            menuMods = {
-                theme : mods.theme,
-                disabled : mods.disabled,
-                mode : mods.mode
-            },
             attrs = { role : 'menu' };
 
         ctx
             .js(true)
-            .tParam('menuMods', menuMods)
+            .tParam('menuMods', mods)
             .mix({ elem : 'control' });
 
         mods.disabled?

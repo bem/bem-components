@@ -1,12 +1,7 @@
 block('radio-group')(
     tag()('span'),
 
-    attrs()(function() {
-        return {
-            role : 'radiogroup',
-            'aria-label' : '.'
-        };
-    }),
+    attrs()({ role : 'radiogroup' }),
 
     js()(true),
 

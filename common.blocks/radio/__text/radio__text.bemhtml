@@ -1,6 +1,6 @@
 block('radio').elem('text')(
     tag()('span'),
     attrs()(function() {
-        return { 'aria-hidden' : true };
+        return { 'aria-hidden' : true }; /* NOTE: JAWS processes role="presentation" wrongly */
     })
 );

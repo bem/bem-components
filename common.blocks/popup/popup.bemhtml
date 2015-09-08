@@ -9,10 +9,8 @@ block('popup')(
             zIndexGroupLevel : ctx.zIndexGroupLevel
         };
     }),
-    attrs()(function() {
-        return {
-            role : 'dialog',
-            'aria-hidden' : !this.mods.visible || undefined
-        };
+    attrs()({
+        role : 'dialog',
+        'aria-hidden' : true
     })
 );

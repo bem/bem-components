@@ -10,7 +10,7 @@ block('progressbar')(
     attrs()(function() {
         return {
             role : 'progressbar',
-            'aria-valuenow' : this._val + '%' // NOTE: JAWS doesn't add 'percent' automatically
+            'aria-valuenow' : this._val + '%' /* NOTE: JAWS doesn't add 'percent' automatically */
         };
     }),
 

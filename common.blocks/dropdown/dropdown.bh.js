@@ -28,8 +28,10 @@ module.exports = function(bh) {
                 popupAttrs = popup.attrs || (popup.attrs = {});
             popupMods.theme || (popupMods.theme = ctx.tParam('theme'));
             popupMods.hasOwnProperty('autoclosable') || (popupMods.autoclosable = true);
+
             popupMods.target = 'anchor';
             popupAttrs.id = ctx.tParam('popupId');
+
             popup.mix = [dropdown].concat(popup.mix || []);
 
             return popup;

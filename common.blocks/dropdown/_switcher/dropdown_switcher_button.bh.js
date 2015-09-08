@@ -20,7 +20,7 @@ module.exports = function(bh) {
 
             resAttrs['aria-haspopup'] = 'true';
             resAttrs['aria-controls'] = ctx.tParam('popupId');
-            resAttrs['aria-expanded'] = String(!!dropdownMods.opened);
+            resAttrs['aria-expanded'] = 'false';
 
             res.mix = ctx.tParam('mix');
         }

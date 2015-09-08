@@ -1,16 +1,27 @@
 module.exports = function(bh) {
 
     bh.match('menu__group', function(ctx, json) {
+        var title = json.title;
+
         ctx.attr('role', 'group');
 
-        var title = json.title;
         if(typeof title !== 'undefined') {
+            var titleId = ctx.generateId();
             ctx
-                .attr('aria-label', title, true)
+                .attr('aria-labelledby', titleId)
                 .content([
-                    { elem : 'group-title', content : title },
+                    {
+                        elem : 'group-title',
+                        attrs : {
+                            role : 'presentation',
+                            id : titleId
+                        },
+                        content : title
+                    },
                     ctx.content()
                 ], true);
+        } else {
+            ctx.attr('aria-label', '.'); // NOTE: workaround for JAWS (look #1522 discussion for details)
         }
     });
 

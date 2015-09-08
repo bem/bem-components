@@ -1,11 +1,9 @@
 block('checkbox-group')(
     tag()('span'),
 
-    attrs()(function() {
-        return {
-            role : 'group',
-            'aria-label' : '.'
-        };
+    attrs()({
+        role : 'group',
+        'aria-label' : '.' /* NOTE: workaround for JAWS (look #1522 discussion for details) */
     }),
 
     js()(true),

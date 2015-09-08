@@ -51,7 +51,7 @@ describe('button_togglable_check', function() {
             button.hasMod('checked').should.be.false;
         });
 
-        it('should add correct a11y attributes', function() {
+        it('should update aria-attributes properly', function() {
             button.setMod('checked');
             button.domElem.attr('aria-pressed').should.be.equal('true');
             button.delMod('checked');

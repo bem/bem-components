@@ -1,7 +1,10 @@
 block('icon')(
     tag()('i'),
     attrs()(function() {
-        var attrs = { 'aria-hidden' : 'true' },
+        var attrs = {
+                role : 'presentation',
+                'aria-hidden' : true /* NOTE: JAWS processes role="presentation" wrongly */
+            },
             url = this.ctx.url;
         if(url) attrs.style = 'background-image:url(' + url + ')';
         return attrs;

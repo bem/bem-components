@@ -1,4 +1,7 @@
 block('checkbox').elem('text')(
     tag()('span'),
-    attrs()({ 'aria-hidden' : true }) /* NOTE: JAWS processes role="presentation" wrongly */
+    attrs()({
+        role : 'presentation',
+        'aria-hidden' : true /* NOTE: JAWS processes role="presentation" wrongly */
+    })
 );

@@ -29,10 +29,10 @@ describe('select_mode_radio-check', function() {
     describe('enable/disable', function() {
         it('should enable/disable control elems according to self "disabled" state', function() {
             select.setMod('disabled');
-            select.elem('control').prop('disabled').should.be.true;
+            select.elem('control').attr('disabled').should.be.equal('disabled');
 
             select.delMod('disabled');
-            select.elem('control').prop('disabled').should.be.false;
+            chai.expect(select.elem('control').attr('disabled')).to.be.undefined;
         });
     });
 

@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['radio', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML'],
-    function(provide, Radio, BEMDOM, $, dom, BEMHTML) {
+    ['radio', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'chai'],
+    function(provide, Radio, BEMDOM, $, dom, BEMHTML, chai) {
 
 describe('radio', function() {
     var radioOption;
@@ -29,11 +29,11 @@ describe('radio', function() {
         it('should properly update "control" elem "checked" attr', function() {
             radioOption
                 .setMod('checked')
-                .elem('control').prop('checked').should.be.true;
+                .elem('control').attr('checked').should.be.equal('checked');
 
-            radioOption
+            chai.expect(radioOption
                 .delMod('checked')
-                .elem('control').prop('checked').should.be.false;
+                .elem('control').attr('checked')).to.be.undefined;
         });
 
         it('should set "checked" mod on "change" event', function() {

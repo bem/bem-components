@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['select', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, Select, BEMDOM, $, BEMHTML) {
+    ['select', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
+    function(provide, Select, BEMDOM, $, BEMHTML, chai) {
 
 describe('select_mode_radio', function() {
     var select, menu, button;
@@ -28,10 +28,10 @@ describe('select_mode_radio', function() {
     describe('enable/disable', function() {
         it('should enable/disable control elems according to self "disabled" state', function() {
             select.setMod('disabled');
-            select.elem('control').prop('disabled').should.be.true;
+            select.elem('control').attr('disabled').should.be.equal('disabled');
 
             select.delMod('disabled');
-            select.elem('control').prop('disabled').should.be.false;
+            chai.expect(select.elem('control').attr('disabled')).to.be.undefined;
         });
     });
 

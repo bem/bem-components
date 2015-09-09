@@ -100,11 +100,15 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             '*' : function(modName, modVal) {
                 this._button.setMod(modName, modVal);
                 this._menu.setMod(modName, modVal);
-                this.elem('control').prop('disabled', modVal);
             },
 
             'true' : function() {
+                this.elem('control').attr('disabled', true);
                 this._popup.delMod('visible');
+            },
+
+            '' : function() {
+                this.elem('control').removeAttr('disabled');
             }
         }
     },

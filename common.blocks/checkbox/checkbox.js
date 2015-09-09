@@ -23,7 +23,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends check
     },
 
     _onChange : function() {
-        this.setMod('checked', !!this.elem('control').attr('checked'));
+        this.toggleMod('checked');
     }
 }, /** @lends checkbox */{
     live : function() {

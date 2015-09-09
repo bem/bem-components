@@ -22,6 +22,9 @@ module.exports = function(bh) {
             id : select.id,
             attrs : {
                 role : 'listbox',
+                'aria-owns' : select.options.map(function(option) {
+                    return option.id;
+                }).join(' '),
                 'aria-multiselectable' : mods.mode === 'check'? 'true' : null,
                 'aria-labelledby' : selectTextId
             },

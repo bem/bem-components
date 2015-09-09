@@ -10,6 +10,7 @@ module.exports = function(bh) {
                             type : 'select-option',
                             disabled : mods.disabled || option.disabled
                         },
+                        id : option.id,
                         val : option.val,
                         js : { checkedText : option.checkedText },
                         content : option.text

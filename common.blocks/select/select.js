@@ -50,12 +50,6 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
 
                 this.hasMod('focused') && this._focus();
 
-                var menuItemIds = this._menu.getItems().map(function(item) {
-                    return item.domElem.attr('id');
-                });
-
-                this._button.domElem.attr('aria-owns', menuItemIds.join(' '));
-
                 BEMDOM.blocks['menu-item'].on(
                     this._popup.domElem,
                     { modName : 'hovered', modVal : true }, this._onItemHovered, this);

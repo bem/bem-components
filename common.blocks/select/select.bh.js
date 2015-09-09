@@ -17,6 +17,7 @@ module.exports = function(bh) {
                     iterateOptions(option.group);
                 } else {
                     firstOption || (firstOption = option);
+                    option.id = ctx.generateId();
                     if(containsVal(option.val)) {
                         option.checked = true;
                         checkedOptions.push(option);

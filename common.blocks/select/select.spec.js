@@ -196,10 +196,7 @@ describe('select', function() {
 
     describe('a11y', function() {
         it('should have proper aria-attributes', function() {
-            var buttonElem = select.elem('button'),
-                optionIds = menu.getItems().map(function(option) {
-                    return option.domElem.attr('id');
-                });
+            var buttonElem = select.elem('button');
 
             function getHoveredOptionId() {
                 return menu.findBlockInside({
@@ -210,7 +207,6 @@ describe('select', function() {
             }
 
             select.setMod('focused');
-            buttonElem.attr('aria-owns').should.be.equal(optionIds.join(' '));
             pressDownKey(buttonElem);
             buttonElem.attr('aria-activedescendant').should.be.equal(getHoveredOptionId());
             pressUpKey(buttonElem);

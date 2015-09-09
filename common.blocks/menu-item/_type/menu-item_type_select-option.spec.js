@@ -3,9 +3,10 @@ modules.define(
     ['menu-item', 'i-bem__dom', 'jquery', 'chai', 'BEMHTML'],
     function(provide, MenuItem, BEMDOM, $, chai, BEMHTML) {
 
+var expect = chai.expect;
+
 describe('menu-item_type_select-option', function() {
-    var menuItem,
-        expect = chai.expect;
+    var menuItem;
 
     beforeEach(function() {
         menuItem = BEMDOM

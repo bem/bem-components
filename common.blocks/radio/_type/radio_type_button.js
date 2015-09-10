@@ -14,7 +14,7 @@ provide(Radio.decl({ modName : 'type', modVal : 'button' }, /** @lends radio.pro
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                this._button = this.findBlockInside('button')
+                this._button = this.findBlockOn('button')
                     .on(
                         { modName : 'checked', modVal : '*' },
                         proxyModFromButton,
@@ -26,7 +26,12 @@ provide(Radio.decl({ modName : 'type', modVal : 'button' }, /** @lends radio.pro
             }
         },
 
-        'checked' : proxyModToButton,
+        'checked' : function(modName, modVal) {
+            proxyModToButton.apply(this, arguments);
+            this.domElem
+                .removeAttr('aria-pressed')
+                .attr('aria-checked', String(!!modVal));
+        },
         'disabled' : proxyModToButton,
         'focused' : function(modName, modVal) {
             proxyModToButton.call(this, modName, modVal, false);

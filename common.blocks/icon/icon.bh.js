@@ -4,7 +4,7 @@ module.exports = function(bh) {
             url = json.url;
         if(url) attrs.style = 'background-image:url(' + url + ')';
         ctx
-            .tag('i')
+            .tag('span')
             .attrs(attrs);
     });
 };

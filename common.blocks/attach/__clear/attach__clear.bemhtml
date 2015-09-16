@@ -1,1 +1,1 @@
-block('attach').elem('clear').tag()('i');
+block('attach').elem('clear').tag()('span');

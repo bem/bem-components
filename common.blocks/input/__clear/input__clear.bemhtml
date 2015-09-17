@@ -1,1 +1,1 @@
-block('input').elem('clear').tag()('i');
+block('input').elem('clear').tag()('span');

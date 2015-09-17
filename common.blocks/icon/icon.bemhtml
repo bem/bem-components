@@ -1,5 +1,5 @@
 block('icon')(
-    tag()('i'),
+    tag()('span'),
     attrs()(function() {
         var attrs = { 'aria-hidden' : 'true' },
             url = this.ctx.url;

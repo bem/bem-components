@@ -84,7 +84,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
                     this.__self.buildClass('text') + '">' +
                     escape.html(fileName) +
                 '</span>' +
-                '<i class="' + this.__self.buildClass('clear') + '"/>' +
+                '<span class="' + this.__self.buildClass('clear') + '"/>' +
             '</span>');
 
         return this.dropElemCache('file');

@@ -12,6 +12,11 @@ module.exports = function(bh) {
                 theme : mods.theme,
                 size : mods.size
             },
+            attrs : {
+                role : 'checkbox',
+                'aria-pressed' : null,
+                'aria-checked' : String(!!mods.checked)
+            },
             title : json.title,
             content : [
                 json.icon,

@@ -1,18 +1,18 @@
 module.exports = function(bh) {
 
     bh.match('menu', function(ctx, json) {
-        var menuMods = {
-            theme : ctx.mod('theme'),
-            disabled : ctx.mod('disabled')
-        };
+        var mods = ctx.mods(),
+            attrs = { role : 'menu' };
 
         ctx
             .js(true)
-            .tParam('menuMods', menuMods)
+            .tParam('menuMods', mods)
             .mix({ elem : 'control' });
 
-        var attrs = { role : 'menu' };
-        ctx.mod('disabled') || (attrs.tabindex = 0);
+        mods.disabled?
+            attrs['aria-disabled'] = 'true' :
+            attrs.tabindex = 0;
+
         ctx.attrs(attrs);
 
         var firstItem,

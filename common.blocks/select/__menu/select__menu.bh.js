@@ -7,6 +7,8 @@ module.exports = function(bh) {
                 var res = {
                         block : 'menu-item',
                         mods : { disabled : mods.disabled || option.disabled },
+                        attrs : { role : 'option' },
+                        id : option.id,
                         val : option.val,
                         js : { checkedText : option.checkedText },
                         content : option.text
@@ -33,7 +35,7 @@ module.exports = function(bh) {
                 mode : mods.mode
             },
             val : select.val,
-            attrs : { tabindex : null },
+            attrs : { role : null, tabindex : null },
             content : select.options.map(function(optionOrGroup) {
                 return optionOrGroup.group?
                     {

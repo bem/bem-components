@@ -1,7 +1,9 @@
 modules.define(
     'spec',
-    ['button', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon', 'keyboard__codes'],
-    function(provide, Button, BEMDOM, $, BEMHTML, sinon, keyCodes) {
+    ['button', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon', 'keyboard__codes', 'chai'],
+    function(provide, Button, BEMDOM, $, BEMHTML, sinon, keyCodes, chai) {
+
+var expect = chai.expect;
 
 describe('button', function() {
     var button;
@@ -82,6 +84,15 @@ describe('button', function() {
                 .setMod('pressed');
 
             button.hasMod('pressed').should.be.false;
+        });
+
+        it('should set/remove "aria-disabled" attribute properly', function () {
+            button
+                .setMod('disabled')
+                .domElem.attr('aria-disabled').should.be.equal('true');
+
+            button.delMod('disabled');
+            expect(button.domElem.attr('aria-disabled')).to.be.undefined;
         });
     });
 

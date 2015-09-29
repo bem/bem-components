@@ -49,17 +49,15 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
         },
 
         'disabled' : {
-            '*' : function(modName, modVal) {
-                this.elem('control').prop(modName, !!modVal);
-            },
-
             'true' : function() {
+                this.elem('control').attr('disabled', true);
                 this.delMod('focused');
                 typeof this._tabIndex !== 'undefined' &&
                     this.elem('control').removeAttr('tabindex');
             },
 
             '' : function() {
+                this.elem('control').removeAttr('disabled');
                 typeof this._tabIndex !== 'undefined' &&
                     this.elem('control').attr('tabindex', this._tabIndex);
             }

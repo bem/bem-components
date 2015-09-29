@@ -9,6 +9,11 @@ block('modal')(
         };
     }),
 
+    attrs()({
+        role : 'dialog',
+        'aria-hidden' : true
+    }),
+
     content()(function() {
         return {
             elem : 'table',

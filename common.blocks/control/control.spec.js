@@ -1,7 +1,9 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'control', 'jquery', 'dom', 'objects', 'next-tick', 'BEMHTML'],
-    function(provide, BEMDOM, Control, $, dom, objects, nextTick, BEMHTML) {
+    ['i-bem__dom', 'control', 'jquery', 'dom', 'objects', 'next-tick', 'BEMHTML', 'chai'],
+    function(provide, BEMDOM, Control, $, dom, objects, nextTick, BEMHTML, chai) {
+
+var expect = chai.expect;
 
 describe('control', function() {
     var bemjson = {
@@ -105,12 +107,15 @@ describe('control', function() {
 
         it('should react on disabling', function() {
             controlElem.prop('disabled').should.be.false;
+            expect(controlElem.attr('disabled')).to.be.undefined;
 
             control.setMod('disabled');
             controlElem.prop('disabled').should.be.true;
+            controlElem.attr('disabled').should.be.equal('disabled');
 
             control.delMod('disabled');
             controlElem.prop('disabled').should.be.false;
+            expect(controlElem.attr('disabled')).to.be.undefined;
         });
     });
 });

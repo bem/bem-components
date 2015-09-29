@@ -33,10 +33,21 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
             }
         },
 
-        'disabled' : function(modName, modVal) {
-            this.getItems().forEach(function(menuItem){
-                menuItem.setMod(modName, modVal);
-            });
+        'disabled' : {
+            '*' : function(modName, modVal) {
+                this.__base.apply(this, arguments);
+                this.getItems().forEach(function(menuItem){
+                    menuItem.setMod(modName, modVal);
+                });
+            },
+            'true' : function() {
+                this.__base.apply(this, arguments);
+                this.domElem.attr('aria-disabled', true);
+            },
+            '' : function() {
+                this.__base.apply(this, arguments);
+                this.domElem.removeAttr('aria-disabled');
+            }
         }
     },
 
@@ -137,9 +148,12 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
         if(item.hasMod('hovered')) {
             this._hoveredItem && this._hoveredItem.delMod('hovered');
             this._scrollToItem(this._hoveredItem = item);
+            this.domElem.attr('aria-activedescendant', item.domElem.attr('id'));
         } else if(this._hoveredItem === item) {
             this._hoveredItem = null;
+            this.domElem.removeAttr('aria-activedescendant');
         }
+        this.emit('item-hover', { item : item });
     },
 
     /**

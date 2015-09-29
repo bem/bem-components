@@ -8,6 +8,10 @@ module.exports = function(bh) {
                 js : { zIndexGroupLevel : json.zIndexGroupLevel || 20 },
                 mods : { autoclosable : ctx.mod('autoclosable') }
             })
+            .attrs({
+                role : 'dialog',
+                'aria-hidden' : 'true'
+            })
             .content({
                 elem : 'table',
                 content : {

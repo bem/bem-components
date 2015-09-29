@@ -12,6 +12,11 @@ block('checkbox').mod('type', 'button')(
                 theme : mods.theme,
                 size : mods.size
             },
+            attrs : {
+                role : 'checkbox',
+                'aria-pressed' : undefined,
+                'aria-checked' : !!mods.checked
+            },
             title : ctx.title,
             content : [
                 ctx.icon,

@@ -36,15 +36,16 @@ block('menu')(
         return applyNext({
             _firstItem : firstItem,
             _checkedItems : checkedItems,
-            _menuMods : {
-                theme : mods.theme,
-                disabled : mods.disabled
-            }
+            _menuMods : mods
         });
     }),
     attrs()(function() {
         var attrs = { role : 'menu' };
-        this.mods.disabled || (attrs.tabindex = 0);
+
+        this.mods.disabled?
+            attrs['aria-disabled'] = true :
+            attrs.tabindex = 0;
+
         return attrs;
     }),
     js()(true),

@@ -71,6 +71,14 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
         return this.params.text || this.domElem.text();
     },
 
+    /**
+     * Returns item text for checked state
+     * @returns {String}
+     */
+    getCheckedText : function() {
+        return this.params.checkedText || this.getText();
+    },
+
     _onPointerOver : function() {
         this.setMod('hovered');
     },

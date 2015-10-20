@@ -28,7 +28,7 @@ module.exports = function(bh) {
         ctx.content({
             elem : 'text',
             content : checkedOptions.length === 1?
-                checkedOptions[0].text :
+                checkedOptions[0].checkedText || checkedOptions[0].text :
                 checkedOptions.reduce(function(res, option) {
                     return res + (res? ', ' : '') + (option.checkedText || option.text);
                 }, '') ||

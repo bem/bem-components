@@ -73,7 +73,7 @@ describe('select_mode_check', function() {
             button.getText().should.be.equal('first, sec');
 
             select.setVal([2]);
-            button.getText().should.be.equal('second');
+            button.getText().should.be.equal('sec');
 
             select.setVal([]);
             button.getText().should.be.equal('text');

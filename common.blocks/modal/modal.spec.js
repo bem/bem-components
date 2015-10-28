@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['modal', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, Modal, BEMDOM, $, BEMHTML) {
+    ['modal', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, Modal, BEMDOM, $, BEMHTML, sinon) {
 
 describe('modal', function() {
     var modal;
@@ -31,6 +31,19 @@ describe('modal', function() {
         it('should get proper z-index', function() {
             modal.setMod('visible');
             Number(modal.domElem.css('z-index')).should.be.equal(21001);
+        });
+    });
+
+    describe('events', function() {
+        it('should emit "show" and "hide" events', function() {
+            var onHide = sinon.spy(),
+                onShow = sinon.spy();
+            modal.on('show', onShow);
+            modal.on('hide', onHide);
+            modal.setMod('visible');
+            onShow.should.have.been.calledOnce;
+            modal.delMod('visible');
+            onHide.should.have.been.calledOnce;
         });
     });
 });

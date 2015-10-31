@@ -282,7 +282,7 @@ modules.require(['i-bem__dom', 'BEMHTML', 'jquery'], function(BEMDOM, BEMHTML, $
         ]
     });
 
-    BEMDOM.append($('.form'), html);    # https://ru.bem.info/libs/bem-core/current/desktop/i-bem/jsdoc/#append-1
+    BEMDOM.append($('.form'), html);    // https://ru.bem.info/libs/bem-core/current/desktop/i-bem/jsdoc/#append-1
 });
 </script>
 </body>

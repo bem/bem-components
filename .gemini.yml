@@ -1,41 +1,29 @@
 gridUrl: http://ondemand.saucelabs.com/wd/hub
 rootUrl: http://localhost:8000/
+windowSize: 1024x768
+
+httpTimeout: 40000
+suitesPerSession: 50
+sessionsPerBrowser: 3
+retry: 2
 
 browsers:
   firefox-latest:
-    browserName: firefox
-    version: 38
-    platform: Linux
+    desiredCapabilities:
+      version: "38.0"
+      browserName: firefox
+      platform: LINUX
+
   chrome-latest:
-    browserName: chrome
-    version: 42
-    platform: Linux
-    chromeOptions:
-      prefs:
-        browser:
-          # Disable spellchecker
-          enable_spellchecking: false
-#  opera-v12:
-#    browserName: opera
-#    version: 12
-#    platform: Windows 7
-#  ie9:
-#    browserName: internet explorer
-#    version: 9
-#    platform: Windows 7
+    desiredCapabilities:
+      version: "42.0"
+      browserName: chrome
+      platform: LINUX
+      chromeOptions:
+        prefs:
+          browser:
+            # Disable spellchecker
+            enable_spellchecking: false
 
-http:
-  timeout: 40000
-  #retries can break the tests if command is
-  #actually performed by saucelabs, but response
-  #is not received. In this case same command may be
-  #executed twice.
-  retries: 0
-
-debug: false
-
-capabilities:
-  record-screenshots: false
-  record-video: false
-  screen-resolution: 1024x768
-  max-duration: 7200
+system:
+  debug: false

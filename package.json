@@ -40,7 +40,7 @@
     "enb-modules": "0.2.0",
     "enb-stylus": "~2.0.0",
     "borschik-tech-cleancss": "2.0.1",
-    "gemini": "^0.12.1",
+    "gemini": "^1.0.6",
     "git-hooks": "~0.0.6",
     "http-server": "^0.7.2",
     "istanbul": "0.3.5",

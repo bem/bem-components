@@ -49,10 +49,6 @@ before_script:
           true && export `base64 --decode <<< U0FVQ0VfQUNDRVNTX0tFWT0yODFiNGMzNy02YWYzLTRmMGEtOGRmYi0xYmUzMjY1OGNiOTQK`
         fi
         curl -L https://gist.githubusercontent.com/henrikhodne/9322897/raw/sauce-connect.sh | bash
-        echo "  tunnel-identifier: '${TRAVIS_JOB_NUMBER}'" >> .gemini.yml
-        echo "  build: '${TRAVIS_BUILD_NUMBER}'" >> .gemini.yml
-        echo "  tags:" >> .gemini.yml
-        echo "    - CI" >> .gemini.yml
         cat .gemini.yml
       fi
 

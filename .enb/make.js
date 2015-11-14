@@ -104,7 +104,10 @@ module.exports = function(config) {
                         source : '.tmp.source.js',
                         target : LIB_NAME + '.dev.js'
                     }],
-                    [techs.engines.bemhtml, { target : LIB_NAME + '.dev.bemhtml.js' }],
+                    [techs.engines.bemhtml, {
+                        target : LIB_NAME + '.dev.bemhtml.js',
+                        sourceSuffixes : ['bemhtml.js', 'bemhtml']
+                    }],
                     [techs.engines.bhBundle, {
                         target : LIB_NAME + '.dev.bh.js',
                         mimic : ['bh', 'BEMHTML'],
@@ -128,9 +131,9 @@ module.exports = function(config) {
                     [techs.borschik, { source : LIB_NAME + '.dev.css', target : LIB_NAME + '.css', tech : 'cleancss', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', tech : 'cleancss', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.js', target : LIB_NAME + '.js', minify : true }],
-                    [techs.borschik, { source : LIB_NAME + '.dev.bemhtml.js', target : LIB_NAME + '.bemhtml.js', minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.bemhtml.js', target : LIB_NAME + '.bemhtml.js', minify : true, techOptions : { uglify : { mangle : false } } }],
                     [techs.borschik, { source : LIB_NAME + '.dev.bh.js', target : LIB_NAME + '.bh.js', minify : true }],
-                    [techs.borschik, { source : LIB_NAME + '.dev.js+bemhtml.js', target : LIB_NAME + '.js+bemhtml.js', minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.js+bemhtml.js', target : LIB_NAME + '.js+bemhtml.js', minify : true, techOptions : { uglify : { mangle : false } } }],
                     [techs.borschik, { source : LIB_NAME + '.dev.js+bh.js', target : LIB_NAME + '.js+bh.js', minify : true }]
                 ]);
 
@@ -234,7 +237,8 @@ module.exports = function(config) {
                     bhOptions : bhOptions
                 }] : [techs.engines.bemhtml, {
                     target : '?.browser.bemhtml.js',
-                    filesTarget : '?.template.files'
+                    filesTarget : '?.template.files',
+                    sourceSuffixes : ['bemhtml.js', 'bemhtml']
                 }]
             ]);
 
@@ -243,7 +247,7 @@ module.exports = function(config) {
                 [techs.engines.bhCommonJS, { bhOptions : bhOptions }],
                 [techs.html.bh]
             ] : [
-                [techs.engines.bemhtml],
+                [techs.engines.bemhtml, { sourceSuffixes : ['bemhtml.js', 'bemhtml'] }],
                 [techs.html.bemhtml]
             ]);
 
@@ -352,17 +356,17 @@ module.exports = function(config) {
                         }
                     },
                     'bemhtml-dev' : {
-                        tech : 'enb-bemxjst/techs/bemhtml',
-                        options : { devMode : true }
+                        tech : 'enb-bemxjst-1x/techs/bemhtml',
+                        options : { exportName : 'BEMHTML', devMode : true }
                     },
                     'bemhtml-prod' : {
-                        tech : 'enb-bemxjst/techs/bemhtml',
-                        options : { devMode : false }
+                        tech : 'enb-bemxjst-1x/techs/bemhtml',
+                        options : { exportName : 'BEMHTML', devMode : false }
                     },
                     'bemhtml@bem-xjst-4' : {
-                        tech : 'enb-bemxjst-2/techs/bemhtml',
+                        tech : 'enb-bemxjst/techs/bemhtml',
                         options : {
-                            exportName : 'BEMHTML'
+                            sourceSuffixes : ['bemhtml.js', 'bemhtml']
                         }
                     }
                 },

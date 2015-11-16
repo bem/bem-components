@@ -1,8 +1,20 @@
 # Changelog
 
+## 2.4.0
+
+### Notable changes
+* `bem-core` dependency was updated to [2.8.0](https://en.bem.info/libs/bem-core/v2.8.0/changelog/#280).
+* Accessibility (a11y) was improved in all blocks ([#1206](https://github.com/bem/bem-components/issues/1206)).
+* `dist` build is now uses `bem-xjst@next`, which gives possibility to add templates in runtime.
+
+### Other changes
+* `dropdown` does not generate extra wrapper around `switcher` and `popup` any more ([#1392](https://github.com/bem/bem-components/issues/1392)).
+* Misused `<i>` element replaced with neutral `<span>` in all blocks ([#1668](https://github.com/bem/bem-components/issues/1668)).
+* Multiline comments in stylus files, which break source maps, replaced with singleline ([#1702](https://github.com/bem/bem-components/issues/1702)).
+
 ## 2.3.0
 
-### Major changes
+### Notable changes
 * `bem-core` dependency was updated to [2.7.0](https://en.bem.info/libs/bem-core/v2.7.0/changelog/#270).
 * BH 4.x support added ([#1587](https://github.com/bem/bem-components/issues/1587)).
 * BEM-XJST 2.x support added ([#1495](https://github.com/bem/bem-components/pull/1495)).
@@ -51,7 +63,7 @@
 
 ## 2.1.0
 
-### Major changes
+### Notable changes
 
 * Optional support for Internet Explorer 8 in graceful degradation way was implemented ([#1205](https://github.com/bem/bem-components/issues/1205)). For more info please refer [notes in README](/README.md#support-ie8).
 * `bem-core` dependency was updated to [2.6.0](https://github.com/bem/bem-core/blob/v2/CHANGELOG.md#260).

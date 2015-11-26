@@ -82,6 +82,11 @@ ctx = '.input_theme_islands'
         {
             display: none;
         }
+
+        &::-webkit-autofill {
+            border: 1px solid transparent;
+            background-clip: padding-box;
+        }
     }
 
     &.input_has-clear .input__control
@@ -165,7 +170,7 @@ ctx = '.input_theme_islands'
             padding: 0 6px;
         }
 
-        &.input_has-clear .input__box
+        &.input_has-clear .input__control
         {
             padding-right: 24px;
         }
@@ -183,7 +188,7 @@ ctx = '.input_theme_islands'
             padding: 0 8px;
         }
 
-        &.input_has-clear .input__box
+        &.input_has-clear .input__control
         {
             padding-right: 28px;
         }
@@ -218,7 +223,7 @@ ctx = '.input_theme_islands'
             padding: 0 10px;
         }
 
-        &.input_has-clear .input__box
+        &.input_has-clear .input__control
         {
             padding-right: 32px;
         }
@@ -235,7 +240,7 @@ ctx = '.input_theme_islands'
             padding: 0 12px;
         }
 
-        &.input_has-clear .input__box
+        &.input_has-clear .input__control
         {
             padding-right: 38px;
         }

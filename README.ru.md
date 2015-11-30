@@ -182,12 +182,12 @@ bem-components
 
 ```html
 <link rel="stylesheet" href="https://yastatic.net/bem-components/latest/desktop/bem-components.css">
-<script src="https://yastatic.net/bem-components/latest/desktop/bem-components.js+bh.js"></script>
+<script src="https://yastatic.net/bem-components/latest/desktop/bem-components.js+bemhtml.js"></script>
 ```
 
 Схема подключения файла с CDN: `//yastatic.net/название-библиотеки/версия/платформа/имя-файла`.
 
-Пример: `//yastatic.net/bem-components/latest/desktop/bem-components.dev.js+bh.js`.
+Пример: `//yastatic.net/bem-components/latest/desktop/bem-components.dev.js+bemhtml.js`.
 
 #### Загрузка в виде архива
 
@@ -195,7 +195,7 @@ bem-components
 
 ```html
 <link rel="stylesheet" href="desktop/bem-components.css">
-<script src="desktop/bem-components.js+bh.js"></script>
+<script src="desktop/bem-components.js+bemhtml.js"></script>
 ```
 
 #### Сбор файлов из исходного кода
@@ -219,7 +219,7 @@ npm run dist
 
 ```html
 <link rel="stylesheet" href="bower_components/bem-components-dist/desktop/bem-components.css">
-<script src="bower_components/bem-components-dist/desktop/bem-components.js+bh.js"></script>
+<script src="bower_components/bem-components-dist/desktop/bem-components.js+bemhtml.js"></script>
 ```
 
 #### Установка с помощью Bower
@@ -234,7 +234,7 @@ bower i bem/bem-components-dist
 
 ```html
 <link rel="stylesheet" href="bower_components/bem-components-dist/desktop/bem-components.css">
-<script src="bower_components/bem-components-dist/desktop/bem-components.js+bh.js"></script>
+<script src="bower_components/bem-components-dist/desktop/bem-components.js+bemhtml.js"></script>
 ```
 
 #### Работа с библиотекой в виде Dist
@@ -312,7 +312,7 @@ BEMHTML.apply({
 
 ### Понимание принципов библиотеки
 
-**Блок и его состояния**
+#### Блок и его состояния
 
 Библиотека состоит из блоков, визуальное представление которых можно увидеть на [витрине `bem-components`](https://ru.bem.info/libs/bem-components/current/showcase/). У блоков есть состояния, которые определяют его поведенческую модель. Состояние блока выражается через модификаторы и специализированные поля. Изменение модификатора создает событие, которое можно использовать для работы с блоком.
 
@@ -321,7 +321,7 @@ BEMHTML.apply({
 * Для реакции на изменения «состояния» полей `value` применяется событие `change`.
 * Для реакции на установку/снятие модификатора применяются различные события на изменение модификатора.
 
-**Контролы в `bem-components`**
+#### Контролы в `bem-components`
 
 Контролы в `bem-components` могут использоваться как базовая часть для создания других компонетов библиотек. Такие контролы не имеют моделей, как в HTML, и могут использоваться для решения задач, в которых не нужна семантика конкретной HTML-модели.
 

@@ -7,6 +7,7 @@ block('select')(
             isValDef = typeof ctx.val !== 'undefined',
             isModeCheck = this.mods.mode === 'check',
             firstOption, checkedOptions = [],
+            random = Math.floor(Math.random() * Date.now()),
             optionIds = [],
             containsVal = function(val) {
                 return isValDef &&
@@ -21,7 +22,7 @@ block('select')(
                         iterateOptions(option.group);
                     } else {
                         firstOption || (firstOption = option);
-                        optionIds.push(option.id = _this.generateId());
+                        optionIds.push(option.id = 'option' + random++);
                         if(containsVal(option.val)) {
                             option.checked = true;
                             checkedOptions.push(option);
@@ -36,7 +37,7 @@ block('select')(
             _select : ctx,
             _checkedOptions : checkedOptions,
             _firstOption : firstOption,
-            _optionsIds : optionIds
+            _optionIds : optionIds
         });
     }),
 

@@ -16,9 +16,9 @@ block('dropdown').mod('switcher', 'button').elem('switcher').def()(function() {
         resMods.theme || (resMods.theme = dropdownMods.theme);
         resMods.disabled = dropdownMods.disabled;
 
-        resAttrs['aria-haspopup'] = true;
+        resAttrs['aria-haspopup'] = 'true';
         resAttrs['aria-controls'] = this._popupId;
-        resAttrs['aria-expanded'] = false;
+        resAttrs['aria-expanded'] = 'false';
 
         res.mix = apply('mix');
     }

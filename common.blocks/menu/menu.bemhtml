@@ -43,7 +43,7 @@ block('menu')(
         var attrs = { role : 'menu' };
 
         this.mods.disabled?
-            attrs['aria-disabled'] = true :
+            attrs['aria-disabled'] = 'true' :
             attrs.tabindex = 0;
 
         return attrs;

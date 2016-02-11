@@ -15,7 +15,7 @@ block('checkbox').mod('type', 'button')(
             attrs : {
                 role : 'checkbox',
                 'aria-pressed' : undefined,
-                'aria-checked' : !!mods.checked
+                'aria-checked' : String(!!mods.checked)
             },
             title : ctx.title,
             content : [

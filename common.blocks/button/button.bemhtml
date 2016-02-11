@@ -27,7 +27,7 @@ block('button')(
                 };
 
             this.mods.disabled &&
-                !this._isRealButton && (attrs['aria-disabled'] = true);
+                !this._isRealButton && (attrs['aria-disabled'] = 'true');
 
             return attrs;
         },

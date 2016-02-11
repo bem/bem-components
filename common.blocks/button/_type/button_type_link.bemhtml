@@ -7,7 +7,7 @@ block('button').mod('type', 'link')(
 
         ctx.target && (attrs.target = ctx.target);
         this.mods.disabled?
-            attrs['aria-disabled'] = true :
+            attrs['aria-disabled'] = 'true' :
             attrs.href = ctx.url;
 
         return this.extend(applyNext(), attrs);

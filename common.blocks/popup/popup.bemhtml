@@ -9,5 +9,5 @@ block('popup')(
             zIndexGroupLevel : ctx.zIndexGroupLevel
         };
     }),
-    attrs()({ 'aria-hidden' : true })
+    attrs()({ 'aria-hidden' : 'true' })
 );

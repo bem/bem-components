@@ -2,11 +2,11 @@ block('select')(
     def().match(function() { return !this._select; })(function() { // TODO: check BEM-XJST for proper applyNext
         if(!this.mods.mode) throw Error('Can\'t build select without mode modifier');
 
-        var ctx = this.ctx,
+        var _this = this,
+            ctx = this.ctx,
             isValDef = typeof ctx.val !== 'undefined',
             isModeCheck = this.mods.mode === 'check',
             firstOption, checkedOptions = [],
-            random = Math.floor(Math.random() * Date.now()),
             optionIds = [],
             containsVal = function(val) {
                 return isValDef &&
@@ -21,7 +21,7 @@ block('select')(
                         iterateOptions(option.group);
                     } else {
                         firstOption || (firstOption = option);
-                        optionIds.push(option.id = 'option' + random++);
+                        optionIds.push(option.id = _this.identify(option));
                         if(containsVal(option.val)) {
                             option.checked = true;
                             checkedOptions.push(option);

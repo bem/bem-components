@@ -17,7 +17,7 @@ module.exports = function(bh) {
                     iterateOptions(option.group);
                 } else {
                     firstOption || (firstOption = option);
-                    optionIds.push(option.id = 'option' + random++);
+                    optionIds.push(option.id = ctx.generateId());
                     if(containsVal(option.val)) {
                         option.checked = true;
                         checkedOptions.push(option);
@@ -29,7 +29,6 @@ module.exports = function(bh) {
         var isValDef = typeof json.val !== 'undefined',
             isModeCheck = ctx.mod('mode') === 'check',
             firstOption, checkedOptions = [],
-            random = Math.floor(Math.random() * Date.now()),
             optionIds = [];
 
         iterateOptions(json.options);

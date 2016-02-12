@@ -16,7 +16,7 @@ block('menu-item')(
                         'menuitem',
             attrs = {
                 role : role,
-                id : this.generateId(),
+                id : this.ctx.id || this.generateId(),
                 'aria-disabled' : mods.disabled && 'true',
                 'aria-checked' : menuMode && String(!!mods.checked)
             };

@@ -21,7 +21,7 @@ block('select')(
                         iterateOptions(option.group);
                     } else {
                         firstOption || (firstOption = option);
-                        optionIds.push(option.id = _this.generateId());
+                        optionIds.push(option.id = _this.identify(option));
                         if(containsVal(option.val)) {
                             option.checked = true;
                             checkedOptions.push(option);
@@ -36,7 +36,7 @@ block('select')(
             _select : ctx,
             _checkedOptions : checkedOptions,
             _firstOption : firstOption,
-            _optionsIds : optionIds
+            _optionIds : optionIds
         });
     }),
 

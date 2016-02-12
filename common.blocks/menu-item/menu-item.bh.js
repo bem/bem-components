@@ -15,7 +15,7 @@ module.exports = function(bh) {
             .js({ val : json.val })
             .attrs({
                 role : role,
-                id : ctx.generateId(),
+                id : json.id || ctx.generateId(),
                 'aria-disabled' : ctx.mod('disabled') && 'true',
                 'aria-checked' : menuMode && String(!!ctx.mod('checked'))
             });

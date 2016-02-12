@@ -16,7 +16,7 @@ block('select').elem('button')(
             },
             attrs : {
                 role : 'listbox',
-                'aria-owns' : this._optionsIds.join(' '),
+                'aria-owns' : this._optionIds.join(' '),
                 'aria-multiselectable' : mods.mode === 'check'? 'true' : undefined,
                 'aria-labelledby' : this._selectTextId
             },

@@ -86,6 +86,7 @@
     content : 'bem.info'
 }
 ```
+Способ установки фокуса на блок определяет выбор модификатора: `focused` или `focused-hard`. [Читать подробности](../../README.ru.md#Модификатор-focused).
 
 <a name="theme"></a>
 

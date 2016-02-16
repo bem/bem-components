@@ -16,7 +16,7 @@ env:
     # SAUCE_ACCESS_KEY
     - secure: "L0m7LKhlXK3hob+0jwVCAE7qGd9x+9shMN8OthTTV7lHyz83Ypv3FMEKQtDYho9d24i1SidJbtvpFrkKBLGkn94JzrNE/8UcKPNiIWLHc2bvQ15/aS2XH7nrloWLI8hoavs0A3dJUCFyPY8auRop4Z/vOnFZuDBGuziyZFuZeds="
     # GH_TOKEN
-    - secure: "dFagbXO03ErbMonM+6/jZxskwcUAcD5w+/aKoRPqUWbvSKtgy1Fo1h6aY01Cd6o4/6tO0scgkbLhQUkLRwwTKN2qfDFM5mQX8fV9NWmQxaGJqUB4b9hoKVELM5J13EXSTL4ddssDmHdv+s57a7Bnj8AMIHNulwIaqiJ5V1xVuKU="
+    - secure: "bGov22gdjFLUhVeeTv8i2fLgE8fWfd97kxIg8tiuKsO58YJlhKTqmmTKpx7u26kHc+4lZxXFndWpdE7YYyKp7n3OIOjAaGIiVHX5z0SaoNSjvN9BmE4EElnJbYjwSr9UxNmJWde8RQLBRjrBLuXvn3e1E93GjoB5rzSL9bRDT/s="
   matrix:
     - TEST_SCOPE: specs
     - TEST_SCOPE: tmpls
@@ -42,6 +42,11 @@ before_install:
       fi
 
 before_script:
+  - npm install pull-github-notify minimist
+  - |
+        if [ "${TRAVIS_PULL_REQUEST}" != "false" ] && [ "${TEST_SCOPE}" == "specs" ]; then
+          node notify.js --clear
+        fi
   - |
       if [ "${TEST_SCOPE}" == "gemini" -o "${TEST_SCOPE}" == "dists" ]; then
         if [ ! "$SAUCE_USERNAME" -a ! "$SAUCE_ACCESS_KEY" ]; then
@@ -59,8 +64,13 @@ after_success:
         npm install coveralls
         node_modules/.bin/istanbul report lcovonly
         cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
-        sh publish_showcase.sh
+        if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
+          sh publish_showcase.sh
+        fi
       fi
 
 after_failure:
-  sh publish_report.sh
+  - |
+      if [ "${TRAVIS_PULL_REQUEST}" != "false" ] && [ "${TEST_SCOPE}" == "gemini"; then
+        sh publish_report.sh
+      fi

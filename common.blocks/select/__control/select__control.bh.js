@@ -8,7 +8,8 @@ module.exports = function(bh) {
                 type : 'hidden',
                 name : ctx.tParam('select').name,
                 value : json.val,
-                disabled : mods.disabled? 'disabled' : undefined
+                disabled : mods.disabled? 'disabled' : undefined,
+                autocomplete : 'off'
             });
     });
 

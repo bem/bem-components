@@ -5,7 +5,7 @@ var addLinkToDoc = function(blockName, hash, text) {
         {
             block : 'link',
             mods : { theme : 'islands', size : 'l', type : 'docs' },
-            url : '../../common.blocks/' + blockName + '/' + blockName + '.ru.md' + (hash? hash : ''),
+            url : 'https://github.com/bem/bem-components/blob/v2/common.blocks/' + blockName + '/' + blockName + '.ru.md' + (hash? hash : ''),
             content : text || blockName
         },
         { tag : 'br'}

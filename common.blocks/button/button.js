@@ -106,7 +106,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
         this._isPointerPressInProgress = false;
         this.unbindFromDoc('pointerrelease', this._onPointerRelease);
 
-        if(dom.contains(this.elem('control'), $(e.target))) {
+        if(e.originalEvent.type === 'pointerup' && dom.contains(this.elem('control'), $(e.target))) {
             this._focusedByPointer = true;
             this._focus();
             this._focusedByPointer = false;

@@ -38,7 +38,10 @@ describe('button_togglable_check', function() {
             function triggerPointerUpPointerDown(onBlock) {
                 button.domElem
                     .trigger('pointerpress')
-                    .trigger(new $.Event('pointerrelease', { target : onBlock? button.domElem[0] : $('body') }));
+                    .trigger(new $.Event('pointerrelease', {
+                        target : onBlock? button.domElem[0] : $('body'),
+                        originalEvent : new $.Event('pointerup')
+                    }));
             }
 
             triggerPointerUpPointerDown(true);

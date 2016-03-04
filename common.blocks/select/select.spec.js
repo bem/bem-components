@@ -79,12 +79,19 @@ describe('select', function() {
         it('should toggle popup after click on button', function() {
             button.domElem
                 .trigger('pointerpress')
-                .trigger('pointerrelease');
+                .trigger(createPointerrelease());
             select.hasMod('opened').should.be.true;
 
             button.domElem
                 .trigger('pointerpress')
-                .trigger('pointerrelease');
+                .trigger(createPointerrelease());
+            select.hasMod('opened').should.be.false;
+        });
+
+        it('should not be opened on pointercancel on button', function() {
+            button.domElem
+                .trigger('pointerpress')
+                .trigger(createPointerrelease('pointercancel'));
             select.hasMod('opened').should.be.false;
         });
     });
@@ -116,7 +123,7 @@ describe('select', function() {
             // try to emulate some browsers behaviour where blur can't be prevented
             popup.domElem.trigger('pointerpress');
             button.domElem.blur();
-            popup.domElem.trigger('pointerrelease');
+            popup.domElem.trigger(createPointerrelease());
 
             button.hasMod('focused').should.be.true;
             button.hasMod('focused-hard').should.be.true;
@@ -218,6 +225,10 @@ describe('select', function() {
 });
 
 provide();
+
+function createPointerrelease(originalEventName) {
+    return $.Event('pointerrelease', { originalEvent : new $.Event(originalEventName || 'pointerup') });
+}
 
 function doKeyDown(code, elem) {
     elem.trigger($.Event('keydown', { keyCode : code }));

@@ -14,10 +14,14 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends check
     onSetMod : {
         'checked' : {
             'true' : function() {
-                this.elem('control').attr('checked', true);
+                this.elem('control')
+                    .attr('checked', true)
+                    .prop('checked', true);
             },
             '' : function() {
-                this.elem('control').removeAttr('checked');
+                this.elem('control')
+                    .removeAttr('checked')
+                    .prop('checked', false);
             }
         }
     },

@@ -36,4 +36,21 @@ gemini.suite('link', function(root) {
             });
         });
 
+    [
+        'minor',
+        'external',
+        'ghost',
+        'black',
+        'strong'
+    ]
+        .forEach(function(test) {
+            var linkSelector = '.link_view_' + test;
+
+            gemini.suite(test, function(suite) {
+                suite
+                    .setCaptureElements(linkSelector)
+                    .capture('plain');
+            });
+        });
+
 });

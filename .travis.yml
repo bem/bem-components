@@ -71,6 +71,6 @@ after_success:
 
 after_failure:
   - |
-      if [ "${TRAVIS_PULL_REQUEST}" != "false" ] && [ "${TEST_SCOPE}" == "gemini"; then
+      if [ "${TRAVIS_PULL_REQUEST}" != "false" ] && [ "${TEST_SCOPE}" == "gemini" ]; then
         sh publish_report.sh
       fi

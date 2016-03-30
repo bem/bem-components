@@ -29,8 +29,8 @@ Contents
 
 **Additional information**
 
--   [Changelog](/CHANGELOG.en.md)
--   [Migration to future versions](/MIGRATION.en.md)
+-   [Changelog](/CHANGELOG.md)
+-   [Migration to future versions](/MIGRATION.md)
 
 <a name="levels"></a>
 

@@ -6,6 +6,12 @@ module.exports = {
     head : [{ elem : 'css', url : '../../dist/desktop/desktop.css' }],
     scripts : [{ elem : 'js', url : '../../dist/desktop/desktop.browser.js' }],
     content : [
+        {
+            block: 'link',
+            mods: { theme: 'islands', size: 's' },
+            content: 'link'
+        },
+
         [
             {
                 block : 'button',

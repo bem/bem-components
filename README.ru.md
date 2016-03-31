@@ -174,6 +174,10 @@ bem-components
 * `bem-components.js+bemhtml.js` — объединение JavaScript-кода и BEMHTML-шаблонов для использования шаблонов в браузере
 * `bem-components.js+bh.js` — объединение JavaScript-кода и BH-шаблонов для использования шаблонов в браузере
 
+* bem-components.no-autoinit.js - JavaScript без автоматической инициализации. Следует использовать при необходимости писать собственный код на `i-bem.js`
+* bem-components.no-autoinit.js+bemhtml.js
+* bem-components.no-autoinit.js+bh.js
+
 В каждый набор также включены аналогичные dev-версии (с сохранением форматирования и комментариев).
 
 #### Подключение файлов с CDN
@@ -266,7 +270,7 @@ HTML страницы будет выглядеть следующим обра�
 </head>
 <body class="page page_theme_islands">
     <form class="form" action="/"></form>
-<script src="https://yastatic.net/bem-components/latest/desktop/bem-components.js+bemhtml.js"></script>
+<script src="https://yastatic.net/bem-components/latest/desktop/bem-components.no-autoinit.js+bemhtml.js"></script>
 <script>
 modules.require(['i-bem__dom', 'BEMHTML', 'jquery'], function(BEMDOM, BEMHTML, $) {
     var html = BEMHTML.apply({

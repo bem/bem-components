@@ -2,7 +2,8 @@ module.exports = {
     files : {
         provide : require('enb/techs/file-provider'),
         copy : require('enb/techs/file-copy'),
-        merge : require('enb/techs/file-merge')
+        merge : require('enb/techs/file-merge'),
+        write : require('enb/techs/write-file')
     },
     bem : require('enb-bem-techs'),
     stylus : require('enb-stylus/techs/stylus'),

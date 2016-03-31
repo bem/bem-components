@@ -64,8 +64,23 @@ module.exports = function(config) {
                 nodeConfig.addTechs([
                     [techs.bem.levels, { levels : getSourceLevels(platform) }],
                     [techs.bem.levelsToBemdecl, { target : '.tmp.bemdecl.js' }],
+                    [techs.files.write, {
+                        target : '.tmp.i-bem-dom-init-auto.deps.js',
+                        content : 'module.exports = ' + JSON.stringify({ deps : [{
+                            block : 'i-bem',
+                            elem : 'dom',
+                            mod : 'init',
+                            val : 'auto'
+                        }] })
+                    }],
+                    [techs.bem.subtractDeps, { from : '.tmp.deps.js', target : '.tmp.no-autoinit.deps.js', what : '.tmp.i-bem-dom-init-auto.deps.js' }],
                     [techs.bem.depsOld, { bemdeclFile : '.tmp.bemdecl.js', target : '.tmp.deps.js' }],
                     [techs.bem.files, { depsFile : '.tmp.deps.js' }],
+                    [techs.bem.files, {
+                        depsFile : '.tmp.no-autoinit.deps.js',
+                        filesTarget : '.tmp.no-autoinit-files.files',
+                        dirsTarget : '.tmp.no-autoinit-files.dirs'
+                    }],
                     [techs.stylus, {
                         target : '.tmp.dev.css',
                         autoprefixer : {
@@ -99,10 +114,20 @@ module.exports = function(config) {
                         target : '.tmp.pre-source.js',
                         sourceSuffixes : ['vanilla.js', 'browser.js', 'js'],
                     }],
+                    [techs.js, {
+                        filesTarget : '.tmp.no-autoinit-files.files',
+                        target : '.tmp.no-autoinit.pre-source.js',
+                        sourceSuffixes : ['vanilla.js', 'browser.js', 'js'],
+                    }],
                     [techs.borschik, { source : '.tmp.pre-source.js', target : '.tmp.source.js', freeze : false, minify : false }],
+                    [techs.borschik, { source : '.tmp.no-autoinit.pre-source.js', target : '.tmp.no-autoinit.source.js', freeze : false, minify : false }],
                     [techs.ym, {
                         source : '.tmp.source.js',
                         target : LIB_NAME + '.dev.js'
+                    }],
+                    [techs.ym, {
+                        source : '.tmp.no-autoinit.source.js',
+                        target : LIB_NAME + '.dev.no-autoinit.js'
                     }],
                     [techs.engines.bemhtml, {
                         target : LIB_NAME + '.dev.bemhtml.js',
@@ -123,22 +148,42 @@ module.exports = function(config) {
                         sources : [LIB_NAME + '.dev.js', LIB_NAME + '.dev.bemhtml.js']
                     }],
                     [techs.files.merge, {
+                        target : LIB_NAME + '.dev.no-autoinit.js+bemhtml.js',
+                        sources : [LIB_NAME + '.dev.no-autoinit.js', LIB_NAME + '.dev.bemhtml.js']
+                    }],
+                    [techs.files.merge, {
                         target : LIB_NAME + '.dev.js+bh.js',
                         sources : [LIB_NAME + '.dev.js', '.tmp.browser.bh.js']
+                    }],
+                    [techs.files.merge, {
+                        target : LIB_NAME + '.dev.no-autoinit.js+bh.js',
+                        sources : [LIB_NAME + '.dev.no-autoinit.js', '.tmp.browser.bh.js']
                     }],
                     [techs.borschik, { source : '.tmp.dev.css', target : LIB_NAME + '.dev.css', tech : 'cleancss', minify : false }],
                     [techs.borschik, { source : '.tmp.dev.ie.css', target : LIB_NAME + '.dev.ie.css', tech : 'cleancss', minify : false }],
                     [techs.borschik, { source : LIB_NAME + '.dev.css', target : LIB_NAME + '.css', tech : 'cleancss', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', tech : 'cleancss', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.js', target : LIB_NAME + '.js', minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.no-autoinit.js', target : LIB_NAME + '.no-autoinit.js', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.bemhtml.js', target : LIB_NAME + '.bemhtml.js', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.bh.js', target : LIB_NAME + '.bh.js', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.js+bemhtml.js', target : LIB_NAME + '.js+bemhtml.js', minify : true }],
-                    [techs.borschik, { source : LIB_NAME + '.dev.js+bh.js', target : LIB_NAME + '.js+bh.js', minify : true }]
+                    [techs.borschik, { source : LIB_NAME + '.dev.js+bh.js', target : LIB_NAME + '.js+bh.js', minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.no-autoinit.js+bemhtml.js', target : LIB_NAME + '.no-autoinit.js+bemhtml.js', minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.no-autoinit.js+bh.js', target : LIB_NAME + '.no-autoinit.js+bh.js', minify : true }]
                 ]);
 
                 nodeConfig.addTargets([
-                    LIB_NAME + '.css', LIB_NAME + '.ie.css', LIB_NAME + '.js', LIB_NAME + '.bemhtml.js', LIB_NAME + '.bh.js', LIB_NAME + '.js+bemhtml.js', LIB_NAME + '.js+bh.js'
+                    LIB_NAME + '.css',
+                    LIB_NAME + '.ie.css',
+                    LIB_NAME + '.js',
+                    LIB_NAME + '.no-autoinit.js',
+                    LIB_NAME + '.bemhtml.js',
+                    LIB_NAME + '.bh.js',
+                    LIB_NAME + '.js+bemhtml.js',
+                    LIB_NAME + '.js+bh.js',
+                    LIB_NAME + '.no-autoinit.js+bemhtml.js',
+                    LIB_NAME + '.no-autoinit.js+bh.js'
                 ]);
             });
         });

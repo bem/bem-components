@@ -37,6 +37,19 @@ describe('checkbox_type_button', function() {
             button.hasMod('checked').should.be.false;
         });
 
+        it('should set/unset property properly', function() {
+            expect(checkbox.elem('control')[0].checked).to.be.false;
+
+            checkbox.setMod('checked');
+            expect(checkbox.elem('control')[0].checked).to.be.true;
+
+            checkbox.delMod('checked');
+            expect(checkbox.elem('control')[0].checked).to.be.false;
+
+            checkbox.setMod('checked');
+            expect(checkbox.elem('control')[0].checked).to.be.true;
+        });
+
         it('should set/unset aria-attributes properly', function() {
             checkbox.setMod('checked');
             expect(button.domElem.attr('aria-pressed')).to.be.undefined;

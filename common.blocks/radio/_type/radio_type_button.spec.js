@@ -34,6 +34,19 @@ describe('radio_type_button', function() {
             radio.delMod('checked');
             radio.findBlockInside('button').hasMod('checked').should.be.false;
         });
+
+        it('should set/unset property "checked"', function() {
+            radio.elem('control').prop('checked').should.be.false;
+
+            radio.setMod('checked');
+            radio.elem('control').prop('checked').should.be.true;
+
+            radio.delMod('checked');
+            radio.elem('control').prop('checked').should.be.false;
+
+            radio.setMod('checked');
+            radio.elem('control').prop('checked').should.be.true;
+        });
     });
 
     describe('disabled', function() {

@@ -1,5 +1,25 @@
 # Changelog
 
+## 2.5.0
+
+### Notable changes
+* [bem-core](https://en.bem.info/libs/bem-core/) library was updated to 2.9.0 ([#1755](https://github.com/bem/bem-components/issues/1755)).
+
+### Bug fixes
+* Fixed a bug in `select` which led to caching of hidden input on page refresh ([#1752](https://github.com/bem/bem-components/issues/1752)).
+* Fixed a bug in `button` which led to `click` event generation after `pointercancel` [#1764](https://github.com/bem/bem-components/pull/1764).
+* Fixed a bug in `checkbox` and `radio` which led to wrong form serialization with the help of `jQuery` [#1768](https://github.com/bem/bem-components/issues/1768).
+* Fixed a bug in `button` styling with `focused-hard` modifier ([#1721](https://github.com/bem/bem-components/pull/1721)).
+* Fixed right border of `button` inside `control-group` ([#1723](https://github.com/bem/bem-components/pull/1723)).
+* Fixed borders for autofilled inputs in Blink-based browsers ([#1710](https://github.com/bem/bem-components/issues/1710)).
+* Fixed a11y markup in `select` ([#1734](https://github.com/bem/bem-components/issues/1734)).
+* Added insufficient dependencies in `select` ([#1667](https://github.com/bem/bem-components/pull/1667))&
+
+### Other changes
+* Dist: added client JS bundles without autoinit [#1781](https://github.com/bem/bem-components/pull/1781).
+* BEMHTML: implemented support for new versions of `bem-xjst` ([#1745](https://github.com/bem/bem-components/issues/1745)).
+* Documentation updated.
+
 ## 2.4.0
 
 ### Notable changes

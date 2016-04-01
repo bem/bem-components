@@ -1,5 +1,25 @@
 # История изменений
 
+## 2.5.0
+
+### Крупные изменения
+* Библиотека [bem-core](https://ru.bem.info/libs/bem-core/) была обновлена до версии 2.9.0 ([#1755](https://github.com/bem/bem-components/issues/1755)).
+
+### В релиз вошли следующие исправления ошибок
+* Исправлена ошибка, при которой значение скрытого инпута в блоке `select` кэшировалось при перезагружке страницы ([#1752](https://github.com/bem/bem-components/issues/1752)).
+* Исправлена ошибка, при которой в блоке `button` происходило событие `click` после `pointercancel` [#1764](https://github.com/bem/bem-components/pull/1764).
+* Исправлена ошибка, при которой неправильно сериализовались значения `checkbox` и `radio` с помощью `jQuery` [#1768](https://github.com/bem/bem-components/issues/1768).
+* Исправлено отображение `button` в состоянии `focused-hard` ([#1721](https://github.com/bem/bem-components/pull/1721)).
+* Исправлено отображение правой границы `button` внутри `control-group` ([#1723](https://github.com/bem/bem-components/pull/1723)).
+* Исправлено отображение границ для автозаполненных инпутов в браузерах, основанных на Blink ([#1710](https://github.com/bem/bem-components/issues/1710)).
+* Исправлена a11y-разметка в блоке `select` ([#1734](https://github.com/bem/bem-components/issues/1734)).
+* Добавлены недостающие зависимости для `select` ([#1667](https://github.com/bem/bem-components/pull/1667))&
+
+### Также в релиз вошли следующие изменения
+* Dist: добавлена генерация бандлов без автоинициализации клиентского JS [#1781](https://github.com/bem/bem-components/pull/1781).
+* BEMHTML: внесены изменения для поддержки новых версий `bem-xjst` ([#1745](https://github.com/bem/bem-components/issues/1745)).
+* Обновлена документация.
+
 ## 2.4.0
 
 ### Крупные изменения

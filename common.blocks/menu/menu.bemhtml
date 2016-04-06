@@ -49,5 +49,9 @@ block('menu')(
         return attrs;
     }),
     js()(true),
-    mix()([{ elem : 'control' }])
+    mix()({ elem : 'control' }),
+    mod('disabled', true)
+        .js()(function() {
+            return this.extend(applyNext(), { tabIndex : 0 });
+        })
 );

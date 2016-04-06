@@ -80,6 +80,26 @@ describe('menu', function() {
             control.attr('tabindex').should.be.equal('0');
         });
 
+        it('should restore "tabindex" attribute on enable if was disabled initially', function() {
+            var menu = buildMenu({
+                    block : 'menu',
+                    mods : { disabled : true },
+                    content : [
+                        {
+                            block : 'menu-item',
+                            content : 'item 1'
+                        }
+                    ]
+                }),
+                control = menu.elem('control');
+
+            expect(control.attr('tabindex')).to.be.undefined;
+            menu.delMod('disabled');
+            control.attr('tabindex').should.be.equal('0');
+
+            BEMDOM.destruct(menu.domElem);
+        });
+
         it('should pass disabled mod to menu items', function() {
             menu.setMod('disabled');
             menuItems.forEach(function(menuItem) {

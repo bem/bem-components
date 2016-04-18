@@ -1,5 +1,14 @@
 # История изменений
 
+## 2.5.1
+
+### Крупные изменения
+* Библиотека [bem-core](https://ru.bem.info/libs/bem-core/) была обновлена до версии [2.9.1](https://github.com/bem/bem-core/releases/tag/v2.9.1) ([#1789](https://github.com/bem/bem-components/issues/1789)). Это обновление исправляет баг в `page`, из-за которого в `<meta name=viewport>` было неверное значение `user-scalable` на уровне `touch`.
+
+### В релиз вошли следующие исправления ошибок
+* Исправлена ошибка в блоке `menu`, из-за которой не проставлялся `tabindex` после состояния `disabled` ([#1791](https://github.com/bem/bem-components/pull/1791)).
+* Исправлена ошибка в блоке `control-group`, которая приводила к лишней границе на стыке нескольких `button_checked`.
+
 ## 2.5.0
 
 ### Крупные изменения

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.5.1
+
+### Notable changes
+* [bem-core](https://en.bem.info/libs/bem-core/) library was updated to [2.9.1](https://github.com/bem/bem-core/releases/tag/v2.9.1) ([#1789](https://github.com/bem/bem-components/issues/1789)). With this update an issue in `page` was fixed. `<meta name=viewport>` had wrong user-scalable value on the `touch` level.
+
+### Bug fixes
+* Fixed a bug in `menu` which led to absence of `tabindex` after disabled state ([#1791](https://github.com/bem/bem-components/pull/1791)).
+* Fixed a bug in `control-group` which led to extra border on two or more `button_checked`.
+
 ## 2.5.0
 
 ### Notable changes

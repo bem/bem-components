@@ -2,10 +2,10 @@
     block : 'page',
     title : 'z-index-group',
     head : [
-        { elem : 'css', url : '_10-z-index-group.css' }
+        { elem : 'css', url : '10-z-index-group.css' }
     ],
     scripts : [
-        { elem : 'js', url : '_10-z-index-group.js' }
+        { elem : 'js', url : '10-z-index-group.js' }
     ],
     mods : { theme : 'islands' },
     content : [

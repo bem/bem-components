@@ -3,7 +3,7 @@
     title : 'bem-components: spin',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_simple.css' }
+        { elem : 'css', url : 'simple.css' }
     ],
     content : [
         { tag : 'h2', content : 'simple' },

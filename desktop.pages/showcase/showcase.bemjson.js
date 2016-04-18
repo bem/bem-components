@@ -5,7 +5,7 @@ var addLinkToDoc = function(blockName, hash, text) {
         {
             block : 'link',
             mods : { theme : 'islands', size : 'l', type : 'docs' },
-            url : 'https://github.com/bem/bem-components/blob/v2/common.blocks/' +
+            url : 'https://github.com/bem/bem-components/blob/v3/common.blocks/' +
                 blockName + '/' + blockName + '.ru.md' + (hash? hash : ''),
             content : text || blockName
         },
@@ -22,15 +22,15 @@ module.exports = {
             elem : 'conditional-comment',
             condition : '> IE 8',
             msieOnly : false,
-            content : { elem : 'css', url : '_showcase.css' }
+            content : { elem : 'css', url : 'showcase.css' }
         },
         {
             elem : 'conditional-comment',
             condition : '<= IE 8',
-            content : { elem : 'css', url : '_showcase.ie.css' }
+            content : { elem : 'css', url : 'showcase.ie.css' }
         }
     ],
-    scripts : [{ elem : 'js', url : '_showcase.js' }],
+    scripts : [{ elem : 'js', url : 'showcase.js' }],
     content : [
         {
             block : 'layout',

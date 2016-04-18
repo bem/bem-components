@@ -7,15 +7,15 @@
             elem : 'conditional-comment',
             condition : '> IE 8',
             msieOnly : false,
-            content : { elem : 'css', url : '_simple.css' }
+            content : { elem : 'css', url : 'simple.css' }
         },
         {
             elem : 'conditional-comment',
             condition : '<= IE 8',
-            content : { elem : 'css', url : '_simple.ie.css' }
+            content : { elem : 'css', url : 'simple.ie.css' }
         }
     ],
-    scripts : [{ elem : 'js', url : '_simple.js' }],
+    scripts : [{ elem : 'js', url : 'simple.js' }],
     content : ['simple', 'islands'].map(function(theme) {
         var size = theme == 'islands'? 'm' : undefined;
 

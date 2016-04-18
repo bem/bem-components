@@ -3,8 +3,8 @@
     title : 'bem-components: popup within scrolling',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_horiz-scroll.css' },
-        { elem : 'js', url : '_horiz-scroll.js' }
+        { elem : 'css', url : 'horiz-scroll.css' },
+        { elem : 'js', url : 'horiz-scroll.js' }
     ],
     content : [
         {

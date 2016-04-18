@@ -7,15 +7,15 @@
             elem : 'conditional-comment',
             condition : '> IE 8',
             msieOnly : false,
-            content : { elem : 'css', url : '_islands.css' }
+            content : { elem : 'css', url : 'islands.css' }
         },
         {
             elem : 'conditional-comment',
             condition : '<= IE 8',
-            content : { elem : 'css', url : '_islands.ie.css' }
+            content : { elem : 'css', url : 'islands.ie.css' }
         }
     ],
-    scripts : [ { elem : 'js', url : '_islands.js' } ],
+    scripts : [ { elem : 'js', url : 'islands.js' } ],
     content : [
         { tag : 'h2', content : 'islands theme' },
 

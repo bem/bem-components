@@ -1,9 +1,9 @@
 block('select').elem('button')(
-    def()(function() {
+    replace()(function() {
         var select = this._select,
             mods = this.mods;
 
-        return applyCtx({
+        return {
             block : 'button',
             mix : { block : this.block, elem : this.elem },
             mods : {
@@ -26,7 +26,7 @@ block('select').elem('button')(
                 apply('content'),
                 { block : 'icon', mix : { block : 'select', elem : 'tick' } }
             ]
-        });
+        };
     }),
     def()(function() {
         return applyNext({ _selectTextId : this.generateId() });

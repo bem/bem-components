@@ -1,5 +1,5 @@
 block('select').elem('menu')(
-    def()(function() {
+    replace()(function() {
         var mods = this.mods,
             optionToMenuItem = function(option) {
                 var res = {
@@ -23,7 +23,7 @@ block('select').elem('menu')(
                 return res;
             };
 
-        return applyCtx({
+        return {
             block : 'menu',
             mix : { block : this.block, elem : this.elem },
             mods : {
@@ -43,6 +43,6 @@ block('select').elem('menu')(
                     } :
                     optionToMenuItem(optionOrGroup);
             })
-        });
+        };
     })
 );

@@ -379,7 +379,15 @@ module.exports = function(config) {
                 levels : getLibLevels(platform),
                 sourceLevels : getSpecLevels(platform),
                 jsSuffixes : ['vanilla.js', 'browser.js', 'js'],
-                depsTech : techs.bem.depsOld
+                depsTech : techs.bem.depsOld,
+                scripts : ['https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js'],
+                templateEngine : {
+                    bemtreeTemplateTech : require('enb-bemxjst/techs/bemtree'),
+                    templateTech : require('enb-bemxjst/techs/bemhtml'),
+                    templateOptions : { sourceSuffixes : ['bemhtml', 'bemhtml.js'] },
+                    htmlTech : require('enb-bemxjst/techs/bemjson-to-html'),
+                    htmlTechOptionNames : { bemjsonFile : 'bemjsonFile', templateFile : 'bemhtmlFile' }
+                }
             });
 
             sets.tmplSpecs.configure({
@@ -387,28 +395,13 @@ module.exports = function(config) {
                 levels : getLibLevels(platform),
                 sourceLevels : getSpecLevels(platform),
                 engines : {
-                    'bh@4' : {
+                    'bh' : {
                         tech : 'enb-bh/techs/bh-commonjs',
                         options : {
                             bhOptions : bhOptions
                         }
                     },
-                    'bh@3' : {
-                        tech : 'enb-bh/techs/bh-commonjs',
-                        options : {
-                            bhFilename : require.resolve('bh/lib/bh.js'),
-                            bhOptions : bhOptions
-                        }
-                    },
-                    'bemhtml-dev' : {
-                        tech : 'enb-bemxjst-1x/techs/bemhtml',
-                        options : { exportName : 'BEMHTML', devMode : true }
-                    },
-                    'bemhtml-prod' : {
-                        tech : 'enb-bemxjst-1x/techs/bemhtml',
-                        options : { exportName : 'BEMHTML', devMode : false }
-                    },
-                    'bemhtml@bem-xjst-4' : {
+                    'bemhtml' : {
                         tech : 'enb-bemxjst/techs/bemhtml',
                         options : {
                             sourceSuffixes : ['bemhtml.js', 'bemhtml']

@@ -67,12 +67,6 @@ provide(BEMDOM.decl(this.name, /** @lends dropdown.prototype */{
             (this._switcher = this.findBlockOn(this.getMod('switcher')));
     },
 
-    _onPopupVisibilityChange : function(_, data) {
-        this.setMod('opened', data.modVal);
-    }
-}, /** @lends dropdown */{
-    live : true,
-
     /**
      * On BEM click event handler
      * @param {events:Event} e
@@ -81,7 +75,13 @@ provide(BEMDOM.decl(this.name, /** @lends dropdown.prototype */{
     onSwitcherClick : function(e) {
         this._switcher || (this._switcher = e.target);
         this.toggleMod('opened');
+    },
+
+    _onPopupVisibilityChange : function(_, data) {
+        this.setMod('opened', data.modVal);
     }
+}, /** @lends dropdown */{
+    live : true
 }));
 
 });

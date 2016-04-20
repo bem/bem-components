@@ -1,6 +1,6 @@
 block('dropdown')(
-    def()(function() {
-        return applyCtx([{ elem : 'switcher' }, { elem : 'popup' }]);
+    replace()(function() {
+        return [{ elem : 'switcher' }, { elem : 'popup' }];
     }),
     def()(function() {
         var ctx = this.ctx;
@@ -11,20 +11,20 @@ block('dropdown')(
     js()(function() {
         return { id : this.generateId() };
     }),
-    elem('switcher').def()(function() {
+    elem('switcher').replace()(function() {
         var dropdown = this._dropdown,
             switcher = dropdown.switcher;
 
         switcher.block && (switcher.mix = apply('mix'));
 
-        return applyCtx(switcher);
+        return switcher;
     }),
     elem('switcher').mix()(function() {
         var dropdown = this._dropdown;
 
         return [dropdown].concat(dropdown.switcher.mix || [], dropdown.mix || []);
     }),
-    elem('popup').def()(function() {
+    elem('popup').replace()(function() {
         var dropdown = this._dropdown,
             popup = dropdown.popup;
 
@@ -42,6 +42,6 @@ block('dropdown')(
 
         popup.mix = [dropdown].concat(popup.mix || []);
 
-        return applyCtx(popup);
+        return popup;
     })
 );

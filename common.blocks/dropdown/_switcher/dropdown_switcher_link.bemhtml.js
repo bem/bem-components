@@ -1,4 +1,4 @@
-block('dropdown').mod('switcher', 'link').elem('switcher').def()(function() {
+block('dropdown').mod('switcher', 'link').elem('switcher').replace()(function() {
     var dropdown = this._dropdown,
         switcher = dropdown.switcher;
 
@@ -22,5 +22,5 @@ block('dropdown').mod('switcher', 'link').elem('switcher').def()(function() {
         res.mix = apply('mix');
     }
 
-    return applyCtx(res);
+    return res;
 });

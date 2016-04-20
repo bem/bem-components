@@ -74,7 +74,11 @@ module.exports = {
                     'mix',
                     'mod',
                     'mode',
-                    'tag'
+                    'tag',
+                    'wrap',
+                    'replace',
+                    'extend',
+                    'once'
                 ]
             },
             includes : ['*.blocks/**/*.bemhtml.js']

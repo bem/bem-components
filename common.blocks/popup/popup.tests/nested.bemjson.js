@@ -3,8 +3,8 @@
     title : 'bem-components: nested popups',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_nested.css' },
-        { elem : 'js', url : '_nested.js' }
+        { elem : 'css', url : 'nested.css' },
+        { elem : 'js', url : 'nested.js' }
     ],
     content : [
         {

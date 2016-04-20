@@ -3,8 +3,8 @@
     title : 'bem-components: control-group',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_gemini.css' },
-        { elem : 'js', url : '_gemini.js' }
+        { elem : 'css', url : 'gemini.css' },
+        { elem : 'js', url : 'gemini.js' }
     ],
     content : [
         { tag : 'h3', content : 'search form' },

@@ -3,8 +3,8 @@
     title : 'bem-components: control-group',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_simple.css' },
-        { elem : 'js', url : '_simple.js' }
+        { elem : 'css', url : 'simple.css' },
+        { elem : 'js', url : 'simple.js' }
     ],
     content : [
         { tag : 'h2', content : 'islands' },

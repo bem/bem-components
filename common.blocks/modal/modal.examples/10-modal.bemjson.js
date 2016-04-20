@@ -6,16 +6,16 @@
             elem : 'conditional-comment',
             condition : '> IE 8',
             msieOnly : false,
-            content : { elem : 'css', url : '_10-modal.css' }
+            content : { elem : 'css', url : '10-modal.css' }
         },
         {
             elem : 'conditional-comment',
             condition : '<= IE 8',
-            content : { elem : 'css', url : '_10-modal.ie.css' }
+            content : { elem : 'css', url : '10-modal.ie.css' }
         }
     ],
     scripts : [
-        { elem : 'js', url : '_10-modal.js' }
+        { elem : 'js', url : '10-modal.js' }
     ],
     mods : { theme : 'islands' },
     content : {

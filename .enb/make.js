@@ -159,10 +159,10 @@ module.exports = function(config) {
                         target : LIB_NAME + '.dev.no-autoinit.js+bh.js',
                         sources : [LIB_NAME + '.dev.no-autoinit.js', '.tmp.browser.bh.js']
                     }],
-                    [techs.borschik, { source : '.tmp.dev.css', target : LIB_NAME + '.dev.css', tech : 'cleancss', minify : false }],
-                    [techs.borschik, { source : '.tmp.dev.ie.css', target : LIB_NAME + '.dev.ie.css', tech : 'cleancss', minify : false }],
-                    [techs.borschik, { source : LIB_NAME + '.dev.css', target : LIB_NAME + '.css', tech : 'cleancss', minify : true }],
-                    [techs.borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', tech : 'cleancss', minify : true }],
+                    [techs.borschik, { source : '.tmp.dev.css', target : LIB_NAME + '.dev.css', minify : false }],
+                    [techs.borschik, { source : '.tmp.dev.ie.css', target : LIB_NAME + '.dev.ie.css', minify : false }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.css', target : LIB_NAME + '.css', minify : true }],
+                    [techs.borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.js', target : LIB_NAME + '.js', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.no-autoinit.js', target : LIB_NAME + '.no-autoinit.js', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.bemhtml.js', target : LIB_NAME + '.bemhtml.js', minify : true }],
@@ -333,8 +333,8 @@ module.exports = function(config) {
         config.mode('production', function() {
             config.nodes(nodes, function(nodeConfig) {
                 nodeConfig.addTechs([
-                    [techs.borschik, { source : '.tmp.css', target : '?.css', tech : 'cleancss', minify : true }],
-                    [techs.borschik, { source : '.tmp.ie.css', target : '?.ie.css', tech : 'cleancss', minify : true }],
+                    [techs.borschik, { source : '.tmp.css', target : '?.css', minify : true }],
+                    [techs.borschik, { source : '.tmp.ie.css', target : '?.ie.css', minify : true }],
                     [techs.borschik, { source : '.tmp.js', target : '?.js', minify : true }]
                 ]);
             });

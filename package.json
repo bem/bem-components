@@ -14,17 +14,12 @@
   "engines": {
     "node": ">=0.10"
   },
-  "dependencies": {
-    "bem-environ": "~1.4.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "bem": "~0.10.2",
     "bem-naming": "0.5.1",
-    "bem-tools-autoprefixer": "~0.0.3",
     "bem-walk": "1.0.0-alpha1",
     "borschik-tech-cleancss": "^2.1.0",
     "bower": "^1.6.5",
-    "bower-npm-install": "~0.5.4",
     "csscomb": "~3.1.8",
     "enb": "^1.1.0",
     "enb-bem-docs": "^0.11.0",

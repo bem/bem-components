@@ -431,7 +431,7 @@ module.exports = function(config) {
 function getLibLevels(platform) {
     return (PLATFORMS[platform] || SETS[platform]).map(function(level) {
         return level + '.blocks';
-    });
+    }).filter(fs.existsSync);
 }
 
 function getSourceLevels(platform) {
@@ -450,7 +450,9 @@ function getSourceLevels(platform) {
         levels.push({ path : path.join('design', name + '.blocks'), check : true });
     });
 
-    return levels;
+    return levels.filter(function(level) {
+        return fs.existsSync(level.path);
+    });
 }
 
 function getTestLevels(platform) {

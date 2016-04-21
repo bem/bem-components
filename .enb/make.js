@@ -343,18 +343,17 @@ module.exports = function(config) {
 
     function configureLevels(platform, nodes) {
         config.nodes(nodes, function(nodeConfig) {
-            var nodeDir = nodeConfig.getNodePath(),
-                blockSublevelDir = path.join(nodeDir, '..', '.blocks'),
-                sublevelDir = path.join(nodeDir, 'blocks'),
-                extendedLevels = [].concat(getTestLevels(platform));
-
-            if(fs.existsSync(blockSublevelDir)) {
-                extendedLevels.push(blockSublevelDir);
-            }
-
-            if(fs.existsSync(sublevelDir)) {
-                extendedLevels.push(sublevelDir);
-            }
+            var nodeDirname = nodeConfig.getNodePath(),
+                blockName = path.basename(path.dirname(nodeDirname)),
+                exampleName = path.basename(nodeDirname),
+                extendedLevels = [].concat(
+                    getTestLevels(platform),
+                    [
+                        path.join(nodeDirname, blockName + '.blocks'),
+                        path.join(nodeDirname, exampleName + '.blocks'),
+                        path.join(nodeDirname, 'blocks')
+                    ].filter(fs.existsSync)
+                );
 
             nodeConfig.addTech([techs.bem.levels, { levels : extendedLevels }]);
         });

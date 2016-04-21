@@ -3,8 +3,8 @@
     title : 'bem-components: link',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_gemini.css' },
-        { elem : 'js', url : '_gemini.js' }
+        { elem : 'css', url : 'gemini.css' },
+        { elem : 'js', url : 'gemini.js' }
     ],
     content : ['islands'].map(function(theme, i) {
         var content = [

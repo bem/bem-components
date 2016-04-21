@@ -11,7 +11,7 @@ modules.define('dropdown', ['link'], function(provide, _, Dropdown) {
  */
 provide(Dropdown.decl({ modName : 'switcher', modVal : 'link' }, null, /** @lends dropdown */{
     live : function() {
-        this.liveInitOnBlockEvent('click', 'link', this.onSwitcherClick);
+        this.liveInitOnBlockEvent('click', 'link', this.prototype.onSwitcherClick);
         return this.__base.apply(this, arguments);
     }
 }));

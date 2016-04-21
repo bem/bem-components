@@ -3,8 +3,8 @@
     title : 'bem-components: destruct popup',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_destruct.css' },
-        { elem : 'js', url : '_destruct.js' }
+        { elem : 'css', url : 'destruct.css' },
+        { elem : 'js', url : 'destruct.js' }
     ],
     content : [
         {

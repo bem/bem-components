@@ -3,7 +3,7 @@
     title : 'bem-components: image',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_gemini.css' }
+        { elem : 'css', url : 'gemini.css' }
     ],
     content : [
         {

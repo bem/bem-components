@@ -18,7 +18,7 @@
   "devDependencies": {
     "bem-naming": "0.5.1",
     "bem-walk": "1.0.0-alpha1",
-    "borschik-tech-cleancss": "^2.1.0",
+    "borschik": "^1.6.0",
     "bower": "^1.6.5",
     "csscomb": "~3.1.8",
     "enb": "^1.1.0",
@@ -29,7 +29,7 @@
     "enb-bem-tmpl-specs": "^1.2.0",
     "enb-bemxjst": "^6.3.1",
     "enb-bh": "^1.2.0",
-    "enb-borschik": "^2.1.0",
+    "enb-borschik": "^2.4.0",
     "enb-magic-factory": "^0.5.0",
     "enb-magic-platform": "0.6.0",
     "enb-modules": "0.2.0",

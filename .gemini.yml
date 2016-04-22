@@ -26,4 +26,6 @@ browsers:
             enable_spellchecking: false
 
 system:
+  plugins:
+    gemini-saucelabs-info: {}
   debug: false

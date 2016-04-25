@@ -11,7 +11,7 @@
             block : 'test-nested',
             js : true,
             content : [
-                { block : 'link', mods : { pseudo : true }, cls : 'test-nested-link-1', content : 'open' },
+                { block : 'button', mods : { theme : 'islands', size : 'm' }, cls : 'test-nested-button-1', text : 'open' },
                 {
                     block : 'popup',
                     cls : 'test-nested-popup',
@@ -23,10 +23,10 @@
                             js : true,
                             content : [
                                 { tag : 'p', content : {
-                                    block : 'link',
-                                    mods : { pseudo : true },
-                                    cls : 'test-nested-link-2',
-                                    content : 'open second'
+                                    block : 'button',
+                                    mods : { theme : 'islands', size : 'm' },
+                                    cls : 'test-nested-button-2',
+                                    text : 'open second'
                                 } },
                                 {
                                     block : 'popup',
@@ -50,14 +50,12 @@
                     js : true,
                     cls : 'all',
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'all directions' },
+                        { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'all directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'islands' },
                             cls : 'all-popup',
                             content : [
-                                'There\'s content',
-                                { tag : 'br' },
                                 'There\'s content',
                                 { tag : 'br' },
                                 { block : 'link', mods : { pseudo : true }, content : 'update content' }
@@ -72,7 +70,7 @@
                     js : true,
                     cls : 'bottom',
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'bottom-* directions' },
+                        { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'bottom-* directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'islands' },
@@ -92,7 +90,7 @@
                     js : true,
                     cls : 'top',
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'top-* directions' },
+                        { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'top-* directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'islands' },
@@ -112,7 +110,7 @@
                     js : true,
                     cls : 'right',
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'right-* directions' },
+                        { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'right-* directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'islands' },
@@ -132,7 +130,7 @@
                     js : true,
                     cls : 'left',
                     content : [
-                        { block : 'link', mods : { pseudo : true }, content : 'left-* directions' },
+                        { block : 'button', mods : { theme : 'islands', size : 'm' }, text : 'left-* directions' },
                         {
                             block : 'popup',
                             mods : { target : 'anchor', theme : 'islands' },

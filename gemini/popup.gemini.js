@@ -12,7 +12,7 @@ gemini.suite('popup', function(root) {
         'left'
     ]
         .forEach(function(test) {
-            var popupSwitcher = '.' + test + ' .link',
+            var popupSwitcher = '.' + test + ' .button',
                 popupSelector = ' .' + test + '-popup';
 
             gemini.suite(test, function(suite) {
@@ -28,17 +28,17 @@ gemini.suite('popup', function(root) {
 
         gemini.suite('test-nested', function(suite) {
             suite
-                .setCaptureElements('.test-nested-popup', '.test-nested-link-1')
+                .setCaptureElements('.test-nested-popup', '.test-nested-button-1')
                 .capture('opened', function(actions) {
                     actions
-                        .click('.test-nested-link-1')
-                        .click('.test-nested-link-2')
+                        .click('.test-nested-button-1')
+                        .click('.test-nested-button-2')
                         .wait(300);
                 });
         });
 
         gemini.suite('body-margin', function(suite) {
-            var popupSwither = '.all .link';
+            var popupSwither = '.all .button';
             suite
                 .setCaptureElements(popupSwither, '.all-popup')
                 .capture('static-opened', function(actions) {

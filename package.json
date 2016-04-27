@@ -49,7 +49,7 @@
     "jscs-bem": "^0.2.0",
     "jshint": "2.6.0",
     "jshint-groups": "0.7.0",
-    "stylus": "0.52.4"
+    "stylus": "0.54.5"
   },
   "optionalDependencies": {},
   "private": true,

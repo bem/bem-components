@@ -3,8 +3,8 @@
     title : 'bem-components: button',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_gemini.css' },
-        { elem : 'js', url : '_gemini.js' }
+        { elem : 'css', url : 'gemini.css' },
+        { elem : 'js', url : 'gemini.js' }
     ],
     content : [
         { tag : 'h2', content : 'islands' },
@@ -65,6 +65,13 @@
                 mods : { theme : 'islands', size : 'm', view : 'action', disabled : true },
                 text : 'action',
                 cls : 'gemini-test-button-action-disabled'
+            },
+            '&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;',
+            {
+                block : 'button',
+                mods : { theme : 'islands', size : 'm', togglable : 'radio', disabled : true, checked : true },
+                text : 'radio disabled checked',
+                cls : 'gemini-test-button-radio-checked-disabled'
             }
         ] },
 

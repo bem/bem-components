@@ -3,8 +3,8 @@
     title : 'bem-components: popup within scrolling',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_vert-scroll.css' },
-        { elem : 'js', url : '_vert-scroll.js' }
+        { elem : 'css', url : 'vert-scroll.css' },
+        { elem : 'js', url : 'vert-scroll.js' }
     ],
     content : [
         {

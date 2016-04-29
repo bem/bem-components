@@ -142,21 +142,28 @@ ctx = '.button_theme_islands'
 
     &.button_view_action
     {
-        background: rgba(191, 153, 0, 0.8);
+        background: #ffdb4d;
 
         &:before
         {
-            background: #ffdb4d;
-        }
-
-        &.button_pressed:before
-        {
-            background: #fc0;
+            display: none;
         }
 
         &.button_hovered
         {
-            background: rgba(159, 127, 0, 0.8);
+            background: #ffd633;
+        }
+
+        &.button_pressed
+        {
+            background: #ffcc00;
+        }
+
+        &.button_focused-hard
+        {
+            animation: button-action-focus 0.5s infinite linear alternate;
+
+            box-shadow: none;
         }
     }
 
@@ -217,16 +224,14 @@ ctx = '.button_theme_islands'
             display: none;
         }
 
-        &.button_checked:before
+        &.button_checked
         {
-            display: block;
-
-            background: #ffeba0;
+            background: rgba(0, 0, 0, 0.15);
         }
 
         .button__text
         {
-            color: #aaa;
+            color: #767676;
         }
 
         .icon
@@ -307,6 +312,19 @@ ctx = '.button_theme_islands'
     .button__text:not(:last-child)
     {
         margin-right: 0;
+    }
+}
+
+@keyframes button-action-focus
+{
+    from
+    {
+        background-color: #ffdb4d;
+    }
+
+    to
+    {
+        background-color: #fc0;
     }
 }
 

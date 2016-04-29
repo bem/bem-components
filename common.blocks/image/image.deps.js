@@ -1,3 +1,0 @@
-({
-    mustDeps : 'i-bem'
-})

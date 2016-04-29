@@ -11,10 +11,10 @@
     "libs"
   ],
   "dependencies": {
-    "bem-core": "2.9.1"
+    "bem-core": "#6c57644"
   },
   "devDependencies": {
-    "bem-pr": "~0.10.0"
+    "bem-pr": "~0.13.0"
   },
   "license": "MPL-2.0",
   "private": true

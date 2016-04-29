@@ -3,8 +3,8 @@
     title : 'bem-components: link',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_simple.css' },
-        { elem : 'js', url : '_simple.js' }
+        { elem : 'css', url : 'simple.css' },
+        { elem : 'js', url : 'simple.js' }
     ],
     content : ['default', 'simple', 'islands'].map(function(theme, i) {
         var content = [
@@ -12,6 +12,9 @@
                 { block : 'link', url : 'http://example.com/', content : 'plain url' },
                 { block : 'link', mods : { view : 'minor' }, url : 'http://example.com/help/', content : 'minor' },
                 { block : 'link', mods : { view : 'external' }, url : 'http://www.w3.org/', content : 'external' },
+                { block : 'link', mods : { view : 'ghost' }, url : 'http://example.com/', content : 'ghost' },
+                { block : 'link', mods : { view : 'black' }, url : 'http://example.com/', content : 'black' },
+                { block : 'link', mods : { view : 'strong' }, url : 'http://example.com/', content : 'strong' },
                 {
                     block : 'link',
                     mods : { disabled : true },

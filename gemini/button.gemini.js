@@ -8,6 +8,30 @@ gemini.suite('button', function(root) {
         'islands',
         'plain',
         'pseudo',
+        'islands-link',
+        'islands-icon'
+    ]
+        .forEach(function(test) {
+            var buttonSelector = '.gemini-test-button-' + test,
+                buttonEnabledSelector = buttonSelector + '-enabled';
+
+            // tests for enabled focused button, excluding button_view_action
+            gemini.suite(test + '-focused', function(suite) {
+                suite
+                    .setCaptureElements(buttonEnabledSelector)
+                    .before(function(actions, find) {
+                        this.button = find(buttonEnabledSelector);
+                    })
+                    .capture('focused-hard', function(actions) {
+                        actions.focus(this.button);
+                    });
+            });
+        });
+
+    [
+        'islands',
+        'plain',
+        'pseudo',
         'action',
         'islands-link',
         'islands-icon'
@@ -28,9 +52,6 @@ gemini.suite('button', function(root) {
                     .capture('hovered', function(actions) {
                         actions.mouseMove(this.button);
                     })
-                    .capture('focused-hard', function(actions) {
-                        actions.focus(this.button);
-                    })
                     .capture('pressed', function(actions) {
                         actions.mouseDown(this.button);
                     })
@@ -45,6 +66,12 @@ gemini.suite('button', function(root) {
                     .setCaptureElements(buttonDisabledSelector)
                     .capture('plain');
             });
+        });
+
+        gemini.suite('radio-checked-disabled', function(suite) {
+            suite
+                .setCaptureElements('.gemini-test-button-radio-checked-disabled')
+                .capture('plain');
         });
 
     [

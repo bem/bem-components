@@ -3,8 +3,8 @@
     title : 'bem-components: popup',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_controls.css' },
-        { elem : 'js', url : '_controls.js' }
+        { elem : 'css', url : 'controls.css' },
+        { elem : 'js', url : 'controls.js' }
     ],
     content : [
         {

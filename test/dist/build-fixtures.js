@@ -28,7 +28,7 @@ if(!fs.existsSync(fixturesDir)) {
 });
 
 platforms.forEach(function (platform) {
-    var levels = sets[platform],
+    var levels = sets[platform].filter(fs.existsSync),
         config = {
             levels : levels.map(function (levelname) {
                 return { path : levelname };

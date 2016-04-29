@@ -30,6 +30,7 @@ module.exports = {
                 '**/*.i18n/*.js',
                 '**/*.bem/*.js',
                 '**/_*.js',
+                '**/*.bemhtml.js',
                 '**/*.bh.js',
                 '**/*.spec.js',
                 '**/*.deps.js',
@@ -73,10 +74,14 @@ module.exports = {
                     'mix',
                     'mod',
                     'mode',
-                    'tag'
+                    'tag',
+                    'wrap',
+                    'replace',
+                    'extend',
+                    'once'
                 ]
             },
-            includes : ['*.blocks/**/*.bemhtml']
+            includes : ['*.blocks/**/*.bemhtml.js']
         },
 
         bhjs : {

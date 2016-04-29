@@ -3,8 +3,8 @@
     title : 'bem-components: popup',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_z-index-group.css' },
-        { elem : 'js', url : '_z-index-group.js' }
+        { elem : 'css', url : 'z-index-group.css' },
+        { elem : 'js', url : 'z-index-group.js' }
     ],
     content : { block : 'test-wrapper', js : true, content : [
         {

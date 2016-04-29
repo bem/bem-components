@@ -93,7 +93,13 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
             .__base.apply(this, arguments);
     },
 
+    _onMouseDown : function(e) {
+        e.preventDefault(); // NOTE: prevents button from being blurred at least in FF and Safari
+        this.unbindFrom('mousedown', this._onMouseDown);
+    },
+
     _onPointerPress : function() {
+        this.bindTo('mousedown', this._onMouseDown);
         if(!this.hasMod('disabled')) {
             this._isPointerPressInProgress = true;
             this

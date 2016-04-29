@@ -3,8 +3,8 @@
     title : 'bem-components: attach',
     mods : { theme : 'islands' },
     head : [
-        { elem : 'css', url : '_gemini.css' },
-        { elem : 'js', url : '_gemini.js' }
+        { elem : 'css', url : 'gemini.css' },
+        { elem : 'js', url : 'gemini.js' }
     ],
     content : ['s', 'm', 'l', 'xl'].map(function(size) {
         var cls = 'islands-size' + size.toUpperCase();

@@ -7,7 +7,13 @@ gemini.suite('link', function(root) {
     [
         'islands-no-url',
         'islands-url',
-        'islands-pseudo'
+        'islands-pseudo',
+
+        'link_view_minor',
+        'link_view_external',
+        'link_view_ghost',
+        'link_view_black',
+        'link_view_strong'
     ]
         .forEach(function(test) {
             var linkSelector = '.' + test;
@@ -35,5 +41,4 @@ gemini.suite('link', function(root) {
                     });
             });
         });
-
 });

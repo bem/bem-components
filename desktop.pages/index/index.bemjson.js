@@ -7,15 +7,15 @@
             elem : 'conditional-comment',
             condition : '> IE 8',
             msieOnly : false,
-            content : { elem : 'css', url : '_index.css' }
+            content : { elem : 'css', url : 'index.css' }
         },
         {
             elem : 'conditional-comment',
             condition : '<= IE 8',
-            content : { elem : 'css', url : '_index.ie.css' }
+            content : { elem : 'css', url : 'index.ie.css' }
         }
     ],
-    scripts : [ { elem : 'js', url : '_index.js' } ],
+    scripts : [ { elem : 'js', url : 'index.js' } ],
     content : [
         { tag : 'h2', content : 'Library variety' },
         {

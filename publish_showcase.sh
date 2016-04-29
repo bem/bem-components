@@ -12,7 +12,7 @@ YENV=production node_modules/.bin/magic make desktop.pages/${SHOWCASE_NAME}
 
 git clone -q --branch gh-pages "https://$GH_TOKEN@github.com/bem/reports.git" "$REPORTS_ROOT"
 mkdir -p ${PUBLISH_SHOWCASE_DIR}
-for f in ${SHOWCASE_NAME}.html _${SHOWCASE_NAME}.css _${SHOWCASE_NAME}.js; do
+for f in ${SHOWCASE_NAME}.html ${SHOWCASE_NAME}.css ${SHOWCASE_NAME}.js; do
     cp ${SOURCE_SHOWCASE_DIR}/${f} ${PUBLISH_SHOWCASE_DIR}
 done
 

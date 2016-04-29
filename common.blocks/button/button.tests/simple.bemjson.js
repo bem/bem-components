@@ -7,15 +7,15 @@
             elem : 'conditional-comment',
             condition : '> IE 8',
             msieOnly : false,
-            content : { elem : 'css', url : '_simple.css' }
+            content : { elem : 'css', url : 'simple.css' }
         },
         {
             elem : 'conditional-comment',
             condition : '<= IE 8',
-            content : { elem : 'css', url : '_simple.ie.css' }
+            content : { elem : 'css', url : 'simple.ie.css' }
         }
     ],
-    scripts : [{ elem : 'js', url : '_simple.js' }],
+    scripts : [{ elem : 'js', url : 'simple.js' }],
     content : [
 
         { tag : 'h2', content : 'default' },
@@ -393,6 +393,18 @@
                 block : 'button',
                 mods : { theme : 'islands', size : 'm', togglable : 'radio' },
                 text : 'radio'
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'islands', size : 'm', togglable : 'radio', disabled : true },
+                text : ' radio disabled'
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'islands', size : 'm', togglable : 'radio', disabled : true, checked : true },
+                text : 'radio disabled checked'
             },
             ' ',
             {

@@ -1,6 +1,6 @@
 block('dropdown')(
     replace()(function() {
-        return [{ elem : 'switcher' }, { elem : 'popup' }];
+        return [{ elem : 'popup' }, { elem : 'switcher' }];
     }),
     def()(function() {
         var ctx = this.ctx;

@@ -345,7 +345,8 @@ ctx = '.button_theme_islands'
     }
 
     > {ctx}:first-child,
-    > :first-child {ctx}
+    > :first-child {ctx},
+    > :first-child.popup + {ctx}
     {
         border-radius: 3px 0 0 3px;
 

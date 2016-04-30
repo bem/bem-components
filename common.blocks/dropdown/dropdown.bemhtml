@@ -1,6 +1,6 @@
 block('dropdown')(
     def()(function() {
-        return applyCtx([{ elem : 'switcher' }, { elem : 'popup' }]);
+        return applyCtx([{ elem : 'popup' }, { elem : 'switcher' }]);
     }),
     def()(function() {
         var ctx = this.ctx;

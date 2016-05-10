@@ -49,12 +49,12 @@ module.exports = function(config) {
         fs.existsSync(pathToBorschikConf) || fs.writeFileSync(pathToBorschikConf, [
             '{',
             '    "freeze_paths" : {',
-            '        "../libs/**": ":base64:",',
             '        "../libs/**/*.svg": ":encodeURIComponent:",',
-            '        "../*.blocks/**": ":base64:",',
+            '        "../libs/**": ":base64:",',
             '        "../*.blocks/**/*.svg": ":encodeURIComponent:",',
-            '        "../design/*.blocks/**": ":base64:",',
-            '        "../design/*.blocks/**/*.svg": ":encodeURIComponent:"',
+            '        "../*.blocks/**": ":base64:",',
+            '        "../design/*.blocks/**/*.svg": ":encodeURIComponent:",',
+            '        "../design/*.blocks/**": ":base64:"',
             '    }',
             '}'
         ].join('\n'));

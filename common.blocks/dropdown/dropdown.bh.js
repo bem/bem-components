@@ -13,7 +13,7 @@ module.exports = function(bh) {
                     dropdown.switcher.mix || [],
                     dropdown.mix || []));
 
-            return [{ elem : 'switcher' }, { elem : 'popup' }];
+            return [{ elem : 'popup' }, { elem : 'switcher' }];
         },
 
         'dropdown__popup' : function(ctx) {

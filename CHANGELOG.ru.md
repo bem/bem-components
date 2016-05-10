@@ -1,5 +1,17 @@
 # История изменений
 
+## 3.0.0
+
+### Изменения, ломающие обратную совместимость
+* Библиотека [bem-core](https://en.bem.info/libs/bem-core/) была обновлена до версии [3.0.1](https://github.com/bem/bem-core/releases/tag/v3.0.1). С этим обновлением больше не используется библиотека [FastClick](https://github.com/ftlabs/fastclick) и вместо нее для iOS-устройств внедрена собственная реализация pointer-событий. Кроме того, для контролов было добавлено свойство `touch-action: manipulation` ([#1787](https://github.com/bem/bem-components/issues/1787)).
+* Прекращена поддержка старых версий `bem-xjst` и `bh` ([#1803](https://github.com/bem/bem-components/issues/1803)). Следует использовать [bem-xjst](https://github.com/bem/bem-xjst) 6.3.0+. С этого момента нет необходимости добавлять зависимость от блока `i-bem` ради базовых шаблонов.
+* Расширения файлов BEMHTML-шаблонов переименованы с `*.bemhtml` на `*.bemhtml.js` ([#1464](https://github.com/bem/bem-components/issues/1464). Необходимо убедиться, что в конфиге сборки поддерживается новое расширение.
+* Метод `onSwitcherClick` блока `dropdown` был перенесен в прототип ([#1502](https://github.com/bem/bem-components/issues/1502)).
+* Удалены конфиги `bem-tools` ([#1816](https://github.com/bem/bem-components/issues/1816)).
+
+### В релиз вошли следующие исправления ошибок
+* Исправлено отображение `dropdown` внутри `control-group` ([#1741](https://github.com/bem/bem-components/issues/1741)).
+
 ## 2.5.1
 
 ### Крупные изменения

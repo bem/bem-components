@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.0.0
+
+### Breaking changes
+* [bem-core](https://en.bem.info/libs/bem-core/) library was updated to [3.0.1](https://github.com/bem/bem-core/releases/tag/v3.0.1). With this update [FastClick](https://github.com/ftlabs/fastclick) was removed and new implementation for pointer events was introduced for iOS devices. Also `touch-action: manipulation` property was added to controls ([#1787](https://github.com/bem/bem-components/issues/1787)).
+* Dropped support for old `bem-xjst` & `bh` versions ([#1803](https://github.com/bem/bem-components/issues/1803)). [bem-xjst](https://github.com/bem/bem-xjst) 6.3.0+ should be used. Since now there's no need to add dependencies on `i-bem` block for base templates.
+* File extentions of `BEMHTML` templates were renamed from `.bemhtml` to `.bemhtml.js` ([#1464](https://github.com/bem/bem-components/issues/1464). Please check that new extention is supported in you build config.
+* `onSwitcherClick` method of `dropdown` block was moved to prototype ([#1502](https://github.com/bem/bem-components/issues/1502)).
+* `bem-tools` configs were removed ([#1816](https://github.com/bem/bem-components/issues/1816)).
+
+### Bug fixes
+* Wrong styling for `dropdown` in `control-group` was fixed ([#1741](https://github.com/bem/bem-components/issues/1741)).
+
 ## 2.5.1
 
 ### Notable changes

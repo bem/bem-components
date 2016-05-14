@@ -46,7 +46,6 @@
     "stylus": "^0.54.2"
   },
   "optionalDependencies": {},
-  "private": true,
   "scripts": {
     "start": "magic server",
     "deps": "bower i",

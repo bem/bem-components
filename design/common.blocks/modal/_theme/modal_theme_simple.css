@@ -1,0 +1,11 @@
+.modal_theme_simple {
+  display: none;
+  background: rgba(50,50,50,0.2);
+}
+.modal_theme_simple.modal_visible {
+  display: block;
+}
+.modal_theme_simple .modal__content {
+  background: #fff;
+  border: 1px solid #bfbfbf;
+}

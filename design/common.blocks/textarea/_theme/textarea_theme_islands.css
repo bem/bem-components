@@ -1,0 +1,56 @@
+.textarea_theme_islands {
+  font-family: Arial, Helvetica, sans-serif;
+  display: inline-block;
+  background: #fff;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-height: 2em;
+  border: 1px solid rgba(0,0,0,0.2);
+  outline: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.textarea_theme_islands::-webkit-input-placeholder {
+  color: #999;
+  text-indent: 0;
+}
+.textarea_theme_islands::-moz-placeholder {
+  opacity: 1;
+  color: #999;
+}
+.textarea_theme_islands.textarea_focused {
+  border-color: #fc0;
+  box-shadow: 0 0 0 1px #fc0;
+}
+.textarea_theme_islands.textarea_width_available {
+  width: 100%;
+  resize: vertical;
+}
+.textarea_theme_islands.textarea_disabled {
+  resize: none;
+  cursor: default;
+  color: rgba(0,0,0,0.4);
+  border-color: transparent;
+  background: rgba(0,0,0,0.08);
+}
+.textarea_theme_islands.textarea_size_s {
+  font-size: 13px;
+  line-height: 16px;
+  padding-left: 6px;
+}
+.textarea_theme_islands.textarea_size_m {
+  font-size: 13px;
+  line-height: 18px;
+  padding: 3px 5px;
+}
+.textarea_theme_islands.textarea_size_l {
+  font-size: 15px;
+  line-height: 20px;
+  padding: 5px 7px;
+}
+.textarea_theme_islands.textarea_size_xl {
+  font-size: 18px;
+  line-height: 22px;
+  padding-left: 11px;
+}

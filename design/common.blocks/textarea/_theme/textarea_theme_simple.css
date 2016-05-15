@@ -1,0 +1,24 @@
+.textarea_theme_simple {
+  font-family: inherit;
+  font-size: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  min-height: 2em;
+  margin: 0;
+  cursor: auto;
+  border: 1px solid rgba(0,0,0,0.3);
+  background: #fff;
+  -webkit-appearance: none;
+}
+.textarea_theme_simple.textarea_disabled {
+  opacity: 0.6;
+}
+.textarea_theme_simple.textarea_focused {
+  box-shadow: 0 0 5px 1px #fc0;
+}
+.textarea_theme_simple.textarea_focused:focus {
+  outline: none;
+}
+.textarea_theme_simple.textarea_width_available {
+  width: 100%;
+}

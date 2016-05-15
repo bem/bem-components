@@ -1,0 +1,40 @@
+.input_theme_islands {
+  border: 1px solid #ccc;
+}
+.input_theme_islands .input__clear {
+  visibility: hidden;
+}
+.input_theme_islands .input__clear_visible {
+  visibility: visible;
+}
+.input_theme_islands.input_focused {
+  border: 1px solid #fc0;
+  outline: 1px solid #fc0;
+}
+.input_theme_islands.input_disabled {
+  background: #ebebeb;
+}
+.input_theme_islands.input_disabled .input__box,
+.input_theme_islands.input_disabled .input__control {
+  color: #999;
+}
+.input_theme_islands.input_size_s .input__control {
+  line-height: 24px;
+}
+.input_theme_islands.input_size_m .input__control {
+  line-height: 28px;
+}
+.input_theme_islands.input_size_l .input__control {
+  line-height: 32px;
+}
+.input_theme_islands.input_size_xl .input__control {
+  line-height: 38px;
+}
+.input_theme_islands.input_size_s .input__clear,
+.input_theme_islands.input_size_m .input__clear {
+  background-image: url("clear_size_s.png");
+}
+.input_theme_islands.input_size_l .input__clear,
+.input_theme_islands.input_size_xl .input__clear {
+  background-image: url("clear_size_l.png");
+}

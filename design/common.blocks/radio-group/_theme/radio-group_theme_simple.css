@@ -1,0 +1,16 @@
+.radio-group_theme_simple .radio_type_button:first-of-type .button_togglable_radio,
+.radio-group_theme_simple .radio_type_button~ .radio_type_button .button_togglable_radio {
+  border-right-width: 0;
+}
+.radio-group_theme_simple .radio_type_button~ .radio_type_button .button_togglable_radio {
+  border-radius: 0;
+}
+.radio-group_theme_simple .radio_type_button:first-of-type .button_togglable_radio {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.radio-group_theme_simple .radio_type_button:last-of-type .button_togglable_radio {
+  border-right-width: 1px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}

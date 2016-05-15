@@ -1,0 +1,69 @@
+.attach_theme_islands {
+  font-family: Arial, Helvetica, sans-serif;
+  display: inline-block;
+  white-space: nowrap;
+}
+.attach_theme_islands .attach__control {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+}
+.attach_theme_islands .attach__file,
+.attach_theme_islands .attach__no-file {
+  display: inline;
+  margin-left: 0.4em;
+}
+.attach_theme_islands .attach__clear {
+  display: inline-block;
+  margin-left: 0.4em;
+  cursor: pointer;
+  transition: opacity 0.1s ease-out;
+  vertical-align: middle;
+  opacity: 0.3;
+  background: center no-repeat;
+}
+.attach_theme_islands .attach__clear:hover {
+  opacity: 1;
+}
+.attach_theme_islands.attach_disabled .attach__no-file,
+.attach_theme_islands.attach_disabled .attach__file {
+  opacity: 0.6;
+}
+.attach_theme_islands.attach_size_s {
+  font-size: 13px;
+}
+.attach_theme_islands.attach_size_m {
+  font-size: 13px;
+}
+.attach_theme_islands.attach_size_l {
+  font-size: 15px;
+}
+.attach_theme_islands.attach_size_xl {
+  font-size: 18px;
+}
+.attach_theme_islands.attach_size_s .attach__clear,
+.attach_theme_islands.attach_size_m .attach__clear {
+  width: 10px;
+  height: 14px;
+  background-image: url("../../theme/_islands/clear_size_s.svg");
+}
+.attach_theme_islands.attach_size_l .attach__clear,
+.attach_theme_islands.attach_size_xl .attach__clear {
+  width: 14px;
+  height: 14px;
+  background-image: url("../../theme/_islands/clear_size_l.svg");
+}
+.attach_theme_islands .button {
+  position: relative;
+}
+.attach_theme_islands .button__text {
+  display: inline;
+  z-index: 1;
+}

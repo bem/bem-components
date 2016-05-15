@@ -1,0 +1,8 @@
+.popup_theme_simple {
+  display: none;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.3);
+}
+.popup_theme_simple.popup_visible {
+  display: block;
+}

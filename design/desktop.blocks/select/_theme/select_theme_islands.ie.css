@@ -1,0 +1,7 @@
+.select_theme_islands .select__tick {
+  background-image: url("arrow.png");
+  height: 100%;
+}
+.select_theme_islands.select_size_s .select__tick {
+  background-image: url("arrow-s.png");
+}

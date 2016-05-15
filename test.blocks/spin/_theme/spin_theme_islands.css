@@ -1,0 +1,5 @@
+.spin_theme_islands.spin_paused {
+  animation: none;
+  border-top-color: #fc0;
+  border-left-color: #fc0;
+}

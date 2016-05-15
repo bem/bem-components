@@ -1,0 +1,35 @@
+.checkbox_theme_simple {
+  position: relative;
+}
+.checkbox_theme_simple .checkbox__control {
+  position: absolute;
+  z-index: -1;
+  visibility: hidden;
+}
+.checkbox_theme_simple .checkbox__box {
+  display: inline-block;
+}
+.checkbox_theme_simple .checkbox__box:before {
+  line-height: 0.6em;
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  margin: 0.1em 0.2em 0.3em;
+  content: ' ';
+  vertical-align: middle;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: inset 0 0 1px 1px rgba(0,0,0,0.5);
+}
+.checkbox_theme_simple.checkbox_disabled {
+  opacity: 0.6;
+}
+.checkbox_theme_simple.checkbox_checked .checkbox__box:before {
+  content: '\2713';
+  background: #fff7db;
+}
+_::-webkit-full-page-media,
+_:future,
+:root .checkbox_theme_islands .checkbox__box {
+  pointer-events: none;
+}

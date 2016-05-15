@@ -1,0 +1,38 @@
+.attach_theme_simple {
+  display: inline-block;
+  white-space: nowrap;
+}
+.attach_theme_simple .attach__control {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  opacity: 0;
+}
+.attach_theme_simple .attach__file,
+.attach_theme_simple .attach__no-file {
+  display: inline;
+  margin-left: 0.5em;
+}
+.attach_theme_simple .attach__clear {
+  margin-left: 5px;
+  cursor: pointer;
+}
+.attach_theme_simple .attach__clear:before {
+  content: '×';
+}
+.attach_theme_simple.attach_disabled .attach__no-file,
+.attach_theme_simple.attach_disabled .attach__file {
+  opacity: 0.6;
+}
+.attach_theme_simple .button {
+  position: relative;
+}
+.attach_theme_simple .button__text {
+  display: inline;
+  z-index: 1;
+}

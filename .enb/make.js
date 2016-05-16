@@ -89,7 +89,7 @@ module.exports = function(config) {
                     }],
                     [techs.stylus, {
                         target : '.tmp.dev.ie.css',
-                        sourceSuffixes : ['styl', 'ie.styl']
+                        sourceSuffixes : ['styl', 'css', 'ie.styl', 'ie.css']
                     }],
                     [techs.bem.depsByTechToBemdecl, {
                         target : '.tmp.js-js.bemdecl.js',
@@ -227,7 +227,7 @@ module.exports = function(config) {
                         browsers : getBrowsers(platform)
                     }
                 }],
-                [techs.stylus, { target : '.tmp.ie.css', sourceSuffixes : ['styl', 'ie.styl'] }],
+                [techs.stylus, { target : '.tmp.ie.css', sourceSuffixes : ['styl', 'css',  'ie.styl', 'ie.css'] }],
                 [techs.js, {
                     target : '.tmp.browser.js',
                     sourceSuffixes : ['vanilla.js', 'browser.js', 'js'],

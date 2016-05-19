@@ -10,13 +10,13 @@ retry: 2
 browsers:
   firefox-latest:
     desiredCapabilities:
-      version: "46.0"
+      version: "45.0"
       browserName: firefox
       platform: LINUX
 
   chrome-latest:
     desiredCapabilities:
-      version: "50.0"
+      version: "48.0"
       browserName: chrome
       platform: LINUX
       chromeOptions:

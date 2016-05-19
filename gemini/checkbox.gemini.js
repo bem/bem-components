@@ -1,5 +1,3 @@
-var gemini = require('gemini');
-
 gemini.suite('checkbox', function(root) {
 
     root.setUrl('desktop.tests/checkbox/gemini/gemini.html');

@@ -1,5 +1,3 @@
-var gemini = require('gemini');
-
 gemini.suite('dist', function(root) {
 
     root

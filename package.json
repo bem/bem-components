@@ -51,7 +51,7 @@
     "deps": "bower i",
     "dist": "npm run deps && magic make dist/desktop dist/touch-pad dist/touch-phone",
     "dist-gemini-test": "http-server -s -p 8000 & p=$!; gemini test test/dist/dist.gemini.js --reporter html --reporter flat; e=$?; kill -9 ${p}; exit ${e}",
-    "dist-gemini-gather": "http-server -c \"no-cache, no-store\" -s -p 8000 & p=$!; gemini gather test/dist/dist.gemini.js; kill -9 ${p}",
+    "dist-gemini-update": "http-server -c \"no-cache, no-store\" -s -p 8000 & p=$!; gemini update test/dist/dist.gemini.js; kill -9 ${p}",
     "compiled": "find . -iname '*.styl' | xargs stylus",
     "build": "npm run build-${TEST_SCOPE:-all}",
     "build-all": "npm run deps && magic make desktop.examples desktop.tests desktop.docs touch.examples touch.tests touch.docs *.pages/*",
@@ -70,7 +70,7 @@
     "dists": "npm run test-dists",
     "unit": "npm run test-specs",
     "gemini": "http-server -s -p 8000 & p=$!; gemini test --reporter html --reporter flat; e=$?; kill -9 ${p}; exit ${e}",
-    "gemini-gather": "http-server -c \"no-cache, no-store\" -s -p 8000 & p=$!; gemini gather; kill -9 ${p}",
+    "gemini-update": "http-server -c \"no-cache, no-store\" -s -p 8000 & p=$!; gemini update; kill -9 ${p}",
     "coverage": "ISTANBUL_COVERAGE=yes npm run specs"
   }
 }

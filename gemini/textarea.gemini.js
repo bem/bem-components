@@ -1,5 +1,3 @@
-var gemini = require('gemini');
-
 gemini.suite('textarea', function(root) {
 
     root.setUrl('desktop.tests/textarea/gemini/gemini.html');

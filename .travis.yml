@@ -9,6 +9,7 @@ sudo: false
 
 env:
   global:
+    - CXX: g++-4.8
     - GH_REF: github.com/bem/bem-components.git
     - ISTANBUL_COVERAGE: yes
     # SAUCE_USERNAME
@@ -25,6 +26,13 @@ env:
 
 matrix:
   fast_finish: true
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
 
 branches:
   except:

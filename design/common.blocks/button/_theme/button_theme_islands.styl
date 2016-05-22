@@ -77,7 +77,11 @@ ctx = '.button_theme_islands'
         z-index: 1;
 
         background: rgba(178, 142, 0, 0.6);
-        box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
+
+        &.button.button:before
+        {
+            box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
+        }
     }
 
     &.button_pressed:before
@@ -113,11 +117,6 @@ ctx = '.button_theme_islands'
     &.button_view_plain
     {
         background: none;
-
-        &:before
-        {
-            display: none;
-        }
 
         &.button_pressed
         {
@@ -175,11 +174,6 @@ ctx = '.button_theme_islands'
         &.button_hovered:before
         {
             box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
-        }
-
-        &.button_focused-hard:before
-        {
-            box-shadow: none;
         }
 
         &.button_pressed:before
@@ -334,7 +328,7 @@ ctx = '.button_theme_islands'
         {
             &:before
             {
-                right: 1px;
+                right: 0;
             }
         }
 

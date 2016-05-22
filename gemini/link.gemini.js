@@ -10,7 +10,7 @@ gemini.suite('link', function(root) {
         'link_view_minor',
         'link_view_external',
         'link_view_ghost',
-        'link_view_black',
+        'link_view_text',
         'link_view_strong'
     ]
         .forEach(function(test) {

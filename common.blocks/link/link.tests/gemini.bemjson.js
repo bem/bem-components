@@ -14,7 +14,7 @@
                 { block : 'link', mods : { view : 'minor' }, url : '#', content : '_view_minor' },
                 { block : 'link', mods : { view : 'external' }, url : '#', content : '_view_external' },
                 { block : 'link', mods : { view : 'ghost' }, url : '#', content : '_view_ghost' },
-                { block : 'link', mods : { view : 'black' }, url : '#', content : '_view_black' },
+                { block : 'link', mods : { view : 'text' }, url : '#', content : '_view_text' },
                 { block : 'link', mods : { view : 'strong' }, url : '#', content : '_view_strong' }
             ].map(function(link, j) {
                 (link.mods || (link.mods = {})).theme = theme;

@@ -68,7 +68,7 @@
                 {
                     block : 'test',
                     mods : { direction : 'bottom' },
-                    attrs : { style : 'margin: 40px 0 0 0;' },
+                    attrs : { style : 'margin: 60px 0 0 0;' },
                     js : true,
                     cls : 'bottom',
                     content : [

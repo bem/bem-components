@@ -1,14 +1,26 @@
 {
   "name": "bem-components",
-  "version": "3.0.0",
   "description": "BEM Components Library",
-  "bugs": "https://github.com/bem/bem-components/issues",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bem/bem-components.git"
+  },
+  "homepage": "https://bem.info/libs/bem-components/",
   "main": "",
+  "keywords": [
+    "bem",
+    "components",
+    "controls",
+    "ui"
+  ],
   "ignore": [
-    ".bem/cache",
-    ".enb/tmp",
-    "node_modules",
-    "libs"
+    "*",
+    "!common.blocks",
+    "!desktop.blocks",
+    "!touch.blocks",
+    "!design",
+    "!*.md",
+    "!LICENSE.txt"
   ],
   "dependencies": {
     "bem-core": "3.0.1"
@@ -16,6 +28,5 @@
   "devDependencies": {
     "bem-pr": "~0.13.0"
   },
-  "license": "MPL-2.0",
-  "private": true
+  "license": "MPL-2.0"
 }

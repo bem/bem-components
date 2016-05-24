@@ -1,0 +1,3 @@
+*.blocks/*/*.tests
+*.blocks/*/*.tmpl-specs
+*.blocks/*/*.spec.js

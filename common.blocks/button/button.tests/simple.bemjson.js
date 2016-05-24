@@ -397,6 +397,18 @@
             ' ',
             {
                 block : 'button',
+                mods : { theme : 'islands', size : 'm', togglable : 'radio', disabled : true },
+                text : ' radio disabled'
+            },
+            ' ',
+            {
+                block : 'button',
+                mods : { theme : 'islands', size : 'm', togglable : 'radio', disabled : true, checked : true },
+                text : 'radio disabled checked'
+            },
+            ' ',
+            {
+                block : 'button',
                 mods : { theme : 'islands', size : 'm', togglable : 'check', view : 'pseudo' },
                 text : 'check'
             },

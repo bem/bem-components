@@ -1,5 +1,3 @@
-var gemini = require('gemini');
-
 gemini.suite('control-group', function(root) {
     root.setUrl('desktop.tests/control-group/gemini/gemini.html');
 

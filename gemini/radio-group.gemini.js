@@ -1,5 +1,3 @@
-var gemini = require('gemini');
-
 gemini.suite('radio-group', function(root) {
 
     root.setUrl('desktop.tests/radio-group/gemini/gemini.html');

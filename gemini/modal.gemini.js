@@ -1,5 +1,3 @@
-var gemini = require('gemini');
-
 gemini.suite('modal', function(root) {
 
     root.setUrl('desktop.tests/modal/gemini/gemini.html');

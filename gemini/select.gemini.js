@@ -1,5 +1,4 @@
-var gemini = require('gemini'),
-    animationTime = 300;
+var animationTime = 300;
 
 gemini.suite('select', function(root) {
 

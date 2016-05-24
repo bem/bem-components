@@ -8,7 +8,7 @@
     ],
     content : [
         { tag : 'h3', content : 'search form' },
-        { tag : 'p', content : {
+        { block : 'test', content : {
             block : 'control-group',
             content : [
                 {
@@ -34,7 +34,7 @@
         } },
 
         { tag : 'h3', content : 'multiple form' },
-        { tag : 'p', content : {
+        { block : 'test', content : {
             block : 'control-group',
             content : [
                 {

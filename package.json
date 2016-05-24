@@ -4,16 +4,28 @@
   "name": "bem-components",
   "version": "3.0.1",
   "description": "BEM Components Library",
+  "homepage": "https://bem.info/libs/bem-components/",
   "repository": {
     "type": "git",
     "url": "git://github.com/bem/bem-components.git"
   },
+  "bugs": "https://github.com/bem/bem-components/issues",
   "keywords": [
-    "bem"
+    "bem",
+    "components",
+    "controls",
+    "ui"
   ],
   "engines": {
     "node": ">=4"
   },
+  "files": [
+    "common.blocks",
+    "desktop.blocks",
+    "touch.blocks",
+    "design",
+    "README.ru.md"
+  ],
   "dependencies": {},
   "devDependencies": {
     "bem-naming": "^1.0.1",
@@ -45,7 +57,6 @@
     "jshint-groups": "^0.8.0",
     "stylus": "^0.54.5"
   },
-  "optionalDependencies": {},
   "scripts": {
     "start": "magic server",
     "deps": "bower i",

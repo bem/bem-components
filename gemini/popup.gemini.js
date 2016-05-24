@@ -1,5 +1,3 @@
-var gemini = require('gemini');
-
 gemini.suite('popup', function(root) {
 
     root.setUrl('desktop.tests/popup/gemini/gemini.html');

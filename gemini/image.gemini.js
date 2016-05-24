@@ -1,5 +1,3 @@
-var gemini = require('gemini');
-
 gemini.suite('image', function(root) {
 
     root.setUrl('desktop.tests/image/gemini/gemini.html');

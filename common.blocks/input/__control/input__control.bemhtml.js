@@ -2,7 +2,7 @@ block('input').elem('control')(
     tag()('input'),
 
     attrs()(function() {
-        var input = this._input,
+        var input = this.ctx._input,
             attrs = {
                 id : input.id,
                 name : input.name,

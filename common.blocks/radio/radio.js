@@ -4,8 +4,8 @@
 
 modules.define(
     'radio',
-    ['i-bem__dom', 'control'],
-    function(provide, BEMDOM, Control) {
+    ['i-bem-dom', 'control'],
+    function(provide, bemDom, Control) {
 
 /**
  * @exports
@@ -13,16 +13,16 @@ modules.define(
  * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends radio.prototype */{
+provide(bemDom.declBlock(this.name, Control, /** @lends radio.prototype */{
     onSetMod : {
         'checked' : {
             'true' : function() {
-                this.elem('control')
+                this._elem('control').domElem
                     .attr('checked', true)
                     .prop('checked', true);
             },
             '' : function() {
-                this.elem('control')
+                this._elem('control').domElem
                     .removeAttr('checked')
                     .prop('checked', false);
             }
@@ -33,8 +33,9 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends radio
         this.hasMod('disabled') || this.setMod('checked');
     }
 }, /** @lends radio */{
-    live : function() {
-        this.liveBindTo('change', this.prototype._onChange);
+    lazyInit : true,
+    onInit : function() {
+        this._domEvents().on('change', this.prototype._onChange);
         return this.__base.apply(this, arguments);
     }
 }));

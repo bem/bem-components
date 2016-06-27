@@ -1,15 +1,15 @@
 modules.define(
     'spec',
-    ['menu', 'i-bem__dom', 'jquery', 'sinon', 'BEMHTML'],
-    function(provide, Menu, BEMDOM, $, sinon, BEMHTML) {
+    ['menu', 'i-bem-dom', 'jquery', 'sinon', 'BEMHTML'],
+    function(provide, Menu, bemDom, $, sinon, BEMHTML) {
 
-describe('menu_mode_check', function() {
+describe('menu_mode', function() {
     var menu, menuVal;
 
     beforeEach(function() {
         menuVal = 'bla';
 
-        Menu.decl({ modName : 'mode', modVal : 'bla' }, {
+        Menu.declMod({ modName : 'mode', modVal : 'bla' }, {
             _getVal : function() {
                 return menuVal;
             }
@@ -22,7 +22,7 @@ describe('menu_mode_check', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(menu.domElem);
+        bemDom.destruct(menu.domElem);
     });
 
     describe('content change', function() {
@@ -34,9 +34,8 @@ describe('menu_mode_check', function() {
 
         it('should emit change event after content was changed', function() {
             var spy = sinon.spy();
-            menu
-                .on('change', spy)
-                .setContent('');
+            menu._events().on('change', spy);
+            menu.setContent('');
             spy.should.have.been.called;
         });
     });
@@ -46,8 +45,8 @@ describe('menu_mode_check', function() {
 provide();
 
 function buildMenu(bemjson) {
-    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))
-        .bem('menu');
+    return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body'))
+        .bem(Menu);
 }
 
 });

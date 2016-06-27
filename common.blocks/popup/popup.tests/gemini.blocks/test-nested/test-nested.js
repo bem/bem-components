@@ -1,13 +1,13 @@
-modules.define('test-nested', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('test-nested', ['i-bem-dom', 'popup', 'link'], function(provide, bemDom, Popup, Link) {
 
-provide(BEMDOM.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var link = this.findBlockInside('link'),
-                    popup = this.findBlockInside('popup').setAnchor(link);
+                var link = this.findChildBlock(Link),
+                    popup = this.findChildBlock(Popup).setAnchor(link);
 
-                link.on('click', function() {
+                this._events(link).on('click', function() {
                     popup.toggleMod('visible');
                 });
             }

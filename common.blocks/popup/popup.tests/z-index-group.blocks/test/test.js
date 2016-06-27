@@ -1,13 +1,15 @@
-modules.define('test', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('test', ['i-bem-dom', 'popup', 'link'], function(provide, bemDom, Popup, Link) {
 
-provide(BEMDOM.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var popup = this.findBlockInside('popup').setAnchor(
-                    this.findBlockInside('link')
-                        .on('click', function() { popup.toggleMod('visible'); })
-                );
+                var link = this.findChildBlock(Link),
+                    popup = this.findChildBlock(Popup).setAnchor(link);
+
+                this._events(Link).on('click', function() {
+                    popup.toggleMod('visible');
+                });
             }
         }
     }

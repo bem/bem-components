@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['button', 'i-bem__dom', 'chai', 'jquery', 'BEMHTML'],
-    function(provide, Button, BEMDOM, chai, $, BEMHTML) {
+    ['button', 'i-bem-dom', 'chai', 'jquery', 'BEMHTML'],
+    function(provide, Button, bemDom, chai, $, BEMHTML) {
 
 var expect = chai.expect;
 
@@ -17,7 +17,7 @@ describe('button_type_link', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(button.domElem);
+        bemDom.destruct(button.domElem);
     });
 
     describe('url', function() {
@@ -35,7 +35,7 @@ describe('button_type_link', function() {
 
     describe('disabled', function() {
         it('should remove "href" attribute if disabled before init', function() {
-            BEMDOM.destruct(button.domElem); // we need to destruct default button from beforeEach
+            bemDom.destruct(button.domElem); // we need to destruct default button from beforeEach
             button = buildButton({
                 block : 'button',
                 mods : { type : 'link', disabled : true },
@@ -57,9 +57,9 @@ describe('button_type_link', function() {
     });
 
     function buildButton(bemjson) {
-        return BEMDOM.init($(BEMHTML.apply(bemjson))
+        return bemDom.init($(BEMHTML.apply(bemjson))
             .appendTo('body'))
-            .bem('button');
+            .bem(Button);
     }
 });
 

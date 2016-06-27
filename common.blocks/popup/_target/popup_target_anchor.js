@@ -4,10 +4,10 @@
 
 modules.define(
     'popup',
-    ['i-bem__dom', 'jquery', 'objects', 'functions__throttle'],
-    function(provide, BEMDOM, $, objects, throttle, Popup) {
+    ['i-bem-dom', 'jquery', 'objects', 'functions__throttle', 'z-index-group'],
+    function(provide, bemDom, $, objects, throttle, zIndexGroup, Popup) {
 
-var body = $(BEMDOM.doc[0].body),
+var body = $(bemDom.doc[0].body),
     UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
     undef;
 
@@ -16,7 +16,7 @@ var body = $(BEMDOM.doc[0].body),
  * @class popup
  * @bem
  */
-provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.prototype */{
+provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popup.prototype */{
     beforeSetMod : {
         'visible' : {
             'true' : function() {
@@ -30,6 +30,8 @@ provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.p
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
+
+                this._destructorClass = bemDom.declBlock('_' + this.__self.getName() + '-destructor');
 
                 this._anchor = null;
                 this._anchorParents = null;
@@ -68,7 +70,7 @@ provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.p
 
     /**
      * Sets target
-     * @param {jQuery|BEMDOM} anchor DOM elem or anchor BEMDOM block
+     * @param {jQuery|bemDom} anchor DOM elem or anchor bemDom block
      * @returns {popup} this
      */
     setAnchor : function(anchor) {
@@ -77,11 +79,9 @@ provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.p
             ._unbindFromParentPopup()
             ._unbindFromDestructor();
 
-        this._anchor = anchor instanceof BEMDOM?
-            anchor.domElem :
-            anchor;
+        this._anchor = anchor.domElem || anchor;
 
-        this._destructor = this._anchor.bem('_' + this.__self.getName() + '-destructor');
+        this._destructor = this._anchor.bem(this._destructorClass);
         this._isAnchorVisible = undef;
 
         this._bindToDestructor();
@@ -188,23 +188,20 @@ provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.p
     _calcZIndexGroupLevel : function() {
         var res = this.__base.apply(this, arguments);
 
-        return this._destructor.findBlocksOutside('z-index-group').reduce(
-            function(res, zIndexGroup) {
-                return res + Number(zIndexGroup.getMod('level'));
+        return this._destructor.findParentBlocks(zIndexGroup).reduce(
+            function(res, zIndexGroupInstance) {
+                return res + Number(zIndexGroupInstance.getMod('level'));
             },
             res);
     },
 
     _bindToAnchorParents : function() {
-        return this.bindTo(
-            this._anchorParents,
-            'scroll',
-            this._onAnchorParentsScroll);
+        this._domEvents(this._anchorParents).on('scroll', this._onAnchorParentsScroll);
+        return this;
     },
 
     _unbindFromAnchorParents : function() {
-        this._anchorParents && this.unbindFrom(
-            this._anchorParents,
+        this._anchorParents && this._domEvents(this._anchorParents).un(
             'scroll',
             this._onAnchorParentsScroll);
         return this;
@@ -236,24 +233,26 @@ provide(Popup.decl({ modName : 'target', modVal : 'anchor' }, /** @lends popup.p
     },
 
     _bindToDestructor : function() {
-        this._destructor.on({ modName : 'js', modVal : '' }, this._onPopupAnchorDestruct, this);
+        this._events(this._destructor).on({ modName : 'js', modVal : '' }, this._onPopupAnchorDestruct, this);
         return this;
     },
 
     _unbindFromDestructor : function() {
         this._destructor &&
-            this._destructor.un({ modName : 'js', modVal : '' }, this._onPopupAnchorDestruct, this);
+            this._events(this._destructor).un({ modName : 'js', modVal : '' }, this._onPopupAnchorDestruct, this);
         return this;
     },
 
     _onPopupAnchorDestruct : function() {
-        BEMDOM.destruct(this.domElem);
+        bemDom.destruct(this.domElem);
     },
 
     _getParentPopup : function() {
-        return this._parentPopup === undef?
-            this._parentPopup = this.findBlockOutside(this._anchor, this.__self.getName()) :
-            this._parentPopup;
+        if(this._parentPopup) return this._parentPopup;
+
+        var parentPopupDomElem = this._anchor.closest(Popup._buildSelector());
+
+        return this._parentPopup = !!parentPopupDomElem.length && parentPopupDomElem.bem(Popup);
     }
 }));
 

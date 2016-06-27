@@ -82,17 +82,17 @@ module.exports = {
                             val : 3,
                             content : [
                                 {
-                                    block : 'menu-item',
+                                    elem : 'item',
                                     val : 1,
                                     content : 'Show on the site'
                                 },
                                 {
-                                    block : 'menu-item',
+                                    elem : 'item',
                                     val : 2,
                                     content : 'Cached version'
                                 },
                                 {
-                                    block : 'menu-item',
+                                    elem : 'item',
                                     val : 3,
                                     content : 'Search in your pocket'
                                 }

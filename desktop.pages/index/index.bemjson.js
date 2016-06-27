@@ -466,17 +466,17 @@
                                 val : [ 2 ],
                                 content : [
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         val : 1,
                                         content : 'New'
                                     },
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         val : 2,
                                         content : 'Open'
                                     },
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         mods : { disabled : true },
                                         val : 3,
                                         content : 'Open Recent'
@@ -492,17 +492,17 @@
                                 val : 2,
                                 content : [
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         val : 1,
                                         content : 'New'
                                     },
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         val : 2,
                                         content : 'Open'
                                     },
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         mods : { disabled : true },
                                         val : 3,
                                         content : 'Open Recent'
@@ -518,17 +518,17 @@
                                 val : 2,
                                 content : [
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         val : 1,
                                         content : 'New'
                                     },
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         val : 2,
                                         content : 'Open'
                                     },
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         mods : { disabled : true },
                                         val : 3,
                                         content : 'Open Recent'

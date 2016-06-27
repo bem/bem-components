@@ -2,7 +2,7 @@
  * @module input
  */
 
-modules.define('input', ['tick', 'idle'], function(provide, tick, idle, Input) {
+modules.define('input', ['i-bem-dom', 'tick', 'idle'], function(provide, bemDom, tick, idle, Input) {
 
 var instances = [],
     boundToTick,
@@ -25,7 +25,7 @@ var instances = [],
     update = function() {
         var instance, i = 0;
         while(instance = instances[i++]) {
-            instance.setVal(instance.elem('control').val());
+            instance.setVal(instance._elem('control').domElem.val());
         }
     };
 
@@ -34,7 +34,7 @@ var instances = [],
  * @class input
  * @bem
  */
-provide(Input.decl(/** @lends input.prototype */{
+provide(bemDom.declBlock(Input, /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -64,7 +64,7 @@ provide(Input.decl(/** @lends input.prototype */{
      * @override
      */
     _focus : function() {
-        var input = this.elem('control')[0];
+        var input = this._elem('control').domElem[0];
         if(input.createTextRange && !input.selectionStart) {
             var range = input.createTextRange();
             range.move('character', input.value.length);

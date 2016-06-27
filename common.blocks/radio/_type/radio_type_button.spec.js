@@ -1,13 +1,13 @@
 modules.define(
     'spec',
-    ['radio', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML'],
-    function(provide, Radio, BEMDOM, $, dom, BEMHTML) {
+    ['radio', 'i-bem-dom', 'jquery', 'dom', 'button', 'BEMHTML'],
+    function(provide, Radio, bemDom, $, dom, Button, BEMHTML) {
 
 describe('radio_type_button', function() {
     var radio;
 
     function buildRadio() {
-        return BEMDOM.init($(BEMHTML.apply({
+        return bemDom.init($(BEMHTML.apply({
                 block : 'radio',
                 mods : { type : 'button' },
                 name : 'name',
@@ -15,7 +15,7 @@ describe('radio_type_button', function() {
                 label : 'label'
             }))
                 .appendTo('body'))
-                .bem('radio');
+                .bem(Radio);
     }
 
     beforeEach(function() {
@@ -23,49 +23,49 @@ describe('radio_type_button', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(radio.domElem);
+        bemDom.destruct(radio.domElem);
     });
 
     describe('checked', function() {
         it('should set/unset "checked" mod for button according to self', function() {
             radio.setMod('checked');
-            radio.findBlockInside('button').hasMod('checked').should.be.true;
+            radio.findChildBlock(Button).hasMod('checked').should.be.true;
 
             radio.delMod('checked');
-            radio.findBlockInside('button').hasMod('checked').should.be.false;
+            radio.findChildBlock(Button).hasMod('checked').should.be.false;
         });
 
         it('should set/unset property "checked"', function() {
-            radio.elem('control').prop('checked').should.be.false;
+            radio._elem('control').domElem.prop('checked').should.be.false;
 
             radio.setMod('checked');
-            radio.elem('control').prop('checked').should.be.true;
+            radio._elem('control').domElem.prop('checked').should.be.true;
 
             radio.delMod('checked');
-            radio.elem('control').prop('checked').should.be.false;
+            radio._elem('control').domElem.prop('checked').should.be.false;
 
             radio.setMod('checked');
-            radio.elem('control').prop('checked').should.be.true;
+            radio._elem('control').domElem.prop('checked').should.be.true;
         });
     });
 
     describe('disabled', function() {
         it('should set/unset "disabled" mod for button according to self', function() {
             radio.setMod('disabled');
-            radio.findBlockInside('button').hasMod('disabled').should.be.true;
+            radio.findChildBlock(Button).hasMod('disabled').should.be.true;
 
             radio.delMod('disabled');
-            radio.findBlockInside('button').hasMod('disabled').should.be.false;
+            radio.findChildBlock(Button).hasMod('disabled').should.be.false;
         });
     });
 
     describe('focused', function() {
         it('should set/unset "disabled" mod for button according to self', function() {
             radio.setMod('focused');
-            radio.findBlockInside('button').hasMod('focused').should.be.true;
+            radio.findChildBlock(Button).hasMod('focused').should.be.true;
 
             radio.delMod('focused');
-            radio.findBlockInside('button').hasMod('focused').should.be.false;
+            radio.findChildBlock(Button).hasMod('focused').should.be.false;
         });
     });
 });

@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['menu', 'i-bem__dom', 'jquery', 'sinon', 'chai', 'keyboard__codes', 'BEMHTML'],
-    function(provide, Menu, BEMDOM, $, sinon, chai, keyCodes, BEMHTML) {
+    ['menu', 'menu__item', 'i-bem-dom', 'jquery', 'sinon', 'chai', 'keyboard__codes', 'BEMHTML'],
+    function(provide, Menu, MenuItem, bemDom, $, sinon, chai, keyCodes, BEMHTML) {
 
 var expect = chai.expect;
 
@@ -13,64 +13,64 @@ describe('menu', function() {
             block : 'menu',
             content : [
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     content : 'item 1'
                 },
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     content : 'item 2'
                 },
                 {
-                    block : 'menu-item',
-                    mods : { disabled : true },
+                    elem : 'item',
+                    elemMods : { disabled : true },
                     content : 'item 3'
                 },
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     content : 'item 4'
                 }
             ]
         });
-        menuItems = menu.findBlocksInside('menu-item');
+        menuItems = menu.findChildElems('item');
 
         menu2 = buildMenu({
             block : 'menu',
             content : [
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     content : 'first'
                 },
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     content : 'second'
                 },
                 {
-                    block : 'menu-item',
-                    mods : { disabled : true },
+                    elem : 'item',
+                    elemMods : { disabled : true },
                     content : 'third'
                 },
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     content : 'four'
                 },
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     content : 'fifth'
                 }
             ]
         });
 
-        menuItems2 = menu2.findBlocksInside('menu-item');
+        menuItems2 = menu2.findChildElems('item');
     });
 
     afterEach(function() {
-        BEMDOM.destruct(menu.domElem);
-        BEMDOM.destruct(menu2.domElem);
+        bemDom.destruct(menu.domElem);
+        bemDom.destruct(menu2.domElem);
     });
 
     describe('disable', function() {
         it('should remove "tabindex" attribute on disable', function() {
-            var control = menu.elem('control');
+            var control = menu._elem('control').domElem;
             control.attr('tabindex').should.be.equal('0');
 
             menu.setMod('disabled');
@@ -86,18 +86,18 @@ describe('menu', function() {
                     mods : { disabled : true },
                     content : [
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             content : 'item 1'
                         }
                     ]
                 }),
-                control = menu.elem('control');
+                control = menu._elem('control').domElem;
 
             expect(control.attr('tabindex')).to.be.undefined;
             menu.delMod('disabled');
             control.attr('tabindex').should.be.equal('0');
 
-            BEMDOM.destruct(menu.domElem);
+            bemDom.destruct(menu.domElem);
         });
 
         it('should pass disabled mod to menu items', function() {
@@ -123,32 +123,32 @@ describe('menu', function() {
 
     describe('hover on items', function() {
         it('should unhover previous hovered item', function() {
-            menuItems[0].setMod('hovered');
-            menuItems[1].setMod('hovered');
-            menuItems[0].hasMod('hovered').should.be.false;
+            menuItems.get(0).setMod('hovered');
+            menuItems.get(1).setMod('hovered');
+            menuItems.get(0).hasMod('hovered').should.be.false;
         });
 
         it('should react on up/down keys when focused', function() {
             pressDownKey();
-            menuItems[0].hasMod('hovered').should.be.false;
+            menuItems.get(0).hasMod('hovered').should.be.false;
 
             menu.domElem.focus();
             pressDownKey();
-            menuItems[0].hasMod('hovered').should.be.true;
+            menuItems.get(0).hasMod('hovered').should.be.true;
         });
 
         it('should properly cycle through items by keyboard', function() {
             menu.domElem.focus();
             pressDownKey();
-            menuItems[0].hasMod('hovered').should.be.true;
+            menuItems.get(0).hasMod('hovered').should.be.true;
             pressDownKey();
-            menuItems[1].hasMod('hovered').should.be.true;
+            menuItems.get(1).hasMod('hovered').should.be.true;
             pressDownKey();
-            menuItems[3].hasMod('hovered').should.be.true; // skip disabled
+            menuItems.get(3).hasMod('hovered').should.be.true; // skip disabled
             pressDownKey();
-            menuItems[0].hasMod('hovered').should.be.true; // cycle down
+            menuItems.get(0).hasMod('hovered').should.be.true; // cycle down
             pressUpKey();
-            menuItems[3].hasMod('hovered').should.be.true; // cycle back (up)
+            menuItems.get(3).hasMod('hovered').should.be.true; // cycle back (up)
         });
 
         it('should select a item by pressing on a key', function() {
@@ -158,15 +158,15 @@ describe('menu', function() {
             menu2.domElem.focus();
 
             doKeyPress('S');
-            menuItems2[1].hasMod('hovered').should.be.true;
+            menuItems2.get(1).hasMod('hovered').should.be.true;
 
             doKeyPress('F');
-            menuItems2[3].hasMod('hovered').should.be.false;
+            menuItems2.get(3).hasMod('hovered').should.be.false;
 
             clock.tick(TIMEOUT_KEYBOARD_SEARCH + 1);
 
             doKeyPresses('fif');
-            menuItems2[4].hasMod('hovered').should.be.true;
+            menuItems2.get(4).hasMod('hovered').should.be.true;
 
             clock.restore();
         });
@@ -175,45 +175,45 @@ describe('menu', function() {
             menu2.setMod('focused');
 
             doKeyPress('F');
-            menuItems2[0].hasMod('hovered').should.be.true;
+            menuItems2.get(0).hasMod('hovered').should.be.true;
 
             doKeyPress('f');
-            menuItems2[3].hasMod('hovered').should.be.true;
+            menuItems2.get(3).hasMod('hovered').should.be.true;
 
             doKeyPress('F');
-            menuItems2[4].hasMod('hovered').should.be.true;
+            menuItems2.get(4).hasMod('hovered').should.be.true;
 
             doKeyPress('f');
-            menuItems2[0].hasMod('hovered').should.be.true;
+            menuItems2.get(0).hasMod('hovered').should.be.true;
         });
 
         it('should not select a item by pressing a key with meta, ctrl or alt', function() {
             menu2.domElem.focus();
 
             doKeyPress('i', { metaKey : true });
-            menuItems2[0].hasMod('hovered').should.be.false;
+            menuItems2.get(0).hasMod('hovered').should.be.false;
 
             doKeyPress('i', { altKey : true });
-            menuItems2[0].hasMod('hovered').should.be.false;
+            menuItems2.get(0).hasMod('hovered').should.be.false;
 
             doKeyPress('i', { ctrlKey : true });
-            menuItems2[0].hasMod('hovered').should.be.false;
+            menuItems2.get(0).hasMod('hovered').should.be.false;
 
             doKeyPress(0);
-            menuItems2[0].hasMod('hovered').should.be.false;
+            menuItems2.get(0).hasMod('hovered').should.be.false;
 
             doKeyPress('f');
-            menuItems2[0].hasMod('hovered').should.be.true;
+            menuItems2.get(0).hasMod('hovered').should.be.true;
         });
 
         it('should update "aria-activedescendant" attribute properly', function() {
             menu.domElem.focus();
             pressDownKey();
-            menu.domElem.attr('aria-activedescendant').should.be.equal(menuItems[0].domElem.attr('id'));
+            menu.domElem.attr('aria-activedescendant').should.be.equal(menuItems.get(0).domElem.attr('id'));
             pressDownKey();
-            menu.domElem.attr('aria-activedescendant').should.be.equal(menuItems[1].domElem.attr('id'));
+            menu.domElem.attr('aria-activedescendant').should.be.equal(menuItems.get(1).domElem.attr('id'));
             pressDownKey();
-            menu.domElem.attr('aria-activedescendant').should.be.equal(menuItems[3].domElem.attr('id'));
+            menu.domElem.attr('aria-activedescendant').should.be.equal(menuItems.get(3).domElem.attr('id'));
             menu.domElem.blur();
             expect(menu.domElem.attr('aria-activedescendant')).to.be.undefined;
         });
@@ -223,19 +223,19 @@ describe('menu', function() {
     describe('events', function() {
         it('should emit "item-click" event on item click', function() {
             var spy = sinon.spy();
-            menu.on('item-click', spy);
-            menuItems[1].emit('click', { source : 'pointer' });
+            menu._events().on('item-click', spy);
+            menuItems.get(1)._emit('click', { source : 'pointer' });
             spy.should.have.been.called;
-            spy.args[0][1].item.should.be.equal(menuItems[1]);
+            spy.args[0][1].item.should.be.equal(menuItems.get(1));
             spy.args[0][1].source.should.be.equal('pointer');
         });
 
         it('should emit "item-hover" event on item hover', function() {
             var spy = sinon.spy();
-            menu.on('item-hover', spy);
-            menuItems[1].setMod('hovered', true);
+            menu._events().on('item-hover', spy);
+            menuItems.get(1).setMod('hovered', true);
             spy.should.have.been.called;
-            spy.args[0][1].item.should.be.equal(menuItems[1]);
+            spy.args[0][1].item.should.be.equal(menuItems.get(1));
         });
     });
 
@@ -277,8 +277,8 @@ function pressUpKey() {
 }
 
 function buildMenu(bemjson) {
-    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))
-        .bem('menu');
+    return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body'))
+        .bem(Menu);
 }
 
 });

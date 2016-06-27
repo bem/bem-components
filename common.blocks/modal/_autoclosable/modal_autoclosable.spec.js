@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['modal', 'i-bem__dom', 'jquery', 'BEMHTML', 'next-tick', 'keyboard__codes'],
-    function(provide, Modal, BEMDOM, $, BEMHTML, nextTick, keyCodes) {
+    ['modal', 'i-bem-dom', 'jquery', 'BEMHTML', 'next-tick', 'keyboard__codes'],
+    function(provide, Modal, bemDom, $, BEMHTML, nextTick, keyCodes) {
 
 describe('modal_autoclosable', function() {
     var modal;
@@ -11,11 +11,11 @@ describe('modal_autoclosable', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(modal.domElem);
+        bemDom.destruct(modal.domElem);
     });
 
     it('should be visible on click inside __content', function() {
-        doPointerClick(modal.elem('content'));
+        doPointerClick(modal._elem('content').domElem);
         modal.hasMod('visible').should.be.true;
     });
 
@@ -29,7 +29,7 @@ describe('modal_autoclosable', function() {
 
     it('should be closed on click outside modal', function(done) {
         nextTick(function() {
-            doPointerClick(BEMDOM.scope);
+            doPointerClick(bemDom.scope);
             modal.hasMod('visible').should.be.false;
 
             done();
@@ -37,7 +37,7 @@ describe('modal_autoclosable', function() {
     });
 
     it('should be hidden on press escape', function() {
-        BEMDOM.scope.trigger($.Event('keydown', { keyCode : keyCodes.ESC }));
+        bemDom.scope.trigger($.Event('keydown', { keyCode : keyCodes.ESC }));
         modal.hasMod('visible').should.be.false;
     });
 });
@@ -49,7 +49,7 @@ function buildModal() {
             content : 'content'
         }))
         .appendTo($('body'))
-        .bem('modal');
+        .bem(Modal);
 }
 
 function doPointerClick(target) {

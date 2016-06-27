@@ -9,15 +9,14 @@ modules.define('input', function(provide, Input) {
  * @class input
  * @bem
  */
-provide(Input.decl({ modName : 'has-clear', modVal : true }, /** @lends input.prototype */{
+provide(Input.declMod({ modName : 'has-clear', modVal : true }, /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
-                this
-                    .on('change', this._updateClear)
-                    ._updateClear();
+                this._events().on('change', this._updateClear);
+                this._updateClear();
             }
         }
     },
@@ -29,11 +28,11 @@ provide(Input.decl({ modName : 'has-clear', modVal : true }, /** @lends input.pr
     },
 
     _updateClear : function() {
-        this.toggleMod(this.elem('clear'), 'visible', true, !!this._val);
+        this._elem('clear').toggleMod('visible', true, !!this._val);
     }
 }, /** @lends input */{
-    live : function() {
-        this.liveBindTo('clear', 'pointerclick', function() {
+    onInit : function() {
+        this._domEvents('clear').on('pointerclick', function() {
             this._onClearClick();
         });
 

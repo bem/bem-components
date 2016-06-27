@@ -9,14 +9,13 @@ modules.define('select', ['jquery'], function(provide, $, Select) {
  * @class select
  * @bem
  */
-provide(Select.decl({ modName : 'mode', modVal : 'radio-check' }, /** @lends select.prototype */{
+provide(Select.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends select.prototype */{
     _updateControl : function() {
         var val = this.getVal(),
-            control = this.elem('control');
+            control = this._elem('control') && this._elem('control').domElem;
 
-        if(!control.length) {
+        if(!control || !control.length) {
             control = $(Select._createControlHTML(this.getName(), val));
-            this.dropElemCache('control');
         }
 
         if(typeof val === 'undefined') {
@@ -30,7 +29,7 @@ provide(Select.decl({ modName : 'mode', modVal : 'radio-check' }, /** @lends sel
     },
 
     _updateButton : function() {
-        var checkedItem = this._getCheckedItems()[0];
+        var checkedItem = this._getCheckedItems().get(0);
 
         this._button
             .toggleMod('checked', true, '', !!checkedItem)

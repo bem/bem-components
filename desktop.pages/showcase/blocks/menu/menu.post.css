@@ -4,7 +4,7 @@
 
     border: 1px solid rgba(0,0,0,0.1);
 
-    :block(menu-item) :block(link) {
+    :block(menu):elem(item) :block(link) {
         display: block;
     }
 }

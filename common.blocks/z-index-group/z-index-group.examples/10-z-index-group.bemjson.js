@@ -11,7 +11,7 @@
     content : [
         {
             block : 'popup',
-            js : { live : false },
+            js : { lazyInit : false },
             mods : { target : 'position', theme : 'islands', size : 'bigger' },
             mix : { block : 'z-index-group', mods : { level : 1 } },
             content : [
@@ -20,7 +20,7 @@
         },
         {
             block : 'popup',
-            js : { live : false },
+            js : { lazyInit : false },
             mods : { target : 'position', autoclosable : true, theme : 'islands' },
             mix : { block : 'z-index-group', mods : { level : 2 } },
             content : 'I am block with { level : 2 }.'

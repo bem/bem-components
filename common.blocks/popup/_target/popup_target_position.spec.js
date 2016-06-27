@@ -1,11 +1,11 @@
 modules.define(
     'spec',
-    ['popup', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, Popup, BEMDOM, $, BEMHTML) {
+    ['popup', 'i-bem-dom', 'jquery', 'BEMHTML'],
+    function(provide, Popup, bemDom, $, BEMHTML) {
 
 describe('popup', function() {
     var popup, popupDomElem, popupParentDomElem, popupOwnerDomElem,
-        win = $(window),
+        win = bemDom.win,
         winWidth = win.width(),
         winHeight = win.height(),
         POPUP_MAIN_OFFSET = 5;
@@ -28,7 +28,7 @@ describe('popup', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(popupParentDomElem);
+        bemDom.destruct(popupParentDomElem);
     });
 
     describe('setPosition', function() {
@@ -50,7 +50,7 @@ describe('popup', function() {
             popupOffset.top.should.be.equal(coords.top + popup.params.mainOffset);
             popupOffset.left.should.be.equal(coords.left);
 
-            BEMDOM.destruct(popupDomElem);
+            bemDom.destruct(popupDomElem);
         });
     });
 
@@ -90,7 +90,7 @@ describe('popup', function() {
                         .getMod('direction')
                             .should.be.equal(data[2]);
 
-                    BEMDOM.destruct(popupDomElem);
+                    bemDom.destruct(popupDomElem);
                 });
             });
         });
@@ -120,7 +120,7 @@ describe('popup', function() {
 
             popup.getMod('direction').should.be.equal('left-center');
 
-            BEMDOM.destruct(popupDomElem);
+            bemDom.destruct(popupDomElem);
         });
     });
 });
@@ -128,8 +128,8 @@ describe('popup', function() {
 provide();
 
 function buildPopup(parentDomElem, bemjson) {
-    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo(parentDomElem))
-        .bem('popup');
+    return bemDom.init($(BEMHTML.apply(bemjson)).appendTo(parentDomElem))
+        .bem(Popup);
 }
 
 });

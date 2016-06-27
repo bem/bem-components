@@ -1,0 +1,4 @@
+({
+    block : 'menu',
+    elem : 'item'
+})

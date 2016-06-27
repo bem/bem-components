@@ -1,0 +1,68 @@
+:block(menu):elem(item):mod(theme islands) {
+    position: relative;
+
+    white-space: nowrap;
+
+    &:block(menu):elem(item):mod(disabled) {
+        opacity: 0.3;
+    }
+
+    :block(link):mod(disabled) {
+        cursor: text;
+    }
+
+    &:block(menu):elem(item):mod(checked) {
+        background: 0 50% no-repeat url(../../../theme/_islands/tip.svg);
+    }
+
+    &:block(menu):elem(item):mod(hovered) {
+        cursor: pointer;
+
+        background-color: #ffeba0;
+    }
+
+    &:block(menu):elem(item):mod(type link) {
+        :block(link) {
+            text-decoration: none;
+
+            color: inherit;
+            outline: none;
+
+            /* Fit clickable area to `menu__item` size */
+            &:after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+
+                content: '';
+            }
+        }
+    }
+}
+
+@each $size, $paddingLeft, $paddingVert, $paddingHor, $tipSize in
+(s,    m,    l,    xl),   /* size */
+(30px, 30px, 34px, 40px), /* paddingLeft */
+(3px,  4px,  5px,  6px),  /* paddingVert */
+(10px, 13px, 15px, 20px), /* paddingHor */
+(14px, 14px, 15px, 15px)  /* tipSize */ {
+    :block(menu):mod(size $size) {
+        :block(menu):elem(item):mod(theme islands) {
+            padding: 0 $paddingHor;
+
+            background-size: $tipSize $tipSize;
+            background-position: $paddingHor 50%;
+        }
+
+        :block(menu):elem(group) + :block(menu):elem(item):mod(theme islands) {
+            margin-top: $paddingVert;
+        }
+
+        &[class*='menu:mod(mode)'] :block(menu):elem(item):mod(theme islands),
+        :block(menu):elem(group-title) ~ :block(menu):elem(item):mod(theme islands) {
+            padding: 0 $paddingLeft;
+        }
+    }
+}

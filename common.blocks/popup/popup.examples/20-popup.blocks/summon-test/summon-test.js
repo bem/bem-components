@@ -1,24 +1,25 @@
-modules.define('summon-test', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('summon-test', ['i-bem-dom', 'link', 'popup'], function(provide, bemDom, Link, Popup) {
 
-provide(BEMDOM.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var popup = this.findBlockInside('popup', 'popup'),
+                var popup = this.findChildElem('popup').findMixedBlock(Popup),
                     currentAnchor = null;
 
-                BEMDOM.blocks.link.on(this.elem('summoner'), 'click', function(e) {
-                    var link = e.target;
+                this.findChildElems('summoner').forEach(function(summoner) {
+                    var link = summoner.findMixedBlock(Link);
 
-                    if(currentAnchor === link) {
-                        popup.toggleMod('visible', true);
-                        return;
-                    }
+                    this._events(link).on('click', function() {
+                        if(currentAnchor === link) {
+                            popup.toggleMod('visible', true);
+                            return;
+                        }
 
-                    popup.setAnchor(link).setMod('visible', true);
-                    currentAnchor = link;
-                });
-
+                        popup.setAnchor(link).setMod('visible', true);
+                        currentAnchor = link;
+                    });
+                }, this);
             }
         }
     }

@@ -2,7 +2,7 @@
  * @module input
  */
 
-modules.define('input', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
+modules.define('input', ['i-bem-dom', 'control'], function(provide, bemDom, Control) {
 
 /**
  * @exports
@@ -10,12 +10,12 @@ modules.define('input', ['i-bem__dom', 'control'], function(provide, BEMDOM, Con
  * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input.prototype */{
+provide(bemDom.declBlock(this.name, Control, /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                this._val = this.elem('control').val();
+                this._val = this._elem('control').domElem.val();
             }
         }
     },
@@ -41,18 +41,18 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends input
         if(this._val !== val) {
             this._val = val;
 
-            var control = this.elem('control');
-            control.val() !== val && control.val(val);
+            var control = this._elem('control');
+            control.domElem.val() !== val && control.domElem.val(val);
 
-            this.emit('change', data);
+            this._emit('change', data);
         }
 
         return this;
     }
 }, /** @lends input */{
-    live : function() {
+    lazyInit : false,
+    onInit : function() {
         this.__base.apply(this, arguments);
-        return false;
     }
 }));
 

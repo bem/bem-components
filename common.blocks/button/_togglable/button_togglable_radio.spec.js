@@ -1,18 +1,18 @@
 modules.define(
     'spec',
-    ['button', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML'],
-    function(provide, Button, BEMDOM, $, dom, BEMHTML) {
+    ['button', 'i-bem-dom', 'jquery', 'dom', 'BEMHTML'],
+    function(provide, Button, bemDom, $, dom, BEMHTML) {
 
 describe('button_togglable_radio', function() {
     var button;
 
     beforeEach(function() {
-        button = BEMDOM.init($(BEMHTML.apply({ block : 'button', mods : { togglable : 'radio' } })).appendTo('body'))
-            .bem('button');
+        button = bemDom.init($(BEMHTML.apply({ block : 'button', mods : { togglable : 'radio' } })).appendTo('body'))
+            .bem(Button);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(button.domElem);
+        bemDom.destruct(button.domElem);
     });
 
     describe('disabled', function() {

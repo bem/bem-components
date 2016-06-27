@@ -31,28 +31,28 @@
                         val : 2,
                         content : [
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 1,
                                 content : 'item 1'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 2,
                                 content : 'item 2'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 mods : { disabled : true },
                                 val : 3,
                                 content : 'item 3'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 4,
                                 content : 'item 4'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 5,
                                 content : 'item 5'
                             }
@@ -69,22 +69,22 @@
                         val : [2, 4],
                         content : [
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 1,
                                 content : 'item 1'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 2,
                                 content : 'item 2'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 3,
                                 content : 'item 3'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 4,
                                 content : 'item 4'
                             }
@@ -103,22 +103,22 @@
                         val : 3,
                         content : [
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 1,
                                 content : 'item 1'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 2,
                                 content : 'item 2'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 3,
                                 content : 'item 3'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 4,
                                 content : 'item 4'
                             }
@@ -135,7 +135,7 @@
                         mods : { theme : theme, size : size },
                         content : [
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 mods : { type : 'link' },
                                 content : {
                                     block : 'link',
@@ -144,7 +144,7 @@
                                 }
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 mods : { type : 'link', disabled : true },
                                 content : {
                                     block : 'link',
@@ -153,7 +153,7 @@
                                 }
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 mods : { type : 'link' },
                                 content : {
                                     block : 'link',
@@ -175,11 +175,11 @@
                                 title : 'Group 1',
                                 content : [
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         content : 'item 1'
                                     },
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         content : 'item 2'
                                     }
                                 ]
@@ -189,11 +189,11 @@
                                 title : 'Group 2',
                                 content : [
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         content : 'item 3'
                                     },
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         content : 'item 4'
                                     }
                                 ]
@@ -202,11 +202,11 @@
                                 elem : 'group',
                                 content : [
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         content : 'item 5'
                                     },
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         content : 'item 6'
                                     }
                                 ]
@@ -221,14 +221,14 @@
                         mods : { theme : theme, size : size },
                         content : [
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 content : [
                                     { block : 'icon', mods : { social : 'twitter' } },
                                     'Twitter'
                                 ]
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 content : [
                                     { block : 'icon', mods : { social : 'vk' } },
                                     'VK'
@@ -239,14 +239,14 @@
                                 title : 'Group 2',
                                 content : [
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         content : [
                                             { block : 'icon', mods : { social : 'twitter' } },
                                             'Twitter'
                                         ]
                                     },
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         content : [
                                             { block : 'icon', mods : { social : 'vk' } },
                                             'VK'
@@ -263,7 +263,7 @@
                         val : 1,
                         content : [
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 1,
                                 content : [
                                     { block : 'icon', mods : { social : 'twitter' } },
@@ -271,7 +271,7 @@
                                 ]
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 2,
                                 content : [
                                     { block : 'icon', mods : { social : 'vk' } },
@@ -288,22 +288,22 @@
                         mods : { mode : 'radio', theme : theme, size : size, disabled : true },
                         content : [
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 1,
                                 content : 'item 1'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 2,
                                 content : 'item 2'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 3,
                                 content : 'item 3'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 val : 4,
                                 content : 'item 4'
                             }

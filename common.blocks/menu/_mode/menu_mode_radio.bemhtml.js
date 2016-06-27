@@ -4,6 +4,6 @@ block('menu')
         return this._firstItem && this._checkedItems && !this._checkedItems.length;
     })
     .def()(function() {
-        (this._firstItem.mods || (this._firstItem.mods = {})).checked = true;
+        (this._firstItem.elemMods || (this._firstItem.elemMods = {})).checked = true;
         return applyNext();
     });

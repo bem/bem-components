@@ -47,11 +47,11 @@
                                 mods : { theme : 'islands', size : cell.size },
                                 content : [
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         content : 'New'
                                     },
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         mods : { disabled : true },
                                         content : 'Open Recent'
                                     },
@@ -60,17 +60,17 @@
                                         title : 'Save',
                                         content : [
                                             {
-                                                block : 'menu-item',
+                                                elem : 'item',
                                                 content : 'Save as...'
                                             },
                                             {
-                                                block : 'menu-item',
+                                                elem : 'item',
                                                 content : 'Export'
                                             }
                                         ]
                                     },
                                     {
-                                        block : 'menu-item',
+                                        elem : 'item',
                                         content : 'Close'
                                     }
                                 ]
@@ -86,12 +86,12 @@
                                         title : 'Automate',
                                         content : [
                                             {
-                                                block : 'menu-item',
+                                                elem : 'item',
                                                 val : 'batch',
                                                 content : 'Batch'
                                             },
                                             {
-                                                block : 'menu-item',
+                                                elem : 'item',
                                                 val : 'droplet',
                                                 content : 'Create Droplet'
                                             }
@@ -101,7 +101,7 @@
                                         elem : 'group',
                                         content : [
                                             {
-                                                block : 'menu-item',
+                                                elem : 'item',
                                                 val : 'twitter',
                                                 content : [
                                                     { block : 'icon', mods : { social : 'twitter' } },
@@ -109,7 +109,7 @@
                                                 ]
                                             },
                                             {
-                                                block : 'menu-item',
+                                                elem : 'item',
                                                 val : 'vk',
                                                 content : [
                                                     { block : 'icon', mods : { social : 'vk' } },

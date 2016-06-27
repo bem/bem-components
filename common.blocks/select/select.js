@@ -4,8 +4,8 @@
 
 modules.define(
     'select',
-    ['i-bem__dom', 'popup', 'menu', 'menu-item', 'button', 'jquery', 'dom', 'keyboard__codes', 'strings__escape'],
-    function(provide, BEMDOM, Popup, Menu, MenuItem, Button, $, dom, keyCodes, escape) {
+    ['i-bem-dom', 'popup', 'menu', 'menu__item', 'button', 'jquery', 'dom', 'keyboard__codes', 'strings__escape'],
+    function(provide, bemDom, Popup, Menu, MenuItem, Button, $, dom, keyCodes, escape) {
 
 /**
  * @exports
@@ -14,7 +14,7 @@ modules.define(
  *
  * @bemmod opened Represents opened state
  */
-provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
+provide(bemDom.declBlock(this.name, /** @lends select.prototype */{
     beforeSetMod : {
         'opened' : {
             'true' : function() {
@@ -32,19 +32,18 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._button = this.findBlockInside('button')
-                    .on('click', this._onButtonClick, this);
+                this._button = this.findChildBlock(Button);
+                this._events(Button).on('click', this._onButtonClick, this);
 
-                this._popup = this.findBlockInside('popup')
-                    .setAnchor(this._button)
-                    .on({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
+                this._popup = this.findChildBlock(Popup)
+                    .setAnchor(this._button);
+                this._events(Popup).on({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
 
-                this._menu = this._popup.findBlockInside('menu')
-                    .on({
-                        'change' : this._onMenuChange,
-                        'item-click' : this._onMenuItemClick,
-                        'item-hover' : this._onMenuItemHover
-                    }, this);
+                this._menu = this._popup.findChildBlock(Menu);
+                this._events(this._menu)
+                    .on('change', this._onMenuChange, this)
+                    .on('item-click', this._onMenuItemClick, this)
+                    .on('item-hover', this._onMenuItemHover, this);
 
                 this._isPointerPressInProgress = false;
                 this._buttonWidth = null;
@@ -73,16 +72,14 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
 
                 this._updateMenuHeight();
                 this._popup.setMod('visible');
-                this
-                    .bindToDoc('pointerpress', this._onDocPointerPress)
-                    .setMod('focused')
+                this._domEvents(bemDom.doc).on('pointerpress', this._onDocPointerPress);
+                this.setMod('focused')
                     ._hoverCheckedOrFirstItem();
             },
 
             '' : function() {
-                this
-                    .unbindFromDoc('pointerpress', this._onDocPointerPress)
-                    ._popup.delMod('visible');
+                this._domEvents(bemDom.doc).un('pointerpress', this._onDocPointerPress);
+                this._popup.delMod('visible');
             }
         },
 
@@ -93,12 +90,16 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             },
 
             'true' : function() {
-                this.elem('control').attr('disabled', true);
+                this._elems('control').forEach(function(control) {
+                    control.domElem.attr('disabled', true);
+                });
                 this._popup.delMod('visible');
             },
 
             '' : function() {
-                this.elem('control').removeAttr('disabled');
+                this._elems('control').forEach(function(control) {
+                    control.domElem.removeAttr('disabled');
+                });
             }
         }
     },
@@ -129,30 +130,27 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
         return this.params.name;
     },
 
-    getDefaultParams : function() {
+    _getDefaultParams : function() {
         return {
             optionsMaxHeight : Number.POSITIVE_INFINITY
         };
     },
 
     _focus : function() {
-        this
-            .bindTo('button', {
-                keydown : this._onKeyDown,
-                keypress : this._onKeyPress
-            })
-            ._button.setMod('focused');
+        this._domEvents('button')
+            .on('keydown', this._onKeyDown)
+            .on('keypress', this._onKeyPress);
+
+        this._button.setMod('focused');
     },
 
     _blur : function() {
-        this
-            .unbindFrom('button', {
-                keydown : this._onKeyDown,
-                keypress : this._onKeyPress
-            })
-            .delMod('opened')
-            ._button
-                .delMod('focused');
+        this._domEvents('button')
+            .un('keydown', this._onKeyDown)
+            .un('keypress', this._onKeyPress);
+
+        this.delMod('opened');
+        this._button.delMod('focused');
     },
 
     _updateMenuWidth : function() {
@@ -181,7 +179,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
     },
 
     _hoverCheckedOrFirstItem : function() { // NOTE: may be it should be moved to menu
-        (this._getCheckedItems()[0] || this._menu.getItems()[0])
+        (this._getCheckedItems().get(0) || this._menu.getItems().get(0))
             .setMod('hovered');
     },
 
@@ -218,7 +216,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
             this._updateMenuWidth() :
             this._buttonWidth = null;
 
-        this.emit('change');
+        this._emit('change');
     },
 
     _onMenuItemClick : function() {},
@@ -250,7 +248,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
         if(this._isEventInPopup(e)) {
             e.pointerType === 'mouse' && e.preventDefault(); // prevents button blur in most desktop browsers
             this._isPointerPressInProgress = true;
-            this.bindToDoc(
+            this._domEvents(bemDom.doc).on(
                 'pointerrelease',
                 { focusedHardMod : this._button.getMod('focused-hard') },
                 this._onDocPointerRelease);
@@ -259,21 +257,20 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
 
     _onDocPointerRelease : function(e) {
         this._isPointerPressInProgress = false;
-        this
-            .unbindFromDoc('pointerrelease', this._onDocPointerRelease)
-            ._button
-                .toggleMod('focused', true, '', this._isEventInPopup(e))
-                .setMod('focused-hard', e.data.focusedHardMod);
+        this._domEvents().un('pointerrelease', this._onDocPointerRelease);
+        this._button
+            .toggleMod('focused', true, '', this._isEventInPopup(e))
+            .setMod('focused-hard', e.data.focusedHardMod);
     },
 
     _isEventInPopup : function(e) {
         return dom.contains(this._popup.domElem, $(e.target));
     }
 }, /** @lends select */{
-    live : function() {
-        this.liveInitOnBlockInsideEvent(
+    lazyInit : true,
+    onInit : function() {
+        this._events(Button).on(
             { modName : 'focused', modVal : '*' },
-            'button',
             this.prototype._onButtonFocusChange);
     },
 
@@ -282,7 +279,7 @@ provide(BEMDOM.decl(this.name, /** @lends select.prototype */{
         return '<input ' +
             'type="hidden" ' +
             'name="' + name + '" ' +
-            'class="' + this.buildClass('control') + '" ' +
+            'class="' + this._buildClassName('control') + '" ' +
             'value="' + escape.attr(val) + '"/>';
     }
 }));

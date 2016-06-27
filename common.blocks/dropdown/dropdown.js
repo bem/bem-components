@@ -4,8 +4,8 @@
 
 modules.define(
     'dropdown',
-    ['i-bem__dom', 'popup'],
-    function(provide, BEMDOM) {
+    ['i-bem-dom', 'popup'],
+    function(provide, bemDom, Popup) {
 
 /**
  * @exports
@@ -14,7 +14,7 @@ modules.define(
  *
  * @bemmod opened Represents opened state
  */
-provide(BEMDOM.decl(this.name, /** @lends dropdown.prototype */{
+provide(bemDom.declBlock(this.name, /** @lends dropdown.prototype */{
     beforeSetMod : {
         'opened' : {
             'true' : function() {
@@ -52,19 +52,24 @@ provide(BEMDOM.decl(this.name, /** @lends dropdown.prototype */{
      * @returns {popup}
      */
     getPopup : function() {
-        return this._popup ||
-            (this._popup = this.findBlockOn('popup')
-                .setAnchor(this.getSwitcher())
-                .on({ modName : 'visible', modVal : '*' }, this._onPopupVisibilityChange, this));
+        if(this._popup) return this._popup;
+
+        this._popup = this.findMixedBlock(Popup).setAnchor(this.getSwitcher());
+        this._popup._events().on({ modName : 'visible', modVal : '*' }, this._onPopupVisibilityChange, this);
+        return this._popup;
     },
 
     /**
      * Returns switcher
-     * @returns {i-bem__dom}
+     * @returns {i-bem-dom}
      */
     getSwitcher : function() {
         return this._switcher ||
-            (this._switcher = this.findBlockOn(this.getMod('switcher')));
+            (this._switcher = this.findMixedBlock(this._getSwitcherClass()));
+    },
+
+    _getSwitcherClass : function() {
+        return bemDom.declBlock(this.getMod('switcher'));
     },
 
     /**
@@ -81,7 +86,7 @@ provide(BEMDOM.decl(this.name, /** @lends dropdown.prototype */{
         this.setMod('opened', data.modVal);
     }
 }, /** @lends dropdown */{
-    live : true
+    lazyInit : true
 }));
 
 });

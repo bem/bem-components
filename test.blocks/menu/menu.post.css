@@ -1,0 +1,4 @@
+:block(menu):elem(item) :block(icon) {
+    width: 16px;
+    margin-right: 5px;
+}

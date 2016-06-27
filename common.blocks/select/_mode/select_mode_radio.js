@@ -9,14 +9,14 @@ modules.define('select', function(provide, Select) {
  * @class select
  * @bem
  */
-provide(Select.decl({ modName : 'mode', modVal : 'radio' }, /** @lends select.prototype */{
+provide(Select.declMod({ modName : 'mode', modVal : 'radio' }, /** @lends select.prototype */{
     _updateControl : function() {
         var val = this.getVal();
-        this.elem('control').val(val);
+        this._elem('control').domElem.val(val);
     },
 
     _updateButton : function() {
-        this._button.setText(this._getCheckedItems()[0].getText());
+        this._button.setText(this._getCheckedItems().get(0).getText());
     },
 
     _onMenuItemClick : function(_, data) {

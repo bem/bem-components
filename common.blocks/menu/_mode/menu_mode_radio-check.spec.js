@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['menu', 'i-bem__dom', 'jquery', 'chai', 'sinon', 'BEMHTML'],
-    function(provide, Menu, BEMDOM, $, chai, sinon, BEMHTML) {
+    ['menu', 'menu__item', 'i-bem-dom', 'jquery', 'chai', 'sinon', 'BEMHTML'],
+    function(provide, Menu, MenuItem, bemDom, $, chai, sinon, BEMHTML) {
 
 describe('menu_mode_radio-check', function() {
     var menu, menuItems;
@@ -13,32 +13,32 @@ describe('menu_mode_radio-check', function() {
             val : 2,
             content : [
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     val : 1,
                     content : 'item 1'
                 },
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     val : 2,
                     content : 'item 2'
                 },
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     val : 3,
                     content : 'item 3'
                 },
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     val : 4,
                     content : 'item 4'
                 }
             ]
         });
-        menuItems = menu.findBlocksInside('menu-item');
+        menuItems = menu.findChildElems(MenuItem);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(menu.domElem);
+        bemDom.destruct(menu.domElem);
     });
 
     describe('value', function() {
@@ -52,25 +52,25 @@ describe('menu_mode_radio-check', function() {
                 mods : { mode : 'radio-check' },
                 content : [
                     {
-                        block : 'menu-item',
+                        elem : 'item',
                         val : 1,
                         content : 'item 1'
                     },
                     {
-                        block : 'menu-item',
+                        elem : 'item',
                         val : 2,
                         content : 'item 2'
                     }
                 ]
             });
             chai.should().not.exist(nonCheckedMenu.getVal());
-            BEMDOM.destruct(nonCheckedMenu.domElem);
+            bemDom.destruct(nonCheckedMenu.domElem);
         });
 
         it('should modify value after clicks on items', function() {
-            menuItems[0].emit('click', { source : 'pointer' });
+            menuItems.get(0)._emit('click', { source : 'pointer' });
             menu.getVal().should.be.eql(1);
-            menuItems[0].emit('click', { source : 'pointer' });
+            menuItems.get(0)._emit('click', { source : 'pointer' });
             chai.should().not.exist(menu.getVal());
         });
 
@@ -80,8 +80,8 @@ describe('menu_mode_radio-check', function() {
 
         it('should change checked state of items', function() {
             menu.setVal(1);
-            menuItems[0].hasMod('checked').should.be.true;
-            menuItems[1].hasMod('checked').should.be.false;
+            menuItems.get(0).hasMod('checked').should.be.true;
+            menuItems.get(1).hasMod('checked').should.be.false;
         });
     });
 
@@ -90,7 +90,7 @@ describe('menu_mode_radio-check', function() {
 
         beforeEach(function() {
             spy = sinon.spy();
-            menu.on('change', spy);
+            menu._events().on('change', spy);
         });
 
         it('should emit change event if value was changed', function() {
@@ -104,12 +104,12 @@ describe('menu_mode_radio-check', function() {
         });
 
         it('should emit change event on non checked items clicks', function() {
-            menuItems[0].emit('click', { source : 'pointer' });
+            menuItems.get(0)._emit('click', { source : 'pointer' });
             spy.should.have.been.called;
         });
 
         it('should emit change event on checked items clicks', function() {
-            menuItems[1].emit('click', { source : 'pointer' });
+            menuItems.get(1)._emit('click', { source : 'pointer' });
             spy.should.have.been.called;
         });
     });
@@ -118,8 +118,8 @@ describe('menu_mode_radio-check', function() {
 provide();
 
 function buildMenu(bemjson) {
-    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))
-        .bem('menu');
+    return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body'))
+        .bem(Menu);
 }
 
 });

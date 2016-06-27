@@ -1,14 +1,14 @@
 modules.define(
     'spec',
-    ['checkbox', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'chai'],
-    function(provide, Checkbox, BEMDOM, $, dom, BEMHTML, chai) {
+    ['checkbox', 'i-bem-dom', 'button', 'jquery', 'dom', 'BEMHTML', 'chai'],
+    function(provide, Checkbox, bemDom, Button, $, dom, BEMHTML, chai) {
 
 describe('checkbox_type_button', function() {
     var expect = chai.expect,
         checkbox, button;
 
     function buildCheckbox() {
-        return BEMDOM.init($(BEMHTML.apply({
+        return bemDom.init($(BEMHTML.apply({
                 block : 'checkbox',
                 mods : { type : 'button' },
                 name : 'name',
@@ -16,16 +16,16 @@ describe('checkbox_type_button', function() {
                 label : 'label'
             }))
                 .appendTo('body'))
-                .bem('checkbox');
+                .bem(Checkbox);
     }
 
     beforeEach(function() {
         checkbox = buildCheckbox();
-        button = checkbox.findBlockInside('button');
+        button = checkbox.findChildBlock(Button);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(checkbox.domElem);
+        bemDom.destruct(checkbox.domElem);
     });
 
     describe('checked', function() {
@@ -38,16 +38,16 @@ describe('checkbox_type_button', function() {
         });
 
         it('should set/unset property properly', function() {
-            expect(checkbox.elem('control')[0].checked).to.be.false;
+            expect(checkbox._elem('control').domElem[0].checked).to.be.false;
 
             checkbox.setMod('checked');
-            expect(checkbox.elem('control')[0].checked).to.be.true;
+            expect(checkbox._elem('control').domElem[0].checked).to.be.true;
 
             checkbox.delMod('checked');
-            expect(checkbox.elem('control')[0].checked).to.be.false;
+            expect(checkbox._elem('control').domElem[0].checked).to.be.false;
 
             checkbox.setMod('checked');
-            expect(checkbox.elem('control')[0].checked).to.be.true;
+            expect(checkbox._elem('control').domElem[0].checked).to.be.true;
         });
 
         it('should set/unset aria-attributes properly', function() {

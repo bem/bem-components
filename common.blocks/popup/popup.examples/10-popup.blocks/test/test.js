@@ -1,11 +1,11 @@
-modules.define('test', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('test', ['i-bem-dom'], function(provide, bemDom) {
 
-provide(BEMDOM.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var link = this.findBlockInside('link'),
-                    popup = this.findBlockInside('popup')
+                var link = this.findChildBlock('link'),
+                    popup = this.findChildBlock('popup')
                         .setAnchor(link);
 
                 link.on('click', function() {

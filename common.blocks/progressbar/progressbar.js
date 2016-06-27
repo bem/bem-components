@@ -2,14 +2,14 @@
  * @module progressbar
  */
 
-modules.define('progressbar', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('progressbar', ['i-bem-dom'], function(provide, bemDom) {
 
 /**
  * @exports
  * @class progressbar
  * @bem
  */
-provide(BEMDOM.decl(this.name, /** @lends progressbar.prototype */{
+provide(bemDom.declBlock(this.name, /** @lends progressbar.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -25,7 +25,7 @@ provide(BEMDOM.decl(this.name, /** @lends progressbar.prototype */{
      */
     setVal : function(val) {
         this.domElem.attr('aria-valuenow', (this._val = val) + '%');
-        this.elem('bar').css('width', val + '%');
+        this._elem('bar').domElem.css('width', val + '%');
         return this;
     },
 
@@ -38,7 +38,7 @@ provide(BEMDOM.decl(this.name, /** @lends progressbar.prototype */{
     }
 
 }, /** @lends progressbar */{
-    live : true
+    lazyInit : true
 }));
 
 });

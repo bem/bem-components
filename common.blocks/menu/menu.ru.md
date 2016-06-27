@@ -35,7 +35,7 @@
 
 ## Описание блока
 
-Блок предоставляет возможность изменять внешний вид меню и управлять поведением вложенных независимых блоков – [пунктов меню](../menu-item/menu-item.ru.md).
+Блок предоставляет возможность изменять внешний вид меню и управлять поведением вложенных независимых блоков – [пунктов меню](../menu__item/menu__item.ru.md).
 
 Реализация блока поддерживает клавиатурное управление: если блок `menu` находится [в фокусе](#focused) (установлен модификатор `focused` в значении `true`), ввод с клавиатуры одного из названий пунктов меню автоматически переводит фокус на данный пункт. Выбор происходит нажатием на кнопку `Пробел` или `Ввод`.
 
@@ -66,12 +66,12 @@
     mods : { theme : 'islands', size : 'm' },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Море'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Горы'
         }
@@ -91,17 +91,17 @@
     val : [1, 3],
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отдых в горах'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отдых на море'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 3,
             content : 'Отдых на даче'
         }
@@ -122,12 +122,12 @@
     mods : { theme : 'islands', size : 'm', mode : 'radio' },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отдых в горах'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отдых на море'
         }
@@ -147,12 +147,12 @@
     val : 2,
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отдых в горах'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отдых на море'
         }
@@ -170,7 +170,7 @@
 
 Отвечает за неактивное состояние, при котором блок виден, но недоступен для действий пользователя.
 
-Если блоку `menu` устанавливается модификатор `disabled`, то все вложенные в него блоки `menu-item` также становятся неактивными.
+Если блоку `menu` устанавливается модификатор `disabled`, то все вложенные в него блоки `menu__item` также становятся неактивными.
 
 ```js
 {
@@ -178,12 +178,12 @@
     mods : { theme : 'islands', size : 'm', mode : 'radio-check', disabled : true },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отдых в горах'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отдых на море'
         }
@@ -200,13 +200,13 @@
     val : 2,
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             mods : { disabled : true },
             val : 1,
             content : 'Отдых в горах'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отдых на море'
         }
@@ -233,12 +233,12 @@
     val : 2,
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отдых в горах'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отдых на море'
         }
@@ -265,12 +265,12 @@
     val : [1],
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отдых в горах'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отдых на море'
         }
@@ -297,12 +297,12 @@
     mods : { theme : 'islands', mode : 'check', size : 's' },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отдых в горах'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отдых на море'
         }
@@ -319,12 +319,12 @@
     val : [2],
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отдых в горах'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отдых на море'
         }
@@ -340,12 +340,12 @@
     val : [2],
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отдых в горах'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отдых на море'
         }
@@ -362,12 +362,12 @@
     val : [2],
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отдых в горах'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отдых на море'
         }
@@ -390,12 +390,12 @@
     mods : { theme : 'islands', size : 'm' },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отпуск на работе'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отпуск на диване'
         }
@@ -419,12 +419,12 @@
     val : 2,
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отпуск на работе'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отпуск на диване'
         }
@@ -441,12 +441,12 @@
     val : [1, 2],
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отдых в горах'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Отдых на море'
         }
@@ -468,7 +468,7 @@
     val : 2,
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Отпуск на работе'
         },
@@ -476,19 +476,19 @@
             elem : 'group',
             content : [
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     val : 2,
                     content : 'Отпуск в горах'
                 },
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     val : 3,
                     content : 'Отпуск на море'
                 }
             ]
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 4,
             content : 'Отпуск на диване'
         }
@@ -512,7 +512,7 @@
     val : 2,
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Работа'
         },
@@ -521,12 +521,12 @@
             title : 'Активный отдых',
             content : [
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     val : 2,
                     content : 'В горах'
                 },
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     val : 3,
                     content : 'На море'
                 }

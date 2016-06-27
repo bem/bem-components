@@ -1,24 +1,24 @@
 /**
- * @module menu-item
+ * @module menu__item
  */
 
-modules.define('menu-item', ['link'], function(provide, _, MenuItem) {
+modules.define('menu__item', ['link'], function(provide, Link, MenuItem) {
 
 /**
  * @exports
- * @class menu-item
+ * @class menu__item
  * @bem
  */
-provide(MenuItem.decl({ modName : 'type', modVal : 'link' }, /** @lends menu-item.prototype */{
+provide(MenuItem.declMod({ modName : 'type', modVal : 'link' }, /** @lends menu__item.prototype */{
     onSetMod : {
         'hovered' : {
             'true' : function() {
-                this._getMenu().hasMod('focused') &&
+                this._block().hasMod('focused') &&
                     this._getLink().setMod('focused');
             },
 
             '' : function() {
-                var menu = this._getMenu();
+                var menu = this._block();
                 menu.hasMod('focused') && menu.domElem.focus(); // NOTE: keep DOM-based focus within our menu
             }
         },
@@ -29,20 +29,17 @@ provide(MenuItem.decl({ modName : 'type', modVal : 'link' }, /** @lends menu-ite
         }
     },
 
-    _getMenu : function() {
-        return this._menu || (this._menu = this.findBlockOutside('menu'));
-    },
-
     _getLink : function() {
-        return this._link || (this._link = this.findBlockInside('link'));
+        return this._link || (this._link = this.findChildBlock(Link));
     },
 
     _onFocus : function() {
         this.setMod('hovered');
     }
-}, /** @lends menu-item */{
-    live : function() {
-        this.liveBindTo('focusin', this.prototype._onFocus);
+}, /** @lends menu__item */{
+    lazyInit : true,
+    onInit : function() {
+        this._domEvents().on('focusin', this.prototype._onFocus);
         return this.__base.apply(this, arguments);
     }
 }));

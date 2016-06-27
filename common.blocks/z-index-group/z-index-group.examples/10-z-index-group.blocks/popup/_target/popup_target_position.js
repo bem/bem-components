@@ -1,6 +1,6 @@
 modules.define('popup', function(provide, Popup) {
 
-provide(Popup.decl({ modName : 'target', modVal : 'position' }, {
+provide(Popup.declMod({ modName : 'target', modVal : 'position' }, {
     onSetMod : {
         'js' : {
             'inited' : function() {

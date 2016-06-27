@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['input', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
-    function(provide, Input, BEMDOM, $, BEMHTML, sinon) {
+    ['input', 'i-bem-dom', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, Input, bemDom, $, BEMHTML, sinon) {
 
 describe('input', function() {
     var input;
@@ -11,7 +11,7 @@ describe('input', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(input.domElem);
+        bemDom.destruct(input.domElem);
     });
 
     describe('val', function() {
@@ -23,12 +23,12 @@ describe('input', function() {
 
         it('should update control elem value when value changed', function() {
             input.setVal('blabla');
-            input.elem('control').val().should.be.equal('blabla');
+            input._elem('control').domElem.val().should.be.equal('blabla');
         });
 
         it('should emit "change" event only when value changed', function() {
             var spy = sinon.spy();
-            input.on('change', spy);
+            input._events().on('change', spy);
 
             input.setVal('bla');
             spy.should.not.have.been.called;
@@ -38,12 +38,12 @@ describe('input', function() {
         });
 
         it('should update value when control value changed', function(done) {
-            input.on('change', function(e) {
+            input._events().on('change', function(e) {
                 e.target.getVal().should.be.equal('new-value');
                 done();
             });
 
-            input.elem('control')
+            input._elem('control').domElem
                 .val('new-value')
                 .trigger('input'); // TODO: разобраться с touch, нихера оно не работает без этого при программной установке
         });
@@ -53,8 +53,8 @@ describe('input', function() {
 provide();
 
 function buildInput(bemjson) {
-    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))
-        .bem('input');
+    return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body'))
+        .bem(Input);
 }
 
 });

@@ -1,6 +1,4 @@
-# menu-item
-
-Use this block as a part of the [menu](../menu/menu.en.md) block.
+# menu__item
 
 ## Overview
 
@@ -20,7 +18,7 @@ Use this block as a part of the [menu](../menu/menu.en.md) block.
 
 ## Block description
 
-Use the `menu-item` block to control the size, state and appearance of the menu items. Use this block as a part of the [menu](../menu/menu.en.md) block.
+Use the `menu__item` to control the size, state and appearance of the menu items. Use this block as a part of the [menu](../menu/menu.en.md) block.
 
 ### Modifiers of the block
 
@@ -40,7 +38,7 @@ Use this modifier to create the menu items implemented by the [link](../link/lin
     mods : { theme : 'islands', size : 'm' },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             mods : { type : 'link' },
             content : {
                 block : 'link',
@@ -49,7 +47,7 @@ Use this modifier to create the menu items implemented by the [link](../link/lin
             }
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             mods : { type : 'link' },
             content : {
                 block : 'link',
@@ -77,12 +75,12 @@ The modifier makes the block inactive. The disabled block is visible but not ava
     mods : { theme : 'islands', size : 'm' },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             mods : { disabled : true },
             content : 'BH'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             content : 'BEMHTML'
         }
     ]
@@ -116,12 +114,12 @@ Specifies the value of the menu item.
     val : 'item-1',
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 'item-1',
             content : 'BH'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 'item-2',
             content : 'BEMHTML'
         }

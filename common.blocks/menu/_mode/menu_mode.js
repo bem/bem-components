@@ -2,14 +2,14 @@
  * @module menu
  */
 
-modules.define('menu', ['keyboard__codes'], function(provide, keyCodes, Menu) {
+modules.define('menu', ['i-bem-dom', 'keyboard__codes'], function(provide, bemDom, keyCodes, Menu) {
 
 /**
  * @exports
  * @class menu
  * @bem
  */
-provide(Menu.decl({ modName : 'mode' }, /** @lends menu.prototype */{
+provide(Menu.declMod({ modName : 'mode', modVal : '*' }, /** @lends menu.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -22,9 +22,9 @@ provide(Menu.decl({ modName : 'mode' }, /** @lends menu.prototype */{
 
     _onKeyDown : function(e) {
         if(e.keyCode === keyCodes.ENTER || e.keyCode === keyCodes.SPACE) {
-            this
-                .unbindFromDoc('keydown', this._onKeyDown)
-                .bindToDoc('keyup', this._onKeyUp);
+            this._domEvents(bemDom.doc)
+                .un('keydown', this._onKeyDown)
+                .on('keyup', this._onKeyUp);
 
             e.keyCode === keyCodes.SPACE && e.preventDefault();
             this._onItemClick(this._hoveredItem, { source : 'keyboard' });
@@ -33,9 +33,9 @@ provide(Menu.decl({ modName : 'mode' }, /** @lends menu.prototype */{
     },
 
     _onKeyUp : function() {
-        this.unbindFromDoc('keyup', this._onKeyUp);
+        this._domEvents(bemDom.doc).un('keyup', this._onKeyUp);
         // it could be unfocused while is key being pressed
-        this.hasMod('focused') && this.bindToDoc('keydown', this._onKeyDown);
+        this.hasMod('focused') && this._domEvents(bemDom.doc).on('keydown', this._onKeyDown);
     },
 
     /**
@@ -68,7 +68,7 @@ provide(Menu.decl({ modName : 'mode' }, /** @lends menu.prototype */{
         if(this._setVal(val)) {
             this._val = val;
             this._isValValid = true;
-            this.emit('change');
+            this._emit('change');
         }
         return this;
     },
@@ -86,7 +86,7 @@ provide(Menu.decl({ modName : 'mode' }, /** @lends menu.prototype */{
     _updateItemsCheckedMod : function(modVals) {
         var items = this.getItems();
         modVals.forEach(function(modVal, i) {
-            items[i].setMod('checked', modVal);
+            items.get(i).setMod('checked', modVal);
         });
     },
 
@@ -97,7 +97,7 @@ provide(Menu.decl({ modName : 'mode' }, /** @lends menu.prototype */{
     setContent : function() {
         var res = this.__base.apply(this, arguments);
         this._isValValid = false;
-        this.emit('change'); // NOTE: potentially unwanted event could be emitted
+        this._emit('change'); // NOTE: potentially unwanted event could be emitted
         return res;
     }
 }));

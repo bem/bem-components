@@ -1,6 +1,6 @@
 [{
     mustDeps : [
-        { block : 'i-bem', elems : 'dom' },
+        'i-bem-dom',
         'popup'
     ]
 },

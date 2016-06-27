@@ -9,7 +9,8 @@ modules.define('button', function(provide, Button) {
  * @class button
  * @bem
  */
-provide(Button.decl({ modName : 'togglable' }, /** @lends button.prototype */{
+
+provide(Button.declMod({ modName : 'togglable', modVal : '*' }, /** @lends button.prototype */{
     onSetMod : {
         'checked' : function(_, modVal) {
             this.__base.apply(this, arguments);

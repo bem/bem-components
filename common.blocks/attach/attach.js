@@ -4,8 +4,8 @@
 
 modules.define(
     'attach',
-    ['i-bem__dom', 'i-bem__internal', 'control', 'jquery', 'strings__escape'],
-    function(provide, BEMDOM, INTERNAL, Control, $, escape) {
+    ['i-bem-dom', 'i-bem__internal', 'control', 'button', 'jquery', 'strings__escape'],
+    function(provide, bemDom, INTERNAL, Control, Button, $, escape) {
 
 /**
  * @exports
@@ -13,7 +13,7 @@ modules.define(
  * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attach.prototype */{
+provide(bemDom.declBlock(this.name, Control, /** @lends attach.prototype */{
     onSetMod : {
         'disabled' : function(modName, modVal) {
             this.__base.apply(this, arguments);
@@ -32,11 +32,11 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
     },
 
     _clear : function(data) {
-        var control = this.elem('control'),
+        var control = this._elem('control').domElem,
             name = control.attr('name'),
             tabIndex = control.attr('tabindex');
 
-        BEMDOM.replace(
+        bemDom.replace(
             control,
             '<input' +
                 ' class="' + control.attr('class') + '"' +
@@ -45,12 +45,11 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
                 (tabIndex? ' tabindex="' + tabIndex + '"' : '') +
             '/>');
 
-        BEMDOM.destruct(this.elem('file'));
+        this._elem('file') && bemDom.destruct(this._elem('file').domElem);
 
-        this.domElem.append(this.elem('no-file')); // use append because only detached before
+        this.domElem.append(this._elem('no-file').domElem); // use append because only detached before
 
         return this
-            .dropElemCache('control file')
             ._emitChange(data);
     },
 
@@ -59,7 +58,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
     },
 
     _onChange : function() {
-        this.elem('no-file').detach();
+        this._elem('no-file').domElem.detach();
         this.getVal()?
             this
                 ._updateFileElem()
@@ -68,36 +67,36 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends attac
     },
 
     _emitChange : function(data) {
-        return this.emit('change', data);
+        return this._emit('change', data);
     },
 
     _updateFileElem : function() {
         var fileName = extractFileNameFromPath(this.getVal());
 
-        this.elem('file').length && BEMDOM.destruct(this.elem('file'));
+        this._elem('file') && bemDom.destruct(this._elem('file').domElem);
 
-        BEMDOM.append(
+        bemDom.append(
             this.domElem,
             '<span class="' +
-                this.__self.buildClass('file') + '">' +
+                this.__self._buildClassName('file') + '">' +
                 '<span class="' +
-                    this.__self.buildClass('text') + '">' +
+                    this.__self._buildClassName('text') + '">' +
                     escape.html(fileName) +
                 '</span>' +
-                '<span class="' + this.__self.buildClass('clear') + '"/>' +
+                '<span class="' + this.__self._buildClassName('clear') + '"/>' +
             '</span>');
 
-        return this.dropElemCache('file');
+        return this;
     },
 
     _getButton : function() {
-        return this.findBlockInside('button');
+        return this.findChildBlock(Button);
     }
 }, /** @lends attach */{
-    live : function() {
-        this
-            .liveBindTo('clear', 'pointerclick', this.prototype._onClearClick)
-            .liveBindTo('control', 'change', this.prototype._onChange);
+    lazyInit : true,
+    onInit : function() {
+        this._domEvents('clear').on('pointerclick', this.prototype._onClearClick);
+        this._domEvents('control').on('change', this.prototype._onChange);
 
         return this.__base.apply(this, arguments);
     }

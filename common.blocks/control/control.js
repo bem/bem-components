@@ -4,8 +4,8 @@
 
 modules.define(
     'control',
-    ['i-bem__dom', 'dom', 'next-tick'],
-    function(provide, BEMDOM, dom, nextTick) {
+    ['i-bem-dom', 'dom', 'next-tick'],
+    function(provide, bemDom, dom, nextTick) {
 
 /**
  * @exports
@@ -13,7 +13,7 @@ modules.define(
  * @abstract
  * @bem
  */
-provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
+provide(bemDom.declBlock(this.name, /** @lends control.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -25,7 +25,7 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._focused = dom.containsFocus(this.elem('control'));
+                this._focused = dom.containsFocus(this._elem('control').domElem);
                 this._focused?
                     // if control is already in focus, we need to force _onFocus
                     this._onFocus() :
@@ -34,10 +34,10 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
 
                 this._tabIndex = typeof this.params.tabIndex !== 'undefined'?
                     this.params.tabIndex :
-                    this.elem('control').attr('tabindex');
+                    this._elem('control').domElem.attr('tabindex');
 
                 if(this.hasMod('disabled') && this._tabIndex !== 'undefined')
-                    this.elem('control').removeAttr('tabindex');
+                    this._elem('control').domElem.removeAttr('tabindex');
             }
         },
 
@@ -53,16 +53,16 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
 
         'disabled' : {
             'true' : function() {
-                this.elem('control').attr('disabled', true);
+                this._elem('control').domElem.attr('disabled', true);
                 this.delMod('focused');
                 typeof this._tabIndex !== 'undefined' &&
-                    this.elem('control').removeAttr('tabindex');
+                    this._elem('control').domElem.removeAttr('tabindex');
             },
 
             '' : function() {
-                this.elem('control').removeAttr('disabled');
+                this._elem('control').domElem.removeAttr('disabled');
                 typeof this._tabIndex !== 'undefined' &&
-                    this.elem('control').attr('tabindex', this._tabIndex);
+                    this._elem('control').domElem.attr('tabindex', this._tabIndex);
             }
         }
     },
@@ -72,7 +72,7 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
      * @returns {String}
      */
     getName : function() {
-        return this.elem('control').attr('name') || '';
+        return this._elem('control').domElem.attr('name') || '';
     },
 
     /**
@@ -80,7 +80,7 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
      * @returns {String}
      */
     getVal : function() {
-        return this.elem('control').val();
+        return this._elem('control').domElem.val();
     },
 
     _onFocus : function() {
@@ -94,31 +94,32 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
     },
 
     _focus : function() {
-        dom.isFocusable(this.elem('control'))?
-            this.elem('control').focus() :
+        dom.isFocusable(this._elem('control').domElem)?
+            this._elem('control').domElem.focus() :
             this._onFocus(); // issues/1456
     },
 
     _blur : function() {
-        dom.isFocusable(this.elem('control'))?
-            this.elem('control').blur() :
+        dom.isFocusable(this._elem('control').domElem)?
+            this._elem('control').domElem.blur() :
             this._onBlur();
     }
 }, /** @lends control */{
-    live : function() {
-        this
-            .liveBindTo('control', 'focusin', function() {
+    lazyInit : true,
+    onInit : function() {
+        this._domEvents('control')
+            .on('focusin', function() {
                 this._focused || this._onFocus(); // to prevent double call of _onFocus in case of init by focus
             })
-            .liveBindTo('control', 'focusout', this.prototype._onBlur);
+            .on('focusout', this.prototype._onBlur);
 
         var focused = dom.getFocused();
-        if(focused.hasClass(this.buildClass('control'))) {
-            var _this = this; // TODO: https://github.com/bem/bem-core/issues/425
+        if(focused.hasClass(this._buildClassName('control'))) {
+            var _this = this;
             nextTick(function() {
                 if(focused[0] === dom.getFocused()[0]) {
-                    var block = focused.closest(_this.buildSelector());
-                    block && block.bem(_this.getName());
+                    var block = focused.closest(_this._buildSelector());
+                    block && block.bem(_this);
                 }
             });
         }

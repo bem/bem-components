@@ -1,13 +1,13 @@
-modules.define('test', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('test', ['i-bem-dom'], function(provide, bemDom) {
 
-provide(BEMDOM.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var popup = this.findBlockInside('popup'),
-                    destructor = this.findBlockOn('destructor', 'link'),
+                var popup = this.findChildBlock('popup'),
+                    destructor = this.findMixedBlock('destructor', 'link'),
                     position = this.params.position,
-                    link = this.findBlockInside('link');
+                    link = this.findChildBlock('link');
 
                 if(position) {
                     popup.setPosition.apply(popup, position);
@@ -20,7 +20,7 @@ provide(BEMDOM.decl(this.name, {
                 });
 
                 destructor && destructor.on('click', function() {
-                    BEMDOM.destruct(this.domElem);
+                    bemDom.destruct(this.domElem);
                 }, this);
             }
         }

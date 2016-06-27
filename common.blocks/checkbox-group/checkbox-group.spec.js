@@ -1,14 +1,14 @@
 modules.define(
     'spec',
-    ['checkbox-group', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
-    function(provide, CheckboxGroup, BEMDOM, $, dom, BEMHTML, sinon) {
+    ['checkbox-group', 'i-bem-dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
+    function(provide, CheckboxGroup, bemDom, $, dom, BEMHTML, sinon) {
 
 describe('checkbox-group', function() {
     var checkboxGroup;
 
     function buildCheckboxGroup(bemjson) {
-        return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))
-            .bem('checkbox-group');
+        return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body'))
+            .bem(CheckboxGroup);
     }
 
     beforeEach(function() {
@@ -25,7 +25,7 @@ describe('checkbox-group', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(checkboxGroup.domElem);
+        bemDom.destruct(checkboxGroup.domElem);
     });
 
     describe('value', function() {
@@ -34,7 +34,7 @@ describe('checkbox-group', function() {
         });
 
         it('should have correct initial empty value', function() {
-            BEMDOM.destruct(checkboxGroup.domElem);
+            bemDom.destruct(checkboxGroup.domElem);
 
             checkboxGroup = buildCheckboxGroup({
                 block : 'checkbox-group',
@@ -49,11 +49,10 @@ describe('checkbox-group', function() {
             var checkboxes = checkboxGroup.getCheckboxes(),
                 spy = sinon.spy();
 
-            checkboxGroup
-                .on('change', spy)
-                .setVal(['val1']);
-            checkboxes[0].hasMod('checked').should.be.true;
-            checkboxes[1].hasMod('checked').should.be.false;
+            checkboxGroup._events().on('change', spy);
+            checkboxGroup.setVal(['val1']);
+            checkboxes.get(0).hasMod('checked').should.be.true;
+            checkboxes.get(1).hasMod('checked').should.be.false;
             checkboxGroup.getVal().should.be.eql(['val1']);
             spy.should.have.been.calledOnce;
         });
@@ -67,15 +66,14 @@ describe('checkbox-group', function() {
             var checkboxes = checkboxGroup.getCheckboxes();
 
             checkboxGroup.setVal(['val44']);
-            checkboxes[1].hasMod('checked').should.be.true;
+            checkboxes.get(1).hasMod('checked').should.be.true;
         });
 
         it('should not trigger "change" when wrong value is set', function() {
             var spy = sinon.spy();
 
-            checkboxGroup
-                .on('change', spy)
-                .setVal(['val44']);
+            checkboxGroup._events().on('change', spy);
+            checkboxGroup.setVal(['val44']);
             spy.should.not.have.been.called;
         });
     });
@@ -83,13 +81,13 @@ describe('checkbox-group', function() {
     describe('focus/blur', function() {
         it('should focus first option', function() {
             checkboxGroup.setMod('focused');
-            checkboxGroup.getCheckboxes()[0].hasMod('focused').should.be.true;
+            checkboxGroup.getCheckboxes().get(0).hasMod('focused').should.be.true;
         });
 
         it('should remove "focused" mod from currently focused option', function() {
-            checkboxGroup.getCheckboxes()[1].setMod('focused');
+            checkboxGroup.getCheckboxes().get(1).setMod('focused');
             checkboxGroup.delMod('focused');
-            checkboxGroup.getCheckboxes()[1].hasMod('focused').should.be.false;
+            checkboxGroup.getCheckboxes().get(1).hasMod('focused').should.be.false;
         });
     });
 

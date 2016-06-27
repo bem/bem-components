@@ -2,7 +2,7 @@
  * @module textarea
  */
 
-modules.define('textarea', ['i-bem__dom', 'input'], function(provide, BEMDOM, Input) {
+modules.define('textarea', ['i-bem-dom', 'input'], function(provide, bemDom, Input) {
 
 /**
  * @exports
@@ -10,6 +10,6 @@ modules.define('textarea', ['i-bem__dom', 'input'], function(provide, BEMDOM, In
  * @augments input
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Input }));
+provide(bemDom.declBlock(this.name, Input));
 
 });

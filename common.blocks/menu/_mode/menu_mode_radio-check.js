@@ -9,14 +9,14 @@ modules.define('menu', function(provide, Menu) {
  * @class menu
  * @bem
  */
-provide(Menu.decl({ modName : 'mode', modVal : 'radio-check' }, /** @lends menu.prototype */{
+provide(Menu.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends menu.prototype */{
     /**
      * @override
      */
     _getVal : function() {
         var items = this.getItems(),
             i = 0, item;
-        while(item = items[i++])
+        while(item = items.get(i++))
             if(item.hasMod('checked'))
                 return item.getVal();
     },
@@ -59,7 +59,7 @@ provide(Menu.decl({ modName : 'mode', modVal : 'radio-check' }, /** @lends menu.
                 item.delMod('checked');
         });
         this._isValValid = false;
-        this.emit('change');
+        this._emit('change');
     }
 }));
 

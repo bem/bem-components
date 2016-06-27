@@ -4,8 +4,8 @@
 
 modules.define(
     'popup',
-    ['i-bem__dom', 'objects'],
-    function(provide, BEMDOM, objects, Popup) {
+    ['i-bem-dom', 'objects'],
+    function(provide, bemDom, objects, Popup) {
 
 var VIEWPORT_ACCURACY_FACTOR = 0.99,
     DEFAULT_DIRECTIONS = [
@@ -15,7 +15,7 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
         'left-top', 'left-center', 'left-bottom'
     ],
 
-    win = BEMDOM.win,
+    win = bemDom.win,
     undef;
 
 /**
@@ -28,7 +28,7 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
  * @param {Number} [viewportOffset=0] offset from the viewport (window)
  * @param {Array[String]} [directions] allowed directions
  */
-provide(Popup.decl({ modName : 'target' }, /** @lends popup.prototype */{
+provide(Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -46,14 +46,13 @@ provide(Popup.decl({ modName : 'target' }, /** @lends popup.prototype */{
         'visible' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
-                this
-                    .bindToWin('scroll resize', this._onWinScrollAndResize)
-                    .redraw();
+                this._domEvents(win).on('scroll resize', this._onWinScrollAndResize);
+                this.redraw();
             },
 
             '' : function() {
                 this.__base.apply(this, arguments);
-                this.unbindFromWin('scroll resize', this._onWinScrollAndResize);
+                this._domEvents(win).un('scroll resize', this._onWinScrollAndResize);
             }
         }
     },
@@ -290,7 +289,7 @@ provide(Popup.decl({ modName : 'target' }, /** @lends popup.prototype */{
         this.redraw();
     },
 
-    getDefaultParams : function() {
+    _getDefaultParams : function() {
         return objects.extend(
             this.__base.apply(this, arguments),
             {

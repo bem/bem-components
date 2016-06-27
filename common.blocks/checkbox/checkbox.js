@@ -2,7 +2,7 @@
  * @module checkbox
  */
 
-modules.define('checkbox', ['i-bem__dom', 'control'], function(provide, BEMDOM, Control) {
+modules.define('checkbox', ['i-bem-dom', 'control'], function(provide, bemDom, Control) {
 
 /**
  * @exports
@@ -10,16 +10,16 @@ modules.define('checkbox', ['i-bem__dom', 'control'], function(provide, BEMDOM, 
  * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends checkbox.prototype */{
+provide(bemDom.declBlock(this.name, Control, /** @lends checkbox.prototype */{
     onSetMod : {
         'checked' : {
             'true' : function() {
-                this.elem('control')
+                this._elem('control').domElem
                     .attr('checked', true)
                     .prop('checked', true);
             },
             '' : function() {
-                this.elem('control')
+                this._elem('control').domElem
                     .removeAttr('checked')
                     .prop('checked', false);
             }
@@ -27,11 +27,12 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends check
     },
 
     _onChange : function() {
-        this.setMod('checked', this.elem('control').prop('checked'));
+        this.setMod('checked', this._elem('control').domElem.prop('checked'));
     }
 }, /** @lends checkbox */{
-    live : function() {
-        this.liveBindTo('control', 'change', this.prototype._onChange);
+    lazyInit : true,
+    onInit : function() {
+        this._domEvents('control').on('change', this.prototype._onChange);
         return this.__base.apply(this, arguments);
     }
 }));

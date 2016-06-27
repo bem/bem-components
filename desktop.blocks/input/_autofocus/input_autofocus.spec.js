@@ -1,24 +1,24 @@
 modules.define(
     'spec',
-    ['input', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, Input, BEMDOM, $, BEMHTML) {
+    ['input', 'i-bem-dom', 'jquery', 'BEMHTML'],
+    function(provide, Input, bemDom, $, BEMHTML) {
 
 describe('input_autofocus', function() {
     var input;
 
     beforeEach(function() {
-        input = BEMDOM.init(
+        input = bemDom.init(
                 $(BEMHTML.apply({
                     block : 'input',
                     mods : { autofocus : true },
                     val : 'bla'
                 })))
             .appendTo('body')
-            .bem('input');
+            .bem(Input);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(input.domElem);
+        bemDom.destruct(input.domElem);
     });
 
     it('should set "focused" mod at first time when text key pressed', function() {

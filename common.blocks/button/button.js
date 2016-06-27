@@ -4,8 +4,8 @@
 
 modules.define(
     'button',
-    ['i-bem__dom', 'control', 'jquery', 'dom', 'functions', 'keyboard__codes'],
-    function(provide, BEMDOM, Control, $, dom, functions, keyCodes) {
+    ['i-bem-dom', 'control', 'jquery', 'dom', 'functions', 'keyboard__codes'],
+    function(provide, bemDom, Control, $, dom, functions, keyCodes) {
 
 /**
  * @exports
@@ -13,7 +13,7 @@ modules.define(
  * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends button.prototype */{
+provide(bemDom.declBlock(this.name, Control, /** @lends button.prototype */{
     beforeSetMod : {
         'pressed' : {
             'true' : function() {
@@ -67,7 +67,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
      * @returns {String}
      */
     getText : function() {
-        return this.elem('text').text();
+        return this._elem('text').domElem.text();
     },
 
     /**
@@ -76,7 +76,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
      * @returns {button} this
      */
     setText : function(text) {
-        this.elem('text').text(text || '');
+        this._elem('text').domElem.text(text || '');
         return this;
     },
 
@@ -84,41 +84,39 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
         if(this._isPointerPressInProgress) return;
 
         this.__base.apply(this, arguments);
-        this.bindTo('control', 'keydown', this._onKeyDown);
+        this._domEvents('control').on('keydown', this._onKeyDown);
     },
 
     _onBlur : function() {
-        this
-            .unbindFrom('control', 'keydown', this._onKeyDown)
-            .__base.apply(this, arguments);
+        this._domEvents('control').un('keydown', this._onKeyDown);
+        this.__base.apply(this, arguments);
     },
 
     _onMouseDown : function(e) {
         e.preventDefault(); // NOTE: prevents button from being blurred at least in FF and Safari
-        this.unbindFrom('mousedown', this._onMouseDown);
+        this._domEvents().un('mousedown', this._onMouseDown);
     },
 
     _onPointerPress : function() {
-        this.bindTo('mousedown', this._onMouseDown);
+        this._domEvents().on('mousedown', this._onMouseDown);
         if(!this.hasMod('disabled')) {
             this._isPointerPressInProgress = true;
-            this
-                .bindToDoc('pointerrelease', this._onPointerRelease)
-                .setMod('pressed');
+            this._domEvents(bemDom.doc).on('pointerrelease', this._onPointerRelease);
+            this.setMod('pressed');
         }
     },
 
     _onPointerRelease : function(e) {
         this._isPointerPressInProgress = false;
-        this.unbindFromDoc('pointerrelease', this._onPointerRelease);
+        this._domEvents(bemDom.doc).un('pointerrelease', this._onPointerRelease);
 
-        if(e.originalEvent.type === 'pointerup' && dom.contains(this.elem('control'), $(e.target))) {
+        if(e.originalEvent.type === 'pointerup' && dom.contains(this.findMixedElem('control').domElem, $(e.target))) {
             this._focusedByPointer = true;
             this._focus();
             this._focusedByPointer = false;
             this
                 ._updateChecked()
-                .emit('click');
+                ._emit('click');
         } else {
             this._blur();
         }
@@ -131,23 +129,25 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
 
         var keyCode = e.keyCode;
         if(keyCode === keyCodes.SPACE || keyCode === keyCodes.ENTER) {
-            this
-                .unbindFrom('control', 'keydown', this._onKeyDown)
-                .bindTo('control', 'keyup', this._onKeyUp)
-                ._updateChecked()
+            this._domEvents('control')
+                .un('keydown', this._onKeyDown)
+                .on('keyup', this._onKeyUp);
+
+            this._updateChecked()
                 .setMod('pressed');
         }
     },
 
     _onKeyUp : function(e) {
-        this
-            .unbindFrom('control', 'keyup', this._onKeyUp)
-            .bindTo('control', 'keydown', this._onKeyDown)
-            .delMod('pressed');
+        this._domEvents('control')
+            .un('keyup', this._onKeyUp)
+            .on('keydown', this._onKeyDown);
+
+        this.delMod('pressed');
 
         e.keyCode === keyCodes.SPACE && this._doAction();
 
-        this.emit('click');
+        this._emit('click');
     },
 
     _updateChecked : function() {
@@ -161,8 +161,9 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
 
     _doAction : functions.noop
 }, /** @lends button */{
-    live : function() {
-        this.liveBindTo('control', 'pointerpress', this.prototype._onPointerPress);
+    lazyInit : true,
+    onInit : function() {
+        this._domEvents('control').on('pointerpress', this.prototype._onPointerPress);
         return this.__base.apply(this, arguments);
     }
 }));

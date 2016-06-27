@@ -9,7 +9,7 @@ modules.define('menu', function(provide, Menu) {
  * @class menu
  * @bem
  */
-provide(Menu.decl({ modName : 'mode', modVal : 'radio' }, /** @lends menu.prototype */{
+provide(Menu.declMod({ modName : 'mode', modVal : 'radio' }, /** @lends menu.prototype */{
     /**
      * @override
      */
@@ -18,7 +18,7 @@ provide(Menu.decl({ modName : 'mode', modVal : 'radio' }, /** @lends menu.protot
             i = 0,
             item;
 
-        while(item = items[i++])
+        while(item = items.get(i++))
             if(item.hasMod('checked'))
                 return item.getVal();
     },
@@ -61,7 +61,7 @@ provide(Menu.decl({ modName : 'mode', modVal : 'radio' }, /** @lends menu.protot
                 item.delMod('checked');
             }
         }, this);
-        isChanged && this.emit('change');
+        isChanged && this._emit('change');
     }
 }));
 

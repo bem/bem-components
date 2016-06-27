@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['i-bem__dom', 'control', 'jquery', 'dom', 'objects', 'next-tick', 'BEMHTML', 'chai'],
-    function(provide, BEMDOM, Control, $, dom, objects, nextTick, BEMHTML, chai) {
+    ['i-bem-dom', 'control', 'jquery', 'dom', 'objects', 'next-tick', 'BEMHTML', 'chai'],
+    function(provide, bemDom, Control, $, dom, objects, nextTick, BEMHTML, chai) {
 
 var expect = chai.expect;
 
@@ -20,11 +20,11 @@ describe('control', function() {
 
     beforeEach(function() {
         control = buildControl(bemjson);
-        controlElem = control.elem('control');
+        controlElem = control._elem('control').domElem;
     });
 
     afterEach(function() {
-        BEMDOM.destruct(control.domElem);
+        bemDom.destruct(controlElem);
     });
 
     describe('name', function() {
@@ -34,9 +34,8 @@ describe('control', function() {
 
         it('getName should return an empty string for non inputs', function() {
             // NOTE: we're replacing `<input>` tag with `<span>`
-            var controlElem = control.findElem('control');
-            controlElem.replaceWith('<span class="' + controlElem[0].className + '" tabindex="0">Blah</span>');
-            control.dropElemCache();
+            var controlElem = control.findChildElem('control').domElem;
+            bemDom.replace(controlElem, '<span class="' + controlElem[0].className + '" tabindex="0">Blah</span>');
 
             control.getName().should.be.equal('');
         });
@@ -72,12 +71,12 @@ describe('control', function() {
 
         it('should set focus state if DOM-focus has been set before init', function() {
             var domElem = $(BEMHTML.apply(bemjson)).appendTo('body');
-            domElem.find('.' + Control.buildClass('control')).focus();
+            domElem.find('.' + Control._buildClassName('control')).focus();
 
-            var control = BEMDOM.init(domElem).bem('control');
+            var control = bemDom.init(domElem).bem(Control);
             control.hasMod('focused').should.be.true;
 
-            BEMDOM.destruct(control.domElem);
+            bemDom.destruct(control.domElem);
         });
 
         it('should have DOM-focus if initialized with focus state', function() {
@@ -85,8 +84,8 @@ describe('control', function() {
             bemJson.mods = { focused : true };
 
             var control = buildControl(bemJson);
-            dom.containsFocus(control.elem('control')).should.be.true;
-            BEMDOM.destruct(control.domElem);
+            dom.containsFocus(control._elem('control').domElem).should.be.true;
+            bemDom.destruct(control.domElem);
         });
     });
 
@@ -123,7 +122,7 @@ describe('control', function() {
 provide();
 
 function buildControl(bemjson) {
-    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body')).bem('control');
+    return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body')).bem(Control);
 }
 
 });

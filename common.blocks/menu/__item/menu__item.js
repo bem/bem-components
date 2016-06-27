@@ -1,17 +1,17 @@
 /**
- * @module menu-item
+ * @module menu__item
  */
 
-modules.define('menu-item', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('menu__item', ['i-bem-dom'], function(provide, bemDom) {
 
 /**
  * @exports
- * @class menu-item
+ * @class menu__item
  * @bem
  *
  * @param val Value of item
  */
-provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
+provide(bemDom.declElem('menu', 'item', /** @lends menu__item.prototype */{
     beforeSetMod : {
         'hovered' : {
             'true' : function() {
@@ -23,7 +23,7 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this.bindTo('pointerleave', this._onPointerLeave);
+                this._domEvents().on('pointerleave', this._onPointerLeave);
             }
         },
 
@@ -80,14 +80,16 @@ provide(BEMDOM.decl(this.name, /** @lends menu-item.prototype */{
     },
 
     _onPointerClick : function() {
-        this.hasMod('disabled') || this.emit('click', { source : 'pointer' });
+        this.hasMod('disabled') || this._emit('click', { source : 'pointer' });
     }
-}, /** @lends menu-item */{
-    live : function() {
+}, /** @lends menu__item */{
+    lazyInit : true,
+    onInit : function() {
         var ptp = this.prototype;
-        this
-            .liveBindTo('pointerover', ptp._onPointerOver)
-            .liveBindTo('pointerclick', ptp._onPointerClick);
+
+        this._domEvents()
+            .on('pointerover', ptp._onPointerOver)
+            .on('pointerclick', ptp._onPointerClick);
     }
 }));
 

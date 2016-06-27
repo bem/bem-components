@@ -4,8 +4,8 @@
 
 modules.define(
     'menu',
-    ['i-bem__dom', 'control', 'keyboard__codes', 'menu-item'],
-    function(provide, BEMDOM, Control, keyCodes) {
+    ['i-bem-dom', 'control', 'keyboard__codes', 'menu__item'],
+    function(provide, bemDom, Control, keyCodes, MenuItem) {
 
 /** @const Number */
 var TIMEOUT_KEYBOARD_SEARCH = 1500;
@@ -16,7 +16,7 @@ var TIMEOUT_KEYBOARD_SEARCH = 1500;
  * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.prototype */{
+provide(bemDom.declBlock(this.name, Control, /** @lends menu.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -36,9 +36,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
         'disabled' : {
             '*' : function(modName, modVal) {
                 this.__base.apply(this, arguments);
-                this.getItems().forEach(function(menuItem){
-                    menuItem.setMod(modName, modVal);
-                });
+                this.getItems().setMod(modName, modVal);
             },
             'true' : function() {
                 this.__base.apply(this, arguments);
@@ -53,10 +51,10 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
 
     /**
      * Returns items
-     * @returns {menu-item[]}
+     * @returns {menu__item[]}
      */
     getItems : function() {
-        return this._items || (this._items = this.findBlocksInside('menu-item'));
+        return this._items || (this._items = this.findChildElems('item'));
     },
 
     /**
@@ -65,7 +63,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
      * @returns {menu} this
      */
     setContent : function(content) {
-        BEMDOM.update(this.domElem, content);
+        bemDom.update(this.domElem, content);
         this._hoveredItem = null;
         this._items = null;
         return this;
@@ -74,7 +72,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
     /**
      * Search menu item by keyboard event
      * @param {jQuery.Event} e
-     * @returns {menu-item}
+     * @returns {menu__item}
      */
     searchItemByKeyboardEvent : function(e) {
         var currentTime = +new Date(),
@@ -100,21 +98,21 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
         lastTyping.time = currentTime;
 
         // If key is pressed again, then continue to search to next menu item
-        if(isSameChar && items[index].getText().search(lastTyping.char) === 0) {
-            index = index >= items.length - 1? 0 : index + 1;
+        if(isSameChar && items.get(index).getText().search(lastTyping.char) === 0) {
+            index = index >= items.size() - 1? 0 : index + 1;
         }
 
-        // 2 passes: from index to items.length and from 0 to index.
-        var i = index, len = items.length;
+        // 2 passes: from index to items.size() and from 0 to index.
+        var i = index, len = items.size();
         while(i < len) {
-            if(this._doesItemMatchText(items[i], lastTyping.text)) {
+            if(this._doesItemMatchText(items.get(i), lastTyping.text)) {
                 lastTyping.index = i;
-                return items[i];
+                return items.get(i);
             }
 
             i++;
 
-            if(i === items.length) {
+            if(i === items.size()) {
                 i = 0;
                 len = index;
             }
@@ -126,17 +124,18 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
     /** @override **/
     _onFocus : function() {
         this.__base.apply(this, arguments);
-        this
-            .bindToDoc('keydown', this._onKeyDown) // NOTE: should be called after __base
-            .bindToDoc('keypress', this._onKeyPress);
+        this._domEvents(bemDom.doc) // NOTE: should be called after __base
+            .on('keydown', this._onKeyDown)
+            .on('keypress', this._onKeyPress);
     },
 
     /** @override **/
     _onBlur : function() {
-        this
-            .unbindFromDoc('keydown', this._onKeyDown)
-            .unbindFromDoc('keypress', this._onKeyPress)
-            .__base.apply(this, arguments);
+        this._domEvents(bemDom.doc)
+            .un('keydown', this._onKeyDown)
+            .un('keypress', this._onKeyPress);
+
+        this.__base.apply(this, arguments);
         this._hoveredItem && this._hoveredItem.delMod('hovered');
     },
 
@@ -153,7 +152,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
             this._hoveredItem = null;
             this.domElem.removeAttr('aria-activedescendant');
         }
-        this.emit('item-hover', { item : item });
+        this._emit('item-hover', { item : item });
     },
 
     /**
@@ -181,7 +180,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
      * @private
      */
     _onItemClick : function(item, data) {
-        this.emit('item-click', { item : item, source : data.source });
+        this._emit('item-click', { item : item, source : data.source });
     },
 
     /**
@@ -197,8 +196,8 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
 
             var dir = keyCode - 39, // using the features of key codes for "up"/"down" ;-)
                 items = this.getItems(),
-                len = items.length,
-                hoveredIdx = items.indexOf(this._hoveredItem),
+                len = items.size(),
+                hoveredIdx = items.toArray().indexOf(this._hoveredItem),
                 nextIdx = hoveredIdx,
                 i = 0;
 
@@ -206,11 +205,11 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
                 nextIdx += dir;
                 nextIdx = nextIdx < 0? len - 1 : nextIdx >= len? 0 : nextIdx;
                 if(++i === len) return; // if we have no next item to hover
-            } while(items[nextIdx].hasMod('disabled'));
+            } while(items.get(nextIdx).hasMod('disabled'));
 
             this._lastTyping.index = nextIdx;
 
-            items[nextIdx].setMod('hovered');
+            items.get(nextIdx).setMod('hovered');
         }
     },
 
@@ -233,12 +232,13 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
             item.getText().toLowerCase().search(text) === 0;
     }
 }, /** @lends menu */{
-    live : function() {
-        this
-            .liveInitOnBlockInsideEvent({ modName : 'hovered', modVal : '*' }, 'menu-item', function(e) {
+    lazyInit : true,
+    onInit : function() {
+        this._events(MenuItem)
+            .on({ modName : 'hovered', modVal : '*' }, function(e) {
                 this._onItemHover(e.target);
             })
-            .liveInitOnBlockInsideEvent('click', 'menu-item', function(e, data) {
+            .on('click', function(e, data) {
                 this._onItemClick(e.target, data);
             });
 

@@ -9,7 +9,7 @@ modules.define('menu', function(provide, Menu) {
  * @class menu
  * @bem
  */
-provide(Menu.decl({ modName : 'mode', modVal : 'check' }, /** @lends menu.prototype */{
+provide(Menu.declMod({ modName : 'mode', modVal : 'check' }, /** @lends menu.prototype */{
     /**
      * @override
      */
@@ -58,7 +58,7 @@ provide(Menu.decl({ modName : 'mode', modVal : 'check' }, /** @lends menu.protot
             item === clickedItem && item.toggleMod('checked');
         });
         this._isValValid = false;
-        this.emit('change');
+        this._emit('change');
     }
 }));
 

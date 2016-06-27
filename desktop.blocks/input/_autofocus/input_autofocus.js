@@ -1,20 +1,18 @@
-modules.define('input', ['dom'], function(provide, dom, Input) {
+modules.define('input', ['dom', 'i-bem-dom'], function(provide, dom, bemDom, Input) {
 
-provide(Input.decl({ modName : 'autofocus', modVal : true }, {
+provide(Input.declMod({ modName : 'autofocus', modVal : true }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                this.bindToDoc('keydown', this._onDocKeyDown);
+                this._domEvents(bemDom.doc).on('keydown', this._onDocKeyDown);
             }
         },
 
         'focused' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
-                this
-                    .unbindFromDoc('keydown')
-                    .delMod('autofocus');
+                this.delMod('autofocus');
             }
         }
     },
@@ -25,7 +23,7 @@ provide(Input.decl({ modName : 'autofocus', modVal : true }, {
         if(isTextKey(e) && !dom.isEditable(dom.getFocused())) {
             // ставим курсор в конец строки и добавляем пробел
             // пробел нужен для того чтобы мы начинали набирать после автофокуса новое слово
-            var inputDomNode = this.elem('control')[0],
+            var inputDomNode = this._elem('control').domElem[0],
                 val = this.getVal();
 
             if(val.length && val.substr(val.length - 1, 1) !== ' ') {

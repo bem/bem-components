@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['select', 'i-bem__dom', 'jquery', 'sinon', 'chai', 'keyboard__codes', 'next-tick', 'BEMHTML'],
-    function(provide, Select, BEMDOM, $, sinon, chai, keyCodes, nextTick, BEMHTML) {
+    ['select', 'i-bem-dom', 'jquery', 'sinon', 'chai', 'button', 'popup', 'menu', 'keyboard__codes', 'next-tick', 'BEMHTML'],
+    function(provide, Select, bemDom, $, sinon, chai, Button, Popup, Menu, keyCodes, nextTick, BEMHTML) {
 
 describe('select', function() {
     var select, button, popup, menu;
@@ -16,13 +16,13 @@ describe('select', function() {
                 { val : 2, text : 'second' }
             ]
         });
-        button = select.findBlockInside('button');
-        popup = select.findBlockInside('popup');
-        menu = select.findBlockInside('menu');
+        button = select.findChildBlock(Button);
+        popup = select.findChildBlock(Popup);
+        menu = select.findChildBlock(Menu);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(select.domElem);
+        bemDom.destruct(select.domElem);
     });
 
     describe('show/hide', function() {
@@ -52,11 +52,11 @@ describe('select', function() {
 
         it('should hover first item on open', function() {
             select.setMod('opened');
-            menu.getItems()[0].hasMod('hovered').should.be.true;
+            menu.getItems().get(0).hasMod('hovered').should.be.true;
         });
 
         it('should hover first checked item on open', function() {
-            var item = menu.getItems()[1].setMod('checked');
+            var item = menu.getItems().get(1).setMod('checked');
             select.setMod('opened');
             item.hasMod('hovered').should.be.true;
         });
@@ -162,7 +162,7 @@ describe('select', function() {
 
     describe('keyboard', function() {
         it('should be opened on "down" press if focused', function() {
-            var buttonElem = select.elem('button');
+            var buttonElem = select._elem('button').domElem;
             pressDownKey(buttonElem);
             select.hasMod('opened').should.be.false;
             select.setMod('focused');
@@ -171,7 +171,7 @@ describe('select', function() {
         });
 
         it('should be opened on "up" press if focused', function() {
-            var buttonElem = select.elem('button');
+            var buttonElem = select._elem('button').domElem;
             pressUpKey(buttonElem);
             select.hasMod('opened').should.be.false;
             select.setMod('focused');
@@ -181,7 +181,7 @@ describe('select', function() {
 
         it('should be closed on "esc" press', function() {
             select.setMod('opened');
-            pressEscKey(select.elem('button'));
+            pressEscKey(select._elem('button').domElem);
             select.hasMod('opened').should.be.false;
         });
     });
@@ -190,8 +190,8 @@ describe('select', function() {
         it('should emit "change" on menu "change"', function() {
             var spy = sinon.spy();
 
-            select.on('change', spy);
-            menu.emit('change');
+            select._events().on('change', spy);
+            menu._emit('change');
 
             spy.should.have.been.called;
         });
@@ -205,11 +205,11 @@ describe('select', function() {
 
     describe('a11y', function() {
         it('should have proper aria-attributes', function() {
-            var buttonElem = select.elem('button');
+            var buttonElem = select._elem('button').domElem;
 
             function getHoveredOptionId() {
-                return menu.findBlockInside({
-                    block : 'menu-item',
+                return menu.findChildElem({
+                    elem : 'item',
                     modName : 'hovered',
                     modVal : true
                 }).domElem.attr('id');
@@ -249,8 +249,8 @@ function pressEscKey(elem) {
 }
 
 function buildSelect(bemjson) {
-    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))
-        .bem('select');
+    return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body'))
+        .bem(Select);
 }
 
 });

@@ -2,20 +2,21 @@
  * @module input
  */
 
-modules.define('input', function(provide, Input) {
+modules.define('input', ['i-bem-dom'], function(provide, bemDom, Input) {
 
 /**
  * @exports
  * @class input
  * @bem
  */
-provide(Input.decl(/** @lends input.prototype */{
+provide(bemDom.declBlock(Input, /** @lends input.prototype */{
     _onInputChanged : function() {
-        this.setVal(this.elem('control').val());
+        this.setVal(this._elem('control').domElem.val());
     }
 }, /** @lends input */{
-    live : function() {
-        this.liveBindTo('control', 'input', this.prototype._onInputChanged);
+    lazyInit : true,
+    onInit : function() {
+        this._domEvents('control').on('input', this.prototype._onInputChanged);
         return this.__base.apply(this, arguments);
     }
 }));

@@ -33,7 +33,7 @@ module.exports = function(bh) {
                 iterateItems = function(content) {
                     var i = 0, itemOrGroup;
                     while(itemOrGroup = content[i++]) {
-                        if(itemOrGroup.block === 'menu-item') {
+                        if(itemOrGroup.elem === 'item') {
                             firstItem || (firstItem = itemOrGroup);
                             if(containsVal(itemOrGroup.val)) {
                                 (itemOrGroup.mods = itemOrGroup.mods || {}).checked = true;

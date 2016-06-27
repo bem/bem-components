@@ -17,23 +17,23 @@
                     val : 2,
                     content : [
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             val : 1,
                             content : 'item 1'
                         },
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             val : 2,
                             content : 'item 2'
                         },
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             mods : { disabled : true },
                             val : 3,
                             content : 'item 3'
                         },
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             val : 4,
                             content : 'item 4'
                         }
@@ -58,22 +58,22 @@
                     val : [2, 4],
                     content : [
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             val : 1,
                             content : 'item 1'
                         },
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             val : 2,
                             content : 'item 2'
                         },
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             val : 3,
                             content : 'item 3'
                         },
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             val : 4,
                             content : 'item 4'
                         }
@@ -88,7 +88,7 @@
                     cls : 'islands-link',
                     content : [
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             mods : { type : 'link' },
                             content : {
                                 block : 'link',
@@ -97,7 +97,7 @@
                             }
                         },
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             mods : { type : 'link', disabled : true },
                             content : {
                                 block : 'link',
@@ -106,7 +106,7 @@
                             }
                         },
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             mods : { type : 'link' },
                             content : {
                                 block : 'link',
@@ -125,14 +125,14 @@
                     cls : 'islands-icon',
                     content : [
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             content : [
                                 { block : 'icon', mods : { social : 'twitter' } },
                                 'Twitter'
                             ]
                         },
                         {
-                            block : 'menu-item',
+                            elem : 'item',
                             content : [
                                 { block : 'icon', mods : { social : 'vk' } },
                                 'VK'
@@ -143,14 +143,14 @@
                             title : 'Group 2',
                             content : [
                                 {
-                                    block : 'menu-item',
+                                    elem : 'item',
                                     content : [
                                         { elem : 'icon', elemMods : { social : 'twitter' } },
                                         'Twitter'
                                     ]
                                 },
                                 {
-                                    block : 'menu-item',
+                                    elem : 'item',
                                     content : [
                                         { elem : 'icon', elemMods : { social : 'vk' } },
                                         'VK'

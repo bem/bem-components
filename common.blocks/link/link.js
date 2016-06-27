@@ -4,8 +4,8 @@
 
 modules.define(
     'link',
-    ['i-bem__dom', 'control', 'events'],
-    function(provide, BEMDOM, Control, events) {
+    ['i-bem-dom', 'control', 'events'],
+    function(provide, bemDom, Control, events) {
 
 /**
  * @exports
@@ -13,7 +13,7 @@ modules.define(
  * @augments control
  * @bem
  */
-provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends link.prototype */{
+provide(bemDom.declBlock(this.name, Control, /** @lends link.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -64,13 +64,14 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends link.
             e.preventDefault();
         } else {
             var event = new events.Event('click');
-            this.emit(event);
+            this._emit(event);
             event.isDefaultPrevented() && e.preventDefault();
         }
     }
 }, /** @lends link */{
-    live : function() {
-        this.liveBindTo('control', 'pointerclick', this.prototype._onPointerClick);
+    lazyInit : true,
+    onInit : function() {
+        this._domEvents('control').on('pointerclick', this.prototype._onPointerClick);
         return this.__base.apply(this, arguments);
     }
 }));

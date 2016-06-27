@@ -1,5 +1,5 @@
 [{
-    mustDeps : { block : 'i-bem', elems : ['dom'] },
+    mustDeps : { block : 'i-bem-dom' },
     shouldDeps : [
         {
             elems : ['box', 'control', 'text'],

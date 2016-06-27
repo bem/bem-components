@@ -1,11 +1,11 @@
 modules.define(
     'spec',
-    ['menu-item', 'i-bem__dom', 'jquery', 'sinon', 'chai', 'BEMHTML'],
-    function(provide, MenuItem, BEMDOM, $, sinon, chai, BEMHTML) {
+    ['menu__item', 'i-bem-dom', 'jquery', 'sinon', 'chai', 'BEMHTML'],
+    function(provide, MenuItem, bemDom, $, sinon, chai, BEMHTML) {
 
 var expect = chai.expect;
 
-describe('menu-item', function() {
+describe('menu__item', function() {
     var menuItem;
 
     beforeEach(function() {
@@ -13,7 +13,7 @@ describe('menu-item', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(menuItem.domElem);
+        bemDom.destruct(menuItem.domElem);
     });
 
     describe('hovered', function() {
@@ -43,9 +43,8 @@ describe('menu-item', function() {
         it('emit event on pointer click if it is not disabled', function() {
             var spy = sinon.spy();
 
-            menuItem
-                .on('click', spy)
-                .domElem.trigger('pointerclick');
+            menuItem._events().on('click', spy);
+            menuItem.domElem.trigger('pointerclick');
 
             spy.should.have.been.called;
 
@@ -89,13 +88,14 @@ describe('menu-item', function() {
 });
 
 function buildMenuItem(val) {
-    return BEMDOM
+    return bemDom
         .init($(BEMHTML.apply({
-            block : 'menu-item',
+            block : 'menu',
+            elem : 'item',
             val : val,
             content : 'item'
         })).appendTo('body'))
-        .bem('menu-item');
+        .bem(MenuItem);
 }
 
 provide();

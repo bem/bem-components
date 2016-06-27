@@ -1,0 +1,3 @@
+({
+    shouldDeps : 'z-index-group'
+})

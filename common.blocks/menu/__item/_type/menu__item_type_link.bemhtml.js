@@ -1,4 +1,4 @@
-block('menu-item').mod('type', 'link').mod('disabled', true).match(function() {
+block('menu').elem('item').elemMod('type', 'link').elemMod('disabled', true).match(function() {
     return !this._menuItemDisabled;
 }).def()(function() {
     return applyNext({ _menuItemDisabled : true });

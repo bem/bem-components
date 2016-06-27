@@ -1,24 +1,24 @@
 modules.define(
     'spec',
-    ['input', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML'],
-    function(provide, Input, BEMDOM, $, dom, BEMHTML) {
+    ['input', 'i-bem-dom', 'jquery', 'dom', 'BEMHTML'],
+    function(provide, Input, bemDom, $, dom, BEMHTML) {
 
 describe('input', function() {
     var input;
 
     beforeEach(function() {
-        input = BEMDOM.init($(BEMHTML.apply({ block : 'input', val : 'bla' })).appendTo('body'))
-            .bem('input');
+        input = bemDom.init($(BEMHTML.apply({ block : 'input', val : 'bla' })).appendTo('body'))
+            .bem(Input);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(input.domElem);
+        bemDom.destruct(input.domElem);
     });
 
     describe('focus/blur', function() {
         it('should be focused after "focused" mod set', function() {
             input.setMod('focused');
-            dom.containsFocus(input.elem('control')).should.be.true;
+            dom.containsFocus(input._elem('control').domElem).should.be.true;
         });
     });
 });

@@ -12,10 +12,11 @@ modules.define(
  * @class select
  * @bem
  */
-provide(Select.decl({ modName : 'mode', modVal : 'check' }, /** @lends select.prototype */{
+provide(Select.declMod({ modName : 'mode', modVal : 'check' }, /** @lends select.prototype */{
     _updateControl : function() {
-        this.elem('control').remove();
-        this.dropElemCache('control');
+        this.findChildElems('control').forEach(function(control) {
+            control.domElem.remove();
+        });
 
         var name = this.getName();
         this.domElem.prepend(
@@ -29,10 +30,10 @@ provide(Select.decl({ modName : 'mode', modVal : 'check' }, /** @lends select.pr
         var checkedItems = this._getCheckedItems();
 
         this._button
-            .toggleMod('checked', true, '', !!checkedItems.length)
+            .toggleMod('checked', true, '', !!checkedItems.size())
             .setText(
-                checkedItems.length === 1?
-                    checkedItems[0].getText() : // one checked
+                checkedItems.size() === 1?
+                    checkedItems.get(0).getText() : // one checked
                     checkedItems.reduce(function(res, item) { // many checked
                         return res + (res? ', ' : '') + (item.params.checkedText || item.getText());
                     }, '') ||

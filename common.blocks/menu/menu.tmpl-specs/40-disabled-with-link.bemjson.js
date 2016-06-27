@@ -3,8 +3,8 @@
     mods : { theme : 'islands', size : 'm', disabled : true },
     content : [
         {
-            block : 'menu-item',
-            mods : { type : 'link' },
+            elem : 'item',
+            elemMods : { type : 'link' },
             content : {
                 block : 'link',
                 url : '//yandex.ru',
@@ -12,8 +12,8 @@
             }
         },
         {
-            block : 'menu-item',
-            mods : { type : 'link' },
+            elem : 'item',
+            elemMods : { type : 'link' },
             content : {
                 block : 'link',
                 url : '//google.ru',

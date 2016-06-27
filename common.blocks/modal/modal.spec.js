@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['modal', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, Modal, BEMDOM, $, BEMHTML) {
+    ['modal', 'i-bem-dom', 'jquery', 'BEMHTML'],
+    function(provide, Modal, bemDom, $, BEMHTML) {
 
 describe('modal', function() {
     var modal;
@@ -11,7 +11,7 @@ describe('modal', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(modal.domElem);
+        bemDom.destruct(modal.domElem);
     });
 
     describe('content', function() {
@@ -41,7 +41,7 @@ function buildModal() {
             content : 'content'
         }))
         .appendTo($('body'))
-        .bem('modal');
+        .bem(Modal);
 }
 
 provide();

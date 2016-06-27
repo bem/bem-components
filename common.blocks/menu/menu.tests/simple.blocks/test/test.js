@@ -1,12 +1,13 @@
-modules.define('test', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('test', ['i-bem-dom', 'menu', 'button'],
+    function(provide, bemDom, Menu, Button) {
 
-provide(BEMDOM.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var menu = this.findBlockInside('menu');
-                this.findBlocksInside('button').forEach(function(button) {
-                    button.on('click', function() {
+                var menu = this.findChildBlock(Menu);
+                this.findChildBlocks(Button).forEach(function(button) {
+                    button._events().on('click', function() {
                         menu.setVal(this.params.val);
                     });
                 });

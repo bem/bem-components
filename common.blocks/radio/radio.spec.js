@@ -1,20 +1,20 @@
 modules.define(
     'spec',
-    ['radio', 'i-bem__dom', 'jquery', 'dom', 'BEMHTML', 'chai'],
-    function(provide, Radio, BEMDOM, $, dom, BEMHTML, chai) {
+    ['radio', 'i-bem-dom', 'jquery', 'dom', 'BEMHTML', 'chai'],
+    function(provide, Radio, bemDom, $, dom, BEMHTML, chai) {
 
 describe('radio', function() {
     var radioOption;
 
     function buildRadio() {
-        return BEMDOM.init($(BEMHTML.apply({
+        return bemDom.init($(BEMHTML.apply({
                 block : 'radio',
                 name : 'name',
                 val : 'val',
                 label : 'label'
             }))
                 .appendTo('body'))
-                .bem('radio');
+                .bem(Radio);
     }
 
     beforeEach(function() {
@@ -22,20 +22,20 @@ describe('radio', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(radioOption.domElem);
+        bemDom.destruct(radioOption.domElem);
     });
 
     describe('checked', function() {
         it('should properly update "control" elem "checked" attr', function() {
             radioOption
                 .setMod('checked')
-                .elem('control').prop('checked').should.be.true;
-            radioOption.elem('control').attr('checked').should.be.equal('checked');
+                ._elem('control').domElem.prop('checked').should.be.true;
+            radioOption._elem('control').domElem.attr('checked').should.be.equal('checked');
 
             radioOption
                 .delMod('checked')
-                .elem('control').prop('checked').should.be.false;
-            chai.expect(radioOption.elem('control').attr('checked')).to.be.undefined;
+                ._elem('control').domElem.prop('checked').should.be.false;
+            chai.expect(radioOption._elem('control').domElem.attr('checked')).to.be.undefined;
         });
 
         it('should set "checked" mod on "change" event', function() {

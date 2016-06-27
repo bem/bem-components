@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['popup', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
-    function(provide, Popup, BEMDOM, $, BEMHTML, chai) {
+    ['popup', 'i-bem-dom', 'jquery', 'BEMHTML', 'chai'],
+    function(provide, Popup, bemDom, $, BEMHTML, chai) {
 
 var expect = chai.expect;
 describe('popup', function() {
@@ -20,7 +20,7 @@ describe('popup', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(popupParentDomElem);
+        bemDom.destruct(popupParentDomElem);
     });
 
     describe('attachment to body', function() {
@@ -28,7 +28,7 @@ describe('popup', function() {
             popup.domElem.parent()[0].should.be.eql(popupParentDomElem[0], 'misplaced on init');
             popup.setMod('visible');
             popup.domElem.parent()[0].should.be.eql($('body')[0], 'misplaced on visible');
-            BEMDOM.destruct(popupDomElem);
+            bemDom.destruct(popupDomElem);
         });
     });
 
@@ -42,7 +42,7 @@ describe('popup', function() {
     describe('destructing', function() {
         it('should be hidden on destruct', function() {
             popup.setMod('visible');
-            BEMDOM.destruct(popupDomElem);
+            bemDom.destruct(popupDomElem);
             popup.hasMod('visible').should.be.false;
         });
     });
@@ -62,8 +62,8 @@ describe('popup', function() {
 provide();
 
 function buildPopup(parentDomElem, bemjson) {
-    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo(parentDomElem))
-        .bem('popup');
+    return bemDom.init($(BEMHTML.apply(bemjson)).appendTo(parentDomElem))
+        .bem(Popup);
 }
 
 });

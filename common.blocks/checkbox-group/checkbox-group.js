@@ -4,8 +4,8 @@
 
 modules.define(
     'checkbox-group',
-    ['i-bem__dom', 'jquery', 'dom', 'checkbox'],
-    function(provide, BEMDOM, $, dom) {
+    ['i-bem-dom', 'jquery', 'dom', 'checkbox'],
+    function(provide, bemDom, $, dom, Checkbox) {
 
 var undef;
 /**
@@ -13,7 +13,7 @@ var undef;
  * @class checkbox-group
  * @bem
  */
-provide(BEMDOM.decl(this.name, /** @lends checkbox-group.prototype */{
+provide(bemDom.declBlock(this.name, /** @lends checkbox-group.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -44,15 +44,15 @@ provide(BEMDOM.decl(this.name, /** @lends checkbox-group.prototype */{
                 var checkboxes = this.getCheckboxes(),
                     i = 0, checkbox;
 
-                while(checkbox = checkboxes[i++]) {
+                while(checkbox = checkboxes.get(i++)) {
                     if(checkbox.setMod('focused').hasMod('focused')) // we need to be sure that checkbox has got focus
                         return;
                 }
             },
 
             '' : function() {
-                var focusedCheckbox = this.findBlockInside({
-                        block : 'checkbox',
+                var focusedCheckbox = this.findChildBlock({
+                        block : Checkbox,
                         modName : 'focused',
                         modVal : true
                     });
@@ -103,7 +103,7 @@ provide(BEMDOM.decl(this.name, /** @lends checkbox-group.prototype */{
             });
             this._inSetVal = false;
             this._val = val;
-            this.emit('change', data);
+            this._emit('change', data);
         }
 
         return this;
@@ -114,7 +114,7 @@ provide(BEMDOM.decl(this.name, /** @lends checkbox-group.prototype */{
      * @returns {String}
      */
     getName : function() {
-        return this.getCheckboxes()[0].getName();
+        return this.getCheckboxes().get(0).getName();
     },
 
     /**
@@ -122,7 +122,7 @@ provide(BEMDOM.decl(this.name, /** @lends checkbox-group.prototype */{
      * @returns {Array[checkbox]}
      */
     getCheckboxes : function() {
-        return this._checkboxes || (this._checkboxes = this.findBlocksInside('checkbox'));
+        return this._checkboxes || (this._checkboxes = this.findChildBlocks(Checkbox));
     },
 
     _extractVal : function() {
@@ -138,7 +138,7 @@ provide(BEMDOM.decl(this.name, /** @lends checkbox-group.prototype */{
     _onCheckboxCheck : function() {
         if(!this._inSetVal) {
             this._val = this._extractVal();
-            this.emit('change');
+            this._emit('change');
         }
     },
 
@@ -146,17 +146,12 @@ provide(BEMDOM.decl(this.name, /** @lends checkbox-group.prototype */{
         this.setMod('focused', e.target.getMod('focused'));
     }
 }, /** @lends checkbox-group */{
-    live : function() {
+    lazyInit : true,
+    onInit : function() {
         var ptp = this.prototype;
-        this
-            .liveInitOnBlockInsideEvent(
-                { modName : 'checked', modVal : '*' },
-                'checkbox',
-                ptp._onCheckboxCheck)
-            .liveInitOnBlockInsideEvent(
-                { modName : 'focused', modVal : '*' },
-                'checkbox',
-                ptp._onCheckboxFocus);
+        this._events(Checkbox)
+            .on({ modName : 'checked', modVal : '*' }, ptp._onCheckboxCheck)
+            .on({ modName : 'focused', modVal : '*' }, ptp._onCheckboxFocus);
     }
 }));
 

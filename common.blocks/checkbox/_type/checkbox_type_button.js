@@ -2,19 +2,20 @@
  * @module checkbox
  */
 
-modules.define('checkbox', ['button'], function(provide, _, Checkbox) {
+modules.define('checkbox', ['button', 'functions'], function(provide, Button, functions, Checkbox) {
 
 /**
  * @exports
  * @class checkbox
  * @bem
  */
-provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, /** @lends checkbox.prototype */{
+provide(Checkbox.declMod({ modName : 'type', modVal : 'button' }, /** @lends checkbox.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
-                this._button = this.findBlockInside('button')
+                this._button = this.findChildBlock(Button);
+                this._button._events()
                     .on(
                         { modName : 'checked', modVal : '*' },
                         proxyModFromButton,
@@ -38,8 +39,10 @@ provide(Checkbox.decl({ modName : 'type', modVal : 'button' }, /** @lends checkb
         }
     }
 }, /** @lends checkbox */{
-    live : function() {
-        this.liveInitOnBlockInsideEvent({ modName : 'js', modVal : 'inited' }, 'button');
+    lazyInit : true,
+    onInit : function() {
+
+        this._events(Button).on({ modName : 'js', modVal : 'inited' }, functions.noop);
         return this.__base.apply(this, arguments);
     }
 }));

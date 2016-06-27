@@ -3,8 +3,9 @@ block('select').elem('menu')(
         var mods = this.mods,
             optionToMenuItem = function(option) {
                 var res = {
-                        block : 'menu-item',
-                        mods : { disabled : mods.disabled || option.disabled },
+                        block : 'menu',
+                        elem : 'item',
+                        elemMods : { disabled : mods.disabled || option.disabled },
                         attrs : { role : 'option' },
                         id : option.id,
                         val : option.val,

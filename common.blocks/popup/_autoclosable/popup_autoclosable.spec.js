@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['popup', 'i-bem__dom', 'jquery', 'BEMHTML', 'next-tick', 'keyboard__codes'],
-    function(provide, Popup, BEMDOM, $, BEMHTML, nextTick, keyCodes) {
+    ['popup', 'i-bem-dom', 'jquery', 'BEMHTML', 'next-tick', 'keyboard__codes'],
+    function(provide, Popup, bemDom, $, BEMHTML, nextTick, keyCodes) {
 
 describe('popup_autoclosable', function() {
     var rootDomElem;
@@ -11,7 +11,7 @@ describe('popup_autoclosable', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(rootDomElem);
+        bemDom.destruct(rootDomElem);
     });
 
     describe('pointer reactions', function() {
@@ -116,14 +116,14 @@ function buildPopupWithAnchor(parentDomElem, isAutoclosable) {
 
     return {
         anchorDomElem : anchorDomElem,
-        popup : BEMDOM.init(
+        popup : bemDom.init(
             $(BEMHTML.apply({
                 block : 'popup',
                 mods : { target : 'anchor', autoclosable : isAutoclosable },
                 content : 'content'
             }))
                 .appendTo(parentDomElem))
-                .bem('popup')
+                .bem(Popup)
                 .setAnchor(anchorDomElem)
     };
 }

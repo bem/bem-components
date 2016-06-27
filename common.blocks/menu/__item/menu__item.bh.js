@@ -1,5 +1,5 @@
 module.exports = function(bh) {
-    bh.match('menu-item', function(ctx, json) {
+    bh.match('menu__item', function(ctx, json) {
         var menuMods = ctx.tParam('menuMods'),
             menuMode = menuMods && menuMods.mode,
             role = menuMode?

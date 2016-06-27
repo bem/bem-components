@@ -11,7 +11,7 @@ modules.define(
  * @class popup
  * @bem
  */
-provide(Popup.decl({ modName : 'target', modVal : 'position' }, /** @lends popup.prototype */{
+provide(Popup.declMod({ modName : 'target', modVal : 'position' }, /** @lends popup.prototype */{
     beforeSetMod : {
         'visible' : {
             'true' : function() {

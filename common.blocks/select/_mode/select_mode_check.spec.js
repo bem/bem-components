@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['select', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
-    function(provide, Select, BEMDOM, $, BEMHTML, chai) {
+    ['select', 'i-bem-dom', 'menu', 'button', 'jquery', 'BEMHTML', 'chai'],
+    function(provide, Select, bemDom, Menu, Button, $, BEMHTML, chai) {
 
 describe('select_mode_check', function() {
     var select, menu, button;
@@ -19,23 +19,23 @@ describe('select_mode_check', function() {
             ],
             val : [2, 3]
         });
-        menu = select.findBlockInside('menu');
-        button = select.findBlockInside('button');
+        menu = select.findChildBlock(Menu);
+        button = select.findChildBlock(Button);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(select.domElem);
+        bemDom.destruct(select.domElem);
     });
 
     describe('enable/disable', function() {
         it('should enable/disable control elems according to self "disabled" state', function() {
             select.setMod('disabled');
-            select.elem('control').prop('disabled').should.be.true;
-            select.elem('control').attr('disabled').should.be.equal('disabled');
+            select._elem('control').domElem.prop('disabled').should.be.true;
+            select._elem('control').domElem.attr('disabled').should.be.equal('disabled');
 
             select.delMod('disabled');
-            select.elem('control').prop('disabled').should.be.false;
-            chai.expect(select.elem('control').attr('disabled')).to.be.undefined;
+            select._elem('control').domElem.prop('disabled').should.be.false;
+            chai.expect(select._elem('control').domElem.attr('disabled')).to.be.undefined;
         });
     });
 
@@ -55,7 +55,7 @@ describe('select_mode_check', function() {
                 ]
             });
             nonCheckedSelect.getVal().should.be.eql([]);
-            BEMDOM.destruct(nonCheckedSelect.domElem);
+            bemDom.destruct(nonCheckedSelect.domElem);
         });
 
         it('should synchronize value with menu (select -> menu)', function() {
@@ -81,24 +81,24 @@ describe('select_mode_check', function() {
 
         it('should update control\'s value according to checked values', function() {
             select.setVal([1, 2]);
-            $.makeArray(select.findElem('control').map(function() {
-                return $(this).val();
-            })).should.be.eql(['1', '2']);
+            select.findChildElems('control').map(function(control) {
+                return control.domElem.val();
+            }).should.be.eql(['1', '2']);
         });
 
         it('should add/remove control according to value', function() {
             select.setVal([]);
-            select.findElem('control').length.should.be.equal(0);
+            select.findChildElems('control').size().should.be.equal(0);
 
             select.setVal([1, 2]);
-            select.findElem('control').length.should.be.equal(2);
+            select.findChildElems('control').size().should.be.equal(2);
         });
     });
 
     describe('keyboard', function() {
         it('should select "first" item by pressing on "f"', function() {
             select.setMod('focused');
-            doKeyPress('f', select.elem('button'));
+            doKeyPress('f', select._elem('button').domElem);
             select.getVal().should.be.eql([1]);
         });
     });
@@ -112,8 +112,8 @@ function doKeyPress(char, elem) {
 }
 
 function buildSelect(bemjson) {
-    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))
-        .bem('select');
+    return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body'))
+        .bem(Select);
 }
 
 });

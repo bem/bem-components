@@ -1,19 +1,19 @@
-modules.define('test', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('test', ['i-bem-dom', 'modal', 'link'], function(provide, bemDom, Modal, Link) {
 
-provide(BEMDOM.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var modal = this.findBlockInside('modal');
+                var modal = this.findChildBlock(Modal);
 
-                this.findBlockInside('link').on('click', function() {
+                this.findChildBlock(Link)._events().on('click', function() {
                     modal.toggleMod('visible');
                 });
             }
         }
     }
 }, {
-    live : false
+    lazyInit : false
 }));
 
 });

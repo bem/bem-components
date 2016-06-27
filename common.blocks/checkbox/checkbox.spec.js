@@ -1,20 +1,20 @@
 modules.define(
     'spec',
-    ['checkbox', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
-    function(provide, Checkbox, BEMDOM, $, BEMHTML, chai) {
+    ['checkbox', 'i-bem-dom', 'jquery', 'BEMHTML', 'chai'],
+    function(provide, Checkbox, bemDom, $, BEMHTML, chai) {
 
 describe('checkbox', function() {
     var checkbox;
 
     function buildCheckbox() {
-        return BEMDOM.init($(BEMHTML.apply({
+        return bemDom.init($(BEMHTML.apply({
                 block : 'checkbox',
                 name : 'name',
                 val : 'val',
                 label : 'label'
             }))
             .appendTo('body'))
-            .bem('checkbox');
+            .bem(Checkbox);
     }
 
     beforeEach(function() {
@@ -22,29 +22,29 @@ describe('checkbox', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(checkbox.domElem);
+        bemDom.destruct(checkbox.domElem);
     });
 
     describe('checked', function() {
         it('should properly update "control" elem "checked" attr', function() {
             checkbox
                 .setMod('checked')
-                .elem('control').prop('checked').should.be.true;
-            checkbox.elem('control').attr('checked').should.be.equal('checked');
+                ._elem('control').domElem.prop('checked').should.be.true;
+            checkbox._elem('control').domElem.attr('checked').should.be.equal('checked');
 
             checkbox
                 .delMod('checked')
-                .elem('control').prop('checked').should.be.false;
-            chai.expect(checkbox.elem('control').attr('checked')).to.be.undefined;
+                ._elem('control').domElem.prop('checked').should.be.false;
+            chai.expect(checkbox._elem('control').domElem.attr('checked')).to.be.undefined;
         });
 
         it('should switch "checked" mod on "change" event', function() {
-            checkbox.elem('control')
+            checkbox._elem('control').domElem
                 .attr('checked', true)
                 .trigger('change');
             checkbox.hasMod('checked').should.be.true;
 
-            checkbox.elem('control')
+            checkbox._elem('control').domElem
                 .removeAttr('checked')
                 .trigger('change');
             checkbox.hasMod('checked').should.be.false;

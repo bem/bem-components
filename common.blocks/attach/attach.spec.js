@@ -1,23 +1,22 @@
 modules.define(
     'spec',
-    ['attach', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
-    function(provide, Attach, BEMDOM, $, BEMHTML, sinon) {
+    ['attach', 'i-bem-dom', 'button', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, Attach, bemDom, Button, $, BEMHTML, sinon) {
 
 describe('attach', function() {
     var attach;
     beforeEach(function() {
         var bemJson = { block : 'attach', name : 'upload', button : 'file' };
-        attach = BEMDOM.init($(BEMHTML.apply(bemJson)).appendTo('body'))
-            .bem('attach');
+        attach = bemDom.init($(BEMHTML.apply(bemJson)).appendTo('body'))
+            .bem(Attach);
 
         // we need to replace input[@type=file] by input[@type=text] for tests
-        var input = attach.findElem('control');
-        input.replaceWith('<input class="attach__control" name="' + input.attr('name')  + '"/>');
-        attach.dropElemCache();
+        var input = attach.findChildElem('control').domElem;
+        bemDom.replace(input, '<input class="attach__control" name="' + input.attr('name')  + '"/>');
     });
 
     afterEach(function() {
-        BEMDOM.destruct(attach.domElem);
+        bemDom.destruct(attach.domElem);
     });
 
     describe('value', function() {
@@ -29,14 +28,14 @@ describe('attach', function() {
 
         it('should emit "change" event after input value changed', function() {
             var spy = sinon.spy();
-            attach.on('change', spy);
+            attach._events().on('change', spy);
             setFile('file.png');
             spy.should.have.been.calledOnce;
         });
 
         it('should properly extract file name', function() {
             setFile('\\usr\\local\\file.png');
-            attach.elem('text').text().should.be.equal('file.png');
+            attach._elem('text').domElem.text().should.be.equal('file.png');
         });
     });
 
@@ -50,7 +49,7 @@ describe('attach', function() {
         it('should emit "change" event after clear', function() {
             var spy = sinon.spy();
             setFile('file.png');
-            attach.on('change', spy);
+            attach._events().on('change', spy);
             attach.clear();
             spy.should.have.been.calledOnce;
             attach.clear();
@@ -61,7 +60,7 @@ describe('attach', function() {
             var spy = sinon.spy();
             attach.clear = spy;
             setFile('file.png');
-            attach.elem('clear').trigger('pointerclick');
+            attach._elem('clear').domElem.trigger('pointerclick');
             spy.should.have.been.calledOnce;
         });
     });
@@ -69,15 +68,15 @@ describe('attach', function() {
     describe('enable/disable', function() {
         it('should enable/disable button according to self "disabled" state', function() {
             attach.setMod('disabled');
-            attach.findBlockInside('button').hasMod('disabled').should.be.true;
+            attach.findChildBlock(Button).hasMod('disabled').should.be.true;
 
             attach.delMod('disabled');
-            attach.findBlockInside('button').hasMod('disabled').should.be.false;
+            attach.findChildBlock(Button).hasMod('disabled').should.be.false;
         });
     });
 
     function setFile(filePath) {
-        attach.elem('control')
+        attach._elem('control').domElem
             .val(filePath)
             .trigger('change');
     }

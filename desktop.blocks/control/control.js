@@ -1,10 +1,10 @@
 /** @module control */
 
 modules.define(
-    'control',
-    function(provide, Control) {
+    'control', ['i-bem-dom'],
+    function(provide, bemDom) {
 
-provide(Control.decl({
+provide(bemDom.declBlock('control', {
     beforeSetMod : {
         'hovered' : {
             'true' : function() {
@@ -23,11 +23,11 @@ provide(Control.decl({
 
         'hovered' : {
             'true' : function() {
-                this.bindTo('mouseleave', this._onMouseLeave);
+                this._domEvents().on('mouseleave', this._onMouseLeave);
             },
 
             '' : function() {
-                this.unbindFrom('mouseleave', this._onMouseLeave);
+                this._domEvents().un('mouseleave', this._onMouseLeave);
             }
         }
     },
@@ -40,10 +40,9 @@ provide(Control.decl({
         this.delMod('hovered');
     }
 }, {
-    live : function() {
-        return this
-            .liveBindTo('mouseover', this.prototype._onMouseOver)
-            .__base.apply(this, arguments);
+    onInit : function() {
+        this._domEvents().on('mouseover', this.prototype._onMouseOver);
+        return this.__base.apply(this, arguments);
     }
 }));
 

@@ -1,34 +1,41 @@
 modules.define(
     'spec',
-    ['dropdown', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon'],
-    function(provide, Dropdown, BEMDOM, $, BEMHTML, sinon) {
+    ['dropdown', 'i-bem-dom', 'popup', 'jquery', 'BEMHTML', 'sinon'],
+    function(provide, Dropdown, bemDom, Popup, $, BEMHTML, sinon) {
 
 describe('dropdown', function() {
     var body = $('body'),
         dropdown;
 
     beforeEach(function() {
-        dropdown = BEMDOM.init($(BEMHTML.apply({
+        // Custom = bemDom.declBlock('custom');
+        // Dropdown.declMod({ modName : 'custom', modVal : true }, {
+        //     _getSwitcherClass : function() {
+        //         return Custom;
+        //     }
+        // });
+
+        dropdown = bemDom.init($(BEMHTML.apply({
                 block : 'dropdown',
                 mods : { switcher : 'custom' },
                 switcher : { block : 'custom' },
                 popup : 'popup'
             }))
             .appendTo(body))
-            .bem('dropdown');
+            .bem(Dropdown);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(dropdown.domElem);
+        bemDom.destruct(dropdown.domElem);
     });
 
     describe('getters', function() {
         it('should return switcher instance', function() {
-            dropdown.getSwitcher().should.be.instanceOf(BEMDOM.blocks['custom']);
+            dropdown.getSwitcher().should.be.instanceOf(dropdown._getSwitcherClass());
         });
 
         it('should return popup instance', function() {
-            dropdown.getPopup().should.be.instanceOf(BEMDOM.blocks['popup']);
+            dropdown.getPopup().should.be.instanceOf(Popup);
         });
     });
 
@@ -74,9 +81,9 @@ describe('dropdown', function() {
         it('should destruct properly', function() {
             var spy = sinon.spy();
 
-            dropdown.getPopup().on({ modName : 'js', modVal : '' }, spy);
+            dropdown.getPopup()._events().on({ modName : 'js', modVal : '' }, spy);
             dropdown.setMod('opened');
-            BEMDOM.destruct(dropdown.domElem);
+            bemDom.destruct(dropdown.domElem);
 
             spy.should.have.been.calledOnce;
         });

@@ -1,13 +1,13 @@
 modules.define(
     'spec',
-    ['control', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, Control, BEMDOM, $, BEMHTML) {
+    ['control', 'i-bem-dom', 'jquery', 'BEMHTML'],
+    function(provide, Control, bemDom, $, BEMHTML) {
 
 describe('control', function() {
     var control;
 
     beforeEach(function() {
-        control = BEMDOM.init($(BEMHTML.apply({
+        control = bemDom.init($(BEMHTML.apply({
             block : 'control',
             js : true,
             tag : 'span',
@@ -16,11 +16,11 @@ describe('control', function() {
                 tag : 'input',
                 attrs : { name : 'blah' }
             }
-        })).appendTo('body')).bem('control');
+        })).appendTo('body')).bem(Control);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(control.domElem);
+        bemDom.destruct(control.domElem);
     });
 
     describe('hover', function() {

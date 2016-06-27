@@ -1,18 +1,18 @@
 modules.define(
     'spec',
-    ['menu-item', 'link', 'i-bem__dom', 'jquery', 'dom', 'sinon', 'BEMHTML'],
-    function(provide, MenuItem, Link, BEMDOM, $, dom, sinon, BEMHTML) {
+    ['menu__item', 'menu', 'link', 'i-bem-dom', 'jquery', 'dom', 'sinon', 'BEMHTML'],
+    function(provide, MenuItem, Menu, Link, bemDom, $, dom, sinon, BEMHTML) {
 
-describe('menu-item_type_link', function() {
+describe('menu__item_type_link', function() {
     var menu, menuItem, link;
 
     beforeEach(function() {
-        menu = BEMDOM
+        menu = bemDom
             .init($(BEMHTML.apply({
                 block : 'menu',
                 content : [{
-                    block : 'menu-item',
-                    mods : { type : 'link' },
+                    elem : 'item',
+                    elemMods : { type : 'link' },
                     content : {
                         block : 'link',
                         url : 'http://yandex.ru',
@@ -20,13 +20,13 @@ describe('menu-item_type_link', function() {
                     }
                 }]
             })).appendTo('body'))
-            .bem('menu');
-        menuItem = menu.findBlockInside('menu-item');
-        link = menuItem.findBlockInside('link');
+            .bem(Menu);
+        menuItem = menu.findChildBlock(MenuItem);
+        link = menuItem.findChildBlock(Link);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(menu.domElem);
+        bemDom.destruct(menu.domElem);
     });
 
     describe('hovered', function() {

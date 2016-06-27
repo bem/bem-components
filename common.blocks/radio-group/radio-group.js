@@ -4,8 +4,8 @@
 
 modules.define(
     'radio-group',
-    ['i-bem__dom', 'jquery', 'dom', 'radio'],
-    function(provide, BEMDOM, $, dom) {
+    ['i-bem-dom', 'jquery', 'dom', 'radio'],
+    function(provide, bemDom, $, dom, Radio) {
 
 var undef;
 /**
@@ -13,7 +13,7 @@ var undef;
  * @class radio-group
  * @bem
  */
-provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
+provide(bemDom.declBlock(this.name, /** @lends radio-group.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -25,8 +25,8 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._checkedRadio = this.findBlockInside({
-                    block : 'radio',
+                this._checkedRadio = this.findChildBlock({
+                    block : Radio,
                     modName : 'checked',
                     modVal : true
                 });
@@ -38,9 +38,7 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
         },
 
         'disabled' : function(modName, modVal) {
-            this.getRadios().forEach(function(option) {
-                option.setMod(modName, modVal);
-            });
+            this.getRadios().setMod(modName, modVal);
         },
 
         'focused' : {
@@ -50,7 +48,7 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
                 var radios = this.getRadios(),
                     i = 0, radio;
 
-                while(radio = radios[i++]) {
+                while(radio = radios.get(i++)) {
                     if(radio.setMod('focused').hasMod('focused')) { // we need to be sure that radio has got focus
                         return;
                     }
@@ -58,8 +56,8 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
             },
 
             '' : function() {
-                var focusedRadio = this.findBlockInside({
-                        block : 'radio',
+                var focusedRadio = this.findChildBlock({
+                        block : Radio,
                         modName : 'focused',
                         modVal : true
                     });
@@ -92,7 +90,7 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
             if(isValUndef) {
                 this._val = undef;
                 this._checkedRadio.delMod('checked');
-                this.emit('change', data);
+                this._emit('change', data);
             } else {
                 var radio = this._getRadioByVal(val);
                 if(radio) {
@@ -103,7 +101,7 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
                     radio.setMod('checked');
 
                     this._inSetVal = false;
-                    this.emit('change', data);
+                    this._emit('change', data);
                 }
             }
         }
@@ -116,7 +114,7 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
      * @returns {String}
      */
     getName : function() {
-        return this.getRadios()[0].getName();
+        return this.getRadios().get(0).getName();
     },
 
     /**
@@ -124,14 +122,14 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
      * @returns {radio[]}
      */
     getRadios : function() {
-        return this._radios || (this._radios = this.findBlocksInside('radio'));
+        return this._radios || (this._radios = this.findChildBlocks(Radio));
     },
 
     _getRadioByVal : function(val) {
         var radios = this.getRadios(),
             i = 0, option;
 
-        while(option = radios[i++]) {
+        while(option = radios.get(i++)) {
             if(option.getVal() === val) {
                 return option;
             }
@@ -146,7 +144,7 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
                 this.getRadios().forEach(function(radio) {
                     radio.getVal() !== radioVal && radio.delMod('checked');
                 });
-                this.emit('change');
+                this._emit('change');
             } else {
                 this.setVal(radioVal);
             }
@@ -157,17 +155,12 @@ provide(BEMDOM.decl(this.name, /** @lends radio-group.prototype */{
         this.setMod('focused', e.target.getMod('focused'));
     }
 }, /** @lends radio-group */{
-    live : function() {
+    lazyInit : true,
+    onInit : function() {
         var ptp = this.prototype;
-        this
-            .liveInitOnBlockInsideEvent(
-                { modName : 'checked', modVal : true },
-                'radio',
-                ptp._onRadioCheck)
-            .liveInitOnBlockInsideEvent(
-                { modName : 'focused', modVal : '*' },
-                'radio',
-                ptp._onRadioFocus);
+        this._events(Radio)
+            .on({ modName : 'checked', modVal : true }, ptp._onRadioCheck)
+            .on({ modName : 'focused', modVal : '*' }, ptp._onRadioFocus);
     }
 }));
 

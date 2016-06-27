@@ -132,7 +132,8 @@ module.exports = function(config) {
                     }],
                     [techs.engines.bemhtml, {
                         target : LIB_NAME + '.dev.bemhtml.js',
-                        sourceSuffixes : ['bemhtml.js', 'bemhtml']
+                        sourceSuffixes : ['bemhtml.js', 'bemhtml'],
+                        engineOptions : { elemJsInstances : true }
                     }],
                     [techs.engines.bhBundle, {
                         target : LIB_NAME + '.dev.bh.js',
@@ -290,7 +291,8 @@ module.exports = function(config) {
                 }] : [techs.engines.bemhtml, {
                     target : '.tmp.browser.bemhtml.js',
                     filesTarget : '.tmp.template.files',
-                    sourceSuffixes : ['bemhtml.js', 'bemhtml']
+                    sourceSuffixes : ['bemhtml.js', 'bemhtml'],
+                    engineOptions : { elemJsInstances : true }
                 }]
             ]);
 
@@ -304,7 +306,8 @@ module.exports = function(config) {
             ] : [
                 [techs.engines.bemhtml, {
                     target : '.tmp.bemhtml.js',
-                    sourceSuffixes : ['bemhtml.js', 'bemhtml']
+                    sourceSuffixes : ['bemhtml.js', 'bemhtml'],
+                    engineOptions : { elemJsInstances : true }
                 }],
                 [techs.html.bemhtml, { bemhtmlFile : '.tmp.bemhtml.js' }]
             ]);
@@ -396,7 +399,10 @@ module.exports = function(config) {
                 templateEngine : {
                     bemtreeTemplateTech : require('enb-bemxjst/techs/bemtree'),
                     templateTech : require('enb-bemxjst/techs/bemhtml'),
-                    templateOptions : { sourceSuffixes : ['bemhtml', 'bemhtml.js'] },
+                    templateOptions : {
+                        sourceSuffixes : ['bemhtml', 'bemhtml.js'],
+                        engineOptions : { elemJsInstances : true }
+                    },
                     htmlTech : require('enb-bemxjst/techs/bemjson-to-html'),
                     htmlTechOptionNames : { bemjsonFile : 'bemjsonFile', templateFile : 'bemhtmlFile' }
                 }
@@ -416,7 +422,8 @@ module.exports = function(config) {
                     'bemhtml' : {
                         tech : 'enb-bemxjst/techs/bemhtml',
                         options : {
-                            sourceSuffixes : ['bemhtml.js', 'bemhtml']
+                            sourceSuffixes : ['bemhtml.js', 'bemhtml'],
+                            engineOptions : { elemJsInstances : true }
                         }
                     }
                 },

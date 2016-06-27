@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['radio-group', 'i-bem__dom', 'jquery', 'BEMHTML', 'chai'],
-    function(provide, RadioGroup, BEMDOM, $, BEMHTML, chai) {
+    ['radio-group', 'i-bem-dom', 'jquery', 'BEMHTML', 'chai'],
+    function(provide, RadioGroup, bemDom, $, BEMHTML, chai) {
 
 var expect = chai.expect;
 
@@ -9,8 +9,8 @@ describe('radio-group_mode-radio-check', function() {
     var radioGroup;
 
     function buildRadioGroup(bemjson) {
-        return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo('body'))
-            .bem('radio-group');
+        return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body'))
+            .bem(RadioGroup);
     }
 
     beforeEach(function() {
@@ -27,12 +27,12 @@ describe('radio-group_mode-radio-check', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(radioGroup.domElem);
+        bemDom.destruct(radioGroup.domElem);
     });
 
     describe('value', function() {
         it('should allow to unset value', function() {
-            radioGroup.getRadios()[1].delMod('checked');
+            radioGroup.getRadios().get(1).delMod('checked');
             expect(radioGroup.getVal()).to.be.undefined;
         });
     });

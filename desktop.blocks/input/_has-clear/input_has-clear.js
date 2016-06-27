@@ -1,12 +1,13 @@
 modules.define('input', function(provide, Input) {
 
-provide(Input.decl({ modName : 'has-clear', modVal : true }, {
+provide(Input.declMod({ modName : 'has-clear', modVal : true }, {
     _onBoxClick : function() {
-        this.hasMod(this.elem('clear'), 'visible') || this.setMod('focused');
+        this._elem('clear').hasMod('visible') || this.setMod('focused');
     }
 }, {
-    live : function() {
-        this.liveBindTo('box', 'pointerclick', function() {
+    lazyInit : true,
+    onInit : function() {
+        this._domEvents('box').on('pointerclick', function() {
             this._onBoxClick();
         });
 

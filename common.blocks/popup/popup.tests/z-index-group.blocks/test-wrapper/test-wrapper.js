@@ -1,14 +1,12 @@
-modules.define('test-wrapper', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('test-wrapper', ['i-bem-dom', 'popup', 'link'], function(provide, bemDom, Popup, Link) {
 
-provide(BEMDOM.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var popup = this.findBlockInside('summon', 'popup');
-                this.findBlocksInside('summoner', 'link').forEach(function(link) {
-                    link.on('click', function(e) {
-                        popup.setAnchor(e.target).setMod('visible');
-                    });
+                var popup = this._elem('summon').findChildBlock(Popup);
+                this._elem('summoner').findChildBlocks(Link).on('click', function(e) {
+                    popup.setAnchor(e.target).setMod('visible');
                 });
             }
         }

@@ -1,4 +1,4 @@
-# menu-item
+# menu__item
 
 Используется как составная часть блока [menu](../menu/menu.ru.md).
 
@@ -20,7 +20,7 @@
 
 ## Описание блока
 
-Блок `menu-item` предоставляет возможность изменять состояние, содержимое и тип пунктов меню. Используется только в составе блока `menu`.
+`menu__item` предоставляет возможность изменять состояние, содержимое и тип пунктов меню. Используется только в составе блока `menu`.
 
 ### Модификаторы блока
 
@@ -40,7 +40,7 @@
     mods : { theme : 'islands', size : 'm' },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             mods : { type : 'link' },
             content : {
                 block : 'link',
@@ -49,7 +49,7 @@
             }
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             mods : { type : 'link' },
             content : {
                 block : 'link',
@@ -76,12 +76,12 @@
     mods : { theme : 'islands', size : 'm' },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             mods : { disabled : true },
             content : 'BH'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             content : 'BEMHTML'
         }
     ]
@@ -113,12 +113,12 @@
     val : 'item-1',
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 'item-1',
             content : 'BH'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 'item-2',
             content : 'BEMHTML'
         }

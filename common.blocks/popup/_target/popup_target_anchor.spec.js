@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['popup', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, Popup, BEMDOM, $, BEMHTML) {
+    ['popup', 'i-bem-dom', 'jquery', 'BEMHTML'],
+    function(provide, Popup, bemDom, $, BEMHTML) {
 
 describe('popup', function() {
     var popup, popupDomElem, popupParentDomElem, popupAnchorDomElem,
@@ -29,7 +29,7 @@ describe('popup', function() {
     });
 
     afterEach(function() {
-        BEMDOM.destruct(popupParentDomElem);
+        bemDom.destruct(popupParentDomElem);
     });
 
     describe('setAnchor', function() {
@@ -407,7 +407,7 @@ describe('popup', function() {
                 .setAnchor(popupAnchorDomElem)
                 .setMod('visible');
 
-            BEMDOM.destruct(popupAnchorDomElem);
+            bemDom.destruct(popupAnchorDomElem);
 
             popup.hasMod('js').should.be.false;
         });
@@ -417,8 +417,8 @@ describe('popup', function() {
 provide();
 
 function buildPopup(parentDomElem, bemjson) {
-    return BEMDOM.init($(BEMHTML.apply(bemjson)).appendTo(parentDomElem))
-        .bem('popup');
+    return bemDom.init($(BEMHTML.apply(bemjson)).appendTo(parentDomElem))
+        .bem(Popup);
 }
 
 function getZIndex(popup) {

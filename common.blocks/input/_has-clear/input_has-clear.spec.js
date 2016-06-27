@@ -1,9 +1,9 @@
-modules.define('spec', ['input', 'i-bem__dom', 'jquery', 'BEMHTML'], function(provide, Input, BEMDOM, $, BEMHTML) {
+modules.define('spec', ['input', 'i-bem-dom', 'jquery', 'BEMHTML'], function(provide, Input, bemDom, $, BEMHTML) {
 
 describe('input_has-clear', function() {
     var input;
     afterEach(function() {
-        BEMDOM.destruct(input.domElem);
+        bemDom.destruct(input.domElem);
     });
 
     it('should hide clear elem if value is empty', function() {
@@ -26,24 +26,24 @@ describe('input_has-clear', function() {
 
     it('should clear input on click', function() {
         input = buildInput('bla');
-        input.elem('clear').trigger('pointerclick');
+        input._elem('clear').domElem.trigger('pointerclick');
         input.getVal().should.be.equal('');
     });
 });
 
 function buildInput(val) {
-    return BEMDOM.init(
+    return bemDom.init(
             $(BEMHTML.apply({
                 block : 'input',
                 mods : { 'has-clear' : true },
                 val : val
             })))
         .appendTo('body')
-        .bem('input');
+        .bem(Input);
 }
 
 function isClearElemVisible(input) {
-    return input.hasMod(input.elem('clear'), 'visible');
+    return input._elem('clear').hasMod('visible');
 }
 
 provide();

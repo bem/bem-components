@@ -2,7 +2,7 @@
  * @module radio-group
  */
 
-modules.define('radio-group', function(provide, RadioGroup) {
+modules.define('radio-group', ['radio'], function(provide, Radio, RadioGroup) {
 
 var undef;
 
@@ -11,15 +11,15 @@ var undef;
  * @class radio-group
  * @bem
  */
-provide(RadioGroup.decl({ modName : 'mode', modVal : 'radio-check' }, /** @lends radio-group.prototype */{
+provide(RadioGroup.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends radio-group.prototype */{
     _onRadioUncheck : function(e) {
         this._checkedRadio === e.target && this.setVal(undef);
     }
 }, /** @lends radio-group */{
-    live : function() {
-        this.liveInitOnBlockInsideEvent(
+    lazyInit : true,
+    onInit : function() {
+        this._events(Radio).on(
             { modName : 'checked', modVal : '' },
-            'radio',
             this.prototype._onRadioUncheck);
 
         return this.__base.apply(this, arguments);

@@ -1,11 +1,10 @@
 [{
-    mustDeps : { block : 'i-bem', elems : ['dom'] },
+    mustDeps : { block : 'i-bem-dom' },
     shouldDeps : [
         'control',
-        'menu-item',
         { block : 'keyboard', elem : 'codes' },
         { mods : { focused : true } },
-        { elem : 'group' }
+        { elem : ['item', 'group'] }
     ]
 },
 {
@@ -16,7 +15,7 @@
     tech : 'tmpl-spec.js',
     shouldDeps : [
         { tech : 'bemhtml', block : 'link' },
-        { tech : 'bemhtml', block : 'menu-item', mods : { type : 'link' } },
+        { tech : 'bemhtml', elem : 'item', mods : { type : 'link' } },
         { tech : 'bemhtml', block : 'menu', mods : { mode : 'radio' } },
         { tech : 'bemhtml', block : 'menu', elem : 'group' }
     ]

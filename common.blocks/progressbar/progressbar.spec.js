@@ -1,26 +1,26 @@
 modules.define(
     'spec',
-    ['progressbar', 'i-bem__dom', 'jquery', 'BEMHTML'],
-    function(provide, progressbar, BEMDOM, $, BEMHTML) {
+    ['progressbar', 'i-bem-dom', 'jquery', 'BEMHTML'],
+    function(provide, Progressbar, bemDom, $, BEMHTML) {
 
 describe('progressbar', function() {
     var progressbar;
 
     beforeEach(function() {
-        progressbar = BEMDOM.init($(BEMHTML.apply({ block : 'progressbar', val : 10 }))
+        progressbar = bemDom.init($(BEMHTML.apply({ block : 'progressbar', val : 10 }))
             .appendTo('body'))
-            .bem('progressbar');
+            .bem(Progressbar);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(progressbar.domElem);
+        bemDom.destruct(progressbar.domElem);
     });
 
     describe('setVal', function() {
         it('should set correct percents', function() {
             var val = 15;
             progressbar.setVal(val);
-            progressbar.elem('bar')[0].style.width.should.be.equal(val + '%');
+            progressbar._elem('bar').domElem[0].style.width.should.be.equal(val + '%');
             progressbar.domElem.attr('aria-valuenow').should.be.equal(val + '%');
         });
     });

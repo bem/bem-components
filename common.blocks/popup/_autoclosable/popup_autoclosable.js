@@ -4,8 +4,8 @@
 
 modules.define(
     'popup',
-    ['jquery', 'i-bem__dom', 'ua', 'dom', 'keyboard__codes'],
-    function(provide, $, BEMDOM, ua, dom, keyCodes, Popup) {
+    ['jquery', 'i-bem-dom', 'ua', 'dom', 'keyboard__codes', 'next-tick'],
+    function(provide, $, bemDom, ua, dom, keyCodes, nextTick, Popup) {
 
 var KEYDOWN_EVENT = ua.opera && ua.version < 12.10? 'keypress' : 'keydown',
     visiblePopupsStack = [];
@@ -15,24 +15,23 @@ var KEYDOWN_EVENT = ua.opera && ua.version < 12.10? 'keypress' : 'keydown',
  * @class popup
  * @bem
  */
-provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup.prototype */{
+provide(Popup.declMod({ modName : 'autoclosable', modVal : true }, /** @lends popup.prototype */{
     onSetMod : {
         'visible' : {
             'true' : function() {
+                var _this = this;
                 visiblePopupsStack.unshift(this);
-                this
-                    // NOTE: nextTick because of event bubbling to document
-                    .nextTick(function() {
-                        this.bindToDoc('pointerclick', this._onDocPointerClick);
-                    })
-                    .__base.apply(this, arguments);
+                // NOTE: nextTick because of event bubbling to document
+                nextTick(function() {
+                    _this._domEvents(bemDom.doc).on('pointerclick', _this._onDocPointerClick);
+                });
+                this.__base.apply(this, arguments);
             },
 
             '' : function() {
                 visiblePopupsStack.splice(visiblePopupsStack.indexOf(this), 1);
-                this
-                    .unbindFromDoc('pointerclick', this._onDocPointerClick)
-                    .__base.apply(this, arguments);
+                this._domEvents(bemDom.doc).un('pointerclick', this._onDocPointerClick);
+                this.__base.apply(this, arguments);
             }
         }
     },
@@ -46,8 +45,11 @@ provide(Popup.decl({ modName : 'autoclosable', modVal : true }, /** @lends popup
            this.delMod('visible');
     }
 }, /** @lends popup */{
-    live : function() {
-        BEMDOM.doc.on(KEYDOWN_EVENT, onDocKeyPress);
+    lazyInit : true,
+    onInit : function() {
+        // TODO: checkme!
+        // this._domEvents(bemDom.doc).on(KEYDOWN_EVENT, onDocKeyPress);
+        bemDom.doc.on(KEYDOWN_EVENT, onDocKeyPress);
     }
 }));
 

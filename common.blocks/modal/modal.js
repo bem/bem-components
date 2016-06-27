@@ -4,8 +4,8 @@
 
 modules.define(
     'modal',
-    ['i-bem__dom', 'popup'],
-    function(provide, BEMDOM) {
+    ['i-bem-dom', 'popup'],
+    function(provide, bemDom, Popup) {
 
 /**
  * @exports
@@ -14,11 +14,11 @@ modules.define(
  *
  * @bemmod visible Represents visible state
  */
-provide(BEMDOM.decl(this.name, /** @lends modal.prototype */{
+provide(bemDom.declBlock(this.name, /** @lends modal.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._popup = this.findBlockOn('popup');
+                this._popup = this.findMixedBlock(Popup);
             },
 
             '' : function() {
@@ -37,11 +37,11 @@ provide(BEMDOM.decl(this.name, /** @lends modal.prototype */{
      * @returns {modal} this
      */
     setContent : function(content) {
-        BEMDOM.update(this.elem('content'), content);
+        bemDom.update(this._elem('content').domElem, content);
         return this;
     }
 }, /** @lends modal */{
-    live : true
+    lazyInit : true
 }));
 
 });

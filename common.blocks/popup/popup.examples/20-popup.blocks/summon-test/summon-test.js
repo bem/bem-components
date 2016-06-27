@@ -1,13 +1,13 @@
-modules.define('summon-test', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('summon-test', ['i-bem-dom', 'link'], function(provide, bemDom, Link) {
 
-provide(BEMDOM.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var popup = this.findBlockInside('popup', 'popup'),
+                var popup = this.findChildBlock('popup', 'popup'),
                     currentAnchor = null;
 
-                BEMDOM.blocks.link.on(this.elem('summoner'), 'click', function(e) {
+                Link._events('summoner').on('click', function(e) {
                     var link = e.target;
 
                     if(currentAnchor === link) {

@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['button', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon', 'keyboard__codes', 'chai'],
-    function(provide, Button, BEMDOM, $, BEMHTML, sinon, keyCodes, chai) {
+    ['button', 'i-bem-dom', 'jquery', 'BEMHTML', 'sinon', 'keyboard__codes', 'chai'],
+    function(provide, Button, bemDom, $, BEMHTML, sinon, keyCodes, chai) {
 
 var expect = chai.expect;
 
@@ -9,12 +9,12 @@ describe('button', function() {
     var button;
 
     beforeEach(function() {
-        button = BEMDOM.init($(BEMHTML.apply({ block : 'button', text : 'foo' })).appendTo('body'))
-            .bem('button');
+        button = bemDom.init($(BEMHTML.apply({ block : 'button', text : 'foo' })).appendTo('body'))
+            .bem(Button);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(button.domElem);
+        bemDom.destruct(button.domElem);
     });
 
     describe('focus/blur', function() {
@@ -100,9 +100,8 @@ describe('button', function() {
         it('should emit click on release on self', function() {
             var spy = sinon.spy();
 
-            button
-                .on('click', spy)
-                .domElem
+            button._events().on('click', spy);
+            button.domElem
                     .trigger('pointerpress')
                     .trigger(createPointerrelease());
 
@@ -112,9 +111,8 @@ describe('button', function() {
         it('should not emit click on pointercancel', function() {
             var spy = sinon.spy();
 
-            button
-                .on('click', spy)
-                .domElem
+            button._events().on('click', spy);
+            button.domElem
                     .trigger('pointerpress')
                     .trigger(createPointerrelease('pointercancel'));
 
@@ -124,7 +122,7 @@ describe('button', function() {
         it('should emit click on release outside self', function() {
             var spy = sinon.spy();
 
-            button.on('click', spy);
+            button._events().on('click', spy);
             button.domElem.trigger('pointerpress');
             $('body').trigger(createPointerrelease());
 
@@ -134,8 +132,8 @@ describe('button', function() {
         it('should emit click on "space" or "enter"', function() {
             var spy = sinon.spy();
 
+            button._events().on('click', spy);
             button
-                .on('click', spy)
                 .setMod('focused')
                 .domElem
                     .trigger($.Event('keydown', { keyCode : keyCodes.SPACE }))
@@ -149,8 +147,8 @@ describe('button', function() {
         it('should not emit click on release event if disabled', function() {
             var spy = sinon.spy();
 
+            button._events().on('click', spy);
             button
-                .on('click', spy)
                 .setMod('disabled')
                 .domElem
                     .trigger('pointerpress')
@@ -167,7 +165,7 @@ describe('button', function() {
 
         it('should set text to the button', function() {
             button.setText('bar');
-            button.elem('text').text().should.be.equal('bar');
+            button._elem('text').domElem.text().should.be.equal('bar');
         });
     });
 });

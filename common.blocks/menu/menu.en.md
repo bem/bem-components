@@ -35,7 +35,7 @@ Use this block for creating different types of menu.
 
 ## Block description
 
-Use the `menu` block to control the state, behavior and appearance of the menu and its nested components – the [menu-item](../menu-item/menu-item.en.md) blocks.
+Use the `menu` block to control the state, behavior and appearance of the menu and its nested components – the [item](../menu__item/menu__item.en.md) elements.
 
 The block supports key-pad control. If `menu` block is in [focus](#focused) (`focused` modifier with `true` value), type a menu item name on your keyboard to switch to the menu item. Use `Space bar` or `Enter` buttons to select the menu item.
 
@@ -67,12 +67,12 @@ If the `mode` modifier is not set to the block, the basic list without the possi
     mods : { theme : 'islands', size : 'm' },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Swimming'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Skiing'
         }
@@ -92,17 +92,17 @@ Use this modifier to create the menu with the possibility to select any number o
     val : [1, 3],
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Skiing'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Swimming'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 3,
             content : 'Downshifting'
         }
@@ -124,12 +124,12 @@ If any item is not selected in BEMJSON declaration, the first menu item is selec
     mods : { theme : 'islands', size : 'm', mode : 'radio' },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Skiing'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Swimming'
         }
@@ -149,12 +149,12 @@ Use this modifier to create the menu that has one mandatory selected item like i
     val : 2,
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Skiing'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Swimming'
         }
@@ -172,7 +172,7 @@ Use cases: `BEMJSON`, `JS`.
 
 The modifier makes the block inactive. The disabled block is visible but not available for user actions.
 
-If `menu` block is disabled, all nested `menu-item` blocks are also disabled:
+If `menu` block is disabled, all nested `menu__item` blocks are also disabled:
 
 ```js
 {
@@ -180,12 +180,12 @@ If `menu` block is disabled, all nested `menu-item` blocks are also disabled:
     mods : { theme : 'islands', size : 'm', mode : 'radio-check', disabled : true },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Skiing'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Swimming'
         }
@@ -202,13 +202,13 @@ The `disabled` modifier with the `true` value could be set to a separate menu it
     val : 2,
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             mods : { disabled : true },
             val : 1,
             content : 'Skiing'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Swimming'
         }
@@ -233,12 +233,12 @@ The modifier puts the focus on the block.
     val : 2,
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Skiing'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Swimming'
         }
@@ -264,12 +264,12 @@ The `islands` theme requires the <a href="#size">size</a> modifier.
     val : [1],
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Skiing'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Swimming'
         }
@@ -296,12 +296,12 @@ Sets the size value for all types of menus.
     mods : { theme : 'islands', mode : 'check', size : 's' },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Skiing'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Swimming'
         }
@@ -318,12 +318,12 @@ Sets the size value for all types of menus.
     val : [2],
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Skiing'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Swimming'
         }
@@ -339,12 +339,12 @@ Sets the size value for all types of menus.
     val : [2],
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Skiing'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Swimming'
         }
@@ -361,12 +361,12 @@ Sets the size value for all types of menus.
     val : [2],
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Skiing'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Swimming'
         }
@@ -389,12 +389,12 @@ Specifies the list of the menu items.
     mods : { theme : 'islands', size : 'm' },
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Vacation at work'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Vacation on the couch'
         }
@@ -419,12 +419,12 @@ Specifies:
     val : 2,
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Vacation at work'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Vacation on the couch'
         }
@@ -441,12 +441,12 @@ Specifies:
     val : [1, 2],
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Skiing'
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 2,
             content : 'Swimming'
         }
@@ -469,7 +469,7 @@ A visual grouping of the menu items that does not affect the general logic of it
     val : 2,
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Work'
         },
@@ -477,19 +477,19 @@ A visual grouping of the menu items that does not affect the general logic of it
             elem : 'group',
             content : [
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     val : 2,
                     content : 'Skiing'
                 },
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     val : 3,
                     content : 'Swimming'
                 }
             ]
         },
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 4,
             content : 'Downshifting'
         }
@@ -514,7 +514,7 @@ Specifies the title for a group of menu items.
     val : 2,
     content : [
         {
-            block : 'menu-item',
+            elem : 'item',
             val : 1,
             content : 'Work'
         },
@@ -523,12 +523,12 @@ Specifies the title for a group of menu items.
             title : 'Outdoor activity',
             content : [
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     val : 2,
                     content : 'Skiing'
                 },
                 {
-                    block : 'menu-item',
+                    elem : 'item',
                     val : 3,
                     content : 'Swimming'
                 }

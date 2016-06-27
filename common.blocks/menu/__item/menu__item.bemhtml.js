@@ -1,15 +1,15 @@
-block('menu-item')(
+block('menu').elem('item')(
     def().match(function() { return this._menuMods; })(function() {
-        var mods = this.mods;
-        mods.theme = mods.theme || this._menuMods.theme;
-        mods.disabled = mods.disabled || this._menuMods.disabled;
+        var elemMods = this.elemMods;
+        elemMods.theme = elemMods.theme || this._menuMods.theme;
+        elemMods.disabled = elemMods.disabled || this._menuMods.disabled;
         return applyNext();
     }),
     js()(function() {
         return { val : this.ctx.val };
     }),
     attrs()(function(){
-        var mods = this.mods,
+        var elemMods = this.elemMods,
             menuMode = this._menuMods && this._menuMods.mode,
             role = menuMode?
                         (menuMode === 'check'? 'menuitemcheckbox' : 'menuitemradio') :
@@ -17,8 +17,8 @@ block('menu-item')(
             attrs = {
                 role : role,
                 id : this.ctx.id || this.generateId(),
-                'aria-disabled' : mods.disabled && 'true',
-                'aria-checked' : menuMode && String(!!mods.checked)
+                'aria-disabled' : elemMods.disabled && 'true',
+                'aria-checked' : menuMode && String(!!elemMods.checked)
             };
 
         return attrs;

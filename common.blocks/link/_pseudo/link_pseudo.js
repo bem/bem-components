@@ -9,18 +9,18 @@ modules.define('link', ['keyboard__codes'], function(provide, keyCodes, Link) {
  * @class link
  * @bem
  */
-provide(Link.decl({ modName : 'pseudo', modVal : true }, /** @lends link.prototype */{
+provide(Link.declMod({ modName : 'pseudo', modVal : true }, /** @lends link.prototype */{
     onSetMod : {
         'focused' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
 
-                this.bindTo('control', 'keydown', this._onKeyDown);
+                this._domEvents('control').on('keydown', this._onKeyDown);
             },
             '' : function() {
                 this.__base.apply(this, arguments);
 
-                this.unbindFrom('control', 'keydown', this._onKeyDown);
+                this._domEvents('control').un('keydown', this._onKeyDown);
             }
         }
     },

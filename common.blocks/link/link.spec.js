@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['link', 'i-bem__dom', 'jquery', 'BEMHTML', 'sinon', 'chai'],
-    function(provide, Link, BEMDOM, $, BEMHTML, sinon, chai) {
+    ['link', 'i-bem-dom', 'jquery', 'BEMHTML', 'sinon', 'chai'],
+    function(provide, Link, bemDom, $, BEMHTML, sinon, chai) {
 
 var expect = chai.expect;
 
@@ -9,21 +9,21 @@ describe('link', function() {
     var link;
 
     beforeEach(function() {
-        link = BEMDOM.init(
+        link = bemDom.init(
                 $(BEMHTML.apply({ block : 'link', url : '/' })))
             .appendTo('body')
-            .bem('link');
+            .bem(Link);
     });
 
     afterEach(function() {
-        BEMDOM.destruct(link.domElem);
+        bemDom.destruct(link.domElem);
     });
 
     it('should emit "click" event and do not prevent default action', function() {
         var spy = sinon.spy(),
             e = $.Event('pointerclick');
 
-        link.on('click', spy);
+        link._events().on('click', spy);
         link.domElem.trigger(e);
 
         e.isDefaultPrevented().should.be.false;
@@ -33,7 +33,7 @@ describe('link', function() {
     it('should emit "click" event and prevent default action', function() {
         var e = $.Event('pointerclick');
 
-        link.on('click', function(e) {
+        link._events().on('click', function(e) {
             e.preventDefault();
         });
         link.domElem.trigger(e);
@@ -63,7 +63,7 @@ describe('link', function() {
                 e = $.Event('pointerclick');
 
             link.setMod('disabled');
-            link.on('click', spy);
+            link._events().on('click', spy);
             link.domElem.trigger(e);
 
             e.isDefaultPrevented().should.be.true;

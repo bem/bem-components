@@ -9,7 +9,7 @@ modules.define('progressbar', function(provide, Progressbar) {
  * @class progressbar
  * @bem
  */
-provide(Progressbar.decl({ modName : 'theme', modVal : 'simple' }, /** @lends progressbar.prototype */{
+provide(Progressbar.declMod({ modName : 'theme', modVal : 'simple' }, /** @lends progressbar.prototype */{
 
     /**
      * Sets text

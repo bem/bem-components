@@ -7,7 +7,8 @@ var LIB_NAME = 'bem-components',
     techs = require('./techs'),
     bhOptions = {
         jsAttrName : 'data-bem',
-        jsAttrScheme : 'json'
+        jsAttrScheme : 'json',
+        xhtml : false
     },
     PLATFORMS = {
         'desktop' : ['common', 'desktop'],

@@ -28,7 +28,7 @@ block('menu')(
                     }
                 };
 
-            if(!this.isArray(ctx.content)) throw Error('menu: content must be an array of the menu items');
+            if(!Array.isArray(ctx.content)) throw Error('menu: content must be an array of the menu items');
 
             iterateItems(ctx.content);
         }

@@ -376,7 +376,7 @@ Specifies the button lable.
 }
 ```
 
-**Important!** The button lable can be defined by using `content` field. However, this solution is very cumbersome and is not recommended to use.
+**Important!** Despite on the fact that the `content` fild allows to specify the button lable too, still it's not recommended and it's better to use field `text`.
 
 <a name="buttonurl"></a>
 

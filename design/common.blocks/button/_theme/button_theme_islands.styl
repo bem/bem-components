@@ -343,12 +343,12 @@ ctx = '.button_theme_islands'
 
         &.button_checked:before
         {
-            right: 0;
+            right: 1px;
         }
 
         &.button_focused-hard.button:before
         {
-            left: 1px;
+            left: 0;
         }
     }
 
@@ -361,6 +361,11 @@ ctx = '.button_theme_islands'
         &:before
         {
             border-radius: 2px 0 0 2px;
+        }
+
+        &.button_focused-hard.button:before
+        {
+            left: 1px;
         }
     }
 

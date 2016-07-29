@@ -47,6 +47,8 @@ gemini.suite('checkbox-group', function(root) {
     [
         'button-size_m',
         'button-size_l',
+        'button-checked-size_m',
+        'button-checked-size_l',
         'button-icon-size_m',
         'button-icon-size_l'
     ]

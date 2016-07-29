@@ -376,7 +376,7 @@ Specifies the button lable.
 }
 ```
 
-**Important!** Despite on the fact that the `content` fild allows to specify the button lable too, still it's not recommended and it's better to use field `text`.
+**Important!** Despite on the fact that the `content` field also allows to specify the button lable or any other random BEMJSON instead of element `button__text`, still it's not recommended and it's better to use `text` field.
 
 <a name="buttonurl"></a>
 

@@ -25,7 +25,6 @@ Use this block to control a selection parameter with two available states – �
 | <a href="#checkboxtext">text</a> | <code>String</code> | Checkbox lable. |
 | <a href="#checkboxicon">icon</a> | <code>BEMJSON</code> | Checkbox icon. It is created by the <a href="../icon/icon.en.md">icon</a> block. Use icons only when checkboxes with the <a href="#checkboxtype">type modifier is set to button</a>. |
 | <a href="#checkboxtitle">title</a> | <code>String</code> | Tooltip content. Use tooltips only for checkboxes when the <a href="#checkboxtype">type modifier is set to button</a>. |
-| <a href="#id">id</a> | <code>String</code> | The checkbox unique identifier. |
 | <a href="#tab">tabIndex</a> | <code>Number</code> | The order when navigating through controls on a page by pressing the <code>Tab</code> key.|
 
 ## Block description
@@ -327,25 +326,6 @@ Use the `title` field for checkboxes only with the <a href="#checkboxtype">type 
         block : 'icon',
         mods : { social : 'twitter' }
     }
-}
-```
-
-<a name="id"></a>
-
-#### `id` field
-
-Type: `String`.
-
-Specifies the checkbox unique ID.
-
-```js
-{
-    block : 'checkbox',
-    mods : { theme : 'islands', size : 'm', type : 'button' },
-    name: 'name1',
-    val: '1',
-    text : 'Candies',
-    id : 'checkbox-id'
 }
 ```
 

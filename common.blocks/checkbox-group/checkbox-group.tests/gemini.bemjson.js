@@ -83,16 +83,6 @@
                 } },
                 { tag : 'p', content : {
                     block : 'checkbox-group',
-                    mods : { theme : 'islands', size : size, type : 'button', disabled : true },
-                    val : [2],
-                    options : [
-                        { text : 'first', val : 1 },
-                        { text : 'second', val : 2 }
-                    ],
-                    cls : 'button-size_' + size + '-disabled'
-                } },
-                { tag : 'p', content : {
-                    block : 'checkbox-group',
                     mods : { theme : 'islands', size : size, type : 'button' },
                     val : [2],
                     options : [
@@ -111,6 +101,28 @@
                 } },
                 { tag : 'p', content : {
                     block : 'checkbox-group',
+                    mods : { theme : 'islands', size : size, type : 'button' },
+                    val : [1, 2, 3, 4],
+                    options : [
+                        { text : 'first', val : 1 },
+                        { text : 'second', val : 2 },
+                        { text : 'third', val : 3 },
+                        { text : 'fourth', val : 4 }
+                    ],
+                    cls : 'button-checked-size_' + size + '-enabled'
+                } },
+                { tag : 'p', content : {
+                    block : 'checkbox-group',
+                    mods : { theme : 'islands', size : size, type : 'button', disabled : true },
+                    val : [2],
+                    options : [
+                        { text : 'first', val : 1 },
+                        { text : 'second', val : 2 }
+                    ],
+                    cls : 'button-size_' + size + '-disabled'
+                } },
+                { tag : 'p', content : {
+                    block : 'checkbox-group',
                     mods : { theme : 'islands', size : size, type : 'button', disabled : true },
                     val : [2],
                     options : [
@@ -126,7 +138,19 @@
                         }
                     ],
                     cls : 'button-icon-size_' + size + '-disabled'
-                } }
+                } },
+                { tag : 'p', content : {
+                    block : 'checkbox-group',
+                    mods : { theme : 'islands', size : size, type : 'button', disabled : true },
+                    val : [1, 2, 3, 4],
+                    options : [
+                        { text : 'first', val : 1 },
+                        { text : 'second', val : 2 },
+                        { text : 'third', val : 3 },
+                        { text : 'fourth', val : 4 }
+                    ],
+                    cls : 'button-checked-size_' + size + '-disabled'
+                } },
             ]
         })
     ]

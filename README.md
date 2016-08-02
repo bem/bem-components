@@ -164,7 +164,7 @@ The easiest way to connect the library to the project is to download pre-built l
 * [To gather files from the sourse code](#files-collecting-from-the-sourse-code) — ability to build an unreleased version of the library.
 * [To install using Bower](#installation-using-bower)
 
-To use connected library files, see [Work with library](#work-with-library).
+To use connected library files, see [Work with library](#work-with-library-in-dist-form).
 
 **Composition of pre-assembled library**
 

@@ -227,7 +227,7 @@ npm install
 npm run dist
 ```
 
-As a result files will be available in the `bem-components-dist` folder.  Connect  files to HTML page:
+As a result files will be available in the `bem-components-dist` folder. Connect files to HTML page:
 
 ```html
 <link rel="stylesheet" href="bower_components/bem-components-dist/desktop/bem-components.css">
@@ -253,7 +253,7 @@ As a result files will be available in a `bem-components-dist` folder. The conne
 
 Work with library can be organized into two steps:
 
-1. To find  the right block on the library website: [bem.info](https://en.bem.info). For example, [select](https://en.bem.info/libs/bem-components/v3.0.0/desktop/select/#mandatory-single-choice-list-mode-modifier-with-radio-value-1).
+1. To find the right block on the library website: [bem.info](https://en.bem.info). For example, [select](https://en.bem.info/libs/bem-components/v3.0.0/desktop/select/#mandatory-single-choice-list-mode-modifier-with-radio-value-1).
 2. To the necessary HTML.
 
 The first step is always the same. The second is performed in three different ways which can be randomly combined:
@@ -262,7 +262,7 @@ The first step is always the same. The second is performed in three different wa
 
 This option is the easiest, but while upgrading templates in the future versions of the library changes into each updated block will be required to do manually.
 
-**2 method.** To use templating in the browser. Assembly of `Dist` library includes pre-assembled BEMHTML and BH  templates at option.
+**2 method.** To use templating in the browser. Assembly of `Dist` library includes pre-assembled BEMHTML and BH templates at option.
 
 To do this, copy BEMJSON code from the documentation and paste into HTML page. Use the tab `BEMJSON` in the header of the example.
 
@@ -346,7 +346,7 @@ Let’s consider «behavioral model» of [HTMLInputElement](https://developer.mo
 Controls in `bem-components` have two types of focus which are set by modifiers `focused` and `focused-hard`. Type of focus defines the appearance of control.
 
 The choice of modifier occurs automatically, depending on the method of setting the focus:
-* `focused` —  set when you click on control by mouse cursor.
+* `focused` — set when you click on control by mouse cursor.
 * `focused-hard` — set in during transition to control with the keyboard or through JavaScript. Created for a more explicit highlighting of the component when it receives focus. For example, in the theme of islands most of controls get an extra border when you install the modifier `focused-hard`.
 
 <a name="development"></a>

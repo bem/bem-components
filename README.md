@@ -139,10 +139,7 @@ Choose the most suitable method of delivery for your project:
 
 | Dist | Source | Compiled |
 |---------|--------|----------|
-|Pre-assembled CSS- and JavaScript code and templates of library.
-It connects to the page by means of links. It does not require assembly and compatibility with your project.
-| The full source code of the library. To use pre-assembly is required. Requires full project's compatibility with [the technologies](#techs) and [tools](#tools) of the library.
-| The full source code of the library. To use pre-assembly is required. It differs from the «Source» method, here [Stylus](#techs) is compiled into CSS. It's suitable for projects where [Stylus](https://learnboost.github.io/stylus/) is not used.|
+|Pre-assembled CSS- and JavaScript code and templates of library. It connects to the page by means of links. It does not require assembly and compatibility with your project.| The full source code of the library. To use pre-assembly is required. Requires full project's compatibility with [the technologies](#techs) and [tools](#tools) of the library.| The full source code of the library. To use pre-assembly is required. It differs from the «Source» method, here [Stylus](#techs) is compiled into CSS. It's suitable for projects where [Stylus](https://learnboost.github.io/stylus/) is not used. |
 
 The way of library using defines the order of it connection to the project:
 

@@ -13,6 +13,7 @@ Use this block for creating different types of links.
 | <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
 | <a href="#theme">theme</a> | <code>islands</code> | <code>BEMJSON</code> | A custom design. |
 | <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the link. Use sizes only for links when <a href="#themes">theme modifier is set to islands</a>.|
+| <a href="#view">view</a> | <code>'minor'</code>, <code>'external'</code>, <code>'ghost'</code>, <code>'text'</code>, <code>'strong'</code> | <code>BEMJSON</code> | Visual highlighting.|
 
 ### Custom fields of the block
 
@@ -156,6 +157,79 @@ Sets the size value for all types of links.
 {
     block : 'link',
     mods : { theme : 'islands', size: 'xl' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
+
+<a name="view"></a>
+
+#### `view` modifier
+
+Acceptable values: `'minor'`, `'external'`, `'ghost'`, `'text'`, `'strong'`.
+
+Use case: `BEMJSON`.
+
+##### Secondary link (`view` modifier with `minor` value)
+
+The modifier visually highlights secondary links on a page.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size: 'm', view : 'minor' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
+
+##### External link (`view` modifier with `external` value)
+
+The modifier visually highlights external links on a page.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size: 'm', view : 'external' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
+
+##### Ghost link (`view` modifier with `ghost` value)
+
+The modifier changes visual representation of the link. For example, use it if you do not need to focus attention on the link:
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size: 'm', view : 'ghost' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
+
+##### Link to match text (`view` modifier with `text` value)
+
+Use this modifier to create a link to match the color of text.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size: 'm', view : 'text' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
+
+##### Bold link (`view` modifier with `strong` value)
+
+The modifier visually highlights important links on a page.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size: 'm', view : 'strong' },
     url : 'https://bem.info/',
     content : 'bem.info'
 }

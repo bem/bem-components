@@ -139,7 +139,7 @@ Choose the most suitable method of delivery for your project:
 
 | Dist | Source | Compiled |
 |---------|--------|----------|
-|Pre-assembled CSS- and JavaScript code and templates of library. It connects to the page by means of links. It does not require assembly and compatibility with your project.| The full source code of the library. To use pre-assembly is required. Requires full project's compatibility with [the technologies](#techs) and [tools](#tools) of the library.| The full source code of the library. To use pre-assembly is required. It differs from the «Source» method, here [Stylus](#techs) is compiled into CSS. It's suitable for projects where [Stylus](https://learnboost.github.io/stylus/) is not used. |
+|Pre-assembled CSS- and JavaScript code and templates of library. It connects to the page by means of links. It does not require assembly and compatibility with your project.| The full source code of the library. To use pre-assembly is required. Requires full project's compatibility with [technologies](#techs) and [tools](#tools) of library.| The full source code of the library. To use pre-assembly is required. It differs from the «Source» method, here [Stylus](#techs) is compiled into CSS. It's suitable for projects where [Stylus](https://learnboost.github.io/stylus/) is not used. |
 
 The way of library using defines the order of it connection to the project:
 
@@ -151,7 +151,7 @@ The way of library using defines the order of it connection to the project:
 
 Recommended method of connection is the use of tools [ENB](http://enb-make.info/) or [bem-tools](https://ru.bem.info/tools/bem/bem-tools/).
 
-Use [project-stub](https://en.bem.info/platform/project-stub/), as an example, where the library is activated by default. You can also create a project and connect it to the library using the Yo generator, which allows you to create the necessary project configuration.
+Use [project-stub](https://en.bem.info/platform/project-stub/), as an example, where library is activated by default. You can also create a project and connect it to the library using the [Yo generator](https://ru.bem.info/tools/bem/bem-stub/), which allows you to create the necessary project configuration.
 
 
 <a name="dist"></a>
@@ -161,7 +161,7 @@ The easiest way to connect the library to the project is to download pre-built l
 
 * [Connect files with CDN](#files-scheme-connection-with-cdn) — is the fastest way.
 * [Download the archive](#loading-gzipped) — ability to choose correct build version.
-* [To gather files from the sourse code](#files-collecting-from-the-sourse-code) — ability to build an unreleased version of the library.
+* [To gather files from the sourse code](#files-collecting-from-the-sourse-code) — ability to build an unreleased version of library.
 * [To install using Bower](#installation-using-bower)
 
 To use connected library files, see [Work with library](#work-with-library-in-dist-form).
@@ -174,16 +174,16 @@ Separate sets' files for three platforms are available:
 * touch-phone
 
 Each set includes:
-* `bem-components.css` — styles
-* `bem-components.ie.css` — styles for IE8 ([read more](#support-for-internet-explorer-8))
-* `bem-components.js` — JavaScript
-* `bem-components.bemhtml.js` — BEMHTML-templates
-* `bem-components.bh.js` — BH-templates
-* `bem-components.js+bemhtml.js` — joining JavaScript code and BEMHTML-templates to use templates in the browser
-* `bem-components.js+bh.js` — joining JavaScript code and BH-templates to use templates in the browser
-* bem-components.no-autoinit.js - JavaScript without automatic initialization.
-* bem-components.no-autoinit.js+bemhtml.js
-* bem-components.no-autoinit.js+bh.js
+* `bem-components.css` — styles;
+* `bem-components.ie.css` — styles for IE8 ([read more](#support-for-internet-explorer-8));
+* `bem-components.js` — JavaScript;
+* `bem-components.bemhtml.js` — BEMHTML-templates;
+* `bem-components.bh.js` — BH-templates;
+* `bem-components.js+bemhtml.js` — joining JavaScript code and BEMHTML-templates to use templates in the browser;
+* `bem-components.js+bh.js`` — joining JavaScript code and BH-templates to use templates in the browser;
+* `bem-components.no-autoinit.js` - JavaScript without automatic initialization;
+* `bem-components.no-autoinit.js+bemhtml.js`;
+* `bem-components.no-autoinit.js+bh.js`.
 
 Each kit includes similar dev-versions (saving original formatting
 and comments).

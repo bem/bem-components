@@ -8,7 +8,7 @@ A composite block that consists of a [control component](#modswitcher) (for exam
 
 | Modifier | Acceptable values | Use cases | Description |
 | ----------- | ------------------- | -------------------- | --------- |
-| <a href=#modswitcher>switcher</a> | <code>'link'</code>, <code>'button'</code> | <code>BEMJSON</code> | The type of the control component. |
+| <a href=#modswitcher>switcher</a> | <code>'link'</code>, <code>'button'</code> | <code>BEMJSON</code> | The type of the control component. A modifier is required. |
 | <a href=#disabled>disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
 | <a href=#opened>opened</a> | <code>true</code> | <code>JS</code> | Displaying the popup on a page. |
 | <a href=#theme>theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | A custom design. |

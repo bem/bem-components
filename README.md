@@ -147,7 +147,7 @@ The way of library using defines the order of it connection to the project:
 * [Connection of pre-assembled library files (Dist)](#dist)
 
 <a name="source-compiled"></a>
-### The source code library's connection (Source и Compiled)
+### The source code library's connection (Source and Compiled)
 
 Recommended method of connection is the use of tools [ENB](http://enb-make.info/) or [bem-tools](https://ru.bem.info/tools/bem/bem-tools/).
 

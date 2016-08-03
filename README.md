@@ -143,7 +143,7 @@ Choose the most suitable method of delivery for your project:
 
 The way of library using defines the order of it connection to the project:
 
-* [The source code library's connection (Source и Compiled)](#source-compiled)
+* [The source code library's connection (Source and Compiled)](#source-compiled)
 * [Connection of pre-assembled library files (Dist)](#dist)
 
 <a name="source-compiled"></a>
@@ -341,7 +341,7 @@ Let’s consider «behavioral model» of [HTMLInputElement](https://developer.mo
 
 #### Particularities of implementation
 
-##### The `focused` modifier
+##### `focused` modifier
 
 Controls in `bem-components` have two types of focus which are set by modifiers `focused` and `focused-hard`. Type of focus defines the appearance of control.
 

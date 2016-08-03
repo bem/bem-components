@@ -180,8 +180,8 @@ Each set includes:
 * `bem-components.bemhtml.js` — BEMHTML-templates;
 * `bem-components.bh.js` — BH-templates;
 * `bem-components.js+bemhtml.js` — joining JavaScript code and BEMHTML-templates to use templates in the browser;
-* `bem-components.js+bh.js`` — joining JavaScript code and BH-templates to use templates in the browser;
-* `bem-components.no-autoinit.js` - JavaScript without automatic initialization;
+* `bem-components.js+bh.js` — joining JavaScript code and BH-templates to use templates in the browser;
+* `bem-components.no-autoinit.js` — JavaScript without automatic initialization;
 * `bem-components.no-autoinit.js+bemhtml.js`;
 * `bem-components.no-autoinit.js+bh.js`.
 
@@ -203,7 +203,8 @@ Example: `//yastatic.net/bem-components/latest/desktop/bem-components.dev.js+bem
 
 #### Loading gzipped
 
-Select the necessary library version and download the archive. Unzip it. Add files to the page using the `<link>` and `<script>` elements.
+Select the necessary library version and download the [archive](https://github.com/bem/bem-components-dist/releases).
+Unzip it. Add files to the page using the `<link>` and `<script>` elements:
 
 ```html
 <link rel="stylesheet" href="desktop/bem-components.css">
@@ -214,10 +215,10 @@ Select the necessary library version and download the archive. Unzip it. Add fil
 
 The library code is on Github: [https://github.com/bem/bem-components](https://github.com/bem/bem-components).
 
-To build follow the commands:
+To build follow commands:
 
 ```
-# Clone sourse code of the library
+# Clone sourse code of library
 git clone https://github.com/bem/bem-components.git
 # Go to the library folder
 cd bem-components
@@ -254,7 +255,7 @@ As a result files will be available in a `bem-components-dist` folder. The conne
 Work with library can be organized into two steps:
 
 1. To find the right block on the library website: [bem.info](https://en.bem.info). For example, [select](https://en.bem.info/libs/bem-components/v3.0.0/desktop/select/#mandatory-single-choice-list-mode-modifier-with-radio-value-1).
-2. To the necessary HTML.
+2. To get the necessary HTML.
 
 The first step is always the same. The second is performed in three different ways which can be randomly combined:
 
@@ -319,7 +320,7 @@ BEMHTML.apply({
         { val : 2, text : 'Master class' },
         { val : 3, text : 'Round Table' }
     ]
-}); // return HTML line
+}); // returns HTML line
 ```
 
 ### Library’s principles understanding

@@ -13,6 +13,7 @@
 | <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
 | <a href="#theme">theme</a> | <code>islands</code> | <code>BEMJSON</code> | Стилевое оформление. |
 | <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер блока. Используется только с модификатором <a href="#theme">theme в значении islands</a>.|
+| <a href="#view">view</a> | <code>'minor'</code>, <code>'external'</code>, <code>'ghost'</code>, <code>'text'</code>, <code>'strong'</code> | <code>BEMJSON</code> | Тип визуального выделения ссылки.|
 
 ### Специализированные поля блока
 
@@ -161,6 +162,79 @@
 }
 ```
 
+<a name="view"></a>
+
+#### Модификатор `view`
+
+Допустимые значения: `'minor'`, `'external'`, `'ghost'`, `'text'`, `'strong'`.
+
+Способ использования: `BEMJSON`.
+
+##### Второстепенная ссылка (модификатор `view` в значении `minor`)
+
+Используется для визуального выделения второстепенных ссылок на странице.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size: 'm', view : 'minor' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
+
+##### Внешняя ссылка (модификатор `view` в значении `external`)
+
+Используется для визуального выделения ссылок, которые ведут на внешние ресурсы.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size: 'm', view : 'external' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
+
+##### Малозаметная ссылка (модификатор `view` в значении `ghost`)
+
+Используется при необходимости сделать ссылку менее заметной на странице.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size: 'm', view : 'ghost' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
+
+##### Ссылка под цвет текста (модификатор `view` в значении `text`)
+
+Используется при необходимости сделать ссылку под цвет текста.
+
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size: 'm', view : 'text' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
+
+##### Жирная ссылка (модификатор `view` в значении `strong`)
+
+Используется для визуального выделения важных ссылок на странице.
+
+```js
+{
+    block : 'link',
+    mods : { theme : 'islands', size: 'm', view : 'strong' },
+    url : 'https://bem.info/',
+    content : 'bem.info'
+}
+```
 
 ### Специализированные поля блока
 

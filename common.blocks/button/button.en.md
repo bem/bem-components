@@ -376,6 +376,8 @@ Specifies the button lable.
 }
 ```
 
+**Note** The `text` field is used for defining the button text in most cases, but you can't use it for setting custom BEMJSON. If you need to put HTML markup inside a `button` block, use the `content` field instead.
+
 <a name="buttonurl"></a>
 
 #### `url` field

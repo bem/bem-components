@@ -12,11 +12,11 @@
 },
 {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'textarea' }
+    shouldDeps : { tech : 'bemhtml', block : 'textarea' }
 },
 {
     tech : 'tmpl-spec.js',
-    mustDeps : [
+    shouldDeps : [
         { tech : 'bemhtml', block : 'textarea' },
         { tech : 'bemhtml', block : 'icon' }
     ]

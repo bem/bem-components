@@ -4,9 +4,9 @@
 },
 {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'menu-item' }
+    shouldDeps : { tech : 'bemhtml', block : 'menu-item' }
 },
 {
     tech : 'tmpl-spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'link' }
+    shouldDeps : { tech : 'bemhtml', block : 'link' }
 }]

@@ -12,9 +12,9 @@
 },
 {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'link' }
+    shouldDeps : { tech : 'bemhtml', block : 'link' }
 },
 {
     tech : 'tmpl-spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'link', mods : { pseudo : true } }
+    shouldDeps : { tech : 'bemhtml', block : 'link', mods : { pseudo : true } }
 }]

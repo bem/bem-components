@@ -13,15 +13,15 @@ The library provides design themes. This version introduces the "islands" theme,
 
 ## Contents
 
-* <a href="#levels">Levels</a>
-* <a href="#blocks">Blocks</a>
-* <a href="#supported-browsers">Supported browsers</a>
-* <a href="#techs">Technologies</a>
-* <a href="#tools">Tools</a>
-* <a href="#usage">Usage</a>
-* <a href="#development">Development</a>
-* <a href="#maintain">Maintainers</a>
-* <a href="#workflow">Workflow</a>
+* [Levels](#levels)
+* [Blocks](#blocks)
+* [Supported browsers](#supported-browsers)
+* [Technologies](#techs)
+* [Tools](#tools)
+* [Usage](#usage)
+* [Development](#development)
+* [Maintainers](#maintain)
+* [Workflow](#workflow)
 
 **Additional information**
 
@@ -29,7 +29,6 @@ The library provides design themes. This version introduces the "islands" theme,
 * [Migration to future versions](/MIGRATION.md)
 
 <a name="levels"></a>
-
 ## Levels
 
 * `common.blocks` — support of any devices and browsers.
@@ -40,7 +39,6 @@ The library provides design themes. This version introduces the "islands" theme,
 * `design/<common|desktop|touch|touch-phone|touch-pad>.blocks` — implementation of various designs (themes).
 
 <a name="blocks"></a>
-
 ## Blocks
 
 * [attach](common.blocks/attach/attach.en.md)
@@ -67,7 +65,6 @@ The library provides design themes. This version introduces the "islands" theme,
 * [z-index-group](common.blocks/z-index-group/z-index-group.en.md)
 
 <a name="supported-browsers"></a>
-
 ## Supported browsers
 
 * **Desktop**
@@ -85,16 +82,14 @@ The library provides design themes. This version introduces the "islands" theme,
   * Internet Explorer 10+
 
 <a name="ie8"></a>
-
 ### Support for Internet Explorer 8
 
-To support Internet Explorer 8, you must add
+To support Internet Explorer 8, you must add:
 
 * [es5-shim](https://www.npmjs.com/package/es5-shim);
-* style files with the `*.ie.styl` extension to the page. To do this, specify them in the build config (see this [example](https://github.com/bem/bem-components/blob/1f218c8ba10183fda21660e28cfbb280cd8cde54/.enb/make.js#L174)) and add comments in the `page` section (see this [example](https://gist.github.com/innabelaya/904ab01666fd1a19d312)). You can also enable styles for Internet Explorer 8 at the template level.
+* style files with the `*.ie.styl` extension to the page. To do this, specify them in the build config (see this [example](https://github.com/bem/bem-components/blob/1f218c8ba10183fda21660e28cfbb280cd8cde54/.enb/make.js#L174)) and add comments in the `page` section (see this [example](https://gist.github.com/godfreyd/b715d670bc09b9caf4c4adf44e6604a1)). You can also enable styles for Internet Explorer 8 at the template level.
 
 <a name="techs"></a>
-
 ## Technologies
 
 * [YModules](https://en.bem.info/tools/bem/modules/)
@@ -105,7 +100,6 @@ To support Internet Explorer 8, you must add
 * [Stylus](https://learnboost.github.io/stylus/)
 
 <a name="tools"></a>
-
 ## Tools
 
 **Assemblers**
@@ -130,65 +124,63 @@ To support Internet Explorer 8, you must add
 * [Autoprefixer](https://github.com/ai/autoprefixer/) — used during assembly to generate vendor prefixes for supported browsers based on the configuration.
 
 <a name="usage"></a>
-
 ## Usage
 
-There are several ways to start work with `bem-components`. The choice of an appropriate way of using depends on the projects' requirements and its compatibility with [the technologies](#techs) and [tools](#tools) of the library, as well as on your experience with BEM projects.
+There are several ways to start using `bem-components`.  The best approach depends on your project’s requirements and its compatibility with the [technologies](#techs) and [tools](#tools) of the library, as well as on your experience with BEM projects.
 
-Choose the most suitable method of delivery for your project:
+Choose the most suitable method for your project:
 
 | Dist | Source | Compiled |
 |---------|--------|----------|
-|Pre-assembled CSS- and JavaScript code and templates of library. It connects to the page by means of links. It does not require assembly and compatibility with your project.| The full source code of the library. To use pre-assembly is required. Requires full project's compatibility with [technologies](#techs) and [tools](#tools) of library.| The full source code of the library. To use pre-assembly is required. It differs from the «Source» method, here [Stylus](#techs) is compiled into CSS. It's suitable for projects where [Stylus](https://learnboost.github.io/stylus/) is not used. |
+| Pre-assembled CSS and JavaScript code and library templates. Integrated by linking to the page. Doesn't require assembly or compatibility with your project.| The full source code of the library. Requires assembly. Your project must be fully compatible with the library’s [technologies](#techs) and [tools](#tools). | The full source code of the library. Requires assembly. Differs from the Source method in that [Stylus](#techs) is compiled into CSS. Suitable for projects where [Stylus](https://learnboost.github.io/stylus/) is not used. |
 
-The way of library using defines the order of it connection to the project:
+The way you are using the library determines how to integrate it into your project:
 
-* [The source code library's connection (Source and Compiled)](#source-compiled)
-* [Connection of pre-assembled library files (Dist)](#dist)
+* [Integrating the library source code (Source and Compiled)](#source-compiled)
+* [Integrating the pre-assembled library files (Dist)](#dist)
 
 <a name="source-compiled"></a>
-### The source code library's connection (Source and Compiled)
+### Integrating the library source code (Source and Compiled)
 
-Recommended method of connection is the use of tools [ENB](http://enb-make.info/) or [bem-tools](https://ru.bem.info/tools/bem/bem-tools/).
+We recommend using [ENB](http://enb-make.info/) or [bem-tools](https://ru.bem.info/tools/bem/bem-tools/) to integrate the library.
 
-Use [project-stub](https://en.bem.info/platform/project-stub/), as an example, where library is activated by default. You can also create a project and connect it to the library using the [Yo generator](https://ru.bem.info/tools/bem/bem-stub/), which allows you to create the necessary project configuration.
+As an example, you can use [project-stub](https://ru.bem.info/tutorials/project-stub/), where the library is enabled by default. You can also create a project and use the [Yo generator](https://ru.bem.info/tools/bem/bem-stub/) to connect the library (this allows you to create the necessary project configuration).
 
 
 <a name="dist"></a>
-### Connection of pre-assembled library files (Dist)
+### Integrating the pre-assembled library files (Dist)
 
-The easiest way to connect the library to the project is to download pre-built library files and add them to HTML pages using the `<link>` and`<script>` elements. There are several ways to do it:
+The easiest way to connect the library to the project is to download the pre-assembled library files and use `<link>` and `<script>` elements to add them to HTML pages. There are several ways to do this:
 
-* [Connect files with CDN](#files-scheme-connection-with-cdn) — is the fastest way.
-* [Download the archive](#loading-gzipped) — ability to choose correct build version.
-* [To gather files from the sourse code](#files-collecting-from-the-sourse-code) — ability to build an unreleased version of library.
-* [To install using Bower](#installation-using-bower)
+* [Connect files with CDN](#connecting-files-from-a-cdn) — This is the fastest way.
+* [Download the archive](#loading-gzipped) — You can choose the desired build version.
+* [Assemble the files from the source code](#assembling-files-from-the-source-code) — You can build an unreleased version of the library.
+* [Install using Bower](#installation-using-bower)
 
-To use connected library files, see [Work with library](#work-with-library-in-dist-form).
+For information about how to use the connected library files, see [Working with the library](#work-with-library-in-dist-form).
 
-**Composition of pre-assembled library**
+**Structure of the pre-assembled library**
 
-Separate sets' files for three platforms are available:
+There are separate sets of files available for three platforms:
 * desktop
 * touch-pad
 * touch-phone
 
 Each set includes:
-* `bem-components.css` — styles;
-* `bem-components.ie.css` — styles for IE8 ([read more](#support-for-internet-explorer-8));
+* `bem-components.css` — Styles;
+* `bem-components.ie.css` — Styles for IE8 ([more information](#support-for-internet-explorer-8));
 * `bem-components.js` — JavaScript;
-* `bem-components.bemhtml.js` — BEMHTML-templates;
-* `bem-components.bh.js` — BH-templates;
-* `bem-components.js+bemhtml.js` — joining JavaScript code and BEMHTML-templates to use templates in the browser;
-* `bem-components.js+bh.js` — joining JavaScript code and BH-templates to use templates in the browser;
-* `bem-components.no-autoinit.js` — JavaScript without automatic initialization;
+* `bem-components.bemhtml.js` — BEMHTML templates;
+* `bem-components.bh.js` — BH templates;
+* `bem-components.js+bemhtml.js` — Combines JavaScript code and BEMHTML templates for using templates in the browser;
+* `bem-components.js+bh.js` — Combines JavaScript code and BH templates for using templates in the browser;
+* `bem-components.no-autoinit.js` - JavaScript without automatic initialization.  Use it if you need to write your own code in `i-bem.js`;
 * `bem-components.no-autoinit.js+bemhtml.js`;
 * `bem-components.no-autoinit.js+bh.js`.
 
-Each kit includes similar dev-versions (saving original formatting
-and comments).
+Each set also includes the development versions of the same files (preserving the original formatting and comments).
 
-#### File's scheme connection with CDN
+#### Connecting files from a CDN
 
 The fastest and easiest way to connect the library to the project is to add the `<link>` and `<script>` elements to HTML pages:
 
@@ -197,38 +189,37 @@ The fastest and easiest way to connect the library to the project is to add the 
 <script src="https://yastatic.net/bem-components/latest/desktop/bem-components.js+bemhtml.js"></script>
 ```
 
-File's scheme connection with CDN: `//yastatic.net/library-name/version/platform/file-name`.
+Pattern for connecting a file from the CDN: `//yastatic.net/library-name/version/platform/file-name`.
 
 Example: `//yastatic.net/bem-components/latest/desktop/bem-components.dev.js+bemhtml.js`.
 
 #### Loading gzipped
 
-Select the necessary library version and download the [archive](https://github.com/bem/bem-components-dist/releases).
-Unzip it. Add files to the page using the `<link>` and `<script>` elements:
+Select the appropriate library version and download the [archive](https://github.com/bem/bem-components-dist/releases). Unzip it.  Add the files to the page using `<link>` and `<script>` elements:
 
 ```html
 <link rel="stylesheet" href="desktop/bem-components.css">
 <script src="desktop/bem-components.js+bemhtml.js"></script>
 ```
 
-#### Files collecting from the sourse code
+#### Assembling files from the source code
 
 The library code is on Github: [https://github.com/bem/bem-components](https://github.com/bem/bem-components).
 
-To build follow commands:
+To run the build, use these commands:
 
 ```
-# Clone sourse code of library
+# Clone the library source code
 git clone https://github.com/bem/bem-components.git
-# Go to the library folder
+# Switch to the library folder
 cd bem-components
-# Install required dependencies
+# Install the required dependencies
 npm install
-# Gather Dist
+# Build Dist
 npm run dist
 ```
 
-As a result files will be available in the `bem-components-dist` folder. Connect files to HTML page:
+As a result of the build, the files will be available in the `bem-components-dist` folder.  Connect the files in the page's HTML:
 
 ```html
 <link rel="stylesheet" href="bower_components/bem-components-dist/desktop/bem-components.css">
@@ -243,31 +234,32 @@ Provided [Bower](http://bower.io/) is already in your project, run the following
 bower i bem/bem-components-dist
 ```
 
-As a result files will be available in a `bem-components-dist` folder. The connection doesn't differ from the previous method:
+As a result of the build, the files will be available in the `bem-components-dist` folder.  Connect the files the same way as for the previous method:
 
 ```html
 <link rel="stylesheet" href="bower_components/bem-components-dist/desktop/bem-components.css">
 <script src="bower_components/bem-components-dist/desktop/bem-components.js+bemhtml.js"></script>
 ```
 
-#### Work with library in Dist form
+#### Working with the library as Dist
 
-Work with library can be organized into two steps:
+There are two steps to working with the library:
 
-1. To find the right block on the library website: [bem.info](https://en.bem.info). For example, [select](https://en.bem.info/libs/bem-components/v3.0.0/desktop/select/#mandatory-single-choice-list-mode-modifier-with-radio-value-1).
-2. To get the necessary HTML.
+1. Find the right block on the library website: [bem.info](https://en.bem.info). For example, you can use [select](https://en.bem.info/libs/bem-components/v3.0.0/desktop/select/#mandatory-single-choice-list-mode-modifier-with-radio-value-1).
+2. Get the necessary HTML.
 
-The first step is always the same. The second is performed in three different ways which can be randomly combined:
+The first step is always the same. The second step can be performed in three different ways, which you can combine as you wish:
 
-**1 method.** To copy HTML from the example. To do this, go to `HTML` tab in the header of the example.
+**Method 1.** Copy the HTML from the example.  To do this, go to the `HTML` tab in the header of the example.
 
-This option is the easiest, but while upgrading templates in the future versions of the library changes into each updated block will be required to do manually.
+This is the easiest approach, but if templates are updated in future versions of the library, you will have to make the changes manually in each updated block.
 
-**2 method.** To use templating in the browser. Assembly of `Dist` library includes pre-assembled BEMHTML and BH templates at option.
+**Method 2.** Use templating in the browser.  Assembling the `Dist` library includes pre-assembled BEMHTML and BH templates to choose from.
 
-To do this, copy BEMJSON code from the documentation and paste into HTML page. Use the tab `BEMJSON` in the header of the example.
+To do this, copy the sample BEMJSON code from the documentation and paste it into the page's HTML code.  Use the `BEMJSON` tab in the header of the example.
 
-The HTML page would be like:
+The page's HTML code will look like this:
+
 
 ```html
 <!DOCTYPE html>
@@ -302,9 +294,9 @@ modules.require(['i-bem__dom', 'BEMHTML', 'jquery'], function(BEMDOM, BEMHTML, $
 </html>
 ```
 
-To update library to a new version this code won't require any changes in markup, like the first method. However, the client-driven markup may be indexed worse by search engines.
+In contrast to the first method, this code won't require any changes to the markup when the library is updated to a new version.  However, client-generated markup might not be indexed as well by search engines.
 
-**3 Method.** Execute `{BEMHTML,BH}.apply()` in Node.js and give browser ready HTML:
+**Method 3**. Execute `{BEMHTML,BH}.apply()` in Node.js and give the browser the prepared HTML:
 
 ```js
 var BEMHTML = require('./dist/desktop/bem-components.bemhtml.js').BEMHTML;
@@ -323,35 +315,34 @@ BEMHTML.apply({
 }); // returns HTML line
 ```
 
-### Library’s principles understanding
+### Library concepts
 
-#### The block and it conditions
+#### The block and its states
 
-The library consists of blocks, a visual representation of which can be seen on [`bem-components` display](https://en.bem.info/libs/bem-components/v3.0.0/showcase/). The blocks have states that determine its behavioral model. The block’s state is expressed through the modifiers and specialized fields. Modifier’s changing creates an event which can be used to operate with block.
+The library consists of blocks, which you can see represented visually in the [`bem-components` showcase](https://ru.bem.info/libs/bem-components/current/showcase/).  Blocks have states that determine the behavioral model.  A block’s state is expressed through modifiers and specialized fields.  Changing a modifier creates an event that can be used for working with the block.
 
-There is no need to create special additional BEM event, if you have opportunity to work with event to change the modifier. Depending on that by means of what component’s state changes (modifier or field), different events are used:
+There is no need to create a special BEM event if you can work with the modifier change event.  Depending on what is used for changing a component’s state (a modifier or a field), different events are used:
 
-* To respond on changes of `value` fields «status» event `change` is used.
-* To respond on installing/removing modifier different events to change the modifier are used.
+* To respond to changing the "state" of `value` fields, the `change` event is used.
+* To respond to setting or removing a modifier, various modifier change events are used.
 
 #### Controls in `bem-components`
 
-Controls in `bem-components` can be used as the base part for creating other components of the libraries. Such controls have no models, as in HTML, and can be used for tasks that don't require the semantics of specific HTML model.
+The controls in `bem-components` can be used as the basis for creating other library components.  Such controls don't have models as in HTML, and they can be used for tasks that don't require the semantics of a specific HTML model.
 
-Let’s consider «behavioral model» of [HTMLInputElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement), which is a higher-level interface, specifically designed to edit data. Blocks of `bem-components` are characterized by the fact that they can be used as the basic part of another library which will solve the same problem. But along with that, they can solve other interface problems which can be used without semantics of an `HTML input`.
+As an example, think of the "behavioral model" for the [HTMLInputElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement), which is a higher-level interface designed specifically for editing data.  What is different about `bem-components` blocks is that they can be used as the basis of a block in another library that will solve the same problem.  But along with that, they can serve other purposes in the interface that don't require `HTML input` semantics.
 
-#### Particularities of implementation
+#### Implementation details
 
 ##### `focused` modifier
 
-Controls in `bem-components` have two types of focus which are set by modifiers `focused` and `focused-hard`. Type of focus defines the appearance of control.
+Controls in bem-components have two types of focus, which are set using the modifiers `focused` and `focused-hard`.  The type of focus determines the appearance of the control.
 
-The choice of modifier occurs automatically, depending on the method of setting the focus:
-* `focused` — set when you click on control by mouse cursor.
-* `focused-hard` — set in during transition to control with the keyboard or through JavaScript. Created for a more explicit highlighting of the component when it receives focus. For example, in the theme of islands most of controls get an extra border when you install the modifier `focused-hard`.
+The modifier is chosen automatically based on how the focus is set:
+* `focused` — Set for a mouse click on the control.
+* `focused-hard` — Set when the control is selected using the keyboard or through JavaScript.  It highlights the component more obviously when it gets the focus.  For example, in the `Islands` theme, most of the controls get an extra border when `focused-hard` is set.
 
 <a name="development"></a>
-
 ## Development
 
 * <a href="#working-copy">Working copy</a>
@@ -362,7 +353,6 @@ The choice of modifier occurs automatically, depending on the method of setting 
   * <a href="#template-tests">Tests for templates</a>
 
 <a name="working-copy"></a>
-
 ### Working copy
 
 Get sources:

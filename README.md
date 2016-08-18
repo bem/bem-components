@@ -157,7 +157,7 @@ The easiest way to connect the library to the project is to download the pre-ass
 * [Assemble the files from the source code](#assembling-files-from-the-source-code) — You can build an unreleased version of the library.
 * [Install using Bower](#installation-using-bower)
 
-For information about how to use the connected library files, see [Working with the library](#work-with-library-in-dist-form).
+For information about how to use the connected library files, see [Working with the library](#working-with-the-library-as-dist).
 
 **Structure of the pre-assembled library**
 

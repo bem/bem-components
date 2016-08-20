@@ -15,10 +15,10 @@
   ],
   "ignore": [
     "*",
-    "!common.blocks",
-    "!desktop.blocks",
-    "!touch.blocks",
-    "!design",
+    "!common.blocks/**",
+    "!desktop.blocks/**",
+    "!touch.blocks/**",
+    "!design/**",
     "!*.md",
     "!LICENSE.txt"
   ],

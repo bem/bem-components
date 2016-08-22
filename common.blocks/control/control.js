@@ -100,9 +100,9 @@ provide(BEMDOM.decl(this.name, /** @lends control.prototype */{
     },
 
     _blur : function() {
-        dom.isFocusable(this.elem('control'))?
-            this.elem('control').blur() :
-            this._onBlur();
+        // force both `blur` and `_onBlur` for FF which can have disabled element as `document.activeElement`
+        this.elem('control').blur();
+        this._onBlur();
     }
 }, /** @lends control */{
     live : function() {

@@ -82,15 +82,14 @@ module.exports = function(config) {
                         filesTarget : '.tmp.no-autoinit-files.files',
                         dirsTarget : '.tmp.no-autoinit-files.dirs'
                     }],
-                    [techs.stylus, {
+                    [techs.postcss.postcss, {
                         target : '.tmp.dev.css',
-                        autoprefixer : {
-                            browsers : getBrowsers(platform)
-                        }
+                        plugins : techs.postcss.plugins(getBrowsers(platform))
                     }],
-                    [techs.stylus, {
+                    [techs.postcss.postcss, {
                         target : '.tmp.dev.ie.css',
-                        sourceSuffixes : ['styl', 'css', 'ie.styl', 'ie.css']
+                        sourceSuffixes : ['post.css', 'css',  'ie.post.css', 'ie.css'],
+                        plugins : techs.postcss.plugins(getBrowsers(platform))
                     }],
                     [techs.bem.depsByTechToBemdecl, {
                         target : '.tmp.js-js.bemdecl.js',
@@ -222,13 +221,15 @@ module.exports = function(config) {
 
             // Client techs
             nodeConfig.addTechs([
-                [techs.stylus, {
+                [techs.postcss.postcss, {
                     target : '.tmp.css',
-                    autoprefixer : {
-                        browsers : getBrowsers(platform)
-                    }
+                    plugins : techs.postcss.plugins(getBrowsers(platform))
                 }],
-                [techs.stylus, { target : '.tmp.ie.css', sourceSuffixes : ['styl', 'css',  'ie.styl', 'ie.css'] }],
+                [techs.postcss.postcss, {
+                    target : '.tmp.ie.css',
+                    sourceSuffixes : ['post.css', 'css',  'ie.post.css', 'ie.css'],
+                    plugins : techs.postcss.plugins(getBrowsers(platform))
+                }],
                 [techs.js, {
                     target : '.tmp.browser.js',
                     sourceSuffixes : ['vanilla.js', 'browser.js', 'js'],

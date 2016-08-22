@@ -31,6 +31,7 @@
     "bem-core": "^3.0.1"
   },
   "devDependencies": {
+    "autoprefixer": "^6.4.0",
     "bem-naming": "^1.0.1",
     "bem-walk": "^1.0.0-1",
     "borschik": "^1.6.0",
@@ -48,17 +49,20 @@
     "enb-magic-factory": "^0.5.0",
     "enb-magic-platform": "^0.7.0",
     "enb-modules": "^0.3.0",
-    "enb-stylus": "^2.3.3",
+    "enb-postcss": "^1.1.0",
     "gemini": "^4.4.2",
     "gemini-saucelabs-info": "^1.0.0",
     "git-hooks": "^1.0.2",
+    "glob": "^7.0.5",
     "http-server": "^0.9.0",
     "istanbul": "^0.4.4",
     "jscs": "^2.11.0",
     "jscs-bem": "^0.2.0",
     "jshint": "^2.9.2",
     "jshint-groups": "^0.8.0",
-    "stylus": "^0.54.5"
+    "postcss-import": "^8.1.2",
+    "postcss-nested": "^1.0.0",
+    "rebem-css": "^0.2.0"
   },
   "scripts": {
     "start": "magic server",
@@ -66,7 +70,7 @@
     "dist": "npm run deps && magic make dist/desktop dist/touch-pad dist/touch-phone",
     "dist-gemini-test": "http-server -s -p 8000 & p=$!; gemini test test/dist/dist.gemini.js --reporter html --reporter flat; e=$?; kill -9 ${p}; exit ${e}",
     "dist-gemini-update": "http-server -c \"no-cache, no-store\" -s -p 8000 & p=$!; gemini update test/dist/dist.gemini.js; kill -9 ${p}",
-    "compiled": "find . -iname '*.styl' | xargs stylus",
+    "compiled": "node compile-postcss.js",
     "build": "npm run build-${TEST_SCOPE:-all}",
     "build-all": "npm run deps && magic make desktop.examples desktop.tests desktop.docs touch.examples touch.tests touch.docs *.pages/*",
     "build-specs": "npm run deps",

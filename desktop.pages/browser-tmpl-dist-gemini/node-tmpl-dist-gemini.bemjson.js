@@ -153,11 +153,21 @@ module.exports = {
             val : 25
         },
 
+        {
+            tag: 'style',
+            content: [
+                '.spin_theme_islands.spin_paused {',
+                '    animation: none;',
+                '',
+                '    border-top-color: #fc0;',
+                '    border-left-color: #fc0;',
+                '}',
+            ].join('')
+        },
         ['s', 'm', 'l', 'xl'].map(function(size) {
             return {
                 block : 'spin',
-                attrs : { style : '-webkit-animation-play-state: paused; animation-play-state: paused;'},
-                mods : { theme : 'islands', size : size, visible : true }
+                mods : { theme : 'islands', size : size, visible : true, paused : true }
             };
         }),
 

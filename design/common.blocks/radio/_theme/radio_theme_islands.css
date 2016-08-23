@@ -1,0 +1,107 @@
+.radio_theme_islands {
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.radio_theme_islands:hover {
+  cursor: pointer;
+}
+.radio_theme_islands .radio__control {
+  position: absolute;
+  z-index: -1;
+  margin: 0;
+  opacity: 0;
+}
+.radio_theme_islands .radio__box {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.2);
+}
+.radio_theme_islands .radio__box:before {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  content: '';
+  border-radius: 50%;
+  background: #fff;
+}
+.radio_theme_islands.radio_size_m {
+  font-size: 13px;
+}
+.radio_theme_islands.radio_size_m .radio__box {
+  line-height: 14px;
+  top: 2px;
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+.radio_theme_islands.radio_size_m .radio__box:after {
+  top: 4px;
+  left: 4px;
+  width: 6px;
+  height: 6px;
+}
+.radio_theme_islands.radio_size_l {
+  font-size: 15px;
+}
+.radio_theme_islands.radio_size_l .radio__box {
+  line-height: 17px;
+  top: 3px;
+  width: 17px;
+  height: 17px;
+  margin-right: 7px;
+}
+.radio_theme_islands.radio_size_l .radio__box:after {
+  top: 5px;
+  left: 5px;
+  width: 7px;
+  height: 7px;
+}
+.radio_theme_islands.radio_checked .radio__box {
+  background: rgba(153,122,0,0.5);
+}
+.radio_theme_islands.radio_checked .radio__box:before {
+  background: #ffeba0;
+}
+.radio_theme_islands.radio_checked .radio__box:after {
+  position: absolute;
+  border-radius: 50%;
+  background: #000;
+  content: '';
+}
+.radio_theme_islands.radio_focused .radio__box {
+  box-shadow: 0 0 0 1px #fc0, inset 0 0 0 1px #fc0;
+}
+.radio_theme_islands.radio_hovered .radio__box {
+  background: rgba(0,0,0,0.3);
+}
+.radio_theme_islands.radio_hovered.radio_checked .radio__box {
+  background: rgba(129,103,0,0.6);
+}
+.radio_theme_islands.radio_disabled {
+  cursor: default;
+  color: #999;
+}
+.radio_theme_islands.radio_disabled .radio__box {
+  background: rgba(0,0,0,0.08);
+}
+.radio_theme_islands.radio_disabled .radio__box:before {
+  display: none;
+}
+.radio_theme_islands.radio_disabled .radio__box:after {
+  background: rgba(0,0,0,0.4);
+}
+.radio_theme_islands.radio_type_button {
+  display: inline-block;
+}
+.radio_theme_islands.radio_type_line.radio_size_m {
+  margin-right: 13px;
+}
+.radio_theme_islands.radio_type_line.radio_size_l {
+  margin-right: 15px;
+}
+.radio_theme_islands.radio_type_line:last-child {
+  margin-right: 0;
+}

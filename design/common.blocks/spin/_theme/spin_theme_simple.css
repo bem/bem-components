@@ -1,0 +1,43 @@
+.spin_theme_simple {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 2px dashed #000;
+  border-radius: 50%;
+}
+.spin_theme_simple.spin_visible {
+  display: inline-block;
+  animation: spin_theme_simple 2s infinite linear;
+}
+@-moz-keyframes spin_theme_simple {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin_theme_simple {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spin_theme_simple {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin_theme_simple {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

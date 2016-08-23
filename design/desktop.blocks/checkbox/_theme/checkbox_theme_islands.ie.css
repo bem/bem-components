@@ -1,0 +1,42 @@
+.checkbox_theme_islands .checkbox__box {
+  background: #cbcbcb;
+}
+.checkbox_theme_islands .checkbox__box:after {
+  top: -4px;
+  filter: alpha(opacity=0);
+}
+.checkbox_theme_islands .checkbox__control {
+  outline: none;
+  filter: alpha(opacity=0);
+}
+.checkbox_theme_islands.checkbox_checked .checkbox__box {
+  background: #ccbd80;
+}
+.checkbox_theme_islands.checkbox_checked .checkbox__box:before {
+  content: ' ';
+}
+.checkbox_theme_islands.checkbox_checked .checkbox__box:after {
+  content: ' ';
+  filter: alpha(opacity=100);
+}
+.checkbox_theme_islands.checkbox_hovered .checkbox__box {
+  background: #b3b3b3;
+}
+.checkbox_theme_islands.checkbox_hovered.checkbox_checked .checkbox__box {
+  background: #b2a265;
+}
+.checkbox_theme_islands.checkbox_focused.checkbox .checkbox__box {
+  background: #fc0;
+}
+.checkbox_theme_islands.checkbox_disabled .checkbox__box {
+  background: #ebebeb;
+}
+.checkbox_theme_islands.checkbox_disabled.checkbox_checked .checkbox__box:after {
+  background-position: 0 100%;
+}
+.checkbox_theme_islands.checkbox_size_m .checkbox__box:after {
+  background-image: url("tip_size_m.png");
+}
+.checkbox_theme_islands.checkbox_size_l .checkbox__box:after {
+  background-image: url("tip_size_l.png");
+}

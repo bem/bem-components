@@ -1,0 +1,11 @@
+.test {
+  margin: 10px 0;
+}
+.test__content {
+  width: 450px;
+  padding: 20px;
+}
+.page_hide-scroll {
+  overflow: hidden;
+  min-height: 100vh;
+}

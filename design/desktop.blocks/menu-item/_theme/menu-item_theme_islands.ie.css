@@ -1,0 +1,15 @@
+.menu-item_theme_islands.menu-item_disabled {
+  color: #999;
+}
+.menu_size_s .menu-item_theme_islands.menu-item_checked {
+  background: 10px 50% no-repeat url("tip_size_s.png");
+}
+.menu_size_m .menu-item_theme_islands.menu-item_checked {
+  background: 13px 50% no-repeat url("tip_size_s.png");
+}
+.menu_size_l .menu-item_theme_islands.menu-item_checked {
+  background: 15px 50% no-repeat url("tip_size_l.png");
+}
+.menu_size_xl .menu-item_theme_islands.menu-item_checked {
+  background: 20px 50% no-repeat url("tip_size_l.png");
+}

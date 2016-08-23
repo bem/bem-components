@@ -1,0 +1,22 @@
+.menu-item_theme_simple {
+  padding: 4px 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.menu__group .menu-item_theme_simple {
+  padding-left: 25px;
+}
+.menu-item_theme_simple.menu-item_disabled {
+  opacity: 0.3;
+}
+.menu-item_theme_simple .link_disabled {
+  cursor: text;
+}
+.menu-item_theme_simple.menu-item_checked {
+  font-weight: bold;
+  background: #fff7db;
+}
+.menu-item_theme_simple.menu-item_hovered {
+  cursor: pointer;
+  background: #ffc7c7;
+}

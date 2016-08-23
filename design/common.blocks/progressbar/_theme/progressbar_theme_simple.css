@@ -1,0 +1,29 @@
+.progressbar_theme_simple {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 8px;
+  background: #f4f4f4;
+}
+.progressbar_theme_simple .progressbar__bar {
+  height: 100%;
+  background: rgba(255,255,255,0.7);
+}
+.progressbar_theme_simple .progressbar__box {
+  position: relative;
+  overflow: hidden;
+  height: 20px;
+  padding: 1px;
+  background: linear-gradient(to right, #2de254 0%, #47a0e5 100%);
+  flex: 1 0 auto;
+}
+.progressbar_theme_simple .progressbar__text {
+  font-family: Verdana, sans-serif;
+  min-width: 3em;
+  padding-left: 5px;
+  text-align: right;
+}
+.progressbar_theme_simple .progressbar__text:after {
+  content: '%';
+}

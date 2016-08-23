@@ -1,0 +1,97 @@
+.spin_theme_islands {
+  position: absolute;
+  display: inline-block;
+  visibility: hidden;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+.spin_theme_islands:after {
+  content: '\00A0';
+}
+.spin_theme_islands.spin_visible {
+  position: relative;
+  visibility: visible;
+  animation: spin_theme_islands 1s infinite linear;
+  background: 0 0 no-repeat url("spin_theme_islands.gif");
+  background: linear-gradient(1deg, rgba(0,0,0,0), rgba(0,0,0,0));
+  backface-visibility: hidden;
+}
+.spin_theme_islands.spin_size_xs {
+  line-height: 16px;
+  width: 16px;
+  height: 16px;
+  background-position: -2px -2px;
+}
+.spin_theme_islands.spin_size_s {
+  line-height: 24px;
+  width: 24px;
+  height: 24px;
+  background-position: -2px -19px;
+}
+.spin_theme_islands.spin_size_m {
+  line-height: 28px;
+  width: 28px;
+  height: 28px;
+  background-position: -2px -44px;
+}
+.spin_theme_islands.spin_size_l {
+  line-height: 32px;
+  width: 32px;
+  height: 32px;
+  background-position: -2px -73px;
+}
+.spin_theme_islands.spin_size_xl {
+  line-height: 38px;
+  width: 38px;
+  height: 38px;
+  background-position: -2px -106px;
+}
+@-moz-keyframes spin_theme_islands {
+  from {
+    border-top-color: #fc0;
+    border-left-color: #fc0;
+    transform: rotate(0);
+  }
+  to {
+    border-top-color: #fc0;
+    border-left-color: #fc0;
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin_theme_islands {
+  from {
+    border-top-color: #fc0;
+    border-left-color: #fc0;
+    transform: rotate(0);
+  }
+  to {
+    border-top-color: #fc0;
+    border-left-color: #fc0;
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spin_theme_islands {
+  from {
+    border-top-color: #fc0;
+    border-left-color: #fc0;
+    transform: rotate(0);
+  }
+  to {
+    border-top-color: #fc0;
+    border-left-color: #fc0;
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin_theme_islands {
+  from {
+    border-top-color: #fc0;
+    border-left-color: #fc0;
+    transform: rotate(0);
+  }
+  to {
+    border-top-color: #fc0;
+    border-left-color: #fc0;
+    transform: rotate(360deg);
+  }
+}

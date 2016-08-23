@@ -16,11 +16,11 @@
 },
 {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'select' }
+    shouldDeps : { tech : 'bemhtml', block : 'select' }
 },
 {
     tech : 'tmpl-spec.js',
-    mustDeps : [
+    shouldDeps : [
         { tech : 'bemhtml', block : 'select', mods : { mode : ['radio', 'check', 'radio-check'] } },
         { tech : 'bemhtml', block : 'icon' }
     ]

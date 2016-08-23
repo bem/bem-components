@@ -14,11 +14,11 @@
 },
 {
     tech : 'spec.js',
-    mustDeps : { tech : 'bemhtml', block : 'button' }
+    shouldDeps : { tech : 'bemhtml', block : 'button' }
 },
 {
     tech : 'tmpl-spec.js',
-    mustDeps : [
+    shouldDeps : [
         { tech : 'bemhtml', block : 'button', mods : { type : 'link' } },
         { tech : 'bemhtml', block : 'icon' }
     ]

@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.0.1
+
+### Bug fixes
+* Fixed an issue in `button` with `disabled` modifier in Firefox which led to situation when `document.activeElement` was still pointing to a block if it was focused before `disabled` was set ([#1913](https://github.com/bem/bem-components/issues/1913)).
+
+### Other changes
+* `cursor: pointer` rule was added to `attach` ([#1860](https://github.com/bem/bem-components/issues/1860)).
+* Documentation updated.
+
 ## 3.0.0
 
 ### Breaking changes

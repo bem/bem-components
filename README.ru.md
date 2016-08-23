@@ -1,5 +1,5 @@
-bem-components
-======================
+# Библиотека BEM Components
+
 [![GitHub Release](https://img.shields.io/github/release/bem/bem-components.svg?style=flat)](https://github.com/bem/bem-components/releases)
 [![Build Status](https://img.shields.io/travis/bem/bem-components/v2.svg?style=flat)](https://travis-ci.org/bem/bem-components)
 [![Coverage Status](https://img.shields.io/coveralls/bem/bem-components/v2.svg?style=flat)](https://coveralls.io/r/bem/bem-components?branch=v2)
@@ -338,7 +338,7 @@ BEMHTML.apply({
 Контролы в bem-components имеют два типа фокуса, которые выставляются с помощью модификаторов `focused` и `focused-hard`. Тип фокуса определяет внешний вид контрола.
 
 Выбор модификатора происходит автоматически в зависимости от способа установки фокуса:
-* `focused` —  выставляется при клике на контрол курсором мыши.
+* `focused` — выставляется при клике на контрол курсором мыши.
 * `focused-hard` — выставляется при переходе на контрол с помощью клавиатуры или через JavaScript. Создан для более явного визуального выделения компонента при получении фокуса. Например, в теме `islands` большинство контролов получают дополнительную рамку при установке модификатора `focused-hard`.
 
 <a name="development"></a>

@@ -3,7 +3,7 @@ module.exports = function(bh) {
         ctx.applyBase();
         var firstItem = ctx.tParam('firstItem');
         if(firstItem && !ctx.tParam('checkedItems').length) {
-            (firstItem.mods = firstItem.mods || {}).checked = true;
+            (firstItem.elemMods = firstItem.elemMods || {}).checked = true;
         }
     });
 };

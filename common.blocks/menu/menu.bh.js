@@ -36,7 +36,7 @@ module.exports = function(bh) {
                         if(itemOrGroup.elem === 'item') {
                             firstItem || (firstItem = itemOrGroup);
                             if(containsVal(itemOrGroup.val)) {
-                                (itemOrGroup.mods = itemOrGroup.mods || {}).checked = true;
+                                (itemOrGroup.elemMods = itemOrGroup.elemMods || {}).checked = true;
                                 checkedItems.push(itemOrGroup);
                             }
                         } else if(itemOrGroup.content) { // menu__group

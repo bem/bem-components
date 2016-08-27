@@ -2,9 +2,9 @@
 
 modules.define(
     'control', ['i-bem-dom'],
-    function(provide, bemDom) {
+    function(provide, bemDom, Control) {
 
-provide(bemDom.declBlock('control', {
+provide(bemDom.declBlock(Control, {
     beforeSetMod : {
         'hovered' : {
             'true' : function() {

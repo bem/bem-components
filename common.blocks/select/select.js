@@ -64,7 +64,7 @@ provide(bemDom.declBlock(this.name, /** @lends select.prototype */{
 
         'opened' : {
             '*' : function(_, modVal) {
-                this._menu && this._menu.setMod('focused', modVal);
+                this._menu.setMod('focused', modVal);
             },
 
             'true' : function() {
@@ -79,7 +79,7 @@ provide(bemDom.declBlock(this.name, /** @lends select.prototype */{
 
             '' : function() {
                 this._domEvents(bemDom.doc).un('pointerpress', this._onDocPointerPress);
-                this._popup && this._popup.delMod('visible');
+                this._popup.delMod('visible');
             }
         },
 
@@ -90,14 +90,16 @@ provide(bemDom.declBlock(this.name, /** @lends select.prototype */{
             },
 
             'true' : function() {
-                // TODO: checkme
-                this._elem('control') && this._elem('control').domElem.attr('disabled', true);
+                this._elems('control').forEach(function(control) {
+                    control.domElem.attr('disabled', true);
+                });
                 this._popup.delMod('visible');
             },
 
             '' : function() {
-                // TODO: checkme
-                this._elem('control') && this._elem('control').domElem.removeAttr('disabled');
+                this._elems('control').forEach(function(control) {
+                    control.domElem.removeAttr('disabled');
+                });
             }
         }
     },
@@ -148,7 +150,7 @@ provide(bemDom.declBlock(this.name, /** @lends select.prototype */{
             .un('keypress', this._onKeyPress);
 
         this.delMod('opened');
-        this._button && this._button.delMod('focused');
+        this._button.delMod('focused');
     },
 
     _updateMenuWidth : function() {

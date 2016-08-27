@@ -2,7 +2,7 @@
  * @module input
  */
 
-modules.define('input', ['i-bem-dom', 'tick', 'idle'], function(provide, bemDom, tick, idle) {
+modules.define('input', ['i-bem-dom', 'tick', 'idle'], function(provide, bemDom, tick, idle, Input) {
 
 var instances = [],
     boundToTick,
@@ -34,7 +34,7 @@ var instances = [],
  * @class input
  * @bem
  */
-provide(bemDom.declBlock(this.name, /** @lends input.prototype */{
+provide(bemDom.declBlock(Input, /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {

@@ -1,11 +1,9 @@
-.attach_theme_simple
-{
+:block(attach):mod(theme simple) {
     display: inline-block;
 
     white-space: nowrap;
 
-    .attach__control
-    {
+    :block(attach):elem(control) {
         position: absolute;
         z-index: 2;
         top: 0;
@@ -21,41 +19,34 @@
         opacity: 0;
     }
 
-    .attach__file,
-    .attach__no-file
-    {
+    :block(attach):elem(file),
+    :block(attach):elem(no-file) {
         display: inline;
 
         margin-left: 0.5em;
     }
 
-    .attach__clear
-    {
+    :block(attach):elem(clear) {
         margin-left: 5px;
 
         cursor: pointer;
 
-        &:before
-        {
+        &:before {
             content: '×';
         }
     }
 
-    &.attach_disabled
-    {
-        .attach__no-file,
-        .attach__file
-        {
+    &:block(attach):mod(disabled) {
+        :block(attach):elem(file),
+        :block(attach):elem(no-file) {
             opacity: 0.6;
         }
     }
 
-    .button
-    {
+    :block(button) {
         position: relative;
 
-        &__text
-        {
+        &:elem(text) {
             display: inline;
 
             z-index: 1;

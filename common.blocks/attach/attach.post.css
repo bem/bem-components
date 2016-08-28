@@ -1,12 +1,10 @@
-.attach
-{
+:block(attach) {
     touch-action: manipulation;
 
-    &__file,
-    &__no-file,
-    .button__text,
-    .attach_disabled .attach__clear
-    {
+    &:elem(file),
+    &:elem(no-file),
+    &:mod(disabled) :block(attach):elem(clear),
+    :block(button):elem(text) {
         display: none;
     }
 }

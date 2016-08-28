@@ -1,13 +1,11 @@
-.attach_theme_islands
-{
+:block(attach):mod(theme islands) {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     display: inline-block;
 
     white-space: nowrap;
 
-    .attach__control
-    {
+    :block(attach):elem(control) {
         position: absolute;
         z-index: 2;
         top: 0;
@@ -24,16 +22,14 @@
         opacity: 0;
     }
 
-    .attach__file,
-    .attach__no-file
-    {
+    :block(attach):elem(file),
+    :block(attach):elem(no-file) {
         display: inline;
 
         margin-left: 0.4em;
     }
 
-    .attach__clear
-    {
+    :block(attach):elem(clear) {
         display: inline-block;
 
         margin-left: 0.4em;
@@ -45,50 +41,43 @@
         opacity: 0.3;
         background: center no-repeat;
 
-        &:hover
-        {
+        &:hover {
             opacity: 1;
         }
     }
 
-    &.attach_disabled
-    {
-        .attach__no-file,
-        .attach__file
-        {
+    &:block(attach):mod(disabled) {
+        :block(attach):elem(file),
+        :block(attach):elem(no-file) {
             opacity: 0.6;
         }
     }
 
-    &.attach_size_s { font-size: 13px; }
-    &.attach_size_m { font-size: 13px; }
-    &.attach_size_l { font-size: 15px; }
-    &.attach_size_xl { font-size: 18px; }
+    &:block(attach):mod(size s) { font-size: 13px; }
+    &:block(attach):mod(size m) { font-size: 13px; }
+    &:block(attach):mod(size l) { font-size: 15px; }
+    &:block(attach):mod(size xl) { font-size: 18px; }
 
-    &.attach_size_s .attach__clear,
-    &.attach_size_m .attach__clear
-    {
+    &:block(attach):mod(size s) :block(attach):elem(clear),
+    &:block(attach):mod(size m) :block(attach):elem(clear) {
         width: 10px;
         height: 14px;
 
         background-image: url(../../theme/_islands/clear_size_s.svg);
     }
 
-    &.attach_size_l .attach__clear,
-    &.attach_size_xl .attach__clear
-    {
+    &:block(attach):mod(size l) :block(attach):elem(clear),
+    &:block(attach):mod(size xl) :block(attach):elem(clear) {
         width: 14px;
         height: 14px;
 
         background-image: url(../../theme/_islands/clear_size_l.svg);
     }
 
-    .button
-    {
+    :block(button) {
         position: relative;
 
-        &__text
-        {
+        &:elem(text) {
             display: inline;
 
             z-index: 1;

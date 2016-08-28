@@ -1,27 +1,20 @@
-.attach_theme_islands
-{
-    .attach__control
-    {
+:block(attach):mod(theme islands) {
+    :block(attach):elem(control) {
         position: static;
 
         vertical-align: top;
     }
 
-    attachHeight = (24 28 32 38)
-    for sizeVal, i in s m l xl
-    {
-        .button_size_{sizeVal}
-        {
-            .attach__control
-            {
-                height: attachHeight[i]px;
+    @each $size, $val in (s, m, l, xl), (24, 28, 32, 38) {
+        :block(button):mod(size $size) {
+            :block(button):elem(control) {
+                height: $(val)px;
             }
         }
     }
 
-    .attach__no-file,
-    .button__text
-    {
+    :block(attach):elem(no-file),
+    :block(button):elem(text) {
         display: none;
     }
 }

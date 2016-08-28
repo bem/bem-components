@@ -1,5 +1,4 @@
-ctx = '.button_theme_islands'
-{ctx} {
+:block(button):mod(theme islands) {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     position: relative;
@@ -22,15 +21,13 @@ ctx = '.button_theme_islands'
 
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-    &::-moz-focus-inner
-    {
+    &::-moz-focus-inner {
         padding: 0;
 
         border: 0;
     }
 
-    .button__text
-    {
+    :block(button):elem(text) {
         position: relative;
 
         display: inline-block;
@@ -40,19 +37,16 @@ ctx = '.button_theme_islands'
         vertical-align: top;
     }
 
-    .icon
-    {
+    :block(icon) {
         position: relative;
     }
 
-    &.button_type_link
-    {
+    &:block(button):mod(type link) {
         text-decoration: none;
     }
 
-    // Decorative element (inner background)
-    &:before
-    {
+    /* Decorative element (inner background) */
+    &:before {
         position: absolute;
         top: 1px;
         right: 1px;
@@ -65,328 +59,267 @@ ctx = '.button_theme_islands'
         background: #fff;
     }
 
-    &.button_hovered
-    {
+    &:block(button):mod(hovered) {
         cursor: pointer;
 
         background: rgba(0, 0, 0, 0.3);
     }
 
-    &.button_focused-hard
-    {
+    &:block(button):mod(focused-hard) {
         z-index: 1;
 
         background: rgba(178, 142, 0, 0.6);
 
-        &.button:before
-        {
+        &:block(button):before {
             box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
         }
     }
 
-    &.button_pressed:before
-    {
+    &:block(button):mod(pressed):before {
         background: #f6f5f3;
     }
 
-    &.button_checked
-    {
+    &:block(button):mod(checked) {
         background: rgba(153, 122, 0, 0.5);
 
-        &:before
-        {
+        &:before {
             background: #ffeba0;
         }
 
-        &.button_pressed
-        {
+        &:block(button):mod(pressed) {
             background: rgba(129, 103, 0, 0.6);
 
-            &:before
-            {
+            &:before {
                 background: #fee481;
             }
         }
 
-        &.button_hovered
-        {
+        &:block(button):mod(hovered) {
             background: rgba(129, 103, 0, 0.6);
         }
     }
 
-    &.button_view_plain
-    {
+    &:block(button):mod(view plain) {
         background: none;
 
-        &.button_pressed
-        {
+        &:block(button):mod(pressed) {
             background: #f6f5f3;
         }
 
-        &.button_checked
-        {
+        &:block(button):mod(checked) {
             background: #ffeba0;
 
-            &.button_pressed
-            {
+            &:block(button):mod(pressed) {
                 background: #fee481;
             }
         }
 
-        &.button_disabled
-        {
+        &:block(button):mod(disabled) {
             background: none;
         }
     }
 
-    &.button_view_action
-    {
+    &:block(button):mod(view action) {
         background: #ffdb4d;
 
-        &:before
-        {
+        &:before {
             display: none;
         }
 
-        &.button_hovered
-        {
+        &:block(button):mod(hovered) {
             background: #ffd633;
         }
 
-        &.button_pressed
-        {
+        &:block(button):mod(pressed) {
             background: #ffcc00;
         }
 
-        &.button_focused-hard
-        {
+        &:block(button):mod(focused-hard) {
             animation: button-action-focus 0.5s infinite linear alternate;
 
             box-shadow: none;
         }
     }
 
-    &.button_view_pseudo
-    {
+    &:block(button):mod(view pseudo) {
         overflow: hidden;
 
         background: none;
 
-        &:before
-        {
+        &:before {
             background: none;
             box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
         }
 
-        &.button_hovered:before
-        {
+        &:block(button):mod(hovered):before {
             box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
         }
 
-        &.button_pressed:before
-        {
+        &:block(button):mod(pressed):before {
             background: rgba(0, 0, 0, 0.05);
         }
 
-        &.button_checked
-        {
-            &:before
-            {
+        &:block(button):mod(checked) {
+            &:before {
                 background: #ffeba0;
                 box-shadow: 0 0 0 1px rgba(153, 122, 0, 0.5);
             }
 
-            &.button_hovered:before
-            {
+            &:block(button):mod(hovered):before {
                 box-shadow: 0 0 0 1px rgba(129, 103, 0, 0.6);
             }
 
-            &.button_pressed:before
-            {
+            &:block(button):mod(pressed):before {
                 background: #fee481;
                 box-shadow: 0 0 0 1px rgba(129, 103, 0, 0.6);
             }
         }
     }
 
-    &.button_disabled
-    {
+    &:block(button):mod(disabled) {
         background: rgba(0, 0, 0, 0.08);
 
-        &:before
-        {
+        &:before {
             display: none;
         }
 
-        &.button_checked
-        {
+        &:block(button):mod(checked) {
             background: rgba(0, 0, 0, 0.15);
         }
 
-        .button__text
-        {
+        :block(button):elem(text) {
             color: #767676;
         }
 
-        .icon
-        {
+        :block(icon) {
             opacity: 0.3;
         }
     }
 
-    &.button_size_s
-    {
+    &:block(button):mod(size s) {
         font-size: 13px;
         line-height: 24px;
 
-        .icon
-        {
+        :block(icon) {
             width: 24px;
         }
 
-        .button__text
-        {
+        :block(button):elem(text) {
             margin: 0 10px;
         }
     }
 
-    &.button_size_m
-    {
+    &:block(button):mod(size m) {
         font-size: 13px;
         line-height: 28px;
 
-        .icon
-        {
+        :block(icon) {
             width: 28px;
         }
 
-        .button__text
-        {
+        :block(button):elem(text) {
             margin: 0 13px;
         }
     }
 
-    &.button_size_l
-    {
+    &:block(button):mod(size l) {
         font-size: 15px;
         line-height: 32px;
 
-        .icon
-        {
+        :block(icon) {
             width: 32px;
         }
 
-        .button__text
-        {
+        :block(button):elem(text) {
             margin: 0 15px;
         }
     }
 
-    &.button_size_xl
-    {
+    &:block(button):mod(size xl) {
         font-size: 18px;
         line-height: 38px;
 
-        .icon
-        {
+        :block(icon) {
             width: 38px;
         }
 
-        .button__text
-        {
+        :block(button):elem(text) {
             margin: 0 18px;
         }
     }
 
-    & .icon + .button__text
-    {
+    & :block(icon) + :block(button):elem(text) {
         margin-left: 0;
     }
 
-    .button__text:not(:last-child)
-    {
+    :block(button):elem(text):not(:last-child) {
         margin-right: 0;
     }
 }
 
-@keyframes button-action-focus
-{
-    from
-    {
+@keyframes button-action-focus {
+    from {
         background-color: #ffdb4d;
     }
 
-    to
-    {
+    to {
         background-color: #fc0;
     }
 }
 
-.control-group
-{
-    .button_checked + {ctx}:before
-    .radio_checked + .radio {ctx}:before
-    .checkbox_checked + .checkbox {ctx}:before
-    {
+:block(control-group) {
+    :block(button):mod(checked) + :block(button):mod(theme islands):before
+    :block(radio):mod(checked) + :block(radio) :block(button):mod(theme islands):before
+    :block(checkbox):mod(checked) + :block(checkbox) :block(button):mod(theme islands):before {
         left: 0;
     }
 
-    {ctx} {
+    :block(button):mod(theme islands) {
         border-radius: 0;
 
-        &:before
-        {
+        &:before {
             right: 0;
 
             border-radius: 0;
         }
 
-        &.button_checked:before
-        {
+        &:block(button):mod(checked):before {
             right: 1px;
         }
 
-        &.button_focused-hard.button:before
-        {
+        &:block(button):mod(focused-hard):block(button):before {
             left: 0;
         }
     }
 
-    > {ctx}:first-child,
-    > :first-child {ctx},
-    > :first-child.popup + {ctx}
-    {
+    > :block(button):mod(theme islands):first-child,
+    > :first-child :block(button):mod(theme islands),
+    > :first-child:block(popup) + :block(button):mod(theme islands) {
         border-radius: 3px 0 0 3px;
 
-        &:before
-        {
+        &:before {
             border-radius: 2px 0 0 2px;
         }
 
-        &.button_focused-hard.button:before
-        {
+        &:block(button):mod(focused-hard):block(button):before {
             left: 1px;
         }
     }
 
-    > {ctx}:last-child,
-    > :last-child {ctx}
-    {
+    > :block(button):mod(theme islands):last-child,
+    > :last-child :block(button):mod(theme islands) {
         border-radius: 0 3px 3px 0;
 
-        &:before
-        {
+        &:before {
             border-radius: 0 2px 2px 0;
             right: 1px;
         }
     }
 
-    > :only-child {ctx}
-    {
+    > :only-child :block(button):mod(theme islands) {
         border-radius: 3px;
 
-        &:before
-        {
+        &:before {
             border-radius: 2px;
         }
     }

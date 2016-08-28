@@ -1,21 +1,17 @@
-.checkbox_theme_simple
-{
+:block(checkbox):mod(theme simple) {
     position: relative;
 
-    .checkbox__control
-    {
+    :block(checkbox):elem(control) {
         position: absolute;
         z-index: -1;
 
         visibility: hidden;
     }
 
-    .checkbox__box
-    {
+    :block(checkbox):elem(box) {
         display: inline-block;
 
-        &:before
-        {
+        &:before {
             line-height: 0.6em;
 
             display: inline-block;
@@ -33,13 +29,11 @@
         }
     }
 
-    &.checkbox_disabled
-    {
+    &:block(checkbox):mod(disabled) {
         opacity: 0.6;
     }
 
-    &.checkbox_checked .checkbox__box:before
-    {
+    &:block(checkbox):mod(checked) :block(checkbox):elem(box):before {
         content: '\2713';
 
         background: #fff7db;
@@ -47,7 +41,8 @@
 }
 
 // hack for Safari only
-_::-webkit-full-page-media, _:future, :root .checkbox_theme_islands .checkbox__box
-{
+_::-webkit-full-page-media,
+_:future,
+:root :block(checkbox):mod(theme islands) :block(checkbox):elem(box) {
     pointer-events: none; // NOTE: Fix #1472 and #1590
 }

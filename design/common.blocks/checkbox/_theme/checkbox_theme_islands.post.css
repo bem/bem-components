@@ -1,18 +1,15 @@
-.checkbox_theme_islands
-{
+:block(checkbox):mod(theme islands) {
     position: relative; // fix #1538
 
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-    &:hover
-    {
+    &:hover {
         cursor: pointer;
     }
 
-    .checkbox__control
-    {
+    :block(checkbox):elem(control) {
         position: absolute;
         z-index: -1;
 
@@ -21,8 +18,7 @@
         opacity: 0;
     }
 
-    .checkbox__box
-    {
+    :block(checkbox):elem(box) {
         position: relative;
 
         display: inline-block;
@@ -30,8 +26,7 @@
         border-radius: 3px;
         background: rgba(0, 0, 0, 0.2);
 
-        &:before
-        {
+        &:before {
             position: absolute;
             top: 1px;
             right: 1px;
@@ -44,8 +39,7 @@
             background: #fff;
         }
 
-        &:after
-        {
+        &:after {
             position: absolute;
             top: -5px;
             left: 2px;
@@ -62,12 +56,10 @@
         }
     }
 
-    &.checkbox_size_m
-    {
+    &:block(checkbox):mod(size m) {
         font-size: 13px;
 
-        .checkbox__box
-        {
+        :block(checkbox):elem(box) {
             line-height: 14px;
 
             top: 2px;
@@ -76,8 +68,7 @@
             height: 14px;
             margin-right: 5px;
 
-            &:after
-            {
+            &:after {
                 width: 15px;
                 height: 15px;
 
@@ -86,12 +77,10 @@
         }
     }
 
-    &.checkbox_size_l
-    {
+    &:block(checkbox):mod(size l) {
         font-size: 15px;
 
-        .checkbox__box
-        {
+        :block(checkbox):elem(box) {
             line-height: 17px;
 
             top: 3px;
@@ -100,8 +89,7 @@
             height: 17px;
             margin-right: 7px;
 
-            &:after
-            {
+            &:after {
                 width: 18px;
                 height: 18px;
 
@@ -110,19 +98,15 @@
         }
     }
 
-    &.checkbox_checked
-    {
-        .checkbox__box
-        {
+    &:block(checkbox):mod(checked) {
+        :block(checkbox):elem(box) {
             background: rgba(153, 122, 0, 0.5);
 
-            &:before
-            {
+            &:before {
                 background: #ffeba0;
             }
 
-            &:after
-            {
+            &:after {
                 visibility: visible;
                 opacity: 1;
                 transform: translateY(0px);
@@ -132,68 +116,54 @@
         }
     }
 
-    &.checkbox_focused
-    {
-        .checkbox__box:before
-        {
+    &:block(checkbox):mod(focused) {
+        :block(checkbox):elem(box):before {
             box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
         }
     }
 
-    &.checkbox_hovered
-    {
-        .checkbox__box
-        {
+    &:block(checkbox):mod(hovered) {
+        :block(checkbox):elem(box) {
             background: rgba(0, 0, 0, 0.3);
         }
 
-        &.checkbox_checked .checkbox__box
-        {
+        &:block(checkbox):mod(checked) :block(checkbox):elem(box) {
             background: rgba(129, 103, 0, 0.6);
         }
     }
 
-    &.checkbox_disabled
-    {
+    &:block(checkbox):mod(disabled) {
         cursor: default;
 
         color: #999;
 
-        .checkbox__box
-        {
+        :block(checkbox):elem(box) {
             background: rgba(0, 0, 0, 0.08);
 
-            &:before
-            {
+            &:before {
                 display: none;
             }
         }
 
-        &.checkbox_checked .checkbox__box
-        {
+        &:block(checkbox):mod(checked) :block(checkbox):elem(box) {
             background: rgba(0, 0, 0, 0.15);
 
-            &:after
-            {
+            &:after {
                 opacity: 0.4;
             }
         }
     }
 
-    &.checkbox_type_button
-    {
+    &:block(checkbox):mod(type button) {
         display: inline-block;
     }
 
-    &.checkbox_type_line
-    {
-        &.checkbox_size_m
-        {
+    &:block(checkbox):mod(type line) {
+        &:block(checkbox):mod(size m) {
             margin-right: 13px;
         }
 
-        &.checkbox_size_l
-        {
+        &:block(checkbox):mod(size l) {
             margin-right: 15px;
         }
 
@@ -205,7 +175,8 @@
 }
 
 // hack for Safari only
-_::-webkit-full-page-media, _:future, :root .checkbox_theme_islands .checkbox__box
-{
+_::-webkit-full-page-media,
+_:future,
+:root :block(checkbox):mod(theme islands) :block(checkbox):elem(box) {
     pointer-events: none; // NOTE: Fix #1472 and #1590
 }

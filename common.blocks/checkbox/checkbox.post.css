@@ -1,4 +1,3 @@
-.checkbox
-{
+:block(checkbox) {
     touch-action: manipulation;
 }

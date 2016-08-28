@@ -11,8 +11,8 @@ module.exports = {
         plugins : function(browsers) {
             return [
                 require('postcss-import')(),
-                require('postcss-simple-vars')(),
                 require('postcss-each'),
+                require('postcss-simple-vars')(),
                 require('postcss-nested'),
                 require('rebem-css'),
                 require('autoprefixer')({ browsers : browsers })

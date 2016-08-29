@@ -1,5 +1,4 @@
-ctx = '.input_theme_islands'
-{ctx} {
+:block(input):mod(theme islands) {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     position: relative;
@@ -10,9 +9,8 @@ ctx = '.input_theme_islands'
 
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-    // Decorative element (inner background)
-    &:before
-    {
+    /* Decorative element (inner background) */
+    &:before {
         position: absolute;
         top: 1px;
         right: 1px;
@@ -24,8 +22,7 @@ ctx = '.input_theme_islands'
         background: #fff;
     }
 
-    .input__box
-    {
+    :block(input):elem(box) {
         position: relative;
 
         display: block;
@@ -35,8 +32,7 @@ ctx = '.input_theme_islands'
         user-select: none;
     }
 
-    .input__control
-    {
+    :block(input):elem(control) {
         font: inherit;
         line-height: inherit;
 
@@ -54,32 +50,27 @@ ctx = '.input_theme_islands'
 
         -webkit-appearance: none;
 
-        // лишние отступы у текста
-        &::-webkit-search-decoration
-        {
+        /*лишние отступы у текста*/
+        &::-webkit-search-decoration {
             -webkit-appearance: none;
         }
 
-        // нативный крестик
-        &::-webkit-search-cancel-button
-        {
+        /*нативный крестик*/
+        &::-webkit-search-cancel-button {
             display: none;
         }
 
-        &::-webkit-input-placeholder
-        {
+        &::-webkit-input-placeholder {
             color: #999;
             text-indent: 0;
         }
 
-        &::-moz-placeholder
-        {
+        &::-moz-placeholder {
             opacity: 1;
             color: #999;
         }
 
-        &::-ms-clear
-        {
+        &::-ms-clear {
             display: none;
         }
 
@@ -89,13 +80,11 @@ ctx = '.input_theme_islands'
         }
     }
 
-    &.input_has-clear .input__control
-    {
+    &:block(input):mod(has-clear) :block(input):elem(control) {
         text-overflow: ellipsis;
     }
 
-    .input__clear
-    {
+    :block(input):elem(clear) {
         position: absolute;
         top: 0;
         right: 0;
@@ -106,12 +95,10 @@ ctx = '.input_theme_islands'
         opacity: 0;
         background: 50% 50% no-repeat;
 
-        &_visible
-        {
+        &:mod(visible) {
             opacity: 0.3;
 
-            &:hover
-            {
+            &:hover {
                 cursor: pointer;
 
                 opacity: 1;
@@ -119,42 +106,35 @@ ctx = '.input_theme_islands'
         }
     }
 
-    &.input_focused
-    {
+    &:block(input):mod(focused) {
         z-index: 1;
 
-        &:before
-        {
+        &:before {
             box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
         }
 
-        .input__control
-        {
-            text-overflow: clip; // fix ellipsis bug in Chrome
+        :block(input):elem(control) {
+            text-overflow: clip; /* fix ellipsis bug in Chrome */
         }
     }
 
-    &.input_disabled
-    {
+    &:block(input):mod(disabled) {
         background: rgba(0, 0, 0, 0.08);
 
         &:before,
-        .input__clear
-        {
+        :block(input):elem(clear) {
             display: none;
         }
 
-        .input__box,
-        .input__control
-        {
+        :block(input):elem(box),
+        :block(input):elem(control) {
             color: rgba(0, 0, 0, 0.4);
             cursor: default;
         }
     }
 
-    &.input_size_s .input__clear,
-    &.input_size_m .input__clear
-    {
+    &:block(input):mod(size s) :block(input):elem(clear),
+    &:block(input):mod(size m) :block(input):elem(clear) {
         width: 24px;
         height: 24px;
 
@@ -162,42 +142,35 @@ ctx = '.input_theme_islands'
         background-position: 7px 50%;
     }
 
-    &.input_size_s
-    {
+    &:block(input):mod(size s) {
         font-size: 13px;
         line-height: 16px;
 
-        .input__control
-        {
+        :block(input):elem(control) {
             height: 24px;
             padding: 0 7px;
         }
 
-        &.input_has-clear .input__control
-        {
+        &:block(input):mod(has-clear) :block(input):elem(control) {
             padding-right: 24px;
         }
 
     }
 
-    &.input_size_m
-    {
+    &:block(input):mod(size m) {
         font-size: 13px;
         line-height: 16px;
 
-        .input__control
-        {
+        :block(input):elem(control) {
             height: 28px;
             padding: 0 8px;
         }
 
-        &.input_has-clear .input__control
-        {
+        &:block(input):mod(has-clear) :block(input):elem(control) {
             padding-right: 28px;
         }
 
-        .input__clear
-        {
+        :block(input):elem(clear) {
             width: 28px;
             height: 28px;
 
@@ -205,9 +178,8 @@ ctx = '.input_theme_islands'
         }
     }
 
-    &.input_size_l .input__clear,
-    &.input_size_xl .input__clear
-    {
+    &:block(input):mod(size l) :block(input):elem(clear),
+    &:block(input):mod(size xl) :block(input):elem(clear) {
         width: 32px;
         height: 32px;
 
@@ -215,41 +187,34 @@ ctx = '.input_theme_islands'
         background-position: 9px 50%;
     }
 
-    &.input_size_l
-    {
+    &:block(input):mod(size l) {
         font-size: 15px;
         line-height: 18px;
 
-        .input__control
-        {
+        :block(input):elem(control) {
             height: 32px;
             padding: 0 10px;
         }
 
-        &.input_has-clear .input__control
-        {
+        &:block(input):mod(has-clear) :block(input):elem(control) {
             padding-right: 32px;
         }
     }
 
-    &.input_size_xl
-    {
+    &:block(input):mod(size xl) {
         font-size: 18px;
         line-height: 22px;
 
-        .input__control
-        {
+        :block(input):elem(control) {
             height: 38px;
             padding: 0 12px;
         }
 
-        &.input_has-clear .input__control
-        {
+        &:block(input):mod(has-clear) :block(input):elem(control) {
             padding-right: 38px;
         }
 
-        .input__clear
-        {
+        :block(input):elem(clear) {
             width: 38px;
             height: 38px;
 
@@ -257,36 +222,29 @@ ctx = '.input_theme_islands'
         }
     }
 
-    &.input_has-clear .input__control
-    {
+    &:block(input):mod(has-clear) :block(input):elem(control) {
         padding-right: 0;
     }
 
-    &.input_width_available
-    {
+    &:block(input):mod(width available) {
         width: 100%;
     }
 
-    &.input_type_password .input__control
-    {
+    &:block(input):mod(type password) :block(input):elem(control) {
         text-overflow: clip;
     }
 }
 
-.control-group
-{
-    {ctx} {
-        &:before
-        {
+:block(control-group) {
+    :block(input):mod(theme islands) {
+        &:before {
             right: 0;
         }
     }
 
-    > {ctx}:last-child,
-    > :last-child {ctx}
-    {
-        &:before
-        {
+    > :block(input):mod(theme islands):last-child,
+    > :last-child :block(input):mod(theme islands) {
+        &:before {
             right: 1px;
         }
     }

@@ -1,54 +1,43 @@
-.input_theme_islands
-{
+:block(input):mod(theme islands) {
     border: 1px solid #ccc;
 
-    .input__clear
-    {
+    :block(input):elem(clear) {
         visibility: hidden;
 
-        &_visible
-        {
+        &:mod(visible) {
             visibility: visible;
         }
     }
 
-    &.input_focused
-    {
+    &:block(input):mod(focused) {
         border: 1px solid #fc0;
         outline: 1px solid #fc0;
     }
 
-    &.input_disabled
-    {
+    &:block(input):mod(disabled) {
         background: #ebebeb;
 
-        .input__box,
-        .input__control
-        {
+        :block(input):elem(box),
+        :block(input):elem(control) {
             color: #999;
         }
     }
 
-    sizeList = (24 28 32 38);
-    for sizeVal, i in s m l xl {
-        &.input_size_{sizeVal}
-        {
-            .input__control
-            {
-                line-height: sizeList[i]px;
+    @each $size, $val in (s, m, l, xl), (24, 28, 32, 38) {
+        &:block(input):mod(size $size) {
+            :block(input):elem(control) {
+                line-height: $(val)px;
             }
         }
     }
 
-    &.input_size_s .input__clear,
-    &.input_size_m .input__clear
-    {
+    &:block(input):mod(size s) :block(input):elem(clear),
+    &:block(input):mod(size m) :block(input):elem(clear) {
         background-image: url(clear_size_s.png);
     }
 
-    &.input_size_l .input__clear,
-    &.input_size_xl .input__clear
-    {
+    &:block(input):mod(size l) :block(input):elem(clear),
+    &:block(input):mod(size xl) :block(input):elem(clear) {
         background-image: url(clear_size_l.png);
     }
 }

@@ -1,9 +1,7 @@
-.input_theme_simple
-{
+:block(input):mod(theme simple) {
     display: inline-block;
 
-    .input__box
-    {
+    :block(input):elem(box) {
         position: relative;
 
         display: block;
@@ -14,8 +12,7 @@
         background: #fff;
     }
 
-    .input__control
-    {
+    :block(input):elem(control) {
         font-family: inherit;
         font-size: 100%;
 
@@ -27,24 +24,20 @@
 
         -webkit-appearance: none;
 
-        &::-ms-clear
-        {
+        &::-ms-clear {
             display: none;
         }
 
-        &::-webkit-search-decoration
-        {
+        &::-webkit-search-decoration {
             -webkit-appearance: none;
         }
 
-        &::-webkit-search-cancel-button
-        {
+        &::-webkit-search-cancel-button {
             display: none;
         }
     }
 
-    .input__clear
-    {
+    :block(input):elem(clear) {
         position: absolute;
         z-index: 1;
         top: 0;
@@ -58,8 +51,7 @@
 
         user-select: none;
 
-        &:after
-        {
+        &:after {
             font-size: 140%;
             font-weight: bold;
             line-height: 1;
@@ -72,57 +64,47 @@
             text-align: center;
         }
 
-        &_visible
-        {
+        &:mod(visible) {
             display: block;
 
             cursor: pointer;
 
             opacity: 0.2;
 
-            &:hover
-            {
+            &:hover {
                 opacity: 1;
             }
         }
     }
 
-    &.input_disabled
-    {
+    &:block(input):mod(disabled) {
         opacity: 0.6;
 
-        .input__control
-        {
+        :block(input):elem(control) {
             resize: none;
         }
 
-        .input__clear
-        {
+        :block(input):elem(clear) {
             display: none;
         }
 
-        .input__box,
-        .input__control
-        {
+        :block(input):elem(box),
+        :block(input):elem(control) {
             cursor: auto;
         }
     }
 
-    &.input_width_available
-    {
+    &:block(input):mod(width available) {
         width: 100%;
     }
 
-    &.input_focused
-    {
-        .input__box
-        {
+    &:block(input):mod(focused) {
+        :block(input):elem(box) {
             box-shadow: 0 0 5px 1px #fc0;
         }
     }
 
-    &.input_focused .input__control:focus
-    {
+    &:block(input):mod(focused) :block(input):elem(control):focus {
         outline: none;
     }
 }

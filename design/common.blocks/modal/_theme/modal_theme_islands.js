@@ -11,7 +11,7 @@ modules.define(
  * @class modal
  * @bem
  */
-provide(Modal.decl({ modName : 'theme', modVal : 'islands' }, /** @lends modal.prototype */{
+provide(Modal.declMod({ modName : 'theme', modVal : 'islands' }, /** @lends modal.prototype */{
     onSetMod : {
         'visible' : {
             'true' : function() {

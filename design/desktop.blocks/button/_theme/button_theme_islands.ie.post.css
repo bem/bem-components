@@ -107,7 +107,7 @@ $checkedPressedColor: #fee481;
         }
     }
 
-    @each $blockName in checkbox, radio
+    @each $blockName in checkbox, radio {
         &:block($(blockName)-group):mod(type button) {
             :block(button):mod(theme islands):block(button):mod(focused-hard) {
                 &:after {

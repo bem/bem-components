@@ -1,21 +1,17 @@
-.link_theme_simple
-{
+:block(link):mod(theme simple) {
     cursor: pointer;
     text-decoration: underline;
 
     &,
-    &:link
-    {
+    &:link {
         color: #008ace;
     }
 
-    &:visited
-    {
+    &:visited {
         color: #b40eb4;
     }
 
-    &:hover
-    {
+    &:hover {
         color: #c00;
     }
 }

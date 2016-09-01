@@ -1,4 +1,3 @@
-.link
-{
+:block(link) {
     touch-action: manipulation;
 }

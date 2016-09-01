@@ -1,20 +1,16 @@
-.menu-item_theme_islands
-{
-    &.menu-item_disabled
-    {
+:block(menu-item):mod(theme islands) {
+    &:block(menu-item):mod(disabled) {
         color: #999;
     }
 }
 
-paddingHor = (10 13 15 20);
-imageSize = (s s l l);
-
-for sizeVal, i in s m l xl {
-    .menu_size_{sizeVal}
-    {
-        .menu-item_theme_islands.menu-item_checked
-        {
-            background: (paddingHor[i])px 50% no-repeat url('tip_size_'imageSize[i]'.png');
+@each $size, $paddingHor, $imageSize in
+(s,    m,    l,    xl),   /* size */
+(10px, 13px, 15px, 20px), /* paddingHor */
+(s,    s,    l,    l)     /* imageSize */ {
+    :block(menu):mod(size $size) {
+        :block(menu-item):mod(theme islands):block(menu-item):mod(checked) {
+            background: $paddingHor 50% no-repeat url('tip_size_$(imageSize).png');
         }
     }
 }

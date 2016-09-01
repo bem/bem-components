@@ -1,5 +1,4 @@
-.menu-item .icon
-{
+:block(menu-item) :block(icon) {
     width: 16px;
     margin-right: 5px;
 }

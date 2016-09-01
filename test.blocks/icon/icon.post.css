@@ -1,4 +1,3 @@
-.icon
-{
+:block(icon) {
     min-width: 1em;
 }

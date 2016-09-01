@@ -1,27 +1,22 @@
-.icon_action_up,
-.icon_action_right,
-.icon_action_down,
-.icon_action_left
-{
+:block(icon):mod(action up),
+:block(icon):mod(action right),
+:block(icon):mod(action down),
+:block(icon):mod(action left) {
     background-image: url(arrow.svg);
 }
 
-.icon_action_up
-{
+:block(icon):mod(action up) {
     transform: rotate(180deg);
 }
 
-.icon_action_right
-{
+:block(icon):mod(action right) {
     transform: rotate(-90deg);
 }
 
-.icon_action_left
-{
+:block(icon):mod(action left) {
     transform: rotate(90deg);
 }
 
-.icon_action_download
-{
+:block(icon):mod(action download) {
     background-image: url(download.svg);
 }

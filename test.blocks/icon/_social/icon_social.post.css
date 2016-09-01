@@ -1,12 +1,5 @@
-.icon_social
-{
-    &_twitter
-    {
-        background-image: url(twitter.png);
-    }
-
-    &_vk
-    {
-        background-image: url(vk.png);
+@each $val in twitter, vk {
+    :block(icon):mod(social $val) {
+        background-image: url($(val).png);
     }
 }

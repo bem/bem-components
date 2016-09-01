@@ -1,16 +1,13 @@
-.modal_theme_simple
-{
+:block(modal):mod(theme simple) {
     display: none;
 
     background: rgba(50, 50, 50, .2);
 
-    &.modal_visible
-    {
+    &:block(modal):mod(visible) {
         display: block;
     }
 
-    .modal__content
-    {
+    :block(modal):elem(content) {
         background: #fff;
         border: 1px solid #bfbfbf;
     }

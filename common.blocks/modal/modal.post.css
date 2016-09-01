@@ -1,5 +1,4 @@
-.modal
-{
+:block(modal) {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,8 +10,7 @@
 
     -webkit-overflow-scrolling: touch;
 
-    &__table
-    {
+    &:elem(table) {
         display: table;
 
         width: 100%;
@@ -21,15 +19,13 @@
         text-align: center;
     }
 
-    &__cell
-    {
+    &:elem(cell) {
         display: table-cell;
 
         vertical-align: middle;
     }
 
-    &__content
-    {
+    &:elem(content) {
         display: inline-block;
 
         text-align: left;

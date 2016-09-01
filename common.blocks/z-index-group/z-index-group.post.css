@@ -1,5 +1,5 @@
-for level in (0..9) {
-    .z-index-group_level_{level} {
-        z-index: (level + 1) * 1000;
+@for $level from 0 to 9 {
+    :block(z-index-group):mod(level $level) {
+        z-index: calc(($level + 1) * 1000);
     }
 }

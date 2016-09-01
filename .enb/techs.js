@@ -12,7 +12,9 @@ module.exports = {
             return [
                 require('postcss-import')(),
                 require('postcss-each'),
+                require('postcss-for'),
                 require('postcss-simple-vars')(),
+                require('postcss-calc')(),
                 require('postcss-nested'),
                 require('rebem-css'),
                 require('autoprefixer')({ browsers : browsers })

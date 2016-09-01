@@ -1,11 +1,8 @@
-.menu_theme_islands
-{
+:block(menu):mod(theme islands) {
     border: 1px solid #ccc;
 
-    .menu__group
-    {
-        &-title
-        {
+    :block(menu):elem(group) {
+        &-title {
             color: #999;
         }
     }

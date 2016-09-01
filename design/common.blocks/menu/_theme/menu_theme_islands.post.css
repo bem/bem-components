@@ -1,10 +1,4 @@
-fontSize = (13 13 15 15);
-lineHeight = (24 24 28 32);
-paddingVert = (3 4 5 6);
-paddingHor = (10 13 15 20);
-
-.menu_theme_islands
-{
+:block(menu):mod(theme islands) {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     box-sizing: border-box;
@@ -19,66 +13,60 @@ paddingHor = (10 13 15 20);
     /* Using pseudo-elements intead of paddings because of Firefox bug with bottom padding (#1158):
      * https://bugzilla.mozilla.org/show_bug.cgi?id=748518 */
     &:before,
-    &:after
-    {
+    &:after {
         display: block;
 
         content: '';
     }
 
-    for sizeVal, i in (s m l xl) {
-        &.menu_size_{sizeVal}
-        {
-            font-size: (fontSize[i])px;
-            line-height: (lineHeight[i])px;
+    @each $size, $fontSize, $lineHeight, $paddingVert, $paddingHor in
+    (s,    m,    l,    xl),
+    (13px, 13px, 15px, 15px),  /* fontSize */
+    (24px, 24px, 28px, 32px,), /* lineHeight */
+    (3px,  4px,  5px,  6px),   /* paddingVer */
+    (10px, 13px, 15px, 20px)   /* paddingHor */ {
+        &:block(menu):mod(size $size) {
+            font-size: $fontSize;
+            line-height: $lineHeight;
 
             &:before,
-            &:after
-            {
-                height: (paddingVert[i])px;
+            &:after {
+                height: $paddingVert;
             }
 
-            .menu-item + .menu__group
-            {
-                margin-top: (paddingVert[i])px;
+            :block(menu-item) + :block(menu):elem(group) {
+                margin-top: $paddingVert;
             }
 
-            .menu__group
-            {
-                padding: (paddingVert[i])px 0;
+            :block(menu):elem(group) {
+                padding: $paddingVert 0;
 
-                &-title
-                {
-                    padding: 0 (paddingHor[i])px;
+                &-title {
+                    padding: 0 $paddingHor;
                 }
             }
         }
     }
 
-    .menu__group
-    {
+    :block(menu):elem(group) {
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-width: 1px 0;
 
-        &-title
-        {
+        &-title {
             color: #999;
         }
 
-        & + .menu__group
-        {
+        & + :block(menu):elem(group) {
             border-top: 0;
         }
 
-        &:last-child
-        {
+        &:last-child {
             padding-bottom: 0;
 
             border-bottom: 0;
         }
 
-        &:first-child
-        {
+        &:first-child {
             padding-top: 0;
 
             border-top: 0;

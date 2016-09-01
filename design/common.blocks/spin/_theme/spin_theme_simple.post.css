@@ -1,5 +1,4 @@
-.spin_theme_simple
-{
+:block(spin):mod(theme simple) {
     display: none;
 
     width: 20px;
@@ -8,22 +7,18 @@
     border: 2px dashed #000;
     border-radius: 50%;
 
-    &.spin_visible
-    {
+    &:block(spin):mod(visible) {
         display: inline-block;
 
         animation: spin_theme_simple 2s infinite linear;
     }
 }
 
-@keyframes spin_theme_simple
-{
-    from
-    {
+@keyframes spin_theme_simple {
+    from {
         transform: rotate(0);
     }
-    to
-    {
+    to {
         transform: rotate(360deg);
     }
 }

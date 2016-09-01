@@ -1,5 +1,4 @@
-.spin_theme_islands.spin_paused
-{
+:block(spin):mod(theme islands):block(spin):mod(paused) {
     animation: none;
 
     border-top-color: #fc0;

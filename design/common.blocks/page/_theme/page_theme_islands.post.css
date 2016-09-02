@@ -1,10 +1,8 @@
-html
-{
+html {
     min-height: 100%;
 }
 
-.page_theme_islands
-{
+:block(page):mod(theme islands) {
     font: 13px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     min-height: 100%;

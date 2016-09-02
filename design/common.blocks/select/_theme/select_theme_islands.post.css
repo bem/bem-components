@@ -1,84 +1,68 @@
-.select_theme_islands
-{
+:block(select):mod(theme islands) {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     max-width: 100%;
 
     vertical-align: bottom;
 
-    .select__button
-    {
+    :block(select):elem(button) {
         width: 100%;
 
         text-align: left;
         vertical-align: top;
 
-        .button__text
-        {
+        :block(button):elem(text) {
             display: block;
 
-            &:empty:before
-            {
+            &:empty:before {
                 content: '\00a0';
             }
         }
 
-        &.button_size_s
-        {
-            .button__text
-            {
+        &:block(button):mod(size s) {
+            :block(button):elem(text) {
                 padding-right: 22px;
             }
 
-            .icon
-            {
+            :block(icon) {
                 width: 25px;
             }
         }
 
 
-        &.button_size_m
-        {
-            .button__text
-            {
+        &:block(button):mod(size m) {
+            :block(button):elem(text) {
                 padding-right: 25px;
             }
 
-            .icon
-            {
+            :block(icon) {
                 width: 31px;
             }
         }
 
-        &.button_size_l
-        {
-            .button__text
-            {
+        &:block(button):mod(size l) {
+            :block(button):elem(text) {
                 padding-right: 29px;
             }
 
-            .icon
-            {
+            :block(icon) {
                 width: 35px;
             }
         }
 
-        &.button_size_xl
-        {
-            .button__text
-            {
+        &:block(button):mod(size xl) {
+            :block(button):elem(text) {
                 padding-right: 33px;
             }
 
-            .icon
+            :block(icon)
             {
                 width: 39px;
             }
         }
     }
 
-    .select__tick
-    {
+    :block(select):elem(tick) {
         position: absolute;
         top: 0;
         right: 0;
@@ -88,18 +72,15 @@
         transition: transform 0.1s ease-out;
     }
 
-    &.select_size_s .select__tick
-    {
-      background-image: url(../../theme/_islands/arrow-s.svg);
+    &:block(select):mod(size s) :block(select):elem(tick) {
+        background-image: url(../../theme/_islands/arrow-s.svg);
     }
 
-    &.select_opened .select__tick
-    {
+    &:block(select):mod(opened) :block(select):elem(tick) {
         transform: rotate(-180deg);
     }
 
-    &.select_width_available
-    {
+    &:block(select):mod(width available) {
         width: 100%;
     }
 }

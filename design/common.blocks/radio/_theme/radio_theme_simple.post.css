@@ -1,15 +1,12 @@
-.radio_theme_simple
-{
-    .radio__control
-    {
+:block(radio):mod(theme simple) {
+    :block(radio):elem(control) {
         position: absolute;
         z-index: -1;
 
         opacity: 0;
     }
 
-    .radio__box:before
-    {
+    :block(radio):elem(box):before {
         line-height: 1em;
 
         display: inline-block;
@@ -27,18 +24,15 @@
         box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.5);
     }
 
-    &.radio_disabled
-    {
+    &:block(radio):mod(disabled) {
         opacity: 0.6;
     }
 
-    &.radio_focused .radio__box:before
-    {
+    &:block(radio):mod(focused) :block(radio):elem(box):before {
         box-shadow: 0 0 5px 1px #fc0;
     }
 
-    &.radio_checked .radio__box:before
-    {
+    &:block(radio):mod(checked) :block(radio):elem(box):before {
         content: '\2022';
 
         background: #fff7db;

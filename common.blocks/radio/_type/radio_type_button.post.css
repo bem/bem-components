@@ -1,5 +1,4 @@
-.radio.radio_type_button .radio__control
-{
+:block(radio):block(radio):mod(type button) :block(radio):elem(control) {
     position: absolute;
 
     visibility: hidden;

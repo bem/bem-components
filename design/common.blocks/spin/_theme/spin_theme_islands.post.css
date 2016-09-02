@@ -29,10 +29,11 @@
         backface-visibility: hidden; /* Accelerate animation */
     }
 
-    @each $size, $val, $bgShift in
-    ( xs,   s,     m,     l,     xl),   /* size */
-    ( 16px, 24px,  28px,  32px,  38px), /* val */
-    (-2px, -27px, -56px, -89px, -128px) /* bgShift */ {
+    $bgShift: -$borderWidth;
+
+    @each $size, $val in
+    (xs,   s,     m,     l,     xl),  /* size */
+    (16px, 24px,  28px,  32px,  38px) /* val */ {
         &:block(spin):mod(size $size) {
             line-height: $val;
 
@@ -41,6 +42,8 @@
 
             background-position: -$(borderWidth) $bgShift;
         }
+
+        $bgShift: calc($bgShift - ($val + 1));
     }
 }
 

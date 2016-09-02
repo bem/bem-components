@@ -1,4 +1,3 @@
-.textarea
-{
+:block(textarea) {
     touch-action: manipulation;
 }

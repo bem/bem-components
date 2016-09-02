@@ -1,19 +1,15 @@
-.textarea_theme_islands
-{
+:block(textarea):mod(theme islands) {
     border: 1px solid #ccc;
 
-    &.textarea_focused
-    {
+    &:block(textarea):mod(focused) {
         border: 1px solid #fc0;
         outline: 1px solid #fc0;
     }
 
-    &.textarea_disabled
-    {
+    &:block(textarea):mod(disabled) {
         background: #ebebeb;
 
-        .textarea__control
-        {
+        :block(textarea):elem(control) {
             color: #999;
         }
     }

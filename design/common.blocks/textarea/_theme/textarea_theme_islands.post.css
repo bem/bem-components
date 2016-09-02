@@ -1,5 +1,4 @@
-.textarea_theme_islands
-{
+:block(textarea):mod(theme islands) {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     display: inline-block;
@@ -17,33 +16,28 @@
     -webkit-appearance: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-    &::-webkit-input-placeholder
-    {
+    &::-webkit-input-placeholder {
         color: #999;
         text-indent: 0;
     }
 
-    &::-moz-placeholder
-    {
+    &::-moz-placeholder {
         opacity: 1;
         color: #999;
     }
 
-    &.textarea_focused
-    {
+    &:block(textarea):mod(focused) {
         border-color: #ffcc00;
         box-shadow: 0 0 0 1px #ffcc00;
     }
 
-    &.textarea_width_available
-    {
+    &:block(textarea):mod(width available) {
         width: 100%;
 
         resize: vertical;
     }
 
-    &.textarea_disabled
-    {
+    &:block(textarea):mod(disabled) {
         resize: none;
         cursor: default;
 
@@ -52,32 +46,28 @@
         background: rgba(0, 0, 0, .08);
     }
 
-    &.textarea_size_s
-    {
+    &:block(textarea):mod(size s) {
         font-size: 13px;
         line-height: 16px;
 
         padding-left: 6px;
     }
 
-    &.textarea_size_m
-    {
+    &:block(textarea):mod(size m) {
         font-size: 13px;
         line-height: 18px;
 
         padding: 3px 5px;
     }
 
-    &.textarea_size_l
-    {
+    &:block(textarea):mod(size l) {
         font-size: 15px;
         line-height: 20px;
 
         padding: 5px 7px;
     }
 
-    &.textarea_size_xl
-    {
+    &:block(textarea):mod(size xl) {
         font-size: 18px;
         line-height: 22px;
 

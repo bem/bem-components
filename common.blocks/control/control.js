@@ -25,7 +25,9 @@ provide(bemDom.declBlock(this.name, /** @lends control.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._focused = dom.containsFocus(this._elem('control').domElem);
+                var controlDomElem = this._elem('control').domElem;
+
+                this._focused = dom.containsFocus(controlDomElem);
                 this._focused?
                     // if control is already in focus, we need to force _onFocus
                     this._onFocus() :
@@ -34,10 +36,10 @@ provide(bemDom.declBlock(this.name, /** @lends control.prototype */{
 
                 this._tabIndex = typeof this.params.tabIndex !== 'undefined'?
                     this.params.tabIndex :
-                    this._elem('control').domElem.attr('tabindex');
+                    controlDomElem.attr('tabindex');
 
                 if(this.hasMod('disabled') && this._tabIndex !== 'undefined')
-                    this._elem('control').domElem.removeAttr('tabindex');
+                    controlDomElem.removeAttr('tabindex');
             }
         },
 

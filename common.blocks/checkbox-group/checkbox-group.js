@@ -32,9 +32,7 @@ provide(bemDom.declBlock(this.name, /** @lends checkbox-group.prototype */{
         },
 
         'disabled' : function(modName, modVal) {
-            this.getCheckboxes().forEach(function(option) {
-                option.setMod(modName, modVal);
-            });
+            this.getCheckboxes().setMod(modName, modVal);
         },
 
         'focused' : {

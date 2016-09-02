@@ -1,9 +1,7 @@
-.progressbar_theme_islands
-{
+:block(progressbar):mod(theme islands) {
     overflow: hidden;
 
-    .progressbar__bar
-    {
+    :block(progressbar):elem(bar) {
         height: 2px;
 
         background: #fc0;

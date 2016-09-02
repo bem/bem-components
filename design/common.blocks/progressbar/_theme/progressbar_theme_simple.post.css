@@ -1,5 +1,4 @@
-.progressbar_theme_simple
-{
+:block(progressbar):mod(theme simple) {
     font-size: 12px;
 
     display: flex;
@@ -10,15 +9,14 @@
 
     background: #f4f4f4;
 
-    .progressbar__bar
-    {
+    :block(progressbar):elem(bar) {
         height: 100%;
+
 
         background: rgba(255,255,255,.7);
     }
 
-    .progressbar__box
-    {
+    :block(progressbar):elem(box) {
         position: relative;
 
         overflow: hidden;
@@ -31,8 +29,7 @@
         flex: 1 0 auto;
     }
 
-    .progressbar__text
-    {
+    :block(progressbar):elem(text) {
 
         font-family: Verdana, sans-serif;
 
@@ -42,8 +39,7 @@
 
         text-align: right;
 
-        &:after
-        {
+        &:after {
             content: '%';
         }
     }

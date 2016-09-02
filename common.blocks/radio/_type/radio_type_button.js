@@ -15,7 +15,7 @@ provide(Radio.declMod({ modName : 'type', modVal : 'button' }, /** @lends radio.
             'inited' : function() {
                 this.__base.apply(this, arguments);
                 this._button = this.findChildBlock(Button);
-                this._button._events()
+                this._events(Button)
                     .on(
                         { modName : 'checked', modVal : '*' },
                         proxyModFromButton,

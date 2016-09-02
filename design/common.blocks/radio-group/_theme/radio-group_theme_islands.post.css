@@ -1,19 +1,15 @@
-.radio-group_theme_islands
-{
+:block(radio-group):mod(theme islands) {
     display: inline-block;
 
-    &.radio-group_size_m
-    {
+    &:block(radio-group):mod(size m) {
         line-height: 24px;
     }
 
-    &.radio-group_size_l
-    {
+    &:block(radio-group):mod(size l) {
         line-height: 30px;
     }
 
-    &.radio-group_type_button
-    {
+    &:block(radio-group):mod(type button) {
         display: inline-block;
 
         white-space: nowrap;

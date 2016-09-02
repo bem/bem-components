@@ -1,26 +1,20 @@
-.radio-group_theme_simple
-{
-    .radio_type_button
-    {
-        &:first-of-type .button_togglable_radio,
-        &~ .radio_type_button .button_togglable_radio
-        {
+:block(radio-group):mod(theme simple) {
+    :block(radio):mod(type button) {
+        &:first-of-type :block(button):mod(togglable radio),
+        &~ :block(radio):mod(type button) :block(button):mod(togglable radio) {
             border-right-width: 0;
         }
 
-        &~ .radio_type_button .button_togglable_radio
-        {
+        &~ :block(radio):mod(type button) :block(button):mod(togglable radio) {
             border-radius: 0;
         }
 
-        &:first-of-type .button_togglable_radio
-        {
+        &:first-of-type :block(button):mod(togglable radio) {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
         }
 
-        &:last-of-type .button_togglable_radio
-        {
+        &:last-of-type :block(button):mod(togglable radio) {
             border-right-width: 1px;
             border-top-right-radius: 3px;
             border-bottom-right-radius: 3px;

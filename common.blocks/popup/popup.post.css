@@ -1,4 +1,3 @@
-.popup
-{
+:block(popup) {
     position: absolute;
 }

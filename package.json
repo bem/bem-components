@@ -65,6 +65,7 @@
     "postcss-import": "^8.1.2",
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^3.0.0",
+    "postcss-url": "^5.1.2",
     "rebem-css": "^0.2.0"
   },
   "scripts": {

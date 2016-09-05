@@ -60,7 +60,7 @@
             margin-top: $paddingVert;
         }
 
-        &[class*=':block(menu):mod(mode)'] :block(menu-item):mod(theme islands),
+        &[class*='menu:mod(mode)'] :block(menu-item):mod(theme islands),
         :block(menu):elem(group-title) ~ :block(menu-item):mod(theme islands) {
             padding: 0 $paddingLeft;
         }

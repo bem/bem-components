@@ -268,8 +268,8 @@
 }
 
 :block(control-group) {
-    :block(button):mod(checked) + :block(button):mod(theme islands):before
-    :block(radio):mod(checked) + :block(radio) :block(button):mod(theme islands):before
+    :block(button):mod(checked) + :block(button):mod(theme islands):before,
+    :block(radio):mod(checked) + :block(radio) :block(button):mod(theme islands):before,
     :block(checkbox):mod(checked) + :block(checkbox) :block(button):mod(theme islands):before {
         left: 0;
     }

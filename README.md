@@ -425,7 +425,7 @@ For executing tests locally, you need to:
 1.  Create an [OpenSauce](https://saucelabs.com/opensauce) account in SauceLabs.
 2.  Install the [Sauce Connect](https://saucelabs.com/connect) utility.
 3.  Set up environment variables (`SAUCE_USERNAME` and `SAUCE_ACCESS_KEY`).
-4.  Launch the `src` utility (SauceConnect) and wait for the tunnel to be opened.
+4.  Launch the `sc` utility (SauceConnect) and wait for the tunnel to be opened.
 5.  Run the tests using `npm run gemini`.
 6.  If you need to make new versions of screenshots, use the command `npm run gemini-gather`.
 

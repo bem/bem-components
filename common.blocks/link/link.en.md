@@ -12,7 +12,7 @@ Use this block for creating different types of links.
 | <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The disabled state. |
 | <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | The block is in focus. |
 | <a href="#theme">theme</a> | <code>islands</code> | <code>BEMJSON</code> | A custom design. |
-| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the link. Use sizes only for links when <a href="#themes">theme modifier is set to islands</a>.|
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | The size of the link. Use sizes for links only when the <a href="#themes">theme modifier is set to islands</a>.|
 | <a href="#view">view</a> | <code>'minor'</code>, <code>'external'</code>, <code>'ghost'</code>, <code>'text'</code>, <code>'strong'</code> | <code>BEMJSON</code> | Visual highlighting.|
 
 ### Custom fields of the block
@@ -198,7 +198,7 @@ The modifier visually highlights external links on a page.
 
 ##### Ghost link (`view` modifier with `ghost` value)
 
-The modifier changes visual representation of the link. For example, use it if you do not need to focus attention on the link:
+The modifier changes the way the link looks. Use it if you don't want the link to stand out on the page:
 
 ```js
 {
@@ -211,7 +211,7 @@ The modifier changes visual representation of the link. For example, use it if y
 
 ##### Link to match text (`view` modifier with `text` value)
 
-Use this modifier to create a link to match the color of text.
+Use this modifier to create a link that matches the text color.
 
 ```js
 {

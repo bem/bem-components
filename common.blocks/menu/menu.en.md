@@ -25,7 +25,7 @@ Use this block for creating different types of menu.
 
 | Element | Use cases | Description |
 | --------| --------------------- | -------- |
-| <a href=#group>group</a> | <code>BEMJSON</code> | The menu items visual grouping. The `content` field is required for this element. |
+| <a href=#group>group</a> | <code>BEMJSON</code> | Visual grouping of menu items. The `content` field is required for this element. |
 
 ### Custom fields of the block elements
 

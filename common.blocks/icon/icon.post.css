@@ -18,7 +18,7 @@
      */
     > img,
     > svg {
-        margin: -5.15em 0 -5em; // 0.15 — magic number, empirically found
+        margin: -5.15em 0 -5em; /* 0.15 — magic number, empirically found */
 
         vertical-align: middle;
     }

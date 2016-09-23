@@ -1,0 +1,43 @@
+:block(radio):mod(theme islands) {
+    :block(radio):elem(box) {
+        background: #cbcbcb;
+    }
+
+    :block(radio):elem(control) {
+        outline: none;
+
+        filter: unquote('alpha(opacity=0)');
+    }
+
+    &:block(radio):mod(checked) :block(radio):elem(box) {
+        background: #ccbd80;
+
+        &:before {
+            content: ' ';
+        }
+    }
+
+    &:block(radio):mod(hovered) {
+        :block(radio):elem(box) {
+            background: #b3b3b3;
+        }
+
+        &:block(radio):mod(checked) :block(radio):elem(box) {
+            background: #b2a265;
+        }
+    }
+
+    &:block(radio):mod(focused):block(radio) {
+        :block(radio):elem(box) {
+            background: #fc0;
+        }
+    }
+
+    &:block(radio):mod(disabled) :block(radio):elem(box) {
+        background: #ebebeb;
+
+        &:after {
+            background: #8d8d8d;
+        }
+    }
+}

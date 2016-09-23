@@ -1,0 +1,326 @@
+:block(button):mod(theme islands) {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    position: relative;
+
+    display: inline-block;
+
+    margin: 0;
+    padding: 0;
+
+    user-select: none;
+
+    color: #000;
+    border: 0;
+    border-radius: 3px;
+    outline: 0;
+    background: rgba(0, 0, 0, 0.2);
+
+    text-align: center;
+    white-space: nowrap;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    &::-moz-focus-inner {
+        padding: 0;
+
+        border: 0;
+    }
+
+    :block(button):elem(text) {
+        position: relative;
+
+        display: inline-block;
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+        vertical-align: top;
+    }
+
+    :block(icon) {
+        position: relative;
+    }
+
+    &:block(button):mod(type link) {
+        text-decoration: none;
+    }
+
+    /* Decorative element (inner background) */
+    &:before {
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        bottom: 1px;
+        left: 1px;
+
+        content: '';
+
+        border-radius: 2px;
+        background: #fff;
+    }
+
+    &:block(button):mod(hovered) {
+        cursor: pointer;
+
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    &:block(button):mod(focused-hard) {
+        z-index: 1;
+
+        background: rgba(178, 142, 0, 0.6);
+
+        &:block(button):before {
+            box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
+        }
+    }
+
+    &:block(button):mod(pressed):before {
+        background: #f6f5f3;
+    }
+
+    &:block(button):mod(checked) {
+        background: rgba(153, 122, 0, 0.5);
+
+        &:before {
+            background: #ffeba0;
+        }
+
+        &:block(button):mod(pressed) {
+            background: rgba(129, 103, 0, 0.6);
+
+            &:before {
+                background: #fee481;
+            }
+        }
+
+        &:block(button):mod(hovered) {
+            background: rgba(129, 103, 0, 0.6);
+        }
+    }
+
+    &:block(button):mod(view plain) {
+        background: none;
+
+        &:block(button):mod(pressed) {
+            background: #f6f5f3;
+        }
+
+        &:block(button):mod(checked) {
+            background: #ffeba0;
+
+            &:block(button):mod(pressed) {
+                background: #fee481;
+            }
+        }
+
+        &:block(button):mod(disabled) {
+            background: none;
+        }
+    }
+
+    &:block(button):mod(view action) {
+        background: #ffdb4d;
+
+        &:before {
+            display: none;
+        }
+
+        &:block(button):mod(hovered) {
+            background: #ffd633;
+        }
+
+        &:block(button):mod(pressed) {
+            background: #ffcc00;
+        }
+
+        &:block(button):mod(focused-hard) {
+            animation: button-action-focus 0.5s infinite linear alternate;
+
+            box-shadow: none;
+        }
+    }
+
+    &:block(button):mod(view pseudo) {
+        overflow: hidden;
+
+        background: none;
+
+        &:before {
+            background: none;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+        }
+
+        &:block(button):mod(hovered):before {
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+        }
+
+        &:block(button):mod(pressed):before {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        &:block(button):mod(checked) {
+            &:before {
+                background: #ffeba0;
+                box-shadow: 0 0 0 1px rgba(153, 122, 0, 0.5);
+            }
+
+            &:block(button):mod(hovered):before {
+                box-shadow: 0 0 0 1px rgba(129, 103, 0, 0.6);
+            }
+
+            &:block(button):mod(pressed):before {
+                background: #fee481;
+                box-shadow: 0 0 0 1px rgba(129, 103, 0, 0.6);
+            }
+        }
+    }
+
+    &:block(button):mod(disabled) {
+        background: rgba(0, 0, 0, 0.08);
+
+        &:before {
+            display: none;
+        }
+
+        &:block(button):mod(checked) {
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        :block(button):elem(text) {
+            color: #767676;
+        }
+
+        :block(icon) {
+            opacity: 0.3;
+        }
+    }
+
+    &:block(button):mod(size s) {
+        font-size: 13px;
+        line-height: 24px;
+
+        :block(icon) {
+            width: 24px;
+        }
+
+        :block(button):elem(text) {
+            margin: 0 10px;
+        }
+    }
+
+    &:block(button):mod(size m) {
+        font-size: 13px;
+        line-height: 28px;
+
+        :block(icon) {
+            width: 28px;
+        }
+
+        :block(button):elem(text) {
+            margin: 0 13px;
+        }
+    }
+
+    &:block(button):mod(size l) {
+        font-size: 15px;
+        line-height: 32px;
+
+        :block(icon) {
+            width: 32px;
+        }
+
+        :block(button):elem(text) {
+            margin: 0 15px;
+        }
+    }
+
+    &:block(button):mod(size xl) {
+        font-size: 18px;
+        line-height: 38px;
+
+        :block(icon) {
+            width: 38px;
+        }
+
+        :block(button):elem(text) {
+            margin: 0 18px;
+        }
+    }
+
+    & :block(icon) + :block(button):elem(text) {
+        margin-left: 0;
+    }
+
+    :block(button):elem(text):not(:last-child) {
+        margin-right: 0;
+    }
+}
+
+@keyframes button-action-focus {
+    from {
+        background-color: #ffdb4d;
+    }
+
+    to {
+        background-color: #fc0;
+    }
+}
+
+:block(control-group) {
+    :block(button):mod(checked) + :block(button):mod(theme islands):before,
+    :block(radio):mod(checked) + :block(radio) :block(button):mod(theme islands):before,
+    :block(checkbox):mod(checked) + :block(checkbox) :block(button):mod(theme islands):before {
+        left: 0;
+    }
+
+    :block(button):mod(theme islands) {
+        border-radius: 0;
+
+        &:before {
+            right: 0;
+
+            border-radius: 0;
+        }
+
+        &:block(button):mod(checked):before {
+            right: 1px;
+        }
+
+        &:block(button):mod(focused-hard):block(button):before {
+            left: 0;
+        }
+    }
+
+    > :block(button):mod(theme islands):first-child,
+    > :first-child :block(button):mod(theme islands),
+    > :first-child:block(popup) + :block(button):mod(theme islands) {
+        border-radius: 3px 0 0 3px;
+
+        &:before {
+            border-radius: 2px 0 0 2px;
+        }
+
+        &:block(button):mod(focused-hard):block(button):before {
+            left: 1px;
+        }
+    }
+
+    > :block(button):mod(theme islands):last-child,
+    > :last-child :block(button):mod(theme islands) {
+        border-radius: 0 3px 3px 0;
+
+        &:before {
+            border-radius: 0 2px 2px 0;
+            right: 1px;
+        }
+    }
+
+    > :only-child :block(button):mod(theme islands) {
+        border-radius: 3px;
+
+        &:before {
+            border-radius: 2px;
+        }
+    }
+}

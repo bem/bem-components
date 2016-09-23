@@ -1,0 +1,6 @@
+:block(spin):mod(theme islands):block(spin):mod(paused) {
+    animation: none;
+
+    border-top-color: #fc0;
+    border-left-color: #fc0;
+}

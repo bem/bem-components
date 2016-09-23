@@ -1,0 +1,121 @@
+$checkedColor: #ffeba0;
+$checkedPressedColor: #fee481;
+
+:block(button):mod(theme islands) {
+    border: 1px solid #cbcbcb;
+    background: #fff;
+
+    &:before {
+        content: none;
+    }
+
+    &:block(button):mod(hovered) {
+        border-color: #b2b2b2;
+    }
+
+    &:block(button):mod(focused-hard) {
+        border-color: #fc0 !important;
+        outline: 1px solid #fc0;
+    }
+
+    &:block(button):mod(checked) {
+        border-color: #cbbc7f;
+        background: $checkedColor;
+
+        &:block(button):mod(pressed) {
+            background: $checkedPressedColor;
+        }
+
+        &:block(button):mod(pressed),
+        &:block(button):mod(hovered) {
+            border-color: #b2a265;
+        }
+    }
+
+    &:block(button):mod(pressed) {
+        background: #f6f5f3;
+    }
+
+    &:block(button):mod(view action) {
+        border-color: #caac32;
+        background: #ffdb4d;
+
+        &:block(button):mod(pressed) {
+            background: #fc0;
+        }
+
+        &:block(button):mod(hovered) {
+            border-color: #b19732;
+        }
+    }
+
+    &:block(button):mod(view pseudo) {
+        &:block(button):mod(pressed) {
+            background: #f2f2f2;
+        }
+
+        &:block(button):mod(checked) {
+            &:block(button):mod(pressed) {
+                background: $checkedPressedColor;
+            }
+
+            &:block(button):mod(pressed),
+            &:block(button):mod(hovered) {
+                border-color: #937d28;
+            }
+        }
+    }
+
+    &:block(button):mod(disabled) {
+        border-color: #eaeaea;
+        background: #eaeaea;
+
+        &:block(button):mod(checked) {
+            background: $checkedColor;
+        }
+    }
+
+    @each $size, $val in (s, m, l, xl), (22, 26, 30, 36) {
+        &:block(button):mod(size $size) {
+            line-height: $(val)px;
+        }
+    }
+}
+
+:block(control-group) {
+    :block(button):mod(theme islands) {
+        border-left-width: 0;
+
+        &:after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+
+            content: '';
+
+            border-left: 1px solid transparent;
+        }
+    }
+
+    > :first-child :block(button):mod(theme islands),
+    > :block(button):mod(theme islands):first-child {
+        border-left-width: 1px;
+
+        &:after {
+            content: none !important;
+        }
+    }
+
+    @each $blockName in checkbox, radio {
+        &:block($(blockName)-group):mod(type button) {
+            :block(button):mod(theme islands):block(button):mod(focused-hard) {
+                &:after {
+                    content: ' ';
+
+                    border-color: #fc0;
+                }
+            }
+        }
+    }
+}

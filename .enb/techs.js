@@ -6,7 +6,22 @@ module.exports = {
         write : require('enb/techs/write-file')
     },
     bem : require('enb-bem-techs'),
-    stylus : require('enb-stylus/techs/stylus'),
+    postcss : {
+        postcss : require('enb-postcss/techs/enb-postcss'),
+        plugins : function(browsers) {
+            return [
+                require('postcss-import')(),
+                require('postcss-each'),
+                require('postcss-for'),
+                require('postcss-simple-vars')(),
+                require('postcss-calc')(),
+                require('postcss-nested'),
+                require('rebem-css'),
+                require('postcss-url')({ url : 'rebase' }),
+                require('autoprefixer')({ browsers : browsers })
+            ];
+        }
+    },
     js : require('enb-borschik/techs/js-borschik-include'),
     ym : require('enb-modules/techs/prepend-modules'),
     engines : {

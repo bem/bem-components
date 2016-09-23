@@ -1,0 +1,5 @@
+@each $val in twitter, vk {
+    :block(icon):mod(social $val) {
+        background-image: url($(val).png);
+    }
+}

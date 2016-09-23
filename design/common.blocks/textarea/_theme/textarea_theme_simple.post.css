@@ -1,0 +1,33 @@
+:block(textarea):mod(theme simple) {
+    font-family: inherit;
+    font-size: 100%;
+
+    display: inline-block;
+
+    box-sizing: border-box;
+    min-height: 2em;
+    margin: 0;
+
+    cursor: auto;
+
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: #fff;
+
+    -webkit-appearance: none;
+
+    &:block(textarea):mod(disabled) {
+        opacity: 0.6;
+    }
+
+    &:block(textarea):mod(focused) {
+        box-shadow: 0 0 5px 1px #fc0;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &:block(textarea):mod(width available) {
+        width: 100%;
+    }
+}

@@ -1,0 +1,17 @@
+:block(link):mod(theme simple) {
+    cursor: pointer;
+    text-decoration: underline;
+
+    &,
+    &:link {
+        color: #008ace;
+    }
+
+    &:visited {
+        color: #b40eb4;
+    }
+
+    &:hover {
+        color: #c00;
+    }
+}

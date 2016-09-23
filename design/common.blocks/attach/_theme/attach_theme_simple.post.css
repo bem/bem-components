@@ -1,0 +1,55 @@
+:block(attach):mod(theme simple) {
+    display: inline-block;
+
+    white-space: nowrap;
+
+    :block(attach):elem(control) {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        margin: 0;
+
+        cursor: pointer;
+
+        opacity: 0;
+    }
+
+    :block(attach):elem(file),
+    :block(attach):elem(no-file) {
+        display: inline;
+
+        margin-left: 0.5em;
+    }
+
+    :block(attach):elem(clear) {
+        margin-left: 5px;
+
+        cursor: pointer;
+
+        &:before {
+            content: '×';
+        }
+    }
+
+    &:block(attach):mod(disabled) {
+        :block(attach):elem(file),
+        :block(attach):elem(no-file) {
+            opacity: 0.6;
+        }
+    }
+
+    :block(button) {
+        position: relative;
+
+        &:elem(text) {
+            display: inline;
+
+            z-index: 1;
+        }
+    }
+}

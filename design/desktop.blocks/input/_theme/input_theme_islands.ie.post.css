@@ -1,0 +1,43 @@
+:block(input):mod(theme islands) {
+    border: 1px solid #ccc;
+
+    :block(input):elem(clear) {
+        visibility: hidden;
+
+        &:mod(visible) {
+            visibility: visible;
+        }
+    }
+
+    &:block(input):mod(focused) {
+        border: 1px solid #fc0;
+        outline: 1px solid #fc0;
+    }
+
+    &:block(input):mod(disabled) {
+        background: #ebebeb;
+
+        :block(input):elem(box),
+        :block(input):elem(control) {
+            color: #999;
+        }
+    }
+
+    @each $size, $val in (s, m, l, xl), (24, 28, 32, 38) {
+        &:block(input):mod(size $size) {
+            :block(input):elem(control) {
+                line-height: $(val)px;
+            }
+        }
+    }
+
+    &:block(input):mod(size s) :block(input):elem(clear),
+    &:block(input):mod(size m) :block(input):elem(clear) {
+        background-image: url(clear_size_s.png);
+    }
+
+    &:block(input):mod(size l) :block(input):elem(clear),
+    &:block(input):mod(size xl) :block(input):elem(clear) {
+        background-image: url(clear_size_l.png);
+    }
+}

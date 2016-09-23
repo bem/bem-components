@@ -1,0 +1,63 @@
+:block(checkbox):mod(theme islands) {
+    :block(checkbox):elem(box) {
+        background: #cbcbcb;
+
+        &:after {
+            top: -4px;
+
+            filter: unquote('alpha(opacity=0)');
+        }
+    }
+
+    :block(checkbox):elem(control) {
+        outline: none;
+
+        filter: unquote('alpha(opacity=0)');
+    }
+
+    &:block(checkbox):mod(checked) :block(checkbox):elem(box) {
+        background: #ccbd80;
+
+        &:before {
+            content: ' ';
+        }
+
+        &:after {
+            content: ' ';
+
+            filter: unquote('alpha(opacity=100)');
+        }
+    }
+
+    &:block(checkbox):mod(hovered) {
+        :block(checkbox):elem(box) {
+            background: #b3b3b3;
+        }
+
+        &:block(checkbox):mod(checked) :block(checkbox):elem(box) {
+            background: #b2a265;
+        }
+    }
+
+    &:block(checkbox):mod(focused):block(checkbox) {
+        :block(checkbox):elem(box) {
+            background: #fc0;
+        }
+    }
+
+    &:block(checkbox):mod(disabled) {
+        :block(checkbox):elem(box) {
+            background: #ebebeb;
+        }
+
+        &:block(checkbox):mod(checked) :block(checkbox):elem(box):after {
+            background-position: 0 100%;
+        }
+    }
+
+    @each $size in m, l {
+        &:block(checkbox):mod(size $size) :block(checkbox):elem(box):after {
+            background-image: url('tip_size_$(size).png');
+        }
+    }
+}

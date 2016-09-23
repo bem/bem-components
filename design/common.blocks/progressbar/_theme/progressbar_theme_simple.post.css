@@ -1,0 +1,46 @@
+:block(progressbar):mod(theme simple) {
+    font-size: 12px;
+
+    display: flex;
+    align-items: center;
+
+    height: 40px;
+    padding: 0 8px;
+
+    background: #f4f4f4;
+
+    :block(progressbar):elem(bar) {
+        height: 100%;
+
+
+        background: rgba(255,255,255,.7);
+    }
+
+    :block(progressbar):elem(box) {
+        position: relative;
+
+        overflow: hidden;
+
+        height: 20px;
+        padding: 1px;
+
+        background: linear-gradient(to right, rgba(45,226,84,1) 0%,rgba(71,160,229,1) 100%);
+
+        flex: 1 0 auto;
+    }
+
+    :block(progressbar):elem(text) {
+
+        font-family: Verdana, sans-serif;
+
+        min-width: 3em;
+
+        padding-left: 5px;
+
+        text-align: right;
+
+        &:after {
+            content: '%';
+        }
+    }
+}

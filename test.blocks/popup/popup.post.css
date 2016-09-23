@@ -1,0 +1,10 @@
+:block(popup):not(:block(modal)):not([class*="popup:mod(theme)"]) {
+    display: none;
+
+    background: #fff7db;
+    box-shadow: inset 0 0 1px red;
+}
+
+:block(popup):mod(visible):not(:block(modal)):not([class*="popup:mod(theme)"]) {
+    display: block;
+}

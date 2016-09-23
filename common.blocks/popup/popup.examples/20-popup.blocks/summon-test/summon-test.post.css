@@ -1,0 +1,18 @@
+:block(summon-test) {
+    display: inline-block;
+
+    margin-bottom: 1em;
+    padding: 10px;
+
+    background-color: #eee;
+
+    &:elem(popup) {
+        padding: 10px;
+    }
+
+    :block(test) {
+        display: inline-block;
+
+        margin-right: 100px;
+    }
+}

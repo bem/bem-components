@@ -1,0 +1,110 @@
+:block(input):mod(theme simple) {
+    display: inline-block;
+
+    :block(input):elem(box) {
+        position: relative;
+
+        display: block;
+
+        user-select: none;
+
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        background: #fff;
+    }
+
+    :block(input):elem(control) {
+        font-family: inherit;
+        font-size: 100%;
+
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+
+        border: 0;
+
+        -webkit-appearance: none;
+
+        &::-ms-clear {
+            display: none;
+        }
+
+        &::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+
+        &::-webkit-search-cancel-button {
+            display: none;
+        }
+    }
+
+    :block(input):elem(clear) {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        display: none;
+
+        margin: 0;
+        padding: 0;
+
+        user-select: none;
+
+        &:after {
+            font-size: 140%;
+            font-weight: bold;
+            line-height: 1;
+
+            display: block;
+
+            width: 1.2em;
+
+            content: '×';
+            text-align: center;
+        }
+
+        &:mod(visible) {
+            display: block;
+
+            cursor: pointer;
+
+            opacity: 0.2;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    &:block(input):mod(disabled) {
+        opacity: 0.6;
+
+        :block(input):elem(control) {
+            resize: none;
+        }
+
+        :block(input):elem(clear) {
+            display: none;
+        }
+
+        :block(input):elem(box),
+        :block(input):elem(control) {
+            cursor: auto;
+        }
+    }
+
+    &:block(input):mod(width available) {
+        width: 100%;
+    }
+
+    &:block(input):mod(focused) {
+        :block(input):elem(box) {
+            box-shadow: 0 0 5px 1px #fc0;
+        }
+    }
+
+    &:block(input):mod(focused) :block(input):elem(control):focus {
+        outline: none;
+    }
+}

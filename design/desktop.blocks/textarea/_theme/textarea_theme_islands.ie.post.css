@@ -1,0 +1,16 @@
+:block(textarea):mod(theme islands) {
+    border: 1px solid #ccc;
+
+    &:block(textarea):mod(focused) {
+        border: 1px solid #fc0;
+        outline: 1px solid #fc0;
+    }
+
+    &:block(textarea):mod(disabled) {
+        background: #ebebeb;
+
+        :block(textarea):elem(control) {
+            color: #999;
+        }
+    }
+}

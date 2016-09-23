@@ -1,0 +1,8 @@
+:block(link):mod(pseudo):not([class*="link:mod(theme)"]) {
+    cursor: pointer;
+    color: blue;
+
+    &:hover {
+        color: red;
+    }
+}

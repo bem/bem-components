@@ -1,0 +1,14 @@
+:block(test) {
+    margin: 10px 0;
+
+    &__content
+    {
+        width: 450px;
+        padding: 20px;
+    }
+}
+
+:block(page):mod(hide-scroll) {
+    overflow: hidden;
+    min-height: 100vh;
+}

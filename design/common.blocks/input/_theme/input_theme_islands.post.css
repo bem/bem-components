@@ -1,0 +1,251 @@
+:block(input):mod(theme islands) {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    position: relative;
+
+    display: inline-block;
+
+    background: rgba(0, 0, 0, 0.2);
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    /* Decorative element (inner background) */
+    &:before {
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        bottom: 1px;
+        left: 1px;
+
+        content: '';
+
+        background: #fff;
+    }
+
+    :block(input):elem(box) {
+        position: relative;
+
+        display: block;
+
+        -webkit-touch-callout: none;
+
+        user-select: none;
+    }
+
+    :block(input):elem(control) {
+        font: inherit;
+        line-height: inherit;
+
+        position: relative;
+
+        display: inline-block;
+
+        box-sizing: border-box;
+        padding: 0;
+        width: 100%;
+
+        border: 0;
+        outline: none;
+        background: none;
+
+        -webkit-appearance: none;
+
+        /*лишние отступы у текста*/
+        &::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+
+        /*нативный крестик*/
+        &::-webkit-search-cancel-button {
+            display: none;
+        }
+
+        &::-webkit-input-placeholder {
+            color: #999;
+            text-indent: 0;
+        }
+
+        &::-moz-placeholder {
+            opacity: 1;
+            color: #999;
+        }
+
+        &::-ms-clear {
+            display: none;
+        }
+
+        &::-webkit-autofill {
+            border: 1px solid transparent;
+            background-clip: padding-box;
+        }
+    }
+
+    &:block(input):mod(has-clear) :block(input):elem(control) {
+        text-overflow: ellipsis;
+    }
+
+    :block(input):elem(clear) {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        cursor: text;
+        transition: opacity 0.1s ease-out;
+
+        opacity: 0;
+        background: 50% 50% no-repeat;
+
+        &:mod(visible) {
+            opacity: 0.3;
+
+            &:hover {
+                cursor: pointer;
+
+                opacity: 1;
+            }
+        }
+    }
+
+    &:block(input):mod(focused) {
+        z-index: 1;
+
+        &:before {
+            box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
+        }
+
+        :block(input):elem(control) {
+            text-overflow: clip; /* fix ellipsis bug in Chrome */
+        }
+    }
+
+    &:block(input):mod(disabled) {
+        background: rgba(0, 0, 0, 0.08);
+
+        &:before,
+        :block(input):elem(clear) {
+            display: none;
+        }
+
+        :block(input):elem(box),
+        :block(input):elem(control) {
+            color: rgba(0, 0, 0, 0.4);
+            cursor: default;
+        }
+    }
+
+    &:block(input):mod(size s) :block(input):elem(clear),
+    &:block(input):mod(size m) :block(input):elem(clear) {
+        width: 24px;
+        height: 24px;
+
+        background-image: url(../../theme/_islands/clear_size_s.svg);
+        background-position: 7px 50%;
+    }
+
+    &:block(input):mod(size s) {
+        font-size: 13px;
+        line-height: 16px;
+
+        :block(input):elem(control) {
+            height: 24px;
+            padding: 0 7px;
+        }
+
+        &:block(input):mod(has-clear) :block(input):elem(control) {
+            padding-right: 24px;
+        }
+
+    }
+
+    &:block(input):mod(size m) {
+        font-size: 13px;
+        line-height: 16px;
+
+        :block(input):elem(control) {
+            height: 28px;
+            padding: 0 8px;
+        }
+
+        &:block(input):mod(has-clear) :block(input):elem(control) {
+            padding-right: 28px;
+        }
+
+        :block(input):elem(clear) {
+            width: 28px;
+            height: 28px;
+
+            background-position: 9px 50%;
+        }
+    }
+
+    &:block(input):mod(size l) :block(input):elem(clear),
+    &:block(input):mod(size xl) :block(input):elem(clear) {
+        width: 32px;
+        height: 32px;
+
+        background-image: url(../../theme/_islands/clear_size_l.svg);
+        background-position: 9px 50%;
+    }
+
+    &:block(input):mod(size l) {
+        font-size: 15px;
+        line-height: 18px;
+
+        :block(input):elem(control) {
+            height: 32px;
+            padding: 0 10px;
+        }
+
+        &:block(input):mod(has-clear) :block(input):elem(control) {
+            padding-right: 32px;
+        }
+    }
+
+    &:block(input):mod(size xl) {
+        font-size: 18px;
+        line-height: 22px;
+
+        :block(input):elem(control) {
+            height: 38px;
+            padding: 0 12px;
+        }
+
+        &:block(input):mod(has-clear) :block(input):elem(control) {
+            padding-right: 38px;
+        }
+
+        :block(input):elem(clear) {
+            width: 38px;
+            height: 38px;
+
+            background-position: 12px 50%;
+        }
+    }
+
+    &:block(input):mod(has-clear) :block(input):elem(control) {
+        padding-right: 0;
+    }
+
+    &:block(input):mod(width available) {
+        width: 100%;
+    }
+
+    &:block(input):mod(type password) :block(input):elem(control) {
+        text-overflow: clip;
+    }
+}
+
+:block(control-group) {
+    :block(input):mod(theme islands) {
+        &:before {
+            right: 0;
+        }
+    }
+
+    > :block(input):mod(theme islands):last-child,
+    > :last-child :block(input):mod(theme islands) {
+        &:before {
+            right: 1px;
+        }
+    }
+}

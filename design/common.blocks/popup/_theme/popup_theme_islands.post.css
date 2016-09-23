@@ -1,0 +1,82 @@
+:block(popup):mod(theme islands) {
+    display: none;
+    visibility: hidden;
+
+    margin: -9999px 0 0 -9999px;
+
+    animation-duration: 0.1s;
+    animation-timing-function: ease-out;
+
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
+                0 10px 20px -5px rgba(0, 0, 0, 0.4);
+
+    animation-fill-mode: forwards;
+
+    &:block(popup):mod(js inited) {
+        display: block;
+    }
+
+    &:block(popup):mod(visible) {
+        visibility: visible;
+
+        margin: 0;
+    }
+
+    /* Divided into two parts for better optimization */
+    @each $main, $secondary in
+    (bottom, bottom, bottom, top,  top,    top,   right, right,  right,  left, left,   left),  /* main */
+    (left,   center, right,  left, center, right, top,   center, bottom, top,  center, bottom) /* secondary */ {
+        &:block(popup):mod(direction $(main)-$(secondary)) {
+            animation-name: popup_theme_islands_$(main);
+            &:block(popup):mod(visible) {
+              animation-name: popup_theme_islands_$(main)_visible;
+            }
+        }
+    }
+}
+
+@each $direction, $axis, $offset in
+(button, top, right, left),
+(Y,      Y,   X,     X),
+(10,    -10,  10,   -10) {
+    @keyframes popup_theme_islands_$(direction) {
+        0% {
+            visibility: visible;
+
+            margin: 0;
+
+            transform: translate$(axis)(0);
+
+            opacity: 1;
+        }
+
+        99% {
+            margin: 0;
+
+            transform: translate$(axis)($(offset)px);
+        }
+
+        100% {
+            visibility: hidden;
+
+            margin: -9999px 0 0 -9999px;
+
+            opacity: 0;
+        }
+    }
+
+    @keyframes popup_theme_islands_$(direction)_visible {
+        0% {
+            opacity: 0;
+
+            transform: translate$(axis)($(offset)px);
+        }
+
+        100% {
+            opacity: 1;
+
+            transform: translate$(axis)(0);
+        }
+    }
+}

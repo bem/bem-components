@@ -1,0 +1,11 @@
+:block(select):mod(theme islands) {
+    :block(select):elem(tick) {
+        background-image: url(arrow.png);
+
+        height: 100%;
+    }
+
+    &:block(select):mod(size s) :block(select):elem(tick) {
+        background-image: url(arrow-s.png);
+    }
+}

@@ -1,0 +1,159 @@
+:block(radio):mod(theme islands) {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    :block(radio):elem(control) {
+        position: absolute;
+        z-index: -1;
+
+        margin: 0;
+
+        opacity: 0;
+    }
+
+    :block(radio):elem(box) {
+        position: relative;
+
+        display: inline-block;
+
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.2);
+
+        &:before {
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            bottom: 1px;
+            left: 1px;
+
+            content: '';
+
+            border-radius: 50%;
+            background: #fff;
+        }
+    }
+
+    &:block(radio):mod(size m) {
+        font-size: 13px;
+
+        :block(radio):elem(box) {
+            line-height: 14px;
+
+            top: 2px;
+
+            width: 14px;
+            height: 14px;
+            margin-right: 5px;
+
+            &:after {
+                top: 4px;
+                left: 4px;
+
+                width: 6px;
+                height: 6px;
+            }
+        }
+    }
+
+    &:block(radio):mod(size l) {
+        font-size: 15px;
+
+        :block(radio):elem(box) {
+            line-height: 17px;
+
+            top: 3px;
+
+            width: 17px;
+            height: 17px;
+            margin-right: 7px;
+
+            &:after {
+                top: 5px;
+                left: 5px;
+
+                width: 7px;
+                height: 7px;
+            }
+        }
+    }
+
+    &:block(radio):mod(checked) {
+        :block(radio):elem(box) {
+            background: rgba(153, 122, 0, 0.5);
+
+            &:before {
+                background: #ffeba0;
+            }
+
+            &:after {
+                position: absolute;
+
+                border-radius: 50%;
+                background: #000;
+
+                content: '';
+            }
+        }
+    }
+
+    &:block(radio):mod(focused) {
+        :block(radio):elem(box):before {
+            box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
+        }
+    }
+
+    &:block(radio):mod(hovered) {
+        :block(radio):elem(box) {
+           background: rgba(0, 0, 0, 0.3);
+        }
+
+        &:block(radio):mod(checked) :block(radio):elem(box) {
+           background: rgba(129, 103, 0, 0.6);
+        }
+    }
+
+    &:block(radio):mod(disabled) {
+        cursor: default;
+
+        color: #999;
+
+        :block(radio):elem(box) {
+            background: rgba(0, 0, 0, 0.08);
+
+            :block(radio):mod(checked)& {
+                background: rgba(0, 0, 0, 0.15);
+            }
+
+            &:before {
+                display: none;
+            }
+
+            &:after {
+                background: rgba(0, 0, 0, 0.4);
+            }
+        }
+    }
+
+    &:block(radio):mod(type button) {
+        display: inline-block;
+    }
+
+    &:block(radio):mod(type line) {
+        &:block(radio):mod(size m) {
+            margin-right: 13px;
+        }
+
+        &:block(radio):mod(size l) {
+            margin-right: 15px;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

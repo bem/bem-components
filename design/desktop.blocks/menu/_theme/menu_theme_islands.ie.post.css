@@ -1,0 +1,9 @@
+:block(menu):mod(theme islands) {
+    border: 1px solid #ccc;
+
+    :block(menu):elem(group) {
+        &-title {
+            color: #999;
+        }
+    }
+}

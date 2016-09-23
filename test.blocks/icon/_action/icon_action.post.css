@@ -1,0 +1,24 @@
+:block(icon) {
+    &:mod(action up),
+    &:mod(action right),
+    &:mod(action down),
+    &:mod(action left) {
+        background-image: url(arrow.svg);
+    }
+
+    &:mod(action up) {
+        transform: rotate(180deg);
+    }
+
+    &:mod(action right) {
+        transform: rotate(-90deg);
+    }
+
+    &:mod(action left) {
+        transform: rotate(90deg);
+    }
+
+    &:mod(action download) {
+        background-image: url(download.svg);
+    }
+}

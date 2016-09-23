@@ -1,0 +1,104 @@
+:block(modal):mod(theme islands) {
+    display: none;
+    visibility: hidden;
+
+    margin: -9999px 0 0 -9999px; /* to prevent clickability and visiblity of internal elements with visiblity: visible */
+
+    background: rgba(50, 50, 50, 0.2);
+
+    &,
+    & :block(modal):elem(content) {
+        animation-duration: 0.2s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out;
+    }
+
+    :block(modal):elem(content) {
+        margin: 5px;
+
+        border: 1px solid #bfbfbf;
+        background-color: #fff;
+    }
+
+    &:block(modal):mod(js inited) {
+        display: block;
+    }
+
+    &:block(modal):mod(has-animation) {
+        animation-name: modal_theme_islands;
+
+        :block(modal):elem(content) {
+            animation-name: modal_theme_islands__content;
+        }
+    }
+
+    &:block(modal):mod(visible) {
+        visibility: visible;
+
+        margin: 0;
+
+        &:block(modal):mod(has-animation) {
+            animation-name: modal_theme_islands_visible;
+
+            :block(modal):elem(content) {
+                animation-name: modal_theme_islands_visible__content;
+            }
+        }
+    }
+}
+
+/* closing modal */
+@keyframes modal_theme_islands {
+    0% {
+        visibility: visible;
+
+        margin: 0;
+
+        opacity: 1;
+    }
+
+    99% {
+        margin: 0;
+    }
+
+    100% {
+        visibility: hidden;
+
+        margin: -9999px 0 0 -9999px;
+
+        opacity: 0;
+    }
+}
+
+/* opening modal */
+@keyframes modal_theme_islands_visible {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* closing modal__content */
+@keyframes modal_theme_islands__content {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+/* opening modal__content */
+@keyframes modal_theme_islands_visible__content {
+    0% {
+        transform: scale(.75);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,14 @@
+:block(modal):mod(theme simple) {
+    display: none;
+
+    background: rgba(50, 50, 50, .2);
+
+    &:block(modal):mod(visible) {
+        display: block;
+    }
+
+    :block(modal):elem(content) {
+        background: #fff;
+        border: 1px solid #bfbfbf;
+    }
+}

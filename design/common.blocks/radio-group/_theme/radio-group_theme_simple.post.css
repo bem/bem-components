@@ -1,0 +1,23 @@
+:block(radio-group):mod(theme simple) {
+    :block(radio):mod(type button) {
+        &:first-of-type :block(button):mod(togglable radio),
+        &~ :block(radio):mod(type button) :block(button):mod(togglable radio) {
+            border-right-width: 0;
+        }
+
+        &~ :block(radio):mod(type button) :block(button):mod(togglable radio) {
+            border-radius: 0;
+        }
+
+        &:first-of-type :block(button):mod(togglable radio) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &:last-of-type :block(button):mod(togglable radio) {
+            border-right-width: 1px;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+    }
+}

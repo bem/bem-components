@@ -1,0 +1,20 @@
+:block(attach):mod(theme islands) {
+    :block(attach):elem(control) {
+        position: static;
+
+        vertical-align: top;
+    }
+
+    @each $size, $val in (s, m, l, xl), (24, 28, 32, 38) {
+        :block(button):mod(size $size) {
+            :block(button):elem(control) {
+                height: $(val)px;
+            }
+        }
+    }
+
+    :block(attach):elem(no-file),
+    :block(button):elem(text) {
+        display: none;
+    }
+}

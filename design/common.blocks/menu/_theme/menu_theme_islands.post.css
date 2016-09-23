@@ -1,0 +1,75 @@
+:block(menu):mod(theme islands) {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    box-sizing: border-box;
+
+    user-select: none;
+
+    outline: 0;
+    background: #fff;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    /* Using pseudo-elements intead of paddings because of Firefox bug with bottom padding (#1158):
+     * https://bugzilla.mozilla.org/show_bug.cgi?id=748518 */
+    &:before,
+    &:after {
+        display: block;
+
+        content: '';
+    }
+
+    @each $size, $fontSize, $lineHeight, $paddingVert, $paddingHor in
+    (s,    m,    l,    xl),
+    (13px, 13px, 15px, 15px),  /* fontSize */
+    (24px, 24px, 28px, 32px,), /* lineHeight */
+    (3px,  4px,  5px,  6px),   /* paddingVer */
+    (10px, 13px, 15px, 20px)   /* paddingHor */ {
+        &:block(menu):mod(size $size) {
+            font-size: $fontSize;
+            line-height: $lineHeight;
+
+            &:before,
+            &:after {
+                height: $paddingVert;
+            }
+
+            :block(menu-item) + :block(menu):elem(group) {
+                margin-top: $paddingVert;
+            }
+
+            :block(menu):elem(group) {
+                padding: $paddingVert 0;
+
+                &-title {
+                    padding: 0 $paddingHor;
+                }
+            }
+        }
+    }
+
+    :block(menu):elem(group) {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-width: 1px 0;
+
+        &-title {
+            color: #999;
+        }
+
+        & + :block(menu):elem(group) {
+            border-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+
+            border-bottom: 0;
+        }
+
+        &:first-child {
+            padding-top: 0;
+
+            border-top: 0;
+        }
+    }
+}

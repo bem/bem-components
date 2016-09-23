@@ -1,15 +1,13 @@
 # BEM Components Library
 
+`bem-components` is an open-source library that provides a set of ready-made visual components (blocks) for creating web interfaces.
+
+The library provides design themes. This version introduces the `islands` theme, which implements the new Yandex design. Features include supporting multiple themes at once, and creating new themes.
+
 [![GitHub Release](https://img.shields.io/github/release/bem/bem-components.svg?style=flat)](https://github.com/bem/bem-components/releases)
 [![Build Status](https://img.shields.io/travis/bem/bem-components/v2.svg?style=flat)](https://travis-ci.org/bem/bem-components)
 [![Coverage Status](https://img.shields.io/coveralls/bem/bem-components/v2.svg?style=flat)](https://coveralls.io/r/bem/bem-components?branch=v2)
 [![devDependency Status](https://img.shields.io/david/dev/bem/bem-components.svg?style=flat)](https://david-dm.org/bem/bem-components#info=devDependencies)
-
-## What is this?
-
-BEM is an open-source library that provides a set of ready-made visual components (blocks) for creating web interfaces.
-
-The library provides design themes. This version introduces the "islands" theme, which implements the new Yandex design. Features include supporting multiple themes at once, and creating new themes.
 
 ## Contents
 
@@ -425,7 +423,7 @@ For executing tests locally, you need to:
 1.  Create an [OpenSauce](https://saucelabs.com/opensauce) account in SauceLabs.
 2.  Install the [Sauce Connect](https://saucelabs.com/connect) utility.
 3.  Set up environment variables (`SAUCE_USERNAME` and `SAUCE_ACCESS_KEY`).
-4.  Launch the `src` utility (SauceConnect) and wait for the tunnel to be opened.
+4.  Launch the `sc` utility (SauceConnect) and wait for the tunnel to be opened.
 5.  Run the tests using `npm run gemini`.
 6.  If you need to make new versions of screenshots, use the command `npm run gemini-gather`.
 

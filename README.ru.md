@@ -1,15 +1,13 @@
 # Библиотека BEM Components
 
+`bem-components` — это библиотека с открытым кодом, которая предоставляет набор готовых визуальных компонентов (блоков). Содержит контролы форм и другие базовые компоненты для построения интерфейсов.
+
+Библиотека предоставляет темы оформления. В данной версии представлена тема `islands`, реализующая дизайн Яндекса. Предусмотрена одновременная поддержка нескольких тем и возможность создания новых.
+
 [![GitHub Release](https://img.shields.io/github/release/bem/bem-components.svg?style=flat)](https://github.com/bem/bem-components/releases)
 [![Build Status](https://img.shields.io/travis/bem/bem-components/v2.svg?style=flat)](https://travis-ci.org/bem/bem-components)
 [![Coverage Status](https://img.shields.io/coveralls/bem/bem-components/v2.svg?style=flat)](https://coveralls.io/r/bem/bem-components?branch=v2)
 [![devDependency Status](https://img.shields.io/david/dev/bem/bem-components.svg?style=flat)](https://david-dm.org/bem/bem-components#info=devDependencies)
-
-## Что это?
-
-Библиотека с открытым кодом, которая предоставляет набор готовых визуальных компонентов (блоков). Содержит контролы форм и другие базовые компоненты для построения интерфейсов.
-
-Библиотека предоставляет темы оформления. В данной версии представлена тема «islands», реализующая новый дизайн Яндекса. Предусмотрена одновременная поддержка нескольких тем и возможность создания новых.
 
 ## Содержание
 

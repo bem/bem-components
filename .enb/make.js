@@ -394,6 +394,12 @@ module.exports = function(config) {
                 jsSuffixes : ['vanilla.js', 'browser.js', 'js'],
                 depsTech : techs.bem.depsOld,
                 scripts : ['https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js'],
+                cssEngine : {
+                    tech : techs.postcss.postcss,
+                    options : {
+                        plugins : techs.postcss.plugins(getBrowsers(platform))
+                    }
+                },
                 templateEngine : {
                     bemtreeTemplateTech : require('enb-bemxjst/techs/bemtree'),
                     templateTech : require('enb-bemxjst/techs/bemhtml'),

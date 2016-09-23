@@ -6,7 +6,7 @@ provide(bemDom.declBlock(this.name, {
             'inited' : function() {
                 var modal = this.findChildBlock(Modal);
 
-                Link._events(this.domElem).on('click', function() {
+                this._events(Link).on('click', function() {
                     modal.setMod('visible', true);
                 });
             }

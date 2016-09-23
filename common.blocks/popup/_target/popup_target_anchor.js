@@ -234,13 +234,13 @@ provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popu
     },
 
     _bindToDestructor : function() {
-        this._destructor._events().on({ modName : 'js', modVal : '' }, this._onPopupAnchorDestruct, this);
+        this._events(this._destructor).on({ modName : 'js', modVal : '' }, this._onPopupAnchorDestruct, this);
         return this;
     },
 
     _unbindFromDestructor : function() {
         this._destructor &&
-            this._destructor._events().un({ modName : 'js', modVal : '' }, this._onPopupAnchorDestruct, this);
+            this._events(this._destructor).un({ modName : 'js', modVal : '' }, this._onPopupAnchorDestruct, this);
         return this;
     },
 

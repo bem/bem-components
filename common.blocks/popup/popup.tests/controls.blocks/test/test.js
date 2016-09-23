@@ -5,8 +5,9 @@ provide(bemDom.declBlock(this.name, {
         'js' : {
             'inited' : function() {
                 var popup = this.findChildBlock(Popup).setAnchor(
-                    this.findChildBlock(Link)._events()
-                        .on('click', function() { popup.toggleMod('visible'); })
+                    this._events(Link).on('click', function() {
+                        popup.toggleMod('visible');
+                    })
                 );
             }
         }

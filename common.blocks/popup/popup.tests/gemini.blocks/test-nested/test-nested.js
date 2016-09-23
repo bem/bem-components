@@ -7,7 +7,7 @@ provide(bemDom.declBlock(this.name, {
                 var link = this.findChildBlock(Link),
                     popup = this.findChildBlock(Popup).setAnchor(link);
 
-                link._events().on('click', function() {
+                this._events(link).on('click', function() {
                     popup.toggleMod('visible');
                 });
             }

@@ -33,14 +33,14 @@ provide(bemDom.declBlock(this.name, /** @lends select.prototype */{
         'js' : {
             'inited' : function() {
                 this._button = this.findChildBlock(Button);
-                this._button._events().on('click', this._onButtonClick, this);
+                this._events(Button).on('click', this._onButtonClick, this);
 
                 this._popup = this.findChildBlock(Popup)
                     .setAnchor(this._button);
-                this._popup._events().on({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
+                this._events(Popup).on({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
 
                 this._menu = this._popup.findChildBlock(Menu);
-                this._menu._events()
+                this._events(this._menu)
                     .on('change', this._onMenuChange, this)
                     .on('item-click', this._onMenuItemClick, this)
                     .on('item-hover', this._onMenuItemHover, this);

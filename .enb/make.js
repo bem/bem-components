@@ -414,16 +414,33 @@ module.exports = function(config) {
                 levels : getLibLevels(platform),
                 sourceLevels : getSpecLevels(platform),
                 engines : {
-                    'bh' : {
+                    bh : {
                         tech : 'enb-bh/techs/bh-commonjs',
                         options : {
                             bhOptions : bhOptions
                         }
                     },
-                    'bemhtml' : {
+                    bhEscaped : {
+                        tech : 'enb-bh/techs/bh-commonjs',
+                        options : {
+                            bhOptions : Object.assign({}, bhOptions, {
+                                escapeContent : true
+                            })
+                        }
+                    },
+                    bemhtml : {
                         tech : 'enb-bemxjst/techs/bemhtml',
                         options : {
                             sourceSuffixes : ['bemhtml.js', 'bemhtml']
+                        }
+                    },
+                    bemhtmlEscaped : {
+                        tech : 'enb-bemxjst/techs/bemhtml',
+                        options : {
+                            sourceSuffixes : ['bemhtml', 'bemhtml.js'],
+                            engineOptions : {
+                                escapeContent : true
+                            }
                         }
                     }
                 },

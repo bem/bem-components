@@ -7,11 +7,11 @@ provide(bemDom.declBlock(this.name, {
                 var links = this.findChildBlocks(Link),
                     popup = this.findChildBlock(Popup).setAnchor(links.get(0));
 
-                links.get(0)._events().on('click', function() {
+                this._events(links.get(0)).on('click', function() {
                     popup.toggleMod('visible');
                 });
 
-                links.get(1)._events().on('click', function() {
+                this._events(links.get(1)).on('click', function() {
                     bemDom.destruct(this.domElem);
                 }, this);
             }

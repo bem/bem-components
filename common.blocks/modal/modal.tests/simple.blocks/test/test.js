@@ -11,11 +11,11 @@ provide(bemDom.declBlock(this.name, {
                     paragraph = text.html();
 
                 this._modal = this.findChildBlock(Modal);
-                this._modal._events().on({ modName : 'visible', modVal : '*' }, function(e, data) {
+                this._events(Modal).on({ modName : 'visible', modVal : '*' }, function(e, data) {
                     page.setMod('hide-scroll', data.modVal);
                 });
 
-                this.findChildBlock(Link)._events().on('click', function() {
+                this._events(Link).on('click', function() {
                     this._modal.toggleMod('visible');
                 }, this);
 

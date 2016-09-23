@@ -13,11 +13,11 @@ provide(bemDom.declBlock(this.name, {
                     popup.setPosition(target[0], target[1]) :
                     popup.setAnchor(link);
 
-                updateLink && updateLink._events().on('click', function() {
+                updateLink && this._events(updateLink).on('click', function() {
                     popup.setContent('content updated');
                 });
 
-                link._events().on('click', function() {
+                this._events(link).on('click', function() {
                     popup.toggleMod('visible');
                 });
             }

@@ -89,13 +89,14 @@ provide(bemDom.declBlock(this.name, /** @lends popup.prototype */{
 
     _bindToParentPopup : function() {
         var parentPopup = this._getParentPopup();
-        parentPopup && parentPopup._events().on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
+        parentPopup &&
+            this._events(parentPopup).on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
 
         return this;
     },
 
     _unbindFromParentPopup : function() {
-        this._parentPopup && this._parentPopup._events()
+        this._parentPopup && this._events(this._parentPopup)
             .un({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
 
         this._parentPopup = undef;

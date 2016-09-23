@@ -1,5 +1,4 @@
-.test
-{
+:block(test) {
   display: inline-block;
 
   margin-right: 10px;

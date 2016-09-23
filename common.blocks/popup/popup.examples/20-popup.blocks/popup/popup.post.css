@@ -1,5 +1,4 @@
-.popup:after
-{
+:block(popup):after {
     font-size: 10px;
     line-height: 10px;
 

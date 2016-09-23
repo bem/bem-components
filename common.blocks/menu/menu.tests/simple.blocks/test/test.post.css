@@ -1,5 +1,4 @@
-.test
-{
+:block(test) {
     display: table-cell;
 
     width: 150px;
@@ -7,20 +6,17 @@
 
     border-right: 20px solid transparent;
 
-    h3
-    {
+    h3 {
         margin-top: 0;
     }
 
-    .button
-    {
+    :block(button) {
         display: block;
 
         margin: 5px;
     }
 
-    .menu[class*='menu_theme']
-    {
+    :block(menu)[class*="menu:mod(theme)"] {
         border: 1px solid rgba(0, 0, 0, 0.1);
     }
 }

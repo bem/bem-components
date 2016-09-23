@@ -1,14 +1,11 @@
-.modal_theme_islands
-{
-    .modal__content
-    {
+:block(modal):mod(theme islands) {
+    :block(modal):elem(content) {
         width: 450px;
         padding: 20px;
 
         text-align: center;
 
-        .text
-        {
+        :block(text) {
             font-size: 20px;
             line-height: 24px;
         }

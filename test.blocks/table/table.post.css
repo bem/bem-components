@@ -1,5 +1,4 @@
-.table
-{
+:block(table) {
     border-collapse: collapse;
 
     &__title

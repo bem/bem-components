@@ -1,12 +1,10 @@
-.menu_custom
-{
+:block(menu):mod(custom) {
     width: 200px;
     max-height: 200px;
 
     border: 1px solid rgba(0,0,0,0.1);
 
-    .menu-item .link
-    {
+    :block(menu-item) :block(link) {
         display: block;
     }
 }

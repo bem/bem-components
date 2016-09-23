@@ -1,5 +1,4 @@
-.spin-container
-{
+:block(spin-container) {
     display: flex;
 
     width: 300px;

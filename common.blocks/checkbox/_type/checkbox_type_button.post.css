@@ -1,5 +1,4 @@
-.checkbox.checkbox_type_button .checkbox__control
-{
+:block(checkbox):block(checkbox):mod(type button) :block(checkbox):elem(control) {
     position: absolute;
 
     visibility: hidden;

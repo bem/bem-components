@@ -1,22 +1,24 @@
-:block(icon):mod(action up),
-:block(icon):mod(action right),
-:block(icon):mod(action down),
-:block(icon):mod(action left) {
-    background-image: url(arrow.svg);
-}
+:block(icon) {
+    &:mod(action up),
+    &:mod(action right),
+    &:mod(action down),
+    &:mod(action left) {
+        background-image: url(arrow.svg);
+    }
 
-:block(icon):mod(action up) {
-    transform: rotate(180deg);
-}
+    &:mod(action up) {
+        transform: rotate(180deg);
+    }
 
-:block(icon):mod(action right) {
-    transform: rotate(-90deg);
-}
+    &:mod(action right) {
+        transform: rotate(-90deg);
+    }
 
-:block(icon):mod(action left) {
-    transform: rotate(90deg);
-}
+    &:mod(action left) {
+        transform: rotate(90deg);
+    }
 
-:block(icon):mod(action download) {
-    background-image: url(download.svg);
+    &:mod(action download) {
+        background-image: url(download.svg);
+    }
 }

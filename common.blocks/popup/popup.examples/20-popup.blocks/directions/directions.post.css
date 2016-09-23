@@ -1,5 +1,4 @@
-.directions
-{
+:block(directions) {
     padding: 70px;
 
     &__cell

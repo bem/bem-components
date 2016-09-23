@@ -1,5 +1,4 @@
-.separator
-{
+:block(separator) {
     width: 100%;
     height: 1px;
     margin: 25px 0;

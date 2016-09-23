@@ -1,5 +1,4 @@
-.line
-{
+:block(line) {
     position: relative;
 
     box-sizing: content-box;

@@ -1,0 +1,5 @@
+.checkbox.checkbox_type_button .checkbox__control {
+    position: absolute;
+
+    visibility: hidden;
+}

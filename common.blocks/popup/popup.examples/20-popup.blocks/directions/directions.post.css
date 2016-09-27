@@ -1,20 +1,16 @@
 :block(directions) {
     padding: 70px;
 
-    &__cell
-    {
+    &:elem(cell) {
         padding: 8px;
 
-        &_border_yes
-        {
+        &:mod(border yes) {
             border: 1px solid #ccc;
         }
 
-        for direction in left center right
-        {
-            &_align_{direction}
-            {
-                text-align: direction;
+        @each $direction in left, center, right {
+            &:mod(align $direction) {
+                text-align: $direction;
             }
         }
     }

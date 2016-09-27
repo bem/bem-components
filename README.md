@@ -95,7 +95,7 @@ To support Internet Explorer 8, you must add:
 * [BEMHTML](https://en.bem.info/technology/bemhtml/current/reference/)
 * [BH](https://en.bem.info/technology/bh/current/about/)
 * [DEPS](https://en.bem.info/technology/deps/about/)
-* [Stylus](https://learnboost.github.io/stylus/)
+* [PostCSS](http://postcss.org/)
 
 <a name="tools"></a>
 ## Tools
@@ -130,7 +130,7 @@ Choose the most suitable method for your project:
 
 | Dist | Source | Compiled |
 |---------|--------|----------|
-| Pre-assembled CSS and JavaScript code and library templates. Integrated by linking to the page. Doesn't require assembly or compatibility with your project.| The full source code of the library. Requires assembly. Your project must be fully compatible with the library’s [technologies](#techs) and [tools](#tools). | The full source code of the library. Requires assembly. Differs from the Source method in that [Stylus](#techs) is compiled into CSS. Suitable for projects where [Stylus](https://learnboost.github.io/stylus/) is not used. |
+| Pre-assembled CSS and JavaScript code and library templates. Integrated by linking to the page. Doesn't require assembly or compatibility with your project.| The full source code of the library. Requires assembly. Your project must be fully compatible with the library’s [technologies](#techs) and [tools](#tools). | The full source code of the library. Requires assembly. Differs from the Source method in that [PostCSS](#techs) is compiled into CSS. Suitable for projects where [PostCSS](http://postcss.org/) is not used. |
 
 The way you are using the library determines how to integrate it into your project:
 

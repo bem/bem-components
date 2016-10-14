@@ -28,6 +28,11 @@ provide(BEMDOM.decl(this.name, /** @lends modal.prototype */{
 
         'visible' : function(modName, modVal) {
             this._popup.setMod(modName, modVal);
+            if(modVal) {
+                this.emit('show');
+            } else {
+                this.emit('hide');
+            }
         }
     },
 

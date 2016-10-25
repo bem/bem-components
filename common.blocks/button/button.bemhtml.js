@@ -52,7 +52,8 @@ block('button')(
             var ctx = this.ctx,
                 content = [ctx.icon];
             // NOTE: wasn't moved to separate template for optimization
-            'text' in ctx && content.push({ elem : 'text', content : ctx.text });
+            /* jshint eqnull: true */
+            ctx.text != null && content.push({ elem : 'text', content : ctx.text });
             return content;
         },
         match(function() { return typeof this.ctx.content !== 'undefined'; })(function() {

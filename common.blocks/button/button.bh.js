@@ -27,7 +27,8 @@ module.exports = function(bh) {
         var content = ctx.content();
         if(typeof content === 'undefined') {
             content = [json.icon];
-            'text' in json && content.push({ elem : 'text', content : json.text });
+            /* jshint eqnull: true */
+            json.text != null && content.push({ elem : 'text', content : json.text });
             ctx.content(content);
         }
     });

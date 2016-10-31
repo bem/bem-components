@@ -1,0 +1,10 @@
+.link_type_docs {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.link_type_docs:after {
+  content: ' ❏';
+}
+.radio-group_type_button ~ .link_type_docs {
+  margin-top: 20px;
+}

@@ -1,0 +1,13 @@
+.radio-group_theme_islands {
+  display: inline-block;
+}
+.radio-group_theme_islands.radio-group_size_m {
+  line-height: 24px;
+}
+.radio-group_theme_islands.radio-group_size_l {
+  line-height: 30px;
+}
+.radio-group_theme_islands.radio-group_type_button {
+  display: inline-block;
+  white-space: nowrap;
+}

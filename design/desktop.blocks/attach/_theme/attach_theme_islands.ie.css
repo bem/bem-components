@@ -1,0 +1,20 @@
+.attach_theme_islands .attach__control {
+  position: static;
+  vertical-align: top;
+}
+.attach_theme_islands .button_size_s .attach__control {
+  height: 24px;
+}
+.attach_theme_islands .button_size_m .attach__control {
+  height: 28px;
+}
+.attach_theme_islands .button_size_l .attach__control {
+  height: 32px;
+}
+.attach_theme_islands .button_size_xl .attach__control {
+  height: 38px;
+}
+.attach_theme_islands .attach__no-file,
+.attach_theme_islands .button__text {
+  display: none;
+}

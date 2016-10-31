@@ -1,0 +1,13 @@
+.checkbox-group_theme_islands {
+  display: inline-block;
+}
+.checkbox-group_theme_islands.checkbox-group_size_m {
+  line-height: 24px;
+}
+.checkbox-group_theme_islands.checkbox-group_size_l {
+  line-height: 30px;
+}
+.checkbox-group_theme_islands.checkbox-group_type_button {
+  display: inline-block;
+  white-space: nowrap;
+}

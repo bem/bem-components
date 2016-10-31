@@ -1,0 +1,100 @@
+.menu_theme_islands {
+  box-sizing: border-box;
+  user-select: none;
+  outline: 0;
+  background: #fff;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+/* Using pseudo-elements intead of paddings because of Firefox bug with bottom padding (#1158):
+     * https://bugzilla.mozilla.org/show_bug.cgi?id=748518 */
+}
+.menu_theme_islands:before,
+.menu_theme_islands:after {
+  display: block;
+  content: '';
+}
+.menu_theme_islands.menu_size_s {
+  font-size: 13px;
+  line-height: 24px;
+}
+.menu_theme_islands.menu_size_s:before,
+.menu_theme_islands.menu_size_s:after {
+  height: 3px;
+}
+.menu_theme_islands.menu_size_s .menu-item + .menu__group {
+  margin-top: 3px;
+}
+.menu_theme_islands.menu_size_s .menu__group {
+  padding: 3px 0;
+}
+.menu_theme_islands.menu_size_s .menu__group-title {
+  padding: 0 10px;
+}
+.menu_theme_islands.menu_size_m {
+  font-size: 13px;
+  line-height: 24px;
+}
+.menu_theme_islands.menu_size_m:before,
+.menu_theme_islands.menu_size_m:after {
+  height: 4px;
+}
+.menu_theme_islands.menu_size_m .menu-item + .menu__group {
+  margin-top: 4px;
+}
+.menu_theme_islands.menu_size_m .menu__group {
+  padding: 4px 0;
+}
+.menu_theme_islands.menu_size_m .menu__group-title {
+  padding: 0 13px;
+}
+.menu_theme_islands.menu_size_l {
+  font-size: 15px;
+  line-height: 28px;
+}
+.menu_theme_islands.menu_size_l:before,
+.menu_theme_islands.menu_size_l:after {
+  height: 5px;
+}
+.menu_theme_islands.menu_size_l .menu-item + .menu__group {
+  margin-top: 5px;
+}
+.menu_theme_islands.menu_size_l .menu__group {
+  padding: 5px 0;
+}
+.menu_theme_islands.menu_size_l .menu__group-title {
+  padding: 0 15px;
+}
+.menu_theme_islands.menu_size_xl {
+  font-size: 15px;
+  line-height: 32px;
+}
+.menu_theme_islands.menu_size_xl:before,
+.menu_theme_islands.menu_size_xl:after {
+  height: 6px;
+}
+.menu_theme_islands.menu_size_xl .menu-item + .menu__group {
+  margin-top: 6px;
+}
+.menu_theme_islands.menu_size_xl .menu__group {
+  padding: 6px 0;
+}
+.menu_theme_islands.menu_size_xl .menu__group-title {
+  padding: 0 20px;
+}
+.menu_theme_islands .menu__group {
+  border: 1px solid rgba(0,0,0,0.1);
+  border-width: 1px 0;
+}
+.menu_theme_islands .menu__group-title {
+  color: #999;
+}
+.menu_theme_islands .menu__group + .menu__group {
+  border-top: 0;
+}
+.menu_theme_islands .menu__group:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.menu_theme_islands .menu__group:first-child {
+  padding-top: 0;
+  border-top: 0;
+}

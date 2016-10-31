@@ -1,0 +1,9 @@
+.modal_theme_islands .modal__content {
+  width: 450px;
+  padding: 20px;
+  text-align: center;
+}
+.modal_theme_islands .modal__content .text {
+  font-size: 20px;
+  line-height: 24px;
+}

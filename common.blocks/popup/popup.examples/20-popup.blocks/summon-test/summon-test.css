@@ -1,0 +1,13 @@
+.summon-test {
+  display: inline-block;
+  margin-bottom: 1em;
+  padding: 10px;
+  background-color: #eee;
+}
+.summon-test__popup {
+  padding: 10px;
+}
+.summon-test .test {
+  display: inline-block;
+  margin-right: 100px;
+}

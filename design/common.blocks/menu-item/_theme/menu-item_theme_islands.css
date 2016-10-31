@@ -1,0 +1,78 @@
+.menu-item_theme_islands {
+  position: relative;
+  white-space: nowrap;
+}
+.menu-item_theme_islands.menu-item_disabled {
+  opacity: 0.3;
+}
+.menu-item_theme_islands .link_disabled {
+  cursor: text;
+}
+.menu-item_theme_islands.menu-item_checked {
+  background: 0 50% no-repeat url("../../theme/_islands/tip.svg");
+}
+.menu-item_theme_islands.menu-item_hovered {
+  cursor: pointer;
+  background-color: #ffeba0;
+}
+.menu-item_theme_islands.menu-item_type_link .link {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+.menu-item_theme_islands.menu-item_type_link .link:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+}
+.menu_size_s .menu-item_theme_islands {
+  padding: 0 10px;
+  background-size: 14px 14px;
+  background-position: 10px 50%;
+}
+.menu_size_s .menu__group + .menu-item_theme_islands {
+  margin-top: 3px;
+}
+.menu_size_s[class*='menu_mode'] .menu-item_theme_islands,
+.menu_size_s .menu__group-title ~ .menu-item_theme_islands {
+  padding: 0 30px;
+}
+.menu_size_m .menu-item_theme_islands {
+  padding: 0 13px;
+  background-size: 14px 14px;
+  background-position: 13px 50%;
+}
+.menu_size_m .menu__group + .menu-item_theme_islands {
+  margin-top: 4px;
+}
+.menu_size_m[class*='menu_mode'] .menu-item_theme_islands,
+.menu_size_m .menu__group-title ~ .menu-item_theme_islands {
+  padding: 0 30px;
+}
+.menu_size_l .menu-item_theme_islands {
+  padding: 0 15px;
+  background-size: 15px 15px;
+  background-position: 15px 50%;
+}
+.menu_size_l .menu__group + .menu-item_theme_islands {
+  margin-top: 5px;
+}
+.menu_size_l[class*='menu_mode'] .menu-item_theme_islands,
+.menu_size_l .menu__group-title ~ .menu-item_theme_islands {
+  padding: 0 34px;
+}
+.menu_size_xl .menu-item_theme_islands {
+  padding: 0 20px;
+  background-size: 15px 15px;
+  background-position: 20px 50%;
+}
+.menu_size_xl .menu__group + .menu-item_theme_islands {
+  margin-top: 6px;
+}
+.menu_size_xl[class*='menu_mode'] .menu-item_theme_islands,
+.menu_size_xl .menu__group-title ~ .menu-item_theme_islands {
+  padding: 0 40px;
+}

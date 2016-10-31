@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.2
+
+### Other changes
+* button: Don't render element for text if passed `null` or `undefined` ([#1951](https://github.com/bem/bem-components/issues/1951)).
+* BEMHTML template of `menu` block was changed to support `bem-xjst` 7.x in `bem-components` library.
+* Minor docs update.
+
 ## 3.0.1
 
 ### Bug fixes

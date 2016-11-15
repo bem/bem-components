@@ -79,12 +79,14 @@ describe('select', function() {
         it('should toggle popup after click on button', function() {
             button.domElem
                 .trigger('pointerpress')
-                .trigger(createPointerrelease());
+                .trigger(createPointerrelease())
+                .trigger('pointerclick');
             select.hasMod('opened').should.be.true;
 
             button.domElem
                 .trigger('pointerpress')
-                .trigger(createPointerrelease());
+                .trigger(createPointerrelease())
+                .trigger('pointerclick');
             select.hasMod('opened').should.be.false;
         });
 

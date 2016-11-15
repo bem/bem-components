@@ -116,14 +116,19 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends butto
             this._focusedByPointer = true;
             this._focus();
             this._focusedByPointer = false;
-            this
-                ._updateChecked()
-                .emit('click');
+            this.bindTo('pointerclick', this._onPointerClick);
         } else {
             this._blur();
         }
 
         this.delMod('pressed');
+    },
+
+    _onPointerClick : function() {
+        this
+            .unbindFrom('pointerclick', this._onPointerClick)
+            ._updateChecked()
+            .emit('click');
     },
 
     _onKeyDown : function(e) {

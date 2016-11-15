@@ -104,7 +104,8 @@ describe('button', function() {
                 .on('click', spy)
                 .domElem
                     .trigger('pointerpress')
-                    .trigger(createPointerrelease());
+                    .trigger(createPointerrelease())
+                    .trigger('pointerclick');
 
             spy.should.have.been.calledOnce;
         });

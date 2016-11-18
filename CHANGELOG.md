@@ -1,9 +1,17 @@
 # Changelog
 
+## 3.1.0
+
+### Notable changes
+* [bem-core](https://en.bem.info/libs/bem-core/) library was updated to [3.2.0](https://github.com/bem/bem-core/releases/tag/v3.2.0).
+
+### Bug fixes
+* `button`: emit `click` on `pointerclick` instead of `pointerup`. This change fixes a bug in `popup__autocloseable` ([#1958](https://github.com/bem/bem-components/issues/1958)).
+
 ## 3.0.2
 
 ### Other changes
-* button: Don't render element for text if passed `null` or `undefined` ([#1951](https://github.com/bem/bem-components/issues/1951)).
+* `button`: Don't render element for text if passed `null` or `undefined` ([#1951](https://github.com/bem/bem-components/issues/1951)).
 * BEMHTML template of `menu` block was changed to support `bem-xjst` 7.x in `bem-components` library.
 * Minor docs update.
 

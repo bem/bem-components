@@ -1,5 +1,13 @@
 # История изменений
 
+## 3.1.0
+
+### Notable changes
+* Библиотека [bem-core](https://en.bem.info/libs/bem-core/) была обновлена до версии [3.2.0](https://github.com/bem/bem-core/releases/tag/v3.2.0).
+
+### Bug fixes
+* Блок `button` теперь генерирует событие `click` на DOM-событие `pointerclick` вместо `pointerup`, что исправляет ошибку в `popup__autocloseable` ([#1958](https://github.com/bem/bem-components/issues/1958)).
+
 ## 3.0.2
 
 ### В релиз вошли следующие изменения

@@ -19,9 +19,12 @@ describe('modal_autoclosable', function() {
         modal.hasMod('visible').should.be.true;
     });
 
-    it('should be closed on click inside modal, but outside __content', function() {
-        doPointerClick(modal.domElem);
-        modal.hasMod('visible').should.be.false;
+    it('should be closed on click inside modal, but outside __content', function(done) {
+        setTimeout(function() {
+            doPointerClick(modal.domElem);
+            modal.hasMod('visible').should.be.false;
+            done();
+        }, 50);
     });
 
     it('should be closed on click outside modal', function(done) {

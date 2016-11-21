@@ -1,0 +1,94 @@
+.button_theme_islands {
+  border: 1px solid #cbcbcb;
+  background: #fff;
+}
+.button_theme_islands:before {
+  content: none;
+}
+.button_theme_islands.button_hovered {
+  border-color: #b2b2b2;
+}
+.button_theme_islands.button_focused-hard {
+  border-color: #fc0 !important;
+  outline: 1px solid #fc0;
+}
+.button_theme_islands.button_checked {
+  border-color: #cbbc7f;
+  background: #ffeba0;
+}
+.button_theme_islands.button_checked.button_pressed {
+  background: #fee481;
+}
+.button_theme_islands.button_checked.button_pressed,
+.button_theme_islands.button_checked.button_hovered {
+  border-color: #b2a265;
+}
+.button_theme_islands.button_pressed {
+  background: #f6f5f3;
+}
+.button_theme_islands.button_view_action {
+  border-color: #caac32;
+  background: #ffdb4d;
+}
+.button_theme_islands.button_view_action.button_pressed {
+  background: #fc0;
+}
+.button_theme_islands.button_view_action.button_hovered {
+  border-color: #b19732;
+}
+.button_theme_islands.button_view_pseudo.button_pressed {
+  background: #f2f2f2;
+}
+.button_theme_islands.button_view_pseudo.button_checked.button_pressed {
+  background: #fee481;
+}
+.button_theme_islands.button_view_pseudo.button_checked.button_pressed,
+.button_theme_islands.button_view_pseudo.button_checked.button_hovered {
+  border-color: #937d28;
+}
+.button_theme_islands.button_disabled {
+  border-color: #eaeaea;
+  background: #eaeaea;
+}
+.button_theme_islands.button_disabled.button_checked {
+  background: #ffeba0;
+}
+.button_theme_islands.button_size_s {
+  line-height: 22px;
+}
+.button_theme_islands.button_size_m {
+  line-height: 26px;
+}
+.button_theme_islands.button_size_l {
+  line-height: 30px;
+}
+.button_theme_islands.button_size_xl {
+  line-height: 36px;
+}
+.control-group .button_theme_islands {
+  border-left-width: 0;
+}
+.control-group .button_theme_islands:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  border-left: 1px solid transparent;
+}
+.control-group > :first-child .button_theme_islands,
+.control-group > .button_theme_islands:first-child {
+  border-left-width: 1px;
+}
+.control-group > :first-child .button_theme_islands:after,
+.control-group > .button_theme_islands:first-child:after {
+  content: none !important;
+}
+.control-group.checkbox-group_type_button .button_theme_islands.button_focused-hard:after {
+  content: ' ';
+  border-color: #fc0;
+}
+.control-group.radio-group_type_button .button_theme_islands.button_focused-hard:after {
+  content: ' ';
+  border-color: #fc0;
+}

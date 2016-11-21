@@ -1,0 +1,35 @@
+.line {
+  position: relative;
+  box-sizing: content-box;
+  border-width: 1px 0;
+  border-style: dashed;
+  border-color: rgba(0,0,0,0.1);
+  white-space: nowrap;
+}
+.line:after {
+  font-size: inherit;
+  line-height: inherit;
+  position: absolute;
+  top: 35%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  content: '';
+  background: rgba(0,0,0,0.1);
+}
+.line_size_s {
+  font-size: 13px;
+  height: 24px;
+}
+.line_size_m {
+  font-size: 13px;
+  height: 28px;
+}
+.line_size_l {
+  font-size: 15px;
+  height: 32px;
+}
+.line_size_xl {
+  font-size: 18px;
+  height: 38px;
+}

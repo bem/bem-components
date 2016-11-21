@@ -1,0 +1,31 @@
+.link_theme_islands {
+  color: #44b;
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+}
+.link_theme_islands.link_view_minor {
+  color: #669;
+}
+.link_theme_islands.link_view_external {
+  color: #070;
+}
+.link_theme_islands:hover {
+  color: #e00;
+}
+.link_theme_islands.link_size_s {
+  font-size: 13px;
+}
+.link_theme_islands.link_size_m {
+  font-size: 13px;
+}
+.link_theme_islands.link_size_l {
+  font-size: 15px;
+}
+.link_theme_islands.link_size_xl {
+  font-size: 18px;
+}
+.link_theme_islands.link_disabled {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}

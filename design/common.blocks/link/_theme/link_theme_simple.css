@@ -1,0 +1,14 @@
+.link_theme_simple {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.link_theme_simple,
+.link_theme_simple:link {
+  color: #008ace;
+}
+.link_theme_simple:visited {
+  color: #b40eb4;
+}
+.link_theme_simple:hover {
+  color: #c00;
+}

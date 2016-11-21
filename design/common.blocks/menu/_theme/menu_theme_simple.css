@@ -1,0 +1,11 @@
+.menu_theme_simple {
+  outline: 0;
+}
+.menu_theme_simple.menu_focused {
+  border-color: rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px 1px #fc0;
+}
+.menu_theme_simple .menu__group-title {
+  font-style: italic;
+  padding: 4px 10px;
+}

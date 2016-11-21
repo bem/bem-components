@@ -1,0 +1,28 @@
+.radio_theme_islands .radio__box {
+  background: #cbcbcb;
+}
+.radio_theme_islands .radio__control {
+  outline: none;
+  filter: alpha(opacity=0);
+}
+.radio_theme_islands.radio_checked .radio__box {
+  background: #ccbd80;
+}
+.radio_theme_islands.radio_checked .radio__box:before {
+  content: ' ';
+}
+.radio_theme_islands.radio_hovered .radio__box {
+  background: #b3b3b3;
+}
+.radio_theme_islands.radio_hovered.radio_checked .radio__box {
+  background: #b2a265;
+}
+.radio_theme_islands.radio_focused.radio .radio__box {
+  background: #fc0;
+}
+.radio_theme_islands.radio_disabled .radio__box {
+  background: #ebebeb;
+}
+.radio_theme_islands.radio_disabled .radio__box:after {
+  background: #8d8d8d;
+}

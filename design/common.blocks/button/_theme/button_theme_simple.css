@@ -1,0 +1,58 @@
+.button_theme_simple {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 100%;
+  display: inline-block;
+  margin: 0;
+  padding: 0.2em 1em;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.3);
+  outline: 0;
+  border-radius: 3px;
+  color: #000;
+  background: #fff;
+}
+.button_theme_simple::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+.button_theme_simple .button__text {
+  position: relative;
+}
+.button_theme_simple.button_type_link {
+  text-decoration: none;
+}
+.button_theme_simple.button_disabled {
+  opacity: 0.6;
+}
+.button_theme_simple.button_focused-hard {
+  box-shadow: 0 0 5px 1px #fc0;
+}
+.button_theme_simple.button_hovered {
+  border-color: rgba(0,0,0,0.5);
+}
+.button_theme_simple.button_checked {
+  background: #fff7db;
+}
+.button_theme_simple.button_pressed {
+  background: #fff7db;
+  box-shadow: inset 0 0 1px 1px rgba(0,0,0,0.1);
+}
+.button_theme_simple.button_pressed.button_focused-hard {
+  box-shadow: inset 0 0 1px 1px rgba(0,0,0,0.1), 0 0 5px 1px #fc0;
+}
+.button_theme_simple.button_pressed .button__text,
+.button_theme_simple.button_pressed .icon {
+  position: relative;
+  top: 1px;
+}
+.button_theme_simple .icon {
+  width: 1em;
+  margin-left: -0.7em;
+}
+.button_theme_simple .icon + .button__text {
+  margin-left: 0.3em;
+}
+.button_theme_simple .icon:last-child {
+  margin-right: -0.7em;
+}

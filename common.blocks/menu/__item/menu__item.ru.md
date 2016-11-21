@@ -41,7 +41,7 @@
     content : [
         {
             elem : 'item',
-            mods : { type : 'link' },
+            elemMods : { type : 'link' },
             content : {
                 block : 'link',
                 url : 'https://bem.info/',
@@ -50,7 +50,7 @@
         },
         {
             elem : 'item',
-            mods : { type : 'link' },
+            elemMods : { type : 'link' },
             content : {
                 block : 'link',
                 url : 'https://tech.yandex.ru/',
@@ -77,7 +77,7 @@
     content : [
         {
             elem : 'item',
-            mods : { disabled : true },
+            elemMods : { disabled : true },
             content : 'BH'
         },
         {

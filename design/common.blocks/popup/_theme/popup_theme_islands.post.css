@@ -37,7 +37,7 @@
 }
 
 @each $direction, $axis, $offset in
-(button, top, right, left),
+(bottom, top, right, left),
 (Y,      Y,   X,     X),
 (10,    -10,  10,   -10) {
     @keyframes popup_theme_islands_$(direction) {

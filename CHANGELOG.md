@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.1.2
+
+### Bug fixes
+* `*.styl` files are compiled to `*.css` in release package.
+
 ## 3.1.0
 
 ### Notable changes

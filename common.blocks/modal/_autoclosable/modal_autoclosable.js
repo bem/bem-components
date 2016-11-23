@@ -18,8 +18,11 @@ provide(Modal.declMod({ modName : 'autoclosable', modVal : true }, /** @lends mo
             'true' : function() {
                 this.__base.apply(this, arguments);
 
-                this._domEvents().on('pointerclick', this._onPointerClick);
-                this._popup._events().on({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
+                this
+                    ._nextTick(function() {
+                        this._domEvents().on('pointerclick', this._onPointerClick);
+                    })
+                    ._popup._events().on({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
             }
         }
     },

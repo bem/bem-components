@@ -23,7 +23,7 @@
     "!LICENSE.txt"
   ],
   "dependencies": {
-    "bem-core": "4.0.0"
+    "bem-core": "4.1.0"
   },
   "devDependencies": {
     "bem-pr": "~0.13.0"

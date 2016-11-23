@@ -28,7 +28,7 @@
   ],
   "dependencies": {},
   "peerDependency": {
-    "bem-core": "^3.0.1"
+    "bem-core": "^4.1.0"
   },
   "devDependencies": {
     "bem-naming": "^1.0.1",

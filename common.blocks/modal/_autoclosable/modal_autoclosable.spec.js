@@ -1,7 +1,7 @@
 modules.define(
     'spec',
-    ['modal', 'i-bem-dom', 'jquery', 'BEMHTML', 'next-tick', 'keyboard__codes'],
-    function(provide, Modal, bemDom, $, BEMHTML, nextTick, keyCodes) {
+    ['modal', 'i-bem-dom', 'jquery', 'BEMHTML', 'keyboard__codes'],
+    function(provide, Modal, bemDom, $, BEMHTML, keyCodes) {
 
 describe('modal_autoclosable', function() {
     var modal;
@@ -14,9 +14,12 @@ describe('modal_autoclosable', function() {
         bemDom.destruct(modal.domElem);
     });
 
-    it('should be visible on click inside __content', function() {
-        doPointerClick(modal._elem('content').domElem);
-        modal.hasMod('visible').should.be.true;
+    it('should be visible on click inside __content', function(done) {
+        setTimeout(function() {
+            doPointerClick(modal._elem('content').domElem);
+            modal.hasMod('visible').should.be.true;
+            done();
+        }, 50);
     });
 
     it('should be closed on click inside modal, but outside __content', function(done) {
@@ -28,12 +31,11 @@ describe('modal_autoclosable', function() {
     });
 
     it('should be closed on click outside modal', function(done) {
-        nextTick(function() {
+        setTimeout(function() {
             doPointerClick(bemDom.scope);
             modal.hasMod('visible').should.be.false;
-
             done();
-        });
+        }, 50);
     });
 
     it('should be hidden on press escape', function() {

@@ -4,8 +4,8 @@
 
 modules.define(
     'popup',
-    ['jquery', 'i-bem-dom', 'ua', 'dom', 'keyboard__codes', 'next-tick'],
-    function(provide, $, bemDom, ua, dom, keyCodes, nextTick, Popup) {
+    ['jquery', 'i-bem-dom', 'ua', 'dom', 'keyboard__codes'],
+    function(provide, $, bemDom, ua, dom, keyCodes, Popup) {
 
 var KEYDOWN_EVENT = ua.opera && ua.version < 12.10? 'keypress' : 'keydown',
     visiblePopupsStack = [];
@@ -19,13 +19,13 @@ provide(Popup.declMod({ modName : 'autoclosable', modVal : true }, /** @lends po
     onSetMod : {
         'visible' : {
             'true' : function() {
-                var _this = this;
                 visiblePopupsStack.unshift(this);
                 // NOTE: nextTick because of event bubbling to document
-                nextTick(function() {
-                    _this._domEvents(bemDom.doc).on('pointerclick', _this._onDocPointerClick);
-                });
-                this.__base.apply(this, arguments);
+                this
+                    ._nextTick(function() {
+                        this._domEvents(bemDom.doc).on('pointerclick', this._onDocPointerClick);
+                    })
+                    .__base.apply(this, arguments);
             },
 
             '' : function() {

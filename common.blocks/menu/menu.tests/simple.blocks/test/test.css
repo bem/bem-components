@@ -1,0 +1,16 @@
+.test {
+  display: table-cell;
+  width: 150px;
+  padding: 1px;
+  border-right: 20px solid transparent;
+}
+.test h3 {
+  margin-top: 0;
+}
+.test .button {
+  display: block;
+  margin: 5px;
+}
+.test .menu[class*='menu_theme'] {
+  border: 1px solid rgba(0,0,0,0.1);
+}

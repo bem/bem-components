@@ -1,0 +1,6 @@
+.menu_theme_islands {
+  border: 1px solid #ccc;
+}
+.menu_theme_islands .menu__group-title {
+  color: #999;
+}

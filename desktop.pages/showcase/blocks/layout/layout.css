@@ -1,0 +1,10 @@
+.layout {
+  display: flex;
+  max-width: 1440px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.layout__cell {
+  padding: 20px;
+  vertical-align: top;
+}

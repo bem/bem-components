@@ -1,0 +1,25 @@
+.test {
+  position: absolute;
+}
+.test_direction_all,
+.test_direction_left,
+.test_direction_right {
+  top: 200px;
+}
+.test_direction_all {
+  left: 300px;
+}
+.test_direction_left {
+  left: 170px;
+}
+.test_direction_right {
+  left: 410px;
+}
+.test_direction_bottom {
+  top: 250px;
+  left: 280px;
+}
+.test_direction_top {
+  top: 150px;
+  left: 290px;
+}

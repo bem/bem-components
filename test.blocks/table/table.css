@@ -1,0 +1,17 @@
+.table {
+  border-collapse: collapse;
+}
+.table__title {
+  padding: 0 2em 0.5em 0;
+  border-bottom: 1px solid #bbb;
+  text-align: left;
+}
+.table__cell {
+  padding: 1em 2em 1em 0;
+  border-bottom: 1px solid #ddd;
+  vertical-align: top;
+}
+.table__title:last-child,
+.table__cell:last-child {
+  padding-right: 0;
+}

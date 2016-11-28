@@ -1,0 +1,13 @@
+.textarea_theme_islands {
+  border: 1px solid #ccc;
+}
+.textarea_theme_islands.textarea_focused {
+  border: 1px solid #fc0;
+  outline: 1px solid #fc0;
+}
+.textarea_theme_islands.textarea_disabled {
+  background: #ebebeb;
+}
+.textarea_theme_islands.textarea_disabled .textarea__control {
+  color: #999;
+}

@@ -1,0 +1,18 @@
+.icon_action_up,
+.icon_action_right,
+.icon_action_down,
+.icon_action_left {
+  background-image: url("arrow.svg");
+}
+.icon_action_up {
+  transform: rotate(180deg);
+}
+.icon_action_right {
+  transform: rotate(-90deg);
+}
+.icon_action_left {
+  transform: rotate(90deg);
+}
+.icon_action_download {
+  background-image: url("download.svg");
+}

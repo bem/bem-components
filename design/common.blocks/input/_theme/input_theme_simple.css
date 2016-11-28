@@ -1,0 +1,78 @@
+.input_theme_simple {
+  display: inline-block;
+}
+.input_theme_simple .input__box {
+  position: relative;
+  display: block;
+  user-select: none;
+  border: 1px solid rgba(0,0,0,0.3);
+  background: #fff;
+}
+.input_theme_simple .input__control {
+  font-family: inherit;
+  font-size: 100%;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  -webkit-appearance: none;
+}
+.input_theme_simple .input__control::-ms-clear {
+  display: none;
+}
+.input_theme_simple .input__control::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+.input_theme_simple .input__control::-webkit-search-cancel-button {
+  display: none;
+}
+.input_theme_simple .input__clear {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+.input_theme_simple .input__clear:after {
+  font-size: 140%;
+  font-weight: bold;
+  line-height: 1;
+  display: block;
+  width: 1.2em;
+  content: '×';
+  text-align: center;
+}
+.input_theme_simple .input__clear_visible {
+  display: block;
+  cursor: pointer;
+  opacity: 0.2;
+}
+.input_theme_simple .input__clear_visible:hover {
+  opacity: 1;
+}
+.input_theme_simple.input_disabled {
+  opacity: 0.6;
+}
+.input_theme_simple.input_disabled .input__control {
+  resize: none;
+}
+.input_theme_simple.input_disabled .input__clear {
+  display: none;
+}
+.input_theme_simple.input_disabled .input__box,
+.input_theme_simple.input_disabled .input__control {
+  cursor: auto;
+}
+.input_theme_simple.input_width_available {
+  width: 100%;
+}
+.input_theme_simple.input_focused .input__box {
+  box-shadow: 0 0 5px 1px #fc0;
+}
+.input_theme_simple.input_focused .input__control:focus {
+  outline: none;
+}

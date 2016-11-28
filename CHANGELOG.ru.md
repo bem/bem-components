@@ -1,16 +1,21 @@
 # История изменений
 
+## 3.1.3
+
+### В релиз вошли следующие исправления ошибок
+* Исправлена ошибка в `modal_autoclosable`, приводящая к моментальному закрытию ([1963](https://github.com/bem/bem-components/pull/1963)).
+
 ## 3.1.2
 
-### Bug fixes
+### В релиз вошли следующие исправления ошибок
 * `*.styl`-файлы скомпилированы в `*.css`.
 
 ## 3.1.0
 
-### Notable changes
+### Крупные изменения
 * Библиотека [bem-core](https://en.bem.info/libs/bem-core/) была обновлена до версии [3.2.0](https://github.com/bem/bem-core/releases/tag/v3.2.0).
 
-### Bug fixes
+### В релиз вошли следующие исправления ошибок
 * Блок `button` теперь генерирует событие `click` на DOM-событие `pointerclick` вместо `pointerup`, что исправляет ошибку в `popup__autocloseable` ([#1958](https://github.com/bem/bem-components/issues/1958)).
 
 ## 3.0.2

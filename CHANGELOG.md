@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.1.3
+
+### Bug fixes
+* An issue in `modal_autoclosable` which led to immediate closing was fixed ([1963](https://github.com/bem/bem-components/pull/1963)).
+
 ## 3.1.2
 
 ### Bug fixes

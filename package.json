@@ -62,7 +62,7 @@
     "postcss-calc": "^5.3.1",
     "postcss-each": "^0.9.3",
     "postcss-for": "^2.1.1",
-    "postcss-import": "^8.1.2",
+    "postcss-import": "^9.0.0",
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^3.0.0",
     "postcss-url": "^5.1.2",

@@ -7,7 +7,7 @@
 * Stylus was changed to [PostCSS](http://postcss.org/) ([#1912](https://github.com/bem/bem-components/pull/1912)).
 
 ### Notable changes
-* [bem-core](https://en.bem.info/libs/bem-core/) library was updated to [3.1.0](https://github.com/bem/bem-core/releases/tag/v3.1.0) ([#1944](https://github.com/bem/bem-components/issues/1944)).
+* [bem-core](https://en.bem.info/libs/bem-core/) library was updated to [3.2.0](https://github.com/bem/bem-core/releases/tag/v3.2.0) ([#1966](https://github.com/bem/bem-components/issues/1944)).
 
 ### Bug fixes
 * An issue in BEMHTML tempalte of `menu` which prevented to use `bem-xjst` was fixed.

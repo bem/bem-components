@@ -1,0 +1,9 @@
+.attach {
+    touch-action: manipulation;
+}
+.attach__file,
+    .attach__no-file,
+    .attach_disabled .attach__clear,
+    .attach .button__text {
+    display: none;
+}

@@ -7,7 +7,7 @@
 * Вместо Stylus теперь используется [PostCSS](http://postcss.org/) ([#1912](https://github.com/bem/bem-components/pull/1912)).
 
 ### Крупные изменения
-* Библиотека [bem-core](https://en.bem.info/libs/bem-core/) была обновлена до версии [3.1.0](https://github.com/bem/bem-core/releases/tag/v3.1.0) ([#1944](https://github.com/bem/bem-components/issues/1944)).
+* Библиотека [bem-core](https://en.bem.info/libs/bem-core/) была обновлена до версии [3.2.0](https://github.com/bem/bem-core/releases/tag/v3.2.0) ([#1944](https://github.com/bem/bem-components/issues/1944)).
 
 ### В релиз вошли следующие исправления ошибок
 * Исправлена ошибка в BEMHTML-шаблоне блока `menu`, не позволявшая использовать `bem-xjst` выше 6 версии.

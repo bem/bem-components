@@ -1,15 +1,17 @@
-modules.define('link-popup', ['i-bem-dom'], function(provide, bemDom) {
+modules.define('link-popup',
+    ['i-bem-dom', 'link', 'popup'],
+    function(provide, bemDom, Link, Popup) {
 
-provide(bemDom.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var link = this.findBlockInside('link'),
-                    popup = this.findBlockInside('popup');
+                var link = this.findChildBlock(Link),
+                    popup = this.findChildBlock(Popup);
 
                 popup.setAnchor(link);
 
-                link.on('click', function() {
+                this._events(link).on('click', function() {
                     popup.toggleMod('visible');
                 });
             }

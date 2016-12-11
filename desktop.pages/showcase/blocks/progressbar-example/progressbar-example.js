@@ -1,11 +1,13 @@
-modules.define('progressbar-example', ['i-bem__dom', 'tick'], function(provide, BEMDOM, tick) {
+modules.define('progressbar-example',
+    ['i-bem-dom', 'tick', 'button', 'progressbar'],
+    function(provide, bemDom, tick, Button, Progressbar) {
 
-provide(BEMDOM.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._button = this.findBlockInside('button');
-                this._progressbar = this.findBlockInside('progressbar');
+                this._button = this.findChildBlock(Button);
+                this._progressbar = this.findChildBlock(Progressbar);
             }
         }
     },
@@ -25,10 +27,10 @@ provide(BEMDOM.decl(this.name, {
         }
     }
 }, {
-    live : function() {
-        this.liveInitOnBlockInsideEvent(
+    lazyInit : true,
+    onInit : function() {
+        this._events(Button).on(
             { modName : 'checked', modVal : '*' },
-            'button',
             this.prototype._progressProcess
         );
     }

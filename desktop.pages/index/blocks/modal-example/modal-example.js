@@ -1,12 +1,14 @@
-modules.define('modal-example', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('modal-example',
+    ['i-bem-dom', 'modal', 'link'],
+    function(provide, bemDom, Modal, Link) {
 
-provide(BEMDOM.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._modal = this.findBlockInside('modal');
+                this._modal = this.findChildBlock(Modal);
 
-                this.findBlockInside('link').on('click', function() {
+                this._events(this.findChildBlock(Link)).on('click', function() {
                     this._modal.toggleMod('visible');
                 }, this);
             }

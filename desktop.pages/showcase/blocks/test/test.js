@@ -1,13 +1,13 @@
-modules.define('test', ['i-bem__dom'], function(provide, BEMDOM) {
+modules.define('test', ['i-bem-dom', 'modal', 'link'], function(provide, bemDom, Modal, Link) {
 
-provide(BEMDOM.decl(this.name, {
+provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var modal = this.findBlockInside('modal'),
-                    trigger = this.findBlockInside({ block : 'link', modName : 'show-modal', modVal : true });
+                var modal = this.findChildBlock(Modal),
+                    trigger = this.findChildBlock({ block : Link, modName : 'show-modal', modVal : true });
 
-                trigger.on('click', function() {
+                this._events(trigger).on('click', function() {
                     modal.setMod('visible');
                 });
             }

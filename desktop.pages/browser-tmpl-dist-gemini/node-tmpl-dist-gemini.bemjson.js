@@ -112,12 +112,12 @@ module.exports = {
                         title : 'Group 1',
                         content : [
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 mods : { checked : true },
                                 content : 'item 1'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 content : 'item 2'
                             }
                         ]
@@ -127,12 +127,12 @@ module.exports = {
                         title : 'Group 2',
                         content : [
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 mods : { disabled : true },
                                 content : 'item 3'
                             },
                             {
-                                block : 'menu-item',
+                                elem : 'item',
                                 mods : { disabled : true, checked : true },
                                 content : 'item 4'
                             }

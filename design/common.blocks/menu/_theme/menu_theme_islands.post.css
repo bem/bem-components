@@ -34,7 +34,7 @@
                 height: $paddingVert;
             }
 
-            :block(menu-item) + :block(menu):elem(group) {
+            :block(menu):elem(item) + :block(menu):elem(group) {
                 margin-top: $paddingVert;
             }
 

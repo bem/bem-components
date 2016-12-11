@@ -1,0 +1,16 @@
+:block(menu):elem(item):mod(theme islands) {
+    &:block(menu):elem(item):mod(disabled) {
+        color: #999;
+    }
+}
+
+@each $size, $paddingHor, $imageSize in
+(s,    m,    l,    xl),   /* size */
+(10px, 13px, 15px, 20px), /* paddingHor */
+(s,    s,    l,    l)     /* imageSize */ {
+    :block(menu):mod(size $size) {
+        :block(menu):elem(item):mod(theme islands):block(menu):elem(item):mod(checked) {
+            background: $paddingHor 50% no-repeat url('tip_size_$(imageSize).png');
+        }
+    }
+}

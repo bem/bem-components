@@ -31,7 +31,6 @@ provide(Input.declMod({ modName : 'has-clear', modVal : true }, /** @lends input
         this._elem('clear').toggleMod('visible', true, !!this._val);
     }
 }, /** @lends input */{
-    lazyInit : true,
     onInit : function() {
         this._domEvents('clear').on('pointerclick', function() {
             this._onClearClick();

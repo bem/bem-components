@@ -50,6 +50,7 @@ provide(bemDom.declBlock(this.name, Control, /** @lends input.prototype */{
         return this;
     }
 }, /** @lends input */{
+    lazyInit : false,
     onInit : function() {
         this.__base.apply(this, arguments);
     }

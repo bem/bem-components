@@ -5,7 +5,6 @@ provide(Input.declMod({ modName : 'has-clear', modVal : true }, {
         this._elem('clear').hasMod('visible') || this.setMod('focused');
     }
 }, {
-    lazyInit : true,
     onInit : function() {
         this._domEvents('box').on('pointerclick', function() {
             this._onBoxClick();

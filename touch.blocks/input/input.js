@@ -14,7 +14,6 @@ provide(bemDom.declBlock(Input, /** @lends input.prototype */{
         this.setVal(this._elem('control').domElem.val());
     }
 }, /** @lends input */{
-    lazyInit : true,
     onInit : function() {
         this._domEvents('control').on('input', this.prototype._onInputChanged);
         return this.__base.apply(this, arguments);

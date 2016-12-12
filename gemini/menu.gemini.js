@@ -21,7 +21,7 @@ gemini.suite('menu', function(root) {
 
                     .capture('plain')
                     .capture('hovered', function(actions, find) {
-                        actions.mouseMove(find(menuSelector + ' .menu-item'));
+                        actions.mouseMove(find(menuSelector + ' .menu__item'));
                     });
             });
         });

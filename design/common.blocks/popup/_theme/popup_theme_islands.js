@@ -1,7 +1,7 @@
 modules.define('popup', ['objects'], function(provide, objects, Popup) {
 
 provide(Popup.declMod({ modName : 'theme', modVal : 'islands' }, {
-    getDefaultParams : function() {
+    _getDefaultParams : function() {
         return objects.extend(
             this.__base(),
             {

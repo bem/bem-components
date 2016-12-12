@@ -31,7 +31,7 @@
     "bem-core": "^3.2.0"
   },
   "devDependencies": {
-    "autoprefixer": "^6.4.0",
+    "autoprefixer": "^6.5.4",
     "bem-naming": "^1.0.1",
     "bem-walk": "^1.0.0-1",
     "borschik": "^1.6.0",

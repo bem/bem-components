@@ -446,6 +446,7 @@ module.exports = function(config) {
                         options : {
                             sourceSuffixes : ['bemhtml', 'bemhtml.js'],
                             engineOptions : {
+                                elemJsInstances : true,
                                 escapeContent : true
                             }
                         }

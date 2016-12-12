@@ -4,13 +4,15 @@ provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var popup = this._elem('summon').findChildBlock(Popup),
-                    links = this._elem('summoner').findChildBlocks(Link);
+                var popup = this._elem('summon').findMixedBlock(Popup);
 
-                // TODO: check
-                this._events(links).on('click', function(e) {
-                    popup.setAnchor(e.target).setMod('visible');
-                });
+                this.findChildElems('summoner').forEach(function(summoner) {
+                    var link = summoner.findMixedBlock(Link);
+
+                    this._events(link).on('click', function(e) {
+                        popup.setAnchor(e.target).setMod('visible');
+                    });
+                }, this);
             }
         }
     }

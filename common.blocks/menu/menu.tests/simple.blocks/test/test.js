@@ -10,7 +10,7 @@ provide(bemDom.declBlock(this.name, {
 
                 this.findChildBlocks(Button).forEach(function(button) {
                     _this._events(button).on('click', function() {
-                        menu.setVal(this.params.val);
+                        menu.setVal(button.params.val);
                     });
                 });
             }

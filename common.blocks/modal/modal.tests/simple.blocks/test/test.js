@@ -1,14 +1,14 @@
-modules.define('test', ['i-bem-dom', 'page', 'modal', 'link'],
-    function(provide, bemDom, Page, Modal, Link) {
+modules.define('test', ['i-bem-dom', 'page', 'modal', 'link', 'button'],
+    function(provide, bemDom, Page, Modal, Link, Button) {
 
 provide(bemDom.declBlock(this.name, {
     onSetMod : {
         'js' : {
             'inited' : function() {
                 var page = this.findParentBlock(Page),
-                    content = this._elem('content'),
-                    text = this._elem('text'),
-                    paragraph = text.html();
+                    content = this._elem('content').domElem,
+                    text = this._elem('text') && this._elem('text').domElem,
+                    paragraph = text && text.html();
 
                 this._modal = this.findChildBlock(Modal);
                 this._events(Modal).on({ modName : 'visible', modVal : '*' }, function(e, data) {
@@ -40,9 +40,9 @@ provide(bemDom.declBlock(this.name, {
     },
 
     bindToButtonClick : function(elem, action) {
-        var button = this.findMixedBlock(elem, 'button');
+        var button = this.findChildElem(elem) && this.findChildElem(elem).findMixedBlock(Button);
 
-        button && button.on('click', action, this);
+        button && this._events(button).on('click', action, this);
 
         return this;
     }

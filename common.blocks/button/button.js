@@ -114,9 +114,7 @@ provide(bemDom.declBlock(this.name, Control, /** @lends button.prototype */{
             this._focusedByPointer = true;
             this._focus();
             this._focusedByPointer = false;
-            this
-                ._updateChecked()
-                ._emit('click');
+            this._domEvents().once('pointerclick', this._onPointerClick);
         } else {
             this._blur();
         }
@@ -126,9 +124,8 @@ provide(bemDom.declBlock(this.name, Control, /** @lends button.prototype */{
 
     _onPointerClick : function() {
         this
-            .unbindFrom('pointerclick', this._onPointerClick)
             ._updateChecked()
-            .emit('click');
+            ._emit('click');
     },
 
     _onKeyDown : function(e) {

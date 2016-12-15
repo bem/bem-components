@@ -1,5 +1,12 @@
 # История изменений
 
+## 5.0.0
+
+### Изменения, ломающие обратную совместимость
+* Библиотека [bem-core](https://en.bem.info/libs/bem-core/) была обновлена до версии [4.1.1](https://github.com/bem/bem-core/releases/tag/v4.1.1).
+
+Подробнее об [изменениях](https://ru.bem.info/platform/libs/bem-core/4.1.1/changelog/) и [способе миграции](https://ru.bem.info/platform/libs/bem-core/4.1.1/migration/) с предыдущей версии.
+
 ## 4.0.0
 
 ### Изменения, ломающие обратную совместимость

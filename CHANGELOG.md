@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.0.0
+
+### Breaking changes
+* [bem-core](https://en.bem.info/libs/bem-core/) library was updated to [4.1.1](https://github.com/bem/bem-core/releases/tag/v4.1.1).
+
+See [changelog](https://en.bem.info/platform/libs/bem-core/4.1.1/changelog/) and [migration guide](https://en.bem.info/platform/libs/bem-core/4.1.1/migration/) from previous version.
+
 ## 4.0.0
 
 ### Breaking changes

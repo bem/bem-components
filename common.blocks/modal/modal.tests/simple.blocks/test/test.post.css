@@ -1,8 +1,7 @@
 :block(test) {
     margin: 10px 0;
 
-    &__content
-    {
+    &:elem(content) {
         width: 450px;
         padding: 20px;
     }

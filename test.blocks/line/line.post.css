@@ -9,8 +9,7 @@
 
     white-space: nowrap;
 
-    &:after
-    {
+    &:after {
         font-size: inherit;
         line-height: inherit;
 
@@ -26,29 +25,25 @@
         background: rgba(0, 0, 0, 0.1);
     }
 
-    &_size_s
-    {
+    &:mod(size s) {
         font-size: 13px;
 
         height: 24px;
     }
 
-    &_size_m
-    {
+    &:mod(size m) {
         font-size: 13px;
 
         height: 28px;
     }
 
-    &_size_l
-    {
+    &:mod(size l) {
         font-size: 15px;
 
         height: 32px;
     }
 
-    &_size_xl
-    {
+    &:mod(size xl) {
         font-size: 18px;
 
         height: 38px;

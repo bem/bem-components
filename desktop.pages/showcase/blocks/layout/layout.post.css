@@ -6,8 +6,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
 
-    &__cell
-    {
+    &:elem(cell) {
         padding: 20px;
 
         vertical-align: top;

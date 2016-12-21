@@ -1,8 +1,7 @@
 :block(table) {
     border-collapse: collapse;
 
-    &__title
-    {
+    &:elem(title) {
         padding: 0 2em 0.5em 0;
 
         border-bottom: 1px solid #bbb;
@@ -10,8 +9,7 @@
         text-align: left;
     }
 
-    &__cell
-    {
+    &:elem(cell) {
         padding: 1em 2em 1em 0;
 
         border-bottom: 1px solid #ddd;
@@ -19,9 +17,8 @@
         vertical-align: top;
     }
 
-    &__title:last-child,
-    &__cell:last-child
-    {
+    &:elem(title):last-child,
+    &:elem(cell):last-child {
         padding-right: 0;
     }
 }

@@ -271,7 +271,7 @@ The page's HTML code will look like this:
     <form class="form" action="/"></form>
 <script src="https://yastatic.net/bem-components/latest/desktop/bem-components.no-autoinit.js+bemhtml.js"></script>
 <script>
-modules.require(['i-bem__dom', 'BEMHTML', 'jquery'], function(BEMDOM, BEMHTML, $) {
+modules.require(['i-bem__dom', 'BEMHTML', 'jquery', 'i-bem__dom_init'], function(BEMDOM, BEMHTML, $, init) {
     var html = BEMHTML.apply({
         block : 'select',
         mods : { mode : 'check', theme : 'islands', size : 'm' },
@@ -286,6 +286,8 @@ modules.require(['i-bem__dom', 'BEMHTML', 'jquery'], function(BEMDOM, BEMHTML, $
     });
 
     BEMDOM.append($('.form'), html);
+    
+    // NOTE: explicitly call `init();` if you need to initialize blocks from HTML markup
 });
 </script>
 </body>

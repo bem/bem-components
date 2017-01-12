@@ -270,7 +270,7 @@ HTML страницы будет выглядеть следующим обра�
     <form class="form" action="/"></form>
 <script src="https://yastatic.net/bem-components/latest/desktop/bem-components.no-autoinit.js+bemhtml.js"></script>
 <script>
-modules.require(['i-bem__dom', 'BEMHTML', 'jquery'], function(BEMDOM, BEMHTML, $) {
+modules.require(['i-bem__dom', 'BEMHTML', 'jquery', 'i-bem__dom_init'], function(BEMDOM, BEMHTML, $, init) {
     var html = BEMHTML.apply({
         block : 'select',
         mods : { mode : 'check', theme : 'islands', size : 'm' },
@@ -285,6 +285,8 @@ modules.require(['i-bem__dom', 'BEMHTML', 'jquery'], function(BEMDOM, BEMHTML, $
     });
 
     BEMDOM.append($('.form'), html);    // https://ru.bem.info/libs/bem-core/current/desktop/i-bem/jsdoc/#append-1
+    
+    // NOTE: необходимо явно вызвать `init();`, если требуется инициализировать блоки, заранее присутствующие в HTML-разметке
 });
 </script>
 </body>

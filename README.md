@@ -287,7 +287,7 @@ modules.require(['i-bem__dom', 'BEMHTML', 'jquery', 'i-bem__dom_init'], function
 
     BEMDOM.append($('.form'), html);
     
-    init();
+    // NOTE: explicitly call `init();` if you need to initialize blocks from HTML markup
 });
 </script>
 </body>

@@ -286,7 +286,7 @@ modules.require(['i-bem__dom', 'BEMHTML', 'jquery', 'i-bem__dom_init'], function
 
     BEMDOM.append($('.form'), html);    // https://ru.bem.info/libs/bem-core/current/desktop/i-bem/jsdoc/#append-1
     
-    NOTE: необходимо явно вызвать `init();`, если требуется инициализировать блоки, заранее присутствующие в HTML-разметке
+    // NOTE: необходимо явно вызвать `init();`, если требуется инициализировать блоки, заранее присутствующие в HTML-разметке
 });
 </script>
 </body>

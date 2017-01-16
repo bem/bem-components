@@ -1,11 +1,11 @@
 block('checkbox-group')(
     tag()('span'),
 
-    attrs()({ role : 'group' }),
+    addAttrs()({ role : 'group' }),
 
     js()(true),
 
-    mix()([{ block : 'control-group' }]),
+    addMix()([{ block : 'control-group' }]),
 
     content()(function() {
         var mods = this.mods,

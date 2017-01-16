@@ -1,7 +1,7 @@
 block('menu').elem('group')(
-    attrs()({ role : 'group' }),
+    addAttrs()({ role : 'group' }),
     match(function() { return typeof this.ctx.title !== 'undefined'; })(
-        attrs()(function() {
+        addAttrs()(function() {
             return this.extend(applyNext(), {
                 'aria-label' : undefined,
                 'aria-labelledby' : this.generateId()

@@ -1,7 +1,7 @@
 block('modal')(
     js()(true),
 
-    mix()(function() {
+    addMix()(function() {
         return {
             block : 'popup',
             js : { zIndexGroupLevel : this.ctx.zIndexGroupLevel || 20 },
@@ -9,7 +9,7 @@ block('modal')(
         };
     }),
 
-    attrs()({
+    addAttrs()({
         role : 'dialog',
         'aria-hidden' : 'true'
     }),

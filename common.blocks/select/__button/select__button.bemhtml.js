@@ -34,7 +34,7 @@ block('select').elem('button')(
 );
 
 block('button').elem('text').match(function() { return this._select; })(
-    attrs()(function() {
+    addAttrs()(function() {
         return { id : this._selectTextId };
     })
 );

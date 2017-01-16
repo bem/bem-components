@@ -1,1 +1,1 @@
-block('control-group').attrs()({ role : 'group' });
+block('control-group').addAttrs()({ role : 'group' });

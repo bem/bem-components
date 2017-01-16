@@ -1,7 +1,7 @@
 block('radio').elem('control')(
     tag()('input'),
 
-    attrs()(function() {
+    addAttrs()(function() {
         // NOTE: don't remove autocomplete attribute, otherwise js and DOM may be desynced
         var ctx = this.ctx,
             attrs = {

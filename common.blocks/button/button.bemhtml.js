@@ -13,9 +13,9 @@ block('button')(
     js()(true),
 
     // NOTE: mix below is to satisfy interface of `control`
-    mix()({ elem : 'control' }),
+    addMix()({ elem : 'control' }),
 
-    attrs()(
+    addAttrs()(
         // Common attributes
         function() {
             var ctx = this.ctx,

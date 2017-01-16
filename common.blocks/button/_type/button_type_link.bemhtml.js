@@ -1,7 +1,7 @@
 block('button').mod('type', 'link')(
     tag()('a'),
 
-    attrs()(function() {
+    addAttrs()(function() {
         var ctx = this.ctx,
             attrs = { role : 'link' };
 

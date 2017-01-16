@@ -1,11 +1,11 @@
 block('image')(
-    attrs()({ role : 'img' }),
+    addAttrs()({ role : 'img' }),
 
     tag()('span'),
 
     match(function() { return typeof this.ctx.content === 'undefined'; })(
         tag()('img'),
-        attrs()(function() {
+        addAttrs()(function() {
             var ctx = this.ctx;
             return this.extend(applyNext(),
                 {

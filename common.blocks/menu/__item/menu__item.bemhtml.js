@@ -8,7 +8,7 @@ block('menu').elem('item')(
     js()(function() {
         return { val : this.ctx.val };
     }),
-    attrs()(function(){
+    addAttrs()(function(){
         var elemMods = this.elemMods,
             menuMode = this._menuMods && this._menuMods.mode,
             role = menuMode?

@@ -39,7 +39,7 @@ block('menu')(
             _menuMods : mods
         });
     }),
-    attrs()(function() {
+    addAttrs()(function() {
         var attrs = { role : 'menu' };
 
         this.mods.disabled?
@@ -49,7 +49,7 @@ block('menu')(
         return attrs;
     }),
     js()(true),
-    mix()({ elem : 'control' }),
+    addMix()({ elem : 'control' }),
     mod('disabled', true)
         .js()(function() {
             return this.extend(applyNext(), { tabIndex : 0 });

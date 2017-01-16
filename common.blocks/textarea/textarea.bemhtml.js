@@ -3,9 +3,9 @@ block('textarea')(
     tag()('textarea'),
 
     // NOTE: mix below is to satisfy interface of `control`
-    mix()({ elem : 'control' }),
+    addMix()({ elem : 'control' }),
 
-    attrs()(function() {
+    addAttrs()(function() {
         var ctx = this.ctx,
             attrs = {
                 id : ctx.id,

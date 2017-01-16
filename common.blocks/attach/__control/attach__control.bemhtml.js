@@ -2,7 +2,7 @@ block('attach').elem('control')(
 
     tag()('input'),
 
-    attrs()(function() {
+    addAttrs()(function() {
         var attrs = { type : 'file' },
             attach = this._attach;
 

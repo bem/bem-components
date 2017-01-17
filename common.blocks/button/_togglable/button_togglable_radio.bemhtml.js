@@ -1,3 +1,3 @@
-block('button').mod('togglable', 'radio').attrs()(function() {
-    return this.extend(applyNext(), { 'aria-pressed' : String(!!this.mods.checked) });
+block('button').mod('togglable', 'radio').addAttrs()(function() {
+    return { 'aria-pressed' : String(!!this.mods.checked) };
 });

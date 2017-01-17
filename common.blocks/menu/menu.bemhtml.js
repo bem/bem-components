@@ -39,14 +39,16 @@ block('menu')(
             _menuMods : mods
         });
     }),
-    addAttrs()(function() {
+    attrs()(function() {
         var attrs = { role : 'menu' };
 
         this.mods.disabled?
             attrs['aria-disabled'] = 'true' :
             attrs.tabindex = 0;
 
-        return attrs;
+        // extend in backwards order:
+        // bemjson have more priority
+        return this.extend(attrs, applyNext());
     }),
     js()(true),
     addMix()({ elem : 'control' }),

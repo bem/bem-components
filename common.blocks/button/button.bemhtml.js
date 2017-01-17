@@ -19,8 +19,9 @@ block('button')(
         // Common attributes
         function() {
             var ctx = this.ctx,
+                a = applyNext(),
                 attrs = {
-                    role : 'button',
+                    role : (a && a.role) || 'button',
                     tabindex : ctx.tabIndex,
                     id : ctx.id,
                     title : ctx.title
@@ -43,7 +44,7 @@ block('button')(
 
             this.mods.disabled && (attrs.disabled = 'disabled');
 
-            return this.extend(applyNext(), attrs);
+            return attrs;
         })
     ),
 

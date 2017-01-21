@@ -32,9 +32,9 @@ provide(Select.decl({ modName : 'mode', modVal : 'check' }, /** @lends select.pr
             .toggleMod('checked', true, '', !!checkedItems.length)
             .setText(
                 checkedItems.length === 1?
-                    checkedItems[0].getText() : // one checked
+                    checkedItems[0].getCheckedText() : // one checked
                     checkedItems.reduce(function(res, item) { // many checked
-                        return res + (res? ', ' : '') + (item.params.checkedText || item.getText());
+                        return res + (res? ', ' : '') + item.getCheckedText();
                     }, '') ||
                         this.params.text); // none checked
     },

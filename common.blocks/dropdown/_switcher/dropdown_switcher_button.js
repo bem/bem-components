@@ -21,11 +21,6 @@ provide(Dropdown.declMod({ modName : 'switcher', modVal : 'button' }, /** @lends
         return this._switcher ||
             (this._switcher = this.findMixedBlock(Button));
     }
-}, /** @lends dropdown */{
-    onInit : function() {
-        this._events(Button).on('click', this.prototype.onSwitcherClick);
-        return this.__base.apply(this, arguments);
-    }
 }));
 
 });

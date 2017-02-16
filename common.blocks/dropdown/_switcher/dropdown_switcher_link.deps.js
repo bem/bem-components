@@ -1,5 +1,11 @@
 [{
-    shouldDeps : { block : 'link', mods : { pseudo : true } }
+    shouldDeps : [
+        {
+            elem : 'switcher',
+            mods : { switcher : 'link' }
+        },
+        { block : 'link', mods : { pseudo : true } },
+    ]
 },
 {
     tech : 'spec.js',

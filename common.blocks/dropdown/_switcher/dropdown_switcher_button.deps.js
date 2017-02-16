@@ -1,5 +1,11 @@
 [{
-    shouldDeps : 'button'
+    shouldDeps : [
+        {
+            elem : 'switcher',
+            mods : { switcher : 'button' }
+        },
+        'button'
+    ]
 },
 {
     tech : 'spec.js',

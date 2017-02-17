@@ -1,9 +1,6 @@
 block('dropdown')(
     replace()(function() {
-        return [
-            { elem : 'popup' },
-            { elem : 'switcher', elemMods : { switcher : this.mods.switcher } }
-        ];
+        return [{ elem : 'popup' }, { elem : 'switcher' }];
     }),
     def()(function() {
         var ctx = this.ctx;
@@ -28,7 +25,7 @@ block('dropdown')(
         return [dropdown].concat(dropdown.switcher.mix || [], dropdown.mix || [], {
             block : this.block,
             elem : this.elem,
-            elemMods : { switcher : this.elemMods.switcher },
+            elemMods : { switcher : this.mods.switcher },
             js : true
         });
     }),

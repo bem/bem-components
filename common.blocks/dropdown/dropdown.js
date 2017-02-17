@@ -77,7 +77,7 @@ provide(bemDom.declBlock(this.name, /** @lends dropdown.prototype */{
      * @param {events:Event} e
      * @protected
      */
-    onSwitcherClick : function(e) {
+    _onSwitcherClick : function(e) {
         this._switcher || (this._switcher = e.target);
         this.toggleMod('opened');
     },
@@ -88,7 +88,7 @@ provide(bemDom.declBlock(this.name, /** @lends dropdown.prototype */{
 }, /** @lends dropdown */{
     lazyInit : true,
     onInit : function() {
-        this._events(Switcher).on('click', this.prototype.onSwitcherClick);
+        this._events(Switcher).on('click', this.prototype._onSwitcherClick);
     }
 }));
 

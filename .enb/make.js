@@ -129,6 +129,10 @@ module.exports = function(config) {
                         source : '.tmp.no-autoinit.source.js',
                         target : LIB_NAME + '.dev.no-autoinit.js'
                     }],
+                    [techs.js, {
+                        target : '.tmp.dev.tmpls.bemhtml.js',
+                        sourceSuffixes : ['bemhtml.js', 'bemhtml']
+                    }],
                     [techs.engines.bemhtml, {
                         target : LIB_NAME + '.dev.bemhtml.js',
                         sourceSuffixes : ['bemhtml.js', 'bemhtml'],
@@ -166,6 +170,8 @@ module.exports = function(config) {
                     [techs.borschik, { source : LIB_NAME + '.dev.ie.css', target : LIB_NAME + '.ie.css', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.js', target : LIB_NAME + '.js', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.no-autoinit.js', target : LIB_NAME + '.no-autoinit.js', minify : true }],
+                    [techs.borschik, { source : '.tmp.dev.tmpls.bemhtml.js', target : LIB_NAME + '.dev.tmpls.bemhtml.js', minify : false }],
+                    [techs.borschik, { source : '.tmp.dev.tmpls.bemhtml.js', target : LIB_NAME + '.tmpls.bemhtml.js', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.bemhtml.js', target : LIB_NAME + '.bemhtml.js', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.bh.js', target : LIB_NAME + '.bh.js', minify : true }],
                     [techs.borschik, { source : LIB_NAME + '.dev.js+bemhtml.js', target : LIB_NAME + '.js+bemhtml.js', minify : true }],
@@ -180,6 +186,8 @@ module.exports = function(config) {
                     LIB_NAME + '.js',
                     LIB_NAME + '.no-autoinit.js',
                     LIB_NAME + '.bemhtml.js',
+                    LIB_NAME + '.dev.tmpls.bemhtml.js',
+                    LIB_NAME + '.tmpls.bemhtml.js',
                     LIB_NAME + '.bh.js',
                     LIB_NAME + '.js+bemhtml.js',
                     LIB_NAME + '.js+bh.js',

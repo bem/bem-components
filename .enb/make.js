@@ -67,12 +67,19 @@ module.exports = function(config) {
                     [techs.bem.levelsToBemdecl, { target : '.tmp.bemdecl.js' }],
                     [techs.files.write, {
                         target : '.tmp.i-bem-dom-init-auto.deps.js',
-                        content : 'module.exports = ' + JSON.stringify({ deps : [{
-                            block : 'i-bem',
-                            elem : 'dom',
-                            mod : 'init',
-                            val : 'auto'
-                        }] })
+                        content : 'module.exports = ' + JSON.stringify({ deps : [
+                            {
+                                block : 'i-bem-dom',
+                                elem : 'init',
+                                mod : 'auto',
+                                val : true
+                            },
+                            {
+                                block : 'i-bem-dom',
+                                elem : 'init',
+                                mod : 'auto'
+                            }
+                        ] })
                     }],
                     [techs.bem.subtractDeps, { from : '.tmp.deps.js', target : '.tmp.no-autoinit.deps.js', what : '.tmp.i-bem-dom-init-auto.deps.js' }],
                     [techs.bem.depsOld, { bemdeclFile : '.tmp.bemdecl.js', target : '.tmp.deps.js' }],

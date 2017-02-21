@@ -14,11 +14,6 @@ provide(Dropdown.declMod({ modName : 'switcher', modVal : 'link' }, { /** @lends
         return this._switcher ||
             (this._switcher = this.findMixedBlock(Link));
     }
-}, {
-    onInit : function() {
-        this._events(Link).on('click', this.prototype.onSwitcherClick);
-        return this.__base.apply(this, arguments);
-    }
 }));
 
 });

@@ -11,7 +11,14 @@ module.exports = function(bh) {
                 .tParam('theme', ctx.mod('theme'))
                 .tParam('mix', [dropdown].concat(
                     dropdown.switcher.mix || [],
-                    dropdown.mix || []));
+                    dropdown.mix || [],
+                    {
+                        block : dropdown.block,
+                        elem : 'switcher',
+                        elemMods : { switcher : (dropdown.mods || {}).switcher },
+                        js : true
+                    })
+                );
 
             return [{ elem : 'popup' }, { elem : 'switcher' }];
         },

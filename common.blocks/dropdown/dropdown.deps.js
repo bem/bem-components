@@ -1,6 +1,9 @@
 [{
-    mustDeps : { block : 'i-bem', elem : 'dom' },
+    mustDeps : 'i-bem-dom',
     shouldDeps : [
+        {
+            elem : 'switcher'
+        },
         {
             block : 'popup',
             mods : {

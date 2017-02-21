@@ -22,7 +22,12 @@ block('dropdown')(
     elem('switcher').mix()(function() {
         var dropdown = this._dropdown;
 
-        return [dropdown].concat(dropdown.switcher.mix || [], dropdown.mix || []);
+        return [dropdown].concat(dropdown.switcher.mix || [], dropdown.mix || [], {
+            block : this.block,
+            elem : this.elem,
+            elemMods : { switcher : this.mods.switcher },
+            js : true
+        });
     }),
     elem('popup').replace()(function() {
         var dropdown = this._dropdown,

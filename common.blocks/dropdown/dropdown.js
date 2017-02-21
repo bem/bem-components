@@ -4,8 +4,8 @@
 
 modules.define(
     'dropdown',
-    ['i-bem-dom', 'popup'],
-    function(provide, bemDom, Popup) {
+    ['i-bem-dom', 'popup', 'dropdown__switcher'],
+    function(provide, bemDom, Popup, Switcher) {
 
 /**
  * @exports
@@ -77,7 +77,7 @@ provide(bemDom.declBlock(this.name, /** @lends dropdown.prototype */{
      * @param {events:Event} e
      * @protected
      */
-    onSwitcherClick : function(e) {
+    _onSwitcherClick : function(e) {
         this._switcher || (this._switcher = e.target);
         this.toggleMod('opened');
     },
@@ -86,7 +86,10 @@ provide(bemDom.declBlock(this.name, /** @lends dropdown.prototype */{
         this.setMod('opened', data.modVal);
     }
 }, /** @lends dropdown */{
-    lazyInit : true
+    lazyInit : true,
+    onInit : function() {
+        this._events(Switcher).on('click', this.prototype._onSwitcherClick);
+    }
 }));
 
 });

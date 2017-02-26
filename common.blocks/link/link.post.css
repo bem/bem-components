@@ -1,3 +1,7 @@
 :block(link) {
     touch-action: manipulation;
+
+    &:mod(disabled) {
+        pointer-events: none;
+    }
 }

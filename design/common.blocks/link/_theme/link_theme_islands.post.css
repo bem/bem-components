@@ -41,6 +41,7 @@
     }
 
     &:block(link):mod(disabled) {
+        color: #ddd;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
 }

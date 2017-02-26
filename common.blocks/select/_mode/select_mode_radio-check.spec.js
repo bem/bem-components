@@ -91,11 +91,16 @@ describe('select_mode_radio-check', function() {
         it('should add/remove control according to value', function() {
             var control = select._elem('control').domElem;
 
+            dom.contains(select.domElem, control).should.be.true;
+
             select.setVal(undefined);
             dom.contains(select.domElem, control).should.be.false;
 
             select.setVal(1);
+            control = select._elem('control').domElem;
             dom.contains(select.domElem, control).should.be.true;
+            select.setVal(2);
+            select.findChildElems('control').size().should.equal(1);
         });
 
         it('should create control in case of none checked', function() {

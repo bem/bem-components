@@ -2,7 +2,7 @@
  * @module select
  */
 
-modules.define('select', ['jquery'], function(provide, $, Select) {
+modules.define('select', ['i-bem-dom', 'jquery'], function(provide, bemDom, $, Select) {
 
 /**
  * @exports
@@ -12,19 +12,23 @@ modules.define('select', ['jquery'], function(provide, $, Select) {
 provide(Select.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends select.prototype */{
     _updateControl : function() {
         var val = this.getVal(),
-            control = this._elem('control') && this._elem('control').domElem;
+            control = this._elem('control'),
+            controlDomElem = control && control.domElem;
 
-        if(!control || !control.length) {
-            control = $(Select._createControlHTML(this.getName(), val));
+        if(!controlDomElem || !controlDomElem.length) {
+            controlDomElem = $(Select._createControlHTML(this.getName(), val));
         }
 
         if(typeof val === 'undefined') {
             // NOTE: because there is a possibility of whole select disabling,
-            // "remove" is used instead of "disable"
-            control.remove();
+            // "destruct" is used instead of "disable"
+            bemDom.destruct(controlDomElem);
         } else {
-            control.parent().length || this.domElem.prepend(control);
-            control.val(val);
+            if(!controlDomElem.parent().length) {
+                bemDom.prepend(this.domElem, controlDomElem);
+                this._dropElemCache('control');
+            }
+            controlDomElem.val(val);
         }
     },
 

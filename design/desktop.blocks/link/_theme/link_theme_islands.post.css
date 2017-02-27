@@ -1,0 +1,5 @@
+:block(link):mod(theme islands) {
+    &:mod(disabled) {
+        cursor: default;
+    }
+}

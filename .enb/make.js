@@ -428,19 +428,25 @@ module.exports = function(config) {
                             })
                         }
                     },
+                    bemhtml7x : {
+                        tech : 'enb-bemxjst-7x/techs/bemhtml',
+                        options : {
+                            sourceSuffixes : ['bemhtml.js', 'bemhtml'],
+                            exportName : 'BEMHTML'
+                        }
+                    },
+                    bemhtml7xEscaped : {
+                        tech : 'enb-bemxjst-7x/techs/bemhtml',
+                        options : {
+                            sourceSuffixes : ['bemhtml', 'bemhtml.js'],
+                            engineOptions : { escapeContent : true },
+                            exportName : 'BEMHTML'
+                        }
+                    },
                     bemhtml : {
                         tech : 'enb-bemxjst/techs/bemhtml',
                         options : {
                             sourceSuffixes : ['bemhtml.js', 'bemhtml']
-                        }
-                    },
-                    bemhtmlEscaped : {
-                        tech : 'enb-bemxjst/techs/bemhtml',
-                        options : {
-                            sourceSuffixes : ['bemhtml', 'bemhtml.js'],
-                            engineOptions : {
-                                escapeContent : true
-                            }
                         }
                     }
                 },

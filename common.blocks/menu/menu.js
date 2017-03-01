@@ -235,7 +235,7 @@ provide(BEMDOM.decl({ block : this.name, baseBlock : Control }, /** @lends menu.
 }, /** @lends menu */{
     live : function() {
         this
-            .liveInitOnBlockInsideEvent({ modName : 'hovered', modVal : '*' }, 'menu-item', function(e) {
+            .liveInitOnBlockInsideEvent({ modName : 'hovered', modVal : true }, 'menu-item', function(e) {
                 this._onItemHover(e.target);
             })
             .liveInitOnBlockInsideEvent('click', 'menu-item', function(e, data) {

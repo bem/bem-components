@@ -1,0 +1,6 @@
+.link {
+    touch-action: manipulation;
+}
+.link_disabled {
+    pointer-events: none;
+}

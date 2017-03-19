@@ -1,0 +1,14 @@
+.layout {
+    display: -webkit-box;
+    display: flex;
+
+    max-width: 1440px;
+
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+            justify-content: space-between;
+}
+.layout__cell {
+    padding: 20px;
+    vertical-align: top;
+}

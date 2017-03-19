@@ -40,7 +40,7 @@ block('select')(
         });
     }),
 
-    js()(function() {
+    addJs()(function() {
         var ctx = this.ctx;
         return {
             name : ctx.name,

@@ -46,10 +46,12 @@ block('menu')(
             attrs['aria-disabled'] = 'true' :
             attrs.tabindex = 0;
 
-        return attrs;
+        // extend in backwards order:
+        // bemjson have more priority
+        return this.extend(attrs, applyNext());
     }),
     js()(true),
-    mix()({ elem : 'control' }),
+    addMix()({ elem : 'control' }),
     mod('disabled', true)
         .js()(function() {
             return this.extend(applyNext(), { tabIndex : 0 });

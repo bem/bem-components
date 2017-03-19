@@ -13,14 +13,15 @@ block('button')(
     js()(true),
 
     // NOTE: mix below is to satisfy interface of `control`
-    mix()({ elem : 'control' }),
+    addMix()({ elem : 'control' }),
 
-    attrs()(
+    addAttrs()(
         // Common attributes
         function() {
             var ctx = this.ctx,
+                a = applyNext(),
                 attrs = {
-                    role : 'button',
+                    role : (a && a.role) || 'button',
                     tabindex : ctx.tabIndex,
                     id : ctx.id,
                     title : ctx.title
@@ -43,7 +44,7 @@ block('button')(
 
             this.mods.disabled && (attrs.disabled = 'disabled');
 
-            return this.extend(applyNext(), attrs);
+            return attrs;
         })
     ),
 

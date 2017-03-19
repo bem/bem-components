@@ -5,15 +5,16 @@ block('menu').elem('item')(
         elemMods.disabled = elemMods.disabled || this._menuMods.disabled;
         return applyNext();
     }),
-    js()(function() {
+    addJs()(function() {
         return { val : this.ctx.val };
     }),
-    attrs()(function(){
+    addAttrs()(function(){
         var elemMods = this.elemMods,
             menuMode = this._menuMods && this._menuMods.mode,
-            role = menuMode?
+            a = applyNext(),
+            role = (a && a.role) || (menuMode?
                         (menuMode === 'check'? 'menuitemcheckbox' : 'menuitemradio') :
-                        'menuitem',
+                        'menuitem'),
             attrs = {
                 role : role,
                 id : this.ctx.id || this.generateId(),

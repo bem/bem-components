@@ -1,11 +1,11 @@
 block('radio-group')(
     tag()('span'),
 
-    attrs()({ role : 'radiogroup' }),
+    addAttrs()({ role : 'radiogroup' }),
 
     js()(true),
 
-    mix()([{ block : 'control-group' }]),
+    addMix()([{ block : 'control-group' }]),
 
     content()(function() {
         var mods = this.mods,

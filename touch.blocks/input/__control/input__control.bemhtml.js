@@ -1,6 +1,6 @@
 block('input').elem('control')(
 
-    attrs()(function() {
+    addAttrs()(function() {
         return this.extend({
             autocomplete : 'off',
             autocorrect : 'off',

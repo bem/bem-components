@@ -7,7 +7,7 @@ block('progressbar')(
         return { val : this._val };
     }),
 
-    attrs()(function() {
+    addAttrs()(function() {
         return {
             role : 'progressbar',
             'aria-valuenow' : this._val + '%' /* NOTE: JAWS doesn't add 'percent' automatically */

@@ -1,7 +1,7 @@
 block('input').elem('control')(
     tag()('input'),
 
-    attrs()(function() {
+    addAttrs()(function() {
         var input = this._input,
             attrs = {
                 id : input.id,

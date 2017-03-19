@@ -1,6 +1,6 @@
 block('radio').elem('text')(
     tag()('span'),
-    attrs()(function() {
+    addAttrs()(function() {
         return { role : 'presentation' };
     })
 );

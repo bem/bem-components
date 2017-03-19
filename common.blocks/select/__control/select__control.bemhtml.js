@@ -1,6 +1,6 @@
 block('select').elem('control')(
     tag()('input'),
-    attrs()(function() {
+    addAttrs()(function() {
         return {
             type : 'hidden',
             name : this._select.name,

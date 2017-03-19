@@ -47,7 +47,7 @@ block('menu')(
             attrs.tabindex = 0;
 
         // extend in backwards order:
-        // bemjson have more priority
+        // bemjson has more priority
         return this.extend(attrs, applyNext());
     }),
     js()(true),

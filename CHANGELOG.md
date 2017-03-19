@@ -1,5 +1,10 @@
 # Changelog
 
+## 6.0.0
+
+### Breaking changes
+* BEMHTML templates now depends on `bem-xjst v8.6.7` ([#1942](https://github.com/bem/bem-components/issues/1942)).
+
 ## 5.1.0
 
 ### Notable changes

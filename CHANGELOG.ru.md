@@ -1,5 +1,18 @@
 # История изменений
 
+## 5.1.0
+
+### Крупные изменения
+* Библиотека [bem-core](https://en.bem.info/libs/bem-core/) была обновлена до версии [4.2.0](https://github.com/bem/bem-core/releases/tag/v4.2.0) ([#2019](https://github.com/bem/bem-components/issues/2019)).
+
+### В релиз вошли следующие исправления ошибок
+* Исправлена ошибка в `dropdown`, приводящая к его неожиданному закрытию ([#1998](https://github.com/bem/bem-components/issues/1998)).
+* dist: Исправлена ошибка, при которой `i-bem-dom__init_auto` подключался в `no-autoinit`-бандл ([#2002](https://github.com/bem/bem-components/issues/2002)).
+
+### Также в релиз вошли следующие изменения
+* Add styles for link_disabled ([#2004](https://github.com/bem/bem-components/issues/2004)).
+* dist: Provide concatenated bem-xjst templates ([#1855](https://github.com/bem/bem-components/issues/1855)).
+
 ## 5.0.0
 
 ### Изменения, ломающие обратную совместимость

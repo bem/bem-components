@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.1.0
+
+### Notable changes
+* [bem-core](https://en.bem.info/libs/bem-core/) library was updated to [4.2.0](https://github.com/bem/bem-core/releases/tag/v4.2.0) ([#2019](https://github.com/bem/bem-components/issues/2019)).
+
+### Bug fixes
+* Fixed dropdown unexpected closing ([#1998](https://github.com/bem/bem-components/issues/1998)).
+* dist: i-bem-dom__init_auto was removed from no-autoinit bundle ([#2002](https://github.com/bem/bem-components/issues/2002)).
+
+### Other changes
+* Add styles for link_disabled ([#2004](https://github.com/bem/bem-components/issues/2004)).
+* dist: Provide concatenated bem-xjst templates ([#1855](https://github.com/bem/bem-components/issues/1855)).
+
 ## 5.0.0
 
 ### Breaking changes

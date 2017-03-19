@@ -453,7 +453,10 @@ module.exports = function(config) {
                         tech : 'enb-bemxjst/techs/bemhtml',
                         options : {
                             sourceSuffixes : ['bemhtml.js', 'bemhtml'],
-                            engineOptions : { elemJsInstances : true }
+                            engineOptions : {
+                                elemJsInstances : true,
+                                escapeContent : false
+                            }
                         }
                     },
                     bemhtmlEscaped : {

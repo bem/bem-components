@@ -67,6 +67,8 @@ module.exports = {
                     'block',
                     'cls',
                     'content',
+                    'appendContent',
+                    'prependContent',
                     'def',
                     'elem',
                     'js',
@@ -80,8 +82,7 @@ module.exports = {
                     'tag',
                     'wrap',
                     'replace',
-                    'extend',
-                    'once'
+                    'extend'
                 ]
             },
             includes : ['*.blocks/**/*.bemhtml.js']

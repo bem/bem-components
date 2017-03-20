@@ -71,7 +71,9 @@
   },
   "scripts": {
     "start": "magic server",
-    "deps": "bower i",
+    "deps": "bower i && npm run drop-cache",
+    "drop-cache": "rm -rf .enb/tmp",
+    "postinstall": "npm run drop-cache",
     "dist": "npm run deps && magic make dist/desktop dist/touch-pad dist/touch-phone",
     "dist-gemini-test": "http-server -s -p 8000 & p=$!; gemini test test/dist/dist.gemini.js --reporter html --reporter flat; e=$?; kill -9 ${p}; exit ${e}",
     "dist-gemini-update": "http-server -c \"no-cache, no-store\" -s -p 8000 & p=$!; gemini update test/dist/dist.gemini.js; kill -9 ${p}",

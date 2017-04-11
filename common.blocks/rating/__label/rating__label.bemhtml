@@ -1,0 +1,4 @@
+block('rating').elem('label') (
+    tag()('label'),
+    js()(true)
+);

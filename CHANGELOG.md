@@ -95,6 +95,7 @@
 ### Notable changes
 
 * Optional support for Internet Explorer 8 in graceful degradation way was implemented ([#1205](https://github.com/bem/bem-components/issues/1205)). For more info please refer [notes in README](/README.md#support-ie8).
+* The structure of the block `textarea` was changed – additional wrapper was removed ([#1330](https://github.com/bem/bem-components/issues/1330)).
 * `bem-core` dependency was updated to [2.6.0](https://github.com/bem/bem-core/blob/v2/CHANGELOG.md#260).
 
 

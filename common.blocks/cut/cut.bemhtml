@@ -1,0 +1,10 @@
+block('cut')(
+    js()(true),
+
+    content()(function() {
+        return [
+            { elem : 'container', content : applyNext() },
+            { elem : 'switcher', content : this.ctx.switcher || 'Show' }
+        ];
+    })
+);

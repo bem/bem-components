@@ -1,0 +1,15 @@
+block('map')(
+    tag()('div'),
+    js()(function() {
+      return {
+        'id' : this.ctx.id,
+        'center' : this.ctx.center,
+        'zoom' : this.ctx.zoom,
+        'controls' : this.ctx.controls,
+        'geoObjects' : this.ctx.geoObjects
+      };
+    }),
+    attrs()( function() {
+      return { 'id' : this.ctx.id };
+    })
+);

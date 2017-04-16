@@ -401,6 +401,111 @@ describe('popup', function() {
         }
     });
 
+    describe('possible drawing params', function() {
+        var winTop = win.scrollTop(),
+            winLeft = win.scrollLeft(),
+            winBottom = winTop + winHeight,
+            winRight = winLeft + winWidth;
+
+        var variants = [
+            { anchorSide : 2, offset : 0 },
+            // { anchorSide : 2, offset : 200 },
+            { anchorSide : winHeight - 2, offset : 0 },
+            // { anchorSide : winHeight - 2, offset : 200 }
+        ];
+
+        variants.forEach(function(v) {
+            // precalculate anchor position
+            v.anchorTop = winTop + Math.round((winHeight - v.anchorSide) / 2);
+            v.anchorLeft = winLeft + Math.round((winWidth - v.anchorSide) / 2);
+
+            it('should properly calculate drawing params for anchorSide: ' + v.anchorSide +
+                ' and offset: ' + v.offset, function() {
+
+                var precalculatedParams = precalculate(v);
+
+                popupAnchorDomElem
+                    .css({
+                        position : 'absolute',
+                        display : 'block',
+                        overflow : 'hidden',
+                        width : v.anchorSide,
+                        height : v.anchorSide,
+                        left : v.anchorLeft,
+                        top : v.anchorTop
+                    });
+
+                popup
+                    .setAnchor(popupAnchorDomElem)
+                    .setMod('visible');
+
+                popup.calcPossibleDrawingParams().forEach(function(params) {
+                    var direction = params.direction,
+                        expectedParams = precalculatedParams[direction];
+
+                    params.left.should.be.eq(expectedParams.left, direction + ' left ok');
+                    params.top.should.be.eq(expectedParams.top, direction + ' top ok');
+                    params.width.should.be.eq(expectedParams.width, direction + ' width ok');
+                    params.height.should.be.eq(expectedParams.height, direction + ' height ok');
+                });
+            });
+        });
+
+        function precalculate(v) {
+            v.viewportOffset = v.offset;
+            v.secondaryOffset = 0;
+
+            // precalculateParams by anchorSide, anchorLeft, anchorTop, and offsets
+            var bottomsTop = v.anchorTop + v.anchorSide + POPUP_MAIN_OFFSET,
+                bottomsHeight = winBottom - bottomsTop - v.viewportOffset,
+                topsTop = winTop + v.viewportOffset,
+                topsHeight = v.anchorTop - topsTop - POPUP_MAIN_OFFSET,
+
+                rightsLeft = v.anchorLeft + v.anchorSide + POPUP_MAIN_OFFSET,
+                rightsWidth = winRight - rightsLeft - v.viewportOffset,
+                leftsLeft = winLeft + v.viewportOffset,
+                leftsWidth = v.anchorLeft - leftsLeft - POPUP_MAIN_OFFSET,
+
+                leftAlignedLeft = v.anchorLeft + v.secondaryOffset,
+                leftAlignedWidth = winRight - leftAlignedLeft - v.viewportOffset,
+                rightAlignedLeft = winLeft + v.viewportOffset,
+                rightAlignedWidth = v.anchorLeft + v.anchorSide - rightAlignedLeft - v.secondaryOffset,
+
+                topAlignedTop = v.anchorTop + v.secondaryOffset,
+                topAlignedHeight = winBottom - topAlignedTop - v.viewportOffset,
+                bottomAlignedTop = winTop + v.viewportOffset,
+                bottomAlignedHeight = v.anchorTop + v.anchorSide - bottomAlignedTop - v.secondaryOffset,
+
+                horizCenterWidth = winWidth - v.viewportOffset * 2,
+                horizCenterLeft = v.anchorLeft - (horizCenterWidth - v.anchorSide) / 2,
+                vertCenterHeight = winHeight - v.viewportOffset * 2,
+                vertCenterTop = v.anchorTop - (vertCenterHeight - v.anchorSide) / 2;
+
+            return {
+                'bottom-left' : dimHash(bottomsTop, bottomsHeight, leftAlignedLeft, leftAlignedWidth),
+                'bottom-center' : dimHash(bottomsTop, bottomsHeight, horizCenterLeft, horizCenterWidth),
+                'bottom-right' : dimHash(bottomsTop, bottomsHeight, rightAlignedLeft, rightAlignedWidth),
+
+                'top-left' : dimHash(topsTop, topsHeight, leftAlignedLeft, leftAlignedWidth),
+                'top-center' : dimHash(topsTop, topsHeight, horizCenterLeft, horizCenterWidth),
+                'top-right' : dimHash(topsTop, topsHeight, rightAlignedLeft, rightAlignedWidth),
+
+                'right-top' : dimHash(topAlignedTop, topAlignedHeight, rightsLeft, rightsWidth),
+                'right-center' : dimHash(vertCenterTop, vertCenterHeight, rightsLeft, rightsWidth),
+                'right-bottom' : dimHash(bottomAlignedTop, bottomAlignedHeight, rightsLeft, rightsWidth),
+
+                'left-top' : dimHash(topAlignedTop, topAlignedHeight, leftsLeft, leftsWidth),
+                'left-center' : dimHash(vertCenterTop, vertCenterHeight, leftsLeft, leftsWidth),
+                'left-bottom' : dimHash(bottomAlignedTop, bottomAlignedHeight, leftsLeft, leftsWidth)
+            };
+
+            /** convert dimensions array to object */
+            function dimHash(top, height, left, width) {
+                return { top : top, height : height, left : left, width : width };
+            }
+        }
+    });
+
     describe('destructing', function() {
         it('should be destructed on anchor destruct', function() {
             popup

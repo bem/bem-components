@@ -1,0 +1,5 @@
+block('input').mod('readonly', true)(
+    elem('control').attrs()(function() {
+        return this._.extend(applyNext(), { readonly: 'readonly' });
+    })
+);

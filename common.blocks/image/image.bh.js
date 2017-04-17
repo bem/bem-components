@@ -1,7 +1,5 @@
 module.exports = function(bh) {
     bh.match('image', function(ctx, json) {
-        ctx.attr('role', 'img');
-
         if(typeof json.content !== 'undefined') {
             ctx.tag('span');
         } else {

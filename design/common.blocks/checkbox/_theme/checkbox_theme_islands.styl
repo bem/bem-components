@@ -65,6 +65,7 @@
     &.checkbox_size_m
     {
         font-size: 13px;
+        line-height: inherit;
 
         .checkbox__box
         {
@@ -89,6 +90,7 @@
     &.checkbox_size_l
     {
         font-size: 15px;
+        line-height: inherit;
 
         .checkbox__box
         {
@@ -134,7 +136,7 @@
 
     &.checkbox_focused
     {
-        .checkbox__box
+        .checkbox__box:before
         {
             box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
         }
@@ -169,9 +171,14 @@
             }
         }
 
-        &.checkbox_checked .checkbox__box:after
+        &.checkbox_checked .checkbox__box
         {
-            opacity: 0.4;
+            background: rgba(0, 0, 0, 0.15);
+
+            &:after
+            {
+                opacity: 0.4;
+            }
         }
     }
 

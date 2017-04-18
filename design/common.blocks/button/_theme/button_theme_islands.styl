@@ -77,7 +77,11 @@ ctx = '.button_theme_islands'
         z-index: 1;
 
         background: rgba(178, 142, 0, 0.6);
-        box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
+
+        &.button.button:before
+        {
+            box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
+        }
     }
 
     &.button_pressed:before
@@ -114,11 +118,6 @@ ctx = '.button_theme_islands'
     {
         background: none;
 
-        &:before
-        {
-            display: none;
-        }
-
         &.button_pressed
         {
             background: #f6f5f3;
@@ -142,21 +141,28 @@ ctx = '.button_theme_islands'
 
     &.button_view_action
     {
-        background: rgba(191, 153, 0, 0.8);
+        background: #ffdb4d;
 
         &:before
         {
-            background: #ffdb4d;
-        }
-
-        &.button_pressed:before
-        {
-            background: #fc0;
+            display: none;
         }
 
         &.button_hovered
         {
-            background: rgba(159, 127, 0, 0.8);
+            background: #ffd633;
+        }
+
+        &.button_pressed
+        {
+            background: #ffcc00;
+        }
+
+        &.button_focused-hard
+        {
+            animation: button-action-focus 0.5s infinite linear alternate;
+
+            box-shadow: none;
         }
     }
 
@@ -175,11 +181,6 @@ ctx = '.button_theme_islands'
         &.button_hovered:before
         {
             box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
-        }
-
-        &.button_focused-hard:before
-        {
-            box-shadow: none;
         }
 
         &.button_pressed:before
@@ -217,16 +218,14 @@ ctx = '.button_theme_islands'
             display: none;
         }
 
-        &.button_checked:before
+        &.button_checked
         {
-            display: block;
-
-            background: #ffeba0;
+            background: rgba(0, 0, 0, 0.15);
         }
 
         .button__text
         {
-            color: #aaa;
+            color: #767676;
         }
 
         .icon
@@ -310,6 +309,19 @@ ctx = '.button_theme_islands'
     }
 }
 
+@keyframes button-action-focus
+{
+    from
+    {
+        background-color: #ffdb4d;
+    }
+
+    to
+    {
+        background-color: #fc0;
+    }
+}
+
 .control-group
 {
     .button_checked + {ctx}:before
@@ -334,7 +346,7 @@ ctx = '.button_theme_islands'
         {
             &:before
             {
-                right: 1px;
+                right: 0;
             }
         }
 

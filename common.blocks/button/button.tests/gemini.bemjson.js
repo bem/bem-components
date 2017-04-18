@@ -65,6 +65,13 @@
                 mods : { theme : 'islands', size : 'm', view : 'action', disabled : true },
                 text : 'action',
                 cls : 'gemini-test-button-action-disabled'
+            },
+            '&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;',
+            {
+                block : 'button',
+                mods : { theme : 'islands', size : 'm', togglable : 'radio', disabled : true, checked : true },
+                text : 'radio disabled checked',
+                cls : 'gemini-test-button-radio-checked-disabled'
             }
         ] },
 

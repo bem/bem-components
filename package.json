@@ -33,7 +33,7 @@
     "enb-magic-factory": "^0.5.0",
     "enb-magic-platform": "^0.6.0",
     "enb-modules": "^0.2.0",
-    "enb-stylus": "^2.3.2",
+    "enb-stylus": "^2.3.3",
     "gemini": "^3.0.2",
     "gemini-saucelabs-info": "^1.0.0",
     "git-hooks": "^1.0.2",

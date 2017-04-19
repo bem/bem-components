@@ -41,7 +41,7 @@
     "istanbul": "^0.4.3",
     "jscs": "^2.11.0",
     "jscs-bem": "^0.2.0",
-    "jshint": "^2.9.2",
+    "jshint": "^2.9.3",
     "jshint-groups": "^0.8.0",
     "stylus": "^0.54.2"
   },

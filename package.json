@@ -34,7 +34,7 @@
     "enb-magic-platform": "^0.6.0",
     "enb-modules": "^0.2.0",
     "enb-stylus": "^2.3.2",
-    "gemini": "^3.0.2",
+    "gemini": "^4.11.0",
     "gemini-saucelabs-info": "^1.0.0",
     "git-hooks": "^1.0.2",
     "http-server": "^0.9.0",

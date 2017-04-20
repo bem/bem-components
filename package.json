@@ -48,7 +48,7 @@
     "enb-magic-factory": "^0.5.0",
     "enb-magic-platform": "^0.7.0",
     "enb-modules": "^0.4.0",
-    "enb-postcss": "^1.1.0",
+    "enb-postcss": "^1.1.2",
     "gemini": "^4.11.0",
     "gemini-saucelabs-info": "^1.0.0",
     "git-hooks": "^1.0.2",

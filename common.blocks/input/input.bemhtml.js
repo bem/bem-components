@@ -1,6 +1,6 @@
 block('input')(
     tag()('span'),
-    js()(true),
+    addJs()(true),
     def()(function() {
         return applyNext({ _input : this.ctx });
     }),

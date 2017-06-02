@@ -1,6 +1,6 @@
 block('select').mod('mode', 'check')(
-    js()(function() {
-        return this.extend(applyNext(), { text : this.ctx.text });
+    addJs()(function() {
+        return { text : this.ctx.text };
     }),
 
     elem('button').content()(function() {

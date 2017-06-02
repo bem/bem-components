@@ -50,7 +50,7 @@ block('menu')(
         // bemjson has more priority
         return this.extend(attrs, applyNext());
     }),
-    js()(true),
+    addJs()(true),
     addMix()({ elem : 'control' }),
     mod('disabled', true)
         .js()(function() {

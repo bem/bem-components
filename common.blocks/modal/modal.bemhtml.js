@@ -1,5 +1,5 @@
 block('modal')(
-    js()(true),
+    addJs()(true),
 
     addMix()(function() {
         return {

@@ -3,7 +3,7 @@ block('attach')(
 
     tag()('span'),
 
-    js()(true),
+    addJs()(true),
 
     content()(
         function() {

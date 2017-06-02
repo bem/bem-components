@@ -10,7 +10,7 @@ block('button')(
         return this.ctx.tag || 'button';
     }),
 
-    js()(true),
+    addJs()(true),
 
     // NOTE: mix below is to satisfy interface of `control`
     addMix()({ elem : 'control' }),

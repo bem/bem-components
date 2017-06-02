@@ -8,7 +8,7 @@ block('dropdown')(
         ctx.js = this.extend(apply('js'), ctx.js);
         return applyNext({ _dropdown : ctx, _popupId : this.generateId() });
     }),
-    js()(function() {
+    addJs()(function() {
         return { id : this.generateId() };
     }),
     elem('switcher').replace()(function() {

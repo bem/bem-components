@@ -3,7 +3,7 @@ block('progressbar')(
         return applyNext({ _val : this.ctx.val || 0 });
     }),
 
-    js()(function(){
+    addJs()(function(){
         return { val : this._val };
     }),
 

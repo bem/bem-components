@@ -1,5 +1,5 @@
 block('textarea')(
-    js()(true),
+    addJs()(true),
     tag()('textarea'),
 
     // NOTE: mix below is to satisfy interface of `control`

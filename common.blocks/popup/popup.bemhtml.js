@@ -1,5 +1,5 @@
 block('popup')(
-    js()(function() {
+    addJs()(function() {
         var ctx = this.ctx;
         return {
             mainOffset : ctx.mainOffset,

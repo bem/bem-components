@@ -3,7 +3,7 @@ block('radio-group')(
 
     addAttrs()({ role : 'radiogroup' }),
 
-    js()(true),
+    addJs()(true),
 
     addMix()([{ block : 'control-group' }]),
 

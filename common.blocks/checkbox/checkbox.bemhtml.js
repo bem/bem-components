@@ -1,7 +1,7 @@
 block('checkbox')(
     tag()('label'),
 
-    js()(true),
+    addJs()(true),
 
     content()(function() {
         var ctx = this.ctx,

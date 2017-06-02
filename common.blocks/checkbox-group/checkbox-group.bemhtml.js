@@ -3,7 +3,7 @@ block('checkbox-group')(
 
     addAttrs()({ role : 'group' }),
 
-    js()(true),
+    addJs()(true),
 
     addMix()([{ block : 'control-group' }]),
 

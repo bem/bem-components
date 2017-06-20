@@ -144,14 +144,14 @@ provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popu
             anchorRight = anchorLeft + anchor.outerWidth(),
             anchorBottom = anchorTop + anchor.outerHeight(),
             direction = this.getMod('direction'),
-            vertBorder = Math.floor(this._checkMainDirection(direction, 'top') ||
+            vertBorder = this._checkMainDirection(direction, 'top') ||
                     this._checkSecondaryDirection(direction, 'top')?
                 anchorTop :
-                anchorBottom),
-            horizBorder = Math.floor(this._checkMainDirection(direction, 'left') ||
+                anchorBottom,
+            horizBorder = this._checkMainDirection(direction, 'left') ||
                     this._checkSecondaryDirection(direction, 'left')?
                 anchorLeft :
-                anchorRight),
+                anchorRight,
             res = true;
 
         this._anchorParents.each(function() {
@@ -167,14 +167,14 @@ provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popu
                 var parentOffset = parent.offset();
 
                 if(checkOverflowY) {
-                    var parentTopOffset = Math.floor(parentOffset.top);
+                    var parentTopOffset = parentOffset.top;
                     if(vertBorder < parentTopOffset || parentTopOffset + parent.outerHeight() < vertBorder) {
                         return res = false;
                     }
                 }
 
                 if(checkOverflowX) {
-                    var parentLeftOffset = Math.floor(parentOffset.left);
+                    var parentLeftOffset = parentOffset.left;
                     return res = !(
                         horizBorder < parentLeftOffset ||
                         parentLeftOffset + parent.outerWidth() < horizBorder);

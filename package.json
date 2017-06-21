@@ -28,10 +28,10 @@
   ],
   "dependencies": {},
   "peerDependency": {
-    "bem-core": "^4.2.0"
+    "bem-core": "^4.2.1"
   },
   "devDependencies": {
-    "autoprefixer": "^6.4.0",
+    "autoprefixer": "^7.1.1",
     "bem-naming": "^1.0.1",
     "bem-walk": "^1.0.0-1",
     "borschik": "^1.6.0",
@@ -53,20 +53,20 @@
     "gemini-saucelabs-info": "^1.0.0",
     "git-hooks": "^1.0.2",
     "glob": "^7.1.0",
-    "http-server": "^0.9.0",
+    "http-server": "^0.10.0",
     "istanbul": "^0.4.4",
     "jscs": "^2.11.0",
     "jscs-bem": "^0.2.0",
     "jshint": "^2.9.2",
     "jshint-groups": "^0.8.0",
-    "postcss-calc": "^5.3.1",
-    "postcss-each": "^0.9.3",
+    "postcss-calc": "^6.0.0",
+    "postcss-each": "^0.10.0",
     "postcss-for": "^2.1.1",
-    "postcss-import": "^9.0.0",
-    "postcss-nested": "^1.0.0",
+    "postcss-import": "^10.0.0",
+    "postcss-nested": "^2.0.2",
     "postcss-reporter": "^3.0.0",
-    "postcss-simple-vars": "^3.0.0",
-    "postcss-url": "^5.1.2",
+    "postcss-simple-vars": "^4.0.0",
+    "postcss-url": "^6.1.0",
     "rebem-css": "^0.2.0"
   },
   "scripts": {

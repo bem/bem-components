@@ -28,7 +28,7 @@
   ],
   "dependencies": {},
   "peerDependency": {
-    "bem-core": "^4.2.0"
+    "bem-core": "^4.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

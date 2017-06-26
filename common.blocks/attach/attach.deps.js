@@ -4,7 +4,7 @@
         { block : 'control' },
         { block : 'button' },
         { block : 'icon' },
-        { elems : ['button', 'control', 'no-file', 'file'] },
+        { elems : ['button', 'control', 'no-file'] },
         { block : 'jquery', elem : 'event', mods : { type : 'pointer' } },
         { block : 'strings', elem : 'escape' }
     ]

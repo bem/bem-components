@@ -1,3 +1,0 @@
-({
-    shouldDeps : { elems : ['text', 'clear'] }
-})

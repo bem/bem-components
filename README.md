@@ -500,8 +500,7 @@ All tests are run automatically using [Travis](https://travis-ci.org) on each pu
 
 * [veged](https://github.com/veged)
 * [dfilatov](https://github.com/dfilatov)
-* [mishanga](https://github.com/mishanga)
-* [narqo](https://github.com/narqo)
+* [tadatuta](https://github.com/tadatuta)
 
 <a name="workflow"></a>
 

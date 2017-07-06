@@ -1,0 +1,62 @@
+.select_theme_islands {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    max-width: 100%;
+
+    vertical-align: bottom;
+}
+.select_theme_islands .select__button {
+    width: 100%;
+    text-align: left;
+    vertical-align: top;
+}
+.select_theme_islands .select__button .button__text {
+    display: block;
+}
+.select_theme_islands .select__button .button__text:empty:before {
+    content: '\00a0';
+}
+.select_theme_islands .select__button.button_size_s .button__text {
+    padding-right: 22px;
+}
+.select_theme_islands .select__button.button_size_s .icon {
+    width: 25px;
+}
+.select_theme_islands .select__button.button_size_m .button__text {
+    padding-right: 25px;
+}
+.select_theme_islands .select__button.button_size_m .icon {
+    width: 31px;
+}
+.select_theme_islands .select__button.button_size_l .button__text {
+    padding-right: 29px;
+}
+.select_theme_islands .select__button.button_size_l .icon {
+    width: 35px;
+}
+.select_theme_islands .select__button.button_size_xl .button__text {
+    padding-right: 33px;
+}
+.select_theme_islands .select__button.button_size_xl .icon
+            {
+    width: 39px;
+}
+.select_theme_islands .select__tick {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-image: url(../../theme/_islands/arrow.svg);
+    transition: -webkit-transform 0.1s ease-out;
+    transition: transform 0.1s ease-out;
+    transition: transform 0.1s ease-out, -webkit-transform 0.1s ease-out;
+}
+.select_theme_islands.select_size_s .select__tick {
+    background-image: url(../../theme/_islands/arrow-s.svg);
+}
+.select_theme_islands.select_opened .select__tick {
+    -webkit-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+}
+.select_theme_islands.select_width_available {
+    width: 100%;
+}

@@ -1,5 +1,19 @@
 # История изменений
 
+## 6.0.1
+
+### Крупные изменения
+* Библиотека [bem-core](https://en.bem.info/libs/bem-core/) была обновлена до версии [4.2.1](https://github.com/bem/bem-core/releases/tag/v4.2.1) ([#2054](https://github.com/bem/bem-components/issues/2054)).
+
+### В релиз вошли следующие исправления ошибок
+* Поддержка bem-xjst 8.x: режим `js()` был заменен на `addJs()` ([#2050](https://github.com/bem/bem-components/issues/2050)).
+* popup_target_anchor: Исправлены вычисления позиции для поддержки новой версии jQuery ([#2051](https://github.com/bem/bem-components/issues/2051)).
+* Исправлена ошибка, при которой не удалялись контролы в `select_mode_radio-check` ([#2055](https://github.com/bem/bem-components/pull/2055)).
+
+### Также в релиз вошли следующие изменения
+* Добавлено CLA ([#2034](https://github.com/bem/bem-components/issues/2034)).
+* attach: Удалены неиспользуемые шаблоны ([#2056](https://github.com/bem/bem-components/pull/2056)).
+
 ## 6.0.0
 
 ### Изменения, ломающие обратную совместимость

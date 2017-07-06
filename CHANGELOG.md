@@ -1,5 +1,19 @@
 # Changelog
 
+## 6.0.1
+
+### Notable changes
+* [bem-core](https://en.bem.info/libs/bem-core/) library was updated to [4.2.1](https://github.com/bem/bem-core/releases/tag/v4.2.1) ([#2054](https://github.com/bem/bem-components/issues/2054)).
+
+### Bug fixes
+* bem-xjst 8.x support: `js()` was replaced with `addJs()` ([#2050](https://github.com/bem/bem-components/issues/2050)).
+* popup_target_anchor: Fix calc logic to support new version of jQuery ([#2051](https://github.com/bem/bem-components/issues/2051)).
+* Remove old inputs in select_mode_radio-check([#2055](https://github.com/bem/bem-components/pull/2055)).
+
+### Other changes
+* Added CLA ([#2034](https://github.com/bem/bem-components/issues/2034)).
+* attach: Remove dead templates ([#2056](https://github.com/bem/bem-components/pull/2056)).
+
 ## 6.0.0
 
 ### Breaking changes

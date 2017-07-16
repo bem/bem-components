@@ -47,6 +47,7 @@ provide(Popup.declMod({ modName : 'autoclosable', modVal : true }, /** @lends po
 }, /** @lends popup */{
     lazyInit : true,
     onInit : function() {
+        this.__base.apply(this, arguments);
         // TODO: checkme!
         // this._domEvents(bemDom.doc).on(KEYDOWN_EVENT, onDocKeyPress);
         bemDom.doc.on(KEYDOWN_EVENT, onDocKeyPress);

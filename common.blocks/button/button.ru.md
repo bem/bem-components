@@ -26,6 +26,7 @@
 | <a href="#buttonval">val</a> | <code>String</code>, <code>Number</code> | Значение, отправляемое на сервер. Не используется, если <a href="#link-button">модификатор type выставлен в значение link</a>. |
 | <a href="#buttontext">text</a> | <code>String</code>| Текст кнопки. |
 | <a href="#buttonurl">url</a> | <code>String</code>| Адрес. Используется только для кнопки с <a href="#link-button">модификатором type в значении link</a>. |
+| <a href="#buttontarget">target</a> | `String` | Условие открытия окна. Используется только для кнопки с <a href="#link-button">модификатором type в значении link</a>. |
 | <a href="#buttonicon">icon</a> | <code>BEMJSON</code> | Иконка на кнопке. Формируется блоком <a href="../icon/icon.ru.md">icon</a>. |
 | <a href="#buttontitle">title</a> | <code>String</code> | Текст всплывающей подсказки. |
 | <a href="#buttonid">id</a> | <code>String</code> | Уникальный идентификатор кнопки. |
@@ -149,7 +150,7 @@
 
 Отвечает за наличие фокуса на блоке.
 
-Выставляется автоматически при получении кнопки фокуса.
+Выставляется автоматически при получении кнопкой фокуса.
 
 ```javascript
 {
@@ -395,6 +396,26 @@
     block : 'button',
     mods : { theme : 'islands', size : 'm', type : 'link' },
     url : 'https://bem.info/',
+    text : 'Попробуй БЭМ'
+}
+```
+
+<a name="buttontarget"></a>
+
+#### Поле `target`
+
+Тип: `String`.
+
+Определяет условие открытия окна при нажатии на кнопку с <a href="#link-button">модификатором type в значении link</a>.
+
+Не используется с другими типами кнопок.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', type : 'link' },
+    url : 'https://bem.info/',
+    target: '_blank',
     text : 'Попробуй БЭМ'
 }
 ```

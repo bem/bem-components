@@ -17,10 +17,10 @@ describe('menu__item', function() {
     });
 
     describe('hovered', function() {
-        it('should be hovered/unhovered on pointerover/pointerleave', function() {
+        it('should be hovered/unhovered on pointermove/pointerleave', function() {
             menuItem.hasMod('hovered').should.be.false;
 
-            menuItem.domElem.trigger('pointerover');
+            menuItem.domElem.trigger('pointermove');
             menuItem.hasMod('hovered').should.be.true;
 
             menuItem.domElem.trigger('pointerleave');

@@ -71,7 +71,7 @@ provide(bemDom.declElem('menu', 'item', /** @lends menu__item.prototype */{
         return this.params.text || this.domElem.text();
     },
 
-    _onPointerOver : function() {
+    _onPointerMove : function() {
         this.setMod('hovered');
     },
 
@@ -88,7 +88,7 @@ provide(bemDom.declElem('menu', 'item', /** @lends menu__item.prototype */{
         var ptp = this.prototype;
 
         this._domEvents()
-            .on('pointerover', ptp._onPointerOver)
+            .on('pointermove', ptp._onPointerMove)
             .on('pointerclick', ptp._onPointerClick);
     }
 }));

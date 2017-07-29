@@ -9,7 +9,7 @@ block('checkbox').elem('control')(
                 autocomplete : 'off',
                 name : ctx.name,
                 value : ctx.val
-            };            
+            };
 
         ctx.checked && (attrs.checked = 'checked');
         ctx.disabled && (attrs.disabled = 'disabled');

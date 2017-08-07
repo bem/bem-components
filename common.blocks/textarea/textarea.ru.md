@@ -21,7 +21,7 @@
 | [name](#name) | `String` | Имя текстовой области. |
 | [val](#val) | `String`, `Number` | Содержимое текстовой области. |
 | [placeholder](#placeholder) | `String` | Подсказка в текстовой области. |
-| [autocomplete](#autocomplete) | `String` | Отключение автозаполнения текстовой области. |
+| [autocomplete](#autocomplete) | `Boolean` | Отключение автозаполнения текстовой области. |
 | [id](#id) | `String` | Уникальный идентификатор текстовой области. |
 | [tabIndex](#tab) | `Number` | Последовательность перехода между контролами при нажатии на `Tab`. |
 
@@ -79,7 +79,7 @@
 
 Отвечает за наличие фокуса на блоке.
 
-```js
+```javascript
 {
     block : 'textarea',
     mods : { theme : 'islands', size : 'm', focused : true },
@@ -214,9 +214,9 @@
 
 #### Поле `autocomplete`
 
-Допустимое значение: `'off'`.
+Допустимое значение: `false`.
 
-Тип: `String`.
+Тип: `Boolean`.
 
 Отключает автозаполнение текстовой области введенным ранее текстом. По умолчанию автозаполнение включено и зависит от настроек браузера.
 
@@ -224,7 +224,7 @@
 {
     block : 'textarea',
     mods : { theme : 'islands', size : 'm' },
-    autocomplete : 'off'
+    autocomplete : false
 }
 ```
 

@@ -2,29 +2,30 @@
 
 Используется для создания текстовой области.
 
-## Обзор блока
+## Обзор
 
 ### Модификаторы блока
 
 | Модификатор | Допустимые значения | Способы использования | Описание |
 | ----------- | ------------------- | -------------------- | -------- |
-| <a href="#width">width</a> | <code>'available'</code> | <code>BEMJSON</code> | Максимально допустимая ширина текстовой области. |
-| <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
-| <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
-| <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
-| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер текстовой области. Используется только для текстовых областей с модификатором <a href="#theme">theme в значении islands</a>.|
+| [width](#width) | `'available'` | `BEMJSON` | Максимально допустимая ширина текстовой области. |
+| [disabled](#disabled) | `true` | `BEMJSON`, `JS` | Неактивное состояние. |
+| [focused](#focused) | `true` | `BEMJSON`, `JS` | Фокус на блоке. |
+| [theme](#theme) | `'islands'` | `BEMJSON` | Стилевое оформление. |
+| [size](#size) | `'s'`, `'m'`, `'l'`, `'xl'` | `BEMJSON` | Размер текстовой области. Используется только с модификатором [theme в значении islands](#theme). |
 
-### Специализированные поля блока
+### Поля блока
 
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
-| <a href="#name">name</a> | <code>String</code> | Имя текстовой области. |
-| <a href="#val">val</a> | <code>String</code>, <code>Number</code> | Содержимое текстовой области. |
-| <a href="#placeholder">placeholder</a> | <code>String</code> | Подсказка в текстовой области. |
-| <a href="#id">id</a> | <code>String</code> | Уникальный идентификатор текстовой области. |
-| <a href="#tab">tabIndex</a> | <code>Number</code> | Последовательность перехода между контролами при нажатии на <code>Tab</code>. |
+| [name](#name) | `String` | Имя текстовой области. |
+| [val](#val) | `String`, `Number` | Содержимое текстовой области. |
+| [placeholder](#placeholder) | `String` | Подсказка в текстовой области. |
+| [autocomplete](#autocomplete) | `Boolean` | Отключение автозаполнения текстовой области. |
+| [id](#id) | `String` | Уникальный идентификатор текстовой области. |
+| [tabIndex](#tab) | `Number` | Последовательность перехода между контролами при нажатии на `Tab`. |
 
-## Описание блока
+## Описание
 
 Блок `textarea` используется для создания области, в которую можно вводить несколько строк текста.
 
@@ -85,7 +86,8 @@
     placeholder : 'Ваш текст должен быть здесь'
 }
 ```
-Способ установки фокуса на блок определяет выбор модификатора: `focused` или `focused-hard`. [Читать подробности](../../README.ru.md#Модификатор-focused).
+
+> **Примечание.** Способ установки фокуса на блок определяет выбор модификатора: `focused` или `focused-hard`. [Подробнее](../../README.ru.md#Модификатор-focused).
 
 <a name="theme"></a>
 
@@ -157,7 +159,7 @@
 }
 ```
 
-### Специализированные поля блока
+### Поля блока
 
 <a name="name"></a>
 
@@ -205,6 +207,24 @@
     block : 'textarea',
     mods : { theme : 'islands', size : 'm' },
     placeholder : 'Ваш текст должен быть здесь'
+}
+```
+
+<a name="autocomplete"></a>
+
+#### Поле `autocomplete`
+
+Допустимое значение: `false`.
+
+Тип: `Boolean`.
+
+Отключает автозаполнение текстовой области введенным ранее текстом. По умолчанию автозаполнение включено и зависит от настроек браузера.
+
+```js
+{
+    block : 'textarea',
+    mods : { theme : 'islands', size : 'm' },
+    autocomplete : false
 }
 ```
 

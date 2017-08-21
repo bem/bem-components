@@ -13,8 +13,9 @@
 | <a href="#has-clear">has-clear</a> | <code>true</code> | <code>BEMJSON</code> | Крестик для очистки поля ввода. |
 | <a href="#disabled">disabled</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Неактивное состояние. |
 | <a href="#focused">focused</a> | <code>true</code> | <code>BEMJSON</code>, <code>JS</code> | Фокус на блоке. |
+| <a href="#hovered">hovered</a> | <code>true</code> | — | Наведение курсором. |
 | <a href="#theme">theme</a> | <code>'islands'</code> | <code>BEMJSON</code> | Стилевое оформление. |
-| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер текстового поля. Используется только с модификатором <a href="#theme">theme в значении islands</a>.|
+| <a href="#size">size</a> | <code>'s'</code>, <code>'m'</code>, <code>'l'</code>, <code>'xl'</code> | <code>BEMJSON</code> | Размер текстового поля. Используется только с модификатором <a href="#theme">theme в значении islands</a>. |
 
 ### Специализированные поля блока
 
@@ -152,6 +153,16 @@
 }
 ```
 Способ установки фокуса на блок определяет выбор модификатора: `focused` или `focused-hard`. [Читать подробности](../../README.ru.md#Модификатор-focused).
+
+<a name="hovered"></a>
+
+#### Модификатор `hovered`
+
+Допустимое значение: `true`.
+
+Способы использования: `—`.
+
+Выставляется автоматически при наведении на блок курсором.
 
 <a name="theme"></a>
 

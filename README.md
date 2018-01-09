@@ -23,8 +23,8 @@ The library provides design themes. This version introduces the `islands` theme,
 
 **Additional information**
 
-* [Changelog](/CHANGELOG.md)
-* [Migration to future versions](/MIGRATION.md)
+* [Changelog](./CHANGELOG.md)
+* [Migration to future versions](./MIGRATION.md)
 
 <a name="levels"></a>
 ## Levels
@@ -286,7 +286,7 @@ modules.require(['i-bem__dom', 'BEMHTML', 'jquery', 'i-bem__dom_init'], function
     });
 
     BEMDOM.append($('.form'), html);
-    
+
     // NOTE: explicitly call `init();` if you need to initialize blocks from HTML markup
 });
 </script>

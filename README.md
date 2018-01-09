@@ -14,11 +14,11 @@ The library provides design themes. This version introduces the `islands` theme,
 * [Levels](#levels)
 * [Blocks](#blocks)
 * [Supported browsers](#supported-browsers)
-* [Technologies](#techs)
+* [Technologies](#technologies)
 * [Tools](#tools)
 * [Usage](#usage)
 * [Development](#development)
-* [Maintainers](#maintain)
+* [Maintainers](#maintainers)
 * [Workflow](#workflow)
 
 **Additional information**
@@ -26,7 +26,6 @@ The library provides design themes. This version introduces the `islands` theme,
 * [Changelog](./CHANGELOG.md)
 * [Migration to future versions](./MIGRATION.md)
 
-<a name="levels"></a>
 ## Levels
 
 * `common.blocks` — support of any devices and browsers.
@@ -36,7 +35,6 @@ The library provides design themes. This version introduces the `islands` theme,
 * `touch-pad.blocks` — implementation of specific features for tablets.
 * `design/<common|desktop|touch|touch-phone|touch-pad>.blocks` — implementation of various designs (themes).
 
-<a name="blocks"></a>
 ## Blocks
 
 * [attach](common.blocks/attach/attach.en.md)
@@ -62,7 +60,6 @@ The library provides design themes. This version introduces the `islands` theme,
 * [textarea](common.blocks/textarea/textarea.en.md)
 * [z-index-group](common.blocks/z-index-group/z-index-group.en.md)
 
-<a name="supported-browsers"></a>
 ## Supported browsers
 
 * **Desktop**
@@ -72,14 +69,13 @@ The library provides design themes. This version introduces the `islands` theme,
   * Yandex *(the last two stable versions)*
   * Opera 12.6+
   * Internet Explorer 9+
-  * [Partial support](#ie8) for Internet Explorer 8
+  * [Partial support](#support-for-internet-explorer-8) for Internet Explorer 8
 
 * **Touch**
   * Android 4+
   * iOS 5+
   * Internet Explorer 10+
 
-<a name="ie8"></a>
 ### Support for Internet Explorer 8
 
 To support Internet Explorer 8, you must add:
@@ -87,7 +83,6 @@ To support Internet Explorer 8, you must add:
 * [es5-shim](https://www.npmjs.com/package/es5-shim);
 * style files with the `*.ie.styl` extension to the page. To do this, specify them in the build config (see this [example](https://github.com/bem/bem-components/blob/1f218c8ba10183fda21660e28cfbb280cd8cde54/.enb/make.js#L174)) and add comments in the `page` section (see this [example](https://gist.github.com/godfreyd/b715d670bc09b9caf4c4adf44e6604a1)). You can also enable styles for Internet Explorer 8 at the template level.
 
-<a name="techs"></a>
 ## Technologies
 
 * [YModules](https://en.bem.info/tools/bem/modules/)
@@ -97,7 +92,6 @@ To support Internet Explorer 8, you must add:
 * [DEPS](https://en.bem.info/technology/deps/about/)
 * [PostCSS](http://postcss.org/)
 
-<a name="tools"></a>
 ## Tools
 
 **Assemblers**
@@ -121,31 +115,27 @@ To support Internet Explorer 8, you must add:
 
 * [Autoprefixer](https://github.com/ai/autoprefixer/) — used during assembly to generate vendor prefixes for supported browsers based on the configuration.
 
-<a name="usage"></a>
 ## Usage
 
-There are several ways to start using `bem-components`.  The best approach depends on your project’s requirements and its compatibility with the [technologies](#techs) and [tools](#tools) of the library, as well as on your experience with BEM projects.
+There are several ways to start using `bem-components`.  The best approach depends on your project’s requirements and its compatibility with the [technologies](#technologies) and [tools](#tools) of the library, as well as on your experience with BEM projects.
 
 Choose the most suitable method for your project:
 
 | Dist | Source | Compiled |
 |---------|--------|----------|
-| Pre-assembled CSS and JavaScript code and library templates. Integrated by linking to the page. Doesn't require assembly or compatibility with your project.| The full source code of the library. Requires assembly. Your project must be fully compatible with the library’s [technologies](#techs) and [tools](#tools). | The full source code of the library. Requires assembly. Differs from the Source method in that [PostCSS](#techs) is compiled into CSS. Suitable for projects where [PostCSS](http://postcss.org/) is not used. |
+| Pre-assembled CSS and JavaScript code and library templates. Integrated by linking to the page. Doesn't require assembly or compatibility with your project.| The full source code of the library. Requires assembly. Your project must be fully compatible with the library’s [technologies](#technologies) and [tools](#tools). | The full source code of the library. Requires assembly. Differs from the Source method in that [PostCSS](#technologies) is compiled into CSS. Suitable for projects where [PostCSS](http://postcss.org/) is not used. |
 
 The way you are using the library determines how to integrate it into your project:
 
-* [Integrating the library source code (Source and Compiled)](#source-compiled)
-* [Integrating the pre-assembled library files (Dist)](#dist)
+* [Integrating the library source code (Source and Compiled)](#integrating-the-library-source-code-source-and-compiled)
+* [Integrating the pre-assembled library files (Dist)](#integrating-the-pre-assembled-library-files-dist)
 
-<a name="source-compiled"></a>
 ### Integrating the library source code (Source and Compiled)
 
 We recommend using [ENB](http://enb-make.info/) or [bem-tools](https://ru.bem.info/tools/bem/bem-tools/) to integrate the library.
 
 As an example, you can use [project-stub](https://ru.bem.info/tutorials/project-stub/), where the library is enabled by default. You can also create a project and use the [Yo generator](https://ru.bem.info/tools/bem/bem-stub/) to connect the library (this allows you to create the necessary project configuration).
 
-
-<a name="dist"></a>
 ### Integrating the pre-assembled library files (Dist)
 
 The easiest way to connect the library to the project is to download the pre-assembled library files and use `<link>` and `<script>` elements to add them to HTML pages. There are several ways to do this:
@@ -342,17 +332,15 @@ The modifier is chosen automatically based on how the focus is set:
 * `focused` — Set for a mouse click on the control.
 * `focused-hard` — Set when the control is selected using the keyboard or through JavaScript.  It highlights the component more obviously when it gets the focus.  For example, in the `Islands` theme, most of the controls get an extra border when `focused-hard` is set.
 
-<a name="development"></a>
 ## Development
 
-* <a href="#working-copy">Working copy</a>
-* <a href="/CONTRIBUTING.md">How to contribute</a>
-* <a href="#modular-tests">Testing</a>
-  * <a href="#unit-tests">JavaScript unit tests</a>
-  * <a href="#regression-tests">Regression tests for layout</a>
-  * <a href="#template-tests">Tests for templates</a>
+* [Working copy](#working-copy)
+* [How to contribute](./CONTRIBUTING.md)
+* [Testing](#testing)
+  * [JavaScript unit tests](#javascript-unit-tests)
+  * [Regression tests for layout](#Regression-tests-for-layout)
+  * [Tests for templates](#tests-for-templates)
 
-<a name="working-copy"></a>
 ### Working copy
 
 Get sources:
@@ -389,7 +377,7 @@ $ npm start
 $ open http://localhost:8080/
 ```
 
-**Note:** For information about assembling individual blocks, see the section [Tests for templates](#template-tests).
+**Note:** For information about assembling individual blocks, see the section [Tests for templates](#tests-for-templates).
 
 Code analysis:
 
@@ -397,11 +385,7 @@ Code analysis:
 $ npm run lint
 ```
 
-<a name="modular-tests"></a>
-
 ### Testing
-
-<a name="unit-tests"></a>
 
 #### JavaScript unit tests
 
@@ -411,15 +395,12 @@ To launch point-based assembly, use the command `enb make specs desktop.specs/<b
 
 Tests will be run automatically on [Travis](https://travis-ci.org) for each pull request.
 
-<a name="regression-tests"></a>
-
 #### Regression tests for layout
 
 [Gemini](https://en.bem.info/tools/testing/gemini/) is used for layout testing.
 
 Tests for each block are stored in a separate `block-name.gemini.js` file in the `gemini/` directory. Locally, test are executed manually. On Travis, tests are executed automatically. For [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2), the [SauceLabs](https://saucelabs.com) service is used.
 
-<a name="run-test"></a>
 For executing tests locally, you need to:
 
 1.  Create an [OpenSauce](https://saucelabs.com/opensauce) account in SauceLabs.
@@ -433,7 +414,7 @@ When developing new tests to speed up local execution:
 
 1.  Install and run [Selenium Server](http://docs.seleniumhq.org/download/) or [PhantomJS](http://phantomjs.org/).
 2.  In the `.gemini.yml` file, change the `gridUrl` option to `http://localhost:4444/`.
-3.  [Run the tests](#run-test).
+3.  Run the tests.
 
 For more information about using `Gemini` with various backends, read the article [Gemini quick start](https://en.bem.info/tools/testing/gemini/).
 
@@ -443,8 +424,6 @@ Before commiting new or modified reference images, you must:
 
 1.  Make sure the images are correct. To find differences between the old and new versions, use the Araxis Merge utility or something similar.
 2.  Use [ImageOptim](http://imageoptim.com/) to compress the images (this is the most effective tool for compressing images as of May, 2014).
-
-<a name="template-tests"></a>
 
 #### Tests for templates
 
@@ -494,15 +473,11 @@ the template does not match with the block sample in HTML, you will see an error
 
 All tests are run automatically using [Travis](https://travis-ci.org) on each pull request.
 
-<a name="maintain"></a>
-
 ## Maintainers
 
 * [veged](https://github.com/veged)
 * [dfilatov](https://github.com/dfilatov)
 * [tadatuta](https://github.com/tadatuta)
-
-<a name="workflow"></a>
 
 ## Workflow
 

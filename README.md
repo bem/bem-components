@@ -132,7 +132,7 @@ The way you are using the library determines how to integrate it into your proje
 
 ### Integrating the library source code (Source and Compiled)
 
-We recommend using [ENB](http://enb-make.info/) or [bem-tools](https://ru.bem.info/tools/bem/bem-tools/) to integrate the library.
+We recommend using [ENB](https://en.bem.info/toolbox/enb/) or [bem-tools](https://ru.bem.info/tools/bem/bem-tools/) to integrate the library.
 
 As an example, you can use [project-stub](https://ru.bem.info/tutorials/project-stub/), where the library is enabled by default. You can also create a project and use the [Yo generator](https://ru.bem.info/tools/bem/bem-stub/) to connect the library (this allows you to create the necessary project configuration).
 

@@ -97,7 +97,7 @@
 **Сборщики**
 
 * [bem-tools](https://ru.bem.info/tools/bem/bem-tools/)
-* [ENB](http://enb-make.info/)
+* [ENB](https://ru.bem.info/toolbox/enb/)
 * [borschik](https://ru.bem.info/tools/optimizers/borschik/)
 
 **Оптимизаторы**
@@ -132,7 +132,7 @@
 
 ### Подключение исходного кода библиотеки (Source и Compiled)
 
-Рекомендуемый способ подключения — использование инструментов [ENB](http://enb-make.info/) или [bem-tools](https://ru.bem.info/tools/bem/bem-tools/).
+Рекомендуемый способ подключения — использование инструментов [ENB](https://ru.bem.info/toolbox/enb/) или [bem-tools](https://ru.bem.info/tools/bem/bem-tools/).
 
 В качестве примера воспользуйтесь [project-stub](https://ru.bem.info/tutorials/project-stub/), где библиотека подключена по умолчанию. Также можно создать проект и подключить в него библиотеку с помощью [генератора на Yo](https://ru.bem.info/tools/bem/bem-stub/), который позволяет создать необходимую конфигурацию проекта.
 

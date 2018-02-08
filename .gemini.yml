@@ -16,7 +16,7 @@ browsers:
 
   chrome-latest:
     desiredCapabilities:
-      version: "48.0"
+      version: "62.0"
       browserName: chrome
       platform: LINUX
       chromeOptions:

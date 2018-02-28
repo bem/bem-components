@@ -277,6 +277,8 @@
     :block(button):mod(theme islands) {
         border-radius: 0;
 
+        vertical-align: top;
+
         &:before {
             right: 0;
 

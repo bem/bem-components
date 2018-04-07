@@ -39,7 +39,7 @@ module.exports = function(bh) {
             popupMods.target = 'anchor';
             popupAttrs.id = ctx.tParam('popupId');
 
-            popup.mix = [dropdown].concat(popup.mix || []);
+            popup.mix = [dropdown].concat(popup.mix || [], dropdown.mix || []);
 
             return popup;
         },

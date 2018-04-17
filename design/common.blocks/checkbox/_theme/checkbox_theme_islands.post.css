@@ -66,7 +66,6 @@
 
             width: 14px;
             height: 14px;
-            margin-right: 5px;
 
             &:after {
                 width: 15px;
@@ -74,6 +73,10 @@
 
                 transform: translateY(-5px);
             }
+        }
+
+        :block(checkbox):elem(text) {
+            margin-left: 5px;
         }
     }
 
@@ -87,7 +90,6 @@
 
             width: 17px;
             height: 17px;
-            margin-right: 7px;
 
             &:after {
                 width: 18px;
@@ -95,6 +97,10 @@
 
                 transform: translateY(-7px);
             }
+        }
+
+        :block(checkbox):elem(text) {
+            margin-left: 7px;
         }
     }
 

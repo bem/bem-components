@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.1.1
+
+### Bug fixes
+* An issue in `select_mode_radio-check` which led to extra `input` elements in DOM was fixed.
+* An issue in `attach` which could result with wrong templates order was fixed.
+
+### Other changes
+* In `checkbox` block with `islands` theme margin was moved to `text` element.
+
 ## 5.1.0
 
 ### Notable changes

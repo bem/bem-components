@@ -26,6 +26,7 @@ Use this block for creating different types of buttons.
 | <a href="#buttonval">val</a> | <code>String</code> | The value to send to the server. Do not use when the <a href="#link-button">type modifier is set to link</a>. |
 | <a href="#buttontext">text</a> | <code>String</code>| Button lable. |
 | <a href="#buttonurl">url</a> | <code>String</code>| Link address. Use only when the <a href="#link-button">type modifier is set to link</a>. |
+| <a href="#buttontarget">target</a> | <code>String</code>| Link behavior. Use only when the <a href="#link-button">type modifier is set to link</a>. |
 | <a href="#buttonicon">icon</a> | <code>BEMJSON</code> | Button icon. It iscreated by the <a href="../icon/icon.en.md">icon</a> block. |
 | <a href="#buttontitle">title</a> | <code>String</code> | Tooltip content. |
 | <a href="#buttonid">id</a> | <code>BEMJSON</code> | The button unique identifier. |
@@ -393,6 +394,28 @@ Use the `url` field for <a href="#link-button">link-buttons</a> only.
     block : 'button',
     mods : { theme : 'islands', size : 'm', type : 'link' },
     url : 'https://bem.info/',
+    text : 'Try BEM!'
+}
+```
+
+<a name="buttontarget"></a>
+
+#### `target` field
+
+Type: `String`.
+
+Specifies the link behavior.
+
+The field supports all HTML attribute values of the `target`: `_blank`, `_self` (default), `_parent`, `_top`.
+
+Use the `target` field for <a href="#link-button">link-buttons</a> only.
+
+```js
+{
+    block : 'button',
+    mods : { theme : 'islands', size : 'm', type : 'link' },
+    url : 'https://bem.info/',
+    target : '_blank',
     text : 'Try BEM!'
 }
 ```

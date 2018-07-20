@@ -23,8 +23,8 @@ provide(Input.declMod({ modName : 'has-clear', modVal : true }, /** @lends input
 
     _onClearClick : function() {
         this
-            .setVal('', { source : 'clear' })
-            .setMod('focused');
+            .setMod('focused')
+            .setVal('', { source : 'clear' });
     },
 
     _updateClear : function() {

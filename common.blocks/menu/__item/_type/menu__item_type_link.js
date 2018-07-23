@@ -37,7 +37,6 @@ provide(MenuItem.declMod({ modName : 'type', modVal : 'link' }, /** @lends menu_
         this.setMod('hovered');
     }
 }, /** @lends menu__item */{
-    lazyInit : true,
     onInit : function() {
         this._domEvents().on('focusin', this.prototype._onFocus);
         return this.__base.apply(this, arguments);

@@ -45,7 +45,6 @@ provide(Popup.declMod({ modName : 'autoclosable', modVal : true }, /** @lends po
            this.delMod('visible');
     }
 }, /** @lends popup */{
-    lazyInit : true,
     onInit : function() {
         // TODO: checkme!
         // this._domEvents(bemDom.doc).on(KEYDOWN_EVENT, onDocKeyPress);

@@ -34,7 +34,6 @@ provide(Radio.declMod({ modName : 'type', modVal : 'button' }, /** @lends radio.
         }
     }
 }, /** @lends radio */{
-    lazyInit : true,
     onInit : function() {
         this._events(Button).on({ modName : 'js', modVal : 'inited' }, Functions.noop);
         return this.__base.apply(this, arguments);

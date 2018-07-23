@@ -16,7 +16,6 @@ provide(RadioGroup.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @le
         this._checkedRadio === e.target && this.setVal(undef);
     }
 }, /** @lends radio-group */{
-    lazyInit : true,
     onInit : function() {
         this._events(Radio).on(
             { modName : 'checked', modVal : '' },

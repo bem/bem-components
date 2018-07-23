@@ -45,7 +45,6 @@ provide(Popup.declMod({ modName : 'autoclosable', modVal : true }, /** @lends po
            this.delMod('visible');
     }
 }, /** @lends popup */{
-    lazyInit : true,
     onInit : function() {
         this.__base.apply(this, arguments);
         // TODO: checkme!

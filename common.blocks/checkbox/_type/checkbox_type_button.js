@@ -39,9 +39,7 @@ provide(Checkbox.declMod({ modName : 'type', modVal : 'button' }, /** @lends che
         }
     }
 }, /** @lends checkbox */{
-    lazyInit : true,
     onInit : function() {
-
         this._events(Button).on({ modName : 'js', modVal : 'inited' }, functions.noop);
         return this.__base.apply(this, arguments);
     }

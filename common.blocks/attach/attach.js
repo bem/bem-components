@@ -34,6 +34,7 @@ provide(bemDom.declBlock(this.name, Control, /** @lends attach.prototype */{
     _clear : function(data) {
         var control = this._elem('control').domElem,
             name = control.attr('name'),
+            accept = control.attr('accept'),
             tabIndex = control.attr('tabindex');
 
         bemDom.replace(
@@ -42,6 +43,7 @@ provide(bemDom.declBlock(this.name, Control, /** @lends attach.prototype */{
                 ' class="' + control.attr('class') + '"' +
                 ' type="file"' +
                 (name? ' name="' + name + '"' : '') +
+                (accept? ' accept="' + accept + '"' : '') +
                 (tabIndex? ' tabindex="' + tabIndex + '"' : '') +
             '/>');
 

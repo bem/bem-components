@@ -41,43 +41,43 @@ branches:
 
 before_install:
   - |
-      if [ "${TEST_SCOPE}" == "gemini" ] && [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
-        if [ ! "$SAUCE_USERNAME" -a ! "$SAUCE_ACCESS_KEY" ]; then
-          true && export `base64 --decode <<< U0FVQ0VfVVNFUk5BTUU9YmVtLWluZm8K`
-          true && export `base64 --decode <<< U0FVQ0VfQUNDRVNTX0tFWT0yODFiNGMzNy02YWYzLTRmMGEtOGRmYi0xYmUzMjY1OGNiOTQK`
-        fi
-        curl https://api.github.com/repos/bem/bem-components/pulls/$TRAVIS_PULL_REQUEST/files?per_page=100 | grep '"filename":.*"' | grep -v '\.md"' >/dev/null || (echo "Gemini tests skipped!" && exit 0)
-      fi
+  if [ "${TEST_SCOPE}" == "gemini" ] && [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
+    if [ ! "$SAUCE_USERNAME" -a ! "$SAUCE_ACCESS_KEY" ]; then
+      true && export `base64 --decode <<< U0FVQ0VfVVNFUk5BTUU9YmVtLWluZm8K`
+      true && export `base64 --decode <<< U0FVQ0VfQUNDRVNTX0tFWT0yODFiNGMzNy02YWYzLTRmMGEtOGRmYi0xYmUzMjY1OGNiOTQK`
+    fi
+    curl https://api.github.com/repos/bem/bem-components/pulls/$TRAVIS_PULL_REQUEST/files?per_page=100 | grep '"filename":.*"' | grep -v '\.md"' >/dev/null || (echo "Gemini tests skipped!" && exit 0)
+  fi
 
-before_script:
+install:
+  - npm install
   - npm install pull-github-notify minimist
+before_script:
   - |
-        if [ "${TRAVIS_PULL_REQUEST}" != "false" ] && [ "${TEST_SCOPE}" == "specs" ] && [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then
-          node notify.js --clear
-        fi
+  if [ "${TRAVIS_PULL_REQUEST}" != "false" ] && [ "${TEST_SCOPE}" == "specs" ] && [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then
+    node notify.js --clear
+  fi
   - |
-      if [ "${TEST_SCOPE}" == "gemini" -o "${TEST_SCOPE}" == "dists" ]; then
-        if [ ! "$SAUCE_USERNAME" -a ! "$SAUCE_ACCESS_KEY" ]; then
-          true && export `base64 --decode <<< U0FVQ0VfVVNFUk5BTUU9YmVtLWluZm8K`
-          true && export `base64 --decode <<< U0FVQ0VfQUNDRVNTX0tFWT0yODFiNGMzNy02YWYzLTRmMGEtOGRmYi0xYmUzMjY1OGNiOTQK`
-        fi
-        curl -L https://gist.githubusercontent.com/tadatuta/3303b14f47dbee9ca079/raw/sauce-connect.sh | bash
-        cat .gemini.yml
-      fi
-
+  if [ "${TEST_SCOPE}" == "gemini" -o "${TEST_SCOPE}" == "dists" ]; then
+    if [ ! "$SAUCE_USERNAME" -a ! "$SAUCE_ACCESS_KEY" ]; then
+      true && export `base64 --decode <<< U0FVQ0VfVVNFUk5BTUU9YmVtLWluZm8K`
+      true && export `base64 --decode <<< U0FVQ0VfQUNDRVNTX0tFWT0yODFiNGMzNy02YWYzLTRmMGEtOGRmYi0xYmUzMjY1OGNiOTQK`
+    fi
+    curl -L https://gist.githubusercontent.com/tadatuta/3303b14f47dbee9ca079/raw/sauce-connect.sh | bash
+    cat .gemini.yml
+  fi
 after_success:
   - |
-      if [ "${TEST_SCOPE}" == "specs" ]; then
-        npm install coveralls
-        node_modules/.bin/istanbul report lcovonly
-        cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
-        if [ "${TRAVIS_PULL_REQUEST}" != "false" ] && [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then
-          sh publish_showcase.sh
-        fi
-      fi
-
+  if [ "${TEST_SCOPE}" == "specs" ]; then
+    npm install coveralls
+    node_modules/.bin/istanbul report lcovonly
+    cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js && echo "Coverage data was sent to coveralls!"
+    if [ "${TRAVIS_PULL_REQUEST}" != "false" ] && [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then
+      sh publish_showcase.sh
+    fi
+  fi
 after_failure:
   - |
-      if [ "${TRAVIS_PULL_REQUEST}" != "false" ] && [ "${TEST_SCOPE}" == "gemini" ] && [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then
-        sh publish_report.sh
-      fi
+  if [ "${TRAVIS_PULL_REQUEST}" != "false" ] && [ "${TEST_SCOPE}" == "gemini" ] && [ "${TRAVIS_SECURE_ENV_VARS}" != "false" ]; then
+    sh publish_report.sh
+  fi

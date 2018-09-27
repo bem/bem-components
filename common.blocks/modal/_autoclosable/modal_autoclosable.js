@@ -14,15 +14,23 @@ modules.define(
  */
 provide(Modal.declMod({ modName : 'autoclosable', modVal : true }, /** @lends modal.prototype */{
     onSetMod : {
+        'js' : {
+            inited : function() {
+                this.__base.apply(this, arguments);
+                this._events(this._popup)
+                    .on({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
+            }
+        },
         'visible' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
 
-                this
-                    ._nextTick(function() {
-                        this._domEvents().on('pointerclick', this._onPointerClick);
-                    })
-                    ._popup._events().on({ modName : 'visible', modVal : '' }, this._onPopupHide, this);
+                this._nextTick(function() {
+                    this._domEvents().on('pointerclick', this._onPointerClick);
+                });
+            },
+            '' : function() {
+                this._domEvents().un('pointerclick', this._onPointerClick);
             }
         }
     },

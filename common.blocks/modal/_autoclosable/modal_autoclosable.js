@@ -24,14 +24,12 @@ provide(Modal.declMod({ modName : 'autoclosable', modVal : true }, /** @lends mo
         'visible' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
-
                 this._nextTick(function() {
                     this._domEvents().on('pointerclick', this._onPointerClick);
                 });
             },
             '' : function() {
                 this.__base.apply(this, arguments);
-                
                 this._domEvents().un('pointerclick', this._onPointerClick);
             }
         }

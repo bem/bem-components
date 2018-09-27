@@ -30,6 +30,8 @@ provide(Modal.declMod({ modName : 'autoclosable', modVal : true }, /** @lends mo
                 });
             },
             '' : function() {
+                this.__base.apply(this, arguments);
+                
                 this._domEvents().un('pointerclick', this._onPointerClick);
             }
         }

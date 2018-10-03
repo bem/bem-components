@@ -101,20 +101,20 @@ provide(bemDom.declBlock(this.name, Control, /** @lends button.prototype */{
         this._domEvents().on('mousedown', this._onMouseDown);
         if(!this.hasMod('disabled')) {
             this._isPointerPressInProgress = true;
-            this._domEvents(bemDom.doc).on('pointerrelease', this._onPointerRelease);
             this.setMod('pressed');
         }
     },
 
     _onPointerRelease : function(e) {
+        if(this.hasMod('disabled')) return;
+
         this._isPointerPressInProgress = false;
-        this._domEvents(bemDom.doc).un('pointerrelease', this._onPointerRelease);
 
         if(e.originalEvent.type === 'pointerup' && dom.contains(this.findMixedElem('control').domElem, $(e.target))) {
             this._focusedByPointer = true;
             this._focus();
             this._focusedByPointer = false;
-            this._domEvents().once('pointerclick', this._onPointerClick);
+            this._onPointerClick();
         } else {
             this._blur();
         }
@@ -168,6 +168,7 @@ provide(bemDom.declBlock(this.name, Control, /** @lends button.prototype */{
     lazyInit : true,
     onInit : function() {
         this._domEvents('control').on('pointerpress', this.prototype._onPointerPress);
+        this._domEvents(bemDom.doc).on('pointerrelease', this.prototype._onPointerRelease);
         return this.__base.apply(this, arguments);
     }
 }));

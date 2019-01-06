@@ -4,7 +4,7 @@ gemini.suite('attach', function(root) {
             'islands-sizeS',
             'islands-sizeM',
             'islands-sizeL',
-            'islands-sizeXL'
+            'islands-sizeXS'
         ].forEach(function(test) {
             gemini.suite(test + '-enabled', function(suite) {
                 var attachEnabledSelector = '.' + test + '-enabled';

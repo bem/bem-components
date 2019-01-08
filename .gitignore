@@ -19,6 +19,7 @@ libs
 /coverage
 /coverage.json
 /gemini-report/
+/hermione-report/
 
 /dist
 /*.docs

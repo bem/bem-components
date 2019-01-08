@@ -49,10 +49,10 @@
     "enb-magic-platform": "^0.7.0",
     "enb-modules": "^0.4.0",
     "enb-postcss": "^1.1.0",
-    "gemini": "^4.11.0",
-    "gemini-saucelabs-info": "^1.0.0",
     "git-hooks": "^1.0.2",
     "glob": "^7.1.0",
+    "hermione": "^1.2.1",
+    "html-reporter": "^3.1.2",
     "http-server": "^0.9.0",
     "istanbul": "^0.4.4",
     "jscs": "^2.11.0",
@@ -94,7 +94,7 @@
     "tmpls": "npm run test-tmpls",
     "dists": "npm run test-dists",
     "unit": "npm run test-specs",
-    "gemini": "http-server -s -p 8000 & p=$!; gemini test --reporter html --reporter flat; e=$?; kill -9 ${p}; exit ${e}",
+    "gemini": "http-server -p 8000 & p=$!; hermione; e=$?; kill -9 ${p}; exit ${e}",
     "gemini-update": "http-server -c \"no-cache, no-store\" -s -p 8000 & p=$!; gemini update; kill -9 ${p}",
     "coverage": "ISTANBUL_COVERAGE=yes npm run specs"
   }

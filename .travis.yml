@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "4"
+  - "8"
 
 # sudo=false to run builds inside container infrastructure
 # see https://github.com/bem/bem-components/issues/1528

@@ -2,7 +2,7 @@
 
 ROOT="$(dirname $0)"
 REPORTS_ROOT="$ROOT/reports"
-SOURCE_REPORT_DIR="$ROOT/gemini-report"
+SOURCE_REPORT_DIR="$ROOT/hermione-report"
 PUBLISH_REPORT_DIR="$ROOT/reports/$TRAVIS_BUILD_NUMBER"
 
 git clone -q --branch gh-pages "https://$GH_TOKEN@github.com/bem/reports.git" "$REPORTS_ROOT"
@@ -18,5 +18,5 @@ git pull -q --rebase origin gh-pages
 git push -q origin gh-pages
 cd -
 
-msg="Report is [available](http://bem.github.io/reports/$TRAVIS_BUILD_NUMBER/gemini-report)"
+msg="Report is [available](http://bem.github.io/reports/$TRAVIS_BUILD_NUMBER/hermione-report)"
 node notify.js --id "error_report" --message "$msg"

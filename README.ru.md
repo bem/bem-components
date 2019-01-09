@@ -322,9 +322,9 @@ $ npm run lint
 
 #### Регрессионное тестирование верстки
 
-Для тестирования верстки используется [Gemini](https://ru.bem.info/tools/testing/gemini/).
+Для тестирования верстки используется [Hermione](https://ru.bem.info/tools/testing/hermione/).
 
-Тесты каждого блока находятся в отдельном файле вида `block-name.gemini.js` в директории `gemini/`. Локально тесты запускаются вручную. Тесты на Travis запускаются автоматически. В качестве [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2) используется сервис [SauceLabs](https://saucelabs.com).
+Тесты каждого блока находятся в отдельном файле вида `block-name.hermione.js` в директории `hermione/`. Локально тесты запускаются вручную. Тесты на Travis запускаются автоматически. В качестве [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2) используется сервис [SauceLabs](https://saucelabs.com).
 
 Для запуска тестов локально необходимо:
 
@@ -332,16 +332,16 @@ $ npm run lint
 1. Установите утилиту [Sauce Connect](https://saucelabs.com/connect).
 1. Настройте окружение (переменные среды `SAUCE_USERNAME` и `SAUCE_ACCESS_KEY`).
 1. Запустите утилиту `sc` (SauceConnect) и дождаться установки туннеля.
-1. Запустите тесты командой `npm run gemini`.
-1. Соберите новые версии скриншотов при необходимости командой `npm run gemini-gather`.
+1. Запустите тесты командой `hermione`.
+1. Соберите новые версии скриншотов при необходимости командой `hermione gui`.
 
 При разработке новых тестов для ускорения локального запуска:
 
 1. Установите и запустите [Selenium Server](http://docs.seleniumhq.org/download/) или [PhantomJS](http://phantomjs.org/).
-1. Исправьте в файле `.gemini.yml` опцию `gridUrl` на `http://localhost:4444/`.
+1. Исправьте в файле `.hermione.conf.js` опцию `gridUrl` на `http://localhost:4444/`.
 1. Запустите тесты.
 
-Подробно про использование `Gemini` с разными бекендами читайте в статье [Введение в работу с Gemini](https://ru.bem.info/tools/testing/gemini/).
+Подробно про использование `Hermione` с разными бекендами читайте в статье [Введение в работу с Hermione](https://github.com/gemini-testing/hermione#quick-start).
 
 **Важно!** В репозиторий необходимо сохранять скриншоты, собранные в SauceLabs. Это позволит избежать отличий в отрисовке шрифтов.
 

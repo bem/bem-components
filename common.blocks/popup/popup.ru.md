@@ -17,10 +17,10 @@
 
 | Поле | Тип | Описание |
 | ---- | --- | -------- |
-| <a href="#directions">directions</a> | <code>Array</code> | Расположение (в порядке приоритета) относительно точки открытия. Используется только для всплывающих окон с модификатором <a href="#popuptarget">target</a>. |
-| <a href="#mainOffset">mainOffset</a> | <code>Number</code> | Смещение в пикселях всплывающего окна относительно основного направления. Используется только с модификатором <a href="#popuptarget">target</a>. |
-| <a href="#secondaryOffset">secondaryOffset</a> | <code>Number</code>| Смещение в пикселях всплывающего окна относительно второстепенного направления. Используется только с модификатором <a href="#popuptarget">target</a>. |
-| <a href="#viewportOffset">viewportOffset</a> | <code>Number</code>| Минимально допустимое смещение в пикселях всплывающего окна от края окна браузера. Используется только с модификатором <a href="#popuptarget">target</a>. |
+| <a href="#directions">directions</a> | <code>Array</code> | Расположение (в порядке приоритета) относительно точки открытия. Используется только для всплывающих окон с модификатором <a href="#target">target</a>. |
+| <a href="#mainOffset">mainOffset</a> | <code>Number</code> | Смещение в пикселях всплывающего окна относительно основного направления. Используется только с модификатором <a href="#target">target</a>. |
+| <a href="#secondaryOffset">secondaryOffset</a> | <code>Number</code>| Смещение в пикселях всплывающего окна относительно второстепенного направления. Используется только с модификатором <a href="#target">target</a>. |
+| <a href="#viewportOffset">viewportOffset</a> | <code>Number</code>| Минимально допустимое смещение в пикселях всплывающего окна от края окна браузера. Используется только с модификатором <a href="#target">target</a>. |
 | <a href="#zIndexGroupLevel">zIndexGroupLevel</a> | <code>Number</code> | Уровень слоя для открывающихся всплывающих окон. Использует блок <a href="../z-index-group/z-index-group.ru.md">z-index-group</a>.|
 
 ## Описание блока
@@ -47,13 +47,13 @@
 
 Поддерживается многоуровневая вложенность всплывающих окон (из каждого открытого блока `popup` может быть вызван другой). Одновременно с закрытием всплывающего окна закрываются все его дочерние окна.
 
-Необходимо использовать метод [setAnchor](https://ru.bem.info/libs/bem-components/v2/desktop/popup/jsdoc/).
+Необходимо использовать метод [setAnchor](https://ru.bem.info/libraries/classic/bem-components/6.0.0/desktop/popup/#jsdoc-setAnchor-1).
 
 ##### Координаты (модификатор `target` в значении `position`)
 
 Позволяет задавать точку открытия всплывающего окна координатами.
 
-Необходимо использовать метод [setPosition](https://ru.bem.info/libs/bem-components/v2/desktop/popup/jsdoc/).
+Необходимо использовать метод [setPosition](https://ru.bem.info/libraries/classic/bem-components/6.0.0/desktop/popup/#jsdoc-setPosition-1).
 
 <a name="visible"></a>
 

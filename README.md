@@ -397,9 +397,9 @@ Tests will be run automatically on [Travis](https://travis-ci.org) for each pull
 
 #### Regression tests for layout
 
-[Gemini](https://en.bem.info/tools/testing/gemini/) is used for layout testing.
+[Hermione](https://github.com/gemini-testing/hermione/) is used for layout testing.
 
-Tests for each block are stored in a separate `block-name.gemini.js` file in the `gemini/` directory. Locally, test are executed manually. On Travis, tests are executed automatically. For [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2), the [SauceLabs](https://saucelabs.com) service is used.
+Tests for each block are stored in a separate `block-name.hermione.js` file in the `hermione/` directory. Locally, test are executed manually. On Travis, tests are executed automatically. For [Selenium Grid](https://code.google.com/p/selenium/wiki/Grid2), the [SauceLabs](https://saucelabs.com) service is used.
 
 For executing tests locally, you need to:
 
@@ -407,16 +407,16 @@ For executing tests locally, you need to:
 2.  Install the [Sauce Connect](https://saucelabs.com/connect) utility.
 3.  Set up environment variables (`SAUCE_USERNAME` and `SAUCE_ACCESS_KEY`).
 4.  Launch the `sc` utility (SauceConnect) and wait for the tunnel to be opened.
-5.  Run the tests using `npm run gemini`.
-6.  If you need to make new versions of screenshots, use the command `npm run gemini-gather`.
+5.  Run the tests using `hermione`.
+6.  If you need to make new versions of screenshots, use the command `hermione gui`.
 
 When developing new tests to speed up local execution:
 
 1.  Install and run [Selenium Server](http://docs.seleniumhq.org/download/) or [PhantomJS](http://phantomjs.org/).
-2.  In the `.gemini.yml` file, change the `gridUrl` option to `http://localhost:4444/`.
+2.  In the `.hermione.conf.js` file, change the `gridUrl` option to `http://localhost:4444/`.
 3.  Run the tests.
 
-For more information about using `Gemini` with various backends, read the article [Gemini quick start](https://en.bem.info/tools/testing/gemini/).
+For more information about using `Hermione` with various backends, read the article [Hermione quick start](https://github.com/gemini-testing/hermione#quick-start).
 
 **Note:** You need to save screenshots from SauceLabs in the repository. This helps to avoid discrepancies when rendering fonts.
 

@@ -23,7 +23,7 @@
     "!LICENSE.txt"
   ],
   "dependencies": {
-    "bem-core": "https://github.com/bem/bem-core.git#9ab08cc330b4fce900f59bb696c8e3a31b7f3eec"
+    "bem-core": "https://github.com/bem/bem-core.git#182f3f062f1cc41aa549c6ff0fbc47720caae9e9"
   },
   "devDependencies": {
     "bem-pr": "~0.13.0"

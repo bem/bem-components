@@ -37,6 +37,11 @@ describe('attach', function() {
             setFile('\\usr\\local\\file.png');
             attach._elem('text').domElem.text().should.be.equal('file.png');
         });
+
+        it('should have file element', function() {
+            setFile('file.png');
+            Boolean(attach.getFileElem()).should.be.true;
+        });
     });
 
     describe('clear', function() {

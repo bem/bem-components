@@ -1,25 +1,34 @@
 block('select').elem('button')(
-    replace()(function() {
-        var select = this._select,
-            mods = this.mods;
+    mode('button-attrs')(function() {
+        var mods = this.mods;
+
+        return {
+            role : 'listbox',
+            'aria-owns' : this._optionIds.join(' '),
+            'aria-multiselectable' : mods.mode === 'check'? 'true' : undefined,
+            'aria-labelledby' : this._selectTextId
+        };
+    }),
+    mode('button-mods')(function() {
+        var mods = this.mods;
+
+        return {
+            size : mods.size,
+            theme : mods.theme,
+            view : mods.view,
+            focused : mods.focused,
+            disabled : mods.disabled,
+            checked : mods.mode !== 'radio' && !!this._checkedOptions.length
+        };
+    }),
+    mode('button')(function() {
+        var select = this._select;
 
         return {
             block : 'button',
             mix : { block : this.block, elem : this.elem },
-            mods : {
-                size : mods.size,
-                theme : mods.theme,
-                view : mods.view,
-                focused : mods.focused,
-                disabled : mods.disabled,
-                checked : mods.mode !== 'radio' && !!this._checkedOptions.length
-            },
-            attrs : {
-                role : 'listbox',
-                'aria-owns' : this._optionIds.join(' '),
-                'aria-multiselectable' : mods.mode === 'check'? 'true' : undefined,
-                'aria-labelledby' : this._selectTextId
-            },
+            mods : apply('button-mods'),
+            attrs : apply('button-attrs'),
             id : select.id,
             tabIndex : select.tabIndex,
             content : [
@@ -27,6 +36,9 @@ block('select').elem('button')(
                 { block : 'icon', mix : { block : 'select', elem : 'tick' } }
             ]
         };
+    }),
+    replace()(function() {
+        return apply('button');
     }),
     def()(function() {
         return applyNext({ _selectTextId : this.generateId() });

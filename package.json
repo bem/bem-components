@@ -43,6 +43,7 @@
     "jscs-bem": "^0.2.0",
     "jshint": "^2.9.2",
     "jshint-groups": "^0.8.0",
+    "mocha-phantomjs": "^3.6.0",
     "stylus": "^0.54.2"
   },
   "optionalDependencies": {},
@@ -63,7 +64,7 @@
     "test-all": "npm run lint && npm run unit && npm run test-tmpls && npm run gemini && npm run test-dists",
     "test-specs": "magic run specs",
     "test-tmpls": "magic run tmpl-specs",
-    "test-dists": "node_modules/enb-bem-specs/node_modules/.bin/mocha-phantomjs test/dist/fixtures/*.html && npm run dist-gemini-test",
+    "test-dists": "mocha-phantomjs test/dist/fixtures/*.html && npm run dist-gemini-test",
     "lint": "jshint-groups && jscs . && csscomb -vl .",
     "specs": "npm run lint && npm run test-specs",
     "tmpls": "npm run test-tmpls",

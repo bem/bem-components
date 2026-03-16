@@ -28,14 +28,17 @@
     "dist",
     "README.ru.md"
   ],
-  "dependencies": {},
   "peerDependencies": {
     "bem-core": "^5.0.0",
     "jquery": "^4.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.3",
+    "globals": "^16.5.0"
+  },
   "scripts": {
-    "lint": "echo 'lint not configured yet'",
+    "lint": "eslint .",
     "test": "echo 'tests not configured yet'",
     "build": "echo 'build not configured yet'",
     "prepare": "husky"

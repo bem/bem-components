@@ -1,12 +1,12 @@
-modules.define('link-popup',
-    ['i-bem-dom', 'link', 'popup'],
-    function(provide, bemDom, Link, Popup) {
+import bemDom from 'bem:i-bem-dom';
+import Link from 'bem:link';
+import Popup from 'bem:popup';
 
-provide(bemDom.declBlock(this.name, {
+export default bemDom.declBlock('link-popup', {
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var link = this.findChildBlock(Link),
+                const link = this.findChildBlock(Link),
                     popup = this.findChildBlock(Popup);
 
                 popup.setAnchor(link);
@@ -17,6 +17,4 @@ provide(bemDom.declBlock(this.name, {
             }
         }
     }
-}));
-
 });

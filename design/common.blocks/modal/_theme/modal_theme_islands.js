@@ -2,16 +2,13 @@
  * @module modal
  */
 
-modules.define(
-    'modal',
-    function(provide, Modal) {
-
 /**
  * @exports
  * @class modal
  * @bem
  */
-provide(Modal.declMod({ modName : 'theme', modVal : 'islands' }, /** @lends modal.prototype */{
+export default function(Modal) {
+return Modal.declMod({ modName : 'theme', modVal : 'islands' }, /** @lends modal.prototype */{
     onSetMod : {
         'visible' : {
             'true' : function() {
@@ -23,6 +20,5 @@ provide(Modal.declMod({ modName : 'theme', modVal : 'islands' }, /** @lends moda
             }
         }
     }
-}));
-
 });
+};

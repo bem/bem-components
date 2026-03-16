@@ -1,6 +1,7 @@
-modules.define('popup', ['objects'], function(provide, objects, Popup) {
+import objects from 'bem:objects';
 
-provide(Popup.declMod({ modName : 'theme', modVal : 'islands' }, {
+export default function(Popup) {
+return Popup.declMod({ modName : 'theme', modVal : 'islands' }, {
     _getDefaultParams : function() {
         return objects.extend(
             this.__base(),
@@ -9,6 +10,5 @@ provide(Popup.declMod({ modName : 'theme', modVal : 'islands' }, {
                 viewportOffset : 10
             });
     }
-}));
-
 });
+};

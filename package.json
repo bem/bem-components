@@ -35,7 +35,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
-    "git-hooks": "^1.0.2",
     "postcss-calc": "^5.3.1",
     "postcss-each": "^0.9.3",
     "postcss-for": "^2.1.1",

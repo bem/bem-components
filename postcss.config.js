@@ -14,7 +14,7 @@ export default {
         postcssImport(),
         postcssEach,
         postcssFor,
-        postcssSimpleVars(),
+        postcssSimpleVars({ unknown: () => {} }),
         postcssCalc(),
         postcssNested,
         rebemCss,

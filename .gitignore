@@ -8,7 +8,6 @@
 .bem/snapshots
 .enb/tmp
 node_modules
-libs
 
 *.pages/*/*
 !*.pages/.bem/*

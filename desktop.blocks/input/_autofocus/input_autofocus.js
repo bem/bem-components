@@ -1,6 +1,8 @@
-modules.define('input', ['dom', 'i-bem-dom'], function(provide, dom, bemDom, Input) {
+import dom from 'bem:dom';
+import bemDom from 'bem:i-bem-dom';
 
-provide(Input.declMod({ modName : 'autofocus', modVal : true }, {
+export default function(Input) {
+return Input.declMod({ modName : 'autofocus', modVal : true }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -21,10 +23,8 @@ provide(Input.declMod({ modName : 'autofocus', modVal : true }, {
         if(this.hasMod('focused')) return;
 
         if(isTextKey(e) && !dom.isEditable(dom.getFocused())) {
-            // ставим курсор в конец строки и добавляем пробел
-            // пробел нужен для того чтобы мы начинали набирать после автофокуса новое слово
-            var inputDomNode = this._elem('control').domElem[0],
-                val = this.getVal();
+            const inputDomNode = this._elem('control').domElem[0];
+            let val = this.getVal();
 
             if(val.length && val.substr(val.length - 1, 1) !== ' ') {
                 val += ' ';
@@ -32,32 +32,26 @@ provide(Input.declMod({ modName : 'autofocus', modVal : true }, {
             }
 
             if(inputDomNode.createTextRange) { // IE
-                var r = inputDomNode.createTextRange();
+                const r = inputDomNode.createTextRange();
                 r.collapse(false);
                 r.select();
-            } else if(inputDomNode.selectionStart) { // браузеры
+            } else if(inputDomNode.selectionStart) {
                 inputDomNode.setSelectionRange(val.length, val.length);
             }
 
             this.setMod('focused');
         }
     }
-}));
+});
 
-/**
- * Хелпер для определения типа нажатой клавиши
- * возвращает true в случае, если нажатая клавиша вводит текст
- */
 function isTextKey(e) {
-    var keyCode = e.charCode || e.keyCode || e.which || 0;
-    // TODO: проверку можно сделать проще, если проверять обратное -- что нажата системная клавиша
+    const keyCode = e.charCode || e.keyCode || e.which || 0;
     if(!e.ctrlKey && !e.altKey && !e.metaKey && (
             (keyCode >= 48 && keyCode <= 57) ||     // isDigit
             (keyCode >= 96 && keyCode <= 105) ||    // isNumpad
             (keyCode >= 65 && keyCode <= 90) ||     // isLetter
-            (keyCode >= 1025 && keyCode <= 1071) || // isLetter (кирилица в Opera)
-            keyCode === 0))                         // isLetter (кирилица в FF)
+            (keyCode >= 1025 && keyCode <= 1071) || // isLetter
+            keyCode === 0))                         // isLetter
         return true;
 }
-
-});
+};

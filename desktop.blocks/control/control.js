@@ -1,10 +1,9 @@
 /** @module control */
 
-modules.define(
-    'control', ['i-bem-dom'],
-    function(provide, bemDom, Control) {
+import bemDom from 'bem:i-bem-dom';
 
-provide(bemDom.declBlock(Control, {
+export default function(Control) {
+return bemDom.declBlock(Control, {
     beforeSetMod : {
         'hovered' : {
             'true' : function() {
@@ -44,6 +43,5 @@ provide(bemDom.declBlock(Control, {
         this._domEvents().on('mouseover', this.prototype._onMouseOver);
         return this.__base.apply(this, arguments);
     }
-}));
-
 });
+};

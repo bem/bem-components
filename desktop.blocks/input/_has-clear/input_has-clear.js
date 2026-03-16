@@ -1,6 +1,5 @@
-modules.define('input', function(provide, Input) {
-
-provide(Input.declMod({ modName : 'has-clear', modVal : true }, {
+export default function(Input) {
+return Input.declMod({ modName : 'has-clear', modVal : true }, {
     _onBoxClick : function() {
         this._elem('clear').hasMod('visible') || this.setMod('focused');
     }
@@ -12,6 +11,5 @@ provide(Input.declMod({ modName : 'has-clear', modVal : true }, {
 
         return this.__base.apply(this, arguments);
     }
-}));
-
 });
+};

@@ -2,13 +2,13 @@
  * @module menu
  */
 
-modules.define(
-    'menu',
-    ['i-bem-dom', 'control', 'keyboard__codes', 'menu__item'],
-    function(provide, bemDom, Control, keyCodes, MenuItem) {
+import bemDom from 'bem:i-bem-dom';
+import Control from 'bem:control';
+import keyCodes from 'bem:keyboard__codes';
+import MenuItem from 'bem:menu__item';
 
 /** @const Number */
-var TIMEOUT_KEYBOARD_SEARCH = 1500;
+const TIMEOUT_KEYBOARD_SEARCH = 1500;
 
 /**
  * @exports
@@ -16,7 +16,7 @@ var TIMEOUT_KEYBOARD_SEARCH = 1500;
  * @augments control
  * @bem
  */
-provide(bemDom.declBlock(this.name, Control, /** @lends menu.prototype */{
+export default bemDom.declBlock('menu', Control, /** @lends menu.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -75,13 +75,13 @@ provide(bemDom.declBlock(this.name, Control, /** @lends menu.prototype */{
      * @returns {menu__item}
      */
     searchItemByKeyboardEvent : function(e) {
-        var currentTime = +new Date(),
+        const currentTime = +new Date(),
             charCode = e.charCode,
             char = String.fromCharCode(charCode).toLowerCase(),
             lastTyping = this._lastTyping,
-            index = lastTyping.index,
             isSameChar = char === lastTyping.char && lastTyping.text.length === 1,
             items = this.getItems();
+        let index = lastTyping.index;
 
         if(charCode <= keyCodes.SPACE || e.ctrlKey || e.altKey || e.metaKey) {
             lastTyping.time = currentTime;
@@ -103,7 +103,7 @@ provide(bemDom.declBlock(this.name, Control, /** @lends menu.prototype */{
         }
 
         // 2 passes: from index to items.size() and from 0 to index.
-        var i = index, len = items.size();
+        let i = index, len = items.size();
         while(i < len) {
             if(this._doesItemMatchText(items.get(i), lastTyping.text)) {
                 lastTyping.index = i;
@@ -160,9 +160,9 @@ provide(bemDom.declBlock(this.name, Control, /** @lends menu.prototype */{
      * @private
      */
     _scrollToItem : function(item) {
-        var domElemOffsetTop = this.domElem.offset().top,
-            itemDomElemOffsetTop = item.domElem.offset().top,
-            relativeScroll;
+        const domElemOffsetTop = this.domElem.offset().top,
+            itemDomElemOffsetTop = item.domElem.offset().top;
+        let relativeScroll;
 
         if((relativeScroll = itemDomElemOffsetTop - domElemOffsetTop) < 0 ||
             (relativeScroll =
@@ -188,17 +188,17 @@ provide(bemDom.declBlock(this.name, Control, /** @lends menu.prototype */{
      * @private
      */
     _onKeyDown : function(e) {
-        var keyCode = e.keyCode,
+        const keyCode = e.keyCode,
             isArrow = keyCode === keyCodes.UP || keyCode === keyCodes.DOWN;
 
         if(isArrow && !e.shiftKey) {
             e.preventDefault();
 
-            var dir = keyCode - 39, // using the features of key codes for "up"/"down" ;-)
+            const dir = keyCode - 39, // using the features of key codes for "up"/"down" ;-)
                 items = this.getItems(),
                 len = items.size(),
-                hoveredIdx = items.toArray().indexOf(this._hoveredItem),
-                nextIdx = hoveredIdx,
+                hoveredIdx = items.toArray().indexOf(this._hoveredItem);
+            let nextIdx = hoveredIdx,
                 i = 0;
 
             do {
@@ -218,7 +218,7 @@ provide(bemDom.declBlock(this.name, Control, /** @lends menu.prototype */{
      * @private
      */
     _onKeyPress : function(e) {
-        var item = this.searchItemByKeyboardEvent(e);
+        const item = this.searchItemByKeyboardEvent(e);
         item && item.setMod('hovered');
     },
 
@@ -244,6 +244,4 @@ provide(bemDom.declBlock(this.name, Control, /** @lends menu.prototype */{
 
         return this.__base.apply(this, arguments);
     }
-}));
-
 });

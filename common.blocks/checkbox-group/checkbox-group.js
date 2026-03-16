@@ -2,18 +2,15 @@
  * @module checkbox-group
  */
 
-modules.define(
-    'checkbox-group',
-    ['i-bem-dom', 'jquery', 'dom', 'checkbox'],
-    function(provide, bemDom, $, dom, Checkbox) {
-
-var undef;
+import bemDom from 'bem:i-bem-dom';
+import dom from 'bem:dom';
+import Checkbox from 'bem:checkbox';
 /**
  * @exports
  * @class checkbox-group
  * @bem
  */
-provide(bemDom.declBlock(this.name, /** @lends checkbox-group.prototype */{
+export default bemDom.declBlock('checkbox-group', /** @lends checkbox-group.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -27,7 +24,7 @@ provide(bemDom.declBlock(this.name, /** @lends checkbox-group.prototype */{
             'inited' : function() {
                 this._inSetVal = false;
                 this._val = this._extractVal();
-                this._checkboxes = undef;
+                this._checkboxes = undefined;
             }
         },
 
@@ -39,8 +36,8 @@ provide(bemDom.declBlock(this.name, /** @lends checkbox-group.prototype */{
             'true' : function() {
                 if(dom.containsFocus(this.domElem)) return;
 
-                var checkboxes = this.getCheckboxes(),
-                    i = 0, checkbox;
+                const checkboxes = this.getCheckboxes();
+                let i = 0, checkbox;
 
                 while(checkbox = checkboxes.get(i++)) {
                     if(checkbox.setMod('focused').hasMod('focused')) // we need to be sure that checkbox has got focus
@@ -49,7 +46,7 @@ provide(bemDom.declBlock(this.name, /** @lends checkbox-group.prototype */{
             },
 
             '' : function() {
-                var focusedCheckbox = this.findChildBlock({
+                const focusedCheckbox = this.findChildBlock({
                         block : Checkbox,
                         modName : 'focused',
                         modVal : true
@@ -77,11 +74,11 @@ provide(bemDom.declBlock(this.name, /** @lends checkbox-group.prototype */{
     setVal : function(val, data) {
         val = val.map(String);
 
-        var checkboxes = this.getCheckboxes(),
-            wasChanged = false,
-            notFoundValsCnt = val.length,
-            checkboxesCheckedModVals = checkboxes.map(function(checkbox) {
-                var isChecked = checkbox.hasMod('checked'),
+        const checkboxes = this.getCheckboxes();
+        let wasChanged = false,
+            notFoundValsCnt = val.length;
+        const checkboxesCheckedModVals = checkboxes.map(function(checkbox) {
+                const isChecked = checkbox.hasMod('checked'),
                     hasEqVal = !!~val.indexOf(checkbox.getVal());
 
                 if(hasEqVal) {
@@ -146,11 +143,9 @@ provide(bemDom.declBlock(this.name, /** @lends checkbox-group.prototype */{
 }, /** @lends checkbox-group */{
     lazyInit : true,
     onInit : function() {
-        var ptp = this.prototype;
+        const ptp = this.prototype;
         this._events(Checkbox)
             .on({ modName : 'checked', modVal : '*' }, ptp._onCheckboxCheck)
             .on({ modName : 'focused', modVal : '*' }, ptp._onCheckboxFocus);
     }
-}));
-
 });

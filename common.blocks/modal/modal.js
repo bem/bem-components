@@ -2,10 +2,8 @@
  * @module modal
  */
 
-modules.define(
-    'modal',
-    ['i-bem-dom', 'popup'],
-    function(provide, bemDom, Popup) {
+import bemDom from 'bem:i-bem-dom';
+import Popup from 'bem:popup';
 
 /**
  * @exports
@@ -14,7 +12,7 @@ modules.define(
  *
  * @bemmod visible Represents visible state
  */
-provide(bemDom.declBlock(this.name, /** @lends modal.prototype */{
+export default bemDom.declBlock('modal', /** @lends modal.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -42,6 +40,4 @@ provide(bemDom.declBlock(this.name, /** @lends modal.prototype */{
     }
 }, /** @lends modal */{
     lazyInit : true
-}));
-
 });

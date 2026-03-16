@@ -2,7 +2,8 @@
  * @module textarea
  */
 
-modules.define('textarea', ['i-bem-dom', 'input'], function(provide, bemDom, Input) {
+import bemDom from 'bem:i-bem-dom';
+import Input from 'bem:input';
 
 /**
  * @exports
@@ -10,6 +11,4 @@ modules.define('textarea', ['i-bem-dom', 'input'], function(provide, bemDom, Inp
  * @augments input
  * @bem
  */
-provide(bemDom.declBlock(this.name, Input));
-
-});
+export default bemDom.declBlock('textarea', Input);

@@ -2,14 +2,13 @@
  * @module input
  */
 
-modules.define('input', function(provide, Input) {
-
 /**
  * @exports
  * @class input
  * @bem
  */
-provide(Input.declMod({ modName : 'has-clear', modVal : true }, /** @lends input.prototype */{
+export default function(Input) {
+return Input.declMod({ modName : 'has-clear', modVal : true }, /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -38,6 +37,5 @@ provide(Input.declMod({ modName : 'has-clear', modVal : true }, /** @lends input
 
         return this.__base.apply(this, arguments);
     }
-}));
-
 });
+};

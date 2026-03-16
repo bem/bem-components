@@ -2,14 +2,15 @@
  * @module menu__item
  */
 
-modules.define('menu__item', ['link'], function(provide, Link, MenuItem) {
+import Link from 'bem:link';
 
 /**
  * @exports
  * @class menu__item
  * @bem
  */
-provide(MenuItem.declMod({ modName : 'type', modVal : 'link' }, /** @lends menu__item.prototype */{
+export default function(MenuItem) {
+return MenuItem.declMod({ modName : 'type', modVal : 'link' }, /** @lends menu__item.prototype */{
     onSetMod : {
         'hovered' : {
             'true' : function() {
@@ -18,7 +19,7 @@ provide(MenuItem.declMod({ modName : 'type', modVal : 'link' }, /** @lends menu_
             },
 
             '' : function() {
-                var menu = this._block();
+                const menu = this._block();
                 menu.hasMod('focused') && menu.domElem.focus(); // NOTE: keep DOM-based focus within our menu
             }
         },
@@ -41,6 +42,5 @@ provide(MenuItem.declMod({ modName : 'type', modVal : 'link' }, /** @lends menu_
         this._domEvents().on('focusin', this.prototype._onFocus);
         return this.__base.apply(this, arguments);
     }
-}));
-
 });
+};

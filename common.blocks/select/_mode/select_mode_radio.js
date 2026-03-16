@@ -2,16 +2,15 @@
  * @module select
  */
 
-modules.define('select', function(provide, Select) {
-
 /**
  * @exports
  * @class select
  * @bem
  */
-provide(Select.declMod({ modName : 'mode', modVal : 'radio' }, /** @lends select.prototype */{
+export default function(Select) {
+return Select.declMod({ modName : 'mode', modVal : 'radio' }, /** @lends select.prototype */{
     _updateControl : function() {
-        var val = this.getVal();
+        const val = this.getVal();
         this._elem('control').domElem.val(val);
     },
 
@@ -22,6 +21,5 @@ provide(Select.declMod({ modName : 'mode', modVal : 'radio' }, /** @lends select
     _onMenuItemClick : function(_, data) {
         data.source === 'pointer' && this.delMod('opened');
     }
-}));
-
 });
+};

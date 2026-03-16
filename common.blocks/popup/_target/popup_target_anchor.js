@@ -2,21 +2,22 @@
  * @module popup
  */
 
-modules.define(
-    'popup',
-    ['i-bem-dom', 'jquery', 'objects', 'functions__throttle', 'z-index-group'],
-    function(provide, bemDom, $, objects, throttle, zIndexGroup, Popup) {
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import objects from 'bem:objects';
+import throttle from 'bem:functions__throttle';
+import zIndexGroup from 'bem:z-index-group';
 
-var body = $(bemDom.doc[0].body),
-    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100,
-    undef;
+const body = $(bemDom.doc[0].body),
+    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100;
 
 /**
  * @exports
  * @class popup
  * @bem
  */
-provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popup.prototype */{
+export default function(Popup) {
+return Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popup.prototype */{
     beforeSetMod : {
         'visible' : {
             'true' : function() {
@@ -36,7 +37,7 @@ provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popu
                 this._anchor = null;
                 this._anchorParents = null;
                 this._destructor = null;
-                this._isAnchorVisible = undef;
+                this._isAnchorVisible = undefined;
                 this._updateIsAnchorVisible = throttle(
                     this._updateIsAnchorVisible,
                     UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL,
@@ -63,7 +64,7 @@ provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popu
 
                 this._unbindFromAnchorParents();
                 this._anchorParents = null;
-                this._isAnchorVisible = undef;
+                this._isAnchorVisible = undefined;
             }
         }
     },
@@ -82,7 +83,7 @@ provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popu
         this._anchor = anchor.domElem || anchor;
 
         this._destructor = this._anchor.bem(this._destructorClass);
-        this._isAnchorVisible = undef;
+        this._isAnchorVisible = undefined;
 
         this._bindToDestructor();
 
@@ -105,7 +106,7 @@ provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popu
      * @override
      */
     _calcTargetDimensions : function() {
-        var anchor = this._anchor,
+        const anchor = this._anchor,
             anchorOffset = anchor.offset(),
             bodyOffset = body.css('position') === 'static'?
                 { left : 0, top : 0 } :
@@ -137,7 +138,7 @@ provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popu
      * @returns {Boolean} Whether state is visible
      */
     _calcIsAnchorVisible : function() {
-        var anchor = this._anchor,
+        const anchor = this._anchor,
             anchorOffset = anchor.offset(),
             anchorLeft = anchorOffset.left,
             anchorTop = anchorOffset.top,
@@ -151,30 +152,30 @@ provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popu
             horizBorder = this._checkMainDirection(direction, 'left') ||
                     this._checkSecondaryDirection(direction, 'left')?
                 anchorLeft :
-                anchorRight,
-            res = true;
+                anchorRight;
+        let res = true;
 
         this._anchorParents.each(function() {
             if(this.tagName === 'BODY') return false;
 
-            var parent = $(this),
+            const parent = $(this),
                 overflowY = parent.css('overflow-y'),
                 checkOverflowY = overflowY === 'scroll' || overflowY === 'hidden' || overflowY === 'auto',
                 overflowX = parent.css('overflow-x'),
                 checkOverflowX = overflowX === 'scroll' || overflowX === 'hidden' || overflowX === 'auto';
 
             if(checkOverflowY || checkOverflowX) {
-                var parentOffset = parent.offset();
+                const parentOffset = parent.offset();
 
                 if(checkOverflowY) {
-                    var parentTopOffset = parentOffset.top;
+                    const parentTopOffset = parentOffset.top;
                     if(vertBorder < parentTopOffset || parentTopOffset + parent.outerHeight() < vertBorder) {
                         return res = false;
                     }
                 }
 
                 if(checkOverflowX) {
-                    var parentLeftOffset = parentOffset.left;
+                    const parentLeftOffset = parentOffset.left;
                     return res = !(
                         horizBorder < parentLeftOffset ||
                         parentLeftOffset + parent.outerWidth() < horizBorder);
@@ -186,7 +187,7 @@ provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popu
     },
 
     _calcZIndexGroupLevel : function() {
-        var res = this.__base.apply(this, arguments);
+        const res = this.__base.apply(this, arguments);
 
         return this._destructor.findParentBlocks(zIndexGroup).reduce(
             function(res, zIndexGroupInstance) {
@@ -225,7 +226,7 @@ provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popu
         if(!this.hasMod('js', 'inited') || !this.hasMod('visible'))
             return;
 
-        var isAnchorVisible = this._calcIsAnchorVisible();
+        const isAnchorVisible = this._calcIsAnchorVisible();
         if(isAnchorVisible !== this._isAnchorVisible) {
             this._isAnchorVisible = isAnchorVisible;
             this.redraw();
@@ -250,10 +251,9 @@ provide(Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popu
     _getParentPopup : function() {
         if(this._parentPopup) return this._parentPopup;
 
-        var parentPopupDomElem = this._anchor.closest(Popup._buildSelector());
+        const parentPopupDomElem = this._anchor.closest(Popup._buildSelector());
 
         return this._parentPopup = !!parentPopupDomElem.length && parentPopupDomElem.bem(Popup);
     }
-}));
-
 });
+};

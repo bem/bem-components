@@ -2,20 +2,19 @@
  * @module menu
  */
 
-modules.define('menu', function(provide, Menu) {
-
 /**
  * @exports
  * @class menu
  * @bem
  */
-provide(Menu.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends menu.prototype */{
+export default function(Menu) {
+return Menu.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends menu.prototype */{
     /**
      * @override
      */
     _getVal : function() {
-        var items = this.getItems(),
-            i = 0, item;
+        const items = this.getItems();
+        let i = 0, item;
         while(item = items.get(i++))
             if(item.hasMod('checked'))
                 return item.getVal();
@@ -25,10 +24,10 @@ provide(Menu.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends me
      * @override
      */
     _setVal : function(val) {
-        var isValUndefined = typeof val === 'undefined',
-            wasChanged = false,
-            hasVal = false,
-            itemsCheckedVals = this.getItems().map(function(item) {
+        const isValUndefined = typeof val === 'undefined';
+        let wasChanged = false,
+            hasVal = false;
+        const itemsCheckedVals = this.getItems().map(function(item) {
                 if(isValUndefined) {
                     item.hasMod('checked') && (wasChanged = true);
                     return false;
@@ -61,6 +60,5 @@ provide(Menu.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends me
         this._isValValid = false;
         this._emit('change');
     }
-}));
-
 });
+};

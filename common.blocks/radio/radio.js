@@ -2,10 +2,8 @@
  * @module radio
  */
 
-modules.define(
-    'radio',
-    ['i-bem-dom', 'control'],
-    function(provide, bemDom, Control) {
+import bemDom from 'bem:i-bem-dom';
+import Control from 'bem:control';
 
 /**
  * @exports
@@ -13,7 +11,7 @@ modules.define(
  * @augments control
  * @bem
  */
-provide(bemDom.declBlock(this.name, Control, /** @lends radio.prototype */{
+export default bemDom.declBlock('radio', Control, /** @lends radio.prototype */{
     onSetMod : {
         'checked' : {
             'true' : function() {
@@ -38,6 +36,4 @@ provide(bemDom.declBlock(this.name, Control, /** @lends radio.prototype */{
         this._domEvents().on('change', this.prototype._onChange);
         return this.__base.apply(this, arguments);
     }
-}));
-
 });

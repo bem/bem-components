@@ -2,16 +2,13 @@
  * @module popup
  */
 
-modules.define(
-    'popup',
-    function(provide, Popup) {
-
 /**
  * @exports
  * @class popup
  * @bem
  */
-provide(Popup.declMod({ modName : 'target', modVal : 'position' }, /** @lends popup.prototype */{
+export default function(Popup) {
+return Popup.declMod({ modName : 'target', modVal : 'position' }, /** @lends popup.prototype */{
     beforeSetMod : {
         'visible' : {
             'true' : function() {
@@ -45,7 +42,7 @@ provide(Popup.declMod({ modName : 'target', modVal : 'position' }, /** @lends po
      * @override
      */
     _calcTargetDimensions : function() {
-        var pos = this._position;
+        const pos = this._position;
 
         return {
             left : pos.left,
@@ -54,6 +51,5 @@ provide(Popup.declMod({ modName : 'target', modVal : 'position' }, /** @lends po
             height : 0
         };
     }
-}));
-
 });
+};

@@ -2,23 +2,19 @@
  * @module select
  */
 
-modules.define(
-    'select',
-    ['strings__escape'],
-    function(provide, escape, Select) {
-
 /**
  * @exports
  * @class select
  * @bem
  */
-provide(Select.declMod({ modName : 'mode', modVal : 'check' }, /** @lends select.prototype */{
+export default function(Select) {
+return Select.declMod({ modName : 'mode', modVal : 'check' }, /** @lends select.prototype */{
     _updateControl : function() {
         this.findChildElems('control').forEach(function(control) {
             control.domElem.remove();
         });
 
-        var name = this.getName();
+        const name = this.getName();
         this.domElem.prepend(
             this.getVal()
                 .map(function(val) {
@@ -27,7 +23,7 @@ provide(Select.declMod({ modName : 'mode', modVal : 'check' }, /** @lends select
     },
 
     _updateButton : function() {
-        var checkedItems = this._getCheckedItems();
+        const checkedItems = this._getCheckedItems();
 
         this._button
             .toggleMod('checked', true, '', !!checkedItems.size())
@@ -53,6 +49,5 @@ provide(Select.declMod({ modName : 'mode', modVal : 'check' }, /** @lends select
             this._preventToToggleOpened = false :
             this.__base.apply(this, arguments);
     }
-}));
-
 });
+};

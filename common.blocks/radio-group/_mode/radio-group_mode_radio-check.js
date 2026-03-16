@@ -2,18 +2,17 @@
  * @module radio-group
  */
 
-modules.define('radio-group', ['radio'], function(provide, Radio, RadioGroup) {
-
-var undef;
+import Radio from 'bem:radio';
 
 /**
  * @exports
  * @class radio-group
  * @bem
  */
-provide(RadioGroup.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends radio-group.prototype */{
+export default function(RadioGroup) {
+return RadioGroup.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends radio-group.prototype */{
     _onRadioUncheck : function(e) {
-        this._checkedRadio === e.target && this.setVal(undef);
+        this._checkedRadio === e.target && this.setVal(undefined);
     }
 }, /** @lends radio-group */{
     onInit : function() {
@@ -23,6 +22,5 @@ provide(RadioGroup.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @le
 
         return this.__base.apply(this, arguments);
     }
-}));
-
 });
+};

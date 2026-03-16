@@ -2,10 +2,10 @@
  * @module attach
  */
 
-modules.define(
-    'attach',
-    ['i-bem-dom', 'i-bem__internal', 'control', 'button', 'jquery', 'strings__escape'],
-    function(provide, bemDom, INTERNAL, Control, Button, $, escape) {
+import bemDom from 'bem:i-bem-dom';
+import Control from 'bem:control';
+import Button from 'bem:button';
+import escape from 'bem:strings__escape';
 
 /**
  * @exports
@@ -13,7 +13,7 @@ modules.define(
  * @augments control
  * @bem
  */
-provide(bemDom.declBlock(this.name, Control, /** @lends attach.prototype */{
+export default bemDom.declBlock('attach', Control, /** @lends attach.prototype */{
     onSetMod : {
         'disabled' : function(modName, modVal) {
             this.__base.apply(this, arguments);
@@ -40,7 +40,7 @@ provide(bemDom.declBlock(this.name, Control, /** @lends attach.prototype */{
     },
 
     _clear : function(data) {
-        var control = this._elem('control').domElem,
+        const control = this._elem('control').domElem,
             name = control.attr('name'),
             accept = control.attr('accept'),
             tabIndex = control.attr('tabindex');
@@ -81,7 +81,7 @@ provide(bemDom.declBlock(this.name, Control, /** @lends attach.prototype */{
     },
 
     _updateFileElem : function() {
-        var fileName = extractFileNameFromPath(this.getVal());
+        const fileName = extractFileNameFromPath(this.getVal());
 
         this.getFileElem() && bemDom.destruct(this._elem('file').domElem);
 
@@ -110,10 +110,8 @@ provide(bemDom.declBlock(this.name, Control, /** @lends attach.prototype */{
 
         return this.__base.apply(this, arguments);
     }
-}));
+});
 
 function extractFileNameFromPath(path) {
     return path.split('\\').pop(); // we need this only in windows
 }
-
-});

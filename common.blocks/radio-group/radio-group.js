@@ -2,18 +2,15 @@
  * @module radio-group
  */
 
-modules.define(
-    'radio-group',
-    ['i-bem-dom', 'jquery', 'dom', 'radio'],
-    function(provide, bemDom, $, dom, Radio) {
-
-var undef;
+import bemDom from 'bem:i-bem-dom';
+import dom from 'bem:dom';
+import Radio from 'bem:radio';
 /**
  * @exports
  * @class radio-group
  * @bem
  */
-provide(bemDom.declBlock(this.name, /** @lends radio-group.prototype */{
+export default bemDom.declBlock('radio-group', /** @lends radio-group.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -32,8 +29,8 @@ provide(bemDom.declBlock(this.name, /** @lends radio-group.prototype */{
                 });
 
                 this._inSetVal = false;
-                this._val = this._checkedRadio? this._checkedRadio.getVal() : undef;
-                this._radios = undef;
+                this._val = this._checkedRadio? this._checkedRadio.getVal() : undefined;
+                this._radios = undefined;
             }
         },
 
@@ -45,8 +42,8 @@ provide(bemDom.declBlock(this.name, /** @lends radio-group.prototype */{
             'true' : function() {
                 if(dom.containsFocus(this.domElem)) return;
 
-                var radios = this.getRadios(),
-                    i = 0, radio;
+                const radios = this.getRadios();
+                let i = 0, radio;
 
                 while(radio = radios.get(i++)) {
                     if(radio.setMod('focused').hasMod('focused')) { // we need to be sure that radio has got focus
@@ -56,7 +53,7 @@ provide(bemDom.declBlock(this.name, /** @lends radio-group.prototype */{
             },
 
             '' : function() {
-                var focusedRadio = this.findChildBlock({
+                const focusedRadio = this.findChildBlock({
                         block : Radio,
                         modName : 'focused',
                         modVal : true
@@ -82,21 +79,21 @@ provide(bemDom.declBlock(this.name, /** @lends radio-group.prototype */{
      * @returns {radio-group} this
      */
     setVal : function(val, data) {
-        var isValUndef = val === undef;
+        const isValUndef = val === undefined;
 
         isValUndef || (val = String(val));
 
         if(this._val !== val) {
             if(isValUndef) {
-                this._val = undef;
+                this._val = undefined;
                 this._checkedRadio.delMod('checked');
                 this._emit('change', data);
             } else {
-                var radio = this._getRadioByVal(val);
+                const radio = this._getRadioByVal(val);
                 if(radio) {
                     this._inSetVal = true;
 
-                    this._val !== undef && this._getRadioByVal(this._val).delMod('checked');
+                    this._val !== undefined && this._getRadioByVal(this._val).delMod('checked');
                     this._val = radio.getVal();
                     radio.setMod('checked');
 
@@ -126,8 +123,8 @@ provide(bemDom.declBlock(this.name, /** @lends radio-group.prototype */{
     },
 
     _getRadioByVal : function(val) {
-        var radios = this.getRadios(),
-            i = 0, option;
+        const radios = this.getRadios();
+        let i = 0, option;
 
         while(option = radios.get(i++)) {
             if(option.getVal() === val) {
@@ -137,7 +134,7 @@ provide(bemDom.declBlock(this.name, /** @lends radio-group.prototype */{
     },
 
     _onRadioCheck : function(e) {
-        var radioVal = (this._checkedRadio = e.target).getVal();
+        const radioVal = (this._checkedRadio = e.target).getVal();
         if(!this._inSetVal) {
             if(this._val === radioVal) {
                 // on block init value set in constructor, we need remove old checked and emit "change" event
@@ -157,11 +154,9 @@ provide(bemDom.declBlock(this.name, /** @lends radio-group.prototype */{
 }, /** @lends radio-group */{
     lazyInit : true,
     onInit : function() {
-        var ptp = this.prototype;
+        const ptp = this.prototype;
         this._events(Radio)
             .on({ modName : 'checked', modVal : true }, ptp._onRadioCheck)
             .on({ modName : 'focused', modVal : '*' }, ptp._onRadioFocus);
     }
-}));
-
 });

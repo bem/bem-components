@@ -2,12 +2,13 @@
  * @module popup
  */
 
-modules.define(
-    'popup',
-    ['jquery', 'i-bem-dom', 'ua', 'dom', 'keyboard__codes'],
-    function(provide, $, bemDom, ua, dom, keyCodes, Popup) {
+import $ from 'bem:jquery';
+import bemDom from 'bem:i-bem-dom';
+import ua from 'bem:ua';
+import dom from 'bem:dom';
+import keyCodes from 'bem:keyboard__codes';
 
-var KEYDOWN_EVENT = ua.opera && ua.version < 12.10? 'keypress' : 'keydown',
+const KEYDOWN_EVENT = ua.opera && ua.version < 12.10? 'keypress' : 'keydown',
     visiblePopupsStack = [];
 
 /**
@@ -15,7 +16,8 @@ var KEYDOWN_EVENT = ua.opera && ua.version < 12.10? 'keypress' : 'keydown',
  * @class popup
  * @bem
  */
-provide(Popup.declMod({ modName : 'autoclosable', modVal : true }, /** @lends popup.prototype */{
+export default function(Popup) {
+return Popup.declMod({ modName : 'autoclosable', modVal : true }, /** @lends popup.prototype */{
     onSetMod : {
         'visible' : {
             'true' : function() {
@@ -51,7 +53,7 @@ provide(Popup.declMod({ modName : 'autoclosable', modVal : true }, /** @lends po
         // this._domEvents(bemDom.doc).on(KEYDOWN_EVENT, onDocKeyPress);
         bemDom.doc.on(KEYDOWN_EVENT, onDocKeyPress);
     }
-}));
+});
 
 function onDocKeyPress(e) {
     e.keyCode === keyCodes.ESC &&
@@ -60,5 +62,4 @@ function onDocKeyPress(e) {
         !dom.isEditable($(e.target)) &&
             visiblePopupsStack[0].delMod('visible');
 }
-
-});
+};

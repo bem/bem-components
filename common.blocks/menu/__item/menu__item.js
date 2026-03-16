@@ -2,7 +2,7 @@
  * @module menu__item
  */
 
-modules.define('menu__item', ['i-bem-dom'], function(provide, bemDom) {
+import bemDom from 'bem:i-bem-dom';
 
 /**
  * @exports
@@ -11,7 +11,7 @@ modules.define('menu__item', ['i-bem-dom'], function(provide, bemDom) {
  *
  * @param val Value of item
  */
-provide(bemDom.declElem('menu', 'item', /** @lends menu__item.prototype */{
+export default bemDom.declElem('menu', 'item', /** @lends menu__item.prototype */{
     beforeSetMod : {
         'hovered' : {
             'true' : function() {
@@ -85,12 +85,10 @@ provide(bemDom.declElem('menu', 'item', /** @lends menu__item.prototype */{
 }, /** @lends menu__item */{
     lazyInit : true,
     onInit : function() {
-        var ptp = this.prototype;
+        const ptp = this.prototype;
 
         this._domEvents()
             .on('pointermove', ptp._onPointerMove)
             .on('pointerclick', ptp._onPointerClick);
     }
-}));
-
 });

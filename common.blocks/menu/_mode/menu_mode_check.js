@@ -2,14 +2,13 @@
  * @module menu
  */
 
-modules.define('menu', function(provide, Menu) {
-
 /**
  * @exports
  * @class menu
  * @bem
  */
-provide(Menu.declMod({ modName : 'mode', modVal : 'check' }, /** @lends menu.prototype */{
+export default function(Menu) {
+return Menu.declMod({ modName : 'mode', modVal : 'check' }, /** @lends menu.prototype */{
     /**
      * @override
      */
@@ -24,10 +23,10 @@ provide(Menu.declMod({ modName : 'mode', modVal : 'check' }, /** @lends menu.pro
      * @param {Array} vals
      */
     _setVal : function(vals) {
-        var wasChanged = false,
-            notFoundValsCnt = vals.length,
-            itemsCheckedVals = this.getItems().map(function(item) {
-                var isChecked = item.hasMod('checked'),
+        let wasChanged = false,
+            notFoundValsCnt = vals.length;
+        const itemsCheckedVals = this.getItems().map(function(item) {
+                const isChecked = item.hasMod('checked'),
                     hasEqVal = vals.some(function(val) {
                         return item.isValEq(val);
                     });
@@ -60,6 +59,5 @@ provide(Menu.declMod({ modName : 'mode', modVal : 'check' }, /** @lends menu.pro
         this._isValValid = false;
         this._emit('change');
     }
-}));
-
 });
+};

@@ -2,10 +2,14 @@
  * @module select
  */
 
-modules.define(
-    'select',
-    ['i-bem-dom', 'popup', 'menu', 'menu__item', 'button', 'jquery', 'dom', 'keyboard__codes', 'strings__escape'],
-    function(provide, bemDom, Popup, Menu, MenuItem, Button, $, dom, keyCodes, escape) {
+import bemDom from 'bem:i-bem-dom';
+import Popup from 'bem:popup';
+import Menu from 'bem:menu';
+import Button from 'bem:button';
+import $ from 'bem:jquery';
+import dom from 'bem:dom';
+import keyCodes from 'bem:keyboard__codes';
+import escape from 'bem:strings__escape';
 
 /**
  * @exports
@@ -14,7 +18,7 @@ modules.define(
  *
  * @bemmod opened Represents opened state
  */
-provide(bemDom.declBlock(this.name, /** @lends select.prototype */{
+export default bemDom.declBlock('select', /** @lends select.prototype */{
     beforeSetMod : {
         'opened' : {
             'true' : function() {
@@ -160,10 +164,10 @@ provide(bemDom.declBlock(this.name, /** @lends select.prototype */{
     },
 
     _updateMenuHeight : function() {
-        var drawingParams = this._popup.calcPossibleDrawingParams(),
+        const drawingParams = this._popup.calcPossibleDrawingParams(),
             menuDomElem = this._menu.domElem,
-            menuWidth = menuDomElem.outerWidth(),
-            bestHeight = 0;
+            menuWidth = menuDomElem.outerWidth();
+        let bestHeight = 0;
 
         drawingParams.forEach(function(params) {
             params.width >= menuWidth && params.height > bestHeight && (bestHeight = params.height);
@@ -199,7 +203,7 @@ provide(bemDom.declBlock(this.name, /** @lends select.prototype */{
     _onKeyPress : function(e) {
         // press a key: closed select - set value, opened select - set hover on menu-item.
         if(!this.hasMod('opened')) {
-            var item = this._menu.searchItemByKeyboardEvent(e);
+            const item = this._menu.searchItemByKeyboardEvent(e);
             item && this._setSingleVal(item.getVal());
         }
     },
@@ -222,7 +226,7 @@ provide(bemDom.declBlock(this.name, /** @lends select.prototype */{
     _onMenuItemClick : function() {},
 
     _onMenuItemHover : function(e, data) {
-        var item = data.item;
+        const item = data.item;
         item.hasMod('hovered')?
             this._button.domElem.attr('aria-activedescendant', item.domElem.attr('id')) :
             this._button.domElem.removeAttr('aria-activedescendant');
@@ -282,6 +286,4 @@ provide(bemDom.declBlock(this.name, /** @lends select.prototype */{
             'class="' + this._buildClassName('control') + '" ' +
             'value="' + escape.attr(val) + '"/>';
     }
-}));
-
 });

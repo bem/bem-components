@@ -2,14 +2,16 @@
  * @module radio
  */
 
-modules.define('radio', ['button', 'functions'], function(provide, Button, Functions, Radio) {
+import Button from 'bem:button';
+import Functions from 'bem:functions';
 
 /**
  * @exports
  * @class radio
  * @bem
  */
-provide(Radio.declMod({ modName : 'type', modVal : 'button' }, /** @lends radio.prototype */{
+export default function(Radio) {
+return Radio.declMod({ modName : 'type', modVal : 'button' }, /** @lends radio.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -38,7 +40,7 @@ provide(Radio.declMod({ modName : 'type', modVal : 'button' }, /** @lends radio.
         this._events(Button).on({ modName : 'js', modVal : 'inited' }, Functions.noop);
         return this.__base.apply(this, arguments);
     }
-}));
+});
 
 function proxyModToButton(modName, modVal, callBase) {
     callBase !== false && this.__base.apply(this, arguments);
@@ -48,5 +50,4 @@ function proxyModToButton(modName, modVal, callBase) {
 function proxyModFromButton(_, data) {
     this.setMod(data.modName, data.modVal);
 }
-
-});
+};

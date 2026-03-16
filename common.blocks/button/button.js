@@ -2,10 +2,12 @@
  * @module button
  */
 
-modules.define(
-    'button',
-    ['i-bem-dom', 'control', 'jquery', 'dom', 'functions', 'keyboard__codes'],
-    function(provide, bemDom, Control, $, dom, functions, keyCodes) {
+import bemDom from 'bem:i-bem-dom';
+import Control from 'bem:control';
+import $ from 'bem:jquery';
+import dom from 'bem:dom';
+import functions from 'bem:functions';
+import keyCodes from 'bem:keyboard__codes';
 
 /**
  * @exports
@@ -13,7 +15,7 @@ modules.define(
  * @augments control
  * @bem
  */
-provide(bemDom.declBlock(this.name, Control, /** @lends button.prototype */{
+export default bemDom.declBlock('button', Control, /** @lends button.prototype */{
     beforeSetMod : {
         'pressed' : {
             'true' : function() {
@@ -131,7 +133,7 @@ provide(bemDom.declBlock(this.name, Control, /** @lends button.prototype */{
     _onKeyDown : function(e) {
         if(this.hasMod('disabled')) return;
 
-        var keyCode = e.keyCode;
+        const keyCode = e.keyCode;
         if(keyCode === keyCodes.SPACE || keyCode === keyCodes.ENTER) {
             this._domEvents('control')
                 .un('keydown', this._onKeyDown)
@@ -170,6 +172,4 @@ provide(bemDom.declBlock(this.name, Control, /** @lends button.prototype */{
         this._domEvents('control').on('pointerpress', this.prototype._onPointerPress);
         return this.__base.apply(this, arguments);
     }
-}));
-
 });

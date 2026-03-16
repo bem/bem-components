@@ -2,12 +2,10 @@
  * @module popup
  */
 
-modules.define(
-    'popup',
-    ['i-bem-dom', 'objects'],
-    function(provide, bemDom, objects, Popup) {
+import bemDom from 'bem:i-bem-dom';
+import objects from 'bem:objects';
 
-var VIEWPORT_ACCURACY_FACTOR = 0.99,
+const VIEWPORT_ACCURACY_FACTOR = 0.99,
     DEFAULT_DIRECTIONS = [
         'bottom-left', 'bottom-center', 'bottom-right',
         'top-left', 'top-center', 'top-right',
@@ -15,8 +13,7 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
         'left-top', 'left-center', 'left-bottom'
     ],
 
-    win = bemDom.win,
-    undef;
+    win = bemDom.win;
 
 /**
  * @exports
@@ -28,17 +25,18 @@ var VIEWPORT_ACCURACY_FACTOR = 0.99,
  * @param {Number} [viewportOffset=0] offset from the viewport (window)
  * @param {Array[String]} [directions] allowed directions
  */
-provide(Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.prototype */{
+export default function(Popup) {
+return Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
                 this.__base.apply(this, arguments);
 
                 this._lastDrawingCss = {
-                    left : undef,
-                    top : undef,
-                    zIndex : undef,
-                    display : undef
+                    left : undefined,
+                    top : undefined,
+                    zIndex : undefined,
+                    display : undefined
                 };
             }
         },
@@ -71,12 +69,12 @@ provide(Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.pro
     redraw : function() {
         if(!this.hasMod('visible')) return this;
 
-        var bestDrawingParams = this._calcBestDrawingParams();
+        const bestDrawingParams = this._calcBestDrawingParams();
 
         this.setMod('direction', bestDrawingParams.direction);
 
-        var lastDrawingCss = this._lastDrawingCss,
-            needUpdateCss = false;
+        const lastDrawingCss = this._lastDrawingCss;
+        let needUpdateCss = false;
 
         objects.each(
             this._calcDrawingCss(bestDrawingParams),
@@ -104,7 +102,7 @@ provide(Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.pro
      * @returns {Array}
      */
     calcPossibleDrawingParams : function() {
-        var target = this._calcTargetDimensions(),
+        const target = this._calcTargetDimensions(),
             viewport = this._calcViewportDimensions(),
             params = this.params,
             mainOffset = params.mainOffset,
@@ -112,7 +110,7 @@ provide(Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.pro
             viewportOffset = params.viewportOffset;
 
         return this.params.directions.map(function(direction) {
-            var subRes = {
+            const subRes = {
                     direction : direction,
                     width : 0,
                     height : 0,
@@ -165,11 +163,11 @@ provide(Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.pro
     },
 
     _calcBestDrawingParams : function() {
-        var popup = this._calcPopupDimensions(),
+        const popup = this._calcPopupDimensions(),
             target = this._calcTargetDimensions(),
             viewport = this._calcViewportDimensions(),
-            directions = this.params.directions,
-            i = 0,
+            directions = this.params.directions;
+        let i = 0,
             direction,
             pos,
             viewportFactor,
@@ -198,7 +196,7 @@ provide(Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.pro
     },
 
     _calcPopupDimensions : function() {
-        var popupWidth = this.domElem.outerWidth(),
+        const popupWidth = this.domElem.outerWidth(),
             popupHeight = this.domElem.outerHeight();
 
         return {
@@ -216,7 +214,7 @@ provide(Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.pro
     _calcTargetDimensions : function() {},
 
     _calcViewportDimensions : function() {
-        var winTop = win.scrollTop(),
+        const winTop = win.scrollTop(),
             winLeft = win.scrollLeft(),
             winWidth = win.width(),
             winHeight = win.height();
@@ -230,7 +228,7 @@ provide(Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.pro
     },
 
     _calcPos : function(direction, target, popup) {
-        var res = {},
+        const res = {},
             mainOffset = this.params.mainOffset,
             secondaryOffset = this.params.secondaryOffset;
 
@@ -264,7 +262,7 @@ provide(Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.pro
     },
 
     _calcViewportFactor : function(pos, viewport, popup) {
-        var viewportOffset = this.params.viewportOffset,
+        const viewportOffset = this.params.viewportOffset,
             intersectionLeft = Math.max(pos.left, viewport.left + viewportOffset),
             intersectionRight = Math.min(pos.left + popup.width, viewport.right - viewportOffset),
             intersectionTop = Math.max(pos.top, viewport.top + viewportOffset),
@@ -299,6 +297,5 @@ provide(Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.pro
                 directions : DEFAULT_DIRECTIONS
             });
     }
-}));
-
 });
+};

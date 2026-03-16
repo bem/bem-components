@@ -1,5 +1,3 @@
-modules.define('z-index-group', ['i-bem-dom'], function(provide, bemDom) {
+import bemDom from 'bem:i-bem-dom';
 
-provide(bemDom.declBlock(this.name));
-
-});
+export default bemDom.declBlock('z-index-group');

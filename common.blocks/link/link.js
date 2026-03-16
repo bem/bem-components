@@ -2,10 +2,9 @@
  * @module link
  */
 
-modules.define(
-    'link',
-    ['i-bem-dom', 'control', 'events'],
-    function(provide, bemDom, Control, events) {
+import bemDom from 'bem:i-bem-dom';
+import Control from 'bem:control';
+import events from 'bem:events';
 
 /**
  * @exports
@@ -13,7 +12,7 @@ modules.define(
  * @augments control
  * @bem
  */
-provide(bemDom.declBlock(this.name, Control, /** @lends link.prototype */{
+export default bemDom.declBlock('link', Control, /** @lends link.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -63,7 +62,7 @@ provide(bemDom.declBlock(this.name, Control, /** @lends link.prototype */{
         if(this.hasMod('disabled')) {
             e.preventDefault();
         } else {
-            var event = new events.Event('click');
+            const event = new events.Event('click');
             this._emit(event);
             event.isDefaultPrevented() && e.preventDefault();
         }
@@ -74,6 +73,4 @@ provide(bemDom.declBlock(this.name, Control, /** @lends link.prototype */{
         this._domEvents('control').on('pointerclick', this.prototype._onPointerClick);
         return this.__base.apply(this, arguments);
     }
-}));
-
 });

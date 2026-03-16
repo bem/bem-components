@@ -2,14 +2,14 @@
  * @module progressbar
  */
 
-modules.define('progressbar', ['i-bem-dom'], function(provide, bemDom) {
+import bemDom from 'bem:i-bem-dom';
 
 /**
  * @exports
  * @class progressbar
  * @bem
  */
-provide(bemDom.declBlock(this.name, /** @lends progressbar.prototype */{
+export default bemDom.declBlock('progressbar', /** @lends progressbar.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -39,6 +39,4 @@ provide(bemDom.declBlock(this.name, /** @lends progressbar.prototype */{
 
 }, /** @lends progressbar */{
     lazyInit : true
-}));
-
 });

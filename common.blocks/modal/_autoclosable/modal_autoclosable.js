@@ -2,17 +2,16 @@
  * @module modal
  */
 
-modules.define(
-    'modal',
-    ['jquery', 'dom'],
-    function(provide, $, dom, Modal) {
+import $ from 'bem:jquery';
+import dom from 'bem:dom';
 
 /**
  * @exports
  * @class modal
  * @bem
  */
-provide(Modal.declMod({ modName : 'autoclosable', modVal : true }, /** @lends modal.prototype */{
+export default function(Modal) {
+return Modal.declMod({ modName : 'autoclosable', modVal : true }, /** @lends modal.prototype */{
     onSetMod : {
         'visible' : {
             'true' : function() {
@@ -34,6 +33,5 @@ provide(Modal.declMod({ modName : 'autoclosable', modVal : true }, /** @lends mo
     _onPopupHide : function() {
         this.delMod('visible');
     }
-}));
-
 });
+};

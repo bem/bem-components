@@ -2,10 +2,9 @@
  * @module control
  */
 
-modules.define(
-    'control',
-    ['i-bem-dom', 'dom', 'next-tick'],
-    function(provide, bemDom, dom, nextTick) {
+import bemDom from 'bem:i-bem-dom';
+import dom from 'bem:dom';
+import nextTick from 'bem:next-tick';
 
 /**
  * @exports
@@ -13,7 +12,7 @@ modules.define(
  * @abstract
  * @bem
  */
-provide(bemDom.declBlock(this.name, /** @lends control.prototype */{
+export default bemDom.declBlock('control', /** @lends control.prototype */{
     beforeSetMod : {
         'focused' : {
             'true' : function() {
@@ -25,7 +24,7 @@ provide(bemDom.declBlock(this.name, /** @lends control.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                var controlDomElem = this._elem('control').domElem;
+                const controlDomElem = this._elem('control').domElem;
 
                 this._focused = dom.containsFocus(controlDomElem);
                 this._focused?
@@ -115,17 +114,15 @@ provide(bemDom.declBlock(this.name, /** @lends control.prototype */{
             })
             .on('focusout', this.prototype._onBlur);
 
-        var focused = dom.getFocused();
+        const focused = dom.getFocused();
         if(focused.hasClass(this._buildClassName('control'))) {
-            var _this = this;
+            const _this = this;
             nextTick(function() {
                 if(focused[0] === dom.getFocused()[0]) {
-                    var block = focused.closest(_this._buildSelector());
+                    const block = focused.closest(_this._buildSelector());
                     block && block.bem(_this);
                 }
             });
         }
     }
-}));
-
 });

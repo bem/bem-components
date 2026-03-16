@@ -2,7 +2,8 @@
  * @module checkbox
  */
 
-modules.define('checkbox', ['i-bem-dom', 'control'], function(provide, bemDom, Control) {
+import bemDom from 'bem:i-bem-dom';
+import Control from 'bem:control';
 
 /**
  * @exports
@@ -10,7 +11,7 @@ modules.define('checkbox', ['i-bem-dom', 'control'], function(provide, bemDom, C
  * @augments control
  * @bem
  */
-provide(bemDom.declBlock(this.name, Control, /** @lends checkbox.prototype */{
+export default bemDom.declBlock('checkbox', Control, /** @lends checkbox.prototype */{
     onSetMod : {
         'checked' : {
             'true' : function() {
@@ -35,6 +36,4 @@ provide(bemDom.declBlock(this.name, Control, /** @lends checkbox.prototype */{
         this._domEvents('control').on('change', this.prototype._onChange);
         return this.__base.apply(this, arguments);
     }
-}));
-
 });

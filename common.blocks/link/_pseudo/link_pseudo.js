@@ -2,14 +2,15 @@
  * @module link
  */
 
-modules.define('link', ['keyboard__codes'], function(provide, keyCodes, Link) {
+import keyCodes from 'bem:keyboard__codes';
 
 /**
  * @exports
  * @class link
  * @bem
  */
-provide(Link.declMod({ modName : 'pseudo', modVal : true }, /** @lends link.prototype */{
+export default function(Link) {
+return Link.declMod({ modName : 'pseudo', modVal : true }, /** @lends link.prototype */{
     onSetMod : {
         'focused' : {
             'true' : function() {
@@ -34,6 +35,5 @@ provide(Link.declMod({ modName : 'pseudo', modVal : true }, /** @lends link.prot
     _onKeyDown : function(e) {
         e.keyCode === keyCodes.ENTER && this._onPointerClick(e);
     }
-}));
-
 });
+};

@@ -2,14 +2,16 @@
  * @module checkbox
  */
 
-modules.define('checkbox', ['button', 'functions'], function(provide, Button, functions, Checkbox) {
+import Button from 'bem:button';
+import functions from 'bem:functions';
 
 /**
  * @exports
  * @class checkbox
  * @bem
  */
-provide(Checkbox.declMod({ modName : 'type', modVal : 'button' }, /** @lends checkbox.prototype */{
+export default function(Checkbox) {
+return Checkbox.declMod({ modName : 'type', modVal : 'button' }, /** @lends checkbox.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -43,7 +45,7 @@ provide(Checkbox.declMod({ modName : 'type', modVal : 'button' }, /** @lends che
         this._events(Button).on({ modName : 'js', modVal : 'inited' }, functions.noop);
         return this.__base.apply(this, arguments);
     }
-}));
+});
 
 function proxyModToButton(modName, modVal, callBase) {
     callBase !== false && this.__base.apply(this, arguments);
@@ -53,5 +55,4 @@ function proxyModToButton(modName, modVal, callBase) {
 function proxyModFromButton(_, data) {
     this.setMod(data.modName, data.modVal);
 }
-
-});
+};

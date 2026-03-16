@@ -2,14 +2,13 @@
  * @module button
  */
 
-modules.define('button', function(provide, Button) {
-
 /**
  * @exports
  * @class button
  * @bem
  */
-provide(Button.declMod({ modName : 'type', modVal : 'link' }, /** @lends button.prototype */{
+export default function(Button) {
+return Button.declMod({ modName : 'type', modVal : 'link' }, /** @lends button.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -59,6 +58,5 @@ provide(Button.declMod({ modName : 'type', modVal : 'link' }, /** @lends button.
     _doAction : function() {
         this._url && (document.location = this._url);
     }
-}));
-
 });
+};

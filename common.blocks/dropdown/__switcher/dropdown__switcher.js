@@ -1,11 +1,9 @@
-modules.define('dropdown__switcher', ['i-bem-dom'], function(provide, bemDom) {
+import bemDom from 'bem:i-bem-dom';
 
-provide(bemDom.declElem('dropdown', 'switcher', {
+export default bemDom.declElem('dropdown', 'switcher', {
     _onSwitcherClick : function() {
         this._emit('click');
     }
 }, {
     lazyInit : true
-}));
-
 });

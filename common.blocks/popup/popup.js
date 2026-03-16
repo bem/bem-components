@@ -2,14 +2,10 @@
  * @module popup
  */
 
-modules.define(
-    'popup',
-    ['i-bem-dom'],
-    function(provide, bemDom) {
+import bemDom from 'bem:i-bem-dom';
 
-var ZINDEX_FACTOR = 1000,
-    visiblePopupsZIndexes = {},
-    undef;
+const ZINDEX_FACTOR = 1000,
+    visiblePopupsZIndexes = {};
 
 /**
  * @exports
@@ -20,11 +16,11 @@ var ZINDEX_FACTOR = 1000,
  *
  * @bemmod visible Represents visible state
  */
-provide(bemDom.declBlock(this.name, /** @lends popup.prototype */{
+export default bemDom.declBlock('popup', /** @lends popup.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
-                this._parentPopup = undef;
+                this._parentPopup = undefined;
                 this._zIndex = null;
                 this._zIndexGroupLevel = null;
                 this._isAttachedToScope = false;
@@ -72,8 +68,8 @@ provide(bemDom.declBlock(this.name, /** @lends popup.prototype */{
     },
 
     _calcZIndexGroupLevel : function() {
-        var res = this.params.zIndexGroupLevel,
-            parentPopup = this._getParentPopup();
+        let res = this.params.zIndexGroupLevel;
+        const parentPopup = this._getParentPopup();
 
         parentPopup && (res += parentPopup._zIndexGroupLevel);
 
@@ -81,14 +77,14 @@ provide(bemDom.declBlock(this.name, /** @lends popup.prototype */{
     },
 
     _setPreventHideByClick : function() {
-        var curPopup = this;
+        let curPopup = this;
         do {
             curPopup._preventHideByClick = true;
         } while(curPopup = curPopup._getParentPopup());
     },
 
     _bindToParentPopup : function() {
-        var parentPopup = this._getParentPopup();
+        const parentPopup = this._getParentPopup();
         parentPopup &&
             this._events(parentPopup).on({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
 
@@ -99,7 +95,7 @@ provide(bemDom.declBlock(this.name, /** @lends popup.prototype */{
         this._parentPopup && this._events(this._parentPopup)
             .un({ modName : 'visible', modVal : '' }, this._onParentPopupHide, this);
 
-        this._parentPopup = undef;
+        this._parentPopup = undefined;
 
         return this;
     },
@@ -113,7 +109,7 @@ provide(bemDom.declBlock(this.name, /** @lends popup.prototype */{
     },
 
     _captureZIndex : function() {
-        var level = this._zIndexGroupLevel === null?
+        const level = this._zIndexGroupLevel === null?
                 this._zIndexGroupLevel = this._calcZIndexGroupLevel() :
                 this._zIndexGroupLevel,
             zIndexes = visiblePopupsZIndexes[level] || (visiblePopupsZIndexes[level] = [(level + 1) * ZINDEX_FACTOR]),
@@ -126,7 +122,7 @@ provide(bemDom.declBlock(this.name, /** @lends popup.prototype */{
     },
 
     _releaseZIndex : function() {
-        var zIndexes = visiblePopupsZIndexes[this._zIndexGroupLevel];
+        const zIndexes = visiblePopupsZIndexes[this._zIndexGroupLevel];
         zIndexes.splice(zIndexes.indexOf(this._zIndex), 1);
 
         return this;
@@ -146,6 +142,4 @@ provide(bemDom.declBlock(this.name, /** @lends popup.prototype */{
     }
 }, /** @lends popup */{
     lazyInit : true
-}));
-
 });

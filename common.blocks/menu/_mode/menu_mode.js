@@ -2,14 +2,16 @@
  * @module menu
  */
 
-modules.define('menu', ['i-bem-dom', 'keyboard__codes'], function(provide, bemDom, keyCodes, Menu) {
+import bemDom from 'bem:i-bem-dom';
+import keyCodes from 'bem:keyboard__codes';
 
 /**
  * @exports
  * @class menu
  * @bem
  */
-provide(Menu.declMod({ modName : 'mode', modVal : '*' }, /** @lends menu.prototype */{
+export default function(Menu) {
+return Menu.declMod({ modName : 'mode', modVal : '*' }, /** @lends menu.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -84,7 +86,7 @@ provide(Menu.declMod({ modName : 'mode', modVal : '*' }, /** @lends menu.prototy
     },
 
     _updateItemsCheckedMod : function(modVals) {
-        var items = this.getItems();
+        const items = this.getItems();
         modVals.forEach(function(modVal, i) {
             items.get(i).setMod('checked', modVal);
         });
@@ -95,11 +97,10 @@ provide(Menu.declMod({ modName : 'mode', modVal : '*' }, /** @lends menu.prototy
      * @override
      */
     setContent : function() {
-        var res = this.__base.apply(this, arguments);
+        const res = this.__base.apply(this, arguments);
         this._isValValid = false;
         this._emit('change'); // NOTE: potentially unwanted event could be emitted
         return res;
     }
-}));
-
 });
+};

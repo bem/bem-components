@@ -2,8 +2,9 @@
   "author": "",
   "license": "MPL-2.0",
   "name": "bem-components",
-  "version": "6.0.1",
+  "version": "7.0.0",
   "description": "BEM Components Library",
+  "type": "module",
   "homepage": "https://bem.info/libs/bem-components/",
   "repository": {
     "type": "git",
@@ -17,18 +18,20 @@
     "ui"
   ],
   "engines": {
-    "node": ">=4"
+    "node": ">=20"
   },
   "files": [
     "common.blocks",
     "desktop.blocks",
     "touch.blocks",
     "design",
+    "dist",
     "README.ru.md"
   ],
   "dependencies": {},
-  "peerDependency": {
-    "bem-core": "^4.2.1"
+  "peerDependencies": {
+    "bem-core": "^5.0.0",
+    "jquery": "^4.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
@@ -96,6 +99,7 @@
     "tmpls": "npm run test-tmpls",
     "dists": "npm run test-dists",
     "unit": "npm run test-specs",
-    "coverage": "ISTANBUL_COVERAGE=yes npm run specs"
+    "coverage": "ISTANBUL_COVERAGE=yes npm run specs",
+    "prepare": "husky"
   }
 }

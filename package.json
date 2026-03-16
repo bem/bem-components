@@ -54,9 +54,13 @@
     "*.js": "eslint --fix"
   },
   "scripts": {
+    "dev": "vite --config build/vite.config.js",
+    "build": "npm run build:desktop && npm run build:touch-pad && npm run build:touch-phone",
+    "build:desktop": "BEM_PLATFORM=desktop vite build --config build/vite.config.js",
+    "build:touch-pad": "BEM_PLATFORM=touch-pad vite build --config build/vite.config.js",
+    "build:touch-phone": "BEM_PLATFORM=touch-phone vite build --config build/vite.config.js",
     "lint": "eslint .",
     "test": "echo 'tests not configured yet'",
-    "build": "echo 'build not configured yet'",
     "prepare": "husky"
   }
 }

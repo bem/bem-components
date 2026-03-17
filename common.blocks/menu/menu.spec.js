@@ -1,7 +1,9 @@
-modules.define(
-    'spec',
-    ['menu', 'menu__item', 'i-bem-dom', 'jquery', 'sinon', 'chai', 'keyboard__codes', 'BEMHTML'],
-    function(provide, Menu, MenuItem, bemDom, $, sinon, chai, keyCodes, BEMHTML) {
+import Menu from 'bem:menu';
+import MenuItem from 'bem:menu__item';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import keyCodes from 'bem:keyboard__codes';
+
 
 var expect = chai.expect;
 
@@ -248,7 +250,6 @@ describe('menu', function() {
     });
 });
 
-provide();
 
 function doKeyDown(code) {
     $(document).trigger($.Event('keydown', { keyCode : code }));
@@ -281,4 +282,3 @@ function buildMenu(bemjson) {
         .bem(Menu);
 }
 
-});

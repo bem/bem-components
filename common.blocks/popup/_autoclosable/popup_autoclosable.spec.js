@@ -1,7 +1,9 @@
-modules.define(
-    'spec',
-    ['popup', 'i-bem-dom', 'jquery', 'BEMHTML', 'next-tick', 'keyboard__codes'],
-    function(provide, Popup, bemDom, $, BEMHTML, nextTick, keyCodes) {
+import Popup from 'bem:popup';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import nextTick from 'bem:next-tick';
+import keyCodes from 'bem:keyboard__codes';
+
 
 describe('popup_autoclosable', function() {
     var rootDomElem;
@@ -106,7 +108,6 @@ describe('popup_autoclosable', function() {
     });
 });
 
-provide();
 
 function buildPopupWithAnchor(parentDomElem, isAutoclosable) {
     var anchorDomElem = $(BEMHTML.apply({
@@ -135,4 +136,3 @@ function doPointerClick(target) {
         .trigger('pointerclick');
 }
 
-});

@@ -1,7 +1,10 @@
-modules.define(
-    'spec',
-    ['select', 'i-bem-dom', 'menu', 'button', 'jquery', 'dom', 'chai', 'BEMHTML'],
-    function(provide, Select, bemDom, Menu, Button, $, dom, chai, BEMHTML) {
+import Select from 'bem:select';
+import bemDom from 'bem:i-bem-dom';
+import Menu from 'bem:menu';
+import Button from 'bem:button';
+import $ from 'bem:jquery';
+import dom from 'bem:dom';
+
 
 describe('select_mode_radio-check', function() {
     var select, menu, button;
@@ -140,7 +143,6 @@ describe('select_mode_radio-check', function() {
     });
 });
 
-provide();
 
 function doKeyPress(char, elem) {
     elem.trigger($.Event('keypress', { charCode : char.charCodeAt() }));
@@ -151,4 +153,3 @@ function buildSelect(bemjson) {
         .bem(Select);
 }
 
-});

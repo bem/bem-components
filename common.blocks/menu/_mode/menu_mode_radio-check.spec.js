@@ -1,7 +1,8 @@
-modules.define(
-    'spec',
-    ['menu', 'menu__item', 'i-bem-dom', 'jquery', 'chai', 'sinon', 'BEMHTML'],
-    function(provide, Menu, MenuItem, bemDom, $, chai, sinon, BEMHTML) {
+import Menu from 'bem:menu';
+import MenuItem from 'bem:menu__item';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 describe('menu_mode_radio-check', function() {
     var menu, menuItems;
@@ -115,11 +116,9 @@ describe('menu_mode_radio-check', function() {
     });
 });
 
-provide();
 
 function buildMenu(bemjson) {
     return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body'))
         .bem(Menu);
 }
 
-});

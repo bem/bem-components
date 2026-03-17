@@ -1,7 +1,10 @@
-modules.define(
-    'spec',
-    ['i-bem-dom', 'control', 'jquery', 'dom', 'objects', 'next-tick', 'BEMHTML', 'chai'],
-    function(provide, bemDom, Control, $, dom, objects, nextTick, BEMHTML, chai) {
+import bemDom from 'bem:i-bem-dom';
+import Control from 'bem:control';
+import $ from 'bem:jquery';
+import dom from 'bem:dom';
+import objects from 'bem:objects';
+import nextTick from 'bem:next-tick';
+
 
 var expect = chai.expect;
 
@@ -119,10 +122,8 @@ describe('control', function() {
     });
 });
 
-provide();
 
 function buildControl(bemjson) {
     return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body')).bem(Control);
 }
 
-});

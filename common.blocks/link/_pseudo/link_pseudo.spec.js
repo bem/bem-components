@@ -1,7 +1,8 @@
-modules.define(
-    'spec',
-    ['link', 'i-bem-dom', 'jquery', 'BEMHTML', 'sinon', 'keyboard__codes'],
-    function(provide, Link, bemDom, $, BEMHTML, sinon, keyCodes) {
+import Link from 'bem:link';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import keyCodes from 'bem:keyboard__codes';
+
 
 describe('link_pseudo', function() {
     var link;
@@ -35,8 +36,3 @@ describe('link_pseudo', function() {
 
         spy.should.have.been.calledOnce;
     });
-});
-
-provide();
-
-});

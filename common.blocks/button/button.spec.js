@@ -1,7 +1,8 @@
-modules.define(
-    'spec',
-    ['button', 'i-bem-dom', 'jquery', 'BEMHTML', 'sinon', 'keyboard__codes', 'chai'],
-    function(provide, Button, bemDom, $, BEMHTML, sinon, keyCodes, chai) {
+import Button from 'bem:button';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import keyCodes from 'bem:keyboard__codes';
+
 
 var expect = chai.expect;
 
@@ -171,10 +172,8 @@ describe('button', function() {
     });
 });
 
-provide();
 
 function createPointerrelease(originalEventName) {
     return new $.Event('pointerrelease', { originalEvent : new $.Event(originalEventName || 'pointerup') });
 }
 
-});

@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['popup', 'i-bem-dom', 'jquery', 'BEMHTML', 'chai'],
-    function(provide, Popup, bemDom, $, BEMHTML, chai) {
+import Popup from 'bem:popup';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 var expect = chai.expect;
 describe('popup', function() {
@@ -59,11 +59,9 @@ describe('popup', function() {
     });
 });
 
-provide();
 
 function buildPopup(parentDomElem, bemjson) {
     return bemDom.init($(BEMHTML.apply(bemjson)).appendTo(parentDomElem))
         .bem(Popup);
 }
 
-});

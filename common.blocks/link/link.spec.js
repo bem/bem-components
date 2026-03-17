@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['link', 'i-bem-dom', 'jquery', 'BEMHTML', 'sinon', 'chai'],
-    function(provide, Link, bemDom, $, BEMHTML, sinon, chai) {
+import Link from 'bem:link';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 var expect = chai.expect;
 
@@ -100,8 +100,3 @@ describe('link', function() {
             expect(link.domElem.attr('href')).to.be.equal(url);
         });
     });
-});
-
-provide();
-
-});

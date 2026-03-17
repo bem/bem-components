@@ -21,6 +21,10 @@ const sinonChaiPlugin = sinonChai.default ?? sinonChai;
 chai.use(sinonChaiPlugin);
 chai.should();
 
+// Expose test helpers as globals (spec files reference them as bare identifiers)
+window.chai = chai;
+window.sinon = sinon;
+
 // -- 3. bem-core blocks -------------------------------------------------------
 import identify from 'bem:identify';
 import inherit from 'bem:inherit';
@@ -34,7 +38,7 @@ import stringsEscape from 'bem:strings__escape';
 import events from 'bem:events';
 import eventsObservable from 'bem:events__observable';
 
-import $ from 'jquery';
+import $ from 'bem:jquery';
 import 'bem:jquery__config';
 
 import dom from 'bem:dom';
@@ -122,103 +126,31 @@ import zIndexGroup from 'bem:z-index-group';
 // -- 5. BEMHTML shim ----------------------------------------------------------
 import BEMHTML from './bemhtml-shim.js';
 
-// -- 6. Modules shim ----------------------------------------------------------
-import { createModulesShim } from './modules-shim.js';
+// Expose BEMHTML globally (spec files reference it as a bare identifier)
+window.BEMHTML = BEMHTML;
 
-window.modules = createModulesShim({
-    // bem-core blocks
-    identify,
-    inherit,
-    objects,
-    functions,
-    'functions__debounce': functionsDebounce,
-    'functions__throttle': functionsThrottle,
-    'next-tick': nextTick,
-    'strings__escape': stringsEscape,
-    events,
-    'events__observable': eventsObservableBemDom,
-    'events__observable_type_bem-dom': eventsObservableBemDom,
-    dom,
-    cookie,
-    tick,
-    uri,
-    'uri__querystring': uriQuerystring,
-    'loader_type_js': loaderTypeJs,
-    'i-bem__internal': bemInternal,
-    'i-bem': bem,
-    'i-bem__collection': bemCollection,
-    'i-bem-dom': bemDom,
-    'i-bem-dom__collection': bemDomCollection,
-    'i-bem-dom__init': bemDomInit,
-    'keyboard__codes': keyboardCodes,
-    jquery: $,
-
-    // bem-components blocks
-    attach,
-    button,
-    checkbox,
-    'checkbox-group': checkboxGroup,
-    control,
-    dropdown,
-    icon,
-    image,
-    input,
-    link,
-    menu,
-    'menu__item': menuItem,
-    modal,
-    popup,
-    progressbar,
-    radio,
-    'radio-group': radioGroup,
-    select,
-    spin,
-    textarea,
-    'z-index-group': zIndexGroup,
-
-    // Test helpers
-    chai,
-    sinon,
-    'sinon-chai': sinonChaiPlugin,
-    BEMHTML,
-});
-
-// Register mocha as a module
-window.modules.define('mocha', function(provide) {
-    provide(window.mocha);
-});
-
-// Bootstrap 'spec': individual spec files will add more 'spec' definitions after this one.
-window.modules.define('spec', function(provide) {
-    provide();
-});
-
-// -- 7. Import all spec files -------------------------------------------------
-// Use lazy glob so spec files are imported AFTER window.modules is set up.
-// Each spec file calls modules.define('spec', ...) as a side effect.
-const specLoaders = import.meta.glob([
+// -- 6. Import all spec files -------------------------------------------------
+// Spec files are plain ESM with describe() at top level.
+// Eager glob ensures they execute immediately as side effects,
+// registering mocha tests via describe/it.
+import.meta.glob([
     '/common.blocks/**/*.spec.js',
     '/desktop.blocks/**/*.spec.js',
-]);
+], { eager: true });
 
-Promise.all(Object.values(specLoaders).map(load => load())).then(() => {
-    // -- 8. Run mocha ---------------------------------------------------------
-    // Resolve 'spec' module -> runs all spec factories -> registers describe/it.
-    window.modules.require(['spec'], function() {
-        const runner = mocha.run(function(failures) {
-            window.__testResults = {
-                failures,
-                total: runner.stats.tests,
-                passed: runner.stats.passes,
-                pending: runner.stats.pending,
-            };
-        });
-        window.__testFailures = [];
-        runner.on('fail', function(test, err) {
-            window.__testFailures.push({
-                title: test.fullTitle(),
-                err: err.message,
-            });
-        });
+// -- 7. Run mocha -------------------------------------------------------------
+const runner = mocha.run(function(failures) {
+    window.__testResults = {
+        failures,
+        total: runner.stats.tests,
+        passed: runner.stats.passes,
+        pending: runner.stats.pending,
+    };
+});
+window.__testFailures = [];
+runner.on('fail', function(test, err) {
+    window.__testFailures.push({
+        title: test.fullTitle(),
+        err: err.message,
     });
 });

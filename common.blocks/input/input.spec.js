@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['input', 'i-bem-dom', 'jquery', 'BEMHTML', 'sinon'],
-    function(provide, Input, bemDom, $, BEMHTML, sinon) {
+import Input from 'bem:input';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 describe('input', function() {
     var input;
@@ -50,11 +50,9 @@ describe('input', function() {
     });
 });
 
-provide();
 
 function buildInput(bemjson) {
     return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body'))
         .bem(Input);
 }
 
-});

@@ -1,7 +1,8 @@
-modules.define(
-    'spec',
-    ['input', 'i-bem-dom', 'jquery', 'dom', 'BEMHTML'],
-    function(provide, Input, bemDom, $, dom, BEMHTML) {
+import Input from 'bem:input';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import dom from 'bem:dom';
+
 
 describe('input', function() {
     var input;
@@ -21,8 +22,3 @@ describe('input', function() {
             dom.containsFocus(input._elem('control').domElem).should.be.true;
         });
     });
-});
-
-provide();
-
-});

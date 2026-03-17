@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['popup', 'i-bem-dom', 'jquery', 'BEMHTML'],
-    function(provide, Popup, bemDom, $, BEMHTML) {
+import Popup from 'bem:popup';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 describe('popup', function() {
     var popup, popupDomElem, popupParentDomElem, popupOwnerDomElem,
@@ -125,11 +125,9 @@ describe('popup', function() {
     });
 });
 
-provide();
 
 function buildPopup(parentDomElem, bemjson) {
     return bemDom.init($(BEMHTML.apply(bemjson)).appendTo(parentDomElem))
         .bem(Popup);
 }
 
-});

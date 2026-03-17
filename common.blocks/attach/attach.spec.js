@@ -1,7 +1,8 @@
-modules.define(
-    'spec',
-    ['attach', 'i-bem-dom', 'button', 'jquery', 'BEMHTML', 'sinon'],
-    function(provide, Attach, bemDom, Button, $, BEMHTML, sinon) {
+import Attach from 'bem:attach';
+import bemDom from 'bem:i-bem-dom';
+import Button from 'bem:button';
+import $ from 'bem:jquery';
+
 
 describe('attach', function() {
     var attach;
@@ -85,8 +86,3 @@ describe('attach', function() {
             .val(filePath)
             .trigger('change');
     }
-});
-
-provide();
-
-});

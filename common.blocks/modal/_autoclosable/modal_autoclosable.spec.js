@@ -1,7 +1,8 @@
-modules.define(
-    'spec',
-    ['modal', 'i-bem-dom', 'jquery', 'BEMHTML', 'keyboard__codes'],
-    function(provide, Modal, bemDom, $, BEMHTML, keyCodes) {
+import Modal from 'bem:modal';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import keyCodes from 'bem:keyboard__codes';
+
 
 describe('modal_autoclosable', function() {
     var modal;
@@ -61,6 +62,4 @@ function doPointerClick(target) {
         .trigger('pointerclick');
 }
 
-provide();
 
-});

@@ -1,7 +1,9 @@
-modules.define(
-    'spec',
-    ['radio', 'i-bem-dom', 'jquery', 'dom', 'button', 'BEMHTML'],
-    function(provide, Radio, bemDom, $, dom, Button, BEMHTML) {
+import Radio from 'bem:radio';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import dom from 'bem:dom';
+import Button from 'bem:button';
+
 
 describe('radio_type_button', function() {
     var radio;
@@ -68,8 +70,3 @@ describe('radio_type_button', function() {
             radio.findChildBlock(Button).hasMod('focused').should.be.false;
         });
     });
-});
-
-provide();
-
-});

@@ -1,7 +1,8 @@
-modules.define(
-    'spec',
-    ['checkbox-group', 'i-bem-dom', 'jquery', 'dom', 'BEMHTML', 'sinon'],
-    function(provide, CheckboxGroup, bemDom, $, dom, BEMHTML, sinon) {
+import CheckboxGroup from 'bem:checkbox-group';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import dom from 'bem:dom';
+
 
 describe('checkbox-group', function() {
     var checkboxGroup;
@@ -109,8 +110,3 @@ describe('checkbox-group', function() {
            checkboxGroup.getName().should.be.equal('name');
         });
     });
-});
-
-provide();
-
-});

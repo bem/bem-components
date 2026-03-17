@@ -1,7 +1,12 @@
-modules.define(
-    'spec',
-    ['select', 'i-bem-dom', 'jquery', 'sinon', 'chai', 'button', 'popup', 'menu', 'keyboard__codes', 'next-tick', 'BEMHTML'],
-    function(provide, Select, bemDom, $, sinon, chai, Button, Popup, Menu, keyCodes, nextTick, BEMHTML) {
+import Select from 'bem:select';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import Button from 'bem:button';
+import Popup from 'bem:popup';
+import Menu from 'bem:menu';
+import keyCodes from 'bem:keyboard__codes';
+import nextTick from 'bem:next-tick';
+
 
 describe('select', function() {
     var select, button, popup, menu;
@@ -226,7 +231,6 @@ describe('select', function() {
     });
 });
 
-provide();
 
 function createPointerrelease(originalEventName) {
     return $.Event('pointerrelease', { originalEvent : new $.Event(originalEventName || 'pointerup') });
@@ -253,4 +257,3 @@ function buildSelect(bemjson) {
         .bem(Select);
 }
 
-});

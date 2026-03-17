@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['menu', 'i-bem-dom', 'jquery', 'sinon', 'BEMHTML'],
-    function(provide, Menu, bemDom, $, sinon, BEMHTML) {
+import Menu from 'bem:menu';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 describe('menu_mode', function() {
     var menu, menuVal;
@@ -42,11 +42,9 @@ describe('menu_mode', function() {
 
 });
 
-provide();
 
 function buildMenu(bemjson) {
     return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body'))
         .bem(Menu);
 }
 
-});

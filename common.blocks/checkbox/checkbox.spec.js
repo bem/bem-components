@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['checkbox', 'i-bem-dom', 'jquery', 'BEMHTML', 'chai'],
-    function(provide, Checkbox, bemDom, $, BEMHTML, chai) {
+import Checkbox from 'bem:checkbox';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 describe('checkbox', function() {
     var checkbox;
@@ -50,8 +50,3 @@ describe('checkbox', function() {
             checkbox.hasMod('checked').should.be.false;
         });
     });
-});
-
-provide();
-
-});

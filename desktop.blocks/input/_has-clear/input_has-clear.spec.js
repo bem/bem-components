@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['input', 'i-bem-dom', 'jquery', 'BEMHTML'],
-    function(provide, Input, bemDom, $, BEMHTML) {
+import Input from 'bem:input';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 describe('input_has-clear', function() {
     var input;
@@ -27,6 +27,4 @@ function buildInput(val) {
         .bem(Input);
 }
 
-provide();
 
-});

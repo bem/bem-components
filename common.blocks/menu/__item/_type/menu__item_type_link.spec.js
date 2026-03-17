@@ -1,7 +1,10 @@
-modules.define(
-    'spec',
-    ['menu__item', 'menu', 'link', 'i-bem-dom', 'jquery', 'dom', 'sinon', 'BEMHTML'],
-    function(provide, MenuItem, Menu, Link, bemDom, $, dom, sinon, BEMHTML) {
+import MenuItem from 'bem:menu__item';
+import Menu from 'bem:menu';
+import Link from 'bem:link';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import dom from 'bem:dom';
+
 
 describe('menu__item_type_link', function() {
     var menu, menuItem, link;
@@ -71,8 +74,3 @@ describe('menu__item_type_link', function() {
         });
     });
 
-});
-
-provide();
-
-});

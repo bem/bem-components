@@ -1,7 +1,8 @@
-modules.define(
-    'spec',
-    ['radio', 'i-bem-dom', 'jquery', 'dom', 'BEMHTML', 'chai'],
-    function(provide, Radio, bemDom, $, dom, BEMHTML, chai) {
+import Radio from 'bem:radio';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import dom from 'bem:dom';
+
 
 describe('radio', function() {
     var radioOption;
@@ -49,8 +50,3 @@ describe('radio', function() {
             radioOption.hasMod('checked').should.be.false;
         });
     });
-});
-
-provide();
-
-});

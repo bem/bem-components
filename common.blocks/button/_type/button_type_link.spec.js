@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['button', 'i-bem-dom', 'chai', 'jquery', 'BEMHTML'],
-    function(provide, Button, bemDom, chai, $, BEMHTML) {
+import Button from 'bem:button';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 var expect = chai.expect;
 
@@ -61,8 +61,3 @@ describe('button_type_link', function() {
             .appendTo('body'))
             .bem(Button);
     }
-});
-
-provide();
-
-});

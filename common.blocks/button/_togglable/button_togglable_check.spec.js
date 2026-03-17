@@ -1,7 +1,8 @@
-modules.define(
-    'spec',
-    ['button', 'i-bem-dom', 'jquery', 'dom', 'BEMHTML'],
-    function(provide, Button, bemDom, $, dom, BEMHTML) {
+import Button from 'bem:button';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+import dom from 'bem:dom';
+
 
 describe('button_togglable_check', function() {
     var button;
@@ -62,8 +63,3 @@ describe('button_togglable_check', function() {
             button.domElem.attr('aria-pressed').should.be.equal('false');
         });
     });
-});
-
-provide();
-
-});

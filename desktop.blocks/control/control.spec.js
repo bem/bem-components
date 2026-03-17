@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['control', 'i-bem-dom', 'jquery', 'BEMHTML'],
-    function(provide, Control, bemDom, $, BEMHTML) {
+import Control from 'bem:control';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 describe('control', function() {
     var control;
@@ -50,8 +50,3 @@ describe('control', function() {
                     .should.be.false;
         });
     });
-});
-
-provide();
-
-});

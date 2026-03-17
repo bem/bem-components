@@ -1,7 +1,8 @@
-modules.define(
-    'spec',
-    ['dropdown', 'i-bem-dom', 'popup', 'jquery', 'BEMHTML', 'sinon'],
-    function(provide, Dropdown, bemDom, Popup, $, BEMHTML, sinon) {
+import Dropdown from 'bem:dropdown';
+import bemDom from 'bem:i-bem-dom';
+import Popup from 'bem:popup';
+import $ from 'bem:jquery';
+
 
 describe('dropdown', function() {
     var body = $('body'),
@@ -88,8 +89,3 @@ describe('dropdown', function() {
             spy.should.have.been.calledOnce;
         });
     });
-});
-
-provide();
-
-});

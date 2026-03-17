@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['modal', 'i-bem-dom', 'jquery', 'BEMHTML'],
-    function(provide, Modal, bemDom, $, BEMHTML) {
+import Modal from 'bem:modal';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 describe('modal', function() {
     var modal;
@@ -44,6 +44,4 @@ function buildModal() {
         .bem(Modal);
 }
 
-provide();
 
-});

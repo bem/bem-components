@@ -1,7 +1,8 @@
-modules.define(
-    'spec',
-    ['menu', 'menu__item', 'i-bem-dom', 'jquery', 'sinon', 'BEMHTML'],
-    function(provide, Menu, MenuItem, bemDom, $, sinon, BEMHTML) {
+import Menu from 'bem:menu';
+import MenuItem from 'bem:menu__item';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 describe('menu_mode_check', function() {
     var menu, menuItems;
@@ -111,11 +112,9 @@ describe('menu_mode_check', function() {
     });
 });
 
-provide();
 
 function buildMenu(bemjson) {
     return bemDom.init($(BEMHTML.apply(bemjson)).appendTo('body'))
         .bem(Menu);
 }
 
-});

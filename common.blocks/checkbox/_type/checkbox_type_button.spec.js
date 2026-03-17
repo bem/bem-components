@@ -1,7 +1,9 @@
-modules.define(
-    'spec',
-    ['checkbox', 'i-bem-dom', 'button', 'jquery', 'dom', 'BEMHTML', 'chai'],
-    function(provide, Checkbox, bemDom, Button, $, dom, BEMHTML, chai) {
+import Checkbox from 'bem:checkbox';
+import bemDom from 'bem:i-bem-dom';
+import Button from 'bem:button';
+import $ from 'bem:jquery';
+import dom from 'bem:dom';
+
 
 describe('checkbox_type_button', function() {
     var expect = chai.expect,
@@ -80,8 +82,3 @@ describe('checkbox_type_button', function() {
             button.hasMod('focused').should.be.false;
         });
     });
-});
-
-provide();
-
-});

@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['progressbar', 'i-bem-dom', 'jquery', 'BEMHTML'],
-    function(provide, Progressbar, bemDom, $, BEMHTML) {
+import Progressbar from 'bem:progressbar';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 describe('progressbar', function() {
     var progressbar;
@@ -32,8 +32,3 @@ describe('progressbar', function() {
         });
     });
 
-});
-
-provide();
-
-});

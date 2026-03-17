@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['dropdown', 'i-bem-dom', 'jquery', 'BEMHTML'],
-    function(provide, Dropdown, bemDom, $, BEMHTML) {
+import Dropdown from 'bem:dropdown';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 describe('dropdown', function() {
     var body = $('body'),
@@ -43,8 +43,3 @@ describe('dropdown', function() {
         dropdown.delMod('opened');
         switcher.domElem.attr('aria-expanded').should.be.equal('false');
     });
-});
-
-provide();
-
-});

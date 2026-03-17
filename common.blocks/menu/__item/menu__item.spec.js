@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['menu__item', 'i-bem-dom', 'jquery', 'sinon', 'chai', 'BEMHTML'],
-    function(provide, MenuItem, bemDom, $, sinon, chai, BEMHTML) {
+import MenuItem from 'bem:menu__item';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 var expect = chai.expect;
 
@@ -98,6 +98,4 @@ function buildMenuItem(val) {
         .bem(MenuItem);
 }
 
-provide();
 
-});

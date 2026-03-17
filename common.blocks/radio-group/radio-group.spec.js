@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['radio-group', 'i-bem-dom', 'jquery', 'BEMHTML', 'chai', 'sinon'],
-    function(provide, RadioGroup, bemDom, $, BEMHTML, chai, sinon) {
+import RadioGroup from 'bem:radio-group';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 var expect = chai.expect;
 
@@ -131,8 +131,3 @@ describe('radio-group', function() {
            radioGroup.getName().should.be.equal('name');
         });
     });
-});
-
-provide();
-
-});

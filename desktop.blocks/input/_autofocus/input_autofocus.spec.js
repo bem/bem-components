@@ -1,7 +1,7 @@
-modules.define(
-    'spec',
-    ['input', 'i-bem-dom', 'jquery', 'BEMHTML'],
-    function(provide, Input, bemDom, $, BEMHTML) {
+import Input from 'bem:input';
+import bemDom from 'bem:i-bem-dom';
+import $ from 'bem:jquery';
+
 
 describe('input_autofocus', function() {
     var input;
@@ -37,8 +37,3 @@ describe('input_autofocus', function() {
         input.hasMod('focused').should.be.false;
         input.getVal().should.be.equal('bla');
     });
-});
-
-provide();
-
-});

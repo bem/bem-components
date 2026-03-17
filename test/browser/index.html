@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>bem-components browser tests</title>
+    <link rel="stylesheet" href="/node_modules/mocha/mocha.css">
+    <!-- mocha.js is the pre-compiled browser UMD bundle — load as classic script -->
+    <script src="/node_modules/mocha/mocha.js"></script>
+    <style>
+        body { padding: 20px; }
+        #mocha { margin: 0; }
+    </style>
+</head>
+<body>
+    <div id="mocha"></div>
+    <script type="module" src="./entry.js"></script>
+</body>
+</html>

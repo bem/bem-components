@@ -110,3 +110,6 @@ describe('checkbox-group', function() {
            checkboxGroup.getName().should.be.equal('name');
         });
     });
+
+});
+

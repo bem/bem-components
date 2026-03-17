@@ -89,3 +89,6 @@ describe('dropdown', function() {
             spy.should.have.been.calledOnce;
         });
     });
+
+});
+

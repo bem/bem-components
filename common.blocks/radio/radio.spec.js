@@ -50,3 +50,6 @@ describe('radio', function() {
             radioOption.hasMod('checked').should.be.false;
         });
     });
+
+});
+

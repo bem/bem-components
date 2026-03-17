@@ -36,3 +36,6 @@ describe('link_pseudo', function() {
 
         spy.should.have.been.calledOnce;
     });
+
+});
+

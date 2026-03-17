@@ -63,3 +63,6 @@ describe('button_togglable_check', function() {
             button.domElem.attr('aria-pressed').should.be.equal('false');
         });
     });
+
+});
+

@@ -100,3 +100,6 @@ describe('link', function() {
             expect(link.domElem.attr('href')).to.be.equal(url);
         });
     });
+
+});
+

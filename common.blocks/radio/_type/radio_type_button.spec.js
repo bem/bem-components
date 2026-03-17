@@ -70,3 +70,6 @@ describe('radio_type_button', function() {
             radio.findChildBlock(Button).hasMod('focused').should.be.false;
         });
     });
+
+});
+

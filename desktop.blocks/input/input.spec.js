@@ -22,3 +22,6 @@ describe('input', function() {
             dom.containsFocus(input._elem('control').domElem).should.be.true;
         });
     });
+
+});
+

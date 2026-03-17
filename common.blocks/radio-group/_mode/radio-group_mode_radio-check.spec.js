@@ -36,3 +36,6 @@ describe('radio-group_mode-radio-check', function() {
             expect(radioGroup.getVal()).to.be.undefined;
         });
     });
+
+});
+

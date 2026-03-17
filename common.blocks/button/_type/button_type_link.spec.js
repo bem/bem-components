@@ -61,3 +61,6 @@ describe('button_type_link', function() {
             .appendTo('body'))
             .bem(Button);
     }
+
+});
+

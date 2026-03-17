@@ -32,3 +32,6 @@ describe('progressbar', function() {
         });
     });
 
+
+});
+

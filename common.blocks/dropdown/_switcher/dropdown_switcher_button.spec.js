@@ -43,3 +43,6 @@ describe('dropdown', function() {
         dropdown.delMod('opened');
         switcher.domElem.attr('aria-expanded').should.be.equal('false');
     });
+
+});
+

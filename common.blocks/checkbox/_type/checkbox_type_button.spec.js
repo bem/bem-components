@@ -82,3 +82,6 @@ describe('checkbox_type_button', function() {
             button.hasMod('focused').should.be.false;
         });
     });
+
+});
+

@@ -64,3 +64,6 @@ describe('button_togglable_radio', function() {
             button.domElem.attr('aria-pressed').should.be.equal('false');
         });
     });
+
+});
+

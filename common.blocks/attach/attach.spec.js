@@ -86,3 +86,6 @@ describe('attach', function() {
             .val(filePath)
             .trigger('change');
     }
+
+});
+

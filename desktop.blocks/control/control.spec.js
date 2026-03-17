@@ -50,3 +50,6 @@ describe('control', function() {
                     .should.be.false;
         });
     });
+
+});
+

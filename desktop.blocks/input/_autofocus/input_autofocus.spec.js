@@ -37,3 +37,6 @@ describe('input_autofocus', function() {
         input.hasMod('focused').should.be.false;
         input.getVal().should.be.equal('bla');
     });
+
+});
+

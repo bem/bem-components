@@ -65,7 +65,9 @@
     "build:touch-pad": "BEM_PLATFORM=touch-pad vite build --config build/vite.config.js",
     "build:touch-phone": "BEM_PLATFORM=touch-phone vite build --config build/vite.config.js",
     "lint": "eslint .",
-    "test": "echo 'tests not configured yet'",
+    "test": "npm run lint && npm run test:browser",
+    "test:browser": "playwright test",
+    "test:browser:ui": "playwright test --ui",
     "prepare": "husky"
   }
 }

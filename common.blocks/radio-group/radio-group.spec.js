@@ -131,3 +131,6 @@ describe('radio-group', function() {
            radioGroup.getName().should.be.equal('name');
         });
     });
+
+});
+

@@ -50,3 +50,6 @@ describe('checkbox', function() {
             checkbox.hasMod('checked').should.be.false;
         });
     });
+
+});
+

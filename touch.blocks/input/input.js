@@ -9,7 +9,7 @@ import bemDom from 'bem:i-bem-dom';
  * @class input
  * @bem
  */
-import Input from 'bem:input';
+export default function(Input) {
 
 bemDom.declBlock(Input, /** @lends input.prototype */{
     _onInputChanged : function() {
@@ -21,3 +21,7 @@ bemDom.declBlock(Input, /** @lends input.prototype */{
         return this.__base.apply(this, arguments);
     }
 });
+
+return Input;
+
+}

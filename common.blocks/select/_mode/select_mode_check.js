@@ -7,8 +7,9 @@
  * @class select
  * @bem
  */
-export default function(Select) {
-return Select.declMod({ modName : 'mode', modVal : 'check' }, /** @lends select.prototype */{
+import Select from 'bem:select';
+
+Select.declMod({ modName : 'mode', modVal : 'check' }, /** @lends select.prototype */{
     _updateControl : function() {
         this.findChildElems('control').forEach(function(control) {
             control.domElem.remove();
@@ -50,4 +51,5 @@ return Select.declMod({ modName : 'mode', modVal : 'check' }, /** @lends select.
             this.__base.apply(this, arguments);
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

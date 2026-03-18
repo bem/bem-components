@@ -10,8 +10,9 @@ import functions from 'bem:functions';
  * @class checkbox
  * @bem
  */
-export default function(Checkbox) {
-return Checkbox.declMod({ modName : 'type', modVal : 'button' }, /** @lends checkbox.prototype */{
+import Checkbox from 'bem:checkbox';
+
+Checkbox.declMod({ modName : 'type', modVal : 'button' }, /** @lends checkbox.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -55,4 +56,5 @@ function proxyModToButton(modName, modVal, callBase) {
 function proxyModFromButton(_, data) {
     this.setMod(data.modName, data.modVal);
 }
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

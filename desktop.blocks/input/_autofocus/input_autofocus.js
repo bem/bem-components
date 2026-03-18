@@ -1,8 +1,8 @@
 import dom from 'bem:dom';
 import bemDom from 'bem:i-bem-dom';
+import Input from 'bem:input';
 
-export default function(Input) {
-return Input.declMod({ modName : 'autofocus', modVal : true }, {
+Input.declMod({ modName : 'autofocus', modVal : true }, {
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -54,4 +54,5 @@ function isTextKey(e) {
             keyCode === 0))                         // isLetter
         return true;
 }
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

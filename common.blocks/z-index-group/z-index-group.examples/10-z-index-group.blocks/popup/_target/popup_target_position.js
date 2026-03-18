@@ -15,3 +15,5 @@ provide(Popup.declMod({ modName : 'target', modVal : 'position' }, {
 }));
 
 });
+// Side-effect only - modifier is registered on import
+export default function() {};

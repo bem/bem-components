@@ -7,8 +7,9 @@
  * @class select
  * @bem
  */
-export default function(Select) {
-return Select.declMod({ modName : 'mode', modVal : 'radio' }, /** @lends select.prototype */{
+import Select from 'bem:select';
+
+Select.declMod({ modName : 'mode', modVal : 'radio' }, /** @lends select.prototype */{
     _updateControl : function() {
         const val = this.getVal();
         this._elem('control').domElem.val(val);
@@ -22,4 +23,5 @@ return Select.declMod({ modName : 'mode', modVal : 'radio' }, /** @lends select.
         data.source === 'pointer' && this.delMod('opened');
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

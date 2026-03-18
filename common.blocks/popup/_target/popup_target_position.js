@@ -7,8 +7,9 @@
  * @class popup
  * @bem
  */
-export default function(Popup) {
-return Popup.declMod({ modName : 'target', modVal : 'position' }, /** @lends popup.prototype */{
+import Popup from 'bem:popup';
+
+Popup.declMod({ modName : 'target', modVal : 'position' }, /** @lends popup.prototype */{
     beforeSetMod : {
         'visible' : {
             'true' : function() {
@@ -52,4 +53,5 @@ return Popup.declMod({ modName : 'target', modVal : 'position' }, /** @lends pop
         };
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

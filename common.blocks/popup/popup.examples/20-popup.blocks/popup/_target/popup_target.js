@@ -9,3 +9,5 @@ provide(Popup.declMod({ modName : 'target', modVal : '*' }, {
 }));
 
 });
+// Side-effect only - modifier is registered on import
+export default function() {};

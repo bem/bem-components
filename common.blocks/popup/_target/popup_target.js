@@ -25,8 +25,9 @@ const VIEWPORT_ACCURACY_FACTOR = 0.99,
  * @param {Number} [viewportOffset=0] offset from the viewport (window)
  * @param {Array[String]} [directions] allowed directions
  */
-export default function(Popup) {
-return Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.prototype */{
+import Popup from 'bem:popup';
+
+Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -298,4 +299,5 @@ return Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.prot
             });
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

@@ -13,6 +13,15 @@
 </head>
 <body>
     <div id="mocha"></div>
+    <script>
+        // Catch module loading errors (these don't trigger 'error' events normally)
+        window.addEventListener('error', function(e) {
+            console.error('[module-error]', e.message, e.filename, e.lineno);
+        });
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('[unhandled-rejection]', e.reason);
+        });
+    </script>
     <script type="module" src="./entry.js"></script>
 </body>
 </html>

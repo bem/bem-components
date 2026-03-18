@@ -62,6 +62,7 @@ import bemDomInit from 'bem:i-bem-dom__init';
 import eventsObservableBemDom from 'bem:events__observable_type_bem-dom';
 
 import keyboardCodes from 'bem:keyboard__codes';
+import idle from 'bem:idle';
 
 // -- 4. bem-components blocks -------------------------------------------------
 import attach from 'bem:attach';
@@ -80,11 +81,12 @@ import dropdown from 'bem:dropdown';
 import 'bem:dropdown_switcher_button';
 import 'bem:dropdown_switcher_link';
 
-import icon from 'bem:icon';
-import image from 'bem:image';
+import 'bem:icon';
+import 'bem:image';
 
 import input from 'bem:input';
 import 'bem:input_has-clear';
+import 'bem:input_autofocus';
 
 import link from 'bem:link';
 import 'bem:link_pseudo';
@@ -130,27 +132,33 @@ import BEMHTML from './bemhtml-shim.js';
 window.BEMHTML = BEMHTML;
 
 // -- 6. Import all spec files -------------------------------------------------
-// Spec files are plain ESM with describe() at top level.
-// Eager glob ensures they execute immediately as side effects,
-// registering mocha tests via describe/it.
-import.meta.glob([
+// Use lazy glob (without eager) so spec files are imported AFTER this
+// module's top-level code has executed and mocha.setup() has run.
+// Each spec file uses describe/it/beforeEach/afterEach from mocha globals.
+const specLoaders = import.meta.glob([
     '/common.blocks/**/*.spec.js',
     '/desktop.blocks/**/*.spec.js',
-], { eager: true });
+]);
 
-// -- 7. Run mocha -------------------------------------------------------------
-const runner = mocha.run(function(failures) {
-    window.__testResults = {
-        failures,
-        total: runner.stats.tests,
-        passed: runner.stats.passes,
-        pending: runner.stats.pending,
-    };
-});
-window.__testFailures = [];
-runner.on('fail', function(test, err) {
-    window.__testFailures.push({
-        title: test.fullTitle(),
-        err: err.message,
+Promise.all(Object.values(specLoaders).map(load => load())).then(() => {
+    // -- 7. Run mocha ---------------------------------------------------------
+    const runner = mocha.run(function(failures) {
+        window.__testResults = {
+            failures,
+            total: runner.stats.tests,
+            passed: runner.stats.passes,
+            pending: runner.stats.pending,
+        };
     });
+    window.__testFailures = [];
+    runner.on('fail', function(test, err) {
+        window.__testFailures.push({
+            title: test.fullTitle(),
+            err: err.message,
+        });
+    });
+}).catch(err => {
+    console.error('[entry.js] Failed to load spec files:', err);
+    window.__testResults = { failures: 1, total: 0, passed: 0, pending: 0 };
+    window.__testFailures = [{ title: 'spec loading', err: String(err) }];
 });

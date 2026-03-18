@@ -1,5 +1,6 @@
-export default function(Input) {
-return Input.declMod({ modName : 'has-clear', modVal : true }, {
+import Input from 'bem:input';
+
+Input.declMod({ modName : 'has-clear', modVal : true }, {
     _onBoxClick : function() {
         this._elem('clear').hasMod('visible') || this.setMod('focused');
     }
@@ -12,4 +13,6 @@ return Input.declMod({ modName : 'has-clear', modVal : true }, {
         return this.__base.apply(this, arguments);
     }
 });
-};
+
+// Barrel-compatible export (this module is side-effect only)
+export default function(x) { return x; };

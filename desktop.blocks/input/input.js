@@ -36,6 +36,7 @@ const update = function() {
  * @class input
  * @bem
  */
+
 export default function(Input) {
 return bemDom.declBlock(Input, /** @lends input.prototype */{
     onSetMod : {

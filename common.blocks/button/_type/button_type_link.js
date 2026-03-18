@@ -7,8 +7,9 @@
  * @class button
  * @bem
  */
-export default function(Button) {
-return Button.declMod({ modName : 'type', modVal : 'link' }, /** @lends button.prototype */{
+import Button from 'bem:button';
+
+Button.declMod({ modName : 'type', modVal : 'link' }, /** @lends button.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -59,4 +60,5 @@ return Button.declMod({ modName : 'type', modVal : 'link' }, /** @lends button.p
         this._url && (document.location = this._url);
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

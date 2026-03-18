@@ -10,8 +10,9 @@ import dom from 'bem:dom';
  * @class modal
  * @bem
  */
-export default function(Modal) {
-return Modal.declMod({ modName : 'autoclosable', modVal : true }, /** @lends modal.prototype */{
+import Modal from 'bem:modal';
+
+Modal.declMod({ modName : 'autoclosable', modVal : true }, /** @lends modal.prototype */{
     onSetMod : {
         'visible' : {
             'true' : function() {
@@ -34,4 +35,5 @@ return Modal.declMod({ modName : 'autoclosable', modVal : true }, /** @lends mod
         this.delMod('visible');
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

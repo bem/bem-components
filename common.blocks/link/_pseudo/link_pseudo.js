@@ -9,8 +9,9 @@ import keyCodes from 'bem:keyboard__codes';
  * @class link
  * @bem
  */
-export default function(Link) {
-return Link.declMod({ modName : 'pseudo', modVal : true }, /** @lends link.prototype */{
+import Link from 'bem:link';
+
+Link.declMod({ modName : 'pseudo', modVal : true }, /** @lends link.prototype */{
     onSetMod : {
         'focused' : {
             'true' : function() {
@@ -36,4 +37,5 @@ return Link.declMod({ modName : 'pseudo', modVal : true }, /** @lends link.proto
         e.keyCode === keyCodes.ENTER && this._onPointerClick(e);
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

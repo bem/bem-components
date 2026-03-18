@@ -10,8 +10,9 @@ import $ from 'bem:jquery';
  * @class select
  * @bem
  */
-export default function(Select) {
-return Select.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends select.prototype */{
+import Select from 'bem:select';
+
+Select.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends select.prototype */{
     _updateControl : function() {
         const val = this.getVal(),
             control = this._elem('control');
@@ -46,4 +47,5 @@ return Select.declMod({ modName : 'mode', modVal : 'radio-check' }, /** @lends s
         data.source === 'pointer' && this.delMod('opened');
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

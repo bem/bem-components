@@ -9,8 +9,9 @@ import Link from 'bem:link';
  * @class menu__item
  * @bem
  */
-export default function(MenuItem) {
-return MenuItem.declMod({ modName : 'type', modVal : 'link' }, /** @lends menu__item.prototype */{
+import MenuItem from 'bem:menu__item';
+
+MenuItem.declMod({ modName : 'type', modVal : 'link' }, /** @lends menu__item.prototype */{
     onSetMod : {
         'hovered' : {
             'true' : function() {
@@ -43,4 +44,5 @@ return MenuItem.declMod({ modName : 'type', modVal : 'link' }, /** @lends menu__
         return this.__base.apply(this, arguments);
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

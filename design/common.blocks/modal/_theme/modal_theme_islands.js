@@ -7,8 +7,9 @@
  * @class modal
  * @bem
  */
-export default function(Modal) {
-return Modal.declMod({ modName : 'theme', modVal : 'islands' }, /** @lends modal.prototype */{
+import Modal from 'bem:modal';
+
+Modal.declMod({ modName : 'theme', modVal : 'islands' }, /** @lends modal.prototype */{
     onSetMod : {
         'visible' : {
             'true' : function() {
@@ -21,4 +22,5 @@ return Modal.declMod({ modName : 'theme', modVal : 'islands' }, /** @lends modal
         }
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

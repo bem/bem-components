@@ -16,8 +16,9 @@ const KEYDOWN_EVENT = ua.opera && ua.version < 12.10? 'keypress' : 'keydown',
  * @class popup
  * @bem
  */
-export default function(Popup) {
-return Popup.declMod({ modName : 'autoclosable', modVal : true }, /** @lends popup.prototype */{
+import Popup from 'bem:popup';
+
+Popup.declMod({ modName : 'autoclosable', modVal : true }, /** @lends popup.prototype */{
     onSetMod : {
         'visible' : {
             'true' : function() {
@@ -62,4 +63,5 @@ function onDocKeyPress(e) {
         !dom.isEditable($(e.target)) &&
             visiblePopupsStack[0].delMod('visible');
 }
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

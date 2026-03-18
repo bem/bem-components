@@ -28,4 +28,5 @@ node_modules
 /*.sets
 /*.tmpl-specs
 /test/dist/fixtures
+/test-results
 .claude/settings.local.json

@@ -2,13 +2,14 @@
  * @module input
  */
 
+import Input from 'bem:input';
+
 /**
  * @exports
  * @class input
  * @bem
  */
-export default function(Input) {
-return Input.declMod({ modName : 'has-clear', modVal : true }, /** @lends input.prototype */{
+Input.declMod({ modName : 'has-clear', modVal : true }, /** @lends input.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -38,4 +39,6 @@ return Input.declMod({ modName : 'has-clear', modVal : true }, /** @lends input.
         return this.__base.apply(this, arguments);
     }
 });
-};
+
+// Barrel-compatible export (this module is side-effect only)
+export default function(x) { return x; };

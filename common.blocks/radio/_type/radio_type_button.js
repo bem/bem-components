@@ -10,8 +10,9 @@ import Functions from 'bem:functions';
  * @class radio
  * @bem
  */
-export default function(Radio) {
-return Radio.declMod({ modName : 'type', modVal : 'button' }, /** @lends radio.prototype */{
+import Radio from 'bem:radio';
+
+Radio.declMod({ modName : 'type', modVal : 'button' }, /** @lends radio.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -50,4 +51,5 @@ function proxyModToButton(modName, modVal, callBase) {
 function proxyModFromButton(_, data) {
     this.setMod(data.modName, data.modVal);
 }
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

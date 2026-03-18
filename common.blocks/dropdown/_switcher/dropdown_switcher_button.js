@@ -9,8 +9,9 @@ import Button from 'bem:button';
  * @class dropdown
  * @bem
  */
-export default function(Dropdown) {
-return Dropdown.declMod({ modName : 'switcher', modVal : 'button' }, /** @lends dropdown.prototype */{
+import Dropdown from 'bem:dropdown';
+
+Dropdown.declMod({ modName : 'switcher', modVal : 'button' }, /** @lends dropdown.prototype */{
     onSetMod : {
         'opened' : function(_, modVal) {
             this.__base.apply(this, arguments);
@@ -23,4 +24,5 @@ return Dropdown.declMod({ modName : 'switcher', modVal : 'button' }, /** @lends 
             (this._switcher = this.findMixedBlock(Button));
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

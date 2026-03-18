@@ -1,7 +1,7 @@
 import objects from 'bem:objects';
+import Popup from 'bem:popup';
 
-export default function(Popup) {
-return Popup.declMod({ modName : 'theme', modVal : 'islands' }, {
+Popup.declMod({ modName : 'theme', modVal : 'islands' }, {
     _getDefaultParams : function() {
         return objects.extend(
             this.__base(),
@@ -11,4 +11,5 @@ return Popup.declMod({ modName : 'theme', modVal : 'islands' }, {
             });
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

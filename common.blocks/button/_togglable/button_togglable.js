@@ -8,8 +8,9 @@
  * @bem
  */
 
-export default function(Button) {
-return Button.declMod({ modName : 'togglable', modVal : '*' }, /** @lends button.prototype */{
+import Button from 'bem:button';
+
+Button.declMod({ modName : 'togglable', modVal : '*' }, /** @lends button.prototype */{
     onSetMod : {
         'checked' : function(_, modVal) {
             this.__base.apply(this, arguments);
@@ -17,4 +18,5 @@ return Button.declMod({ modName : 'togglable', modVal : '*' }, /** @lends button
         }
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

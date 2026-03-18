@@ -7,8 +7,9 @@
  * @class progressbar
  * @bem
  */
-export default function(Progressbar) {
-return Progressbar.declMod({ modName : 'theme', modVal : 'simple' }, /** @lends progressbar.prototype */{
+import Progressbar from 'bem:progressbar';
+
+Progressbar.declMod({ modName : 'theme', modVal : 'simple' }, /** @lends progressbar.prototype */{
 
     /**
      * Sets text
@@ -21,4 +22,5 @@ return Progressbar.declMod({ modName : 'theme', modVal : 'simple' }, /** @lends 
     }
 
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

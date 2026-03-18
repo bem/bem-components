@@ -8,16 +8,20 @@ import objects from 'bem:objects';
 import throttle from 'bem:functions__throttle';
 import zIndexGroup from 'bem:z-index-group';
 
-const body = $(bemDom.doc[0].body),
-    UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100;
+const UPDATE_TARGET_VISIBILITY_THROTTLING_INTERVAL = 100;
+let _body;
+function getBody() {
+    return _body || (_body = $(document.body));
+}
 
 /**
  * @exports
  * @class popup
  * @bem
  */
-export default function(Popup) {
-return Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popup.prototype */{
+import Popup from 'bem:popup';
+
+Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popup.prototype */{
     beforeSetMod : {
         'visible' : {
             'true' : function() {
@@ -108,9 +112,9 @@ return Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popup
     _calcTargetDimensions : function() {
         const anchor = this._anchor,
             anchorOffset = anchor.offset(),
-            bodyOffset = body.css('position') === 'static'?
+            bodyOffset = getBody().css('position') === 'static'?
                 { left : 0, top : 0 } :
-                body.offset();
+                getBody().offset();
 
         return {
             left : anchorOffset.left - bodyOffset.left,
@@ -256,4 +260,5 @@ return Popup.declMod({ modName : 'target', modVal : 'anchor' }, /** @lends popup
         return this._parentPopup = !!parentPopupDomElem.length && parentPopupDomElem.bem(Popup);
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

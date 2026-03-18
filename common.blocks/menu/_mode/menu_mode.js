@@ -10,8 +10,9 @@ import keyCodes from 'bem:keyboard__codes';
  * @class menu
  * @bem
  */
-export default function(Menu) {
-return Menu.declMod({ modName : 'mode', modVal : '*' }, /** @lends menu.prototype */{
+import Menu from 'bem:menu';
+
+Menu.declMod({ modName : 'mode', modVal : '*' }, /** @lends menu.prototype */{
     onSetMod : {
         'js' : {
             'inited' : function() {
@@ -103,4 +104,5 @@ return Menu.declMod({ modName : 'mode', modVal : '*' }, /** @lends menu.prototyp
         return res;
     }
 });
-};
+// Side-effect only - modifier is registered on import
+export default function() {};

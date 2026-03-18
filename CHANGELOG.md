@@ -1,5 +1,21 @@
 # Changelog
 
+## 7.0.0
+
+### Breaking changes
+* **Node.js 20+ required** (was >=4).
+* **ym replaced with ES modules** — `modules.define`/`modules.require` replaced with native `import`/`export`. All `bem:*` imports are resolved by Vite plugin.
+* **jQuery 4** — peer dependency updated from `^3.0.0` to `^4.0.0`.
+* **bem-core 5** — peer dependency updated from `^4.0.0` to `^5.0.0`.
+* **Build system: ENB replaced with Vite** — `npm run build` builds all 3 platforms (desktop, touch-pad, touch-phone). Dev server via `npm run dev`.
+* **Linting: jshint/jscs replaced with ESLint 10** — flat config in `eslint.config.js`, run via `npm run lint`.
+* **Testing: Hermione replaced with Playwright** — run via `npm run test:browser`.
+* **CSS processing via Vite** — PostCSS is now handled natively by Vite instead of ENB plugins.
+* **CI: Travis replaced with GitHub Actions**.
+* **Git hooks: git-hooks replaced with husky**.
+* **Bower removed** — all dependencies managed via npm.
+* Dropped support for Internet Explorer 8/9.
+
 ## 6.0.1
 
 ### Notable changes

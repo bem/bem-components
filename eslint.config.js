@@ -15,6 +15,7 @@ export default [
             '**/*.examples/**',
             '**/*.bemhtml.js',
             '**/*.bh.js',
+            '**/*.i18n/**',
             'common.bundles/',
             'touch-pad.pages/',
             'touch-phone.pages/',

@@ -54,7 +54,7 @@ export default bemDom.declBlock('control', /** @lends control.prototype */{
 
         'disabled' : {
             'true' : function() {
-                this._elem('control').domElem.attr('disabled', true);
+                this._elem('control').domElem.attr('disabled', 'disabled');
                 this.delMod('focused');
                 typeof this._tabIndex !== 'undefined' &&
                     this._elem('control').domElem.removeAttr('tabindex');

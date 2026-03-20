@@ -7,8 +7,15 @@
     <!-- mocha.js is the pre-compiled browser UMD bundle — load as classic script -->
     <script src="/node_modules/mocha/mocha.js"></script>
     <style>
-        body { padding: 20px; }
+        body { padding: 0; margin: 0; }
         #mocha { margin: 0; }
+
+        /* Critical block styles needed for browser tests.
+           These mirror the PostCSS-compiled output of the component CSS. */
+        .popup { position: absolute; }
+        /* test.blocks/popup: themeless popups need display toggling */
+        .popup:not(.modal):not([class*="popup_theme"]) { display: none; }
+        .popup_visible:not(.modal):not([class*="popup_theme"]) { display: block; }
     </style>
 </head>
 <body>

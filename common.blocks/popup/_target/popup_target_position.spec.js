@@ -11,6 +11,7 @@ describe('popup', function() {
         POPUP_MAIN_OFFSET = 5;
 
     beforeEach(function() {
+        $(window).scrollTop(0).scrollLeft(0);
         popupParentDomElem = $(BEMHTML.apply({ tag : 'div' })).appendTo('body');
         popupOwnerDomElem = $(BEMHTML.apply({
             tag : 'span',
@@ -68,12 +69,13 @@ describe('popup', function() {
                 [margin, winHeight - popupHeight + POPUP_MAIN_OFFSET / 2, 'right-top'],
                 [margin, winHeight - popupHeight / 2, 'right-center'],
                 [margin, winHeight - margin - POPUP_MAIN_OFFSET * 1.5, 'right-bottom'],
-                [winWidth - margin, winHeight - popupHeight, 'left-top'],
+                [winWidth - margin, winHeight - popupHeight + POPUP_MAIN_OFFSET, 'left-top'],
                 [winWidth - margin, winHeight - popupHeight / 2, 'left-center'],
                 [winWidth - margin, winHeight - margin - POPUP_MAIN_OFFSET * 1.5, 'left-bottom']
             ];
 
         beforeEach(function() {
+            $(window).scrollTop(0).scrollLeft(0);
             popup.domElem.css({ width : popupWidth, height : popupHeight });
         });
 

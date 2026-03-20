@@ -16,7 +16,7 @@ export default bemDom.declBlock('radio', Control, /** @lends radio.prototype */{
         'checked' : {
             'true' : function() {
                 this._elem('control').domElem
-                    .attr('checked', true)
+                    .attr('checked', 'checked')
                     .prop('checked', true);
             },
             '' : function() {

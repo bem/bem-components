@@ -29,4 +29,5 @@ node_modules
 /*.tmpl-specs
 /test/dist/fixtures
 /test-results
+test/browser/bemhtml-compiled.js
 .claude/settings.local.json

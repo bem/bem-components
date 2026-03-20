@@ -80,6 +80,9 @@ import control from 'bem:control';
 import dropdown from 'bem:dropdown';
 import 'bem:dropdown_switcher_button';
 import 'bem:dropdown_switcher_link';
+import 'bem:dropdown__switcher';
+import 'bem:dropdown__switcher_switcher_button';
+import 'bem:dropdown__switcher_switcher_link';
 
 import 'bem:icon';
 import 'bem:image';
@@ -125,8 +128,8 @@ import spin from 'bem:spin';
 import textarea from 'bem:textarea';
 import zIndexGroup from 'bem:z-index-group';
 
-// -- 5. BEMHTML shim ----------------------------------------------------------
-import BEMHTML from './bemhtml-shim.js';
+// -- 5. BEMHTML (compiled templates) ------------------------------------------
+import BEMHTML from './bemhtml-compiled.js';
 
 // Expose BEMHTML globally (spec files reference it as a bare identifier)
 window.BEMHTML = BEMHTML;

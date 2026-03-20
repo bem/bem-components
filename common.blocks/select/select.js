@@ -95,7 +95,7 @@ export default bemDom.declBlock('select', /** @lends select.prototype */{
 
             'true' : function() {
                 this._elems('control').forEach(function(control) {
-                    control.domElem.attr('disabled', true);
+                    control.domElem.attr('disabled', 'disabled');
                 });
                 this._popup.delMod('visible');
             },

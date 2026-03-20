@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 // Allow failures during initial setup. Failures are primarily due to
 // the minimal BEMHTML shim not producing block-specific HTML templates.
-const MAX_ALLOWED_FAILURES = 200;
+const MAX_ALLOWED_FAILURES = 0;
 
 test('bem-components browser spec tests', async ({ page }) => {
     const pageErrors = [];
@@ -49,5 +49,20 @@ test('bem-components browser spec tests', async ({ page }) => {
     }
 
     console.log(`Browser tests: ${passed} passed, ${failures} failed, ${total} total`);
+
+    if (failures > 0) {
+        const failDetails = await page.evaluate(() => window.__testFailures ?? []);
+        const summary = {};
+        for (const f of failDetails) {
+            const suite = f.title.split(' ')[0];
+            summary[suite] = (summary[suite] || 0) + 1;
+        }
+        console.log('Failures by suite:', JSON.stringify(summary, null, 2));
+        console.log('First 10 failures:');
+        for (const f of failDetails.slice(0, 10)) {
+            console.log(`  x ${f.title}\n    ${f.err}`);
+        }
+    }
+
     expect(failures).toBeLessThanOrEqual(MAX_ALLOWED_FAILURES);
 });

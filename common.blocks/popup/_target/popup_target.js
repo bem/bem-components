@@ -13,7 +13,7 @@ const VIEWPORT_ACCURACY_FACTOR = 0.99,
         'left-top', 'left-center', 'left-bottom'
     ],
 
-    win = bemDom.win;
+    getWin = () => bemDom.win;
 
 /**
  * @exports
@@ -45,13 +45,13 @@ Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.prototype *
         'visible' : {
             'true' : function() {
                 this.__base.apply(this, arguments);
-                this._domEvents(win).on('scroll resize', this._onWinScrollAndResize);
+                this._domEvents(getWin()).on('scroll resize', this._onWinScrollAndResize);
                 this.redraw();
             },
 
             '' : function() {
                 this.__base.apply(this, arguments);
-                this._domEvents(win).un('scroll resize', this._onWinScrollAndResize);
+                this._domEvents(getWin()).un('scroll resize', this._onWinScrollAndResize);
             }
         }
     },
@@ -215,10 +215,11 @@ Popup.declMod({ modName : 'target', modVal : '*' }, /** @lends popup.prototype *
     _calcTargetDimensions : function() {},
 
     _calcViewportDimensions : function() {
-        const winTop = win.scrollTop(),
-            winLeft = win.scrollLeft(),
-            winWidth = win.width(),
-            winHeight = win.height();
+        const w = getWin(),
+            winTop = w.scrollTop(),
+            winLeft = w.scrollLeft(),
+            winWidth = w.width(),
+            winHeight = w.height();
 
         return {
             top : winTop,

@@ -40,12 +40,12 @@ describe('checkbox', function() {
 
         it('should switch "checked" mod on "change" event', function() {
             checkbox._elem('control').domElem
-                .attr('checked', true)
+                .prop('checked', true)
                 .trigger('change');
             checkbox.hasMod('checked').should.be.true;
 
             checkbox._elem('control').domElem
-                .removeAttr('checked')
+                .prop('checked', false)
                 .trigger('change');
             checkbox.hasMod('checked').should.be.false;
         });

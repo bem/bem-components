@@ -70,8 +70,12 @@
     "test:tmpls": "node --test test/run-tmpl-specs.js",
     "build:bemhtml": "node build/compile-bemhtml.js",
     "pretest:browser": "node build/compile-bemhtml.js",
-    "test:browser": "playwright test",
-    "test:browser:ui": "playwright test --ui",
+    "test:browser": "playwright test --project=browser-specs",
+    "test:browser:ui": "playwright test --project=browser-specs --ui",
+    "generate:e2e-fixtures": "node test/e2e/generate-fixtures.js",
+    "pretest:e2e": "node test/e2e/generate-fixtures.js",
+    "test:e2e": "playwright test --project=e2e",
+    "test:e2e:update": "playwright test --project=e2e --update-snapshots",
     "prepare": "husky"
   }
 }

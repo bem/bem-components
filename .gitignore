@@ -30,4 +30,5 @@ node_modules
 /test/dist/fixtures
 /test-results
 test/browser/bemhtml-compiled.js
+test/e2e/fixtures/
 .claude/settings.local.json

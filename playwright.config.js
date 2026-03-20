@@ -2,8 +2,6 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
-    testDir: './test',
-    testMatch: ['browser.spec.js'],
     timeout: 60_000,
     retries: 1,
 
@@ -12,6 +10,19 @@ export default defineConfig({
         headless: true,
         baseURL: 'http://localhost:5174',
     },
+
+    projects: [
+        {
+            name: 'browser-specs',
+            testDir: './test',
+            testMatch: ['browser.spec.js'],
+        },
+        {
+            name: 'e2e',
+            testDir: './test/e2e',
+            testMatch: ['**/*.spec.js'],
+        },
+    ],
 
     webServer: {
         command: 'node node_modules/.bin/vite --config build/vite.test.config.js --port 5174',

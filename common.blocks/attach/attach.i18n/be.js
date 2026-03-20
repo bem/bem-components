@@ -1,6 +1,6 @@
-module.exports = {
+export default {
     "attach": {
-        "button-text": "Выбрать файл",
-        "no-file": "файл не выбран"
+        "button-text": "Выбраць файл",
+        "no-file": "файл не выбраны"
     }
 };

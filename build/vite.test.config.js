@@ -1,8 +1,21 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'node:path';
 import bemLevels from 'bem-core/build/plugins/vite-plugin-bem-levels.js';
+import bemI18n from './vite-plugin-bem-i18n.js';
 
 const rootDir = resolve(import.meta.dirname, '..');
+
+const levels = {
+    desktop: [
+        'node_modules/bem-core/common.blocks',
+        'node_modules/bem-core/desktop.blocks',
+        'common.blocks',
+        'desktop.blocks',
+        'design/common.blocks',
+        'design/desktop.blocks',
+        'test.blocks',
+    ],
+};
 
 export default defineConfig({
     root: rootDir,
@@ -10,17 +23,12 @@ export default defineConfig({
     plugins: [
         bemLevels({
             platform: 'desktop',
-            levels: {
-                desktop: [
-                    'node_modules/bem-core/common.blocks',
-                    'node_modules/bem-core/desktop.blocks',
-                    'common.blocks',
-                    'desktop.blocks',
-                    'design/common.blocks',
-                    'design/desktop.blocks',
-                    'test.blocks',
-                ],
-            },
+            levels,
+            rootDir,
+        }),
+        bemI18n({
+            platform: 'desktop',
+            levels,
             rootDir,
         }),
     ],

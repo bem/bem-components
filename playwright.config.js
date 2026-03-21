@@ -21,6 +21,7 @@ export default defineConfig({
             name: 'e2e',
             testDir: './test/e2e',
             testMatch: ['**/*.spec.js'],
+            snapshotPathTemplate: '{testDir}/{testFileDir}/{testFileName}-snapshots/{arg}{ext}',
         },
     ],
 

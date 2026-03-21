@@ -28,8 +28,10 @@
     "dist",
     "README.ru.md"
   ],
+  "dependencies": {
+    "bem-core": "^5.0.0"
+  },
   "peerDependencies": {
-    "bem-core": "^5.0.0",
     "jquery": "^4.0.0"
   },
   "devDependencies": {

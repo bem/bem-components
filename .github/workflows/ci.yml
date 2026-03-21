@@ -54,11 +54,15 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+      # Regenerate baselines on Linux (font rendering differs from macOS)
+      - run: npx playwright test --project=e2e --update-snapshots
+      # Verify they pass after regeneration
       - run: npm run test:e2e
-    # Note: E2E snapshots were generated on macOS. To regenerate for Linux CI:
-    # npx playwright test --project=e2e --update-snapshots
-    # Then commit the updated snapshots.
-    continue-on-error: true
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: e2e-test-results
+          path: test-results/
 
   build:
     runs-on: ubuntu-latest

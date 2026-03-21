@@ -1,9 +1,10 @@
 /**
- * tmpl-specs runner — verifies BEMHTML templates produce correct HTML output.
+ * tmpl-specs runner — verifies BEMHTML and BH templates produce correct HTML output.
  *
  * For each .bemjson.js / .html pair found in tmpl-specs directories,
  * compiles all BEMHTML templates from every level, applies the BEMJSON input,
  * and compares the result with the reference HTML.
+ * Additionally tests BH templates using the same specs.
  *
  * Usage: node --test test/run-tmpl-specs.js
  */
@@ -17,6 +18,7 @@ import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const bemxjst = require('bem-xjst');
+const BH = require('bh').BH;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -325,21 +327,80 @@ function normalizeHtml(html) {
     return s;
 }
 
+/**
+ * Load a CommonJS .bh.js template file in an ESM-based project.
+ * Wraps the file contents in a function that provides module/exports/require.
+ */
+function loadCjsTemplate(filePath) {
+    const code = readFileSync(filePath, 'utf8');
+    const mod = { exports: {} };
+    const wrappedFn = new Function('module', 'exports', 'require', code);
+    wrappedFn(mod, mod.exports, require);
+    return mod.exports;
+}
+
+/**
+ * Gather all .bh.js template files from project levels (no bem-core — BH
+ * templates live only in this project) and load them into a BH instance.
+ */
+function compileBhTemplates() {
+    const bhLevels = [
+        resolve(projectRoot, 'common.blocks'),
+        resolve(projectRoot, 'desktop.blocks'),
+        resolve(projectRoot, 'design/common.blocks'),
+        resolve(projectRoot, 'design/desktop.blocks'),
+    ];
+
+    const allFiles = [];
+    for (const level of bhLevels) {
+        allFiles.push(...findFiles(level, '.bh.js'));
+    }
+
+    const bh = new BH();
+    bh.setOptions({
+        jsAttrName: 'data-bem',
+        jsAttrScheme: 'json',
+    });
+
+    let loaded = 0;
+    for (const f of allFiles) {
+        try {
+            const templateFn = loadCjsTemplate(f);
+            if (typeof templateFn === 'function') {
+                templateFn(bh);
+                loaded++;
+            }
+        } catch (e) {
+            // Skip templates that fail to load
+            console.warn(`  [BH] Warning: could not load ${f}: ${e.message}`);
+        }
+    }
+
+    console.log(`  [BH] Loaded ${loaded}/${allFiles.length} template files.`);
+    return bh;
+}
+
 // --- Main ---
 
 console.log('Compiling all BEMHTML templates...');
 const bemhtml = compileAllTemplates();
-console.log('Templates compiled.\n');
+console.log('BEMHTML templates compiled.');
+
+console.log('Loading all BH templates...');
+const bh = compileBhTemplates();
+console.log('BH templates loaded.\n');
 
 const specs = findTmplSpecs();
 console.log(`Found ${specs.length} tmpl-spec test pairs.\n`);
 
-let passed = 0;
-let failed = 0;
+let bemhtmlPassed = 0;
+let bemhtmlFailed = 0;
+let bhPassed = 0;
+let bhFailed = 0;
 
 describe('tmpl-specs', () => {
     for (const spec of specs) {
-        it(spec.name, () => {
+        it(`${spec.name} (BEMHTML)`, () => {
             const bemjsonCode = readFileSync(spec.bemjsonPath, 'utf8');
             const expectedHtml = readFileSync(spec.htmlPath, 'utf8');
 
@@ -353,9 +414,35 @@ describe('tmpl-specs', () => {
 
             try {
                 assert.equal(normalizedActual, normalizedExpected);
-                passed++;
+                bemhtmlPassed++;
             } catch (e) {
-                failed++;
+                bemhtmlFailed++;
+                throw e;
+            }
+        });
+
+        it(`${spec.name} (BH)`, () => {
+            const bemjsonCode = readFileSync(spec.bemjsonPath, 'utf8');
+            const expectedHtml = readFileSync(spec.htmlPath, 'utf8');
+
+            const bemjson = eval(bemjsonCode);
+
+            let actualHtml;
+            try {
+                actualHtml = bh.apply(bemjson);
+            } catch (e) {
+                bhFailed++;
+                throw new Error(`BH.apply() failed: ${e.message}`);
+            }
+
+            const normalizedActual = normalizeHtml(actualHtml);
+            const normalizedExpected = normalizeHtml(expectedHtml);
+
+            try {
+                assert.equal(normalizedActual, normalizedExpected);
+                bhPassed++;
+            } catch (e) {
+                bhFailed++;
                 throw e;
             }
         });
@@ -365,7 +452,7 @@ describe('tmpl-specs', () => {
 // node:test runs after describe blocks complete
 process.on('exit', () => {
     console.log(`\n--- tmpl-specs summary ---`);
-    console.log(`Passed: ${passed}`);
-    console.log(`Failed: ${failed}`);
-    console.log(`Total:  ${passed + failed}`);
+    console.log(`BEMHTML — Passed: ${bemhtmlPassed}, Failed: ${bemhtmlFailed}, Total: ${bemhtmlPassed + bemhtmlFailed}`);
+    console.log(`BH     — Passed: ${bhPassed}, Failed: ${bhFailed}, Total: ${bhPassed + bhFailed}`);
+    console.log(`Overall: ${bemhtmlPassed + bhPassed} passed, ${bemhtmlFailed + bhFailed} failed`);
 });

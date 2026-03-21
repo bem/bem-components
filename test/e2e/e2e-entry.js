@@ -39,7 +39,7 @@ import 'bem:i-bem-dom__events';
 import 'bem:i-bem-dom__events_type_dom';
 import 'bem:i-bem-dom__events_type_bem';
 import 'bem:i-bem-dom__collection';
-import 'bem:i-bem-dom';
+import bemDom from 'bem:i-bem-dom';
 import bemDomInit from 'bem:i-bem-dom__init';
 
 import 'bem:events__observable_type_bem-dom';
@@ -58,7 +58,7 @@ import 'bem:checkbox-group';
 
 import 'bem:control';
 
-import 'bem:dropdown';
+import Dropdown from 'bem:dropdown';
 import 'bem:dropdown_switcher_button';
 import 'bem:dropdown_switcher_link';
 import 'bem:dropdown__switcher';
@@ -72,7 +72,7 @@ import 'bem:input';
 import 'bem:input_has-clear';
 import 'bem:input_autofocus';
 
-import 'bem:link';
+import Link from 'bem:link';
 import 'bem:link_pseudo';
 
 import 'bem:menu';
@@ -83,10 +83,10 @@ import 'bem:menu_mode_check';
 import 'bem:menu_mode_radio';
 import 'bem:menu_mode_radio-check';
 
-import 'bem:modal';
+import Modal from 'bem:modal';
 import 'bem:modal_autoclosable';
 
-import 'bem:popup';
+import Popup from 'bem:popup';
 import 'bem:popup_autoclosable';
 import 'bem:popup_target';
 import 'bem:popup_target_anchor';
@@ -100,7 +100,7 @@ import 'bem:radio_type_button';
 import 'bem:radio-group';
 import 'bem:radio-group_mode_radio-check';
 
-import 'bem:select';
+import Select from 'bem:select';
 import 'bem:select_mode_check';
 import 'bem:select_mode_radio';
 import 'bem:select_mode_radio-check';
@@ -140,6 +140,11 @@ $(function() {
         // CSS still applies, so visual tests can proceed.
         console.warn('[e2e-entry] BEM DOM init error:', e.message);
     }
+    // Expose jQuery and BEM APIs on window for E2E test access
+    window.$ = window.jQuery = $;
+    window.bemDom = bemDom;
+    window.bemBlocks = { Select, Modal, Popup, Dropdown, Link };
+
     // Signal to Playwright that initialization is complete
     document.body.dataset.bemReady = 'true';
     window.__bemReady = true;

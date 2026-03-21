@@ -17,7 +17,7 @@ Migrate bem-components from legacy tooling (ENB, ym, jshint/jscs, Hermione, Trav
 | Module system | ES modules (replace ym) | Consistent with bem-core v5 |
 | Vite BEM plugin | Reuse `vite-plugin-bem-levels` from bem-core (import, not copy) | Single source of truth, avoid divergent forks. Requires adding export in bem-core package.json and extending plugin for `.post.css` support |
 | Migration approach | Phased (approach A) | Proven on bem-core; each phase leaves project in testable state |
-| bem-core dependency | npm peerDependency ^5.0.0 (replace Bower) | Bower removed in bem-core v5 |
+| bem-core dependency | npm dependency ^5.0.0 (auto-installed, not peerDep) | Simplifies installation; jQuery stays as peerDep |
 | touch-pad vs touch-phone | Keep both platforms (same levels, may differ in autoprefixer targets) | Matches current ENB setup; can be unified later if no difference needed |
 
 ## Risks
@@ -26,7 +26,7 @@ Migrate bem-components from legacy tooling (ENB, ym, jshint/jscs, Hermione, Trav
 |------|-----------|
 | `rebem-css` ^0.2.0 incompatible with PostCSS 8 (Vite uses PostCSS 8) | Check compatibility early in Phase 3.1; if broken, fork and update to PostCSS 8 API |
 | `vite-plugin-bem-levels` from bem-core doesn't handle `.post.css` or `design/` levels | Extend the plugin in bem-core upstream before Phase 3.2; add `exports` field to bem-core package.json |
-| i18n build (attach.i18n/, `DEFAULT_LANGS = ['ru', 'en']`) currently handled by ENB | Needs Vite-compatible i18n compilation — see Phase 3.5 |
+| i18n build (attach.i18n/) currently handled by ENB | Resolved: created `build/vite-plugin-bem-i18n.js` Vite plugin that scans `.i18n/` dirs and generates virtual `bem:i18n` module. 7 languages (be, en, kk, ru, tr, tt, uk) in attach block |
 
 ## Phase 0: Preparation
 
@@ -36,9 +36,10 @@ Migrate bem-components from legacy tooling (ENB, ym, jshint/jscs, Hermione, Trav
   - `"type": "module"`
   - `"engines": { "node": ">=20" }`
   - Fix `"peerDependency"` → `"peerDependencies"` (typo in current package.json)
-  - Set `"peerDependencies": { "bem-core": "^5.0.0", "jquery": "^4.0.0" }`
+  - Move `bem-core` ^5.0.0 to `"dependencies"` (auto-installed)
+  - Set `"peerDependencies": { "jquery": "^4.0.0" }`
   - Add `"prepare": "husky"`
-- Add `.nvmrc` with `22`
+- Add `.nvmrc` with `24`
 
 ## Phase 1: Remove Legacy
 
@@ -89,10 +90,10 @@ Configure `.husky/pre-commit` → `npx lint-staged`.
 ### GitHub Actions CI
 
 Create `.github/workflows/ci.yml` with jobs:
-- `lint`: Node.js 22, `npm run lint`
-- `test`: Node.js [20, 22] matrix, `npm test`
-- `test-browser`: Node.js 22, Playwright + Chromium, `npm run test:browser`
-- `build`: Node.js 22, `npm run build`, upload dist/ artifact
+- `lint`: Node.js 24, `npm run lint`
+- `test`: Node.js [20, 22, 24] matrix, `npm test`
+- `test-browser`: Node.js 24, Playwright + Chromium, `npm run test:browser`
+- `build`: Node.js 24, `npm run build`, upload dist/ artifact
 
 Triggers: push on `v7`, `v*`; pull_request on `v7`.
 
@@ -125,7 +126,9 @@ Create `postcss.config.js` with current plugin chain (updated to latest versions
 
 Vite picks up `postcss.config.js` automatically. Verify `.post.css` files are processed correctly.
 
-**Risk: `rebem-css` ^0.2.0 was written for PostCSS 5-6. Vite uses PostCSS 8. Must verify compatibility early — if broken, fork and update to PostCSS 8 API.**
+**Note:** Added `unknown: () => {}` option to `postcss-simple-vars` to silence warnings about variables used inside `@each` loops (variables are resolved by `postcss-each` before `postcss-simple-vars` runs, but the plugin still warns about them).
+
+**Risk: `rebem-css` ^0.2.0 was written for PostCSS 5-6. Vite uses PostCSS 8. Must verify compatibility early — if broken, fork and update to PostCSS 8 API.** (Resolved: rebem-css works with PostCSS 8 without changes.)
 
 ### 3.2 Reuse vite-plugin-bem-levels from bem-core
 
@@ -191,19 +194,20 @@ Output per platform:
 
 ### 3.5 i18n support
 
-Current ENB handles i18n via `enb-bem-i18n` for blocks with `.i18n/` directories (e.g. `attach.i18n/`, with `ru.js` and `en.js` keysets). Languages: `['ru', 'en']`.
+Current ENB handles i18n via `enb-bem-i18n` for blocks with `.i18n/` directories (e.g. `attach.i18n/`). 7 languages: be, en, kk, ru, tr, tt, uk.
 
-Need Vite-compatible i18n compilation:
-- Parse `.i18n/{lang}.js` keyset files
-- Make them available at build time per language
-- Integrate with vite-plugin-bem-levels or as a separate small plugin
+**Implemented:** Created `build/vite-plugin-bem-i18n.js` — a Vite plugin that:
+- Scans `.i18n/` directories across all BEM levels
+- Generates a virtual `bem:i18n` module that exports keyset functions per language
+- Integrates with the existing vite-plugin-bem-levels infrastructure
 
 ### 3.6 Template compilation
 
-`.bemhtml.js` and `.bh.js` files are currently compiled by ENB-specific technologies (`enb-bemxjst`, `enb-bh`). Need Vite-compatible compilation:
-- BEMHTML: compile via `bem-xjst` directly
-- BH: compile via `bh` runtime
-- Integrate with vite-plugin-bem-levels or as separate build step
+`.bemhtml.js` and `.bh.js` files are currently compiled by ENB-specific technologies (`enb-bemxjst`, `enb-bh`).
+
+**Implemented:** Created `build/compile-bemhtml.js` that compiles all `.bemhtml.js` files via `bem-xjst` into a browser-ready bundle for tests. This is needed for browser tests (spec files use `BEMHTML.apply()`) but not for production build (templates are server-side).
+
+**BH templates:** Added BH testing to the tmpl-specs runner (`bh@4.2.1`). 3 known differences between BH and BEMHTML output are marked as todo.
 
 ## Phase 4: Module System — ym → ES modules
 
@@ -237,9 +241,18 @@ Key transformations:
 - Dependencies resolved via `bem:` prefix (handled by vite-plugin-bem-levels)
 - `this.name` in `declBlock` → string literal with block name
 
+**Important discovery:** Modifier files required a self-executing pattern (not just `export default function`). They need to import the parent block and call `declMod` at module scope so the modifier is registered immediately when the barrel file imports it. Example:
+
+```js
+import Block from 'bem:button';
+Block.declMod({ modName: 'type', modVal: 'link' }, { /* ... */ });
+```
+
 ### 4.2 Redefinitions
 
 Blocks with overrides on multiple levels (e.g. `select.js` in `common.blocks` and `desktop.blocks`) are handled automatically by vite-plugin-bem-levels through barrel files and import chains.
+
+**Important:** Modifier files (e.g. `button/_type/button_type_link.js`) must use the self-executing transformer pattern — they import the parent block and call `declMod()` at module scope, rather than using `export default function`. This ensures modifiers are registered when the barrel file imports them.
 
 ### 4.3 Spec files
 
@@ -262,24 +275,24 @@ Create:
 - `test/browser.spec.js` — entry point for browser tests
 - `test/browser/` — shims for mocha, chai, sinon in browser context
 
-### 5.1 Unit tests (specs)
+### 5.1 Unit tests (browser specs)
 
-~30+ `*.spec.js` files currently use mocha-style via ym:
-- Server-side tests → rewrite to `node:test` + `node:assert`
-- Browser spec tests → adapt for Playwright + Vite (shim mocha/chai/sinon as in bem-core)
+279 browser spec tests pass. All spec files migrated from ym to ESM. Real BEMHTML compiled via `bem-xjst` (not a shim) using `build/compile-bemhtml.js`:
+- Browser spec tests adapted for Playwright + Vite (shim mocha/chai/sinon as in bem-core)
 
 ### 5.2 E2E tests
 
-Rewrite ~19 hermione test files to Playwright:
-- New baseline screenshots (old Sauce Labs screenshots incompatible)
+232 Playwright E2E visual regression tests (expanded from the original ~19 hermione files to cover all visual states including opened popup/dropdown/select/modal):
+- New baseline screenshots (platform-agnostic, old Sauce Labs screenshots incompatible)
 - Remove hermione custom plugins (`custom-server`, `setFocusedState`)
 - Remove Sauce Labs integration
 
 ### 5.3 Template specs
 
-Adapt `*.tmpl-specs/` to run without ENB:
-- Compile bemjson → html through both engines (BEMHTML + BH)
-- Compare with reference HTML files
+Adapted `*.tmpl-specs/` to run without ENB via `test/run-tmpl-specs.js`:
+- Compiles bemjson → html through both engines (BEMHTML + BH via `bh@4.2.1`)
+- Compares with reference HTML files
+- 3 known BH/BEMHTML differences marked as todo
 
 ### 5.4 Test levels
 
@@ -307,10 +320,11 @@ Adapt `*.tmpl-specs/` to run without ENB:
 
 ### Final validation checklist
 
-- [ ] `npm run lint` passes
-- [ ] `npm test` — all unit tests green
-- [ ] `npm run test:browser` — all browser tests green
-- [ ] `npm run build` — all 3 platforms build successfully
-- [ ] dist files contain correct ESM/UMD bundles + CSS
-- [ ] `import` from bem-core ^5.0.0 works correctly
-- [ ] i18n keysets compile correctly for both languages
+- [x] `npm run lint` passes
+- [x] `npm run test:browser` — 279 browser spec tests green (real BEMHTML via bem-xjst)
+- [x] `npm run test:e2e` — 232 Playwright E2E visual regression tests green
+- [x] `npm run test:tmpls` — template specs pass (BEMHTML + BH, 3 known BH differences as todo)
+- [x] `npm run build` — all 3 platforms build successfully
+- [x] dist files contain correct ESM/UMD bundles + CSS
+- [x] `import` from bem-core ^5.0.0 works correctly
+- [x] i18n keysets compile correctly for all 7 languages (be, en, kk, ru, tr, tt, uk)

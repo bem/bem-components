@@ -1,3 +1,22 @@
-*.blocks/*/*.tests
-*.blocks/*/*.tmpl-specs
-*.blocks/*/*.spec.js
+# Test files
+**/*.spec.js
+**/*.tests/
+**/*.tmpl-specs/
+**/*.examples/
+
+# Build infrastructure
+build/
+test/
+docs/
+.enb/
+.github/
+.husky/
+
+# Config files
+eslint.config.js
+postcss.config.js
+playwright.config.js
+.nvmrc
+
+# Other
+test-results/

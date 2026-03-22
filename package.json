@@ -20,20 +20,13 @@
   "engines": {
     "node": ">=20"
   },
-  "files": [
-    "common.blocks",
-    "desktop.blocks",
-    "touch.blocks",
-    "design",
-    "dist",
-    "README.ru.md"
-  ],
   "peerDependencies": {
     "bem-core": "^5.0.0",
     "jquery": "^4.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "bem-core": "^5.0.0",
     "@playwright/test": "^1.58.2",
     "autoprefixer": "^10.4.27",
     "bem-xjst": "^8.10.0",

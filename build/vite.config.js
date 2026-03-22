@@ -59,7 +59,7 @@ export default defineConfig(({ mode }) => {
             outDir: resolve(rootDir, 'dist', platform),
             emptyOutDir: true,
             sourcemap: true,
-            minify: mode === 'production' ? 'esbuild' : false,
+            minify: mode === 'production',
             rollupOptions: {
                 external: ['jquery'],
                 output: {
